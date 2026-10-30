@@ -1,0 +1,3016 @@
+# Module 12 — Algorithms
+
+Episodes 72–83 · Dark blue + Butter
+
+## EP 72 — What is an algorithm? Big-O made easy
+
+**Module 12 · Algorithms · 6:30 · Dark blue + Butter · Prerequisite: EP 71**
+
+**Learning goals:** define an algorithm as a finite list of exact steps; count the steps a loop takes for a given n; name the growth class of a snippet as O(1), O(log n), O(n) or O(n²); spot a hidden O(n²) caused by calling a counting function inside a loop condition.
+
+### YouTube
+
+- **Title:** Why Some Code Takes 1 Year | Big-O in C, EP 72
+- **Description:** Why does one program finish instantly and another run forever on the same data? We count the steps of four tiny C loops and discover O(1), O(log n), O(n) and O(n²), with zero scary maths. Welcome to the Algorithms module. 0:00 Two programs, same job · 0:25 Title · 0:30 What is an algorithm · 1:10 Counting steps · 1:50 The four shapes of growth · 2:45 Code: counting steps live · 3:50 Run it · 4:20 Pun · 4:25 Why Big-O ignores small stuff · 5:00 Bug of the Day · 5:45 Challenge · 6:15 Outro
+- **Tags:** big o notation, time complexity, c programming, algorithms for beginners, O(n) explained, O(log n), nested loops, learn c, koding konkani, data structures and algorithms, c tutorial
+- **Thumbnail:** big text "1 SEC vs 1 YEAR"; two butter bars, one tiny, one shooting off the top of the frame; Xecxec holding a stopwatch with both claws, eyes wide; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:25 | Concept slide | Two laptops, "Program A: 0.01 s", "Program B: still running…" | Program B's progress bar crawls; calendar pages fly off; tick-tock SFX |
+| 2 | 0:25 | 0:05 | Title card | EP 72 · WHAT IS AN ALGORITHM? | Module 12 stinger, title slams in; claw-click |
+| 3 | 0:30 | 0:40 | Concept slide | Recipe card "Fish curry rice" with 5 numbered steps; definition box "Algorithm = finite, exact steps that solve a problem" | Steps tick in one by one; Xecxec stirs a pot |
+| 4 | 1:10 | 0:40 | Algorithm bars | Row of 8 fish boxes, a pointer checks each in turn; counter "steps: 1…8" | Pointer hops box to box; counter rolls; blip per step |
+| 5 | 1:50 | 0:55 | Concept slide | Four growth curves on one chart: O(1), O(log n), O(n), O(n²) in mint, pastel blue, butter, tomato | Curves draw left to right; O(n²) shoots off the top; whoosh |
+| 6 | 2:45 | 1:05 | Code explain | big\_o\_steps.c (26 lines) with a variable tracker for one, logn, lin, quad | Line highlights per \[HL\] cue; tracker counts up |
+| 7 | 3:50 | 0:30 | Terminal | gcc command and 3 output lines | Lines type out; O(n²) column flashes tomato |
+| 8 | 4:20 | 0:05 | Pun card | Pun | Drum rimshot, Xecxec claps claws |
+| 9 | 4:25 | 0:35 | Concept slide | "Drop constants, keep the biggest term": 3n + 5 → O(n); n² + n → O(n²) | Small terms shrink and fall away |
+| 10 | 5:00 | 0:45 | Bug of the Day | Loop with my\_len(word) in its condition; steps = 56 vs 7 | Red siren; my\_len call glows in every loop check |
+| 11 | 5:45 | 0:30 | Challenge | Four snippets A–D to rank | Cards shuffle in; timer ticks |
+| 12 | 6:15 | 0:15 | Outro | Next: EP 73 Linear vs binary search | Xecxec waves; sign-off |
+
+### Narration script
+
+**\[1 · Cold open\]** Two programs. Same job: find duplicate roll numbers in a list. Program A finishes in a blink. Program B is still running. Still. Running. Same computer, same data. The difference is not the speed of the laptop. The difference is the algorithm. Today we learn how to tell, just by reading code, which one is going to make you wait a year.
+
+**\[2 · Title\]** Episode 72. What is an algorithm? Big-O made easy.
+
+**\[3 · What is an algorithm\]** An algorithm is a finite list of exact steps that solves a problem. You already know one: a recipe. Wash the rice. Boil the water. Add the rice. Make the curry. Serve. Every step is clear, and the recipe ends. Every C program you have written since Episode 4 is an algorithm too. In this module we stop asking only "does it work?" and start asking "how much work does it do?"
+
+**\[4 · Counting steps\]** Here are eight boxes at the fish market, and we are looking for the kingfish. We check box one, box two, box three, and so on. In the worst case, the kingfish is in the last box, and we check all eight. Eight boxes, eight steps. If the market had a thousand boxes, it would be a thousand steps. The number of steps grows with n, the size of the input. That idea, how the steps grow as n grows, is what Big-O describes.
+
+**\[5 · Four shapes\]** Four shapes cover most of what you will meet. O(1), constant: the same number of steps no matter how big n is, like reading the first box. O(log n), logarithmic: every step cuts the problem in half, so even a million items need only about twenty steps. O(n), linear: one step per item, like checking every box. And O(n²), quadratic: for every item you go through every item again. That one is the curve that shoots off the screen. Ten items, a hundred steps. A thousand items, a million steps.
+
+**\[6 · Code explain\]** Let's count steps for real. \[HL 4\] An array of three sizes: 10, 100 and 1000. \[HL 6\] We loop over them, \[HL 7\] and n is the current size. \[HL 8\] Four counters, all long, all starting at zero. \[HL 10\] O(1): one increment, no loop. It runs once, whatever n is. \[TRACK one=1\] \[HL 12\] O(log n): i starts at n and is divided by 2 each time, while it is greater than 1. For n equals 10, i goes 10, 5, 2, then 1 stops it. That's three steps. \[TRACK logn=3\] \[HL 15\] O(n): a plain loop from 0 to n. Ten steps for n equals 10. \[TRACK lin=10\] \[HL 18\] O(n²): a loop inside a loop. \[HL 19\] For each of the n outer turns, the inner loop also runs n times. Ten times ten is a hundred. \[TRACK quad=100\] \[HL 22\] Finally we print all four counters with %ld, because they are long.
+
+**\[7 · Run it\]** Compile with gcc big\_o\_steps.c -o big\_o\_steps and run it. Look at the columns. O(1) stays at 1. O(log n) creeps from 3 to 6 to 9. O(n) grows ten times when n grows ten times. And O(n²)? A hundred, ten thousand, one million. Multiply n by ten and the work multiplies by a hundred.
+
+**\[8 · Pun\]** Why did the nested loop never get invited to parties? Because it always went round and round and round and round.
+
+**\[9 · Why Big-O ignores small stuff\]** Big-O only cares about the shape when n is large. If a loop does 3n plus 5 steps, we call it O(n). The 3 and the 5 don't change the shape. If code does n² plus n steps, we call it O(n²), because when n is a million, n² is so huge that the extra n is like one grain of sand on Calangute beach. Drop the constants. Keep the biggest term.
+
+**\[10 · Bug of the Day\]** Today's bug: the nested loop nobody noticed. We count the letter o in "monsoon". The answer is right: 3. But look at the loop condition. It calls my\_len every single time the loop checks i. And my\_len walks the whole word. So a loop that looks like O(n) is secretly O(n²). Our step counter shows 56 steps instead of 7. The fix: call my\_len once before the loop, store it in len, and compare with len. Now it's 7 steps. The same trap happens with strlen from Module 7, so watch your loop conditions.
+
+**\[11 · Challenge\]** Your challenge: rank these four snippets from fastest to slowest for a large n. A: a single loop to n. B: a loop where i doubles each time. C: one printf, no loop. D: a loop inside a loop, both to n. Write your ranking in the comments.
+
+**\[12 · Outro\]** Next episode, we race two ways of searching: checking every box, and the guess-the-number trick that finds anything in a thousand items in ten steps. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int sizes[] = {10, 100, 1000};
+
+    for (int k = 0; k < 3; k++) {
+        int n = sizes[k];
+        long one = 0, logn = 0, lin = 0, quad = 0;
+
+        one++;                                   /* O(1)     */
+
+        for (int i = n; i > 1; i = i / 2)        /* O(log n) */
+            logn++;
+
+        for (int i = 0; i < n; i++)              /* O(n)     */
+            lin++;
+
+        for (int i = 0; i < n; i++)              /* O(n^2)   */
+            for (int j = 0; j < n; j++)
+                quad++;
+
+        printf("n=%4d | O(1)=%ld | O(log n)=%ld | O(n)=%ld | O(n^2)=%ld\n",
+               n, one, logn, lin, quad);
+    }
+    return 0;
+}
+```
+
+```text
+$ gcc big_o_steps.c -o big_o_steps
+$ ./big_o_steps
+n=  10 | O(1)=1 | O(log n)=3 | O(n)=10 | O(n^2)=100
+n= 100 | O(1)=1 | O(log n)=6 | O(n)=100 | O(n^2)=10000
+n=1000 | O(1)=1 | O(log n)=9 | O(n)=1000 | O(n^2)=1000000
+```
+
+### Bug of the Day
+
+Wrong code (compiles cleanly, output is correct, but the work is O(n²)):
+
+```c
+#include <stdio.h>
+
+long steps = 0;
+
+int my_len(const char *s) {
+    int n = 0;
+    while (s[n] != '\0') {
+        n++;
+        steps++;
+    }
+    return n;
+}
+
+int main(void) {
+    char word[] = "monsoon";
+    int count = 0;
+
+    for (int i = 0; i < my_len(word); i++) {
+        if (word[i] == 'o')
+            count++;
+    }
+    printf("o appears %d times, steps = %ld\n", count, steps);
+    return 0;
+}
+```
+
+```text
+o appears 3 times, steps = 56
+```
+
+Fixed (only main changes):
+
+```c
+    int len = my_len(word);
+    for (int i = 0; i < len; i++) {
+        if (word[i] == 'o')
+            count++;
+    }
+```
+
+```text
+o appears 3 times, steps = 7
+```
+
+Why: the loop condition runs n + 1 times, and each check walked the whole string, so 8 checks × 7 letters = 56 steps; computing the length once makes it 7.
+
+### Pun & challenge
+
+- **Pun:** Why did the nested loop never get invited to parties? It always went round and round and round and round.
+- **Challenge:** Rank from fastest to slowest for large n: A) `for (i = 0; i < n; i++)`; B) `for (i = 1; i < n; i *= 2)`; C) a single `printf`; D) a loop to n inside a loop to n.
+- **Challenge answer:** C (O(1)) → B (O(log n)) → A (O(n)) → D (O(n²)).
+
+### Shorts for EP 72
+
+**S1 · Same job, 1 second vs 1 year** — 0:25 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "This program is still running. Since last year."
+- **Script:** Two programs. Same job. Same laptop. One finishes in a blink. The other is still running. The difference isn't the computer, it's the algorithm. By the end of this episode you'll spot the slow one just by reading the code. Full episode: Big-O made easy.
+- **On-screen text:** SAME JOB. 1 SEC vs 1 YEAR.
+- **Caption + hashtags:** Same code job, wildly different speed. Here's why. #cprogramming #learntocode #kodingkonkani #bigo #algorithms
+
+**S2 · Big-O in 30 seconds** — 0:35 · built from scenes 5 and 7
+
+- **Hook (first 1.5s):** "Four shapes. That's all Big-O is."
+- **Script:** Big-O describes how the steps grow when the input grows. O(1): same steps no matter what. O(log n): halve the problem each time, so a million items need about twenty steps. O(n): one step per item. O(n²): a loop inside a loop. Ten items, a hundred steps. A thousand items, a million steps. Multiply n by ten, the work multiplies by a hundred.
+- **On-screen text:** O(1) · O(log n) · O(n) · O(n²)
+- **Caption + hashtags:** Big-O in four shapes. #cprogramming #learntocode #kodingkonkani #bigo #timecomplexity
+
+**S3 · The hidden nested loop** — 0:35 · built from scene 10
+
+- **Hook (first 1.5s):** "This loop looks fast. It isn't."
+- **Script:** We count the o's in "monsoon". Answer: three, correct. But look at the loop condition: it calls my\_len every time it checks i, and my\_len walks the whole word. 56 steps instead of 7. Call the length function once, store it, and compare with that. Same trap with strlen.
+- **On-screen text:** 56 STEPS vs 7
+- **Caption + hashtags:** The O(n²) hiding in your for loop. #cprogramming #learntocode #kodingkonkani #bugoftheday #codingtips
+
+**S4 · The nested loop at parties** — 0:12 · built from scene 8
+
+- **Hook (first 1.5s):** "Why is the nested loop never invited to parties?"
+- **Script:** Why did the nested loop never get invited to parties? Because it always went round and round and round and round.
+- **On-screen text:** ROUND AND ROUND AND ROUND…
+- **Caption + hashtags:** O(n²) energy. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · Rank these 4 snippets** — 0:25 · built from scene 11
+
+- **Hook (first 1.5s):** "Rank these from fastest to slowest."
+- **Script:** Four snippets. A: a loop to n. B: a loop where i doubles. C: a single printf. D: a loop inside a loop. Rank them fastest to slowest for a huge n. Comment your answer, and the solution is pinned on the full episode.
+- **On-screen text:** RANK A B C D
+- **Caption + hashtags:** Which is fastest? Comment your ranking. #cprogramming #learntocode #kodingkonkani #bigo #quiz
+
+## EP 73 — Linear vs binary search, visualised
+
+**Module 12 · Algorithms · 6:45 · Dark blue + Butter · Prerequisite: EP 72**
+
+**Learning goals:** write linear search and binary search as C functions; trace binary search by hand using low, high and mid; explain why binary search needs a sorted array and is O(log n); compute mid safely as low + (high - low) / 2.
+
+### YouTube
+
+- **Title:** Guess My Number in 7 Tries | Binary Search in C, EP 73
+- **Description:** Checking every box works, but halving the problem is magic. We animate linear search and binary search side by side on the same array, write both in C, and count their steps. Plus the one-character bug that makes binary search loop forever. 0:00 Guess my number · 0:20 Title · 0:25 Linear search, animated · 1:05 Binary search, animated · 2:00 Step trace · 2:30 Code: both functions · 3:55 Run it · 4:15 Pun · 4:20 Complexity compared · 4:55 Bug of the Day · 5:55 Challenge · 6:25 Outro
+- **Tags:** binary search, linear search, c programming, searching algorithms, binary search in c, O(log n), algorithms for beginners, learn c, koding konkani, dsa in c, c tutorial
+- **Thumbnail:** big text "7 TRIES. ANY NUMBER."; a row of bars with half greyed out and a butter arrow on the middle bar; Xecxec holding up seven fingers-worth of claws (a "7" card); Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | "Think of a number from 1 to 100." Guesses 50, 75, 62… appear | Each guess crosses out half a number strip; ding on the hit |
+| 2 | 0:20 | 0:05 | Title card | EP 73 · LINEAR vs BINARY SEARCH | Stinger; claw-click |
+| 3 | 0:25 | 0:40 | Algorithm bars | 6 bars \[3, 8, 15, 21, 34, 42\], target 34; pointer i walks left to right | Each checked bar flashes pastel blue, then grey; found bar turns mint; blip per step |
+| 4 | 1:05 | 0:55 | Algorithm bars | Same bars, labels low / mid / high under them | Out-of-range bars fade grey; mid arrow drops in butter; found bar mint; whoosh on each halving |
+| 5 | 2:00 | 0:30 | Concept slide | Step-trace tables for both searches (below) | Rows reveal one at a time in sync with scenes 3–4 replay at 2x |
+| 6 | 2:30 | 1:25 | Code explain | search.c (38 lines); tracker for low, high, mid, steps | \[HL\]/\[TRACK\] cues |
+| 7 | 3:55 | 0:20 | Terminal | gcc and 2 output lines | Lines type out; "5 steps" vs "2 steps" boxed |
+| 8 | 4:15 | 0:05 | Pun card | Pun | Rimshot |
+| 9 | 4:20 | 0:35 | Concept slide | Table: n = 6, 1000, 1,000,000 with worst-case steps linear vs binary | Linear column grows huge; binary column barely moves |
+| 10 | 4:55 | 1:00 | Bug of the Day | mid = low + high / 2; terminal frozen with a spinning cursor | Red siren; mid arrow stuck on bar 5, bouncing |
+| 11 | 5:55 | 0:30 | Challenge | "Binary search on 1–100: what's the most guesses ever needed?" | Timer |
+| 12 | 6:25 | 0:20 | Outro | Next: EP 74 Bubble sort | Sign-off |
+
+### Step trace
+
+Array `{3, 8, 15, 21, 34, 42}`, target **34**. (Searching does not swap, so the swap column records the range change instead.)
+
+Linear search:
+
+| Step | Array state | Compared | Swapped / range |
+| --- | --- | --- | --- |
+| 1 | \[3, 8, 15, 21, 34, 42\] | a\[0\]=3 == 34? no | none, i → 1 |
+| 2 | \[3, 8, 15, 21, 34, 42\] | a\[1\]=8 == 34? no | none, i → 2 |
+| 3 | \[3, 8, 15, 21, 34, 42\] | a\[2\]=15 == 34? no | none, i → 3 |
+| 4 | \[3, 8, 15, 21, 34, 42\] | a\[3\]=21 == 34? no | none, i → 4 |
+| 5 | \[3, 8, 15, 21, 34, 42\] | a\[4\]=34 == 34? yes | none, return 4 |
+
+Binary search:
+
+| Step | low, high, mid | Compared | Swapped / range |
+| --- | --- | --- | --- |
+| 1 | 0, 5, 2 | a\[2\]=15 vs 34: 15 < 34 | none; low = 3 (bars 0–2 grey) |
+| 2 | 3, 5, 4 | a\[4\]=34 vs 34: equal | none; return 4 |
+
+**Complexity:** linear search best O(1), average O(n), worst O(n), space O(1); works on any array. Binary search best O(1), average O(log n), worst O(log n), space O(1) (iterative); needs a sorted array.
+
+### Narration script
+
+**\[1 · Cold open\]** Think of a number from 1 to 100. Is it 50? Higher. 75? Lower. 62? Higher. 68, 71, 73. Got it in six. With this trick, I never need more than seven guesses for any number from 1 to 100. That trick is called binary search.
+
+**\[2 · Title\]** Episode 73. Linear versus binary search, visualised.
+
+**\[3 · Linear search\]** You met both searches briefly in Episode 43; today we watch them race. First, the simple way. Six fish boxes with weights 3, 8, 15, 21, 34 and 42, and we want 34. Linear search checks box zero: 3, no. Box one: 8, no. 15, no. 21, no. Box four: 34, yes! Five steps. Linear search is honest and works on any array, sorted or not. But in the worst case it checks every single box.
+
+**\[4 · Binary search\]** Now the clever way. Binary search only works if the array is sorted, and ours is. We keep two markers: low at index 0 and high at index 5. The middle, mid, is index 2, value 15. Is 15 our 34? No, and 15 is smaller. Since the array is sorted, 34 cannot be anywhere left of 15. So we throw away the whole left half in one step. Now low moves to 3. The new mid is index 4, value 34. Found it, in two steps. Every comparison cuts the remaining boxes in half.
+
+**\[5 · Step trace\]** Here are both traces side by side. Linear: five comparisons, one per box. Binary: two comparisons, and the range shrinks each time. Remember this table; you will see these exact frames in the animation.
+
+**\[6 · Code explain\]** \[HL 3\] linear\_search takes the array, its size n, the target, and a pointer to a step counter, so the caller can see how much work happened. That's the call-by-reference trick from Episode 55. \[HL 4\] Loop over every index. \[HL 5\] Add one to the steps through the pointer. \[HL 6\] If this element is the target, \[HL 7\] return its index. \[HL 9\] If the loop finishes, the target is missing, so return minus one. \[HL 12\] Now binary\_search. \[HL 13\] low starts at 0, high at n minus 1. \[TRACK low=0 high=5\] \[HL 14\] Keep going while low is not past high. \[HL 15\] mid is low plus half the distance between them. \[TRACK mid=2\] \[HL 16\] Count a step. \[HL 17\] If a\[mid\] is the target, return it. \[HL 19\] If a\[mid\] is smaller, the target must be to the right, so low becomes mid plus one. \[TRACK low=3\] \[HL 21\] Otherwise it's to the left, so high becomes mid minus one. Back to the top: \[TRACK mid=4\] a\[4\] is 34, return 4. \[HL 24\] If low passes high, the range is empty: return minus one. \[HL 28\] In main, our sorted fish array. \[HL 30\] Two step counters. \[HL 32\] Call both functions with the address of each counter. \[HL 35\] And print the index and steps.
+
+**\[7 · Run it\]** Compile and run. Linear: index 4 in 5 steps. Binary: index 4 in 2 steps. With six items the gap is small. Watch what happens with more.
+
+**\[8 · Pun\]** Why is binary search so calm in arguments? It always meets you halfway.
+
+**\[9 · Complexity\]** Worst case for linear search is n steps: a thousand items, a thousand steps; a million items, a million steps. That's O(n). Binary search halves each time, so the worst case is about log base 2 of n: ten steps for a thousand items, twenty for a million. That's O(log n). Both use O(1) extra memory. The catch: binary search needs sorted data, which is exactly why the next eight episodes are about sorting.
+
+**\[10 · Bug of the Day\]** Today's bug: a wrong mid. Someone wrote low plus high divided by 2, without brackets. Division happens before addition, remember precedence from Module 2, so this is low plus half of high. Search for 21: first mid is 2, so low becomes 3. Next mid is 3 plus 5 divided by 2, which is 3 plus 2, which is 5. 42 is too big, so high becomes 4. Next mid is 3 plus 4 divided by 2, still 5. Again. And again. The program never finishes. The fix: low plus, in brackets, high minus low, divided by 2. We use this form instead of low plus high over 2 because on huge arrays low plus high can overflow an int.
+
+**\[11 · Challenge\]** Your challenge: write binary search for the numbers 1 to 100, and find the largest number of guesses it can ever need. Then print the guesses it makes for 73.
+
+**\[12 · Outro\]** Binary search needs sorted data. So next episode, we sort! Our first sort is bubble sort, where the heaviest value floats to the top. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int linear_search(const int a[], int n, int target, int *steps) {
+    for (int i = 0; i < n; i++) {
+        (*steps)++;
+        if (a[i] == target)
+            return i;
+    }
+    return -1;
+}
+
+int binary_search(const int a[], int n, int target, int *steps) {
+    int low = 0, high = n - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        (*steps)++;
+        if (a[mid] == target)
+            return mid;
+        else if (a[mid] < target)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return -1;
+}
+
+int main(void) {
+    int fish[] = {3, 8, 15, 21, 34, 42};
+    int n = 6;
+    int s1 = 0, s2 = 0;
+
+    int p1 = linear_search(fish, n, 34, &s1);
+    int p2 = binary_search(fish, n, 34, &s2);
+
+    printf("Linear: found at index %d in %d steps\n", p1, s1);
+    printf("Binary: found at index %d in %d steps\n", p2, s2);
+    return 0;
+}
+```
+
+```text
+$ gcc search.c -o search
+$ ./search
+Linear: found at index 4 in 5 steps
+Binary: found at index 4 in 2 steps
+```
+
+### Bug of the Day
+
+Wrong code:
+
+```c
+#include <stdio.h>
+
+int binary_search(const int a[], int n, int target) {
+    int low = 0, high = n - 1;
+    while (low <= high) {
+        int mid = low + high / 2;
+        if (a[mid] == target)
+            return mid;
+        else if (a[mid] < target)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return -1;
+}
+
+int main(void) {
+    int fish[] = {3, 8, 15, 21, 34, 42};
+    printf("21 is at index %d\n", binary_search(fish, 6, 21));
+    return 0;
+}
+```
+
+No compiler error or warning. Output: nothing at all; the program hangs (press Ctrl+C to stop it). mid gets stuck at 5 while low = 3 and high = 4.
+
+Fixed line:
+
+```c
+        int mid = low + (high - low) / 2;
+```
+
+```text
+21 is at index 3
+```
+
+Why: `/` binds tighter than `+`, so `low + high / 2` is not the middle of the range; once mid falls outside low..high the range stops shrinking.
+
+### Pun & challenge
+
+- **Pun:** Why is binary search so calm in arguments? It always meets you halfway.
+- **Challenge:** Binary search over the numbers 1 to 100 (low = 1, high = 100). What is the most guesses ever needed? Print every mid it tries when the secret number is 73.
+- **Challenge answer:** At most 7 guesses (2⁷ = 128 ≥ 100). For 73, with mid = low + (high - low) / 2 the guesses are 50, 75, 62, 68, 71, 73 (6 guesses).
+
+### Shorts for EP 73
+
+**S1 · Any number in 7 guesses** — 0:20 · built from scene 1
+
+- **Hook (first 1.5s):** "Think of a number from 1 to 100."
+- **Script:** Think of a number from 1 to 100. 50? Higher. 75? Lower. 62, 68, 71, 73. Got it. I never need more than seven guesses, for any number. The trick has a name: binary search. And it's how computers search sorted data.
+- **On-screen text:** 1–100 IN 7 GUESSES
+- **Caption + hashtags:** The guessing trick computers use. #cprogramming #learntocode #kodingkonkani #binarysearch #algorithms
+
+**S2 · Binary search in 30 seconds** — 0:35 · built from scenes 4 and 9
+
+- **Hook (first 1.5s):** "Throw away half the array. Every step."
+- **Script:** Binary search needs a sorted array. Look at the middle. If it's your target, done. If it's too small, the target can only be on the right, so throw away the whole left half. Too big? Throw away the right half. Repeat. A thousand items: about ten steps. A million: about twenty. That's O(log n).
+- **On-screen text:** HALVE IT. AGAIN. AGAIN.
+- **Caption + hashtags:** Binary search, visualised. #cprogramming #learntocode #kodingkonkani #binarysearch #dsa
+
+**S3 · The bracket that froze my program** — 0:35 · built from scene 10
+
+- **Hook (first 1.5s):** "Missing brackets. Infinite loop."
+- **Script:** mid equals low plus high divided by two. Looks fine? Division happens first, so it's low plus half of high. Search for 21 and mid gets stuck on index 5 forever. The program just hangs. Fix: low plus, in brackets, high minus low, divided by two.
+- **On-screen text:** low + (high - low) / 2
+- **Caption + hashtags:** One pair of brackets, one frozen program. #cprogramming #learntocode #kodingkonkani #bugoftheday #binarysearch
+
+**S4 · Meets you halfway** — 0:10 · built from scene 8
+
+- **Hook (first 1.5s):** "Why is binary search so calm?"
+- **Script:** Why is binary search so calm in arguments? It always meets you halfway.
+- **On-screen text:** IT MEETS YOU HALFWAY
+- **Caption + hashtags:** Peak diplomacy. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · How many guesses?** — 0:20 · built from scene 11
+
+- **Hook (first 1.5s):** "1 to 100. What's the worst case?"
+- **Script:** Binary search on the numbers 1 to 100. What is the largest number of guesses it can ever need? Is it 7, 10, or 50? Comment your answer. The proof is pinned on the full episode.
+- **On-screen text:** 7? 10? 50?
+- **Caption + hashtags:** Comment your answer. #cprogramming #learntocode #kodingkonkani #quiz #binarysearch
+
+## EP 74 — Bubble sort
+
+**Module 12 · Algorithms · 7:00 · Dark blue + Butter · Prerequisite: EP 73**
+
+**Learning goals:** trace bubble sort pass by pass on paper; write bubble\_sort in C with the correct inner-loop bound n - 1 - pass; add an early-exit flag so a sorted array finishes in one pass; state its best, average and worst time complexity.
+
+### YouTube
+
+- **Title:** Bubble Sort, Animated Step by Step | C Programming EP 74
+- **Description:** The biggest value bubbles to the end on every pass. We animate bubble sort on six bars, trace every comparison and swap, then write it in C with an early-exit flag. Plus the inner-loop bug that reads past the end of your array. 0:00 The heaviest bubble · 0:20 Title · 0:25 The idea · 1:00 Pass 1 animated · 1:50 Passes 2 to 4 · 2:30 Step trace · 2:55 Code · 4:20 Run it · 4:40 Pun · 4:45 Complexity · 5:20 Bug of the Day · 6:20 Challenge · 6:45 Outro
+- **Tags:** bubble sort, bubble sort in c, sorting algorithms, c programming, sorting visualised, algorithms for beginners, learn c, koding konkani, dsa in c, time complexity, c tutorial
+- **Thumbnail:** big text "BUBBLE SORT"; six bars with the tallest one rising out of a bubble at the right end; Xecxec blowing a soap bubble; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Glass of soda; the biggest bubble rises to the top | Bubbles rise; pop SFX; Xecxec sips |
+| 2 | 0:20 | 0:05 | Title card | EP 74 · BUBBLE SORT | Stinger; claw-click |
+| 3 | 0:25 | 0:35 | Concept slide | Rule card: "Compare neighbours. If left > right, swap. Repeat." | Two bars wobble and swap; whoosh |
+| 4 | 1:00 | 0:50 | Algorithm bars | Bars \[5, 2, 9, 1, 6, 3\]; pass 1, steps 1.1–1.5 | Compared pair in pastel blue; swap slides in tomato; 9 locks mint at the end; tick per compare, swoosh per swap |
+| 5 | 1:50 | 0:40 | Algorithm bars | Passes 2, 3, 4 at 2x speed; "swapped = false" badge in pass 4 | Locked bars stay mint; pass 4 shows no tomato; bell on early exit |
+| 6 | 2:30 | 0:25 | Concept slide | Full step-trace table (below) | Rows reveal in sync with a 4x replay |
+| 7 | 2:55 | 1:25 | Code explain | bubble.c (36 lines); tracker for pass, j, swapped, temp | \[HL\]/\[TRACK\] cues |
+| 8 | 4:20 | 0:20 | Terminal | gcc and 5 output lines | Lines type out |
+| 9 | 4:40 | 0:05 | Pun card | Pun | Rimshot, bubble pop |
+| 10 | 4:45 | 0:35 | Concept slide | Complexity card: best O(n), average O(n²), worst O(n²), space O(1), stable | Each badge stamps in |
+| 11 | 5:20 | 1:00 | Bug of the Day | Inner loop j < n - pass; output 1 -1 2 3 5 6 | Red siren; j arrow steps past the last bar into a grey "not yours" box |
+| 12 | 6:20 | 0:25 | Challenge | Marks 72, 45, 98, 60, 85 sorted descending | Timer |
+| 13 | 6:45 | 0:15 | Outro | Next: EP 75 Selection sort | Sign-off |
+
+### Step trace
+
+Array `{5, 2, 9, 1, 6, 3}`, sort ascending. j compares a\[j\] and a\[j+1\].
+
+| Pass.step | Array after step | Compared | Swapped |
+| --- | --- | --- | --- |
+| start | \[5, 2, 9, 1, 6, 3\] | — | — |
+| 1.1 | \[2, 5, 9, 1, 6, 3\] | a\[0\]=5 > a\[1\]=2? yes | 5 ↔ 2 |
+| 1.2 | \[2, 5, 9, 1, 6, 3\] | a\[1\]=5 > a\[2\]=9? no | none |
+| 1.3 | \[2, 5, 1, 9, 6, 3\] | a\[2\]=9 > a\[3\]=1? yes | 9 ↔ 1 |
+| 1.4 | \[2, 5, 1, 6, 9, 3\] | a\[3\]=9 > a\[4\]=6? yes | 9 ↔ 6 |
+| 1.5 | \[2, 5, 1, 6, 3, 9\] | a\[4\]=9 > a\[5\]=3? yes | 9 ↔ 3; 9 locked |
+| 2.1 | \[2, 5, 1, 6, 3, 9\] | a\[0\]=2 > a\[1\]=5? no | none |
+| 2.2 | \[2, 1, 5, 6, 3, 9\] | a\[1\]=5 > a\[2\]=1? yes | 5 ↔ 1 |
+| 2.3 | \[2, 1, 5, 6, 3, 9\] | a\[2\]=5 > a\[3\]=6? no | none |
+| 2.4 | \[2, 1, 5, 3, 6, 9\] | a\[3\]=6 > a\[4\]=3? yes | 6 ↔ 3; 6 locked |
+| 3.1 | \[1, 2, 5, 3, 6, 9\] | a\[0\]=2 > a\[1\]=1? yes | 2 ↔ 1 |
+| 3.2 | \[1, 2, 5, 3, 6, 9\] | a\[1\]=2 > a\[2\]=5? no | none |
+| 3.3 | \[1, 2, 3, 5, 6, 9\] | a\[2\]=5 > a\[3\]=3? yes | 5 ↔ 3; 5 locked |
+| 4.1 | \[1, 2, 3, 5, 6, 9\] | a\[0\]=1 > a\[1\]=2? no | none |
+| 4.2 | \[1, 2, 3, 5, 6, 9\] | a\[1\]=2 > a\[2\]=3? no | none; swapped = false, stop |
+
+Totals: 14 comparisons, 8 swaps, 4 passes (pass 5 skipped by the flag).
+
+**Complexity:** best O(n) (already sorted, one pass with the flag), average O(n²), worst O(n²) (reverse order); space O(1) extra; stable (equal values keep their order).
+
+### Narration script
+
+**\[1 · Cold open\]** Pour a glass of soda and watch. The bubbles rise, and the biggest ones reach the top first. Today's sorting algorithm works exactly like that. On every pass, the biggest value floats to the end of the array.
+
+**\[2 · Title\]** Episode 74. Bubble sort.
+
+**\[3 · The idea\]** Bubble sort has one simple rule. Look at two neighbours. If the left one is bigger than the right one, swap them. Then move one step right and do it again. When you reach the end, that's one pass. You already saw how to swap two values with a temp variable in Episode 44. Bubble sort is just that swap, used again and again.
+
+**\[4 · Pass 1\]** Our array: 5, 2, 9, 1, 6, 3. Compare 5 and 2. 5 is bigger, swap. Now 5 and 9: already in order, no swap. 9 and 1: swap. 9 and 6: swap. 9 and 3: swap. Look where 9 ended up: right at the end. The biggest value bubbled all the way up. It's now in its final place, so we lock it in green and never touch it again.
+
+**\[5 · Passes 2 to 4\]** Pass 2 does the same on the first five bars, and 6 locks in place. Pass 3 locks 5. In pass 4 we compare 1 and 2, then 2 and 3, and nothing swaps. If a whole pass makes zero swaps, the array is already sorted, so we stop early. That's the early-exit flag.
+
+**\[6 · Step trace\]** Here's every single step. Fourteen comparisons, eight swaps, four passes. Notice each pass is one step shorter than the last, because one more bar is locked at the end.
+
+**\[7 · Code explain\]** \[HL 2\] We include stdbool.h so we can use bool, true and false. \[HL 4\] print\_array is a helper that prints any int array. \[HL 10\] bubble\_sort takes the array and its length. Arrays are passed as a pointer, so sorting inside the function changes the caller's array. \[HL 11\] The outer loop counts passes. Six elements need at most five passes. \[TRACK pass=0\] \[HL 12\] At the start of each pass, swapped is false. \[TRACK swapped=false\] \[HL 13\] The inner loop moves j along the array. Its limit is n minus 1 minus pass. Minus 1 because we look at j plus 1. Minus pass because that many bars are already locked at the end. \[TRACK j=0\] \[HL 14\] If the left neighbour is bigger, \[HL 15\] save it in temp, \[TRACK temp=5\] \[HL 16\] copy the right one left, \[HL 17\] put temp on the right, \[HL 18\] and remember that we swapped. \[TRACK swapped=true\] \[HL 21\] After each pass we print the array so you can watch it. \[HL 23\] If no swap happened, \[HL 24\] break out of the outer loop. \[HL 29\] In main, our six marks. \[HL 30\] sizeof the whole array divided by sizeof one element gives the count, 6. \[HL 34\] And we sort.
+
+**\[8 · Run it\]** Compile and run. After pass 1, 9 is at the end. After pass 2, 6 and 9. After pass 3, the array is sorted, but the code doesn't know yet. Pass 4 makes no swaps, so it stops. Without the flag, it would waste a fifth pass.
+
+**\[9 · Pun\]** Why did bubble sort go to the gym? It wanted to swap its weight around.
+
+**\[10 · Complexity\]** For n elements, bubble sort makes about n squared over 2 comparisons in the average and worst case. That's O(n²). Its best case is a sorted array: one pass, no swaps, done, so O(n), but only because of our flag. It needs O(1) extra memory, just temp. And it's stable: two equal marks never jump past each other. Bubble sort is easy to understand but slow on big data. We will measure exactly how slow in Episode 81.
+
+**\[11 · Bug of the Day\]** Today's bug: the inner loop running too far. Someone wrote j less than n minus pass, forgetting the minus 1. On the first pass, j reaches 5, and the code compares marks\[5\] with marks\[6\]. But a six-element array has no index 6. To make this visible, we gave the array a seventh slot holding minus 1. The result: 1, minus 1, 2, 3, 5, 6. The 9 has vanished, and a minus 1 that was never in our data has appeared. In a real program that extra slot is someone else's memory, so the output is unpredictable, or the program crashes. GCC gives no warning. The fix: j less than n minus 1 minus pass.
+
+**\[12 · Challenge\]** Your challenge: sort these marks in descending order, highest first: 72, 45, 98, 60, 85. Hint: you only need to change one character.
+
+**\[13 · Outro\]** Bubble sort swaps a lot. Next episode, selection sort makes at most one swap per pass by picking the smallest every round. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+#include <stdbool.h>
+
+void print_array(const int a[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
+void bubble_sort(int a[], int n) {
+    for (int pass = 0; pass < n - 1; pass++) {
+        bool swapped = false;
+        for (int j = 0; j < n - 1 - pass; j++) {
+            if (a[j] > a[j + 1]) {
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        printf("After pass %d: ", pass + 1);
+        print_array(a, n);
+        if (!swapped)
+            break;
+    }
+}
+
+int main(void) {
+    int marks[] = {5, 2, 9, 1, 6, 3};
+    int n = sizeof(marks) / sizeof(marks[0]);
+
+    printf("Before:       ");
+    print_array(marks, n);
+    bubble_sort(marks, n);
+    return 0;
+}
+```
+
+```text
+$ gcc bubble.c -o bubble
+$ ./bubble
+Before:       5 2 9 1 6 3
+After pass 1: 2 5 1 6 3 9
+After pass 2: 2 1 5 3 6 9
+After pass 3: 1 2 3 5 6 9
+After pass 4: 1 2 3 5 6 9
+```
+
+(Each line also ends with a trailing space after the last number.)
+
+### Bug of the Day
+
+Wrong code (the array has a 7th slot only so the overrun is visible and the output is repeatable):
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int marks[7] = {5, 2, 9, 1, 6, 3, -1};   /* -1 marks the end */
+    int n = 6;
+
+    for (int pass = 0; pass < n - 1; pass++) {
+        for (int j = 0; j < n - pass; j++) {
+            if (marks[j] > marks[j + 1]) {
+                int temp = marks[j];
+                marks[j] = marks[j + 1];
+                marks[j + 1] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++)
+        printf("%d ", marks[i]);
+    printf("\n");
+    return 0;
+}
+```
+
+No error or warning from GCC. Output:
+
+```text
+1 -1 2 3 5 6
+```
+
+Fixed inner loop:
+
+```c
+        for (int j = 0; j < n - 1 - pass; j++) {
+```
+
+```text
+1 2 3 5 6 9
+```
+
+Why: with `j < n - pass`, j reaches n - 1 and `marks[j + 1]` reads one element past the data, swapping a value from outside the array in. (With a real 6-element array this is undefined behaviour; on screen say "your output may differ, or it may crash".)
+
+### Pun & challenge
+
+- **Pun:** Why did bubble sort go to the gym? It wanted to swap its weight around.
+- **Challenge:** Sort the marks 72, 45, 98, 60, 85 in descending order using bubble sort.
+- **Challenge answer:** Change `a[j] > a[j + 1]` to `a[j] < a[j + 1]`. Output: `98 85 72 60 45`.
+
+### Shorts for EP 74
+
+**S1 · The heaviest bubble** — 0:20 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "Watch the biggest bubble."
+- **Script:** In a glass of soda, the biggest bubbles reach the top first. There's a sorting algorithm that works exactly like that: on every pass, the biggest number floats to the end. It's called bubble sort, and we animate every single swap.
+- **On-screen text:** BIGGEST FLOATS UP
+- **Caption + hashtags:** Sorting, but make it soda. #cprogramming #learntocode #kodingkonkani #bubblesort #sorting
+
+**S2 · Bubble sort in 30 seconds** — 0:35 · built from scenes 4–5
+
+- **Hook (first 1.5s):** "Compare. Swap. Repeat."
+- **Script:** Bubble sort compares neighbours. If the left is bigger, swap. Walk to the end and the biggest value is now last. Lock it. Repeat on the rest. If a whole pass makes no swaps, the array is sorted, so stop early. Average and worst case: O(n squared). Best case with that early stop: O(n).
+- **On-screen text:** COMPARE · SWAP · REPEAT
+- **Caption + hashtags:** Bubble sort, every swap animated. #cprogramming #learntocode #kodingkonkani #bubblesort #dsa
+
+**S3 · Where did my 9 go?** — 0:35 · built from scene 11
+
+- **Hook (first 1.5s):** "I sorted six numbers and one disappeared."
+- **Script:** The inner loop says j less than n minus pass. Forgot the minus 1. So j reaches the last index and compares it with the slot after the array. Our 9 vanished and a minus 1 from outside the data appeared. GCC said nothing. Fix: j less than n minus 1 minus pass.
+- **On-screen text:** j < n - 1 - pass
+- **Caption + hashtags:** One missing minus one. #cprogramming #learntocode #kodingkonkani #bugoftheday #bubblesort
+
+**S4 · Bubble sort at the gym** — 0:10 · built from scene 9
+
+- **Hook (first 1.5s):** "Why did bubble sort join a gym?"
+- **Script:** Why did bubble sort go to the gym? It wanted to swap its weight around.
+- **On-screen text:** SWAP ITS WEIGHT AROUND
+- **Caption + hashtags:** Leg day is swap day. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · One-character challenge** — 0:20 · built from scene 12
+
+- **Hook (first 1.5s):** "Change one character. Sort backwards."
+- **Script:** Here's bubble sort sorting ascending. Your job: make it sort these marks highest first: 72, 45, 98, 60, 85. You only need to change one character. Which one? Comment below.
+- **On-screen text:** ONE CHARACTER. WHICH ONE?
+- **Caption + hashtags:** Comment the character. #cprogramming #learntocode #kodingkonkani #quiz #bubblesort
+
+## EP 75 — Selection sort
+
+**Module 12 · Algorithms · 6:40 · Dark blue + Butter · Prerequisite: EP 74**
+
+**Learning goals:** trace selection sort by finding the minimum of the unsorted part each round; write selection\_sort in C that swaps at most once per pass; count the swaps it makes; explain why it is O(n²) in every case but makes at most n - 1 swaps.
+
+### YouTube
+
+- **Title:** Selection Sort: Pick the Shortest Kid | C Programming EP 75
+- **Description:** Find the smallest, put it first, repeat. We animate selection sort on six bars, trace every comparison, and write it in C with a swap counter. Plus the bug that swaps inside the wrong loop and scrambles your data. 0:00 Line up by height · 0:20 Title · 0:25 The idea · 0:55 Pass 1 animated · 1:45 Passes 2 to 5 · 2:20 Step trace · 2:45 Code · 4:05 Run it · 4:25 Pun · 4:30 Complexity · 5:05 Bug of the Day · 6:05 Challenge · 6:25 Outro
+- **Tags:** selection sort, selection sort in c, sorting algorithms, c programming, sorting visualised, find minimum, algorithms for beginners, learn c, koding konkani, dsa in c, c tutorial
+- **Thumbnail:** big text "PICK THE SMALLEST"; six bars, the shortest one glowing mint with a spotlight; Xecxec pointing a claw at it like a PT teacher with a whistle; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | School assembly; six kids of different heights; PT teacher Xecxec with a whistle | Whistle SFX; shortest kid steps forward |
+| 2 | 0:20 | 0:05 | Title card | EP 75 · SELECTION SORT | Stinger; claw-click |
+| 3 | 0:25 | 0:30 | Concept slide | Rule card: "Find the smallest in the unsorted part. Swap it to the front. Repeat." | Wall divides sorted (left) and unsorted (right) |
+| 4 | 0:55 | 0:50 | Algorithm bars | Bars \[5, 2, 9, 1, 6, 3\]; pass 1: j scans, "min" tag jumps 0 → 1 → 3 | Scanning bar pastel blue; min bar outlined butter; one tomato swap 5 ↔ 1; 1 locks mint; tick per compare, swoosh per swap |
+| 5 | 1:45 | 0:35 | Algorithm bars | Passes 2–5 at 2x; "no swap needed" stamps on passes 2, 4, 5 | Stamp thud |
+| 6 | 2:20 | 0:25 | Concept slide | Step-trace table (below) | Rows reveal with 4x replay |
+| 7 | 2:45 | 1:20 | Code explain | selection.c (36 lines); tracker for i, j, min, swaps | \[HL\]/\[TRACK\] cues |
+| 8 | 4:05 | 0:20 | Terminal | gcc and 6 output lines | Lines type out; "Swaps: 2" boxed |
+| 9 | 4:25 | 0:05 | Pun card | Pun | Rimshot |
+| 10 | 4:30 | 0:35 | Concept slide | Complexity card + comparison with bubble on the same array: comparisons 15 vs 14, swaps 2 vs 8 | Counters roll side by side |
+| 11 | 5:05 | 1:00 | Bug of the Day | Swap inside the inner loop; output 1 2 3 6 5 9, Swaps: 15 | Red siren; bars jitter, swapping on every compare |
+| 12 | 6:05 | 0:20 | Challenge | "Count the swaps for 64, 25, 12, 22, 11" | Timer |
+| 13 | 6:25 | 0:15 | Outro | Next: EP 76 Insertion sort | Sign-off |
+
+### Step trace
+
+Array `{5, 2, 9, 1, 6, 3}`, sort ascending. Pass i scans j = i+1 … 5 and tracks the index of the smallest value (min).
+
+| Pass.step | Array state | Compared | Swapped |
+| --- | --- | --- | --- |
+| 1.1 | \[5, 2, 9, 1, 6, 3\] | a\[1\]=2 < a\[0\]=5? yes | none; min = 1 |
+| 1.2 | \[5, 2, 9, 1, 6, 3\] | a\[2\]=9 < a\[1\]=2? no | none; min = 1 |
+| 1.3 | \[5, 2, 9, 1, 6, 3\] | a\[3\]=1 < a\[1\]=2? yes | none; min = 3 |
+| 1.4 | \[5, 2, 9, 1, 6, 3\] | a\[4\]=6 < a\[3\]=1? no | none; min = 3 |
+| 1.5 | \[5, 2, 9, 1, 6, 3\] | a\[5\]=3 < a\[3\]=1? no | none; min = 3 |
+| 1 end | \[1, 2, 9, 5, 6, 3\] | min = 1 at index 3 | a\[0\] ↔ a\[3\] (5 ↔ 1); 1 locked |
+| 2.1 | \[1, 2, 9, 5, 6, 3\] | a\[2\]=9 < a\[1\]=2? no | none; min = 1 |
+| 2.2 | \[1, 2, 9, 5, 6, 3\] | a\[3\]=5 < a\[1\]=2? no | none; min = 1 |
+| 2.3 | \[1, 2, 9, 5, 6, 3\] | a\[4\]=6 < a\[1\]=2? no | none; min = 1 |
+| 2.4 | \[1, 2, 9, 5, 6, 3\] | a\[5\]=3 < a\[1\]=2? no | none; min = 1 |
+| 2 end | \[1, 2, 9, 5, 6, 3\] | min = 2 already at index 1 | none; 2 locked |
+| 3.1 | \[1, 2, 9, 5, 6, 3\] | a\[3\]=5 < a\[2\]=9? yes | none; min = 3 |
+| 3.2 | \[1, 2, 9, 5, 6, 3\] | a\[4\]=6 < a\[3\]=5? no | none; min = 3 |
+| 3.3 | \[1, 2, 9, 5, 6, 3\] | a\[5\]=3 < a\[3\]=5? yes | none; min = 5 |
+| 3 end | \[1, 2, 3, 5, 6, 9\] | min = 3 at index 5 | a\[2\] ↔ a\[5\] (9 ↔ 3); 3 locked |
+| 4.1 | \[1, 2, 3, 5, 6, 9\] | a\[4\]=6 < a\[3\]=5? no | none; min = 3 |
+| 4.2 | \[1, 2, 3, 5, 6, 9\] | a\[5\]=9 < a\[3\]=5? no | none; min = 3 |
+| 4 end | \[1, 2, 3, 5, 6, 9\] | min = 5 already at index 3 | none; 5 locked |
+| 5.1 | \[1, 2, 3, 5, 6, 9\] | a\[5\]=9 < a\[4\]=6? no | none; min = 4 |
+| 5 end | \[1, 2, 3, 5, 6, 9\] | min = 6 already at index 4 | none; 6 and 9 locked |
+
+Totals: 15 comparisons, 2 swaps, 5 passes.
+
+**Complexity:** best O(n²), average O(n²), worst O(n²) (it always scans the whole unsorted part); at most n - 1 swaps; space O(1) extra; not stable in this array form.
+
+### Narration script
+
+**\[1 · Cold open\]** Morning assembly. The PT teacher wants the line sorted by height, shortest in front. So he looks at everyone, finds the shortest kid, and sends them to the front. Then he looks at the rest, finds the next shortest, and so on. That is selection sort.
+
+**\[2 · Title\]** Episode 75. Selection sort.
+
+**\[3 · The idea\]** Imagine a wall in the array. Left of the wall is sorted. Right of the wall is not. Each round, we scan the unsorted side, select the smallest value, and swap it to the first unsorted position. The wall moves one step right. Bubble sort swapped neighbours again and again. Selection sort makes at most one swap per round.
+
+**\[4 · Pass 1\]** Same array as last time: 5, 2, 9, 1, 6, 3. We start by assuming the first one, 5, is the smallest. Compare 2 with 5: 2 is smaller, so min moves to 2. 9: no. 1: smaller than 2, so min moves to 1. 6: no. 3: no. The smallest is 1, at index 3. Now one swap: 1 goes to the front, and 5 goes where 1 was. 1 is locked.
+
+**\[5 · Passes 2 to 5\]** Pass 2 scans 9, 5, 6, 3 and finds nothing smaller than 2. 2 is already in place, so no swap. Pass 3 finds 3 and swaps it with 9. Passes 4 and 5 find everything already in place. Five passes, but only two swaps.
+
+**\[6 · Step trace\]** Here's the full trace. Fifteen comparisons and only two swaps. Count the comparisons per pass: 5, 4, 3, 2, 1. That adds up to 15, which is n times n minus 1 over 2.
+
+**\[7 · Code explain\]** \[HL 9\] selection\_sort returns an int this time: the number of swaps it made. \[HL 10\] swaps starts at zero. \[TRACK swaps=0\] \[HL 11\] i marks the first unsorted position. We stop at n minus 2, because when one item is left it must already be the largest. \[TRACK i=0\] \[HL 12\] We assume the smallest is at i. Note that min stores an index, not a value. \[TRACK min=0\] \[HL 13\] j scans the rest of the array. \[HL 14\] If a\[j\] is smaller than the current smallest, \[HL 15\] remember j. \[TRACK j=1 min=1\] \[TRACK j=3 min=3\] \[HL 17\] After the scan, if the smallest isn't already at i, \[HL 18\] we swap with temp, \[HL 21\] and count it. \[TRACK swaps=1\] \[HL 23\] We print the array after each pass. \[HL 26\] And return the swap count. \[HL 30\] In main, six heights. \[HL 33\] Sort and capture the swaps. \[HL 34\] Print them.
+
+**\[8 · Run it\]** Compile and run. After pass 1, the 1 is at the front. Pass 2 changes nothing. Pass 3 puts 3 in place, and the array is sorted. Passes 4 and 5 still run, because selection sort has no early exit. Swaps: 2.
+
+**\[9 · Pun\]** Why is selection sort so good at cricket team trials? It always picks the best, one at a time.
+
+**\[10 · Complexity\]** Selection sort always scans the whole unsorted part, even if the array is already sorted. So best, average and worst cases are all O(n²). Its strength is swaps: never more than n minus 1. If moving data is expensive, like heavy records, that matters. It uses O(1) extra memory. One catch: the long-distance swap can jump an item past an equal one, so this version is not stable. On our array: bubble sort made 14 comparisons and 8 swaps; selection made 15 comparisons and just 2 swaps.
+
+**\[11 · Bug of the Day\]** Today's bug: swapping inside the inner loop. Someone moved the swap block up by one brace, so it runs on every single comparison, not once per pass. The output: 1, 2, 3, 6, 5, 9. Almost sorted, but 6 and 5 are wrong. And it made 15 swaps instead of 2. The swap was supposed to happen after we finished searching for the minimum, not while we were still searching. The fix: move the swap block below the closing brace of the inner loop.
+
+**\[12 · Challenge\]** Your challenge: sort 64, 25, 12, 22, 11 with selection sort. How many swaps does it make? Predict first, then run your code to check.
+
+**\[13 · Outro\]** Next episode, insertion sort: the way you already sort cards in your hand. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+void print_array(const int a[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
+int selection_sort(int a[], int n) {
+    int swaps = 0;
+    for (int i = 0; i < n - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j < n; j++) {
+            if (a[j] < a[min])
+                min = j;
+        }
+        if (min != i) {
+            int temp = a[i];
+            a[i] = a[min];
+            a[min] = temp;
+            swaps++;
+        }
+        printf("Pass %d: ", i + 1);
+        print_array(a, n);
+    }
+    return swaps;
+}
+
+int main(void) {
+    int heights[] = {5, 2, 9, 1, 6, 3};
+    int n = sizeof(heights) / sizeof(heights[0]);
+
+    int swaps = selection_sort(heights, n);
+    printf("Swaps: %d\n", swaps);
+    return 0;
+}
+```
+
+```text
+$ gcc selection.c -o selection
+$ ./selection
+Pass 1: 1 2 9 5 6 3
+Pass 2: 1 2 9 5 6 3
+Pass 3: 1 2 3 5 6 9
+Pass 4: 1 2 3 5 6 9
+Pass 5: 1 2 3 5 6 9
+Swaps: 2
+```
+
+### Bug of the Day
+
+Wrong code:
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int heights[] = {5, 2, 9, 1, 6, 3};
+    int n = 6, swaps = 0;
+
+    for (int i = 0; i < n - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j < n; j++) {
+            if (heights[j] < heights[min])
+                min = j;
+            int temp = heights[i];
+            heights[i] = heights[min];
+            heights[min] = temp;
+            swaps++;
+        }
+    }
+    for (int i = 0; i < n; i++)
+        printf("%d ", heights[i]);
+    printf("\nSwaps: %d\n", swaps);
+    return 0;
+}
+```
+
+No error or warning from GCC. Wrong output:
+
+```text
+1 2 3 6 5 9
+Swaps: 15
+```
+
+Fixed loop body:
+
+```c
+    for (int i = 0; i < n - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j < n; j++) {
+            if (heights[j] < heights[min])
+                min = j;
+        }
+        if (min != i) {
+            int temp = heights[i];
+            heights[i] = heights[min];
+            heights[min] = temp;
+            swaps++;
+        }
+    }
+```
+
+```text
+1 2 3 5 6 9
+Swaps: 2
+```
+
+Why: swapping during the scan moves values while min still points at an old position, so later comparisons compare the wrong things; swap only once the scan has finished.
+
+### Pun & challenge
+
+- **Pun:** Why is selection sort so good at cricket team trials? It always picks the best, one at a time.
+- **Challenge:** Sort 64, 25, 12, 22, 11 with selection sort. Predict the number of swaps, then check with your code.
+- **Challenge answer:** 3 swaps. Passes: 11 25 12 22 64 → 11 12 25 22 64 → 11 12 22 25 64 → (no swap).
+
+### Shorts for EP 75
+
+**S1 · The PT teacher's algorithm** — 0:20 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "Your PT teacher knows a sorting algorithm."
+- **Script:** Morning assembly. The PT teacher finds the shortest kid and sends them to the front. Then the next shortest. Then the next. Congratulations, he just ran selection sort. Here's how to write it in C.
+- **On-screen text:** SHORTEST TO THE FRONT
+- **Caption + hashtags:** Assembly line, but make it code. #cprogramming #learntocode #kodingkonkani #selectionsort #sorting
+
+**S2 · Selection sort in 30 seconds** — 0:35 · built from scenes 4 and 10
+
+- **Hook (first 1.5s):** "Find the smallest. Swap once. Repeat."
+- **Script:** Selection sort scans the unsorted part and remembers where the smallest value is. Then it makes one swap to put it at the front. The sorted part grows by one each round. It always does about n squared over 2 comparisons, so it's O(n squared) every time, but it never makes more than n minus 1 swaps.
+- **On-screen text:** ONE SWAP PER ROUND
+- **Caption + hashtags:** Selection sort, animated. #cprogramming #learntocode #kodingkonkani #selectionsort #dsa
+
+**S3 · 15 swaps instead of 2** — 0:35 · built from scene 11
+
+- **Hook (first 1.5s):** "Right idea. Wrong brace."
+- **Script:** This selection sort swaps inside the inner loop, on every comparison. Result: 1, 2, 3, 6, 5, 9. Not sorted, and 15 swaps instead of 2. The swap must happen after the scan finishes. Move it below the inner loop's closing brace.
+- **On-screen text:** SWAP AFTER THE SCAN
+- **Caption + hashtags:** One brace in the wrong place. #cprogramming #learntocode #kodingkonkani #bugoftheday #selectionsort
+
+**S4 · Cricket trials** — 0:10 · built from scene 9
+
+- **Hook (first 1.5s):** "Selection sort at cricket trials."
+- **Script:** Why is selection sort so good at cricket team trials? It always picks the best, one at a time.
+- **On-screen text:** PICKS THE BEST, ONE AT A TIME
+- **Caption + hashtags:** Selectors hate this one trick. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · How many swaps?** — 0:20 · built from scene 12
+
+- **Hook (first 1.5s):** "Predict the swaps."
+- **Script:** Selection sort on 64, 25, 12, 22, 11. How many swaps will it make? Two, three, or four? Comment your guess, then run the code. Answer pinned on the full episode.
+- **On-screen text:** 2? 3? 4?
+- **Caption + hashtags:** Comment before you run it. #cprogramming #learntocode #kodingkonkani #quiz #selectionsort
+
+## EP 76 — Insertion sort
+
+**Module 12 · Algorithms · 6:40 · Dark blue + Butter · Prerequisite: EP 75**
+
+**Learning goals:** trace insertion sort as "take the next card, shift the bigger ones right, drop it in the gap"; write insertion\_sort in C with a saved key and a while loop; explain why the key must be saved before shifting; state why insertion sort is fast on nearly sorted data.
+
+### YouTube
+
+- **Title:** Insertion Sort = Sorting Playing Cards | C Programming EP 76
+- **Description:** You already know this algorithm: it's how you sort cards in your hand. We animate insertion sort on six bars, trace every shift, and write it in C. Plus the bug that overwrites your card before you've saved it. 0:00 Cards in your hand · 0:20 Title · 0:25 The idea · 0:55 Inserting 2, 9 and 1 · 1:45 Inserting 6 and 3 · 2:15 Step trace · 2:40 Code · 3:55 Run it · 4:15 Pun · 4:20 Complexity · 5:00 Bug of the Day · 6:00 Challenge · 6:25 Outro
+- **Tags:** insertion sort, insertion sort in c, sorting algorithms, c programming, sorting visualised, playing cards sort, algorithms for beginners, learn c, koding konkani, dsa in c, c tutorial
+- **Thumbnail:** big text "SORT LIKE CARDS"; a fan of five playing cards with one card lifted and an arrow into a gap; Xecxec holding cards in both claws, smug; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | A hand of cards: 5, 2, 9, 1, 6, 3; Xecxec picks them up one at a time | Card flick SFX; each card slides into its spot |
+| 2 | 0:20 | 0:05 | Title card | EP 76 · INSERTION SORT | Stinger; claw-click |
+| 3 | 0:25 | 0:30 | Concept slide | Rule card: "Take the next item (key). Shift bigger items right. Drop key in the gap." | Sorted part on left grows; key lifts above the row |
+| 4 | 0:55 | 0:50 | Algorithm bars | Bars \[5, 2, 9, 1, 6, 3\]; keys 2, 9, 1 (steps 1.1–3.4) | Key bar lifts in butter; compared bar pastel blue; shifting bar slides right in tomato; key drops into gap; sorted prefix mint; tick per compare, slide SFX per shift, thunk on drop |
+| 5 | 1:45 | 0:30 | Algorithm bars | Keys 6 and 3 at 2x (steps 4.1–5.4) | Same colours |
+| 6 | 2:15 | 0:25 | Concept slide | Step-trace table (below) | Rows reveal with 4x replay |
+| 7 | 2:40 | 1:15 | Code explain | insertion.c (29 lines); tracker for i, key, j, array | \[HL\]/\[TRACK\] cues |
+| 8 | 3:55 | 0:20 | Terminal | gcc and 5 output lines | Lines type out |
+| 9 | 4:15 | 0:05 | Pun card | Pun | Rimshot, card shuffle |
+| 10 | 4:20 | 0:40 | Concept slide | Complexity card; three sorts on our array: bubble 14 compares / 8 swaps, selection 15 / 2, insertion 11 compares / 8 shifts | Counters roll |
+| 11 | 5:00 | 1:00 | Bug of the Day | Loop uses cards\[i\] instead of a saved key; output 5 5 9 9 9 9 | Red siren; key bar gets squashed by the shifting bar, then copies spread |
+| 12 | 6:00 | 0:25 | Challenge | "Insert 30 into 10 20 40 50" | Timer |
+| 13 | 6:25 | 0:15 | Outro | Next: EP 77 Recursion, visualised | Sign-off |
+
+### Step trace
+
+Array `{5, 2, 9, 1, 6, 3}`. Pass i lifts key = a\[i\]; j walks left from i - 1. Insertion sort shifts instead of swapping; the last column shows each shift or placement.
+
+| Pass.step | Array after step | Compared | Shifted / placed |
+| --- | --- | --- | --- |
+| start | \[5, 2, 9, 1, 6, 3\] | — | — |
+| 1.1 (key 2) | \[5, 5, 9, 1, 6, 3\] | a\[0\]=5 > 2? yes | shift 5 to a\[1\] |
+| 1.2 | \[2, 5, 9, 1, 6, 3\] | j = -1, left edge | place 2 at a\[0\] |
+| 2.1 (key 9) | \[2, 5, 9, 1, 6, 3\] | a\[1\]=5 > 9? no | place 9 at a\[2\] (stays) |
+| 3.1 (key 1) | \[2, 5, 9, 9, 6, 3\] | a\[2\]=9 > 1? yes | shift 9 to a\[3\] |
+| 3.2 | \[2, 5, 5, 9, 6, 3\] | a\[1\]=5 > 1? yes | shift 5 to a\[2\] |
+| 3.3 | \[2, 2, 5, 9, 6, 3\] | a\[0\]=2 > 1? yes | shift 2 to a\[1\] |
+| 3.4 | \[1, 2, 5, 9, 6, 3\] | j = -1, left edge | place 1 at a\[0\] |
+| 4.1 (key 6) | \[1, 2, 5, 9, 9, 3\] | a\[3\]=9 > 6? yes | shift 9 to a\[4\] |
+| 4.2 | \[1, 2, 5, 6, 9, 3\] | a\[2\]=5 > 6? no | place 6 at a\[3\] |
+| 5.1 (key 3) | \[1, 2, 5, 6, 9, 9\] | a\[4\]=9 > 3? yes | shift 9 to a\[5\] |
+| 5.2 | \[1, 2, 5, 6, 6, 9\] | a\[3\]=6 > 3? yes | shift 6 to a\[4\] |
+| 5.3 | \[1, 2, 5, 5, 6, 9\] | a\[2\]=5 > 3? yes | shift 5 to a\[3\] |
+| 5.4 | \[1, 2, 3, 5, 6, 9\] | a\[1\]=2 > 3? no | place 3 at a\[2\] |
+
+Totals: 11 comparisons, 8 shifts, 5 placements. (Animation note: during a shift the array briefly holds a duplicate; draw the key floating above the row so viewers see it is safe.)
+
+**Complexity:** best O(n) (already sorted: one comparison per item, no shifts), average O(n²), worst O(n²) (reverse order); space O(1) extra; stable (uses `>` not `>=`, so equal items never jump past each other).
+
+### Narration script
+
+**\[1 · Cold open\]** You're playing cards at a family get-together. You pick up your cards one at a time. Each new card, you slide into the right place among the cards you're already holding. You've been doing a sorting algorithm your whole life. It's called insertion sort.
+
+**\[2 · Title\]** Episode 76. Insertion sort.
+
+**\[3 · The idea\]** The left part of the array is your hand, already sorted. At first, the hand is just the first item. Then we take the next item and call it the key. We lift the key out, slide every bigger item in the hand one step right, and drop the key into the gap. Insertion sort doesn't swap pairs. It shifts.
+
+**\[4 · Inserting 2, 9 and 1\]** Our hand starts as just 5. The key is 2. Is 5 bigger than 2? Yes, so shift 5 right. We've reached the left edge, so drop 2 at the front. Hand: 2, 5. Next key: 9. Is 5 bigger than 9? No. 9 stays where it is. Next key: 1. 9 is bigger, shift. 5 is bigger, shift. 2 is bigger, shift. Left edge: drop 1 at the front. Hand: 1, 2, 5, 9.
+
+**\[5 · Inserting 6 and 3\]** Key 6: shift 9, then 5 is smaller, so 6 drops after 5. Key 3: shift 9, shift 6, shift 5, then 2 is smaller, so 3 drops after 2. Sorted.
+
+**\[6 · Step trace\]** Here's every step: eleven comparisons and eight shifts. See the moments where a number appears twice, like 5, 5 at step 1.1? That's normal. The key is safely held in a variable, waiting to drop into the gap.
+
+**\[7 · Code explain\]** \[HL 9\] insertion\_sort takes the array and its length. \[HL 10\] i starts at 1, because a hand of one card is already sorted. \[TRACK i=1\] \[HL 11\] We save a\[i\] in key. This line is the most important one. \[TRACK key=2\] \[HL 12\] j starts just left of the key. \[TRACK j=0\] \[HL 13\] While j is still inside the array and a\[j\] is bigger than the key, \[HL 14\] copy a\[j\] one step right, \[TRACK array=5,5,9,1,6,3\] \[HL 15\] and move j left. \[TRACK j=-1\] The order of the two conditions matters: j greater or equal to 0 is checked first, so we never read a\[-1\]. That's short-circuit evaluation of the AND operator from Module 2. \[HL 17\] When the loop stops, j plus 1 is the gap. Drop the key there. \[TRACK array=2,5,9,1,6,3\] \[HL 18\] Print the array after each insert. \[HL 24\] In main, our six cards, \[HL 27\] and we sort.
+
+**\[8 · Run it\]** Compile and run. Insert 2: 2, 5 at the front. Insert 9: no change. Insert 1: it slides all the way to the front. Insert 6, then 3, and we're done.
+
+**\[9 · Pun\]** Why did insertion sort win the card game? It always knew where to put things.
+
+**\[10 · Complexity\]** In the worst case, a reverse-sorted array, every key shifts past every card in the hand: about n squared over 2 shifts, so O(n²). Average is also O(n²). But the best case is special. If the array is already sorted, each key does one comparison and no shifts, so O(n). Nearly sorted data, like adding a few new marks to a sorted list, is where insertion sort shines. Extra memory: just key, so O(1). And it's stable. On our array: bubble sort 14 comparisons and 8 swaps, selection 15 and 2, insertion 11 comparisons and 8 shifts.
+
+**\[11 · Bug of the Day\]** Today's bug: overwriting before shifting. Someone skipped the key variable and compared with cards\[i\] directly. But the very first shift writes into cards\[i\]! The card we were trying to insert is overwritten before we've placed it. The output: 5, 5, 9, 9, 9, 9. Two of our numbers are copied over and over, and 1, 2, 3 and 6 are gone. The fix: save cards\[i\] in key before the while loop, compare with key, and place key at the end.
+
+**\[12 · Challenge\]** Your challenge: write a function insert\_sorted that takes a sorted array 10, 20, 40, 50 with room to spare, inserts 30 in the right place, and returns the new length. It's just one pass of insertion sort.
+
+**\[13 · Outro\]** Next episode, we take a break from sorting to understand recursion properly, with a call-stack animation and the Tower of Hanoi. We'll need it for merge sort and quick sort. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+void print_array(const int a[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
+void insertion_sort(int a[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = a[i];
+        int j = i - 1;
+        while (j >= 0 && a[j] > key) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+        printf("Insert %d: ", key);
+        print_array(a, n);
+    }
+}
+
+int main(void) {
+    int cards[] = {5, 2, 9, 1, 6, 3};
+    int n = sizeof(cards) / sizeof(cards[0]);
+
+    insertion_sort(cards, n);
+    return 0;
+}
+```
+
+```text
+$ gcc insertion.c -o insertion
+$ ./insertion
+Insert 2: 2 5 9 1 6 3
+Insert 9: 2 5 9 1 6 3
+Insert 1: 1 2 5 9 6 3
+Insert 6: 1 2 5 6 9 3
+Insert 3: 1 2 3 5 6 9
+```
+
+### Bug of the Day
+
+Wrong code:
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int cards[] = {5, 2, 9, 1, 6, 3};
+    int n = 6;
+
+    for (int i = 1; i < n; i++) {
+        int j = i - 1;
+        while (j >= 0 && cards[j] > cards[i]) {
+            cards[j + 1] = cards[j];
+            j--;
+        }
+        cards[j + 1] = cards[i];
+    }
+    for (int i = 0; i < n; i++)
+        printf("%d ", cards[i]);
+    printf("\n");
+    return 0;
+}
+```
+
+No error or warning from GCC. Wrong output:
+
+```text
+5 5 9 9 9 9
+```
+
+Fixed loop:
+
+```c
+    for (int i = 1; i < n; i++) {
+        int key = cards[i];
+        int j = i - 1;
+        while (j >= 0 && cards[j] > key) {
+            cards[j + 1] = cards[j];
+            j--;
+        }
+        cards[j + 1] = key;
+    }
+```
+
+```text
+1 2 3 5 6 9
+```
+
+Why: the first shift writes into cards\[i\] (because j + 1 == i), destroying the value being inserted, so it must be saved in key first.
+
+### Pun & challenge
+
+- **Pun:** Why did insertion sort win the card game? It always knew where to put things.
+- **Challenge:** Write `int insert_sorted(int a[], int n, int value)` that inserts value into the sorted array a (which has room for one more) and returns the new length. Test: insert 30 into 10 20 40 50.
+- **Challenge answer:**
+
+```c
+int insert_sorted(int a[], int n, int value) {
+    int j = n - 1;
+    while (j >= 0 && a[j] > value) {
+        a[j + 1] = a[j];
+        j--;
+    }
+    a[j + 1] = value;
+    return n + 1;
+}
+```
+
+With `int a[10] = {10, 20, 40, 50};` and `n = insert_sorted(a, 4, 30);` the array prints `10 20 30 40 50`.
+
+### Shorts for EP 76
+
+**S1 · You already know this algorithm** — 0:20 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "You've been running this algorithm for years."
+- **Script:** You pick up playing cards one at a time and slide each one into the right place in your hand. That's a real sorting algorithm with a real name: insertion sort. Here it is, animated and in C.
+- **On-screen text:** YOU ALREADY KNOW IT
+- **Caption + hashtags:** Card games taught you DSA. #cprogramming #learntocode #kodingkonkani #insertionsort #sorting
+
+**S2 · Insertion sort in 30 seconds** — 0:35 · built from scenes 4 and 10
+
+- **Hook (first 1.5s):** "Lift. Shift. Drop."
+- **Script:** Insertion sort keeps a sorted part on the left. Lift the next item, the key. Shift every bigger item one step right. Drop the key into the gap. Worst case O(n squared). But on data that's already nearly sorted, it's close to O(n), which is why real libraries use it for small or nearly sorted pieces.
+- **On-screen text:** LIFT · SHIFT · DROP
+- **Caption + hashtags:** Insertion sort, animated. #cprogramming #learntocode #kodingkonkani #insertionsort #dsa
+
+**S3 · 5 5 9 9 9 9** — 0:35 · built from scene 11
+
+- **Hook (first 1.5s):** "My sort turned six numbers into two."
+- **Script:** This insertion sort compares with cards\[i\] directly. But the first shift writes over cards\[i\], so the card we're inserting is destroyed. Output: 5, 5, 9, 9, 9, 9. Fix: save cards\[i\] into a key variable before you shift anything.
+- **On-screen text:** SAVE THE KEY FIRST
+- **Caption + hashtags:** Save before you shift. #cprogramming #learntocode #kodingkonkani #bugoftheday #insertionsort
+
+**S4 · Card game champion** — 0:10 · built from scene 9
+
+- **Hook (first 1.5s):** "Why does insertion sort win at cards?"
+- **Script:** Why did insertion sort win the card game? It always knew where to put things.
+- **On-screen text:** KNEW WHERE TO PUT THINGS
+- **Caption + hashtags:** Undefeated at family card night. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · Insert 30** — 0:20 · built from scene 12
+
+- **Hook (first 1.5s):** "One pass. One number. Where does it go?"
+- **Script:** You have 10, 20, 40, 50, sorted. Write a C function that inserts 30 in the right place by shifting, and returns the new length. It's just one pass of insertion sort. Solution pinned on the full episode.
+- **On-screen text:** 10 20 \_ 40 50
+- **Caption + hashtags:** Try it before you peek. #cprogramming #learntocode #kodingkonkani #challenge #insertionsort
+
+## EP 77 — Recursion, visualised (Tower of Hanoi)
+
+**Module 12 · Algorithms · 7:15 · Dark blue + Butter · Prerequisite: EP 76 (recursion basics: EP 39–40)**
+
+**Learning goals:** read a recursive function as "trust the smaller call"; follow the call stack as frames are pushed and popped; solve Tower of Hanoi in C with a base case and two recursive calls; show that n discs need 2ⁿ − 1 moves.
+
+### YouTube
+
+- **Title:** Move 64 Discs Before the World Ends | Recursion EP 77
+- **Description:** A legend says monks are moving 64 golden discs, and when they finish, the world ends. We solve the Tower of Hanoi in 11 lines of C, watch the call stack grow and shrink frame by frame, and work out how long the monks really need. 0:00 The legend · 0:25 Title · 0:30 The rules · 1:00 Solve 1, 2, 3 discs · 1:55 The recursive idea · 2:35 Code · 3:40 Call stack, animated · 4:40 Run it · 5:00 Pun · 5:05 2ⁿ − 1 and the 64 discs · 5:45 Bug of the Day · 6:40 Challenge · 7:00 Outro
+- **Tags:** recursion in c, tower of hanoi, call stack, recursion visualised, c programming, base case, recursive function, algorithms for beginners, learn c, koding konkani, c tutorial, 2^n - 1
+- **Thumbnail:** big text "64 DISCS = ?"; three pegs with a tall golden disc stack; Xecxec sweating, carrying one disc on his back; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:25 | Concept slide | Temple, 3 pegs, 64 golden discs; caption "A legend" | Gong SFX; candles flicker |
+| 2 | 0:25 | 0:05 | Title card | EP 77 · RECURSION, VISUALISED | Stinger; claw-click |
+| 3 | 0:30 | 0:30 | Concept slide | Pegs A, B, C; 3 rules: one disc at a time; only the top disc; never big on small | Rule 3 shows a big disc on a small one, red X, buzzer |
+| 4 | 1:00 | 0:55 | Algorithm bars | Discs as horizontal butter bars on pegs; solve n = 1, 2, 3 | Each move slides a disc; move counter 1, 3, 7; clack per move |
+| 5 | 1:55 | 0:40 | Concept slide | 3-step recipe: move n−1 to B; move the biggest to C; move n−1 onto it | Top n−1 discs grouped in a pastel-blue box labelled "trust the smaller call" |
+| 6 | 2:35 | 1:05 | Code explain | hanoi.c (19 lines); tracker for n, from, to, via, moves | \[HL\]/\[TRACK\] cues |
+| 7 | 3:40 | 1:00 | Memory boxes | Call stack: frames hanoi(3,A,C,B) → hanoi(2,A,B,C) → hanoi(1,A,C,B) → hanoi(0,…) push/pop; pegs mirrored beside it | Frame push = box drops on stack (thud); pop = box lifts off (whoosh); disc moves sync with printf |
+| 8 | 4:40 | 0:20 | Terminal | gcc and 8 output lines | Lines type out |
+| 9 | 5:00 | 0:05 | Pun card | Pun | Rimshot |
+| 10 | 5:05 | 0:40 | Concept slide | Table n: 1, 2, 3, 4, 10, 64 with moves 1, 3, 7, 15, 1023, 18,446,744,073,709,551,615 | Last number scrolls across the screen; clock spins |
+| 11 | 5:45 | 0:55 | Bug of the Day | hanoi with no base case; GCC warning; crash | Red siren; stack of frames grows past the top of the screen, then shatters |
+| 12 | 6:40 | 0:20 | Challenge | "Hanoi with 4 discs: how many moves? What is move 8?" | Timer |
+| 13 | 7:00 | 0:15 | Outro | Next: EP 78 Merge sort | Sign-off |
+
+### Move trace (hanoi(3, 'A', 'C', 'B'))
+
+This drives scenes 4 and 7. Stack depth = frames on the call stack (including main) at the moment of the printf.
+
+| Move | Disc | From → To | Peg A | Peg B | Peg C | Printing frame | Stack depth |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| start | — | — | 3 2 1 | — | — | — | 1 |
+| 1 | 1 | A → C | 3 2 | — | 1 | hanoi(1,A,C,B) | 4 |
+| 2 | 2 | A → B | 3 | 2 | 1 | hanoi(2,A,B,C) | 3 |
+| 3 | 1 | C → B | 3 | 2 1 | — | hanoi(1,C,B,A) | 4 |
+| 4 | 3 | A → C | — | 2 1 | 3 | hanoi(3,A,C,B) | 2 |
+| 5 | 1 | B → A | 1 | 2 | 3 | hanoi(1,B,A,C) | 4 |
+| 6 | 2 | B → C | 1 | — | 3 2 | hanoi(2,B,C,A) | 3 |
+| 7 | 1 | A → C | — | — | 3 2 1 | hanoi(1,A,C,B) | 4 |
+
+(Pegs list discs bottom to top. Every hanoi(1, …) also pushes two hanoi(0, …) frames that return immediately; show them as quick grey flashes at depth 5.)
+
+**Complexity:** moves T(n) = 2T(n−1) + 1 = 2ⁿ − 1, so time O(2ⁿ); call-stack space O(n).
+
+### Narration script
+
+**\[1 · Cold open\]** There's a famous legend. In a temple, monks are moving 64 golden discs from one peg to another, following strict rules. When they finish, the legend says, the world will end. Should we be worried? Today we'll write the solution in C and find out exactly how many moves they need.
+
+**\[2 · Title\]** Episode 77. Recursion, visualised.
+
+**\[3 · The rules\]** Three pegs: A, B and C. All the discs start on A, biggest at the bottom. The goal: move them all to C. Rule one: move one disc at a time. Rule two: only the top disc of a peg can move. Rule three: never put a bigger disc on a smaller one.
+
+**\[4 · Solve 1, 2, 3\]** One disc? Easy: A to C. One move. Two discs? Small one to B, big one to C, small one to C. Three moves. Three discs takes more thinking: small to C, middle to B, small to B, big to C, small to A, middle to C, small to C. Seven moves. Four discs by hand gets confusing fast. We need a better way to think.
+
+**\[5 · The recursive idea\]** Here's the trick. To move 3 discs from A to C: first, move the top 2 discs out of the way, onto B. Then move the biggest disc from A to C. Then move those 2 discs from B onto C. But how do we move 2 discs? The same way, with 1 disc! You don't solve the small problem yourself. You trust a smaller call to solve it. That's recursion: a function that solves a problem by calling itself on a smaller version, until it reaches a case so small it needs no work. That's the base case, which you met in Episode 39.
+
+**\[6 · Code explain\]** \[HL 3\] A global counter for moves. \[HL 5\] hanoi takes the number of discs n, and three peg names: from, to, and via, the helper peg. \[TRACK n=3 from=A to=C via=B\] \[HL 6\] Base case: zero discs means nothing to do, \[HL 7\] so return. Without this line, the calls would never stop. \[HL 8\] Step one: move n minus 1 discs from "from" to "via", using "to" as the helper. Notice the last two pegs swap places. \[HL 9\] Step two: count a move, \[HL 10\] and print it. This is disc n, the biggest one in this call. \[HL 11\] Step three: move n minus 1 discs from "via" to "to", using "from" as the helper. \[HL 15\] In main, we move 3 discs from A to C using B. \[HL 16\] Print the total.
+
+**\[7 · Call stack\]** Let's watch the call stack, the memory C uses to remember unfinished function calls. main calls hanoi 3. That frame is pushed on the stack. hanoi 3 calls hanoi 2, pushed on top. hanoi 2 calls hanoi 1. hanoi 1 calls hanoi 0, which returns at once, popped. Now hanoi 1 prints: move 1, disc 1, A to C. It calls hanoi 0 again, popped, and hanoi 1 finishes, popped. Back in hanoi 2, which was waiting patiently: move 2, disc 2, A to B. And so on. Each frame remembers its own n, from, to and via. That's why the same function can be at four different stages at the same time. The stack is never more than five frames deep here, including main.
+
+**\[8 · Run it\]** Compile and run. Seven moves, exactly the ones we did by hand. Try changing the 3 in main to 4 or 5 and watch the list explode.
+
+**\[9 · Pun\]** To understand recursion, you must first understand recursion.
+
+**\[10 · 2ⁿ − 1\]** Look at the move counts: 1, 3, 7, 15. Each is double the last, plus one. For n discs it's 2 to the power n, minus 1. Ten discs: 1023 moves. Sixty-four discs: 18,446,744,073,709,551,615 moves. Even at one move per second, with no breaks, that is more than 500 billion years. So relax, the monks aren't finishing any time soon. In Big-O terms this is O(2ⁿ): exponential. Every extra disc doubles the work. That's even worse than the O(n²) we feared in Episode 72.
+
+**\[11 · Bug of the Day\]** Today's bug: the missing base case. Delete the if n equals 0 return lines. With minus Wall, GCC warns you: infinite recursion detected. If you run it anyway, hanoi calls hanoi with 2, 1, 0, minus 1, minus 2, forever. Each call pushes a new frame until the stack is full, and the program crashes with a stack overflow before printing a single line. On Windows it just exits silently; on Linux you'll see "Segmentation fault". Every recursive function needs a base case that is always reached.
+
+**\[12 · Challenge\]** Your challenge: run Hanoi with 4 discs. How many moves does it take? And what is move number 8? Predict first using the recipe, then check.
+
+**\[13 · Outro\]** Next episode, we use this exact "split it, trust the smaller call" idea to build a seriously fast sort: merge sort. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int moves = 0;
+
+void hanoi(int n, char from, char to, char via) {
+    if (n == 0)
+        return;
+    hanoi(n - 1, from, via, to);
+    moves++;
+    printf("Move %d: disc %d from %c to %c\n", moves, n, from, to);
+    hanoi(n - 1, via, to, from);
+}
+
+int main(void) {
+    hanoi(3, 'A', 'C', 'B');
+    printf("Total moves: %d\n", moves);
+    return 0;
+}
+```
+
+```text
+$ gcc hanoi.c -o hanoi
+$ ./hanoi
+Move 1: disc 1 from A to C
+Move 2: disc 2 from A to B
+Move 3: disc 1 from C to B
+Move 4: disc 3 from A to C
+Move 5: disc 1 from B to A
+Move 6: disc 2 from B to C
+Move 7: disc 1 from A to C
+Total moves: 7
+```
+
+### Bug of the Day
+
+Wrong code:
+
+```c
+#include <stdio.h>
+
+void hanoi(int n, char from, char to, char via) {
+    hanoi(n - 1, from, via, to);
+    printf("disc %d from %c to %c\n", n, from, to);
+    hanoi(n - 1, via, to, from);
+}
+
+int main(void) {
+    hanoi(3, 'A', 'C', 'B');
+    return 0;
+}
+```
+
+GCC warning with `gcc -Wall hanoi_bug.c -o hanoi_bug` (no warning without -Wall):
+
+```text
+hanoi_bug.c: In function 'hanoi':
+hanoi_bug.c:3:6: warning: infinite recursion detected [-Winfinite-recursion]
+    3 | void hanoi(int n, char from, char to, char via) {
+      |      ^~~~~
+hanoi_bug.c:4:5: note: recursive call
+    4 |     hanoi(n - 1, from, via, to);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+Running it prints nothing and crashes with a stack overflow: on Windows the program exits silently (exit code -1073741571, i.e. 0xC00000FD); on Linux the shell prints `Segmentation fault`.
+
+Fixed: put the base case back as the first lines of hanoi:
+
+```c
+    if (n == 0)
+        return;
+```
+
+Why: without a base case n keeps going down (0, -1, -2, …) and every call adds a stack frame until the stack runs out.
+
+### Pun & challenge
+
+- **Pun:** To understand recursion, you must first understand recursion.
+- **Challenge:** Change main to `hanoi(4, 'A', 'C', 'B');`. How many moves? What is move 8?
+- **Challenge answer:** 15 moves (2⁴ − 1). Move 8 is "disc 4 from A to C": the first 7 moves park discs 1–3 on B, then the biggest disc moves.
+
+### Shorts for EP 77
+
+**S1 · 64 discs before the world ends** — 0:25 · built from scenes 1 and 10
+
+- **Hook (first 1.5s):** "When the monks finish, the world ends."
+- **Script:** A legend says monks are moving 64 golden discs, and when they finish, the world ends. How many moves do they need? 2 to the power 64, minus 1. That's over 18 quintillion. At one move per second, more than 500 billion years. We're safe. Here's the 11-line C program that solves it.
+- **On-screen text:** 64 DISCS = 500+ BILLION YEARS
+- **Caption + hashtags:** The math says we're fine. #cprogramming #learntocode #kodingkonkani #recursion #towerofhanoi
+
+**S2 · Recursion in 30 seconds** — 0:35 · built from scenes 5 and 7
+
+- **Hook (first 1.5s):** "Don't solve it. Trust the smaller call."
+- **Script:** To move 3 discs: move the top 2 out of the way, move the biggest, then move the 2 back on top. How do you move 2? The same way, with 1. That's recursion: a function calling itself on a smaller problem, down to a base case. Each call gets its own frame on the call stack, and they finish in reverse order.
+- **On-screen text:** TRUST THE SMALLER CALL
+- **Caption + hashtags:** Recursion, finally visual. #cprogramming #learntocode #kodingkonkani #recursion #callstack
+
+**S3 · The function that never stopped** — 0:30 · built from scene 11
+
+- **Hook (first 1.5s):** "Two deleted lines. Instant crash."
+- **Script:** Remove the base case from hanoi and n goes 3, 2, 1, 0, minus 1, minus 2, forever. Each call stacks a new frame until memory runs out. GCC even warns you with minus Wall: infinite recursion detected. Always write the base case first.
+- **On-screen text:** NO BASE CASE = CRASH
+- **Caption + hashtags:** Base case first, always. #cprogramming #learntocode #kodingkonkani #bugoftheday #recursion
+
+**S4 · To understand recursion…** — 0:10 · built from scene 9
+
+- **Hook (first 1.5s):** "The only definition of recursion you need."
+- **Script:** To understand recursion, you must first understand recursion.
+- **On-screen text:** …FIRST UNDERSTAND RECURSION
+- **Caption + hashtags:** See: recursion. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · Four discs** — 0:20 · built from scene 12
+
+- **Hook (first 1.5s):** "Four discs. How many moves?"
+- **Script:** Tower of Hanoi with 4 discs. How many moves does it take? And what is move number 8? Use the recipe: move the small ones away, move the biggest, move them back. Comment your answer.
+- **On-screen text:** 4 DISCS: ? MOVES
+- **Caption + hashtags:** Comment before you code it. #cprogramming #learntocode #kodingkonkani #quiz #towerofhanoi
+
+## EP 78 — Merge sort
+
+**Module 12 · Algorithms · 7:30 · Dark blue + Butter · Prerequisite: EP 77**
+
+**Learning goals:** describe merge sort as split, sort each half recursively, merge; write a merge function that combines two sorted runs using a temp array, including the leftover loops; write recursive merge\_sort with a correct base case and mid; explain why it is O(n log n) in every case and needs O(n) extra space.
+
+### YouTube
+
+- **Title:** Merge Sort: Split, Sort, Merge | C Programming EP 78
+- **Description:** Split the class in two, let each half sort itself, then merge the two lines. We animate merge sort as a split tree, trace every comparison of every merge, and write it in C with recursion. Plus the leftover-elements bug that duplicates your data. 0:00 Split the class · 0:20 Title · 0:25 Divide and conquer · 1:00 The split tree · 1:40 Merging, animated · 2:35 Step trace · 3:00 Code: merge · 4:00 Code: merge\_sort · 4:35 Run it · 4:50 Pun · 4:55 Why n log n · 5:40 Bug of the Day · 6:50 Challenge · 7:15 Outro
+- **Tags:** merge sort, merge sort in c, divide and conquer, sorting algorithms, recursion, n log n, c programming, algorithms for beginners, learn c, koding konkani, dsa in c
+- **Thumbnail:** big text "SPLIT. SORT. MERGE."; a tree of bars splitting down and zipping back up; Xecxec holding two halves together like a zipper; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Class of 6 kids by roll number; teacher splits them into two groups | Whistle; groups slide apart |
+| 2 | 0:20 | 0:05 | Title card | EP 78 · MERGE SORT | Stinger; claw-click |
+| 3 | 0:25 | 0:35 | Concept slide | 3 words: DIVIDE, CONQUER, COMBINE; link back to Hanoi's "trust the smaller call" | Words stamp in |
+| 4 | 1:00 | 0:40 | Algorithm bars | Split tree: \[5,2,9,1,6,3\] → \[5,2,9\] \[1,6,3\] → \[5,2\] \[9\] \[1,6\] \[3\] → singles | Bars drop down a level per split; snip SFX |
+| 5 | 1:40 | 0:55 | Algorithm bars | Merges bottom-up, steps M1–M5 from the trace | Two front bars compared in pastel blue; smaller one drops into the temp row in butter; leftovers slide in tomato; merged run turns mint; tick per compare, zip SFX on finish |
+| 6 | 2:35 | 0:25 | Concept slide | Step-trace table (below) | Rows reveal with replay |
+| 7 | 3:00 | 1:00 | Code explain | merge.c lines 9–26 (merge); tracker for i, j, k, temp | \[HL\]/\[TRACK\] cues |
+| 8 | 4:00 | 0:35 | Code explain | merge.c lines 28–44 (merge\_sort, main); tracker for left, mid, right | \[HL\]/\[TRACK\] cues; mini call tree in corner |
+| 9 | 4:35 | 0:15 | Terminal | gcc and 1 output line | Line types out |
+| 10 | 4:50 | 0:05 | Pun card | Pun | Rimshot |
+| 11 | 4:55 | 0:45 | Concept slide | Split tree with "log₂ n levels" on the side and "n work per level" along the bottom | Each level glows; total "n × log n" assembles |
+| 12 | 5:40 | 1:10 | Bug of the Day | merge without the two leftover loops; output 1 2 2 3 3 3 | Red siren; leftover bars left behind, old values show through |
+| 13 | 6:50 | 0:25 | Challenge | "Merge {1, 4, 7} and {2, 3, 8, 9}" | Timer |
+| 14 | 7:15 | 0:15 | Outro | Next: EP 79 Quick sort | Sign-off |
+
+### Step trace
+
+Array `{5, 2, 9, 1, 6, 3}`. Splits happen first (S rows, in call order), merges happen as the calls return (M rows). Merge sort copies rather than swaps; the last column shows what is written back.
+
+| Step | Array state after step | Compared | Written / moved |
+| --- | --- | --- | --- |
+| S1 | \[5, 2, 9, 1, 6, 3\] | split 0..5 at mid 2 | left \[5, 2, 9\], right \[1, 6, 3\] |
+| S2 | \[5, 2, 9, 1, 6, 3\] | split 0..2 at mid 1 | left \[5, 2\], right \[9\] |
+| S3 | \[5, 2, 9, 1, 6, 3\] | split 0..1 at mid 0 | \[5\] and \[2\] (base cases) |
+| M1 | \[2, 5, 9, 1, 6, 3\] | 5 <= 2? no, take 2 | leftover 5; write \[2, 5\] to 0..1 |
+| M2 | \[2, 5, 9, 1, 6, 3\] | 2 <= 9? yes; 5 <= 9? yes | leftover 9; write \[2, 5, 9\] to 0..2 (no change) |
+| S4 | \[2, 5, 9, 1, 6, 3\] | split 3..5 at mid 4 | left \[1, 6\], right \[3\] |
+| S5 | \[2, 5, 9, 1, 6, 3\] | split 3..4 at mid 3 | \[1\] and \[6\] (base cases) |
+| M3 | \[2, 5, 9, 1, 6, 3\] | 1 <= 6? yes | leftover 6; write \[1, 6\] to 3..4 (no change) |
+| M4 | \[2, 5, 9, 1, 3, 6\] | 1 <= 3? yes; 6 <= 3? no, take 3 | leftover 6; write \[1, 3, 6\] to 3..5 |
+| M5 | \[1, 2, 3, 5, 6, 9\] | 2 <= 1? no; 2 <= 3? yes; 5 <= 3? no; 5 <= 6? yes; 9 <= 6? no | leftover 9; write \[1, 2, 3, 5, 6, 9\] to 0..5 |
+
+Totals: 11 comparisons, 5 merges, 16 values written back.
+
+**Complexity:** best, average and worst O(n log n); space O(n) extra for temp (plus O(log n) call stack); stable (uses `<=`, so equal values from the left run go first).
+
+### Narration script
+
+**\[1 · Cold open\]** A teacher has to line up the whole class by roll number. Instead of doing it alone, she splits the class into two groups and says, "Each group, sort yourselves." Then she merges the two sorted lines into one. Splitting the work is the secret behind one of the fastest sorts there is.
+
+**\[2 · Title\]** Episode 78. Merge sort.
+
+**\[3 · Divide and conquer\]** Merge sort has three steps. Divide: cut the array in half. Conquer: sort each half, by calling merge sort on it. Yes, recursion, just like Hanoi in Episode 77, we trust the smaller call. Combine: merge the two sorted halves into one sorted array. The base case: an array of one element is already sorted.
+
+**\[4 · The split tree\]** Our array, 5, 2, 9, 1, 6, 3, splits into 5, 2, 9 and 1, 6, 3. Those split again: 5, 2 and 9; 1, 6 and 3. And again, until every piece is a single number. Single numbers are already sorted. Now the real work starts, on the way back up.
+
+**\[5 · Merging\]** To merge two sorted lines, look only at the front of each. Merge 5 and 2: 2 is smaller, take it. The left line still has 5, so it comes along. 2, 5. Merge 2, 5 with 9: 2, then 5, then the leftover 9. On the right side: 1, 6. Then 1, 6 with 3: take 1, then 3 beats 6, then leftover 6. 1, 3, 6. The final merge: 2, 5, 9 with 1, 3, 6. Compare fronts: 1. Then 2. Then 3. Then 5. Then 6. And the leftover 9. Sorted!
+
+**\[6 · Step trace\]** Here's the whole story: five splits, five merges, eleven comparisons. Notice the leftovers. Every merge ends with one side empty and something left on the other side. Remember that; it's today's bug.
+
+**\[7 · Code: merge\]** \[HL 9\] merge takes the array and three indexes: the left run goes from left to mid, the right run from mid plus 1 to right. \[HL 10\] A temp array to build the merged result. We use a fixed size of 100 to keep the code simple; Episode 66's malloc would make it any size. \[HL 11\] i walks the left run, j walks the right run, k fills temp. \[TRACK i=0 j=3 k=0\] \[HL 13\] While both runs still have items, \[HL 14\] if the left front is smaller or equal, \[HL 15\] copy it into temp and move both i and k forward. The k plus plus and i plus plus are post-increments: use the value, then add one. \[HL 17\] Otherwise take the right front. \[TRACK temp=1\] \[HL 19\] When one run runs out, this loop copies whatever is left in the left run, \[HL 21\] and this one copies whatever is left in the right run. Only one of them will actually do anything. \[HL 24\] Finally, copy temp back into the array, starting at left.
+
+**\[8 · Code: merge\_sort\]** \[HL 28\] merge\_sort sorts the part of the array from left to right. \[HL 29\] Base case: if the part has one element or none, \[HL 30\] it's already sorted. \[HL 31\] Find the middle the safe way, from Episode 73. \[TRACK left=0 mid=2 right=5\] \[HL 32\] Sort the left half, \[HL 33\] sort the right half, \[HL 34\] then merge them. Three lines, and that's the entire algorithm. \[HL 41\] In main we sort from index 0 to n minus 1, \[HL 42\] and print.
+
+**\[9 · Run it\]** Compile and run: 1, 2, 3, 5, 6, 9.
+
+**\[10 · Pun\]** Why did the two sorted arrays get married? Because they were a perfect merge.
+
+**\[11 · Why n log n\]** How fast is this? Look at the split tree. Each level halves the pieces, so there are about log base 2 of n levels. On every level, the merges together touch all n elements once. So the total work is n times log n. For a million numbers, that's about 20 million steps, compared with roughly 500 billion comparisons for bubble sort. And unlike quick sort, which is next, merge sort is O(n log n) in the best, average and worst case. The price: it needs an extra temp array, so O(n) extra memory. It's also stable.
+
+**\[12 · Bug of the Day\]** Today's bug: forgetting the leftover elements. Someone deleted the two small while loops after the main merge loop. It compiles without any warning. But the output is 1, 2, 2, 3, 3, 3. When one run empties, the other run's remaining items never get copied into temp, and k is too small. So when temp is copied back, those positions keep old values from earlier. Our 5, 6 and 9 were all leftovers at some point, and they're gone. The fix: always drain both runs after the main loop.
+
+**\[13 · Challenge\]** Your challenge: write a program that merges two already-sorted arrays, 1, 4, 7 and 2, 3, 8, 9, into a third array of size 7, and prints it. It's the merge step on its own.
+
+**\[14 · Outro\]** Merge sort splits in the middle and does the work on the way up. Next episode, quick sort does the work on the way down, by picking a captain. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+void print_array(const int a[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
+void merge(int a[], int left, int mid, int right) {
+    int temp[100];
+    int i = left, j = mid + 1, k = 0;
+
+    while (i <= mid && j <= right) {
+        if (a[i] <= a[j])
+            temp[k++] = a[i++];
+        else
+            temp[k++] = a[j++];
+    }
+    while (i <= mid)
+        temp[k++] = a[i++];
+    while (j <= right)
+        temp[k++] = a[j++];
+
+    for (int t = 0; t < k; t++)
+        a[left + t] = temp[t];
+}
+
+void merge_sort(int a[], int left, int right) {
+    if (left >= right)
+        return;
+    int mid = left + (right - left) / 2;
+    merge_sort(a, left, mid);
+    merge_sort(a, mid + 1, right);
+    merge(a, left, mid, right);
+}
+
+int main(void) {
+    int roll[] = {5, 2, 9, 1, 6, 3};
+    int n = sizeof(roll) / sizeof(roll[0]);
+
+    merge_sort(roll, 0, n - 1);
+    print_array(roll, n);
+    return 0;
+}
+```
+
+```text
+$ gcc merge.c -o merge
+$ ./merge
+1 2 3 5 6 9
+```
+
+On screen note: temp\[100\] means this version sorts at most 100 elements per merge; EP 81 uses a malloc'd temp for 10,000 numbers.
+
+### Bug of the Day
+
+Wrong code (merge without the leftover loops):
+
+```c
+#include <stdio.h>
+
+void merge(int a[], int left, int mid, int right) {
+    int temp[100];
+    int i = left, j = mid + 1, k = 0;
+
+    while (i <= mid && j <= right) {
+        if (a[i] <= a[j])
+            temp[k++] = a[i++];
+        else
+            temp[k++] = a[j++];
+    }
+
+    for (int t = 0; t < k; t++)
+        a[left + t] = temp[t];
+}
+
+void merge_sort(int a[], int left, int right) {
+    if (left >= right)
+        return;
+    int mid = left + (right - left) / 2;
+    merge_sort(a, left, mid);
+    merge_sort(a, mid + 1, right);
+    merge(a, left, mid, right);
+}
+
+int main(void) {
+    int roll[] = {5, 2, 9, 1, 6, 3};
+    merge_sort(roll, 0, 5);
+    for (int i = 0; i < 6; i++)
+        printf("%d ", roll[i]);
+    printf("\n");
+    return 0;
+}
+```
+
+No error or warning from GCC. Wrong output:
+
+```text
+1 2 2 3 3 3
+```
+
+Fixed: add the two drain loops after the main while loop:
+
+```c
+    while (i <= mid)
+        temp[k++] = a[i++];
+    while (j <= right)
+        temp[k++] = a[j++];
+```
+
+```text
+1 2 3 5 6 9
+```
+
+Why: the main loop stops as soon as one run is empty, so the other run's remaining values never reach temp and the copy-back leaves stale values in those slots.
+
+### Pun & challenge
+
+- **Pun:** Why did the two sorted arrays get married? Because they were a perfect merge.
+- **Challenge:** Merge the sorted arrays {1, 4, 7} and {2, 3, 8, 9} into c\[7\] and print it.
+- **Challenge answer:**
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a[] = {1, 4, 7}, b[] = {2, 3, 8, 9}, c[7];
+    int na = 3, nb = 4, i = 0, j = 0, k = 0;
+    while (i < na && j < nb)
+        c[k++] = (a[i] <= b[j]) ? a[i++] : b[j++];
+    while (i < na) c[k++] = a[i++];
+    while (j < nb) c[k++] = b[j++];
+    for (int t = 0; t < k; t++) printf("%d ", c[t]);
+    printf("\n");
+    return 0;
+}
+```
+
+Output: `1 2 3 4 7 8 9`
+
+### Shorts for EP 78
+
+**S1 · Split the class** — 0:20 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "The laziest teacher has the fastest method."
+- **Script:** The teacher splits the class in two and says, sort yourselves. Each half splits again, and again. Then she merges the sorted lines back together. That's merge sort, and it sorts a million numbers in about 20 million steps.
+- **On-screen text:** SPLIT. SORT. MERGE.
+- **Caption + hashtags:** Divide and conquer, classroom edition. #cprogramming #learntocode #kodingkonkani #mergesort #sorting
+
+**S2 · Merge sort in 30 seconds** — 0:40 · built from scenes 4, 5 and 11
+
+- **Hook (first 1.5s):** "Split until it's trivial. Then zip it back up."
+- **Script:** Merge sort cuts the array in half, again and again, until every piece is one number. One number is already sorted. Then it merges pairs of sorted pieces by comparing just their front items. log n levels of splitting, n work per level: O(n log n) in every case. The cost: an extra temp array.
+- **On-screen text:** O(n log n) ALWAYS
+- **Caption + hashtags:** Merge sort, visualised. #cprogramming #learntocode #kodingkonkani #mergesort #dsa
+
+**S3 · Where did 5, 6 and 9 go?** — 0:35 · built from scene 12
+
+- **Hook (first 1.5s):** "My merge sort printed 3 three times."
+- **Script:** The merge loop stops when one side runs out. If you forget to copy what's left on the other side, those numbers never make it into temp. Our output: 1, 2, 2, 3, 3, 3. Always add the two leftover loops after the main merge loop.
+- **On-screen text:** DRAIN THE LEFTOVERS
+- **Caption + hashtags:** Don't leave anyone behind. #cprogramming #learntocode #kodingkonkani #bugoftheday #mergesort
+
+**S4 · A perfect merge** — 0:10 · built from scene 10
+
+- **Hook (first 1.5s):** "Why did two arrays get married?"
+- **Script:** Why did the two sorted arrays get married? Because they were a perfect merge.
+- **On-screen text:** A PERFECT MERGE
+- **Caption + hashtags:** Wedding season in Goa hits different. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · Merge these two** — 0:20 · built from scene 13
+
+- **Hook (first 1.5s):** "Two sorted lists. One pass."
+- **Script:** You have 1, 4, 7 and 2, 3, 8, 9, both sorted. Merge them into one sorted list of seven, comparing only the front of each. Write it in C. Solution pinned on the full episode.
+- **On-screen text:** {1,4,7} + {2,3,8,9}
+- **Caption + hashtags:** Code it, then check. #cprogramming #learntocode #kodingkonkani #challenge #mergesort
+
+## EP 79 — Quick sort
+
+**Module 12 · Algorithms · 7:30 · Dark blue + Butter · Prerequisite: EP 78**
+
+**Learning goals:** explain quick sort as "pick a pivot, put smaller items left and bigger items right, recurse on each side"; write a Lomuto partition function and recursive quick\_sort in C; trace a partition step by step with i and j; explain why the average case is O(n log n) but a bad pivot gives O(n²).
+
+### YouTube
+
+- **Title:** Quick Sort: Pick a Captain, Everyone Lines Up | C EP 79
+- **Description:** Pick a captain. Everyone shorter stands on the left, everyone taller on the right. Repeat. We animate quick sort's partition step by step, write it in C with a swap function and recursion, and see why the choice of pivot can make it fast or painfully slow. 0:00 Pick a captain · 0:20 Title · 0:25 The idea · 0:55 Partition, animated · 2:00 The rest of the sort · 2:30 Step trace · 2:55 Code: partition · 4:10 Code: quick\_sort · 4:40 Run it · 4:55 Pun · 5:00 Good pivot, bad pivot · 5:45 Bug of the Day · 6:50 Challenge · 7:15 Outro
+- **Tags:** quick sort, quicksort in c, partition, pivot, sorting algorithms, divide and conquer, c programming, algorithms for beginners, learn c, koding konkani, dsa in c
+- **Thumbnail:** big text "PICK A CAPTAIN"; bars split around a tall bar wearing a captain's armband; Xecxec in a cricket cap pointing left and right; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Beach football: captain steps out; shorter kids go left, taller go right | Whistle; kids scamper |
+| 2 | 0:20 | 0:05 | Title card | EP 79 · QUICK SORT | Stinger; claw-click |
+| 3 | 0:25 | 0:30 | Concept slide | Rule card: "Pick a pivot. Smaller → left. Bigger → right. Pivot is now in its final place. Recurse." | Pivot bar gets a captain armband |
+| 4 | 0:55 | 1:05 | Algorithm bars | Bars \[5, 2, 9, 1, 6, 3\]; pivot 3 (last); markers i and j under bars; steps P1.1–P1.6 | Pivot butter; j bar pastel blue; swaps tomato; "small zone" left of i shaded mint; pivot drops into its slot and locks mint; tick per compare, swoosh per swap |
+| 5 | 2:00 | 0:30 | Algorithm bars | Remaining partitions P2–P4 at 2x | Locked pivots stay mint |
+| 6 | 2:30 | 0:25 | Concept slide | Step-trace table (below) | Rows reveal |
+| 7 | 2:55 | 1:15 | Code explain | quick.c lines 9–26 (swap, partition); tracker for pivot, i, j, array | \[HL\]/\[TRACK\] cues |
+| 8 | 4:10 | 0:30 | Code explain | quick.c lines 28–43 (quick\_sort, main); tracker for low, high, p | \[HL\]/\[TRACK\] cues |
+| 9 | 4:40 | 0:15 | Terminal | gcc and 1 output line | Line types out |
+| 10 | 4:55 | 0:05 | Pun card | Pun | Rimshot |
+| 11 | 5:00 | 0:45 | Concept slide | Two split trees: balanced (pivot near the middle, log n levels) vs lopsided (sorted input, last pivot, n levels) | Balanced tree glows mint; lopsided one leans and creaks |
+| 12 | 5:45 | 1:05 | Bug of the Day | quick\_sort(a, low, p) instead of p - 1; crash | Red siren; the same call box repeats down the screen |
+| 13 | 6:50 | 0:25 | Challenge | "Sort 10 random numbers" | Dice roll SFX |
+| 14 | 7:15 | 0:15 | Outro | Next: EP 80 Counting sort | Sign-off |
+
+### Step trace
+
+Array `{5, 2, 9, 1, 6, 3}`, Lomuto partition with pivot = last element. i marks the end of the "smaller than pivot" zone (starts at low - 1); j scans low … high - 1.
+
+| Step | Array after step | Compared | Swapped |
+| --- | --- | --- | --- |
+| P1 start | \[5, 2, 9, 1, 6, 3\] | partition 0..5, pivot = 3, i = -1 | — |
+| P1.1 | \[5, 2, 9, 1, 6, 3\] | j=0: 5 < 3? no | none |
+| P1.2 | \[2, 5, 9, 1, 6, 3\] | j=1: 2 < 3? yes, i = 0 | a\[0\] ↔ a\[1\] (5 ↔ 2) |
+| P1.3 | \[2, 5, 9, 1, 6, 3\] | j=2: 9 < 3? no | none |
+| P1.4 | \[2, 1, 9, 5, 6, 3\] | j=3: 1 < 3? yes, i = 1 | a\[1\] ↔ a\[3\] (5 ↔ 1) |
+| P1.5 | \[2, 1, 9, 5, 6, 3\] | j=4: 6 < 3? no | none |
+| P1.6 | \[2, 1, 3, 5, 6, 9\] | place pivot at i + 1 = 2 | a\[2\] ↔ a\[5\] (9 ↔ 3); 3 locked, p = 2 |
+| P2 start | \[2, 1, 3, 5, 6, 9\] | partition 0..1, pivot = 1, i = -1 | — |
+| P2.1 | \[2, 1, 3, 5, 6, 9\] | j=0: 2 < 1? no | none |
+| P2.2 | \[1, 2, 3, 5, 6, 9\] | place pivot at 0 | a\[0\] ↔ a\[1\] (2 ↔ 1); 1 locked, p = 0; 2 is a single (base case) |
+| P3 start | \[1, 2, 3, 5, 6, 9\] | partition 3..5, pivot = 9, i = 2 | — |
+| P3.1 | \[1, 2, 3, 5, 6, 9\] | j=3: 5 < 9? yes, i = 3 | a\[3\] ↔ a\[3\] (self, no visible change) |
+| P3.2 | \[1, 2, 3, 5, 6, 9\] | j=4: 6 < 9? yes, i = 4 | a\[4\] ↔ a\[4\] (self) |
+| P3.3 | \[1, 2, 3, 5, 6, 9\] | place pivot at 5 | a\[5\] ↔ a\[5\] (self); 9 locked, p = 5 |
+| P4 start | \[1, 2, 3, 5, 6, 9\] | partition 3..4, pivot = 6, i = 2 | — |
+| P4.1 | \[1, 2, 3, 5, 6, 9\] | j=3: 5 < 6? yes, i = 3 | a\[3\] ↔ a\[3\] (self) |
+| P4.2 | \[1, 2, 3, 5, 6, 9\] | place pivot at 4 | a\[4\] ↔ a\[4\] (self); 6 locked, p = 4; 5 is a single (base case) |
+
+Totals: 9 comparisons, 4 partitions, 3 visible swaps (+ 5 self-swaps). Animation note: show self-swaps as a small bounce, not a slide.
+
+**Complexity:** best O(n log n), average O(n log n), worst O(n²) (already sorted or reverse-sorted input with last-element pivot); space O(log n) call stack on average, O(n) in the worst case; not stable.
+
+### Narration script
+
+**\[1 · Cold open\]** Football on the beach at sunset. Someone picks a captain. Then everyone shorter than the captain stands on the left, everyone taller on the right. Without sorting anyone else yet, the captain is already standing in exactly the right spot. That one idea powers quick sort.
+
+**\[2 · Title\]** Episode 79. Quick sort.
+
+**\[3 · The idea\]** Quick sort picks one element called the pivot, our captain. It rearranges the array so everything smaller than the pivot is on its left and everything bigger is on its right. This step is called partitioning. After it, the pivot is in its final place forever. Then quick sort does the same thing to the left part and the right part, recursively. Merge sort did its hard work on the way back up. Quick sort does it on the way down.
+
+**\[4 · Partition, animated\]** Our array: 5, 2, 9, 1, 6, 3. We choose the last element, 3, as the pivot. We keep a marker i, the edge of the "smaller than 3" zone, which starts just before the array. Another marker, j, walks along. j at 5: is 5 less than 3? No, skip. j at 2: yes! Grow the zone, i moves to index 0, and swap 2 into it. j at 9: no. j at 1: yes! i moves to 1, swap 1 into the zone. j at 6: no. Done scanning. Now the pivot steps into the slot just after the zone: swap 3 with 9. Look: 2 and 1 on the left, 3 in the middle, 5, 6, 9 on the right. 3 is locked.
+
+**\[5 · The rest\]** Now quick sort the left part, 2 and 1. Pivot 1: 2 is not smaller, so 1 swaps to the front. Locked. Then the right part, 5, 6, 9. Pivot 9: both are smaller, so they stay put, and 9 stays at the end. Then 5, 6 with pivot 6: same story. Every piece is now a single element or locked. Sorted.
+
+**\[6 · Step trace\]** Here's every step. Nine comparisons in total. Some swaps swap an element with itself; that happens when the zone and j are at the same place, and it's harmless.
+
+**\[7 · Code: partition\]** \[HL 9\] First, a swap function that takes two pointers. This is the real swap from Episode 55: it changes the caller's values. \[HL 15\] partition works on the part of the array from low to high. \[HL 16\] The pivot is the last element. \[TRACK pivot=3\] \[HL 17\] i starts at low minus 1: the zone is empty. \[TRACK i=-1\] \[HL 18\] j walks from low up to, but not including, high, because high is the pivot itself. \[HL 19\] If a\[j\] is smaller than the pivot, \[HL 20\] grow the zone by one, \[TRACK j=1 i=0\] \[HL 21\] and swap a\[j\] into it. \[TRACK array=2,5,9,1,6,3\] \[HL 24\] After the loop, swap the pivot into position i plus 1. \[TRACK array=2,1,3,5,6,9\] \[HL 25\] Return that position, so the caller knows where the pivot ended up.
+
+**\[8 · Code: quick\_sort\]** \[HL 28\] quick\_sort sorts from low to high. \[HL 29\] Only if there are at least two elements. That's the base case, written the other way round. \[HL 30\] Partition, and get the pivot's final index p. \[TRACK low=0 high=5 p=2\] \[HL 31\] Sort everything left of p, \[HL 32\] and everything right of p. p itself is never touched again. \[HL 40\] In main, sort the whole array from 0 to n minus 1.
+
+**\[9 · Run it\]** Compile and run: 1, 2, 3, 5, 6, 9.
+
+**\[10 · Pun\]** Why did the pivot get promoted? Because it always knew its place.
+
+**\[11 · Good pivot, bad pivot\]** If the pivot lands near the middle, each partition splits the work in half, just like merge sort. About log n levels, n work per level: O(n log n). That's the average case, and in practice quick sort is usually very fast, with no temp array. But if the pivot is always the smallest or largest, like taking the last element of an already sorted array, each partition peels off just one element. That's n levels, and O(n²), as slow as bubble sort. Real libraries avoid this by choosing a random pivot or the middle of three values. Quick sort is not stable, because long swaps can jump equal values past each other.
+
+**\[12 · Bug of the Day\]** Today's bug: a bad recursive call. Someone wrote quick\_sort a, low, p, instead of p minus 1. It looks harmless, but now the pivot is included in the left part. When the pivot is the largest element in that part, partition puts it at the end, p equals high, and the next call is exactly the same as this one. The same call, forever, until the stack overflows and the program crashes, with no output. GCC gives no warning this time, because it can't prove the recursion never ends. The fix: exclude the pivot, p minus 1 and p plus 1. That guarantees every call works on a smaller piece.
+
+**\[13 · Challenge\]** Your challenge: fill an array with 10 random numbers from 0 to 99 using rand, with srand of time NULL to seed it (include stdlib.h and time.h; the answer shows how), print it, quick sort it, and print it again.
+
+**\[14 · Outro\]** Every sort so far works by comparing. Next episode, a sort that never compares two numbers at all: counting sort. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+void print_array(const int a[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
+void swap(int *x, int *y) {
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+int partition(int a[], int low, int high) {
+    int pivot = a[high];
+    int i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (a[j] < pivot) {
+            i++;
+            swap(&a[i], &a[j]);
+        }
+    }
+    swap(&a[i + 1], &a[high]);
+    return i + 1;
+}
+
+void quick_sort(int a[], int low, int high) {
+    if (low < high) {
+        int p = partition(a, low, high);
+        quick_sort(a, low, p - 1);
+        quick_sort(a, p + 1, high);
+    }
+}
+
+int main(void) {
+    int team[] = {5, 2, 9, 1, 6, 3};
+    int n = sizeof(team) / sizeof(team[0]);
+
+    quick_sort(team, 0, n - 1);
+    print_array(team, n);
+    return 0;
+}
+```
+
+```text
+$ gcc quick.c -o quick
+$ ./quick
+1 2 3 5 6 9
+```
+
+### Bug of the Day
+
+Wrong code (only quick\_sort changes; the rest of quick.c is the same):
+
+```c
+void quick_sort(int a[], int low, int high) {
+    if (low < high) {
+        int p = partition(a, low, high);
+        quick_sort(a, low, p);
+        quick_sort(a, p + 1, high);
+    }
+}
+```
+
+No error or warning from GCC (even with -Wall -Wextra). Running it prints nothing and crashes with a stack overflow: on Windows the program exits silently; on Linux the shell prints `Segmentation fault`. Trace: partition(0..1) places pivot 1 at p = 0, then quick\_sort(3..5) places 9 at p = 5 and calls quick\_sort(3, 5) again, which repeats forever.
+
+Fixed:
+
+```c
+        quick_sort(a, low, p - 1);
+```
+
+```text
+1 2 3 5 6 9
+```
+
+Why: including the pivot means a part can stay the same size (p == high), so the recursion never reaches the base case.
+
+### Pun & challenge
+
+- **Pun:** Why did the pivot get promoted? Because it always knew its place.
+- **Challenge:** Fill an array with 10 random numbers from 0 to 99, print it, quick sort it, print it again.
+- **Challenge answer:** Add `#include <stdlib.h>` and `#include <time.h>` to quick.c and replace main with the code below. Output differs every run, for example `Before: 12 52 7 53 37 15 78 85 83 71` then `After:  7 12 15 37 52 53 71 78 83 85`.
+
+```c
+int main(void) {
+    int a[10];
+    srand((unsigned) time(NULL));
+    for (int i = 0; i < 10; i++)
+        a[i] = rand() % 100;
+    printf("Before: ");
+    print_array(a, 10);
+    quick_sort(a, 0, 9);
+    printf("After:  ");
+    print_array(a, 10);
+    return 0;
+}
+```
+
+### Shorts for EP 79
+
+**S1 · Pick a captain** — 0:20 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "The captain is already in the right place."
+- **Script:** Pick a captain. Shorter kids go left, taller kids go right. Now the captain is standing exactly where they belong in the sorted line, without sorting anyone else. Do that again on each side and you've got quick sort.
+- **On-screen text:** PICK A CAPTAIN
+- **Caption + hashtags:** Beach football explains quick sort. #cprogramming #learntocode #kodingkonkani #quicksort #sorting
+
+**S2 · Quick sort in 30 seconds** — 0:40 · built from scenes 4 and 11
+
+- **Hook (first 1.5s):** "Smaller left. Bigger right. Repeat."
+- **Script:** Quick sort picks a pivot. It walks the array and swaps every smaller element into a zone on the left. Then the pivot moves in right after the zone, into its final place. Recurse on both sides. Good pivots give O(n log n) and no extra array. Bad pivots, like the last element of sorted data, give O(n squared).
+- **On-screen text:** PIVOT · PARTITION · RECURSE
+- **Caption + hashtags:** Quick sort's partition, animated. #cprogramming #learntocode #kodingkonkani #quicksort #dsa
+
+**S3 · p instead of p - 1** — 0:35 · built from scene 12
+
+- **Hook (first 1.5s):** "Two characters missing. Infinite recursion."
+- **Script:** quick\_sort a, low, p. Looks fine. But it includes the pivot in the left part. If the pivot ends up at the end, the next call is exactly the same as this one, forever, until the stack overflows. Exclude the pivot: p minus 1 and p plus 1.
+- **On-screen text:** p - 1, NOT p
+- **Caption + hashtags:** The pivot is already done. Leave it. #cprogramming #learntocode #kodingkonkani #bugoftheday #quicksort
+
+**S4 · Knew its place** — 0:10 · built from scene 10
+
+- **Hook (first 1.5s):** "Why did the pivot get promoted?"
+- **Script:** Why did the pivot get promoted? Because it always knew its place.
+- **On-screen text:** IT KNEW ITS PLACE
+- **Caption + hashtags:** Career goals. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · Sort 10 random numbers** — 0:20 · built from scene 13
+
+- **Hook (first 1.5s):** "Random in. Sorted out."
+- **Script:** Fill an array with 10 random numbers from 0 to 99. Print it. Quick sort it. Print it again. Post your before and after in the comments.
+- **On-screen text:** 10 RANDOM → SORTED
+- **Caption + hashtags:** Show your output. #cprogramming #learntocode #kodingkonkani #challenge #quicksort
+
+## EP 80 — Counting sort
+
+**Module 12 · Algorithms · 6:30 · Dark blue + Butter · Prerequisite: EP 79**
+
+**Learning goals:** sort small whole-number ranges by counting instead of comparing; write counting\_sort with a count array and a rebuild loop; explain O(n + k) time and O(k) space, where k is the range of values; handle negative values with an offset.
+
+### YouTube
+
+- **Title:** Sorting 1,000 Exam Marks Instantly | Counting Sort EP 80
+- **Description:** Every sort so far compared numbers. Counting sort never compares anything: it just counts how many of each value there are, like tallying fish by type at the market. We animate it, write it in C, and break it with a negative number. 0:00 Tally the fish · 0:20 Title · 0:25 The idea · 0:55 Counting phase, animated · 1:40 Rebuild phase, animated · 2:20 Step trace · 2:45 Code · 3:50 Run it · 4:05 Pun · 4:10 When to use it · 4:50 Bug of the Day · 5:55 Challenge · 6:15 Outro
+- **Tags:** counting sort, counting sort in c, non comparison sort, sorting algorithms, O(n + k), c programming, algorithms for beginners, learn c, koding konkani, dsa in c, sort exam marks
+- **Thumbnail:** big text "NO COMPARING!"; a row of tally boxes 0–9 with tick marks; Xecxec with a clipboard and pencil; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Fish market: tally sheet "mackerel IIII, pomfret II, kingfish I" | Pencil scratch per tally |
+| 2 | 0:20 | 0:05 | Title card | EP 80 · COUNTING SORT | Stinger; claw-click |
+| 3 | 0:25 | 0:30 | Concept slide | "Values are small whole numbers 0–9? Just count them." | Ten empty buckets labelled 0–9 slide in |
+| 4 | 0:55 | 0:45 | Algorithm bars | Bars \[5, 2, 9, 1, 6, 3\] above a count row 0–9; steps C1–C6 | Each bar flies into its bucket (pastel blue); bucket number ticks up in butter; plop SFX |
+| 5 | 1:40 | 0:40 | Algorithm bars | Rebuild: walk buckets 0–9; steps R1–R6 | Empty buckets flash grey and skip; non-empty bucket pops a bar back into slot k (mint); pop SFX |
+| 6 | 2:20 | 0:25 | Concept slide | Step-trace table (below) | Rows reveal |
+| 7 | 2:45 | 1:05 | Code explain | counting.c (33 lines); tracker for i, count\[\], v, k | \[HL\]/\[TRACK\] cues; count row stays visible |
+| 8 | 3:50 | 0:15 | Terminal | gcc and 1 output line | Line types out |
+| 9 | 4:05 | 0:05 | Pun card | Pun | Rimshot |
+| 10 | 4:10 | 0:40 | Concept slide | Card: time O(n + k), space O(k); good for marks 0–100, ages, dice; bad for phone numbers (k too big) and decimals | Green ticks, red crosses |
+| 11 | 4:50 | 1:05 | Bug of the Day | Temperatures with -2; output 0 1 3 3 5 (one value missing) | Red siren; -2 flies left of bucket 0 into a dark "not yours" box |
+| 12 | 5:55 | 0:20 | Challenge | "Sort exam grades 0–100" | Timer |
+| 13 | 6:15 | 0:15 | Outro | Next: EP 81 Sorting showdown | Sign-off |
+
+### Step trace
+
+Array `{5, 2, 9, 1, 6, 3}`, values 0–9, `count[10]` starts all 0. Counting sort makes no comparisons between elements and no swaps; the columns show reads and writes instead.
+
+| Step | Array state | Compared / read | Written |
+| --- | --- | --- | --- |
+| C1 | \[5, 2, 9, 1, 6, 3\] | read a\[0\] = 5 | count\[5\] = 1 |
+| C2 | \[5, 2, 9, 1, 6, 3\] | read a\[1\] = 2 | count\[2\] = 1 |
+| C3 | \[5, 2, 9, 1, 6, 3\] | read a\[2\] = 9 | count\[9\] = 1 |
+| C4 | \[5, 2, 9, 1, 6, 3\] | read a\[3\] = 1 | count\[1\] = 1 |
+| C5 | \[5, 2, 9, 1, 6, 3\] | read a\[4\] = 6 | count\[6\] = 1 |
+| C6 | \[5, 2, 9, 1, 6, 3\] | read a\[5\] = 3 | count\[3\] = 1; count = \[0,1,1,1,0,1,1,0,0,1\] |
+| R1 | \[1, 2, 9, 1, 6, 3\] | v = 0: count 0, skip; v = 1: count 1 | a\[0\] = 1, count\[1\] = 0 |
+| R2 | \[1, 2, 9, 1, 6, 3\] | v = 2: count 1 | a\[1\] = 2, count\[2\] = 0 |
+| R3 | \[1, 2, 3, 1, 6, 3\] | v = 3: count 1 | a\[2\] = 3, count\[3\] = 0 |
+| R4 | \[1, 2, 3, 5, 6, 3\] | v = 4: skip; v = 5: count 1 | a\[3\] = 5, count\[5\] = 0 |
+| R5 | \[1, 2, 3, 5, 6, 3\] | v = 6: count 1 | a\[4\] = 6, count\[6\] = 0 |
+| R6 | \[1, 2, 3, 5, 6, 9\] | v = 7, 8: skip; v = 9: count 1 | a\[5\] = 9, count\[9\] = 0 |
+
+Totals: 0 element comparisons, 6 counts, 10 bucket visits, 6 writes.
+
+**Complexity:** best, average and worst O(n + k), where k is the number of possible values (here 10); space O(k) for the count array; this simple version rebuilds values from counts, so it suits plain numbers (a stable version that moves whole records uses prefix sums and an output array).
+
+### Narration script
+
+**\[1 · Cold open\]** At the fish market, the auction man doesn't sort fish by comparing them two at a time. He keeps a tally: four mackerel, two pomfret, one kingfish. Then he reads the tally in order. No comparisons at all. Today we sort numbers the same way.
+
+**\[2 · Title\]** Episode 80. Counting sort.
+
+**\[3 · The idea\]** Every sort so far worked by comparing two numbers. Counting sort doesn't compare. If we know all the values are small whole numbers, say 0 to 9, we make ten buckets, one per value. We go through the array once and count how many of each value we see. Then we walk the buckets from 0 to 9 and write each value out as many times as we counted it.
+
+**\[4 · Counting phase\]** Our array: 5, 2, 9, 1, 6, 3. 5: bucket 5 becomes 1. 2: bucket 2 becomes 1. 9, 1, 6, 3, same thing. One pass, and our count row reads: nothing in 0, one in 1, one in 2, one in 3, nothing in 4, one each in 5, 6 and 9.
+
+**\[5 · Rebuild phase\]** Now walk the buckets in order. Bucket 0 is empty, skip. Bucket 1 has one: write 1. Bucket 2: write 2. Bucket 3: write 3. Bucket 4: empty. 5, 6, then 7 and 8 empty, then 9. The array is 1, 2, 3, 5, 6, 9. We never compared two numbers.
+
+**\[6 · Step trace\]** Here's the full trace: six counting steps and six writes, plus a quick look at all ten buckets. If a value appeared three times, its bucket would say 3 and we'd write it three times.
+
+**\[7 · Code explain\]** \[HL 3\] MAX\_MARK is the largest value we allow, 9. A #define keeps it in one place, so changing the range means changing one line. \[HL 11\] counting\_sort takes the array and its length. \[HL 12\] The count array has MAX\_MARK plus 1 slots, 0 to 9, all set to zero by the equals brace zero. \[TRACK count=0,0,0,0,0,0,0,0,0,0\] \[HL 14\] One pass over the input. \[HL 15\] count of a\[i\], plus plus. The value itself is used as the index. \[TRACK i=0 count\[5\]=1\] That's the whole trick. \[HL 17\] k is where we write next. \[HL 18\] Walk every possible value v from 0 to MAX\_MARK. \[HL 19\] While this bucket still has items, \[HL 20\] write v into the array and move k forward, \[TRACK v=1 k=1\] \[HL 21\] and take one out of the bucket. \[HL 30\] In main, sort and \[HL 31\] print.
+
+**\[8 · Run it\]** Compile and run: 1, 2, 3, 5, 6, 9.
+
+**\[9 · Pun\]** Why is counting sort so good at maths? It never loses count.
+
+**\[10 · When to use it\]** Counting sort takes one pass over n items and one pass over k buckets, so it's O(n + k). If the range is small, that beats O(n log n). Sorting a thousand exam marks from 0 to 100 needs just 101 buckets: almost instant. But if k is huge, like phone numbers, you'd need billions of buckets, so it's useless there. It also only works for whole numbers, or things you can turn into small whole numbers. It can't sort decimals or names directly.
+
+**\[11 · Bug of the Day\]** Today's bug: negative numbers break it. We sort morning temperatures in Goa's hill stations: 3, minus 2, 5, 3, 1, 0. The code does count of temps i, plus plus. For minus 2, that's count of minus 2: an index before the start of the array. C doesn't check. It quietly writes into memory that isn't ours. The output on our machine: 0, 1, 3, 3, 5. The minus 2 has vanished, and on another machine it could crash. The fix: shift every value by an offset. If the smallest allowed value is minus 5, store each value at index value minus MIN\_T, so minus 5 goes to bucket 0. When writing out, loop v from MIN\_T to MAX\_T and read count of v minus MIN\_T. Now the output is minus 2, 0, 1, 3, 3, 5.
+
+**\[12 · Challenge\]** Your challenge: change counting\_sort to sort exam grades from 0 to 100. Test it on 78, 45, 100, 0, 45, 92, 63.
+
+**\[13 · Outro\]** We now have six sorts. Next episode, we race them all on ten thousand numbers with a real stopwatch. Place your bets. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+#define MAX_MARK 9
+
+void print_array(const int a[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
+void counting_sort(int a[], int n) {
+    int count[MAX_MARK + 1] = {0};
+
+    for (int i = 0; i < n; i++)
+        count[a[i]]++;
+
+    int k = 0;
+    for (int v = 0; v <= MAX_MARK; v++) {
+        while (count[v] > 0) {
+            a[k++] = v;
+            count[v]--;
+        }
+    }
+}
+
+int main(void) {
+    int marks[] = {5, 2, 9, 1, 6, 3};
+    int n = sizeof(marks) / sizeof(marks[0]);
+
+    counting_sort(marks, n);
+    print_array(marks, n);
+    return 0;
+}
+```
+
+```text
+$ gcc counting.c -o counting
+$ ./counting
+1 2 3 5 6 9
+```
+
+### Bug of the Day
+
+Wrong code:
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int count[10] = {0};
+    int temps[] = {3, -2, 5, 3, 1, 0};
+    int n = 6;
+
+    for (int i = 0; i < n; i++)
+        count[temps[i]]++;
+
+    for (int v = 0; v < 10; v++)
+        for (int c = 0; c < count[v]; c++)
+            printf("%d ", v);
+    printf("\n");
+    return 0;
+}
+```
+
+No error or warning from GCC. Wrong output on our test machine (undefined behaviour, so on screen: "your output may differ, or it may crash"):
+
+```text
+0 1 3 3 5
+```
+
+Fixed with an offset:
+
+```c
+#include <stdio.h>
+
+#define MIN_T (-5)
+#define MAX_T 9
+
+int main(void) {
+    int count[MAX_T - MIN_T + 1] = {0};
+    int temps[] = {3, -2, 5, 3, 1, 0};
+    int n = 6;
+
+    for (int i = 0; i < n; i++)
+        count[temps[i] - MIN_T]++;
+
+    for (int v = MIN_T; v <= MAX_T; v++)
+        for (int c = 0; c < count[v - MIN_T]; c++)
+            printf("%d ", v);
+    printf("\n");
+    return 0;
+}
+```
+
+```text
+-2 0 1 3 3 5
+```
+
+Why: count\[-2\] is outside the array, so the -2 is written into memory that is not count and never read back; subtracting the minimum maps every value to a valid index 0 … k-1.
+
+### Pun & challenge
+
+- **Pun:** Why is counting sort so good at maths? It never loses count.
+- **Challenge:** Make counting\_sort handle exam grades 0–100 and sort 78, 45, 100, 0, 45, 92, 63.
+- **Challenge answer:** Change `#define MAX_MARK 9` to `#define MAX_MARK 100` (count gets 101 slots) and use `int marks[] = {78, 45, 100, 0, 45, 92, 63};`. Output: `0 45 45 63 78 92 100`.
+
+### Shorts for EP 80
+
+**S1 · A sort that never compares** — 0:20 · built from scenes 1–3
+
+- **Hook (first 1.5s):** "This sort never compares two numbers."
+- **Script:** The fish market auction man doesn't compare fish two at a time. He tallies them: four mackerel, two pomfret. Then reads the tally in order. That's counting sort, and for small ranges like exam marks, it's faster than any comparison sort.
+- **On-screen text:** ZERO COMPARISONS
+- **Caption + hashtags:** Tally marks beat quick sort (sometimes). #cprogramming #learntocode #kodingkonkani #countingsort #sorting
+
+**S2 · Counting sort in 30 seconds** — 0:35 · built from scenes 4, 5 and 10
+
+- **Hook (first 1.5s):** "Count. Then write."
+- **Script:** Make one bucket per possible value. Pass over the array and add one to each value's bucket. Then walk the buckets in order and write each value as many times as it was counted. Time: O(n plus k), where k is the range. Brilliant for marks 0 to 100. Useless for phone numbers.
+- **On-screen text:** O(n + k)
+- **Caption + hashtags:** Counting sort, animated. #cprogramming #learntocode #kodingkonkani #countingsort #dsa
+
+**S3 · Minus 2 vanished** — 0:35 · built from scene 11
+
+- **Hook (first 1.5s):** "I sorted six temperatures and got five."
+- **Script:** count of temps i, plus plus. For minus 2, that's count of minus 2, before the start of the array. C doesn't check, so it writes into someone else's memory and the value disappears. Fix: subtract the minimum, so minus 5 maps to bucket 0.
+- **On-screen text:** INDEX = VALUE - MIN
+- **Caption + hashtags:** Negative index, silent bug. #cprogramming #learntocode #kodingkonkani #bugoftheday #countingsort
+
+**S4 · Never loses count** — 0:10 · built from scene 9
+
+- **Hook (first 1.5s):** "Why is counting sort good at maths?"
+- **Script:** Why is counting sort so good at maths? It never loses count.
+- **On-screen text:** IT NEVER LOSES COUNT
+- **Caption + hashtags:** Topper energy. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · Grades 0 to 100** — 0:20 · built from scene 12
+
+- **Hook (first 1.5s):** "How many buckets do you need?"
+- **Script:** You want to counting-sort exam grades from 0 to 100. How many buckets does the count array need: 100, 101, or 1000? Comment your answer, then sort 78, 45, 100, 0, 45, 92, 63.
+- **On-screen text:** 100? 101? 1000?
+- **Caption + hashtags:** Off-by-one check. #cprogramming #learntocode #kodingkonkani #quiz #countingsort
+
+## EP 81 — Sorting showdown
+
+**Module 12 · Algorithms · 7:45 · Dark blue + Butter · Prerequisite: EP 80 (function pointers: EP 60; malloc: EP 66)**
+
+**Learning goals:** time a piece of C code with clock() and CLOCKS\_PER\_SEC; build a fair race that gives every sort an identical copy of the same data; check that each result really is sorted; connect measured times to the Big-O classes from EP 72.
+
+### YouTube
+
+- **Title:** 6 Sorting Algorithms Race on 10,000 Numbers | C EP 81
+- **Description:** Bubble, selection, insertion, merge, quick and counting sort, all racing on the same 10,000 random numbers, timed live with clock(). We build a fair race in C, then run it on your machine. Plus the timing bug that lets one sort cheat. 0:00 Place your bets · 0:20 Title · 0:25 The six racers · 1:05 Small-array scorecard · 1:35 How to time code · 2:20 Code: the race harness · 3:50 Race day · 4:50 Pun · 4:55 What the results mean · 5:50 Bug of the Day · 7:00 Challenge · 7:30 Outro
+- **Tags:** sorting algorithms comparison, sorting race, bubble sort vs quick sort, merge sort, counting sort, clock in c, time complexity, c programming, learn c, koding konkani, dsa in c
+- **Thumbnail:** big text "WHICH SORT WINS?"; six bar-chart racers on a running track; Xecxec with a chequered flag; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Six racers on a beach track; "10,000 numbers. One winner." | Crowd cheer; starting pistol click |
+| 2 | 0:20 | 0:05 | Title card | EP 81 · SORTING SHOWDOWN | Stinger; claw-click |
+| 3 | 0:25 | 0:40 | Concept slide | Six racer cards with their Big-O: bubble, selection, insertion O(n²); merge, quick O(n log n); counting O(n + k) | Cards flip in one by one |
+| 4 | 1:05 | 0:30 | Algorithm bars | Six mini bar rows sorting {5, 2, 9, 1, 6, 3} side by side, replaying EP 74–80 traces; scorecard below | All six animate in parallel; counters tick |
+| 5 | 1:35 | 0:45 | Concept slide | Stopwatch diagram: copy data → start = clock() → sort → end = clock() → (end - start) / CLOCKS\_PER\_SEC | Arrows light in order; stopwatch click on start and stop |
+| 6 | 2:20 | 1:30 | Code explain | showdown.c (139 lines), shown in 3 zoomed chunks: the six sorts collapsed, race() lines 113–122, main lines 124–139; tracker for start, end, ms | \[HL\]/\[TRACK\] cues |
+| 7 | 3:50 | 1:00 | Terminal | Live screen recording of `gcc showdown.c -o showdown` and `./showdown` on the reference machine; results drawn as horizontal bars from the real output | Bars grow to the measured value; finish-line ding for each; numbers are \[MEASURED\] |
+| 8 | 4:50 | 0:05 | Pun card | Pun | Rimshot |
+| 9 | 4:55 | 0:55 | Concept slide | Results table with \[MEASURED\] values; "10x more data" prediction column (O(n²) × 100, O(n log n) × \~13, O(n + k) × \~10) | Prediction arrows animate |
+| 10 | 5:50 | 1:10 | Bug of the Day | Copy moved out of race(); insertion suddenly near 0 ms, quick suddenly slow | Red siren; "already sorted!" stamp on the data |
+| 11 | 7:00 | 0:30 | Challenge | "Predict the winner on already-sorted data" | Timer |
+| 12 | 7:30 | 0:15 | Outro | Next: EP 82 Build your own header library | Sign-off |
+
+### Step trace: scorecard on the 6-element array
+
+Scene 4 replays the exact traces from EP 74–80 on `{5, 2, 9, 1, 6, 3}` side by side. The counts below are exact and come from those traces; they are what the mini counters show.
+
+| Racer (EP) | Final array | Element comparisons | Swaps / moves |
+| --- | --- | --- | --- |
+| Bubble (74) | \[1, 2, 3, 5, 6, 9\] | 14 | 8 swaps |
+| Selection (75) | \[1, 2, 3, 5, 6, 9\] | 15 | 2 swaps |
+| Insertion (76) | \[1, 2, 3, 5, 6, 9\] | 11 | 8 shifts + 5 placements |
+| Merge (78) | \[1, 2, 3, 5, 6, 9\] | 11 | 16 writes back |
+| Quick (79) | \[1, 2, 3, 5, 6, 9\] | 9 | 3 visible swaps + 5 self-swaps |
+| Counting (80) | \[1, 2, 3, 5, 6, 9\] | 0 | 6 counts + 6 writes |
+
+Race procedure (scene 5 and 7), repeated for each racer:
+
+| Step | work\[\] state | What happens | Measured |
+| --- | --- | --- | --- |
+| 1 | copy of original (unsorted) | memcpy original → work | — |
+| 2 | unsorted | start = clock() | — |
+| 3 | sorted | sort(work, n) | — |
+| 4 | sorted | end = clock() | ms = 1000 × (end - start) / CLOCKS\_PER\_SEC |
+| 5 | sorted | is\_sorted(work, n) | prints "sorted" or "NOT SORTED" |
+
+**Complexity recap:** bubble best O(n) / avg O(n²) / worst O(n²), space O(1); selection O(n²) / O(n²) / O(n²), O(1); insertion O(n) / O(n²) / O(n²), O(1); merge O(n log n) all cases, O(n); quick O(n log n) / O(n log n) / O(n²), O(log n) average stack; counting O(n + k) all cases, O(k).
+
+### How the timings are measured (production note)
+
+- No timing numbers are written in this doc. Every time on screen is a **\[MEASURED\]** placeholder, filled from the real output of `./showdown` recorded for this episode.
+- Reference run: Windows + MSYS2 UCRT64 GCC, compiled with plain `gcc showdown.c -o showdown` (no -O flags, same as students), laptop on charger, other apps closed. Run it 3 times and use the middle run; record the machine (CPU, RAM) and show it in a corner caption.
+- `clock()` measures processor time; on Windows its resolution is about 1 ms, so very fast sorts may show 0.00 ms. If so, say so on screen rather than inventing a smaller number.
+- On-screen caption during scene 7 and 9: "Times from our laptop. Yours will differ. The ranking is what matters."
+- The script below uses \[MEASURED\] where a number is read out. The narrator records those lines after the run.
+
+### Narration script
+
+**\[1 · Cold open\]** Six sorting algorithms. Ten thousand random numbers. One stopwatch. Over the last seven episodes you met every one of these racers. Today they race, for real, on our laptop, and then on yours. Place your bets now.
+
+**\[2 · Title\]** Episode 81. Sorting showdown.
+
+**\[3 · The racers\]** Lane one: bubble sort, O(n²). Lane two: selection sort, O(n²). Lane three: insertion sort, also O(n²), but fast on nearly sorted data. Lane four: merge sort, O(n log n). Lane five: quick sort, O(n log n) on average. Lane six: counting sort, O(n + k), the one that never compares. Big-O predicts the race. Let's see if it's right.
+
+**\[4 · Small scorecard\]** First, a warm-up on our familiar six numbers, 5, 2, 9, 1, 6, 3. Here are the exact counts from each episode. Bubble: 14 comparisons. Selection: 15. Insertion and merge: 11. Quick: 9. Counting: zero. With six items, they're all instant. The differences only show up when n gets big.
+
+**\[5 · How to time code\]** To time code in C, we use clock from time.h. It returns how much processor time the program has used so far, in ticks. We call clock just before the sort and just after. The difference, divided by CLOCKS\_PER\_SEC, is the time in seconds. Multiply by 1000 for milliseconds. One rule for a fair race: every racer must get exactly the same unsorted numbers.
+
+**\[6 · Code: the harness\]** The six sort functions are the ones from Episodes 74 to 80, with two changes: they all take just the array and n, and merge sort now gets its temp array from malloc, Episode 66, so it can handle ten thousand numbers. \[HL 113\] race takes the racer's name, a pointer to its sort function, from Episode 60, the original data, a work array, and n. \[HL 115\] First, memcpy copies the original numbers into work. Every racer starts from the same unsorted data. \[HL 116\] Start the stopwatch. \[TRACK start=ticks\] \[HL 117\] Call the sort through the function pointer. \[HL 118\] Stop the stopwatch. \[TRACK end=ticks\] \[HL 119\] Convert ticks to milliseconds. We write 1000.0, a double, so the division isn't integer division. \[TRACK ms=\[MEASURED\]\] \[HL 120\] Print the name, the time, \[HL 121\] and check the result really is sorted. A fast sort that gives the wrong answer doesn't win. \[HL 125\] In main, the arrays are static so ten thousand ints don't sit on the stack, Episode 65. \[HL 127\] srand of 42: a fixed seed, so every run uses the same numbers and the race is repeatable. \[HL 128\] Fill the array with random values from 0 to 9999. \[HL 132\] And run all six races.
+
+**\[7 · Race day\]** Compile and run. Bubble sort: \[MEASURED\] milliseconds. Selection sort: \[MEASURED\]. Insertion sort: \[MEASURED\]. Merge sort: \[MEASURED\]. Quick sort: \[MEASURED\]. Counting sort: \[MEASURED\]. Every result says "sorted". These are our laptop's numbers; yours will be different, but the order should look similar.
+
+**\[8 · Pun\]** Why did bubble sort finish last? It kept stopping to swap stories.
+
+**\[9 · What it means\]** Look at the gap. The three O(n²) sorts are in one group, and the O(n log n) sorts are in a much faster group. Counting sort wins here because our values only go up to 9999, so k is small. Now the prediction: with 100,000 numbers, ten times more, the O(n²) sorts should take about a hundred times longer, the O(n log n) sorts about thirteen times longer, and counting sort about ten times longer. Big-O told us the shape of the race before we ran it. Try it yourself in the challenge.
+
+**\[10 · Bug of the Day\]** Today's bug: timing the wrong thing. Someone moved the memcpy out of race and into main, so the data is copied only once, before the first race. With minus Wall minus Wextra, GCC hints at it: unused parameter original. Bubble sort sorts the array, and every racer after it gets already-sorted data. Insertion sort suddenly looks almost instant, because sorted data is its best case. And quick sort with a last-element pivot suddenly gets slow, because sorted data is its worst case. The times are real, but they measure the wrong experiment. The fix: copy the original into work inside race, before every start. Always check what you're timing.
+
+**\[11 · Challenge\]** Your challenge: before running anything, predict which sort will win if the input is already sorted. Then change the fill loop to original of i equals i, run the race, and compare with your prediction. Bonus: try N equals 100,000 and check the times-100 prediction.
+
+**\[12 · Outro\]** Our showdown file is getting long, with six sorts in one file. Next episode, we pack them into our own header library, sort.h and sort.c, so any program can include them. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#define N 10000
+#define MAX_VALUE 9999
+
+void bubble_sort(int a[], int n) {
+    for (int pass = 0; pass < n - 1; pass++) {
+        int swapped = 0;
+        for (int j = 0; j < n - 1 - pass; j++) {
+            if (a[j] > a[j + 1]) {
+                int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t;
+                swapped = 1;
+            }
+        }
+        if (!swapped)
+            break;
+    }
+}
+
+void selection_sort(int a[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j < n; j++)
+            if (a[j] < a[min])
+                min = j;
+        int t = a[i]; a[i] = a[min]; a[min] = t;
+    }
+}
+
+void insertion_sort(int a[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = a[i], j = i - 1;
+        while (j >= 0 && a[j] > key) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+    }
+}
+
+void merge(int a[], int temp[], int left, int mid, int right) {
+    int i = left, j = mid + 1, k = left;
+    while (i <= mid && j <= right)
+        temp[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];
+    while (i <= mid)   temp[k++] = a[i++];
+    while (j <= right) temp[k++] = a[j++];
+    for (int t = left; t <= right; t++)
+        a[t] = temp[t];
+}
+
+void merge_rec(int a[], int temp[], int left, int right) {
+    if (left >= right)
+        return;
+    int mid = left + (right - left) / 2;
+    merge_rec(a, temp, left, mid);
+    merge_rec(a, temp, mid + 1, right);
+    merge(a, temp, left, mid, right);
+}
+
+void merge_sort(int a[], int n) {
+    int *temp = malloc(n * sizeof(int));
+    if (temp == NULL)
+        return;
+    merge_rec(a, temp, 0, n - 1);
+    free(temp);
+}
+
+int partition(int a[], int low, int high) {
+    int pivot = a[high], i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (a[j] < pivot) {
+            i++;
+            int t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+    int t = a[i + 1]; a[i + 1] = a[high]; a[high] = t;
+    return i + 1;
+}
+
+void quick_rec(int a[], int low, int high) {
+    if (low < high) {
+        int p = partition(a, low, high);
+        quick_rec(a, low, p - 1);
+        quick_rec(a, p + 1, high);
+    }
+}
+
+void quick_sort(int a[], int n) {
+    quick_rec(a, 0, n - 1);
+}
+
+void counting_sort(int a[], int n) {
+    static int count[MAX_VALUE + 1];
+    memset(count, 0, sizeof(count));
+    for (int i = 0; i < n; i++)
+        count[a[i]]++;
+    int k = 0;
+    for (int v = 0; v <= MAX_VALUE; v++)
+        while (count[v]-- > 0)
+            a[k++] = v;
+}
+
+int is_sorted(const int a[], int n) {
+    for (int i = 1; i < n; i++)
+        if (a[i - 1] > a[i])
+            return 0;
+    return 1;
+}
+
+void race(const char *name, void (*sort)(int[], int),
+          const int original[], int work[], int n) {
+    memcpy(work, original, n * sizeof(int));
+    clock_t start = clock();
+    sort(work, n);
+    clock_t end = clock();
+    double ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;
+    printf("%-10s %9.2f ms  %s\n", name, ms,
+           is_sorted(work, n) ? "sorted" : "NOT SORTED");
+}
+
+int main(void) {
+    static int original[N], work[N];
+
+    srand(42);
+    for (int i = 0; i < N; i++)
+        original[i] = rand() % (MAX_VALUE + 1);
+
+    printf("Sorting %d random numbers\n", N);
+    race("Bubble",    bubble_sort,    original, work, N);
+    race("Selection", selection_sort, original, work, N);
+    race("Insertion", insertion_sort, original, work, N);
+    race("Merge",     merge_sort,     original, work, N);
+    race("Quick",     quick_sort,     original, work, N);
+    race("Counting",  counting_sort,  original, work, N);
+    return 0;
+}
+```
+
+Expected output shape (times are machine-dependent; fill from the recorded run):
+
+```text
+$ gcc showdown.c -o showdown
+$ ./showdown
+Sorting 10000 random numbers
+Bubble     [MEASURED] ms  sorted
+Selection  [MEASURED] ms  sorted
+Insertion  [MEASURED] ms  sorted
+Merge      [MEASURED] ms  sorted
+Quick      [MEASURED] ms  sorted
+Counting   [MEASURED] ms  sorted
+```
+
+### Bug of the Day
+
+Wrong code: the copy is moved out of race() into main, so it happens only once.
+
+```c
+void race(const char *name, void (*sort)(int[], int),
+          const int original[], int work[], int n) {
+    clock_t start = clock();
+    sort(work, n);
+    clock_t end = clock();
+    double ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;
+    printf("%-10s %9.2f ms  %s\n", name, ms,
+           is_sorted(work, n) ? "sorted" : "NOT SORTED");
+}
+
+/* in main, before the races: */
+    memcpy(work, original, N * sizeof(int));
+```
+
+GCC warning with `gcc -Wall -Wextra showdown_bug.c -o showdown_bug` (line number depends on the file; none without -Wextra):
+
+```text
+showdown_bug.c: In function 'race':
+showdown_bug.c:114:21: warning: unused parameter 'original' [-Wunused-parameter]
+  114 |           const int original[], int work[], int n) {
+      |           ~~~~~~~~~~^~~~~~~~~~
+```
+
+Wrong behaviour (describe with \[MEASURED\] values from a recorded run of the buggy file): only Bubble gets random data. Insertion then sorts already-sorted data, its best case, and its time drops to almost nothing; Quick sorts already-sorted data with a last-element pivot, its worst case, and its time jumps up to bubble-sort territory. Every line still says "sorted", so the bug is easy to miss.
+
+Fixed: put `memcpy(work, original, n * sizeof(int));` back as the first line of race().
+
+Why: each sort runs in place on work, so without a fresh copy every racer after the first is timed on sorted input, which is a different experiment.
+
+### Pun & challenge
+
+- **Pun:** Why did bubble sort finish last? It kept stopping to swap stories.
+- **Challenge:** Predict the winner when the input is already sorted, then test it: change the fill loop to `original[i] = i;` (and keep MAX\_VALUE at least N - 1). Bonus: set N to 100000 and MAX\_VALUE to 99999 and check the "O(n²) gets about 100 times slower" prediction.
+- **Challenge answer:** Predict from Big-O, then confirm with your own \[MEASURED\] run. On sorted input bubble sort (with its early-exit flag) and insertion sort both hit their O(n) best case, and counting sort stays O(n + k), so these three should lead; selection stays O(n²); merge stays O(n log n); quick sort with the last-element pivot hits its O(n²) worst case. (Caution for the bonus: quick sort on 100,000 sorted numbers recurses about 100,000 deep and may crash with a stack overflow on Windows, which is itself a lesson about bad pivots.)
+
+### Shorts for EP 81
+
+**S1 · Place your bets** — 0:20 · built from scenes 1 and 3
+
+- **Hook (first 1.5s):** "Six sorts. 10,000 numbers. Who wins?"
+- **Script:** Bubble, selection, insertion, merge, quick and counting sort, all racing on the same ten thousand random numbers, timed with a real stopwatch in C. Comment your winner before you watch the full race.
+- **On-screen text:** WHO WINS? COMMENT NOW
+- **Caption + hashtags:** Place your bets. #cprogramming #learntocode #kodingkonkani #sortingalgorithms #dsa
+
+**S2 · Timing code in 30 seconds** — 0:35 · built from scenes 5–6
+
+- **Hook (first 1.5s):** "How to put a stopwatch on your C code."
+- **Script:** Include time.h. Call clock just before the code and just after. Subtract, divide by CLOCKS\_PER\_SEC, and multiply by 1000 for milliseconds. Use 1000.0 so it isn't integer division. And for a fair race, give every racer a fresh copy of the same data.
+- **On-screen text:** clock() ÷ CLOCKS\_PER\_SEC
+- **Caption + hashtags:** Benchmark like a pro. #cprogramming #learntocode #kodingkonkani #ctips #performance
+
+**S3 · The race that lied** — 0:35 · built from scene 10
+
+- **Hook (first 1.5s):** "Insertion sort suddenly won. It cheated."
+- **Script:** We copied the data only once. Bubble sort sorted it, and every racer after that got already-sorted numbers. Insertion sort hit its best case and looked instant. Quick sort hit its worst case and crawled. Copy the data before every race.
+- **On-screen text:** FRESH COPY EVERY RACE
+- **Caption + hashtags:** Measure the right thing. #cprogramming #learntocode #kodingkonkani #bugoftheday #benchmarking
+
+**S4 · Swap stories** — 0:10 · built from scene 8
+
+- **Hook (first 1.5s):** "Why did bubble sort finish last?"
+- **Script:** Why did bubble sort finish last? It kept stopping to swap stories.
+- **On-screen text:** STOPPED TO SWAP STORIES
+- **Caption + hashtags:** Gossip is O(n²). #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · Already sorted: who wins?** — 0:25 · built from scene 11
+
+- **Hook (first 1.5s):** "The data is already sorted. Now who wins?"
+- **Script:** Same six sorts, but the input is already in order. One of the fast sorts suddenly becomes slow, and one of the slow sorts becomes fast. Which ones? Comment your prediction, then run it.
+- **On-screen text:** SORTED INPUT: WHO WINS?
+- **Caption + hashtags:** Big-O has best and worst cases. #cprogramming #learntocode #kodingkonkani #quiz #sortingalgorithms
+
+## EP 82 — Build your own header library (sort.h + sort.c)
+
+**Module 12 · Algorithms · 7:00 · Dark blue + Butter · Prerequisite: EP 81 (headers basics: EP 36; structs: EP 61–64)**
+
+**Learning goals:** split code into a header (declarations) and a source file (definitions); include your own header with quotes; protect a header with an include guard and explain what the preprocessor does with it; compile and link several .c files with one gcc command.
+
+### YouTube
+
+- **Title:** Make Your Own #include: sort.h From Scratch | C EP 82
+- **Description:** printf comes from stdio.h. Today you write your own header. We move our sorts into sort.h and sort.c, add a stats struct that counts comparisons and swaps, and learn the include guard that stops a header from being pasted twice. Plus the exact GCC errors you get without one. 0:00 Make your own #include · 0:20 Title · 0:25 .h vs .c · 1:10 Code: sort.h · 2:00 Code: sort.c · 2:50 Code: report.h and main.c · 3:35 Compile and link · 4:05 Pun · 4:10 What #include really does · 4:50 Bug of the Day · 6:20 Challenge · 6:45 Outro
+- **Tags:** header files in c, include guards, ifndef define endif, multiple source files, c library, gcc linking, c programming, learn c, koding konkani, c tutorial, modular programming
+- **Thumbnail:** big text "YOUR OWN #include"; a code tile reading `#include "sort.h"` with a butter glow; Xecxec stamping a header file like a librarian; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | `#include <stdio.h>` morphs into `#include "sort.h"` | Typewriter SFX; Xecxec grins |
+| 2 | 0:20 | 0:05 | Title card | EP 82 · BUILD YOUR OWN HEADER LIBRARY | Stinger; claw-click |
+| 3 | 0:25 | 0:45 | Concept slide | Restaurant menu (sort.h: what's available) vs kitchen (sort.c: how it's made); main.c is the customer | Menu card flips; kitchen door swings |
+| 4 | 1:10 | 0:50 | Code explain | sort.h (13 lines) | \[HL\] cues; guard lines glow butter |
+| 5 | 2:00 | 0:50 | Code explain | sort.c (42 lines), zoomed on lines 1–2 and 10–26 | \[HL\]/\[TRACK\] cues; tracker for stats->comparisons, stats->swaps |
+| 6 | 2:50 | 0:45 | Code explain | report.h (8 lines), report.c (6 lines), main.c (17 lines) side by side | \[HL\] cues; arrows show main.c including both headers and report.h including sort.h |
+| 7 | 3:35 | 0:30 | Terminal | `gcc main.c sort.c report.c -o sorter` and 3 output lines | Three .c files fly into gcc, one .exe comes out |
+| 8 | 4:05 | 0:05 | Pun card | Pun | Rimshot |
+| 9 | 4:10 | 0:40 | Concept slide | Preprocessor view of main.c: sort.h pasted once, report.h pasted, then sort.h again but skipped because SORT\_H is defined | Pasted blocks slide in; second sort.h block hits a butter "SORT\_H already defined" gate and bounces off |
+| 10 | 4:50 | 1:30 | Bug of the Day | sort.h without guards; GCC errors | Red siren; second sort.h paste collides with the first, sparks |
+| 11 | 6:20 | 0:25 | Challenge | "Add search.h and search.c" | Timer |
+| 12 | 6:45 | 0:15 | Outro | Next: EP 83 Stacks and queues | Sign-off |
+
+### Step trace: what the preprocessor sees in main.c
+
+This drives scene 9. (EP 82 is not a sorting episode, so this trace follows the include guard instead of an array.)
+
+| Step | Line being processed | SORT\_H defined? | Result |
+| --- | --- | --- | --- |
+| 1 | `#include <stdio.h>` | no | stdio.h pasted |
+| 2 | `#include "sort.h"` → `#ifndef SORT_H` | no → true | enter the header |
+| 3 | `#define SORT_H` | yes from here on | — |
+| 4 | SortStats, 3 prototypes | yes | pasted (first and only time) |
+| 5 | `#include "report.h"` → `#ifndef REPORT_H` | yes | REPORT\_H defined, enter report.h |
+| 6 | inside report.h: `#include "sort.h"` → `#ifndef SORT_H` | yes → false | jump to `#endif`, nothing pasted |
+| 7 | `void print_stats(...)` | yes | pasted |
+| 8 | main() | yes | compiled; every name declared exactly once |
+
+### Narration script
+
+**\[1 · Cold open\]** Since Episode 4 you've written hash include stdio dot h, and printf just worked. Someone wrote that header for you. Today, you write your own. By the end of this episode, any program you write can say hash include "sort.h" and get all your sorts for free.
+
+**\[2 · Title\]** Episode 82. Build your own header library.
+
+**\[3 · .h vs .c\]** Think of a restaurant. The menu tells you what you can order: names and prices, no recipes. That's the header file, sort.h. It lists the functions that exist, their names, parameters and return types. The kitchen is where the food is actually made. That's sort.c, the function bodies. And main.c is the customer: it reads the menu and orders. You split files like this in Episode 36. Today we turn it into a proper reusable library.
+
+**\[4 · Code: sort.h\]** \[HL 1\] hash ifndef SORT\_H: if SORT\_H is not defined yet, keep reading. \[HL 2\] hash define SORT\_H: define it now. These two lines, plus the hash endif at the bottom, are the include guard. We'll see why they matter in a minute. \[HL 4\] A struct from Module 9, SortStats, with two counters, \[HL 5\] comparisons \[HL 6\] and swaps. \[HL 7\] typedef, from Episode 63, lets us just write SortStats. \[HL 9\] Then the prototypes: print\_array, \[HL 10\] bubble\_sort and \[HL 11\] insertion\_sort. Each sort now takes a pointer to a SortStats so it can report its work. No function bodies here, just the menu. \[HL 13\] hash endif closes the guard.
+
+**\[5 · Code: sort.c\]** \[HL 1\] sort.c needs printf, so it includes stdio.h. \[HL 2\] And it includes our own header, with double quotes instead of angle brackets. Quotes mean: look in my project folder first. Including your own header in its .c file lets GCC check that the bodies match the prototypes. \[HL 10\] bubble\_sort is our version from Episode 74, with stats added. \[HL 14\] Every comparison, we do stats arrow comparisons plus plus. \[TRACK stats->comparisons=1\] The arrow is for accessing a struct through a pointer, from Episode 62. \[HL 19\] Every swap, stats arrow swaps plus plus. \[TRACK stats->swaps=1\] Insertion sort, further down, counts the same way, with each shift counted as a swap.
+
+**\[6 · Code: report and main\]** We also make a tiny second library, report. \[HL report.h 4\] report.h includes sort.h, because print\_stats needs the SortStats type. \[HL report.c 4\] report.c prints a name and the two counters. \[HL main.c 2\] main.c includes sort.h, \[HL main.c 3\] and report.h. Notice: sort.h now arrives twice, once directly and once through report.h. Hold that thought. \[HL main.c 8\] Each sort gets its own stats, starting at zero, \[HL main.c 10\] and we pass their addresses.
+
+**\[7 · Compile and link\]** To build, list every .c file: gcc main.c sort.c report.c minus o sorter. GCC compiles each file separately, then the linker joins them into one program. You never put .h files in the gcc command; they're pasted in by hash include. Run it: 1, 2, 3, 5, 6, 9. Bubble: 14 comparisons, 8 swaps. Insertion: 11 comparisons, 8 shifts. The same numbers as our step traces in Episodes 74 and 76.
+
+**\[8 · Pun\]** Why did the header file never get invited back? It kept including itself.
+
+**\[9 · What #include really does\]** Here's the secret: hash include is copy-paste. Before compiling, the preprocessor replaces the line with the whole header file. So in main.c, sort.h is pasted. Then report.h is pasted, and inside it, sort.h tries to come in a second time. But now SORT\_H is already defined, so hash ifndef SORT\_H is false, and the preprocessor skips straight to the hash endif. Nothing is pasted twice. That's the include guard doing its job.
+
+**\[10 · Bug of the Day\]** Today's bug: missing include guards. Delete the three guard lines from sort.h and build again. GCC stops with errors. Conflicting types for SortStats, previous declaration of SortStats. Then conflicting types for bubble\_sort and insertion\_sort. Why conflicting, when they're identical? Because each time the typedef is pasted, it creates a brand-new struct type with no name of its own, and two different struct types can't share the name SortStats. The functions then conflict because their parameter types now point at two different structs. The fix: always wrap every header in ifndef, define, endif, with a name made from the file name in capitals.
+
+**\[11 · Challenge\]** Your challenge: make search.h and search.c with linear\_search and binary\_search from Episode 73, with their own include guard. Then write a main that sorts an array with your library and finds 6 with binary\_search.
+
+**\[12 · Outro\]** Next episode, the last in this module: two data structures you use every day without noticing, stacks and queues. Keep coding, says Xecxec!
+
+### Code shown
+
+sort.h
+
+```c
+#ifndef SORT_H
+#define SORT_H
+
+typedef struct {
+    long comparisons;
+    long swaps;
+} SortStats;
+
+void print_array(const int a[], int n);
+void bubble_sort(int a[], int n, SortStats *stats);
+void insertion_sort(int a[], int n, SortStats *stats);
+
+#endif
+```
+
+sort.c
+
+```c
+#include <stdio.h>
+#include "sort.h"
+
+void print_array(const int a[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
+void bubble_sort(int a[], int n, SortStats *stats) {
+    for (int pass = 0; pass < n - 1; pass++) {
+        int swapped = 0;
+        for (int j = 0; j < n - 1 - pass; j++) {
+            stats->comparisons++;
+            if (a[j] > a[j + 1]) {
+                int t = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = t;
+                stats->swaps++;
+                swapped = 1;
+            }
+        }
+        if (!swapped)
+            break;
+    }
+}
+
+void insertion_sort(int a[], int n, SortStats *stats) {
+    for (int i = 1; i < n; i++) {
+        int key = a[i];
+        int j = i - 1;
+        while (j >= 0) {
+            stats->comparisons++;
+            if (a[j] <= key)
+                break;
+            a[j + 1] = a[j];
+            stats->swaps++;
+            j--;
+        }
+        a[j + 1] = key;
+    }
+}
+```
+
+report.h
+
+```c
+#ifndef REPORT_H
+#define REPORT_H
+
+#include "sort.h"
+
+void print_stats(const char *name, SortStats s);
+
+#endif
+```
+
+report.c
+
+```c
+#include <stdio.h>
+#include "report.h"
+
+void print_stats(const char *name, SortStats s) {
+    printf("%-9s comparisons=%ld swaps=%ld\n", name, s.comparisons, s.swaps);
+}
+```
+
+main.c
+
+```c
+#include <stdio.h>
+#include "sort.h"
+#include "report.h"
+
+int main(void) {
+    int a[] = {5, 2, 9, 1, 6, 3};
+    int b[] = {5, 2, 9, 1, 6, 3};
+    SortStats sa = {0, 0}, sb = {0, 0};
+
+    bubble_sort(a, 6, &sa);
+    insertion_sort(b, 6, &sb);
+
+    print_array(a, 6);
+    print_stats("Bubble", sa);
+    print_stats("Insertion", sb);
+    return 0;
+}
+```
+
+```text
+$ gcc main.c sort.c report.c -o sorter
+$ ./sorter
+1 2 3 5 6 9
+Bubble    comparisons=14 swaps=8
+Insertion comparisons=11 swaps=8
+```
+
+### Bug of the Day
+
+Wrong sort.h (no include guard):
+
+```c
+typedef struct {
+    long comparisons;
+    long swaps;
+} SortStats;
+
+void print_array(const int a[], int n);
+void bubble_sort(int a[], int n, SortStats *stats);
+void insertion_sort(int a[], int n, SortStats *stats);
+```
+
+Exact GCC 13 output for `gcc main.c sort.c report.c -o sorter`:
+
+```text
+In file included from report.h:4,
+                 from main.c:3:
+sort.h:4:3: error: conflicting types for 'SortStats'; have 'struct <anonymous>'
+    4 | } SortStats;
+      |   ^~~~~~~~~
+In file included from main.c:2:
+sort.h:4:3: note: previous declaration of 'SortStats' with type 'SortStats'
+    4 | } SortStats;
+      |   ^~~~~~~~~
+sort.h:7:6: error: conflicting types for 'bubble_sort'; have 'void(int *, int,  SortStats *)'
+    7 | void bubble_sort(int a[], int n, SortStats *stats);
+      |      ^~~~~~~~~~~
+sort.h:7:6: note: previous declaration of 'bubble_sort' with type 'void(int *, int,  SortStats *)'
+    7 | void bubble_sort(int a[], int n, SortStats *stats);
+      |      ^~~~~~~~~~~
+sort.h:8:6: error: conflicting types for 'insertion_sort'; have 'void(int *, int,  SortStats *)'
+    8 | void insertion_sort(int a[], int n, SortStats *stats);
+      |      ^~~~~~~~~~~~~~
+sort.h:8:6: note: previous declaration of 'insertion_sort' with type 'void(int *, int,  SortStats *)'
+    8 | void insertion_sort(int a[], int n, SortStats *stats);
+      |      ^~~~~~~~~~~~~~
+```
+
+Fixed: wrap sort.h in `#ifndef SORT_H` / `#define SORT_H` … `#endif` (as in Code shown).
+
+Why: main.c pulls sort.h in twice (directly and via report.h), and each paste of the anonymous typedef struct creates a new, different type named SortStats; the guard makes the second paste empty.
+
+### Pun & challenge
+
+- **Pun:** Why did the header file never get invited back? It kept including itself.
+- **Challenge:** Create search.h and search.c with linear\_search and binary\_search (from EP 73) and an include guard named SEARCH\_H. In main, sort {5, 2, 9, 1, 6, 3} with insertion\_sort from your library, then find 6 with binary\_search.
+- **Challenge answer:**
+
+search.h
+
+```c
+#ifndef SEARCH_H
+#define SEARCH_H
+
+int linear_search(const int a[], int n, int target);
+int binary_search(const int a[], int n, int target);
+
+#endif
+```
+
+search.c
+
+```c
+#include "search.h"
+
+int linear_search(const int a[], int n, int target) {
+    for (int i = 0; i < n; i++)
+        if (a[i] == target)
+            return i;
+    return -1;
+}
+
+int binary_search(const int a[], int n, int target) {
+    int low = 0, high = n - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (a[mid] == target)
+            return mid;
+        else if (a[mid] < target)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return -1;
+}
+```
+
+main2.c
+
+```c
+#include <stdio.h>
+#include "sort.h"
+#include "search.h"
+
+int main(void) {
+    int a[] = {5, 2, 9, 1, 6, 3};
+    SortStats s = {0, 0};
+
+    insertion_sort(a, 6, &s);
+    print_array(a, 6);
+    printf("6 is at index %d\n", binary_search(a, 6, 6));
+    return 0;
+}
+```
+
+```text
+$ gcc main2.c sort.c search.c -o finder
+$ ./finder
+1 2 3 5 6 9
+6 is at index 4
+```
+
+### Shorts for EP 82
+
+**S1 · Make your own #include** — 0:20 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "stdio.h was written by someone. Write yours."
+- **Script:** Every C program starts with hash include stdio dot h. Someone wrote that file. Today you write your own: sort dot h. Then any program can include it and get your sorting functions for free.
+- **On-screen text:** #include "sort.h"
+- **Caption + hashtags:** Your own C library in 7 minutes. #cprogramming #learntocode #kodingkonkani #headerfiles #cprojects
+
+**S2 · .h vs .c in 30 seconds** — 0:35 · built from scenes 3 and 9
+
+- **Hook (first 1.5s):** "The menu and the kitchen."
+- **Script:** A header file is the menu: function names and parameters, no bodies. The .c file is the kitchen: the actual code. Hash include is just copy-paste of the menu into your file. And the include guard, ifndef, define, endif, makes sure the menu is pasted only once, even if two files ask for it.
+- **On-screen text:** .h = MENU · .c = KITCHEN
+- **Caption + hashtags:** Header files finally explained. #cprogramming #learntocode #kodingkonkani #headerfiles #includeguards
+
+**S3 · Conflicting types for SortStats** — 0:40 · built from scene 10
+
+- **Hook (first 1.5s):** "Identical code. Conflicting types?"
+- **Script:** main.c includes sort.h, and so does report.h. Without an include guard, sort.h gets pasted twice. Each paste of the typedef struct makes a new type, so GCC says conflicting types for SortStats. Add ifndef SORT\_H, define SORT\_H, and endif. Every header, every time.
+- **On-screen text:** ALWAYS ADD INCLUDE GUARDS
+- **Caption + hashtags:** Three lines that save your build. #cprogramming #learntocode #kodingkonkani #bugoftheday #headerfiles
+
+**S4 · Kept including itself** — 0:10 · built from scene 8
+
+- **Hook (first 1.5s):** "Why wasn't the header invited back?"
+- **Script:** Why did the header file never get invited back? It kept including itself.
+- **On-screen text:** IT KEPT INCLUDING ITSELF
+- **Caption + hashtags:** Know your guards. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · Build search.h** — 0:20 · built from scene 11
+
+- **Hook (first 1.5s):** "Your library needs a second header."
+- **Script:** Make search dot h and search dot c with linear and binary search, with their own include guard. Sort an array with your library, then find 6 with binary search. Post your gcc command in the comments.
+- **On-screen text:** search.h + search.c
+- **Caption + hashtags:** Grow your own C library. #cprogramming #learntocode #kodingkonkani #challenge #headerfiles
+
+## EP 83 — Stacks and queues with arrays
+
+**Module 12 · Algorithms · 7:00 · Dark blue + Butter · Prerequisite: EP 82**
+
+**Learning goals:** explain LIFO (stack) and FIFO (queue) with everyday examples; implement push and pop on an array with a top index; implement a circular queue with front, count and the % operator; guard every operation against overflow and underflow.
+
+### YouTube
+
+- **Title:** Stacks vs Queues: Plates and the Bus Queue | C EP 83
+- **Description:** A pile of plates and the queue at Panjim bus stand are two of the most important data structures in computing. We build a stack and a circular queue from plain arrays in C, animate every push, pop, enqueue and dequeue, and catch the overflow and underflow bugs that silently corrupt memory. 0:00 Plates vs the bus queue · 0:20 Title · 0:25 LIFO and FIFO · 1:00 Stack, animated · 1:35 Code: the stack · 2:40 Queue, animated · 3:15 Code: the circular queue · 4:15 Run it · 4:35 Pun · 4:40 Where you meet them · 5:15 Bug of the Day · 6:20 Challenge · 6:45 Outro
+- **Tags:** stack in c, queue in c, circular queue, push pop, enqueue dequeue, lifo fifo, data structures in c, stack overflow underflow, c programming, learn c, koding konkani, dsa in c
+- **Thumbnail:** big text "STACK vs QUEUE"; left: a pile of plates, right: a line of people at a bus; Xecxec balancing a plate on one claw; Dark blue background, Butter text.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Split screen: wedding buffet plate pile; Panjim bus stand queue | Plate clink; bus horn |
+| 2 | 0:20 | 0:05 | Title card | EP 83 · STACKS AND QUEUES | Stinger; claw-click |
+| 3 | 0:25 | 0:35 | Concept slide | LIFO = Last In, First Out (stack); FIFO = First In, First Out (queue) | Letters drop in; arrows show in/out ends |
+| 4 | 1:00 | 0:35 | Memory boxes | Vertical array of 5 boxes, top arrow; steps ST1–ST7 below | Push: value drops in (thud), top arrow rises; pop: value lifts out (whoosh); overflow: box 6 flashes red, buzzer |
+| 5 | 1:35 | 1:05 | Code explain | stackqueue.c lines 1–26; tracker for top, stack\[\] | \[HL\]/\[TRACK\] cues |
+| 6 | 2:40 | 0:35 | Memory boxes | Horizontal ring of 5 boxes, front and rear arrows; steps Q1–Q5 | Enqueue at rear (slide in), dequeue at front (slide out); index 4 wraps to 0 with a curved arrow |
+| 7 | 3:15 | 1:00 | Code explain | stackqueue.c lines 28–52; tracker for front, count, rear, queue\[\] | \[HL\]/\[TRACK\] cues |
+| 8 | 4:15 | 0:20 | Terminal | gcc and 12 output lines (main is lines 54–70) | Lines type out; overflow and empty lines flash butter |
+| 9 | 4:35 | 0:05 | Pun card | Pun | Rimshot |
+| 10 | 4:40 | 0:35 | Concept slide | Stack: undo button, function call stack (EP 77), brackets in code. Queue: printer jobs, WhatsApp messages in order, ticket counters | Icons pop in two columns |
+| 11 | 5:15 | 1:05 | Bug of the Day | push/pop with no checks; 4 pushes into SIZE 3, 5 pops; top ends at -2 | Red siren; 4th value lands outside the boxes; top arrow sinks below the floor |
+| 12 | 6:20 | 0:25 | Challenge | "Bracket checker: {a\[i\] = (b + c);} vs (x + y\]" | Brackets light up in pairs |
+| 13 | 6:45 | 0:15 | Outro | Module 12 complete; Next: EP 84 (Module 13, Projects) | Module badge stamps; sign-off |
+
+### Step trace
+
+This drives scenes 4 and 6 (EP 83 is not a sort; the trace follows the data structure). SIZE = 5. "\_" = slot not in use.
+
+Stack (main lines 57–60):
+
+| Step | Operation | Check | stack\[0..4\] | top |
+| --- | --- | --- | --- | --- |
+| ST1 | push(10) | top == 4? no | \[10, \_, \_, \_, \_\] | 0 |
+| ST2 | push(20) | no | \[10, 20, \_, \_, \_\] | 1 |
+| ST3 | push(30), push(40), push(50) | no | \[10, 20, 30, 40, 50\] | 4 |
+| ST4 | push(60) | top == 4? yes | unchanged; prints "Stack overflow! Can't push 60" | 4 |
+| ST5 | pop → 50 | top == -1? no | \[10, 20, 30, 40, \_\] | 3 |
+| ST6 | pop → 40, 30, 20, 10 | no | \[\_, \_, \_, \_, \_\] | -1 |
+| ST7 | pop | top == -1? yes | unchanged; prints "Stack underflow! Nothing to pop" | -1 |
+
+Queue (main lines 62–67):
+
+| Step | Operation | Check | queue\[0..4\] | front, count, next rear |
+| --- | --- | --- | --- | --- |
+| Q1 | enqueue 10, 20, 30 | count == 5? no | \[10, 20, 30, \_, \_\] | 0, 3, 3 |
+| Q2 | dequeue → 10 | count == 0? no | \[\_, 20, 30, \_, \_\] | 1, 2, 3 |
+| Q3 | enqueue 40 | count == 5? no; rear = (1 + 2) % 5 = 3 | \[\_, 20, 30, 40, \_\] | 1, 3, 4 |
+| Q4 | dequeue → 20, 30, 40 | no | \[\_, \_, \_, \_, \_\] | 4, 0, 4 |
+| Q5 | dequeue | count == 0? yes | unchanged; prints "Queue empty! Nobody to remove" | 4, 0, 4 |
+
+(Animation note: slots are not erased in memory; draw dequeued and popped slots greyed out as "free". Wrap-around demo for scene 6: after Q4, front = 4, so the next enqueue goes to index 4 and the one after to (4 + 1) % 5 = 0.)
+
+**Complexity:** push, pop, enqueue, dequeue are all O(1) time; space O(SIZE).
+
+### Narration script
+
+**\[1 · Cold open\]** At a Goan wedding buffet, the plates are in a pile. The last plate the caterer put on top is the first one you pick up. At Panjim bus stand, it's the opposite: the first person in the queue is the first one on the bus. These two ideas are two of the most useful data structures in all of programming.
+
+**\[2 · Title\]** Episode 83. Stacks and queues with arrays.
+
+**\[3 · LIFO and FIFO\]** A stack is LIFO: last in, first out. You only touch the top. Adding is called push, removing is called pop. A queue is FIFO: first in, first out. You add at the back, called enqueue, and remove from the front, called dequeue. We'll build both from a plain array, an index or two, and some careful checks.
+
+**\[4 · Stack, animated\]** A stack of five boxes. top starts at minus 1: empty. Push 10: top becomes 0. Push 20, 30, 40, 50: top reaches 4, full. Push 60? No room. That's a stack overflow, and we must refuse it. Now pop: 50 comes out first, the last one in. Then 40, 30, 20, 10. Pop again? Empty. That's stack underflow.
+
+**\[5 · Code: the stack\]** \[HL 2\] stdbool for true and false. \[HL 4\] SIZE is 5. \[HL 7\] The stack is just an int array, \[HL 8\] and top is the index of the top item. Minus 1 means empty. \[TRACK top=-1\] \[HL 10\] push returns true if it worked. \[HL 11\] If top is already SIZE minus 1, the stack is full: \[HL 12\] print a message \[HL 13\] and return false. \[HL 15\] Otherwise, stack of plus plus top equals value. Pre-increment: top goes up first, then we store at the new top. \[TRACK top=0 stack\[0\]=10\] \[HL 19\] pop gives back the value through a pointer, like in Episode 55, and returns true or false. \[HL 20\] If top is minus 1, it's empty: \[HL 21\] underflow. \[HL 24\] Otherwise, read stack of top, then top minus minus. Post-decrement: read first, then move down. \[TRACK top=3\] That's the whole stack: two functions, one index.
+
+**\[6 · Queue, animated\]** Now a queue of five boxes. Enqueue 10, 20, 30: they line up from index 0. Dequeue: 10 leaves from the front, and front moves to index 1. Enqueue 40: it goes to index 3. But what happens when we reach the end of the array while there's free space at the start? We wrap around to index 0, like seats on a Ferris wheel. This is called a circular queue.
+
+**\[7 · Code: the circular queue\]** \[HL 29\] The queue array, \[HL 30\] front, the index of the first person, and count, how many are waiting. \[TRACK front=0 count=0\] \[HL 32\] enqueue. \[HL 33\] If count equals SIZE, it's full. \[HL 37\] The back of the queue is front plus count, but we take it modulo SIZE, so 5 wraps to 0, 6 to 1, and so on. That percent sign is the remainder operator from Module 2, and it's the whole trick of a circular queue. \[TRACK rear=0\] \[HL 38\] Store the value there, \[HL 39\] and one more person is waiting. \[TRACK count=1\] \[HL 43\] dequeue. \[HL 44\] If count is 0, nobody's there. \[HL 48\] Otherwise, take the value at front, \[HL 49\] move front forward, again modulo SIZE, \[TRACK front=1\] \[HL 50\] and one fewer is waiting. \[TRACK count=2\]
+
+**\[8 · Run it\]** \[HL 57\] main pushes 10, 20, 30, 40, 50 and 60. Run it. Stack overflow, can't push 60. Then pops 50, 40, 30, 20, 10, newest first. Then stack underflow. \[HL 62\] The queue: dequeued 10, then after adding 40, dequeued 20, 30, 40, oldest first. Then queue empty. Same numbers in, opposite order out.
+
+**\[9 · Pun\]** Why did the stack refuse to queue at the bus stand? It always wanted to be on top.
+
+**\[10 · Where you meet them\]** You use stacks every day. The undo button is a stack: the last thing you did is the first thing undone. The call stack from Episode 77 is a stack of function frames. Code editors use a stack to check brackets. Queues are everywhere too: print jobs, messages delivered in the order they were sent, a ticket counter. Every operation we wrote is O(1): it takes the same time no matter how many items there are.
+
+**\[11 · Bug of the Day\]** Today's bug: overflow and underflow with no checks. Here's a stack of size 3 with no if statements. We push four values. The fourth one goes into stack of 3, which doesn't exist. Then we pop five times. The fifth pop reads stack of minus 1, also outside the array. Our output: popped 4, 3, 2, 1, then 0, a value nobody pushed, and top ends at minus 2. GCC gives no warning, and on another machine you could see different garbage, or a crash. The fix: check top equals SIZE minus 1 before every push, and top equals minus 1 before every pop, exactly like our main code.
+
+**\[12 · Challenge\]** Your challenge: build a bracket checker using a stack of chars. Push every opening bracket. For every closing bracket, pop and check it matches. At the end, the stack must be empty. Test it on curly a square i equals round b plus c, and on round x plus y square.
+
+**\[13 · Outro\]** That's the end of Module 12! You can now measure algorithms, search, sort six different ways, build your own library and use stacks and queues. Next, Module 13: real projects that put everything together. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+#include <stdbool.h>
+
+#define SIZE 5
+
+/* ---------- Stack: last in, first out ---------- */
+int stack[SIZE];
+int top = -1;
+
+bool push(int value) {
+    if (top == SIZE - 1) {
+        printf("Stack overflow! Can't push %d\n", value);
+        return false;
+    }
+    stack[++top] = value;
+    return true;
+}
+
+bool pop(int *value) {
+    if (top == -1) {
+        printf("Stack underflow! Nothing to pop\n");
+        return false;
+    }
+    *value = stack[top--];
+    return true;
+}
+
+/* ---------- Queue: first in, first out (circular) ---------- */
+int queue[SIZE];
+int front = 0, count = 0;
+
+bool enqueue(int value) {
+    if (count == SIZE) {
+        printf("Queue full! Can't add %d\n", value);
+        return false;
+    }
+    int rear = (front + count) % SIZE;
+    queue[rear] = value;
+    count++;
+    return true;
+}
+
+bool dequeue(int *value) {
+    if (count == 0) {
+        printf("Queue empty! Nobody to remove\n");
+        return false;
+    }
+    *value = queue[front];
+    front = (front + 1) % SIZE;
+    count--;
+    return true;
+}
+
+int main(void) {
+    int v;
+
+    for (int i = 1; i <= 6; i++)
+        push(i * 10);
+    while (pop(&v))
+        printf("Popped %d\n", v);
+
+    enqueue(10); enqueue(20); enqueue(30);
+    dequeue(&v);
+    printf("Dequeued %d\n", v);
+    enqueue(40);
+    while (dequeue(&v))
+        printf("Dequeued %d\n", v);
+
+    return 0;
+}
+```
+
+```text
+$ gcc stackqueue.c -o stackqueue
+$ ./stackqueue
+Stack overflow! Can't push 60
+Popped 50
+Popped 40
+Popped 30
+Popped 20
+Popped 10
+Stack underflow! Nothing to pop
+Dequeued 10
+Dequeued 20
+Dequeued 30
+Dequeued 40
+Queue empty! Nobody to remove
+```
+
+### Bug of the Day
+
+Wrong code:
+
+```c
+#include <stdio.h>
+
+#define SIZE 3
+
+int stack[SIZE];
+int top = -1;
+
+void push(int value) {
+    stack[++top] = value;
+}
+
+int pop(void) {
+    return stack[top--];
+}
+
+int main(void) {
+    push(1); push(2); push(3); push(4);
+    for (int i = 0; i < 5; i++)
+        printf("Popped %d\n", pop());
+    printf("top is now %d\n", top);
+    return 0;
+}
+```
+
+No error or warning from GCC. Output on our test machine (undefined behaviour; on screen: "your output may differ, or it may crash"):
+
+```text
+Popped 4
+Popped 3
+Popped 2
+Popped 1
+Popped 0
+top is now -2
+```
+
+Fixed: add the full and empty checks before touching the array (as push and pop in Code shown), so push(4) prints "Stack overflow! Can't push 4" and the 4th pop prints "Stack underflow! Nothing to pop".
+
+Why: push(4) writes stack\[3\] and the 5th pop reads stack\[-1\], both outside the 3-element array, and top drifts to -2 so every later operation is wrong too.
+
+### Pun & challenge
+
+- **Pun:** Why did the stack refuse to queue at the bus stand? It always wanted to be on top.
+- **Challenge:** Write `bool balanced(const char *s)` using a stack of chars to check that (), \[\] and {} are balanced and correctly nested. Test: `{a[i] = (b + c);}`, `(x + y]`, `((1 + 2)`.
+- **Challenge answer:**
+
+```c
+#include <stdio.h>
+#include <stdbool.h>
+
+#define SIZE 100
+
+char stack[SIZE];
+int top = -1;
+
+bool matches(char open, char close) {
+    return (open == '(' && close == ')') ||
+           (open == '[' && close == ']') ||
+           (open == '{' && close == '}');
+}
+
+bool balanced(const char *s) {
+    top = -1;
+    for (int i = 0; s[i] != '\0'; i++) {
+        char c = s[i];
+        if (c == '(' || c == '[' || c == '{') {
+            if (top == SIZE - 1)
+                return false;
+            stack[++top] = c;
+        } else if (c == ')' || c == ']' || c == '}') {
+            if (top == -1 || !matches(stack[top--], c))
+                return false;
+        }
+    }
+    return top == -1;
+}
+
+int main(void) {
+    const char *tests[] = {"{a[i] = (b + c);}", "(x + y]", "((1 + 2)"};
+    for (int i = 0; i < 3; i++)
+        printf("%-20s %s\n", tests[i], balanced(tests[i]) ? "balanced" : "NOT balanced");
+    return 0;
+}
+```
+
+```text
+{a[i] = (b + c);}    balanced
+(x + y]              NOT balanced
+((1 + 2)             NOT balanced
+```
+
+### Shorts for EP 83
+
+**S1 · Plates vs the bus queue** — 0:20 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "The last plate is the first one taken."
+- **Script:** At the wedding buffet, the last plate stacked is the first plate taken. At the bus stand, the first person in line gets on first. Those are stacks and queues, two of the most important data structures in programming, and you can build both from a plain C array.
+- **On-screen text:** PLATES vs BUS QUEUE
+- **Caption + hashtags:** Data structures hiding in plain sight. #cprogramming #learntocode #kodingkonkani #datastructures #stack
+
+**S2 · Stack and queue in 30 seconds** — 0:40 · built from scenes 4 and 6
+
+- **Hook (first 1.5s):** "Last in, first out. First in, first out."
+- **Script:** A stack is an array plus a top index. Push: increase top, store. Pop: read, decrease top. A queue adds at the back and removes from the front. Use front plus count, modulo the size, and it wraps around like a ring. Every operation is O(1). Just check for full and empty first.
+- **On-screen text:** LIFO · FIFO · O(1)
+- **Caption + hashtags:** Stack and circular queue, animated. #cprogramming #learntocode #kodingkonkani #queue #dsa
+
+**S3 · Popped a number nobody pushed** — 0:35 · built from scene 11
+
+- **Hook (first 1.5s):** "I popped a 0. I never pushed a 0."
+- **Script:** A stack of size 3 with no checks. Push four values: the fourth lands outside the array. Pop five times: the last pop reads stack of minus 1 and gives garbage, and top ends at minus 2. Always check for full before push and empty before pop.
+- **On-screen text:** CHECK FULL. CHECK EMPTY.
+- **Caption + hashtags:** Overflow and underflow, caught. #cprogramming #learntocode #kodingkonkani #bugoftheday #stack
+
+**S4 · Always on top** — 0:10 · built from scene 9
+
+- **Hook (first 1.5s):** "Why won't the stack stand in a queue?"
+- **Script:** Why did the stack refuse to queue at the bus stand? It always wanted to be on top.
+- **On-screen text:** ALWAYS WANTS TO BE ON TOP
+- **Caption + hashtags:** LIFO lifestyle. #cprogramming #programmingmemes #kodingkonkani #learntocode
+
+**S5 · Are these brackets balanced?** — 0:20 · built from scene 12
+
+- **Hook (first 1.5s):** "Your code editor does this with a stack."
+- **Script:** Three strings: curly a square i equals round b plus c; round x plus y square; and two round opens with one close. Which are balanced? Comment your answers, then build the checker with a stack. Code pinned on the full episode.
+- **On-screen text:** BALANCED OR NOT?
+- **Caption + hashtags:** Build a bracket checker. #cprogramming #learntocode #kodingkonkani #challenge #stack

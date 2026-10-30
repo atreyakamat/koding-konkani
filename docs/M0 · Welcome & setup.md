@@ -1,0 +1,649 @@
+# Module 0 — Welcome & setup
+
+Episodes 1–4 · Peach + Tomato
+
+## EP 01 — Welcome to Koding Konkani
+
+**Module 0 · Welcome & setup · 5:30 · Peach + Tomato · Prerequisite: none**
+
+**Learning goals:** know what the 86-episode course covers and in what order; recognise the 8 beats every episode follows; read one line of C (printf) and say what each part does; use the four study rules from day one.
+
+### YouTube
+
+- **Title:** A Crab Will Teach You C | C Programming EP 01
+- **Description:** Meet Xecxec, the Goan beach crab who will judge your code for 86 episodes. In this first episode you see the full course map, how every episode works, and the four rules that make C actually stick. No setup needed yet, just bring curiosity. 0:00 Meet Xecxec · 0:20 Why learn C? · 1:05 The course map · 2:15 How every episode works · 3:05 Your first look at C · 3:39 How to study · 4:29 Bug of the Day · 4:54 Challenge · 5:14 Next episode
+- **Tags:** c programming, learn c, c for beginners, c programming course, koding konkani, c tutorial, programming for students, class 11 computer science, first year engineering, coding in goa, printf
+- **Thumbnail:** big text "A CRAB TEACHES C?" in tomato on peach; Xecxec wearing tiny glasses, pointing a claw at a dark-blue code card showing `printf("Hi");`; thin black border and drop shadow.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:15 | Concept slide | Dark-blue screen, blinking cursor types "Hello?"; Xecxec scuttles in from the right | Typewriter on "Hello?" with key clicks; Xecxec slides in with sand-scuttle SFX, stops, claw-click x2; speech bubble "It's Sheck Sheck." pops |
+| 2 | 0:15 | 0:05 | Title card | EP 01 · WELCOME TO KODING KONKANI | Title stamps in on peach with a whoosh + thud; tomato underline wipes left to right |
+| 3 | 0:20 | 0:45 | Concept slide | "Why C?": laptop, washing machine, Python logo, each stamped "C INSIDE" | Three icons pop in one by one with a pop SFX; tomato "C INSIDE" stamp lands on each with a stamp thud; Python logo flips to reveal "written in C" |
+| 4 | 1:05 | 1:10 | Concept slide | Course map: 14 module tiles in their colour pairs; Pointers tile glows | Tiles pop in left to right in time with narration, soft marimba note per tile; Pointers tile shakes and gets a "BOSS" badge; counter ticks up to "86 episodes" |
+| 5 | 2:15 | 0:50 | Concept slide | "How every episode works": 8 beat icons in a row (hook, why, concept, code, bug, pun, challenge, next) | Icons light up one by one with a soft chime; a tiny Xecxec walks along the row under each lit icon |
+| 6 | 3:05 | 0:30 | Code explain | Preview: the 6-line Hi program, line 4 is the focus | Code types in fast; \[HL 4\] butter highlight on line 4; labels "function", "text", "end of statement" fly in under printf, "Hi" and ; |
+| 7 | 3:35 | 0:04 | Pun card | "Why do C programmers never get lost? They always know where their pointers are." | Card flips in, rimshot SFX; Xecxec slow-blinks |
+| 8 | 3:39 | 0:50 | Concept slide | "How to study": 4 numbered rules | Each rule slides in with a tick sound; rule 1 gets a tomato "NO COPY-PASTE" stamp |
+| 9 | 4:29 | 0:25 | Bug of the Day | Copy-pasted printf with curly quotes; terminal shows "stray '\\342' in program" | Butter banner "BUG OF THE DAY" drops in with a siren blip; error lines appear in tomato with a buzzer; quotes morph from curly to straight, terminal turns mint with a ding |
+| 10 | 4:54 | 0:20 | Challenge | "Comment: why are you learning C?" with three example chips (exams, job, game) | Chips bounce in; Xecxec holds a tiny pen; pencil-scribble SFX |
+| 11 | 5:14 | 0:16 | Outro | Next: EP 02 · What is C, really? + subscribe button | Next-episode card slides up; Xecxec waves both claws, claw-click; sign-off text types in |
+
+### Narration script
+
+**\[1 · Cold open\]** Hello? Is this thing on? Oh, hi. You found us. Before we start, meet the most confident crab on Baga beach. This is Xecxec. Yes, it is spelled X-E-C, X-E-C. And yes, you say it "Sheck Sheck". He doesn't talk much, but he will be judging your code for the next 86 episodes.
+
+**\[2 · Title\]** Welcome to Koding Konkani.
+
+**\[3 · Why C\]** So why learn C in a world full of Python and JavaScript? Because C is everywhere you can't see. The operating system on your laptop? Mostly C. The small chip inside your washing machine? Very often C. And Python itself, the most popular beginner language? The main version of Python is written in C. When you learn C, you learn how a computer really thinks: memory, numbers, and instructions. After that, every other language feels easier, because you know what is happening underneath.
+
+**\[4 · Course map\]** Here is the journey, module by module. We start from zero: installing a compiler and printing your first line. Then the basics: variables, data types, input and output. Then operators, decisions and loops, the building blocks of every program. Then functions, arrays and strings. Then the big boss: pointers. We take nine full episodes on pointers, slowly, with pictures, so nobody gets left behind. After that come structures, dynamic memory and files. Then my favourite part: algorithms. Bubble sort, merge sort, quick sort, all animated so you can watch every single step. And we finish by building real projects you can show to anyone. That's 86 episodes, five to eight minutes each. Small bites, like a plate of fish fry, not a full wedding buffet.
+
+**\[5 · How episodes work\]** Every episode has the same rhythm, so you always know where you are. First, a quick hook. Then why the topic matters. Then the concept, with diagrams. Then the code, typed out and explained line by line. Then the Bug of the Day: the mistake almost everyone makes. A pun, because Xecxec insists. A small challenge for you. And a peek at the next episode.
+
+**\[6 · Preview\]** Here is a tiny taste. This is a full C program, but today we only look at line four. \[HL 4\] printf, open bracket, "Hi" in double quotes, close bracket, semicolon. printf is a function, a ready-made tool that prints text. The f stands for "formatted". The text inside the quotes is exactly what shows up on screen. And that semicolon at the end means "this statement is done". Forget it, and Xecxec gets very upset. Don't worry about the other lines yet. Episode 4 explains every one.
+
+**\[7 · Pun\]** Why do C programmers never get lost? Because they always know where their pointers are. Okay, that joke will make sense in episode 53. Save it for later.
+
+**\[8 · How to study\]** Four rules. One: type every program yourself. No copy-paste. Your fingers learn too. Two: break things on purpose. Delete a semicolon, compile, and read the error. Errors are clues, not insults. Three: do every challenge, even the small ones. Five minutes of practice beats an hour of watching. Four: if you're stuck, rewind. That's what the button is for. Nobody is grading how many times you replay a scene.
+
+**\[9 · Bug of the Day\]** Today's bug is about rule one. Someone copies printf, "Hi", from a website and pastes it into their editor. Look closely at the quotes. They are curly, fancy quotes, not the straight quotes from your keyboard. GCC says: stray backslash 3 4 2 in program. That strange number is the first byte of the curly quote character. C only accepts straight double quotes. Type the code yourself, and this bug never happens.
+
+**\[10 · Challenge\]** Your first challenge is an easy one. In the comments, tell us why you're learning C. Exams? A job? A game you want to build? We read every comment.
+
+**\[11 · Outro\]** Next episode: what C really is, and how a compiler turns your code into a program. Keep coding, says Xecxec!
+
+### Code shown
+
+Preview program (scene 6). Only line 4 is explained in this episode.
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hi");
+    return 0;
+}
+```
+
+**Expected output:**
+
+```text
+Hi
+```
+
+### Bug of the Day
+
+Wrong code, pasted from a web page (the quotes on line 4 are curly “ ” characters):
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf(“Hi”);
+    return 0;
+}
+```
+
+GCC output:
+
+```text
+hi.c: In function 'main':
+hi.c:4:12: error: stray '\342' in program
+    4 |     printf(<U+201C>Hi<U+201D>);
+      |            ^~~~~~~~
+hi.c:4:15: error: stray '\342' in program
+    4 |     printf(<U+201C>Hi<U+201D>);
+      |                      ^~~~~~~~
+hi.c:4:13: error: 'Hi' undeclared (first use in this function)
+```
+
+Fixed code (straight quotes, typed by hand):
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hi");
+    return 0;
+}
+```
+
+**Why:** C only understands the straight double quote from your keyboard; curly quotes from websites and word processors are different characters, so GCC sees them as stray bytes.
+
+### Pun & challenge
+
+- **Pun:** "Why do C programmers never get lost? They always know where their pointers are."
+- **Challenge:** Comment why you're learning C: exams, a job, a game, or something else.
+- **Challenge answer:** No wrong answers. Pinned comment from the channel: "Xecxec is learning C so he can write a billing program for the Mapusa fish market. What's yours?" Start of EP 02 shows three real reasons from the comments.
+
+### Shorts for EP 01
+
+**S1 · A crab will teach you C** — 0:20 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "This crab is going to teach you C. Seriously."
+- **Script:** This crab is going to teach you C. Seriously. His name is Xecxec. You say it "Sheck Sheck". He lives on Baga beach, he never talks, and he will judge every line of code you write. 86 episodes, from Hello World to sorting algorithms. Full series on the channel.
+- **On-screen text:** A CRAB WILL TEACH YOU C
+- **Caption + hashtags:** Meet your new C teacher. He has claws. #cprogramming #learntocode #kodingkonkani #codinglife #goa
+
+**S2 · Why learn C in 2026?** — 0:35 · built from scene 3
+
+- **Hook (first 1.5s):** "Python is written in C."
+- **Script:** Python is written in C. The main version, the one most people install, is built in C. So is most of your laptop's operating system, and the chip in your washing machine probably runs C too. Learn C and you learn how computers really think: memory, numbers, instructions. Then every other language gets easier. That's why we start here.
+- **On-screen text:** PYTHON IS WRITTEN IN C
+- **Caption + hashtags:** Why C is still the best first language to really understand computers. #cprogramming #python #learntocode #kodingkonkani #computerscience
+
+**S3 · The copy-paste bug** — 0:25 · built from scene 9
+
+- **Hook (first 1.5s):** "This code looks perfect. It won't compile."
+- **Script:** This code looks perfect. It won't compile. GCC says: stray backslash 3 4 2 in program. Why? Look at the quotes. They're curly quotes, copied from a website. C only accepts the straight quote from your keyboard. Fix: type it yourself. Your fingers learn, and this bug disappears.
+- **On-screen text:** stray '\\342' in program?!
+- **Caption + hashtags:** Copied code from a website and got a weird error? It's the quotes. #cprogramming #debugging #learntocode #kodingkonkani #codingtips
+
+**S4 · Meet Xecxec** — 0:15 · built from scene 1 + pun card
+
+- **Hook (first 1.5s):** "It's pronounced Sheck Sheck. Don't argue."
+- **Script:** It's pronounced Sheck Sheck. Don't argue. Why do C programmers never get lost? Because they always know where their pointers are. He thinks that's hilarious. You will too, in episode 53.
+- **On-screen text:** IT'S "SHECK SHECK"
+- **Caption + hashtags:** The crab has jokes. Bad ones. #programmerhumor #cprogramming #kodingkonkani #codingmemes #goa
+
+**S5 · What does the f mean?** — 0:20 · built from scene 6
+
+- **Hook (first 1.5s):** "Quick: what does the f in printf stand for?"
+- **Script:** Quick: what does the f in printf stand for? Is it fast? Function? Formatted? Lock in your answer. It's formatted. printf means print formatted, because it can print text with numbers and values slotted in. Comment if you got it right.
+- **On-screen text:** printf = print \_\_\_?
+- **Caption + hashtags:** Fast, function or formatted? Comment before you check. #cprogramming #codingquiz #learntocode #kodingkonkani #printf
+
+## EP 02 — What is C, really?
+
+**Module 0 · Welcome & setup · 6:00 · Peach + Tomato · Prerequisite: EP 01**
+
+**Learning goals:** say who made C, when and why; explain what a compiler does using the words source code and machine code; tell the difference between compiled and interpreted languages; name real places where C runs today.
+
+### YouTube
+
+- **Title:** Your Phone Runs 50-Year-Old Code | C Programming EP 02
+- **Description:** C was created in 1972, and it still runs inside your phone, your laptop and even your washing machine. In this episode you learn where C came from, what a compiler actually does, and why compiled C code is so fast. No code to type yet; just the big picture before we install everything in EP 03. 0:00 C is inside everything · 0:20 Born at Bell Labs, 1972 · 1:15 What a compiler does · 2:35 Compiled vs interpreted · 3:29 Where C runs today · 4:24 Myth: "C is dead" · 5:04 Challenge · 5:44 Next episode
+- **Tags:** what is c programming, history of c, dennis ritchie, compiler explained, compiled vs interpreted, c programming for beginners, koding konkani, learn c, how code runs, machine code
+- **Thumbnail:** big text "50 YEARS OLD" in tomato on peach; a phone with a tomato "C INSIDE" stamp; Xecxec peeking from behind the phone with wide eyes.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:15 | Concept slide | Phone, laptop, car icons each stamped "C INSIDE" | Icons drop in one by one with a pop; tomato stamp thuds onto each; Xecxec gasps (eyes widen, claw-click) |
+| 2 | 0:15 | 0:05 | Title card | EP 02 · WHAT IS C, REALLY? | Title stamps in with whoosh + thud; tomato underline wipe |
+| 3 | 0:20 | 0:55 | Concept slide | Timeline: 1969 Unix begins · 1972 C at Bell Labs (Dennis Ritchie) · 1978 "The C Programming Language" book · today | Timeline line draws left to right with a pencil SFX; year markers pop; an "assembly" card full of cryptic lines shakes and gets crossed out in tomato |
+| 4 | 1:15 | 1:20 | Concept slide | Pipeline: hello.c → compiler → hello.exe (machine code) → CPU | hello.c card slides into a compiler "machine" with gear-whir SFX; out comes a strip of 1s and 0s; strip feeds into a CPU chip that lights up mint with a ding |
+| 5 | 2:35 | 0:50 | Concept slide | Split screen: compiled (chef reads whole recipe once, then cooks) vs interpreted (live translator, sentence by sentence) | Left side: recipe card flips once, chef cooks fast with sizzle SFX; right side: speech bubbles appear one at a time with a small delay and a tick each |
+| 6 | 3:25 | 0:04 | Pun card | "Why was the C program so calm? It had already been compiled." | Card flips in, rimshot; Xecxec lies in a beach chair |
+| 7 | 3:29 | 0:55 | Concept slide | "Where C runs today": 5 tiles: operating systems, databases, game engines, microcontrollers, other languages | Tiles pop in a 3+2 grid with marimba notes; each tile icon does a small idle wiggle |
+| 8 | 4:24 | 0:40 | Bug of the Day | Myth-buster card: "C is old, so it's useless" | Butter "BUG OF THE DAY" banner + siren blip; myth text in tomato gets a big "MYTH" stamp; three fact chips slide in mint |
+| 9 | 5:04 | 0:40 | Challenge | "Name 3 things near you that run C" with a small home illustration (fan, TV, router) | Objects in the room glow one at a time with a soft chime; question marks float above them |
+| 10 | 5:44 | 0:16 | Outro | Next: EP 03 · Setting up VS Code + GCC + subscribe | Next card slides up; Xecxec waves, claw-click; sign-off types in |
+
+### Narration script
+
+**\[1 · Cold open\]** Your phone. Your laptop. Even the small computer inside a car engine. Under the hood, all of them run code written in a language born more than fifty years ago. That language is C.
+
+**\[2 · Title\]** What is C, really?
+
+**\[3 · History\]** In 1972, at Bell Labs in America, a programmer named Dennis Ritchie created C. He and Ken Thompson were building an operating system called Unix. Before C, that kind of software was written in assembly language: short, cryptic instructions that were painful to read and different for every type of machine. C was a new idea. Close enough to the hardware to be fast, but readable enough for humans. In 1978 Ritchie and Brian Kernighan wrote a small book about it, and C spread everywhere. That mix of speed and readability is why it's still here today.
+
+**\[4 · Compiler\]** Here's the key idea of this whole episode. Computers don't understand C. A processor, the CPU, only understands machine code: patterns of ones and zeroes. So how does your C code run? You write it in a text file, like hello dot c. That file is called source code. Then a program called a compiler reads the whole file and translates it into machine code. On Windows you get a file like hello dot exe, which the CPU can run directly. Translate once, then run it as many times as you like, without the compiler. The compiler we will use is called GCC. We install it next episode.
+
+**\[5 · Compiled vs interpreted\]** Some languages work differently. Python normally uses an interpreter. Think of a live translator at a meeting, translating every sentence while you speak. It works, but there's always a small delay. C is like a chef who translates the whole recipe once, writes it down in his own language, and then cooks fast every single time. That is a big reason C programs run so quickly.
+
+**\[6 · Pun\]** Why was the C program so calm? Because it had already been compiled. Nothing left to translate. Total beach mode.
+
+**\[7 · Where C runs\]** So where does C run today? The core of operating systems like Linux, and large parts of Windows and Android. Databases, like SQLite, which is inside almost every phone. Parts of game engines, where every millisecond counts. Microcontrollers, the tiny computers in washing machines, fans and remote controls. And the interpreters of other languages, including Python. Learn C, and you can read the code that runs the world.
+
+**\[8 · Bug of the Day\]** Today's bug isn't in code. It's a myth. "C is old, so it's useless." Wrong. Old means battle-tested. C is still used every day, in new projects and in huge old ones. Languages like C plus plus, Java and JavaScript borrowed their curly braces and semicolons from C. And C still sits at the bottom of almost everything. Old isn't dead. Ask any Goan grandmother's fish curry recipe.
+
+**\[9 · Challenge\]** Your challenge: look around your room and name three things that probably run C code. Maybe the router, the TV, or the fan's remote. Put your three in the comments.
+
+**\[10 · Outro\]** Next episode, we install everything you need to write C on your own Windows computer. Keep coding, says Xecxec!
+
+### Code shown
+
+No code is typed in this episode. The pipeline diagram in scene 4 shows this file as the "hello.c" card (the same program students type in EP 04):
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+**Expected output** (shown on the CPU screen at the end of the pipeline):
+
+```text
+Hello, World!
+```
+
+### Bug of the Day
+
+This episode's bug is a wrong idea, not wrong code.
+
+Wrong idea:
+
+```text
+"C is from 1972, so it's useless today."
+```
+
+What the facts say (the three mint chips on screen):
+
+```text
+1. Linux, SQLite and Python's main interpreter are written in C.
+2. Microcontrollers in everyday devices are mostly programmed in C.
+3. C++, Java and JavaScript borrowed C's syntax: braces, semicolons, operators.
+```
+
+Fixed idea: "C is old, so it's proven, and learning it makes every later language easier."
+
+**Why:** a language's age doesn't decide its usefulness; what still runs on it does.
+
+### Pun & challenge
+
+- **Pun:** "Why was the C program so calm? It had already been compiled."
+- **Challenge:** Name three things around you that probably run C code.
+- **Challenge answer:** Good answers: Wi-Fi router, smart TV, washing machine, microwave, car, TV remote, phone. Pinned comment: "Xecxec says: the Wi-Fi router, the ceiling fan remote, and the billing machine at the fish market."
+
+### Shorts for EP 02
+
+**S1 · Your phone runs on C** — 0:20 · built from scenes 1–2
+
+- **Hook (first 1.5s):** "Your phone is running 50-year-old code."
+- **Script:** Your phone is running 50-year-old code. So is your laptop. So is the small computer in a car engine. The language is C, created in 1972, and it's still everywhere. Want to know why? Full episode on the channel.
+- **On-screen text:** YOUR PHONE RUNS ON C
+- **Caption + hashtags:** A language from 1972 is inside the phone you're holding. #cprogramming #learntocode #kodingkonkani #techfacts #computerscience
+
+**S2 · What a compiler does** — 0:40 · built from scene 4
+
+- **Hook (first 1.5s):** "Computers don't understand C. Here's the trick."
+- **Script:** Computers don't understand C. Here's the trick. A CPU only understands machine code: ones and zeroes. So you write C in a text file, called source code. A program called a compiler translates the whole file into machine code, an exe file the CPU runs directly. Translate once, run forever. That's why C is fast.
+- **On-screen text:** C → COMPILER → 1s AND 0s
+- **Caption + hashtags:** What a compiler actually does, in 40 seconds. #cprogramming #compiler #learntocode #kodingkonkani #computerscience
+
+**S3 · Is C dead?** — 0:25 · built from scene 8
+
+- **Hook (first 1.5s):** "People say C is dead. They're wrong."
+- **Script:** People say C is dead. They're wrong. Linux is written in C. SQLite, inside almost every phone, is written in C. Python's main interpreter is written in C. Old doesn't mean dead. Old means battle-tested.
+- **On-screen text:** C IS DEAD? MYTH.
+- **Caption + hashtags:** Old isn't dead. Old is battle-tested. #cprogramming #programming #kodingkonkani #learntocode #mythbusting
+
+**S4 · Calm compiled code** — 0:12 · built from scene 6
+
+- **Hook (first 1.5s):** "Why is C code always so calm?"
+- **Script:** Why is C code always so calm? Because it's already been compiled. Nothing left to translate. Total beach mode.
+- **On-screen text:** ALREADY COMPILED. CHILL.
+- **Caption + hashtags:** Xecxec in beach mode. #programmerhumor #cprogramming #kodingkonkani #codingmemes #goa
+
+**S5 · Chef or translator?** — 0:25 · built from scene 5
+
+- **Hook (first 1.5s):** "Python or C: which one is the chef?"
+- **Script:** Python or C: which one is the chef? One reads the whole recipe once, translates it, then cooks fast every time. The other translates sentence by sentence while it works. Comment chef or translator for C. Answer: C is the chef. It's compiled once, then runs fast.
+- **On-screen text:** CHEF OR TRANSLATOR?
+- **Caption + hashtags:** Compiled vs interpreted, explained with a kitchen. Which one is C? #cprogramming #python #codingquiz #kodingkonkani #learntocode
+
+## EP 03 — Setting up: VS Code + GCC on Windows
+
+**Module 0 · Welcome & setup · 7:00 · Peach + Tomato · Prerequisite: EP 02**
+
+**Learning goals:** install GCC through MSYS2 (UCRT64) on Windows; add C:\\msys64\\ucrt64\\bin to PATH and explain what PATH is; install VS Code with the C/C++ extension; prove the setup works with gcc --version and fix "gcc is not recognized".
+
+### YouTube
+
+- **Title:** Install GCC + VS Code on Windows (Fix PATH) | C EP 03
+- **Description:** Set up a real C compiler on Windows in about seven minutes: MSYS2, GCC (UCRT64), the PATH variable and VS Code. We also fix the most common setup error, "'gcc' is not recognized". On Mac or Linux? Mac: run xcode-select --install in Terminal. Ubuntu/Debian: sudo apt install build-essential. Then skip to 4:34 for VS Code. 0:00 'gcc' is not recognized · 0:20 What we install · 1:00 Install MSYS2 · 2:30 Install GCC with pacman · 3:20 Add GCC to PATH · 4:34 Install VS Code · 5:24 Test with gcc --version · 5:54 Bug of the Day · 6:29 Challenge · 6:45 Next episode
+- **Tags:** install gcc windows, msys2 gcc, vs code c setup, gcc is not recognized, add gcc to path, c programming setup, mingw ucrt64, koding konkani, c for beginners, windows c compiler
+- **Thumbnail:** big text "GCC NOT FOUND?" in tomato on peach; a dark-blue terminal card with the red error line; Xecxec holding a wrench, one claw raised in triumph.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:15 | Terminal | `gcc --version` typed; reply "'gcc' is not recognized..." in tomato | Key clicks as command types; error appears with a buzzer; Xecxec facepalms with a claw-clack |
+| 2 | 0:15 | 0:05 | Title card | EP 03 · SETTING UP | Title stamps in, whoosh + thud; a tiny wrench icon spins once |
+| 3 | 0:20 | 0:40 | Concept slide | Two boxes: "Compiler: GCC (via MSYS2)" and "Editor: VS Code"; price tag "₹0" on both | Boxes slide in from left and right; "₹0" tags swing in with a cash-register ding |
+| 4 | 1:00 | 1:30 | Concept slide | Mock-ups: msys2.org download page → installer → folder C:\\msys64 → Finish → UCRT64 terminal | Mock browser and installer windows slide in one after another; mouse cursor clicks Next with click SFX; progress bar fills with a rising tone |
+| 5 | 2:30 | 0:50 | Terminal | `pacman -S mingw-w64-ucrt-x86_64-gcc`, then "Proceed with installation? \[Y/n\]" and download bars | Command types with key clicks; Y pressed with a bigger click; progress bars fill with soft ticks; "app store" icon floats beside pacman |
+| 6 | 3:20 | 1:10 | Concept slide | Windows mock-ups: Edit the system environment variables → Environment Variables → Path → Edit → New → `C:\msys64\ucrt64\bin` | Each window zooms in from the previous button; the new path row highlights butter; OK buttons click in sequence with three clicks |
+| 7 | 4:30 | 0:04 | Pun card | "Why did the compiler get lost? Nobody gave it a PATH." | Card flips in, rimshot; Xecxec holds a tiny map upside down |
+| 8 | 4:34 | 0:50 | Concept slide | Mock-ups: code.visualstudio.com → install → Extensions panel → search "C/C++" → Install (Microsoft) | Cursor moves with whoosh; Install button turns mint with a ding |
+| 9 | 5:24 | 0:30 | Terminal | New terminal: `gcc --version` prints a version line in mint | Old terminal window closes with a swoosh, new one opens; version line types in; confetti burst + party horn; Xecxec dances |
+| 10 | 5:54 | 0:35 | Bug of the Day | Two wrong PATH entries vs the right one; "close and reopen" arrow | Butter banner + siren blip; wrong rows shake with buzzer and get tomato crosses; correct row glows mint with a ding |
+| 11 | 6:29 | 0:16 | Challenge | "Run gcc --version. Comment your version number." | Comment-bubble icon bounces; pencil scribble SFX |
+| 12 | 6:45 | 0:15 | Outro | Next: EP 04 · Hello, World! + subscribe | Next card slides up; Xecxec waves, claw-click; sign-off types in |
+
+### Narration script
+
+**\[1 · Cold open\]** You type gcc, press Enter, and Windows says it has never heard of it. Classic. By the end of this episode, that will never happen to you again.
+
+**\[2 · Title\]** Setting up.
+
+**\[3 · What we install\]** We need two things. First, a compiler, to turn C into a program. Remember EP 02: the compiler is the chef who translates the recipe. We'll use GCC, installed through a free tool called MSYS2. Second, an editor, to write code comfortably. We'll use VS Code. Both are completely free. Zero rupees.
+
+**\[4 · Install MSYS2\]** Open your browser and go to msys2 dot org. Download the installer and run it. Keep the default folder, C colon, msys64. Don't change it, because we'll need this exact path later. Click Next until it finishes, and leave the box ticked that says "Run MSYS2 now". A terminal window opens. Check its title bar says UCRT64. That's the MSYS2 terminal we'll use for installing.
+
+**\[5 · Install GCC\]** In that terminal, type this command carefully: pacman, space, dash, capital S, space, mingw dash w64 dash ucrt dash x86 underscore 64 dash gcc. Press Enter. It asks, proceed with installation? Type Y and press Enter. Pacman is a package manager: think of it as an app store for the terminal. It downloads GCC and everything GCC needs. Wait until the progress bars finish.
+
+**\[6 · PATH\]** Now we tell Windows where GCC lives. Press the Windows key and search for "Edit the system environment variables". Open it and click Environment Variables. Under your user variables, select Path and click Edit. Click New, and type: C colon, backslash, msys64, backslash, ucrt64, backslash, bin. Then click OK on every window, all three. So what is this list? It's called PATH. When you type a command like gcc, Windows searches every folder in this list, in order, looking for a program with that name. If GCC's folder isn't on the list, Windows simply doesn't find it. It's like telling the bus conductor your stop. No stop, no bus.
+
+**\[7 · Pun\]** Why did the compiler get lost? Nobody gave it a PATH.
+
+**\[8 · VS Code\]** Next, go to code dot visualstudio dot com and install VS Code. Keep the default options. Open it, click the Extensions icon on the left, the one with four squares, and search for C slash C plus plus. Install the one made by Microsoft. This gives you colours for your code, suggestions while you type, and error hints.
+
+**\[9 · Test\]** Moment of truth. Open a brand-new terminal. In VS Code, that's Terminal, New Terminal. Type gcc, space, dash dash version, and press Enter. If you see a line starting with gcc and a version number, you're ready. Your number may be different from ours, and that's fine. Shell yeah!
+
+**\[10 · Bug of the Day\]** If it still says gcc is not recognized, check two things. First, the PATH entry must be the bin folder exactly. Not C colon msys64 ucrt64 without bin. Not msys 6 4 with a typo. It must end in backslash bin, because that's the folder where gcc dot exe lives. Second, close and reopen your terminal, and VS Code too. A terminal reads PATH only when it starts, so an old window doesn't see your new entry.
+
+**\[11 · Challenge\]** Your challenge: run gcc dash dash version and comment the version number you got. Let's see who has the newest one.
+
+**\[12 · Outro\]** Next episode, you write and run your first real C program. Keep coding, says Xecxec!
+
+### Code shown
+
+Commands typed on screen, in order.
+
+In the MSYS2 UCRT64 terminal (scene 5):
+
+```bash
+pacman -S mingw-w64-ucrt-x86_64-gcc
+```
+
+PATH entry added in scene 6:
+
+```text
+C:\msys64\ucrt64\bin
+```
+
+In a new VS Code terminal (scene 9):
+
+```bash
+gcc --version
+```
+
+**Expected output** (version and build text will differ on your machine; on-screen note: "your version may differ"):
+
+```text
+gcc.exe (Rev2, Built by MSYS2 project) 15.2.0
+Copyright (C) 2025 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
+
+### Bug of the Day
+
+Wrong PATH entries (either one causes the error):
+
+```text
+C:\msys64\ucrt64
+C:\msys46\ucrt64\bin
+```
+
+Error in Command Prompt:
+
+```text
+'gcc' is not recognized as an internal or external command,
+operable program or batch file.
+```
+
+The same error in VS Code's default PowerShell terminal:
+
+```text
+gcc : The term 'gcc' is not recognized as the name of a cmdlet, function, script file, or operable program.
+```
+
+Fixed PATH entry, then close and reopen every terminal and VS Code:
+
+```text
+C:\msys64\ucrt64\bin
+```
+
+**Why:** Windows only searches the exact folders listed in PATH, gcc.exe lives inside the bin folder, and a terminal reads PATH only when it opens.
+
+### Pun & challenge
+
+- **Pun:** "Why did the compiler get lost? Nobody gave it a PATH."
+- **Challenge:** Run gcc --version and comment the version number you got.
+- **Challenge answer:** Any version line starting "gcc.exe (Rev..., Built by MSYS2 project)" means success. Pinned comment: "If you got 'not recognized', check that PATH ends in \\bin and reopen VS Code. Still stuck? Reply with a screenshot."
+
+Note: the video stays Windows-only; the Mac and Linux commands live in the description.
+
+### Shorts for EP 03
+
+**S1 · 'gcc' is not recognized?** — 0:45 · built from scenes 1, 6, 9
+
+- **Hook (first 1.5s):** "Windows doesn't know gcc? Fix it in 40 seconds."
+- **Script:** Windows doesn't know gcc? Fix it in 40 seconds. Search for "Edit the system environment variables". Click Environment Variables. Select Path, click Edit, then New. Type C colon, msys64, ucrt64, bin. OK, OK, OK. Now close your terminal and open a new one. Type gcc dash dash version. There's your version number. Fixed.
+- **On-screen text:** 'gcc' NOT RECOGNIZED? FIX IT
+- **Caption + hashtags:** The fix for "'gcc' is not recognized" on Windows. Save this. #cprogramming #gcc #windows #kodingkonkani #codingtips #learntocode
+
+**S2 · What is PATH?** — 0:30 · built from scene 6
+
+- **Hook (first 1.5s):** "Your computer has a secret list of folders."
+- **Script:** Your computer has a secret list of folders. It's called PATH. When you type a command like gcc, Windows searches every folder on that list, in order. If the program's folder isn't there, Windows says it has never heard of it. Add the folder, reopen the terminal, and it works.
+- **On-screen text:** PATH = WHERE WINDOWS LOOKS
+- **Caption + hashtags:** PATH explained in 30 seconds. #cprogramming #windows #learntocode #kodingkonkani #computerscience
+
+**S3 · Reopen the terminal!** — 0:20 · built from scene 10
+
+- **Hook (first 1.5s):** "You set PATH and it still fails. Here's why."
+- **Script:** You set PATH and gcc still isn't recognized. Here's why. A terminal reads PATH only when it opens. Your old window never saw the change. Close it, close VS Code, open them again. And check your entry ends in backslash bin.
+- **On-screen text:** CLOSE IT. REOPEN IT.
+- **Caption + hashtags:** The 2-second fix nobody tells you. #cprogramming #gcc #debugging #kodingkonkani #codingtips
+
+**S4 · Compiler got lost** — 0:10 · built from scene 7
+
+- **Hook (first 1.5s):** "Why did the compiler get lost?"
+- **Script:** Why did the compiler get lost? Nobody gave it a PATH.
+- **On-screen text:** NOBODY GAVE IT A PATH
+- **Caption + hashtags:** Xecxec is not sorry. #programmerhumor #cprogramming #kodingkonkani #codingmemes #windows
+
+**S5 · Which folder goes in PATH?** — 0:20 · built from scenes 6, 10
+
+- **Hook (first 1.5s):** "Only one of these PATH entries works. Which one?"
+- **Script:** Only one of these PATH entries works. A: C colon msys64 ucrt64. B: C colon msys64 ucrt64 bin. C: C colon msys46 ucrt64 bin. Comment your letter. Answer: B. gcc dot exe lives inside the bin folder, and option C has a typo.
+- **On-screen text:** A, B OR C?
+- **Caption + hashtags:** Spot the one that works. Comment A, B or C. #cprogramming #codingquiz #gcc #kodingkonkani #learntocode
+
+## EP 04 — Hello, World!
+
+**Module 0 · Welcome & setup · 6:30 · Peach + Tomato · Prerequisite: EP 03**
+
+**Learning goals:** write, compile and run a C program from VS Code; explain every line of Hello World (#include, main, braces, printf, \\n, return 0); use gcc file.c -o name; read a "expected ';'" error and find the real broken line.
+
+### YouTube
+
+- **Title:** Your First C Program: Hello World | C Programming EP 04
+- **Description:** Write, compile and run your very first C program, then understand every single line of it. We also break it on purpose to read a real GCC error. You need GCC and VS Code from EP 03. 0:00 Hello, World! · 0:20 Why Hello World? · 0:50 Type the program · 1:30 Line by line · 3:30 Compile and run · 4:19 Bug of the Day: missing semicolon · 5:09 Bonus: three lines · 5:44 Challenge · 6:14 Next episode
+- **Tags:** hello world in c, first c program, c programming for beginners, printf in c, gcc compile and run, vs code c program, expected semicolon error, koding konkani, learn c, main function in c, c tutorial
+- **Thumbnail:** big text "HELLO, WORLD!" in tomato on peach; dark-blue terminal card with the output in mint; Xecxec with both claws up, cheering.
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:15 | Terminal | `./hello` runs; "Hello, World!" prints in mint | Key clicks; output types in letter by letter; Xecxec raises both claws with a double claw-click and a small cheer SFX |
+| 2 | 0:15 | 0:05 | Title card | EP 04 · HELLO, WORLD! | Title stamps in with whoosh + thud; tomato underline wipe |
+| 3 | 0:20 | 0:30 | Concept slide | "Hello World proves 3 things": compiler works, code runs, you see the result | Three tick boxes fill mint one at a time with a tick sound |
+| 4 | 0:50 | 0:40 | Code explain | VS Code mock-up: new file hello.c, the 6-line program types itself | Explorer panel: "hello.c" appears with a pop; code types at typing speed with soft key clicks; a "TYPE IT, DON'T PASTE" sticker slaps on in tomato |
+| 5 | 1:30 | 2:00 | Code explain | Line by line on hello.c with labels | \[HL n\] butter highlight moves line to line with a soft tick; side labels fly in for each part; braces pulse in pairs; \\n shows a cursor dropping one line |
+| 6 | 3:30 | 0:45 | Terminal | `gcc hello.c -o hello` (no output), then `./hello` prints the line | Command types; short "gear" whir while compiling; hello.exe icon pops into the file panel; second command prints in mint with a ding |
+| 7 | 4:15 | 0:04 | Pun card | "Without a semicolon, my code has no point. With one, it has a full stop." | Card flips, rimshot; a giant semicolon bonks Xecxec on the head |
+| 8 | 4:19 | 0:50 | Bug of the Day | Semicolon deleted from line 4; the real GCC error; caret under the end of line 4 | Butter banner + siren blip; semicolon flies away with a whoosh; error prints in tomato with a buzzer; arrow from "before 'return'" up to the end of line 4; semicolon flies back, terminal turns mint with a ding |
+| 9 | 5:09 | 0:35 | Code explain | Bonus program: three printf lines, output stacks in three lines | \[HL 4\] \[HL 5\] \[HL 6\] highlights in turn; each output line drops into a mini terminal with a pop |
+| 10 | 5:44 | 0:30 | Challenge | "Print your name on line 1 and your village or town on line 2" | Two empty lines with blinking cursors; pencil scribble SFX |
+| 11 | 6:14 | 0:16 | Outro | Next: EP 05 · How a C program is built + subscribe | Next card slides up; Xecxec waves, claw-click; sign-off types in |
+
+### Narration script
+
+**\[1 · Cold open\]** Those two words have been printed by millions of beginners around the world. Today, you join them.
+
+**\[2 · Title\]** Hello, World!
+
+**\[3 · Why Hello World\]** Hello World is a tradition, and there's a good reason for it. It's the smallest program that proves three things. Your compiler works. Your code runs. And you can see the result. Small program, big moment.
+
+**\[4 · Type it\]** Open VS Code. Open a folder for your C programs, for example a folder called c-course on your Desktop. Make a new file and name it hello dot c. The dot c ending tells everyone this is C source code. Now type this program. Don't paste it. Type it, every character, including the punctuation.
+
+**\[5 · Line by line\]** Let's go line by line. \[HL 1\] Line one: hash include, angle bracket, stdio dot h. stdio means standard input and output. This line brings in a ready-made library that gives us printf. Without it, the compiler doesn't know what printf is. \[HL 3\] Line three: int main, round brackets, and an opening curly brace. main is where every C program starts running. Not line one, main. The word int means main gives back a whole number, an integer, when it finishes. The curly braces hold everything main does: this opening one, and the closing one on line six. \[HL 4\] Line four: printf, and inside the brackets, in double quotes, Hello comma World exclamation mark, then backslash n. printf prints the text between the quotes. Backslash n is a special pair of characters meaning "new line": after printing, the cursor moves down to the next line. And the semicolon ends the statement, like a full stop ends a sentence. \[HL 5\] Line five: return zero. main promised to give back an int, and here it is. Zero means "everything went fine". \[HL 6\] Line six: the closing curly brace. main is done, and the program ends.
+
+**\[6 · Compile and run\]** Now let's compile. Open the terminal in VS Code: Terminal, New Terminal. Type gcc, space, hello dot c, space, dash o, space, hello. gcc is the compiler. hello dot c is your source file. Dash o means "name the output", and hello is the name we choose. Press Enter. If nothing prints, that's good news. No news means no errors. A new file, hello dot exe, appears. Now run it: dot slash hello. And there it is. Hello, World!
+
+**\[7 · Pun\]** Without a semicolon, my code has no point. With one, it has a full stop.
+
+**\[8 · Bug of the Day\]** Now let's break it on purpose, like rule two from EP 01 says. Delete the semicolon after printf, save, and compile again. GCC says: hello dot c, 4 colon 30, error: expected semicolon before return. Read it carefully. 4 colon 30 means line four, column thirty: the exact spot at the end of the printf line. But the message mentions return, which is on line five. Why? The compiler only notices something is missing when it reaches the next word. It even shows a little semicolon under the caret, suggesting the fix. So when an error mentions a line, always check the end of the line above it too. Put the semicolon back, compile, run. Fixed.
+
+**\[9 · Bonus\]** Bonus: want more than one line? \[HL 4\] Use one printf per line, \[HL 5\] each ending in backslash n, \[HL 6\] so each one starts on a new line. Hello. From. Goa. You could also do it with one printf and backslash n between the words. Same output.
+
+**\[10 · Challenge\]** Your challenge: write a program that prints your name on the first line and your village or town on the second. Comment your output, and tell us where you're coding from.
+
+**\[11 · Outro\]** Next episode: what actually happens between typing gcc and your program running. Keep coding, says Xecxec!
+
+### Code shown
+
+hello.c (scenes 4–6):
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+Terminal commands (scene 6):
+
+```bash
+gcc hello.c -o hello
+./hello
+```
+
+**Expected output:**
+
+```text
+Hello, World!
+```
+
+three.c (scene 9, bonus):
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello\n");
+    printf("from\n");
+    printf("Goa!\n");
+    return 0;
+}
+```
+
+**Expected output:**
+
+```text
+Hello
+from
+Goa!
+```
+
+### Bug of the Day
+
+Wrong code (semicolon missing on line 4):
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n")
+    return 0;
+}
+```
+
+GCC output:
+
+```text
+hello.c: In function 'main':
+hello.c:4:30: error: expected ';' before 'return'
+    4 |     printf("Hello, World!\n")
+      |                              ^
+      |                              ;
+    5 |     return 0;
+      |     ~~~~~~
+```
+
+Fixed code:
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+**Why:** the compiler only discovers the missing semicolon when it reaches the next word (return), so the message names line 5's word while the fix belongs at the end of line 4.
+
+### Pun & challenge
+
+- **Pun:** "Without a semicolon, my code has no point. With one, it has a full stop."
+- **Challenge:** Print your name on the first line and your village or town on the second.
+- **Challenge answer:** shown at the start of EP 05:
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Xecxec\n");
+    printf("Baga, Goa\n");
+    return 0;
+}
+```
+
+```text
+Xecxec
+Baga, Goa
+```
+
+### Shorts for EP 04
+
+**S1 · Your first C program** — 0:30 · built from scenes 1, 4, 6
+
+- **Hook (first 1.5s):** "Six lines. Your first program. Let's go."
+- **Script:** Six lines. Your first program. Let's go. Make a file called hello dot c. Type hash include stdio dot h, int main, printf Hello World with backslash n, and return zero. In the terminal: gcc hello dot c dash o hello. Then dot slash hello. Hello, World! Welcome to programming.
+- **On-screen text:** YOUR FIRST C PROGRAM
+- **Caption + hashtags:** Six lines to your first C program. Type it, don't paste it. #cprogramming #helloworld #learntocode #kodingkonkani #beginnercoding
+
+**S2 · Hello World, explained** — 0:45 · built from scene 5
+
+- **Hook (first 1.5s):** "Every line of Hello World, in 40 seconds."
+- **Script:** Every line of Hello World, in 40 seconds. Hash include stdio dot h brings in printf. int main is where the program starts, and int means it returns a whole number. Curly braces hold main's code. printf prints the text in quotes, and backslash n moves to a new line. The semicolon ends the statement. return zero means everything went fine. Done.
+- **On-screen text:** EVERY LINE, EXPLAINED
+- **Caption + hashtags:** Stop typing Hello World without knowing what it means. #cprogramming #helloworld #learntocode #kodingkonkani #codingtips
+
+**S3 · The error is on the line above** — 0:25 · built from scene 8
+
+- **Hook (first 1.5s):** "The error mentions return. The bug isn't there."
+- **Script:** The error mentions return. The bug isn't there. GCC says: expected semicolon before return. Return is on line five, but the missing semicolon is at the end of line four. The compiler only notices it when it hits the next word. So always check the line above. Even the caret points to the end of line four.
+- **On-screen text:** CHECK THE LINE ABOVE
+- **Caption + hashtags:** The number one beginner error in C, and how to read it. #cprogramming #debugging #learntocode #kodingkonkani #gcc
+
+**S4 · Semicolon has a point** — 0:10 · built from scene 7
+
+- **Hook (first 1.5s):** "My code has no point."
+- **Script:** My code has no point. Without a semicolon, it never does. With one, it has a full stop.
+- **On-screen text:** ; = FULL STOP
+- **Caption + hashtags:** Xecxec got bonked by a semicolon. #programmerhumor #cprogramming #kodingkonkani #codingmemes #semicolon
+
+**S5 · What does this print?** — 0:15 · built from scene 9
+
+- **Hook (first 1.5s):** "What does printf("A\\nB") print?"
+- **Script:** What does this print? printf, quote, A, backslash n, B, quote. One line, or two? Comment your answer. Answer: two lines. A on the first, B on the second. Backslash n is a new line.
+- **On-screen text:** printf("A\\nB"); → ?
+- **Caption + hashtags:** One line or two? Comment before the answer. #cprogramming #codingquiz #printf #kodingkonkani #learntocode

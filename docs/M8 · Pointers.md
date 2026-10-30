@@ -1,0 +1,1680 @@
+# Module 8 — Pointers
+
+Episodes 52–60 · Lilac + Dark blue
+
+## EP 52 — Memory & Addresses
+
+**Module 8 · Pointers · 6:30 · Lilac + Dark blue · Prerequisite: EP 51**
+
+**Learning goals:** picture RAM as a numbered street of one-byte houses; use `&` to get the address of any variable; print an address correctly with `%p` and a `(void *)` cast; use `sizeof` to see how many bytes a variable takes.
+
+### YouTube
+
+- **Title:** Every Variable Has an Address | C Programming EP 52
+- **Description:** Before pointers, you need one idea: every variable lives at a numbered spot in memory. We draw RAM as a street of houses, find each variable's house number with &, and print it the right way with %p. Slow, visual, and no jargon. 0:00 A lane of numbered houses · 0:20 Title · 0:25 RAM as a street · 1:15 Three variables in memory · 2:10 Code, line by line · 3:30 Running it · 4:00 Pun · 4:05 Hex and neighbours · 4:50 Bug of the Day: printing an address with %d · 5:40 Challenge · 6:10 Next episode
+- **Tags:** c programming, pointers in c, memory address in c, ampersand operator c, %p printf, sizeof in c, c for beginners, learn c, koding konkani, c tutorial india, class 12 computer science, first year engineering c
+- **Thumbnail:** big text "YOUR HOUSE NUMBER"; a lilac memory street with one box glowing and the number `000000A3C25FFB9C` on its gate; Xecxec pointing at the gate with one claw, eyebrows raised; lilac background, dark blue text block
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | A Panjim lane of pastel houses, each gate with a number; postman on a cycle | Camera pans left to right along the lane; cycle bell; Xecxec pops out of a letterbox |
+| 2 | 0:20 | 0:05 | Title card | EP 52 · MEMORY & ADDRESSES | Title slams in on lilac; claw-click |
+| 3 | 0:25 | 0:50 | Memory boxes | The houses flatten into a row of 16 small lilac boxes labelled 1000 to 1015; caption "1 box = 1 byte" | Boxes slide in one by one with soft ticks; numbers count up under each box |
+| 4 | 1:15 | 0:55 | Memory boxes | `age` fills boxes 1000–1003 (19), `grade` fills 1004 (A), `cgpa` fills 1008–1015 (8.5), with 1005–1007 greyed out as unused gap; gate sign shows the first house number | Each variable drops in as a coloured block spanning its bytes; a gate sign flips up showing `&age = 1000`; Xecxec holds the sign |
+| 5 | 2:10 | 1:20 | Code explain | `addresses.c` (16 lines) on a cream code panel, variable tracker on the right | Line highlights in butter; tracker rows appear for age, grade, cgpa with value and address columns |
+| 6 | 3:30 | 0:30 | Terminal | Dark blue terminal: compile and run; sticky note "your addresses will differ" | Typewriter effect for the command; output lines print one by one; sticky note flaps in |
+| 7 | 4:00 | 0:05 | Pun card | "Why does a variable never get lost in Goa? It always knows its address." | Card flips; Xecxec does a tiny dance; rimshot |
+| 8 | 4:05 | 0:45 | Memory boxes | Hex digit strip 0–9, A–F; the real output addresses placed above the three blocks; `grade` and `age` touching | Hex strip lights up digit by digit; arrow labels "next door neighbours"; question mark over the order |
+| 9 | 4:50 | 0:50 | Bug of the Day | `%d` with `&age`, GCC warning, garbage negative number | Warning text types out in butter; a too-small box tries to hold an 8-byte address and overflows; buzzer; then fixed line slides in with a ding |
+| 10 | 5:40 | 0:30 | Challenge | "Print 3 addresses" task card | Card unfolds; timer icon; Xecxec taps the card |
+| 11 | 6:10 | 0:20 | Outro | "Next: EP 53 · What is a pointer?" with a GPS pin teaser | Pin drops onto a box; claw-click; sign-off text |
+
+### Narration script
+
+**\[1 · Cold open\]** Picture a lane in Panjim. Every house has a number painted on the gate. The postman does not care who lives inside. He only needs the number. Your computer's memory works in exactly the same way. Every variable you have ever made has a house number. Today, we find it.
+
+**\[2 · Title\]** Episode fifty-two. Memory and addresses. Welcome to Module 8: pointers.
+
+**\[3 · RAM as a street\]** Many students say this module is where C gets hard. So we will go slowly, one box at a time, and you will see every step. First question: what is memory? Your RAM is a very long street of tiny houses. Each house holds exactly one byte, which is eight bits. And every house has a number, called its address. The numbers go up one by one: house 1000, house 1001, house 1002, and so on. When you write int age equals 19, the computer picks some houses on this street, puts 19 inside, and remembers where it put it. Until now you only used the name, age. Today you learn that behind every name, there is a number.
+
+**\[4 · Three variables in memory\]** Let's make three variables. An int called age, holding 19. A char called grade, holding the letter A. And a double called cgpa, holding 8.5. Look at how many houses each one needs. The int takes four houses, so four bytes. The char takes just one. The double takes eight. Now the key rule: the address of a variable is the number of its first house. If age starts at house 1000, its address is 1000, even though it also uses 1001, 1002 and 1003. Xecxec is holding up the gate sign. In C, the operator that gives you this number is the ampersand, the "and" sign. Ampersand age means "the address of age". Say it with me: ampersand means address of.
+
+**\[5 · Code, line by line\]** Here is our program. \[HL 1\] Line 1 brings in stdio dot h, so we can use printf. \[HL 3\] Line 3 is main, as always. \[HL 4\] Line 4 makes age and stores 19. \[TRACK age=19\] \[HL 5\] Line 5 makes grade and stores the character A. \[TRACK grade='A'\] \[HL 6\] Line 6 makes cgpa and stores 8.5. \[TRACK cgpa=8.5\] Now the new part. \[HL 8\] Line 8 prints two things: the value of age, using percent d, and the address of age, using percent p. Percent p is the format code for addresses. P for pointer. Notice we wrote ampersand age, the address. And in front of it we wrote void star in brackets. That is called a cast. Percent p officially expects a general address type called void star, so we convert our address to that type. Just remember the pattern: percent p, then bracket void star bracket, then ampersand name. \[TRACK &age=shown\] \[HL 9\] Line 9 does the same for grade, with percent c for the letter. \[HL 10\] Line 10 does it for cgpa, with percent point one f to show one decimal place. \[HL 12\] Lines 12 to 14 use sizeof, which tells us how many bytes each variable takes. sizeof gives back a special type called size t, and the matching format code is percent z u. \[HL 15\] Line 15 returns zero. Done.
+
+**\[6 · Running it\]** Save it as addresses dot c. In the terminal, type gcc addresses dot c, dash o, addresses. Then run it with dot slash addresses. Look at those long numbers. Those are real house numbers inside your RAM. On Windows they print as sixteen characters; on Linux they start with zero x. Your numbers will be different from mine. In fact, run it again and they may change every time. That is normal. Windows moves your program to a new part of the street each run, for safety. The sizes, though, should match: four, one and eight.
+
+**\[7 · Pun\]** Why does a variable never get lost in Goa? Because it always knows its address.
+
+**\[8 · Hex and neighbours\]** Why do the addresses have letters in them? Because they are written in hexadecimal, base sixteen. After 9, hex keeps counting with A, B, C, D, E and F. So the letter F just means fifteen. You do not need to convert these by hand. Just know they are numbers. Now compare the last two digits. grade's address ends in 9B, and age's ends in 9C. They are next-door neighbours! The compiler decided to place them side by side. But which variable goes first is the compiler's choice, not yours. Never write code that depends on that order.
+
+**\[9 · Bug of the Day\]** Today's bug: printing an address with percent d. GCC warns you: format percent d expects an int, but this argument has type int star. And the output is a strange negative number. Why? On 64-bit Windows, an address is eight bytes, but percent d reads only four. You get half a house number, which is nonsense. The fix: use percent p and the void star cast. Addresses get percent p. Always.
+
+**\[10 · Challenge\]** Your challenge. Make three variables: an int, a float and a char. Print each one's address with percent p, and its size with sizeof. Then look at the addresses and tell me in the comments: which two variables are neighbours? Pause the video and try it now.
+
+**\[11 · Outro\]** You can now find any variable's house. Next episode, we store that house number inside another variable. That variable is called a pointer, and it works like a GPS pin. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int age = 19;
+    char grade = 'A';
+    double cgpa = 8.5;
+
+    printf("age   = %d, lives at %p\n", age, (void *)&age);
+    printf("grade = %c, lives at %p\n", grade, (void *)&grade);
+    printf("cgpa  = %.1f, lives at %p\n", cgpa, (void *)&cgpa);
+
+    printf("Size of age:   %zu bytes\n", sizeof age);
+    printf("Size of grade: %zu bytes\n", sizeof grade);
+    printf("Size of cgpa:  %zu bytes\n", sizeof cgpa);
+    return 0;
+}
+```
+
+**Expected output** (sample from Windows; your addresses will differ and can change every run; sizes shown are for 64-bit Windows and Linux):
+
+```text
+age   = 19, lives at 000000A3C25FFB9C
+grade = A, lives at 000000A3C25FFB9B
+cgpa  = 8.5, lives at 000000A3C25FFB90
+Size of age:   4 bytes
+Size of grade: 1 bytes
+Size of cgpa:  8 bytes
+```
+
+### Bug of the Day
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int age = 19;
+    printf("age lives at %d\n", &age);
+    return 0;
+}
+```
+
+GCC (`gcc -Wall bug.c`) prints:
+
+```text
+bug.c: In function 'main':
+bug.c:5:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'int *' [-Wformat=]
+    5 |     printf("age lives at %d\n", &age);
+      |                          ~^     ~~~~
+      |                           |     |
+      |                           int   int *
+```
+
+Running it prints a meaningless number such as `age lives at -2051088252` (it changes every run).
+
+Fixed:
+
+```c
+    printf("age lives at %p\n", (void *)&age);
+```
+
+Why: an address is 8 bytes on 64-bit systems but `%d` reads a 4-byte int, so you see half an address; `%p` is the format made for addresses.
+
+### Pun & challenge
+
+- **Pun:** "Why does a variable never get lost in Goa? It always knows its address."
+- **Challenge:** Declare an `int`, a `float` and a `char`. Print each one's address with `%p` and its size with `sizeof`. Which two are neighbours?
+- **Challenge answer:**
+
+```c
+int n = 5; float f = 2.5f; char c = 'x';
+printf("%p %zu\n", (void *)&n, sizeof n);   /* size 4 */
+printf("%p %zu\n", (void *)&f, sizeof f);   /* size 4 */
+printf("%p %zu\n", (void *)&c, sizeof c);   /* size 1 */
+```
+
+Neighbours are the two whose addresses differ by exactly the size of one of them; the order is chosen by the compiler.
+
+### Shorts for EP 52
+
+**S1 · Every variable has a house number** — 0:25 · built from scenes 1–3
+
+- **Hook (first 1.5s):** Gate number zooms in: "Your variable lives HERE."
+- **Script:** Every variable in C lives somewhere. Your RAM is a long street of tiny houses, one byte each, and every house has a number called an address. When you write int age equals 19, the computer picks four houses and puts 19 inside. Want to see the house number? That is one symbol away. Full episode on the channel.
+- **On-screen text:** EVERY VARIABLE HAS AN ADDRESS
+- **Caption + hashtags:** Your variables have house numbers. #cprogramming #learntocode #kodingkonkani #pointers #codinglife
+
+**S2 · & in 30 seconds** — 0:30 · built from scenes 4–5
+
+- **Hook (first 1.5s):** Big ampersand spins in: "This symbol = address of."
+- **Script:** The ampersand in C means "address of". Ampersand age gives you the house number where age lives. To print it, use percent p, and put void star in brackets in front. An int uses four bytes, a char uses one, a double uses eight. The address is always the number of the first byte. That is the whole idea.
+- **On-screen text:** & = ADDRESS OF
+- **Caption + hashtags:** One symbol, one meaning. #cprogramming #learntocode #kodingkonkani #ctutorial #pointers
+
+**S3 · Never print an address with %d** — 0:30 · built from scene 9
+
+- **Hook (first 1.5s):** Terminal shows `-2051088252`: "That is NOT an address."
+- **Script:** Printing an address with percent d? GCC warns you, and you get a weird negative number. On a 64-bit computer an address is eight bytes, but percent d reads only four. Half an address is useless. Use percent p, with a void star cast. Addresses get percent p. Always.
+- **On-screen text:** ADDRESSES GET %p
+- **Caption + hashtags:** Half an address is no address. #cprogramming #debugging #kodingkonkani #learntocode #cbugs
+
+**S4 · Variable in Goa** — 0:12 · built from scene 7
+
+- **Hook (first 1.5s):** Xecxec on a beach with a map, looking lost.
+- **Script:** Why does a variable never get lost in Goa? Because it always knows its address.
+- **On-screen text:** IT ALWAYS KNOWS ITS ADDRESS
+- **Caption + hashtags:** Xecxec approves this pun. #programmerhumor #cprogramming #kodingkonkani #goa #codingmemes
+
+**S5 · Quiz: how many bytes?** — 0:20 · built from scenes 4 and 10
+
+- **Hook (first 1.5s):** "int, char, double. How many bytes each?"
+- **Script:** Quick quiz. On a normal 64-bit Windows or Linux computer, how many bytes does an int take? A char? A double? Answer in three, two, one. Four, one and eight. Now try this: print the address of three variables and find the two neighbours. Comment your answer.
+- **On-screen text:** 4 · 1 · 8
+- **Caption + hashtags:** Did you get all three? #cprogramming #codingquiz #kodingkonkani #learntocode #sizeof
+
+## EP 53 — What Is a Pointer?
+
+**Module 8 · Pointers · 7:00 · Lilac + Dark blue · Prerequisite: EP 52**
+
+**Learning goals:** declare a pointer with `int *p;`; store an address in it with `p = &age;`; read the value it points to with `*p`; explain why a pointer must point somewhere real before you use it.
+
+### YouTube
+
+- **Title:** Pointers Finally Make Sense | C Programming EP 53
+- **Description:** A pointer is just a variable that stores an address, like a GPS pin that stores a location. We draw every box and every arrow so you can see exactly what int \*p = &age does. Then we meet the most common pointer crash: a pointer that points nowhere. 0:00 The GPS pin · 0:20 Title · 0:25 A variable that holds an address · 1:25 Drawing the arrow · 2:25 Code, line by line · 3:55 Running it · 4:25 Pun · 4:30 The two stars · 5:15 Bug of the Day: uninitialised pointer · 6:15 Challenge · 6:40 Next episode
+- **Tags:** pointers in c, what is a pointer, c pointer tutorial, int pointer, dereference operator, address of operator, uninitialized pointer, c programming for beginners, learn c, koding konkani, c programming india, btech c programming
+- **Thumbnail:** big text "POINTERS = GPS PIN"; a lilac box `p` with a thick black arrow to box `age = 19`; a red map pin on top of `age`; Xecxec holding a phone with a map; lilac background, dark blue text block
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Phone map with a pin dropped on Calangute beach; WhatsApp "Location shared" bubble | Pin drops with a bounce; message pop sound; Xecxec taps the pin |
+| 2 | 0:20 | 0:05 | Title card | EP 53 · WHAT IS A POINTER? | Title slams in; claw-click |
+| 3 | 0:25 | 1:00 | Memory boxes | Box `age` at address 1000 holding 19; a new wider box `p` at address 2000, empty, labelled "holds an address" | `age` box from EP 52 slides back in; `p` box grows from a dot; label types out |
+| 4 | 1:25 | 1:00 | Memory boxes | `p` now holds the number 1000; a thick black arrow from `p` to `age`; side caption "p = &age" | The number 1000 flies from `age`'s gate sign into `p`; then the number fades into an arrow that draws itself; whoosh |
+| 5 | 2:25 | 1:30 | Code explain | `pointer.c` (13 lines) on cream panel; tracker shows age, p, \*p | Butter line highlights; tracker rows; mini memory diagram in a corner that updates with each line |
+| 6 | 3:55 | 0:30 | Terminal | Compile and run; sticky note "your addresses will differ" | Output prints line by line; `&age` and `p` lines flash together in mint because they match |
+| 7 | 4:25 | 0:05 | Pun card | "I asked my pointer for directions. It said: I can only point you to an address." | Card flips; Xecxec shrugs; rimshot |
+| 8 | 4:30 | 0:45 | Concept slide | Two cards side by side: `int *p;` labelled "declaration: p is a pointer" and `*p` labelled "use: go to the box" | Each star glows in a different colour (tomato, mint); cards swap places then settle |
+| 9 | 5:15 | 1:00 | Bug of the Day | `int *p; *p = 5;` with GCC warning; memory diagram with `p` holding "???" and an arrow wobbling into a dark area | Arrow wiggles randomly; crash sound; screen shakes; fixed code slides in with ding |
+| 10 | 6:15 | 0:25 | Challenge | "Change a value through a pointer" task card | Card unfolds; Xecxec points |
+| 11 | 6:40 | 0:20 | Outro | "Next: EP 54 · Dereferencing — knock on the door" | A claw knocks on a box door; knock sound; sign-off |
+
+### Narration script
+
+**\[1 · The GPS pin\]** When your friend asks where the party is, you do not send them the whole beach. You send a GPS pin. The pin is not the beach. It is just the location of the beach. Hold on to that idea, because a pointer is exactly that: a pin to a location in memory.
+
+**\[2 · Title\]** Episode fifty-three. What is a pointer?
+
+**\[3 · A variable that holds an address\]** Remember last episode. Our variable age lives in a box with the address 1000, and inside it is 19. We will use small, friendly numbers like 1000 on these diagrams. Real addresses are longer, but the idea is the same. Now, what if we want to save that address, 1000, for later? We need a variable that can hold an address. That kind of variable is called a pointer. Here it is: a new box, called p, living at address 2000. Notice it is wider. On a 64-bit computer, a pointer takes eight bytes, because addresses are big numbers. Right now p is empty. It is waiting for an address.
+
+**\[4 · Drawing the arrow\]** Now we write p equals ampersand age. Ampersand age gives 1000. So the number 1000 goes into box p. That is all that happens. p now holds 1000. But programmers draw it differently. Instead of writing 1000 inside p, we draw an arrow from p to the box at 1000. The arrow means "p points to age". The number and the arrow mean the same thing. Every time you see an arrow in this module, remember: it is just an address stored in a box. Let's go slowly once more. age holds 19. p holds the address of age. The arrow shows that link.
+
+**\[5 · Code, line by line\]** Here is the code. \[HL 4\] Line 4 creates age with the value 19. \[TRACK age=19\] \[HL 5\] Line 5 is the new line. Read it from the middle. int star p means: p is a pointer to an int. The star in a declaration means "this is a pointer". It is part of the type. Then equals ampersand age stores the address of age inside p. \[TRACK p=&age\] On the corner diagram, the arrow appears. \[HL 7\] Line 7 prints age: 19. \[HL 8\] Line 8 prints the address of age with percent p, just like EP 52. \[HL 9\] Line 9 prints p itself. p holds an address, so we use percent p and the void star cast again. This should print exactly the same number as line 8. \[HL 10\] Line 10 is the magic. star p, with no int in front. Here the star means "go to the address stored in p and get what is there". p holds 1000, so we go to box 1000 and find 19. \[TRACK \*p=19\] This is called dereferencing, and we spend the whole next episode on it. \[HL 11\] Line 11 prints ampersand p, the address of p itself. Yes, a pointer is also a variable, so it also has its own house. \[HL 12\] Return zero.
+
+**\[6 · Running it\]** Compile with gcc pointer dot c dash o pointer, and run. age is 19. The address of age and the value of p are the same number. That is the proof: p really holds the address of age. star p gives 19. And the address of p is different, because p lives in its own box. Your numbers will differ from mine, but the two matching lines will always match.
+
+**\[7 · Pun\]** I asked my pointer for directions. It said: sorry, I can only point you to an address.
+
+**\[8 · The two stars\]** Here is where many students get confused, so let's be very clear. The star has two jobs. In a declaration, like int star p, the star says "p is a pointer". It is part of the type. Anywhere else, like printf star p, the star says "go to the box p points to". Same symbol, two meanings. Think of it this way: when you make the pin, the star says "this is a pin". When you use the pin, the star says "go there".
+
+**\[9 · Bug of the Day\]** Today's bug is the most dangerous one in this module. int star p, then star p equals 5. Look at the diagram. p was never given an address. So it holds some leftover garbage number. The arrow points to a random place in memory. Writing 5 there could crash your program, or quietly damage some other data. GCC with dash Wall warns you: p is used uninitialized. Sometimes the program even seems to work, which is worse, because the bug hides. The fix: always give a pointer a real address before you use it. Make a variable, and point to it.
+
+**\[10 · Challenge\]** Your challenge. Make an int called score with the value 40. Make a pointer to it. Then, using only the pointer, change score to 100, and print score. Hint: star p can also be on the left side of an equals sign. Pause and try.
+
+**\[11 · Outro\]** A pointer is a box that holds an address, drawn as an arrow. Next episode we knock on the door at the end of that arrow, and read and write what lives there. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int age = 19;
+    int *p = &age;
+
+    printf("age      = %d\n", age);
+    printf("&age     = %p\n", (void *)&age);
+    printf("p        = %p\n", (void *)p);
+    printf("*p       = %d\n", *p);
+    printf("&p       = %p\n", (void *)&p);
+    return 0;
+}
+```
+
+**Expected output** (Windows sample; your addresses will differ, but `&age` and `p` always match):
+
+```text
+age      = 19
+&age     = 000000E1D07FF8AC
+p        = 000000E1D07FF8AC
+*p       = 19
+&p       = 000000E1D07FF8A0
+```
+
+### Bug of the Day
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int *p;
+    *p = 5;
+    printf("%d\n", *p);
+    return 0;
+}
+```
+
+GCC (`gcc -Wall bug.c`) prints:
+
+```text
+bug.c: In function 'main':
+bug.c:5:8: warning: 'p' is used uninitialized [-Wuninitialized]
+    5 |     *p = 5;
+      |     ~~~^~~
+bug.c:4:10: note: 'p' was declared here
+    4 |     int *p;
+      |          ^
+```
+
+The program has undefined behaviour: it may crash silently, crash with a segmentation fault, or even print `5` and hide the bug.
+
+Fixed:
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int value = 0;
+    int *p = &value;
+    *p = 5;
+    printf("%d\n", *p);
+    return 0;
+}
+```
+
+Why: a pointer that was never given an address holds garbage, so `*p` writes to a random place; point it at a real variable first.
+
+### Pun & challenge
+
+- **Pun:** "I asked my pointer for directions. It said: I can only point you to an address."
+- **Challenge:** Make `int score = 40;` and a pointer to it. Using only the pointer, change `score` to 100, then print `score`.
+- **Challenge answer:**
+
+```c
+int score = 40;
+int *p = &score;
+*p = 100;
+printf("%d\n", score);   /* prints 100 */
+```
+
+### Shorts for EP 53
+
+**S1 · A pointer is a GPS pin** — 0:25 · built from scenes 1 and 4
+
+- **Hook (first 1.5s):** Pin drops on a beach map: "This is a pointer."
+- **Script:** When you share a location, you send a pin, not the beach. A pointer in C is the same. It does not hold the value. It holds the address of the value. int star p equals ampersand age means: p stores where age lives. We draw that as an arrow. That is a pointer.
+- **On-screen text:** POINTER = ADDRESS IN A BOX
+- **Caption + hashtags:** The simplest way to picture a pointer. #cprogramming #pointers #kodingkonkani #learntocode #ctutorial
+
+**S2 · Pointers in 30 seconds** — 0:30 · built from scenes 3–5
+
+- **Hook (first 1.5s):** Three boxes: age, p, arrow. "Three lines. That's it."
+- **Script:** Line one: int age equals 19. A box holding 19. Line two: int star p equals ampersand age. A pointer box holding age's address, drawn as an arrow. Line three: print star p. Follow the arrow, find 19. Ampersand gives the address. Star follows it.
+- **On-screen text:** & GETS IT · \* FOLLOWS IT
+- **Caption + hashtags:** Save this for exam day. #cprogramming #pointers #kodingkonkani #codingtips #learntocode
+
+**S3 · The pointer that points nowhere** — 0:35 · built from scene 9
+
+- **Hook (first 1.5s):** An arrow wobbling into darkness: "Where is this pointing?"
+- **Script:** int star p. Then star p equals 5. Looks fine? It is not. p was never given an address, so it holds garbage and points somewhere random. Writing there can crash your program, or worse, seem to work. GCC warns: p is used uninitialized. Always point to a real variable first.
+- **On-screen text:** NEVER USE AN EMPTY POINTER
+- **Caption + hashtags:** The number one pointer crash. #cprogramming #debugging #kodingkonkani #pointers #cbugs
+
+**S4 · Asking a pointer for directions** — 0:12 · built from scene 7
+
+- **Hook (first 1.5s):** Xecxec on a scooter, lost at a junction.
+- **Script:** I asked my pointer for directions. It said: sorry, I can only point you to an address.
+- **On-screen text:** I CAN ONLY POINT YOU TO AN ADDRESS
+- **Caption + hashtags:** Pointers are not tour guides. #programmerhumor #cprogramming #kodingkonkani #codingmemes #pointers
+
+**S5 · Quiz: what does star-p print?** — 0:20 · built from scenes 5 and 10
+
+- **Hook (first 1.5s):** `int age = 19; int *p = &age;` and a big question mark.
+- **Script:** age is 19. p equals ampersand age. What does star p print? An address? Or 19? Answer: 19. Star follows the arrow to the value. Now your turn: change a variable using only its pointer. Comment your code.
+- **On-screen text:** \*p = ?
+- **Caption + hashtags:** Did you say 19? #cprogramming #codingquiz #kodingkonkani #pointers #learntocode
+
+## EP 54 — Dereferencing
+
+**Module 8 · Pointers · 6:45 · Lilac + Dark blue · Prerequisite: EP 53**
+
+**Learning goals:** read a value through a pointer with `*p`; write a value through a pointer with `*p = ...`; use `(*p)++` correctly and know why the brackets matter; tell `*` and `&` apart in any line of code.
+
+### YouTube
+
+- **Title:** Knock on the Door: Dereferencing in C | EP 54
+- **Description:** Dereferencing means following the arrow and reading or changing what lives at the other end. We change a variable without ever writing its name, one box at a time, and clear up the star-versus-ampersand confusion for good. 0:00 The fish stall · 0:20 Title · 0:25 Knock on the door · 1:15 Reading through a pointer · 1:45 Code, line by line · 3:25 Running it · 3:50 Pun · 3:55 Why (\*p)++ needs brackets · 4:40 Bug of the Day: \* vs & · 5:50 Challenge · 6:25 Next episode
+- **Tags:** dereferencing pointer c, dereference operator, pointers in c, \* and & in c, change value using pointer, c pointer examples, c programming tutorial, learn c, koding konkani, c for beginners india, pointer arithmetic basics, engineering c programming
+- **Thumbnail:** big text "KNOCK KNOCK \*p"; a claw knocking on a lilac box door with `fish = 31` behind it; black arrow from `p`; Xecxec mid-knock with a surprised face; lilac background, dark blue text block
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Mapusa fish market stall with a crate of 10 mackerels; a slip of paper with "Stall 1000" | Slip flutters from a hand to Xecxec; market chatter ambience |
+| 2 | 0:20 | 0:05 | Title card | EP 54 · DEREFERENCING | Title slams in; claw-click |
+| 3 | 0:25 | 0:50 | Memory boxes | Box `fish` at 1000 holding 10, with a door; box `p` at 2000 holding 1000, arrow to `fish` | Claw follows the arrow, knocks twice on `fish`'s door; door opens to show 10; knock-knock SFX |
+| 4 | 1:15 | 0:30 | Memory boxes | New box `copy` at 1004; 10 copied from `fish` into `copy` via the arrow | A glowing "10" travels along the arrow then drops into `copy`; soft pop |
+| 5 | 1:45 | 1:40 | Code explain | `deref.c` (20 lines); tracker: fish, copy, p; corner memory diagram updates each write | Butter highlights; each write through `*p` makes the `fish` box flash tomato then settle; tick sound per change |
+| 6 | 3:25 | 0:25 | Terminal | Compile and run | Output lines print one by one; numbers 10, 25, 30, 31 flash mint |
+| 7 | 3:50 | 0:05 | Pun card | "Pointers are very polite. They always knock before they enter." | Card flips; Xecxec tips an imaginary hat; rimshot |
+| 8 | 3:55 | 0:45 | Memory boxes | Two panels: `(*p)++` grows `fish` from 30 to 31; `*p++` moves the arrow one box right without changing `fish` | Left panel: number ticks up; right panel: arrow slides to the neighbour box, red X appears; buzzer |
+| 9 | 4:40 | 1:10 | Bug of the Day | `int *p = fish;` with GCC warning and a crash; side card "& makes a pin, \* follows a pin" | Arrow tries to point to address 10, lands in a dark zone; crash crunch; fixed line slides in |
+| 10 | 5:50 | 0:35 | Challenge | "Swap the right way (no functions yet)" task card | Two boxes with pointers; question mark between them; Xecxec juggles two shells |
+| 11 | 6:25 | 0:20 | Outro | "Next: EP 55 · Call by reference — fixing the swap from EP 38" | The broken swap from EP 38 flashes; claw-click; sign-off |
+
+### Narration script
+
+**\[1 · The fish stall\]** At the Mapusa market, your mother gives you a slip of paper that says "Stall 1000". The slip is not the fish. It just tells you where the fish is. To get the fish, you have to walk to stall 1000 and look inside. In C, walking to the address and looking inside has a name: dereferencing.
+
+**\[2 · Title\]** Episode fifty-four. Dereferencing.
+
+**\[3 · Knock on the door\]** Here is our memory again. A box called fish, at address 1000, holding 10. A pointer called p, holding the address 1000, so we draw an arrow from p to fish. Last episode you saw that star p gives you 10. Let's slow down and see what really happens. First, the computer looks inside p and finds 1000. Second, it goes to house 1000. Third, it knocks on the door and looks inside. That is star p. Three steps: read the address, go there, use what is inside. Dereferencing is just a big word for "knock on the door at the end of the arrow".
+
+**\[4 · Reading through a pointer\]** If we write int copy equals star p, the computer follows the arrow, sees 10, and puts a copy of 10 into a new box called copy. Notice: fish still has 10. Reading through a pointer does not change anything. It just looks.
+
+**\[5 · Code, line by line\]** Now the full program. \[HL 4\] Line 4: fish equals 10. \[TRACK fish=10\] \[HL 5\] Line 5: p is a pointer to an int, and it holds the address of fish. The arrow appears. \[TRACK p=&fish\] \[HL 7\] Line 7 prints fish: 10. \[HL 9\] Line 9 reads through the pointer. Star p is 10, so copy becomes 10. \[TRACK copy=10\] \[HL 10\] Line 10 prints it. Now the exciting part. \[HL 12\] Line 12: star p equals 25. When star p is on the left of the equals sign, we are not reading. We are writing. Follow the arrow, open the door, and replace what is inside with 25. Watch the fish box. \[TRACK fish=25\] We changed fish without ever writing the word fish! \[HL 13\] Line 13 proves it: fish is now 25. \[HL 15\] Line 15: star p equals star p plus 5. Read the right side first. Star p is 25, plus 5 is 30. Then write 30 through the pointer. \[TRACK fish=30\] \[HL 16\] Line 16 prints 30. \[HL 18\] Line 18: bracket star p bracket plus plus. This adds 1 to the value at the end of the arrow. \[TRACK fish=31\] \[HL 19\] Line 19 prints 31. \[HL 20\] And return zero.
+
+**\[6 · Running it\]** Compile and run. Before: 10. Read through p: 10. After star p equals 25: 25. Then 30. Then 31. Every change to fish happened through p. These are values, not addresses, so your output will match mine exactly.
+
+**\[7 · Pun\]** Pointers are very polite. They always knock before they enter.
+
+**\[8 · Why the brackets matter\]** Why did we write bracket star p bracket plus plus, and not just star p plus plus? Because in C, plus plus is applied before the star. So star p plus plus, without brackets, means: move p to the next box, and then read the old box. The arrow moves, and fish does not change at all. Look at the right panel: the arrow slides away to the neighbour. That is not what we wanted. With brackets, we say "first follow the arrow, then add one to what is there". So when you want to change the value, always use brackets. We'll see moving pointers on purpose in EP 56.
+
+**\[9 · Bug of the Day\]** Today's bug: mixing up star and ampersand. Someone writes int star p equals fish. No ampersand. GCC warns: initialization of int star from int makes pointer from integer without a cast. What happened? p was given the value 10, not the address of fish. So the arrow points to house number 10, which does not belong to our program. Then star p tries to knock on that door, and the program crashes with a segmentation fault. On Windows it may just stop without printing anything. Here is the simple rule, on the card. Ampersand makes a pin. Star follows a pin. When you set up a pointer, you need ampersand. When you use a pointer to reach the value, you need star.
+
+**\[10 · Challenge\]** Your challenge. Make two ints, a equals 3 and b equals 7. Make two pointers, pa pointing to a and pb pointing to b. Now swap the values of a and b, using only pa and pb, and a temp variable. Then print a and b. If you get 7 and 3, you are ready for the next episode. Pause and try.
+
+**\[11 · Outro\]** You can now read and write through a pointer. Remember EP 38, where our swap function did not swap? Next episode, we finally fix it. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int fish = 10;
+    int *p = &fish;
+
+    printf("Before: fish = %d\n", fish);
+
+    int copy = *p;
+    printf("Read through p: %d\n", copy);
+
+    *p = 25;
+    printf("After *p = 25: fish = %d\n", fish);
+
+    *p = *p + 5;
+    printf("After *p = *p + 5: fish = %d\n", fish);
+
+    (*p)++;
+    printf("After (*p)++: fish = %d\n", fish);
+    return 0;
+}
+```
+
+**Expected output:**
+
+```text
+Before: fish = 10
+Read through p: 10
+After *p = 25: fish = 25
+After *p = *p + 5: fish = 30
+After (*p)++: fish = 31
+```
+
+### Bug of the Day
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int fish = 10;
+    int *p = fish;
+    printf("%d\n", *p);
+    return 0;
+}
+```
+
+GCC (`gcc -Wall bug.c`) prints:
+
+```text
+bug.c: In function 'main':
+bug.c:5:14: warning: initialization of 'int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+    5 |     int *p = fish;
+      |              ^~~~
+```
+
+Running it crashes with a segmentation fault (on Windows the program usually just exits without printing anything).
+
+Note: GCC 14 and later turn this warning into an error by default (`error: initialization of 'int *' from 'int' makes pointer from integer without a cast`).
+
+Fixed:
+
+```c
+    int *p = &fish;
+```
+
+Why: without `&`, the pointer receives the value 10 instead of the address of `fish`, so `*p` knocks on house number 10, which the program does not own.
+
+### Pun & challenge
+
+- **Pun:** "Pointers are very polite. They always knock before they enter."
+- **Challenge:** With `int a = 3, b = 7;` and pointers `pa` and `pb`, swap `a` and `b` using only the pointers and a `temp` variable. Print `a` and `b`.
+- **Challenge answer:**
+
+```c
+int a = 3, b = 7;
+int *pa = &a, *pb = &b;
+int temp = *pa;
+*pa = *pb;
+*pb = temp;
+printf("a = %d, b = %d\n", a, b);   /* a = 7, b = 3 */
+```
+
+### Shorts for EP 54
+
+**S1 · Change a variable without its name** — 0:25 · built from scenes 1 and 5
+
+- **Hook (first 1.5s):** `fish` box jumps from 10 to 25: "I never wrote fish."
+- **Script:** Watch. fish is 10. p points to fish. Now: star p equals 25. Print fish. It is 25! We changed fish without ever writing its name. Star p on the left means follow the arrow and write there. That is dereferencing.
+- **On-screen text:** \*p = 25 CHANGES fish
+- **Caption + hashtags:** Spooky, but it is just a pointer. #cprogramming #pointers #kodingkonkani #learntocode #ctutorial
+
+**S2 · Dereferencing in 30 seconds** — 0:30 · built from scenes 3–4
+
+- **Hook (first 1.5s):** Claw knocks on a box door: "This is star p."
+- **Script:** Dereferencing has three steps. Read the address inside p. Go to that house. Knock and look inside. On the right side of equals, star p reads the value. On the left side, star p writes a new value. Same knock, two jobs.
+- **On-screen text:** READ · GO · KNOCK
+- **Caption + hashtags:** Three steps, every time. #cprogramming #pointers #kodingkonkani #codingtips #learntocode
+
+**S3 · Missing ampersand = crash** — 0:35 · built from scene 9
+
+- **Hook (first 1.5s):** `int *p = fish;` then the screen cracks.
+- **Script:** int star p equals fish. One missing ampersand. Now p holds 10, not the address of fish. Star p knocks on house number 10, which your program does not own. Crash. Remember: ampersand makes a pin, star follows a pin.
+- **On-screen text:** & MAKES A PIN · \* FOLLOWS IT
+- **Caption + hashtags:** One symbol, one crash. #cprogramming #debugging #kodingkonkani #pointers #cbugs
+
+**S4 · Polite pointers** — 0:12 · built from scene 7
+
+- **Hook (first 1.5s):** Xecxec in a tiny bow tie at a door.
+- **Script:** Pointers are very polite. They always knock before they enter.
+- **On-screen text:** THEY ALWAYS KNOCK FIRST
+- **Caption + hashtags:** Manners matter, even in memory. #programmerhumor #cprogramming #kodingkonkani #codingmemes #pointers
+
+**S5 · Quiz: brackets or not?** — 0:25 · built from scene 8
+
+- **Hook (first 1.5s):** `(*p)++` vs `*p++` side by side: "Same thing?"
+- **Script:** fish is 30 and p points to it. Which line makes fish 31? Bracket star p bracket plus plus, or star p plus plus? Answer: only the one with brackets. Without brackets, the arrow moves and fish stays 30. Comment if you got it.
+- **On-screen text:** WHICH ONE MAKES 31?
+- **Caption + hashtags:** Brackets save lives. #cprogramming #codingquiz #kodingkonkani #pointers #learntocode
+
+## EP 55 — Call by Reference
+
+**Module 8 · Pointers · 7:30 · Lilac + Dark blue · Prerequisite: EP 38, EP 54**
+
+**Learning goals:** explain, with a memory diagram, why the EP 38 `swap` failed; write a `swap(int *a, int *b)` that really swaps; call it correctly with `swap(&x, &y)`; use pointer parameters to get two results out of one function.
+
+### YouTube
+
+- **Title:** Fixing the Swap That Didn't Swap | C Programming EP 55
+- **Description:** In EP 38 our swap function failed because C passes copies. Now that we know pointers, we pass addresses instead and finally fix it. Every stack box and every arrow is drawn, step by step. 0:00 The broken swap returns · 0:20 Title · 0:25 Why EP 38 failed · 1:35 Send the address, not the copy · 2:35 Watch the swap happen · 3:35 Code, line by line · 4:50 Running it · 5:10 Pun · 5:15 Bug of the Day: passing the value, not the address · 6:20 Challenge: two results from one function · 7:05 Next episode
+- **Tags:** call by reference in c, swap using pointers, pointers as function parameters, call by value vs call by reference, swap function c, c pointers tutorial, c programming for beginners, learn c, koding konkani, c programming india, class 12 c, engineering first year c
+- **Thumbnail:** big text "SWAP FIXED!"; two lilac boxes `x = 9` and `y = 5` with crossing black arrows from `a` and `b`; a tomato "EP 38" stamp crossed out; Xecxec holding two shells, one in each claw, grinning; lilac background, dark blue text block
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Code explain | EP 38's `swap(int a, int b)` and its output "After: x = 5, y = 9" | Old code slides in with a faded "EP 38" stamp; output line flashes tomato; sad trombone; Xecxec facepalms |
+| 2 | 0:20 | 0:05 | Title card | EP 55 · CALL BY REFERENCE | Title slams in; claw-click |
+| 3 | 0:25 | 1:10 | Memory boxes | Two stack frames: `main` (x=5 at 1000, y=9 at 1004) and `swap` (a=5 at 3000, b=9 at 3004, temp at 3008) | `main` frame drops in; `swap` frame stacks above it; 5 and 9 photocopied across with a copier sound; a and b swap inside `swap`; `swap` frame dissolves; x and y unchanged; sad ding |
+| 4 | 1:35 | 1:00 | Memory boxes | Same `main` frame; new `swap` frame where a holds 1000 and b holds 1004; arrows from a to x and from b to y | Addresses 1000 and 1004 fly from x and y gate signs into a and b; numbers turn into arrows; whoosh |
+| 5 | 2:35 | 1:00 | Memory boxes | Step counter 1/3, 2/3, 3/3; temp box; x and y changing through the arrows | Step 1: 5 travels from x along arrow into temp. Step 2: 9 travels from y to x. Step 3: 5 travels from temp to y. Each step a tick; final frame dissolves, x=9 and y=5 stay and flash mint; cheer |
+| 6 | 3:35 | 1:15 | Code explain | `swap.c` (15 lines); tracker shows x, y, a, b, temp; corner diagram from scene 5 replays per line | Butter highlights; tracker values update in sync |
+| 7 | 4:50 | 0:20 | Terminal | Compile and run: Before 5 9, After 9 5 | Output prints; "After" line flashes mint; party popper |
+| 8 | 5:10 | 0:05 | Pun card | "Call by value sends a photocopy. Call by reference sends your house keys." | Card flips; Xecxec jingles a key ring; rimshot |
+| 9 | 5:15 | 1:05 | Bug of the Day | `swap(x, y)` with the pointer version; GCC warning and a crash | a and b receive 5 and 9 as if they were addresses; arrows point to houses 5 and 9 in a dark zone; crash crunch; fix `swap(&x, &y)` slides in |
+| 10 | 6:20 | 0:45 | Challenge | "One function, two answers" — `divide(17, 5, &q, &r)` task card | Two empty boxes q and r with arrows coming from a function machine; Xecxec taps |
+| 11 | 7:05 | 0:25 | Outro | "Next: EP 56 · Pointer arithmetic — walking down the street" | Arrow walks along a row of boxes; footstep SFX; sign-off |
+
+### Narration script
+
+**\[1 · The broken swap returns\]** Remember this? EP 38. We wrote a swap function, called it with x equals 5 and y equals 9, and printed them. They were still 5 and 9. Our swap did not swap. We promised to fix it once we learned pointers. Today, we keep that promise.
+
+**\[2 · Title\]** Episode fifty-five. Call by reference.
+
+**\[3 · Why EP 38 failed\]** Let's draw what happened, very slowly. When main runs, it gets its own area of memory, called a stack frame. Inside it are x at address 1000, holding 5, and y at address 1004, holding 9. Now main calls swap of x comma y. C creates a new stack frame for swap, on top. Inside it are a, b and temp, at their own addresses: 3000, 3004 and 3008. And here is the key moment. C does not send x and y. It sends photocopies. 5 is copied into a, and 9 is copied into b. This is call by value. Now swap does its job perfectly. a becomes 9, b becomes 5. But look: these are the copies. x and y, down in main, never moved. Then swap ends, and its whole frame disappears. Gone. x is still 5. y is still 9. The swap happened, but on the photocopies.
+
+**\[4 · Send the address, not the copy\]** So how do we let swap reach x and y? We give it their addresses. Instead of sending the values 5 and 9, main sends ampersand x and ampersand y, which are 1000 and 1004. Now swap's parameters must be pointers: int star a and int star b. Look at the frame. a holds 1000, so it points to x. b holds 1004, so it points to y. The arrows cross from the swap frame down into main's frame. We are still copying something, but this time we copy the addresses. And with an address, you can knock on the real door. This is called call by reference, or more exactly in C, passing a pointer.
+
+**\[5 · Watch the swap happen\]** Three steps. Step one: int temp equals star a. Follow a's arrow to x, find 5, and put it in temp. Step two: star a equals star b. Follow b's arrow to y, find 9, then follow a's arrow and write 9 into x. Now x is 9. Step three: star b equals temp. Take the 5 from temp, follow b's arrow, and write it into y. Now y is 5. swap ends, its frame disappears, including a, b and temp. But this time x and y keep their new values, because we changed the real boxes. x is 9. y is 5. Finally!
+
+**\[6 · Code, line by line\]** Here is the full program. \[HL 3\] Line 3: void swap, bracket int star a, comma, int star b. Both parameters are pointers to int. The function returns nothing, because it does its work through the arrows. \[HL 4\] Line 4: temp gets star a, which is 5. \[TRACK temp=5\] \[HL 5\] Line 5: star a equals star b. x becomes 9. \[TRACK x=9\] \[HL 6\] Line 6: star b equals temp. y becomes 5. \[TRACK y=5\] \[HL 9\] Now main, from line 9. \[HL 10\] Line 10 creates x equals 5 and y equals 9. \[TRACK x=5\] \[TRACK y=9\] \[HL 11\] Line 11 prints them before. \[HL 12\] Line 12 is the important call: swap of ampersand x, comma, ampersand y. We send addresses. \[TRACK a=&x\] \[TRACK b=&y\] Then lines 4 to 6 run, as we just saw. \[HL 13\] Line 13 prints them after. \[HL 14\] Return zero. Here's a simple way to remember. If a function needs to change your variable, it needs your variable's address. Star in the function header, ampersand in the call.
+
+**\[7 · Running it\]** Compile and run. Before: x equals 5, y equals 9. After: x equals 9, y equals 5. Seventeen episodes later, swap finally swaps. You also already know one function that works like this: scanf. That is why we always wrote ampersand in scanf. scanf needs the address so it can write your input into your variable.
+
+**\[8 · Pun\]** Call by value sends a photocopy. Call by reference sends your house keys.
+
+**\[9 · Bug of the Day\]** Today's bug: you wrote the new pointer swap, but you call it the old way, swap of x comma y, without ampersands. GCC warns twice: passing argument 1 of swap makes pointer from integer without a cast, and a note: expected int star but argument is of type int. Now watch the diagram. a receives 5, and treats it as an address. So a points to house number 5. b points to house number 9. Our program does not own those houses. The moment swap knocks on them, the program crashes with a segmentation fault. The fix is just two ampersands: swap of ampersand x, comma, ampersand y. Star in the header, ampersand in the call. Note: newer GCC versions, 14 and up, make this an error instead of a warning, which is a good thing.
+
+**\[10 · Challenge\]** A C function can return only one value. But with pointers, it can give back as many as you like. Your challenge: write void divide, with int a, int b, int star q, int star r. It should store a divided by b in star q, and the remainder in star r. Call it from main with 17 and 5, and print "17 / 5 = 3 remainder 2". Pause and try.
+
+**\[11 · Outro\]** You just fixed the most famous bug in beginner C. Next episode, our arrows start walking: pointer arithmetic, and what p plus plus really does. Keep coding, says Xecxec!
+
+### Code shown
+
+Recap from EP 38 (shown in scene 1):
+
+```c
+void swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+```
+
+```text
+Before: x = 5, y = 9
+After:  x = 5, y = 9
+```
+
+The fixed program, `swap.c`:
+
+```c
+#include <stdio.h>
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main(void) {
+    int x = 5, y = 9;
+    printf("Before: x = %d, y = %d\n", x, y);
+    swap(&x, &y);
+    printf("After:  x = %d, y = %d\n", x, y);
+    return 0;
+}
+```
+
+**Expected output:**
+
+```text
+Before: x = 5, y = 9
+After:  x = 9, y = 5
+```
+
+### Bug of the Day
+
+```c
+#include <stdio.h>
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main(void) {
+    int x = 5, y = 9;
+    swap(x, y);
+    printf("x = %d, y = %d\n", x, y);
+    return 0;
+}
+```
+
+GCC 13 (`gcc -Wall bug.c`) prints:
+
+```text
+bug.c: In function 'main':
+bug.c:11:10: warning: passing argument 1 of 'swap' makes pointer from integer without a cast [-Wint-conversion]
+   11 |     swap(x, y);
+      |          ^
+      |          |
+      |          int
+bug.c:3:16: note: expected 'int *' but argument is of type 'int'
+    3 | void swap(int *a, int *b) {
+      |           ~~~~~^
+bug.c:11:13: warning: passing argument 2 of 'swap' makes pointer from integer without a cast [-Wint-conversion]
+   11 |     swap(x, y);
+      |             ^
+      |             |
+      |             int
+bug.c:3:24: note: expected 'int *' but argument is of type 'int'
+    3 | void swap(int *a, int *b) {
+      |                   ~~~~~^
+```
+
+Running it crashes with a segmentation fault before printing anything (on Windows it usually exits silently). GCC 14 and later report these as errors.
+
+Fixed:
+
+```c
+    swap(&x, &y);
+```
+
+Why: the function expects addresses, but `x` and `y` send the values 5 and 9, which are then used as house numbers the program does not own.
+
+### Pun & challenge
+
+- **Pun:** "Call by value sends a photocopy. Call by reference sends your house keys."
+- **Challenge:** Write `void divide(int a, int b, int *q, int *r)` that stores the quotient in `*q` and the remainder in `*r`. Call it with 17 and 5 and print `17 / 5 = 3 remainder 2`.
+- **Challenge answer:**
+
+```c
+void divide(int a, int b, int *q, int *r) {
+    *q = a / b;
+    *r = a % b;
+}
+
+/* in main */
+int q, r;
+divide(17, 5, &q, &r);
+printf("17 / 5 = %d remainder %d\n", q, r);
+```
+
+### Shorts for EP 55
+
+**S1 · Why your swap didn't swap** — 0:30 · built from scenes 1 and 3
+
+- **Hook (first 1.5s):** "After: x = 5, y = 9" flashes red: "Your swap is lying to you."
+- **Script:** You wrote a swap function, and nothing swapped. Here is why. C sends photocopies of x and y into the function. The function swaps the copies perfectly. Then the function ends, and the copies are thrown away. Your real x and y never moved. The fix is one idea: send the address. Full episode on the channel.
+- **On-screen text:** C SENDS PHOTOCOPIES
+- **Caption + hashtags:** The most famous beginner bug in C. #cprogramming #pointers #kodingkonkani #learntocode #ctutorial
+
+**S2 · Call by reference in 30 seconds** — 0:35 · built from scenes 4–5
+
+- **Hook (first 1.5s):** Two arrows cross from `a` and `b` into `x` and `y`.
+- **Script:** To let a function change your variables, send their addresses. In the call: swap of ampersand x, ampersand y. In the function: int star a, int star b. Then temp equals star a, star a equals star b, star b equals temp. The function follows the arrows and changes the real boxes. x and y are swapped.
+- **On-screen text:** \* IN THE HEADER · & IN THE CALL
+- **Caption + hashtags:** Write this on your exam sheet. #cprogramming #pointers #kodingkonkani #codingtips #callbyreference
+
+**S3 · Forgot the ampersands** — 0:30 · built from scene 9
+
+- **Hook (first 1.5s):** `swap(x, y);` then the screen cracks.
+- **Script:** Your swap takes pointers, but you called swap of x comma y. GCC warns: makes pointer from integer without a cast. Now a points to house number 5, which your program does not own. Crash. The fix: swap of ampersand x, ampersand y. Two characters.
+- **On-screen text:** swap(&x, &y) NOT swap(x, y)
+- **Caption + hashtags:** Two characters, one crash. #cprogramming #debugging #kodingkonkani #pointers #cbugs
+
+**S4 · Photocopy vs house keys** — 0:12 · built from scene 8
+
+- **Hook (first 1.5s):** Xecxec holding a photocopy in one claw and keys in the other.
+- **Script:** Call by value sends a photocopy. Call by reference sends your house keys.
+- **On-screen text:** PHOTOCOPY vs HOUSE KEYS
+- **Caption + hashtags:** Choose wisely who gets your keys. #programmerhumor #cprogramming #kodingkonkani #codingmemes #pointers
+
+**S5 · Quiz: why does scanf need &?** — 0:25 · built from scenes 7 and 10
+
+- **Hook (first 1.5s):** `scanf("%d", &n);` with the ampersand glowing.
+- **Script:** Quick quiz. Why does scanf need ampersand n, but printf does not? Answer: scanf has to write into n, so it needs n's address. printf only reads n, so a copy is fine. Now your challenge: write one function that gives back both a quotient and a remainder. Comment your code.
+- **On-screen text:** WHY THE & IN scanf?
+- **Caption + hashtags:** You have been using pointers since your first scanf. #cprogramming #codingquiz #kodingkonkani #pointers #learntocode
+
+## EP 56 — Pointer Arithmetic
+
+**Module 8 · Pointers · 7:00 · Lilac + Dark blue · Prerequisite: EP 55**
+
+**Learning goals:** predict how far `p++` and `p + 2` move for an `int *` and a `char *`; subtract two pointers to count the elements between them; walk an array with a pointer instead of an index; explain why arithmetic on a `void *` is not allowed in standard C.
+
+### YouTube
+
+- **Title:** What p++ Really Does to a Pointer | C Programming EP 56
+- **Description:** Adding 1 to a pointer does not add 1 to the address. It moves to the next element, and the step size depends on the type. We walk down a street of memory boxes, one int at a time, and see exactly how far each step goes. 0:00 Walking down the street · 0:20 Title · 0:25 One step = one element · 1:30 Different types, different steps · 2:20 Code, line by line · 3:50 Running it · 4:20 Pun · 4:25 Rules: what you can and cannot do · 5:10 Bug of the Day: arithmetic on void\* · 6:10 Challenge · 6:40 Next episode
+- **Tags:** pointer arithmetic in c, p++ in c, pointer increment, pointer subtraction, void pointer arithmetic, pointers and arrays, c pointers tutorial, learn c, koding konkani, c programming for beginners, c programming india, engineering c
+- **Thumbnail:** big text "p++ = +4 BYTES?"; a row of four lilac boxes with an arrow jumping from the first to the second, a curved "+4" above the jump; Xecxec walking with footprints; lilac background, dark blue text block
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | A Goan street of houses where each house is 4 plots wide; Xecxec walks "one house" and covers 4 plots | Camera follows Xecxec; footstep per plot; ding at each gate |
+| 2 | 0:20 | 0:05 | Title card | EP 56 · POINTER ARITHMETIC | Title slams in; claw-click |
+| 3 | 0:25 | 1:05 | Memory boxes | `marks[4]` = 72, 85, 91, 64 at addresses 1000, 1004, 1008, 1012; byte ruler under them; pointer `p` with arrow to 1000 | Boxes drop in; byte ruler ticks; `p` arrow jumps one box at a time on `p++`; a "+4" arc appears with each jump |
+| 4 | 1:30 | 0:50 | Memory boxes | Second row: `char word[3]` = G, O, A at 2000, 2001, 2002, with pointer `c`; side table: char +1, int +4, double +8 | `c` hops in tiny 1-byte steps; the side table fills row by row |
+| 5 | 2:20 | 1:30 | Code explain | `arith.c` (22 lines); tracker: p (as "points to marks\[i\]"), \*p, c | Butter highlights; corner diagram arrow moves in sync with each line |
+| 6 | 3:50 | 0:30 | Terminal | Compile and run; sticky note "your addresses will differ, the gaps will not" | Output prints; the last two hex digits of each address glow, with "+4" and "+8" tags between them |
+| 7 | 4:20 | 0:05 | Pun card | "My pointer joined a gym. Now it does p++ every morning." | Card flips; Xecxec lifts a tiny dumbbell; rimshot |
+| 8 | 4:25 | 0:45 | Concept slide | Two columns: Allowed (p + n, p - n, p++, p--, p2 - p1, p1 < p2 in the same array) and Not allowed (p1 + p2, p \* 2, going past the end) | Mint ticks pop next to allowed items; tomato crosses next to the others |
+| 9 | 5:10 | 1:00 | Bug of the Day | `void *v = marks; v++;` with a big garbage number output | Arrow moves only 1 byte, landing in the middle of a box; box splits in half; buzzer; fixed `int *v` slides in |
+| 10 | 6:10 | 0:30 | Challenge | "Walk an array with p++" task card | Arrow walks along 5 boxes, printing each value |
+| 11 | 6:40 | 0:20 | Outro | "Next: EP 57 · Pointers & arrays — the locker row's first key" | A row of lockers; a key glows on the first one; sign-off |
+
+### Narration script
+
+**\[1 · Walking down the street\]** Imagine a street where every house is four plots wide. If I say "walk to the next house", you do not walk one plot. You walk four. Pointers work exactly like this. When you add 1 to a pointer, it walks to the next house, not the next plot.
+
+**\[2 · Title\]** Episode fifty-six. Pointer arithmetic.
+
+**\[3 · One step = one element\]** Here is an array of four marks: 72, 85, 91 and 64. Each one is an int, so each one takes four bytes. Let's say the array starts at address 1000. Then 72 is at 1000, 85 is at 1004, 91 is at 1008, and 64 is at 1012. Under the boxes you can see the byte ruler, with every single byte marked. Now we make a pointer p that points to the first box, at 1000. What happens if we write p plus plus? You might think the address becomes 1001. But look. The arrow jumps a whole box, to 1004. Because p is an int pointer, C knows that one step means one int, which is four bytes. So p plus plus adds four to the address. Now star p is 85. Now p plus 2. That means two more ints, so eight more bytes: 1004 plus 8 is 1012. Star p is now 64. The rule is simple. Adding n to a pointer moves it n elements, not n bytes.
+
+**\[4 · Different types, different steps\]** The step size depends on the type. Here is a char array with the letters G, O, A. Each char is one byte. So a char pointer moves one byte per step. 2000, 2001, 2002. An int pointer moves four. A double pointer moves eight. The pointer always moves by the size of the thing it points to. That is why the type in int star matters so much. It tells C how big each step is.
+
+**\[5 · Code, line by line\]** Here is the program. \[HL 4\] Line 4 creates the marks array. \[HL 5\] Line 5: p points to marks of zero, the first box. \[TRACK p=marks\[0\]\] \[HL 7\] Line 7 prints where p points and what is there: 72. \[TRACK \*p=72\] \[HL 8\] Line 8: p plus plus. The arrow jumps one int. \[TRACK p=marks\[1\]\] \[TRACK \*p=85\] \[HL 9\] Line 9 prints the new address and 85. \[HL 10\] Line 10: p equals p plus 2. Two more ints. \[TRACK p=marks\[3\]\] \[TRACK \*p=64\] \[HL 11\] Line 11 prints the address and 64. \[HL 13\] Line 13 makes a second pointer called first, pointing to the start. \[HL 14\] Line 14 subtracts the pointers: p minus first. You might expect 12, because the addresses are 12 bytes apart. But pointer subtraction also counts in elements, so the answer is 3. The format code for this is percent t d. \[HL 16\] Line 16 makes a char array with G, O, A. \[HL 17\] Line 17: c points to it. Notice we wrote just word, without ampersand and without square brackets. An array name already gives the address of its first element. We will explore that properly next episode. \[TRACK c=word\[0\]\] \[HL 18\] Line 18 prints c's address. \[HL 19\] Line 19: c plus plus. \[TRACK c=word\[1\]\] \[HL 20\] Line 20 prints the new address, which is only one byte further. \[HL 21\] Return zero.
+
+**\[6 · Running it\]** Compile and run. Look only at the last two digits of each address. From the first line to the second, the address grows by 4. From the second to the third, by 8. Remember, these are hexadecimal: 80, 84, 8C. 8C is 140 in decimal, and 84 is 132, so the gap is really 8. The distance prints as 3 elements. And the char pointer moves by just 1. Your full addresses will differ, but these gaps will be the same on your machine.
+
+**\[7 · Pun\]** My pointer joined a gym. Now it does p plus plus every morning.
+
+**\[8 · Rules\]** Let's list what is allowed. You can add a whole number to a pointer, or subtract one. You can use plus plus and minus minus. You can subtract two pointers, if they point into the same array, and you get the number of elements between them. You can compare two pointers into the same array with less than or greater than. But you cannot add two pointers together. Address plus address means nothing, like adding two house numbers. You cannot multiply a pointer. And you must not walk past the end of the array and read there. C will not stop you, but you will read garbage or crash.
+
+**\[9 · Bug of the Day\]** Today's bug: arithmetic on a void pointer. A void pointer is a general pointer that does not say what type it points to. We met it in EP 52 with percent p. Here, someone writes void star v equals marks, then v plus plus, and then reads it as an int. In standard C, this is not allowed, because C does not know how big a step should be. GCC allows it as an extension and treats the step as one byte, and with the default settings it does not even warn. So v moves only one byte, into the middle of the first int. Reading there gives a nonsense number, mixing bytes from 72 and 85. If you add the flag dash W pointer dash arith, GCC tells you: wrong type argument to increment. The fix: use a pointer of the real type, int star. Then plus plus moves one whole int, and you get 85.
+
+**\[10 · Challenge\]** Your challenge. Make an array of five ints: 3, 1, 4, 1, 5. Print all five values with a for loop, but do not use square brackets, and do not use an index i. Use only a pointer and p plus plus. Hint: the loop can stop when p reaches a plus 5. Pause and try.
+
+**\[11 · Outro\]** Now you know that pointers walk in steps the size of their type. Next episode, we see the big secret: an array name is already a pointer to its first element, almost. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int marks[4] = {72, 85, 91, 64};
+    int *p = &marks[0];
+
+    printf("p     points to %p, value %d\n", (void *)p, *p);
+    p++;
+    printf("p++   points to %p, value %d\n", (void *)p, *p);
+    p = p + 2;
+    printf("p + 2 points to %p, value %d\n", (void *)p, *p);
+
+    int *first = &marks[0];
+    printf("Distance: %td elements\n", p - first);
+
+    char word[3] = {'G', 'O', 'A'};
+    char *c = word;
+    printf("c   at %p\n", (void *)c);
+    c++;
+    printf("c++ at %p (moved 1 byte)\n", (void *)c);
+    return 0;
+}
+```
+
+**Expected output** (Windows sample; your addresses will differ, but the gaps of 4, 8 and 1 bytes will match):
+
+```text
+p     points to 0000009F8E9FFA80, value 72
+p++   points to 0000009F8E9FFA84, value 85
+p + 2 points to 0000009F8E9FFA8C, value 64
+Distance: 3 elements
+c   at 0000009F8E9FFA7D
+c++ at 0000009F8E9FFA7E (moved 1 byte)
+```
+
+### Bug of the Day
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int marks[4] = {72, 85, 91, 64};
+    void *v = marks;
+    v++;
+    printf("%d\n", *(int *)v);
+    return 0;
+}
+```
+
+With plain `gcc -Wall bug.c`, GCC 13 gives no warning (void pointer arithmetic is a GCC extension). The program prints a nonsense number; on Windows and Linux PCs (little-endian) it is:
+
+```text
+1426063360
+```
+
+With `gcc -Wall -Wpointer-arith bug.c` (or `-Wpedantic`), GCC warns:
+
+```text
+bug.c: In function 'main':
+bug.c:6:6: warning: wrong type argument to increment [-Wpointer-arith]
+    6 |     v++;
+      |      ^~
+```
+
+Fixed:
+
+```c
+    int *v = marks;
+    v++;
+    printf("%d\n", *v);   /* prints 85 */
+```
+
+Why: a `void *` has no element size, so standard C forbids stepping it; GCC steps one byte, landing in the middle of an int.
+
+### Pun & challenge
+
+- **Pun:** "My pointer joined a gym. Now it does p++ every morning."
+- **Challenge:** Print all values of `int a[5] = {3, 1, 4, 1, 5};` using only a pointer and `p++` — no square brackets, no index.
+- **Challenge answer:**
+
+```c
+int a[5] = {3, 1, 4, 1, 5};
+for (int *p = a; p < a + 5; p++) {
+    printf("%d ", *p);
+}
+printf("\n");   /* 3 1 4 1 5 */
+```
+
+### Shorts for EP 56
+
+**S1 · p++ does not add 1** — 0:25 · built from scenes 1 and 3
+
+- **Hook (first 1.5s):** Address 1000, then `p++`, then 1004: "Wait, plus FOUR?"
+- **Script:** p points to an int at address 1000. We do p plus plus. The new address is not 1001. It is 1004. Because an int is four bytes, and a pointer always steps one whole element. One house, not one plot. That is pointer arithmetic.
+- **On-screen text:** p++ = NEXT ELEMENT
+- **Caption + hashtags:** Pointers walk in houses, not plots. #cprogramming #pointers #kodingkonkani #learntocode #ctutorial
+
+**S2 · Pointer arithmetic in 30 seconds** — 0:30 · built from scenes 3–4
+
+- **Hook (first 1.5s):** Three arrows hopping at three speeds: char, int, double.
+- **Script:** Add 1 to a char pointer, it moves 1 byte. To an int pointer, 4 bytes. To a double pointer, 8 bytes. The pointer always moves by the size of its type. And subtracting two pointers gives elements, not bytes. 12 bytes apart for ints means 3 elements.
+- **On-screen text:** STEP = sizeof(TYPE)
+- **Caption + hashtags:** Save this for your viva. #cprogramming #pointers #kodingkonkani #codingtips #learntocode
+
+**S3 · The void pointer trap** — 0:30 · built from scene 9
+
+- **Hook (first 1.5s):** Output `1426063360`: "Where did this come from?"
+- **Script:** void star v points to an int array. v plus plus. Then read it as an int. You get one billion four hundred million. Why? A void pointer has no size, so GCC moves just one byte, into the middle of an int. Standard C does not even allow this. Use a real type like int star.
+- **On-screen text:** NO MATHS ON void\*
+- **Caption + hashtags:** Half an int is not an int. #cprogramming #debugging #kodingkonkani #pointers #cbugs
+
+**S4 · Pointer gym** — 0:12 · built from scene 7
+
+- **Hook (first 1.5s):** Xecxec lifting a dumbbell shaped like an arrow.
+- **Script:** My pointer joined a gym. Now it does p plus plus every morning.
+- **On-screen text:** p++ EVERY MORNING
+- **Caption + hashtags:** Gains: 4 bytes per rep. #programmerhumor #cprogramming #kodingkonkani #codingmemes #pointers
+
+**S5 · Quiz: what does p - first give?** — 0:25 · built from scenes 5 and 10
+
+- **Hook (first 1.5s):** Two arrows on an int array, 12 bytes apart: "12 or 3?"
+- **Script:** Two int pointers into the same array. Their addresses are 12 bytes apart. What does p minus first print? 12, or 3? Answer: 3. Pointer subtraction counts elements. Now try the challenge: print an array using only p plus plus. Comment your loop.
+- **On-screen text:** 12 OR 3?
+- **Caption + hashtags:** Did you say 3? #cprogramming #codingquiz #kodingkonkani #pointers #learntocode
+
+## EP 57 — Pointers & Arrays
+
+**Module 8 · Pointers · 7:15 · Lilac + Dark blue · Prerequisite: EP 56, EP 41**
+
+**Learning goals:** explain why an array name gives the address of its first element; read `a[i]` as `*(a + i)`; pass an array to a function as a pointer plus a length; recognise why a function must never return the address of a local array.
+
+### YouTube
+
+- **Title:** Arrays Are Secretly Pointers (Almost) | C Programming EP 57
+- **Description:** An array name quietly turns into a pointer to its first element. That is why a\[i\] works, why functions need the length passed in, and why returning a local array crashes. We draw the locker row, the key, and every arrow. 0:00 The locker row · 0:20 Title · 0:25 The array name is the first key · 1:25 a\[i\] is \*(a + i) · 2:20 Code, line by line · 4:00 Running it · 4:25 Pun · 4:30 Almost a pointer: two differences · 5:15 Bug of the Day: returning a local array · 6:30 Challenge · 6:55 Next episode
+- **Tags:** pointers and arrays in c, array name as pointer, array decay c, a\[i\] vs \*(a+i), passing array to function c, return local array c, c pointers tutorial, learn c, koding konkani, c programming for beginners, c programming india, engineering c
+- **Thumbnail:** big text "a\[i\] = \*(a+i)"; a row of five lilac lockers with a key labelled `marks` on the first; a black arrow from the key; Xecxec holding a huge key; lilac background, dark blue text block
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | A college locker row, five lockers in a line; a single key tagged "Locker 1" | Key spins in; Xecxec counts lockers with his claw; metal clank |
+| 2 | 0:20 | 0:05 | Title card | EP 57 · POINTERS & ARRAYS | Title slams in; claw-click |
+| 3 | 0:25 | 1:00 | Memory boxes | `marks[5]` = 72, 85, 91, 64, 88 at 1000–1016; label `marks` with an arrow to 1000; `&marks[0]` label beside it showing the same 1000 | Both labels flash and their arrows land on the same box; "same address" stamp; ding |
+| 4 | 1:25 | 0:55 | Memory boxes | Expression ladder: `marks + 2` = 1008, `*(marks + 2)` = 91, `marks[2]` = 91 | Arrow walks two boxes; the box opens to show 91; `marks[2]` slides down to sit next to `*(marks + 2)` with an equals sign |
+| 5 | 2:20 | 1:40 | Code explain | `arrays.c` (22 lines); tracker: marks (address), i, total; two stack frames shown in the corner when `sum` is called | Butter highlights; when `sum` runs, an arrow from `arr` in the `sum` frame points down to `marks` in `main`'s frame |
+| 6 | 4:00 | 0:25 | Terminal | Compile and run; sticky note "your addresses will differ" | Two address lines flash together in mint; Total 400 pops |
+| 7 | 4:25 | 0:05 | Pun card | "Why did the array break up with the pointer? It needed more space, not just an address." | Card flips; Xecxec shrugs; rimshot |
+| 8 | 4:30 | 0:45 | Concept slide | Two differences: `sizeof(marks)` = 20 in main vs 8 for a pointer; `marks = p;` not allowed | sizeof bars grow side by side; a tomato lock icon appears on `marks` |
+| 9 | 5:15 | 1:15 | Bug of the Day | `make_marks()` returning a local array; GCC warning; stack frame disappearing while an arrow still points into it | Frame dissolves; arrow dangles into empty space; crash crunch; fixed version where `main` owns the array slides in |
+| 10 | 6:30 | 0:25 | Challenge | "Sum an array with two pointers: start and end" task card | Two arrows at both ends of a locker row, one walks toward the other |
+| 11 | 6:55 | 0:20 | Outro | "Next: EP 58 · Strings were pointers all along" | Letters B-A-G-A slide into boxes with a `\0` at the end; sign-off |
+
+### Narration script
+
+**\[1 · The locker row\]** In college, the lockers stand in one long row. If you know where locker 1 is, you can find any locker. Locker 3? Just walk two lockers along. You do not need five keys. You only need to know where the row starts. Arrays in C work exactly like this.
+
+**\[2 · Title\]** Episode fifty-seven. Pointers and arrays.
+
+**\[3 · The array name is the first key\]** Here is an array called marks, with five ints: 72, 85, 91, 64 and 88. Remember from EP 56: ints are four bytes, so the boxes are at 1000, 1004, 1008, 1012 and 1016. Now, the big secret. When you use the name marks in an expression, C quietly turns it into the address of the first element. So marks gives you 1000. And ampersand marks of zero also gives 1000. Same arrow, same box. This automatic change is often called "array decay": the array name decays into a pointer to its first element. That is why in EP 56 we could write char star c equals word, with no ampersand.
+
+**\[4 · a\[i\] means star of a plus i\]** Now let's use EP 56's pointer arithmetic. marks plus 2 means: start at the first box, walk two ints. That is address 1008. Star of marks plus 2 knocks on that door and finds 91. And what is marks square bracket 2? Also 91. That's not a coincidence. In C, a square bracket i is defined to mean star of a plus i. Every time you have used square brackets since EP 41, C was doing pointer arithmetic behind your back. The square brackets are just a nicer way to write it.
+
+**\[5 · Code, line by line\]** Here is our program. \[HL 3\] Line 3 defines a function called sum. Its first parameter is const int star arr, a pointer to the first element. The word const promises that sum will only read the marks, not change them. The second parameter, n, is how many elements there are. \[HL 4\] Line 4 sets total to zero. \[HL 5\] Line 5 loops i from 0 to n minus 1. \[HL 6\] Line 6 adds star of arr plus i. That is the same as arr square bracket i. \[HL 8\] Line 8 returns total. \[HL 11\] Line 11 starts main. \[HL 12\] Line 12 creates marks with five values. \[HL 14\] Line 14 prints marks with percent p. \[HL 15\] Line 15 prints ampersand marks of zero. These two lines will show the same address. \[HL 16\] Line 16 prints marks square bracket 2: 91. \[HL 17\] Line 17 prints star of marks plus 2: also 91. \[HL 19\] Line 19 prints sizeof marks inside main. Here marks is still the real array, so the answer is 5 times 4, which is 20 bytes. \[HL 20\] Line 20 calls sum of marks comma 5. Watch the corner. C does not copy all five boxes into sum. It only sends the address 1000. So arr, inside sum's frame, is a pointer with an arrow pointing down into main's array. \[TRACK arr=&marks\[0\]\] The loop runs: \[TRACK total=72\] \[TRACK total=157\] \[TRACK total=248\] \[TRACK total=312\] \[TRACK total=400\] and sum returns 400. This is also why sum needs n. arr is only a pointer. It knows where the row starts, but not how long it is. \[HL 21\] Return zero.
+
+**\[6 · Running it\]** Compile and run. The first two lines show the same address. Then 91 and 91. sizeof marks is 20. And the total is 400. Your addresses will be different, but the two lines will always match each other.
+
+**\[7 · Pun\]** Why did the array break up with the pointer? It needed more space, not just an address.
+
+**\[8 · Almost a pointer\]** We keep saying "almost". An array is not a pointer. Its name just turns into one most of the time. Two differences matter. First: sizeof. In main, sizeof marks is 20, the whole array. But a pointer is always 8 bytes on a 64-bit computer. So inside sum, sizeof arr would give 8, not 20. That's why you cannot find an array's length inside a function. Pass it in. Second: you cannot change where an array lives. marks equals some other pointer is an error. A pointer variable can be moved; an array name cannot.
+
+**\[9 · Bug of the Day\]** Today's bug: returning a local array. Someone writes a function make\_marks that creates an int array inside it, and returns marks. GCC warns: function returns address of local variable. Watch the diagram. make\_marks has its own stack frame, with the array inside. It returns the address of that array. Then the function ends, and its frame disappears. But main is holding an arrow that points into the empty space where the frame used to be. That's called a dangling pointer. With GCC, the returned address is actually replaced by an invalid one, and the program crashes when main reads it. The fix: let main own the array, and pass it into the function to fill. In Module 10 you will learn another fix, using malloc.
+
+**\[10 · Challenge\]** Your challenge. Write a function int sum\_ptr, that takes two pointers: const int star start, and const int star end. end points just past the last element. Add up everything from start to end, using a while loop and start plus plus. Call it with sum\_ptr of a comma a plus 5. You should get 400 for our marks. Pause and try.
+
+**\[11 · Outro\]** Arrays and pointers are close cousins. Next episode, we meet the third cousin: strings. You'll see that strings were pointers all along. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int sum(const int *arr, int n) {
+    int total = 0;
+    for (int i = 0; i < n; i++) {
+        total += *(arr + i);
+    }
+    return total;
+}
+
+int main(void) {
+    int marks[5] = {72, 85, 91, 64, 88};
+
+    printf("marks     = %p\n", (void *)marks);
+    printf("&marks[0] = %p\n", (void *)&marks[0]);
+    printf("marks[2]     = %d\n", marks[2]);
+    printf("*(marks + 2) = %d\n", *(marks + 2));
+
+    printf("sizeof(marks) in main = %zu\n", sizeof(marks));
+    printf("Total = %d\n", sum(marks, 5));
+    return 0;
+}
+```
+
+**Expected output** (Windows sample; your addresses will differ, but the two lines always match):
+
+```text
+marks     = 00000071B0BFF7F0
+&marks[0] = 00000071B0BFF7F0
+marks[2]     = 91
+*(marks + 2) = 91
+sizeof(marks) in main = 20
+Total = 400
+```
+
+### Bug of the Day
+
+```c
+#include <stdio.h>
+
+int *make_marks(void) {
+    int marks[3] = {72, 85, 91};
+    return marks;
+}
+
+int main(void) {
+    int *m = make_marks();
+    printf("%d\n", m[0]);
+    return 0;
+}
+```
+
+GCC (`gcc -Wall bug.c`) prints:
+
+```text
+bug.c: In function 'make_marks':
+bug.c:5:12: warning: function returns address of local variable [-Wreturn-local-addr]
+    5 |     return marks;
+      |            ^~~~~
+```
+
+Running it crashes (segmentation fault on Linux; on Windows the program exits without printing). GCC replaces the returned address with NULL, so `m[0]` reads address 0.
+
+Fixed:
+
+```c
+#include <stdio.h>
+
+void fill_marks(int *marks) {
+    marks[0] = 72;
+    marks[1] = 85;
+    marks[2] = 91;
+}
+
+int main(void) {
+    int m[3];
+    fill_marks(m);
+    printf("%d\n", m[0]);
+    return 0;
+}
+```
+
+```text
+72
+```
+
+Why: a local array lives in its function's stack frame, which disappears when the function returns, so its address is no longer valid.
+
+### Pun & challenge
+
+- **Pun:** "Why did the array break up with the pointer? It needed more space, not just an address."
+- **Challenge:** Write `int sum_ptr(const int *start, const int *end)` that adds every element from `start` up to (not including) `end` using `start++`. Call it as `sum_ptr(a, a + 5)`.
+- **Challenge answer:**
+
+```c
+int sum_ptr(const int *start, const int *end) {
+    int total = 0;
+    while (start < end) {
+        total += *start;
+        start++;
+    }
+    return total;
+}
+/* with a = {72, 85, 91, 64, 88}: sum_ptr(a, a + 5) returns 400 */
+```
+
+### Shorts for EP 57
+
+**S1 · Your array is lying to you** — 0:25 · built from scenes 1 and 3
+
+- **Hook (first 1.5s):** `marks` and `&marks[0]` print the same address: "Same thing?!"
+- **Script:** Print the array name marks with percent p. Now print ampersand marks of zero. Same address! When you use an array's name, C quietly turns it into a pointer to the first element. Like a locker row: know where locker 1 is, and you can find them all.
+- **On-screen text:** ARRAY NAME = FIRST ADDRESS
+- **Caption + hashtags:** The locker row secret. #cprogramming #pointers #kodingkonkani #arrays #learntocode
+
+**S2 · a\[i\] in 30 seconds** — 0:30 · built from scene 4
+
+- **Hook (first 1.5s):** `a[i]` morphs into `*(a + i)`.
+- **Script:** What does a square bracket i really mean? C defines it as star of a plus i. Start at the first element, walk i steps, knock on the door. So marks square bracket 2 and star of marks plus 2 are exactly the same. Square brackets are pointer arithmetic in a nice outfit.
+- **On-screen text:** a\[i\] == \*(a + i)
+- **Caption + hashtags:** You have been doing pointer maths all along. #cprogramming #pointers #kodingkonkani #codingtips #arrays
+
+**S3 · Never return a local array** — 0:35 · built from scene 9
+
+- **Hook (first 1.5s):** A stack frame dissolves while an arrow still points into it.
+- **Script:** A function makes an array and returns it. GCC warns: function returns address of local variable. When the function ends, its frame vanishes, and your pointer points into nothing. The program crashes. Fix: let the caller own the array and pass it in to be filled.
+- **On-screen text:** LOCAL ARRAY DIES WITH ITS FUNCTION
+- **Caption + hashtags:** The arrow outlived the house. #cprogramming #debugging #kodingkonkani #pointers #cbugs
+
+**S4 · Array breakup** — 0:12 · built from scene 7
+
+- **Hook (first 1.5s):** An array box and a pointer arrow sitting apart on a bench.
+- **Script:** Why did the array break up with the pointer? It needed more space, not just an address.
+- **On-screen text:** MORE SPACE, NOT AN ADDRESS
+- **Caption + hashtags:** Relationship advice from C. #programmerhumor #cprogramming #kodingkonkani #codingmemes #pointers
+
+**S5 · Quiz: sizeof inside a function** — 0:25 · built from scene 8
+
+- **Hook (first 1.5s):** "sizeof(marks) is 20 in main. What is it inside sum?"
+- **Script:** An array of five ints. In main, sizeof gives 20. Pass it to a function and check sizeof there. What do you get? Answer: 8 on a 64-bit computer. The function only received a pointer. That's why we always pass the length. Comment if you knew.
+- **On-screen text:** 20 IN main, 8 IN sum
+- **Caption + hashtags:** Pass the length, always. #cprogramming #codingquiz #kodingkonkani #pointers #learntocode
+
+## EP 58 — Pointers & Strings
+
+**Module 8 · Pointers · 7:00 · Lilac + Dark blue · Prerequisite: EP 57, EP 45**
+
+**Learning goals:** explain the difference between `char town[] = "Mapusa";` and `const char *beach = "Baga";` with a memory diagram; walk a string with a `char` pointer until `'\0'`; know why changing a string literal crashes, and use `const` to make GCC catch it.
+
+### YouTube
+
+- **Title:** Strings Were Pointers All Along | C Programming EP 58
+- **Description:** A string in C is just characters in a row ending with \\0, and a char pointer can walk along them. We draw the difference between a char array and a string literal, and see why changing "Baga" through a pointer crashes your program. 0:00 Beach name boards · 0:20 Title · 0:25 Array copy vs literal · 1:35 Walking a string · 2:20 Code, line by line · 3:55 Running it · 4:20 Pun · 4:25 The const habit · 5:05 Bug of the Day: modifying a string literal · 6:15 Challenge: your own strlen · 6:40 Next episode
+- **Tags:** pointers and strings in c, char pointer, string literal c, char array vs char pointer, const char pointer, segmentation fault string, strlen with pointers, c strings tutorial, learn c, koding konkani, c programming for beginners, c programming india
+- **Thumbnail:** big text "STRINGS = POINTERS?"; letters B-A-G-A-\\0 in lilac boxes with a black arrow from `beach`; a tomato padlock on the boxes; Xecxec in sunglasses on a beach towel; lilac background, dark blue text block
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Two beach signs: a painted wooden "Mapusa" sign you own, and a government "Baga" board behind a fence | Xecxec repaints his own sign happily; tries the fenced board and gets a buzz; wave sounds |
+| 2 | 0:20 | 0:05 | Title card | EP 58 · POINTERS & STRINGS | Title slams in; claw-click |
+| 3 | 0:25 | 1:10 | Memory boxes | Left: stack array `town` with 7 boxes M-a-p-u-s-a-\\0. Right: read-only area (grey, padlocked) with B-a-g-a-\\0, and a stack box `beach` (8 bytes) with an arrow to it | Left letters drop into the stack boxes, copied from a faded literal; right side padlock clicks; arrow draws from `beach` |
+| 4 | 1:35 | 0:45 | Memory boxes | Pointer `p` walking B, a, g, a, then stopping at \\0 | Arrow hops one box per step with a footstep; each letter prints below with a dash; red stop sign at \\0 |
+| 5 | 2:20 | 1:35 | Code explain | `strings.c` (21 lines); tracker: town, p, \*p | Butter highlights; scene 4 diagram replays in the corner during the loop |
+| 6 | 3:55 | 0:25 | Terminal | Compile and run | Output prints; `sizeof` line highlights 7 vs 8 with a balance-scale icon |
+| 7 | 4:20 | 0:05 | Pun card | "Why are strings so calm? They always know where to stop: at \\0." | Card flips; Xecxec does yoga on the beach; rimshot |
+| 8 | 4:25 | 0:40 | Concept slide | Rule card: "Pointing at a literal? Write const char \*" | Word `const` stamps on with a thud; padlock icon |
+| 9 | 5:05 | 1:10 | Bug of the Day | `char *beach = "Baga"; beach[0] = 'b';` — no warning, crash; then `const char *` version showing GCC error | Arrow tries to repaint the padlocked B; padlock zaps; crash; then error message types out in butter, Xecxec nods |
+| 10 | 6:15 | 0:25 | Challenge | "Write your own strlen with pointers" task card | Arrow races along "Calangute"; counter ticks to 9 |
+| 11 | 6:40 | 0:20 | Outro | "Next: EP 59 · Pointer to pointer & NULL" | A pin pointing at another pin; sign-off |
+
+### Narration script
+
+**\[1 · Beach name boards\]** Here are two signs. One is a wooden "Mapusa" sign that you painted yourself. It's yours, so you can repaint it anytime. The other is a big "Baga" board put up by the government, behind a fence. You can look at it and point at it, but you are not allowed to change it. In C, strings come in these same two kinds.
+
+**\[2 · Title\]** Episode fifty-eight. Pointers and strings.
+
+**\[3 · Array copy vs literal\]** First, remember from EP 45: a string in C is just characters in a row, ending with a special zero character, written backslash zero. Now look at two lines. Line one: char town square brackets equals "Mapusa". This creates an array of 7 chars on the stack, six letters plus the backslash zero, and copies the letters into it. town is your own wooden sign. You can change any letter. Line two: const char star beach equals "Baga". This time there is no array of our own. The text "Baga" is a string literal. The compiler stores it in a special read-only part of memory, shown here in grey with a padlock. beach is just a pointer, eight bytes on the stack, holding the address of the B. So beach points at the government board. You can read it, but you must not change it. The const at the front is our promise that we will not try.
+
+**\[4 · Walking a string\]** Since a string is chars in a row, we can walk it with a char pointer, just like EP 56. p starts at the B. Star p is B. p plus plus, star p is a. Then g. Then a. Next is backslash zero. That's our stop sign. A loop that runs while star p is not backslash zero will visit every letter and stop at the end. This is how printf, strlen and every string function in C really work.
+
+**\[5 · Code, line by line\]** Here is the program. \[HL 4\] Line 4: town is an array, 7 chars, holding a copy of "Mapusa". \[TRACK town="Mapusa"\] \[HL 5\] Line 5: beach is a pointer to a read-only literal. \[TRACK beach=&"Baga"\[0\]\] \[HL 7\] Line 7 prints both with percent s. percent s takes the address of the first char and prints until backslash zero. \[HL 9\] Line 9 changes town square bracket 0 to a small m. That's fine, because town is our own array. \[TRACK town="mapusa"\] \[HL 10\] Line 10 prints "mapusa". \[HL 12\] Line 12: p is another const char pointer, starting where beach points. \[TRACK p=&B\] \[HL 13\] Line 13: while star p is not equal to backslash zero. \[HL 14\] Line 14 prints the current char and a dash. \[TRACK \*p='B'\] \[HL 15\] Line 15: p plus plus, move to the next letter. \[TRACK \*p='a'\] \[TRACK \*p='g'\] \[TRACK \*p='a'\] \[TRACK \*p='\\0'\] Now star p is backslash zero, so the loop stops. \[HL 17\] Line 17 prints a newline. \[HL 19\] Line 19 prints two sizes. sizeof town is 7, the whole array. sizeof beach is 8, because beach is only a pointer. Same as EP 57. \[HL 20\] Return zero.
+
+**\[6 · Running it\]** Compile and run. "Mapusa and Baga". "Changed: mapusa". Then B dash a dash g dash a dash. And sizes 7 and 8. The 8 is for a 64-bit computer; it is the size of an address, not the length of "Baga".
+
+**\[7 · Pun\]** Why are strings so calm? They always know where to stop.
+
+**\[8 · The const habit\]** One simple habit will save you from today's bug. Whenever a pointer points at a string literal, write const char star, not just char star. C allows plain char star for old reasons, but the literal is still read-only. Adding const lets the compiler catch your mistakes.
+
+**\[9 · Bug of the Day\]** Today's bug: changing a string literal. char star beach equals "Baga", then beach square bracket 0 equals small b. GCC compiles this with no warning at all, even with dash Wall. But when you run it, the program tries to repaint the government board. The memory is read-only, so the operating system stops it: segmentation fault. On Windows, the program just closes without printing. Now add const, as in scene 8. GCC now refuses to compile: error, assignment of read-only location star beach. That error is your friend. It caught the bug before you ran anything. And if you really need to change the letters, make your own copy with an array: char beach square brackets equals "Baga".
+
+**\[10 · Challenge\]** Your challenge. Write your own strlen, called my\_strlen. It takes const char star s and returns a size t. Use a pointer to walk until backslash zero, then return how far you walked. Hint: in EP 56 we learned that subtracting two pointers gives the number of elements between them. Test it with "Calangute", which should give 9, and an empty string, which should give 0. Pause and try.
+
+**\[11 · Outro\]** Strings are just char pointers walking to a backslash zero. Next episode we go one level deeper: a pointer that points to another pointer, and the special value NULL. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    char town[] = "Mapusa";
+    const char *beach = "Baga";
+
+    printf("%s and %s\n", town, beach);
+
+    town[0] = 'm';
+    printf("Changed: %s\n", town);
+
+    const char *p = beach;
+    while (*p != '\0') {
+        printf("%c-", *p);
+        p++;
+    }
+    printf("\n");
+
+    printf("sizeof town = %zu, sizeof beach = %zu\n", sizeof town, sizeof beach);
+    return 0;
+}
+```
+
+**Expected output** (the pointer size 8 is for 64-bit systems):
+
+```text
+Mapusa and Baga
+Changed: mapusa
+B-a-g-a-
+sizeof town = 7, sizeof beach = 8
+```
+
+### Bug of the Day
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    char *beach = "Baga";
+    beach[0] = 'b';
+    printf("%s\n", beach);
+    return 0;
+}
+```
+
+`gcc -Wall bug.c` gives **no warning**. Running it crashes: `Segmentation fault` on Linux; on Windows the program exits without printing anything.
+
+With `const` added (`const char *beach = "Baga";`), GCC refuses to compile:
+
+```text
+bug.c: In function 'main':
+bug.c:5:14: error: assignment of read-only location '*beach'
+    5 |     beach[0] = 'b';
+      |              ^
+```
+
+Fixed (make your own copy if you need to change it):
+
+```c
+    char beach[] = "Baga";
+    beach[0] = 'b';
+    printf("%s\n", beach);   /* prints baga */
+```
+
+Why: a string literal lives in read-only memory, so writing to it is undefined behaviour; an array gives you your own writable copy.
+
+### Pun & challenge
+
+- **Pun:** "Why are strings so calm? They always know where to stop: at \\0."
+- **Challenge:** Write `size_t my_strlen(const char *s)` using a pointer that walks to `'\0'`. Test it with `"Calangute"` (9) and `""` (0).
+- **Challenge answer:**
+
+```c
+size_t my_strlen(const char *s) {
+    const char *p = s;
+    while (*p != '\0') {
+        p++;
+    }
+    return p - s;
+}
+/* my_strlen("Calangute") is 9, my_strlen("") is 0 */
+```
+
+### Shorts for EP 58
+
+**S1 · You cannot repaint the Baga board** — 0:25 · built from scenes 1 and 3
+
+- **Hook (first 1.5s):** A padlocked "Baga" board: "You can point. You cannot paint."
+- **Script:** Two strings. char town brackets equals "Mapusa" makes your own copy in an array. You can change it. const char star beach equals "Baga" just points at a read-only literal. You can read it, never change it. Same text, very different memory.
+- **On-screen text:** ARRAY = YOURS · LITERAL = READ-ONLY
+- **Caption + hashtags:** Know which sign you own. #cprogramming #strings #kodingkonkani #pointers #learntocode
+
+**S2 · How strings really work in 30s** — 0:30 · built from scene 4
+
+- **Hook (first 1.5s):** Arrow hopping B-a-g-a, then a stop sign at \\0.
+- **Script:** A string is just chars in a row, ending with backslash zero. A char pointer starts at the first letter. Print star p, then p plus plus. Repeat until star p is backslash zero. That's how printf, strlen and every string function in C work inside.
+- **On-screen text:** WALK UNTIL \\0
+- **Caption + hashtags:** Every string function, in one loop. #cprogramming #strings #kodingkonkani #codingtips #pointers
+
+**S3 · No warning, still crashes** — 0:35 · built from scenes 8–9
+
+- **Hook (first 1.5s):** `beach[0] = 'b';` then the screen cracks.
+- **Script:** char star beach equals "Baga". Then change the first letter. GCC gives no warning. But the program crashes, because string literals are read-only. Now add const. GCC stops you with an error: assignment of read-only location. Always write const char star for literals.
+- **On-screen text:** ALWAYS const char\* FOR LITERALS
+- **Caption + hashtags:** Let the compiler catch it for you. #cprogramming #debugging #kodingkonkani #strings #cbugs
+
+**S4 · Calm strings** — 0:12 · built from scene 7
+
+- **Hook (first 1.5s):** Xecxec meditating on a beach towel.
+- **Script:** Why are strings so calm? They always know where to stop.
+- **On-screen text:** THEY KNOW WHERE TO STOP
+- **Caption + hashtags:** Inner peace, ending in \\0. #programmerhumor #cprogramming #kodingkonkani #codingmemes #strings
+
+**S5 · Quiz: 7 or 8?** — 0:25 · built from scenes 6 and 10
+
+- **Hook (first 1.5s):** `sizeof town` and `sizeof beach` side by side with question marks.
+- **Script:** town is an array holding "Mapusa". beach is a pointer to "Baga". What is sizeof town? 7, six letters plus backslash zero. And sizeof beach? 8 on a 64-bit computer, the size of a pointer, not the length of Baga. Now write your own strlen with pointers. Comment your code.
+- **On-screen text:** 7 vs 8
+- **Caption + hashtags:** Did you get both? #cprogramming #codingquiz #kodingkonkani #strings #learntocode
+
+## EP 59 — Pointer to Pointer & NULL
+
+**Module 8 · Pointers · 7:15 · Lilac + Dark blue · Prerequisite: EP 58**
+
+**Learning goals:** draw and read a two-level chain `int **pp = &p;`; use `**pp` to reach the final value; use `NULL` to mean "points nowhere" and always check it before dereferencing; use a pointer-to-pointer parameter to let a function change which variable a pointer points at.
+
+### YouTube
+
+- **Title:** Double Pointers and NULL, Drawn Slowly | C Programming EP 59
+- **Description:** A pointer is a variable, so it has an address too, and another pointer can point at it. We draw the chain from pp to p to the value, then meet NULL, the pointer that safely points nowhere, and the crash you get when you forget to check it. 0:00 A pin to a pin · 0:20 Title · 0:25 Pointers have addresses too · 1:30 Following two arrows · 2:20 Code, line by line · 3:45 Running it · 4:05 Pun · 4:10 Why you need a double pointer · 5:05 Bug of the Day: dereferencing NULL · 6:20 Challenge · 6:50 Next episode
+- **Tags:** pointer to pointer in c, double pointer c, int \*\* in c, null pointer c, dereferencing null, segmentation fault c, null check c, c pointers tutorial, learn c, koding konkani, c programming for beginners, c programming india
+- **Thumbnail:** big text "\*\* AND NULL"; three lilac boxes in a row, `pp` to `p` to `bus = 42`, two thick black arrows; a fourth box `q` with a NULL sign and no arrow; Xecxec dizzy with two map pins over his head; lilac background, dark blue text block
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | Phone chat: a friend shares a pin to "Kadamba bus stand"; Xecxec forwards that message to another friend | Pin drops; forward arrow; second phone receives a pin to the first pin; message pops |
+| 2 | 0:20 | 0:05 | Title card | EP 59 · POINTER TO POINTER & NULL | Title slams in; claw-click |
+| 3 | 0:25 | 1:05 | Memory boxes | `bus` at 1000 holding 42; `p` at 2000 holding 1000; `pp` at 3000 holding 2000 | Boxes build left to right; each address number flies into the next box, then turns into an arrow; two whooshes |
+| 4 | 1:30 | 0:50 | Memory boxes | Same chain; labels `pp` = 2000, `*pp` = 1000, `**pp` = 42 | A glowing claw follows one arrow for `*pp` (one knock), then both for `**pp` (two knocks); knock SFX per hop |
+| 5 | 2:20 | 1:25 | Code explain | `double.c` (21 lines); tracker: bus, p, pp, q | Butter highlights; corner chain diagram updates; `q` box appears with a NULL sign |
+| 6 | 3:45 | 0:20 | Terminal | Compile and run | Output prints; 50 flashes mint |
+| 7 | 4:05 | 0:05 | Pun card | "My pointer said it was going nowhere in life. I said: that's fine, as long as you're NULL and not garbage." | Card flips; Xecxec pats a box labelled NULL; rimshot |
+| 8 | 4:10 | 0:55 | Memory boxes | Function `point_to_bigger(&big, &x, &y)`: `main` frame (x=12, y=30, big=NULL) and function frame (slot, a, b); `slot` arrow points to `big` | `slot` arrow reaches into main's `big`; `big` changes from NULL to an arrow pointing at y; ding |
+| 9 | 5:05 | 1:15 | Bug of the Day | `int *p = NULL; printf("%d\n", *p);` — crash; then the safe version with `if (p != NULL)` | Claw follows an arrow into a box marked 0 surrounded by a red fence; zap; crash crunch; safe version slides in with a mint shield |
+| 10 | 6:20 | 0:30 | Challenge | "Safe NULL check" task card: `print_value(&n)` and `print_value(NULL)` | Two calls light up one after another; Xecxec holds a shield |
+| 11 | 6:50 | 0:25 | Outro | "Next: EP 60 · Function pointers — a remote control for functions" | A TV remote pointing at function boxes; click SFX; sign-off |
+
+### Narration script
+
+**\[1 · A pin to a pin\]** Your friend sends you a location pin for the Kadamba bus stand. You forward that message to another friend. Now the second friend has a message that leads to a message that leads to the bus stand. Two steps to reach the place. That is exactly a pointer to a pointer.
+
+**\[2 · Title\]** Episode fifty-nine. Pointer to pointer, and NULL.
+
+**\[3 · Pointers have addresses too\]** Let's build it one box at a time. First, an int called bus, at address 1000, holding 42. Next, a pointer p, at address 2000. p holds 1000, so it points to bus. You know this from EP 53. Now remember: p is also a variable. It lives in its own box, at 2000. So we can take its address too: ampersand p is 2000. To store that, we need a pointer to a pointer to an int. We write int star star pp. Two stars. pp lives at 3000 and holds 2000. So pp points to p, and p points to bus. A chain of two arrows.
+
+**\[4 · Following two arrows\]** Now let's read the chain slowly. pp alone is 2000, the address of p. Star pp means: follow one arrow. We knock on p's door and find 1000. So star pp is the same as p. Star star pp means: follow two arrows. First to p, then to bus. We find 42. Each star is one knock, one hop along the chain. Count the stars, count the hops.
+
+**\[5 · Code, line by line\]** Here is the program. \[HL 4\] Line 4: bus equals 42. \[TRACK bus=42\] \[HL 5\] Line 5: p points to bus. \[TRACK p=&bus\] \[HL 6\] Line 6: int star star pp equals ampersand p. pp points to p. \[TRACK pp=&p\] \[HL 8\] Line 8 prints bus: 42. \[HL 9\] Line 9 prints star p, one hop: 42. \[HL 10\] Line 10 prints star star pp, two hops: also 42. \[HL 12\] Line 12: star star pp equals 50. Two hops, then write. \[TRACK bus=50\] We changed bus through two arrows. \[HL 13\] Line 13 prints bus: 50. \[HL 15\] Now line 15, a new idea. int star q equals NULL. NULL is a special pointer value that means "points nowhere". It is like a pin box that says "no location set". \[TRACK q=NULL\] It is the safe opposite of the garbage pointer from EP 53. A garbage pointer points somewhere random. A NULL pointer clearly points nowhere, and we can check for it. NULL comes from stdio dot h, and from other standard headers too. \[HL 16\] Line 16: if q equals equals NULL. \[HL 17\] Line 17 prints a message, and we do not touch star q. \[HL 19\] Line 19 returns zero.
+
+**\[6 · Running it\]** Compile and run. 42, 42, 42. Then 50, changed through the double pointer. And the NULL message. No addresses printed today, so your output will match mine exactly.
+
+**\[7 · Pun\]** My pointer said it was going nowhere in life. I told it: that's fine, as long as you're NULL, and not garbage.
+
+**\[8 · Why you need a double pointer\]** Why would anyone need two stars? Here's a real reason. In EP 55, to let a function change an int, we passed a pointer to the int. Now suppose a function needs to change a pointer, to make it point somewhere new. Then we must pass a pointer to that pointer. Look at this function, point\_to\_bigger. main has x equals 12, y equals 30, and a pointer big, set to NULL. main calls point\_to\_bigger of ampersand big, ampersand x, ampersand y. Inside, slot is an int star star. It points at big, back in main's frame. a points to x, b points to y. Star a is 12, star b is 30. 30 is bigger, so the function does star slot equals b. Follow slot's arrow to big, and store b's address there. Now main's big points at y. Back in main, we check big is not NULL, and print star big: 30. Same rule as EP 55: to change something, send its address. Even if that something is a pointer.
+
+**\[9 · Bug of the Day\]** Today's bug: dereferencing NULL. int star p equals NULL, then print star p. GCC usually compiles this without any warning. But NULL means nowhere, so there is no door to knock on. The operating system protects address zero, and your program crashes with a segmentation fault. On Windows, it simply stops and prints nothing. NULL is safe only if you check it. So the fix is a habit: before you use star p, ask, is p not NULL? If p is not equal to NULL, then go ahead. This single check prevents a huge number of crashes in real software. And you'll need it a lot in Module 10, where malloc returns NULL when it fails.
+
+**\[10 · Challenge\]** Your challenge. Write void print\_value with one parameter, const int star p. If p is NULL, print "No value". Otherwise, print "Value:" and star p. Call it twice from main: once with the address of an int holding 7, and once with NULL. You should see "Value: 7" and then "No value". Pause and try.
+
+**\[11 · Outro\]** You can now follow chains of arrows, and you know how to point nowhere safely. Next episode, the final pointer trick: pointers to functions. Like a TV remote for your code. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int bus = 42;
+    int *p = &bus;
+    int **pp = &p;
+
+    printf("bus   = %d\n", bus);
+    printf("*p    = %d\n", *p);
+    printf("**pp  = %d\n", **pp);
+
+    **pp = 50;
+    printf("After **pp = 50, bus = %d\n", bus);
+
+    int *q = NULL;
+    if (q == NULL) {
+        printf("q points nowhere, so we do not touch it.\n");
+    }
+    return 0;
+}
+```
+
+**Expected output:**
+
+```text
+bus   = 42
+*p    = 42
+**pp  = 42
+After **pp = 50, bus = 50
+q points nowhere, so we do not touch it.
+```
+
+Scene 8 program, `bigger.c`:
+
+```c
+#include <stdio.h>
+
+void point_to_bigger(int **slot, int *a, int *b) {
+    if (*a > *b) {
+        *slot = a;
+    } else {
+        *slot = b;
+    }
+}
+
+int main(void) {
+    int x = 12, y = 30;
+    int *big = NULL;
+    point_to_bigger(&big, &x, &y);
+    if (big != NULL) {
+        printf("Bigger value: %d\n", *big);
+    }
+    return 0;
+}
+```
+
+**Expected output:**
+
+```text
+Bigger value: 30
+```
+
+### Bug of the Day
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int *p = NULL;
+    printf("%d\n", *p);
+    return 0;
+}
+```
+
+`gcc -Wall bug.c` compiles with **no warning** at the default optimisation level. Running it crashes: `Segmentation fault` on Linux; on Windows the program exits without printing anything.
+
+Fixed:
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int *p = NULL;
+    if (p != NULL) {
+        printf("%d\n", *p);
+    } else {
+        printf("p is NULL, nothing to print\n");
+    }
+    return 0;
+}
+```
+
+```text
+p is NULL, nothing to print
+```
+
+Why: NULL means "points nowhere", so there is no value to read; check for NULL before every dereference.
+
+### Pun & challenge
+
+- **Pun:** "My pointer said it was going nowhere in life. I said: that's fine, as long as you're NULL and not garbage."
+- **Challenge:** Write `void print_value(const int *p)` that prints `No value` if `p` is NULL, otherwise ` Value:  ` and the number. Call it with `&n` (n = 7) and with `NULL`.
+- **Challenge answer:**
+
+```c
+void print_value(const int *p) {
+    if (p == NULL) {
+        printf("No value\n");
+        return;
+    }
+    printf("Value: %d\n", *p);
+}
+/* print_value(&n) prints Value: 7, print_value(NULL) prints No value */
+```
+
+### Shorts for EP 59
+
+**S1 · A pin to a pin** — 0:25 · built from scenes 1 and 3
+
+- **Hook (first 1.5s):** Forwarded location message: "This is int \*\*."
+- **Script:** A pointer is a variable, so it has an address too. Store that address in another pointer, and you get a pointer to a pointer. int star star pp equals ampersand p. pp points to p, p points to the value. Like forwarding a location pin.
+- **On-screen text:** \*\* = POINTER TO A POINTER
+- **Caption + hashtags:** Two arrows, one value. #cprogramming #pointers #kodingkonkani #learntocode #ctutorial
+
+**S2 · Double pointers in 30 seconds** — 0:30 · built from scene 4
+
+- **Hook (first 1.5s):** Claw hopping along two arrows with two knocks.
+- **Script:** pp holds the address of p. Star pp follows one arrow and gives p. Star star pp follows two arrows and gives the value. Each star is one hop. Count the stars, count the hops. And star star pp equals 50 changes the value at the end of the chain.
+- **On-screen text:** 1 STAR = 1 HOP
+- **Caption + hashtags:** Count the stars. #cprogramming #pointers #kodingkonkani #codingtips #doublepointer
+
+**S3 · The NULL crash** — 0:30 · built from scene 9
+
+- **Hook (first 1.5s):** `*p` on a NULL pointer, then the screen cracks.
+- **Script:** int star p equals NULL. Then print star p. No warning from GCC. But NULL points nowhere, so there's nothing to read. Segmentation fault. The fix is one habit: if p is not NULL, then use it. One check, a hundred crashes saved.
+- **On-screen text:** CHECK NULL FIRST
+- **Caption + hashtags:** NULL is safe only when you check it. #cprogramming #debugging #kodingkonkani #pointers #cbugs
+
+**S4 · NULL, not garbage** — 0:15 · built from scene 7
+
+- **Hook (first 1.5s):** A sad pointer box on a park bench, Xecxec sitting beside it.
+- **Script:** My pointer said it was going nowhere in life. I told it: that's fine, as long as you're NULL, and not garbage.
+- **On-screen text:** BE NULL, NOT GARBAGE
+- **Caption + hashtags:** Life advice for pointers. #programmerhumor #cprogramming #kodingkonkani #codingmemes #pointers
+
+**S5 · Quiz: how many stars?** — 0:25 · built from scenes 8 and 10
+
+- **Hook (first 1.5s):** "A function must change WHERE a pointer points. What do you pass?"
+- **Script:** To let a function change an int, you pass an int star. To let a function change an int star, what do you pass? Answer: an int star star, the address of the pointer. Now your challenge: write a function that safely handles NULL. Comment your code.
+- **On-screen text:** CHANGE A POINTER? PASS ITS ADDRESS
+- **Caption + hashtags:** Same rule, one level up. #cprogramming #codingquiz #kodingkonkani #pointers #learntocode
+
+## EP 60 — Function Pointers
+
+**Module 8 · Pointers · 7:00 · Lilac + Dark blue · Prerequisite: EP 59, EP 35**
+
+**Learning goals:** read and write the declaration `int (*f)(int, int)`; point a function pointer at different functions and call through it; pass a function into another function as a parameter; match a function pointer's signature exactly.
+
+### YouTube
+
+- **Title:** Function Pointers: A Remote for Your Code | C EP 60
+- **Description:** Functions live in memory too, so a pointer can point at one. We build a remote control that can switch between add and sub, pass functions into other functions, and see what happens when the signature does not match. The last episode of the pointers module. 0:00 The TV remote · 0:20 Title · 0:25 Functions have addresses · 1:25 Reading the scary declaration · 2:15 Code, line by line · 3:45 Running it · 4:05 Pun · 4:10 Where this is used · 4:50 Bug of the Day: wrong signature · 6:00 Challenge: calculator · 6:35 Module 8 complete
+- **Tags:** function pointers in c, pointer to function c, int (\*f)(int, int), callback in c, passing function as argument c, array of function pointers, c pointers tutorial, learn c, koding konkani, c programming for beginners, c programming india, engineering c
+- **Thumbnail:** big text "POINT AT A FUNCTION?"; a TV remote with buttons labelled add, sub; a black arrow from remote `f` to a lilac function box; Xecxec pressing a button with a claw, excited; lilac background, dark blue text block
+
+### Scene list
+
+| # | Start | Length | Template | On screen | Animation & SFX |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0:00 | 0:20 | Concept slide | A TV remote and a TV showing two channels: "ADD" and "SUB"; Xecxec on a sofa | Button press switches the TV channel; click SFX each time |
+| 2 | 0:20 | 0:05 | Title card | EP 60 · FUNCTION POINTERS | Title slams in; claw-click |
+| 3 | 0:25 | 1:00 | Memory boxes | Code area of memory (dark blue boxes) holding `add` at 0x401500 and `sub` at 0x401520; stack box `f` with an arrow to `add` | Function boxes slide in as machines with gears; `f` arrow draws to `add`; then swings to `sub`; whoosh on each swing |
+| 4 | 1:25 | 0:50 | Concept slide | `int (*f)(int, int)` split into three coloured parts: return type, `(*f)`, parameter list; a second line `int *f(int, int)` crossed out with "function returning int\*" | Each part lights up as narrated; brackets bounce; buzzer on the crossed-out line |
+| 5 | 2:15 | 1:30 | Code explain | `funcptr.c` (19 lines); tracker: f (points to add/sub), op | Butter highlights; corner diagram arrow swings between `add` and `sub`; for `apply`, a second frame shows `op` pointing at the function |
+| 6 | 3:45 | 0:20 | Terminal | Compile and run | Output prints; 11, 5, 14, 6 pop in mint |
+| 7 | 4:05 | 0:05 | Pun card | "Why did the function pointer get a job at the TV store? It's great with remotes." | Card flips; Xecxec channel-surfs; rimshot |
+| 8 | 4:10 | 0:40 | Concept slide | Three cards: `qsort` comparison, button click handlers, menu choices | Cards deal in one by one; each shows a small arrow to a function box |
+| 9 | 4:50 | 1:10 | Bug of the Day | `int (*f)(int, int) = half;` where `half` is `double half(double)`; GCC warning; nonsense output | Remote with a plug that does not fit the socket; sparks; buzzer; matching signature slides in |
+| 10 | 6:00 | 0:35 | Challenge | "Calculator with function pointers" task card; an array of 4 remotes for + - \* / | Four arrows from an array to four function boxes; buttons light up in turn |
+| 11 | 6:35 | 0:25 | Outro | "Module 8 complete!" badge; "Next: EP 61 · struct basics" | Badge stamps on; confetti; claw-click; sign-off |
+
+### Narration script
+
+**\[1 · The TV remote\]** A TV remote does not contain the channels. It just tells the TV which channel to show. Press one button, you get one channel. Press another, you switch. In C, you can build a remote for your functions. It's called a function pointer.
+
+**\[2 · Title\]** Episode sixty. Function pointers.
+
+**\[3 · Functions have addresses\]** All module long, we've pointed at variables. But your functions also live in memory. When your program runs, the machine code for add and sub is stored in a part of memory called the code area. So each function has an address too, just like a variable. The addresses on screen are made-up examples. And if functions have addresses, then a pointer can hold one. Here is f, a function pointer. Right now it points at add. If we write f equals sub, the arrow swings over to sub. Same remote, new channel. When we call f, whichever function it points to is the one that runs.
+
+**\[4 · Reading the scary declaration\]** This is the line that scares everyone: int, bracket star f bracket, bracket int comma int bracket. Let's read it in three parts. In the middle, bracket star f bracket: f is a pointer. On the right, bracket int comma int bracket: to a function that takes two ints. On the left, int: and returns an int. So: f is a pointer to a function that takes two ints and returns an int. The brackets around star f are very important. Without them, int star f, bracket int comma int bracket, means something completely different: a function called f that returns an int pointer. So keep those brackets.
+
+**\[5 · Code, line by line\]** Here is our program. \[HL 3\] Line 3 defines add, which takes two ints and returns their sum. \[HL 4\] Line 4 defines sub, which returns their difference. \[HL 6\] Line 6 defines apply. Its first parameter, op, is a function pointer: int bracket star op bracket, bracket int comma int bracket. The other two are normal ints. \[HL 7\] Line 7 calls op of x comma y and returns the result. apply does not know or care which function op is. It just presses the button. \[HL 10\] Now main. \[HL 11\] Line 11 creates f and points it at add. Notice: we write just add, with no brackets after it. A function name without brackets gives its address, similar to how an array name gives the address of its first element, from EP 57. \[TRACK f=add\] \[HL 12\] Line 12 calls f of 8 comma 3. f points at add, so we get 11. \[HL 14\] Line 14 points f at sub. \[TRACK f=sub\] \[HL 15\] Line 15 calls f of 8 comma 3 again. Same line of code, but now we get 5. \[HL 17\] Line 17 calls apply, passing add as the function. \[TRACK op=add\] Inside apply, op of 10 comma 4 is add of 10 comma 4: 14. \[HL 18\] Line 18 passes sub. \[TRACK op=sub\] We get 6. Passing a function into another function like this is called a callback. \[HL 19\] Return zero.
+
+**\[6 · Running it\]** Compile and run. f of 8 comma 3 is 11, then 5. apply with add gives 14, with sub gives 6. Same code, different behaviour, depending on which button we pressed.
+
+**\[7 · Pun\]** Why did the function pointer get a job at the TV store? Because it's great with remotes.
+
+**\[8 · Where this is used\]** Where would you really use this? First, the standard library function qsort sorts any array, but you pass it a function that says how to compare two items. That's a function pointer. We'll use qsort in Module 12. Second, in apps and games, when you click a button, the program calls a function that was attached to that button earlier. Third, menus: instead of a long switch statement, keep an array of function pointers, and pick one by number. That's exactly today's challenge.
+
+**\[9 · Bug of the Day\]** Today's bug: the wrong signature. Someone has a function double half, bracket double x bracket. Then they write int bracket star f bracket, bracket int comma int bracket, equals half. The remote's plug does not fit the socket. GCC warns: initialization of int bracket star bracket bracket int comma int bracket from incompatible pointer type double bracket star bracket bracket double bracket. If you ignore it and call f, the function receives its inputs in the wrong places and returns its answer in the wrong place, so you get a nonsense number. In GCC 14 and later, this is an error, which is good. The fix: the function pointer's type must match the function exactly. Same return type, same parameter types. For half, that's double bracket star f bracket, bracket double bracket.
+
+**\[10 · Challenge\]** Your final pointer challenge. Write four functions: add, sub, mul and divide. Each takes two ints and returns an int. Make sure divide does not divide by zero. Then make an array of four function pointers: int bracket star ops square bracket 4 bracket, bracket int comma int bracket, and fill it with the four functions. Loop over the array with a equals 20 and b equals 5, and print all four results. You should see 25, 15, 100 and 4. Pause and try.
+
+**\[11 · Outro\]** And that is Module 8, complete. Addresses, pointers, dereferencing, call by reference, arithmetic, arrays, strings, double pointers, NULL, and now function pointers. If you made it here, you have climbed the hardest hill in C. Be proud. Next episode, Module 9 begins: structures, where we group data together like a student ID card. Keep coding, says Xecxec!
+
+### Code shown
+
+```c
+#include <stdio.h>
+
+int add(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
+
+int apply(int (*op)(int, int), int x, int y) {
+    return op(x, y);
+}
+
+int main(void) {
+    int (*f)(int, int) = add;
+    printf("f(8, 3) = %d\n", f(8, 3));
+
+    f = sub;
+    printf("f(8, 3) = %d\n", f(8, 3));
+
+    printf("apply(add, 10, 4) = %d\n", apply(add, 10, 4));
+    printf("apply(sub, 10, 4) = %d\n", apply(sub, 10, 4));
+    return 0;
+}
+```
+
+**Expected output:**
+
+```text
+f(8, 3) = 11
+f(8, 3) = 5
+apply(add, 10, 4) = 14
+apply(sub, 10, 4) = 6
+```
+
+### Bug of the Day
+
+```c
+#include <stdio.h>
+
+double half(double x) { return x / 2; }
+
+int main(void) {
+    int (*f)(int, int) = half;
+    printf("%d\n", f(10, 0));
+    return 0;
+}
+```
+
+GCC 13 (`gcc -Wall bug.c`) prints:
+
+```text
+bug.c: In function 'main':
+bug.c:6:26: warning: initialization of 'int (*)(int,  int)' from incompatible pointer type 'double (*)(double)' [-Wincompatible-pointer-types]
+    6 |     int (*f)(int, int) = half;
+      |                          ^~~~
+```
+
+It still builds, and running it prints a nonsense number that changes from run to run (for example `1012736329`). GCC 14 and later report this as an error.
+
+Fixed:
+
+```c
+#include <stdio.h>
+
+double half(double x) { return x / 2; }
+
+int main(void) {
+    double (*f)(double) = half;
+    printf("%.1f\n", f(10));
+    return 0;
+}
+```
+
+```text
+5.0
+```
+
+Why: calling a function through a pointer of the wrong type passes the arguments and reads the result in the wrong places, so the types must match exactly.
+
+### Pun & challenge
+
+- **Pun:** "Why did the function pointer get a job at the TV store? It's great with remotes."
+- **Challenge:** Write `add`, `sub`, `mul` and `divide` (safe for 0). Store them in `int (*ops[4])(int, int)` and loop over it with `a = 20`, `b = 5` to print all four results.
+- **Challenge answer:**
+
+```c
+int add(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
+int mul(int a, int b) { return a * b; }
+int divide(int a, int b) { return b != 0 ? a / b : 0; }
+
+/* in main */
+int (*ops[4])(int, int) = {add, sub, mul, divide};
+const char symbols[4] = {'+', '-', '*', '/'};
+int a = 20, b = 5;
+for (int i = 0; i < 4; i++) {
+    printf("%d %c %d = %d\n", a, symbols[i], b, ops[i](a, b));
+}
+/* 20 + 5 = 25, 20 - 5 = 15, 20 * 5 = 100, 20 / 5 = 4 */
+```
+
+### Shorts for EP 60
+
+**S1 · You can point at a function?!** — 0:25 · built from scenes 1 and 3
+
+- **Hook (first 1.5s):** Same line `f(8, 3)` prints 11, then 5: "Same code. Different answer."
+- **Script:** f of 8 comma 3 gives 11. Then, the exact same line gives 5. How? f is a function pointer. First it pointed at add, then we pointed it at sub. Functions live in memory, so pointers can point at them. It's a remote control for your code.
+- **On-screen text:** SAME LINE, DIFFERENT FUNCTION
+- **Caption + hashtags:** Pointers can point at functions too. #cprogramming #pointers #kodingkonkani #learntocode #ctutorial
+
+**S2 · Read `int (*f)(int, int)` in 30s** — 0:30 · built from scene 4
+
+- **Hook (first 1.5s):** The scary declaration in big letters, then it splits into three colours.
+- **Script:** Read it from the middle. Bracket star f bracket: f is a pointer. Bracket int comma int bracket: to a function taking two ints. int on the left: that returns an int. Keep the brackets around star f. Without them, it means a function returning a pointer.
+- **On-screen text:** MIDDLE · RIGHT · LEFT
+- **Caption + hashtags:** Never fear this line again. #cprogramming #pointers #kodingkonkani #codingtips #functionpointers
+
+**S3 · The plug doesn't fit** — 0:30 · built from scene 9
+
+- **Hook (first 1.5s):** A remote plug sparking in the wrong socket.
+- **Script:** A function pointer for int, int. A function that takes a double. GCC warns: incompatible pointer type. Run it anyway, and you get a nonsense number. The function pointer's type must match the function exactly: same return type, same parameters.
+- **On-screen text:** SIGNATURES MUST MATCH
+- **Caption + hashtags:** Wrong plug, wrong answer. #cprogramming #debugging #kodingkonkani #pointers #cbugs
+
+**S4 · Great with remotes** — 0:12 · built from scene 7
+
+- **Hook (first 1.5s):** Xecxec in a TV store uniform, holding three remotes.
+- **Script:** Why did the function pointer get a job at the TV store? Because it's great with remotes.
+- **On-screen text:** GREAT WITH REMOTES
+- **Caption + hashtags:** Hired on the spot. #programmerhumor #cprogramming #kodingkonkani #codingmemes #pointers
+
+**S5 · Build a calculator with 4 arrows** — 0:30 · built from scene 10
+
+- **Hook (first 1.5s):** An array of four arrows pointing at +, -, \*, / machines.
+- **Script:** Challenge time. Write add, sub, mul and divide. Put them in an array of function pointers. Loop over it with 20 and 5. You should print 25, 15, 100 and 4, with no switch statement at all. Comment your code, and Xecxec will check it.
+- **On-screen text:** CALCULATOR, NO switch
+- **Caption + hashtags:** Can you do it in under 20 lines? #cprogramming #codingchallenge #kodingkonkani #functionpointers #learntocode
