@@ -255,7 +255,7 @@
   "bug": {
     "wrong": "#include <stdio.h>\n\nvoid merge(int a[], int left, int mid, int right) {\n    int temp[100];\n    int i = left, j = mid + 1, k = 0;\n\n    while (i <= mid && j <= right) {\n        if (a[i] <= a[j])\n            temp[k++] = a[i++];\n        else\n            temp[k++] = a[j++];\n    }\n\n    for (int t = 0; t < k; t++)\n        a[left + t] = temp[t];\n}\n\nvoid merge_sort(int a[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_sort(a, left, mid);\n    merge_sort(a, mid + 1, right);\n    merge(a, left, mid, right);\n}\n\nint main(void) {\n    int roll[] = {5, 2, 9, 1, 6, 3};\n    merge_sort(roll, 0, 5);\n    for (int i = 0; i < 6; i++)\n        printf(\"%d \", roll[i]);\n    printf(\"\\n\");\n    return 0;\n}",
     "error": "No error or warning from GCC. Wrong output:\n\n1 2 2 3 3 3",
-    "fixed": "    while (i <= mid)\n        temp[k++] = a[i++];\n    while (j <= right)\n        temp[k++] = a[j++];",
+    "fixed": "#include <stdio.h>\n\nvoid merge(int a[], int left, int mid, int right) {\n    int temp[100];\n    int i = left, j = mid + 1, k = 0;\n\n    while (i <= mid && j <= right) {\n        if (a[i] <= a[j])\n            temp[k++] = a[i++];\n        else\n            temp[k++] = a[j++];\n    }\n    while (i <= mid)\n        temp[k++] = a[i++];\n    while (j <= right)\n        temp[k++] = a[j++];\n\n    for (int t = 0; t < k; t++)\n        a[left + t] = temp[t];\n}\n\nvoid merge_sort(int a[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_sort(a, left, mid);\n    merge_sort(a, mid + 1, right);\n    merge(a, left, mid, right);\n}\n\nint main(void) {\n    int roll[] = {5, 2, 9, 1, 6, 3};\n    merge_sort(roll, 0, 5);\n    for (int i = 0; i < 6; i++)\n        printf(\"%d \", roll[i]);\n    printf(\"\\n\");\n    return 0;\n}",
     "why": "the main loop stops as soon as one run is empty, so the other run's remaining values never reach temp and the copy-back leaves stale values in those slots."
   },
   "pun": "Why did the two sorted arrays get married? Because they were a perfect merge.",
@@ -370,7 +370,7 @@
   ],
   "bugExtra": {
     "wrongLang": "c",
-    "fixedHasFullProgram": false,
+    "fixedHasFullProgram": true,
     "fixedOutput": "1 2 3 5 6 9"
   }
 }

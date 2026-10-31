@@ -234,7 +234,7 @@
   "bug": {
     "wrong": "#include <stdio.h>\n\nint main(void) {\n    int cards[] = {5, 2, 9, 1, 6, 3};\n    int n = 6;\n\n    for (int i = 1; i < n; i++) {\n        int j = i - 1;\n        while (j >= 0 && cards[j] > cards[i]) {\n            cards[j + 1] = cards[j];\n            j--;\n        }\n        cards[j + 1] = cards[i];\n    }\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", cards[i]);\n    printf(\"\\n\");\n    return 0;\n}",
     "error": "No error or warning from GCC. Wrong output:\n\n5 5 9 9 9 9",
-    "fixed": "    for (int i = 1; i < n; i++) {\n        int key = cards[i];\n        int j = i - 1;\n        while (j >= 0 && cards[j] > key) {\n            cards[j + 1] = cards[j];\n            j--;\n        }\n        cards[j + 1] = key;\n    }",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int cards[] = {5, 2, 9, 1, 6, 3};\n    int n = 6;\n\n    for (int i = 1; i < n; i++) {\n        int key = cards[i];\n        int j = i - 1;\n        while (j >= 0 && cards[j] > key) {\n            cards[j + 1] = cards[j];\n            j--;\n        }\n        cards[j + 1] = key;\n    }\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", cards[i]);\n    printf(\"\\n\");\n    return 0;\n}",
     "why": "the first shift writes into cards[i] (because j + 1 == i), destroying the value being inserted, so it must be saved in key first."
   },
   "pun": "Why did insertion sort win the card game? It always knew where to put things.",
@@ -348,7 +348,7 @@
   ],
   "bugExtra": {
     "wrongLang": "c",
-    "fixedHasFullProgram": false,
+    "fixedHasFullProgram": true,
     "fixedOutput": "1 2 3 5 6 9"
   }
 }

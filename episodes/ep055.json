@@ -190,10 +190,12 @@
       "template": "bug-of-the-day",
       "startSec": 315,
       "lengthSec": 65,
-      "onScreen": "`swap(x, y)` with the pointer version; GCC warning and a crash",
-      "animation": "a and b receive 5 and 9 as if they were addresses; arrows point to houses 5 and 9 in a dark zone; crash crunch; fix `swap(&x, &y)` slides in",
-      "sfx": [],
-      "narration": "Today's bug: you wrote the new pointer swap, but you call it the old way, swap of x comma y, without ampersands. GCC warns twice: passing argument 1 of swap makes pointer from integer without a cast, and a note: expected int star but argument is of type int. Now watch the diagram. a receives 5, and treats it as an address. So a points to house number 5. b points to house number 9. Our program does not own those houses. The moment swap knocks on them, the program crashes with a segmentation fault. The fix is just two ampersands: swap of ampersand x, comma, ampersand y. Star in the header, ampersand in the call. Note: newer GCC versions, 14 and up, make this an error instead of a warning, which is a good thing."
+      "onScreen": "`swap(x, y)` with the pointer version; GCC error (modern GCC refuses to build; older GCC only warned, then crashed)",
+      "animation": "Error lines in tomato with buzzer, then an \"older GCC\" label: a and b receive 5 and 9 as if they were addresses; arrows point to houses 5 and 9 in a dark zone; crash crunch; fix `swap(&x, &y)` slides in",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Today's bug: you wrote the new pointer swap, but you call it the old way, swap of x comma y, without ampersands. GCC reports an error for each argument: passing argument 1 of swap makes pointer from integer without a cast, and its note even suggests the fix: take the address with an ampersand. On the GCC you installed, that stops the build. Older compilers only warned, and the program ran and crashed. Now watch the diagram of what would have happened. a receives 5, and treats it as an address. So a points to house number 5. b points to house number 9. Our program does not own those houses. The moment swap knocks on them, the program crashes with a segmentation fault. The fix is just two ampersands: swap of ampersand x, comma, ampersand y. Star in the header, ampersand in the call."
     },
     {
       "id": 10,
@@ -218,7 +220,7 @@
   ],
   "bug": {
     "wrong": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint main(void) {\n    int x = 5, y = 9;\n    swap(x, y);\n    printf(\"x = %d, y = %d\\n\", x, y);\n    return 0;\n}",
-    "error": "GCC 13 (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'main':\nbug.c:11:10: warning: passing argument 1 of 'swap' makes pointer from integer without a cast [-Wint-conversion]\n   11 |     swap(x, y);\n      |          ^\n      |          |\n      |          int\nbug.c:3:16: note: expected 'int *' but argument is of type 'int'\n    3 | void swap(int *a, int *b) {\n      |           ~~~~~^\nbug.c:11:13: warning: passing argument 2 of 'swap' makes pointer from integer without a cast [-Wint-conversion]\n   11 |     swap(x, y);\n      |             ^\n      |             |\n      |             int\nbug.c:3:24: note: expected 'int *' but argument is of type 'int'\n    3 | void swap(int *a, int *b) {\n      |                   ~~~~~^\n\nRunning it crashes with a segmentation fault before printing anything (on Windows it usually exits silently). GCC 14 and later report these as errors.",
+    "error": "GCC 16 (MSYS2 UCRT64, `gcc -Wall bug.c`) prints this and builds no program (first error shown; a second, similar error follows for argument 2):\n\nbug.c: In function 'main':\nbug.c:11:10: error: passing argument 1 of 'swap' makes pointer from integer without a cast [-Wint-conversion]\n   11 |     swap(x, y);\n      |          ^\n      |          |\n      |          int\nbug.c:11:10: note: possible fix: take the address with '&'\n   11 |     swap(x, y);\n      |          ^\n      |          &\n\nGCC 13 and older printed `warning:` here and built the program anyway. Running that program crashes with a segmentation fault before printing anything (on Windows it usually exits silently).",
     "fixed": "    swap(&x, &y);",
     "why": "the function expects addresses, but `x` and `y` send the values 5 and 9, which are then used as house numbers the program does not own."
   },
@@ -270,7 +272,7 @@
       "id": "S3",
       "title": "Forgot the ampersands",
       "hook": "`swap(x, y);` then the screen cracks.",
-      "script": "Your swap takes pointers, but you called swap of x comma y. GCC warns: makes pointer from integer without a cast. Now a points to house number 5, which your program does not own. Crash. The fix: swap of ampersand x, ampersand y. Two characters.",
+      "script": "Your swap takes pointers, but you called swap of x comma y. Modern GCC says error: makes pointer from integer without a cast, and even suggests the fix. Older compilers only warned, and then a points to house number 5, which your program does not own. Crash. The fix: swap of ampersand x, ampersand y. Two characters.",
       "onScreen": "swap(&x, &y) NOT swap(x, y)",
       "fromScenes": [
         9

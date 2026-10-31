@@ -161,7 +161,7 @@
   "bug": {
     "wrong": "#include <stdio.h>\n\nint main(void) {\n    int rolls[3] = {10, 26, 30};\n\n    FILE *fp = fopen(\"rolls.dat\", \"w\");\n    if (fp == NULL) {\n        perror(\"rolls.dat\");\n        return 1;\n    }\n    fwrite(rolls, sizeof(int), 3, fp);\n    fclose(fp);\n\n    int back[3] = {0, 0, 0};\n    fp = fopen(\"rolls.dat\", \"r\");\n    if (fp == NULL) {\n        perror(\"rolls.dat\");\n        return 1;\n    }\n    size_t got = fread(back, sizeof(int), 3, fp);\n    fclose(fp);\n\n    printf(\"Read %zu of 3 numbers\\n\", got);\n    return 0;\n}",
     "error": "No compiler error or warning. On Windows (MSYS2 UCRT64) the expected wrong output is below, and `rolls.dat` is 13 bytes instead of 12. On Linux and macOS text and binary modes are the same, so it prints `Read 3 of 3 numbers`. On screen: \"Windows only\".\n\nRead 1 of 3 numbers",
-    "fixed": "    FILE *fp = fopen(\"rolls.dat\", \"wb\");\n    ...\n    fp = fopen(\"rolls.dat\", \"rb\");",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int rolls[3] = {10, 26, 30};\n\n    FILE *fp = fopen(\"rolls.dat\", \"wb\");\n    if (fp == NULL) {\n        perror(\"rolls.dat\");\n        return 1;\n    }\n    fwrite(rolls, sizeof(int), 3, fp);\n    fclose(fp);\n\n    int back[3] = {0, 0, 0};\n    fp = fopen(\"rolls.dat\", \"rb\");\n    if (fp == NULL) {\n        perror(\"rolls.dat\");\n        return 1;\n    }\n    size_t got = fread(back, sizeof(int), 3, fp);\n    fclose(fp);\n\n    printf(\"Read %zu of 3 numbers\\n\", got);\n    return 0;\n}",
     "why": "In Windows text mode, byte 10 is written as 13 10 and byte 26 (Ctrl+Z) is read as end of file, so binary data must use `\"wb\"`/`\"rb\"`."
   },
   "pun": "Why did the binary file make a great librarian? It always kept its records straight.",
@@ -287,7 +287,7 @@
   ],
   "bugExtra": {
     "wrongLang": "c",
-    "fixedHasFullProgram": false,
+    "fixedHasFullProgram": true,
     "fixedOutput": "Read 3 of 3 numbers"
   }
 }

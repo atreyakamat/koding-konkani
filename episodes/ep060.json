@@ -184,12 +184,12 @@
       "template": "bug-of-the-day",
       "startSec": 290,
       "lengthSec": 70,
-      "onScreen": "`int (*f)(int, int) = half;` where `half` is `double half(double)`; GCC warning; nonsense output",
+      "onScreen": "`int (*f)(int, int) = half;` where `half` is `double half(double)`; GCC error (older GCC only warned, then printed a nonsense number)",
       "animation": "Remote with a plug that does not fit the socket; sparks; buzzer; matching signature slides in",
       "sfx": [
         "buzzer"
       ],
-      "narration": "Today's bug: the wrong signature. Someone has a function double half, bracket double x bracket. Then they write int bracket star f bracket, bracket int comma int bracket, equals half. The remote's plug does not fit the socket. GCC warns: initialization of int bracket star bracket bracket int comma int bracket from incompatible pointer type double bracket star bracket bracket double bracket. If you ignore it and call f, the function receives its inputs in the wrong places and returns its answer in the wrong place, so you get a nonsense number. In GCC 14 and later, this is an error, which is good. The fix: the function pointer's type must match the function exactly. Same return type, same parameter types. For half, that's double bracket star f bracket, bracket double bracket."
+      "narration": "Today's bug: the wrong signature. Someone has a function double half, bracket double x bracket. Then they write int bracket star f bracket, bracket int comma int bracket, equals half. The remote's plug does not fit the socket. GCC says error: initialization of int bracket star bracket bracket int comma int bracket from incompatible pointer type double bracket star bracket bracket double bracket. That stops the build, which is good. Older compilers only warned, and if you ignored it and called f, the function received its inputs in the wrong places and returned its answer in the wrong place, so you got a nonsense number. The fix: the function pointer's type must match the function exactly. Same return type, same parameter types. For half, that's double bracket star f bracket, bracket double bracket."
     },
     {
       "id": 10,
@@ -217,7 +217,7 @@
   ],
   "bug": {
     "wrong": "#include <stdio.h>\n\ndouble half(double x) { return x / 2; }\n\nint main(void) {\n    int (*f)(int, int) = half;\n    printf(\"%d\\n\", f(10, 0));\n    return 0;\n}",
-    "error": "GCC 13 (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'main':\nbug.c:6:26: warning: initialization of 'int (*)(int,  int)' from incompatible pointer type 'double (*)(double)' [-Wincompatible-pointer-types]\n    6 |     int (*f)(int, int) = half;\n      |                          ^~~~\n\nIt still builds, and running it prints a nonsense number that changes from run to run (for example `1012736329`). GCC 14 and later report this as an error.",
+    "error": "GCC 16 (MSYS2 UCRT64, `gcc -Wall bug.c`) prints this and builds no program:\n\nbug.c: In function 'main':\nbug.c:6:26: error: initialization of 'int (*)(int,  int)' from incompatible pointer type 'double (*)(double)' [-Wincompatible-pointer-types]\n    6 |     int (*f)(int, int) = half;\n      |                          ^~~~\nbug.c:3:8: note: 'half' declared here\n    3 | double half(double x) { return x / 2; }\n      |        ^~~~\n\nGCC 13 and older printed `warning:` and built the program anyway; running it printed a nonsense number that changes from run to run (for example `1012736329`).",
     "fixed": "#include <stdio.h>\n\ndouble half(double x) { return x / 2; }\n\nint main(void) {\n    double (*f)(double) = half;\n    printf(\"%.1f\\n\", f(10));\n    return 0;\n}",
     "why": "calling a function through a pointer of the wrong type passes the arguments and reads the result in the wrong places, so the types must match exactly."
   },
@@ -268,7 +268,7 @@
       "id": "S3",
       "title": "The plug doesn't fit",
       "hook": "A remote plug sparking in the wrong socket.",
-      "script": "A function pointer for int, int. A function that takes a double. GCC warns: incompatible pointer type. Run it anyway, and you get a nonsense number. The function pointer's type must match the function exactly: same return type, same parameters.",
+      "script": "A function pointer for int, int. A function that takes a double. Modern GCC says error: incompatible pointer type, and refuses to build. Older compilers only warned, and you got a nonsense number. The function pointer's type must match the function exactly: same return type, same parameters.",
       "onScreen": "SIGNATURES MUST MATCH",
       "fromScenes": [
         9

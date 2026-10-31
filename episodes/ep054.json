@@ -181,10 +181,12 @@
       "template": "bug-of-the-day",
       "startSec": 280,
       "lengthSec": 70,
-      "onScreen": "`int *p = fish;` with GCC warning and a crash; side card \"& makes a pin, * follows a pin\"",
-      "animation": "Arrow tries to point to address 10, lands in a dark zone; crash crunch; fixed line slides in",
-      "sfx": [],
-      "narration": "Today's bug: mixing up star and ampersand. Someone writes int star p equals fish. No ampersand. GCC warns: initialization of int star from int makes pointer from integer without a cast. What happened? p was given the value 10, not the address of fish. So the arrow points to house number 10, which does not belong to our program. Then star p tries to knock on that door, and the program crashes with a segmentation fault. On Windows it may just stop without printing anything. Here is the simple rule, on the card. Ampersand makes a pin. Star follows a pin. When you set up a pointer, you need ampersand. When you use a pointer to reach the value, you need star."
+      "onScreen": "`int *p = fish;` with the GCC error (modern GCC refuses to build; older GCC only warned and the program crashed); side card \"& makes a pin, * follows a pin\"",
+      "animation": "Error line in tomato with buzzer; then an \"older GCC\" label, the arrow tries to point to address 10 and lands in a dark zone; crash crunch; fixed line slides in",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Today's bug: mixing up star and ampersand. Someone writes int star p equals fish. No ampersand. GCC says error: initialization of int star from int makes pointer from integer without a cast. On the GCC you installed in this course, that is an error, so GCC refuses to build the program. Good, it is protecting you. Older compilers only warned and built the program anyway. What happens then? p is given the value 10, not the address of fish. So the arrow points to house number 10, which does not belong to our program. Then star p tries to knock on that door, and the program crashes with a segmentation fault. On Windows it may just stop without printing anything. Here is the simple rule, on the card. Ampersand makes a pin. Star follows a pin. When you set up a pointer, you need ampersand. When you use a pointer to reach the value, you need star."
     },
     {
       "id": 10,
@@ -211,7 +213,7 @@
   ],
   "bug": {
     "wrong": "#include <stdio.h>\n\nint main(void) {\n    int fish = 10;\n    int *p = fish;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
-    "error": "GCC (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'main':\nbug.c:5:14: warning: initialization of 'int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]\n    5 |     int *p = fish;\n      |              ^~~~\n\nRunning it crashes with a segmentation fault (on Windows the program usually just exits without printing anything).\n\nNote: GCC 14 and later turn this warning into an error by default (`error: initialization of 'int *' from 'int' makes pointer from integer without a cast`).",
+    "error": "GCC 16 (MSYS2 UCRT64, `gcc -Wall bug.c`) prints this and builds no program:\n\nbug.c: In function 'main':\nbug.c:5:14: error: initialization of 'int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]\n    5 |     int *p = fish;\n      |              ^~~~\n\nGCC 13 and older printed `warning:` for the same line and built the program anyway. Running that program crashes with a segmentation fault (on Windows it usually just exits without printing anything).",
     "fixed": "    int *p = &fish;",
     "why": "without `&`, the pointer receives the value 10 instead of the address of `fish`, so `*p` knocks on house number 10, which the program does not own."
   },
@@ -263,7 +265,7 @@
       "id": "S3",
       "title": "Missing ampersand = crash",
       "hook": "`int *p = fish;` then the screen cracks.",
-      "script": "int star p equals fish. One missing ampersand. Now p holds 10, not the address of fish. Star p knocks on house number 10, which your program does not own. Crash. Remember: ampersand makes a pin, star follows a pin.",
+      "script": "int star p equals fish. One missing ampersand. Modern GCC says error: makes pointer from integer without a cast, and refuses to build. Older compilers only warned. Then p holds 10, not the address of fish, and star p knocks on house number 10, which your program does not own. Crash. Remember: ampersand makes a pin, star follows a pin.",
       "onScreen": "& MAKES A PIN · * FOLLOWS IT",
       "fromScenes": [
         9
