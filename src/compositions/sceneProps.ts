@@ -27,6 +27,35 @@ const linesFromNarration = (narration: string): string[] => {
   return lines;
 };
 
+/** Terminal onScreen directions are shot descriptions ("`cmd` typed; reply "text"
+ * in tomato"), not a literal transcript — pull the backtick-quoted command(s) as
+ * input lines and the double-quoted reply as an output line, colouring it from
+ * whichever of tomato/mint/error/success the description mentions. Falls back to
+ * the whole direction as one output line when neither pattern matches, rather
+ * than silently dropping content. */
+const terminalLinesFromOnScreen = (
+  onScreen: string,
+): { text: string; kind?: "input" | "output" | "success" | "error" }[] => {
+  const lines: { text: string; kind?: "input" | "output" | "success" | "error" }[] = [];
+  for (const m of onScreen.matchAll(/`([^`]+)`/g)) {
+    lines.push({ text: m[1], kind: "input" });
+  }
+  const lower = onScreen.toLowerCase();
+  const kind: "output" | "success" | "error" =
+    lower.includes("tomato") || lower.includes("error")
+      ? "error"
+      : lower.includes("mint") || lower.includes("success")
+        ? "success"
+        : "output";
+  for (const m of onScreen.matchAll(/"([^"]+)"/g)) {
+    lines.push({ text: m[1], kind });
+  }
+  if (lines.length === 0) {
+    lines.push({ text: onScreen, kind: "output" });
+  }
+  return lines;
+};
+
 /** Many (not all) concept-slide onScreen directions are shaped "Title": description
  * (e.g. '"Why C?": laptop, washing machine, Python logo...') — a natural analogy
  * card. Cold-open-style concept slides (no colon in their direction) get none,
@@ -95,7 +124,7 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
         output: scene.code?.output,
       };
     case "terminal":
-      return { lines: [{ text: scene.onScreen }] };
+      return { lines: terminalLinesFromOnScreen(scene.onScreen) };
     case "algorithm-bars":
       return { trace: scene.trace ?? [] };
     case "memory-boxes":

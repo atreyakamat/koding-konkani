@@ -23,6 +23,11 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   durationInFrames,
 }) => {
   const frame = useCurrentFrame();
+  // Not every "bug" is broken code — some are a wrong mental model (EP02: a quoted
+  // claim) or a config/path value (EP03). Rendering those through CodeBlock's C
+  // syntax highlighting looked wrong and didn't wrap long lines. A real C snippet
+  // reliably has `;`, `{` or `#include`; prose/paths don't.
+  const isCode = /[;{]|#include/.test(wrongCode) || /[;{]|#include/.test(fixedCode);
   const codeLines = Math.max(wrongCode.split("\n").length, fixedCode.split("\n").length);
   const errorLines = error.split("\n").length;
   // GCC output can run long (EP01: 10 lines) — a compact size keeps the full, real error
@@ -75,13 +80,32 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
         </div>
 
         <div style={{ display: "flex", gap: 48, width: "100%", justifyContent: "center" }}>
-          <div style={{ translate: `${isFixed ? 0 : shakeX}px 0px` }}>
-            <CodeBlock
-              source={isFixed ? fixedCode : wrongCode}
-              width={1100}
-              fontSize={32}
-              maxVisibleLines={Math.min(codeLines, 8)}
-            />
+          <div
+            style={{ translate: `${isFixed ? 0 : shakeX}px 0px`, width: "100%", maxWidth: 1100 }}
+          >
+            {isCode ? (
+              <CodeBlock
+                source={isFixed ? fixedCode : wrongCode}
+                width={1100}
+                fontSize={32}
+                maxVisibleLines={Math.min(codeLines, 8)}
+              />
+            ) : (
+              <Panel background={isFixed ? palette.mint : palette.cream} borderColor={palette.ink}>
+                <div
+                  style={{
+                    fontFamily: fonts.body,
+                    fontWeight: 700,
+                    fontSize: 36,
+                    lineHeight: 1.4,
+                    color: palette.ink,
+                    whiteSpace: "pre-wrap",
+                  }}
+                >
+                  {isFixed ? fixedCode : wrongCode}
+                </div>
+              </Panel>
+            )}
           </div>
         </div>
 

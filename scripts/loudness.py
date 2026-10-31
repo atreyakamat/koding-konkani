@@ -65,11 +65,16 @@ def normalize_file(
     target_tp: float = TARGET_TP,
     target_lra: float = TARGET_LRA,
     copy_video: bool = False,
+    audio_bitrate: str | None = None,
 ) -> dict:
     """Two-pass loudnorm: measure, then apply a linear gain (falling back to
     dynamic normalisation only if the measured values are too far off target).
     `copy_video=True` keeps the video stream untouched (`-c:v copy`) for
-    mastering a rendered MP4's audio without re-encoding its picture."""
+    mastering a rendered MP4's audio without re-encoding its picture. The
+    loudnorm filter always forces an audio *re-encode* (it can't be `-c:a copy`),
+    so without an explicit `audio_bitrate` ffmpeg falls back to its own AAC
+    default (~125kbps) regardless of what the input was encoded at — pass the
+    render's own `--audio-bitrate` value here to actually preserve it."""
     measured = measure(in_path, target_i, target_tp, target_lra)
     # loudnorm's true-peak detection oversamples internally (to 192kHz); without
     # an explicit -ar the encoded output inherits that rate, so pin it back.
@@ -91,17 +96,27 @@ def normalize_file(
     ]
     if copy_video:
         cmd += ["-c:v", "copy"]
+    if audio_bitrate:
+        # ffmpeg's native "aac" encoder caps out around ~230kbps regardless of the
+        # requested -b:a (confirmed: asking for 320k or 400k both land ~235k) — this
+        # build has no libfdk_aac, but Windows's own aac_mf encoder (via
+        # MediaFoundation) hits the requested bitrate correctly.
+        cmd += ["-c:a", "aac_mf", "-b:a", audio_bitrate]
     cmd += [out_path]
     subprocess.run(cmd, capture_output=True, text=True, check=True)
     return measured
 
 
-def master_video(in_path: str, out_path: str, target_tp: float = -1.5) -> dict:
+def master_video(
+    in_path: str, out_path: str, target_tp: float = -1.5, audio_bitrate: str | None = None
+) -> dict:
     """Final mastering pass for a rendered MP4: two-pass loudnorm on the mixed
     audio (narration + music + SFX together can peak hotter than any single
     normalised clip), -c:v copy so the picture is untouched. Returns the
     pre-mastering measurement for the review log."""
-    return normalize_file(in_path, out_path, target_tp=target_tp, copy_video=True)
+    return normalize_file(
+        in_path, out_path, target_tp=target_tp, copy_video=True, audio_bitrate=audio_bitrate
+    )
 
 
 def main() -> None:

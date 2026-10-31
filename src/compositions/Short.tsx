@@ -40,26 +40,58 @@ export const calculateMetadata: CalculateMetadataFunction<ShortProps> = async ({
   };
 };
 
-/** The GCC error lines specifically (not the "GCC output:" header or the caret-pointer
- * lines) — the actual two `error:` messages, which is what makes the panel meaningful. */
-const gccErrorLines = (error: string): string =>
-  error
+/** For a real GCC bug (EP01), the actual `error:` lines (not the "GCC output:" header
+ * or the caret-pointer lines). Not every bug compiles, though — EP02's is a wrong
+ * mental model, EP03's is a PATH problem — neither has a literal "error:" line, so
+ * fall back to the explanation's first few non-empty lines not already shown in the
+ * wrong-value panel above (EP03's error text repeats those same path lines first). */
+const briefErrorLines = (error: string, wrong: string, isCode: boolean): string => {
+  if (isCode) {
+    const gccLines = error.split("\n").filter((l) => l.includes("error:"));
+    if (gccLines.length > 0) return gccLines.join("\n");
+  }
+  const wrongLines = new Set(wrong.split("\n").map((l) => l.trim()));
+  return error
     .split("\n")
-    .filter((l) => l.includes("error:"))
+    .filter((l) => l.trim() && !wrongLines.has(l.trim()))
+    .slice(0, 3)
     .join("\n");
+};
 
-/** The bug reveal: wrong code, then the real GCC error lines typing in underneath. */
+/** The bug reveal: the wrong code/claim/value, then the explanation typing in
+ * underneath. A real C snippet reliably has `;`, `{` or `#include`; a wrong mental
+ * model or a config value (EP02/EP03) doesn't, and reads better as a text card
+ * than C-syntax-highlighted code. */
 const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
   const frame = useCurrentFrame();
-  const errorText = gccErrorLines(episode.bug.error);
+  const isCode = /[;{]|#include/.test(episode.bug.wrong);
+  const errorText = briefErrorLines(episode.bug.error, episode.bug.wrong, isCode);
   const errorChars = typewriterChars(errorText, frame, 24, 1.1);
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16, height: "100%" }}>
-      <CodeBlock source={episode.bug.wrong} width={860} fontSize={34} maxVisibleLines={6} />
+      {isCode ? (
+        <CodeBlock source={episode.bug.wrong} width={860} fontSize={34} maxVisibleLines={6} />
+      ) : (
+        <Panel background={palette.cream} borderColor={palette.ink}>
+          <div
+            style={{
+              fontFamily: fonts.body,
+              fontWeight: 700,
+              fontSize: 30,
+              lineHeight: 1.4,
+              color: palette.ink,
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            {episode.bug.wrong}
+          </div>
+        </Panel>
+      )}
       <Panel background={palette.darkBlue} borderColor={palette.ink}>
         <div
           style={{
-            fontFamily: fonts.code,
+            fontFamily: isCode ? fonts.code : fonts.body,
+            fontWeight: isCode ? 400 : 700,
             fontSize: 22,
             lineHeight: 1.3,
             color: palette.tomato,

@@ -31,6 +31,11 @@ export const Terminal: React.FC<TerminalProps> = ({ lines, colours, durationInFr
     durationInFrames * 0.8,
   );
   const hasError = lines.some((line) => line.kind === "error");
+  // Fixed-size terminal text clipped past the window's right edge on a long
+  // command/output line (STYLE.md fix, 31 Oct) — scale down for long content
+  // instead, same window every time.
+  const longestLine = Math.max(0, ...lines.map((l) => l.text.length));
+  const fontSize = longestLine > 60 ? 22 : longestLine > 40 ? 28 : 34;
 
   return (
     <SceneFrame
@@ -85,9 +90,11 @@ export const Terminal: React.FC<TerminalProps> = ({ lines, colours, durationInFr
                   key={index}
                   style={{
                     fontFamily: fonts.code,
-                    fontSize: 34,
+                    fontSize,
+                    lineHeight: 1.3,
                     color: colourFor(line.kind),
-                    whiteSpace: "pre",
+                    whiteSpace: "pre-wrap",
+                    wordBreak: "break-word",
                   }}
                 >
                   {isInput ? (
