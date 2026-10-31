@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { accentOn } from "../theme/contrast";
 import { Sticker, Chip } from "../ui";
 import { Xecxec } from "../mascot/Xecxec";
 import { enterProgress, springs } from "../lib/motion";
@@ -49,7 +50,7 @@ export const TitleCard: React.FC<TitleCardProps> = ({ ep, title, moduleLabel, co
           fontSize: 128,
           lineHeight: 1.05,
           color: colours.bg,
-          WebkitTextStroke: `4px ${colours.accent}`,
+          WebkitTextStroke: `4px ${accentOn(colours.bg, colours.accent)}`,
           paintOrder: "stroke fill",
           textTransform: "uppercase",
           textAlign: "center",

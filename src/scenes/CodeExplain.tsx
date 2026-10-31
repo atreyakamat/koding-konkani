@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { accentOn, readableOn } from "../theme/contrast";
 import { Panel, Chip, CodeBlock } from "../ui";
 import { typewriterChars } from "../lib/motion";
 import { defaultHlCues, hlLineAt, trackValuesAt } from "../lib/cues";
@@ -49,7 +50,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
       }}
     >
       <div style={{ flex: 1.5, display: "flex", flexDirection: "column", gap: 20 }}>
-        <Chip text={file} background={colours.accent} color={palette.white} />
+        <Chip text={file} background={colours.accent} color={readableOn(colours.accent)} />
         <CodeBlock
           source={source}
           highlightLine={highlightLine}
@@ -73,7 +74,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
               style={{
                 fontFamily: fonts.title,
                 fontSize: 24,
-                color: colours.accent,
+                color: accentOn(colours.bg, colours.accent),
                 textTransform: "uppercase",
               }}
             >

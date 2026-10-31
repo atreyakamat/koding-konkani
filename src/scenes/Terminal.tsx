@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { palette, brutal } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { accentOn } from "../theme/contrast";
 import { typewriterChars } from "../lib/motion";
 import { defaultRevealCues, revealFrame } from "../lib/cues";
 import type { BaseSceneProps } from "./types";
@@ -70,7 +71,9 @@ export const Terminal: React.FC<TerminalProps> = ({ lines, colours, durationInFr
                   whiteSpace: "pre",
                 }}
               >
-                {isInput ? <span style={{ color: colours.accent }}>{"$ "}</span> : null}
+                {isInput ? (
+                  <span style={{ color: accentOn(palette.darkBlue, colours.accent) }}>{"$ "}</span>
+                ) : null}
                 {shown}
               </div>
             );
