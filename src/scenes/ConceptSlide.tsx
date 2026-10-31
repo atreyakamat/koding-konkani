@@ -5,6 +5,7 @@ import { accentOn, readableOn } from "../theme/contrast";
 import { Panel } from "../ui";
 import { enterProgress } from "../lib/motion";
 import { defaultRevealCues, revealFrame } from "../lib/cues";
+import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
 export type ConceptSlideProps = BaseSceneProps & {
@@ -33,115 +34,124 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
   const analogyStart = lastReveal + 8;
 
   return (
-    <AbsoluteFill
-      style={{
-        background: colours.bg,
-        padding: 96,
-        display: "flex",
-        flexDirection: "row",
-        gap: 56,
-        alignItems: "center",
+    <SceneFrame
+      colours={colours}
+      mascot={{
+        poses: [
+          { frame: analogyStart, pose: "clawsUp" },
+          { frame: analogyStart + 36, pose: "idle" },
+        ],
       }}
     >
-      <div style={{ flex: analogy ? 1.3 : 1, display: "flex", flexDirection: "column", gap: 36 }}>
-        {heading ? (
-          <div
-            style={{
-              fontFamily: fonts.title,
-              fontSize: 56,
-              color: accentOn(colours.bg, colours.accent),
-              textTransform: "uppercase",
-            }}
-          >
-            {heading}
-          </div>
-        ) : null}
-        {lines.map((line, index) => {
-          const start = revealFrame(revealCues, index, lines.length, durationInFrames * 0.6);
-          const progress = enterProgress(frame, start, 10);
-          return (
+      <AbsoluteFill
+        style={{
+          padding: "96px 96px 340px",
+          display: "flex",
+          flexDirection: "row",
+          gap: 56,
+          alignItems: "center",
+        }}
+      >
+        <div style={{ flex: analogy ? 1.3 : 1, display: "flex", flexDirection: "column", gap: 36 }}>
+          {heading ? (
             <div
-              key={index}
               style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: 24,
-                opacity: progress,
-                translate: `${(1 - progress) * -48}px 0`,
+                fontFamily: fonts.title,
+                fontSize: 56,
+                color: accentOn(colours.bg, colours.accent),
+                textTransform: "uppercase",
               }}
             >
-              <div
-                style={{
-                  flexShrink: 0,
-                  width: 56,
-                  height: 56,
-                  borderRadius: "50%",
-                  background: colours.accent,
-                  border: `${brutal.border}px solid ${palette.ink}`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: fonts.title,
-                  fontSize: 32,
-                  color: readableOn(colours.accent),
-                }}
-              >
-                {index + 1}
-              </div>
-              <div
-                style={{
-                  fontFamily: fonts.body,
-                  fontWeight: 700,
-                  fontSize: 48,
-                  color: readableOn(colours.bg),
-                  lineHeight: 1.25,
-                }}
-              >
-                {line}
-              </div>
+              {heading}
             </div>
-          );
-        })}
-      </div>
-
-      {analogy
-        ? (() => {
-            const progress = enterProgress(frame, analogyStart, 12);
+          ) : null}
+          {lines.map((line, index) => {
+            const start = revealFrame(revealCues, index, lines.length, durationInFrames * 0.6);
+            const progress = enterProgress(frame, start, 10);
             return (
               <div
+                key={index}
                 style={{
-                  flex: 1,
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 24,
                   opacity: progress,
-                  translate: `${(1 - progress) * 60}px 0`,
+                  translate: `${(1 - progress) * -48}px 0`,
                 }}
               >
-                <Panel background={palette.cream}>
-                  <div
-                    style={{
-                      fontFamily: fonts.title,
-                      fontSize: 32,
-                      color: accentOn(palette.cream, colours.accent),
-                      marginBottom: 16,
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {analogy.title}
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: fonts.body,
-                      fontSize: 36,
-                      color: palette.ink,
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {analogy.body}
-                  </div>
-                </Panel>
+                <div
+                  style={{
+                    flexShrink: 0,
+                    width: 56,
+                    height: 56,
+                    borderRadius: "50%",
+                    background: colours.accent,
+                    border: `${brutal.border}px solid ${palette.ink}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: fonts.title,
+                    fontSize: 32,
+                    color: readableOn(colours.accent),
+                  }}
+                >
+                  {index + 1}
+                </div>
+                <div
+                  style={{
+                    fontFamily: fonts.body,
+                    fontWeight: 700,
+                    fontSize: 58,
+                    color: readableOn(colours.bg),
+                    lineHeight: 1.25,
+                  }}
+                >
+                  {line}
+                </div>
               </div>
             );
-          })()
-        : null}
-    </AbsoluteFill>
+          })}
+        </div>
+
+        {analogy
+          ? (() => {
+              const progress = enterProgress(frame, analogyStart, 12);
+              return (
+                <div
+                  style={{
+                    flex: 1,
+                    opacity: progress,
+                    translate: `${(1 - progress) * 60}px 0`,
+                  }}
+                >
+                  <Panel background={palette.cream}>
+                    <div
+                      style={{
+                        fontFamily: fonts.title,
+                        fontSize: 32,
+                        color: accentOn(palette.cream, colours.accent),
+                        marginBottom: 16,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {analogy.title}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: fonts.body,
+                        fontSize: 36,
+                        color: palette.ink,
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {analogy.body}
+                    </div>
+                  </Panel>
+                </div>
+              );
+            })()
+          : null}
+      </AbsoluteFill>
+    </SceneFrame>
   );
 };

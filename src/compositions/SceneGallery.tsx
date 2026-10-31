@@ -152,6 +152,7 @@ const ep01Items = (bg: string, accent: string): GalleryItem[] => {
           file="hi.c"
           source={HI_C}
           labels={{ 4: "function · text in quotes · end of statement" }}
+          output="Hi"
         />
       ),
     },
