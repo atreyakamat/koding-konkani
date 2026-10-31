@@ -207,7 +207,7 @@
   "bug": {
     "wrong": "#include <stdio.h>\n\nfloat average(int arr[]) {\n    int n = sizeof(arr) / sizeof(arr[0]);\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += arr[i];\n    }\n    return (float)sum / n;\n}\n\nint main() {\n    int marks[] = {78, 92, 65, 88, 71};\n    printf(\"Average: %.2f\\n\", average(marks));\n    return 0;\n}",
     "error": "GCC warning (plain `gcc avg_bug.c -o avg_bug`, no flags needed):\n\navg_bug.c: In function 'average':\navg_bug.c:4:19: warning: 'sizeof' on array function parameter 'arr' will return size of 'int *' [-Wsizeof-array-argument]\n    4 |     int n = sizeof(arr) / sizeof(arr[0]);\n      |                   ^\navg_bug.c:3:19: note: declared here\n    3 | float average(int arr[]) {\n      |               ~~~~^~~~~\n\nWrong output on a 64-bit PC (8-byte address / 4-byte int = 2 elements; on screen: \"depends on your machine\"):\n\nAverage: 85.00",
-    "fixed": "float average(int arr[], int size) {\n    int sum = 0;\n    for (int i = 0; i < size; i++) {\n        sum += arr[i];\n    }\n    return (float)sum / size;\n}",
+    "fixed": "#include <stdio.h>\n\nfloat average(int arr[], int size) {\n    int sum = 0;\n    for (int i = 0; i < size; i++) {\n        sum += arr[i];\n    }\n    return (float)sum / size;\n}\n\nint main() {\n    int marks[] = {78, 92, 65, 88, 71};\n    int n = sizeof(marks) / sizeof(marks[0]);\n    printf(\"Average: %.2f\\n\", average(marks, n));\n    return 0;\n}",
     "why": "inside a function an array parameter is really just the array's address, so sizeof measures the address, not the array; count in the caller and pass the size."
   },
   "pun": "Why do arrays make great friends? They never come to a function alone; they always bring their size.",
@@ -322,6 +322,7 @@
   ],
   "bugExtra": {
     "wrongLang": "c",
-    "fixedHasFullProgram": false
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Average: 78.80"
   }
 }
