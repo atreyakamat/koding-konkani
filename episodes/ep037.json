@@ -1,0 +1,303 @@
+{
+  "ep": 37,
+  "title": "Scope & Lifetime",
+  "module": 5,
+  "lengthSec": 400,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "say where a local, global or static local variable can be used (scope) and how long it lives (lifetime)",
+    "predict the output of a function that uses a `static` counter",
+    "recognise a shadowed variable and turn on `-Wshadow` to catch it"
+  ],
+  "youtube": {
+    "title": "What Happens in a Function Stays There | C Programming EP 37",
+    "description": "Why can't main see a variable you made inside a function? Why does a static variable remember its value? We cover local, global and static variables with a simple fish-market example, and catch a sneaky shadowed variable. Chapters: 0:00 What happens in a function · 0:25 Scope and lifetime · 1:25 Local vs global vs static · 2:15 Code walkthrough · 4:05 Running it · 4:40 Bug of the Day · 5:50 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "What happens in a function"
+      },
+      {
+        "t": "0:25",
+        "label": "Scope and lifetime"
+      },
+      {
+        "t": "1:25",
+        "label": "Local vs global vs static"
+      },
+      {
+        "t": "2:15",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "4:05",
+        "label": "Running it"
+      },
+      {
+        "t": "4:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:50",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "variable scope c",
+      "local and global variables",
+      "static variable c",
+      "lifetime of variables",
+      "shadowing c",
+      "Wshadow",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "class 12 computer science",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "STAYS IN THE FUNCTION",
+      "visual": "big text \"STAYS IN THE FUNCTION\"; a variable box locked inside a room shaped like curly braces; Xecxec peeking through the keyhole; lilac background, tomato text",
+      "pose": "Xecxec peeking through the keyhole"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A variable `basket` made inside a function; main tries to print it; tomato error `'basket' undeclared`",
+      "animation": "Door slams shut on the box; error buzzer",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Here's a function that makes a variable called basket. Back in main, we try to print basket. And GCC says: basket undeclared. But we made it! Yes, inside the function. And what happens in a function stays in the function."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 37 · SCOPE & LIFETIME",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 37. Scope and lifetime."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 60,
+      "onScreen": "Two words: SCOPE = where you can use it; LIFETIME = how long it exists. Fish-market picture: each stall's basket (local), the market clock tower (global), the stall owner's notebook (static)",
+      "animation": "Each picture pops in with its label; market chatter bed",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Two words today. Scope means: where in the code can I use this variable? Lifetime means: how long does it exist while the program runs? Picture the Mapusa fish market. Each stall has its own basket. You can't reach into another stall's basket; that's a local variable. The big clock in the middle of the market, everyone can see; that's a global variable. And the stall owner's notebook, which stays at the stall and remembers yesterday's sales; that's a static local variable. Let's see each one in C."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 85,
+      "lengthSec": 50,
+      "onScreen": "Three boxes: local appears and vanishes with each call; global sits above everything; static stays after the call",
+      "animation": "Local box fades in/out with a puff; static box glows lilac",
+      "sfx": [],
+      "narration": "A local variable is made inside a function. Its scope is only that function's curly braces. It is created when the function is called and destroyed when the function returns. Call again, and you get a brand-new one. A global variable is made outside all functions, at the top of the file. Every function can use it, and it lives for the whole program. A static local variable is made inside a function with the word static. Its scope is still only that function, but its lifetime is the whole program. It is set up once, and it keeps its value between calls."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 135,
+      "lengthSec": 110,
+      "onScreen": "`scope.c` (26 lines)",
+      "animation": "Butter highlights; trackers for total, basket, visits, fresh",
+      "sfx": [],
+      "narration": "[HL 3] Line three: int total equals zero, outside every function. This is global. [HL 5] Line five: addFish, taking count. Parameters are locals too. [HL 6] Line six: int basket equals count. A local, only alive inside addFish. [HL 7] Line seven adds basket to the global total. addFish can see total because it is global. [HL 8] Line eight prints both. [HL 11] Line eleven: function visit. [HL 12] Line twelve: static int visits equals zero. This zero is set only once, before the program starts using it, not on every call. [HL 13] Line thirteen: int fresh equals zero. A normal local, set to zero on every call. [HL 14-15] Lines fourteen and fifteen add one to each. [HL 16] Line sixteen prints them. Now main. [HL 20] addFish of 5: [TRACK basket=5] basket is 5, [TRACK total=5] total becomes 5. When addFish returns, basket is destroyed. [HL 21] addFish of 3: a brand-new basket, [TRACK basket=3] 3, and [TRACK total=8] total becomes 8, because the global remembers. [HL 22] First visit: [TRACK visits=1] visits is 1, [TRACK fresh=1] fresh is 1. [HL 23] Second visit: [TRACK visits=2] visits is 2, but fresh starts again at zero and becomes 1. [HL 24] Third visit: [TRACK visits=3] visits 3, fresh still 1. That's the difference: the static remembers, the local forgets. One warning about globals: they're handy, but any function can change them, which makes bugs hard to find. Use locals and parameters first; use a global only when you really must.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint total = 0;              // global: visible everywhere\n\nvoid addFish(int count) {\n    int basket = count;     // local: lives only inside addFish\n    total = total + basket;\n    printf(\"Basket: %d, Total: %d\\n\", basket, total);\n}\n\nvoid visit(void) {\n    static int visits = 0;  // static local: remembers between calls\n    int fresh = 0;          // normal local: reset every call\n    visits++;\n    fresh++;\n    printf(\"visits = %d, fresh = %d\\n\", visits, fresh);\n}\n\nint main(void) {\n    addFish(5);\n    addFish(3);\n    visit();\n    visit();\n    visit();\n    return 0;\n}",
+        "output": "Basket: 5, Total: 5\nBasket: 3, Total: 8\nvisits = 1, fresh = 1\nvisits = 2, fresh = 1\nvisits = 3, fresh = 1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 245,
+      "lengthSec": 30,
+      "onScreen": "Compile and run; 5 output lines",
+      "animation": "Typing SFX",
+      "sfx": [],
+      "narration": "Compile and run. Basket 5, total 5. Basket 3, total 8. Then visits 1, 2, 3, while fresh stays 1 every time."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 275,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec puts on sunglasses",
+      "sfx": [],
+      "narration": "Why don't local variables go to parties? Because they never get out of their function."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 280,
+      "lengthSec": 70,
+      "onScreen": "`bug.c`: inner `int score` hides the outer one; output 10 instead of 25",
+      "animation": "Two score boxes, inner one covers outer like a shadow; -Wshadow warning in butter; fix removes `int`, mint tick",
+      "sfx": [],
+      "narration": "Today's bug: the shadowed variable. score starts at 10. The loop runs three times and adds 5 each time, so we expect 25. But the program prints 10. Look at line six: int score equals zero, inside the loop. That int creates a new, second score that only lives inside the loop's braces. It hides, or shadows, the outer one. All the adding happens to the inner score, which dies at the end of each loop round. The outer score never changes. GCC doesn't complain, not even with dash Wall. You need an extra flag, dash Wshadow. Then GCC says: declaration of score shadows a previous local. The fix: delete the word int, and the loop uses the outer score. Now it prints 25. Add dash Wshadow to your compile command, and GCC will catch this for you."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 350,
+      "lengthSec": 35,
+      "onScreen": "Challenge card: ticket counter with static",
+      "animation": "Timer ticks",
+      "sfx": [],
+      "narration": "Your challenge: the bus-stand ticket counter. Write a function nextTicket that returns 101 the first time, 102 the second time, 103 the third, using a static variable. Call it three times in a loop and print \"Your ticket: \" and the number."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 385,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 38 · Call by value",
+      "animation": "Two cups swapping and failing; sign-off jingle",
+      "sfx": [],
+      "narration": "Next episode: why passing a variable to a function gives the function a copy, and why our swap function won't swap. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int score = 10;\n    for (int i = 0; i < 3; i++) {\n        int score = 0;\n        score = score + 5;\n    }\n    printf(\"Final score: %d\\n\", score);\n    return 0;\n}",
+    "error": "`gcc bug.c` and `gcc -Wall bug.c` give no message at all. Wrong output:\n\nFinal score: 10\n\nWith `gcc -Wall -Wshadow bug.c -o bug`:\n\nbug.c: In function 'main':\nbug.c:6:13: warning: declaration of 'score' shadows a previous local [-Wshadow]\n    6 |         int score = 0;\n      |             ^~~~~\nbug.c:4:9: note: shadowed declaration is here\n    4 |     int score = 10;\n      |         ^~~~~",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int score = 10;\n    for (int i = 0; i < 3; i++) {\n        score = score + 5;\n    }\n    printf(\"Final score: %d\\n\", score);\n    return 0;\n}",
+    "why": "writing `int` again inside the loop makes a new local that hides the outer variable, so the outer one is never updated."
+  },
+  "pun": "Why don't local variables go to parties? They never get out of their function.",
+  "challenge": "Write `int nextTicket(void)` using a `static` counter so it returns 101, 102, 103 on successive calls. Print three tickets from a loop.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint nextTicket(void) {\n    static int ticket = 100;\n    ticket++;\n    return ticket;\n}\n\nint main(void) {\n    for (int i = 0; i < 3; i++) {\n        printf(\"Your ticket: %d\\n\", nextTicket());\n    }\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What Happens in a Function Stays There",
+      "hook": "tomato error \"'basket' undeclared\"",
+      "script": "We made basket inside a function. main tries to print it. Error: basket undeclared. Why? A local variable only exists inside its own function. It is born when the function is called and destroyed when it returns. What happens in a function stays in the function.",
+      "onScreen": "LOCAL = STAYS INSIDE",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 25,
+      "caption": "Why main can't see your function's variables.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "scope",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "static in 30 Seconds",
+      "hook": "\"visits = 1, 2, 3 but fresh = 1, 1, 1\"",
+      "script": "Two variables inside the same function. fresh is a normal local: it is reset to zero on every call. visits is static: it is set up once and keeps its value between calls. Call the function three times. visits counts 1, 2, 3. fresh is stuck at 1. Static means: same scope, longer memory.",
+      "onScreen": "static = REMEMBERS",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "The keyword that gives a function a memory.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "computerscience",
+        "static"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The Shadow Bug",
+      "hook": "\"Expected 25. Got 10.\"",
+      "script": "score starts at 10, the loop adds 5 three times, but it prints 10. The culprit: int score inside the loop. That creates a second score that hides the first. No warning, even with dash Wall. Add dash Wshadow, and GCC points right at it. Delete that int, and you get 25.",
+      "onScreen": "EXPECTED 25 · GOT 10",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "One extra word, one silent bug.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "gcc",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Local Variables at Parties",
+      "hook": "Xecxec at a party, a variable box stuck behind curly-brace bars",
+      "script": "Why don't local variables go to parties? Because they never get out of their function.",
+      "onScreen": "NEVER GETS OUT",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Introvert variables, explained.",
+      "hashtags": [
+        "codingmemes",
+        "programmerhumor",
+        "kodingkonkani",
+        "cprogramming",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: Global, Local or Static?",
+      "hook": "\"Which variable remembers between calls but can't be seen outside?\"",
+      "script": "Which kind of variable keeps its value between calls but can only be used inside its function? A: global. B: local. C: static local. The answer is C. A global is visible everywhere. A local forgets. A static local remembers, but stays private.",
+      "onScreen": "GLOBAL · LOCAL · STATIC?",
+      "fromScenes": [
+        3,
+        4
+      ],
+      "lengthSec": 25,
+      "caption": "Comment your answer before the reveal.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "exams"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint total = 0;              // global: visible everywhere\n\nvoid addFish(int count) {\n    int basket = count;     // local: lives only inside addFish\n    total = total + basket;\n    printf(\"Basket: %d, Total: %d\\n\", basket, total);\n}\n\nvoid visit(void) {\n    static int visits = 0;  // static local: remembers between calls\n    int fresh = 0;          // normal local: reset every call\n    visits++;\n    fresh++;\n    printf(\"visits = %d, fresh = %d\\n\", visits, fresh);\n}\n\nint main(void) {\n    addFish(5);\n    addFish(3);\n    visit();\n    visit();\n    visit();\n    return 0;\n}",
+      "output": "Basket: 5, Total: 5\nBasket: 3, Total: 8\nvisits = 1, fresh = 1\nvisits = 2, fresh = 1\nvisits = 3, fresh = 1",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Final score: 25"
+  }
+}

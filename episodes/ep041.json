@@ -1,0 +1,344 @@
+{
+  "ep": 41,
+  "title": "Arrays: A Row of Numbered Lockers",
+  "module": 6,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "declare an array and give it starting values",
+    "read and change one element with an index from 0 to size minus 1",
+    "walk through every element with a for loop",
+    "explain why going past the last index is dangerous"
+  ],
+  "youtube": {
+    "title": "Arrays in C: Why Counting Starts at 0 | C Programming EP 41",
+    "description": "Five marks, five variables? There is a better way. Learn how arrays store many values under one name, why the first index is 0, and how to loop through them all. Plus the out-of-bounds bug that GCC will not warn you about. 0:00 Five variables? No thanks · 0:20 Title · 0:25 Why arrays · 1:10 Arrays in memory · 2:00 Code walkthrough · 3:20 Running it · 3:50 Starting values and copying · 4:35 Pun · 4:40 Bug of the Day · 5:40 Challenge · 6:05 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Five variables? No thanks"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Why arrays"
+      },
+      {
+        "t": "1:10",
+        "label": "Arrays in memory"
+      },
+      {
+        "t": "2:00",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "3:20",
+        "label": "Running it"
+      },
+      {
+        "t": "3:50",
+        "label": "Starting values and copying"
+      },
+      {
+        "t": "4:35",
+        "label": "Pun"
+      },
+      {
+        "t": "4:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:40",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:05",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "arrays in c",
+      "c arrays tutorial",
+      "array index",
+      "for loop array",
+      "learn c",
+      "c for beginners",
+      "index out of bounds",
+      "koding konkani",
+      "c programming in english",
+      "class 12 computer science"
+    ],
+    "thumbnail": {
+      "text": "COUNT FROM 0",
+      "visual": "big text \"COUNT FROM 0\"; a row of five dark-blue lockers numbered 0 to 4 on peach; Xecxec pointing at locker 0 with a shocked face; tomato \"[5]\" crossed out above the row",
+      "pose": "Xecxec pointing at locker 0 with a shocked face"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Five separate boxes: mark1 to mark5, then 50 boxes flood in",
+      "animation": "Boxes pop in one by one, then flood; Xecxec buried under them, claw sticks out; pop SFX, rising whoosh",
+      "sfx": [
+        "pop",
+        "whoosh"
+      ],
+      "narration": "You want to store marks for five subjects. Easy. mark1, mark2, mark3, mark4, mark5. Five variables. Now your teacher says, store marks for the whole class. Fifty students. Are you really going to type fifty variable names? Xecxec tried. Look where he is now. There is a better way."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 41 · ARRAYS",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 41. Arrays."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "\"An array = many values, one name, same type\"; row of numbered lockers",
+      "animation": "Lockers slide in left to right with labels 0–4; soft clack per locker",
+      "sfx": [],
+      "narration": "An array is a group of values of the same type, stored under one name. Think of a row of lockers in your school corridor. All the lockers belong to one row, and each locker has a number on its door. To open one, you say the row name and the locker number. In C, the row name is the array name, and the locker number is called the index. One name, many values. That is the whole idea."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 70,
+      "lengthSec": 50,
+      "onScreen": "int marks[5]: five boxes side by side, index under each, value inside",
+      "animation": "Values drop into boxes; index 0 glows tomato; \"size 5, last index 4\" badge stamps in",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Here is how we write it. int marks, square bracket, five, square bracket. This asks C for five int boxes, sitting next to each other in memory. Now the important part. The first box is not number one. It is number zero. So the five boxes are marks zero, marks one, marks two, marks three, and marks four. Size five, last index four. Say it with me: the last index is always size minus one. Remember this, because almost every array bug comes from forgetting it."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 80,
+      "onScreen": "ep41_arrays.c types itself",
+      "animation": "Line highlights in butter; variable tracker shows marks[] and i",
+      "sfx": [],
+      "narration": "Let's read the program. [HL 1] Line one, as always, stdio dot h for printf. [HL 4] Line four creates the array and fills it in one go. int marks five equals, curly brace, 78, 92, 65, 88, 71. [TRACK marks={78,92,65,88,71}] The values go into the boxes in order: 78 into box zero, 92 into box one, and so on. [HL 6] Line six prints marks zero, the first mark: 78. [HL 7] Line seven prints marks four, the last mark: 71. Not marks five. Marks four. [HL 9] Line nine changes a value. marks two equals 70. The 65 in box two is replaced. [TRACK marks={78,92,70,88,71}] Arrays are not frozen; each box is a normal variable. [HL 11] Now line eleven, a for loop, just like Module 4. i starts at zero, and the loop runs while i is less than five. [TRACK i=0] So i takes the values zero, one, two, three, four. [TRACK i=4] Exactly the five valid indexes. [HL 12] Inside, printf shows the index and the value at that index, marks i. The loop counter becomes the locker number. This loop pattern, i from zero while i less than size, is the one you will write a thousand times."
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 200,
+      "lengthSec": 30,
+      "onScreen": "gcc ep41_arrays.c -o ep41 then ./ep41",
+      "animation": "Output lines print one by one; marks[2] = 70 flashes mint",
+      "sfx": [],
+      "narration": "Compile with gcc ep41 underscore arrays dot c, dash o, ep41. Run it. First mark 78, last mark 71. Then the loop prints all five, and look: marks two is now 70, not 65. Our change worked."
+    },
+    {
+      "id": 7,
+      "template": "memory-boxes",
+      "startSec": 230,
+      "lengthSec": 45,
+      "onScreen": "{1, 2} into a[5] fills 1 2 0 0 0; b[] = {4, 5, 6} gets size 3; then b = a; with a red X and a copy loop",
+      "animation": "Zeros fade in grey; \"compiler counts for you\" sticker; b = a gets stamped with the GCC error, then values hop box to box one at a time",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Two quick tricks. If you give fewer values than the size, like int a five equals one comma two, C fills the rest with zeros. So you get 1, 2, 0, 0, 0. And if you give all the values, you can leave the size empty. int b, empty brackets, equals 4, 5, 6. The compiler counts them and makes the size three. But be careful: an array with no starting values at all, inside main, holds random leftover numbers. Always fill it before you read it. And one rule that surprises everyone: you cannot copy a whole array with equals. Write b equals a, and GCC stops with an error: assignment to expression with array type. To copy an array, use a loop and copy it one element at a time: b i equals a i. Remember this; it comes back when we meet structures."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 275,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot with claws",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the array break up with the index? It kept going out of bounds."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 280,
+      "lengthSec": 60,
+      "onScreen": "i <= 5 loop, garbage sixth value",
+      "animation": "Locker 5 appears dotted and red, door creaks open to a random number; alarm buzz",
+      "sfx": [],
+      "narration": "Today's bug looks innocent. The loop says i less than or equal to five. GCC compiles it without a single error. Run it, and you get the five marks, plus a sixth line: marks five equals some strange number. Your number will be different from mine, because there is no locker five. C does not check. It just opens whatever memory sits after the array and shows you what is inside. Sometimes it prints junk, sometimes it crashes, sometimes it quietly changes another variable. The fix: use i less than five. Less than the size, never less than or equal to."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 340,
+      "lengthSec": 25,
+      "onScreen": "Store 5 marks from the keyboard",
+      "animation": "Five empty lockers with question marks; ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. Make an array of five ints. Use a for loop with scanf to read five marks from the keyboard, one per subject. Then use a second loop to print them back as Subject 1, Subject 2, and so on. Hint: scanf needs ampersand marks i, and the subject number is i plus one."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 365,
+      "lengthSec": 25,
+      "onScreen": "Next: EP 42 Array operations",
+      "animation": "Xecxec wears a tiny crown (topper teaser); sign-off",
+      "sfx": [],
+      "narration": "Next episode, we put arrays to work: sum, average, and finding who topped the class. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    int marks[5] = {78, 92, 65, 88, 71};\n\n    for (int i = 0; i <= 5; i++) {\n        printf(\"marks[%d] = %d\\n\", i, marks[i]);\n    }\n    return 0;\n}",
+    "error": "GCC gives no error and, with a plain `gcc file.c`, no warning. Wrong output (the last number is random; on screen: \"your number will differ\"):\n\nmarks[0] = 78\nmarks[1] = 92\nmarks[2] = 65\nmarks[3] = 88\nmarks[4] = 71\nmarks[5] = 32767",
+    "fixed": "    for (int i = 0; i < 5; i++) {\n        printf(\"marks[%d] = %d\\n\", i, marks[i]);\n    }",
+    "why": "an array of size 5 has indexes 0 to 4, and C never checks the index, so marks[5] reads memory that does not belong to the array."
+  },
+  "pun": "Why did the array break up with the index? It kept going out of bounds.",
+  "challenge": "Read 5 marks into an array with scanf in a loop, then print them back as \"Subject 1: 78\" and so on.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint main() {\n    int marks[5];\n\n    for (int i = 0; i < 5; i++) {\n        printf(\"Enter mark %d: \", i + 1);\n        scanf(\"%d\", &marks[i]);\n    }\n    for (int i = 0; i < 5; i++) {\n        printf(\"Subject %d: %d\\n\", i + 1, marks[i]);\n    }\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "50 Variables? No Way",
+      "hook": "Xecxec buried under 50 variable boxes. \"Stop typing mark1, mark2, mark3...\"",
+      "script": "Stop typing mark1, mark2, mark3. If you need fifty marks, you need one array. An array is a row of lockers: one name, many values, each with its own number. int marks fifty, and you are done. Full episode on the channel.",
+      "onScreen": "50 VARIABLES? → 1 ARRAY",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "One name, fifty values. This is why arrays exist.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "arrays",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Arrays in 30 Seconds",
+      "hook": "\"The first box is not number one.\"",
+      "script": "The first box is not number one. In C, int marks five gives you five boxes, numbered zero to four. marks zero is the first, marks four is the last. To visit all of them, loop i from zero while i is less than five. Size five, last index four. Always size minus one.",
+      "onScreen": "SIZE 5 = INDEX 0 TO 4",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "The one rule every array bug forgets.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "arrays",
+        "cprogrammingtutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The Locker That Doesn't Exist",
+      "hook": "Terminal shows \"marks[5] = 32767\". \"Where did this number come from?\"",
+      "script": "Where did this number come from? My array has five marks, but my loop said i less than or equal to five. So C opened locker number five, which does not exist, and showed me random memory. No error, no warning. The fix is one character: less than, not less than or equal to.",
+      "onScreen": "<= 5 ✗  < 5 ✓",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "GCC will not save you from this one.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "debugging"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Out of Bounds",
+      "hook": "Xecxec holding a broken heart labelled \"index\".",
+      "script": "Why did the array break up with the index? It kept going out of bounds.",
+      "onScreen": "IT KEPT GOING OUT OF BOUNDS",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Programmer heartbreak.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What Does This Print?",
+      "hook": "\"int a[5] = {1, 2}; What's in a[4]?\"",
+      "script": "int a five equals one comma two. What is inside a four? Garbage? Error? Pause and guess. The answer is zero. When you give fewer values than the size, C fills the rest with zeros. Comment if you got it.",
+      "onScreen": "a[4] = ?   → 0",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 20,
+      "caption": "Most beginners guess wrong. Did you?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "arrays"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int marks[5] = {78, 92, 65, 88, 71};\n\n    printf(\"First mark: %d\\n\", marks[0]);\n    printf(\"Last mark: %d\\n\", marks[4]);\n\n    marks[2] = 70;\n\n    for (int i = 0; i < 5; i++) {\n        printf(\"marks[%d] = %d\\n\", i, marks[i]);\n    }\n    return 0;\n}",
+      "output": "First mark: 78\nLast mark: 71\nmarks[0] = 78\nmarks[1] = 92\nmarks[2] = 70\nmarks[3] = 88\nmarks[4] = 71",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int a[5] = {1, 2};\n    int b[] = {4, 5, 6};\n\n    for (int i = 0; i < 5; i++) {\n        printf(\"%d \", a[i]);\n    }\n    printf(\"\\n\");\n    printf(\"%d %d %d\\n\", b[0], b[1], b[2]);\n    return 0;\n}",
+      "output": "1 2 0 0 0 \n4 5 6",
+      "lang": "c"
+    },
+    {
+      "file": "file3.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int a[3] = {1, 2, 3};\n    int b[3];\n    b = a;\n    return 0;\n}",
+      "lang": "c"
+    },
+    {
+      "file": "file4.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int a[3] = {1, 2, 3};\n    int b[3];\n\n    for (int i = 0; i < 3; i++) {\n        b[i] = a[i];\n    }\n    printf(\"%d %d %d\\n\", b[0], b[1], b[2]);\n    return 0;\n}",
+      "output": "1 2 3",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,320 @@
+{
+  "ep": 62,
+  "title": "Structs, arrays & pointers",
+  "module": 9,
+  "lengthSec": 400,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "declare and initialise an array of structs",
+    "reach a member with `cls[i].marks`",
+    "point to a struct and use the arrow `->`",
+    "explain that `p->x` means `(*p).x`",
+    "pass a struct to a function by pointer so the function can change it"
+  ],
+  "youtube": {
+    "title": "Array of Structs and the Arrow -> | C Programming EP 62",
+    "description": "One student card is easy. A whole class register needs an array of structs. Today we store three students, loop through them, change one through a pointer with the arrow operator, and settle the dot versus arrow confusion for good. Chapters: 0:00 The class register · 0:25 Array of structs · 1:05 Pointers to structs · 1:45 Code line by line · 3:40 Running it · 4:05 Dot or arrow? · 4:40 Bug of the Day · 5:50 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The class register"
+      },
+      {
+        "t": "0:25",
+        "label": "Array of structs"
+      },
+      {
+        "t": "1:05",
+        "label": "Pointers to structs"
+      },
+      {
+        "t": "1:45",
+        "label": "Code line by line"
+      },
+      {
+        "t": "3:40",
+        "label": "Running it"
+      },
+      {
+        "t": "4:05",
+        "label": "Dot or arrow?"
+      },
+      {
+        "t": "4:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:50",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "array of structures in c",
+      "arrow operator in c",
+      "pointer to structure",
+      "struct and pointers",
+      "dot vs arrow",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "c tutorial english"
+    ],
+    "thumbnail": {
+      "text": ". OR -> ?",
+      "visual": "big text \". OR -> ?\"; a class register book with three ID cards in a row and a pointer arrow aimed at one; Xecxec holding a dot in one claw and an arrow in the other, confused; cream background, tomato blocks",
+      "pose": "Xecxec holding a dot in one claw and an arrow in the other, confused"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A class register book opens to a page of names",
+      "animation": "Page flip, school bell",
+      "sfx": [],
+      "narration": "Every morning, the teacher opens the class register. One row per student: name, roll number, marks. In EP 61 we made one student card. But a class has forty students. We are not going to write s1, s2, s3, all the way to s40. You already know the answer from Module 6: an array. Only this time, an array of structs."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 62 · STRUCTS, ARRAYS & POINTERS",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 62. Structs, arrays and pointers."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 40,
+      "onScreen": "cls[0], cls[1], cls[2] as three ID cards in a row, each with name, rollNo, marks",
+      "animation": "Cards slide in left to right, index labels pop",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "An array of structs is a row of lockers, where every locker holds a whole ID card. cls zero is the first card, cls one the second, cls two the third. To reach one field, you combine what you know. First the index in square brackets to pick the card, then the dot to pick the field. cls one dot marks means: the marks of the second student. Read it left to right: which card, then which field."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 65,
+      "lengthSec": 40,
+      "onScreen": "Pointer p (GPS pin from EP 53) aimed at cls[1]; p->marks highlights the marks field",
+      "animation": "Pin drops, arrow draws, ping",
+      "sfx": [],
+      "narration": "Now pointers. In EP 53, a pointer was a GPS pin holding an address. A pointer can hold the address of a whole struct too. Say p points to cls one. To get the marks, you could write star p in brackets, dot marks: first go to the address, then pick the field. The brackets are needed because the dot is stronger than the star. That is ugly, and programmers write it all the time. So C gives a shortcut: p arrow marks. A minus sign and a greater-than sign, and it means exactly the same thing. Go to the struct p points at, and take its marks."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 105,
+      "lengthSec": 115,
+      "onScreen": "ep62.c, 35 lines; tracker shows the 3 cards and pointer p/top",
+      "animation": "Line highlights; marks field ticks 64.5 to 69.5; key-tap SFX",
+      "sfx": [],
+      "narration": "Let's see it in a real program. [HL 3] Lines 3 to 7 define struct Student, with name, rollNo and marks. [HL 9] Line 9: a function printStudent that takes a pointer to a Student, called p. Why a pointer? A struct can be big. Passing a pointer sends just one address instead of copying the whole card. [HL 10] Line 10 prints the three fields with the arrow: p arrow name, p arrow rollNo, p arrow marks. The percent minus 8 s pads the name to 8 characters so the columns line up, from EP 11. [HL 13] Line 13: a function addGrace, also taking a pointer, plus a bonus. [HL 14] Line 14: p arrow marks equals p arrow marks plus bonus. Because we have the address, we change the real struct, not a copy. That is call by reference from EP 55. [HL 18] Now main. Line 18: struct Student cls, size 3, equals, and then lines 19 to 21: one set of braces per student, all inside an outer pair of braces. Anya, roll 1, 78. Rohan, roll 2, 64.5. Sneha, roll 3, 91. [TRACK cls[1].marks=64.5] [HL 24] Line 24: addGrace with ampersand cls one, and 5. The ampersand gives the address of the second card. Inside the function, p points to Rohan's card, and his marks go up by 5. [TRACK cls[1].marks=69.5] [HL 26] Lines 26 to 28 loop over all three students, with the for loop from EP 27, and pass the address of each card to printStudent. [HL 30] Line 30: a pointer called top, holding the address of cls two, Sneha's card. [HL 31] Line 31 prints top arrow name. [HL 32] And line 32 prints the long form, star top in brackets, dot name. Both print Sneha. Same thing, two spellings.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nstruct Student {\n    char name[30];\n    int rollNo;\n    float marks;\n};\n\nvoid printStudent(struct Student *p) {\n    printf(\"%-8s roll %2d  marks %.1f\\n\", p->name, p->rollNo, p->marks);\n}\n\nvoid addGrace(struct Student *p, float bonus) {\n    p->marks = p->marks + bonus;\n}\n\nint main(void) {\n    struct Student cls[3] = {\n        {\"Anya\", 1, 78.0f},\n        {\"Rohan\", 2, 64.5f},\n        {\"Sneha\", 3, 91.0f}\n    };\n\n    addGrace(&cls[1], 5.0f);\n\n    for (int i = 0; i < 3; i++) {\n        printStudent(&cls[i]);\n    }\n\n    struct Student *top = &cls[2];\n    printf(\"Topper: %s\\n\", top->name);\n    printf(\"Same thing: %s\\n\", (*top).name);\n\n    return 0;\n}",
+        "output": "Anya     roll  1  marks 78.0\nRohan    roll  2  marks 69.5\nSneha    roll  3  marks 91.0\nTopper: Sneha\nSame thing: Sneha"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 220,
+      "lengthSec": 20,
+      "onScreen": "Program output, 5 lines",
+      "animation": "Typing SFX, rows print like a register",
+      "sfx": [],
+      "narration": "Compile and run. Anya, roll 1, 78. Rohan, roll 2, 69.5: the grace marks worked, because we changed the real card through a pointer. Sneha, roll 3, 91. Topper: Sneha. Same thing: Sneha."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 240,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the pointer always get to the struct first? It knew exactly which way the arrow was pointing."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 245,
+      "lengthSec": 35,
+      "onScreen": "Rule card: have the struct? use . · have a pointer? use -> · p->x is (*p).x",
+      "animation": "Two columns stamp in; equals sign glows",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Here is the one rule. Ask yourself: what do I have in my claw? If you have the struct itself, like s or cls one, use the dot. If you have a pointer to a struct, like p or top, use the arrow. And remember, p arrow x is only a shortcut for star p in brackets, dot x. Nothing magic."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 280,
+      "lengthSec": 70,
+      "onScreen": "p.marks inside a function taking a pointer",
+      "animation": "Red underline, error buzz; GCC's \"->\" suggestion slides in",
+      "sfx": [],
+      "narration": "Today's bug: dot versus arrow. Here is addGrace again, but someone wrote p dot marks. p is a pointer, not a struct. Compile it, and GCC 13 says: error: p is a pointer; did you mean to use arrow? And it even draws the arrow under the dot. GCC is very kind today. The opposite mistake happens too. If s is a real struct and you write s arrow marks, GCC says: invalid type argument of arrow, have struct Student. That means: you used an arrow, but you have a struct, not a pointer. The fix in both cases: check what you have. Pointer, arrow. Struct, dot."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 350,
+      "lengthSec": 30,
+      "onScreen": "Read 5 student records, print the topper",
+      "animation": "Five cards fill, crown on the topper; timer ring",
+      "sfx": [],
+      "narration": "Your challenge: make an array of 5 Student structs. Read the name, roll number and marks of each student with scanf in a loop. Then print the topper's name, roll number and marks. Hint: keep the index of the best student so far, like finding the maximum in EP 42. Answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 380,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 63 typedef and enum; sign-off",
+      "animation": "Module tiles, claw-click, music out",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Writing struct Student again and again is getting long, and our programs are full of magic numbers. Next episode, typedef gives our types nicknames, and enum gives our numbers names. EP 63. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nstruct Student {\n    char name[30];\n    int rollNo;\n    float marks;\n};\n\nvoid addGrace(struct Student *p, float bonus) {\n    p.marks = p.marks + bonus;\n}\n\nint main(void) {\n    struct Student s = {\"Rohan\", 2, 64.5f};\n    addGrace(&s, 5.0f);\n    printf(\"%.1f\\n\", s.marks);\n    return 0;\n}",
+    "error": "GCC 13 output:\n\nep62bug.c: In function 'addGrace':\nep62bug.c:10:6: error: 'p' is a pointer; did you mean to use '->'?\n   10 |     p.marks = p.marks + bonus;\n      |      ^\n      |      ->\nep62bug.c:10:16: error: 'p' is a pointer; did you mean to use '->'?\n   10 |     p.marks = p.marks + bonus;\n      |                ^\n      |                ->\n\nThe opposite mistake (`s->marks` where `s` is a struct, not a pointer):\n\nerror: invalid type argument of '->' (have 'struct Student')",
+    "fixed": "    p->marks = p->marks + bonus;",
+    "why": "the dot needs a struct and the arrow needs a pointer to a struct; `p->marks` is shorthand for `(*p).marks`."
+  },
+  "pun": "Why did the pointer always get to the struct first? It knew exactly which way the arrow was pointing.",
+  "challenge": "Read 5 student records (name, roll, marks) into an array of structs, then print the topper's name, roll and marks.",
+  "challengeAnswer": "(worked example)\nstruct Student cls[5];\nint best = 0;\n\nfor (int i = 0; i < 5; i++) {\n    printf(\"Name, roll, marks for student %d: \", i + 1);\n    scanf(\"%29s %d %f\", cls[i].name, &cls[i].rollNo, &cls[i].marks);\n    if (cls[i].marks > cls[best].marks)\n        best = i;\n}\n\nprintf(\"\\nTopper: %s (roll %d) with %.1f\\n\",\n       cls[best].name, cls[best].rollNo, cls[best].marks);\n/* note: no & before cls[i].name, because an array name is already an address (EP 57) */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A whole class in one variable",
+      "hook": "Register book slams open: \"40 students. 1 variable.\"",
+      "script": "Forty students. You are not writing s1 to s40. Make an array of structs. Every slot holds a whole ID card. To reach a field, pick the card with the index, then the field with a dot. cls one dot marks: the second student's marks. Which card, then which field.",
+      "onScreen": "cls[1].marks",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "An array where every slot is a whole struct.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "structs",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The arrow in 30 seconds",
+      "hook": "A GPS pin drops on an ID card: \"p->marks\"",
+      "script": "The arrow in 30 seconds. p is a pointer to a struct. To reach its marks, you could write star p in brackets, dot marks. Brackets needed, because dot is stronger than star. Too ugly. So C gives a shortcut: p arrow marks. Same meaning. The rule: have the struct, use dot. Have a pointer, use arrow.",
+      "onScreen": "p->x == (*p).x",
+      "fromScenes": [
+        4,
+        8
+      ],
+      "lengthSec": 30,
+      "caption": "Dot vs arrow, settled forever.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "pointers",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "\"did you mean to use ->?\"",
+      "hook": "Error: \"'p' is a pointer; did you mean to use '->'?\"",
+      "script": "p is a pointer to a struct, and you wrote p dot marks. GCC says: p is a pointer, did you mean to use arrow? It even draws it for you. The reverse also fails: a real struct with an arrow gives invalid type argument of arrow. Fix: pointer, arrow. Struct, dot.",
+      "onScreen": "POINTER → ARROW · STRUCT → DOT",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "GCC literally tells you the fix.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Which way the arrow points",
+      "hook": "A pointer racing a dot to a struct; the pointer wins",
+      "script": "Why did the pointer always get to the struct first? It knew exactly which way the arrow was pointing.",
+      "onScreen": "IT KNEW WHERE THE ARROW POINTED",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Pointers have a great sense of direction.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Dot or arrow quiz",
+      "hook": "\"&cls[2] → top. top?name\"",
+      "script": "Quiz. top equals ampersand cls two. To print the name, is it top dot name or top arrow name? Three, two, one. Arrow! top holds an address, so it is a pointer. cls two dot name would also work, because cls two is the struct itself. Now your challenge: read 5 students and print the topper. Answer in the comments.",
+      "onScreen": "top.name OR top->name?",
+      "fromScenes": [
+        8,
+        10
+      ],
+      "lengthSec": 30,
+      "caption": "Got it in 3 seconds?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "structs"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nstruct Student {\n    char name[30];\n    int rollNo;\n    float marks;\n};\n\nvoid printStudent(struct Student *p) {\n    printf(\"%-8s roll %2d  marks %.1f\\n\", p->name, p->rollNo, p->marks);\n}\n\nvoid addGrace(struct Student *p, float bonus) {\n    p->marks = p->marks + bonus;\n}\n\nint main(void) {\n    struct Student cls[3] = {\n        {\"Anya\", 1, 78.0f},\n        {\"Rohan\", 2, 64.5f},\n        {\"Sneha\", 3, 91.0f}\n    };\n\n    addGrace(&cls[1], 5.0f);\n\n    for (int i = 0; i < 3; i++) {\n        printStudent(&cls[i]);\n    }\n\n    struct Student *top = &cls[2];\n    printf(\"Topper: %s\\n\", top->name);\n    printf(\"Same thing: %s\\n\", (*top).name);\n\n    return 0;\n}",
+      "output": "Anya     roll  1  marks 78.0\nRohan    roll  2  marks 69.5\nSneha    roll  3  marks 91.0\nTopper: Sneha\nSame thing: Sneha",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "69.5"
+  }
+}

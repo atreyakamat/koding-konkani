@@ -1,0 +1,360 @@
+{
+  "ep": 77,
+  "title": "Recursion, visualised (Tower of Hanoi)",
+  "module": 12,
+  "lengthSec": 435,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "read a recursive function as \"trust the smaller call\"",
+    "follow the call stack as frames are pushed and popped",
+    "solve Tower of Hanoi in C with a base case and two recursive calls",
+    "show that n discs need 2ⁿ − 1 moves"
+  ],
+  "youtube": {
+    "title": "Move 64 Discs Before the World Ends | Recursion EP 77",
+    "description": "A legend says monks are moving 64 golden discs, and when they finish, the world ends. We solve the Tower of Hanoi in 11 lines of C, watch the call stack grow and shrink frame by frame, and work out how long the monks really need. 0:00 The legend · 0:25 Title · 0:30 The rules · 1:00 Solve 1, 2, 3 discs · 1:55 The recursive idea · 2:35 Code · 3:40 Call stack, animated · 4:40 Run it · 5:00 Pun · 5:05 2ⁿ − 1 and the 64 discs · 5:45 Bug of the Day · 6:40 Challenge · 7:00 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The legend"
+      },
+      {
+        "t": "0:25",
+        "label": "Title"
+      },
+      {
+        "t": "0:30",
+        "label": "The rules"
+      },
+      {
+        "t": "1:00",
+        "label": "Solve 1, 2, 3 discs"
+      },
+      {
+        "t": "1:55",
+        "label": "The recursive idea"
+      },
+      {
+        "t": "2:35",
+        "label": "Code"
+      },
+      {
+        "t": "3:40",
+        "label": "Call stack, animated"
+      },
+      {
+        "t": "4:40",
+        "label": "Run it"
+      },
+      {
+        "t": "5:00",
+        "label": "Pun"
+      },
+      {
+        "t": "5:05",
+        "label": "2ⁿ − 1 and the 64 discs"
+      },
+      {
+        "t": "5:45",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:40",
+        "label": "Challenge"
+      },
+      {
+        "t": "7:00",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "recursion in c",
+      "tower of hanoi",
+      "call stack",
+      "recursion visualised",
+      "c programming",
+      "base case",
+      "recursive function",
+      "algorithms for beginners",
+      "learn c",
+      "koding konkani",
+      "c tutorial",
+      "2^n - 1"
+    ],
+    "thumbnail": {
+      "text": "64 DISCS = ?",
+      "visual": "big text \"64 DISCS = ?\"; three pegs with a tall golden disc stack; Xecxec sweating, carrying one disc on his back; Dark blue background, Butter text.",
+      "pose": "Xecxec sweating, carrying one disc on his back"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 25,
+      "onScreen": "Temple, 3 pegs, 64 golden discs; caption \"A legend\"",
+      "animation": "Gong SFX; candles flicker",
+      "sfx": [],
+      "narration": "There's a famous legend. In a temple, monks are moving 64 golden discs from one peg to another, following strict rules. When they finish, the legend says, the world will end. Should we be worried? Today we'll write the solution in C and find out exactly how many moves they need."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 25,
+      "lengthSec": 5,
+      "onScreen": "EP 77 · RECURSION, VISUALISED",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 77. Recursion, visualised."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 30,
+      "lengthSec": 30,
+      "onScreen": "Pegs A, B, C; 3 rules: one disc at a time; only the top disc; never big on small",
+      "animation": "Rule 3 shows a big disc on a small one, red X, buzzer",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Three pegs: A, B and C. All the discs start on A, biggest at the bottom. The goal: move them all to C. Rule one: move one disc at a time. Rule two: only the top disc of a peg can move. Rule three: never put a bigger disc on a smaller one."
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 60,
+      "lengthSec": 55,
+      "onScreen": "Discs as horizontal butter bars on pegs; solve n = 1, 2, 3",
+      "animation": "Each move slides a disc; move counter 1, 3, 7; clack per move",
+      "sfx": [],
+      "narration": "One disc? Easy: A to C. One move. Two discs? Small one to B, big one to C, small one to C. Three moves. Three discs takes more thinking: small to C, middle to B, small to B, big to C, small to A, middle to C, small to C. Seven moves. Four discs by hand gets confusing fast. We need a better way to think."
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "3-step recipe: move n−1 to B; move the biggest to C; move n−1 onto it",
+      "animation": "Top n−1 discs grouped in a pastel-blue box labelled \"trust the smaller call\"",
+      "sfx": [],
+      "narration": "Here's the trick. To move 3 discs from A to C: first, move the top 2 discs out of the way, onto B. Then move the biggest disc from A to C. Then move those 2 discs from B onto C. But how do we move 2 discs? The same way, with 1 disc! You don't solve the small problem yourself. You trust a smaller call to solve it. That's recursion: a function that solves a problem by calling itself on a smaller version, until it reaches a case so small it needs no work. That's the base case, which you met in Episode 39."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 155,
+      "lengthSec": 65,
+      "onScreen": "hanoi.c (19 lines); tracker for n, from, to, via, moves",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 3] A global counter for moves. [HL 5] hanoi takes the number of discs n, and three peg names: from, to, and via, the helper peg. [TRACK n=3 from=A to=C via=B] [HL 6] Base case: zero discs means nothing to do, [HL 7] so return. Without this line, the calls would never stop. [HL 8] Step one: move n minus 1 discs from \"from\" to \"via\", using \"to\" as the helper. Notice the last two pegs swap places. [HL 9] Step two: count a move, [HL 10] and print it. This is disc n, the biggest one in this call. [HL 11] Step three: move n minus 1 discs from \"via\" to \"to\", using \"from\" as the helper. [HL 15] In main, we move 3 discs from A to C using B. [HL 16] Print the total.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint moves = 0;\n\nvoid hanoi(int n, char from, char to, char via) {\n    if (n == 0)\n        return;\n    hanoi(n - 1, from, via, to);\n    moves++;\n    printf(\"Move %d: disc %d from %c to %c\\n\", moves, n, from, to);\n    hanoi(n - 1, via, to, from);\n}\n\nint main(void) {\n    hanoi(3, 'A', 'C', 'B');\n    printf(\"Total moves: %d\\n\", moves);\n    return 0;\n}",
+        "output": "$ gcc hanoi.c -o hanoi\n$ ./hanoi\nMove 1: disc 1 from A to C\nMove 2: disc 2 from A to B\nMove 3: disc 1 from C to B\nMove 4: disc 3 from A to C\nMove 5: disc 1 from B to A\nMove 6: disc 2 from B to C\nMove 7: disc 1 from A to C\nTotal moves: 7"
+      }
+    },
+    {
+      "id": 7,
+      "template": "memory-boxes",
+      "startSec": 220,
+      "lengthSec": 60,
+      "onScreen": "Call stack: frames hanoi(3,A,C,B) → hanoi(2,A,B,C) → hanoi(1,A,C,B) → hanoi(0,…) push/pop; pegs mirrored beside it",
+      "animation": "Frame push = box drops on stack (thud); pop = box lifts off (whoosh); disc moves sync with printf",
+      "sfx": [
+        "pop",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Let's watch the call stack, the memory C uses to remember unfinished function calls. main calls hanoi 3. That frame is pushed on the stack. hanoi 3 calls hanoi 2, pushed on top. hanoi 2 calls hanoi 1. hanoi 1 calls hanoi 0, which returns at once, popped. Now hanoi 1 prints: move 1, disc 1, A to C. It calls hanoi 0 again, popped, and hanoi 1 finishes, popped. Back in hanoi 2, which was waiting patiently: move 2, disc 2, A to B. And so on. Each frame remembers its own n, from, to and via. That's why the same function can be at four different stages at the same time. The stack is never more than five frames deep here, including main."
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 280,
+      "lengthSec": 20,
+      "onScreen": "gcc and 8 output lines",
+      "animation": "Lines type out",
+      "sfx": [],
+      "narration": "Compile and run. Seven moves, exactly the ones we did by hand. Try changing the 3 in main to 4 or 5 and watch the list explode."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 300,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "To understand recursion, you must first understand recursion."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 305,
+      "lengthSec": 40,
+      "onScreen": "Table n: 1, 2, 3, 4, 10, 64 with moves 1, 3, 7, 15, 1023, 18,446,744,073,709,551,615",
+      "animation": "Last number scrolls across the screen; clock spins",
+      "sfx": [],
+      "narration": "Look at the move counts: 1, 3, 7, 15. Each is double the last, plus one. For n discs it's 2 to the power n, minus 1. Ten discs: 1023 moves. Sixty-four discs: 18,446,744,073,709,551,615 moves. Even at one move per second, with no breaks, that is more than 500 billion years. So relax, the monks aren't finishing any time soon. In Big-O terms this is O(2ⁿ): exponential. Every extra disc doubles the work. That's even worse than the O(n²) we feared in Episode 72."
+    },
+    {
+      "id": 11,
+      "template": "bug-of-the-day",
+      "startSec": 345,
+      "lengthSec": 55,
+      "onScreen": "hanoi with no base case; GCC warning; crash",
+      "animation": "Red siren; stack of frames grows past the top of the screen, then shatters",
+      "sfx": [],
+      "narration": "Today's bug: the missing base case. Delete the if n equals 0 return lines. With minus Wall, GCC warns you: infinite recursion detected. If you run it anyway, hanoi calls hanoi with 2, 1, 0, minus 1, minus 2, forever. Each call pushes a new frame until the stack is full, and the program crashes with a stack overflow before printing a single line. On Windows it just exits silently; on Linux you'll see \"Segmentation fault\". Every recursive function needs a base case that is always reached."
+    },
+    {
+      "id": 12,
+      "template": "challenge",
+      "startSec": 400,
+      "lengthSec": 20,
+      "onScreen": "\"Hanoi with 4 discs: how many moves? What is move 8?\"",
+      "animation": "Timer",
+      "sfx": [],
+      "narration": "Your challenge: run Hanoi with 4 discs. How many moves does it take? And what is move number 8? Predict first using the recipe, then check."
+    },
+    {
+      "id": 13,
+      "template": "outro",
+      "startSec": 420,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 78 Merge sort",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "Next episode, we use this exact \"split it, trust the smaller call\" idea to build a seriously fast sort: merge sort. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nvoid hanoi(int n, char from, char to, char via) {\n    hanoi(n - 1, from, via, to);\n    printf(\"disc %d from %c to %c\\n\", n, from, to);\n    hanoi(n - 1, via, to, from);\n}\n\nint main(void) {\n    hanoi(3, 'A', 'C', 'B');\n    return 0;\n}",
+    "error": "GCC warning with `gcc -Wall hanoi_bug.c -o hanoi_bug` (no warning without -Wall):\n\nhanoi_bug.c: In function 'hanoi':\nhanoi_bug.c:3:6: warning: infinite recursion detected [-Winfinite-recursion]\n    3 | void hanoi(int n, char from, char to, char via) {\n      |      ^~~~~\nhanoi_bug.c:4:5: note: recursive call\n    4 |     hanoi(n - 1, from, via, to);\n      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nRunning it prints nothing and crashes with a stack overflow: on Windows the program exits silently (exit code -1073741571, i.e. 0xC00000FD); on Linux the shell prints `Segmentation fault`.",
+    "fixed": "    if (n == 0)\n        return;",
+    "why": "without a base case n keeps going down (0, -1, -2, …) and every call adds a stack frame until the stack runs out."
+  },
+  "pun": "To understand recursion, you must first understand recursion.",
+  "challenge": "Change main to `hanoi(4, 'A', 'C', 'B');`. How many moves? What is move 8?",
+  "challengeAnswer": "15 moves (2⁴ − 1). Move 8 is \"disc 4 from A to C\": the first 7 moves park discs 1–3 on B, then the biggest disc moves.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "64 discs before the world ends",
+      "hook": "\"When the monks finish, the world ends.\"",
+      "script": "A legend says monks are moving 64 golden discs, and when they finish, the world ends. How many moves do they need? 2 to the power 64, minus 1. That's over 18 quintillion. At one move per second, more than 500 billion years. We're safe. Here's the 11-line C program that solves it.",
+      "onScreen": "64 DISCS = 500+ BILLION YEARS",
+      "fromScenes": [
+        1,
+        10
+      ],
+      "lengthSec": 25,
+      "caption": "The math says we're fine.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "recursion",
+        "towerofhanoi"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Recursion in 30 seconds",
+      "hook": "\"Don't solve it. Trust the smaller call.\"",
+      "script": "To move 3 discs: move the top 2 out of the way, move the biggest, then move the 2 back on top. How do you move 2? The same way, with 1. That's recursion: a function calling itself on a smaller problem, down to a base case. Each call gets its own frame on the call stack, and they finish in reverse order.",
+      "onScreen": "TRUST THE SMALLER CALL",
+      "fromScenes": [
+        5,
+        7
+      ],
+      "lengthSec": 35,
+      "caption": "Recursion, finally visual.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "recursion",
+        "callstack"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The function that never stopped",
+      "hook": "\"Two deleted lines. Instant crash.\"",
+      "script": "Remove the base case from hanoi and n goes 3, 2, 1, 0, minus 1, minus 2, forever. Each call stacks a new frame until memory runs out. GCC even warns you with minus Wall: infinite recursion detected. Always write the base case first.",
+      "onScreen": "NO BASE CASE = CRASH",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 30,
+      "caption": "Base case first, always.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "recursion"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "To understand recursion…",
+      "hook": "\"The only definition of recursion you need.\"",
+      "script": "To understand recursion, you must first understand recursion.",
+      "onScreen": "…FIRST UNDERSTAND RECURSION",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 10,
+      "caption": "See: recursion.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Four discs",
+      "hook": "\"Four discs. How many moves?\"",
+      "script": "Tower of Hanoi with 4 discs. How many moves does it take? And what is move number 8? Use the recipe: move the small ones away, move the biggest, move them back. Comment your answer.",
+      "onScreen": "4 DISCS: ? MOVES",
+      "fromScenes": [
+        12
+      ],
+      "lengthSec": 20,
+      "caption": "Comment before you code it.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "quiz",
+        "towerofhanoi"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint moves = 0;\n\nvoid hanoi(int n, char from, char to, char via) {\n    if (n == 0)\n        return;\n    hanoi(n - 1, from, via, to);\n    moves++;\n    printf(\"Move %d: disc %d from %c to %c\\n\", moves, n, from, to);\n    hanoi(n - 1, via, to, from);\n}\n\nint main(void) {\n    hanoi(3, 'A', 'C', 'B');\n    printf(\"Total moves: %d\\n\", moves);\n    return 0;\n}",
+      "output": "$ gcc hanoi.c -o hanoi\n$ ./hanoi\nMove 1: disc 1 from A to C\nMove 2: disc 2 from A to B\nMove 3: disc 1 from C to B\nMove 4: disc 3 from A to C\nMove 5: disc 1 from B to A\nMove 6: disc 2 from B to C\nMove 7: disc 1 from A to C\nTotal moves: 7",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "ep": 15,
+  "title": "Arithmetic operators",
+  "module": 2,
+  "lengthSec": 360,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "use + - * / % on int values and predict the result",
+    "explain why 17 / 5 is 3 and 17 % 5 is 2",
+    "use % for even/odd, last digit and minutes-to-hours",
+    "print a literal % with %%"
+  ],
+  "youtube": {
+    "title": "The % Operator Is a Superpower | C Programming EP 15",
+    "description": "Plus, minus, times and divide you already know. But C's fifth operator, %, the remainder, quietly solves dozens of problems: even or odd, last digit, minutes to hours. This episode explains all five arithmetic operators line by line, plus the error you get when you use % on a float. 0:00 Is today an even day? · 0:20 The five operators · 0:55 Code: all five in action · 2:25 Division vs remainder · 3:05 Three uses of % · 4:14 Bug of the Day: % with floats · 5:04 Challenge · 5:39 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Is today an even day?"
+      },
+      {
+        "t": "0:20",
+        "label": "The five operators"
+      },
+      {
+        "t": "0:55",
+        "label": "Code: all five in action"
+      },
+      {
+        "t": "2:25",
+        "label": "Division vs remainder"
+      },
+      {
+        "t": "3:05",
+        "label": "Three uses of %"
+      },
+      {
+        "t": "4:14",
+        "label": "Bug of the Day: % with floats"
+      },
+      {
+        "t": "5:04",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:39",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "arithmetic operators in c",
+      "modulus operator in c",
+      "remainder in c",
+      "integer division c",
+      "even or odd in c",
+      "c operators",
+      "c programming for beginners",
+      "koding konkani",
+      "learn c",
+      "fmod in c"
+    ],
+    "thumbnail": {
+      "text": "% = SUPERPOWER",
+      "visual": "big text \"% = SUPERPOWER\" in apricot on cream; a huge apricot % sign with a cape; Xecxec saluting beside it.",
+      "pose": "Xecxec saluting beside it"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Calendar page \"30\" with the question \"Is today an even day?\"; `30 % 2 = 0`",
+      "animation": "Calendar page tears off with a paper rip SFX; question types in; the expression slams down in apricot with a thud; Xecxec nods, claw-click",
+      "sfx": [
+        "claw-click",
+        "thud"
+      ],
+      "narration": "Is today an even day? Today is the thirtieth. Thirty, percent sign, two, equals zero. So yes. That little percent sign is one of the most useful tools in C, and most beginners skip right past it."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 15 · ARITHMETIC OPERATORS",
+      "animation": "Title stamps in on cream with whoosh + thud; apricot underline wipe",
+      "sfx": [
+        "stamp",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Arithmetic operators."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 35,
+      "onScreen": "Five operator tiles: + add, - subtract, * multiply, / divide, % remainder",
+      "animation": "Tiles flip in one by one with a marimba note each; the % tile wobbles and gets a small apricot cape",
+      "sfx": [],
+      "narration": "C has five arithmetic operators. Plus adds. Minus subtracts. Star multiplies; we use a star because there's no times sign on the keyboard. Slash divides. And percent gives the remainder after division. It's called the modulo operator, or just mod. Four of these you've known since school. The fifth one is the superpower."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 90,
+      "onScreen": "arith.c (13 lines) with a variable tracker on the right and a mini terminal below",
+      "animation": "[HL n] butter highlight per line; [TRACK] boxes for a and b fill with a pop; each printf result drops into the terminal with a soft ding",
+      "sfx": [
+        "ding",
+        "pop"
+      ],
+      "narration": "Let's see all five. [HL 1] As always, we include stdio dot h for printf. [HL 3] Then main. [HL 4] int a equals 17. [TRACK a=17] [HL 5] int b equals 5. [TRACK b=5] [HL 7] Now the first printf. Inside the quotes, \"a plus b equals\", then percent d, which you know from EP 11 is the slot for an int. After the comma, the value to put in that slot: a plus b. C works it out first, 22, then prints it. [HL 8] a minus b is 12. [HL 9] a star b is 85. [HL 10] Now a slash b. 17 divided by 5 is 3.4, but this prints 3. Remember EP 13: when both numbers are ints, C does integer division and throws away the decimal part. Not rounding, just chopping. [HL 11] And the last line. Look at the quotes: percent percent. Because a single percent inside printf's quotes starts a slot, like percent d, we write two percents to print one real percent sign. Then a percent b gives 2. [HL 12] Return zero, and we're done.",
+      "code": {
+        "file": "arith.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int a = 17;\n    int b = 5;\n\n    printf(\"a + b = %d\\n\", a + b);\n    printf(\"a - b = %d\\n\", a - b);\n    printf(\"a * b = %d\\n\", a * b);\n    printf(\"a / b = %d\\n\", a / b);\n    printf(\"a %% b = %d\\n\", a % b);\n    return 0;\n}",
+        "output": "a + b = 22\na - b = 12\na * b = 85\na / b = 3\na % b = 2"
+      }
+    },
+    {
+      "id": 5,
+      "template": "memory-boxes",
+      "startSec": 145,
+      "lengthSec": 40,
+      "onScreen": "17 fish shared into baskets of 5: 3 full baskets, 2 fish left over; labels \"17 / 5 = 3\" and \"17 % 5 = 2\"",
+      "animation": "Fish drop into baskets with a plop each; full baskets get a mint tick; leftover 2 fish flop with a splash SFX and glow apricot",
+      "sfx": [],
+      "narration": "So what is that 2? Picture 17 fish from the Mapusa market, packed into baskets of 5. You fill three full baskets. That's 17 slash 5: 3. Two fish are left over, flapping on the table. That's 17 percent 5: 2. Division tells you how many full groups. Mod tells you what's left over. Together they always rebuild the number: 3 times 5, plus 2, is 17."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 185,
+      "lengthSec": 65,
+      "onScreen": "day.c (12 lines): even day, minutes to hours, last digit",
+      "animation": "[HL n] per line; [TRACK] boxes for day and minutes; a clock face splits 135 minutes into 2 h + 15 min with a tick-tock SFX; 2026 shrinks to its last digit 6",
+      "sfx": [],
+      "narration": "Here are three real uses. [HL 4] int day equals 30. [TRACK day=30] [HL 5] int minutes equals 135. [TRACK minutes=135] [HL 7] day percent 2. Any number percent 2 is either 0 or 1. Zero means even, one means odd. Thirty gives zero: even day. [HL 8] Next, minutes to hours. [HL 9] minutes slash 60 gives full hours: 2. minutes percent 60 gives the minutes left over: 15. So 135 minutes is 2 hours and 15 minutes, perfect for a bus timetable. [HL 10] And the last one: any number percent 10 gives its last digit. 2026 percent 10 is 6. We'll use that trick a lot in the loops module.",
+      "code": {
+        "file": "day.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int day = 30;\n    int minutes = 135;\n\n    printf(\"day %% 2 = %d\\n\", day % 2);\n    printf(\"%d minutes = %d hours and %d minutes\\n\",\n           minutes, minutes / 60, minutes % 60);\n    printf(\"Last digit of 2026 = %d\\n\", 2026 % 10);\n    return 0;\n}",
+        "output": "day % 2 = 0\n135 minutes = 2 hours and 15 minutes\nLast digit of 2026 = 6"
+      }
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 250,
+      "lengthSec": 4,
+      "onScreen": "\"I asked % to split the bill. It only told me what was left over.\"",
+      "animation": "Card flips, rimshot; Xecxec holds an empty wallet",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I asked percent to split the restaurant bill. It only told me what was left over."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 254,
+      "lengthSec": 50,
+      "onScreen": "kg.c using `kg % 2` on a float; the GCC error; fix with fmod",
+      "animation": "Butter banner + siren blip; error prints in tomato with a buzzer; `%` morphs into `fmod(kg, 2)`; terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Today's bug. You have 7 point 5 kilos of prawns as a float, and you want the remainder after dividing by 2. So you write kg percent 2. GCC says: error: invalid operands to binary percent, have float and int. Binary here just means \"an operator with two sides\", not ones and zeroes. The real point: percent only works on whole-number types like int. For decimals, include math dot h and use the function fmod, f-mod: fmod of kg comma 2. That gives 1 point 5. One extra note: printf with percent f always shows six decimal places, so you'll see 1.500000."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 304,
+      "lengthSec": 35,
+      "onScreen": "\"Read a number. Print n % 2. 0 means even, 1 means odd.\"",
+      "animation": "Number cards 7 and 12 bounce in; pencil scribble SFX; question mark pulses",
+      "sfx": [],
+      "narration": "Your challenge: read a number with scanf, like in EP 12, and print n percent 2. If it prints 0, the number is even. If it prints 1, it's odd. Try 7, try 12, and then try minus 7. That last one has a surprise. Comment what you got."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 339,
+      "lengthSec": 21,
+      "onScreen": "Next: EP 16 · Relational & logical operators + subscribe",
+      "animation": "Next card slides up; Xecxec waves, claw-click; sign-off types in",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: comparing things. Greater than, equal to, and the operators that make decisions possible. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    float kg = 7.5;\n    printf(\"%f\\n\", kg % 2);\n    return 0;\n}",
+    "error": "GCC output:\n\nkg.c: In function 'main':\nkg.c:5:23: error: invalid operands to binary % (have 'float' and 'int')\n    5 |     printf(\"%f\\n\", kg % 2);\n      |                       ^",
+    "fixed": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    float kg = 7.5;\n    printf(\"%f\\n\", fmod(kg, 2));\n    return 0;\n}",
+    "why": "% is defined only for integer types in C; fmod from math.h computes the remainder for floating-point values."
+  },
+  "pun": "\"I asked % to split the restaurant bill. It only told me what was left over.\"",
+  "challenge": "Read a number with scanf and print n % 2. Try 7, 12 and -7.",
+  "challengeAnswer": "shown at the start of EP 16. 7 gives 1 (odd), 12 gives 0 (even), and -7 gives -1, because in C the remainder takes the sign of the left number. So for an odd test, check \"not equal to 0\", which EP 16 teaches.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Is today an even day?",
+      "hook": "\"Is today an even day? C knows in one symbol.\"",
+      "script": "Is today an even day? C knows in one symbol. Today is the thirtieth. Thirty percent two equals zero, so it's even. That percent sign is the remainder operator, and it's one of the most useful tools in C. Full episode on the channel.",
+      "onScreen": "30 % 2 = 0",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "One symbol, tons of uses. Meet the % operator.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingtips",
+        "maths"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "/ vs % in 30 seconds",
+      "hook": "\"17 divided by 5 is 3 in C. Here's where the 2 went.\"",
+      "script": "17 divided by 5 is 3 in C. Here's where the 2 went. Put 17 fish into baskets of 5. Three full baskets: that's 17 slash 5. Two fish left over: that's 17 percent 5. Slash gives full groups, percent gives what's left. Use it for minutes to hours: 135 slash 60 is 2 hours, 135 percent 60 is 15 minutes.",
+      "onScreen": "/ = GROUPS · % = LEFTOVER",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Division vs remainder, explained with fish.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingtips",
+        "goa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "% on a float?",
+      "hook": "\"This one symbol breaks on decimals.\"",
+      "script": "This one symbol breaks on decimals. kg percent 2, where kg is a float. GCC says: invalid operands to binary percent, have float and int. Percent only works on whole numbers. For decimals, include math dot h and use fmod: fmod of kg comma 2.",
+      "onScreen": "% + float = ERROR",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Use fmod, not %, for decimals in C.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "gcc"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Splitting the bill",
+      "hook": "\"Never ask % to split the bill.\"",
+      "script": "Never ask percent to split the bill. I tried. It only told me what was left over.",
+      "onScreen": "% ONLY KNOWS LEFTOVERS",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Xecxec is still paying.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "maths"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What does -7 % 2 print?",
+      "hook": "\"7 % 2 is 1. What is -7 % 2?\"",
+      "script": "7 percent 2 is 1. So what is minus 7 percent 2 in C? 1? Minus 1? Zero? Comment your answer before it shows. Answer: minus 1. In C, the remainder takes the sign of the left number.",
+      "onScreen": "-7 % 2 = ?",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 20,
+      "caption": "Most people get this wrong. Comment first, then check.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "maths"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "arith.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int a = 17;\n    int b = 5;\n\n    printf(\"a + b = %d\\n\", a + b);\n    printf(\"a - b = %d\\n\", a - b);\n    printf(\"a * b = %d\\n\", a * b);\n    printf(\"a / b = %d\\n\", a / b);\n    printf(\"a %% b = %d\\n\", a % b);\n    return 0;\n}",
+      "output": "a + b = 22\na - b = 12\na * b = 85\na / b = 3\na % b = 2",
+      "lang": "c"
+    },
+    {
+      "file": "day.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int day = 30;\n    int minutes = 135;\n\n    printf(\"day %% 2 = %d\\n\", day % 2);\n    printf(\"%d minutes = %d hours and %d minutes\\n\",\n           minutes, minutes / 60, minutes % 60);\n    printf(\"Last digit of 2026 = %d\\n\", 2026 % 10);\n    return 0;\n}",
+      "output": "day % 2 = 0\n135 minutes = 2 hours and 15 minutes\nLast digit of 2026 = 6",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1.500000"
+  }
+}

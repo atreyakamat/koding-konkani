@@ -1,0 +1,328 @@
+{
+  "ep": 48,
+  "title": "Reading Strings: Why Your Full Name Got Cut",
+  "module": 7,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "read one word with scanf(\"%29s\", ...) and know it stops at a space",
+    "read a whole line safely with fgets(buf, sizeof(buf), stdin)",
+    "remove the newline fgets keeps using strcspn",
+    "explain why gets() must never be used"
+  ],
+  "youtube": {
+    "title": "scanf vs fgets: Read Full Names in C (Never gets!) | EP 48",
+    "description": "You type \"Atreya Kamat\" and C only keeps \"Atreya\". Learn why scanf stops at spaces, how fgets reads a whole line safely, how to remove the extra newline, and why gets() was removed from the C language. 0:00 Half a name · 0:20 Title · 0:25 How scanf reads · 1:10 Meet fgets · 2:00 Code walkthrough · 4:00 Running it · 4:20 Never use gets · 5:05 Pun · 5:10 Bug of the Day · 6:10 Challenge · 6:40 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Half a name"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "How scanf reads"
+      },
+      {
+        "t": "1:10",
+        "label": "Meet fgets"
+      },
+      {
+        "t": "2:00",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "4:00",
+        "label": "Running it"
+      },
+      {
+        "t": "4:20",
+        "label": "Never use gets"
+      },
+      {
+        "t": "5:05",
+        "label": "Pun"
+      },
+      {
+        "t": "5:10",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:10",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "fgets in c",
+      "scanf string",
+      "read string with spaces in c",
+      "gets dangerous",
+      "buffer overflow",
+      "strings in c",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "class 12 computer science"
+    ],
+    "thumbnail": {
+      "text": "NAME CUT IN HALF?",
+      "visual": "big text \"NAME CUT IN HALF?\"; a name tag \"ATREYA | KAMAT\" snipped by Xecxec's claw; a red \"gets()\" crossed out in the corner; pastel blue + apricot",
+      "pose": "Xecxec's claw"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Type \"Atreya Kamat\", program prints \"Hello, Atreya!\"",
+      "animation": "\"Kamat\" falls off the screen; Xecxec catches it; snip SFX",
+      "sfx": [],
+      "narration": "Your program asks for your full name. You type Atreya Kamat and press Enter. It says: Hello, Atreya. Where did Kamat go? C did not lose it. It is still waiting, sitting in the keyboard buffer. Today you learn why, and how to read a whole line properly."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 48 · READING STRINGS",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 48. Reading strings."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "Keyboard buffer: A t r e y a _ K a m a t \\n; scanf takes up to the space",
+      "animation": "scanf scoop lifts \"Atreya\", leaves \" Kamat\\n\" waiting; scoop SFX",
+      "sfx": [],
+      "narration": "When you type, your letters first go into a waiting area called the input buffer. Pressing Enter adds a newline at the end. scanf with percent s reads one word. It skips spaces at the start, takes letters, and stops at the first space or newline. So it takes Atreya, and leaves space Kamat newline in the buffer for whoever reads next. scanf percent s is fine for one word, like a city name. For anything with spaces, it is the wrong tool."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 70,
+      "lengthSec": 50,
+      "onScreen": "fgets(where, how many, from where) with three labelled arrows",
+      "animation": "Each argument pops in with a label; pop SFX",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The right tool is fgets. It takes three things. First, where to store the text: our char array. Second, how many bytes it may use: sizeof the array. Third, where to read from: stdin, which means the keyboard. fgets reads the whole line, spaces included, and it never writes more than the size you gave it. It always leaves room for backslash zero. That size limit is what makes it safe."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 120,
+      "onScreen": "ep48_input.c types itself",
+      "animation": "Line highlights; tracker shows name, address and the keyboard buffer",
+      "sfx": [],
+      "narration": "Let's read the code. [HL 2] Line two, a new header, string dot h. We need one function from it today. [HL 5] Line five, name with thirty chars. [HL 6] Line six, address with fifty. [HL 9] Line nine: scanf percent 29 s, name. The 29 is a limit: read at most 29 letters, leaving the thirtieth byte for backslash zero. Also notice: no ampersand before name. An array name already gives the location, as we saw in EP 46. [TRACK name=\"Atreya\" buffer=\" Kamat\\n\"] [HL 10] Line ten prints what scanf got: only Atreya. [HL 12] Line twelve cleans up. while getchar is not newline, semicolon. getchar reads one char from the buffer. This loop throws away everything left over, up to and including the newline. [TRACK buffer=\"\"] Without this line, the next fgets would read the leftover space Kamat and finish instantly. [HL 15] Line fifteen: fgets, address, sizeof address, stdin. It reads the whole address line. [TRACK address=\"221B Fontainhas, Panjim\\n\"] But look at the tracker. fgets keeps the newline at the end. [HL 16] Line sixteen removes it. strcspn, from string dot h, finds the position of the first newline. We put backslash zero there, so the string ends one step earlier. [TRACK address=\"221B Fontainhas, Panjim\"] [HL 17] Line seventeen prints the clean address.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char name[30];\n    char address[50];\n\n    printf(\"Enter your name: \");\n    scanf(\"%29s\", name);\n    printf(\"scanf got: %s\\n\", name);\n\n    while (getchar() != '\\n');\n\n    printf(\"Enter your address: \");\n    fgets(address, sizeof(address), stdin);\n    address[strcspn(address, \"\\n\")] = '\\0';\n    printf(\"fgets got: %s\\n\", address);\n    return 0;\n}",
+        "output": "Enter your name: Atreya Kamat\nscanf got: Atreya\nEnter your address: 221B Fontainhas, Panjim\nfgets got: 221B Fontainhas, Panjim"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 240,
+      "lengthSec": 20,
+      "onScreen": "Run with Atreya Kamat and a Panjim address",
+      "animation": "Input in apricot, output in white",
+      "sfx": [],
+      "narration": "Run it. Enter your name: Atreya Kamat. scanf got: Atreya. Enter your address: 221B Fontainhas, Panjim. fgets got the whole line, commas, spaces and all."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 260,
+      "lengthSec": 45,
+      "onScreen": "gets(name) with a 10-box array and a 20-letter input spilling over",
+      "animation": "Letters overflow onto neighbouring boxes like a monsoon flood; warning siren",
+      "sfx": [],
+      "narration": "Some old books and some exam guides still teach a function called gets. Never use it. gets reads a line but has no size limit. If name holds ten chars and the user types twenty, gets writes the extra letters past the end of the array, over other variables, like monsoon water flooding the next house. This is called a buffer overflow, and attackers have used it to break into real programs. gets was so dangerous that it was removed from the C language in the C11 standard. Many compilers now warn you, and some refuse to build it. On Linux, the linker even prints: the gets function is dangerous and should not be used. Always use fgets."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 305,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the programmer stop using gets? Because it never knew when to stop eating."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 310,
+      "lengthSec": 60,
+      "onScreen": "scanf(\"%s\") on a full name, then the fgets fix",
+      "animation": "Name tag cut, then stitched back; snip, then zip SFX",
+      "sfx": [],
+      "narration": "Today's bug is the hook from the start. char name thirty, scanf percent s name, then print Hello. No error, no warning. Type Atreya Kamat and you get Hello, Atreya. scanf stopped at the space. The fix: use fgets with sizeof name and stdin, and then the strcspn line to remove the newline. Now it prints Hello, Atreya Kamat."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 370,
+      "lengthSec": 30,
+      "onScreen": "Read a full address and print \"Deliver to: ...\"",
+      "animation": "Delivery scooter icon; ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. A delivery app needs your full address. Make a char array of a hundred. Read the whole address with fgets, remove the newline, and print Deliver to, followed by the address. Test it with an address that has spaces and commas."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 400,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 49 string.h toolbox",
+      "animation": "Toolbox opens; sign-off",
+      "sfx": [],
+      "narration": "Next episode, we open C's string toolbox, string dot h: length, copy, join, compare. And you will see why two equal passwords can fail an equals-equals check. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    char name[30];\n    printf(\"Enter your full name: \");\n    scanf(\"%s\", name);\n    printf(\"Hello, %s!\\n\", name);\n    return 0;\n}",
+    "error": "No error, no warning. Wrong output:\n\nEnter your full name: Atreya Kamat\nHello, Atreya!",
+    "fixed": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char name[30];\n    printf(\"Enter your full name: \");\n    fgets(name, sizeof(name), stdin);\n    name[strcspn(name, \"\\n\")] = '\\0';\n    printf(\"Hello, %s!\\n\", name);\n    return 0;\n}",
+    "why": "scanf's %s stops at the first space, while fgets reads the whole line up to the size limit."
+  },
+  "pun": "Why did the programmer stop using gets? Because it never knew when to stop eating.",
+  "challenge": "Read a full address into char address[100] with fgets, remove the newline, and print \"Deliver to: <address>\".",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char address[100];\n\n    printf(\"Enter your full address: \");\n    fgets(address, sizeof(address), stdin);\n    address[strcspn(address, \"\\n\")] = '\\0';\n\n    printf(\"Deliver to: %s\\n\", address);\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Where Did My Surname Go?",
+      "hook": "Terminal: typed \"Atreya Kamat\", printed \"Hello, Atreya!\"",
+      "script": "I typed Atreya Kamat. C said Hello, Atreya. Where did Kamat go? scanf percent s stops at the first space. The rest is still waiting in the keyboard buffer. The fix is one function: fgets.",
+      "onScreen": "\"ATREYA KAMAT\" → \"ATREYA\"",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 22,
+      "caption": "scanf cut my name in half.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "strings",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "fgets in 30 Seconds",
+      "hook": "fgets( ___, ___, ___ ) with three blanks.",
+      "script": "fgets takes three things: where to store the text, how many bytes it may use, and where to read from. fgets, name, sizeof name, stdin. It reads the whole line, spaces included, and never overflows. One catch: it keeps the newline. Remove it with strcspn.",
+      "onScreen": "fgets(name, sizeof(name), stdin);",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "The safe way to read a line in C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "fgets",
+        "cprogrammingtutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Never Use gets()",
+      "hook": "\"gets(name);\" stamped with a red NO.",
+      "script": "If your book teaches gets, skip that page. gets has no size limit. Type more letters than the array holds, and it writes past the end, over other memory. That is a buffer overflow. gets was removed from C in C11. Use fgets.",
+      "onScreen": "gets() = REMOVED FROM C",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 35,
+      "caption": "The function so dangerous C deleted it.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bufferoverflow",
+        "codingsafety"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Stop Eating",
+      "hook": "Xecxec stuffing his face with letters, cheeks bulging.",
+      "script": "Why did the programmer stop using gets? Because it never knew when to stop eating.",
+      "onScreen": "IT NEVER KNEW WHEN TO STOP",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "gets has no table manners.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What Does fgets Store?",
+      "hook": "\"You type Margao and press Enter. What is in the array?\"",
+      "script": "You type Margao and press Enter. fgets stores what? Pause and guess. M, a, r, g, a, o, then a newline, then backslash zero. The newline you typed is kept. That is why we remove it with strcspn.",
+      "onScreen": "\"Margao\\n\\0\"",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 22,
+      "caption": "The hidden newline trips everyone once.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "fgets"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char name[30];\n    char address[50];\n\n    printf(\"Enter your name: \");\n    scanf(\"%29s\", name);\n    printf(\"scanf got: %s\\n\", name);\n\n    while (getchar() != '\\n');\n\n    printf(\"Enter your address: \");\n    fgets(address, sizeof(address), stdin);\n    address[strcspn(address, \"\\n\")] = '\\0';\n    printf(\"fgets got: %s\\n\", address);\n    return 0;\n}",
+      "output": "Enter your name: Atreya Kamat\nscanf got: Atreya\nEnter your address: 221B Fontainhas, Panjim\nfgets got: 221B Fontainhas, Panjim",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Enter your full name: Atreya Kamat\nHello, Atreya Kamat!"
+  }
+}

@@ -1,0 +1,343 @@
+{
+  "ep": 81,
+  "title": "Sorting showdown",
+  "module": 12,
+  "lengthSec": 465,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "time a piece of C code with clock() and CLOCKS_PER_SEC",
+    "build a fair race that gives every sort an identical copy of the same data",
+    "check that each result really is sorted",
+    "connect measured times to the Big-O classes from EP 72"
+  ],
+  "youtube": {
+    "title": "6 Sorting Algorithms Race on 10,000 Numbers | C EP 81",
+    "description": "Bubble, selection, insertion, merge, quick and counting sort, all racing on the same 10,000 random numbers, timed live with clock(). We build a fair race in C, then run it on your machine. Plus the timing bug that lets one sort cheat. 0:00 Place your bets · 0:20 Title · 0:25 The six racers · 1:05 Small-array scorecard · 1:35 How to time code · 2:20 Code: the race harness · 3:50 Race day · 4:50 Pun · 4:55 What the results mean · 5:50 Bug of the Day · 7:00 Challenge · 7:30 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Place your bets"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The six racers"
+      },
+      {
+        "t": "1:05",
+        "label": "Small-array scorecard"
+      },
+      {
+        "t": "1:35",
+        "label": "How to time code"
+      },
+      {
+        "t": "2:20",
+        "label": "Code: the race harness"
+      },
+      {
+        "t": "3:50",
+        "label": "Race day"
+      },
+      {
+        "t": "4:50",
+        "label": "Pun"
+      },
+      {
+        "t": "4:55",
+        "label": "What the results mean"
+      },
+      {
+        "t": "5:50",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "7:00",
+        "label": "Challenge"
+      },
+      {
+        "t": "7:30",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "sorting algorithms comparison",
+      "sorting race",
+      "bubble sort vs quick sort",
+      "merge sort",
+      "counting sort",
+      "clock in c",
+      "time complexity",
+      "c programming",
+      "learn c",
+      "koding konkani",
+      "dsa in c"
+    ],
+    "thumbnail": {
+      "text": "WHICH SORT WINS?",
+      "visual": "big text \"WHICH SORT WINS?\"; six bar-chart racers on a running track; Xecxec with a chequered flag; Dark blue background, Butter text.",
+      "pose": "Xecxec with a chequered flag"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Six racers on a beach track; \"10,000 numbers. One winner.\"",
+      "animation": "Crowd cheer; starting pistol click",
+      "sfx": [],
+      "narration": "Six sorting algorithms. Ten thousand random numbers. One stopwatch. Over the last seven episodes you met every one of these racers. Today they race, for real, on our laptop, and then on yours. Place your bets now."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 81 · SORTING SHOWDOWN",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 81. Sorting showdown."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 40,
+      "onScreen": "Six racer cards with their Big-O: bubble, selection, insertion O(n²); merge, quick O(n log n); counting O(n + k)",
+      "animation": "Cards flip in one by one",
+      "sfx": [],
+      "narration": "Lane one: bubble sort, O(n²). Lane two: selection sort, O(n²). Lane three: insertion sort, also O(n²), but fast on nearly sorted data. Lane four: merge sort, O(n log n). Lane five: quick sort, O(n log n) on average. Lane six: counting sort, O(n + k), the one that never compares. Big-O predicts the race. Let's see if it's right."
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 65,
+      "lengthSec": 30,
+      "onScreen": "Six mini bar rows sorting {5, 2, 9, 1, 6, 3} side by side, replaying EP 74–80 traces; scorecard below",
+      "animation": "All six animate in parallel; counters tick",
+      "sfx": [],
+      "narration": "First, a warm-up on our familiar six numbers, 5, 2, 9, 1, 6, 3. Here are the exact counts from each episode. Bubble: 14 comparisons. Selection: 15. Insertion and merge: 11. Quick: 9. Counting: zero. With six items, they're all instant. The differences only show up when n gets big."
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 45,
+      "onScreen": "Stopwatch diagram: copy data → start = clock() → sort → end = clock() → (end - start) / CLOCKS_PER_SEC",
+      "animation": "Arrows light in order; stopwatch click on start and stop",
+      "sfx": [],
+      "narration": "To time code in C, we use clock from time.h. It returns how much processor time the program has used so far, in ticks. We call clock just before the sort and just after. The difference, divided by CLOCKS_PER_SEC, is the time in seconds. Multiply by 1000 for milliseconds. One rule for a fair race: every racer must get exactly the same unsorted numbers."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 140,
+      "lengthSec": 90,
+      "onScreen": "showdown.c (139 lines), shown in 3 zoomed chunks: the six sorts collapsed, race() lines 113–122, main lines 124–139; tracker for start, end, ms",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "The six sort functions are the ones from Episodes 74 to 80, with two changes: they all take just the array and n, and merge sort now gets its temp array from malloc, Episode 66, so it can handle ten thousand numbers. [HL 113] race takes the racer's name, a pointer to its sort function, from Episode 60, the original data, a work array, and n. [HL 115] First, memcpy copies the original numbers into work. Every racer starts from the same unsorted data. [HL 116] Start the stopwatch. [TRACK start=ticks] [HL 117] Call the sort through the function pointer. [HL 118] Stop the stopwatch. [TRACK end=ticks] [HL 119] Convert ticks to milliseconds. We write 1000.0, a double, so the division isn't integer division. [TRACK ms=[MEASURED]] [HL 120] Print the name, the time, [HL 121] and check the result really is sorted. A fast sort that gives the wrong answer doesn't win. [HL 125] In main, the arrays are static so ten thousand ints don't sit on the stack, Episode 65. [HL 127] srand of 42: a fixed seed, so every run uses the same numbers and the race is repeatable. [HL 128] Fill the array with random values from 0 to 9999. [HL 132] And run all six races.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n\n#define N 10000\n#define MAX_VALUE 9999\n\nvoid bubble_sort(int a[], int n) {\n    for (int pass = 0; pass < n - 1; pass++) {\n        int swapped = 0;\n        for (int j = 0; j < n - 1 - pass; j++) {\n            if (a[j] > a[j + 1]) {\n                int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t;\n                swapped = 1;\n            }\n        }\n        if (!swapped)\n            break;\n    }\n}\n\nvoid selection_sort(int a[], int n) {\n    for (int i = 0; i < n - 1; i++) {\n        int min = i;\n        for (int j = i + 1; j < n; j++)\n            if (a[j] < a[min])\n                min = j;\n        int t = a[i]; a[i] = a[min]; a[min] = t;\n    }\n}\n\nvoid insertion_sort(int a[], int n) {\n    for (int i = 1; i < n; i++) {\n        int key = a[i], j = i - 1;\n        while (j >= 0 && a[j] > key) {\n            a[j + 1] = a[j];\n            j--;\n        }\n        a[j + 1] = key;\n    }\n}\n\nvoid merge(int a[], int temp[], int left, int mid, int right) {\n    int i = left, j = mid + 1, k = left;\n    while (i <= mid && j <= right)\n        temp[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];\n    while (i <= mid)   temp[k++] = a[i++];\n    while (j <= right) temp[k++] = a[j++];\n    for (int t = left; t <= right; t++)\n        a[t] = temp[t];\n}\n\nvoid merge_rec(int a[], int temp[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_rec(a, temp, left, mid);\n    merge_rec(a, temp, mid + 1, right);\n    merge(a, temp, left, mid, right);\n}\n\nvoid merge_sort(int a[], int n) {\n    int *temp = malloc(n * sizeof(int));\n    if (temp == NULL)\n        return;\n    merge_rec(a, temp, 0, n - 1);\n    free(temp);\n}\n\nint partition(int a[], int low, int high) {\n    int pivot = a[high], i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (a[j] < pivot) {\n            i++;\n            int t = a[i]; a[i] = a[j]; a[j] = t;\n        }\n    }\n    int t = a[i + 1]; a[i + 1] = a[high]; a[high] = t;\n    return i + 1;\n}\n\nvoid quick_rec(int a[], int low, int high) {\n    if (low < high) {\n        int p = partition(a, low, high);\n        quick_rec(a, low, p - 1);\n        quick_rec(a, p + 1, high);\n    }\n}\n\nvoid quick_sort(int a[], int n) {\n    quick_rec(a, 0, n - 1);\n}\n\nvoid counting_sort(int a[], int n) {\n    static int count[MAX_VALUE + 1];\n    memset(count, 0, sizeof(count));\n    for (int i = 0; i < n; i++)\n        count[a[i]]++;\n    int k = 0;\n    for (int v = 0; v <= MAX_VALUE; v++)\n        while (count[v]-- > 0)\n            a[k++] = v;\n}\n\nint is_sorted(const int a[], int n) {\n    for (int i = 1; i < n; i++)\n        if (a[i - 1] > a[i])\n            return 0;\n    return 1;\n}\n\nvoid race(const char *name, void (*sort)(int[], int),\n          const int original[], int work[], int n) {\n    memcpy(work, original, n * sizeof(int));\n    clock_t start = clock();\n    sort(work, n);\n    clock_t end = clock();\n    double ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;\n    printf(\"%-10s %9.2f ms  %s\\n\", name, ms,\n           is_sorted(work, n) ? \"sorted\" : \"NOT SORTED\");\n}\n\nint main(void) {\n    static int original[N], work[N];\n\n    srand(42);\n    for (int i = 0; i < N; i++)\n        original[i] = rand() % (MAX_VALUE + 1);\n\n    printf(\"Sorting %d random numbers\\n\", N);\n    race(\"Bubble\",    bubble_sort,    original, work, N);\n    race(\"Selection\", selection_sort, original, work, N);\n    race(\"Insertion\", insertion_sort, original, work, N);\n    race(\"Merge\",     merge_sort,     original, work, N);\n    race(\"Quick\",     quick_sort,     original, work, N);\n    race(\"Counting\",  counting_sort,  original, work, N);\n    return 0;\n}",
+        "output": "$ gcc showdown.c -o showdown\n$ ./showdown\nSorting 10000 random numbers\nBubble     [MEASURED] ms  sorted\nSelection  [MEASURED] ms  sorted\nInsertion  [MEASURED] ms  sorted\nMerge      [MEASURED] ms  sorted\nQuick      [MEASURED] ms  sorted\nCounting   [MEASURED] ms  sorted"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 230,
+      "lengthSec": 60,
+      "onScreen": "Live screen recording of `gcc showdown.c -o showdown` and `./showdown` on the reference machine; results drawn as horizontal bars from the real output",
+      "animation": "Bars grow to the measured value; finish-line ding for each; numbers are [MEASURED]",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Compile and run. Bubble sort: [MEASURED] milliseconds. Selection sort: [MEASURED]. Insertion sort: [MEASURED]. Merge sort: [MEASURED]. Quick sort: [MEASURED]. Counting sort: [MEASURED]. Every result says \"sorted\". These are our laptop's numbers; yours will be different, but the order should look similar."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 290,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did bubble sort finish last? It kept stopping to swap stories."
+    },
+    {
+      "id": 9,
+      "template": "concept-slide",
+      "startSec": 295,
+      "lengthSec": 55,
+      "onScreen": "Results table with [MEASURED] values; \"10x more data\" prediction column (O(n²) × 100, O(n log n) × ~13, O(n + k) × ~10)",
+      "animation": "Prediction arrows animate",
+      "sfx": [],
+      "narration": "Look at the gap. The three O(n²) sorts are in one group, and the O(n log n) sorts are in a much faster group. Counting sort wins here because our values only go up to 9999, so k is small. Now the prediction: with 100,000 numbers, ten times more, the O(n²) sorts should take about a hundred times longer, the O(n log n) sorts about thirteen times longer, and counting sort about ten times longer. Big-O told us the shape of the race before we ran it. Try it yourself in the challenge."
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 350,
+      "lengthSec": 70,
+      "onScreen": "Copy moved out of race(); insertion suddenly near 0 ms, quick suddenly slow",
+      "animation": "Red siren; \"already sorted!\" stamp on the data",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Today's bug: timing the wrong thing. Someone moved the memcpy out of race and into main, so the data is copied only once, before the first race. With minus Wall minus Wextra, GCC hints at it: unused parameter original. Bubble sort sorts the array, and every racer after it gets already-sorted data. Insertion sort suddenly looks almost instant, because sorted data is its best case. And quick sort with a last-element pivot suddenly gets slow, because sorted data is its worst case. The times are real, but they measure the wrong experiment. The fix: copy the original into work inside race, before every start. Always check what you're timing."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 420,
+      "lengthSec": 30,
+      "onScreen": "\"Predict the winner on already-sorted data\"",
+      "animation": "Timer",
+      "sfx": [],
+      "narration": "Your challenge: before running anything, predict which sort will win if the input is already sorted. Then change the fill loop to original of i equals i, run the race, and compare with your prediction. Bonus: try N equals 100,000 and check the times-100 prediction."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 450,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 82 Build your own header library",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "Our showdown file is getting long, with six sorts in one file. Next episode, we pack them into our own header library, sort.h and sort.c, so any program can include them. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "void race(const char *name, void (*sort)(int[], int),\n          const int original[], int work[], int n) {\n    clock_t start = clock();\n    sort(work, n);\n    clock_t end = clock();\n    double ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;\n    printf(\"%-10s %9.2f ms  %s\\n\", name, ms,\n           is_sorted(work, n) ? \"sorted\" : \"NOT SORTED\");\n}\n\n/* in main, before the races: */\n    memcpy(work, original, N * sizeof(int));",
+    "error": "GCC warning with `gcc -Wall -Wextra showdown_bug.c -o showdown_bug` (line number depends on the file; none without -Wextra):\n\nshowdown_bug.c: In function 'race':\nshowdown_bug.c:114:21: warning: unused parameter 'original' [-Wunused-parameter]\n  114 |           const int original[], int work[], int n) {\n      |           ~~~~~~~~~~^~~~~~~~~~\n\nWrong behaviour (describe with [MEASURED] values from a recorded run of the buggy file): only Bubble gets random data. Insertion then sorts already-sorted data, its best case, and its time drops to almost nothing; Quick sorts already-sorted data with a last-element pivot, its worst case, and its time jumps up to bubble-sort territory. Every line still says \"sorted\", so the bug is easy to miss.",
+    "fixed": "Wrong behaviour (describe with [MEASURED] values from a recorded run of the buggy file): only Bubble gets random data. Insertion then sorts already-sorted data, its best case, and its time drops to almost nothing; Quick sorts already-sorted data with a last-element pivot, its worst case, and its time jumps up to bubble-sort territory. Every line still says \"sorted\", so the bug is easy to miss.\n\nFixed: put `memcpy(work, original, n * sizeof(int));` back as the first line of race().",
+    "why": "each sort runs in place on work, so without a fresh copy every racer after the first is timed on sorted input, which is a different experiment."
+  },
+  "pun": "Why did bubble sort finish last? It kept stopping to swap stories.",
+  "challenge": "Predict the winner when the input is already sorted, then test it: change the fill loop to `original[i] = i;` (and keep MAX_VALUE at least N - 1). Bonus: set N to 100000 and MAX_VALUE to 99999 and check the \"O(n²) gets about 100 times slower\" prediction.",
+  "challengeAnswer": "Predict from Big-O, then confirm with your own [MEASURED] run. On sorted input bubble sort (with its early-exit flag) and insertion sort both hit their O(n) best case, and counting sort stays O(n + k), so these three should lead; selection stays O(n²); merge stays O(n log n); quick sort with the last-element pivot hits its O(n²) worst case. (Caution for the bonus: quick sort on 100,000 sorted numbers recurses about 100,000 deep and may crash with a stack overflow on Windows, which is itself a lesson about bad pivots.)",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Place your bets",
+      "hook": "\"Six sorts. 10,000 numbers. Who wins?\"",
+      "script": "Bubble, selection, insertion, merge, quick and counting sort, all racing on the same ten thousand random numbers, timed with a real stopwatch in C. Comment your winner before you watch the full race.",
+      "onScreen": "WHO WINS? COMMENT NOW",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 20,
+      "caption": "Place your bets.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "sortingalgorithms",
+        "dsa"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Timing code in 30 seconds",
+      "hook": "\"How to put a stopwatch on your C code.\"",
+      "script": "Include time.h. Call clock just before the code and just after. Subtract, divide by CLOCKS_PER_SEC, and multiply by 1000 for milliseconds. Use 1000.0 so it isn't integer division. And for a fair race, give every racer a fresh copy of the same data.",
+      "onScreen": "clock() ÷ CLOCKS_PER_SEC",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Benchmark like a pro.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctips",
+        "performance"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The race that lied",
+      "hook": "\"Insertion sort suddenly won. It cheated.\"",
+      "script": "We copied the data only once. Bubble sort sorted it, and every racer after that got already-sorted numbers. Insertion sort hit its best case and looked instant. Quick sort hit its worst case and crawled. Copy the data before every race.",
+      "onScreen": "FRESH COPY EVERY RACE",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Measure the right thing.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "benchmarking"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Swap stories",
+      "hook": "\"Why did bubble sort finish last?\"",
+      "script": "Why did bubble sort finish last? It kept stopping to swap stories.",
+      "onScreen": "STOPPED TO SWAP STORIES",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 10,
+      "caption": "Gossip is O(n²).",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Already sorted: who wins?",
+      "hook": "\"The data is already sorted. Now who wins?\"",
+      "script": "Same six sorts, but the input is already in order. One of the fast sorts suddenly becomes slow, and one of the slow sorts becomes fast. Which ones? Comment your prediction, then run it.",
+      "onScreen": "SORTED INPUT: WHO WINS?",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 25,
+      "caption": "Big-O has best and worst cases.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "quiz",
+        "sortingalgorithms"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n\n#define N 10000\n#define MAX_VALUE 9999\n\nvoid bubble_sort(int a[], int n) {\n    for (int pass = 0; pass < n - 1; pass++) {\n        int swapped = 0;\n        for (int j = 0; j < n - 1 - pass; j++) {\n            if (a[j] > a[j + 1]) {\n                int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t;\n                swapped = 1;\n            }\n        }\n        if (!swapped)\n            break;\n    }\n}\n\nvoid selection_sort(int a[], int n) {\n    for (int i = 0; i < n - 1; i++) {\n        int min = i;\n        for (int j = i + 1; j < n; j++)\n            if (a[j] < a[min])\n                min = j;\n        int t = a[i]; a[i] = a[min]; a[min] = t;\n    }\n}\n\nvoid insertion_sort(int a[], int n) {\n    for (int i = 1; i < n; i++) {\n        int key = a[i], j = i - 1;\n        while (j >= 0 && a[j] > key) {\n            a[j + 1] = a[j];\n            j--;\n        }\n        a[j + 1] = key;\n    }\n}\n\nvoid merge(int a[], int temp[], int left, int mid, int right) {\n    int i = left, j = mid + 1, k = left;\n    while (i <= mid && j <= right)\n        temp[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];\n    while (i <= mid)   temp[k++] = a[i++];\n    while (j <= right) temp[k++] = a[j++];\n    for (int t = left; t <= right; t++)\n        a[t] = temp[t];\n}\n\nvoid merge_rec(int a[], int temp[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_rec(a, temp, left, mid);\n    merge_rec(a, temp, mid + 1, right);\n    merge(a, temp, left, mid, right);\n}\n\nvoid merge_sort(int a[], int n) {\n    int *temp = malloc(n * sizeof(int));\n    if (temp == NULL)\n        return;\n    merge_rec(a, temp, 0, n - 1);\n    free(temp);\n}\n\nint partition(int a[], int low, int high) {\n    int pivot = a[high], i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (a[j] < pivot) {\n            i++;\n            int t = a[i]; a[i] = a[j]; a[j] = t;\n        }\n    }\n    int t = a[i + 1]; a[i + 1] = a[high]; a[high] = t;\n    return i + 1;\n}\n\nvoid quick_rec(int a[], int low, int high) {\n    if (low < high) {\n        int p = partition(a, low, high);\n        quick_rec(a, low, p - 1);\n        quick_rec(a, p + 1, high);\n    }\n}\n\nvoid quick_sort(int a[], int n) {\n    quick_rec(a, 0, n - 1);\n}\n\nvoid counting_sort(int a[], int n) {\n    static int count[MAX_VALUE + 1];\n    memset(count, 0, sizeof(count));\n    for (int i = 0; i < n; i++)\n        count[a[i]]++;\n    int k = 0;\n    for (int v = 0; v <= MAX_VALUE; v++)\n        while (count[v]-- > 0)\n            a[k++] = v;\n}\n\nint is_sorted(const int a[], int n) {\n    for (int i = 1; i < n; i++)\n        if (a[i - 1] > a[i])\n            return 0;\n    return 1;\n}\n\nvoid race(const char *name, void (*sort)(int[], int),\n          const int original[], int work[], int n) {\n    memcpy(work, original, n * sizeof(int));\n    clock_t start = clock();\n    sort(work, n);\n    clock_t end = clock();\n    double ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;\n    printf(\"%-10s %9.2f ms  %s\\n\", name, ms,\n           is_sorted(work, n) ? \"sorted\" : \"NOT SORTED\");\n}\n\nint main(void) {\n    static int original[N], work[N];\n\n    srand(42);\n    for (int i = 0; i < N; i++)\n        original[i] = rand() % (MAX_VALUE + 1);\n\n    printf(\"Sorting %d random numbers\\n\", N);\n    race(\"Bubble\",    bubble_sort,    original, work, N);\n    race(\"Selection\", selection_sort, original, work, N);\n    race(\"Insertion\", insertion_sort, original, work, N);\n    race(\"Merge\",     merge_sort,     original, work, N);\n    race(\"Quick\",     quick_sort,     original, work, N);\n    race(\"Counting\",  counting_sort,  original, work, N);\n    return 0;\n}",
+      "output": "$ gcc showdown.c -o showdown\n$ ./showdown\nSorting 10000 random numbers\nBubble     [MEASURED] ms  sorted\nSelection  [MEASURED] ms  sorted\nInsertion  [MEASURED] ms  sorted\nMerge      [MEASURED] ms  sorted\nQuick      [MEASURED] ms  sorted\nCounting   [MEASURED] ms  sorted",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

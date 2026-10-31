@@ -1,0 +1,331 @@
+{
+  "ep": 57,
+  "title": "Pointers & Arrays",
+  "module": 8,
+  "lengthSec": 435,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain why an array name gives the address of its first element",
+    "read `a[i]` as `*(a + i)`",
+    "pass an array to a function as a pointer plus a length",
+    "recognise why a function must never return the address of a local array"
+  ],
+  "youtube": {
+    "title": "Arrays Are Secretly Pointers (Almost) | C Programming EP 57",
+    "description": "An array name quietly turns into a pointer to its first element. That is why a[i] works, why functions need the length passed in, and why returning a local array crashes. We draw the locker row, the key, and every arrow. 0:00 The locker row · 0:20 Title · 0:25 The array name is the first key · 1:25 a[i] is *(a + i) · 2:20 Code, line by line · 4:00 Running it · 4:25 Pun · 4:30 Almost a pointer: two differences · 5:15 Bug of the Day: returning a local array · 6:30 Challenge · 6:55 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The locker row"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The array name is the first key"
+      },
+      {
+        "t": "1:25",
+        "label": "a[i] is *(a + i)"
+      },
+      {
+        "t": "2:20",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "4:00",
+        "label": "Running it"
+      },
+      {
+        "t": "4:25",
+        "label": "Pun"
+      },
+      {
+        "t": "4:30",
+        "label": "Almost a pointer: two differences"
+      },
+      {
+        "t": "5:15",
+        "label": "Bug of the Day: returning a local array"
+      },
+      {
+        "t": "6:30",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:55",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "pointers and arrays in c",
+      "array name as pointer",
+      "array decay c",
+      "a[i] vs *(a+i)",
+      "passing array to function c",
+      "return local array c",
+      "c pointers tutorial",
+      "learn c",
+      "koding konkani",
+      "c programming for beginners",
+      "c programming india",
+      "engineering c"
+    ],
+    "thumbnail": {
+      "text": "a[i] = *(a+i)",
+      "visual": "big text \"a[i] = *(a+i)\"; a row of five lilac lockers with a key labelled `marks` on the first; a black arrow from the key; Xecxec holding a huge key; lilac background, dark blue text block",
+      "pose": "Xecxec holding a huge key"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A college locker row, five lockers in a line; a single key tagged \"Locker 1\"",
+      "animation": "Key spins in; Xecxec counts lockers with his claw; metal clank",
+      "sfx": [],
+      "narration": "In college, the lockers stand in one long row. If you know where locker 1 is, you can find any locker. Locker 3? Just walk two lockers along. You do not need five keys. You only need to know where the row starts. Arrays in C work exactly like this."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 57 · POINTERS & ARRAYS",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode fifty-seven. Pointers and arrays."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 60,
+      "onScreen": "`marks[5]` = 72, 85, 91, 64, 88 at 1000–1016; label `marks` with an arrow to 1000; `&marks[0]` label beside it showing the same 1000",
+      "animation": "Both labels flash and their arrows land on the same box; \"same address\" stamp; ding",
+      "sfx": [
+        "ding",
+        "stamp"
+      ],
+      "narration": "Here is an array called marks, with five ints: 72, 85, 91, 64 and 88. Remember from EP 56: ints are four bytes, so the boxes are at 1000, 1004, 1008, 1012 and 1016. Now, the big secret. When you use the name marks in an expression, C quietly turns it into the address of the first element. So marks gives you 1000. And ampersand marks of zero also gives 1000. Same arrow, same box. This automatic change is often called \"array decay\": the array name decays into a pointer to its first element. That is why in EP 56 we could write char star c equals word, with no ampersand."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 85,
+      "lengthSec": 55,
+      "onScreen": "Expression ladder: `marks + 2` = 1008, `*(marks + 2)` = 91, `marks[2]` = 91",
+      "animation": "Arrow walks two boxes; the box opens to show 91; `marks[2]` slides down to sit next to `*(marks + 2)` with an equals sign",
+      "sfx": [],
+      "narration": "Now let's use EP 56's pointer arithmetic. marks plus 2 means: start at the first box, walk two ints. That is address 1008. Star of marks plus 2 knocks on that door and finds 91. And what is marks square bracket 2? Also 91. That's not a coincidence. In C, a square bracket i is defined to mean star of a plus i. Every time you have used square brackets since EP 41, C was doing pointer arithmetic behind your back. The square brackets are just a nicer way to write it."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 140,
+      "lengthSec": 100,
+      "onScreen": "`arrays.c` (22 lines); tracker: marks (address), i, total; two stack frames shown in the corner when `sum` is called",
+      "animation": "Butter highlights; when `sum` runs, an arrow from `arr` in the `sum` frame points down to `marks` in `main`'s frame",
+      "sfx": [],
+      "narration": "Here is our program. [HL 3] Line 3 defines a function called sum. Its first parameter is const int star arr, a pointer to the first element. The word const promises that sum will only read the marks, not change them. The second parameter, n, is how many elements there are. [HL 4] Line 4 sets total to zero. [HL 5] Line 5 loops i from 0 to n minus 1. [HL 6] Line 6 adds star of arr plus i. That is the same as arr square bracket i. [HL 8] Line 8 returns total. [HL 11] Line 11 starts main. [HL 12] Line 12 creates marks with five values. [HL 14] Line 14 prints marks with percent p. [HL 15] Line 15 prints ampersand marks of zero. These two lines will show the same address. [HL 16] Line 16 prints marks square bracket 2: 91. [HL 17] Line 17 prints star of marks plus 2: also 91. [HL 19] Line 19 prints sizeof marks inside main. Here marks is still the real array, so the answer is 5 times 4, which is 20 bytes. [HL 20] Line 20 calls sum of marks comma 5. Watch the corner. C does not copy all five boxes into sum. It only sends the address 1000. So arr, inside sum's frame, is a pointer with an arrow pointing down into main's array. [TRACK arr=&marks[0]] The loop runs: [TRACK total=72] [TRACK total=157] [TRACK total=248] [TRACK total=312] [TRACK total=400] and sum returns 400. This is also why sum needs n. arr is only a pointer. It knows where the row starts, but not how long it is. [HL 21] Return zero.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint sum(const int *arr, int n) {\n    int total = 0;\n    for (int i = 0; i < n; i++) {\n        total += *(arr + i);\n    }\n    return total;\n}\n\nint main(void) {\n    int marks[5] = {72, 85, 91, 64, 88};\n\n    printf(\"marks     = %p\\n\", (void *)marks);\n    printf(\"&marks[0] = %p\\n\", (void *)&marks[0]);\n    printf(\"marks[2]     = %d\\n\", marks[2]);\n    printf(\"*(marks + 2) = %d\\n\", *(marks + 2));\n\n    printf(\"sizeof(marks) in main = %zu\\n\", sizeof(marks));\n    printf(\"Total = %d\\n\", sum(marks, 5));\n    return 0;\n}",
+        "output": "marks     = 00000071B0BFF7F0\n&marks[0] = 00000071B0BFF7F0\nmarks[2]     = 91\n*(marks + 2) = 91\nsizeof(marks) in main = 20\nTotal = 400"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 240,
+      "lengthSec": 25,
+      "onScreen": "Compile and run; sticky note \"your addresses will differ\"",
+      "animation": "Two address lines flash together in mint; Total 400 pops",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Compile and run. The first two lines show the same address. Then 91 and 91. sizeof marks is 20. And the total is 400. Your addresses will be different, but the two lines will always match each other."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 5,
+      "onScreen": "\"Why did the array break up with the pointer? It needed more space, not just an address.\"",
+      "animation": "Card flips; Xecxec shrugs; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the array break up with the pointer? It needed more space, not just an address."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 270,
+      "lengthSec": 45,
+      "onScreen": "Two differences: `sizeof(marks)` = 20 in main vs 8 for a pointer; `marks = p;` not allowed",
+      "animation": "sizeof bars grow side by side; a tomato lock icon appears on `marks`",
+      "sfx": [],
+      "narration": "We keep saying \"almost\". An array is not a pointer. Its name just turns into one most of the time. Two differences matter. First: sizeof. In main, sizeof marks is 20, the whole array. But a pointer is always 8 bytes on a 64-bit computer. So inside sum, sizeof arr would give 8, not 20. That's why you cannot find an array's length inside a function. Pass it in. Second: you cannot change where an array lives. marks equals some other pointer is an error. A pointer variable can be moved; an array name cannot."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 315,
+      "lengthSec": 75,
+      "onScreen": "`make_marks()` returning a local array; GCC warning; stack frame disappearing while an arrow still points into it",
+      "animation": "Frame dissolves; arrow dangles into empty space; crash crunch; fixed version where `main` owns the array slides in",
+      "sfx": [],
+      "narration": "Today's bug: returning a local array. Someone writes a function make_marks that creates an int array inside it, and returns marks. GCC warns: function returns address of local variable. Watch the diagram. make_marks has its own stack frame, with the array inside. It returns the address of that array. Then the function ends, and its frame disappears. But main is holding an arrow that points into the empty space where the frame used to be. That's called a dangling pointer. With GCC, the returned address is actually replaced by an invalid one, and the program crashes when main reads it. The fix: let main own the array, and pass it into the function to fill. In Module 10 you will learn another fix, using malloc."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 390,
+      "lengthSec": 25,
+      "onScreen": "\"Sum an array with two pointers: start and end\" task card",
+      "animation": "Two arrows at both ends of a locker row, one walks toward the other",
+      "sfx": [],
+      "narration": "Your challenge. Write a function int sum_ptr, that takes two pointers: const int star start, and const int star end. end points just past the last element. Add up everything from start to end, using a while loop and start plus plus. Call it with sum_ptr of a comma a plus 5. You should get 400 for our marks. Pause and try."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 415,
+      "lengthSec": 20,
+      "onScreen": "\"Next: EP 58 · Strings were pointers all along\"",
+      "animation": "Letters B-A-G-A slide into boxes with a `\\0` at the end; sign-off",
+      "sfx": [],
+      "narration": "Arrays and pointers are close cousins. Next episode, we meet the third cousin: strings. You'll see that strings were pointers all along. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint *make_marks(void) {\n    int marks[3] = {72, 85, 91};\n    return marks;\n}\n\nint main(void) {\n    int *m = make_marks();\n    printf(\"%d\\n\", m[0]);\n    return 0;\n}",
+    "error": "GCC (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'make_marks':\nbug.c:5:12: warning: function returns address of local variable [-Wreturn-local-addr]\n    5 |     return marks;\n      |            ^~~~~\n\nRunning it crashes (segmentation fault on Linux; on Windows the program exits without printing). GCC replaces the returned address with NULL, so `m[0]` reads address 0.",
+    "fixed": "#include <stdio.h>\n\nvoid fill_marks(int *marks) {\n    marks[0] = 72;\n    marks[1] = 85;\n    marks[2] = 91;\n}\n\nint main(void) {\n    int m[3];\n    fill_marks(m);\n    printf(\"%d\\n\", m[0]);\n    return 0;\n}",
+    "why": "a local array lives in its function's stack frame, which disappears when the function returns, so its address is no longer valid."
+  },
+  "pun": "\"Why did the array break up with the pointer? It needed more space, not just an address.\"",
+  "challenge": "Write `int sum_ptr(const int *start, const int *end)` that adds every element from `start` up to (not including) `end` using `start++`. Call it as `sum_ptr(a, a + 5)`.",
+  "challengeAnswer": "(worked example)\nint sum_ptr(const int *start, const int *end) {\n    int total = 0;\n    while (start < end) {\n        total += *start;\n        start++;\n    }\n    return total;\n}\n/* with a = {72, 85, 91, 64, 88}: sum_ptr(a, a + 5) returns 400 */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Your array is lying to you",
+      "hook": "`marks` and `&marks[0]` print the same address: \"Same thing?!\"",
+      "script": "Print the array name marks with percent p. Now print ampersand marks of zero. Same address! When you use an array's name, C quietly turns it into a pointer to the first element. Like a locker row: know where locker 1 is, and you can find them all.",
+      "onScreen": "ARRAY NAME = FIRST ADDRESS",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "The locker row secret.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "arrays",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "a[i] in 30 seconds",
+      "hook": "`a[i]` morphs into `*(a + i)`.",
+      "script": "What does a square bracket i really mean? C defines it as star of a plus i. Start at the first element, walk i steps, knock on the door. So marks square bracket 2 and star of marks plus 2 are exactly the same. Square brackets are pointer arithmetic in a nice outfit.",
+      "onScreen": "a[i] == *(a + i)",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "You have been doing pointer maths all along.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "codingtips",
+        "arrays"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Never return a local array",
+      "hook": "A stack frame dissolves while an arrow still points into it.",
+      "script": "A function makes an array and returns it. GCC warns: function returns address of local variable. When the function ends, its frame vanishes, and your pointer points into nothing. The program crashes. Fix: let the caller own the array and pass it in to be filled.",
+      "onScreen": "LOCAL ARRAY DIES WITH ITS FUNCTION",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "The arrow outlived the house.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "pointers",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Array breakup",
+      "hook": "An array box and a pointer arrow sitting apart on a bench.",
+      "script": "Why did the array break up with the pointer? It needed more space, not just an address.",
+      "onScreen": "MORE SPACE, NOT AN ADDRESS",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Relationship advice from C.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: sizeof inside a function",
+      "hook": "\"sizeof(marks) is 20 in main. What is it inside sum?\"",
+      "script": "An array of five ints. In main, sizeof gives 20. Pass it to a function and check sizeof there. What do you get? Answer: 8 on a 64-bit computer. The function only received a pointer. That's why we always pass the length. Comment if you knew.",
+      "onScreen": "20 IN main, 8 IN sum",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Pass the length, always.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "pointers",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint sum(const int *arr, int n) {\n    int total = 0;\n    for (int i = 0; i < n; i++) {\n        total += *(arr + i);\n    }\n    return total;\n}\n\nint main(void) {\n    int marks[5] = {72, 85, 91, 64, 88};\n\n    printf(\"marks     = %p\\n\", (void *)marks);\n    printf(\"&marks[0] = %p\\n\", (void *)&marks[0]);\n    printf(\"marks[2]     = %d\\n\", marks[2]);\n    printf(\"*(marks + 2) = %d\\n\", *(marks + 2));\n\n    printf(\"sizeof(marks) in main = %zu\\n\", sizeof(marks));\n    printf(\"Total = %d\\n\", sum(marks, 5));\n    return 0;\n}",
+      "output": "marks     = 00000071B0BFF7F0\n&marks[0] = 00000071B0BFF7F0\nmarks[2]     = 91\n*(marks + 2) = 91\nsizeof(marks) in main = 20\nTotal = 400",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "72"
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "ep": 14,
+  "title": "Mini Project: Unit Converter",
+  "module": 1,
+  "lengthSec": 440,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "plan a small program as input, calculation, output",
+    "combine `#define`, `const`, `scanf`, `double` maths and formatted `printf` in one file",
+    "read a `double` with `%lf`",
+    "avoid integer division inside a formula by writing `9.0` instead of `9`"
+  ],
+  "youtube": {
+    "title": "Build a Unit Converter in C | Mini Project EP 14",
+    "description": "Our first real project. Using everything from Module 1 (variables, types, constants, scanf, printf and casting), we build a unit converter for kilometres to miles, rupees to dollars and Celsius to Fahrenheit, step by step. Plus the mixed-types bug that makes 37 degrees come out wrong. 0:00 km to miles, rupees to dollars 0:20 Plan: input, process, output 1:00 Header, #define and const 1:55 Reading input with %lf 3:00 The formulas 4:00 Neat output 4:59 Bug of the Day: 9/5 in a formula 6:24 Challenge 6:59 Module 1 complete",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "km to miles, rupees to dollars 0:20 Plan: input, process, output 1:00 Header, #define and const 1:55 Reading input with %lf 3:00 The formulas 4:00 Neat output 4:59 Bug of the Day: 9/5 in a formula 6:24 Challenge 6:59 Module 1 complete"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "c mini project",
+      "unit converter in c",
+      "c project for beginners",
+      "scanf %lf",
+      "celsius to fahrenheit c",
+      "km to miles c",
+      "c tutorial for beginners",
+      "koding konkani",
+      "learn c"
+    ],
+    "thumbnail": {
+      "text": "MY FIRST PROJECT",
+      "visual": "big text \"MY FIRST PROJECT\"; a retro converter machine with three dials (km, Rs, degrees C); Xecxec in a hard hat turning a dial.",
+      "pose": "Xecxec in a hard hat turning a dial"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Finished converter run: inputs typed, results table appears",
+      "animation": "Keyboard clacks; results drop in with ding; Xecxec in a hard hat claps claws",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Kilometres to miles. Rupees to dollars. Celsius to Fahrenheit. Type three numbers, get three answers, neatly lined up. By the end of this video, you'll have built this yourself, using only what we learned in module one."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 14 · MINI PROJECT: UNIT CONVERTER",
+      "animation": "Title slams in, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode fourteen. Mini project: unit converter."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "Last challenge answer; plan: Input, Process, Output boxes with what goes in each",
+      "animation": "Three boxes connected by arrows; items fly into each box",
+      "sfx": [],
+      "narration": "First, last time's challenge. With seventy-eight, eighty-five and ninety, the average is eighty-four point three three. If you got eighty-four point zero zero, divide by three point zero instead of three. Now, before any code, a plan. Almost every program has three parts. Input: what does the user give us? Here, a distance in kilometres, an amount in rupees, and a temperature in Celsius. Process: what maths do we do? Three conversion formulas. Output: what do we show? A neat table of results. Planning first saves you from staring at a blank screen."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 55,
+      "onScreen": "converter.c lines 1–13",
+      "animation": "Header comment fades in; KM_PER_MILE and RUPEES_PER_DOLLAR get padlock and tag icons",
+      "sfx": [],
+      "narration": "[HL 1] Lines one to six: a header comment, just like episode six taught us. File name, what it does, and where it's from. [HL 7] Line seven: include stdio dot h, for printf and scanf. [HL 9] Line nine: hash define KM_PER_MILE, one point six zero nine three four four. One mile is exactly that many kilometres, and it never changes, so it's a perfect hash define. [HL 13] Line thirteen: const double RUPEES_PER_DOLLAR equals eighty-eight. This is only an example rate. Real exchange rates change every day, so check today's rate and put it here. Notice it's one line to change, not ten. That's the magic-number lesson from episode ten.",
+      "code": {
+        "file": "file1.c",
+        "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
+        "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 65,
+      "onScreen": "Lines 15–27",
+      "animation": "Values fly from keyboard into km, rupees, celsius boxes; tracker updates",
+      "sfx": [],
+      "narration": "[HL 15] Line fifteen: double km, rupees. Two decimal boxes in one line. We use double, because it's more precise than float, like we saw in episode nine. [HL 16] Line sixteen: int celsius. Whole degrees only, to keep it simple. [HL 18] Line eighteen prints a title for our converter. [HL 20] Line twenty asks for the distance. [HL 21] Line twenty-one: scanf, percent l f, ampersand km. Here's something new. For printf, percent f works for both float and double. But for scanf, a double needs percent l f. l f for \"long float\". If you use percent f with a double in scanf, you get garbage. [TRACK km=60] [HL 23] Lines twenty-three [HL 24] and twenty-four do the same for rupees. [TRACK rupees=500] [HL 26] Lines twenty-six [HL 27] and twenty-seven read celsius with percent d and ampersand. [TRACK celsius=37] Every scanf has its ampersand. Episode twelve would be proud.",
+      "code": {
+        "file": "file1.c",
+        "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
+        "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 180,
+      "lengthSec": 60,
+      "onScreen": "Lines 29–31 formulas",
+      "animation": "Each formula animates its numbers: 60 / 1.609344, 500 / 88.0, 37 * 9.0 / 5 + 32",
+      "sfx": [],
+      "narration": "Now the maths. [HL 29] Line twenty-nine: miles equals km divided by KM_PER_MILE. Sixty divided by one point six zero nine three four four. [TRACK miles=37.28] [HL 30] Line thirty: dollars equals rupees divided by RUPEES_PER_DOLLAR. Five hundred divided by eighty-eight. [TRACK dollars=5.68] [HL 31] Line thirty-one: Fahrenheit equals celsius times nine point zero, divided by five, plus thirty-two. Why nine point zero and not nine? Hold that thought. It's today's bug. [TRACK fahrenheit=98.6]",
+      "code": {
+        "file": "file1.c",
+        "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
+        "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
+      }
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 240,
+      "lengthSec": 55,
+      "onScreen": "Lines 33–36 output, with column guides",
+      "animation": "Guide lines at width 8; results line up with receipt whirr",
+      "sfx": [],
+      "narration": "[HL 33] Line thirty-three prints a blank line and a results heading. The backslash n at the start gives some breathing space. [HL 34] Line thirty-four: percent eight point two f for km, then percent eight point two f for miles. Width eight, two decimals, from episode eleven. [HL 35] Line thirty-five: same widths for rupees and dollars. [HL 36] Line thirty-six: percent eight d for celsius, because it's an int, and percent eight point one f for Fahrenheit. Run it. Type sixty, five hundred and thirty-seven. Sixty kilometres is thirty-seven point two eight miles. Five hundred rupees is five point six eight dollars at our example rate. Thirty-seven Celsius is ninety-eight point six Fahrenheit. All numbers in one neat column.",
+      "code": {
+        "file": "file1.c",
+        "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
+        "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
+      }
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 295,
+      "lengthSec": 4,
+      "onScreen": "Pun",
+      "animation": "Drum ba-dum, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "I tried to convert my friend to Fahrenheit. Now he's just a few degrees cooler."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 299,
+      "lengthSec": 85,
+      "onScreen": "`celsius * 9 / 5 + 32` gives 98.0; fix with 9.0 gives 98.6",
+      "animation": "Butter stripe; thermometer stuck at 98.0; buzzer; fix and thermometer rises to 98.6, success chime",
+      "sfx": [
+        "buzzer",
+        "chime"
+      ],
+      "narration": "Now, why nine point zero? Here's the version most people write first: celsius times nine, divided by five, plus thirty-two. Run it with thirty-seven. Ninety-eight point zero. But a normal body temperature is ninety-eight point six! C works left to right. celsius times nine: int times int, three hundred thirty-three. Then divided by five: int divided by int, sixty-six, not sixty-six point six. The point six is lost, like we saw in episode thirteen. Add thirty-two, ninety-eight, and only then is it stored in a double. No warning from GCC. The fix: write nine point zero. Now celsius times nine point zero is a double, three hundred thirty-three point zero, and everything after stays double. Ninety-eight point six. One dot and one zero fixed the whole formula."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 384,
+      "lengthSec": 35,
+      "onScreen": "Add one new conversion (e.g. cm to inches)",
+      "animation": "Timer ticks; a fourth empty dial appears on the machine",
+      "sfx": [],
+      "narration": "Your challenge. Add one new conversion of your choice. Centimetres to inches, kilograms to pounds, or litres to cups. Use a hash define for the conversion factor, read the value with percent l f, and print it in the same neat style. Share your output in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 419,
+      "lengthSec": 21,
+      "onScreen": "Module 1 complete badge; Next: EP 15 · Module 2 Operators; sign-off",
+      "animation": "Badge stamps with a thud; confetti; Xecxec dances; outro sting",
+      "sfx": [
+        "stamp",
+        "sting",
+        "thud"
+      ],
+      "narration": "And that's module one, complete! You can now store values, choose types, take input and print neat output. Next episode starts module two: operators, where C learns to do real maths and make comparisons. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void)\n{\n    int celsius = 37;\n    double fahrenheit = celsius * 9 / 5 + 32;\n    printf(\"%.1f F\\n\", fahrenheit);\n    return 0;\n}",
+    "error": "**GCC output:** none, even with `-Wall`. **Wrong output:**\n\n98.0 F",
+    "fixed": "#include <stdio.h>\n\nint main(void)\n{\n    int celsius = 37;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n    printf(\"%.1f F\\n\", fahrenheit);\n    return 0;\n}",
+    "why": "`celsius * 9 / 5` is all int maths (333 / 5 = 66), so the .6 is lost before the result reaches the double; `9.0` makes the whole chain double."
+  },
+  "pun": "\"I tried to convert my friend to Fahrenheit. Now he's a few degrees cooler.\"",
+  "challenge": "Add one new conversion (cm to inches, kg to pounds, or litres to cups) with a `#define` factor, `%lf` input and the same neat output.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\n#define CM_PER_INCH 2.54\n\nint main(void)\n{\n    double cm;\n    printf(\"Length in cm: \");\n    scanf(\"%lf\", &cm);\n    printf(\"%.2f cm = %.2f inches\\n\", cm, cm / CM_PER_INCH);\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "I built a unit converter",
+      "hook": "\"My first C project. 39 lines.\"",
+      "script": "My first C project. Thirty-nine lines. Type kilometres, rupees and Celsius. Get miles, dollars and Fahrenheit, in one neat table. Variables, constants, scanf, printf. Everything from module one, in one program. Full build on the channel.",
+      "onScreen": "km → miles · Rs → $ · C → F",
+      "fromScenes": [
+        1,
+        7
+      ],
+      "lengthSec": 25,
+      "caption": "Build this in your first week of C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cproject",
+        "beginnerproject"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Plan any program in 30 seconds",
+      "hook": "\"Stuck on a blank screen? Do this first.\"",
+      "script": "Stuck on a blank screen? Plan in three boxes. Input: what does the user give you? Process: what maths do you do? Output: what do you show? For our converter: three numbers in, three formulas, one neat table out. Then the code almost writes itself.",
+      "onScreen": "INPUT → PROCESS → OUTPUT",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 30,
+      "caption": "How to start any program.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "programmingtips",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "37 C = 98.0 F?",
+      "hook": "\"My converter says body temperature is 98.0.\"",
+      "script": "My converter says thirty-seven Celsius is ninety-eight point zero Fahrenheit. It should be ninety-eight point six. The formula: celsius times nine, divided by five. All ints. So three thirty-three divided by five is sixty-six, not sixty-six point six. Fix: nine point zero. Now it's ninety-eight point six.",
+      "onScreen": "* 9 → 98.0 · * 9.0 → 98.6",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "One dot fixed my formula.",
+      "hashtags": [
+        "cprogramming",
+        "codingbugs",
+        "kodingkonkani",
+        "learntocode",
+        "c"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "A few degrees cooler",
+      "hook": "\"I tried to convert my friend.\"",
+      "script": "I tried to convert my friend to Fahrenheit. Now he's just a few degrees cooler.",
+      "onScreen": "FRIEND → FAHRENHEIT",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 10,
+      "caption": "Conversion humour.",
+      "hashtags": [
+        "programmingjokes",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "%f or %lf?",
+      "hook": "\"Reading a double with scanf. %f or %lf?\"",
+      "script": "You want to read a double with scanf. Percent f or percent l f? ... Percent l f. In printf, percent f works for float and double. In scanf, a double needs percent l f. Remember it.",
+      "onScreen": "scanf(\"%?\", &km); · %f or %lf?",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 20,
+      "caption": "The scanf rule for doubles.",
+      "hashtags": [
+        "cquiz",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode",
+        "scanf"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
+      "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "98.6 F"
+  }
+}

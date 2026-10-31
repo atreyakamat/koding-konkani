@@ -1,0 +1,751 @@
+{
+  "ep": 79,
+  "title": "Quick sort",
+  "module": 12,
+  "lengthSec": 450,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "explain quick sort as \"pick a pivot, put smaller items left and bigger items right, recurse on each side\"",
+    "write a Lomuto partition function and recursive quick_sort in C",
+    "trace a partition step by step with i and j",
+    "explain why the average case is O(n log n) but a bad pivot gives O(n²)"
+  ],
+  "youtube": {
+    "title": "Quick Sort: Pick a Captain, Everyone Lines Up | C EP 79",
+    "description": "Pick a captain. Everyone shorter stands on the left, everyone taller on the right. Repeat. We animate quick sort's partition step by step, write it in C with a swap function and recursion, and see why the choice of pivot can make it fast or painfully slow. 0:00 Pick a captain · 0:20 Title · 0:25 The idea · 0:55 Partition, animated · 2:00 The rest of the sort · 2:30 Step trace · 2:55 Code: partition · 4:10 Code: quick_sort · 4:40 Run it · 4:55 Pun · 5:00 Good pivot, bad pivot · 5:45 Bug of the Day · 6:50 Challenge · 7:15 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Pick a captain"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The idea"
+      },
+      {
+        "t": "0:55",
+        "label": "Partition, animated"
+      },
+      {
+        "t": "2:00",
+        "label": "The rest of the sort"
+      },
+      {
+        "t": "2:30",
+        "label": "Step trace"
+      },
+      {
+        "t": "2:55",
+        "label": "Code: partition"
+      },
+      {
+        "t": "4:10",
+        "label": "Code: quick_sort"
+      },
+      {
+        "t": "4:40",
+        "label": "Run it"
+      },
+      {
+        "t": "4:55",
+        "label": "Pun"
+      },
+      {
+        "t": "5:00",
+        "label": "Good pivot, bad pivot"
+      },
+      {
+        "t": "5:45",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:50",
+        "label": "Challenge"
+      },
+      {
+        "t": "7:15",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "quick sort",
+      "quicksort in c",
+      "partition",
+      "pivot",
+      "sorting algorithms",
+      "divide and conquer",
+      "c programming",
+      "algorithms for beginners",
+      "learn c",
+      "koding konkani",
+      "dsa in c"
+    ],
+    "thumbnail": {
+      "text": "PICK A CAPTAIN",
+      "visual": "big text \"PICK A CAPTAIN\"; bars split around a tall bar wearing a captain's armband; Xecxec in a cricket cap pointing left and right; Dark blue background, Butter text.",
+      "pose": "Xecxec in a cricket cap pointing left and right"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Beach football: captain steps out; shorter kids go left, taller go right",
+      "animation": "Whistle; kids scamper",
+      "sfx": [],
+      "narration": "Football on the beach at sunset. Someone picks a captain. Then everyone shorter than the captain stands on the left, everyone taller on the right. Without sorting anyone else yet, the captain is already standing in exactly the right spot. That one idea powers quick sort."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 79 · QUICK SORT",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 79. Quick sort."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 30,
+      "onScreen": "Rule card: \"Pick a pivot. Smaller → left. Bigger → right. Pivot is now in its final place. Recurse.\"",
+      "animation": "Pivot bar gets a captain armband",
+      "sfx": [],
+      "narration": "Quick sort picks one element called the pivot, our captain. It rearranges the array so everything smaller than the pivot is on its left and everything bigger is on its right. This step is called partitioning. After it, the pivot is in its final place forever. Then quick sort does the same thing to the left part and the right part, recursively. Merge sort did its hard work on the way back up. Quick sort does it on the way down."
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 55,
+      "lengthSec": 65,
+      "onScreen": "Bars [5, 2, 9, 1, 6, 3]; pivot 3 (last); markers i and j under bars; steps P1.1–P1.6",
+      "animation": "Pivot butter; j bar pastel blue; swaps tomato; \"small zone\" left of i shaded mint; pivot drops into its slot and locks mint; tick per compare, swoosh per swap",
+      "sfx": [],
+      "narration": "Our array: 5, 2, 9, 1, 6, 3. We choose the last element, 3, as the pivot. We keep a marker i, the edge of the \"smaller than 3\" zone, which starts just before the array. Another marker, j, walks along. j at 5: is 5 less than 3? No, skip. j at 2: yes! Grow the zone, i moves to index 0, and swap 2 into it. j at 9: no. j at 1: yes! i moves to 1, swap 1 into the zone. j at 6: no. Done scanning. Now the pivot steps into the slot just after the zone: swap 3 with 9. Look: 2 and 1 on the left, 3 in the middle, 5, 6, 9 on the right. 3 is locked.",
+      "trace": [
+        {
+          "step": "P1 start",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.1",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.2",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.3",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.4",
+          "array": [
+            2,
+            1,
+            9,
+            5,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.5",
+          "array": [
+            2,
+            1,
+            9,
+            5,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.6",
+          "array": [
+            2,
+            1,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P2 start",
+          "array": [
+            2,
+            1,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P2.1",
+          "array": [
+            2,
+            1,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P2.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P3 start",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P3.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P3.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P3.3",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P4 start",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P4.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P4.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "template": "algorithm-bars",
+      "startSec": 120,
+      "lengthSec": 30,
+      "onScreen": "Remaining partitions P2–P4 at 2x",
+      "animation": "Locked pivots stay mint",
+      "sfx": [],
+      "narration": "Now quick sort the left part, 2 and 1. Pivot 1: 2 is not smaller, so 1 swaps to the front. Locked. Then the right part, 5, 6, 9. Pivot 9: both are smaller, so they stay put, and 9 stays at the end. Then 5, 6 with pivot 6: same story. Every piece is now a single element or locked. Sorted.",
+      "trace": [
+        {
+          "step": "P1 start",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.1",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.2",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.3",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.4",
+          "array": [
+            2,
+            1,
+            9,
+            5,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.5",
+          "array": [
+            2,
+            1,
+            9,
+            5,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "P1.6",
+          "array": [
+            2,
+            1,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P2 start",
+          "array": [
+            2,
+            1,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P2.1",
+          "array": [
+            2,
+            1,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P2.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P3 start",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P3.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P3.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P3.3",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P4 start",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P4.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "P4.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 150,
+      "lengthSec": 25,
+      "onScreen": "Step-trace table (below)",
+      "animation": "Rows reveal",
+      "sfx": [],
+      "narration": "Here's every step. Nine comparisons in total. Some swaps swap an element with itself; that happens when the zone and j are at the same place, and it's harmless."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 175,
+      "lengthSec": 75,
+      "onScreen": "quick.c lines 9–26 (swap, partition); tracker for pivot, i, j, array",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 9] First, a swap function that takes two pointers. This is the real swap from Episode 55: it changes the caller's values. [HL 15] partition works on the part of the array from low to high. [HL 16] The pivot is the last element. [TRACK pivot=3] [HL 17] i starts at low minus 1: the zone is empty. [TRACK i=-1] [HL 18] j walks from low up to, but not including, high, because high is the pivot itself. [HL 19] If a[j] is smaller than the pivot, [HL 20] grow the zone by one, [TRACK j=1 i=0] [HL 21] and swap a[j] into it. [TRACK array=2,5,9,1,6,3] [HL 24] After the loop, swap the pivot into position i plus 1. [TRACK array=2,1,3,5,6,9] [HL 25] Return that position, so the caller knows where the pivot ended up.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid swap(int *x, int *y) {\n    int temp = *x;\n    *x = *y;\n    *y = temp;\n}\n\nint partition(int a[], int low, int high) {\n    int pivot = a[high];\n    int i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (a[j] < pivot) {\n            i++;\n            swap(&a[i], &a[j]);\n        }\n    }\n    swap(&a[i + 1], &a[high]);\n    return i + 1;\n}\n\nvoid quick_sort(int a[], int low, int high) {\n    if (low < high) {\n        int p = partition(a, low, high);\n        quick_sort(a, low, p - 1);\n        quick_sort(a, p + 1, high);\n    }\n}\n\nint main(void) {\n    int team[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(team) / sizeof(team[0]);\n\n    quick_sort(team, 0, n - 1);\n    print_array(team, n);\n    return 0;\n}",
+        "output": "$ gcc quick.c -o quick\n$ ./quick\n1 2 3 5 6 9"
+      }
+    },
+    {
+      "id": 8,
+      "template": "code-explain",
+      "startSec": 250,
+      "lengthSec": 30,
+      "onScreen": "quick.c lines 28–43 (quick_sort, main); tracker for low, high, p",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 28] quick_sort sorts from low to high. [HL 29] Only if there are at least two elements. That's the base case, written the other way round. [HL 30] Partition, and get the pivot's final index p. [TRACK low=0 high=5 p=2] [HL 31] Sort everything left of p, [HL 32] and everything right of p. p itself is never touched again. [HL 40] In main, sort the whole array from 0 to n minus 1.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid swap(int *x, int *y) {\n    int temp = *x;\n    *x = *y;\n    *y = temp;\n}\n\nint partition(int a[], int low, int high) {\n    int pivot = a[high];\n    int i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (a[j] < pivot) {\n            i++;\n            swap(&a[i], &a[j]);\n        }\n    }\n    swap(&a[i + 1], &a[high]);\n    return i + 1;\n}\n\nvoid quick_sort(int a[], int low, int high) {\n    if (low < high) {\n        int p = partition(a, low, high);\n        quick_sort(a, low, p - 1);\n        quick_sort(a, p + 1, high);\n    }\n}\n\nint main(void) {\n    int team[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(team) / sizeof(team[0]);\n\n    quick_sort(team, 0, n - 1);\n    print_array(team, n);\n    return 0;\n}",
+        "output": "$ gcc quick.c -o quick\n$ ./quick\n1 2 3 5 6 9"
+      }
+    },
+    {
+      "id": 9,
+      "template": "terminal",
+      "startSec": 280,
+      "lengthSec": 15,
+      "onScreen": "gcc and 1 output line",
+      "animation": "Line types out",
+      "sfx": [],
+      "narration": "Compile and run: 1, 2, 3, 5, 6, 9."
+    },
+    {
+      "id": 10,
+      "template": "pun-card",
+      "startSec": 295,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the pivot get promoted? Because it always knew its place."
+    },
+    {
+      "id": 11,
+      "template": "concept-slide",
+      "startSec": 300,
+      "lengthSec": 45,
+      "onScreen": "Two split trees: balanced (pivot near the middle, log n levels) vs lopsided (sorted input, last pivot, n levels)",
+      "animation": "Balanced tree glows mint; lopsided one leans and creaks",
+      "sfx": [],
+      "narration": "If the pivot lands near the middle, each partition splits the work in half, just like merge sort. About log n levels, n work per level: O(n log n). That's the average case, and in practice quick sort is usually very fast, with no temp array. But if the pivot is always the smallest or largest, like taking the last element of an already sorted array, each partition peels off just one element. That's n levels, and O(n²), as slow as bubble sort. Real libraries avoid this by choosing a random pivot or the middle of three values. Quick sort is not stable, because long swaps can jump equal values past each other."
+    },
+    {
+      "id": 12,
+      "template": "bug-of-the-day",
+      "startSec": 345,
+      "lengthSec": 65,
+      "onScreen": "quick_sort(a, low, p) instead of p - 1; crash",
+      "animation": "Red siren; the same call box repeats down the screen",
+      "sfx": [],
+      "narration": "Today's bug: a bad recursive call. Someone wrote quick_sort a, low, p, instead of p minus 1. It looks harmless, but now the pivot is included in the left part. When the pivot is the largest element in that part, partition puts it at the end, p equals high, and the next call is exactly the same as this one. The same call, forever, until the stack overflows and the program crashes, with no output. GCC gives no warning this time, because it can't prove the recursion never ends. The fix: exclude the pivot, p minus 1 and p plus 1. That guarantees every call works on a smaller piece."
+    },
+    {
+      "id": 13,
+      "template": "challenge",
+      "startSec": 410,
+      "lengthSec": 25,
+      "onScreen": "\"Sort 10 random numbers\"",
+      "animation": "Dice roll SFX",
+      "sfx": [],
+      "narration": "Your challenge: fill an array with 10 random numbers from 0 to 99 using rand, with srand of time NULL to seed it (include stdlib.h and time.h; the answer shows how), print it, quick sort it, and print it again."
+    },
+    {
+      "id": 14,
+      "template": "outro",
+      "startSec": 435,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 80 Counting sort",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "Every sort so far works by comparing. Next episode, a sort that never compares two numbers at all: counting sort. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "void quick_sort(int a[], int low, int high) {\n    if (low < high) {\n        int p = partition(a, low, high);\n        quick_sort(a, low, p);\n        quick_sort(a, p + 1, high);\n    }\n}",
+    "error": "No error or warning from GCC (even with -Wall -Wextra). Running it prints nothing and crashes with a stack overflow: on Windows the program exits silently; on Linux the shell prints `Segmentation fault`. Trace: partition(0..1) places pivot 1 at p = 0, then quick_sort(3..5) places 9 at p = 5 and calls quick_sort(3, 5) again, which repeats forever.",
+    "fixed": "        quick_sort(a, low, p - 1);",
+    "why": "including the pivot means a part can stay the same size (p == high), so the recursion never reaches the base case."
+  },
+  "pun": "Why did the pivot get promoted? Because it always knew its place.",
+  "challenge": "Fill an array with 10 random numbers from 0 to 99, print it, quick sort it, print it again.",
+  "challengeAnswer": "Add `#include <stdlib.h>` and `#include <time.h>` to quick.c and replace main with the code below. Output differs every run, for example `Before: 12 52 7 53 37 15 78 85 83 71` then `After:  7 12 15 37 52 53 71 78 83 85`.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Pick a captain",
+      "hook": "\"The captain is already in the right place.\"",
+      "script": "Pick a captain. Shorter kids go left, taller kids go right. Now the captain is standing exactly where they belong in the sorted line, without sorting anyone else. Do that again on each side and you've got quick sort.",
+      "onScreen": "PICK A CAPTAIN",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "Beach football explains quick sort.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "quicksort",
+        "sorting"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Quick sort in 30 seconds",
+      "hook": "\"Smaller left. Bigger right. Repeat.\"",
+      "script": "Quick sort picks a pivot. It walks the array and swaps every smaller element into a zone on the left. Then the pivot moves in right after the zone, into its final place. Recurse on both sides. Good pivots give O(n log n) and no extra array. Bad pivots, like the last element of sorted data, give O(n squared).",
+      "onScreen": "PIVOT · PARTITION · RECURSE",
+      "fromScenes": [
+        4,
+        11
+      ],
+      "lengthSec": 40,
+      "caption": "Quick sort's partition, animated.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "quicksort",
+        "dsa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "p instead of p - 1",
+      "hook": "\"Two characters missing. Infinite recursion.\"",
+      "script": "quick_sort a, low, p. Looks fine. But it includes the pivot in the left part. If the pivot ends up at the end, the next call is exactly the same as this one, forever, until the stack overflows. Exclude the pivot: p minus 1 and p plus 1.",
+      "onScreen": "p - 1, NOT p",
+      "fromScenes": [
+        12
+      ],
+      "lengthSec": 35,
+      "caption": "The pivot is already done. Leave it.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "quicksort"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Knew its place",
+      "hook": "\"Why did the pivot get promoted?\"",
+      "script": "Why did the pivot get promoted? Because it always knew its place.",
+      "onScreen": "IT KNEW ITS PLACE",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 10,
+      "caption": "Career goals.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Sort 10 random numbers",
+      "hook": "\"Random in. Sorted out.\"",
+      "script": "Fill an array with 10 random numbers from 0 to 99. Print it. Quick sort it. Print it again. Post your before and after in the comments.",
+      "onScreen": "10 RANDOM → SORTED",
+      "fromScenes": [
+        13
+      ],
+      "lengthSec": 20,
+      "caption": "Show your output.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "challenge",
+        "quicksort"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid swap(int *x, int *y) {\n    int temp = *x;\n    *x = *y;\n    *y = temp;\n}\n\nint partition(int a[], int low, int high) {\n    int pivot = a[high];\n    int i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (a[j] < pivot) {\n            i++;\n            swap(&a[i], &a[j]);\n        }\n    }\n    swap(&a[i + 1], &a[high]);\n    return i + 1;\n}\n\nvoid quick_sort(int a[], int low, int high) {\n    if (low < high) {\n        int p = partition(a, low, high);\n        quick_sort(a, low, p - 1);\n        quick_sort(a, p + 1, high);\n    }\n}\n\nint main(void) {\n    int team[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(team) / sizeof(team[0]);\n\n    quick_sort(team, 0, n - 1);\n    print_array(team, n);\n    return 0;\n}",
+      "output": "$ gcc quick.c -o quick\n$ ./quick\n1 2 3 5 6 9",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "1 2 3 5 6 9"
+  }
+}

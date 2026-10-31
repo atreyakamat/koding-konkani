@@ -1,0 +1,301 @@
+{
+  "ep": 35,
+  "title": "Parameters & Return Values",
+  "module": 5,
+  "lengthSec": 395,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "write functions that take one or more parameters",
+    "return a value with `return` and store or print it in the caller",
+    "tell parameters (in the definition) from arguments (in the call)",
+    "spot and fix a missing return in a non-void function"
+  ],
+  "youtube": {
+    "title": "A Function Is a Juice Machine | C Programming EP 35",
+    "description": "Put fruit in, get juice out. That is exactly how parameters and return values work in C. We write square and average functions, nest one call inside another, and fix the sneaky \"missing return\" bug that gives you wrong answers without any error. Chapters: 0:00 The juice machine · 0:25 Parameters and arguments · 1:15 return · 1:55 Code walkthrough · 3:45 Running it · 4:15 Bug of the Day · 5:45 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The juice machine"
+      },
+      {
+        "t": "0:25",
+        "label": "Parameters and arguments"
+      },
+      {
+        "t": "1:15",
+        "label": "return"
+      },
+      {
+        "t": "1:55",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "3:45",
+        "label": "Running it"
+      },
+      {
+        "t": "4:15",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:45",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "function parameters c",
+      "return value c",
+      "arguments vs parameters",
+      "c functions",
+      "learn c",
+      "c for beginners",
+      "control reaches end of non-void function",
+      "koding konkani",
+      "class 12 computer science",
+      "gcc",
+      "c tutorial"
+    ],
+    "thumbnail": {
+      "text": "INPUT IN, ANSWER OUT",
+      "visual": "big text \"INPUT IN, ANSWER OUT\"; a juice machine with `7` going in the top and `49` coming out of the tap; Xecxec sipping from a glass with a straw; lilac background, tomato text",
+      "pose": "Xecxec sipping from a glass with a straw"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Juice machine: a mango goes in, mango juice comes out; then a `7` goes in, `49` comes out",
+      "animation": "Blender whirr; glass clinks down",
+      "sfx": [],
+      "narration": "At the juice stall near Calangute beach, you hand over a mango, and the machine hands back mango juice. You don't care what happens inside. Fruit goes in, juice comes out. In C, functions can work exactly like this. A number goes in, and an answer comes out."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 35 · PARAMETERS & RETURN VALUES",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 35. Parameters and return values."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "`int square(int n)` with `n` tagged \"parameter\"; `square(7)` with `7` tagged \"argument\"; arrow copies 7 into n",
+      "animation": "Value 7 flies from the call into the box labelled n; pop SFX",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Last episode, our functions had void in the brackets: no inputs. Now look at this: int square, open bracket, int n. That n is a parameter. It is a variable that belongs to the function, waiting to receive a value. When we call square, open bracket, 7, the 7 is called an argument. On the call, C copies the argument into the parameter, so n becomes 7. Easy way to remember: the parameter is the empty glass, the argument is the juice you pour in. A function can have many parameters, separated by commas, and each one needs its own type."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 75,
+      "lengthSec": 40,
+      "onScreen": "`return result;` sends a value back; return type `int` must match",
+      "animation": "Value 49 rides an arrow back to the call site, replacing `square(7)`",
+      "sfx": [],
+      "narration": "Now the output. The word before the function name, int, is the return type. It promises: \"I will give back a whole number.\" The return statement keeps that promise. return result sends the value back to whoever called the function, and the function stops right there. Back in main, the whole expression square of 7 is replaced by that answer. So you can store it, print it, or even pass it to another function."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 110,
+      "onScreen": "`params.c` (18 lines)",
+      "animation": "Butter highlights; variable tracker for n, result, s",
+      "sfx": [],
+      "narration": "Let's read the code. [HL 3] Line three: int square, int n. One parameter, returns an int. [HL 4] Line four: int result equals n times n. [HL 5] Line five: return result. [HL 8] Line eight: float average, int a, comma, int b. Two parameters, and it returns a float. [HL 9] Line nine: return, a plus b, divided by 2.0f. Why 2.0f and not 2? Remember EP 13: int divided by int throws away the decimal. Dividing by 2.0f makes it a float division, so we keep the point five. [HL 12] Now main. [HL 13] Line thirteen: int s equals square of 7. [TRACK n=7] The 7 is copied into n. [TRACK result=49] result becomes 49. The function returns 49, [TRACK s=49] and s becomes 49. [HL 14] Line fourteen prints \"7 squared is 49\". [HL 15] Line fifteen calls average of 4 and 7 right inside printf. We don't need a variable. The answer, 5.5, goes straight into the percent point one f. [HL 16] Line sixteen is fun: square of square of 3. C solves the inside first. [TRACK n=3] Square of 3 gives 9. [TRACK n=9] Then square of 9 gives 81. A function call can be an argument to another function call. [HL 17] And return zero ends main.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint square(int n) {\n    int result = n * n;\n    return result;\n}\n\nfloat average(int a, int b) {\n    return (a + b) / 2.0f;\n}\n\nint main(void) {\n    int s = square(7);\n    printf(\"7 squared is %d\\n\", s);\n    printf(\"Average of 4 and 7 is %.1f\\n\", average(4, 7));\n    printf(\"Square of square(3) is %d\\n\", square(square(3)));\n    return 0;\n}",
+        "output": "7 squared is 49\nAverage of 4 and 7 is 5.5\nSquare of square(3) is 81"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 225,
+      "lengthSec": 25,
+      "onScreen": "Compile and run; 3 output lines",
+      "animation": "Typing SFX; lines drop in",
+      "sfx": [],
+      "narration": "Compile and run. 7 squared is 49. Average of 4 and 7 is 5.5. Square of square of 3 is 81. Three answers from two little machines."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 250,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec spits out juice",
+      "sfx": [],
+      "narration": "Why did the function go to therapy? It had too many issues it couldn't return to."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 255,
+      "lengthSec": 90,
+      "onScreen": "`bug.c`: `bigger` with no return on one path; GCC warning; wrong output differs by build",
+      "animation": "Warning in butter; output \"Bigger: 3\" with a tomato cross; fix adds `return b;`",
+      "sfx": [],
+      "narration": "Today's bug: the missing return. Look at bigger. If a is greater than b, it returns a. But what if it isn't? The function reaches the closing brace without returning anything. Compile with dash Wall, and GCC warns: control reaches end of non-void function. That means \"you promised an int, but on one path you gave nothing back.\" Here is the scary part. It is only a warning, so the program still runs. When we call bigger of 3 and 9, the answer should be 9, but on our test machine it printed 3. With optimisation turned on, it printed 0. The value is garbage, whatever was lying around. This is called undefined behaviour, and your result may be different. The fix is one line: after the if, return b. Now every path returns a value. Rule: if a function is not void, every path must end in a return. And always compile with dash Wall so GCC can warn you."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 345,
+      "lengthSec": 35,
+      "onScreen": "Challenge card: add two numbers read from the user",
+      "animation": "Timer ticks",
+      "sfx": [],
+      "narration": "Your challenge: write a function add that takes two ints and returns their sum. In main, read two numbers from the user with scanf, call add, and print the result. If the user types 12 and 30, your program should print \"Sum = 42\". Pause and try it."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 380,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 36 · Prototypes & header files",
+      "animation": "Two files shaking hands; sign-off jingle",
+      "sfx": [],
+      "narration": "So far, every function had to sit above main. Next episode, we learn how to introduce a function early with a prototype, and how to split code across files with a header. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint bigger(int a, int b) {\n    if (a > b) {\n        return a;\n    }\n}\n\nint main(void) {\n    printf(\"Bigger: %d\\n\", bigger(3, 9));\n    return 0;\n}",
+    "error": "`gcc -Wall bug.c -o bug` prints:\n\nbug.c: In function 'bigger':\nbug.c:7:1: warning: control reaches end of non-void function [-Wreturn-type]\n    7 | }\n      | ^\n\nIt still builds. Output on our test machine (on screen: \"undefined behaviour, your output may differ\"):\n\nBigger: 3",
+    "fixed": "#include <stdio.h>\n\nint bigger(int a, int b) {\n    if (a > b) {\n        return a;\n    }\n    return b;\n}\n\nint main(void) {\n    printf(\"Bigger: %d\\n\", bigger(3, 9));\n    return 0;\n}",
+    "why": "a non-void function must return a value on every path; falling off the end gives the caller garbage."
+  },
+  "pun": "Why did the function go to therapy? It had too many issues it couldn't return to.",
+  "challenge": "Write `int add(int a, int b)`. Read two numbers with scanf, call add, print `Sum = ...`. Input `12 30` should print `Sum = 42`.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint main(void) {\n    int x, y;\n    printf(\"Enter two numbers: \");\n    scanf(\"%d %d\", &x, &y);\n    printf(\"Sum = %d\\n\", add(x, y));\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A Function Is a Juice Machine",
+      "hook": "a `7` dropping into a juice machine",
+      "script": "Mango in, juice out. 7 in, 49 out. That's a C function with a parameter and a return value. The parameter is the empty glass waiting inside the function. The argument is what you pour in when you call it. And return hands the answer back.",
+      "onScreen": "7 IN · 49 OUT",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "The juice-stall way to understand C functions.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "functions",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Parameter vs Argument in 30s",
+      "hook": "\"Parameter or argument? Most students mix these up.\"",
+      "script": "In int square, int n, the n is a parameter: a variable inside the function. In square of 7, the 7 is an argument: the actual value you send. On the call, the argument is copied into the parameter. Then return sends the answer back, and square of 7 becomes 49 right there in your code.",
+      "onScreen": "PARAMETER = GLASS · ARGUMENT = JUICE",
+      "fromScenes": [
+        3,
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Never mix these up in a viva again.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "computerscience",
+        "exams"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The Missing Return Bug",
+      "hook": "output \"Bigger: 3\" with a big tomato question mark",
+      "script": "Bigger of 3 and 9 should be 9. This program printed 3. Why? The function returns a only when a is bigger. Otherwise it falls off the end and returns garbage. GCC even warned: control reaches end of non-void function. Add return b at the end, and you get 9. Every path in a non-void function needs a return.",
+      "onScreen": "BIGGER OF 3 AND 9 = 3??",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 40,
+      "caption": "No error, wrong answer. The worst kind of bug.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "gcc",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Therapy for Functions",
+      "hook": "Xecxec lying on a therapist's couch shaped like curly braces",
+      "script": "Why did the function go to therapy? It had too many issues it couldn't return to.",
+      "onScreen": "ISSUES IT COULDN'T RETURN TO",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Even functions need someone to talk to.",
+      "hashtags": [
+        "codingmemes",
+        "programmerhumor",
+        "kodingkonkani",
+        "cprogramming",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: square(square(3))",
+      "hook": "`square(square(3))` = ?",
+      "script": "square returns n times n. What does square of square of 3 print? A: 9. B: 18. C: 81. The inner call runs first: square of 3 is 9. Then square of 9 is 81. The answer is C.",
+      "onScreen": "square(square(3)) = ?",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 25,
+      "caption": "Comment A, B or C before the reveal.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "functions"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint square(int n) {\n    int result = n * n;\n    return result;\n}\n\nfloat average(int a, int b) {\n    return (a + b) / 2.0f;\n}\n\nint main(void) {\n    int s = square(7);\n    printf(\"7 squared is %d\\n\", s);\n    printf(\"Average of 4 and 7 is %.1f\\n\", average(4, 7));\n    printf(\"Square of square(3) is %d\\n\", square(square(3)));\n    return 0;\n}",
+      "output": "7 squared is 49\nAverage of 4 and 7 is 5.5\nSquare of square(3) is 81",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Bigger: 9"
+  }
+}

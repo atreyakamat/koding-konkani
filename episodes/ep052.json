@@ -1,0 +1,334 @@
+{
+  "ep": 52,
+  "title": "Memory & Addresses",
+  "module": 8,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "picture RAM as a numbered street of one-byte houses",
+    "use `&` to get the address of any variable",
+    "print an address correctly with `%p` and a `(void *)` cast",
+    "use `sizeof` to see how many bytes a variable takes"
+  ],
+  "youtube": {
+    "title": "Every Variable Has an Address | C Programming EP 52",
+    "description": "Before pointers, you need one idea: every variable lives at a numbered spot in memory. We draw RAM as a street of houses, find each variable's house number with &, and print it the right way with %p. Slow, visual, and no jargon. 0:00 A lane of numbered houses · 0:20 Title · 0:25 RAM as a street · 1:15 Three variables in memory · 2:10 Code, line by line · 3:30 Running it · 4:00 Pun · 4:05 Hex and neighbours · 4:50 Bug of the Day: printing an address with %d · 5:40 Challenge · 6:10 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "A lane of numbered houses"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "RAM as a street"
+      },
+      {
+        "t": "1:15",
+        "label": "Three variables in memory"
+      },
+      {
+        "t": "2:10",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "3:30",
+        "label": "Running it"
+      },
+      {
+        "t": "4:00",
+        "label": "Pun"
+      },
+      {
+        "t": "4:05",
+        "label": "Hex and neighbours"
+      },
+      {
+        "t": "4:50",
+        "label": "Bug of the Day: printing an address with %d"
+      },
+      {
+        "t": "5:40",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:10",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "pointers in c",
+      "memory address in c",
+      "ampersand operator c",
+      "%p printf",
+      "sizeof in c",
+      "c for beginners",
+      "learn c",
+      "koding konkani",
+      "c tutorial india",
+      "class 12 computer science",
+      "first year engineering c"
+    ],
+    "thumbnail": {
+      "text": "YOUR HOUSE NUMBER",
+      "visual": "big text \"YOUR HOUSE NUMBER\"; a lilac memory street with one box glowing and the number `000000A3C25FFB9C` on its gate; Xecxec pointing at the gate with one claw, eyebrows raised; lilac background, dark blue text block",
+      "pose": "Xecxec pointing at the gate with one claw, eyebrows raised"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A Panjim lane of pastel houses, each gate with a number; postman on a cycle",
+      "animation": "Camera pans left to right along the lane; cycle bell; Xecxec pops out of a letterbox",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Picture a lane in Panjim. Every house has a number painted on the gate. The postman does not care who lives inside. He only needs the number. Your computer's memory works in exactly the same way. Every variable you have ever made has a house number. Today, we find it."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 52 · MEMORY & ADDRESSES",
+      "animation": "Title slams in on lilac; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode fifty-two. Memory and addresses. Welcome to Module 8: pointers."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "The houses flatten into a row of 16 small lilac boxes labelled 1000 to 1015; caption \"1 box = 1 byte\"",
+      "animation": "Boxes slide in one by one with soft ticks; numbers count up under each box",
+      "sfx": [],
+      "narration": "Many students say this module is where C gets hard. So we will go slowly, one box at a time, and you will see every step. First question: what is memory? Your RAM is a very long street of tiny houses. Each house holds exactly one byte, which is eight bits. And every house has a number, called its address. The numbers go up one by one: house 1000, house 1001, house 1002, and so on. When you write int age equals 19, the computer picks some houses on this street, puts 19 inside, and remembers where it put it. Until now you only used the name, age. Today you learn that behind every name, there is a number."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 75,
+      "lengthSec": 55,
+      "onScreen": "`age` fills boxes 1000–1003 (19), `grade` fills 1004 (A), `cgpa` fills 1008–1015 (8.5), with 1005–1007 greyed out as unused gap; gate sign shows the first house number",
+      "animation": "Each variable drops in as a coloured block spanning its bytes; a gate sign flips up showing `&age = 1000`; Xecxec holds the sign",
+      "sfx": [],
+      "narration": "Let's make three variables. An int called age, holding 19. A char called grade, holding the letter A. And a double called cgpa, holding 8.5. Look at how many houses each one needs. The int takes four houses, so four bytes. The char takes just one. The double takes eight. Now the key rule: the address of a variable is the number of its first house. If age starts at house 1000, its address is 1000, even though it also uses 1001, 1002 and 1003. Xecxec is holding up the gate sign. In C, the operator that gives you this number is the ampersand, the \"and\" sign. Ampersand age means \"the address of age\". Say it with me: ampersand means address of."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 130,
+      "lengthSec": 80,
+      "onScreen": "`addresses.c` (16 lines) on a cream code panel, variable tracker on the right",
+      "animation": "Line highlights in butter; tracker rows appear for age, grade, cgpa with value and address columns",
+      "sfx": [],
+      "narration": "Here is our program. [HL 1] Line 1 brings in stdio dot h, so we can use printf. [HL 3] Line 3 is main, as always. [HL 4] Line 4 makes age and stores 19. [TRACK age=19] [HL 5] Line 5 makes grade and stores the character A. [TRACK grade='A'] [HL 6] Line 6 makes cgpa and stores 8.5. [TRACK cgpa=8.5] Now the new part. [HL 8] Line 8 prints two things: the value of age, using percent d, and the address of age, using percent p. Percent p is the format code for addresses. P for pointer. Notice we wrote ampersand age, the address. And in front of it we wrote void star in brackets. That is called a cast. Percent p officially expects a general address type called void star, so we convert our address to that type. Just remember the pattern: percent p, then bracket void star bracket, then ampersand name. [TRACK &age=shown] [HL 9] Line 9 does the same for grade, with percent c for the letter. [HL 10] Line 10 does it for cgpa, with percent point one f to show one decimal place. [HL 12] Lines 12 to 14 use sizeof, which tells us how many bytes each variable takes. sizeof gives back a special type called size t, and the matching format code is percent z u. [HL 15] Line 15 returns zero. Done.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int age = 19;\n    char grade = 'A';\n    double cgpa = 8.5;\n\n    printf(\"age   = %d, lives at %p\\n\", age, (void *)&age);\n    printf(\"grade = %c, lives at %p\\n\", grade, (void *)&grade);\n    printf(\"cgpa  = %.1f, lives at %p\\n\", cgpa, (void *)&cgpa);\n\n    printf(\"Size of age:   %zu bytes\\n\", sizeof age);\n    printf(\"Size of grade: %zu bytes\\n\", sizeof grade);\n    printf(\"Size of cgpa:  %zu bytes\\n\", sizeof cgpa);\n    return 0;\n}",
+        "output": "age   = 19, lives at 000000A3C25FFB9C\ngrade = A, lives at 000000A3C25FFB9B\ncgpa  = 8.5, lives at 000000A3C25FFB90\nSize of age:   4 bytes\nSize of grade: 1 bytes\nSize of cgpa:  8 bytes"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 210,
+      "lengthSec": 30,
+      "onScreen": "Dark blue terminal: compile and run; sticky note \"your addresses will differ\"",
+      "animation": "Typewriter effect for the command; output lines print one by one; sticky note flaps in",
+      "sfx": [],
+      "narration": "Save it as addresses dot c. In the terminal, type gcc addresses dot c, dash o, addresses. Then run it with dot slash addresses. Look at those long numbers. Those are real house numbers inside your RAM. On Windows they print as sixteen characters; on Linux they start with zero x. Your numbers will be different from mine. In fact, run it again and they may change every time. That is normal. Windows moves your program to a new part of the street each run, for safety. The sizes, though, should match: four, one and eight."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 240,
+      "lengthSec": 5,
+      "onScreen": "\"Why does a variable never get lost in Goa? It always knows its address.\"",
+      "animation": "Card flips; Xecxec does a tiny dance; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why does a variable never get lost in Goa? Because it always knows its address."
+    },
+    {
+      "id": 8,
+      "template": "memory-boxes",
+      "startSec": 245,
+      "lengthSec": 45,
+      "onScreen": "Hex digit strip 0–9, A–F; the real output addresses placed above the three blocks; `grade` and `age` touching",
+      "animation": "Hex strip lights up digit by digit; arrow labels \"next door neighbours\"; question mark over the order",
+      "sfx": [],
+      "narration": "Why do the addresses have letters in them? Because they are written in hexadecimal, base sixteen. After 9, hex keeps counting with A, B, C, D, E and F. So the letter F just means fifteen. You do not need to convert these by hand. Just know they are numbers. Now compare the last two digits. grade's address ends in 9B, and age's ends in 9C. They are next-door neighbours! The compiler decided to place them side by side. But which variable goes first is the compiler's choice, not yours. Never write code that depends on that order."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 290,
+      "lengthSec": 50,
+      "onScreen": "`%d` with `&age`, GCC warning, garbage negative number",
+      "animation": "Warning text types out in butter; a too-small box tries to hold an 8-byte address and overflows; buzzer; then fixed line slides in with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Today's bug: printing an address with percent d. GCC warns you: format percent d expects an int, but this argument has type int star. And the output is a strange negative number. Why? On 64-bit Windows, an address is eight bytes, but percent d reads only four. You get half a house number, which is nonsense. The fix: use percent p and the void star cast. Addresses get percent p. Always."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 340,
+      "lengthSec": 30,
+      "onScreen": "\"Print 3 addresses\" task card",
+      "animation": "Card unfolds; timer icon; Xecxec taps the card",
+      "sfx": [],
+      "narration": "Your challenge. Make three variables: an int, a float and a char. Print each one's address with percent p, and its size with sizeof. Then look at the addresses and tell me in the comments: which two variables are neighbours? Pause the video and try it now."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 370,
+      "lengthSec": 20,
+      "onScreen": "\"Next: EP 53 · What is a pointer?\" with a GPS pin teaser",
+      "animation": "Pin drops onto a box; claw-click; sign-off text",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "You can now find any variable's house. Next episode, we store that house number inside another variable. That variable is called a pointer, and it works like a GPS pin. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int age = 19;\n    printf(\"age lives at %d\\n\", &age);\n    return 0;\n}",
+    "error": "GCC (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'main':\nbug.c:5:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'int *' [-Wformat=]\n    5 |     printf(\"age lives at %d\\n\", &age);\n      |                          ~^     ~~~~\n      |                           |     |\n      |                           int   int *\n\nRunning it prints a meaningless number such as `age lives at -2051088252` (it changes every run).",
+    "fixed": "    printf(\"age lives at %p\\n\", (void *)&age);",
+    "why": "an address is 8 bytes on 64-bit systems but `%d` reads a 4-byte int, so you see half an address; `%p` is the format made for addresses."
+  },
+  "pun": "\"Why does a variable never get lost in Goa? It always knows its address.\"",
+  "challenge": "Declare an `int`, a `float` and a `char`. Print each one's address with `%p` and its size with `sizeof`. Which two are neighbours?",
+  "challengeAnswer": "Neighbours are the two whose addresses differ by exactly the size of one of them; the order is chosen by the compiler.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Every variable has a house number",
+      "hook": "Gate number zooms in: \"Your variable lives HERE.\"",
+      "script": "Every variable in C lives somewhere. Your RAM is a long street of tiny houses, one byte each, and every house has a number called an address. When you write int age equals 19, the computer picks four houses and puts 19 inside. Want to see the house number? That is one symbol away. Full episode on the channel.",
+      "onScreen": "EVERY VARIABLE HAS AN ADDRESS",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Your variables have house numbers.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "pointers",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "& in 30 seconds",
+      "hook": "Big ampersand spins in: \"This symbol = address of.\"",
+      "script": "The ampersand in C means \"address of\". Ampersand age gives you the house number where age lives. To print it, use percent p, and put void star in brackets in front. An int uses four bytes, a char uses one, a double uses eight. The address is always the number of the first byte. That is the whole idea.",
+      "onScreen": "& = ADDRESS OF",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "One symbol, one meaning.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctutorial",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Never print an address with %d",
+      "hook": "Terminal shows `-2051088252`: \"That is NOT an address.\"",
+      "script": "Printing an address with percent d? GCC warns you, and you get a weird negative number. On a 64-bit computer an address is eight bytes, but percent d reads only four. Half an address is useless. Use percent p, with a void star cast. Addresses get percent p. Always.",
+      "onScreen": "ADDRESSES GET %p",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Half an address is no address.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Variable in Goa",
+      "hook": "Xecxec on a beach with a map, looking lost.",
+      "script": "Why does a variable never get lost in Goa? Because it always knows its address.",
+      "onScreen": "IT ALWAYS KNOWS ITS ADDRESS",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Xecxec approves this pun.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "goa",
+        "codingmemes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: how many bytes?",
+      "hook": "\"int, char, double. How many bytes each?\"",
+      "script": "Quick quiz. On a normal 64-bit Windows or Linux computer, how many bytes does an int take? A char? A double? Answer in three, two, one. Four, one and eight. Now try this: print the address of three variables and find the two neighbours. Comment your answer.",
+      "onScreen": "4 · 1 · 8",
+      "fromScenes": [
+        4,
+        10
+      ],
+      "lengthSec": 20,
+      "caption": "Did you get all three?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "sizeof"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int age = 19;\n    char grade = 'A';\n    double cgpa = 8.5;\n\n    printf(\"age   = %d, lives at %p\\n\", age, (void *)&age);\n    printf(\"grade = %c, lives at %p\\n\", grade, (void *)&grade);\n    printf(\"cgpa  = %.1f, lives at %p\\n\", cgpa, (void *)&cgpa);\n\n    printf(\"Size of age:   %zu bytes\\n\", sizeof age);\n    printf(\"Size of grade: %zu bytes\\n\", sizeof grade);\n    printf(\"Size of cgpa:  %zu bytes\\n\", sizeof cgpa);\n    return 0;\n}",
+      "output": "age   = 19, lives at 000000A3C25FFB9C\ngrade = A, lives at 000000A3C25FFB9B\ncgpa  = 8.5, lives at 000000A3C25FFB90\nSize of age:   4 bytes\nSize of grade: 1 bytes\nSize of cgpa:  8 bytes",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

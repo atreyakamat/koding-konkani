@@ -1,0 +1,309 @@
+{
+  "ep": 61,
+  "title": "struct basics",
+  "module": 9,
+  "lengthSec": 380,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "define a `struct` type with members of different types",
+    "declare struct variables and fill them by member assignment or by an initialiser list",
+    "read and write members with the dot operator",
+    "use `strcpy` for a char-array member",
+    "know that one struct can be copied into another with `=`"
+  ],
+  "youtube": {
+    "title": "struct in C: A Student ID Card in Code | C Programming EP 61",
+    "description": "A name, a roll number and a percentage belong together, so why keep them in three separate variables? Today we build a struct, the student ID card of C, fill it two ways, and read it with the dot operator. Plus the error you get when you forget one small keyword. Chapters: 0:00 Three loose variables · 0:25 What a struct is · 1:10 Code line by line · 3:00 Memory picture · 3:40 Copying a struct · 4:20 Bug of the Day · 5:30 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Three loose variables"
+      },
+      {
+        "t": "0:25",
+        "label": "What a struct is"
+      },
+      {
+        "t": "1:10",
+        "label": "Code line by line"
+      },
+      {
+        "t": "3:00",
+        "label": "Memory picture"
+      },
+      {
+        "t": "3:40",
+        "label": "Copying a struct"
+      },
+      {
+        "t": "4:20",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:30",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "struct in c",
+      "structures in c",
+      "dot operator",
+      "struct initialization",
+      "user defined data type",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "c tutorial english"
+    ],
+    "thumbnail": {
+      "text": "STRUCT = ID CARD",
+      "visual": "big text \"STRUCT = ID CARD\"; a student ID card whose fields (name, roll, %) are code boxes; Xecxec holding the card proudly with a lanyard; cream background, tomato blocks",
+      "pose": "Xecxec holding the card proudly with a lanyard"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Three loose variables name1, roll1, pct1 blowing away in the wind",
+      "animation": "Paper flutter, Xecxec chases them",
+      "sfx": [],
+      "narration": "Here is a student. To store her in C so far, we need a char array for the name, an int for the roll number, and a float for the percentage. Three separate variables. Now add a second student. Six variables. A whole class? Hundreds of loose variables, flying around like papers on a windy day at Miramar beach. We need a way to keep things that belong together, together."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 61 · STRUCT BASICS",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 61. struct basics."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "Blank ID card template (the type) vs filled cards (variables)",
+      "animation": "Template stamps out two filled cards; stamp SFX",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Think of your college ID card. Every card has the same fields: name, roll number, and maybe a percentage. The printed blank design is the same for everybody. That blank design is the struct type. Then each student gets their own filled card. Those are struct variables. A struct lets you make your own data type by grouping several values, even of different types, under one name. Arrays from Module 6 group many values of the same type. Structs group values of different types."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 70,
+      "lengthSec": 110,
+      "onScreen": "ep61.c, 28 lines; tracker shows s1 and s2 as cards",
+      "animation": "Line highlights; each member field fills on the card; key-tap SFX",
+      "sfx": [],
+      "narration": "Let's make the card. [HL 2] Line 2 includes string.h, because we will use strcpy from Module 7. [HL 4] Line 4: the keyword struct, then the name Student, then an opening brace. This is the blank design. [HL 5] [HL 6] [HL 7] Lines 5 to 7 are the members, the fields on the card: a char array name of 30 characters, an int rollNo, a float percentage. [HL 8] Line 8: closing brace AND a semicolon. Do not forget that semicolon. This defines the type. It does not create any variable yet and uses no memory for a student. [HL 11] Line 11: struct Student s1. Now we have a real card, called s1. Notice we write both words: struct Student. In C, the type name is the whole phrase. [HL 13] Line 13 fills the name. We use the dot operator: s1 dot name means the name field of s1. Because name is a char array, we cannot write equals with a string. We use strcpy, just like in EP 49. [TRACK s1.name=\"Anya Naik\"] [HL 14] Line 14: s1 dot rollNo equals 17. [TRACK s1.rollNo=17] [HL 15] Line 15: s1 dot percentage equals 88.5. The f at the end makes it a float literal. [TRACK s1.percentage=88.5] [HL 17] Line 17 shows the second way: fill a card at the moment you create it, with values in curly braces, in the same order as the members. Rohan Gaonkar, 23, 91.25. [TRACK s2.name=\"Rohan Gaonkar\"] [TRACK s2.rollNo=23] [TRACK s2.percentage=91.25] [HL 19] Lines 19 to 25 print each member with the dot operator and the right format code: percent s for the name, percent d for the roll, percent point 2 f for the percentage.",
+      "code": {
+        "file": "ep61.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\nstruct Student {\n    char name[30];\n    int rollNo;\n    float percentage;\n};\n\nint main(void) {\n    struct Student s1;\n\n    strcpy(s1.name, \"Anya Naik\");\n    s1.rollNo = 17;\n    s1.percentage = 88.5f;\n\n    struct Student s2 = {\"Rohan Gaonkar\", 23, 91.25f};\n\n    printf(\"Name: %s\\n\", s1.name);\n    printf(\"Roll: %d\\n\", s1.rollNo);\n    printf(\"Percent: %.2f\\n\\n\", s1.percentage);\n\n    printf(\"Name: %s\\n\", s2.name);\n    printf(\"Roll: %d\\n\", s2.rollNo);\n    printf(\"Percent: %.2f\\n\", s2.percentage);\n\n    return 0;\n}",
+        "output": "Name: Anya Naik\nRoll: 17\nPercent: 88.50\n\nName: Rohan Gaonkar\nRoll: 23\nPercent: 91.25"
+      }
+    },
+    {
+      "id": 5,
+      "template": "memory-boxes",
+      "startSec": 180,
+      "lengthSec": 35,
+      "onScreen": "s1 as one long box split into name[30], rollNo, percentage",
+      "animation": "Boxes slide together; size labels \"your sizes may differ\"",
+      "sfx": [],
+      "narration": "What does s1 look like in memory? One block. Inside it, side by side: 30 bytes for the name, then the int, then the float. All of s1 lives together, in one piece. When you write s1 dot rollNo, C goes to the start of s1 and jumps to where rollNo sits inside it. On a typical machine this struct is 40 bytes, but your size may differ, and in EP 64 we will see why struct sizes sometimes surprise you."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 215,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the variables join a struct? They wanted to be part of something bigger, with good member benefits."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "s3 = s1; then s3.rollNo = 99",
+      "animation": "Photocopier animation; two cards side by side",
+      "sfx": [],
+      "narration": "One more superpower. Arrays cannot be copied with equals, remember EP 41. But structs can. Write struct Student s3 equals s1, and every member is copied, even the name array inside. It is a photocopy. Then change s3 dot rollNo to 99. Print both roll numbers: 17 and 99. The original card is untouched. Two separate cards, two separate memories."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 260,
+      "lengthSec": 70,
+      "onScreen": "Student s1; without struct keyword",
+      "animation": "Red underline on Student, error buzz; \"struct\" tile slides in",
+      "sfx": [],
+      "narration": "Today's bug: forgetting the struct keyword. Here, someone writes Student s1, without the word struct. Compile, and GCC says: error: unknown type name Student; use struct keyword to refer to the type. GCC 13 even shows the fix, writing struct right under the mistake. Then two more errors follow: request for member rollNo in something not a structure or union. That is a chain reaction from the first error, so always fix the first error first. Why does this happen? In C, the type is named struct Student, both words. Student alone means nothing. If you have used C plus plus, you may expect Student alone to work. In C, it does not. In EP 63, we learn typedef, which lets you give the type a short nickname. And a bonus bug: forget the semicolon after the closing brace of the struct, and GCC says expected semicolon, identifier or bracket before int, pointing at the next line. The struct definition swallowed the next line."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 330,
+      "lengthSec": 30,
+      "onScreen": "Book struct",
+      "animation": "Book flips open, timer ring",
+      "sfx": [],
+      "narration": "Your challenge: make a struct Book with a title, an author, a number of pages, and a price. Create one book with an initialiser list, and print all four fields neatly. Use your favourite book. Answer in the comments."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 360,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 62 structs, arrays and pointers; sign-off",
+      "animation": "Module tiles, claw-click, music out",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "One card is nice. But a class has many students. Next episode we make an array of structs, a whole class register, and meet a new arrow operator. EP 62. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nstruct Student {\n    char name[30];\n    int rollNo;\n};\n\nint main(void) {\n    Student s1;\n    s1.rollNo = 17;\n    printf(\"%d\\n\", s1.rollNo);\n    return 0;\n}",
+    "error": "GCC 13 output (first error, then the chain reaction):\n\nep61bug.c: In function 'main':\nep61bug.c:9:5: error: unknown type name 'Student'; use 'struct' keyword to refer to the type\n    9 |     Student s1;\n      |     ^~~~~~~\n      |     struct \nep61bug.c:10:7: error: request for member 'rollNo' in something not a structure or union\n   10 |     s1.rollNo = 17;\n      |       ^\n\nBonus (missing `;` after the struct's closing brace):\n\nep61bug2.c:8:1: error: expected ';', identifier or '(' before 'int'",
+    "fixed": "#include <stdio.h>\n\nstruct Student {\n    char name[30];\n    int rollNo;\n};\n\nint main(void) {\n    struct Student s1;\n    s1.rollNo = 17;\n    printf(\"%d\\n\", s1.rollNo);\n    return 0;\n}",
+    "why": "in C the type's full name is `struct Student`; the tag `Student` alone is not a type name unless you add a `typedef` (EP 63)."
+  },
+  "pun": "Why did the variables join a struct? They wanted to be part of something bigger, with good member benefits.",
+  "challenge": "Define `struct Book` with title, author, pages and price. Create one book with an initialiser list and print all four fields.",
+  "challengeAnswer": "(worked example)\nstruct Book {\n    char title[50];\n    char author[40];\n    int pages;\n    float price;\n};\n\nstruct Book b = {\"Wings of Fire\", \"A. P. J. Abdul Kalam\", 180, 299.0f};\nprintf(\"Title : %s\\n\", b.title);\nprintf(\"Author: %s\\n\", b.author);\nprintf(\"Pages : %d\\n\", b.pages);\nprintf(\"Price : Rs %.2f\\n\", b.price);",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Stop using loose variables",
+      "hook": "Papers labelled name1, roll1, pct1 blow away. Xecxec chases them.",
+      "script": "Name, roll number, percentage. Three loose variables per student. A whole class? Hundreds. A struct groups values that belong together into one new type. Like a blank ID card design. Then every student gets their own filled card. One name, all the details inside.",
+      "onScreen": "ONE STUDENT = ONE STRUCT",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Your first user-defined type in C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "structs",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "struct in 30 seconds",
+      "hook": "An ID card whose fields fill in one by one",
+      "script": "struct in 30 seconds. Write struct, a name, and the members in braces. Semicolon at the end. That is the design. struct Student s1 creates a real card. Use the dot to reach a member: s1 dot rollNo equals 17. Or fill everything at once with values in braces, in member order. For a char array member, use strcpy.",
+      "onScreen": "s1.rollNo = 17;",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Define, create, fill, print.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctutorial",
+        "programming"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "unknown type name",
+      "hook": "Red error text: \"unknown type name 'Student'\"",
+      "script": "You defined struct Student. Then you wrote Student s1. GCC says: unknown type name Student, use struct keyword. In C, the type is called struct Student. Both words. Student alone means nothing. GCC 13 even shows you the fix. Want a short name? That is typedef, coming in EP 63.",
+      "onScreen": "IT'S struct Student, NOT Student",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 30,
+      "caption": "The C plus plus habit that breaks your C code.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Member benefits",
+      "hook": "Three variables in suits signing a membership form",
+      "script": "Why did the variables join a struct? They wanted to be part of something bigger, with good member benefits.",
+      "onScreen": "GOOD MEMBER BENEFITS",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 12,
+      "caption": "Join the struct.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Can you copy a struct?",
+      "hook": "\"s3 = s1;\" with a big question mark",
+      "script": "Quiz. Arrays cannot be copied with equals. Can structs? Three, two, one. Yes! s3 equals s1 copies every member, even arrays inside. Change s3, and s1 stays the same. Now your challenge: make a struct Book with title, author, pages and price, and print it. Answer in the comments.",
+      "onScreen": "s3 = s1; ALLOWED?",
+      "fromScenes": [
+        7,
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "Arrays can't, structs can. Did you know?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "structs"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "ep61.c",
+      "source": "#include <stdio.h>\n#include <string.h>\n\nstruct Student {\n    char name[30];\n    int rollNo;\n    float percentage;\n};\n\nint main(void) {\n    struct Student s1;\n\n    strcpy(s1.name, \"Anya Naik\");\n    s1.rollNo = 17;\n    s1.percentage = 88.5f;\n\n    struct Student s2 = {\"Rohan Gaonkar\", 23, 91.25f};\n\n    printf(\"Name: %s\\n\", s1.name);\n    printf(\"Roll: %d\\n\", s1.rollNo);\n    printf(\"Percent: %.2f\\n\\n\", s1.percentage);\n\n    printf(\"Name: %s\\n\", s2.name);\n    printf(\"Roll: %d\\n\", s2.rollNo);\n    printf(\"Percent: %.2f\\n\", s2.percentage);\n\n    return 0;\n}",
+      "output": "Name: Anya Naik\nRoll: 17\nPercent: 88.50\n\nName: Rohan Gaonkar\nRoll: 23\nPercent: 91.25",
+      "lang": "c"
+    },
+    {
+      "file": "ep61copy.c",
+      "source": "#include <stdio.h>\n\nstruct Student {\n    char name[30];\n    int rollNo;\n    float percentage;\n};\n\nint main(void) {\n    struct Student s1 = {\"Anya Naik\", 17, 88.5f};\n    struct Student s3 = s1;\n\n    s3.rollNo = 99;\n    printf(\"s1 roll: %d, s3 roll: %d\\n\", s1.rollNo, s3.rollNo);\n\n    return 0;\n}",
+      "output": "s1 roll: 17, s3 roll: 99",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "17"
+  }
+}

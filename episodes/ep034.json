@@ -1,0 +1,317 @@
+{
+  "ep": 34,
+  "title": "What Are Functions?",
+  "module": 5,
+  "lengthSec": 380,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "define a function with no inputs and no output (`void name(void)`)",
+    "call it from `main` as many times as needed",
+    "explain how control jumps into a function and comes back",
+    "fix the \"implicit declaration\" error by defining a function before it is called"
+  ],
+  "youtube": {
+    "title": "Stop Copy-Pasting Code: Functions | C Programming EP 34",
+    "description": "Typing the same lines again and again? Functions let you write code once and use it everywhere. We build our first two functions, watch exactly how a call jumps in and back, and fix the classic \"implicit declaration\" error. Chapters: 0:00 The copy-paste problem · 0:25 What is a function · 1:15 Anatomy of a function · 2:00 Code walkthrough · 3:20 Running it · 3:55 How a call jumps · 4:35 Bug of the Day · 5:30 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The copy-paste problem"
+      },
+      {
+        "t": "0:25",
+        "label": "What is a function"
+      },
+      {
+        "t": "1:15",
+        "label": "Anatomy of a function"
+      },
+      {
+        "t": "2:00",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "3:20",
+        "label": "Running it"
+      },
+      {
+        "t": "3:55",
+        "label": "How a call jumps"
+      },
+      {
+        "t": "4:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:30",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "functions in c",
+      "c functions tutorial",
+      "void function c",
+      "function call c",
+      "learn c",
+      "c for beginners",
+      "implicit declaration error",
+      "koding konkani",
+      "c programming in english",
+      "class 11 computer science",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "STOP COPY-PASTING",
+      "visual": "big text \"STOP COPY-PASTING\"; a stack of identical code blocks with a tomato \"X\" over it, one clean `greet();` card beside it; Xecxec holding up one claw like a stop sign; lilac background, tomato text",
+      "pose": "Xecxec holding up one claw like a stop sign"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "The same 3 printf lines pasted 10 times; the code panel scrolls and scrolls",
+      "animation": "Paste sound on each copy, scroll speeds up; Xecxec's eyes spin",
+      "sfx": [],
+      "narration": "Look at this program. Print a line of dashes. Print a greeting. Print dashes again. Greeting again. Dashes again. Copy, paste, copy, paste. Now your teacher says, \"Change the greeting.\" In ten places. Xecxec has already given up. There is a better way, and every real program uses it."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 34 · WHAT ARE FUNCTIONS?",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 34. What are functions?"
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "\"Fish curry recipe\" card: write the recipe once, cook it any day; then \"define once, call many times\"",
+      "animation": "Recipe card flips; 3 plates pop in one by one with a pop SFX",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Think of a fish curry recipe. Your aaji writes it down once. After that, nobody rewrites the recipe every time they cook. They just say, \"Make the fish curry,\" and follow the same steps. A function is exactly that: a named block of code that you write once and then use whenever you want. Writing it is called defining the function. Using it is called calling the function. Define once, call many times. And if the recipe needs a change, you fix it in one place, and every plate gets the new taste."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 75,
+      "lengthSec": 45,
+      "onScreen": "Labelled anatomy: `void greet(void) { ... }` with tags: return type, name, parameters, body",
+      "animation": "Each tag slides in with an arrow to its part; tick SFX",
+      "sfx": [],
+      "narration": "Every function has four parts. First, the return type: what the function gives back when it finishes. Here it is void, which means \"nothing\". Second, the name: greet. Names follow the same rules as variable names from EP 07. Third, the brackets with the parameters, which are the inputs. We write void inside them to say \"this function takes no inputs\". Fourth, the body, inside curly braces: the statements that run when the function is called. You already know one function very well: main. It is also a function. It just happens to be the one C runs first."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 80,
+      "onScreen": "`functions.c` (18 lines)",
+      "animation": "Butter line highlights on cues; call arrows drawn from main to each function",
+      "sfx": [],
+      "narration": "Here is our program with two functions. [HL 1] Line one, our usual include for printf. [HL 3] Line three: void printLine, void in brackets, open brace. We are defining a function called printLine that takes nothing and returns nothing. [HL 4] Its body has one job: print twenty dashes and a new line. [HL 5] Line five closes it. Important: defining a function does not run it. It only teaches C the recipe. [HL 7-9] Lines seven to nine define a second function, greet, which prints \"Namaskar from Goa!\". [HL 11] Line eleven: main, where the program actually starts. [HL 12] Line twelve: printLine, open bracket, close bracket, semicolon. This is a call. The empty brackets are required; they tell C \"run this function now\". [HL 13] Line thirteen calls greet. [HL 14-16] Lines fourteen to sixteen call them again: line, greet, line. [HL 17] And return zero ends main. Notice the order: both functions are written above main. C reads your file from top to bottom, so it should meet a function before you call it. Keep that in mind; it is today's bug. Now, if you want to change the greeting, you change line eight. One place. Done.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid printLine(void) {\n    printf(\"--------------------\\n\");\n}\n\nvoid greet(void) {\n    printf(\"Namaskar from Goa!\\n\");\n}\n\nint main(void) {\n    printLine();\n    greet();\n    printLine();\n    greet();\n    printLine();\n    return 0;\n}"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 200,
+      "lengthSec": 35,
+      "onScreen": "`gcc functions.c -o functions` then `./functions`; output appears line by line",
+      "animation": "Typing SFX; each output line drops in",
+      "sfx": [],
+      "narration": "Compile it the usual way: gcc functions dot c, dash o, functions. Then run it with dot slash functions. Dashes. Namaskar from Goa. Dashes. Namaskar from Goa. Dashes. Five lines of output from five short calls."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 235,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec claw-claps",
+      "sfx": [],
+      "narration": "Why did the function break up with main? Because main kept calling, but never let it return the favour."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 240,
+      "lengthSec": 35,
+      "onScreen": "Flow of control: a glowing dot runs down main, jumps into greet, runs its body, jumps back to the next line",
+      "animation": "Whoosh on each jump, soft \"boing\" on return",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Let's follow the computer with this glowing dot. It starts at the top of main. It reaches the call to printLine, and jumps into printLine's body. It prints the dashes, hits the closing brace, and jumps back to main, to the very next line. Then it meets greet, jumps in, prints, and jumps back again. That's all a function call is: go there, do the job, come back to where you left. Like a Kadamba bus going to Panjim and coming back to the same stop."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 275,
+      "lengthSec": 55,
+      "onScreen": "`bug.c`: greet called above its definition; tomato error in terminal",
+      "animation": "Error buzzer; Xecxec facepalms; fix slides greet above main, mint tick",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Today's bug: calling before declaring. Here, main calls greet on line four, but greet is only written on line eight, below main. When the compiler reaches line four, it has never heard of greet. On the GCC that MSYS2 installs today, which is version 14 or newer, you get this error: implicit declaration of function greet. In plain English: \"You used greet, but nobody introduced greet to me.\" On older GCC 13 it is only a warning, but it is still a bug, so treat it as one. The simple fix: move the whole greet function above main. Now the compiler meets greet first, and the call works. In EP 36 you'll learn a second fix, called a prototype."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 330,
+      "lengthSec": 35,
+      "onScreen": "Challenge card + expected output box",
+      "animation": "Timer ticks; Xecxec taps the card",
+      "sfx": [],
+      "narration": "Your challenge: write a function called welcome that prints a three-line banner: a row of stars, the words \"Welcome, coder!\", and another row of stars. Then call it three times from main. Pause, type it, run it. The answer is pinned in the comments and shown at the start of the next episode."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 365,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 35 · Parameters & return values",
+      "animation": "Juice-machine teaser silhouette; sign-off jingle",
+      "sfx": [],
+      "narration": "Today our functions took nothing in and gave nothing back. Next episode, we feed them inputs and get answers out: parameters and return values. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    greet();\n    return 0;\n}\n\nvoid greet(void) {\n    printf(\"Namaskar from Goa!\\n\");\n}",
+    "error": "GCC 14 and newer (current MSYS2 UCRT64) stop with an error; GCC 13 prints the same line as a warning and still builds:\n\nbug.c: In function 'main':\nbug.c:4:5: error: implicit declaration of function 'greet' [-Wimplicit-function-declaration]\n    4 |     greet();\n      |     ^~~~~",
+    "fixed": "#include <stdio.h>\n\nvoid greet(void) {\n    printf(\"Namaskar from Goa!\\n\");\n}\n\nint main(void) {\n    greet();\n    return 0;\n}",
+    "why": "C reads the file top to bottom, so a function must be defined (or declared, EP 36) before the line that calls it."
+  },
+  "pun": "Why did the function break up with main? Main kept calling, but never let it return the favour.",
+  "challenge": "Write `void welcome(void)` that prints a row of stars, \"  Welcome, coder!\", and another row of stars. Call it three times from main.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nvoid welcome(void) {\n    printf(\"********************\\n\");\n    printf(\"  Welcome, coder!\\n\");\n    printf(\"********************\\n\");\n}\n\nint main(void) {\n    welcome();\n    welcome();\n    welcome();\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Stop Copy-Pasting Your Code",
+      "hook": "the code panel scrolling endlessly with paste sounds",
+      "script": "Print dashes. Print a greeting. Dashes again. Greeting again. Copy, paste, copy, paste. Now change the greeting in ten places. Or don't. Write it once as a function, give it a name, and call that name whenever you need it. Change it in one place, and every call updates. That's functions in C, and it starts in episode 34.",
+      "onScreen": "STOP COPY-PASTING · WRITE IT ONCE",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 30,
+      "caption": "Your code does not need ten copies of the same lines.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "functions",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Functions in 30 Seconds",
+      "hook": "`void greet(void)` with four tags popping on",
+      "script": "A function in C has four parts. Return type: what it gives back. void means nothing. Name: greet. Brackets: the inputs. void means none. Body: the code in curly braces. Defining it teaches C the recipe. Calling it, greet with empty brackets and a semicolon, actually runs it. Define once, call many times.",
+      "onScreen": "RETURN TYPE · NAME · INPUTS · BODY",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Every C function, explained in four parts.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctutorial",
+        "programmingbasics"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Bug: Implicit Declaration",
+      "hook": "red error text \"implicit declaration of function 'greet'\"",
+      "script": "You call greet in main, and GCC says: implicit declaration of function greet. Why? Because greet is written below main. C reads top to bottom, so at that line it has never met greet. Move the function above main, and it compiles. Next time GCC says \"implicit declaration\", it means: introduce your function first.",
+      "onScreen": "\"WHO IS greet?\" — GCC",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "The most common first-function error in C, fixed.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "gcc",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The Function Breakup",
+      "hook": "Xecxec holding a broken heart labelled `return`",
+      "script": "Why did the function break up with main? Main kept calling, but never let it return the favour.",
+      "onScreen": "MAIN KEPT CALLING",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Programmer relationships are complicated.",
+      "hashtags": [
+        "codingmemes",
+        "cprogramming",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: Where Does It Return?",
+      "hook": "\"After greet() finishes, where does C go?\"",
+      "script": "main calls printLine, then greet, then printLine. After greet finishes, where does the program continue? A: the start of main. B: the line right after the greet call. C: the end of the program. Think for three seconds. The answer is B. A function always returns to the line right after the call.",
+      "onScreen": "A · B · C — WHERE DOES IT GO BACK?",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Comment your answer before the reveal.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "functions"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nvoid printLine(void) {\n    printf(\"--------------------\\n\");\n}\n\nvoid greet(void) {\n    printf(\"Namaskar from Goa!\\n\");\n}\n\nint main(void) {\n    printLine();\n    greet();\n    printLine();\n    greet();\n    printLine();\n    return 0;\n}",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Namaskar from Goa!"
+  }
+}

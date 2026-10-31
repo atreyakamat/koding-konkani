@@ -1,0 +1,342 @@
+{
+  "ep": 72,
+  "title": "What is an algorithm? Big-O made easy",
+  "module": 12,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "define an algorithm as a finite list of exact steps",
+    "count the steps a loop takes for a given n",
+    "name the growth class of a snippet as O(1), O(log n), O(n) or O(n²)",
+    "spot a hidden O(n²) caused by calling a counting function inside a loop condition"
+  ],
+  "youtube": {
+    "title": "Why Some Code Takes 1 Year | Big-O in C, EP 72",
+    "description": "Why does one program finish instantly and another run forever on the same data? We count the steps of four tiny C loops and discover O(1), O(log n), O(n) and O(n²), with zero scary maths. Welcome to the Algorithms module. 0:00 Two programs, same job · 0:25 Title · 0:30 What is an algorithm · 1:10 Counting steps · 1:50 The four shapes of growth · 2:45 Code: counting steps live · 3:50 Run it · 4:20 Pun · 4:25 Why Big-O ignores small stuff · 5:00 Bug of the Day · 5:45 Challenge · 6:15 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Two programs, same job"
+      },
+      {
+        "t": "0:25",
+        "label": "Title"
+      },
+      {
+        "t": "0:30",
+        "label": "What is an algorithm"
+      },
+      {
+        "t": "1:10",
+        "label": "Counting steps"
+      },
+      {
+        "t": "1:50",
+        "label": "The four shapes of growth"
+      },
+      {
+        "t": "2:45",
+        "label": "Code: counting steps live"
+      },
+      {
+        "t": "3:50",
+        "label": "Run it"
+      },
+      {
+        "t": "4:20",
+        "label": "Pun"
+      },
+      {
+        "t": "4:25",
+        "label": "Why Big-O ignores small stuff"
+      },
+      {
+        "t": "5:00",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:45",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:15",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "big o notation",
+      "time complexity",
+      "c programming",
+      "algorithms for beginners",
+      "O(n) explained",
+      "O(log n)",
+      "nested loops",
+      "learn c",
+      "koding konkani",
+      "data structures and algorithms",
+      "c tutorial"
+    ],
+    "thumbnail": {
+      "text": "1 SEC vs 1 YEAR",
+      "visual": "big text \"1 SEC vs 1 YEAR\"; two butter bars, one tiny, one shooting off the top of the frame; Xecxec holding a stopwatch with both claws, eyes wide; Dark blue background, Butter text.",
+      "pose": "Xecxec holding a stopwatch with both claws, eyes wide"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 25,
+      "onScreen": "Two laptops, \"Program A: 0.01 s\", \"Program B: still running…\"",
+      "animation": "Program B's progress bar crawls; calendar pages fly off; tick-tock SFX",
+      "sfx": [],
+      "narration": "Two programs. Same job: find duplicate roll numbers in a list. Program A finishes in a blink. Program B is still running. Still. Running. Same computer, same data. The difference is not the speed of the laptop. The difference is the algorithm. Today we learn how to tell, just by reading code, which one is going to make you wait a year."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 25,
+      "lengthSec": 5,
+      "onScreen": "EP 72 · WHAT IS AN ALGORITHM?",
+      "animation": "Module 12 stinger, title slams in; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 72. What is an algorithm? Big-O made easy."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 30,
+      "lengthSec": 40,
+      "onScreen": "Recipe card \"Fish curry rice\" with 5 numbered steps; definition box \"Algorithm = finite, exact steps that solve a problem\"",
+      "animation": "Steps tick in one by one; Xecxec stirs a pot",
+      "sfx": [],
+      "narration": "An algorithm is a finite list of exact steps that solves a problem. You already know one: a recipe. Wash the rice. Boil the water. Add the rice. Make the curry. Serve. Every step is clear, and the recipe ends. Every C program you have written since Episode 4 is an algorithm too. In this module we stop asking only \"does it work?\" and start asking \"how much work does it do?\""
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 70,
+      "lengthSec": 40,
+      "onScreen": "Row of 8 fish boxes, a pointer checks each in turn; counter \"steps: 1…8\"",
+      "animation": "Pointer hops box to box; counter rolls; blip per step",
+      "sfx": [],
+      "narration": "Here are eight boxes at the fish market, and we are looking for the kingfish. We check box one, box two, box three, and so on. In the worst case, the kingfish is in the last box, and we check all eight. Eight boxes, eight steps. If the market had a thousand boxes, it would be a thousand steps. The number of steps grows with n, the size of the input. That idea, how the steps grow as n grows, is what Big-O describes."
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 110,
+      "lengthSec": 55,
+      "onScreen": "Four growth curves on one chart: O(1), O(log n), O(n), O(n²) in mint, pastel blue, butter, tomato",
+      "animation": "Curves draw left to right; O(n²) shoots off the top; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Four shapes cover most of what you will meet. O(1), constant: the same number of steps no matter how big n is, like reading the first box. O(log n), logarithmic: every step cuts the problem in half, so even a million items need only about twenty steps. O(n), linear: one step per item, like checking every box. And O(n²), quadratic: for every item you go through every item again. That one is the curve that shoots off the screen. Ten items, a hundred steps. A thousand items, a million steps."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 65,
+      "onScreen": "big_o_steps.c (26 lines) with a variable tracker for one, logn, lin, quad",
+      "animation": "Line highlights per [HL] cue; tracker counts up",
+      "sfx": [],
+      "narration": "Let's count steps for real. [HL 4] An array of three sizes: 10, 100 and 1000. [HL 6] We loop over them, [HL 7] and n is the current size. [HL 8] Four counters, all long, all starting at zero. [HL 10] O(1): one increment, no loop. It runs once, whatever n is. [TRACK one=1] [HL 12] O(log n): i starts at n and is divided by 2 each time, while it is greater than 1. For n equals 10, i goes 10, 5, 2, then 1 stops it. That's three steps. [TRACK logn=3] [HL 15] O(n): a plain loop from 0 to n. Ten steps for n equals 10. [TRACK lin=10] [HL 18] O(n²): a loop inside a loop. [HL 19] For each of the n outer turns, the inner loop also runs n times. Ten times ten is a hundred. [TRACK quad=100] [HL 22] Finally we print all four counters with %ld, because they are long.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int sizes[] = {10, 100, 1000};\n\n    for (int k = 0; k < 3; k++) {\n        int n = sizes[k];\n        long one = 0, logn = 0, lin = 0, quad = 0;\n\n        one++;                                   /* O(1)     */\n\n        for (int i = n; i > 1; i = i / 2)        /* O(log n) */\n            logn++;\n\n        for (int i = 0; i < n; i++)              /* O(n)     */\n            lin++;\n\n        for (int i = 0; i < n; i++)              /* O(n^2)   */\n            for (int j = 0; j < n; j++)\n                quad++;\n\n        printf(\"n=%4d | O(1)=%ld | O(log n)=%ld | O(n)=%ld | O(n^2)=%ld\\n\",\n               n, one, logn, lin, quad);\n    }\n    return 0;\n}",
+        "output": "$ gcc big_o_steps.c -o big_o_steps\n$ ./big_o_steps\nn=  10 | O(1)=1 | O(log n)=3 | O(n)=10 | O(n^2)=100\nn= 100 | O(1)=1 | O(log n)=6 | O(n)=100 | O(n^2)=10000\nn=1000 | O(1)=1 | O(log n)=9 | O(n)=1000 | O(n^2)=1000000"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 230,
+      "lengthSec": 30,
+      "onScreen": "gcc command and 3 output lines",
+      "animation": "Lines type out; O(n²) column flashes tomato",
+      "sfx": [],
+      "narration": "Compile with gcc big_o_steps.c -o big_o_steps and run it. Look at the columns. O(1) stays at 1. O(log n) creeps from 3 to 6 to 9. O(n) grows ten times when n grows ten times. And O(n²)? A hundred, ten thousand, one million. Multiply n by ten and the work multiplies by a hundred."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum rimshot, Xecxec claps claws",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the nested loop never get invited to parties? Because it always went round and round and round and round."
+    },
+    {
+      "id": 9,
+      "template": "concept-slide",
+      "startSec": 265,
+      "lengthSec": 35,
+      "onScreen": "\"Drop constants, keep the biggest term\": 3n + 5 → O(n); n² + n → O(n²)",
+      "animation": "Small terms shrink and fall away",
+      "sfx": [],
+      "narration": "Big-O only cares about the shape when n is large. If a loop does 3n plus 5 steps, we call it O(n). The 3 and the 5 don't change the shape. If code does n² plus n steps, we call it O(n²), because when n is a million, n² is so huge that the extra n is like one grain of sand on Calangute beach. Drop the constants. Keep the biggest term."
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 300,
+      "lengthSec": 45,
+      "onScreen": "Loop with my_len(word) in its condition; steps = 56 vs 7",
+      "animation": "Red siren; my_len call glows in every loop check",
+      "sfx": [],
+      "narration": "Today's bug: the nested loop nobody noticed. We count the letter o in \"monsoon\". The answer is right: 3. But look at the loop condition. It calls my_len every single time the loop checks i. And my_len walks the whole word. So a loop that looks like O(n) is secretly O(n²). Our step counter shows 56 steps instead of 7. The fix: call my_len once before the loop, store it in len, and compare with len. Now it's 7 steps. The same trap happens with strlen from Module 7, so watch your loop conditions."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 345,
+      "lengthSec": 30,
+      "onScreen": "Four snippets A–D to rank",
+      "animation": "Cards shuffle in; timer ticks",
+      "sfx": [],
+      "narration": "Your challenge: rank these four snippets from fastest to slowest for a large n. A: a single loop to n. B: a loop where i doubles each time. C: one printf, no loop. D: a loop inside a loop, both to n. Write your ranking in the comments."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 375,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 73 Linear vs binary search",
+      "animation": "Xecxec waves; sign-off",
+      "sfx": [],
+      "narration": "Next episode, we race two ways of searching: checking every box, and the guess-the-number trick that finds anything in a thousand items in ten steps. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nlong steps = 0;\n\nint my_len(const char *s) {\n    int n = 0;\n    while (s[n] != '\\0') {\n        n++;\n        steps++;\n    }\n    return n;\n}\n\nint main(void) {\n    char word[] = \"monsoon\";\n    int count = 0;\n\n    for (int i = 0; i < my_len(word); i++) {\n        if (word[i] == 'o')\n            count++;\n    }\n    printf(\"o appears %d times, steps = %ld\\n\", count, steps);\n    return 0;\n}",
+    "error": "o appears 3 times, steps = 56",
+    "fixed": "    int len = my_len(word);\n    for (int i = 0; i < len; i++) {\n        if (word[i] == 'o')\n            count++;\n    }",
+    "why": "the loop condition runs n + 1 times, and each check walked the whole string, so 8 checks × 7 letters = 56 steps; computing the length once makes it 7."
+  },
+  "pun": "Why did the nested loop never get invited to parties? It always went round and round and round and round.",
+  "challenge": "Rank from fastest to slowest for large n: A) `for (i = 0; i < n; i++)`; B) `for (i = 1; i < n; i *= 2)`; C) a single `printf`; D) a loop to n inside a loop to n.",
+  "challengeAnswer": "C (O(1)) → B (O(log n)) → A (O(n)) → D (O(n²)).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Same job, 1 second vs 1 year",
+      "hook": "\"This program is still running. Since last year.\"",
+      "script": "Two programs. Same job. Same laptop. One finishes in a blink. The other is still running. The difference isn't the computer, it's the algorithm. By the end of this episode you'll spot the slow one just by reading the code. Full episode: Big-O made easy.",
+      "onScreen": "SAME JOB. 1 SEC vs 1 YEAR.",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 25,
+      "caption": "Same code job, wildly different speed. Here's why.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bigo",
+        "algorithms"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Big-O in 30 seconds",
+      "hook": "\"Four shapes. That's all Big-O is.\"",
+      "script": "Big-O describes how the steps grow when the input grows. O(1): same steps no matter what. O(log n): halve the problem each time, so a million items need about twenty steps. O(n): one step per item. O(n²): a loop inside a loop. Ten items, a hundred steps. A thousand items, a million steps. Multiply n by ten, the work multiplies by a hundred.",
+      "onScreen": "O(1) · O(log n) · O(n) · O(n²)",
+      "fromScenes": [
+        5,
+        7
+      ],
+      "lengthSec": 35,
+      "caption": "Big-O in four shapes.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bigo",
+        "timecomplexity"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The hidden nested loop",
+      "hook": "\"This loop looks fast. It isn't.\"",
+      "script": "We count the o's in \"monsoon\". Answer: three, correct. But look at the loop condition: it calls my_len every time it checks i, and my_len walks the whole word. 56 steps instead of 7. Call the length function once, store it, and compare with that. Same trap with strlen.",
+      "onScreen": "56 STEPS vs 7",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "The O(n²) hiding in your for loop.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "codingtips"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The nested loop at parties",
+      "hook": "\"Why is the nested loop never invited to parties?\"",
+      "script": "Why did the nested loop never get invited to parties? Because it always went round and round and round and round.",
+      "onScreen": "ROUND AND ROUND AND ROUND…",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "O(n²) energy.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Rank these 4 snippets",
+      "hook": "\"Rank these from fastest to slowest.\"",
+      "script": "Four snippets. A: a loop to n. B: a loop where i doubles. C: a single printf. D: a loop inside a loop. Rank them fastest to slowest for a huge n. Comment your answer, and the solution is pinned on the full episode.",
+      "onScreen": "RANK A B C D",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 25,
+      "caption": "Which is fastest? Comment your ranking.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bigo",
+        "quiz"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int sizes[] = {10, 100, 1000};\n\n    for (int k = 0; k < 3; k++) {\n        int n = sizes[k];\n        long one = 0, logn = 0, lin = 0, quad = 0;\n\n        one++;                                   /* O(1)     */\n\n        for (int i = n; i > 1; i = i / 2)        /* O(log n) */\n            logn++;\n\n        for (int i = 0; i < n; i++)              /* O(n)     */\n            lin++;\n\n        for (int i = 0; i < n; i++)              /* O(n^2)   */\n            for (int j = 0; j < n; j++)\n                quad++;\n\n        printf(\"n=%4d | O(1)=%ld | O(log n)=%ld | O(n)=%ld | O(n^2)=%ld\\n\",\n               n, one, logn, lin, quad);\n    }\n    return 0;\n}",
+      "output": "$ gcc big_o_steps.c -o big_o_steps\n$ ./big_o_steps\nn=  10 | O(1)=1 | O(log n)=3 | O(n)=10 | O(n^2)=100\nn= 100 | O(1)=1 | O(log n)=6 | O(n)=100 | O(n^2)=10000\nn=1000 | O(1)=1 | O(log n)=9 | O(n)=1000 | O(n^2)=1000000",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "o appears 3 times, steps = 7"
+  }
+}

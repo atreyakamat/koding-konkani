@@ -1,0 +1,302 @@
+{
+  "ep": 11,
+  "title": "printf Deep Dive",
+  "module": 1,
+  "lengthSec": 400,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "use width (`%5d`), left-align (`%-5d`) and zero-pad (`%05d`)",
+    "control decimals with precision (`%.2f`, `%8.2f`)",
+    "print strings with `%s` and a real percent sign with `%%`",
+    "line up columns to print a neat bill",
+    "match every placeholder to the right type"
+  ],
+  "youtube": {
+    "title": "Make Your C Output Look Rich | printf Deep Dive EP 11",
+    "description": "printf can do much more than print a line. Learn width, alignment, zero padding, precision, %s and %%, then build a neat restaurant bill with perfectly lined-up columns. Plus what happens when you print a float with %d. 0:00 Make your output look rich 0:20 Anatomy of a placeholder 0:55 Width, left-align, zero-pad 2:00 Precision for decimals 2:45 %s, %c and %% 3:24 Build a neat bill 4:34 Bug of the Day: %d for a float 5:49 Challenge 6:24 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Make your output look rich 0:20 Anatomy of a placeholder 0:55 Width, left-align, zero-pad 2:00 Precision for decimals 2:45 %s, %c and %% 3:24 Build a neat bill 4:34 Bug of the Day: %d for a float 5:49 Challenge 6:24 Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "printf in c",
+      "format specifiers",
+      "printf width precision",
+      "%d %f %s",
+      "printf alignment",
+      "c tutorial for beginners",
+      "koding konkani",
+      "formatted output c",
+      "learn c"
+    ],
+    "thumbnail": {
+      "text": "RICH OUTPUT",
+      "visual": "big text \"RICH OUTPUT\"; left: a messy bill with jagged numbers, right: a perfectly aligned bill on a cream receipt; Xecxec wearing sunglasses holding the receipt.",
+      "pose": "Xecxec wearing sunglasses holding the receipt"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Jagged bill vs aligned bill, side by side",
+      "animation": "Receipt printer whirr; Xecxec puts on sunglasses",
+      "sfx": [],
+      "narration": "Two bills. Same items, same prices. One looks like a mess. The other looks like it came from a proper restaurant. The only difference? A few numbers inside printf. Let's make your output look rich."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 11 · PRINTF DEEP DIVE",
+      "animation": "Title slams in, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode eleven. printf deep dive."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 35,
+      "onScreen": "Last challenge answer; anatomy diagram of `%-8.2f`: percent, flag, width, precision, type",
+      "animation": "Each part lifts off with a label and a pop",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Last challenge: with radius five, area is 78.54 and circumference is 31.42. Nice. Now, you know percent d and percent f. But a placeholder can have more parts. Look at percent minus eight point two f. Percent starts it. Minus is a flag: left-align. Eight is the width: use at least eight spaces. Point two is the precision: two digits after the decimal. And f is the type. Every part is optional, except the percent and the type."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 65,
+      "onScreen": "ep11.c lines 9–12 with square-bracket output",
+      "animation": "Width shown as dotted boxes; digits slide right, left, then zeros fill in",
+      "sfx": [],
+      "narration": "In this program, I've put square brackets around each output, so you can see the spaces. [HL 9] Line nine: plain percent d with qty, which is three. Output: bracket, three, bracket. [HL 10] Line ten: percent five d. Width five. The number takes one space, so printf adds four spaces in front. Numbers are right-aligned by default. [HL 11] Line eleven: percent minus five d. The minus flips it: number first, then four spaces. Left-aligned. [HL 12] Line twelve: percent zero five d. Instead of spaces, fill with zeros: zero zero zero zero three. Useful for roll numbers and bill numbers."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 45,
+      "onScreen": "Lines 13–14 precision",
+      "animation": "Extra decimals fall away; rounding arrow shows 45.5 to 45.50",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 13] Line thirteen: percent point two f, with price forty-five point five. Two digits after the point: forty-five point five zero. Perfect for rupees and paise. printf rounds when it cuts digits, so two point three four six with point two f becomes two point three five. [HL 14] Line fourteen combines both: percent eight point two f. The whole thing takes eight spaces, with two decimals. That's three spaces, then forty-five point five zero."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 35,
+      "onScreen": "Lines 15–17: `%c`, `%s`, `%%`",
+      "animation": "\"Feni\" bottle label pops into the brackets; % sign doubles then merges",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "[HL 15] Line fifteen: percent c, the size char, L. [HL 16] Line sixteen: percent s prints a string, a piece of text in double quotes. Here: Feni. We'll do much more with strings in module seven. [HL 17] And line seventeen: how do you print a real percent sign? Percent starts a placeholder, so one percent confuses printf. Write two: percent percent. Output: 100% fresh."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 200,
+      "lengthSec": 4,
+      "onScreen": "Pun",
+      "animation": "Drum ba-dum, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "My printf output was so neat, the receipt asked for my autograph. Well, at least it was well formatted."
+    },
+    {
+      "id": 8,
+      "template": "code-explain",
+      "startSec": 204,
+      "lengthSec": 70,
+      "onScreen": "bill.c lines 5–9, column guides",
+      "animation": "Vertical guide lines show 12, 4, 9 column widths; rows print one by one with receipt whirr",
+      "sfx": [],
+      "narration": "Now let's build the rich bill. The trick is to use the same widths on every line. [HL 5] Line five is the header. Percent minus twelve s: the item name, left-aligned in twelve spaces. Percent four s: Qty, right-aligned in four. Percent nine s: Amount, right-aligned in nine. [HL 6] Line six uses the same widths, but with real types: percent minus twelve s for Fish thali, percent four d for the quantity two, and percent nine point two f for three hundred sixty point zero zero. [HL 7] Lines seven [HL 8] and eight, same pattern: Sol kadhi, then Bebinca. [HL 9] Line nine is the total. For the Qty column, we print an empty string, so it stays blank. Look at the result. Every column lines up, because every line uses the same widths.",
+      "code": {
+        "file": "bill.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    printf(\"%-12s %4s %9s\\n\", \"Item\", \"Qty\", \"Amount\");\n    printf(\"%-12s %4d %9.2f\\n\", \"Fish thali\", 2, 360.00);\n    printf(\"%-12s %4d %9.2f\\n\", \"Sol kadhi\", 3, 90.00);\n    printf(\"%-12s %4d %9.2f\\n\", \"Bebinca\", 1, 120.50);\n    printf(\"%-12s %4s %9.2f\\n\", \"TOTAL\", \"\", 570.50);\n    return 0;\n}",
+        "output": "Item          Qty    Amount\nFish thali      2    360.00\nSol kadhi       3     90.00\nBebinca         1    120.50\nTOTAL                570.50"
+      }
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 274,
+      "lengthSec": 75,
+      "onScreen": "`printf(\"%d\", price)` with float price; GCC warning; garbage output; fix",
+      "animation": "Butter stripe; garbage numbers flicker; buzzer; success chime",
+      "sfx": [
+        "buzzer",
+        "chime"
+      ],
+      "narration": "Today's bug. float price equals forty-five point five. printf, \"Price: percent d\", price. You expect forty-five, maybe. Run it. I got two billion and something. Run again: a completely different number. Your numbers will be different too. Why? printf trusts you. percent d tells it \"an int is coming\", but you sent a float, which is stored completely differently. printf reads the wrong bits from the wrong place. GCC warns you, if you compile with dash Wall: format percent d expects argument of type int, but argument 2 has type double. Wait, double? Yes: when you pass a float to printf, C automatically turns it into a double. That's also why percent f works for both float and double. The fix: use percent point two f. Price: 45.50. Rule: placeholder and type must always match."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 349,
+      "lengthSec": 35,
+      "onScreen": "Print a neat bill for 3 items of your own",
+      "animation": "Timer ticks; blank receipt",
+      "sfx": [],
+      "narration": "Your challenge. Print a neat bill for three items you'd buy in your town: name, quantity and amount. Use the same widths on every line, and add a total line. Post a screenshot of your output."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 384,
+      "lengthSec": 16,
+      "onScreen": "Next: EP 12 · scanf; sign-off",
+      "animation": "Xecxec waves; outro sting",
+      "sfx": [
+        "sting"
+      ],
+      "narration": "So far, our programs only talk. Next episode, with scanf, the user can finally talk back. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void)\n{\n    float price = 45.5f;\n    printf(\"Price: %d\\n\", price);\n    return 0;\n}",
+    "error": "**GCC output with `-Wall`:**\n\nbug11.c: In function 'main':\nbug11.c:6:21: warning: format '%d' expects argument of type 'int', but argument 2 has type 'double' [-Wformat=]\n    6 |     printf(\"Price: %d\\n\", price);\n      |                    ~^     ~~~~~\n      |                     |     |\n      |                     int   double\n      |                    %f\n\n**Wrong output** (garbage that changes each run; on screen: \"your number will differ\"):\n\nPrice: 2084392984",
+    "fixed": "#include <stdio.h>\n\nint main(void)\n{\n    float price = 45.5f;\n    printf(\"Price: %.2f\\n\", price);\n    return 0;\n}",
+    "why": "printf cannot check types at run time; it reads whatever bits the placeholder asks for, so a mismatch prints garbage."
+  },
+  "pun": "\"My output was so neat, the receipt asked for my autograph. At least it was well formatted.\"",
+  "challenge": "Print a neat bill for three items from your town (name, qty, amount) with fixed widths and a total line.",
+  "challengeAnswer": "Reuse the bill.c pattern: `\"%-12s %4d %9.2f\\n\"` for each item, `\"%-12s %4s %9s\\n\"` for the header, and `\"%-12s %4s %9.2f\\n\"` with `\"\"` for the total line. Columns line up because every line uses widths 12, 4 and 9.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Messy bill vs rich bill",
+      "hook": "\"Same bill. One looks broke. One looks rich.\"",
+      "script": "Same bill. One looks broke, one looks rich. The secret: widths inside printf. Percent minus twelve s for the name, percent four d for the quantity, percent nine point two f for the amount. Same widths on every line, and the columns line up.",
+      "onScreen": "%-12s %4d %9.2f",
+      "fromScenes": [
+        1,
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Make your C output look professional.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "printf",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "printf in 30 seconds",
+      "hook": "\"Every part of %-8.2f, explained.\"",
+      "script": "Percent minus eight point two f. Percent: start. Minus: left-align. Eight: width, at least eight spaces. Point two: two digits after the decimal. f: it's a float. Want zeros instead of spaces? Percent zero five d. Want a real percent sign? Percent percent.",
+      "onScreen": "% FLAG WIDTH .PRECISION TYPE",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "printf format specifiers, decoded.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "printf",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Why does printf print garbage?",
+      "hook": "\"Price is 45.5. printf says 2 billion.\"",
+      "script": "The price is forty-five point five. printf says two billion. Why? I used percent d for a float. printf trusts the placeholder and reads the wrong bits. Compile with dash Wall and GCC tells you: percent d expects int, but argument has type double. Fix: percent point two f.",
+      "onScreen": "%d + float = GARBAGE",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Match your placeholders.",
+      "hashtags": [
+        "cprogramming",
+        "codingbugs",
+        "kodingkonkani",
+        "learntocode",
+        "printf"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Well formatted",
+      "hook": "\"My output was so neat...\"",
+      "script": "My printf output was so neat, the receipt asked for my autograph. At least it was well formatted.",
+      "onScreen": "%9.2f OF FAME",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 10,
+      "caption": "Formatting humour.",
+      "hashtags": [
+        "programmingjokes",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What does this print?",
+      "hook": "\"What does %05d print for 42?\"",
+      "script": "printf, percent zero five d, forty-two. What prints? A: 42. B: three spaces then 42. C: 00042. ... C. Width five, padded with zeros. Comment if you got it right.",
+      "onScreen": "printf(\"%05d\", 42); · A) 42 B) \"   42\" C) 00042",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 20,
+      "caption": "printf quiz.",
+      "hashtags": [
+        "cquiz",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode",
+        "printf"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void)\n{\n    int qty = 3;\n    float price = 45.5f;\n    char size = 'L';\n\n    printf(\"[%d]\\n\", qty);\n    printf(\"[%5d]\\n\", qty);          // width 5, right-aligned\n    printf(\"[%-5d]\\n\", qty);         // width 5, left-aligned\n    printf(\"[%05d]\\n\", qty);         // pad with zeros\n    printf(\"[%.2f]\\n\", price);       // 2 digits after the point\n    printf(\"[%8.2f]\\n\", price);      // width 8, 2 decimals\n    printf(\"[%c]\\n\", size);\n    printf(\"[%s]\\n\", \"Feni\");        // a string\n    printf(\"100%% fresh\\n\");         // a real percent sign\n\n    return 0;\n}",
+      "output": "[3]\n[    3]\n[3    ]\n[00003]\n[45.50]\n[   45.50]\n[L]\n[Feni]\n100% fresh",
+      "lang": "c"
+    },
+    {
+      "file": "bill.c",
+      "source": "#include <stdio.h>\n\nint main(void)\n{\n    printf(\"%-12s %4s %9s\\n\", \"Item\", \"Qty\", \"Amount\");\n    printf(\"%-12s %4d %9.2f\\n\", \"Fish thali\", 2, 360.00);\n    printf(\"%-12s %4d %9.2f\\n\", \"Sol kadhi\", 3, 90.00);\n    printf(\"%-12s %4d %9.2f\\n\", \"Bebinca\", 1, 120.50);\n    printf(\"%-12s %4s %9.2f\\n\", \"TOTAL\", \"\", 570.50);\n    return 0;\n}",
+      "output": "Item          Qty    Amount\nFish thali      2    360.00\nSol kadhi       3     90.00\nBebinca         1    120.50\nTOTAL                570.50",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Price: 45.50"
+  }
+}

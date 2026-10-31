@@ -1,0 +1,296 @@
+{
+  "ep": 69,
+  "title": "Writing Files",
+  "module": 11,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#FFB88A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain why data in variables disappears when a program ends",
+    "open a file with `fopen` and pick the right mode (`\"w\"`, `\"a\"`, `\"r\"`)",
+    "write text with `fprintf` and `fputs`, then close it with `fclose`",
+    "always check `fopen`'s result for `NULL` before using the file"
+  ],
+  "youtube": {
+    "title": "Make Your Data Survive a Restart: Writing Files | C EP 69",
+    "description": "Everything in your variables vanishes when the program ends. Files fix that. We open a file, write to it with fprintf, add to it with append mode, and learn why skipping the NULL check crashes your program. 0:00 Where did my data go? 0:25 What is a file? 1:00 fopen and FILE * 1:35 File modes: w, a, r 2:10 Writing a diary, line by line 3:40 Append mode 4:40 Bug of the Day: not checking NULL 5:55 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Where did my data go? 0:25 What is a file? 1:00 fopen and FILE * 1:35 File modes: w, a, r 2:10 Writing a diary, line by line 3:40 Append mode 4:40 Bug of the Day: not checking NULL 5:55 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "file handling in c",
+      "fopen in c",
+      "fprintf",
+      "write to file in c",
+      "append mode",
+      "fclose",
+      "file modes in c",
+      "learn c",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "DATA THAT SURVIVES",
+      "visual": "big text \"DATA THAT SURVIVES\"; a laptop power button with a notebook file safely glowing beside it; Xecxec hugging the file; Apricot background, Dark blue blocks.",
+      "pose": "Xecxec hugging the file"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A game score `score = 950` printed, program ends, run again: `score = 0`",
+      "animation": "Power-off SFX, numbers fade to dust; Xecxec gasps",
+      "sfx": [],
+      "narration": "You play a game. You score 950. You close it, open it again, and your score is 0. Where did it go? Every variable we've used so far lives in memory, and memory is cleared when the program ends. Today we learn how to make data survive a restart."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 69 · WRITING FILES",
+      "animation": "Apricot card, Dark blue text, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode sixty-nine. Writing files."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 35,
+      "onScreen": "RAM (temporary, Lilac boxes) vs disk (permanent, a file icon); arrow \"program → file\"",
+      "animation": "RAM boxes empty on power-off; file icon stays; click SFX",
+      "sfx": [],
+      "narration": "Your variables live in RAM, the computer's short-term memory. Fast, but temporary. Files live on the disk, the long-term memory. Slower, but they stay even after you switch off the computer. Your C code, your photos, your notes, all files. Today our program will create its own file and write to it. Like a fisherman writing today's catch in a notebook, so tomorrow he still knows."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 60,
+      "lengthSec": 35,
+      "onScreen": "`FILE *fp` as a pointer box pointing to a \"file handle\" card linked to `diary.txt`",
+      "animation": "Arrow draws from `fp` to the handle; link chain SFX",
+      "sfx": [],
+      "narration": "To work with a file, C gives us a type called FILE, in capital letters, from stdio dot h. We never use a FILE directly. We use a pointer to one: FILE star fp. You learned pointers in Module 8. fp doesn't hold the file's text. It points to a handle that C uses to keep track of the open file: which file, and where we are in it. The function fopen opens the file and gives us that pointer."
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 35,
+      "onScreen": "Mode table: `\"w\"` write (creates or wipes), `\"a\"` append (adds at end), `\"r\"` read (must exist)",
+      "animation": "Three cards flip; `\"w\"` card shows an eraser wiping old text",
+      "sfx": [],
+      "narration": "fopen needs two things: the file name, and a mode. The mode is a short string. \"w\" means write. It creates the file if it doesn't exist. Careful: if the file does exist, \"w\" wipes it clean first. \"a\" means append. It adds new text to the end and keeps what's there. \"r\" means read, and the file must already exist. We'll use \"r\" next episode."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 130,
+      "lengthSec": 75,
+      "onScreen": "`write.c` with a live `diary.txt` panel",
+      "animation": "Each `fprintf` line types into the file panel; `fclose` shows a lid closing",
+      "sfx": [],
+      "narration": "Let's write a diary. [HL 4] FILE star fp equals fopen, \"diary dot txt\", \"w\". Open diary dot txt for writing. [HL 6] if fp equals NULL. If fopen fails, it gives back NULL instead of a real pointer. Maybe the disk is full, or the folder doesn't exist. [HL 7] [HL 8] Then we print a message and return 1, which means something went wrong. [HL 11] fprintf, fp, \"Day 1: Learned files in C\", backslash n. fprintf is printf with one extra first argument: where to print. Instead of the screen, it prints into fp. [HL 12] fprintf again with percent d and 7, so the file gets \"Fish caught: 7\". Everything you know about printf formats works here. [HL 13] fputs, \"Mood: happy\" backslash n, fp. fputs writes a plain string with no formatting. Notice the order: the string first, then the file. [HL 15] fclose fp. This closes the file. C often holds your text in a waiting area, a buffer, and fclose makes sure everything is really written to the disk. Forget fclose, and you might lose your last lines. [HL 16] Finally, we tell the user \"Saved to diary dot txt\"."
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 205,
+      "lengthSec": 15,
+      "onScreen": "Compile, run, then `cat diary.txt`",
+      "animation": "Output and file contents appear",
+      "sfx": [],
+      "narration": "Compile and run. It says \"Saved to diary dot txt\". Now type cat diary dot txt. In the MSYS2 terminal, cat shows a file's contents. Three lines, exactly what we wrote. The file is in the same folder you ran the program from. Run the program a second time, and you still see three lines, not six. Remember, \"w\" wipes the file first."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 220,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec writing in a diary with a feather, rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the file feel so calm? Because it finally got closure."
+    },
+    {
+      "id": 9,
+      "template": "code-explain",
+      "startSec": 225,
+      "lengthSec": 55,
+      "onScreen": "`append.c`",
+      "animation": "File panel keeps the old 3 lines; new line slides in at the bottom in Mint",
+      "sfx": [],
+      "narration": "To add a new day without wiping the old ones, we use \"a\". [HL 4] fopen, \"diary dot txt\", \"a\". [HL 6] Same NULL check. [HL 11] fprintf, \"Day 2: Monsoon, stayed home and coded\". [HL 13] fclose. Run it, then cat the file. The first three lines are still there, and Day 2 is added at the bottom. Run it again, and another Day 2 line is added. Use \"w\" when you want a fresh file. Use \"a\" for logs and diaries that grow."
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 280,
+      "lengthSec": 75,
+      "onScreen": "`nullbug.c` writes to `notes/today.txt` (folder missing): crash",
+      "animation": "Apricot frame with Butter highlight; `fp` box shows NULL; arrow points at nothing, crash SFX; fix adds the `if` guard",
+      "sfx": [],
+      "narration": "Today's bug: not checking fopen for NULL. This program opens notes slash today dot txt, but there is no notes folder. \"w\" can create a file, but it can't create a folder. So fopen fails and returns NULL. The program doesn't check. It calls fprintf with a NULL pointer. Compile: no error, no warning. Run: the program crashes. On Linux you see \"Segmentation fault\". On Windows it just stops, and \"Saved!\" is never printed. The fix: always check. If fp equals NULL, print a message and return 1. Even better, use perror, which prints the file name and the real reason, like \"No such file or directory\"."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 355,
+      "lengthSec": 20,
+      "onScreen": "\"Save your name and age to me.txt\"",
+      "animation": "Timer ring",
+      "sfx": [],
+      "narration": "Your challenge: ask the user for their name and age, then save both into a file called me dot txt, one per line. Check for NULL, and close the file. Open it with cat to prove it worked."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 375,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 70, reading files",
+      "animation": "Xecxec waves, end card",
+      "sfx": [],
+      "narration": "Next episode: reading files, and getting our diary back. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    FILE *fp = fopen(\"notes/today.txt\", \"w\");\n\n    fprintf(fp, \"Hello file\\n\");\n    fclose(fp);\n\n    printf(\"Saved!\\n\");\n    return 0;\n}",
+    "error": "No compiler error or warning. When the `notes` folder does not exist, the program crashes before printing anything (Linux shows `Segmentation fault`; on Windows the program stops silently with a non-zero exit code). On screen: \"your crash message may differ\".",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    FILE *fp = fopen(\"notes/today.txt\", \"w\");\n\n    if (fp == NULL) {\n        perror(\"notes/today.txt\");\n        return 1;\n    }\n\n    fprintf(fp, \"Hello file\\n\");\n    fclose(fp);\n\n    printf(\"Saved!\\n\");\n    return 0;\n}",
+    "why": "`fopen` returns `NULL` when it cannot open the file, and passing `NULL` to `fprintf` crashes the program."
+  },
+  "pun": "Why did the file feel so calm? Because it finally got closure.",
+  "challenge": "Read the user's name and age, and save them to `me.txt` as `Name: ...` and `Age: ...` on two lines.",
+  "challengeAnswer": "(worked example)\nchar name[50];\nint age;\nprintf(\"Name: \");\nscanf(\"%49s\", name);\nprintf(\"Age: \");\nscanf(\"%d\", &age);\n\nFILE *fp = fopen(\"me.txt\", \"w\");\nif (fp == NULL) {\n    printf(\"Could not open me.txt\\n\");\n    return 1;\n}\nfprintf(fp, \"Name: %s\\nAge: %d\\n\", name, age);\nfclose(fp);\nprintf(\"Saved to me.txt\\n\");",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Why Did My Score Reset to 0?",
+      "hook": "\"score = 950\" turning into \"score = 0\"",
+      "script": "You score 950, close the program, open it again: 0. Variables live in RAM, and RAM is wiped when the program ends. To keep data, write it to a file on the disk. That's file handling in C. Full episode on Koding Konkani.",
+      "onScreen": "950 to 0?! / RAM FORGETS / FILES REMEMBER",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 20,
+      "caption": "Make your data survive a restart.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "filehandling",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Writing a File in 30 Seconds",
+      "hook": "A file icon with text typing into it",
+      "script": "Three steps. Open: FILE star fp equals fopen, file name, \"w\". Check: if fp is NULL, stop. Write: fprintf, fp, then your text, just like printf. Then close with fclose. \"w\" wipes the file first, \"a\" adds to the end.",
+      "onScreen": "OPEN / CHECK / WRITE / CLOSE",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "Four steps to save anything.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "fopen",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "My Program Crashed Writing a File",
+      "hook": "Crash SFX and a NULL box",
+      "script": "This program crashes before it prints anything. Why? The folder \"notes\" doesn't exist, so fopen returns NULL. Then fprintf writes to NULL. Crash. Always check: if fp equals NULL, use perror to print the reason, and return 1.",
+      "onScreen": "CRASH! / fopen = NULL / ALWAYS CHECK",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 30,
+      "caption": "The one check every file program needs.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "filehandling"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: Closure",
+      "hook": "Xecxec closing a diary with a sigh",
+      "script": "Why did the file feel so calm? Because it finally got closure.",
+      "onScreen": "fclose(fp); CLOSURE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 10,
+      "caption": "Always close your files. Emotionally too.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "\"w\" or \"a\"?",
+      "hook": "Two cards: \"w\" and \"a\"",
+      "script": "Quiz. You want to keep a daily log, adding one line each day without losing old ones. Which mode: \"w\" or \"a\"? Answer: \"a\", append. \"w\" would wipe yesterday's log every time.",
+      "onScreen": "\"w\" OR \"a\"? / ANSWER: \"a\"",
+      "fromScenes": [
+        5,
+        9
+      ],
+      "lengthSec": 20,
+      "caption": "Don't wipe your diary by mistake.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "fopen"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    FILE *fp = fopen(\"diary.txt\", \"w\");\n\n    if (fp == NULL) {\n        printf(\"Could not open diary.txt\\n\");\n        return 1;\n    }\n\n    fprintf(fp, \"Day 1: Learned files in C\\n\");\n    fprintf(fp, \"Fish caught: %d\\n\", 7);\n    fputs(\"Mood: happy\\n\", fp);\n\n    fclose(fp);\n    printf(\"Saved to diary.txt\\n\");\n    return 0;\n}",
+      "output": "Saved to diary.txt",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    FILE *fp = fopen(\"diary.txt\", \"a\");\n\n    if (fp == NULL) {\n        printf(\"Could not open diary.txt\\n\");\n        return 1;\n    }\n\n    fprintf(fp, \"Day 2: Monsoon, stayed home and coded\\n\");\n\n    fclose(fp);\n    printf(\"Added a new line\\n\");\n    return 0;\n}",
+      "output": "Added a new line",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "notes/today.txt: No such file or directory"
+  }
+}

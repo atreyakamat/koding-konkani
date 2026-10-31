@@ -1,0 +1,347 @@
+{
+  "ep": 51,
+  "title": "Mini Project: Text Tools (Build Your Own Mini Word)",
+  "module": 7,
+  "lengthSec": 450,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "combine fgets, string functions and your own functions into one small program",
+    "change case with toupper and tolower from ctype.h",
+    "count words with isspace and an inWord flag",
+    "check that a destination has room before strcat to avoid a buffer overflow"
+  ],
+  "youtube": {
+    "title": "Build a Text Tool in C: Case Changer + Word Counter | EP 51",
+    "description": "Module 7 project: build a tiny word processor in C. Read a line safely, count words and characters, and switch it to UPPER or lower case with your own functions. Plus the buffer overflow that strcat will happily cause if you let it. 0:00 Mini Word · 0:20 Title · 0:25 The plan · 1:00 ctype.h · 1:40 The tool functions · 3:20 main · 4:20 Running it · 4:45 Pun · 4:50 Bug of the Day · 6:00 Module 7 recap · 6:30 Challenge · 7:10 Next module",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Mini Word"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The plan"
+      },
+      {
+        "t": "1:00",
+        "label": "ctype.h"
+      },
+      {
+        "t": "1:40",
+        "label": "The tool functions"
+      },
+      {
+        "t": "3:20",
+        "label": "main"
+      },
+      {
+        "t": "4:20",
+        "label": "Running it"
+      },
+      {
+        "t": "4:45",
+        "label": "Pun"
+      },
+      {
+        "t": "4:50",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:00",
+        "label": "Module 7 recap"
+      },
+      {
+        "t": "6:30",
+        "label": "Challenge"
+      },
+      {
+        "t": "7:10",
+        "label": "Next module"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "c mini project",
+      "string project in c",
+      "toupper tolower c",
+      "word counter in c",
+      "ctype.h",
+      "buffer overflow",
+      "strings in c",
+      "learn c",
+      "c for beginners",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "BUILD MINI WORD",
+      "visual": "big text \"BUILD MINI WORD\"; a retro text editor window with \"KEEP CODING\" in apricot; Xecxec typing with both claws; toolbar buttons Aa, abc, #words",
+      "pose": "Xecxec typing with both claws"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A line is typed; word count, UPPER and lower versions appear",
+      "animation": "Text flips case with a flash; typewriter clacks",
+      "sfx": [],
+      "narration": "Every word processor can count your words and switch your text to capitals. Today you build that yourself, in C, using everything from this module. Type a line, and your program tells you how many words it has, then shouts it in UPPER case, then whispers it in lower case. Your own mini Word."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 51 · MINI PROJECT: TEXT TOOLS",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 51. Mini project: text tools."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 35,
+      "onScreen": "Plan: read line (EP 48), count words (EP 50), length (EP 49), change case (new)",
+      "animation": "Four blocks snap together like Lego; snap SFX",
+      "sfx": [],
+      "narration": "Here is the plan. Step one: read a whole line safely with fgets, from EP 48. Step two: count words with the inWord flag from EP 50's challenge. Step three: get the length with strlen from EP 49. Step four, the new part: change the case. And we will put each tool in its own function, like we did with arrays in EP 46."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 60,
+      "lengthSec": 40,
+      "onScreen": "ctype.h: toupper('a') = 'A', tolower('G') = 'g', isspace(' ') = true",
+      "animation": "Letters bounce between small and capital; boing",
+      "sfx": [],
+      "narration": "For case, C has another header: ctype dot h. It works on one character at a time. toupper of small a gives capital A. tolower of capital G gives small g. If the char is not a letter, like a space or a comma, they give it back unchanged. And isspace tells you if a char is a space, a tab or a newline. That is better than checking for a space only."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 100,
+      "lengthSec": 100,
+      "onScreen": "Lines 1–28 of ep51_texttools.c: the three functions",
+      "animation": "Line highlights; tracker shows i, s[i], words, inWord",
+      "sfx": [],
+      "narration": "Let's read the functions. [HL 1] Lines one to three include stdio, string and ctype. [HL 5] Line five, toUpperCase takes a char array s. No size needed this time. Why? [HL 6] Because line six loops until backslash zero. A string carries its own stop sign. [HL 7] Line seven: s i equals toupper of s i. Each letter is replaced by its capital. [TRACK i=0 s[i]='K'] And since arrays are passed by location, EP 46, this changes the caller's text. [HL 11] Lines eleven to fifteen, toLowerCase, the same idea with tolower. [HL 17] Line seventeen, countWords returns an int. [HL 18] words and inWord both start at zero. [TRACK words=0 inWord=0] [HL 19] Line nineteen, loop to backslash zero. [HL 20] Line twenty: if this char is a space, [HL 21] we are between words, so inWord is zero. [HL 22] Line twenty-two: else if we are not already in a word, exclamation mark inWord, [HL 23] then a new word has just started. inWord becomes one, [HL 24] and words goes up. [TRACK words=1 inWord=1] Extra spaces never start a new word, so they never fool the count. [HL 27] Line twenty-seven returns the total.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nvoid toUpperCase(char s[]) {\n    for (int i = 0; s[i] != '\\0'; i++) {\n        s[i] = toupper(s[i]);\n    }\n}\n\nvoid toLowerCase(char s[]) {\n    for (int i = 0; s[i] != '\\0'; i++) {\n        s[i] = tolower(s[i]);\n    }\n}\n\nint countWords(char s[]) {\n    int words = 0, inWord = 0;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        if (isspace(s[i])) {\n            inWord = 0;\n        } else if (!inWord) {\n            inWord = 1;\n            words++;\n        }\n    }\n    return words;\n}\n\nint main() {\n    char text[100];\n\n    printf(\"Type a line: \");\n    fgets(text, sizeof(text), stdin);\n    text[strcspn(text, \"\\n\")] = '\\0';\n\n    printf(\"Words: %d\\n\", countWords(text));\n    printf(\"Letters and symbols: %zu\\n\", strlen(text));\n\n    toUpperCase(text);\n    printf(\"UPPER: %s\\n\", text);\n\n    toLowerCase(text);\n    printf(\"lower: %s\\n\", text);\n    return 0;\n}",
+        "output": "Type a line: Keep Coding says Xecxec in Goa\nWords: 6\nLetters and symbols: 30\nUPPER: KEEP CODING SAYS XECXEC IN GOA\nlower: keep coding says xecxec in goa"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 200,
+      "lengthSec": 60,
+      "onScreen": "Lines 30–46: main",
+      "animation": "Line highlights; tracker shows text",
+      "sfx": [],
+      "narration": "Now main. [HL 31] Line thirty-one, text with a hundred chars. [HL 34] Line thirty-four, fgets reads the line, never more than a hundred bytes. [HL 35] Line thirty-five, strcspn removes the newline, as in EP 48. [TRACK text=\"Keep Coding says Xecxec in Goa\"] [HL 37] Line thirty-seven prints the word count by calling countWords. [HL 38] Line thirty-eight prints strlen, the number of characters, spaces included. [HL 40] Line forty calls toUpperCase, [TRACK text=\"KEEP CODING SAYS XECXEC IN GOA\"] [HL 41] and line forty-one prints the result. [HL 43] Lines forty-three and forty-four do the same for lower case. [TRACK text=\"keep coding says xecxec in goa\"]",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nvoid toUpperCase(char s[]) {\n    for (int i = 0; s[i] != '\\0'; i++) {\n        s[i] = toupper(s[i]);\n    }\n}\n\nvoid toLowerCase(char s[]) {\n    for (int i = 0; s[i] != '\\0'; i++) {\n        s[i] = tolower(s[i]);\n    }\n}\n\nint countWords(char s[]) {\n    int words = 0, inWord = 0;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        if (isspace(s[i])) {\n            inWord = 0;\n        } else if (!inWord) {\n            inWord = 1;\n            words++;\n        }\n    }\n    return words;\n}\n\nint main() {\n    char text[100];\n\n    printf(\"Type a line: \");\n    fgets(text, sizeof(text), stdin);\n    text[strcspn(text, \"\\n\")] = '\\0';\n\n    printf(\"Words: %d\\n\", countWords(text));\n    printf(\"Letters and symbols: %zu\\n\", strlen(text));\n\n    toUpperCase(text);\n    printf(\"UPPER: %s\\n\", text);\n\n    toLowerCase(text);\n    printf(\"lower: %s\\n\", text);\n    return 0;\n}",
+        "output": "Type a line: Keep Coding says Xecxec in Goa\nWords: 6\nLetters and symbols: 30\nUPPER: KEEP CODING SAYS XECXEC IN GOA\nlower: keep coding says xecxec in goa"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 260,
+      "lengthSec": 25,
+      "onScreen": "gcc ep51_texttools.c -o ep51 then ./ep51",
+      "animation": "Input in apricot; four result lines print",
+      "sfx": [],
+      "narration": "Compile and run. Type: Keep Coding says Xecxec in Goa. Words: 6. Letters and symbols: 30, because the five spaces count too. Then the UPPER line, then the lower line. Your mini Word works."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 285,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the lowercase letter go to the gym? It wanted to become a capital."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 290,
+      "lengthSec": 70,
+      "onScreen": "strcat into greeting[10]; letters spill past the end",
+      "animation": "Letters overflow the boxes like a monsoon drain; siren SFX",
+      "sfx": [],
+      "narration": "Our program was careful with sizes. Here is what happens when you are not. greeting is char ten, holding Hello comma space. That is seven chars plus backslash zero. Now strcat greeting with Xecxec the Crab, fifteen more letters. Twenty-three bytes into a ten-byte array. Plain gcc gives no error and no warning. On my test machine it even printed the full greeting, as if nothing was wrong. That is the trap. The extra letters were written over memory that does not belong to greeting. That is a buffer overflow, the same danger as gets in EP 48. Sometimes it looks fine, sometimes it crashes, sometimes it quietly breaks another variable. With optimisation and dash Wall on, GCC can catch it: it warns that the write is out of the bounds of greeting, and the program stops with: buffer overflow detected, terminated. Your exact message depends on your system. The fix: make the destination big enough, char thirty, and check the room first: if strlen greeting plus strlen name is less than sizeof greeting, then strcat."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 360,
+      "lengthSec": 30,
+      "onScreen": "Module 7 recap: \\0, fgets not gets, string.h, loops to \\0, leave room",
+      "animation": "Five checkmarks tick in mint",
+      "sfx": [],
+      "narration": "Module 7 in five lines. One: a string is a char array ending in backslash zero. Two: read lines with fgets, never gets. Three: use string dot h to measure, copy, join and compare; never equals-equals. Four: loop through a string until backslash zero. Five: always leave room, for the stop sign and for anything you add."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 390,
+      "lengthSec": 40,
+      "onScreen": "Add a Title Case tool",
+      "animation": "\"kEEP coding\" turns into \"Keep Coding\"; ticking clock",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Your challenge. Add a fourth tool: toTitleCase. It makes the first letter of each word capital and every other letter small. So k E E P space coding becomes Keep Coding. Hint: reuse the idea of the inWord flag. Call it newWord, start it at one, and set it back to one after every space."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 430,
+      "lengthSec": 20,
+      "onScreen": "Next: Module 8 Pointers, EP 52",
+      "animation": "Lilac arrows point at boxes; Xecxec points at the camera; sign-off",
+      "sfx": [],
+      "narration": "That is the end of Module 7. Next, the module everyone fears, and the one that will finally explain all those \"location\" hints we kept giving you. Module 8: pointers. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char greeting[10] = \"Hello, \";\n    char name[] = \"Xecxec the Crab\";\n\n    strcat(greeting, name);\n    printf(\"%s\\n\", greeting);\n    return 0;\n}",
+    "error": "Plain `gcc overflow.c -o overflow`: no error, no warning, and on my test machine the output even looked right (on screen: \"looks fine, is not fine\"):\n\nHello, Xecxec the Crab\n\nWith `gcc -Wall -O2 overflow.c -o overflow` (Linux GCC 13 with glibc; Windows wording and behaviour may differ), GCC warns and the program aborts:\n\nIn function 'strcat',\n    inlined from 'main' at overflow.c:8:5:\n...: warning: '__builtin___strcat_chk' forming offset [10, 22] is out of the bounds [0, 10] of object 'greeting' with type 'char[10]' [-Warray-bounds=]\noverflow.c:5:10: note: 'greeting' declared here\n    5 |     char greeting[10] = \"Hello, \";\n      |          ^~~~~~~~\n*** buffer overflow detected ***: terminated",
+    "fixed": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char greeting[30] = \"Hello, \";\n    char name[] = \"Xecxec the Crab\";\n\n    if (strlen(greeting) + strlen(name) < sizeof(greeting)) {\n        strcat(greeting, name);\n    }\n    printf(\"%s\\n\", greeting);\n    return 0;\n}",
+    "why": "strcat never checks the destination's size, so 22 letters plus '\\0' written into 10 bytes spill into memory that belongs to something else."
+  },
+  "pun": "Why did the lowercase letter go to the gym? It wanted to become a capital.",
+  "challenge": "Add void toTitleCase(char s[]) that capitalises the first letter of each word and lowercases the rest. \"kEEP coding SAYS xecxec\" becomes \"Keep Coding Says Xecxec\".",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n#include <ctype.h>\n\nvoid toTitleCase(char s[]) {\n    int newWord = 1;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        if (isspace(s[i])) {\n            newWord = 1;\n        } else if (newWord) {\n            s[i] = toupper(s[i]);\n            newWord = 0;\n        } else {\n            s[i] = tolower(s[i]);\n        }\n    }\n}\n\nint main() {\n    char text[] = \"kEEP coding SAYS xecxec\";\n    toTitleCase(text);\n    printf(\"%s\\n\", text);\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "I Built My Own Mini Word",
+      "hook": "A line flips to ALL CAPS with a flash.",
+      "script": "I built my own mini Word in C. Type a line, and it counts the words, then switches it to upper case and lower case. About forty lines of code, using only what we learned in the strings module. Full build on the channel.",
+      "onScreen": "MINI WORD IN 40 LINES OF C",
+      "fromScenes": [
+        1,
+        7
+      ],
+      "lengthSec": 22,
+      "caption": "Your first real text tool in C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cproject",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Change Case in 30 Seconds",
+      "hook": "\"a\" jumps up and becomes \"A\".",
+      "script": "To change case in C, include ctype dot h. toupper turns a small letter into a capital. tolower does the opposite. Anything that is not a letter comes back unchanged. Loop through the string until backslash zero, and replace each char with toupper of itself.",
+      "onScreen": "s[i] = toupper(s[i]);",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Upper case, lower case, one loop.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctype",
+        "cprogrammingtutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "It Worked... But It Was Wrong",
+      "hook": "Terminal shows a perfect greeting, then a red \"buffer overflow detected\".",
+      "script": "This program printed the right answer, and it was still broken. I joined fifteen letters onto a ten-byte array with strcat. strcat never checks the size, so the extra letters landed in memory that is not mine. Sometimes it works, sometimes it crashes. Make the array bigger and check the room first.",
+      "onScreen": "LOOKS FINE ≠ IS FINE",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 40,
+      "caption": "The scariest bugs are the quiet ones.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "bufferoverflow"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Become a Capital",
+      "hook": "A tiny \"a\" lifting a dumbbell, growing into \"A\".",
+      "script": "Why did the lowercase letter go to the gym? It wanted to become a capital.",
+      "onScreen": "IT WANTED TO BECOME A CAPITAL",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Gains, but make it ASCII.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "How Many Words?",
+      "hook": "\"\"  hello   goa \" with extra spaces: how many words?\"",
+      "script": "Two spaces, hello, three spaces, goa, one space. How many words does our counter report? Pause and guess. Two. A new word only starts when a letter follows a space, so extra spaces never add to the count.",
+      "onScreen": "\"  hello   goa \" → 2",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 20,
+      "caption": "Counting spaces would get this wrong.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "strings"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <string.h>\n#include <ctype.h>\n\nvoid toUpperCase(char s[]) {\n    for (int i = 0; s[i] != '\\0'; i++) {\n        s[i] = toupper(s[i]);\n    }\n}\n\nvoid toLowerCase(char s[]) {\n    for (int i = 0; s[i] != '\\0'; i++) {\n        s[i] = tolower(s[i]);\n    }\n}\n\nint countWords(char s[]) {\n    int words = 0, inWord = 0;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        if (isspace(s[i])) {\n            inWord = 0;\n        } else if (!inWord) {\n            inWord = 1;\n            words++;\n        }\n    }\n    return words;\n}\n\nint main() {\n    char text[100];\n\n    printf(\"Type a line: \");\n    fgets(text, sizeof(text), stdin);\n    text[strcspn(text, \"\\n\")] = '\\0';\n\n    printf(\"Words: %d\\n\", countWords(text));\n    printf(\"Letters and symbols: %zu\\n\", strlen(text));\n\n    toUpperCase(text);\n    printf(\"UPPER: %s\\n\", text);\n\n    toLowerCase(text);\n    printf(\"lower: %s\\n\", text);\n    return 0;\n}",
+      "output": "Type a line: Keep Coding says Xecxec in Goa\nWords: 6\nLetters and symbols: 30\nUPPER: KEEP CODING SAYS XECXEC IN GOA\nlower: keep coding says xecxec in goa",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Hello, Xecxec the Crab"
+  }
+}

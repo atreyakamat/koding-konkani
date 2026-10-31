@@ -1,0 +1,357 @@
+{
+  "ep": 80,
+  "title": "Counting sort",
+  "module": 12,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "sort small whole-number ranges by counting instead of comparing",
+    "write counting_sort with a count array and a rebuild loop",
+    "explain O(n + k) time and O(k) space, where k is the range of values",
+    "handle negative values with an offset"
+  ],
+  "youtube": {
+    "title": "Sorting 1,000 Exam Marks Instantly | Counting Sort EP 80",
+    "description": "Every sort so far compared numbers. Counting sort never compares anything: it just counts how many of each value there are, like tallying fish by type at the market. We animate it, write it in C, and break it with a negative number. 0:00 Tally the fish · 0:20 Title · 0:25 The idea · 0:55 Counting phase, animated · 1:40 Rebuild phase, animated · 2:20 Step trace · 2:45 Code · 3:50 Run it · 4:05 Pun · 4:10 When to use it · 4:50 Bug of the Day · 5:55 Challenge · 6:15 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Tally the fish"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The idea"
+      },
+      {
+        "t": "0:55",
+        "label": "Counting phase, animated"
+      },
+      {
+        "t": "1:40",
+        "label": "Rebuild phase, animated"
+      },
+      {
+        "t": "2:20",
+        "label": "Step trace"
+      },
+      {
+        "t": "2:45",
+        "label": "Code"
+      },
+      {
+        "t": "3:50",
+        "label": "Run it"
+      },
+      {
+        "t": "4:05",
+        "label": "Pun"
+      },
+      {
+        "t": "4:10",
+        "label": "When to use it"
+      },
+      {
+        "t": "4:50",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:55",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:15",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "counting sort",
+      "counting sort in c",
+      "non comparison sort",
+      "sorting algorithms",
+      "O(n + k)",
+      "c programming",
+      "algorithms for beginners",
+      "learn c",
+      "koding konkani",
+      "dsa in c",
+      "sort exam marks"
+    ],
+    "thumbnail": {
+      "text": "NO COMPARING!",
+      "visual": "big text \"NO COMPARING!\"; a row of tally boxes 0–9 with tick marks; Xecxec with a clipboard and pencil; Dark blue background, Butter text.",
+      "pose": "Xecxec with a clipboard and pencil"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Fish market: tally sheet \"mackerel IIII, pomfret II, kingfish I\"",
+      "animation": "Pencil scratch per tally",
+      "sfx": [],
+      "narration": "At the fish market, the auction man doesn't sort fish by comparing them two at a time. He keeps a tally: four mackerel, two pomfret, one kingfish. Then he reads the tally in order. No comparisons at all. Today we sort numbers the same way."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 80 · COUNTING SORT",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 80. Counting sort."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 30,
+      "onScreen": "\"Values are small whole numbers 0–9? Just count them.\"",
+      "animation": "Ten empty buckets labelled 0–9 slide in",
+      "sfx": [],
+      "narration": "Every sort so far worked by comparing two numbers. Counting sort doesn't compare. If we know all the values are small whole numbers, say 0 to 9, we make ten buckets, one per value. We go through the array once and count how many of each value we see. Then we walk the buckets from 0 to 9 and write each value out as many times as we counted it."
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 55,
+      "lengthSec": 45,
+      "onScreen": "Bars [5, 2, 9, 1, 6, 3] above a count row 0–9; steps C1–C6",
+      "animation": "Each bar flies into its bucket (pastel blue); bucket number ticks up in butter; plop SFX",
+      "sfx": [],
+      "narration": "Our array: 5, 2, 9, 1, 6, 3. 5: bucket 5 becomes 1. 2: bucket 2 becomes 1. 9, 1, 6, 3, same thing. One pass, and our count row reads: nothing in 0, one in 1, one in 2, one in 3, nothing in 4, one each in 5, 6 and 9."
+    },
+    {
+      "id": 5,
+      "template": "algorithm-bars",
+      "startSec": 100,
+      "lengthSec": 40,
+      "onScreen": "Rebuild: walk buckets 0–9; steps R1–R6",
+      "animation": "Empty buckets flash grey and skip; non-empty bucket pops a bar back into slot k (mint); pop SFX",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Now walk the buckets in order. Bucket 0 is empty, skip. Bucket 1 has one: write 1. Bucket 2: write 2. Bucket 3: write 3. Bucket 4: empty. 5, 6, then 7 and 8 empty, then 9. The array is 1, 2, 3, 5, 6, 9. We never compared two numbers."
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 140,
+      "lengthSec": 25,
+      "onScreen": "Step-trace table (below)",
+      "animation": "Rows reveal",
+      "sfx": [],
+      "narration": "Here's the full trace: six counting steps and six writes, plus a quick look at all ten buckets. If a value appeared three times, its bucket would say 3 and we'd write it three times."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 65,
+      "onScreen": "counting.c (33 lines); tracker for i, count[], v, k",
+      "animation": "[HL]/[TRACK] cues; count row stays visible",
+      "sfx": [],
+      "narration": "[HL 3] MAX_MARK is the largest value we allow, 9. A #define keeps it in one place, so changing the range means changing one line. [HL 11] counting_sort takes the array and its length. [HL 12] The count array has MAX_MARK plus 1 slots, 0 to 9, all set to zero by the equals brace zero. [TRACK count=0,0,0,0,0,0,0,0,0,0] [HL 14] One pass over the input. [HL 15] count of a[i], plus plus. The value itself is used as the index. [TRACK i=0 count[5]=1] That's the whole trick. [HL 17] k is where we write next. [HL 18] Walk every possible value v from 0 to MAX_MARK. [HL 19] While this bucket still has items, [HL 20] write v into the array and move k forward, [TRACK v=1 k=1] [HL 21] and take one out of the bucket. [HL 30] In main, sort and [HL 31] print.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\n#define MAX_MARK 9\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid counting_sort(int a[], int n) {\n    int count[MAX_MARK + 1] = {0};\n\n    for (int i = 0; i < n; i++)\n        count[a[i]]++;\n\n    int k = 0;\n    for (int v = 0; v <= MAX_MARK; v++) {\n        while (count[v] > 0) {\n            a[k++] = v;\n            count[v]--;\n        }\n    }\n}\n\nint main(void) {\n    int marks[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(marks) / sizeof(marks[0]);\n\n    counting_sort(marks, n);\n    print_array(marks, n);\n    return 0;\n}",
+        "output": "$ gcc counting.c -o counting\n$ ./counting\n1 2 3 5 6 9"
+      }
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 230,
+      "lengthSec": 15,
+      "onScreen": "gcc and 1 output line",
+      "animation": "Line types out",
+      "sfx": [],
+      "narration": "Compile and run: 1, 2, 3, 5, 6, 9."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why is counting sort so good at maths? It never loses count."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 250,
+      "lengthSec": 40,
+      "onScreen": "Card: time O(n + k), space O(k); good for marks 0–100, ages, dice; bad for phone numbers (k too big) and decimals",
+      "animation": "Green ticks, red crosses",
+      "sfx": [],
+      "narration": "Counting sort takes one pass over n items and one pass over k buckets, so it's O(n + k). If the range is small, that beats O(n log n). Sorting a thousand exam marks from 0 to 100 needs just 101 buckets: almost instant. But if k is huge, like phone numbers, you'd need billions of buckets, so it's useless there. It also only works for whole numbers, or things you can turn into small whole numbers. It can't sort decimals or names directly."
+    },
+    {
+      "id": 11,
+      "template": "bug-of-the-day",
+      "startSec": 290,
+      "lengthSec": 65,
+      "onScreen": "Temperatures with -2; output 0 1 3 3 5 (one value missing)",
+      "animation": "Red siren; -2 flies left of bucket 0 into a dark \"not yours\" box",
+      "sfx": [],
+      "narration": "Today's bug: negative numbers break it. We sort morning temperatures in Goa's hill stations: 3, minus 2, 5, 3, 1, 0. The code does count of temps i, plus plus. For minus 2, that's count of minus 2: an index before the start of the array. C doesn't check. It quietly writes into memory that isn't ours. The output on our machine: 0, 1, 3, 3, 5. The minus 2 has vanished, and on another machine it could crash. The fix: shift every value by an offset. If the smallest allowed value is minus 5, store each value at index value minus MIN_T, so minus 5 goes to bucket 0. When writing out, loop v from MIN_T to MAX_T and read count of v minus MIN_T. Now the output is minus 2, 0, 1, 3, 3, 5."
+    },
+    {
+      "id": 12,
+      "template": "challenge",
+      "startSec": 355,
+      "lengthSec": 20,
+      "onScreen": "\"Sort exam grades 0–100\"",
+      "animation": "Timer",
+      "sfx": [],
+      "narration": "Your challenge: change counting_sort to sort exam grades from 0 to 100. Test it on 78, 45, 100, 0, 45, 92, 63."
+    },
+    {
+      "id": 13,
+      "template": "outro",
+      "startSec": 375,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 81 Sorting showdown",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "We now have six sorts. Next episode, we race them all on ten thousand numbers with a real stopwatch. Place your bets. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int count[10] = {0};\n    int temps[] = {3, -2, 5, 3, 1, 0};\n    int n = 6;\n\n    for (int i = 0; i < n; i++)\n        count[temps[i]]++;\n\n    for (int v = 0; v < 10; v++)\n        for (int c = 0; c < count[v]; c++)\n            printf(\"%d \", v);\n    printf(\"\\n\");\n    return 0;\n}",
+    "error": "No error or warning from GCC. Wrong output on our test machine (undefined behaviour, so on screen: \"your output may differ, or it may crash\"):\n\n0 1 3 3 5",
+    "fixed": "#include <stdio.h>\n\n#define MIN_T (-5)\n#define MAX_T 9\n\nint main(void) {\n    int count[MAX_T - MIN_T + 1] = {0};\n    int temps[] = {3, -2, 5, 3, 1, 0};\n    int n = 6;\n\n    for (int i = 0; i < n; i++)\n        count[temps[i] - MIN_T]++;\n\n    for (int v = MIN_T; v <= MAX_T; v++)\n        for (int c = 0; c < count[v - MIN_T]; c++)\n            printf(\"%d \", v);\n    printf(\"\\n\");\n    return 0;\n}",
+    "why": "count[-2] is outside the array, so the -2 is written into memory that is not count and never read back; subtracting the minimum maps every value to a valid index 0 … k-1."
+  },
+  "pun": "Why is counting sort so good at maths? It never loses count.",
+  "challenge": "Make counting_sort handle exam grades 0–100 and sort 78, 45, 100, 0, 45, 92, 63.",
+  "challengeAnswer": "Change `#define MAX_MARK 9` to `#define MAX_MARK 100` (count gets 101 slots) and use `int marks[] = {78, 45, 100, 0, 45, 92, 63};`. Output: `0 45 45 63 78 92 100`.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A sort that never compares",
+      "hook": "\"This sort never compares two numbers.\"",
+      "script": "The fish market auction man doesn't compare fish two at a time. He tallies them: four mackerel, two pomfret. Then reads the tally in order. That's counting sort, and for small ranges like exam marks, it's faster than any comparison sort.",
+      "onScreen": "ZERO COMPARISONS",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 20,
+      "caption": "Tally marks beat quick sort (sometimes).",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "countingsort",
+        "sorting"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Counting sort in 30 seconds",
+      "hook": "\"Count. Then write.\"",
+      "script": "Make one bucket per possible value. Pass over the array and add one to each value's bucket. Then walk the buckets in order and write each value as many times as it was counted. Time: O(n plus k), where k is the range. Brilliant for marks 0 to 100. Useless for phone numbers.",
+      "onScreen": "O(n + k)",
+      "fromScenes": [
+        4,
+        5,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Counting sort, animated.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "countingsort",
+        "dsa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Minus 2 vanished",
+      "hook": "\"I sorted six temperatures and got five.\"",
+      "script": "count of temps i, plus plus. For minus 2, that's count of minus 2, before the start of the array. C doesn't check, so it writes into someone else's memory and the value disappears. Fix: subtract the minimum, so minus 5 maps to bucket 0.",
+      "onScreen": "INDEX = VALUE - MIN",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 35,
+      "caption": "Negative index, silent bug.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "countingsort"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Never loses count",
+      "hook": "\"Why is counting sort good at maths?\"",
+      "script": "Why is counting sort so good at maths? It never loses count.",
+      "onScreen": "IT NEVER LOSES COUNT",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 10,
+      "caption": "Topper energy.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Grades 0 to 100",
+      "hook": "\"How many buckets do you need?\"",
+      "script": "You want to counting-sort exam grades from 0 to 100. How many buckets does the count array need: 100, 101, or 1000? Comment your answer, then sort 78, 45, 100, 0, 45, 92, 63.",
+      "onScreen": "100? 101? 1000?",
+      "fromScenes": [
+        12
+      ],
+      "lengthSec": 20,
+      "caption": "Off-by-one check.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "quiz",
+        "countingsort"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\n#define MAX_MARK 9\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid counting_sort(int a[], int n) {\n    int count[MAX_MARK + 1] = {0};\n\n    for (int i = 0; i < n; i++)\n        count[a[i]]++;\n\n    int k = 0;\n    for (int v = 0; v <= MAX_MARK; v++) {\n        while (count[v] > 0) {\n            a[k++] = v;\n            count[v]--;\n        }\n    }\n}\n\nint main(void) {\n    int marks[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(marks) / sizeof(marks[0]);\n\n    counting_sort(marks, n);\n    print_array(marks, n);\n    return 0;\n}",
+      "output": "$ gcc counting.c -o counting\n$ ./counting\n1 2 3 5 6 9",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "-2 0 1 3 3 5"
+  }
+}

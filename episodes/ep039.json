@@ -1,0 +1,323 @@
+{
+  "ep": 39,
+  "title": "Recursion",
+  "module": 5,
+  "lengthSec": 410,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "explain recursion as a function that calls itself on a smaller problem",
+    "write a base case and a recursive case",
+    "trace `factorial(4)` on the call stack, going down and coming back up",
+    "recognise the crash caused by a missing base case"
+  ],
+  "youtube": {
+    "title": "A Function That Calls Itself: Recursion | C Programming EP 39",
+    "description": "Recursion sounds scary, but it's just a function that solves a small piece and asks itself to do the rest. We build a countdown and a factorial, watch every call pile up on the call stack, and crash a program on purpose by forgetting the base case. Chapters: 0:00 A function that calls itself · 0:20 The two rules · 1:10 Countdown · 2:05 Factorial · 3:15 The call stack · 4:20 Running it · 4:45 Bug of the Day · 5:55 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "A function that calls itself"
+      },
+      {
+        "t": "0:20",
+        "label": "The two rules"
+      },
+      {
+        "t": "1:10",
+        "label": "Countdown"
+      },
+      {
+        "t": "2:05",
+        "label": "Factorial"
+      },
+      {
+        "t": "3:15",
+        "label": "The call stack"
+      },
+      {
+        "t": "4:20",
+        "label": "Running it"
+      },
+      {
+        "t": "4:45",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:55",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "recursion in c",
+      "recursive function c",
+      "factorial recursion",
+      "base case",
+      "call stack",
+      "stack overflow",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "class 12 computer science",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "IT CALLS ITSELF",
+      "visual": "big text \"IT CALLS ITSELF\"; a function card holding a phone, calling a smaller copy of itself, which calls a smaller copy; Xecxec on the smallest phone; lilac background, tomato text",
+      "pose": "Xecxec on the smallest phone"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Queue at a bus stand: \"How many people are in front of me?\" Each person asks the one ahead",
+      "animation": "Whisper SFX passes down the line; answers come back up with counting pops",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "You're in a long queue at the Panjim bus stand and you want to know your position. You can't see the front. So you ask the person ahead: \"What's your position?\" They don't know either, so they ask the person ahead of them. This goes on until the very first person says, \"I'm number one.\" Then the answers come back: two, three, four, all the way to you. That is recursion."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 39 · RECURSION",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 39. Recursion."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 50,
+      "onScreen": "Two rules: 1. Base case (when to stop) 2. Recursive case (call yourself with a smaller problem)",
+      "animation": "Rule cards stamp down; stop-sign icon on rule 1",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "A recursive function is a function that calls itself. Every recursive function needs two parts. First, a base case: a simple situation where the answer is known and the function stops calling itself. In the queue, it's the first person saying \"I'm number one\". Second, a recursive case: the function solves a smaller version of the same problem by calling itself, and then uses that answer. Every call must move closer to the base case. Without a base case, it never stops."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 70,
+      "lengthSec": 55,
+      "onScreen": "`recursion.c` lines 1–10: countdown",
+      "animation": "Butter highlights; each call draws a smaller card",
+      "sfx": [],
+      "narration": "Let's start simple. [HL 3] Line three: void countdown, int n. [HL 4] Line four: if n equals zero. That's our base case. [HL 5-6] Print \"Blast off!\" and return, which stops this call. [HL 8] Otherwise, line eight prints n. [HL 9] Line nine: countdown of n minus one. The function calls itself with a smaller number. So countdown of 3 prints 3, then calls countdown of 2, which prints 2, then countdown of 1, which prints 1, then countdown of 0, which hits the base case and prints \"Blast off!\". Each call is one step closer to zero. No loop anywhere, but it behaves like one.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid countdown(int n) {\n    if (n == 0) {\n        printf(\"Blast off!\\n\");\n        return;\n    }\n    printf(\"%d\\n\", n);\n    countdown(n - 1);\n}\n\nint factorial(int n) {\n    if (n <= 1) {\n        return 1;               // base case\n    }\n    return n * factorial(n - 1); // recursive case\n}\n\nint main(void) {\n    countdown(3);\n    printf(\"4! = %d\\n\", factorial(4));\n    printf(\"5! = %d\\n\", factorial(5));\n    return 0;\n}",
+        "output": "3\n2\n1\nBlast off!\n4! = 24\n5! = 120"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 70,
+      "onScreen": "`recursion.c` lines 12–17: factorial",
+      "animation": "Butter highlights; tracker for n",
+      "sfx": [],
+      "narration": "Now a classic exam favourite: factorial. 4 factorial, written 4 with an exclamation mark, means 4 times 3 times 2 times 1, which is 24. Notice something: 4 factorial is 4 times 3 factorial. And 3 factorial is 3 times 2 factorial. The problem contains a smaller copy of itself. [HL 12] Line twelve: int factorial, int n. [HL 13-14] Lines thirteen and fourteen: if n is less than or equal to 1, return 1. That's the base case, because 1 factorial and 0 factorial are both 1. [HL 16] Line sixteen: return n times factorial of n minus 1. That's the recursive case. [TRACK n=4] For 4, it needs factorial of 3 first, so it waits.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid countdown(int n) {\n    if (n == 0) {\n        printf(\"Blast off!\\n\");\n        return;\n    }\n    printf(\"%d\\n\", n);\n    countdown(n - 1);\n}\n\nint factorial(int n) {\n    if (n <= 1) {\n        return 1;               // base case\n    }\n    return n * factorial(n - 1); // recursive case\n}\n\nint main(void) {\n    countdown(3);\n    printf(\"4! = %d\\n\", factorial(4));\n    printf(\"5! = %d\\n\", factorial(5));\n    return 0;\n}",
+        "output": "3\n2\n1\nBlast off!\n4! = 24\n5! = 120"
+      }
+    },
+    {
+      "id": 6,
+      "template": "memory-boxes",
+      "startSec": 195,
+      "lengthSec": 65,
+      "onScreen": "Call stack: frames for factorial(4), (3), (2), (1) stack up; then pop off with return values 1, 2, 6, 24",
+      "animation": "Stack-up thunk per frame; pop SFX; return values ride arrows up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "How does C keep track of all these waiting calls? With the call stack. Think of a stack of plates. factorial of 4 is called: a new frame, a plate, goes on the stack, holding its own n equals 4. It calls factorial of 3: another plate on top, with its own n equals 3. Then 2. Then 1. Remember EP 37: each call gets its own local variables, so the four n's never mix. Now factorial of 1 hits the base case and returns 1. Its plate comes off. factorial of 2 can now finish: 2 times 1 is 2. Plate off. factorial of 3: 3 times 2 is 6. Plate off. factorial of 4: 4 times 6 is 24. Last plate off, and 24 goes back to main. Going down, we pile up. Coming back, we multiply."
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 260,
+      "lengthSec": 20,
+      "onScreen": "Compile and run; 6 output lines",
+      "animation": "Typing SFX",
+      "sfx": [],
+      "narration": "Compile and run. 3, 2, 1, Blast off! 4 factorial equals 24. 5 factorial equals 120."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 280,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec dizzy",
+      "sfx": [],
+      "narration": "To understand recursion, you must first understand recursion."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 285,
+      "lengthSec": 70,
+      "onScreen": "`bug.c`: factorial with no base case; GCC warning; stack frames pile past the top of the screen; crash",
+      "animation": "Frames pile up faster and faster, screen shakes, crash sound; fix adds base case, mint tick",
+      "sfx": [],
+      "narration": "Today's bug: no base case. This factorial only has return n times factorial of n minus one. No stopping rule. Compile with dash Wall, and modern GCC catches it: warning, infinite recursion detected. It's only a warning, so the program still builds. Run it, and the calls go 5, 4, 3, 2, 1, 0, minus 1, minus 2, forever. Each call adds a plate to the stack, and the stack has a fixed size. When it runs out, the program crashes. This is called a stack overflow. On Linux or in the MSYS2 terminal you may see \"Segmentation fault\". In a Windows terminal, the program often just stops with no output at all. Either way, nothing prints. The fix: add the base case back. If n is less than or equal to 1, return 1. Rule for life: write the base case first, then the recursive case."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 355,
+      "lengthSec": 40,
+      "onScreen": "Challenge card: factorial of a number the user enters, up to 20",
+      "animation": "Timer ticks",
+      "sfx": [],
+      "narration": "Your challenge: ask the user for n and print n factorial using recursion. Try 10. Then try 20. Hint: 20 factorial is too big for an int. Remember long long from EP 09, and print it with percent l l d."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 395,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 40 · Recursion practice",
+      "animation": "Mirror inside a mirror; sign-off jingle",
+      "sfx": [],
+      "narration": "Next episode, we practise: Fibonacci, power and sum of digits, plus why some recursion is painfully slow. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint factorial(int n) {\n    return n * factorial(n - 1);\n}\n\nint main(void) {\n    printf(\"%d\\n\", factorial(5));\n    return 0;\n}",
+    "error": "`gcc -Wall bug.c -o bug` (GCC 12 and newer):\n\nbug.c: In function 'factorial':\nbug.c:3:5: warning: infinite recursion detected [-Winfinite-recursion]\n    3 | int factorial(int n) {\n      |     ^~~~~~~~~\nbug.c:4:16: note: recursive call\n    4 |     return n * factorial(n - 1);\n      |                ^~~~~~~~~~~~~~~~\n\nRunning it crashes with a stack overflow and prints nothing. In the MSYS2 or Linux terminal you may see `Segmentation fault`; in PowerShell the program usually ends silently (on screen: \"the crash message depends on your terminal\").",
+    "fixed": "#include <stdio.h>\n\nint factorial(int n) {\n    if (n <= 1) {\n        return 1;\n    }\n    return n * factorial(n - 1);\n}\n\nint main(void) {\n    printf(\"%d\\n\", factorial(5));\n    return 0;\n}",
+    "why": "without a base case the function never stops calling itself, and every call uses stack space until the stack runs out."
+  },
+  "pun": "To understand recursion, you must first understand recursion.",
+  "challenge": "Read n from the user and print n! using a recursive function. It must work for n = 20 (use `long long` and `%lld`).",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nlong long factorial(int n) {\n    if (n <= 1) {\n        return 1;\n    }\n    return n * factorial(n - 1);\n}\n\nint main(void) {\n    int n;\n    printf(\"Enter n: \");\n    scanf(\"%d\", &n);\n    printf(\"%d! = %lld\\n\", n, factorial(n));\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A Function That Calls Itself",
+      "hook": "a long bus-stand queue whispering \"What's your position?\"",
+      "script": "You're in a queue and want your position. Ask the person ahead. They ask the person ahead. Until the first person says \"I'm number one\". Then the answers come back: two, three, four. That's recursion: a function that calls itself on a smaller problem, with a base case where it stops.",
+      "onScreen": "RECURSION = ASK THE NEXT PERSON",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 30,
+      "caption": "Recursion explained with a bus queue.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "recursion",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The Call Stack in 30 Seconds",
+      "hook": "four plates stacking up labelled factorial(4) to factorial(1)",
+      "script": "factorial of 4 calls factorial of 3, which calls 2, which calls 1. Each call is a plate on the stack, with its own n. factorial of 1 returns 1. Then the plates come off: 2 times 1 is 2, 3 times 2 is 6, 4 times 6 is 24. Going down, we pile up. Coming back, we multiply.",
+      "onScreen": "PILE UP · THEN MULTIPLY",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Watch recursion happen, plate by plate.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "computerscience",
+        "recursion"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Stack Overflow Bug",
+      "hook": "frames piling up past the top of the screen, screen shaking",
+      "script": "This factorial has no base case. It calls 5, 4, 3, 2, 1, 0, minus 1, and never stops. Every call takes stack space, until the stack runs out and the program crashes. A stack overflow. GCC even warns: infinite recursion detected. Fix: if n is less than or equal to 1, return 1. Base case first, always.",
+      "onScreen": "NO BASE CASE = CRASH",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "The real meaning of stack overflow.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "gcc",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "To Understand Recursion",
+      "hook": "Xecxec reading a book titled \"Recursion\" whose cover shows Xecxec reading the same book",
+      "script": "To understand recursion, you must first understand recursion.",
+      "onScreen": "FIRST UNDERSTAND RECURSION",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 10,
+      "caption": "Read this caption again.",
+      "hashtags": [
+        "codingmemes",
+        "programmerhumor",
+        "kodingkonkani",
+        "cprogramming",
+        "recursion"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: How Many Lines?",
+      "hook": "`countdown(3);` = how many lines?",
+      "script": "countdown prints n and calls itself with n minus 1, and prints \"Blast off!\" when n is 0. How many lines does countdown of 3 print? A: 3. B: 4. C: it never stops. The answer is B: 3, 2, 1 and Blast off.",
+      "onScreen": "3 · 4 · FOREVER?",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 25,
+      "caption": "Comment A, B or C before the reveal.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "recursion"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nvoid countdown(int n) {\n    if (n == 0) {\n        printf(\"Blast off!\\n\");\n        return;\n    }\n    printf(\"%d\\n\", n);\n    countdown(n - 1);\n}\n\nint factorial(int n) {\n    if (n <= 1) {\n        return 1;               // base case\n    }\n    return n * factorial(n - 1); // recursive case\n}\n\nint main(void) {\n    countdown(3);\n    printf(\"4! = %d\\n\", factorial(4));\n    printf(\"5! = %d\\n\", factorial(5));\n    return 0;\n}",
+      "output": "3\n2\n1\nBlast off!\n4! = 24\n5! = 120",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "120"
+  }
+}

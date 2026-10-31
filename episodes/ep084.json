@@ -1,0 +1,364 @@
+{
+  "ep": 84,
+  "title": "Project: Student Record System",
+  "module": 13,
+  "lengthSec": 480,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#D9C9FF"
+  },
+  "learningGoals": [
+    "combine a `typedef struct`, an array of structs, functions and binary files into one working program",
+    "build a menu loop that survives bad input",
+    "save records with `fwrite` and load them back with `fread` so data survives a restart",
+    "add a new feature (search) to an existing program"
+  ],
+  "youtube": {
+    "title": "Build a Student Record System in C | C Programming EP 84",
+    "description": "Your college office keeps student records. Today you build that system in C: add students, list them in a neat table, and keep them saved to a file even after you close the program. Full code included, explained line by line. Chapters: 0:00 Your college office, in C · 0:20 The plan · 0:55 The Student struct · 1:35 Saving and loading · 2:55 Adding a student · 4:00 Showing all · 4:35 The menu loop · 5:25 Demo · 6:10 Bug of the Day · 7:20 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Your college office, in C"
+      },
+      {
+        "t": "0:20",
+        "label": "The plan"
+      },
+      {
+        "t": "0:55",
+        "label": "The Student struct"
+      },
+      {
+        "t": "1:35",
+        "label": "Saving and loading"
+      },
+      {
+        "t": "2:55",
+        "label": "Adding a student"
+      },
+      {
+        "t": "4:00",
+        "label": "Showing all"
+      },
+      {
+        "t": "4:35",
+        "label": "The menu loop"
+      },
+      {
+        "t": "5:25",
+        "label": "Demo"
+      },
+      {
+        "t": "6:10",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "7:20",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c project",
+      "student record system in c",
+      "c mini project",
+      "struct and file handling c",
+      "fwrite fread c",
+      "menu driven program c",
+      "c programming project for students",
+      "learn c",
+      "koding konkani",
+      "class 12 computer project",
+      "c project with source code",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "BUILD THIS IN C",
+      "visual": "big text \"BUILD THIS IN C\"; a terminal table with Roll / Name / Marks rows and a floppy-disk save icon; Xecxec wearing a college office clerk's spectacles with a pen behind his ear; peach background, lilac accents",
+      "pose": "Xecxec wearing a college office clerk's spectacles with a pen behind his ear"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Finished program running: menu, add a student, table prints; program closed and reopened, data still there",
+      "animation": "Typing SFX; table rows slide in; \"still there!\" sparkle",
+      "sfx": [],
+      "narration": "This is your college office, in C. Add a student. Show everyone in a neat table. Close the program. Open it again, and the records are still there. By the end of this video, you will have built all of it yourself."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 84 · PROJECT: STUDENT RECORD SYSTEM",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 84. Project: student record system."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 35,
+      "onScreen": "Plan diagram: Student struct → array `list[50]` → functions (load, save, add, show) → file `students.dat`; small badges linking each part to its earlier episode (EP 34, 61, 62, 71)",
+      "animation": "Boxes pop in, arrows draw; tick SFX",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here's the plan. Each student is a struct with a roll number, a name and marks, like the ID card from EP 61. We keep up to 50 of them in an array of structs, the class register from EP 62. Four small functions do the work: load, save, add and show. And a binary file, students dot dat, keeps the data safe between runs, just like EP 71. Nothing new today. Every piece is something you already know. A project is just the pieces, put together."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "`students.c` lines 1–14",
+      "animation": "Butter highlights; struct drawn as an ID card",
+      "sfx": [],
+      "narration": "[HL 1-2] Lines one and two: stdio for input and output, string dot h for strcspn, which we'll use to clean the name. [HL 4] Line four: hash define MAX 50, the most students we can store. [HL 5] Line five: the file name, in one place, so we never mistype it. [HL 7-11] Lines seven to eleven: typedef struct, with int roll, char name of 40, and float marks. Thanks to typedef from EP 63, we can just write Student. [HL 13] Line thirteen: Student list of MAX, our register. [HL 14] Line fourteen: int count equals 0, how many students are actually stored. These two are global, because every function needs them. In a bigger program you'd pass them as parameters, but for one file, this keeps the code simple.",
+      "code": {
+        "file": "students.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\n#define MAX 50\n#define FILENAME \"students.dat\"\n\ntypedef struct {\n    int roll;\n    char name[40];\n    float marks;\n} Student;\n\nStudent list[MAX];\nint count = 0;\n\nvoid loadRecords(void) {\n    FILE *fp = fopen(FILENAME, \"rb\");\n    if (fp == NULL) {\n        return;                     // first run: no file yet\n    }\n    count = fread(list, sizeof(Student), MAX, fp);\n    fclose(fp);\n}\n\nvoid saveRecords(void) {\n    FILE *fp = fopen(FILENAME, \"wb\");\n    if (fp == NULL) {\n        printf(\"Could not save!\\n\");\n        return;\n    }\n    fwrite(list, sizeof(Student), count, fp);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\nvoid addStudent(void) {\n    if (count == MAX) {\n        printf(\"Register is full.\\n\");\n        return;\n    }\n    Student s;\n    printf(\"Roll number: \");\n    scanf(\"%d\", &s.roll);\n    clearInput();\n    printf(\"Name: \");\n    fgets(s.name, sizeof(s.name), stdin);\n    s.name[strcspn(s.name, \"\\n\")] = '\\0';\n    printf(\"Marks: \");\n    scanf(\"%f\", &s.marks);\n    clearInput();\n    list[count] = s;\n    count++;\n    saveRecords();\n    printf(\"Saved %s.\\n\", s.name);\n}\n\nvoid showAll(void) {\n    if (count == 0) {\n        printf(\"No records yet.\\n\");\n        return;\n    }\n    printf(\"%-6s %-20s %s\\n\", \"Roll\", \"Name\", \"Marks\");\n    for (int i = 0; i < count; i++) {\n        printf(\"%-6d %-20s %.1f\\n\", list[i].roll, list[i].name, list[i].marks);\n    }\n}\n\nint main(void) {\n    int choice = 0;\n    loadRecords();\n    do {\n        printf(\"\\n1. Add  2. Show all  3. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: addStudent(); break;\n            case 2: showAll();    break;\n            case 3: printf(\"Bye!\\n\"); break;\n            default: printf(\"Pick 1, 2 or 3.\\n\");\n        }\n    } while (choice != 3);\n    return 0;\n}",
+        "output": "1. Add  2. Show all  3. Exit\nChoice: 2\nRoll   Name                 Marks\n101    Riya Naik            88.5\n102    Sanjay Gaonkar       76.0\n\n1. Add  2. Show all  3. Exit\nChoice: 3\nBye!"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 95,
+      "lengthSec": 80,
+      "onScreen": "Lines 16–38: loadRecords, saveRecords, clearInput",
+      "animation": "Butter highlights; file icon opens/closes; records fly to and from disk",
+      "sfx": [],
+      "narration": "[HL 16] loadRecords. [HL 17] Line seventeen opens the file in r b mode: read, binary. [HL 18-20] If fp is NULL, the file doesn't exist yet. That's normal on the very first run, so we just return with zero students. [HL 21] Line twenty-one is the clever bit. fread reads up to MAX records of size Student into list, and it returns how many it actually read. We store that straight into count. [HL 22] Close the file. [HL 25] Now saveRecords. [HL 26] w b mode: write, binary. This replaces the old file with a fresh copy. [HL 27-30] If it fails, we tell the user. Always check fopen, that was EP 69's bug. [HL 31] fwrite writes count records from list in one go. [HL 32] Close. [HL 35-38] And clearInput: it reads and throws away characters until the end of the line. After scanf reads a number, the Enter key is still waiting in the input. clearInput cleans it up. Remember this little function; it saves us in the Bug of the Day.",
+      "code": {
+        "file": "students.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\n#define MAX 50\n#define FILENAME \"students.dat\"\n\ntypedef struct {\n    int roll;\n    char name[40];\n    float marks;\n} Student;\n\nStudent list[MAX];\nint count = 0;\n\nvoid loadRecords(void) {\n    FILE *fp = fopen(FILENAME, \"rb\");\n    if (fp == NULL) {\n        return;                     // first run: no file yet\n    }\n    count = fread(list, sizeof(Student), MAX, fp);\n    fclose(fp);\n}\n\nvoid saveRecords(void) {\n    FILE *fp = fopen(FILENAME, \"wb\");\n    if (fp == NULL) {\n        printf(\"Could not save!\\n\");\n        return;\n    }\n    fwrite(list, sizeof(Student), count, fp);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\nvoid addStudent(void) {\n    if (count == MAX) {\n        printf(\"Register is full.\\n\");\n        return;\n    }\n    Student s;\n    printf(\"Roll number: \");\n    scanf(\"%d\", &s.roll);\n    clearInput();\n    printf(\"Name: \");\n    fgets(s.name, sizeof(s.name), stdin);\n    s.name[strcspn(s.name, \"\\n\")] = '\\0';\n    printf(\"Marks: \");\n    scanf(\"%f\", &s.marks);\n    clearInput();\n    list[count] = s;\n    count++;\n    saveRecords();\n    printf(\"Saved %s.\\n\", s.name);\n}\n\nvoid showAll(void) {\n    if (count == 0) {\n        printf(\"No records yet.\\n\");\n        return;\n    }\n    printf(\"%-6s %-20s %s\\n\", \"Roll\", \"Name\", \"Marks\");\n    for (int i = 0; i < count; i++) {\n        printf(\"%-6d %-20s %.1f\\n\", list[i].roll, list[i].name, list[i].marks);\n    }\n}\n\nint main(void) {\n    int choice = 0;\n    loadRecords();\n    do {\n        printf(\"\\n1. Add  2. Show all  3. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: addStudent(); break;\n            case 2: showAll();    break;\n            case 3: printf(\"Bye!\\n\"); break;\n            default: printf(\"Pick 1, 2 or 3.\\n\");\n        }\n    } while (choice != 3);\n    return 0;\n}",
+        "output": "1. Add  2. Show all  3. Exit\nChoice: 2\nRoll   Name                 Marks\n101    Riya Naik            88.5\n102    Sanjay Gaonkar       76.0\n\n1. Add  2. Show all  3. Exit\nChoice: 3\nBye!"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 175,
+      "lengthSec": 65,
+      "onScreen": "Lines 40–59: addStudent",
+      "animation": "Butter highlights; tracker for s.roll, s.name, s.marks, count",
+      "sfx": [],
+      "narration": "[HL 40] addStudent. [HL 41-44] First, if count equals MAX, the register is full, so we stop. [HL 45] A temporary Student, s. [HL 46-48] Ask for the roll number, read it with scanf, [TRACK s.roll=101] and clear the leftover Enter. [HL 49-50] For the name, we use fgets, not scanf, because names have spaces, like Riya Naik. fgets reads the whole line, up to the size of the array, so it can't overflow. [HL 51] fgets keeps the newline at the end, so strcspn finds it and we replace it with the end-of-string character. [TRACK s.name=\"Riya Naik\"] [HL 52-54] Read the marks [TRACK s.marks=88.5] and clear the line again. [HL 55] list of count equals s copies the whole struct into the next free slot. [HL 56] count plus plus. [TRACK count=1] [HL 57] Save straight away, so nothing is lost if the power goes during a Goa monsoon storm. [HL 58] Confirm with \"Saved Riya Naik\".",
+      "code": {
+        "file": "students.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\n#define MAX 50\n#define FILENAME \"students.dat\"\n\ntypedef struct {\n    int roll;\n    char name[40];\n    float marks;\n} Student;\n\nStudent list[MAX];\nint count = 0;\n\nvoid loadRecords(void) {\n    FILE *fp = fopen(FILENAME, \"rb\");\n    if (fp == NULL) {\n        return;                     // first run: no file yet\n    }\n    count = fread(list, sizeof(Student), MAX, fp);\n    fclose(fp);\n}\n\nvoid saveRecords(void) {\n    FILE *fp = fopen(FILENAME, \"wb\");\n    if (fp == NULL) {\n        printf(\"Could not save!\\n\");\n        return;\n    }\n    fwrite(list, sizeof(Student), count, fp);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\nvoid addStudent(void) {\n    if (count == MAX) {\n        printf(\"Register is full.\\n\");\n        return;\n    }\n    Student s;\n    printf(\"Roll number: \");\n    scanf(\"%d\", &s.roll);\n    clearInput();\n    printf(\"Name: \");\n    fgets(s.name, sizeof(s.name), stdin);\n    s.name[strcspn(s.name, \"\\n\")] = '\\0';\n    printf(\"Marks: \");\n    scanf(\"%f\", &s.marks);\n    clearInput();\n    list[count] = s;\n    count++;\n    saveRecords();\n    printf(\"Saved %s.\\n\", s.name);\n}\n\nvoid showAll(void) {\n    if (count == 0) {\n        printf(\"No records yet.\\n\");\n        return;\n    }\n    printf(\"%-6s %-20s %s\\n\", \"Roll\", \"Name\", \"Marks\");\n    for (int i = 0; i < count; i++) {\n        printf(\"%-6d %-20s %.1f\\n\", list[i].roll, list[i].name, list[i].marks);\n    }\n}\n\nint main(void) {\n    int choice = 0;\n    loadRecords();\n    do {\n        printf(\"\\n1. Add  2. Show all  3. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: addStudent(); break;\n            case 2: showAll();    break;\n            case 3: printf(\"Bye!\\n\"); break;\n            default: printf(\"Pick 1, 2 or 3.\\n\");\n        }\n    } while (choice != 3);\n    return 0;\n}",
+        "output": "1. Add  2. Show all  3. Exit\nChoice: 2\nRoll   Name                 Marks\n101    Riya Naik            88.5\n102    Sanjay Gaonkar       76.0\n\n1. Add  2. Show all  3. Exit\nChoice: 3\nBye!"
+      }
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 240,
+      "lengthSec": 35,
+      "onScreen": "Lines 61–70: showAll",
+      "animation": "Columns line up as `%-6d` / `%-20s` widths are drawn",
+      "sfx": [],
+      "narration": "[HL 61-65] showAll. If there are no students, say so and return. [HL 66] Print the heading. Percent minus 6 s means: a string, 6 characters wide, left-aligned. [HL 67-69] Then a for loop prints every record with the same widths, so the columns line up like a real table. Marks get percent point 1 f, one decimal place.",
+      "code": {
+        "file": "students.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\n#define MAX 50\n#define FILENAME \"students.dat\"\n\ntypedef struct {\n    int roll;\n    char name[40];\n    float marks;\n} Student;\n\nStudent list[MAX];\nint count = 0;\n\nvoid loadRecords(void) {\n    FILE *fp = fopen(FILENAME, \"rb\");\n    if (fp == NULL) {\n        return;                     // first run: no file yet\n    }\n    count = fread(list, sizeof(Student), MAX, fp);\n    fclose(fp);\n}\n\nvoid saveRecords(void) {\n    FILE *fp = fopen(FILENAME, \"wb\");\n    if (fp == NULL) {\n        printf(\"Could not save!\\n\");\n        return;\n    }\n    fwrite(list, sizeof(Student), count, fp);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\nvoid addStudent(void) {\n    if (count == MAX) {\n        printf(\"Register is full.\\n\");\n        return;\n    }\n    Student s;\n    printf(\"Roll number: \");\n    scanf(\"%d\", &s.roll);\n    clearInput();\n    printf(\"Name: \");\n    fgets(s.name, sizeof(s.name), stdin);\n    s.name[strcspn(s.name, \"\\n\")] = '\\0';\n    printf(\"Marks: \");\n    scanf(\"%f\", &s.marks);\n    clearInput();\n    list[count] = s;\n    count++;\n    saveRecords();\n    printf(\"Saved %s.\\n\", s.name);\n}\n\nvoid showAll(void) {\n    if (count == 0) {\n        printf(\"No records yet.\\n\");\n        return;\n    }\n    printf(\"%-6s %-20s %s\\n\", \"Roll\", \"Name\", \"Marks\");\n    for (int i = 0; i < count; i++) {\n        printf(\"%-6d %-20s %.1f\\n\", list[i].roll, list[i].name, list[i].marks);\n    }\n}\n\nint main(void) {\n    int choice = 0;\n    loadRecords();\n    do {\n        printf(\"\\n1. Add  2. Show all  3. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: addStudent(); break;\n            case 2: showAll();    break;\n            case 3: printf(\"Bye!\\n\"); break;\n            default: printf(\"Pick 1, 2 or 3.\\n\");\n        }\n    } while (choice != 3);\n    return 0;\n}",
+        "output": "1. Add  2. Show all  3. Exit\nChoice: 2\nRoll   Name                 Marks\n101    Riya Naik            88.5\n102    Sanjay Gaonkar       76.0\n\n1. Add  2. Show all  3. Exit\nChoice: 3\nBye!"
+      }
+    },
+    {
+      "id": 8,
+      "template": "code-explain",
+      "startSec": 275,
+      "lengthSec": 50,
+      "onScreen": "Lines 72–91: main and the menu loop",
+      "animation": "Butter highlights; loop arrow cycles around the switch",
+      "sfx": [],
+      "narration": "[HL 72-74] main. choice starts at zero, and the first thing we do is load the saved records. [HL 75] A do-while loop, from EP 28, because the menu must show at least once. [HL 76] Print the menu. [HL 77] Here's the safety net. scanf returns how many values it read. If it isn't 1, the user typed something that isn't a number. [HL 78-80] So we clear the line, complain politely, and continue, which jumps back to the top of the loop. [HL 82] Otherwise clear the Enter key. [HL 83-88] The switch from EP 23 calls the right function. [HL 89] And we keep looping while choice isn't 3.",
+      "code": {
+        "file": "students.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\n#define MAX 50\n#define FILENAME \"students.dat\"\n\ntypedef struct {\n    int roll;\n    char name[40];\n    float marks;\n} Student;\n\nStudent list[MAX];\nint count = 0;\n\nvoid loadRecords(void) {\n    FILE *fp = fopen(FILENAME, \"rb\");\n    if (fp == NULL) {\n        return;                     // first run: no file yet\n    }\n    count = fread(list, sizeof(Student), MAX, fp);\n    fclose(fp);\n}\n\nvoid saveRecords(void) {\n    FILE *fp = fopen(FILENAME, \"wb\");\n    if (fp == NULL) {\n        printf(\"Could not save!\\n\");\n        return;\n    }\n    fwrite(list, sizeof(Student), count, fp);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\nvoid addStudent(void) {\n    if (count == MAX) {\n        printf(\"Register is full.\\n\");\n        return;\n    }\n    Student s;\n    printf(\"Roll number: \");\n    scanf(\"%d\", &s.roll);\n    clearInput();\n    printf(\"Name: \");\n    fgets(s.name, sizeof(s.name), stdin);\n    s.name[strcspn(s.name, \"\\n\")] = '\\0';\n    printf(\"Marks: \");\n    scanf(\"%f\", &s.marks);\n    clearInput();\n    list[count] = s;\n    count++;\n    saveRecords();\n    printf(\"Saved %s.\\n\", s.name);\n}\n\nvoid showAll(void) {\n    if (count == 0) {\n        printf(\"No records yet.\\n\");\n        return;\n    }\n    printf(\"%-6s %-20s %s\\n\", \"Roll\", \"Name\", \"Marks\");\n    for (int i = 0; i < count; i++) {\n        printf(\"%-6d %-20s %.1f\\n\", list[i].roll, list[i].name, list[i].marks);\n    }\n}\n\nint main(void) {\n    int choice = 0;\n    loadRecords();\n    do {\n        printf(\"\\n1. Add  2. Show all  3. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: addStudent(); break;\n            case 2: showAll();    break;\n            case 3: printf(\"Bye!\\n\"); break;\n            default: printf(\"Pick 1, 2 or 3.\\n\");\n        }\n    } while (choice != 3);\n    return 0;\n}",
+        "output": "1. Add  2. Show all  3. Exit\nChoice: 2\nRoll   Name                 Marks\n101    Riya Naik            88.5\n102    Sanjay Gaonkar       76.0\n\n1. Add  2. Show all  3. Exit\nChoice: 3\nBye!"
+      }
+    },
+    {
+      "id": 9,
+      "template": "terminal",
+      "startSec": 325,
+      "lengthSec": 40,
+      "onScreen": "Full demo session (run 1 and run 2)",
+      "animation": "Typing SFX; mint tick when data reappears",
+      "sfx": [],
+      "narration": "Compile it: gcc students dot c, dash o, students. Run it. Choice 1: roll 101, Riya Naik, 88.5. Saved. Choice 1 again: roll 102, Sanjay Gaonkar, 76. Choice 2: a neat table. Now let's be a naughty user and type a b c. \"Please type a number.\" No crash. Choice 3, bye. Now run it again and pick 2. Both students are still there, loaded from students dot dat. That's a real, working program."
+    },
+    {
+      "id": 10,
+      "template": "pun-card",
+      "startSec": 365,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec stamping a report card",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Why did the student record system pass every exam? Because it always kept its marks in order."
+    },
+    {
+      "id": 11,
+      "template": "bug-of-the-day",
+      "startSec": 370,
+      "lengthSec": 70,
+      "onScreen": "`menubug.c`: typing `x` makes the menu loop forever",
+      "animation": "Text floods the terminal, scroll speeds up; Xecxec gets buried; fix freezes it, mint tick",
+      "sfx": [],
+      "narration": "Today's bug: the messy menu loop. Here's a simpler menu without our safety net. It just calls scanf and goes into the switch. Type 1 and it works. But type the letter x, and the screen fills with \"Pick 1, 2 or 3\", forever. Why? scanf with percent d sees the x, can't turn it into a number, and leaves the x in the input. choice stays 0. The loop comes back, scanf sees the same x again, fails again. Forever. The program never waits for you. No compiler can warn you about this; it only happens at run time. The fix is the three lines you saw in main: check that scanf returned 1, and if not, clear the bad input with clearInput and continue. Rule: never trust user input. Always check what scanf returns."
+    },
+    {
+      "id": 12,
+      "template": "challenge",
+      "startSec": 440,
+      "lengthSec": 25,
+      "onScreen": "Challenge card: add \"3. Search by roll number\"",
+      "animation": "Timer ticks",
+      "sfx": [],
+      "narration": "Your challenge: add a search feature. Change the menu to four options, with 3 being \"Search\", and write a function searchByRoll that asks for a roll number, loops through the list, and prints the student's name and marks, or \"No student with roll\" and the number. Remember to change Exit to option 4 in the loop condition too."
+    },
+    {
+      "id": 13,
+      "template": "outro",
+      "startSec": 465,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 85 · Bank / ATM simulator",
+      "animation": "ATM screen glowing; sign-off jingle",
+      "sfx": [],
+      "narration": "Next episode: our second project. A bank ATM simulator, with deposits, withdrawals, and a lot of checking. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int choice = 0;\n    do {\n        printf(\"1. Add  2. Show all  3. Exit\\nChoice: \");\n        scanf(\"%d\", &choice);\n        switch (choice) {\n            case 1: printf(\"Adding...\\n\"); break;\n            case 2: printf(\"Showing...\\n\"); break;\n            case 3: printf(\"Bye!\\n\"); break;\n            default: printf(\"Pick 1, 2 or 3.\\n\");\n        }\n    } while (choice != 3);\n    return 0;\n}",
+    "error": "Compiles with no warning. Typing `x` gives endless output (stop it with Ctrl+C):\n\n1. Add  2. Show all  3. Exit\nChoice: x\nPick 1, 2 or 3.\n1. Add  2. Show all  3. Exit\nChoice: Pick 1, 2 or 3.\n1. Add  2. Show all  3. Exit\nChoice: Pick 1, 2 or 3.\n...",
+    "fixed": "#include <stdio.h>\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\nint main(void) {\n    int choice = 0;\n    do {\n        printf(\"1. Add  2. Show all  3. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: printf(\"Adding...\\n\"); break;\n            case 2: printf(\"Showing...\\n\"); break;\n            case 3: printf(\"Bye!\\n\"); break;\n            default: printf(\"Pick 1, 2 or 3.\\n\");\n        }\n    } while (choice != 3);\n    return 0;\n}",
+    "why": "when `scanf(\"%d\")` fails it leaves the bad character in the input, so every later `scanf` fails on the same character; checking the return value and clearing the line breaks the cycle."
+  },
+  "pun": "Why did the student record system pass every exam? It always kept its marks in order.",
+  "challenge": "Add menu option 3, \"Search\", with a function `searchByRoll` that prints the matching student or \"No student with roll N.\"; move Exit to option 4.",
+  "challengeAnswer": "add this function above `main`:",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Your College Office, in C",
+      "hook": "a student table appearing in the terminal, then the program closing",
+      "script": "Add a student. Show a neat table. Close the program. Open it again. The records are still there. This is a full student record system in C, about 90 lines, built from structs, functions and a binary file. Full code and line-by-line explanation in episode 84.",
+      "onScreen": "CLOSE IT. REOPEN. STILL THERE.",
+      "fromScenes": [
+        1,
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Your first real C project, start to finish.",
+      "hashtags": [
+        "cprogramming",
+        "cproject",
+        "kodingkonkani",
+        "learntocode",
+        "studentproject"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Saving Structs in 30 Seconds",
+      "hook": "records flying from the screen into a file icon",
+      "script": "Saving an array of structs takes one line: fwrite, the array, the size of one struct, how many, and the file. Loading takes one line too: fread returns how many records it read, so you store that straight into count. Open with w b to save and r b to load. Always check fopen for NULL.",
+      "onScreen": "fwrite TO SAVE · fread TO LOAD",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Make your C data survive a restart.",
+      "hashtags": [
+        "cprogramming",
+        "filehandling",
+        "kodingkonkani",
+        "learntocode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The Menu That Never Stops",
+      "hook": "terminal flooding with \"Pick 1, 2 or 3.\"",
+      "script": "Type a letter into this menu, and it goes crazy. Why? scanf can't read x as a number, so it leaves the x in the input. Next loop, same x, same failure. Forever. The fix: check that scanf returned 1. If it didn't, throw away the rest of the line and continue. Never trust user input.",
+      "onScreen": "ONE LETTER. INFINITE LOOP.",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 40,
+      "caption": "The bug that breaks every beginner menu.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "scanf",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Marks in Order",
+      "hook": "Xecxec stamping \"PASS\" on a report card",
+      "script": "Why did the student record system pass every exam? Because it always kept its marks in order.",
+      "onScreen": "KEPT ITS MARKS IN ORDER",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 12,
+      "caption": "Top of the class.",
+      "hashtags": [
+        "codingmemes",
+        "programmerhumor",
+        "kodingkonkani",
+        "cprogramming",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: Why fgets for Names?",
+      "hook": "\"Riya Naik\" typed in, only \"Riya\" saved",
+      "script": "Why does the program read names with fgets instead of scanf percent s? A: fgets is faster. B: scanf percent s stops at the first space. C: scanf can't read strings. The answer is B. With scanf, Riya Naik becomes just Riya. fgets reads the whole line.",
+      "onScreen": "A · B · C — WHY fgets?",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 25,
+      "caption": "Comment your answer before the reveal.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "strings"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "students.c",
+      "source": "#include <stdio.h>\n#include <string.h>\n\n#define MAX 50\n#define FILENAME \"students.dat\"\n\ntypedef struct {\n    int roll;\n    char name[40];\n    float marks;\n} Student;\n\nStudent list[MAX];\nint count = 0;\n\nvoid loadRecords(void) {\n    FILE *fp = fopen(FILENAME, \"rb\");\n    if (fp == NULL) {\n        return;                     // first run: no file yet\n    }\n    count = fread(list, sizeof(Student), MAX, fp);\n    fclose(fp);\n}\n\nvoid saveRecords(void) {\n    FILE *fp = fopen(FILENAME, \"wb\");\n    if (fp == NULL) {\n        printf(\"Could not save!\\n\");\n        return;\n    }\n    fwrite(list, sizeof(Student), count, fp);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\nvoid addStudent(void) {\n    if (count == MAX) {\n        printf(\"Register is full.\\n\");\n        return;\n    }\n    Student s;\n    printf(\"Roll number: \");\n    scanf(\"%d\", &s.roll);\n    clearInput();\n    printf(\"Name: \");\n    fgets(s.name, sizeof(s.name), stdin);\n    s.name[strcspn(s.name, \"\\n\")] = '\\0';\n    printf(\"Marks: \");\n    scanf(\"%f\", &s.marks);\n    clearInput();\n    list[count] = s;\n    count++;\n    saveRecords();\n    printf(\"Saved %s.\\n\", s.name);\n}\n\nvoid showAll(void) {\n    if (count == 0) {\n        printf(\"No records yet.\\n\");\n        return;\n    }\n    printf(\"%-6s %-20s %s\\n\", \"Roll\", \"Name\", \"Marks\");\n    for (int i = 0; i < count; i++) {\n        printf(\"%-6d %-20s %.1f\\n\", list[i].roll, list[i].name, list[i].marks);\n    }\n}\n\nint main(void) {\n    int choice = 0;\n    loadRecords();\n    do {\n        printf(\"\\n1. Add  2. Show all  3. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: addStudent(); break;\n            case 2: showAll();    break;\n            case 3: printf(\"Bye!\\n\"); break;\n            default: printf(\"Pick 1, 2 or 3.\\n\");\n        }\n    } while (choice != 3);\n    return 0;\n}",
+      "output": "1. Add  2. Show all  3. Exit\nChoice: 2\nRoll   Name                 Marks\n101    Riya Naik            88.5\n102    Sanjay Gaonkar       76.0\n\n1. Add  2. Show all  3. Exit\nChoice: 3\nBye!",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1. Add  2. Show all  3. Exit\nChoice: x\nPlease type a number.\n1. Add  2. Show all  3. Exit\nChoice: 3\nBye!"
+  }
+}

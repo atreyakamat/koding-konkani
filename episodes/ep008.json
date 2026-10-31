@@ -1,0 +1,294 @@
+{
+  "ep": 8,
+  "title": "Data Types: int, float, char",
+  "module": 1,
+  "lengthSec": 375,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "choose between `int`, `float` and `char` for a value",
+    "print each with `%d`, `%f`/`%.1f` and `%c`",
+    "use `sizeof` with `%zu` to see how many bytes a type uses",
+    "explain why storing 2.5 in an `int` gives 2"
+  ],
+  "youtube": {
+    "title": "Why 2.5 kg Became 2 kg | C Data Types EP 08",
+    "description": "Not every basket can hold every kind of fish. Learn C's three basic data types (int, float and char), how to print each one, and how much memory each uses with sizeof. Plus the bug that silently chops off your decimals. 0:00 Why 2.5 kg became 2 kg 0:20 What is a data type? 1:00 int, float, char in code 2:10 Printing each type 2:55 sizeof: how big is each box? 3:39 A char is secretly a number 4:14 Bug of the Day: decimals in an int 5:24 Challenge 5:59 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Why 2.5 kg became 2 kg 0:20 What is a data type? 1:00 int, float, char in code 2:10 Printing each type 2:55 sizeof: how big is each box? 3:39 A char is secretly a number 4:14 Bug of the Day: decimals in an int 5:24 Challenge 5:59 Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "data types in c",
+      "int float char",
+      "sizeof operator",
+      "format specifiers",
+      "%f",
+      "%c",
+      "c tutorial for beginners",
+      "koding konkani",
+      "learn c",
+      "float vs int"
+    ],
+    "thumbnail": {
+      "text": "2.5 = 2 ?!",
+      "visual": "big text \"2.5 = 2 ?!\"; a weighing scale showing 2.5 kg with a fish, and a code box printing 2; Xecxec shocked, claws on cheeks.",
+      "pose": "Xecxec shocked, claws on cheeks"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Scale shows 2.5 kg; program prints `Weight: 2 kg`",
+      "animation": "Scale ding; then a sad trombone; Xecxec drops his claws",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "The fish seller puts your bangda on the scale. Two and a half kilos. You type it into your program. And your program says: two kilos. Where did half a kilo of fish go? Today we find out."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 08 · DATA TYPES",
+      "animation": "Title slams in, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode eight. Data types: int, float and char."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "Last challenge answer; three boxes of different shapes: int (whole), float (decimal), char (one letter)",
+      "animation": "Each box shape pops in with its own colour; example values drop in",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "First, last time's challenge: three int variables for age, height in centimetres and roll number, each printed with percent d. Good. Now, in episode seven, every box was an int. But not every value is a whole number. A data type tells C what kind of value a box holds, and how big the box must be. Today we meet three. int holds whole numbers, like twelve or minus five. float holds numbers with a decimal point, like two point five. And char holds a single character, like the letter A."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 70,
+      "onScreen": "ep08.c lines 5–7",
+      "animation": "Highlights; variable tracker shows fishCount=12, weight=2.5, grade='A'",
+      "sfx": [],
+      "narration": "[HL 5] Line five: int fishCount equals twelve. [TRACK fishCount=12] A whole number of fish. Nothing new. [HL 6] Line six: float weight equals two point five f. [TRACK weight=2.5] float means this box can hold a decimal. The small f at the end tells C this number is a float. Without it, C treats 2.5 as a bigger type called double, which we meet next episode. [HL 7] Line seven: char grade equals A, in single quotes. [TRACK grade='A'] A char holds exactly one character, and it always goes in single quotes. Double quotes are for text, like in printf. Single quotes are for one character. Mix them up and you'll get errors."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 130,
+      "lengthSec": 45,
+      "onScreen": "Lines 9–12 with output strip",
+      "animation": "`%d`, `%f`, `%.1f`, `%c` each flip to the value; output types out",
+      "sfx": [],
+      "narration": "Each type has its own placeholder. [HL 9] Line nine: percent d for the int. Fish: 12. [HL 10] Line ten: percent f for the float. Weight: 2.500000 kg. Six digits after the point. That's the default, and it looks ugly. [HL 11] So line eleven uses percent point one f: show only one digit after the point. Weight: 2.5 kg. Much better. We'll learn more of these tricks in episode eleven. [HL 12] Line twelve: percent c for a char. Grade: A."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 175,
+      "lengthSec": 40,
+      "onScreen": "Lines 14–16 sizeof; byte blocks 4, 4, 1 drawn as squares",
+      "animation": "Byte squares stack with a tick per byte; note \"sizes can differ on other machines\"",
+      "sfx": [],
+      "narration": "How big is each box? C has a tool for that: sizeof. [HL 14] Line fourteen: sizeof, int. It gives the size in bytes. To print it, we use percent z u, a placeholder made for sizes. On my machine: int uses 4 bytes. [HL 15] float: 4 bytes. [HL 16] char: 1 byte. A byte is 8 bits, 8 tiny on-off switches. These sizes are normal for Windows and Linux PCs today, but C does not promise them on every machine. That's exactly why sizeof exists: you ask, instead of guessing."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 215,
+      "lengthSec": 4,
+      "onScreen": "Pun",
+      "animation": "Drum ba-dum, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the float leave the party early? It couldn't handle the point."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 219,
+      "lengthSec": 35,
+      "onScreen": "`'A'` is stored as 65; `printf(\"%c %d\", grade, grade)` prints `A 65`",
+      "animation": "Letter A morphs into 65 and back; ASCII strip slides past",
+      "sfx": [],
+      "narration": "A secret: a char is really a small number. The computer stores the letter A as the number sixty-five. This mapping is called ASCII. If we print grade with percent c, we see A. If we print the same grade with percent d, we see sixty-five. Same box, two ways of looking at it. We'll use this trick a lot when we reach strings."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 254,
+      "lengthSec": 70,
+      "onScreen": "`int weight = 2.5;` prints 2; `-Wall` is silent; `-Wconversion` warns; fix with float",
+      "animation": "Butter stripe; the .5 falls off the number and drops into the sea with a splash; success chime",
+      "sfx": [
+        "chime"
+      ],
+      "narration": "Now the mystery from the start. Here's the code: int weight equals two point five. Print it with percent d. Output: Weight: 2 kg. An int box only holds whole numbers. When you put two point five into it, C simply chops off the decimal part. It does not round. Two point nine would also become two. The scary part: even with dash Wall, GCC says nothing. You need an extra flag, dash W conversion, and then GCC warns: conversion from double to int changes value from 2.5 to 2. The fix: use the right basket. float weight equals two point five f, and print it with percent point one f. Now it prints 2.5 kg, and your half kilo of fish is back."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 324,
+      "lengthSec": 35,
+      "onScreen": "Print the sizeof char, int, float, double",
+      "animation": "Timer ticks; Xecxec holds a measuring tape",
+      "sfx": [],
+      "narration": "Your challenge. Print the sizeof char, int, float and double, one per line. Use percent z u. Then comment what your machine says. Is your double bigger than your float?"
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 359,
+      "lengthSec": 16,
+      "onScreen": "Next: EP 09 · More types; sign-off",
+      "animation": "Xecxec waves; outro sting",
+      "sfx": [
+        "sting"
+      ],
+      "narration": "Next episode: more types. long, double, unsigned, and the odometer that rolled back to zero. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void)\n{\n    int weight = 2.5;\n    printf(\"Weight: %d kg\\n\", weight);\n    return 0;\n}",
+    "error": "**Wrong output** (`gcc -Wall` gives no warning):\n\nWeight: 2 kg\n\n**With `gcc -Wall -Wconversion`:**\n\nbug08.c: In function 'main':\nbug08.c:5:18: warning: conversion from 'double' to 'int' changes value from '2.5e+0' to '2' [-Wfloat-conversion]\n    5 |     int weight = 2.5;\n      |                  ^~~",
+    "fixed": "#include <stdio.h>\n\nint main(void)\n{\n    float weight = 2.5f;\n    printf(\"Weight: %.1f kg\\n\", weight);\n    return 0;\n}",
+    "why": "An `int` can only hold whole numbers, so C throws away (truncates) the decimal part without rounding."
+  },
+  "pun": "\"Why did the float leave the party early? It couldn't handle the point.\"",
+  "challenge": "Print `sizeof` for char, int, float and double, one per line, using `%zu`.",
+  "challengeAnswer": "(Typical on Windows/Linux PCs; your machine may differ.)",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Where did half a kilo go?",
+      "hook": "\"2.5 kg of fish. My program says 2.\"",
+      "script": "Two and a half kilos of fish. My program says two. Where did the half go? I stored it in an int. An int only holds whole numbers, so C chops off the decimal. No rounding, no warning. Use a float, and the fish is back.",
+      "onScreen": "int weight = 2.5; → 2",
+      "fromScenes": [
+        1,
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "C just ate half my fish.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "datatypes",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Three types in 30 seconds",
+      "hook": "\"int, float, char. Here's when to use each.\"",
+      "script": "int, float, char. int for whole numbers, like twelve fish. Print with percent d. float for decimals, like two point five kilos. Print with percent f. char for one character, like grade A, in single quotes. Print with percent c. Pick the right basket for the right fish.",
+      "onScreen": "int %d · float %f · char %c",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "C data types, fast.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "datatypes",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The silent decimal chop",
+      "hook": "\"Even -Wall won't catch this bug.\"",
+      "script": "Even dash Wall won't catch this one. int weight equals two point five. It prints two. GCC is silent. Add dash W conversion and it finally warns: conversion from double to int changes value. Fix: float weight equals two point five f.",
+      "onScreen": "gcc -Wall -Wconversion",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "The bug GCC doesn't warn you about.",
+      "hashtags": [
+        "cprogramming",
+        "codingbugs",
+        "kodingkonkani",
+        "learntocode",
+        "gcc"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The float left early",
+      "hook": "\"Why did the float leave the party?\"",
+      "script": "Why did the float leave the party early? It couldn't handle the point.",
+      "onScreen": "2.5 → 2 ...",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 10,
+      "caption": "Floating-point humour.",
+      "hashtags": [
+        "programmingjokes",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "A or 65?",
+      "hook": "\"Same variable. Two outputs. Which one?\"",
+      "script": "char grade equals A. printf percent c, grade, then percent d, grade. What prints? ... A, then sixty-five. A char is stored as a number. Sixty-five is the code for capital A.",
+      "onScreen": "printf(\"%c %d\", grade, grade); · ?",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 20,
+      "caption": "A char is secretly a number.",
+      "hashtags": [
+        "cquiz",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode",
+        "ascii"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void)\n{\n    int fishCount = 12;\n    float weight = 2.5f;\n    char grade = 'A';\n\n    printf(\"Fish: %d\\n\", fishCount);\n    printf(\"Weight: %f kg\\n\", weight);\n    printf(\"Weight: %.1f kg\\n\", weight);\n    printf(\"Grade: %c\\n\", grade);\n\n    printf(\"int uses %zu bytes\\n\", sizeof(int));\n    printf(\"float uses %zu bytes\\n\", sizeof(float));\n    printf(\"char uses %zu byte\\n\", sizeof(char));\n\n    return 0;\n}",
+      "output": "Fish: 12\nWeight: 2.500000 kg\nWeight: 2.5 kg\nGrade: A\nint uses 4 bytes\nfloat uses 4 bytes\nchar uses 1 byte",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main(void)\n{\n    char grade = 'A';\n    printf(\"%c %d\\n\", grade, grade);\n    return 0;\n}",
+      "output": "A 65",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Weight: 2.5 kg"
+  }
+}

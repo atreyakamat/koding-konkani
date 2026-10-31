@@ -1,0 +1,346 @@
+{
+  "ep": 49,
+  "title": "string.h: C's String Toolbox",
+  "module": 7,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "get a string's length with strlen (not counting '\\0')",
+    "copy with strcpy and join with strcat into an array big enough to hold the result",
+    "compare strings with strcmp and read its 0 / negative / positive result",
+    "explain why == on two strings compares locations, not letters"
+  ],
+  "youtube": {
+    "title": "strlen, strcpy, strcat, strcmp in C | EP 49",
+    "description": "C cannot copy a string with = or compare it with ==. Open the string.h toolbox: strlen for length, strcpy to copy, strcat to join, and strcmp to compare. Plus the password bug where two identical strings are \"not equal\". 0:00 The password that failed · 0:20 Title · 0:25 The toolbox · 0:55 strlen · 1:30 strcpy and strcat · 2:20 strcmp · 3:00 Code walkthrough · 4:45 Running it · 5:05 Pun · 5:10 Bug of the Day · 6:15 Challenge · 6:45 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The password that failed"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The toolbox"
+      },
+      {
+        "t": "0:55",
+        "label": "strlen"
+      },
+      {
+        "t": "1:30",
+        "label": "strcpy and strcat"
+      },
+      {
+        "t": "2:20",
+        "label": "strcmp"
+      },
+      {
+        "t": "3:00",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "4:45",
+        "label": "Running it"
+      },
+      {
+        "t": "5:05",
+        "label": "Pun"
+      },
+      {
+        "t": "5:10",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:15",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "string.h in c",
+      "strlen",
+      "strcpy",
+      "strcat",
+      "strcmp",
+      "compare strings in c",
+      "strings in c",
+      "learn c",
+      "c for beginners",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "== DOESN'T WORK?",
+      "visual": "big text \"== DOESN'T WORK?\"; an apricot toolbox with four tools labelled strlen, strcpy, strcat, strcmp; Xecxec holding a lock with two identical keys looking confused",
+      "pose": "Xecxec holding a lock with two identical keys looking confused"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Password \"goa123\" typed correctly, program says \"Wrong password\"",
+      "animation": "Lock rattles but stays shut; buzzer",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "The saved password is goa123. You type goa123. Exactly the same. And the program says: wrong password. Your code is not broken in the way you think. You just used the wrong tool. Let's open C's string toolbox."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 49 · STRING.H",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 49. string dot h."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 30,
+      "onScreen": "Toolbox opens: strlen, strcpy, strcat, strcmp with one-line jobs",
+      "animation": "Tools slide out one by one; metal clink",
+      "sfx": [],
+      "narration": "Strings are arrays, and as we saw, you cannot do much with a whole array using plain operators. You cannot copy one with equals, and you cannot compare two with equals-equals. So C gives us a toolbox called string dot h. Four tools today. strlen measures. strcpy copies. strcat joins. strcmp compares."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 55,
+      "lengthSec": 35,
+      "onScreen": "\"Xecxec\" in 7 boxes; strlen counts 6, skips \\0",
+      "animation": "Counter ticks 1 to 6, \\0 box greys out",
+      "sfx": [],
+      "narration": "strlen gives the length of a string. It starts at the first letter and counts until backslash zero. The backslash zero itself is not counted. So strlen of Xecxec is six, while sizeof the array is seven. strlen counts letters. sizeof counts bytes in the array."
+    },
+    {
+      "id": 5,
+      "template": "memory-boxes",
+      "startSec": 90,
+      "lengthSec": 50,
+      "onScreen": "strcpy copies letters into copy[20]; strcat moves \\0 and appends",
+      "animation": "Letters fly box to box; \\0 hops to the new end; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "strcpy, destination, source, copies the source string into the destination, including backslash zero. It is how you do \"equals\" for strings. strcat, destination, source, adds the source to the end of the destination. It finds the backslash zero, writes the new letters over it, and puts a fresh backslash zero at the new end. One big rule for both: the destination array must be big enough. These functions do not check. If it does not fit, they write past the end, just like gets."
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 140,
+      "lengthSec": 40,
+      "onScreen": "strcmp results: 0 equal, negative = first comes earlier, positive = later",
+      "animation": "Dictionary pages flip; three result chips stamp in",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "strcmp, a, b compares two strings letter by letter, like a dictionary. If they are exactly equal, it returns zero. If a comes earlier in dictionary order, it returns a negative number. If a comes later, a positive number. Do not depend on the exact number, like minus one; only check equal to zero, less than zero, or greater than zero. And yes, zero means equal. It feels backwards at first: \"zero difference\" is the way to remember it."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 180,
+      "lengthSec": 105,
+      "onScreen": "ep49_toolbox.c types itself",
+      "animation": "Line highlights; tracker shows first, copy and return values",
+      "sfx": [],
+      "narration": "Let's read it. [HL 2] Line two, string dot h. Without it, these functions are not declared. [HL 5] Line five: first, twenty bytes, holding Crab. We give it room to grow. [HL 6] Line six: second is Xecxec. [HL 7] Line seven: copy, twenty empty bytes. [HL 9] Line nine prints strlen of second: six. Percent z u, because strlen returns a size, just like sizeof. [TRACK strlen=6] [HL 11] Line eleven: strcpy, copy, second. [TRACK copy=\"Xecxec\"] Destination first, source second, like an assignment: copy equals second. [HL 14] Line fourteen: strcat, first, space. [TRACK first=\"Crab \"] [HL 15] Line fifteen: strcat, first, second. [TRACK first=\"Crab Xecxec\"] Crab, space, Xecxec: eleven letters plus backslash zero, which fits in twenty. [HL 18] Line eighteen prints strcmp of apple and apple: zero, equal. [HL 19] Line nineteen: strcmp of apple and mango is less than zero, because a comes before m. So line twenty prints apple comes before mango.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char first[20] = \"Crab\";\n    char second[] = \"Xecxec\";\n    char copy[20];\n\n    printf(\"Length of %s: %zu\\n\", second, strlen(second));\n\n    strcpy(copy, second);\n    printf(\"Copy: %s\\n\", copy);\n\n    strcat(first, \" \");\n    strcat(first, second);\n    printf(\"Joined: %s\\n\", first);\n\n    printf(\"strcmp(\\\"apple\\\", \\\"apple\\\") = %d\\n\", strcmp(\"apple\", \"apple\"));\n    if (strcmp(\"apple\", \"mango\") < 0) {\n        printf(\"apple comes before mango\\n\");\n    }\n    return 0;\n}",
+        "output": "Length of Xecxec: 6\nCopy: Xecxec\nJoined: Crab Xecxec\nstrcmp(\"apple\", \"apple\") = 0\napple comes before mango"
+      }
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 285,
+      "lengthSec": 20,
+      "onScreen": "gcc ep49_toolbox.c -o ep49 then ./ep49",
+      "animation": "Five lines print",
+      "sfx": [],
+      "narration": "Compile and run. Length of Xecxec: 6. Copy: Xecxec. Joined: Crab Xecxec. strcmp of apple and apple is 0. apple comes before mango."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 305,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the two strings go to counselling? They were equal, but they kept saying zero to each other."
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 310,
+      "lengthSec": 65,
+      "onScreen": "typed == saved; \"Wrong password\"; -Wall warning; strcmp fix",
+      "animation": "Two arrays at different addresses with identical letters; address labels flash",
+      "sfx": [],
+      "narration": "Back to our password. saved is goa123, typed is goa123, and the code says if typed equals-equals saved. With plain gcc, no warning at all. Output: wrong password. Compile with dash Wall and GCC tells you the truth: comparison between two arrays. Remember EP 46: an array name stands for the array's location in memory. These are two different arrays, in two different places, so their locations are never equal, even with the same letters inside. Equals-equals compared the addresses, not the letters. The fix: strcmp, typed, saved, equals-equals zero. Now: access granted. And a habit for life: always compile with dash Wall."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 375,
+      "lengthSec": 30,
+      "onScreen": "Password checker with fgets + strcmp",
+      "animation": "Padlock icon; ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. Build a tiny password checker. Store the saved password, feni at 2026. Read the user's attempt with fgets, from EP 48, and remove the newline. Compare with strcmp. Print access granted or wrong password. Test it with a capital F, and notice that strcmp cares about capitals."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 405,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 50 String manipulation",
+      "animation": "\"malayalam\" mirrored; sign-off",
+      "sfx": [],
+      "narration": "Next episode, we write our own string tools: reverse a word, count vowels, and check if malayalam is a palindrome. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    char saved[] = \"goa123\";\n    char typed[] = \"goa123\";\n\n    if (typed == saved) {\n        printf(\"Access granted\\n\");\n    } else {\n        printf(\"Wrong password\\n\");\n    }\n    return 0;\n}",
+    "error": "Plain `gcc pass_bug.c -o pass_bug` gives no warning. With `gcc -Wall pass_bug.c -o pass_bug`:\n\npass_bug.c: In function 'main':\npass_bug.c:7:15: warning: comparison between two arrays [-Warray-compare]\n    7 |     if (typed == saved) {\n      |               ^~\npass_bug.c:7:15: note: use '&typed[0] == &saved[0]' to compare the addresses\n\nWrong output:\n\nWrong password",
+    "fixed": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char saved[] = \"goa123\";\n    char typed[] = \"goa123\";\n\n    if (strcmp(typed, saved) == 0) {\n        printf(\"Access granted\\n\");\n    } else {\n        printf(\"Wrong password\\n\");\n    }\n    return 0;\n}",
+    "why": "== on two arrays compares their memory locations, which are always different; strcmp compares the letters."
+  },
+  "pun": "Why did the two strings go to counselling? They were equal, but they kept saying zero to each other.",
+  "challenge": "Password checker: saved password \"feni@2026\", read the attempt with fgets, strip the newline, compare with strcmp. Try \"Feni@2026\" too.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char saved[] = \"feni@2026\";\n    char typed[30];\n\n    printf(\"Password: \");\n    fgets(typed, sizeof(typed), stdin);\n    typed[strcspn(typed, \"\\n\")] = '\\0';\n\n    if (strcmp(typed, saved) == 0) {\n        printf(\"Access granted\\n\");\n    } else {\n        printf(\"Wrong password\\n\");\n    }\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Right Password, Wrong Answer",
+      "hook": "Terminal: typed goa123, \"Wrong password\".",
+      "script": "Saved password: goa123. I typed goa123. The program says wrong password. Why? I compared strings with equals-equals. In C, that compares where the strings live, not what they say. Use strcmp.",
+      "onScreen": "goa123 == goa123 → FALSE?!",
+      "fromScenes": [
+        1,
+        10
+      ],
+      "lengthSec": 22,
+      "caption": "The password bug every C beginner writes.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "strings",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "string.h in 30 Seconds",
+      "hook": "Toolbox snaps open with four tools.",
+      "script": "Four tools from string dot h. strlen: the length, without backslash zero. strcpy: copy a string, destination first. strcat: join one string onto another. strcmp: compare; zero means equal. And make sure the destination has room.",
+      "onScreen": "strlen · strcpy · strcat · strcmp",
+      "fromScenes": [
+        3,
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "C's string toolbox in half a minute.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "stringh",
+        "cprogrammingtutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "== on Strings",
+      "hook": "Two identical arrays with different address labels.",
+      "script": "Two arrays, same letters, goa123. typed equals-equals saved is false. Each array name stands for its location in memory, and two arrays never share a location. dash Wall even warns: comparison between two arrays. The fix: strcmp, typed, saved, equals-equals zero.",
+      "onScreen": "strcmp(a, b) == 0 ✓",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Compile with -Wall and C tells you.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "debugging"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Saying Zero",
+      "hook": "Two strings on a sofa, a counsellor Xecxec with a clipboard.",
+      "script": "Why did the two strings go to counselling? They were equal, but they kept saying zero to each other.",
+      "onScreen": "EQUAL, BUT THEY KEPT SAYING ZERO",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 12,
+      "caption": "strcmp relationship advice.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "strlen or sizeof?",
+      "hook": "\"char s[] = \"Goa\"; strlen(s) and sizeof(s)?\"",
+      "script": "char s equals Goa. What are strlen s and sizeof s? Pause and guess. strlen is 3: it counts letters. sizeof is 4: the array also holds backslash zero.",
+      "onScreen": "strlen = 3 · sizeof = 4",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 20,
+      "caption": "One counts letters, one counts bytes.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "strings"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char first[20] = \"Crab\";\n    char second[] = \"Xecxec\";\n    char copy[20];\n\n    printf(\"Length of %s: %zu\\n\", second, strlen(second));\n\n    strcpy(copy, second);\n    printf(\"Copy: %s\\n\", copy);\n\n    strcat(first, \" \");\n    strcat(first, second);\n    printf(\"Joined: %s\\n\", first);\n\n    printf(\"strcmp(\\\"apple\\\", \\\"apple\\\") = %d\\n\", strcmp(\"apple\", \"apple\"));\n    if (strcmp(\"apple\", \"mango\") < 0) {\n        printf(\"apple comes before mango\\n\");\n    }\n    return 0;\n}",
+      "output": "Length of Xecxec: 6\nCopy: Xecxec\nJoined: Crab Xecxec\nstrcmp(\"apple\", \"apple\") = 0\napple comes before mango",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Access granted"
+  }
+}

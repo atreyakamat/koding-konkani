@@ -1,0 +1,337 @@
+{
+  "ep": 85,
+  "title": "Project: Bank / ATM Simulator",
+  "module": 13,
+  "lengthSec": 480,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#D9C9FF"
+  },
+  "learningGoals": [
+    "design a program as small functions that take a value and return the updated value (no globals)",
+    "validate every input (not a number, negative, zero, too large) before using it",
+    "persist a single value in a text file with `fprintf` / `fscanf`",
+    "add a PIN check with a limited number of tries"
+  ],
+  "youtube": {
+    "title": "Build an ATM in C (Without Breaking the Bank) | EP 85",
+    "description": "Withdraw minus 5000 rupees and get richer? Not in our ATM. We build a full bank ATM simulator in C with balance, deposit and withdraw, save the balance to a file, and validate every single input. Full code, explained line by line. Chapters: 0:00 Withdraw without breaking the bank · 0:20 The plan · 0:50 Saving the balance · 2:00 Reading a safe amount · 3:05 Deposit and withdraw · 4:15 The menu · 4:50 Demo · 5:40 Bug of the Day · 7:00 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Withdraw without breaking the bank"
+      },
+      {
+        "t": "0:20",
+        "label": "The plan"
+      },
+      {
+        "t": "0:50",
+        "label": "Saving the balance"
+      },
+      {
+        "t": "2:00",
+        "label": "Reading a safe amount"
+      },
+      {
+        "t": "3:05",
+        "label": "Deposit and withdraw"
+      },
+      {
+        "t": "4:15",
+        "label": "The menu"
+      },
+      {
+        "t": "4:50",
+        "label": "Demo"
+      },
+      {
+        "t": "5:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "7:00",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c project",
+      "atm program in c",
+      "bank management system c",
+      "c mini project",
+      "input validation c",
+      "file handling c",
+      "menu driven program c",
+      "c project with source code",
+      "learn c",
+      "koding konkani",
+      "class 12 computer project",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "BUILD AN ATM",
+      "visual": "big text \"BUILD AN ATM\"; an ATM screen showing \"Rs -40000.00\" in tomato with a big cross; Xecxec in a security-guard cap blocking the slot; peach background, lilac accents",
+      "pose": "Xecxec in a security-guard cap blocking the slot"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A broken ATM: withdraw -5000, balance goes UP to 15000; withdraw 50000, balance -40000",
+      "animation": "Cash-register \"cha-ching\" then alarm siren; Xecxec faints",
+      "sfx": [],
+      "narration": "Welcome to the worst ATM in Goa. Balance: 10,000 rupees. Let's withdraw minus 5,000. \"Please collect minus 5,000\". And the balance goes up to 15,000! Now withdraw 50,000. Balance: minus 40,000. The bank manager has fainted. Today we build an ATM that checks everything."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 85 · PROJECT: BANK / ATM SIMULATOR",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 85. Project: bank ATM simulator."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 25,
+      "onScreen": "Plan: `balance` lives in main → passed into deposit/withdraw → new balance returned → saved to `balance.txt`. Rule card: \"Never trust input\"",
+      "animation": "Arrows loop from main to function and back; stamp SFX on the rule",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Here's the plan. The balance lives in main, as a local variable. When you deposit or withdraw, main passes the balance into a function, and the function returns the new balance. That's call by value from EP 38, used on purpose. No globals this time. After every change, we save the balance to a small text file, so it survives a restart. And one rule above all: never trust input. Every amount gets checked before it touches the balance."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 50,
+      "lengthSec": 70,
+      "onScreen": "`atm.c` lines 1–26: constants, loadBalance, saveBalance",
+      "animation": "Butter highlights; text file icon shows `12500.00` inside",
+      "sfx": [],
+      "narration": "[HL 3] Line three: the file name. [HL 4] Line four: MIN_BALANCE, 500 rupees, the minimum the bank wants you to keep. A named constant, from EP 10, instead of a magic number. [HL 6-7] loadBalance starts with a default opening balance of 10,000 for the very first run. [HL 8] Open balance dot txt for reading. [HL 9] If the file exists, [HL 10-12] fscanf reads one double with percent l f. If that fails, say someone typed rubbish into the file, we fall back to 10,000. [HL 13] Close it. [HL 15] Return the balance. [HL 18] saveBalance takes the balance as a parameter. [HL 19-23] Open for writing, and check for NULL. [HL 24] fprintf writes it with two decimal places. Because this is a text file, you can open it in Notepad and read it. That's handy for one number. For many records, like last episode, a binary file is better.",
+      "code": {
+        "file": "atm.c",
+        "source": "#include <stdio.h>\n\n#define BALANCE_FILE \"balance.txt\"\n#define MIN_BALANCE 500.0\n\ndouble loadBalance(void) {\n    double balance = 10000.0;          // opening balance on first run\n    FILE *fp = fopen(BALANCE_FILE, \"r\");\n    if (fp != NULL) {\n        if (fscanf(fp, \"%lf\", &balance) != 1) {\n            balance = 10000.0;\n        }\n        fclose(fp);\n    }\n    return balance;\n}\n\nvoid saveBalance(double balance) {\n    FILE *fp = fopen(BALANCE_FILE, \"w\");\n    if (fp == NULL) {\n        printf(\"Warning: could not save balance.\\n\");\n        return;\n    }\n    fprintf(fp, \"%.2f\\n\", balance);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\ndouble readAmount(void) {\n    double amount;\n    while (1) {\n        printf(\"Amount (Rs): \");\n        if (scanf(\"%lf\", &amount) == 1 && amount > 0) {\n            clearInput();\n            return amount;\n        }\n        clearInput();\n        printf(\"Enter a positive number.\\n\");\n    }\n}\n\ndouble deposit(double balance) {\n    double amount = readAmount();\n    balance += amount;\n    printf(\"Deposited Rs %.2f\\n\", amount);\n    return balance;\n}\n\ndouble withdraw(double balance) {\n    double amount = readAmount();\n    if (balance - amount < MIN_BALANCE) {\n        printf(\"Declined: keep at least Rs %.2f in the account.\\n\", MIN_BALANCE);\n        return balance;\n    }\n    balance -= amount;\n    printf(\"Please collect Rs %.2f\\n\", amount);\n    return balance;\n}\n\nint main(void) {\n    double balance = loadBalance();\n    int choice = 0;\n    printf(\"Welcome to Xecxec Bank ATM\\n\");\n    do {\n        printf(\"\\n1. Balance  2. Deposit  3. Withdraw  4. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: printf(\"Balance: Rs %.2f\\n\", balance); break;\n            case 2: balance = deposit(balance);  saveBalance(balance); break;\n            case 3: balance = withdraw(balance); saveBalance(balance); break;\n            case 4: printf(\"Thank you. Visit again!\\n\"); break;\n            default: printf(\"Pick 1 to 4.\\n\");\n        }\n    } while (choice != 4);\n    return 0;\n}"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 65,
+      "onScreen": "Lines 28–44: clearInput, readAmount",
+      "animation": "Butter highlights; bad inputs (abc, -50, 0) bounce off a shield",
+      "sfx": [],
+      "narration": "[HL 28-31] clearInput, the same helper from EP 84. [HL 33] readAmount: the security guard of our ATM. Its only job is to return a valid amount. [HL 35] while 1 means \"keep asking until we get a good answer\". [HL 36] Ask for the amount. [HL 37] Two checks in one line. scanf must return 1, meaning it really read a number, and amount must be greater than zero. Because of the double ampersand, if scanf fails, C doesn't even look at amount. [HL 38-39] If both pass, clear the Enter key and return the amount. [HL 41-42] If not, clear the bad line and say \"Enter a positive number\". Then the loop asks again. abc, rejected. Minus 50, rejected. Zero, rejected. Every function that needs an amount calls readAmount, so the checking is written in one place.",
+      "code": {
+        "file": "atm.c",
+        "source": "#include <stdio.h>\n\n#define BALANCE_FILE \"balance.txt\"\n#define MIN_BALANCE 500.0\n\ndouble loadBalance(void) {\n    double balance = 10000.0;          // opening balance on first run\n    FILE *fp = fopen(BALANCE_FILE, \"r\");\n    if (fp != NULL) {\n        if (fscanf(fp, \"%lf\", &balance) != 1) {\n            balance = 10000.0;\n        }\n        fclose(fp);\n    }\n    return balance;\n}\n\nvoid saveBalance(double balance) {\n    FILE *fp = fopen(BALANCE_FILE, \"w\");\n    if (fp == NULL) {\n        printf(\"Warning: could not save balance.\\n\");\n        return;\n    }\n    fprintf(fp, \"%.2f\\n\", balance);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\ndouble readAmount(void) {\n    double amount;\n    while (1) {\n        printf(\"Amount (Rs): \");\n        if (scanf(\"%lf\", &amount) == 1 && amount > 0) {\n            clearInput();\n            return amount;\n        }\n        clearInput();\n        printf(\"Enter a positive number.\\n\");\n    }\n}\n\ndouble deposit(double balance) {\n    double amount = readAmount();\n    balance += amount;\n    printf(\"Deposited Rs %.2f\\n\", amount);\n    return balance;\n}\n\ndouble withdraw(double balance) {\n    double amount = readAmount();\n    if (balance - amount < MIN_BALANCE) {\n        printf(\"Declined: keep at least Rs %.2f in the account.\\n\", MIN_BALANCE);\n        return balance;\n    }\n    balance -= amount;\n    printf(\"Please collect Rs %.2f\\n\", amount);\n    return balance;\n}\n\nint main(void) {\n    double balance = loadBalance();\n    int choice = 0;\n    printf(\"Welcome to Xecxec Bank ATM\\n\");\n    do {\n        printf(\"\\n1. Balance  2. Deposit  3. Withdraw  4. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: printf(\"Balance: Rs %.2f\\n\", balance); break;\n            case 2: balance = deposit(balance);  saveBalance(balance); break;\n            case 3: balance = withdraw(balance); saveBalance(balance); break;\n            case 4: printf(\"Thank you. Visit again!\\n\"); break;\n            default: printf(\"Pick 1 to 4.\\n\");\n        }\n    } while (choice != 4);\n    return 0;\n}"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 185,
+      "lengthSec": 70,
+      "onScreen": "Lines 46–62: deposit, withdraw",
+      "animation": "Butter highlights; tracker for balance and amount; MIN_BALANCE line drawn on a bar",
+      "sfx": [],
+      "narration": "[HL 46] deposit takes the current balance. [HL 47] Gets a safe amount from readAmount. [TRACK amount=2500] [HL 48] Adds it. [TRACK balance=12500] [HL 49-50] Prints a receipt and returns the new balance. [HL 53] withdraw also takes the balance. [HL 54] Safe amount again. [HL 55] The second check: would the balance drop below 500? [TRACK amount=20000] If balance minus amount is less than MIN_BALANCE, [HL 56-57] decline, and return the balance unchanged. [HL 59-61] Otherwise subtract, say \"Please collect\", and return the new balance. [TRACK amount=4000] [TRACK balance=8500] One honest note: we use double for money to keep this simple. Real banking software stores paise as whole numbers, because decimals can't always be stored exactly. You saw that kind of rounding in EP 08.",
+      "code": {
+        "file": "atm.c",
+        "source": "#include <stdio.h>\n\n#define BALANCE_FILE \"balance.txt\"\n#define MIN_BALANCE 500.0\n\ndouble loadBalance(void) {\n    double balance = 10000.0;          // opening balance on first run\n    FILE *fp = fopen(BALANCE_FILE, \"r\");\n    if (fp != NULL) {\n        if (fscanf(fp, \"%lf\", &balance) != 1) {\n            balance = 10000.0;\n        }\n        fclose(fp);\n    }\n    return balance;\n}\n\nvoid saveBalance(double balance) {\n    FILE *fp = fopen(BALANCE_FILE, \"w\");\n    if (fp == NULL) {\n        printf(\"Warning: could not save balance.\\n\");\n        return;\n    }\n    fprintf(fp, \"%.2f\\n\", balance);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\ndouble readAmount(void) {\n    double amount;\n    while (1) {\n        printf(\"Amount (Rs): \");\n        if (scanf(\"%lf\", &amount) == 1 && amount > 0) {\n            clearInput();\n            return amount;\n        }\n        clearInput();\n        printf(\"Enter a positive number.\\n\");\n    }\n}\n\ndouble deposit(double balance) {\n    double amount = readAmount();\n    balance += amount;\n    printf(\"Deposited Rs %.2f\\n\", amount);\n    return balance;\n}\n\ndouble withdraw(double balance) {\n    double amount = readAmount();\n    if (balance - amount < MIN_BALANCE) {\n        printf(\"Declined: keep at least Rs %.2f in the account.\\n\", MIN_BALANCE);\n        return balance;\n    }\n    balance -= amount;\n    printf(\"Please collect Rs %.2f\\n\", amount);\n    return balance;\n}\n\nint main(void) {\n    double balance = loadBalance();\n    int choice = 0;\n    printf(\"Welcome to Xecxec Bank ATM\\n\");\n    do {\n        printf(\"\\n1. Balance  2. Deposit  3. Withdraw  4. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: printf(\"Balance: Rs %.2f\\n\", balance); break;\n            case 2: balance = deposit(balance);  saveBalance(balance); break;\n            case 3: balance = withdraw(balance); saveBalance(balance); break;\n            case 4: printf(\"Thank you. Visit again!\\n\"); break;\n            default: printf(\"Pick 1 to 4.\\n\");\n        }\n    } while (choice != 4);\n    return 0;\n}"
+      }
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 255,
+      "lengthSec": 35,
+      "onScreen": "Lines 64–85: main",
+      "animation": "Butter highlights; loop arrow around the switch",
+      "sfx": [],
+      "narration": "[HL 65] main loads the balance once. [HL 67] Welcome message. [HL 68-75] The same safe menu loop from EP 84: check that scanf read a number, otherwise clear and continue. [HL 77] Option 1 prints the balance. [HL 78] Option 2: balance equals deposit of balance, then save. See how the returned value is stored back into balance? Without that assignment, the deposit would vanish, exactly like EP 38's bug. [HL 79] Option 3, the same for withdraw. [HL 80] Option 4 says goodbye. [HL 83] Loop until 4.",
+      "code": {
+        "file": "atm.c",
+        "source": "#include <stdio.h>\n\n#define BALANCE_FILE \"balance.txt\"\n#define MIN_BALANCE 500.0\n\ndouble loadBalance(void) {\n    double balance = 10000.0;          // opening balance on first run\n    FILE *fp = fopen(BALANCE_FILE, \"r\");\n    if (fp != NULL) {\n        if (fscanf(fp, \"%lf\", &balance) != 1) {\n            balance = 10000.0;\n        }\n        fclose(fp);\n    }\n    return balance;\n}\n\nvoid saveBalance(double balance) {\n    FILE *fp = fopen(BALANCE_FILE, \"w\");\n    if (fp == NULL) {\n        printf(\"Warning: could not save balance.\\n\");\n        return;\n    }\n    fprintf(fp, \"%.2f\\n\", balance);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\ndouble readAmount(void) {\n    double amount;\n    while (1) {\n        printf(\"Amount (Rs): \");\n        if (scanf(\"%lf\", &amount) == 1 && amount > 0) {\n            clearInput();\n            return amount;\n        }\n        clearInput();\n        printf(\"Enter a positive number.\\n\");\n    }\n}\n\ndouble deposit(double balance) {\n    double amount = readAmount();\n    balance += amount;\n    printf(\"Deposited Rs %.2f\\n\", amount);\n    return balance;\n}\n\ndouble withdraw(double balance) {\n    double amount = readAmount();\n    if (balance - amount < MIN_BALANCE) {\n        printf(\"Declined: keep at least Rs %.2f in the account.\\n\", MIN_BALANCE);\n        return balance;\n    }\n    balance -= amount;\n    printf(\"Please collect Rs %.2f\\n\", amount);\n    return balance;\n}\n\nint main(void) {\n    double balance = loadBalance();\n    int choice = 0;\n    printf(\"Welcome to Xecxec Bank ATM\\n\");\n    do {\n        printf(\"\\n1. Balance  2. Deposit  3. Withdraw  4. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: printf(\"Balance: Rs %.2f\\n\", balance); break;\n            case 2: balance = deposit(balance);  saveBalance(balance); break;\n            case 3: balance = withdraw(balance); saveBalance(balance); break;\n            case 4: printf(\"Thank you. Visit again!\\n\"); break;\n            default: printf(\"Pick 1 to 4.\\n\");\n        }\n    } while (choice != 4);\n    return 0;\n}"
+      }
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 290,
+      "lengthSec": 45,
+      "onScreen": "Full demo session",
+      "animation": "Typing SFX; note notes slide out of an ATM slot on withdraw",
+      "sfx": [],
+      "narration": "Compile with gcc atm dot c, dash o, atm, and run. Check balance: 10,000. Deposit 2,500. Now withdraw, and try to break it. Minus 50: rejected. a b c: rejected. 20,000: declined, you must keep 500. 4,000: please collect. Balance: 8,500. Exit, and open balance dot txt: 8500 point 00, saved. Run it again, and the ATM remembers."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 335,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec counting cash",
+      "sfx": [],
+      "narration": "Why did the ATM need a break? It had too many withdrawals and no deposit of energy left."
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 340,
+      "lengthSec": 80,
+      "onScreen": "`atmbug.c`: no validation; negative and huge withdrawals; fixed version",
+      "animation": "Balance counter spins the wrong way; fix shows checks as gates, mint tick",
+      "sfx": [],
+      "narration": "Today's bug: no input validation. Here's the ATM from the cold open, cut down. It reads the amount with scanf and subtracts it. No checks at all. The compiler is perfectly happy, even with dash Wall. It is valid C. It's just a terrible ATM. Minus 5,000 makes the balance go up to 15,000. 50,000 makes it minus 40,000. And type letters, and scanf fails, amount stays unset, and you get garbage. The fix adds two gates. Gate one: if scanf didn't return 1, or the amount is zero or less, print \"Invalid amount\" and stop. Gate two: if the amount is more than the balance minus 500, print \"Declined\". Only after both gates do we touch the balance. In real software, most security problems start right here: with input nobody checked."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 420,
+      "lengthSec": 45,
+      "onScreen": "Challenge card: 4-digit PIN, 3 tries, then \"Card blocked\"",
+      "animation": "Keypad beeps; timer ticks",
+      "sfx": [],
+      "narration": "Your challenge: add a PIN check. Write a function checkPin that allows three tries to enter the PIN 4321. It returns 1 if the PIN is right, and 0 after three wrong tries. In main, call it before the menu. If it returns 0, print \"Card blocked. Visit your branch.\" and end the program. Hint: a for loop from 1 to 3, and remember to clear the input after each try."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 465,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 86 · Finale",
+      "animation": "Graduation cap drops onto Xecxec; sign-off jingle",
+      "sfx": [],
+      "narration": "Two projects done! Next episode is the grand finale: exam prep, the questions examiners love, and a sneak peek at what comes after C. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    double balance = 10000.0;\n    double amount;\n    printf(\"Amount to withdraw (Rs): \");\n    scanf(\"%lf\", &amount);\n    balance -= amount;\n    printf(\"Please collect Rs %.2f\\n\", amount);\n    printf(\"Balance: Rs %.2f\\n\", balance);\n    return 0;\n}",
+    "error": "No compiler warning, even with `-Wall`. Wrong output for input `-5000`:\n\nAmount to withdraw (Rs): -5000\nPlease collect Rs -5000.00\nBalance: Rs 15000.00\n\nFor input `50000`:\n\nAmount to withdraw (Rs): 50000\nPlease collect Rs 50000.00\nBalance: Rs -40000.00\n\n(For input `abc`, scanf fails and `amount` is never set, so the output is garbage that changes from machine to machine.)",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    double balance = 10000.0;\n    double amount;\n    printf(\"Amount to withdraw (Rs): \");\n    if (scanf(\"%lf\", &amount) != 1 || amount <= 0) {\n        printf(\"Invalid amount.\\n\");\n        return 1;\n    }\n    if (amount > balance - 500.0) {\n        printf(\"Declined: not enough balance.\\n\");\n        return 1;\n    }\n    balance -= amount;\n    printf(\"Please collect Rs %.2f\\n\", amount);\n    printf(\"Balance: Rs %.2f\\n\", balance);\n    return 0;\n}",
+    "why": "the compiler only checks that code is valid C, not that input makes sense, so the program itself must reject non-numbers, non-positive amounts and amounts larger than the allowed balance."
+  },
+  "pun": "Why did the ATM need a break? Too many withdrawals, and no deposit of energy left.",
+  "challenge": "Add `int checkPin(void)`: three tries to enter PIN 4321, returns 1 on success, 0 after three wrong tries. Call it before the menu; on 0 print \"Card blocked. Visit your branch.\" and end.",
+  "challengeAnswer": "add this function after `clearInput`:",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The Worst ATM in Goa",
+      "hook": "\"Withdraw: -5000\" and the balance jumping UP",
+      "script": "Withdraw minus 5,000 rupees, and your balance goes up to 15,000. Withdraw 50,000, and you're at minus 40,000. This ATM compiles with zero warnings. It's valid C. It just never checks the input. In episode 85, we build one that does.",
+      "onScreen": "WITHDRAW -5000 = GET RICH?",
+      "fromScenes": [
+        1
+      ],
+      "lengthSec": 25,
+      "caption": "Valid code, broken bank.",
+      "hashtags": [
+        "cprogramming",
+        "cproject",
+        "kodingkonkani",
+        "learntocode",
+        "inputvalidation"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Input Validation in 30 Seconds",
+      "hook": "\"abc\", \"-50\" and \"0\" bouncing off a shield",
+      "script": "Two checks make input safe. One: did scanf return 1? If not, the user typed something that isn't a number. Two: is the value in range, like greater than zero? If either fails, clear the line and ask again. Put this in one function, readAmount, and call it everywhere. Write the checking once, use it everywhere.",
+      "onScreen": "IS IT A NUMBER? IS IT IN RANGE?",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Two checks every C program needs.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "scanf",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The Bug That Robs the Bank",
+      "hook": "balance counter spinning to \"Rs -40000.00\"",
+      "script": "This withdraw code reads the amount and subtracts it. No checks. Minus 5,000 adds money. 50,000 sends you negative. Letters give garbage. The fix: gate one, reject anything that isn't a positive number. Gate two, decline if it would drop below the minimum balance. Only then touch the balance.",
+      "onScreen": "NO CHECKS = NO BANK",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 40,
+      "caption": "Most security bugs start with unchecked input.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "security",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The Tired ATM",
+      "hook": "an ATM yawning, Xecxec fanning it",
+      "script": "Why did the ATM need a break? It had too many withdrawals and no deposit of energy left.",
+      "onScreen": "NO DEPOSIT OF ENERGY",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 12,
+      "caption": "Even machines need a holiday.",
+      "hashtags": [
+        "codingmemes",
+        "programmerhumor",
+        "kodingkonkani",
+        "cprogramming",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: Will It Withdraw?",
+      "hook": "\"Balance 1000. Minimum 500. Withdraw 600?\"",
+      "script": "Balance is 1,000 rupees. The minimum balance is 500. You try to withdraw 600. What happens? A: Please collect 600. B: Declined. C: Enter a positive number. The answer is B. 1,000 minus 600 is 400, which is below 500.",
+      "onScreen": "COLLECT · DECLINED · INVALID?",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 25,
+      "caption": "Comment your answer before the reveal.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "cproject"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "atm.c",
+      "source": "#include <stdio.h>\n\n#define BALANCE_FILE \"balance.txt\"\n#define MIN_BALANCE 500.0\n\ndouble loadBalance(void) {\n    double balance = 10000.0;          // opening balance on first run\n    FILE *fp = fopen(BALANCE_FILE, \"r\");\n    if (fp != NULL) {\n        if (fscanf(fp, \"%lf\", &balance) != 1) {\n            balance = 10000.0;\n        }\n        fclose(fp);\n    }\n    return balance;\n}\n\nvoid saveBalance(double balance) {\n    FILE *fp = fopen(BALANCE_FILE, \"w\");\n    if (fp == NULL) {\n        printf(\"Warning: could not save balance.\\n\");\n        return;\n    }\n    fprintf(fp, \"%.2f\\n\", balance);\n    fclose(fp);\n}\n\nvoid clearInput(void) {\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) { }\n}\n\ndouble readAmount(void) {\n    double amount;\n    while (1) {\n        printf(\"Amount (Rs): \");\n        if (scanf(\"%lf\", &amount) == 1 && amount > 0) {\n            clearInput();\n            return amount;\n        }\n        clearInput();\n        printf(\"Enter a positive number.\\n\");\n    }\n}\n\ndouble deposit(double balance) {\n    double amount = readAmount();\n    balance += amount;\n    printf(\"Deposited Rs %.2f\\n\", amount);\n    return balance;\n}\n\ndouble withdraw(double balance) {\n    double amount = readAmount();\n    if (balance - amount < MIN_BALANCE) {\n        printf(\"Declined: keep at least Rs %.2f in the account.\\n\", MIN_BALANCE);\n        return balance;\n    }\n    balance -= amount;\n    printf(\"Please collect Rs %.2f\\n\", amount);\n    return balance;\n}\n\nint main(void) {\n    double balance = loadBalance();\n    int choice = 0;\n    printf(\"Welcome to Xecxec Bank ATM\\n\");\n    do {\n        printf(\"\\n1. Balance  2. Deposit  3. Withdraw  4. Exit\\nChoice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            clearInput();\n            printf(\"Please type a number.\\n\");\n            continue;\n        }\n        clearInput();\n        switch (choice) {\n            case 1: printf(\"Balance: Rs %.2f\\n\", balance); break;\n            case 2: balance = deposit(balance);  saveBalance(balance); break;\n            case 3: balance = withdraw(balance); saveBalance(balance); break;\n            case 4: printf(\"Thank you. Visit again!\\n\"); break;\n            default: printf(\"Pick 1 to 4.\\n\");\n        }\n    } while (choice != 4);\n    return 0;\n}",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Amount to withdraw (Rs): -5000\nInvalid amount.\nAmount to withdraw (Rs): 50000\nDeclined: not enough balance.\nAmount to withdraw (Rs): 2000\nPlease collect Rs 2000.00\nBalance: Rs 8000.00"
+  }
+}

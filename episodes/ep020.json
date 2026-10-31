@@ -1,0 +1,306 @@
+{
+  "ep": 20,
+  "title": "if and else",
+  "module": 3,
+  "lengthSec": 350,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write an `if` with a condition in brackets and a body in braces",
+    "add an `else` for the other path",
+    "predict which branch runs for a given input",
+    "spot the stray semicolon after `if (...)`"
+  ],
+  "youtube": {
+    "title": "if and else: Teach Your Code to Decide | C Programming EP 20",
+    "description": "Until now every program ran every line, top to bottom. Today your code learns to choose: if it rains, take the umbrella, else take the sunglasses. We build a pass/fail checker line by line and meet the semicolon that silently breaks every if. Chapters: 0:00 Rain or shine · 0:25 What if does · 1:15 Code line by line · 2:45 Running it · 3:25 Three rules · 4:05 Bug of the Day · 5:00 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Rain or shine"
+      },
+      {
+        "t": "0:25",
+        "label": "What if does"
+      },
+      {
+        "t": "1:15",
+        "label": "Code line by line"
+      },
+      {
+        "t": "2:45",
+        "label": "Running it"
+      },
+      {
+        "t": "3:25",
+        "label": "Three rules"
+      },
+      {
+        "t": "4:05",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:00",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "if else in c",
+      "c if statement",
+      "decision making in c",
+      "learn c",
+      "c for beginners",
+      "conditional statements",
+      "c tutorial english",
+      "koding konkani",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "IF... ELSE?",
+      "visual": "big text \"IF... ELSE?\"; a road splitting in two with a green PASS sign and a red FAIL sign; Xecxec standing at the fork holding an umbrella in one claw and sunglasses in the other; mint background, dark blue text blocks",
+      "pose": "Xecxec standing at the fork holding an umbrella in one claw and sunglasses in the other"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Rain cloud over Panaji; Xecxec at his door choosing umbrella or sunglasses",
+      "animation": "Cloud slides in, rain drops; claw-click as he grabs the umbrella",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Morning in Panaji. Dark clouds over the Mandovi. Xecxec stands at his door with an umbrella in one claw and sunglasses in the other. If it rains, he takes the umbrella. Else, the sunglasses. You make this kind of choice a hundred times a day. Today, your C program learns to make it too."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 20 · IF AND ELSE",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 20. if and else."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "Flowchart: diamond \"marks >= 35?\" with YES and NO arrows to two boxes",
+      "animation": "Diamond pops, arrows draw in, ding on YES, buzz on NO",
+      "sfx": [
+        "ding",
+        "pop"
+      ],
+      "narration": "Every program we wrote so far ran every line, from top to bottom, like a bus that stops at every stop. An if statement lets the program skip stops. Here is the picture. We have a question in a diamond: are the marks 35 or more? That question is a condition, and you already know conditions from EP 16. It is either true or false. If it is true, we follow the YES arrow and print Pass. If it is false, we follow the NO arrow and print Fail. Only one arrow is followed. Never both. After that, both roads join again and the program carries on."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 75,
+      "lengthSec": 90,
+      "onScreen": "ep20.c, 17 lines; variable tracker for marks",
+      "animation": "Line highlights in butter; tracker box updates; key-tap SFX",
+      "sfx": [],
+      "narration": "Let's turn that diamond into C. [HL 4] Line 4 makes a box called marks. [HL 6] Line 6 asks the user to type marks. [HL 7] Line 7 reads them with scanf, with the ampersand, just like EP 12. Say the user types 72. [TRACK marks=72] Now the important part. [HL 9] Line 9: the word if, then the condition inside round brackets: marks greater than or equal to 35. Is 72 greater than or equal to 35? Yes, true. So C runs the block inside the curly braces. [HL 10] Line 10 prints \"Pass! Party at Baga.\" [HL 11] Line 11 has the closing brace, then the word else, then a new opening brace. Else means: run this only when the condition was false. The condition was true, so C jumps over the whole else block, lines 11 to 13. [HL 15] Line 15 runs no matter what, because it is outside both blocks. It prints \"Result checked.\" Now run it again with 20. [TRACK marks=20] [HL 9] Is 20 greater than or equal to 35? No. False. So C skips line 10 completely, [HL 12] and runs the else block, line 12: \"Fail. Try again, crab.\" [HL 15] And again line 15 runs. One question, two roads, one meeting point.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int marks;\n\n    printf(\"Enter your marks: \");\n    scanf(\"%d\", &marks);\n\n    if (marks >= 35) {\n        printf(\"Pass! Party at Baga.\\n\");\n    } else {\n        printf(\"Fail. Try again, crab.\\n\");\n    }\n\n    printf(\"Result checked.\\n\");\n    return 0;\n}",
+        "output": "Enter your marks: 72\nPass! Party at Baga.\nResult checked.\n\nEnter your marks: 20\nFail. Try again, crab.\nResult checked.\n\nEnter your marks: 35\nPass! Party at Baga.\nResult checked."
+      }
+    },
+    {
+      "id": 5,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 35,
+      "onScreen": "Three runs: 72, 20, 35",
+      "animation": "Typing SFX, output lines fade in; Xecxec cheers on 35",
+      "sfx": [],
+      "narration": "Let's compile and run. gcc ep20.c -o ep20, then dot slash ep20. Type 72: Pass. Run again, type 20: Fail. Now the tricky one: 35. Is 35 greater than or equal to 35? Yes, equal counts. Pass. If we had written only greater than, 35 would fail, and one very angry student would be at your door. Always check the edge value."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 200,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, Xecxec claw-click laugh",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "I told my code a joke about if statements. It only laughed on one condition."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 205,
+      "lengthSec": 40,
+      "onScreen": "Three rules: braces, non-zero is true, else is optional",
+      "animation": "Each rule card stamps in",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Three rules to remember. Rule one: put the body in curly braces, even if it is one line. C allows you to skip them for a single line, but braces keep you safe when you add a second line later. Rule two: in C, any value that is not zero counts as true, and zero counts as false. So if (5) always runs, and if (0) never runs. Rule three: else is optional. An if alone is fine. If the condition is false, the program just skips the block and moves on. But an else can never stand alone. It must follow an if."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 245,
+      "lengthSec": 55,
+      "onScreen": "if (marks >= 35); with marks = 20 still printing Pass!",
+      "animation": "Red flash on the semicolon, error buzz, fix swoosh",
+      "sfx": [],
+      "narration": "Today's bug is one tiny dot with a tail: a semicolon. Look at this code. marks is 20. The if says marks greater than or equal to 35, and then, a semicolon. We run it. It prints Pass! With 20 marks! Why? In C, a semicolon on its own is an empty statement. So the if controls that empty statement and nothing else. The block in braces underneath is just a normal block, and it runs every time. Plain gcc gives no error at all. Compile with -Wall and GCC warns: suggest braces around empty body in an if statement. And if you add an else, it becomes a hard error: else without a previous if. The fix: delete the semicolon. Never put a semicolon right after the closing bracket of an if."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 300,
+      "lengthSec": 30,
+      "onScreen": "Two-subject pass/fail checker",
+      "animation": "Timer ring, Xecxec points at the screen",
+      "sfx": [],
+      "narration": "Your challenge. Read marks for two subjects, maths and English. Print PASS only if both are 35 or more. Otherwise print FAIL. Hint: you need the double ampersand from EP 16. Pause the video, open VS Code, and type it yourself. The answer is pinned in the comments."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 330,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 21 else-if ladders; sign-off",
+      "animation": "Module tiles, claw-click, music out",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: what if there are more than two roads? Grades A, B, C, D, and something worse. We climb the else-if ladder in EP 21. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int marks = 20;\n\n    if (marks >= 35);\n    {\n        printf(\"Pass!\\n\");\n    }\n\n    return 0;\n}",
+    "error": "With plain `gcc` there is no error, and the wrong output is:\n\nPass!\n\nWith `gcc -Wall` (GCC 13):\n\nep20bug.c:6:21: warning: suggest braces around empty body in an 'if' statement [-Wempty-body]\n    6 |     if (marks >= 35);\n      |                     ^\nep20bug.c:6:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]\n\nIf an `else` follows the block, it becomes a hard error: `error: 'else' without a previous 'if'`.",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int marks = 20;\n\n    if (marks >= 35) {\n        printf(\"Pass!\\n\");\n    }\n\n    return 0;\n}",
+    "why": "a lone `;` is an empty statement, so the `if` guards nothing and the braced block below it always runs."
+  },
+  "pun": "I told my code a joke about if statements. It only laughed on one condition.",
+  "challenge": "Read marks for maths and English. Print PASS only if both are 35 or more; otherwise print FAIL.",
+  "challengeAnswer": "(worked example)\nint maths, english;\nscanf(\"%d %d\", &maths, &english);\nif (maths >= 35 && english >= 35) {\n    printf(\"PASS\\n\");\n} else {\n    printf(\"FAIL\\n\");\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Your code can finally choose",
+      "hook": "Xecxec freezes between an umbrella and sunglasses: \"Rain or shine?\"",
+      "script": "Every program you wrote so far runs every single line. Like a bus that stops at every stop. Today that changes. With one word, if, your program asks a question. Are the marks 35 or more? True, it prints Pass. False, it prints Fail. Only one road is taken, never both. Full episode on Koding Konkani.",
+      "onScreen": "YOUR CODE CAN CHOOSE",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "One word turns your program into a decision maker.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ifelse",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "if/else in 30 seconds",
+      "hook": "Code line 9 glows: \"if (marks >= 35)\"",
+      "script": "if and else in 30 seconds. Write if, then a condition in round brackets. If it is true, C runs the block in curly braces. If it is false, C jumps to else and runs that block instead. Code after both blocks runs every time. Type 72: Pass. Type 20: Fail. Type 35? Greater than or equal, so Pass. Always test the edge value.",
+      "onScreen": "TRUE = IF BLOCK · FALSE = ELSE BLOCK",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "The whole if/else idea, line by line.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctutorial",
+        "programming"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The semicolon that lies",
+      "hook": "Terminal shows \"Pass!\" next to \"marks = 20\". Xecxec's jaw drops.",
+      "script": "20 marks. The program says Pass. What? Look closely. There is a semicolon right after the if. In C, a lone semicolon is an empty statement. So the if controls nothing, and the block below runs every time. Plain gcc does not even complain. Compile with -Wall and it warns you. Fix: delete that semicolon. Always compile with -Wall.",
+      "onScreen": "if (...); IS A TRAP",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "One semicolon, zero errors, totally wrong output.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "One condition",
+      "hook": "Xecxec holds up a card: \"Joke incoming\"",
+      "script": "I told my code a joke about if statements. It only laughed on one condition.",
+      "onScreen": "IT ONLY LAUGHED ON ONE CONDITION",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 12,
+      "caption": "Tag the friend who only laughs on conditions.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What does it print?",
+      "hook": "\"if (0)\" on screen with a big question mark",
+      "script": "Quick quiz. int x = 0. if (x) print yes, else print no. What prints? Think. Three, two, one. It prints no. In C, zero is false and any other number is true. Now your challenge: read two marks and print PASS only if both are 35 or more. Answer in the comments.",
+      "onScreen": "if (0) → ???",
+      "fromScenes": [
+        7,
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "Zero is false. Everything else is true. Did you get it?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "ifelse"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int marks;\n\n    printf(\"Enter your marks: \");\n    scanf(\"%d\", &marks);\n\n    if (marks >= 35) {\n        printf(\"Pass! Party at Baga.\\n\");\n    } else {\n        printf(\"Fail. Try again, crab.\\n\");\n    }\n\n    printf(\"Result checked.\\n\");\n    return 0;\n}",
+      "output": "Enter your marks: 72\nPass! Party at Baga.\nResult checked.\n\nEnter your marks: 20\nFail. Try again, crab.\nResult checked.\n\nEnter your marks: 35\nPass! Party at Baga.\nResult checked.",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true
+  }
+}

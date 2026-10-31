@@ -1,0 +1,368 @@
+{
+  "ep": 82,
+  "title": "Build your own header library (sort.h + sort.c)",
+  "module": 12,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "split code into a header (declarations) and a source file (definitions)",
+    "include your own header with quotes",
+    "protect a header with an include guard and explain what the preprocessor does with it",
+    "compile and link several .c files with one gcc command"
+  ],
+  "youtube": {
+    "title": "Make Your Own #include: sort.h From Scratch | C EP 82",
+    "description": "printf comes from stdio.h. Today you write your own header. We move our sorts into sort.h and sort.c, add a stats struct that counts comparisons and swaps, and learn the include guard that stops a header from being pasted twice. Plus the exact GCC errors you get without one. 0:00 Make your own #include · 0:20 Title · 0:25 .h vs .c · 1:10 Code: sort.h · 2:00 Code: sort.c · 2:50 Code: report.h and main.c · 3:35 Compile and link · 4:05 Pun · 4:10 What #include really does · 4:50 Bug of the Day · 6:20 Challenge · 6:45 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Make your own #include"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": ".h vs .c"
+      },
+      {
+        "t": "1:10",
+        "label": "Code: sort.h"
+      },
+      {
+        "t": "2:00",
+        "label": "Code: sort.c"
+      },
+      {
+        "t": "2:50",
+        "label": "Code: report.h and main.c"
+      },
+      {
+        "t": "3:35",
+        "label": "Compile and link"
+      },
+      {
+        "t": "4:05",
+        "label": "Pun"
+      },
+      {
+        "t": "4:10",
+        "label": "What #include really does"
+      },
+      {
+        "t": "4:50",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:45",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "header files in c",
+      "include guards",
+      "ifndef define endif",
+      "multiple source files",
+      "c library",
+      "gcc linking",
+      "c programming",
+      "learn c",
+      "koding konkani",
+      "c tutorial",
+      "modular programming"
+    ],
+    "thumbnail": {
+      "text": "YOUR OWN #include",
+      "visual": "big text \"YOUR OWN #include\"; a code tile reading `#include \"sort.h\"` with a butter glow; Xecxec stamping a header file like a librarian; Dark blue background, Butter text.",
+      "pose": "Xecxec stamping a header file like a librarian"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "`#include <stdio.h>` morphs into `#include \"sort.h\"`",
+      "animation": "Typewriter SFX; Xecxec grins",
+      "sfx": [],
+      "narration": "Since Episode 4 you've written hash include stdio dot h, and printf just worked. Someone wrote that header for you. Today, you write your own. By the end of this episode, any program you write can say hash include \"sort.h\" and get all your sorts for free."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 82 · BUILD YOUR OWN HEADER LIBRARY",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 82. Build your own header library."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "Restaurant menu (sort.h: what's available) vs kitchen (sort.c: how it's made); main.c is the customer",
+      "animation": "Menu card flips; kitchen door swings",
+      "sfx": [],
+      "narration": "Think of a restaurant. The menu tells you what you can order: names and prices, no recipes. That's the header file, sort.h. It lists the functions that exist, their names, parameters and return types. The kitchen is where the food is actually made. That's sort.c, the function bodies. And main.c is the customer: it reads the menu and orders. You split files like this in Episode 36. Today we turn it into a proper reusable library."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 70,
+      "lengthSec": 50,
+      "onScreen": "sort.h (13 lines)",
+      "animation": "[HL] cues; guard lines glow butter",
+      "sfx": [],
+      "narration": "[HL 1] hash ifndef SORT_H: if SORT_H is not defined yet, keep reading. [HL 2] hash define SORT_H: define it now. These two lines, plus the hash endif at the bottom, are the include guard. We'll see why they matter in a minute. [HL 4] A struct from Module 9, SortStats, with two counters, [HL 5] comparisons [HL 6] and swaps. [HL 7] typedef, from Episode 63, lets us just write SortStats. [HL 9] Then the prototypes: print_array, [HL 10] bubble_sort and [HL 11] insertion_sort. Each sort now takes a pointer to a SortStats so it can report its work. No function bodies here, just the menu. [HL 13] hash endif closes the guard.",
+      "code": {
+        "file": "sort.h",
+        "source": "#ifndef SORT_H\n#define SORT_H\n\ntypedef struct {\n    long comparisons;\n    long swaps;\n} SortStats;\n\nvoid print_array(const int a[], int n);\nvoid bubble_sort(int a[], int n, SortStats *stats);\nvoid insertion_sort(int a[], int n, SortStats *stats);\n\n#endif"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 50,
+      "onScreen": "sort.c (42 lines), zoomed on lines 1–2 and 10–26",
+      "animation": "[HL]/[TRACK] cues; tracker for stats->comparisons, stats->swaps",
+      "sfx": [],
+      "narration": "[HL 1] sort.c needs printf, so it includes stdio.h. [HL 2] And it includes our own header, with double quotes instead of angle brackets. Quotes mean: look in my project folder first. Including your own header in its .c file lets GCC check that the bodies match the prototypes. [HL 10] bubble_sort is our version from Episode 74, with stats added. [HL 14] Every comparison, we do stats arrow comparisons plus plus. [TRACK stats->comparisons=1] The arrow is for accessing a struct through a pointer, from Episode 62. [HL 19] Every swap, stats arrow swaps plus plus. [TRACK stats->swaps=1] Insertion sort, further down, counts the same way, with each shift counted as a swap.",
+      "code": {
+        "file": "sort.c",
+        "source": "#include <stdio.h>\n#include \"sort.h\"\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid bubble_sort(int a[], int n, SortStats *stats) {\n    for (int pass = 0; pass < n - 1; pass++) {\n        int swapped = 0;\n        for (int j = 0; j < n - 1 - pass; j++) {\n            stats->comparisons++;\n            if (a[j] > a[j + 1]) {\n                int t = a[j];\n                a[j] = a[j + 1];\n                a[j + 1] = t;\n                stats->swaps++;\n                swapped = 1;\n            }\n        }\n        if (!swapped)\n            break;\n    }\n}\n\nvoid insertion_sort(int a[], int n, SortStats *stats) {\n    for (int i = 1; i < n; i++) {\n        int key = a[i];\n        int j = i - 1;\n        while (j >= 0) {\n            stats->comparisons++;\n            if (a[j] <= key)\n                break;\n            a[j + 1] = a[j];\n            stats->swaps++;\n            j--;\n        }\n        a[j + 1] = key;\n    }\n}"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 170,
+      "lengthSec": 45,
+      "onScreen": "report.h (8 lines), report.c (6 lines), main.c (17 lines) side by side",
+      "animation": "[HL] cues; arrows show main.c including both headers and report.h including sort.h",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "We also make a tiny second library, report. [HL report.h 4] report.h includes sort.h, because print_stats needs the SortStats type. [HL report.c 4] report.c prints a name and the two counters. [HL main.c 2] main.c includes sort.h, [HL main.c 3] and report.h. Notice: sort.h now arrives twice, once directly and once through report.h. Hold that thought. [HL main.c 8] Each sort gets its own stats, starting at zero, [HL main.c 10] and we pass their addresses.",
+      "code": {
+        "file": "report.h",
+        "source": "#ifndef REPORT_H\n#define REPORT_H\n\n#include \"sort.h\"\n\nvoid print_stats(const char *name, SortStats s);\n\n#endif"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 215,
+      "lengthSec": 30,
+      "onScreen": "`gcc main.c sort.c report.c -o sorter` and 3 output lines",
+      "animation": "Three .c files fly into gcc, one .exe comes out",
+      "sfx": [],
+      "narration": "To build, list every .c file: gcc main.c sort.c report.c minus o sorter. GCC compiles each file separately, then the linker joins them into one program. You never put .h files in the gcc command; they're pasted in by hash include. Run it: 1, 2, 3, 5, 6, 9. Bubble: 14 comparisons, 8 swaps. Insertion: 11 comparisons, 8 shifts. The same numbers as our step traces in Episodes 74 and 76."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the header file never get invited back? It kept including itself."
+    },
+    {
+      "id": 9,
+      "template": "concept-slide",
+      "startSec": 250,
+      "lengthSec": 40,
+      "onScreen": "Preprocessor view of main.c: sort.h pasted once, report.h pasted, then sort.h again but skipped because SORT_H is defined",
+      "animation": "Pasted blocks slide in; second sort.h block hits a butter \"SORT_H already defined\" gate and bounces off",
+      "sfx": [],
+      "narration": "Here's the secret: hash include is copy-paste. Before compiling, the preprocessor replaces the line with the whole header file. So in main.c, sort.h is pasted. Then report.h is pasted, and inside it, sort.h tries to come in a second time. But now SORT_H is already defined, so hash ifndef SORT_H is false, and the preprocessor skips straight to the hash endif. Nothing is pasted twice. That's the include guard doing its job."
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 290,
+      "lengthSec": 90,
+      "onScreen": "sort.h without guards; GCC errors",
+      "animation": "Red siren; second sort.h paste collides with the first, sparks",
+      "sfx": [],
+      "narration": "Today's bug: missing include guards. Delete the three guard lines from sort.h and build again. GCC stops with errors. Conflicting types for SortStats, previous declaration of SortStats. Then conflicting types for bubble_sort and insertion_sort. Why conflicting, when they're identical? Because each time the typedef is pasted, it creates a brand-new struct type with no name of its own, and two different struct types can't share the name SortStats. The functions then conflict because their parameter types now point at two different structs. The fix: always wrap every header in ifndef, define, endif, with a name made from the file name in capitals."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 380,
+      "lengthSec": 25,
+      "onScreen": "\"Add search.h and search.c\"",
+      "animation": "Timer",
+      "sfx": [],
+      "narration": "Your challenge: make search.h and search.c with linear_search and binary_search from Episode 73, with their own include guard. Then write a main that sorts an array with your library and finds 6 with binary_search."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 405,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 83 Stacks and queues",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "Next episode, the last in this module: two data structures you use every day without noticing, stacks and queues. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "typedef struct {\n    long comparisons;\n    long swaps;\n} SortStats;\n\nvoid print_array(const int a[], int n);\nvoid bubble_sort(int a[], int n, SortStats *stats);\nvoid insertion_sort(int a[], int n, SortStats *stats);",
+    "error": "Exact GCC 13 output for `gcc main.c sort.c report.c -o sorter`:\n\nIn file included from report.h:4,\n                 from main.c:3:\nsort.h:4:3: error: conflicting types for 'SortStats'; have 'struct <anonymous>'\n    4 | } SortStats;\n      |   ^~~~~~~~~\nIn file included from main.c:2:\nsort.h:4:3: note: previous declaration of 'SortStats' with type 'SortStats'\n    4 | } SortStats;\n      |   ^~~~~~~~~\nsort.h:7:6: error: conflicting types for 'bubble_sort'; have 'void(int *, int,  SortStats *)'\n    7 | void bubble_sort(int a[], int n, SortStats *stats);\n      |      ^~~~~~~~~~~\nsort.h:7:6: note: previous declaration of 'bubble_sort' with type 'void(int *, int,  SortStats *)'\n    7 | void bubble_sort(int a[], int n, SortStats *stats);\n      |      ^~~~~~~~~~~\nsort.h:8:6: error: conflicting types for 'insertion_sort'; have 'void(int *, int,  SortStats *)'\n    8 | void insertion_sort(int a[], int n, SortStats *stats);\n      |      ^~~~~~~~~~~~~~\nsort.h:8:6: note: previous declaration of 'insertion_sort' with type 'void(int *, int,  SortStats *)'\n    8 | void insertion_sort(int a[], int n, SortStats *stats);\n      |      ^~~~~~~~~~~~~~",
+    "fixed": "Fixed: wrap sort.h in `#ifndef SORT_H` / `#define SORT_H` … `#endif` (as in Code shown).",
+    "why": "main.c pulls sort.h in twice (directly and via report.h), and each paste of the anonymous typedef struct creates a new, different type named SortStats; the guard makes the second paste empty."
+  },
+  "pun": "Why did the header file never get invited back? It kept including itself.",
+  "challenge": "Create search.h and search.c with linear_search and binary_search (from EP 73) and an include guard named SEARCH_H. In main, sort {5, 2, 9, 1, 6, 3} with insertion_sort from your library, then find 6 with binary_search.",
+  "challengeAnswer": "search.h",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Make your own #include",
+      "hook": "\"stdio.h was written by someone. Write yours.\"",
+      "script": "Every C program starts with hash include stdio dot h. Someone wrote that file. Today you write your own: sort dot h. Then any program can include it and get your sorting functions for free.",
+      "onScreen": "#include \"sort.h\"",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "Your own C library in 7 minutes.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "headerfiles",
+        "cprojects"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": ".h vs .c in 30 seconds",
+      "hook": "\"The menu and the kitchen.\"",
+      "script": "A header file is the menu: function names and parameters, no bodies. The .c file is the kitchen: the actual code. Hash include is just copy-paste of the menu into your file. And the include guard, ifndef, define, endif, makes sure the menu is pasted only once, even if two files ask for it.",
+      "onScreen": ".h = MENU · .c = KITCHEN",
+      "fromScenes": [
+        3,
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "Header files finally explained.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "headerfiles",
+        "includeguards"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Conflicting types for SortStats",
+      "hook": "\"Identical code. Conflicting types?\"",
+      "script": "main.c includes sort.h, and so does report.h. Without an include guard, sort.h gets pasted twice. Each paste of the typedef struct makes a new type, so GCC says conflicting types for SortStats. Add ifndef SORT_H, define SORT_H, and endif. Every header, every time.",
+      "onScreen": "ALWAYS ADD INCLUDE GUARDS",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 40,
+      "caption": "Three lines that save your build.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "headerfiles"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Kept including itself",
+      "hook": "\"Why wasn't the header invited back?\"",
+      "script": "Why did the header file never get invited back? It kept including itself.",
+      "onScreen": "IT KEPT INCLUDING ITSELF",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 10,
+      "caption": "Know your guards.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Build search.h",
+      "hook": "\"Your library needs a second header.\"",
+      "script": "Make search dot h and search dot c with linear and binary search, with their own include guard. Sort an array with your library, then find 6 with binary search. Post your gcc command in the comments.",
+      "onScreen": "search.h + search.c",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 20,
+      "caption": "Grow your own C library.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "challenge",
+        "headerfiles"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "sort.h",
+      "source": "#ifndef SORT_H\n#define SORT_H\n\ntypedef struct {\n    long comparisons;\n    long swaps;\n} SortStats;\n\nvoid print_array(const int a[], int n);\nvoid bubble_sort(int a[], int n, SortStats *stats);\nvoid insertion_sort(int a[], int n, SortStats *stats);\n\n#endif",
+      "lang": "c"
+    },
+    {
+      "file": "sort.c",
+      "source": "#include <stdio.h>\n#include \"sort.h\"\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid bubble_sort(int a[], int n, SortStats *stats) {\n    for (int pass = 0; pass < n - 1; pass++) {\n        int swapped = 0;\n        for (int j = 0; j < n - 1 - pass; j++) {\n            stats->comparisons++;\n            if (a[j] > a[j + 1]) {\n                int t = a[j];\n                a[j] = a[j + 1];\n                a[j + 1] = t;\n                stats->swaps++;\n                swapped = 1;\n            }\n        }\n        if (!swapped)\n            break;\n    }\n}\n\nvoid insertion_sort(int a[], int n, SortStats *stats) {\n    for (int i = 1; i < n; i++) {\n        int key = a[i];\n        int j = i - 1;\n        while (j >= 0) {\n            stats->comparisons++;\n            if (a[j] <= key)\n                break;\n            a[j + 1] = a[j];\n            stats->swaps++;\n            j--;\n        }\n        a[j + 1] = key;\n    }\n}",
+      "lang": "c"
+    },
+    {
+      "file": "report.h",
+      "source": "#ifndef REPORT_H\n#define REPORT_H\n\n#include \"sort.h\"\n\nvoid print_stats(const char *name, SortStats s);\n\n#endif",
+      "lang": "c"
+    },
+    {
+      "file": "report.c",
+      "source": "#include <stdio.h>\n#include \"report.h\"\n\nvoid print_stats(const char *name, SortStats s) {\n    printf(\"%-9s comparisons=%ld swaps=%ld\\n\", name, s.comparisons, s.swaps);\n}",
+      "lang": "c"
+    },
+    {
+      "file": "main.c",
+      "source": "#include <stdio.h>\n#include \"sort.h\"\n#include \"report.h\"\n\nint main(void) {\n    int a[] = {5, 2, 9, 1, 6, 3};\n    int b[] = {5, 2, 9, 1, 6, 3};\n    SortStats sa = {0, 0}, sb = {0, 0};\n\n    bubble_sort(a, 6, &sa);\n    insertion_sort(b, 6, &sb);\n\n    print_array(a, 6);\n    print_stats(\"Bubble\", sa);\n    print_stats(\"Insertion\", sb);\n    return 0;\n}",
+      "output": "$ gcc main.c sort.c report.c -o sorter\n$ ./sorter\n1 2 3 5 6 9\nBubble    comparisons=14 swaps=8\nInsertion comparisons=11 swaps=8",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

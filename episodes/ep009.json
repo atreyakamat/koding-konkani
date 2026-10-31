@@ -1,0 +1,302 @@
+{
+  "ep": 9,
+  "title": "More Types: long, double, unsigned",
+  "module": 1,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "use `long long`, `double` and `unsigned int` with `%lld`, `%f` and `%u`",
+    "read the limits of a type from `<limits.h>` (`INT_MAX`, `INT_MIN`, `UINT_MAX`)",
+    "explain wrap-around for unsigned types and why signed overflow is a bug",
+    "fix an overflow by using a bigger type"
+  ],
+  "youtube": {
+    "title": "The Odometer That Rolled Back to 0 | C Programming EP 09",
+    "description": "Every box in C has a size limit, and when you go past it, strange things happen. Learn long long, double and unsigned, find the limits of each type with limits.h, and see integer overflow in action. 0:00 The odometer that rolled back 0:20 Bigger and smaller boxes 1:00 long long, double, unsigned in code 2:05 Limits with limits.h 2:55 Overflow: the odometer 3:49 Bug of the Day: 100000 x 100000 5:09 Challenge 5:44 Recap 6:14 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The odometer that rolled back 0:20 Bigger and smaller boxes 1:00 long long, double, unsigned in code 2:05 Limits with limits.h 2:55 Overflow: the odometer 3:49 Bug of the Day: 100000 x 100000 5:09 Challenge 5:44 Recap 6:14 Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "integer overflow",
+      "long long in c",
+      "double vs float",
+      "unsigned int",
+      "limits.h",
+      "INT_MAX",
+      "c data types",
+      "c tutorial for beginners",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "999999 + 1 = 0?",
+      "visual": "big text \"999999 + 1 = 0?\"; a scooter odometer rolling to 000000; Xecxec riding pillion, eyes spinning.",
+      "pose": "Xecxec riding pillion, eyes spinning"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "A scooter odometer at 99999 ticks to 00000",
+      "animation": "Digit drums rolling; clunk; Xecxec falls off the seat",
+      "sfx": [],
+      "narration": "An old scooter has a five-digit odometer. It shows nine nine nine nine nine. You ride one more kilometre. And it shows zero zero zero zero zero. The scooter didn't become new. The counter just ran out of digits. C numbers do the exact same thing."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 09 · MORE TYPES",
+      "animation": "Title slams in, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode nine. More types: long, double and unsigned."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "Last challenge answer (sizes 1, 4, 4, 8); boxes of 4 and 8 bytes; a sign bit on int vs none on unsigned",
+      "animation": "Boxes stretch from 4 to 8 bytes with a rubber-band sound; sign bit flashes",
+      "sfx": [],
+      "narration": "Last episode's challenge: on a typical PC you got char 1, int 4, float 4 and double 8 bytes. Good. Remember, an int box is 4 bytes. That gives it room for about four billion different values. Half of them are used for negative numbers, so an int goes up to about two point one billion. Sometimes that's not enough, and sometimes we never need negatives. So C gives us more types. long long is a bigger whole-number box, 8 bytes. double is a bigger decimal box, 8 bytes, with about twice the precision of float. And unsigned means \"no negatives\", so all the space goes to positive numbers."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 65,
+      "onScreen": "ep09.c lines 6–12",
+      "animation": "Highlights; tracker: distance, pi, likes",
+      "sfx": [],
+      "narration": "[HL 6] Line six: long long distance equals three eighty-four million, four hundred thousand. [TRACK distance=384400000] That's the distance to the Moon in metres. The LL at the end marks it as a long long number. [HL 7] Line seven: double pi equals three point one four one five nine two six five three five eight nine seven nine three. [TRACK pi=3.141592653589793] A float would lose most of those digits. A double keeps them. For decimals, most programmers use double by default. [HL 8] Line eight: unsigned int likes equals four billion, with a U at the end. [TRACK likes=4000000000] A normal int can't hold four billion. An unsigned int can, because it doesn't waste space on negatives. [HL 10] Now printing. long long uses percent l l d. [HL 11] double uses percent f, here with point fifteen for fifteen digits. [HL 12] unsigned uses percent u. Wrong placeholder, wrong output, so learn these pairs.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <limits.h>\n\nint main(void)\n{\n    long long distance = 384400000LL;      // Earth to Moon in metres\n    double pi = 3.141592653589793;\n    unsigned int likes = 4000000000U;      // no negatives allowed\n\n    printf(\"Distance: %lld m\\n\", distance);\n    printf(\"Pi: %.15f\\n\", pi);\n    printf(\"Likes: %u\\n\", likes);\n\n    printf(\"int range: %d to %d\\n\", INT_MIN, INT_MAX);\n    printf(\"unsigned int max: %u\\n\", UINT_MAX);\n\n    unsigned short odometer = 65535;       // biggest unsigned short\n    odometer = odometer + 1;               // one more km...\n    printf(\"Odometer: %hu\\n\", odometer);\n\n    return 0;\n}",
+        "output": "Distance: 384400000 m\nPi: 3.141592653589793\nLikes: 4000000000\nint range: -2147483648 to 2147483647\nunsigned int max: 4294967295\nOdometer: 0"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 50,
+      "onScreen": "Lines 14–15; a number line from INT_MIN to INT_MAX",
+      "animation": "Number line zooms out; ends glow tomato",
+      "sfx": [],
+      "narration": "How do we know the exact limits? [HL 2] Line two includes limits dot h. It gives us named limits. [HL 14] Line fourteen prints INT underscore MIN and INT underscore MAX. On a typical PC: minus two billion one hundred forty-seven million four hundred eighty-three thousand six hundred forty-eight, up to plus two billion one hundred forty-seven million four hundred eighty-three thousand six hundred forty-seven. [HL 15] Line fifteen: the largest unsigned int is a little over four point two nine billion. Your machine will very likely show the same, but always check, don't guess.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <limits.h>\n\nint main(void)\n{\n    long long distance = 384400000LL;      // Earth to Moon in metres\n    double pi = 3.141592653589793;\n    unsigned int likes = 4000000000U;      // no negatives allowed\n\n    printf(\"Distance: %lld m\\n\", distance);\n    printf(\"Pi: %.15f\\n\", pi);\n    printf(\"Likes: %u\\n\", likes);\n\n    printf(\"int range: %d to %d\\n\", INT_MIN, INT_MAX);\n    printf(\"unsigned int max: %u\\n\", UINT_MAX);\n\n    unsigned short odometer = 65535;       // biggest unsigned short\n    odometer = odometer + 1;               // one more km...\n    printf(\"Odometer: %hu\\n\", odometer);\n\n    return 0;\n}",
+        "output": "Distance: 384400000 m\nPi: 3.141592653589793\nLikes: 4000000000\nint range: -2147483648 to 2147483647\nunsigned int max: 4294967295\nOdometer: 0"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 175,
+      "lengthSec": 50,
+      "onScreen": "Lines 17–19: unsigned short 65535 + 1 = 0",
+      "animation": "Odometer graphic from scene 1 returns; digits roll to 0",
+      "sfx": [],
+      "narration": "Now, let's build that odometer. [HL 17] Line seventeen: unsigned short odometer equals sixty-five thousand five hundred thirty-five. [TRACK odometer=65535] An unsigned short is a small 2-byte box, and that's its biggest value. [HL 18] Line eighteen: add one. [TRACK odometer=0] [HL 19] Print it. Zero! Just like the scooter. For unsigned types, C promises this wrap-around. For normal signed types like int, going past the limit is called overflow, and C makes no promise at all. The result can be anything. So treat signed overflow as a bug, always.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <limits.h>\n\nint main(void)\n{\n    long long distance = 384400000LL;      // Earth to Moon in metres\n    double pi = 3.141592653589793;\n    unsigned int likes = 4000000000U;      // no negatives allowed\n\n    printf(\"Distance: %lld m\\n\", distance);\n    printf(\"Pi: %.15f\\n\", pi);\n    printf(\"Likes: %u\\n\", likes);\n\n    printf(\"int range: %d to %d\\n\", INT_MIN, INT_MAX);\n    printf(\"unsigned int max: %u\\n\", UINT_MAX);\n\n    unsigned short odometer = 65535;       // biggest unsigned short\n    odometer = odometer + 1;               // one more km...\n    printf(\"Odometer: %hu\\n\", odometer);\n\n    return 0;\n}",
+        "output": "Distance: 384400000 m\nPi: 3.141592653589793\nLikes: 4000000000\nint range: -2147483648 to 2147483647\nunsigned int max: 4294967295\nOdometer: 0"
+      }
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 225,
+      "lengthSec": 4,
+      "onScreen": "Pun",
+      "animation": "Drum ba-dum, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "I told my int a really big number. It took it negatively."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 229,
+      "lengthSec": 80,
+      "onScreen": "`int total = 100000 * 100000;` prints 1410065408; GCC warning; fix with long long",
+      "animation": "Butter stripe; number bursts out of its box; buzzer; bigger box arrives, success chime",
+      "sfx": [
+        "buzzer",
+        "chime"
+      ],
+      "narration": "Today's bug. You want one lakh times one lakh. That's ten billion. int total equals one hundred thousand times one hundred thousand. Compile, and GCC warns even without dash Wall: integer overflow in expression of type int results in one billion four hundred ten million sixty-five thousand four hundred eight. Run it. Total: 1410065408. Not ten billion. Ten billion is far bigger than INT_MAX, so the int box overflowed. And here's the trap: making total a long long is not enough on its own. Both one lakhs are ints, so the multiplication still happens in int and overflows first. The fix: make one of the numbers a long long with LL. long long total equals one hundred thousand LL times one hundred thousand. Print with percent l l d. Now: Total: 10000000000. Ten billion. Correct."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 309,
+      "lengthSec": 35,
+      "onScreen": "Print the largest int and the largest long long",
+      "animation": "Timer ticks",
+      "sfx": [],
+      "narration": "Your challenge. Include limits dot h and print the largest int and the largest long long. Use percent d and percent l l d. How many digits does the long long have? Write it in the comments."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 344,
+      "lengthSec": 30,
+      "onScreen": "Recap table: type, placeholder, typical size",
+      "animation": "Rows slide in one by one with pop",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Quick recap. int: percent d, usually 4 bytes. long long: percent l l d, 8 bytes. unsigned int: percent u, 4 bytes, no negatives. float: percent f, 4 bytes. double: percent f, 8 bytes, more precise. Screenshot this table."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 374,
+      "lengthSec": 16,
+      "onScreen": "Next: EP 10 · Constants & #define; sign-off",
+      "animation": "Xecxec waves; outro sting",
+      "sfx": [
+        "sting"
+      ],
+      "narration": "Next episode: constants and hash define. Because pi doesn't change. Promise. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void)\n{\n    int total = 100000 * 100000;\n    printf(\"Total: %d\\n\", total);\n    return 0;\n}",
+    "error": "**GCC output** (shown even without `-Wall`):\n\nbug09.c: In function 'main':\nbug09.c:5:24: warning: integer overflow in expression of type 'int' results in '1410065408' [-Woverflow]\n    5 |     int total = 100000 * 100000;\n      |                        ^\n\n**Wrong output:**\n\nTotal: 1410065408",
+    "fixed": "#include <stdio.h>\n\nint main(void)\n{\n    long long total = 100000LL * 100000;\n    printf(\"Total: %lld\\n\", total);\n    return 0;\n}",
+    "why": "The multiplication is done in the type of its operands, so at least one number must already be `long long` (the `LL`) before multiplying."
+  },
+  "pun": "\"I told my int a really big number. It took it negatively.\"",
+  "challenge": "Include `<limits.h>` and print the largest `int` and the largest `long long`.",
+  "challengeAnswer": "(19 digits for long long.)",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The odometer rolled back",
+      "hook": "\"99999 plus 1 equals... zero?\"",
+      "script": "Ninety-nine thousand nine hundred ninety-nine, plus one, equals zero? On an odometer, yes. It ran out of digits. C numbers do the same. An unsigned short holds up to sixty-five thousand five hundred thirty-five. Add one, and it wraps to zero.",
+      "onScreen": "65535 + 1 = 0",
+      "fromScenes": [
+        1,
+        6
+      ],
+      "lengthSec": 25,
+      "caption": "Numbers in C have limits.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "overflow",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Which type when?",
+      "hook": "\"int not big enough? Here's what to use.\"",
+      "script": "int not big enough? Use long long, 8 bytes, printed with percent l l d. Never need negatives? Use unsigned, printed with percent u. Need precise decimals? Use double instead of float. Pick the box that fits your number.",
+      "onScreen": "long long %lld · unsigned %u · double %f",
+      "fromScenes": [
+        3,
+        10
+      ],
+      "lengthSec": 30,
+      "caption": "C types cheat sheet.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "datatypes",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "1 lakh x 1 lakh = wrong",
+      "hook": "\"One lakh times one lakh. C says 1.4 billion.\"",
+      "script": "One lakh times one lakh should be ten billion. C says one point four billion. Why? Both numbers are int, so the answer must fit in an int. It doesn't, so it overflows. Fix: one hundred thousand LL times one hundred thousand, stored in a long long.",
+      "onScreen": "100000LL * 100000",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Integer overflow, explained.",
+      "hashtags": [
+        "cprogramming",
+        "codingbugs",
+        "kodingkonkani",
+        "learntocode",
+        "overflow"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "It took it negatively",
+      "hook": "\"I told my int a really big number.\"",
+      "script": "I told my int a really big number. It took it negatively.",
+      "onScreen": "INT_MAX + 1 = ?",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 10,
+      "caption": "Overflow humour.",
+      "hashtags": [
+        "programmingjokes",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Biggest int?",
+      "hook": "\"What's the biggest number an int can hold?\"",
+      "script": "What's the biggest number an int can hold on a normal PC? A: one million. B: about two point one billion. C: infinity. ... B. Two billion one hundred forty-seven million four hundred eighty-three thousand six hundred forty-seven. It's called INT_MAX.",
+      "onScreen": "A) 1 million B) 2.1 billion C) infinity",
+      "fromScenes": [
+        5,
+        9
+      ],
+      "lengthSec": 20,
+      "caption": "Know your limits.",
+      "hashtags": [
+        "cquiz",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode",
+        "limits"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <limits.h>\n\nint main(void)\n{\n    long long distance = 384400000LL;      // Earth to Moon in metres\n    double pi = 3.141592653589793;\n    unsigned int likes = 4000000000U;      // no negatives allowed\n\n    printf(\"Distance: %lld m\\n\", distance);\n    printf(\"Pi: %.15f\\n\", pi);\n    printf(\"Likes: %u\\n\", likes);\n\n    printf(\"int range: %d to %d\\n\", INT_MIN, INT_MAX);\n    printf(\"unsigned int max: %u\\n\", UINT_MAX);\n\n    unsigned short odometer = 65535;       // biggest unsigned short\n    odometer = odometer + 1;               // one more km...\n    printf(\"Odometer: %hu\\n\", odometer);\n\n    return 0;\n}",
+      "output": "Distance: 384400000 m\nPi: 3.141592653589793\nLikes: 4000000000\nint range: -2147483648 to 2147483647\nunsigned int max: 4294967295\nOdometer: 0",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Total: 10000000000"
+  }
+}

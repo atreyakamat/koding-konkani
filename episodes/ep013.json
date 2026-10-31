@@ -1,0 +1,312 @@
+{
+  "ep": 13,
+  "title": "Type Casting",
+  "module": 1,
+  "lengthSec": 385,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "predict the result of integer division and `%`",
+    "explain implicit conversion (int mixed with double becomes double)",
+    "write an explicit cast like `(float)a / b`",
+    "know that casting to `int` truncates instead of rounding",
+    "place the cast before the division, not after"
+  ],
+  "youtube": {
+    "title": "Why 5 / 2 Is 2 in C | Type Casting EP 13",
+    "description": "In C, 5 divided by 2 is 2. Not 2.5. Learn why integer division throws away the remainder, how C converts types on its own, and how to take control with a cast. Plus the bill-splitting bug that cheats your friend out of 50 paise. 0:00 Why 5 / 2 is 2 0:20 Integer division and % 1:15 Implicit conversion 2:00 Explicit cast 2:45 Casting to int truncates 3:30 char to int 4:04 Bug of the Day: splitting the bill 5:34 Challenge 6:09 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Why 5 / 2 is 2 0:20 Integer division and % 1:15 Implicit conversion 2:00 Explicit cast 2:45 Casting to int truncates 3:30 char to int 4:04 Bug of the Day: splitting the bill 5:34 Challenge 6:09 Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "type casting in c",
+      "integer division",
+      "implicit conversion",
+      "explicit cast",
+      "modulus operator",
+      "float division c",
+      "c tutorial for beginners",
+      "koding konkani",
+      "learn c"
+    ],
+    "thumbnail": {
+      "text": "5 / 2 = 2 ?!",
+      "visual": "big text \"5 / 2 = 2 ?!\"; a calculator showing 2.5 with a big red cross, and C code showing 2; Xecxec holding half a coconut, confused.",
+      "pose": "Xecxec holding half a coconut, confused"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Program prints `5 / 2 = 2`; calculator beside it shows 2.5",
+      "animation": "Calculator beep; record scratch; Xecxec drops a coconut",
+      "sfx": [],
+      "narration": "Ask your calculator: five divided by two. Two point five. Ask C. Two. Is C bad at maths? No. C is just very, very literal. Today you'll learn exactly what it's thinking."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 13 · TYPE CASTING",
+      "animation": "Title slams in, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode thirteen. Type casting."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 20,
+      "lengthSec": 55,
+      "onScreen": "Last challenge answer; ep13.c lines 5–8",
+      "animation": "Five coconuts shared between two crabs: 2 each, 1 left over (the remainder)",
+      "sfx": [],
+      "narration": "First, the challenge: read two numbers with one scanf, print the sum and product. With twelve and thirty, sum forty-two, product three sixty. Now. [HL 5] Line five: int a equals five, b equals two. [TRACK a=5] [TRACK b=2] [HL 7] Line seven prints a divided by b. Both are ints. When C divides an int by an int, the answer is also an int. Any fraction is thrown away. Think of five coconuts shared between two crabs. Each crab gets two whole coconuts. You can't hand out half a coconut in integer land. So five by two is two. [HL 8] And the leftover coconut? That's what percent, the modulus operator, gives you. Five modulus two is one, the remainder. In printf, we write percent percent to show the percent sign, like we learned in episode eleven.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 5, b = 2;\n\n    printf(\"5 / 2 = %d\\n\", a / b);              // int / int\n    printf(\"5 %% 2 = %d\\n\", a % b);             // the remainder\n    printf(\"5.0 / 2 = %f\\n\", 5.0 / 2);          // implicit: 2 becomes 2.0\n    printf(\"(float)a / b = %.1f\\n\", (float)a / b);   // explicit cast\n\n    float price = 99.99f;\n    int rupees = (int)price;                    // cuts off, no rounding\n    printf(\"Rupees: %d\\n\", rupees);\n\n    char letter = 'A';\n    printf(\"Code of %c is %d\\n\", letter, (int)letter);\n\n    return 0;\n}",
+        "output": "5 / 2 = 2\n5 % 2 = 1\n5.0 / 2 = 2.500000\n(float)a / b = 2.5\nRupees: 99\nCode of A is 65"
+      }
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 75,
+      "lengthSec": 45,
+      "onScreen": "Line 9: `5.0 / 2`; a \"type ladder\" int, float, double",
+      "animation": "The int 2 climbs the ladder to become 2.0; result 2.5",
+      "sfx": [],
+      "narration": "[HL 9] Line nine: five point zero divided by two. Now one side is a double. When C mixes types in one calculation, it quietly converts the smaller type to the bigger one. This is called implicit conversion. Picture a ladder: int at the bottom, then float, then double. The int two climbs up and becomes two point zero. Now it's double divided by double, and the answer is two point five.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 5, b = 2;\n\n    printf(\"5 / 2 = %d\\n\", a / b);              // int / int\n    printf(\"5 %% 2 = %d\\n\", a % b);             // the remainder\n    printf(\"5.0 / 2 = %f\\n\", 5.0 / 2);          // implicit: 2 becomes 2.0\n    printf(\"(float)a / b = %.1f\\n\", (float)a / b);   // explicit cast\n\n    float price = 99.99f;\n    int rupees = (int)price;                    // cuts off, no rounding\n    printf(\"Rupees: %d\\n\", rupees);\n\n    char letter = 'A';\n    printf(\"Code of %c is %d\\n\", letter, (int)letter);\n\n    return 0;\n}",
+        "output": "5 / 2 = 2\n5 % 2 = 1\n5.0 / 2 = 2.500000\n(float)a / b = 2.5\nRupees: 99\nCode of A is 65"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 45,
+      "onScreen": "Line 10: `(float)a / b`",
+      "animation": "A tomato \"(float)\" stamp lands on `a`; tracker shows 5 becoming 5.0",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "But what if both values are int variables? You can't add point zero to a variable. Instead, you cast. [HL 10] Line ten: open bracket, float, close bracket, a, divided by b. The type in brackets is a cast. It says: \"treat a as a float, just for this calculation.\" [TRACK a=5.0] a becomes five point zero for a moment. Now it's float divided by int, so b climbs the ladder too, and we get two point five. The variable a itself is still an int with value five. The cast doesn't change the box, only the value we use.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 5, b = 2;\n\n    printf(\"5 / 2 = %d\\n\", a / b);              // int / int\n    printf(\"5 %% 2 = %d\\n\", a % b);             // the remainder\n    printf(\"5.0 / 2 = %f\\n\", 5.0 / 2);          // implicit: 2 becomes 2.0\n    printf(\"(float)a / b = %.1f\\n\", (float)a / b);   // explicit cast\n\n    float price = 99.99f;\n    int rupees = (int)price;                    // cuts off, no rounding\n    printf(\"Rupees: %d\\n\", rupees);\n\n    char letter = 'A';\n    printf(\"Code of %c is %d\\n\", letter, (int)letter);\n\n    return 0;\n}",
+        "output": "5 / 2 = 2\n5 % 2 = 1\n5.0 / 2 = 2.500000\n(float)a / b = 2.5\nRupees: 99\nCode of A is 65"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 45,
+      "onScreen": "Lines 12–14: `(int)price` gives 99",
+      "animation": "A knife slices off .99; it falls into the sea with a splash; label \"cut, not rounded\"",
+      "sfx": [],
+      "narration": "Casting works in the other direction too. [HL 12] Line twelve: float price equals ninety-nine point nine nine. [HL 13] Line thirteen: int rupees equals bracket int bracket price. [TRACK rupees=99] You get ninety-nine, not a hundred. Casting to int does not round. It just cuts off everything after the decimal point. This is called truncation, and it's the same thing we saw in episode eight with two point five kilos of fish.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 5, b = 2;\n\n    printf(\"5 / 2 = %d\\n\", a / b);              // int / int\n    printf(\"5 %% 2 = %d\\n\", a % b);             // the remainder\n    printf(\"5.0 / 2 = %f\\n\", 5.0 / 2);          // implicit: 2 becomes 2.0\n    printf(\"(float)a / b = %.1f\\n\", (float)a / b);   // explicit cast\n\n    float price = 99.99f;\n    int rupees = (int)price;                    // cuts off, no rounding\n    printf(\"Rupees: %d\\n\", rupees);\n\n    char letter = 'A';\n    printf(\"Code of %c is %d\\n\", letter, (int)letter);\n\n    return 0;\n}",
+        "output": "5 / 2 = 2\n5 % 2 = 1\n5.0 / 2 = 2.500000\n(float)a / b = 2.5\nRupees: 99\nCode of A is 65"
+      }
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 210,
+      "lengthSec": 30,
+      "onScreen": "Lines 16–17: `(int)letter` gives 65",
+      "animation": "Callback to EP 08: A morphs into 65",
+      "sfx": [],
+      "narration": "[HL 16] Line sixteen: char letter equals A. [HL 17] Line seventeen casts it with bracket int. Code of A is 65. In episode eight we saw this with percent d. The cast makes it clear in the code that we really want the number.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 5, b = 2;\n\n    printf(\"5 / 2 = %d\\n\", a / b);              // int / int\n    printf(\"5 %% 2 = %d\\n\", a % b);             // the remainder\n    printf(\"5.0 / 2 = %f\\n\", 5.0 / 2);          // implicit: 2 becomes 2.0\n    printf(\"(float)a / b = %.1f\\n\", (float)a / b);   // explicit cast\n\n    float price = 99.99f;\n    int rupees = (int)price;                    // cuts off, no rounding\n    printf(\"Rupees: %d\\n\", rupees);\n\n    char letter = 'A';\n    printf(\"Code of %c is %d\\n\", letter, (int)letter);\n\n    return 0;\n}",
+        "output": "5 / 2 = 2\n5 % 2 = 1\n5.0 / 2 = 2.500000\n(float)a / b = 2.5\nRupees: 99\nCode of A is 65"
+      }
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 240,
+      "lengthSec": 4,
+      "onScreen": "Pun",
+      "animation": "Drum ba-dum, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "I tried to cast my int as the hero of the movie. It said, \"Sorry, I only do whole roles.\""
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 244,
+      "lengthSec": 90,
+      "onScreen": "Splitting Rs 7 between 2 friends gives 3.00; fix with a cast; also the \"cast too late\" version",
+      "animation": "Butter stripe; 50 paise coin rolls away; buzzer; fix and success chime",
+      "sfx": [
+        "buzzer",
+        "chime"
+      ],
+      "narration": "Today's bug. You and your friend split a seven-rupee bus ticket. int total equals seven, int people equals two. float share equals total divided by people. Print with point two f. Each pays: three point zero zero. Somebody just lost fifty paise. But share is a float, so why? Because C does the right side first. total divided by people is int divided by int, so the answer is three. Only then is three stored in the float, as three point zero. No warning, even with dash Wall. The fix: cast before dividing. bracket float total, divided by people. Now: three point five zero. And watch out for this trap. If you write bracket float, then brackets around total divided by people, the division still happens first in int, and you cast a three. Cast the number, not the answer."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 334,
+      "lengthSec": 35,
+      "onScreen": "Read 3 marks, print the average with 2 decimals",
+      "animation": "Timer ticks; three report cards",
+      "sfx": [],
+      "narration": "Your challenge. Read three marks as ints, with one scanf. Print their average with two decimals. Test with seventy-eight, eighty-five and ninety. If you get eighty-four point zero zero, you've hit today's bug. The right answer is eighty-four point three three."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 369,
+      "lengthSec": 16,
+      "onScreen": "Next: EP 14 · Mini project: unit converter; sign-off",
+      "animation": "Xecxec waves; outro sting",
+      "sfx": [
+        "sting"
+      ],
+      "narration": "Next episode is our first mini project: a unit converter. Kilometres to miles, rupees to dollars, and more. Everything from module one, in one program. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void)\n{\n    int total = 7;\n    int people = 2;\n    float share = total / people;\n    printf(\"Each pays: %.2f\\n\", share);\n    return 0;\n}",
+    "error": "**GCC output:** none, even with `-Wall`. **Wrong output:**\n\nEach pays: 3.00",
+    "fixed": "#include <stdio.h>\n\nint main(void)\n{\n    int total = 7;\n    int people = 2;\n    float share = (float)total / people;\n    printf(\"Each pays: %.2f\\n\", share);\n    return 0;\n}",
+    "why": "The division is done as int / int before the result is stored in the float, so the cast must go on an operand before dividing. Note: `(float)(total / people)` is still wrong (3.00), because the int division happens inside the brackets first."
+  },
+  "pun": "\"I tried to cast my int as the hero. It said: sorry, I only do whole roles.\"",
+  "challenge": "Read three integer marks with one `scanf` and print the average with 2 decimals. Test with 78, 85, 90.",
+  "challengeAnswer": "(Dividing by `3` instead of `3.0f` gives `84.00`.)",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "C says 5 / 2 = 2",
+      "hook": "\"Calculator: 2.5. C: 2.\"",
+      "script": "Calculator says five divided by two is two point five. C says two. Why? Both numbers are ints, so C gives an int answer and throws away the fraction. Five coconuts, two crabs: two each, one left over. And that leftover? Five percent two equals one.",
+      "onScreen": "int / int = int",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "C is not bad at maths.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "integerdivision",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Casting in 30 seconds",
+      "hook": "\"How to get 2.5 out of two ints.\"",
+      "script": "How do you get two point five out of two ints? Cast one of them. Bracket float a, divided by b. The cast treats a as a float, so the division becomes a float division. Casting the other way, bracket int ninety-nine point nine nine, gives ninety-nine. It cuts, it does not round.",
+      "onScreen": "(float)a / b · (int)99.99 = 99",
+      "fromScenes": [
+        4,
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "Type casting in C, fast.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "typecasting",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Who stole 50 paise?",
+      "hook": "\"Split Rs 7 between two. C says Rs 3 each.\"",
+      "script": "Split seven rupees between two friends. C says three each. Who stole fifty paise? total divided by people is int divided by int, so you get three, even if you store it in a float. Fix: bracket float total, divided by people. Three point five zero. Cast before you divide.",
+      "onScreen": "CAST BEFORE YOU DIVIDE",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "The integer division trap.",
+      "hashtags": [
+        "cprogramming",
+        "codingbugs",
+        "kodingkonkani",
+        "learntocode",
+        "c"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Whole roles only",
+      "hook": "\"I tried to cast my int in a movie.\"",
+      "script": "I tried to cast my int as the hero of the movie. It said, sorry, I only do whole roles.",
+      "onScreen": "(int) HERO",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 10,
+      "caption": "Casting call.",
+      "hashtags": [
+        "programmingjokes",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "2.5 or 2.0?",
+      "hook": "\"Which line gives 2.5?\"",
+      "script": "int a is five, int b is two. Line one: bracket float, a divided by b. Line two: bracket float, then brackets a divided by b. Which gives two point five? ... Line one. In line two, the int division happens first and gives two.",
+      "onScreen": "(float)a / b · vs · (float)(a / b)",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 20,
+      "caption": "Brackets matter.",
+      "hashtags": [
+        "cquiz",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode",
+        "typecasting"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void)\n{\n    int a = 5, b = 2;\n\n    printf(\"5 / 2 = %d\\n\", a / b);              // int / int\n    printf(\"5 %% 2 = %d\\n\", a % b);             // the remainder\n    printf(\"5.0 / 2 = %f\\n\", 5.0 / 2);          // implicit: 2 becomes 2.0\n    printf(\"(float)a / b = %.1f\\n\", (float)a / b);   // explicit cast\n\n    float price = 99.99f;\n    int rupees = (int)price;                    // cuts off, no rounding\n    printf(\"Rupees: %d\\n\", rupees);\n\n    char letter = 'A';\n    printf(\"Code of %c is %d\\n\", letter, (int)letter);\n\n    return 0;\n}",
+      "output": "5 / 2 = 2\n5 % 2 = 1\n5.0 / 2 = 2.500000\n(float)a / b = 2.5\nRupees: 99\nCode of A is 65",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Each pays: 3.50"
+  }
+}

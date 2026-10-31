@@ -1,0 +1,323 @@
+{
+  "ep": 40,
+  "title": "Recursion Practice",
+  "module": 5,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "write recursive Fibonacci, power and sum-of-digits functions using the base case + smaller problem recipe",
+    "trace a recursive call tree by hand",
+    "explain why naive recursive Fibonacci is slow (repeated calls) and switch to a loop when speed matters"
+  ],
+  "youtube": {
+    "title": "Recursion Practice: Fibonacci, Power, Digits | C Programming EP 40",
+    "description": "Three classic recursion problems that show up in every C exam: Fibonacci, power and sum of digits. We solve each with the same three-step recipe, then discover why fib(40) makes over 33 crore function calls, and fix it with a simple loop. Chapters: 0:00 Mirror inside a mirror · 0:20 The recursion recipe · 0:50 Fibonacci · 2:00 Power · 2:45 Sum of digits · 3:45 Running it · 4:10 Bug of the Day: slow recursion · 5:50 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Mirror inside a mirror"
+      },
+      {
+        "t": "0:20",
+        "label": "The recursion recipe"
+      },
+      {
+        "t": "0:50",
+        "label": "Fibonacci"
+      },
+      {
+        "t": "2:00",
+        "label": "Power"
+      },
+      {
+        "t": "2:45",
+        "label": "Sum of digits"
+      },
+      {
+        "t": "3:45",
+        "label": "Running it"
+      },
+      {
+        "t": "4:10",
+        "label": "Bug of the Day: slow recursion"
+      },
+      {
+        "t": "5:50",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "recursion examples c",
+      "fibonacci recursion c",
+      "power function recursion",
+      "sum of digits recursion",
+      "recursion vs iteration",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "class 12 computer science",
+      "c exam questions",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "331 MILLION CALLS?!",
+      "visual": "big text \"331 MILLION CALLS?!\"; an exploding Fibonacci call tree; Xecxec buried under tiny function cards; lilac background, tomato text",
+      "pose": "Xecxec buried under tiny function cards"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Two mirrors facing each other: endless reflections of Xecxec getting smaller",
+      "animation": "Shimmer SFX; reflections zoom in",
+      "sfx": [],
+      "narration": "Stand between two mirrors in a shop in Margao, and you see yourself, inside yourself, inside yourself, smaller and smaller. Recursion feels like that. Last episode we learned the idea. Today we practise on three problems that appear in almost every C exam."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 40 · RECURSION PRACTICE",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 40. Recursion practice."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 30,
+      "onScreen": "Recipe card: 1. Smallest case? 2. How is the problem a smaller copy? 3. Combine",
+      "animation": "Three steps tick in one by one",
+      "sfx": [],
+      "narration": "For every recursion problem, ask three questions. One: what is the smallest case, where I already know the answer? That's the base case. Two: how is my problem a smaller copy of itself? Three: how do I combine the smaller answer into the full answer? Let's use this recipe three times."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 50,
+      "lengthSec": 70,
+      "onScreen": "`practice.c` lines 3–8: fib, plus call tree for fib(4)",
+      "animation": "Butter highlights; call tree grows branch by branch",
+      "sfx": [],
+      "narration": "The Fibonacci series goes 0, 1, 1, 2, 3, 5, 8, 13. Each number is the sum of the two before it. Recipe. Smallest case: fib of 0 is 0, fib of 1 is 1. Smaller copy: fib of n is fib of n minus 1 plus fib of n minus 2. [HL 3] Line three: int fib, int n. [HL 4-5] Lines four and five: if n is less than or equal to 1, return n. That one line covers both base cases, because fib of 0 is 0 and fib of 1 is 1. [HL 7] Line seven: return fib of n minus 1, plus fib of n minus 2. This function calls itself twice. Look at the call tree for fib of 4. It calls fib of 3 and fib of 2. fib of 3 calls fib of 2 and fib of 1. And see, fib of 2 appears twice. fib of 1 appears three times. Remember that; it matters soon.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint fib(int n) {\n    if (n <= 1) {\n        return n;\n    }\n    return fib(n - 1) + fib(n - 2);\n}\n\nint power(int base, int exp) {\n    if (exp == 0) {\n        return 1;\n    }\n    return base * power(base, exp - 1);\n}\n\nint sumDigits(int n) {\n    if (n == 0) {\n        return 0;\n    }\n    return (n % 10) + sumDigits(n / 10);\n}\n\nint main(void) {\n    printf(\"fib(7) = %d\\n\", fib(7));\n    printf(\"2^10 = %d\\n\", power(2, 10));\n    printf(\"Sum of digits of 4031 = %d\\n\", sumDigits(4031));\n    return 0;\n}",
+        "output": "fib(7) = 13\n2^10 = 1024\nSum of digits of 4031 = 8"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 45,
+      "onScreen": "`practice.c` lines 10–15: power",
+      "animation": "Butter highlights; tracker for exp counting down",
+      "sfx": [],
+      "narration": "Next: power. 2 to the power 10. Recipe. Smallest case: anything to the power zero is 1. Smaller copy: base to the power exp is base times base to the power exp minus 1. [HL 10] Line ten: int power, int base, int exp. [HL 11-12] Lines eleven and twelve: if exp equals zero, return 1. [HL 14] Line fourteen: return base times power of base, exp minus 1. [TRACK exp=10] exp goes 10, 9, 8, all the way [TRACK exp=0] to 0, then the answers multiply back up to 1024.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint fib(int n) {\n    if (n <= 1) {\n        return n;\n    }\n    return fib(n - 1) + fib(n - 2);\n}\n\nint power(int base, int exp) {\n    if (exp == 0) {\n        return 1;\n    }\n    return base * power(base, exp - 1);\n}\n\nint sumDigits(int n) {\n    if (n == 0) {\n        return 0;\n    }\n    return (n % 10) + sumDigits(n / 10);\n}\n\nint main(void) {\n    printf(\"fib(7) = %d\\n\", fib(7));\n    printf(\"2^10 = %d\\n\", power(2, 10));\n    printf(\"Sum of digits of 4031 = %d\\n\", sumDigits(4031));\n    return 0;\n}",
+        "output": "fib(7) = 13\n2^10 = 1024\nSum of digits of 4031 = 8"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 60,
+      "onScreen": "`practice.c` lines 17–22: sumDigits",
+      "animation": "Digits of 4031 peel off one by one with % and / labels",
+      "sfx": [],
+      "narration": "Third: sum of the digits of 4031. That's 4 plus 0 plus 3 plus 1, which is 8. Two tricks from EP 15: n mod 10 gives the last digit, and n divided by 10 removes the last digit. Recipe. Smallest case: if n is 0, there are no digits left, so the sum is 0. Smaller copy: the last digit plus the sum of the digits of the rest. [HL 17] Line seventeen: int sumDigits, int n. [HL 18-19] If n equals zero, return zero. [HL 21] Return n mod 10, plus sumDigits of n divided by 10. [TRACK n=4031] 4031 gives 1, plus sumDigits of 403. [TRACK n=403] That gives 3, plus sumDigits of 40. [TRACK n=40] That gives 0, plus sumDigits of 4. [TRACK n=4] That gives 4, plus sumDigits of 0, [TRACK n=0] which is 0. Total: 1 plus 3 plus 0 plus 4. 8.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint fib(int n) {\n    if (n <= 1) {\n        return n;\n    }\n    return fib(n - 1) + fib(n - 2);\n}\n\nint power(int base, int exp) {\n    if (exp == 0) {\n        return 1;\n    }\n    return base * power(base, exp - 1);\n}\n\nint sumDigits(int n) {\n    if (n == 0) {\n        return 0;\n    }\n    return (n % 10) + sumDigits(n / 10);\n}\n\nint main(void) {\n    printf(\"fib(7) = %d\\n\", fib(7));\n    printf(\"2^10 = %d\\n\", power(2, 10));\n    printf(\"Sum of digits of 4031 = %d\\n\", sumDigits(4031));\n    return 0;\n}",
+        "output": "fib(7) = 13\n2^10 = 1024\nSum of digits of 4031 = 8"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 225,
+      "lengthSec": 20,
+      "onScreen": "Compile and run; 3 output lines",
+      "animation": "Typing SFX",
+      "sfx": [],
+      "narration": "Compile and run. fib of 7 is 13. 2 to the power 10 is 1024. Sum of digits of 4031 is 8. All three, correct."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec counting on his claws",
+      "sfx": [],
+      "narration": "Fibonacci's favourite food? Anything that adds up from the last two meals."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 250,
+      "lengthSec": 100,
+      "onScreen": "`bug.c`: fib(40) with a call counter; 1.2 s pause; \"Calls made: 331160281\"; table of calls for n = 10, 20, 30, 40; loop fix",
+      "animation": "Spinner while waiting; counter rolls up like a petrol pump; fix runs instantly, mint tick",
+      "sfx": [],
+      "narration": "Today's bug: slow recursion. Our fib is correct, but watch what happens with fib of 40. We add a global counter, calls, that goes up by one every time fib runs. Run it, and wait. On our test machine it took about a second; your time will differ, and older laptops take longer. The answer: 102,334,155. And the counter: 331,160,281 calls. That's over 33 crore function calls for one number! Why? Remember the call tree: fib calls itself twice, and the same values get calculated again and again. Look at this table. fib of 10: 177 calls. fib of 20: 21,891. fib of 30: about 27 lakh. fib of 40: over 33 crore. Each step of 10 multiplies the work by more than 100. There's no error, no warning, just a program that seems frozen. The fix: when recursion repeats work, use a loop. Keep two variables, a and b, start them at 0 and 1, and step forward n times. fib of 40 now takes just 40 steps and finishes instantly. Recursion is beautiful, but it is not always fast. Later, in the algorithms module, you'll see a trick that keeps the recursion and remembers old answers."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 350,
+      "lengthSec": 55,
+      "onScreen": "Challenge card: print Fibonacci numbers 0 to 20 using recursive fib",
+      "animation": "Timer ticks",
+      "sfx": [],
+      "narration": "Your challenge: print the first 21 Fibonacci numbers, from fib of 0 up to fib of 20, on one line, using the recursive fib from today. It's still fast for numbers this small. The last number should be 6765."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 405,
+      "lengthSec": 15,
+      "onScreen": "Module 5 complete badge · Next: EP 41 · Arrays",
+      "animation": "Badge stamp; sign-off jingle",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "That's Module 5 complete! You can now write functions, pass values, split files, and think recursively. Next module: storing many values in one name. Arrays. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nlong long calls = 0;\n\nlong long fib(int n) {\n    calls++;\n    if (n <= 1) {\n        return n;\n    }\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void) {\n    printf(\"fib(40) = %lld\\n\", fib(40));\n    printf(\"Calls made: %lld\\n\", calls);\n    return 0;\n}",
+    "error": "No error or warning. Output after a noticeable pause (about 1.2 s on our test machine; on screen: \"your time will differ\"):\n\nfib(40) = 102334155\nCalls made: 331160281\n\nCalls made by recursive fib (shown as a table in scene 9):\n\n| n | Calls |\n| --- | --- |\n| 10 | 177 |\n| 20 | 21,891 |\n| 30 | 2,692,537 |\n| 40 | 331,160,281 |",
+    "fixed": "#include <stdio.h>\n\nlong long fib(int n) {\n    long long a = 0, b = 1;\n    for (int i = 0; i < n; i++) {\n        long long next = a + b;\n        a = b;\n        b = next;\n    }\n    return a;\n}\n\nint main(void) {\n    printf(\"fib(40) = %lld\\n\", fib(40));\n    return 0;\n}",
+    "why": "recursive fib recomputes the same smaller values again and again, so the number of calls grows explosively; a loop computes each value once."
+  },
+  "pun": "Fibonacci's favourite food? Anything that adds up from the last two meals.",
+  "challenge": "Using today's recursive `fib`, print fib(0) to fib(20) on one line.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint fib(int n) {\n    if (n <= 1) {\n        return n;\n    }\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void) {\n    for (int i = 0; i <= 20; i++) {\n        printf(\"%d \", fib(i));\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "331 Million Function Calls",
+      "hook": "the call counter rolling up past 300,000,000",
+      "script": "This tiny Fibonacci function looks innocent. Ask it for fib of 40, and it makes 331 million calls. Why? It calls itself twice, and the same values get worked out again and again. fib of 10: 177 calls. fib of 40: 331 million. The same answer with a loop takes 40 steps.",
+      "onScreen": "331,160,281 CALLS",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Correct code can still be terrible code.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "recursion",
+        "algorithms"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The Recursion Recipe",
+      "hook": "recipe card \"3 questions for every recursion\"",
+      "script": "Three questions solve any recursion problem. What's the smallest case? How is my problem a smaller copy? How do I combine? Sum of digits: if n is 0, return 0. Otherwise, the last digit, n mod 10, plus the sum of digits of n divided by 10. 4031 becomes 1 plus 3 plus 0 plus 4. 8.",
+      "onScreen": "SMALLEST · SMALLER COPY · COMBINE",
+      "fromScenes": [
+        3,
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Save this for your next C exam.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "computerscience",
+        "exams"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Slow Recursion Bug",
+      "hook": "a frozen terminal with a spinner",
+      "script": "No error. No warning. Your program just seems frozen. Recursive fib of 40 is making 331 million calls because it recalculates the same values over and over. Fix: a loop with two variables, a and b, starting at 0 and 1. Step forward n times. Same answer, 40 steps, instant.",
+      "onScreen": "FROZEN? COUNT YOUR CALLS",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 40,
+      "caption": "When recursion is the wrong tool.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "performance",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Fibonacci's Favourite Food",
+      "hook": "Xecxec with two plates and a third plate that is the two combined",
+      "script": "Fibonacci's favourite food? Anything that adds up from the last two meals.",
+      "onScreen": "ADDS UP FROM THE LAST TWO",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Maths jokes, but make them recursive.",
+      "hashtags": [
+        "codingmemes",
+        "programmerhumor",
+        "kodingkonkani",
+        "cprogramming",
+        "fibonacci"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: power(3, 4)",
+      "hook": "`power(3, 4)` = ?",
+      "script": "power returns 1 when exp is 0, otherwise base times power of base, exp minus 1. What is power of 3 and 4? A: 12. B: 64. C: 81. The answer is C: 3 times 3 times 3 times 3 is 81.",
+      "onScreen": "12 · 64 · 81?",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 25,
+      "caption": "Comment your answer before the reveal.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "recursion"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint fib(int n) {\n    if (n <= 1) {\n        return n;\n    }\n    return fib(n - 1) + fib(n - 2);\n}\n\nint power(int base, int exp) {\n    if (exp == 0) {\n        return 1;\n    }\n    return base * power(base, exp - 1);\n}\n\nint sumDigits(int n) {\n    if (n == 0) {\n        return 0;\n    }\n    return (n % 10) + sumDigits(n / 10);\n}\n\nint main(void) {\n    printf(\"fib(7) = %d\\n\", fib(7));\n    printf(\"2^10 = %d\\n\", power(2, 10));\n    printf(\"Sum of digits of 4031 = %d\\n\", sumDigits(4031));\n    return 0;\n}",
+      "output": "fib(7) = 13\n2^10 = 1024\nSum of digits of 4031 = 8",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "fib(40) = 102334155"
+  }
+}

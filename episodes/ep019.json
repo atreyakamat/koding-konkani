@@ -1,0 +1,353 @@
+{
+  "ep": 19,
+  "title": "Precedence & the ternary",
+  "module": 2,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "predict results using C's order of operations (* / % before + -, left to right for equals)",
+    "use brackets to force the order you mean",
+    "write a ternary expression condition ? a : b",
+    "spot the missing-brackets average bug and the & vs == trap"
+  ],
+  "youtube": {
+    "title": "Why 2 + 3 * 4 Isn't 20 in C | C Programming EP 19",
+    "description": "C doesn't read maths left to right; it follows an order of operations, called precedence. This episode shows the order step by step with animated brackets, then introduces C's only three-part operator, the ternary ?:. Plus the average that came out as 193. 0:00 Why 2 + 3 * 4 isn't 20 · 0:20 The precedence ladder · 1:20 Code: prec.c · 2:30 The & trap · 3:00 The ternary ?: · 4:09 Bug of the Day: the 193 average · 4:59 Challenge · 5:39 Recap of Module 2 · 6:09 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Why 2 + 3 * 4 isn't 20"
+      },
+      {
+        "t": "0:20",
+        "label": "The precedence ladder"
+      },
+      {
+        "t": "1:20",
+        "label": "Code: prec.c"
+      },
+      {
+        "t": "2:30",
+        "label": "The & trap"
+      },
+      {
+        "t": "3:00",
+        "label": "The ternary ?:"
+      },
+      {
+        "t": "4:09",
+        "label": "Bug of the Day: the 193 average"
+      },
+      {
+        "t": "4:59",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:39",
+        "label": "Recap of Module 2"
+      },
+      {
+        "t": "6:09",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "operator precedence in c",
+      "order of operations c",
+      "ternary operator in c",
+      "conditional operator c",
+      "associativity in c",
+      "c brackets",
+      "max of two numbers c",
+      "c operators",
+      "koding konkani",
+      "learn c"
+    ],
+    "thumbnail": {
+      "text": "2+3*4 = 20?",
+      "visual": "big text \"2+3*4 = 20?\" in apricot on cream with 20 crossed out in tomato and 14 in mint; Xecxec holding a calculator, shocked.",
+      "pose": "Xecxec holding a calculator, shocked"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "`2 + 3 * 4` with two answers: 20 and 14",
+      "animation": "Expression types in; \"20\" stamps in then gets crossed in tomato with a buzzer; \"14\" slides in mint with a ding; Xecxec drops his calculator, clatter SFX",
+      "sfx": [
+        "buzzer",
+        "ding",
+        "stamp"
+      ],
+      "narration": "2 plus 3 times 4. Quick, what's the answer? If you said 20, C disagrees. C says 14. And C is right."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 19 · PRECEDENCE & THE TERNARY",
+      "animation": "Title stamps in on cream with whoosh + thud; apricot underline wipe",
+      "sfx": [
+        "stamp",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Precedence and the ternary."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 60,
+      "onScreen": "Precedence ladder, top to bottom: ( ) · ! ++ -- · * / % · + - · << >> · < > <= >= · == != · & · ^ · the pipe · && · the double pipe · ?: · = +=",
+      "animation": "Rungs drop in from the top with a wooden knock each; Xecxec climbs down, pausing on * / % and + -, which glow apricot",
+      "sfx": [],
+      "narration": "C doesn't simply read left to right. Some operators are stronger than others, and the stronger ones go first. This is called precedence. Think of it as a ladder. At the very top are brackets: whatever is inside brackets always goes first. Then the one-sided operators like not and plus plus. Then multiply, divide and mod. Then plus and minus. Then the shifts from EP 18. Then the comparisons, less than and greater than. Then equal and not equal. Then the bitwise ones: and, xor, or. Then the logical AND, then logical OR. Near the bottom, the ternary, which you'll meet in a minute. And right at the bottom, assignment, equals and plus-equals, which always happens last. You don't need to memorise the whole ladder today. Just remember: times and divide beat plus and minus, comparisons beat AND and OR, and brackets beat everything."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 80,
+      "lengthSec": 70,
+      "onScreen": "prec.c with invisible brackets appearing",
+      "animation": "[HL n] per line; ghost brackets fade in around the part C does first, with a soft pop; sub-results replace sub-expressions with a click until one number remains",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let's watch C work. [HL 4] 2 plus 3 times 4. Multiply is higher on the ladder, so C does 3 times 4 first: 12. Then 2 plus 12: 14. [HL 5] Want 20? Use brackets. Bracket 2 plus 3 first: 5. Then times 4: 20. [HL 6] 20 minus 6 minus 4. These are the same level. When operators are on the same rung, C goes left to right. 20 minus 6 is 14, minus 4 is 10. Not 20 minus 2. This left-to-right rule is called associativity. [HL 7] 17 slash 3 times 3. Also the same rung, so left to right. 17 slash 3 is 5, integer division from EP 13. Then 5 times 3 is 15. Not 17. [HL 8] 5 greater-than 3, AND, 2 greater-than 4. Comparisons are higher than AND, so they happen first: 1 AND 0, which is 0.",
+      "code": {
+        "file": "prec.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    printf(\"2 + 3 * 4   = %d\\n\", 2 + 3 * 4);\n    printf(\"(2 + 3) * 4 = %d\\n\", (2 + 3) * 4);\n    printf(\"20 - 6 - 4  = %d\\n\", 20 - 6 - 4);\n    printf(\"17 / 3 * 3  = %d\\n\", 17 / 3 * 3);\n    printf(\"5 > 3 && 2 > 4 = %d\\n\", 5 > 3 && 2 > 4);\n    return 0;\n}",
+        "output": "2 + 3 * 4   = 14\n(2 + 3) * 4 = 20\n20 - 6 - 4  = 10\n17 / 3 * 3  = 15\n5 > 3 && 2 > 4 = 0"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 150,
+      "lengthSec": 30,
+      "onScreen": "trap.c: `x & 1 == 0` vs `(x & 1) == 0`, plus the GCC warning",
+      "animation": "Ghost brackets wrap `1 == 0` first in tomato; warning text slides in with a warning beep; real brackets snap in with a click, output turns mint",
+      "sfx": [],
+      "narration": "Here's a trap from the bitwise episode. You want to check whether x is even by testing its last bit: x and 1, equals equals 0. [HL 5] Without brackets, it prints 0, even though 6 is even. Look at the ladder. Double equals is higher than single ampersand. So C first does 1 equals equals 0, which is 0, and then x and 0, which is 0. GCC with dash Wall even warns you: suggest parentheses around comparison in operand of ampersand. [HL 6] With brackets, x and 1 happens first, giving 0, and 0 equals equals 0 is 1. Correct. When you mix bitwise operators with comparisons, always use brackets.",
+      "code": {
+        "file": "trap.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int x = 6;\n    printf(\"without brackets: %d\\n\", x & 1 == 0);\n    printf(\"with brackets   : %d\\n\", (x & 1) == 0);\n    return 0;\n}",
+        "output": "without brackets: 0\nwith brackets   : 1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 180,
+      "lengthSec": 65,
+      "onScreen": "tern.c with a fork-in-the-road graphic for ? and :",
+      "animation": "[HL n] per line; road splits in two; the condition sign flips to 1 or 0 and a tiny bus drives down the matching branch with an engine purr; chosen value drops into the tracker",
+      "sfx": [],
+      "narration": "Now, the only operator in C with three parts. It's called the ternary operator, or the conditional operator. It looks like this: condition, question mark, value if true, colon, value if false. Think of a fork in the road. [HL 4] marks equals 72. [TRACK marks=72] [HL 5] age equals 16. [TRACK age=16] [HL 7] char result equals, marks greater-than-or-equal 40, question mark, capital P, colon, capital F. Is 72 at least 40? Yes, so the whole expression becomes P. [TRACK result='P'] [HL 8] printf with percent c, the slot for a character, prints Result: P. [HL 10] And the ternary can sit right inside printf. Bus fare: if age is less than 12, 10 rupees, otherwise 20. Age is 16, so the condition is false, and it picks 20. In the next module we learn if and else, which can do much bigger choices. The ternary is perfect for small ones: picking one of two values.",
+      "code": {
+        "file": "tern.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int marks = 72;\n    int age = 16;\n\n    char result = (marks >= 40) ? 'P' : 'F';\n    printf(\"Result: %c\\n\", result);\n\n    printf(\"Bus fare: %d rupees\\n\", (age < 12) ? 10 : 20);\n    return 0;\n}",
+        "output": "Result: P\nBus fare: 20 rupees"
+      }
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 4,
+      "onScreen": "\"The ternary operator walked up to a beach shack. Open? Fish curry rice if yes : coconut water if no.\"",
+      "animation": "Card flips, rimshot; Xecxec sips coconut water",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "The ternary operator walked up to a beach shack. Is it open? Fish curry rice if yes, colon, coconut water if no. Xecxec got coconut water."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 249,
+      "lengthSec": 50,
+      "onScreen": "avg.c: `a + b + c / 3` gives 193",
+      "animation": "Butter banner + siren blip; ghost brackets wrap `c / 3` only; 193 appears in tomato with a buzzer; real brackets snap around a + b + c with a click; 80 appears in mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Today's bug. Three marks: 80, 90 and 70. The average should be 80. [HL 5] You write: int avg equals a plus b plus c slash 3. It prints: Average equals 193. What happened? Divide is higher on the ladder than plus. So C does only c slash 3 first: 70 slash 3 is 23. Then 80 plus 90 plus 23: 193. No error, no warning, just a very generous teacher. Fix: brackets. Bracket a plus b plus c, then divide by 3. 240 slash 3 is 80. If you ever feel unsure about the order, add brackets. They cost nothing."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 299,
+      "lengthSec": 40,
+      "onScreen": "\"Read two numbers. Print the bigger one using ?:\"",
+      "animation": "Two number cards bounce in; fork-in-the-road icon pulses; pencil scribble SFX",
+      "sfx": [],
+      "narration": "Your challenge: read two numbers with scanf and print the bigger one, using the ternary operator, not if. One line should do the choosing. Comment your line."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 339,
+      "lengthSec": 30,
+      "onScreen": "Module 2 recap: five tiles for EP 15–19",
+      "animation": "Tiles flip in one by one with a marimba note; a \"MODULE 2 DONE\" badge stamps in apricot; Xecxec does a victory scuttle",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "And that's Module 2 complete. EP 15: arithmetic and the mod superpower. EP 16: comparisons and logic, ones and zeroes, no maybe. EP 17: plus plus, minus minus and the shortcut assignments. EP 18: bitwise operators and switches. And today: precedence and the ternary. You now know almost every operator in C."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 369,
+      "lengthSec": 21,
+      "onScreen": "Next: EP 20 · if and else (Module 3: Decisions, mint + dark blue) + subscribe",
+      "animation": "Next card slides up in Module 3 colours; Xecxec waves, claw-click; sign-off types in",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode, a new module: decisions. Your programs start choosing their own path with if and else. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    int a = 80, b = 90, c = 70;\n    int avg = a + b + c / 3;\n    printf(\"Average = %d\\n\", avg);\n    return 0;\n}",
+    "error": "No error or warning. Wrong output:\n\nAverage = 193",
+    "fixed": "#include <stdio.h>\n\nint main() {\n    int a = 80, b = 90, c = 70;\n    int avg = (a + b + c) / 3;\n    printf(\"Average = %d\\n\", avg);\n    return 0;\n}",
+    "why": "/ is higher in precedence than +, so without brackets only c is divided by 3 (70 / 3 = 23) and then added to 80 + 90."
+  },
+  "pun": "\"The ternary operator walked up to a beach shack. Open? Fish curry rice if yes : coconut water if no.\"",
+  "challenge": "Read two numbers and print the bigger one using ?: (no if).",
+  "challengeAnswer": "shown at the start of EP 20, which then rewrites the same program with if and else.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "2 + 3 * 4 isn't 20",
+      "hook": "\"2 + 3 * 4. If you said 20, C disagrees.\"",
+      "script": "2 plus 3 times 4. If you said 20, C disagrees. C says 14. Multiply goes before add, so it's 3 times 4 first, then plus 2. Want 20? Use brackets. Full episode on the channel.",
+      "onScreen": "2 + 3 * 4 = 14",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "Your maths teacher was right all along.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "maths",
+        "codingtips"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The ternary in 30 seconds",
+      "hook": "\"C's only operator with three parts.\"",
+      "script": "C's only operator with three parts. Condition, question mark, value if true, colon, value if false. marks greater than or equal to 40, question mark, P, colon, F. 72 is at least 40, so you get P. Put it inside printf for a bus fare: age less than 12, 10 rupees, otherwise 20. One line, one choice.",
+      "onScreen": "condition ? yes : no",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "The ternary operator explained with a fork in the road.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingtips",
+        "programming"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The 193 average",
+      "hook": "\"80, 90 and 70. Average: 193?\"",
+      "script": "80, 90 and 70. Average: 193? The code says a plus b plus c slash 3. Divide goes before plus, so only 70 gets divided: 23. Then 80 plus 90 plus 23 is 193. Fix: bracket a plus b plus c, then divide. Now it's 80.",
+      "onScreen": "(a + b + c) / 3",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Missing brackets, very generous teacher.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codingtips"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Fish curry or coconut water?",
+      "hook": "\"The ternary operator walks up to a beach shack.\"",
+      "script": "The ternary operator walks up to a beach shack. Is it open? Fish curry rice if yes, coconut water if no. Xecxec got coconut water.",
+      "onScreen": "open ? fish curry rice : coconut water",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Shack was closed.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "goa"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What does 17 / 3 * 3 print?",
+      "hook": "\"17 / 3 * 3. Is it 17?\"",
+      "script": "17 divided by 3, times 3. Is it 17? Comment your answer. Answer: 15. Same level, so C goes left to right. 17 slash 3 is 5 with integers, and 5 times 3 is 15.",
+      "onScreen": "17 / 3 * 3 = ?",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 20,
+      "caption": "Not 17. Comment your answer first.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "maths"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "prec.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    printf(\"2 + 3 * 4   = %d\\n\", 2 + 3 * 4);\n    printf(\"(2 + 3) * 4 = %d\\n\", (2 + 3) * 4);\n    printf(\"20 - 6 - 4  = %d\\n\", 20 - 6 - 4);\n    printf(\"17 / 3 * 3  = %d\\n\", 17 / 3 * 3);\n    printf(\"5 > 3 && 2 > 4 = %d\\n\", 5 > 3 && 2 > 4);\n    return 0;\n}",
+      "output": "2 + 3 * 4   = 14\n(2 + 3) * 4 = 20\n20 - 6 - 4  = 10\n17 / 3 * 3  = 15\n5 > 3 && 2 > 4 = 0",
+      "lang": "c"
+    },
+    {
+      "file": "trap.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int x = 6;\n    printf(\"without brackets: %d\\n\", x & 1 == 0);\n    printf(\"with brackets   : %d\\n\", (x & 1) == 0);\n    return 0;\n}",
+      "output": "without brackets: 0\nwith brackets   : 1",
+      "lang": "c"
+    },
+    {
+      "file": "tern.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int marks = 72;\n    int age = 16;\n\n    char result = (marks >= 40) ? 'P' : 'F';\n    printf(\"Result: %c\\n\", result);\n\n    printf(\"Bus fare: %d rupees\\n\", (age < 12) ? 10 : 20);\n    return 0;\n}",
+      "output": "Result: P\nBus fare: 20 rupees",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Average = 80"
+  }
+}

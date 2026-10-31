@@ -1,0 +1,290 @@
+{
+  "ep": 26,
+  "title": "Why Loops? The while Loop",
+  "module": 4,
+  "lengthSec": 375,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain why we use loops instead of copy-pasting lines",
+    "write a `while` loop with a counter, a condition and an update",
+    "trace a loop by hand, iteration by iteration",
+    "spot and stop an infinite loop (Ctrl+C)"
+  ],
+  "youtube": {
+    "title": "Stop Copy-Pasting! The while Loop | C Programming EP 26",
+    "description": "Your teacher says \"write sorry 100 times\". In C, you write it once and let a while loop do the rest. We build a while loop line by line, trace it on screen, and learn how to escape the dreaded infinite loop. 0:00 Write sorry 100 times 0:25 Why loops? 1:05 How a while loop works 1:50 Your first while loop, line by line 3:45 Fish that double every day 4:45 Bug of the Day: the infinite loop 5:35 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Write sorry 100 times 0:25 Why loops? 1:05 How a while loop works 1:50 Your first while loop, line by line 3:45 Fish that double every day 4:45 Bug of the Day: the infinite loop 5:35 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "while loop in c",
+      "loops in c",
+      "c tutorial for beginners",
+      "learn c",
+      "infinite loop",
+      "c programming class 11",
+      "c programming class 12",
+      "koding konkani",
+      "gcc",
+      "iteration"
+    ],
+    "thumbnail": {
+      "text": "STOP COPY-PASTING",
+      "visual": "big text \"STOP COPY-PASTING\"; a stack of 100 identical `printf` lines crossed out next to a tiny 4-line while loop; Xecxec holding a red pen, smug; Butter background, Dark blue text blocks.",
+      "pose": "Xecxec holding a red pen, smug"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Notebook page: \"I will not talk in class\" written 100 times; a hand cramping",
+      "animation": "Lines multiply fast down the page, page flips, groan SFX; Xecxec faints onto the notebook",
+      "sfx": [],
+      "narration": "Your teacher says: write \"I will not talk in class\" one hundred times. By line twenty, your hand hurts. By line fifty, you are spelling \"class\" with three S's. Computers never get tired of repeating. Today we teach C to do the boring part for us."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 26 · WHY LOOPS? THE WHILE LOOP",
+      "animation": "Butter card slides in, Dark blue text, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode twenty-six. Why loops? The while loop."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 40,
+      "onScreen": "Five `printf(\"Sorry\\n\");` lines vs one loop box with \"repeat 5 times\"",
+      "animation": "Copy-paste stack grows to 100 and topples; loop box glows; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Suppose we want to print \"Sorry\" five times. We could write printf five times. It works. But what about a hundred times? Or a number the user types in? Copy-paste breaks down fast, and if you need to change the message, you change it in a hundred places. A loop says: here is one block of code, now repeat it while some condition is true. Write once, run many times. That is the whole idea."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 65,
+      "lengthSec": 45,
+      "onScreen": "Flowchart: start → condition? → yes: body → update → back to condition; no: exit",
+      "animation": "Arrow traces the cycle 3 times; the condition diamond flashes Mint (true) then Tomato (false)",
+      "sfx": [],
+      "narration": "A while loop has a simple shape. The word while, a condition in round brackets, and a body in curly braces. C checks the condition. If it is true, it runs the body, then goes back and checks again. If it is false, it skips the body and moves on. Think of a Panjim bus conductor shouting \"Panjim, Panjim!\" while there are empty seats. Seats empty? Shout again. Bus full? Stop shouting and drive. Almost every loop needs three things: a starting value, a condition, and an update that moves us towards the end."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 110,
+      "lengthSec": 90,
+      "onScreen": "`sorry.c` with variable tracker for `i`",
+      "animation": "Line highlights in Butter; tracker box for `i` ticks 1→6; each iteration adds a line to a mini terminal on the right",
+      "sfx": [],
+      "narration": "Here is our program. [HL 4] Line four: int i equals 1. This is our counter, and it starts at one. [TRACK i=1] [HL 6] Line six: while, i less than or equal to 5. C checks: is 1 less than or equal to 5? Yes. So we go inside. [HL 7] Line seven: printf, Sorry, percent d, and we pass i. So it prints \"Sorry 1\". [HL 8] Line eight: i plus plus. This adds one to i. [TRACK i=2] Now we hit the closing brace, and C jumps back up to line six. Is 2 less than or equal to 5? Yes. Print \"Sorry 2\", i becomes 3. [TRACK i=3] Again: \"Sorry 3\", i becomes 4. [TRACK i=4] \"Sorry 4\", i becomes 5. [TRACK i=5] Is 5 less than or equal to 5? Yes, equal counts. Print \"Sorry 5\", and i becomes 6. [TRACK i=6] Now the check: is 6 less than or equal to 5? No. The condition is false, so C jumps past the closing brace. [HL 11] Line eleven prints \"Done! i is now 6\". Notice that: after the loop, i is one more than the last value printed. Remember this, it will save you in exams. [HL 12] And return 0 ends the program. Each trip through the body is called an iteration. This loop did five iterations."
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 200,
+      "lengthSec": 20,
+      "onScreen": "`gcc sorry.c -o sorry` then `./sorry`",
+      "animation": "Typing SFX, output lines appear one by one",
+      "sfx": [],
+      "narration": "Let's compile and run. gcc sorry dot c, dash o sorry. Then dot slash sorry. Five sorries, and \"Done! i is now 6\". Change the 5 to 100, and you get a hundred sorries. Same four lines of code."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 220,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec spins in a circle, rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the while loop never get bored? Because it always had something to repeat to itself."
+    },
+    {
+      "id": 8,
+      "template": "code-explain",
+      "startSec": 225,
+      "lengthSec": 60,
+      "onScreen": "`double.c` with trackers for `fish` and `day`",
+      "animation": "Fish icons double in a basket each iteration; tracker table fills row by row",
+      "sfx": [],
+      "narration": "While loops shine when you don't know how many times you'll repeat. A fisherman at Mapusa market starts with 1 fish. Every day, his catch doubles. How many days until he has at least 100? [HL 4] fish starts at 1. [HL 5] day starts at 1. [TRACK fish=1 day=1] [HL 7] While fish is less than 100. [HL 8] fish equals fish times 2. [HL 9] day plus plus. Watch the tracker. 2 on day 2. 4 on day 3. 8, 16, 32, 64. [TRACK fish=64 day=7] 64 is still less than 100, so one more trip: 128 on day 8. [TRACK fish=128 day=8] Now 128 is not less than 100, so the loop stops. [HL 12] We print \"Day 8: 128 fish\". We never told C \"repeat seven times\". The condition decided."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 285,
+      "lengthSec": 50,
+      "onScreen": "`i++` deleted; terminal floods with \"Sorry 1\"",
+      "animation": "Butter frame, alarm SFX, terminal scrolls endlessly, \"Ctrl+C\" keycap slams down",
+      "sfx": [],
+      "narration": "Today's bug is the most famous loop bug of all. Go back to sorry dot c and delete the i plus plus line. Compile. No error. No warning. Run it. \"Sorry 1, Sorry 1, Sorry 1\" and it never stops. Why? i stays 1 forever, so i less than or equal to 5 is always true. This is an infinite loop. To escape, click on the terminal and press Control plus C. That stops the running program. The fix: make sure something inside the loop moves you towards the exit. Put i plus plus back."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 335,
+      "lengthSec": 25,
+      "onScreen": "\"Print 1 to 50 on one line\"",
+      "animation": "Timer ring, Xecxec taps a clipboard",
+      "sfx": [],
+      "narration": "Your challenge: use a while loop to print the numbers 1 to 50 on one line, separated by spaces. Hint: use percent d followed by a space, and print the newline only after the loop. Answer in the next episode."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 360,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 27, the for loop",
+      "animation": "Xecxec waves, claw-click, end card",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: the for loop, a loop that packs start, condition and update into one neat line. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int i = 1;\n\n    while (i <= 5) {\n        printf(\"Sorry %d\\n\", i);\n    }\n\n    return 0;\n}",
+    "error": "GCC gives no error and no warning (even with `-Wall -Wextra`). The program prints this forever until you press Ctrl+C:\n\nSorry 1\nSorry 1\nSorry 1\n...",
+    "fixed": "    while (i <= 5) {\n        printf(\"Sorry %d\\n\", i);\n        i++;\n    }",
+    "why": "Without `i++` the counter never changes, so the condition `i <= 5` stays true forever."
+  },
+  "pun": "Why did the while loop never get bored? Because it always had something to repeat to itself.",
+  "challenge": "Use a while loop to print 1 to 50 on one line, separated by spaces.",
+  "challengeAnswer": "(worked example)\nint i = 1;\nwhile (i <= 50) {\n    printf(\"%d \", i);\n    i++;\n}\nprintf(\"\\n\");",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Write Sorry 100 Times? Never Again",
+      "hook": "Notebook with lines multiplying, \"100 TIMES?!\"",
+      "script": "Your teacher says write \"sorry\" one hundred times. Your hand gives up at twenty. In C, you write it once. A while loop repeats a block of code as long as a condition is true. Four lines, a hundred sorries. Full episode on Koding Konkani.",
+      "onScreen": "100 TIMES? / WRITE IT ONCE / while (i <= 100)",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Let C write your punishment lines.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "whileloop",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The while Loop in 30 Seconds",
+      "hook": "Flowchart arrow spinning round the loop",
+      "script": "A while loop in thirty seconds. Start a counter: int i equals 1. Write while, and a condition: i less than or equal to 5. Inside, do your work, then i plus plus. C checks the condition, runs the body, comes back, checks again. When the condition turns false, it exits. Start, check, update. That's every loop.",
+      "onScreen": "START / CHECK / UPDATE",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Three parts of every loop.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "whileloop",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The Loop That Never Ends",
+      "hook": "Terminal flooding with \"Sorry 1\"",
+      "script": "This program prints \"Sorry 1\" forever. No error, no warning. Why? We forgot i plus plus, so i stays 1, and the condition is always true. Press Control C to stop it. Then put the update back.",
+      "onScreen": "INFINITE LOOP / CTRL + C / FORGOT i++",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "Every coder's first infinite loop.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "infiniteloop"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: The Loop Who Talks to Itself",
+      "hook": "Xecxec spinning in circles",
+      "script": "Why did the while loop never get bored? Because it always had something to repeat to itself.",
+      "onScreen": "REPEAT TO ITSELF",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 10,
+      "caption": "Loop humour, repeat as needed.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What Is i After the Loop?",
+      "hook": "\"Exam question!\" stamp",
+      "script": "Quick quiz. i starts at 1. while i is less than or equal to 5, print i, then i plus plus. After the loop ends, what is i? Five? No. Six. The loop only stops when the check fails, and that happens at 6. Comment if you got it.",
+      "onScreen": "WHAT IS i? / 5 or 6? / ANSWER: 6",
+      "fromScenes": [
+        5,
+        10
+      ],
+      "lengthSec": 20,
+      "caption": "The exam trap everyone falls for.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "class12"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int i = 1;\n\n    while (i <= 5) {\n        printf(\"Sorry %d\\n\", i);\n        i++;\n    }\n\n    printf(\"Done! i is now %d\\n\", i);\n    return 0;\n}",
+      "output": "Sorry 1\nSorry 2\nSorry 3\nSorry 4\nSorry 5\nDone! i is now 6",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int fish = 1;\n    int day = 1;\n\n    while (fish < 100) {\n        fish = fish * 2;\n        day++;\n    }\n\n    printf(\"Day %d: %d fish\\n\", day, fish);\n    return 0;\n}",
+      "output": "Day 8: 128 fish",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

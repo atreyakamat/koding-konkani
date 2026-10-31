@@ -1,5 +1,5 @@
 import { Html5Audio, interpolate, staticFile, useCurrentFrame } from "remotion";
-import { MUSIC_VOLUME } from "./sfx";
+import { MUSIC_VOLUME } from "./sfx-levels";
 
 export type FrameRange = { from: number; to: number };
 export type MusicBedProps = { src?: string; duckRanges?: FrameRange[]; rampFrames?: number };

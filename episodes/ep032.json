@@ -1,0 +1,281 @@
+{
+  "ep": 32,
+  "title": "Pattern Printing 2: Pyramids and Number Patterns",
+  "module": 4,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "build a centred pyramid using a row table with spaces = n − i and stars = 2i − 1",
+    "join a pyramid and an inverted pyramid into a diamond",
+    "print Floyd's triangle using a counter that lives outside both loops",
+    "check star counts by testing one row by hand"
+  ],
+  "youtube": {
+    "title": "Build a Star Pyramid in C (and a Diamond) | C EP 32",
+    "description": "Pyramids look hard until you write their row table: n minus i spaces, then 2i minus 1 stars. We build a pyramid, turn it into a diamond, print Floyd's triangle, and fix the bug where the pyramid comes out lopsided. 0:00 Challenge answer and hook 0:25 The pyramid row table 1:30 Pyramid, line by line 3:00 Diamond 3:55 Floyd's triangle 5:00 Bug of the Day: space vs star count 6:20 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Challenge answer and hook 0:25 The pyramid row table 1:30 Pyramid, line by line 3:00 Diamond 3:55 Floyd's triangle 5:00 Bug of the Day: space vs star count 6:20 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "pyramid pattern in c",
+      "diamond pattern in c",
+      "floyd's triangle in c",
+      "number pattern in c",
+      "star pattern",
+      "nested loops",
+      "c programming exam questions",
+      "learn c",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "PYRAMID CRAB-STYLE",
+      "visual": "big text \"PYRAMID CRAB-STYLE\"; a golden star pyramid on a beach with Xecxec on top waving a flag; formula \"2i − 1\" in a badge; Butter background, Dark blue blocks.",
+      "pose": "Xecxec on top waving a flag"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "EP 31 challenge output (upside-down right triangle); then Xecxec building a sandcastle pyramid at Calangute",
+      "animation": "Sand pours, castle rises; waves SFX",
+      "sfx": [],
+      "narration": "Last challenge: the upside-down right-aligned triangle. Take the right-aligned triangle and make the outer loop count down: four stars, then three, two, one, all touching the right edge. Today, Xecxec is building a sandcastle at Calangute. Not a triangle. A proper pyramid. Wide at the bottom, pointed on top, perfectly centred."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 32 · PATTERN PRINTING 2",
+      "animation": "Butter card, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode thirty-two. Pattern printing, part two."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 65,
+      "onScreen": "Row table for n = 5: row, spaces (4,3,2,1,0), stars (1,3,5,7,9); rules \"spaces = n − i\", \"stars = 2i − 1\"",
+      "animation": "Columns fill one by one; the odd-number sequence 1,3,5,7,9 pulses",
+      "sfx": [],
+      "narration": "Same trick as last time: the row table. Let n be 5. Row 1 has 4 spaces and 1 star. Row 2 has 3 spaces and 3 stars. Row 3: 2 spaces, 5 stars. Row 4: 1 space, 7 stars. Row 5: no spaces, 9 stars. The spaces column is easy: n minus i, like last episode. The stars column goes 1, 3, 5, 7, 9. Those are odd numbers. And the formula for the i-th odd number is 2 times i, minus 1. Check row 3: 2 times 3 is 6, minus 1 is 5. Yes. Two rules: spaces equal n minus i, stars equal 2i minus 1. This time we print stars with no space after them, so one space fills one star's width."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 90,
+      "lengthSec": 90,
+      "onScreen": "`pyr.c` with trackers `i`, `s`, `k`",
+      "animation": "Spaces as dotted boxes, stars in Tomato, row by row; counter shows \"2*i-1 = …\"",
+      "sfx": [],
+      "narration": "[HL 4] n equals 5. [HL 6] Outer loop: i from 1 to n. [TRACK i=1] [HL 7] First inner loop: s from 1 to n minus i. That's 4 on row 1. [HL 8] Each time, print one space. [HL 10] Second inner loop: k from 1 to 2 times i minus 1. On row 1 that's 1. [HL 11] Print one star. [HL 13] Then newline. Row 1: four spaces, one star. [TRACK i=2] Row 2: 3 spaces, and 2 times 2 minus 1, 3 stars. [TRACK i=3] Row 3: 2 spaces, 5 stars. [TRACK i=5] Row 5: zero spaces, the s loop doesn't run at all, then 9 stars. And we have a pyramid. Notice the stars grow by 2 each row, one on each side, while the spaces shrink by 1. That's what keeps it centred."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 180,
+      "lengthSec": 50,
+      "onScreen": "`diamond.c`: top half then bottom half",
+      "animation": "Pyramid builds, then a mirrored half drops below; shimmer SFX",
+      "sfx": [],
+      "narration": "Want a diamond? It's a pyramid with an upside-down pyramid under it. With n equals 4, the top half is our pyramid code. [HL 11] The bottom half uses the same two inner loops, but the outer loop counts down: i from n minus 1 down to 1. Why n minus 1? Because the widest row, 7 stars, is already printed by the top half. We don't want it twice. Top half: 1, 3, 5, 7 stars. Bottom half: 5, 3, 1. A diamond."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 230,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec in a pharaoh hat, rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why do pyramids make great programmers? They always have a solid base."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 235,
+      "lengthSec": 65,
+      "onScreen": "`floyd.c` with trackers `i`, `j`, `num`",
+      "animation": "`num` tracker keeps rising across rows (never resets), numbers drop into place",
+      "sfx": [],
+      "narration": "One more famous exam pattern: Floyd's triangle. [HL 5] int num equals 1, declared outside both loops. [TRACK num=1] [HL 7] Outer loop: i from 1 to n, with n equal to 4. [HL 8] Inner loop: j from 1 to i, the same as our left triangle. [HL 9] printf percent 3 d, num. The 3 makes each number take 3 spaces, so columns line up. [HL 10] num plus plus. Row 1: 1. [TRACK num=2] Row 2: 2, 3. [TRACK num=4] Row 3: 4, 5, 6. Row 4: 7, 8, 9, 10. [TRACK num=11] The key is where num lives. Because it's outside both loops, it never resets. It just keeps counting across rows. If you declared it inside the outer loop, every row would restart at 1."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 300,
+      "lengthSec": 80,
+      "onScreen": "Inner star limit `k <= i` gives a lopsided shape",
+      "animation": "Butter frame; row table check: row 3 needs 5 stars but gets 3 (Tomato); fixed to `2 * i - 1` (Mint)",
+      "sfx": [],
+      "narration": "Today's bug: space versus star count. A student writes the pyramid but uses k less than or equal to i for the stars, copying from the triangle. Compile: no error. Run it. The output is a right-aligned triangle: 1 star, 2 stars, 3 stars, all pushed to the right. Not a pyramid. Let's check with the row table. Row 3 should have 5 stars. The code gives 3. The spaces shrink by 1 each row, so the stars must grow by 2 to stay centred, but they only grow by 1. The fix: k less than or equal to 2 times i minus 1. The lesson: before you run, test one row of your loop limits against your row table."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 380,
+      "lengthSec": 25,
+      "onScreen": "\"Number pyramid\" target picture: 1 / 121 / 12321 / 1234321 / 123454321",
+      "animation": "Digits pop in, timer ring",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: the number pyramid. With n equals 5: 1 on top, then 1 2 1, then 1 2 3 2 1, up to 1 2 3 4 5 4 3 2 1, all centred. Hint: on each row, after the spaces, count up from 1 to i, then count down from i minus 1 to 1."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 405,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 33, Number games mini project",
+      "animation": "Xecxec waves, end card",
+      "sfx": [],
+      "narration": "Next episode: our first mini project. Is 97 prime? Let's ask C. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "        for (int k = 1; k <= i; k++) {\n            printf(\"*\");\n        }",
+    "error": "No compiler error. Wrong output (a right-aligned triangle, not a pyramid):\n\n    *\n   **\n  ***\n ****\n*****",
+    "fixed": "        for (int k = 1; k <= 2 * i - 1; k++) {\n            printf(\"*\");\n        }",
+    "why": "The spaces shrink by 1 per row, so the stars must grow by 2 per row (1, 3, 5 … = 2i − 1) to stay centred."
+  },
+  "pun": "Why do pyramids make great programmers? They always have a solid base.",
+  "challenge": "With n = 5, print the number pyramid: `1`, `121`, `12321`, `1234321`, `123454321`, centred.",
+  "challengeAnswer": "(worked example)\nint n = 5;\nfor (int i = 1; i <= n; i++) {\n    for (int s = 1; s <= n - i; s++) {\n        printf(\" \");\n    }\n    for (int k = 1; k <= i; k++) {\n        printf(\"%d\", k);\n    }\n    for (int k = i - 1; k >= 1; k--) {\n        printf(\"%d\", k);\n    }\n    printf(\"\\n\");\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Xecxec Builds a Pyramid",
+      "hook": "Sand pyramid rising on Calangute beach",
+      "script": "Xecxec wants a pyramid. Not a triangle, a real pyramid, centred and pointy. In C it takes two inner loops: one for spaces, one for stars. And one tiny formula: 2i minus 1. Full episode on Koding Konkani.",
+      "onScreen": "PYRAMID IN C / SPACES + STARS / 2i - 1",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 20,
+      "caption": "Sandcastle, but make it C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "pyramidpattern",
+        "goa"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The Pyramid Formula in 30 Seconds",
+      "hook": "Row table appearing beside the pyramid",
+      "script": "Every pyramid follows two rules. Spaces on row i: n minus i. Stars on row i: 2i minus 1. For n equals 5, that's 4 spaces and 1 star, then 3 and 3, then 2 and 5, then 1 and 7, then 0 and 9. Write those two rules as loop limits, and you're done.",
+      "onScreen": "SPACES = n - i / STARS = 2i - 1",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 30,
+      "caption": "Two rules, every pyramid.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "starpattern",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "My Pyramid Came Out Lopsided",
+      "hook": "A leaning half-pyramid in Tomato",
+      "script": "This should be a pyramid. It's a lopsided triangle. The stars loop says k up to i, so stars grow by 1. But spaces shrink by 1, so stars must grow by 2 to stay centred. Change it to 2i minus 1. Fixed.",
+      "onScreen": "LOPSIDED? / k <= i / k <= 2*i - 1",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Check your row table first.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "patternprinting"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: Solid Base",
+      "hook": "Xecxec in a pharaoh hat",
+      "script": "Why do pyramids make great programmers? They always have a solid base.",
+      "onScreen": "SOLID BASE",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 10,
+      "caption": "Built different.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "How Many Stars on Row 6?",
+      "hook": "Pyramid with a blank row 6",
+      "script": "Quick quiz. In a pyramid, row i has 2i minus 1 stars. How many on row 6? 2 times 6 is 12, minus 1. Eleven stars.",
+      "onScreen": "ROW 6 = ? / 2(6) - 1 = 11",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 15,
+      "caption": "Pyramid maths in 10 seconds.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "starpattern"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n\n    for (int i = 1; i <= n; i++) {\n        for (int s = 1; s <= n - i; s++) {\n            printf(\" \");\n        }\n        for (int k = 1; k <= 2 * i - 1; k++) {\n            printf(\"*\");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "output": "    *\n   ***\n  *****\n *******\n*********",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 4;\n\n    for (int i = 1; i <= n; i++) {\n        for (int s = 1; s <= n - i; s++) printf(\" \");\n        for (int k = 1; k <= 2 * i - 1; k++) printf(\"*\");\n        printf(\"\\n\");\n    }\n    for (int i = n - 1; i >= 1; i--) {\n        for (int s = 1; s <= n - i; s++) printf(\" \");\n        for (int k = 1; k <= 2 * i - 1; k++) printf(\"*\");\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "output": "   *\n  ***\n *****\n*******\n *****\n  ***\n   *",
+      "lang": "c"
+    },
+    {
+      "file": "file3.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 4;\n    int num = 1;\n\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= i; j++) {\n            printf(\"%3d\", num);\n            num++;\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "output": "  1\n  2  3\n  4  5  6\n  7  8  9 10",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

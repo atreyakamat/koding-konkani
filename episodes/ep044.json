@@ -1,0 +1,325 @@
+{
+  "ep": 44,
+  "title": "Sorting Intro: Line Up by Height",
+  "module": 6,
+  "lengthSec": 360,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain why sorted data matters (binary search, toppers, ranks)",
+    "swap two variables correctly with a temp variable",
+    "write one pass that compares neighbours and swaps them",
+    "use n - 1 as the bound whenever a loop reads h[i + 1]"
+  ],
+  "youtube": {
+    "title": "How to Swap Two Values in C (Sorting Starts Here) | EP 44",
+    "description": "Before you can sort anything, you need to swap two values without losing one. Learn the three-step temp swap, then use it to push the tallest value to the end of an array in one pass. Full sorting algorithms come in Module 12. 0:00 Line up by height · 0:20 Title · 0:25 Why order matters · 1:00 The broken swap · 1:30 The temp swap · 2:20 One pass · 3:40 Running it · 4:00 Pun · 4:05 Bug of the Day · 5:05 Challenge · 5:40 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Line up by height"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Why order matters"
+      },
+      {
+        "t": "1:00",
+        "label": "The broken swap"
+      },
+      {
+        "t": "1:30",
+        "label": "The temp swap"
+      },
+      {
+        "t": "2:20",
+        "label": "One pass"
+      },
+      {
+        "t": "3:40",
+        "label": "Running it"
+      },
+      {
+        "t": "4:00",
+        "label": "Pun"
+      },
+      {
+        "t": "4:05",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:05",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "swap two numbers in c",
+      "swap using temp",
+      "sorting in c",
+      "sorting intro",
+      "arrays in c",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "bubble sort basics",
+      "class 12 computer science"
+    ],
+    "thumbnail": {
+      "text": "SWAP WITHOUT LOSING",
+      "visual": "big text \"SWAP WITHOUT LOSING\"; two glasses (feni and kokum) and an empty third glass labelled temp; Xecxec juggling the glasses; dark-blue arrows",
+      "pose": "Xecxec juggling the glasses"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "algorithm-bars",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Five students as bars 150 142 160 138 155, PT teacher whistle: \"Line up by height!\"",
+      "animation": "Bars wobble out of order; whistle SFX; Xecxec stands on tiptoe to look taller",
+      "sfx": [],
+      "narration": "PT period. The teacher blows the whistle. \"Line up by height!\" Five students, all mixed up. Everyone shuffles around, swapping places with the person next to them, until the line looks right. Your computer has to do the same thing with numbers. Today we learn the one move that every sorting method is built on: the swap."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 44 · SORTING INTRO",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 44. Sorting, the first step."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 35,
+      "onScreen": "Three uses: binary search (EP 43), rank list, find median",
+      "animation": "Three cards flip in; tick per card",
+      "sfx": [],
+      "narration": "Why do we care about order? Remember last episode: binary search only works on sorted data. Sorted marks give you a rank list straight away. And the middle value of a sorted list is the median. Sorting comes up so often that Module 12 has a whole set of sorting algorithms. Today is just the foundation: how to swap two values, and how to make one pass through an array."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 60,
+      "lengthSec": 30,
+      "onScreen": "a = b; b = a; both boxes end as 20",
+      "animation": "10 gets overwritten and vanishes in smoke; sad trombone",
+      "sfx": [],
+      "narration": "Let's try swapping a equals 10 and b equals 20. The obvious way: a equals b, then b equals a. After the first line, a is 20. Good. After the second line, b gets a, which is now 20. So both are 20. The 10 is gone forever. When you write into a box, whatever was inside is lost."
+    },
+    {
+      "id": 5,
+      "template": "memory-boxes",
+      "startSec": 90,
+      "lengthSec": 50,
+      "onScreen": "Three glasses: a, b, temp; kokum and feni swap via the empty glass",
+      "animation": "Pour animation in three steps with step numbers; liquid pour SFX",
+      "sfx": [],
+      "narration": "Think of two glasses: one with kokum, one with feni. You want to swap them. You cannot pour one straight into the other. You need a third, empty glass. Step one: pour a into temp. Step two: pour b into a. Step three: pour temp into b. Three steps, nothing spilled. In C, that third glass is a variable called temp."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 140,
+      "lengthSec": 80,
+      "onScreen": "ep44_swap.c types itself",
+      "animation": "Line highlights; tracker shows a, b, temp, i and the array as bars",
+      "sfx": [],
+      "narration": "Here is the code. [HL 4] Line four, five heights in centimetres. [HL 8] Line eight, a is 10, b is 20. [TRACK a=10 b=20] [HL 9] Line nine, temp equals a. temp now holds the 10 safely. [TRACK temp=10] [HL 10] Line ten, a equals b. [TRACK a=20] [HL 11] Line eleven, b equals temp. [TRACK b=10] Swapped. [HL 12] Line twelve prints a equals 20, b equals 10. Now the array. [HL 15] Line fifteen, a loop where i goes from zero while i is less than n minus one. Why n minus one? Because inside, we look at h i and its neighbour h i plus one. When i is three, the neighbour is h four, the last element. If i went to four, the neighbour would be h five, which does not exist. [HL 16] Line sixteen: if the left student is taller than the right one, they are in the wrong order. [TRACK i=0] 150 is taller than 142, so [HL 17] lines seventeen to nineteen swap them with the same three steps. [TRACK h={142,150,160,138,155}] i equals one: 150 and 160 are fine, no swap. i equals two: 160 and 138, swap. [TRACK h={142,150,138,160,155}] i equals three: 160 and 155, swap. [TRACK h={142,150,138,155,160}] [HL 23] Lines twenty-three to twenty-five print the array. Notice what happened: the tallest, 160, moved all the way to the end. One pass puts the biggest value in its final place. The rest is not sorted yet. Repeating this pass is the idea behind bubble sort, which we build properly in EP 74."
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 220,
+      "lengthSec": 20,
+      "onScreen": "gcc ep44_swap.c -o ep44 then ./ep44",
+      "animation": "Output prints; 160 lands at the end in mint",
+      "sfx": [],
+      "narration": "Compile and run. a equals 20, b equals 10. Then 142, 150, 138, 155, 160. 160 is at the end. Not fully sorted yet, and that is fine. That is exactly what one pass does."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 240,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the two variables need a third friend? Because swapping without temp is a temp-ting mistake."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 245,
+      "lengthSec": 60,
+      "onScreen": "i < n with h[i + 1]; 160 replaced by a stranger",
+      "animation": "Ghost sixth bar appears beyond the array; 160 bar swaps with it and disappears; alarm buzz",
+      "sfx": [],
+      "narration": "Today's bug. Same pass, but the loop says i less than n instead of n minus one. Plain gcc compiles it without a word. When i is four, the code compares h four with h five, and h five is outside the array. If that unknown memory holds a smaller number, the code swaps, and our 160 is carried out of the array and lost. On my machine, with optimisation turned on, the last value printed was zero, and GCC with dash Wall gave a warning: iteration 4 invokes undefined behavior. Your output may differ, and that is the scary part. The fix: whenever the loop body uses i plus one, the bound is n minus one."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 305,
+      "lengthSec": 35,
+      "onScreen": "Put three numbers in descending order using swaps",
+      "animation": "Three shells, biggest to smallest; ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. Take three ints, x, y and z. Using only if statements and the temp swap, put them in descending order, so x is the biggest and z is the smallest. Test with 4, 9, 7. The output should be 9, 7, 4. Hint: three compare-and-swaps are enough."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 340,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 45 2D arrays; Module 12 teaser: full sorts",
+      "animation": "Cinema seat grid fades in; sign-off",
+      "sfx": [],
+      "narration": "Next episode: arrays get a second dimension, rows and columns, like a cinema seat map. And full sorting algorithms are waiting for you in Module 12. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    int h[5] = {150, 142, 160, 138, 155};\n    int n = 5;\n    int temp;\n\n    for (int i = 0; i < n; i++) {\n        if (h[i] > h[i + 1]) {\n            temp = h[i];\n            h[i] = h[i + 1];\n            h[i + 1] = temp;\n        }\n    }\n\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", h[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+    "error": "Compiled with `gcc -Wall -O2 sort_pass.c -o sort_pass`, GCC warns:\n\nsort_pass.c: In function 'main':\nsort_pass.c:9:21: warning: iteration 4 invokes undefined behavior [-Waggressive-loop-optimizations]\n    9 |         if (h[i] > h[i + 1]) {\n      |                    ~^~~~~~~\nsort_pass.c:8:23: note: within this loop\n    8 |     for (int i = 0; i < n; i++) {\n      |                     ~~^~~\n\nWrong output on that build (on screen: \"your output may differ\"; with plain `gcc` it can even look correct):\n\n142 150 138 155 0",
+    "fixed": "    for (int i = 0; i < n - 1; i++) {",
+    "why": "the loop body reads h[i + 1], so i must stop at n - 2, or the last comparison reaches outside the array."
+  },
+  "pun": "Why did the two variables need a third friend? Because swapping without temp is a temp-ting mistake.",
+  "challenge": "Put three ints x, y, z into descending order using only if statements and temp swaps. Test with 4, 9, 7.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint main() {\n    int x = 4, y = 9, z = 7;\n    int temp;\n\n    if (x < y) { temp = x; x = y; y = temp; }\n    if (x < z) { temp = x; x = z; z = temp; }\n    if (y < z) { temp = y; y = z; z = temp; }\n\n    printf(\"%d %d %d\\n\", x, y, z);\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Can You Swap Two Numbers?",
+      "hook": "\"a = b; b = a; Did it swap?\"",
+      "script": "a equals b, b equals a. Did that swap them? No. After the first line, the old value of a is gone, so both end up the same. Swapping needs one extra thing. Full episode on the channel.",
+      "onScreen": "a = b; b = a; → 20, 20",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 25,
+      "caption": "The swap that every beginner gets wrong.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingforbeginners",
+        "sorting"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The Temp Swap in 30 Seconds",
+      "hook": "Two glasses and an empty one: \"Swap them without spilling.\"",
+      "script": "Two glasses, kokum and feni. To swap them, you need an empty third glass. Pour a into temp. Pour b into a. Pour temp into b. In C: temp equals a, a equals b, b equals temp. Three lines, nothing lost.",
+      "onScreen": "temp = a; a = b; b = temp;",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Three lines every sorting algorithm uses.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "sorting",
+        "cprogrammingtutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Where Did 160 Go?",
+      "hook": "Terminal: \"142 150 138 155 0\". \"My tallest student vanished.\"",
+      "script": "My tallest student vanished. The loop compared h i with h i plus one, but it ran while i was less than n. So on the last turn it peeked outside the array, swapped with whatever was there, and 160 was gone. If you use i plus one, stop at n minus one.",
+      "onScreen": "USE i + 1? STOP AT n - 1",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "One character, one lost value.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "debugging"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Temp-ting",
+      "hook": "Xecxec holding two glasses, eyeing a third.",
+      "script": "Why did the two variables need a third friend? Because swapping without temp is a temp-ting mistake.",
+      "onScreen": "A TEMP-TING MISTAKE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Do not resist the temp.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "After One Pass?",
+      "hook": "\"150 142 160 138 155: one pass. Which number is now last?\"",
+      "script": "One pass: compare each pair of neighbours and swap if the left is bigger. Which number ends up last? Pause and guess. 160. One pass always pushes the biggest value to the end. Repeat it and you have bubble sort.",
+      "onScreen": "ONE PASS → BIGGEST GOES LAST",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 22,
+      "caption": "The first idea of bubble sort.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "sorting"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int h[5] = {150, 142, 160, 138, 155};\n    int n = 5;\n\n    /* Swap two values with a temp */\n    int a = 10, b = 20;\n    int temp = a;\n    a = b;\n    b = temp;\n    printf(\"a = %d, b = %d\\n\", a, b);\n\n    /* One pass: compare neighbours, swap if out of order */\n    for (int i = 0; i < n - 1; i++) {\n        if (h[i] > h[i + 1]) {\n            temp = h[i];\n            h[i] = h[i + 1];\n            h[i + 1] = temp;\n        }\n    }\n\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", h[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "output": "a = 20, b = 10\n142 150 138 155 160 ",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int a = 10, b = 20;\n    a = b;\n    b = a;\n    printf(\"a = %d, b = %d\\n\", a, b);\n    return 0;\n}",
+      "output": "a = 20, b = 20",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "ep": 63,
+  "title": "typedef & enum",
+  "module": 9,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "use `typedef` to give a struct or enum a short type name",
+    "define an `enum` and know its values are ints starting at 0",
+    "set custom enum values and predict the ones that follow",
+    "use an enum in a `switch`",
+    "avoid enumerator name clashes by prefixing names"
+  ],
+  "youtube": {
+    "title": "typedef and enum: Give Your Types Nicknames | C Programming EP 63",
+    "description": "Tired of typing struct Student everywhere? Tired of remembering that 2 means green? Today typedef gives your types short names and enum gives your numbers real names. We build a Goa bus signal with both, and see why two enums cannot share a name. Chapters: 0:00 Magic numbers · 0:25 typedef · 1:00 enum · 1:45 Code line by line · 3:35 Running it · 3:55 Custom enum values · 4:40 Bug of the Day · 5:45 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Magic numbers"
+      },
+      {
+        "t": "0:25",
+        "label": "typedef"
+      },
+      {
+        "t": "1:00",
+        "label": "enum"
+      },
+      {
+        "t": "1:45",
+        "label": "Code line by line"
+      },
+      {
+        "t": "3:35",
+        "label": "Running it"
+      },
+      {
+        "t": "3:55",
+        "label": "Custom enum values"
+      },
+      {
+        "t": "4:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:45",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "typedef in c",
+      "enum in c",
+      "enumeration",
+      "typedef struct",
+      "named constants",
+      "switch with enum",
+      "learn c",
+      "koding konkani",
+      "c tutorial english"
+    ],
+    "thumbnail": {
+      "text": "2 = GREEN??",
+      "visual": "big text \"2 = GREEN??\"; a traffic signal with 0, 1, 2 on the lights turning into RED, YELLOW, GREEN name tags; Xecxec wearing a name badge that says \"Hi, I'm Bus\"; cream background, tomato blocks",
+      "pose": "Xecxec wearing a name badge that says \"Hi, I'm Bus\""
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Code with `light = 2;` and `struct Student` repeated 6 times",
+      "animation": "Xecxec squints at the 2; typing fatigue groan",
+      "sfx": [],
+      "narration": "Look at this line: light equals 2. What does 2 mean? Red? Green? Bus number 2? Nobody knows, not even you, three weeks later. And look here: struct Student, struct Student, struct Student, six times in one file. Our code is long and full of mystery numbers. Today we fix both problems with two small keywords."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 63 · TYPEDEF & ENUM",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 63. typedef and enum."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 35,
+      "onScreen": "Name badge: \"struct Student\" gets a nickname tag \"Student\"",
+      "animation": "Badge sticker slaps on; sticker SFX",
+      "sfx": [],
+      "narration": "In Goa, everybody has a nickname. Your full name might be long, but at the fish market, everyone calls you by a short one. typedef gives a type a nickname. You write typedef, then the existing type, then the new short name. After that, both names work, and they mean exactly the same type. typedef does not create a new kind of data. It only creates a new name. And remember the bug from EP 61, writing Student without struct? With typedef, that is exactly what you are allowed to do."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 60,
+      "lengthSec": 45,
+      "onScreen": "Traffic light: 0, 1, 2 become RED, YELLOW, GREEN",
+      "animation": "Numbers flip to name tags one by one; click",
+      "sfx": [],
+      "narration": "Now the mystery 2. An enum, short for enumeration, is a list of named whole-number constants. You write enum, and inside braces: RED, YELLOW, GREEN. C quietly numbers them: RED is 0, YELLOW is 1, GREEN is 2. Now instead of light equals 2, you write light equals GREEN. The computer still stores 2. But the human reading it understands it instantly. It is like #define from EP 10, but the names are grouped together and belong to one type."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 105,
+      "lengthSec": 110,
+      "onScreen": "ep63.c, 36 lines; tracker shows b.route, b.seats, b.light",
+      "animation": "Line highlights; signal light changes colour with the tracker; key-tap SFX",
+      "sfx": [],
+      "narration": "Let's build a Goa bus signal. [HL 3] Lines 3 to 7: typedef enum, then in braces RED, YELLOW, GREEN, then after the closing brace, the name Signal. This does two things at once: it makes the enum, and gives it the short name Signal. Enumerator names are usually in capital letters, like constants. [HL 9] Lines 9 to 13: the same trick for a struct. typedef struct, the members, and the name Bus at the end. The members are a route string, a number of seats, and a light of type Signal. Yes, a struct member can be an enum. [HL 15] Line 15: a function signalName that takes a Signal and returns a string, a const char pointer, from EP 58. [HL 16] Inside, a switch from EP 23. switch works on enums, because enums are whole numbers. [HL 17] case RED returns the text RED. [HL 18] [HL 19] YELLOW, GREEN. [HL 20] Default returns UNKNOWN, just in case. We return directly, so no break is needed: return leaves the function immediately. [HL 25] Now main. Line 25: Bus b. Just Bus. No struct keyword, thanks to typedef. We fill it with the route Panaji-Mapusa, 40 seats, and the light RED. [TRACK b.route=\"Panaji-Mapusa\"] [TRACK b.seats=40] [TRACK b.light=RED] [HL 27] Line 27 prints the route and seats. [HL 28] Line 28 prints the signal name and also its number with percent d. RED is 0. [HL 30] Line 30: b dot light equals GREEN. [TRACK b.light=GREEN] [HL 31] Line 31: if b dot light equals GREEN. Read it aloud. It sounds like English. That is the whole point. [HL 32] Bus goes!",
+      "code": {
+        "file": "ep63.c",
+        "source": "#include <stdio.h>\n\ntypedef enum {\n    RED,\n    YELLOW,\n    GREEN\n} Signal;\n\ntypedef struct {\n    char route[20];\n    int seats;\n    Signal light;\n} Bus;\n\nconst char *signalName(Signal s) {\n    switch (s) {\n        case RED:    return \"RED\";\n        case YELLOW: return \"YELLOW\";\n        case GREEN:  return \"GREEN\";\n        default:     return \"UNKNOWN\";\n    }\n}\n\nint main(void) {\n    Bus b = {\"Panaji-Mapusa\", 40, RED};\n\n    printf(\"Route: %s, seats: %d\\n\", b.route, b.seats);\n    printf(\"Signal: %s (value %d)\\n\", signalName(b.light), b.light);\n\n    b.light = GREEN;\n    if (b.light == GREEN) {\n        printf(\"Signal: %s. Bus goes!\\n\", signalName(b.light));\n    }\n\n    return 0;\n}",
+        "output": "Route: Panaji-Mapusa, seats: 40\nSignal: RED (value 0)\nSignal: GREEN. Bus goes!"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 215,
+      "lengthSec": 15,
+      "onScreen": "Program output, 3 lines",
+      "animation": "Typing SFX, bus horn on \"Bus goes!\"",
+      "sfx": [],
+      "narration": "Compile and run. Route: Panaji-Mapusa, seats: 40. Signal: RED, value 0. Signal: GREEN. Bus goes!"
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 230,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the enum get the job at the traffic signal? It had all the right constants and never changed its mind."
+    },
+    {
+      "id": 8,
+      "template": "code-explain",
+      "startSec": 235,
+      "lengthSec": 45,
+      "onScreen": "ep63b.c, Month enum with JAN = 1 and JUN = 6",
+      "animation": "Number counter ticks 1, 2, 3, jumps to 6, 7",
+      "sfx": [],
+      "narration": "You can choose the numbers. In ep63b.c we have enum Month, with JAN equals 1. Then FEB and MAR with no value. The rule is simple: each enumerator without a value is one more than the one before. So FEB is 2, MAR is 3. Then JUN equals 6, and JUL is 7. The program prints 1, 2, 3, 6, 7. Use this when the numbers mean something real, like month numbers, or error codes.",
+      "code": {
+        "file": "ep63b.c",
+        "source": "#include <stdio.h>\n\nenum Month { JAN = 1, FEB, MAR, JUN = 6, JUL };\n\nint main(void) {\n    printf(\"%d %d %d %d %d\\n\", JAN, FEB, MAR, JUN, JUL);\n    return 0;\n}",
+        "output": "1 2 3 6 7"
+      }
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 280,
+      "lengthSec": 65,
+      "onScreen": "Two enums both using RED",
+      "animation": "Two RED tags collide, error buzz; prefixes SIGNAL_ and FRUIT_ slide in",
+      "sfx": [],
+      "narration": "Today's bug: enum values that clash. We have enum Signal with RED, YELLOW, GREEN. Then someone adds enum Fruit with APPLE, MANGO, and RED, because some apples are red. Compile. GCC says: error: redeclaration of enumerator RED. And a note: previous definition of RED with type enum Signal. Why? In C, enumerator names are not kept inside their enum. They all live in the same big room as your variables and functions. Two things in one room cannot have the same name. So if RED already means 0 for Signal, it cannot also mean something for Fruit. The fix: give each enum's names a prefix. SIGNAL_RED, SIGNAL_YELLOW, SIGNAL_GREEN. FRUIT_APPLE, FRUIT_MANGO, FRUIT_RED. Longer, but clear, and no clash. Real C libraries do this all the time."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 345,
+      "lengthSec": 25,
+      "onScreen": "Enum for days, weekend check",
+      "animation": "Calendar flip, timer ring",
+      "sfx": [],
+      "narration": "Your challenge: make a typedef enum Day with MON equal to 1, then TUE to SUN. Create a Day variable today, set it to SAT, and print \"Weekend! Beach time.\" if it is SAT or SUN, otherwise \"Weekday. Class time.\" Print the day number too. Answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 370,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 64 union and memory layout; sign-off",
+      "animation": "Module tiles, claw-click, music out",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: a strange cousin of the struct called union, where all members share one memory box. Plus the mystery of why sizeof sometimes lies to you. EP 64. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nenum Signal { RED, YELLOW, GREEN };\nenum Fruit  { APPLE, MANGO, RED };\n\nint main(void) {\n    enum Signal s = RED;\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+    "error": "GCC 13 output:\n\nep63bug.c:4:29: error: redeclaration of enumerator 'RED'\n    4 | enum Fruit  { APPLE, MANGO, RED };\n      |                             ^~~\nep63bug.c:3:15: note: previous definition of 'RED' with type 'enum Signal'\n    3 | enum Signal { RED, YELLOW, GREEN };\n      |               ^~~",
+    "fixed": "#include <stdio.h>\n\nenum Signal { SIGNAL_RED, SIGNAL_YELLOW, SIGNAL_GREEN };\nenum Fruit  { FRUIT_APPLE, FRUIT_MANGO, FRUIT_RED };\n\nint main(void) {\n    enum Signal s = SIGNAL_RED;\n    printf(\"%d\\n\", s);\n    return 0;\n}",
+    "why": "all enumerator names in C share one scope with other identifiers, so two enums cannot both define `RED`; prefixes keep them unique."
+  },
+  "pun": "Why did the enum get the job at the traffic signal? It had all the right constants and never changed its mind.",
+  "challenge": "`typedef enum` Day with MON = 1 up to SUN. Set `today = SAT`; print the day number and \"Weekend! Beach time.\" for SAT/SUN, else \"Weekday. Class time.\"",
+  "challengeAnswer": "(worked example)\ntypedef enum { MON = 1, TUE, WED, THU, FRI, SAT, SUN } Day;\n\nDay today = SAT;\nif (today == SAT || today == SUN)\n    printf(\"Day %d: Weekend! Beach time.\\n\", today);\nelse\n    printf(\"Day %d: Weekday. Class time.\\n\", today);\n/* prints: Day 6: Weekend! Beach time. */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What does 2 mean?",
+      "hook": "`light = 2;` with a giant question mark. Xecxec squints.",
+      "script": "light equals 2. Is that red? Green? Bus number 2? Mystery numbers make code impossible to read. An enum gives numbers names. RED is 0, YELLOW is 1, GREEN is 2. Now you write light equals GREEN. The computer still stores 2. But every human understands it.",
+      "onScreen": "light = GREEN; NOT light = 2;",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 25,
+      "caption": "Stop writing mystery numbers.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "enum",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "typedef in 30 seconds",
+      "hook": "\"struct Student\" gets a sticker: \"Hi, I'm Student\"",
+      "script": "typedef in 30 seconds. It gives a type a nickname. typedef struct, the members in braces, then the short name, like Bus. Now you write Bus b, without the word struct. It does not make a new type, only a new name for it. Works with enums too: typedef enum, the values, then Signal.",
+      "onScreen": "typedef = NICKNAME",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Shorter code, same meaning.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "typedef",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Two REDs, one error",
+      "hook": "Two RED tags crash into each other",
+      "script": "enum Signal has RED. enum Fruit also has RED. GCC says: redeclaration of enumerator RED. In C, enum names do not live inside their enum. They all share one big room. Two things, one name, not allowed. Fix: prefixes. SIGNAL_RED and FRUIT_RED. Real C libraries do exactly this.",
+      "onScreen": "redeclaration of enumerator 'RED'",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Why C enums need prefixes.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Never changed its mind",
+      "hook": "Traffic light in a job interview suit",
+      "script": "Why did the enum get the job at the traffic signal? It had all the right constants and never changed its mind.",
+      "onScreen": "ALL THE RIGHT CONSTANTS",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Hired.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What is JUL?",
+      "hook": "`enum { JAN = 1, FEB, MAR, JUN = 6, JUL };` \"JUL = ?\"",
+      "script": "Quiz. JAN equals 1, then FEB, MAR, then JUN equals 6, then JUL. What is JUL? Three, two, one. 7! Each name without a value is one more than the one before. And MAR is 3. Your challenge: make a Day enum and check for the weekend. Answer in the comments.",
+      "onScreen": "JUL = ?",
+      "fromScenes": [
+        8,
+        10
+      ],
+      "lengthSec": 25,
+      "caption": "Enum counting rules in 25 seconds.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "enum"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "ep63.c",
+      "source": "#include <stdio.h>\n\ntypedef enum {\n    RED,\n    YELLOW,\n    GREEN\n} Signal;\n\ntypedef struct {\n    char route[20];\n    int seats;\n    Signal light;\n} Bus;\n\nconst char *signalName(Signal s) {\n    switch (s) {\n        case RED:    return \"RED\";\n        case YELLOW: return \"YELLOW\";\n        case GREEN:  return \"GREEN\";\n        default:     return \"UNKNOWN\";\n    }\n}\n\nint main(void) {\n    Bus b = {\"Panaji-Mapusa\", 40, RED};\n\n    printf(\"Route: %s, seats: %d\\n\", b.route, b.seats);\n    printf(\"Signal: %s (value %d)\\n\", signalName(b.light), b.light);\n\n    b.light = GREEN;\n    if (b.light == GREEN) {\n        printf(\"Signal: %s. Bus goes!\\n\", signalName(b.light));\n    }\n\n    return 0;\n}",
+      "output": "Route: Panaji-Mapusa, seats: 40\nSignal: RED (value 0)\nSignal: GREEN. Bus goes!",
+      "lang": "c"
+    },
+    {
+      "file": "ep63b.c",
+      "source": "#include <stdio.h>\n\nenum Month { JAN = 1, FEB, MAR, JUN = 6, JUL };\n\nint main(void) {\n    printf(\"%d %d %d %d %d\\n\", JAN, FEB, MAR, JUN, JUL);\n    return 0;\n}",
+      "output": "1 2 3 6 7",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "0"
+  }
+}

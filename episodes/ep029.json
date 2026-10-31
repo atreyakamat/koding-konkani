@@ -1,0 +1,287 @@
+{
+  "ep": 29,
+  "title": "break & continue",
+  "module": 4,
+  "lengthSec": 360,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "use `break` to leave a loop early",
+    "use `continue` to skip the rest of one iteration",
+    "trace a loop that uses both",
+    "know that `break` leaves only the innermost loop, and use a flag to leave two"
+  ],
+  "youtube": {
+    "title": "break vs continue: Exit or Skip? | C Programming EP 29",
+    "description": "Sometimes you need to leave a loop early, or skip just one round. break is the emergency exit, continue is the skip button. We trace both line by line and fix the classic \"break only left one loop\" bug. 0:00 Challenge answer and hook 0:25 break: the emergency exit 1:05 continue: the skip button 1:35 Both together, line by line 3:25 Bug of the Day: break in the wrong loop 4:55 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Challenge answer and hook 0:25 break: the emergency exit 1:05 continue: the skip button 1:35 Both together, line by line 3:25 Bug of the Day: break in the wrong loop 4:55 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "break statement in c",
+      "continue statement in c",
+      "break vs continue",
+      "loops in c",
+      "nested loop break",
+      "c tutorial for beginners",
+      "learn c",
+      "koding konkani",
+      "c programming class 11"
+    ],
+    "thumbnail": {
+      "text": "EXIT OR SKIP?",
+      "visual": "big text \"EXIT OR SKIP?\"; a red EXIT door and a yellow SKIP arrow; Xecxec mid-jump through the exit door; Butter background, Dark blue blocks.",
+      "pose": "Xecxec mid-jump through the exit door"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "EP 28 challenge: chai menu run with 1, 5, 3",
+      "animation": "Typing SFX; then a fire alarm rings over a looping track",
+      "sfx": [],
+      "narration": "Last challenge: a chai shop menu with do-while. Show the menu, read a choice, print a message, and repeat while choice is not 3. Here it is running: 1, chai coming. 5, not on the menu. 3, bye. Now imagine you are running laps at Campal ground and the fire alarm rings. You don't finish your laps. You leave right now. C has a keyword for that."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 29 · BREAK & CONTINUE",
+      "animation": "Butter card, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode twenty-nine. break and continue."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 40,
+      "onScreen": "Loop track with a red EXIT door: `break` jumps straight out",
+      "animation": "Xecxec runs laps, hits break, exits through door; door slam SFX",
+      "sfx": [],
+      "narration": "The word break, followed by a semicolon, means: leave this loop immediately. Don't run the rest of the body. Don't check the condition again. Jump to the first line after the loop's closing brace. You met break once already, in the switch statement. Same keyword, same idea: get out."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 65,
+      "lengthSec": 30,
+      "onScreen": "Same track: `continue` jumps from mid-lap back to the check",
+      "animation": "Xecxec skips a hurdle via a shortcut arrow; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "continue is gentler. It means: skip the rest of this round, and go to the next one. In a for loop, it jumps to the update, then the check. In a while loop, it jumps straight to the check. The loop keeps going. Only this one round is cut short."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 95,
+      "lengthSec": 80,
+      "onScreen": "`brk.c` with trackers for `i`, `num`",
+      "animation": "Inputs 4, -3, 6, 0 drop in; skipped line greys out on continue; break arrow flies past the brace",
+      "sfx": [],
+      "narration": "Let's use both. [HL 4] int num, to hold the user's number. [HL 6] for i from 1 to 5. Up to five numbers. [TRACK i=1] [HL 7] [HL 8] Ask for number 1, and read it. The user types 4. [TRACK num=4] [HL 10] if num equals 0. No. [HL 14] if num less than 0. No. [HL 18] Print \"Square = 16\". Next round. [TRACK i=2] The user types minus 3. [TRACK num=-3] Is it 0? No. [HL 14] Is it less than 0? Yes. [HL 15] Print \"Negative, skipped.\" [HL 16] continue. So we skip line eighteen, no square, and go straight to i plus plus. [TRACK i=3] The user types 6. [TRACK num=6] Square = 36. [TRACK i=4] Now the user types 0. [TRACK num=0] [HL 10] num equals 0, yes. [HL 11] Print \"Stopping early.\" [HL 12] break. We leave the loop right now. i was only 4. The fifth number is never asked. [HL 21] We land on \"Loop over.\""
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 175,
+      "lengthSec": 20,
+      "onScreen": "Run `brk.c` with 4, -3, 6, 0",
+      "animation": "Output appears line by line",
+      "sfx": [],
+      "narration": "Run it with 4, minus 3, 6 and 0. Square 16. Negative, skipped. Square 36. Stopping early. Loop over. Exactly as we traced."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 195,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec in a traffic police hat, whistle SFX",
+      "sfx": [],
+      "narration": "Why did the loop get a ticket from the traffic police? It took a break in the middle of the road."
+    },
+    {
+      "id": 8,
+      "template": "code-explain",
+      "startSec": 200,
+      "lengthSec": 15,
+      "onScreen": "`skip3.c` quick example",
+      "animation": "Multiples of 3 fade out from a number strip",
+      "sfx": [],
+      "narration": "A quick one. For i from 1 to 20, if i mod 3 equals 0, continue. Otherwise print i. Mod 3 equals 0 means \"divisible by 3\". So 3, 6, 9 and the rest are skipped. We get 1, 2, 4, 5, 7, 8 and so on up to 20."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 215,
+      "lengthSec": 80,
+      "onScreen": "`brkbug.c` nested search: break leaves only the inner loop; fix with a `found` flag",
+      "animation": "Butter frame; two nested tracks; break exits inner track only, outer keeps running (Tomato); fix shows flag flipping to 1 then second break",
+      "sfx": [],
+      "narration": "Today's bug catches almost everyone. We search a 3 by 3 grid for the cell at row 2, column 2. When we find it, we break. Run it. We see 1 comma 1, 1 comma 2, 1 comma 3, 2 comma 1, \"Found it!\"... and then 3 comma 1, 3 comma 2, 3 comma 3. The search kept going! Why? break only leaves the loop it is directly inside. Here that is the inner col loop. The outer row loop simply moves on to row 3. The fix: use a flag. Before the loops, int found equals 0. When we find it, set found to 1, then break the inner loop. Right after the inner loop, inside the outer one, check: if found, break again. Now the output stops right after \"Found it!\". No compiler error helps you here. You have to know the rule."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 295,
+      "lengthSec": 50,
+      "onScreen": "Rules card: break = leave loop, continue = next round, both only affect the innermost loop",
+      "animation": "Two icons stamp in",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Two rules to remember. break leaves the loop. continue jumps to the next round. And both work only on the innermost loop they are inside. Use them when they make code clearer, not to patch messy logic."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 345,
+      "lengthSec": 15,
+      "onScreen": "\"Print 1 to 30, skip multiples of 4, stop at the first number above 25 divisible by 7\" and Next: EP 30",
+      "animation": "Timer ring, end card",
+      "sfx": [],
+      "narration": "Your challenge: loop i from 1 to 30. Skip any number divisible by 4, using continue. And stop the whole loop, using break, at the first number greater than 25 that is divisible by 7. Print each number that survives. Next episode: nested loops, loops inside loops. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    for (int row = 1; row <= 3; row++) {\n        for (int col = 1; col <= 3; col++) {\n            if (row == 2 && col == 2) {\n                printf(\"Found it!\\n\");\n                break;\n            }\n            printf(\"(%d,%d) \", row, col);\n        }\n    }\n    printf(\"\\nSearch finished.\\n\");\n    return 0;\n}",
+    "error": "No compiler error. Wrong output (the search continues into row 3):\n\n(1,1) (1,2) (1,3) (2,1) Found it!\n(3,1) (3,2) (3,3) \nSearch finished.",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int found = 0;\n    for (int row = 1; row <= 3; row++) {\n        for (int col = 1; col <= 3; col++) {\n            if (row == 2 && col == 2) {\n                printf(\"Found it!\\n\");\n                found = 1;\n                break;\n            }\n            printf(\"(%d,%d) \", row, col);\n        }\n        if (found) {\n            break;\n        }\n    }\n    printf(\"\\nSearch finished.\\n\");\n    return 0;\n}",
+    "why": "`break` exits only the innermost loop, so a flag is needed to stop the outer loop too."
+  },
+  "pun": "Why did the loop get a ticket from the traffic police? It took a break in the middle of the road.",
+  "challenge": "Loop 1 to 30. Skip numbers divisible by 4 (continue). Stop at the first number above 25 divisible by 7 (break). Print the rest.",
+  "challengeAnswer": "prints `1 2 3 5 6 7 9 10 11 13 14 15 17 18 19 21 22 23 25 26 27`, then stops at 28 (above 25 and divisible by 7).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The Fire Alarm Rings Mid-Loop",
+      "hook": "Xecxec running laps, alarm bell rings",
+      "script": "You're running laps. The fire alarm rings. You don't finish your laps, you leave now. In C, that's break. One word, and your loop is over, right there. Full episode on Koding Konkani.",
+      "onScreen": "ALARM! / break; / LEAVE NOW",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 20,
+      "caption": "The emergency exit for loops.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "break",
+        "loops"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "break vs continue in 30 Seconds",
+      "hook": "EXIT door vs SKIP arrow",
+      "script": "break and continue. break leaves the loop completely and jumps past the closing brace. continue skips only the rest of this round and moves to the next one. Exit versus skip. And both only affect the innermost loop.",
+      "onScreen": "break = EXIT / continue = SKIP",
+      "fromScenes": [
+        3,
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Never mix them up again.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "continue",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Why Didn't break Stop My Search?",
+      "hook": "\"Found it!\" then more output keeps printing",
+      "script": "We found the cell and called break. But the program kept searching row 3. Why? break only leaves the loop it's directly inside, the inner one. The outer loop carried on. Fix: set a found flag, and check it after the inner loop to break again.",
+      "onScreen": "FOUND IT... AND KEPT GOING? / break = 1 LOOP ONLY / USE A FLAG",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "The nested-loop break trap.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "nestedloops"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: Traffic Ticket",
+      "hook": "Xecxec blowing a whistle",
+      "script": "Why did the loop get a ticket from the traffic police? It took a break in the middle of the road.",
+      "onScreen": "BREAK IN THE MIDDLE OF THE ROAD",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 10,
+      "caption": "Loops must follow traffic rules too.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Predict the Output",
+      "hook": "\"Predict it!\" stamp",
+      "script": "for i from 1 to 10. If i mod 3 is 0, continue. Print i. What prints? 1, 2, 4, 5, 7, 8, 10. The multiples of 3 are skipped. Comment if you got it right.",
+      "onScreen": "PREDICT IT / 1 2 4 5 7 8 10",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 20,
+      "caption": "Can you trace continue?",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "continue"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int num;\n\n    for (int i = 1; i <= 5; i++) {\n        printf(\"Enter number %d (0 to stop): \", i);\n        scanf(\"%d\", &num);\n\n        if (num == 0) {\n            printf(\"Stopping early.\\n\");\n            break;\n        }\n        if (num < 0) {\n            printf(\"Negative, skipped.\\n\");\n            continue;\n        }\n        printf(\"Square = %d\\n\", num * num);\n    }\n\n    printf(\"Loop over.\\n\");\n    return 0;\n}",
+      "output": "Enter number 1 (0 to stop): 4\nSquare = 16\nEnter number 2 (0 to stop): -3\nNegative, skipped.\nEnter number 3 (0 to stop): 6\nSquare = 36\nEnter number 4 (0 to stop): 0\nStopping early.\nLoop over.",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 20; i++) {\n        if (i % 3 == 0) {\n            continue;\n        }\n        printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "output": "1 2 4 5 7 8 10 11 13 14 16 17 19 20",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "(1,1) (1,2) (1,3) (2,1) Found it!\n\nSearch finished."
+  }
+}

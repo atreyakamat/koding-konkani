@@ -1,0 +1,330 @@
+{
+  "ep": 47,
+  "title": "Strings Are Char Arrays: The Secret Character",
+  "module": 7,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "explain that a C string is a char array ending in '\\0'",
+    "declare a string with a string literal and know it needs length + 1 bytes",
+    "print a whole string with %s and single characters with %c",
+    "loop through a string until '\\0' instead of using a fixed size"
+  ],
+  "youtube": {
+    "title": "Strings in C: The Secret \\0 at the End | EP 47",
+    "description": "C has no real string type. A string is just a char array with a hidden character at the end, and forgetting it causes some of the strangest bugs in C. Learn how strings are stored, why \"Panjim\" needs 7 bytes, and how to walk through a string letter by letter. 0:00 6 letters, 7 bytes? · 0:20 Title · 0:25 Chars in a row · 1:05 The null terminator · 1:55 Code walkthrough · 3:35 Running it · 3:55 Single vs double quotes · 4:25 Pun · 4:30 Bug of the Day · 5:35 Challenge · 6:05 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "6 letters, 7 bytes?"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Chars in a row"
+      },
+      {
+        "t": "1:05",
+        "label": "The null terminator"
+      },
+      {
+        "t": "1:55",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "3:35",
+        "label": "Running it"
+      },
+      {
+        "t": "3:55",
+        "label": "Single vs double quotes"
+      },
+      {
+        "t": "4:25",
+        "label": "Pun"
+      },
+      {
+        "t": "4:30",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:35",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:05",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "strings in c",
+      "null terminator",
+      "char array in c",
+      "string literal",
+      "%s printf",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "c strings tutorial",
+      "class 12 computer science"
+    ],
+    "thumbnail": {
+      "text": "THE SECRET \\0",
+      "visual": "big text \"THE SECRET \\0\"; seven apricot boxes spelling P-a-n-j-i-m with the seventh box glowing and labelled \\0; Xecxec peeking out of the last box; pastel blue background",
+      "pose": "Xecxec peeking out of the last box"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "\"Panjim has 7 bytes\" printed; Xecxec counts six letters on his claws",
+      "animation": "Claw counting 1 to 6, then a confused shrug; question-mark pop",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Panjim. P, a, n, j, i, m. Six letters. Xecxec counted them twice. But when we ask C how much memory this word takes, it says seven bytes. Where did the seventh one come from? There is a secret character hiding at the end of every string in C, and today we find it."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 47 · STRINGS",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 47. Strings are char arrays."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 40,
+      "onScreen": "char word[6] filled with 'G' 'O' 'A' 'N' 'S' '\\0'",
+      "animation": "Letters drop into lockers one by one like beach pebbles; plink per letter",
+      "sfx": [],
+      "narration": "Many languages have a special string type. C does not. In C, a string is just an array of chars, the lockers from EP 41, with one letter in each. Here is char word six, filled with G, O, A, N, S, one character in single quotes per locker. And in the last locker, something odd: backslash zero."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 65,
+      "lengthSec": 50,
+      "onScreen": "\"Panjim\" laid out in 7 boxes, last box \\0 = the stop sign",
+      "animation": "Bus drives along the boxes and brakes at the \\0 stop sign; bus brake SFX",
+      "sfx": [],
+      "narration": "Backslash zero is called the null character. Its value is zero. It is not the digit zero; it is a char whose number is zero. And it is the stop sign of every string. When printf prints a string, it does not know the size of the array. It just starts at the first letter and keeps printing until it hits backslash zero. Like a bus that keeps going until it reaches the last stop. That is why Panjim needs seven bytes: six letters, plus one stop sign. The rule: a string of length n needs n plus one bytes."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 100,
+      "onScreen": "ep47_strings.c types itself",
+      "animation": "Line highlights; tracker shows i and city[i]",
+      "sfx": [],
+      "narration": "Let's read it. [HL 4] Line four builds a string the long way: six chars, ending with backslash zero, written by hand. [HL 5] Line five is the easy way. char city, empty brackets, equals Panjim in double quotes. Double quotes make a string literal, and C adds the backslash zero for you. The compiler counts the letters, adds one, and makes the array seven bytes. [HL 7] Line seven prints word with percent s. Percent s means print a string: start here, stop at backslash zero. [HL 8] Line eight prints city and its size. sizeof city is seven. We use percent z u for a sizeof value. [HL 10] Line ten is the important loop. Look at the condition. Not i less than six. It is city i not equal to backslash zero. [TRACK i=0 city[i]='P'] We keep going while the current char is not the stop sign. [TRACK i=1 city[i]='a'] [HL 11] Line eleven prints each char with percent c, which prints one character. [TRACK i=5 city[i]='m'] When i is six, city six is backslash zero, the condition is false, and the loop ends. [TRACK i=6 city[i]='\\0'] This loop works for any string of any length, because it does not care about the size. It only looks for the stop sign.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    char word[6] = {'G', 'O', 'A', 'N', 'S', '\\0'};\n    char city[] = \"Panjim\";\n\n    printf(\"%s\\n\", word);\n    printf(\"%s has %zu bytes\\n\", city, sizeof(city));\n\n    for (int i = 0; city[i] != '\\0'; i++) {\n        printf(\"city[%d] = %c\\n\", i, city[i]);\n    }\n    return 0;\n}",
+        "output": "GOANS\nPanjim has 7 bytes\ncity[0] = P\ncity[1] = a\ncity[2] = n\ncity[3] = j\ncity[4] = i\ncity[5] = m"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 215,
+      "lengthSec": 20,
+      "onScreen": "gcc ep47_strings.c -o ep47 then ./ep47",
+      "animation": "Output prints; \"7 bytes\" circled in apricot",
+      "sfx": [],
+      "narration": "Compile and run. GOANS. Panjim has 7 bytes. Then each letter of Panjim on its own line, P, a, n, j, i, m. Six letters printed, seven bytes used."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 235,
+      "lengthSec": 30,
+      "onScreen": "'A' (one char) vs \"A\" (two bytes: A and \\0)",
+      "animation": "Two boxes vs one box side by side; ding",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "A quick warning. Single quotes and double quotes are different in C. A in single quotes is one char, one byte. A in double quotes is a string, two bytes: the A and the backslash zero. Use single quotes for one character, double quotes for a string. Mixing them up is a classic compile error."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the string never get lost? It always knew where to stop."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 270,
+      "lengthSec": 65,
+      "onScreen": "char first[4] = \"Sara\"; prints \"SaraKamat\"",
+      "animation": "Bus misses the stop and drives into the next array; tyre screech",
+      "sfx": [],
+      "narration": "Today's bug. Two strings: last is Kamat, first is char four equals Sara. Sara has four letters, the array has four boxes. Looks like a perfect fit. GCC does not even warn, because C allows this. But there is no room for the backslash zero. So when printf prints first, it prints S, a, r, a, and then finds no stop sign. It keeps going into whatever memory comes next. On my machine, the output is Hello, SaraKamat. Your output may be different, or have junk characters, because it depends on what sits next in memory. The fix: always leave room for the stop sign. char first five, or simply empty brackets and let C count."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 335,
+      "lengthSec": 30,
+      "onScreen": "Print a name letter by letter",
+      "animation": "Letters fall vertically; ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. Make a string with your name, using empty brackets. Use a loop that stops at backslash zero to print one letter per line. Bonus: count the letters inside the same loop, and print the count at the end."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 365,
+      "lengthSec": 25,
+      "onScreen": "Next: EP 48 Reading strings",
+      "animation": "Xecxec typing his full name and getting cut off; sign-off",
+      "sfx": [],
+      "narration": "Next episode: reading strings from the keyboard, and why your full name gets cut in half. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    char last[] = \"Kamat\";\n    char first[4] = \"Sara\";\n\n    printf(\"Hello, %s!\\n\", first);\n    printf(\"%s\\n\", last);\n    return 0;\n}",
+    "error": "No error and no warning (C allows the literal to fill the array exactly, dropping the \\0). Wrong output on my machine (on screen: \"yours may differ or show junk characters\"):\n\nHello, SaraKamat!\nKamat",
+    "fixed": "    char first[] = \"Sara\";",
+    "why": "without room for '\\0', printf has no stop sign and keeps reading into the next variable in memory."
+  },
+  "pun": "Why did the string never get lost? It always knew where to stop.",
+  "challenge": "Store your name with char name[] = \"...\"; print it one letter per line with a loop that stops at '\\0'. Bonus: print the letter count.",
+  "challengeAnswer": "Bonus: add int count = 0; before the loop, count++; inside it, and printf(\"%d letters\\n\", count); after it (prints 6 letters).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "6 Letters, 7 Bytes?",
+      "hook": "Terminal: \"Panjim has 7 bytes\". Xecxec counting six on his claws.",
+      "script": "Panjim has six letters. So why does C say seven bytes? Because every string in C ends with a hidden character, backslash zero. It is the stop sign that tells printf where the string ends.",
+      "onScreen": "6 LETTERS + \\0 = 7 BYTES",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 22,
+      "caption": "The secret character at the end of every C string.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "strings",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "C Strings in 30 Seconds",
+      "hook": "A bus stopping at a \\0 stop sign.",
+      "script": "C has no string type. A string is a char array that ends with backslash zero. printf with percent s starts at the first letter and stops at backslash zero. To loop through a string, keep going while the char is not backslash zero. Length n needs n plus one bytes.",
+      "onScreen": "STRING = CHARS + \\0",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Everything about C strings starts here.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "strings",
+        "cprogrammingtutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Hello, SaraKamat?",
+      "hook": "Terminal: \"Hello, SaraKamat!\". \"I only printed first name.\"",
+      "script": "I only printed the first name. Why did the surname come too? char first four equals Sara. Four letters, four boxes, no room for backslash zero. So printf never found the stop sign and kept reading into the next string. Leave room: use empty brackets.",
+      "onScreen": "char first[4] = \"Sara\"; ✗",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "No warning, wrong output. Classic C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "debugging"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Knew Where to Stop",
+      "hook": "Xecxec holding a tiny stop sign with \\0 on it.",
+      "script": "Why did the string never get lost? It always knew where to stop.",
+      "onScreen": "IT ALWAYS KNEW WHERE TO STOP",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Be like a C string.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "'A' or \"A\"?",
+      "hook": "\"'A' and \"A\": same size?\"",
+      "script": "A in single quotes, and A in double quotes. Same size? Pause and guess. No. Single quotes is one char, one byte. Double quotes is a string: the A plus backslash zero, two bytes.",
+      "onScreen": "'A' = 1 BYTE · \"A\" = 2 BYTES",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 20,
+      "caption": "Quotes matter in C.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "strings"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    char word[6] = {'G', 'O', 'A', 'N', 'S', '\\0'};\n    char city[] = \"Panjim\";\n\n    printf(\"%s\\n\", word);\n    printf(\"%s has %zu bytes\\n\", city, sizeof(city));\n\n    for (int i = 0; city[i] != '\\0'; i++) {\n        printf(\"city[%d] = %c\\n\", i, city[i]);\n    }\n    return 0;\n}",
+      "output": "GOANS\nPanjim has 7 bytes\ncity[0] = P\ncity[1] = a\ncity[2] = n\ncity[3] = j\ncity[4] = i\ncity[5] = m",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "Hello, Sara!\nKamat"
+  }
+}

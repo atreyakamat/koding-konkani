@@ -1,0 +1,336 @@
+{
+  "ep": 1,
+  "title": "Welcome to Koding Konkani",
+  "module": 0,
+  "lengthSec": 330,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "know what the 86-episode course covers and in what order",
+    "recognise the 8 beats every episode follows",
+    "read one line of C (printf) and say what each part does",
+    "use the four study rules from day one"
+  ],
+  "youtube": {
+    "title": "A Crab Will Teach You C | C Programming EP 01",
+    "description": "Meet Xecxec, the Goan beach crab who will judge your code for 86 episodes. In this first episode you see the full course map, how every episode works, and the four rules that make C actually stick. No setup needed yet, just bring curiosity. 0:00 Meet Xecxec · 0:20 Why learn C? · 1:05 The course map · 2:15 How every episode works · 3:05 Your first look at C · 3:39 How to study · 4:29 Bug of the Day · 4:54 Challenge · 5:14 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Meet Xecxec"
+      },
+      {
+        "t": "0:20",
+        "label": "Why learn C?"
+      },
+      {
+        "t": "1:05",
+        "label": "The course map"
+      },
+      {
+        "t": "2:15",
+        "label": "How every episode works"
+      },
+      {
+        "t": "3:05",
+        "label": "Your first look at C"
+      },
+      {
+        "t": "3:39",
+        "label": "How to study"
+      },
+      {
+        "t": "4:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:54",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:14",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "learn c",
+      "c for beginners",
+      "c programming course",
+      "koding konkani",
+      "c tutorial",
+      "programming for students",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "printf"
+    ],
+    "thumbnail": {
+      "text": "A CRAB TEACHES C?",
+      "visual": "big text \"A CRAB TEACHES C?\" in tomato on peach; Xecxec wearing tiny glasses, pointing a claw at a dark-blue code card showing `printf(\"Hi\");`; thin black border and drop shadow.",
+      "pose": "Xecxec wearing tiny glasses, pointing a claw at a dark-blue code card showing `printf(\"Hi\")"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Dark-blue screen, blinking cursor types \"Hello?\"; Xecxec scuttles in from the right",
+      "animation": "Typewriter on \"Hello?\" with key clicks; Xecxec slides in with sand-scuttle SFX, stops, claw-click x2; speech bubble \"It's Sheck Sheck.\" pops",
+      "sfx": [
+        "claw-click",
+        "pop"
+      ],
+      "narration": "Hello? Is this thing on? Oh, hi. You found us. Before we start, meet the most confident crab on Baga beach. This is Xecxec. Yes, it is spelled X-E-C, X-E-C. And yes, you say it \"Sheck Sheck\". He doesn't talk much, but he will be judging your code for the next 86 episodes."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 01 · WELCOME TO KODING KONKANI",
+      "animation": "Title stamps in on peach with a whoosh + thud; tomato underline wipes left to right",
+      "sfx": [
+        "stamp",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Welcome to Koding Konkani."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 45,
+      "onScreen": "\"Why C?\": laptop, washing machine, Python logo, each stamped \"C INSIDE\"",
+      "animation": "Three icons pop in one by one with a pop SFX; tomato \"C INSIDE\" stamp lands on each with a stamp thud; Python logo flips to reveal \"written in C\"",
+      "sfx": [
+        "pop",
+        "stamp",
+        "thud"
+      ],
+      "narration": "So why learn C in a world full of Python and JavaScript? Because C is everywhere you can't see. The operating system on your laptop? Mostly C. The small chip inside your washing machine? Very often C. And Python itself, the most popular beginner language? The main version of Python is written in C. When you learn C, you learn how a computer really thinks: memory, numbers, and instructions. After that, every other language feels easier, because you know what is happening underneath."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 65,
+      "lengthSec": 70,
+      "onScreen": "Course map: 14 module tiles in their colour pairs; Pointers tile glows",
+      "animation": "Tiles pop in left to right in time with narration, soft marimba note per tile; Pointers tile shakes and gets a \"BOSS\" badge; counter ticks up to \"86 episodes\"",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the journey, module by module. We start from zero: installing a compiler and printing your first line. Then the basics: variables, data types, input and output. Then operators, decisions and loops, the building blocks of every program. Then functions, arrays and strings. Then the big boss: pointers. We take nine full episodes on pointers, slowly, with pictures, so nobody gets left behind. After that come structures, dynamic memory and files. Then my favourite part: algorithms. Bubble sort, merge sort, quick sort, all animated so you can watch every single step. And we finish by building real projects you can show to anyone. That's 86 episodes, five to eight minutes each. Small bites, like a plate of fish fry, not a full wedding buffet."
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 135,
+      "lengthSec": 50,
+      "onScreen": "\"How every episode works\": 8 beat icons in a row (hook, why, concept, code, bug, pun, challenge, next)",
+      "animation": "Icons light up one by one with a soft chime; a tiny Xecxec walks along the row under each lit icon",
+      "sfx": [
+        "chime"
+      ],
+      "narration": "Every episode has the same rhythm, so you always know where you are. First, a quick hook. Then why the topic matters. Then the concept, with diagrams. Then the code, typed out and explained line by line. Then the Bug of the Day: the mistake almost everyone makes. A pun, because Xecxec insists. A small challenge for you. And a peek at the next episode."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 185,
+      "lengthSec": 30,
+      "onScreen": "Preview: the 6-line Hi program, line 4 is the focus",
+      "animation": "Code types in fast; [HL 4] butter highlight on line 4; labels \"function\", \"text\", \"end of statement\" fly in under printf, \"Hi\" and ;",
+      "sfx": [],
+      "narration": "Here is a tiny taste. This is a full C program, but today we only look at line four. [HL 4] printf, open bracket, \"Hi\" in double quotes, close bracket, semicolon. printf is a function, a ready-made tool that prints text. The f stands for \"formatted\". The text inside the quotes is exactly what shows up on screen. And that semicolon at the end means \"this statement is done\". Forget it, and Xecxec gets very upset. Don't worry about the other lines yet. Episode 4 explains every one.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    printf(\"Hi\");\n    return 0;\n}",
+        "output": "Hi"
+      }
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 215,
+      "lengthSec": 4,
+      "onScreen": "\"Why do C programmers never get lost? They always know where their pointers are.\"",
+      "animation": "Card flips in, rimshot SFX; Xecxec slow-blinks",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why do C programmers never get lost? Because they always know where their pointers are. Okay, that joke will make sense in episode 53. Save it for later."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 219,
+      "lengthSec": 50,
+      "onScreen": "\"How to study\": 4 numbered rules",
+      "animation": "Each rule slides in with a tick sound; rule 1 gets a tomato \"NO COPY-PASTE\" stamp",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Four rules. One: type every program yourself. No copy-paste. Your fingers learn too. Two: break things on purpose. Delete a semicolon, compile, and read the error. Errors are clues, not insults. Three: do every challenge, even the small ones. Five minutes of practice beats an hour of watching. Four: if you're stuck, rewind. That's what the button is for. Nobody is grading how many times you replay a scene."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 269,
+      "lengthSec": 25,
+      "onScreen": "Copy-pasted printf with curly quotes; terminal shows \"stray '\\342' in program\"",
+      "animation": "Butter banner \"BUG OF THE DAY\" drops in with a siren blip; error lines appear in tomato with a buzzer; quotes morph from curly to straight, terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Today's bug is about rule one. Someone copies printf, \"Hi\", from a website and pastes it into their editor. Look closely at the quotes. They are curly, fancy quotes, not the straight quotes from your keyboard. GCC says: stray backslash 3 4 2 in program. That strange number is the first byte of the curly quote character. C only accepts straight double quotes. Type the code yourself, and this bug never happens."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 294,
+      "lengthSec": 20,
+      "onScreen": "\"Comment: why are you learning C?\" with three example chips (exams, job, game)",
+      "animation": "Chips bounce in; Xecxec holds a tiny pen; pencil-scribble SFX",
+      "sfx": [],
+      "narration": "Your first challenge is an easy one. In the comments, tell us why you're learning C. Exams? A job? A game you want to build? We read every comment."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 314,
+      "lengthSec": 16,
+      "onScreen": "Next: EP 02 · What is C, really? + subscribe button",
+      "animation": "Next-episode card slides up; Xecxec waves both claws, claw-click; sign-off text types in",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: what C really is, and how a compiler turns your code into a program. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    printf(“Hi”);\n    return 0;\n}",
+    "error": "GCC output:\n\nhi.c: In function 'main':\nhi.c:4:12: error: stray '\\342' in program\n    4 |     printf(<U+201C>Hi<U+201D>);\n      |            ^~~~~~~~\nhi.c:4:15: error: stray '\\342' in program\n    4 |     printf(<U+201C>Hi<U+201D>);\n      |                      ^~~~~~~~\nhi.c:4:13: error: 'Hi' undeclared (first use in this function)",
+    "fixed": "#include <stdio.h>\n\nint main() {\n    printf(\"Hi\");\n    return 0;\n}",
+    "why": "C only understands the straight double quote from your keyboard; curly quotes from websites and word processors are different characters, so GCC sees them as stray bytes."
+  },
+  "pun": "\"Why do C programmers never get lost? They always know where their pointers are.\"",
+  "challenge": "Comment why you're learning C: exams, a job, a game, or something else.",
+  "challengeAnswer": "No wrong answers. Pinned comment from the channel: \"Xecxec is learning C so he can write a billing program for the Mapusa fish market. What's yours?\" Start of EP 02 shows three real reasons from the comments.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A crab will teach you C",
+      "hook": "\"This crab is going to teach you C. Seriously.\"",
+      "script": "This crab is going to teach you C. Seriously. His name is Xecxec. You say it \"Sheck Sheck\". He lives on Baga beach, he never talks, and he will judge every line of code you write. 86 episodes, from Hello World to sorting algorithms. Full series on the channel.",
+      "onScreen": "A CRAB WILL TEACH YOU C",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "Meet your new C teacher. He has claws.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codinglife",
+        "goa"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Why learn C in 2026?",
+      "hook": "\"Python is written in C.\"",
+      "script": "Python is written in C. The main version, the one most people install, is built in C. So is most of your laptop's operating system, and the chip in your washing machine probably runs C too. Learn C and you learn how computers really think: memory, numbers, instructions. Then every other language gets easier. That's why we start here.",
+      "onScreen": "PYTHON IS WRITTEN IN C",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Why C is still the best first language to really understand computers.",
+      "hashtags": [
+        "cprogramming",
+        "python",
+        "learntocode",
+        "kodingkonkani",
+        "computerscience"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The copy-paste bug",
+      "hook": "\"This code looks perfect. It won't compile.\"",
+      "script": "This code looks perfect. It won't compile. GCC says: stray backslash 3 4 2 in program. Why? Look at the quotes. They're curly quotes, copied from a website. C only accepts the straight quote from your keyboard. Fix: type it yourself. Your fingers learn, and this bug disappears.",
+      "onScreen": "stray '\\342' in program?!",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "Copied code from a website and got a weird error? It's the quotes.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "learntocode",
+        "kodingkonkani",
+        "codingtips"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Meet Xecxec",
+      "hook": "\"It's pronounced Sheck Sheck. Don't argue.\"",
+      "script": "It's pronounced Sheck Sheck. Don't argue. Why do C programmers never get lost? Because they always know where their pointers are. He thinks that's hilarious. You will too, in episode 53.",
+      "onScreen": "IT'S \"SHECK SHECK\"",
+      "fromScenes": [
+        1
+      ],
+      "lengthSec": 15,
+      "caption": "The crab has jokes. Bad ones.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "goa"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What does the f mean?",
+      "hook": "\"Quick: what does the f in printf stand for?\"",
+      "script": "Quick: what does the f in printf stand for? Is it fast? Function? Formatted? Lock in your answer. It's formatted. printf means print formatted, because it can print text with numbers and values slotted in. Comment if you got it right.",
+      "onScreen": "printf = print ___?",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 20,
+      "caption": "Fast, function or formatted? Comment before you check.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "learntocode",
+        "kodingkonkani",
+        "printf"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    printf(\"Hi\");\n    return 0;\n}",
+      "output": "Hi",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true
+  }
+}

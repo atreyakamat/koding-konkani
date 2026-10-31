@@ -1,0 +1,348 @@
+{
+  "ep": 17,
+  "title": "Increment, decrement, assignment",
+  "module": 2,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "use ++ and -- to add or subtract 1",
+    "predict the difference between x++ (use, then add) and ++x (add, then use)",
+    "use the shortcut assignments +=, -=, *=, /=, %=",
+    "avoid changing the same variable twice in one expression"
+  ],
+  "youtube": {
+    "title": "i++ vs ++i: The Drama Explained | C Programming EP 17",
+    "description": "i++ and ++i both add 1, so why do they print different numbers? This episode explains increment and decrement line by line with a live variable tracker, then covers the shortcut assignment operators +=, -=, *=, /= and %=. Plus the one line you should never write. 0:00 i++ vs ++i · 0:20 ++ and -- · 0:45 Code: fish counter · 1:50 Post vs pre, slowly · 2:50 Shortcut assignments · 3:55 Never do this · 4:29 Bug of the Day: the roll number · 5:19 Challenge: predict 5 outputs · 6:09 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "i++ vs ++i"
+      },
+      {
+        "t": "0:20",
+        "label": "++ and --"
+      },
+      {
+        "t": "0:45",
+        "label": "Code: fish counter"
+      },
+      {
+        "t": "1:50",
+        "label": "Post vs pre, slowly"
+      },
+      {
+        "t": "2:50",
+        "label": "Shortcut assignments"
+      },
+      {
+        "t": "3:55",
+        "label": "Never do this"
+      },
+      {
+        "t": "4:29",
+        "label": "Bug of the Day: the roll number"
+      },
+      {
+        "t": "5:19",
+        "label": "Challenge: predict 5 outputs"
+      },
+      {
+        "t": "6:09",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "i++ vs ++i",
+      "increment operator in c",
+      "pre increment post increment",
+      "decrement operator c",
+      "compound assignment c",
+      "+= in c",
+      "c operators",
+      "c programming for beginners",
+      "koding konkani",
+      "learn c"
+    ],
+    "thumbnail": {
+      "text": "i++ vs ++i",
+      "visual": "big text \"i++ vs ++i\" in apricot on cream, split down the middle with a lightning bolt; Xecxec holding popcorn, watching.",
+      "pose": "Xecxec holding popcorn, watching"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Two boxers in corners labelled \"i++\" and \"++i\"; both print a different number",
+      "animation": "Boxing bell SFX; labels bounce; scoreboards flip to 5 and 6 with a clack; Xecxec munches popcorn, crunch SFX",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "i plus plus. Plus plus i. Both add one. So why does one print 5, and the other print 6? Tonight's main event. Let's settle this."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 17 · INCREMENT, DECREMENT, ASSIGNMENT",
+      "animation": "Title stamps in on cream with whoosh + thud; apricot underline wipe",
+      "sfx": [
+        "stamp",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Increment, decrement, assignment."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 25,
+      "onScreen": "`x++` means `x = x + 1`; `x--` means `x = x - 1`",
+      "animation": "Long form shrinks into short form with a zip SFX; +1 and -1 chips float up",
+      "sfx": [],
+      "narration": "Adding one to a variable is so common that C gives it a shortcut. x plus plus means x equals x plus 1. It's called increment. x minus minus means x equals x minus 1. That's decrement. Fun fact: the language C plus plus got its name from this operator. It's C, plus one."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 65,
+      "onScreen": "inc.c lines 1–9: fish counter with tracker",
+      "animation": "[HL n] per line; [TRACK fish] box ticks 5 → 6 → 5 with a click per change; one fish jumps into a basket and back out with plop SFX",
+      "sfx": [],
+      "narration": "[HL 4] int fish equals 5. [TRACK fish=5] [HL 6] fish plus plus on its own line. One more fish. [TRACK fish=6] [HL 7] printf shows 6. [HL 8] fish minus minus. One fish escapes back into the sea. [TRACK fish=5] [HL 9] printf shows 5. When plus plus sits alone on its own line like this, it doesn't matter which side you put it on. fish plus plus and plus plus fish do exactly the same job. The drama only starts when you use the value in the same line.",
+      "code": {
+        "file": "inc.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int fish = 5;\n\n    fish++;\n    printf(\"after fish++ : %d\\n\", fish);\n    fish--;\n    printf(\"after fish-- : %d\\n\", fish);\n\n    int a = 5;\n    int b = a++;\n    printf(\"post: a = %d, b = %d\\n\", a, b);\n\n    int c = 5;\n    int d = ++c;\n    printf(\"pre : c = %d, d = %d\\n\", c, d);\n    return 0;\n}",
+        "output": "after fish++ : 6\nafter fish-- : 5\npost: a = 6, b = 5\npre : c = 6, d = 6"
+      }
+    },
+    {
+      "id": 5,
+      "template": "memory-boxes",
+      "startSec": 110,
+      "lengthSec": 60,
+      "onScreen": "inc.c lines 11–17: boxes a, b, c, d; two-step timeline \"use\" and \"add\" swapping order",
+      "animation": "Post: copy arrow from a to b first (whoosh), then a ticks up (click); Pre: c ticks up first (click), then copy arrow (whoosh); step labels \"1\" and \"2\" pop in apricot",
+      "sfx": [
+        "pop",
+        "whoosh"
+      ],
+      "narration": "Here's the drama. [HL 11] int a equals 5. [TRACK a=5] [HL 12] int b equals a plus plus. The plus plus is after a, so this is post-increment. Post means after. Step one: use the current value of a, which is 5, and copy it into b. [TRACK b=5] Step two: then add one to a. [TRACK a=6] [HL 13] So a is 6, but b is 5. [HL 15] Now int c equals 5. [TRACK c=5] [HL 16] int d equals plus plus c. The plus plus is before c, so this is pre-increment. Pre means before. Step one: add one to c first. [TRACK c=6] Step two: then use the new value, 6, and copy it into d. [TRACK d=6] [HL 17] So c is 6 and d is 6. The easy way to remember: read it left to right. a plus plus: you see a first, so you use a first. Plus plus c: you see plus plus first, so you add first."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 170,
+      "lengthSec": 65,
+      "onScreen": "wallet.c with a rupee wallet tracker",
+      "animation": "[HL n] per line; [TRACK rupees] updates each line with a coin clink; long form `rupees = rupees + 50` fades in beside each line then shrinks",
+      "sfx": [],
+      "narration": "C has shortcuts for the other operators too. [HL 4] Your wallet has 100 rupees. [TRACK rupees=100] [HL 6] rupees plus-equals 50. That means rupees equals rupees plus 50. A friend paid you back. [TRACK rupees=150] [HL 7] Minus-equals 30, for a cutting chai and samosas. [TRACK rupees=120] [HL 8] Times-equals 2. [TRACK rupees=240] [HL 9] Divide-equals 4. [TRACK rupees=60] [HL 10] And mod-equals 7, which keeps only the remainder of 60 divided by 7. [TRACK rupees=4] [HL 12] So the wallet prints 4. These are called compound assignment operators. They save typing, and they make the meaning clear: change this variable, using its own value.",
+      "code": {
+        "file": "wallet.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int rupees = 100;\n\n    rupees += 50;\n    rupees -= 30;\n    rupees *= 2;\n    rupees /= 4;\n    rupees %= 7;\n\n    printf(\"rupees = %d\\n\", rupees);\n    return 0;\n}",
+        "output": "rupees = 4"
+      }
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 235,
+      "lengthSec": 30,
+      "onScreen": "`i = i++ + ++i;` with a big tomato \"DON'T\" stamp and the GCC warning",
+      "animation": "Line types in; warning text appears with a warning beep; stamp thuds; Xecxec backs away",
+      "sfx": [
+        "stamp",
+        "thud"
+      ],
+      "narration": "One warning. Sometimes you'll see puzzle questions like this: i equals i plus plus plus plus plus i. Don't write this. This line changes i more than once in one expression, and the C standard says the result is undefined. That means different compilers may give different answers, and none of them is wrong. GCC even warns you with dash Wall: operation on i may be undefined. The rule: in one expression, change a variable at most once."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 4,
+      "onScreen": "\"Why did i++ arrive late? It always finishes what it's doing first, then moves on.\"",
+      "animation": "Card flips, rimshot; Xecxec taps a tiny watch",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why is i plus plus always late? It finishes using what it has first, and only then moves on."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 269,
+      "lengthSec": 50,
+      "onScreen": "roll.c printing `roll++` shows 41 instead of 42",
+      "animation": "Butter banner + siren blip; tracker shows roll 41 → 42 after printing; output 41 in tomato with buzzer; `++` slides to the front, output 42 in mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Today's bug. The last roll number in the class is 41. [TRACK roll=41] You want to print the next one, 42, so you write printf with roll plus plus. It prints: Next roll number: 41. Why? Post-increment. printf gets the old value, 41, first. Only after that does roll become 42. [TRACK roll=42] No error, no warning, just the wrong number. Fix: plus plus roll. Pre-increment adds first, so printf gets 42. Or, even clearer, do the increment on its own line, then print."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 319,
+      "lengthSec": 50,
+      "onScreen": "ch17.c with 5 blank output lines",
+      "animation": "Lines appear one by one with a tick; blanks pulse apricot; pencil scribble SFX",
+      "sfx": [],
+      "narration": "Your challenge: pause and predict the five output lines of this program before you run it. x starts at 3. Print x plus plus. Print x. Print plus plus x. Add 10. Then y equals x minus minus, and print x and y. Write your five answers in the comments, then compile and check."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 369,
+      "lengthSec": 21,
+      "onScreen": "Next: EP 18 · Bitwise operators + subscribe",
+      "animation": "Next card slides up; Xecxec waves, claw-click; sign-off types in",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: the operators that work on the ones and zeroes inside a number. Bitwise. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    int roll = 41;\n    printf(\"Next roll number: %d\\n\", roll++);\n    return 0;\n}",
+    "error": "No error or warning. Wrong output:\n\nNext roll number: 41",
+    "fixed": "#include <stdio.h>\n\nint main() {\n    int roll = 41;\n    printf(\"Next roll number: %d\\n\", ++roll);\n    return 0;\n}",
+    "why": "post-increment hands over the old value and adds 1 afterwards; pre-increment adds 1 first and hands over the new value."
+  },
+  "pun": "\"Why is i++ always late? It finishes using what it has first, and only then moves on.\"",
+  "challenge": "Predict the five output lines of ch17.c before running it.",
+  "challengeAnswer": "shown at the start of EP 18. x++ prints 3 then x is 4; ++x makes 5 and prints 5; += 10 gives 15; y gets 15 and x drops to 14.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "i++ vs ++i",
+      "hook": "\"Both add one. So why do they print different numbers?\"",
+      "script": "i plus plus. Plus plus i. Both add one. So why does one print 5 and the other print 6? It's all about when the adding happens. The full fight is on the channel.",
+      "onScreen": "i++ vs ++i",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "The oldest rivalry in C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingtips",
+        "programming"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Post vs pre in 30 seconds",
+      "hook": "\"b = a++ and d = ++c. Watch the boxes.\"",
+      "script": "b equals a plus plus, and d equals plus plus c. Watch the boxes. a is 5. Post-increment: use first, so b gets 5, then a becomes 6. c is 5. Pre-increment: add first, so c becomes 6, then d gets 6. Read left to right: whatever you see first happens first.",
+      "onScreen": "a++ USE THEN ADD · ++c ADD THEN USE",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 40,
+      "caption": "Post-increment vs pre-increment, with boxes.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingtips",
+        "computerscience"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The wrong roll number",
+      "hook": "\"We asked for roll number 42. C printed 41.\"",
+      "script": "We asked for roll number 42. C printed 41. The code: printf with roll plus plus. Post-increment gives printf the old value, 41, and adds one after. Fix: plus plus roll. Add first, then print. Now it's 42.",
+      "onScreen": "roll++ → 41 · ++roll → 42",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "One position change, different answer.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codingtips"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Why i++ is always late",
+      "hook": "\"Why is i++ always late?\"",
+      "script": "Why is i plus plus always late? It finishes using what it has first, and only then moves on.",
+      "onScreen": "i++: USE FIRST, MOVE LATER",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Xecxec is still waiting.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Predict the output",
+      "hook": "\"x is 3. What do these three lines print?\"",
+      "script": "x is 3. Line one prints x plus plus. Line two prints x. Line three prints plus plus x. Comment your three numbers. Answer: 3, then 4, then 5. Post-increment prints the old value, pre-increment prints the new one.",
+      "onScreen": "x++ · x · ++x → ?",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 25,
+      "caption": "Three lines, three numbers. Comment yours.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "programming"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "inc.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int fish = 5;\n\n    fish++;\n    printf(\"after fish++ : %d\\n\", fish);\n    fish--;\n    printf(\"after fish-- : %d\\n\", fish);\n\n    int a = 5;\n    int b = a++;\n    printf(\"post: a = %d, b = %d\\n\", a, b);\n\n    int c = 5;\n    int d = ++c;\n    printf(\"pre : c = %d, d = %d\\n\", c, d);\n    return 0;\n}",
+      "output": "after fish++ : 6\nafter fish-- : 5\npost: a = 6, b = 5\npre : c = 6, d = 6",
+      "lang": "c"
+    },
+    {
+      "file": "wallet.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int rupees = 100;\n\n    rupees += 50;\n    rupees -= 30;\n    rupees *= 2;\n    rupees /= 4;\n    rupees %= 7;\n\n    printf(\"rupees = %d\\n\", rupees);\n    return 0;\n}",
+      "output": "rupees = 4",
+      "lang": "c"
+    },
+    {
+      "file": "file3.c",
+      "source": "i = i++ + ++i;",
+      "output": "warning: operation on 'i' may be undefined [-Wsequence-point]",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Next roll number: 42"
+  }
+}

@@ -1,5 +1,5 @@
 import { Html5Audio, Sequence, staticFile } from "remotion";
-import { SFX_VOLUME, type SfxName } from "./sfx";
+import { SFX_VOLUME, type SfxName } from "./sfx-levels";
 
 export type SfxProps = { name: SfxName; at: number; volume?: number };
 
