@@ -2,10 +2,13 @@ import { AbsoluteFill, Audio, staticFile } from "remotion";
 import type { CalculateMetadataFunction } from "remotion";
 import type { Episode } from "../lib/episode";
 import { ShortLayout } from "../scenes/ShortLayout";
+import { Xecxec } from "../mascot/Xecxec";
 import { coloursForModule } from "../theme/modules";
 import { palette } from "../theme/palette";
+import { accentOn } from "../theme/contrast";
 import { CodeBlock, Panel } from "../ui";
 import { fonts } from "../theme/fonts";
+import { analogyFromOnScreen } from "./sceneProps";
 
 const FPS = 30;
 
@@ -69,10 +72,66 @@ const CodeVisual: React.FC<{ source: string; highlightLine?: number }> = ({
   />
 );
 
-/** Per-Short real visuals (animated code / bug), where the Short's source scene has code
- * content to show. Shorts without a natural code/bug visual (intro, concept, joke) fall
- * back to ShortLayout's own styled text card via `visualLabel` — see review.md. */
-const visualFor = (episode: Episode, shortId: string): React.ReactNode | undefined => {
+/** A big Xecxec close-up for the intro Short — he *is* the hook. */
+const XecxecVisual: React.FC = () => (
+  <Panel
+    background={palette.cream}
+    style={{
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    <Xecxec pose="wave" size={440} />
+  </Panel>
+);
+
+/** The source scene's analogy (same "Title": description onScreen pattern ConceptSlide
+ * reads), for a Short whose hook is a concept rather than code. */
+const AnalogyVisual: React.FC<{ title: string; body: string; accent: string }> = ({
+  title,
+  body,
+  accent,
+}) => (
+  <Panel background={palette.cream} style={{ width: "100%", height: "100%" }}>
+    <div
+      style={{
+        fontFamily: fonts.title,
+        fontSize: 36,
+        color: accentOn(palette.cream, accent),
+        marginBottom: 20,
+        textTransform: "uppercase",
+      }}
+    >
+      {title}
+    </div>
+    <div style={{ fontFamily: fonts.body, fontSize: 40, color: palette.ink, lineHeight: 1.4 }}>
+      {body}
+    </div>
+  </Panel>
+);
+
+/** Per-Short real visuals (animated code / bug / mascot / diagram), where the Short's
+ * source scene has content to show. */
+const visualFor = (
+  episode: Episode,
+  shortId: string,
+  accent: string,
+): React.ReactNode | undefined => {
+  if (shortId === "S1") {
+    return <XecxecVisual />;
+  }
+  if (shortId === "S2") {
+    const short = episode.shorts.find((s) => s.id === "S2");
+    const sceneId = short?.fromScenes[0];
+    const scene = episode.scenes.find((s) => s.id === sceneId);
+    const analogy = scene ? analogyFromOnScreen(scene.onScreen) : undefined;
+    if (analogy) {
+      return <AnalogyVisual title={analogy.title} body={analogy.body} accent={accent} />;
+    }
+  }
   if (shortId === "S3") {
     return <BugVisual episode={episode} />;
   }
@@ -105,7 +164,7 @@ export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames }
         colours={colours}
         durationInFrames={durationInFrames}
       >
-        {visualFor(episode, short.id)}
+        {visualFor(episode, short.id, colours.accent)}
       </ShortLayout>
     </AbsoluteFill>
   );

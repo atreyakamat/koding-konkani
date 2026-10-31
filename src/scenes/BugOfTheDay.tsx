@@ -24,6 +24,10 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
 }) => {
   const frame = useCurrentFrame();
   const codeLines = Math.max(wrongCode.split("\n").length, fixedCode.split("\n").length);
+  const errorLines = error.split("\n").length;
+  // GCC output can run long (EP01: 10 lines) — a compact size keeps the full, real error
+  // visible (truncating a teaching moment would be worse) while clearing the caption band.
+  const errorFontSize = errorLines > 6 ? 22 : 28;
   const phase2 = Math.round(durationInFrames * 0.4);
   const phase3 = Math.round(durationInFrames * 0.68);
   const isFixed = frame >= phase3;
@@ -59,15 +63,15 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
     >
       <AbsoluteFill
         style={{
-          padding: 96,
+          padding: "80px 96px 200px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 32,
+          gap: 24,
         }}
       >
         <div style={{ translate: `0px ${bannerY}px` }}>
-          <Sticker text="Bug of the Day" background={palette.butter} rotateDeg={0} fontSize={44} />
+          <Sticker text="Bug of the Day" background={palette.butter} rotateDeg={0} fontSize={40} />
         </div>
 
         <div style={{ display: "flex", gap: 48, width: "100%", justifyContent: "center" }}>
@@ -75,8 +79,8 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
             <CodeBlock
               source={isFixed ? fixedCode : wrongCode}
               width={1100}
-              fontSize={36}
-              maxVisibleLines={Math.min(codeLines, 10)}
+              fontSize={32}
+              maxVisibleLines={Math.min(codeLines, 8)}
             />
           </div>
         </div>
@@ -87,7 +91,8 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
               <div
                 style={{
                   fontFamily: fonts.code,
-                  fontSize: 28,
+                  fontSize: errorFontSize,
+                  lineHeight: 1.3,
                   color: palette.tomato,
                   whiteSpace: "pre-wrap",
                 }}

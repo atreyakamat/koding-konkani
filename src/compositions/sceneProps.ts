@@ -31,7 +31,9 @@ const linesFromNarration = (narration: string): string[] => {
  * (e.g. '"Why C?": laptop, washing machine, Python logo...') — a natural analogy
  * card. Cold-open-style concept slides (no colon in their direction) get none,
  * which is correct: they're narrative, not a numbered-point + analogy layout. */
-const analogyFromOnScreen = (onScreen: string): { title: string; body: string } | undefined => {
+export const analogyFromOnScreen = (
+  onScreen: string,
+): { title: string; body: string } | undefined => {
   const m = onScreen.match(/^"?([^":]{2,40})"?:\s*(.+)$/);
   if (!m) return undefined;
   return { title: m[1].trim(), body: m[2].trim() };

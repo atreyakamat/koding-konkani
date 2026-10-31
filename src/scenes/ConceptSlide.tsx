@@ -31,19 +31,18 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
     lines.length,
     durationInFrames * 0.6,
   );
-  const analogyStart = lastReveal + 8;
-  // The analogy card narrows the text column to ~56%; the 58px size that fits
-  // 3 bullet lines comfortably at full width wraps to 3+ lines per bullet
-  // there and can overflow the frame. Narrower column -> smaller type.
-  const lineFontSize = analogy ? 40 : 58;
+  // Analogy card shows from the start (item 3, 31 Oct v2 review) — it illustrates the
+  // whole point, not just a payoff after the bullets finish. Xecxec's claws-up beat
+  // still lands on the last bullet reveal, independent of the card's own timing.
+  const analogyStart = 14;
 
   return (
     <SceneFrame
       colours={colours}
       mascot={{
         poses: [
-          { frame: analogyStart, pose: "clawsUp" },
-          { frame: analogyStart + 36, pose: "idle" },
+          { frame: lastReveal + 8, pose: "clawsUp" },
+          { frame: lastReveal + 44, pose: "idle" },
         ],
       }}
     >
@@ -61,7 +60,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
             flex: analogy ? 1.3 : 1,
             display: "flex",
             flexDirection: "column",
-            gap: analogy ? 24 : 36,
+            gap: analogy ? 36 : 48,
           }}
         >
           {heading ? (
@@ -112,7 +111,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                   style={{
                     fontFamily: fonts.body,
                     fontWeight: 700,
-                    fontSize: lineFontSize,
+                    fontSize: analogy ? 58 : 68,
                     color: readableOn(colours.bg),
                     lineHeight: 1.25,
                   }}

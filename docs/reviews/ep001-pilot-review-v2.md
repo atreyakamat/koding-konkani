@@ -172,3 +172,55 @@ rather than treating the current gaps as a defect.
   720p (long + Shorts). The reusable `npm run episode` pipeline (now including the mastering step)
   still produces 1080p + 4K + Shorts for the full 86-episode run.
 - Module 0 has not been started, per instruction.
+
+## Round 2 — follow-up fix list (31 Oct, same day)
+
+A second review found 5 more problems in this 720p render. Root cause for most of them: **the long
+video was rendered with `--width=1280 --height=720`, not `--scale`.** Remotion's canvas-dimension
+override evaluates every fixed-pixel value (mascot `size`, font sizes, padding) directly against the
+smaller canvas instead of scaling the whole composition down from its native 1080p layout — so a
+460px-tall mascot became 64% of a 720px-tall frame instead of the intended 43%. This is the same bug
+already fixed for Shorts in round 1 (where it was caught because content was visibly clipped, not
+just crowded); it just hadn't been traced back to the long video too, where the symptom was
+"everything's too big and overlapping" rather than "cut off."
+
+**Fix:** re-rendered the long video with `--scale=0.6666666666666666` (the long video's own flex/
+percentage-based scene templates had tolerated `--width`/`--height` well enough in round 1's spot
+checks that the bug wasn't obvious — but anything with a fixed pixel size, like the mascot or a
+tall GCC error panel, didn't). This alone resolved most of the reported caption/mascot overlaps
+(items 1, in large part). Confirmed by re-rendering `PunCard`'s and `ConceptSlide`'s native
+(un-shrunk) font sizes under `--scale` and finding no overlap — so round 1's font-size-reduction
+"fixes" to those two components were **reverted**: they were compensating for the wrong render flag,
+not a real component bug, and left text under the 44px minimum unnecessarily.
+
+1. **Captions overlapping Xecxec/code: resolved by the `--scale` fix**, confirmed across every
+   sampled scene boundary. No caption-specific repositioning was needed once mascot/content were at
+   their intended proportions.
+2. **BugOfTheDay not fitting tall content: a real, separate bug**, not resolved by the scale fix
+   alone — EP01's GCC error is a genuine 10 lines, and the component didn't reserve space for the
+   caption band. Fixed in `BugOfTheDay.tsx`: bottom padding now reserves the caption zone, the error
+   panel drops to a smaller size (22px vs 28px) specifically when the error is long (>6 lines, rather
+   than truncating a real compiler error, which would be a worse outcome than compact text), and the
+   code panel/banner sizes tightened slightly. Verified: the full 10-line error and the FIXED/why
+   panel both now render completely, clear of the caption band.
+3. **ConceptSlide analogy card now starts near frame 0** (`analogyStart` no longer waits for the
+   bullet reveal sequence to finish) — Xecxec's claws-up beat still fires on the last bullet, decoupled
+   from the card's own entrance. "Fill the lower-left" partially addressed (bullet font bumps from
+   58px to 68px, gap widens, when there's no analogy card) — the no-analogy scenes (cold open, "how
+   episodes work") still have visible empty lower space; a real diagram/icon row is content work
+   beyond a wiring fix and is flagged as a follow-up, not solved here.
+4. **Shorts S1/S2 real visuals added.** S1 ("A crab will teach you C"): a large Xecxec close-up
+   (`XecxecVisual`). S2 ("Why learn C in 2026?"): the same analogy-card content ConceptSlide now
+   shows for its source scene (scene 3's "Why C?" card), reused via the now-exported
+   `analogyFromOnScreen()`. Both confirmed rendering correctly, full visual slot used, no fallback
+   text card.
+5. **Re-rendered everything** (long video + all 5 Shorts, one job at a time, `--scale`, 720p) rather
+   than only S2/S4 as literally specified — S1's visual changed (new Xecxec close-up) so it needed a
+   re-render under the "if visuals change" clause too, S3/S4's underlying components were untouched
+   but were re-rendered anyway for consistency with the corrected `--scale` approach and to avoid any
+   doubt about stale output. All 6 files reverified: correct dimensions (1280×720 / 720×1280 @30fps),
+   -16.06 LUFS / -1.51 dBTP (long) and -16.05 to -16.07 LUFS / -3.6 to -4.1 dBTP (Shorts).
+
+### Verdict: Approved. Known remaining gap: no-analogy ConceptSlide scenes (cold open, "how episodes
+work") still under-fill the lower-left; a real diagram/icon treatment is a content task for a
+follow-up, not a wiring fix.
