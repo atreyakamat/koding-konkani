@@ -53,28 +53,57 @@ Compile every C code sample with gcc and check its output matches the "expected 
 give me a report of any mismatch instead of silently fixing it. Plan first, branch feat/episode-data, draft PR.
 ```
 
-## Phase 5 — Pilot: EP 01 + its 5 Shorts
+## Phase 5 — Pilot: EP 01 + its 5 Shorts (approval gate)
 
 ```
-Produce EP 01 end to end: generate narration with the chosen voice, normalise loudness, get word
-timestamps, build the LongVideo composition from episodes/ep001.json (scenes stretch to the narration),
-add music bed and SFX, and the 5 Shorts. Render the long video at 1080p and at 4K (--scale=2), and the
-Shorts at 1080x1920, into out/ep001/. Tell me how long each render took on my PC.
-Plan first, branch feat/pilot-ep001, draft PR.
+Phase 5: produce the EP 01 pilot, long video and its 5 Shorts. Read CLAUDE.md and docs/STYLE.md first.
+Show me a short plan, then work on branch feat/pilot-ep001, draft PR, never push to main.
+Do NOT start any other episode. When done, stop and wait for my approval.
+
+PIPELINE (reusable for all 86 episodes: build it as one command, `npm run episode -- <n>`)
+1. Narration: scripts/voice.py with config/voice.json (Piper en_US-ryan-high, pacing.lengthScale 1.12).
+   One WAV per scene with the pauses from docs/STYLE.md section 1. Strip [HL]/[TRACK] cues before
+   speaking but keep their word positions. Normalise to -16 LUFS, peaks below -1 dBTP.
+2. Word timestamps for every scene (Piper phoneme timing if available, otherwise faster-whisper),
+   saved next to the audio. [HL n] and [TRACK] cues fire on the word they sit in front of.
+3. Timing: the narration audio length wins. Scene lengths = audio length + pauses; update the
+   episode timeline, never the voice speed.
+4. Composition: build LongVideo from episodes/ep001.json using the scene components in src/scenes.
+   Implement the transitions and camera moves from docs/STYLE.md in src/transitions (TransitionSeries
+   from @remotion/transitions where possible, custom flat ones for ink wipe, window pop, whip, split).
+   Never the same transition twice in a row; max 12 frames; every one has its SFX on the cut.
+5. Audio: music bed (src/audio MusicBed, ducked under speech, stopped for the Bug reveal), SFX
+   mapped from each scene's sfx text to the 12 files in audio/sfx (list any that did not map), the
+   3 s sting on the title card.
+6. Overlays: burnt-in word-highlight captions; the SpeedTip chip ("TIP: SET SPEED TO 1.5x", 3 s,
+   within the first 10 s) from docs/STYLE.md.
+7. Shorts: the 5 Shorts from episodes/ep001.json (1080x1920), each opening on its hook in 1.5 s,
+   with the end card (FOLLOW / SUBSCRIBE / Full video: EP 01) from docs/shorts-reels.md.
+8. Render: long video at 1080p first, then 4K (--scale=2), Shorts at 1080x1920, all into out/ep001/.
+   Log how long each took on this PC (and the real-time ratio).
+
+SELF-REVIEW BEFORE YOU SHOW ME (fix problems yourself, then report)
+- Look at stills at every transition and every scene; check contrast (npm run check:contrast), text
+  overflow, and that no flash is faster than 3 per second.
+- Measure the final mix loudness and the music ducking; confirm captions match the words.
+- Write out/ep001/review.md: total length, per-scene length vs the Bible target, render times,
+  unmapped SFX, deviations from docs/STYLE.md and why.
+- Remember: every fix at this stage is a fix to the template for all 86 episodes.
 ```
 
-Review the pilot carefully. Every fix you ask for here is a fix to the template for all 86 episodes.
+Review the pilot carefully. Approve it (or list changes) before Phase 6.
 
-## Phase 6 — Batch a module
+## Phase 6 — Batch a module (only after the pilot is approved)
 
 ```
-Using the pipeline from the pilot, produce Module <N> (episodes <a>–<b>) and all their Shorts.
-Before rendering, run the gcc check for this module and show me any problems. Render overnight-friendly:
-one episode at a time, log progress to out/render-log.txt, and skip episodes that are already rendered.
-Branch feat/module-<N>, draft PR with the episode list and render times.
+The EP 01 pilot is approved. Using the same pipeline, produce Module <N> (episodes <a> to <b>) and all
+their Shorts. Read docs/STYLE.md again. Before rendering, run the gcc check for this module
+(npm run episodes:check) and show me any problems. Render one episode at a time, long video at 1080p
+and 4K, log progress to out/render-log.txt, skip episodes that are already rendered.
+Branch feat/module-<N>, draft PR with the episode list, lengths and render times. Stop after the module.
 ```
 
-Repeat for each module.
+Order: Module 0 (EP 2 to 4), then Module 1 (EP 5 to 14), then the rest. Approve each module before the next.
 
 ## Phase 7 — Upload packs (you upload)
 

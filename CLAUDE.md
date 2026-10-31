@@ -74,6 +74,8 @@ Module colour pairs (background + accent): M0 peach+tomato · M1 pastelBlue+toma
 
 Motion: snappy springs, 8–12 frame moves, 2-frame shake on impacts, every move has a sound. Respect the scene timings in the episode JSON.
 
+**Pacing, cuts, transitions and camera moves are defined in `docs/STYLE.md`. Read it before building any scene or composition.** The narrator is deliberately slow (Piper `length_scale` 1.12, see `config/voice.json`); viewers can speed up with the player. Never speed the voice up to save time.
+
 ## Scene templates (one component each in `src/scenes/`)
 
 1. **TitleCard** — accent background, EP sticker (butter, rotated), huge outlined title, module chip, Xecxec scuttles in. SFX thud + whoosh + claw click.
