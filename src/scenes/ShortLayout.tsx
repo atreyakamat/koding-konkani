@@ -108,7 +108,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
       <div
         style={{
           position: "absolute",
-          top: 520,
+          top: 440,
           left: 60,
           width: 860,
           height: 540,
@@ -144,7 +144,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
         <div
           style={{
             position: "absolute",
-            top: 520,
+            top: 440,
             left: 60,
             width: 860,
             height: 540,

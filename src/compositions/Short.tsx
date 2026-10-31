@@ -1,13 +1,14 @@
+import { useCurrentFrame } from "remotion";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import type { CalculateMetadataFunction } from "remotion";
 import type { Episode } from "../lib/episode";
 import { ShortLayout } from "../scenes/ShortLayout";
-import { Xecxec } from "../mascot/Xecxec";
 import { coloursForModule } from "../theme/modules";
-import { palette } from "../theme/palette";
+import { palette, brutal } from "../theme/palette";
 import { accentOn } from "../theme/contrast";
 import { CodeBlock, Panel } from "../ui";
 import { fonts } from "../theme/fonts";
+import { typewriterChars } from "../lib/motion";
 import { analogyFromOnScreen } from "./sceneProps";
 
 const FPS = 30;
@@ -39,79 +40,173 @@ export const calculateMetadata: CalculateMetadataFunction<ShortProps> = async ({
   };
 };
 
-/** The bug reveal (wrong code + GCC's first error line), for the "copy-paste bug" Short. */
-const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => (
-  <div style={{ display: "flex", flexDirection: "column", gap: 16, height: "100%" }}>
-    <CodeBlock source={episode.bug.wrong} width={860} fontSize={34} maxVisibleLines={6} />
-    <Panel background={palette.darkBlue} borderColor={palette.ink}>
-      <div
-        style={{
-          fontFamily: fonts.code,
-          fontSize: 24,
-          color: palette.tomato,
-          whiteSpace: "pre-wrap",
-        }}
-      >
-        {episode.bug.error.split("\n")[0]}
-      </div>
-    </Panel>
-  </div>
-);
+/** The GCC error lines specifically (not the "GCC output:" header or the caret-pointer
+ * lines) — the actual two `error:` messages, which is what makes the panel meaningful. */
+const gccErrorLines = (error: string): string =>
+  error
+    .split("\n")
+    .filter((l) => l.includes("error:"))
+    .join("\n");
 
-/** A code scene's source with its taught line highlighted, for a "what does X mean" Short. */
+/** The bug reveal: wrong code, then the real GCC error lines typing in underneath. */
+const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
+  const frame = useCurrentFrame();
+  const errorText = gccErrorLines(episode.bug.error);
+  const errorChars = typewriterChars(errorText, frame, 24, 1.1);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16, height: "100%" }}>
+      <CodeBlock source={episode.bug.wrong} width={860} fontSize={34} maxVisibleLines={6} />
+      <Panel background={palette.darkBlue} borderColor={palette.ink}>
+        <div
+          style={{
+            fontFamily: fonts.code,
+            fontSize: 22,
+            lineHeight: 1.3,
+            color: palette.tomato,
+            whiteSpace: "pre-wrap",
+            minHeight: 60,
+          }}
+        >
+          {errorText.slice(0, errorChars)}
+        </div>
+      </Panel>
+    </div>
+  );
+};
+
+/** A code scene's source, typing in, with its taught line highlighted once typing reaches it. */
 const CodeVisual: React.FC<{ source: string; highlightLine?: number }> = ({
   source,
   highlightLine,
-}) => (
-  <CodeBlock
-    source={source}
-    width={860}
-    fontSize={36}
-    highlightLine={highlightLine}
-    maxVisibleLines={8}
-  />
-);
+}) => {
+  const frame = useCurrentFrame();
+  const visibleChars = typewriterChars(source, frame, 10, source.length / 40);
+  const typingDone = visibleChars >= source.length;
+  return (
+    <CodeBlock
+      source={source}
+      width={860}
+      fontSize={36}
+      visibleChars={visibleChars}
+      highlightLine={typingDone ? highlightLine : undefined}
+      maxVisibleLines={8}
+    />
+  );
+};
 
-/** A big Xecxec close-up for the intro Short — he *is* the hook. */
-const XecxecVisual: React.FC = () => (
-  <Panel
-    background={palette.cream}
-    style={{
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    <Xecxec pose="wave" size={440} />
-  </Panel>
-);
+/** A single line of code typing in — for the intro Short, where the hero is Xecxec
+ * (already dancing in ShortLayout's own fixed spot) and the visual slot shows what
+ * he's about to teach, not a second copy of him. */
+const TypedLineVisual: React.FC<{ line: string }> = ({ line }) => {
+  const frame = useCurrentFrame();
+  const visibleChars = typewriterChars(line, frame, 14, 0.6);
+  return (
+    <Panel
+      background={palette.cream}
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          fontFamily: fonts.code,
+          fontWeight: 700,
+          fontSize: 56,
+          color: palette.ink,
+        }}
+      >
+        {line.slice(0, visibleChars)}
+        <span style={{ opacity: Math.floor(frame / 15) % 2 === 0 ? 1 : 0 }}>|</span>
+      </div>
+    </Panel>
+  );
+};
 
 /** The source scene's analogy (same "Title": description onScreen pattern ConceptSlide
- * reads), for a Short whose hook is a concept rather than code. */
+ * reads), for a Short whose hook is a concept rather than code. Title sweeps in first,
+ * then the body — the "highlight sweep" motion for a Short with no code to type. */
 const AnalogyVisual: React.FC<{ title: string; body: string; accent: string }> = ({
   title,
   body,
   accent,
-}) => (
-  <Panel background={palette.cream} style={{ width: "100%", height: "100%" }}>
-    <div
+}) => {
+  const frame = useCurrentFrame();
+  const bodyOpacity = Math.min(1, Math.max(0, (frame - 16) / 10));
+  return (
+    <Panel background={palette.cream} style={{ width: "100%", height: "100%" }}>
+      <div
+        style={{
+          fontFamily: fonts.title,
+          fontSize: 46,
+          color: accentOn(palette.cream, accent),
+          marginBottom: 24,
+          textTransform: "uppercase",
+        }}
+      >
+        {title}
+      </div>
+      <div
+        style={{
+          fontFamily: fonts.body,
+          fontWeight: 700,
+          fontSize: 48,
+          color: palette.ink,
+          lineHeight: 1.4,
+          opacity: bodyOpacity,
+        }}
+      >
+        {body}
+      </div>
+    </Panel>
+  );
+};
+
+/** Pronunciation card: the written name, an arrow, and how it's actually said — for the
+ * "it's pronounced ___" Short, which has no code to show. */
+const PronunciationVisual: React.FC<{ accent: string }> = ({ accent }) => {
+  const frame = useCurrentFrame();
+  const saySweep = Math.min(1, Math.max(0, (frame - 20) / 14));
+  return (
+    <Panel
+      background={palette.cream}
       style={{
-        fontFamily: fonts.title,
-        fontSize: 36,
-        color: accentOn(palette.cream, accent),
-        marginBottom: 20,
-        textTransform: "uppercase",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 24,
       }}
     >
-      {title}
-    </div>
-    <div style={{ fontFamily: fonts.body, fontSize: 40, color: palette.ink, lineHeight: 1.4 }}>
-      {body}
-    </div>
-  </Panel>
-);
+      <div style={{ fontFamily: fonts.code, fontWeight: 700, fontSize: 64, color: palette.ink }}>
+        Xecxec
+      </div>
+      <div
+        style={{ fontFamily: fonts.title, fontSize: 40, color: accentOn(palette.cream, accent) }}
+      >
+        ↓ say it like
+      </div>
+      <div
+        style={{
+          fontFamily: fonts.title,
+          fontSize: 72,
+          color: palette.ink,
+          background: accent,
+          border: `${brutal.border}px solid ${palette.ink}`,
+          padding: "10px 28px",
+          clipPath: `inset(0 ${(1 - saySweep) * 100}% 0 0)`,
+        }}
+      >
+        SHECK SHECK
+      </div>
+    </Panel>
+  );
+};
 
 /** Per-Short real visuals (animated code / bug / mascot / diagram), where the Short's
  * source scene has content to show. */
@@ -121,7 +216,7 @@ const visualFor = (
   accent: string,
 ): React.ReactNode | undefined => {
   if (shortId === "S1") {
-    return <XecxecVisual />;
+    return <TypedLineVisual line='printf("Hi");' />;
   }
   if (shortId === "S2") {
     const short = episode.shorts.find((s) => s.id === "S2");
@@ -134,6 +229,9 @@ const visualFor = (
   }
   if (shortId === "S3") {
     return <BugVisual episode={episode} />;
+  }
+  if (shortId === "S4") {
+    return <PronunciationVisual accent={accent} />;
   }
   if (shortId === "S5") {
     const short = episode.shorts.find((s) => s.id === "S5");

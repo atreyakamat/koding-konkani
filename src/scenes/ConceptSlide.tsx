@@ -121,6 +121,37 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
               </div>
             );
           })}
+          {!analogy ? (
+            <div style={{ display: "flex", gap: 28, marginTop: 24 }}>
+              {["{ }", "#", "01"].map((glyph, i) => {
+                const start = lastReveal + 10 + i * 8;
+                const progress = enterProgress(frame, start, 10);
+                return (
+                  <div
+                    key={glyph}
+                    style={{
+                      width: 120,
+                      height: 120,
+                      borderRadius: "50%",
+                      background: colours.accent,
+                      border: `${brutal.border}px solid ${palette.ink}`,
+                      boxShadow: `${brutal.shadow}px ${brutal.shadow}px 0 0 ${palette.ink}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontFamily: fonts.code,
+                      fontWeight: 700,
+                      fontSize: 40,
+                      color: readableOn(colours.accent),
+                      scale: `${progress} ${progress}`,
+                    }}
+                  >
+                    {glyph}
+                  </div>
+                );
+              })}
+            </div>
+          ) : null}
         </div>
 
         {analogy
