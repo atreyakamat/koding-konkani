@@ -1,0 +1,921 @@
+{
+  "ep": 75,
+  "title": "Selection sort",
+  "module": 12,
+  "lengthSec": 400,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "trace selection sort by finding the minimum of the unsorted part each round",
+    "write selection_sort in C that swaps at most once per pass",
+    "count the swaps it makes",
+    "explain why it is O(n²) in every case but makes at most n - 1 swaps"
+  ],
+  "youtube": {
+    "title": "Selection Sort: Pick the Shortest Kid | C Programming EP 75",
+    "description": "Find the smallest, put it first, repeat. We animate selection sort on six bars, trace every comparison, and write it in C with a swap counter. Plus the bug that swaps inside the wrong loop and scrambles your data. 0:00 Line up by height · 0:20 Title · 0:25 The idea · 0:55 Pass 1 animated · 1:45 Passes 2 to 5 · 2:20 Step trace · 2:45 Code · 4:05 Run it · 4:25 Pun · 4:30 Complexity · 5:05 Bug of the Day · 6:05 Challenge · 6:25 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Line up by height"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The idea"
+      },
+      {
+        "t": "0:55",
+        "label": "Pass 1 animated"
+      },
+      {
+        "t": "1:45",
+        "label": "Passes 2 to 5"
+      },
+      {
+        "t": "2:20",
+        "label": "Step trace"
+      },
+      {
+        "t": "2:45",
+        "label": "Code"
+      },
+      {
+        "t": "4:05",
+        "label": "Run it"
+      },
+      {
+        "t": "4:25",
+        "label": "Pun"
+      },
+      {
+        "t": "4:30",
+        "label": "Complexity"
+      },
+      {
+        "t": "5:05",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:05",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:25",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "selection sort",
+      "selection sort in c",
+      "sorting algorithms",
+      "c programming",
+      "sorting visualised",
+      "find minimum",
+      "algorithms for beginners",
+      "learn c",
+      "koding konkani",
+      "dsa in c",
+      "c tutorial"
+    ],
+    "thumbnail": {
+      "text": "PICK THE SMALLEST",
+      "visual": "big text \"PICK THE SMALLEST\"; six bars, the shortest one glowing mint with a spotlight; Xecxec pointing a claw at it like a PT teacher with a whistle; Dark blue background, Butter text.",
+      "pose": "Xecxec pointing a claw at it like a PT teacher with a whistle"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "School assembly; six kids of different heights; PT teacher Xecxec with a whistle",
+      "animation": "Whistle SFX; shortest kid steps forward",
+      "sfx": [],
+      "narration": "Morning assembly. The PT teacher wants the line sorted by height, shortest in front. So he looks at everyone, finds the shortest kid, and sends them to the front. Then he looks at the rest, finds the next shortest, and so on. That is selection sort."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 75 · SELECTION SORT",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 75. Selection sort."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 30,
+      "onScreen": "Rule card: \"Find the smallest in the unsorted part. Swap it to the front. Repeat.\"",
+      "animation": "Wall divides sorted (left) and unsorted (right)",
+      "sfx": [],
+      "narration": "Imagine a wall in the array. Left of the wall is sorted. Right of the wall is not. Each round, we scan the unsorted side, select the smallest value, and swap it to the first unsorted position. The wall moves one step right. Bubble sort swapped neighbours again and again. Selection sort makes at most one swap per round."
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 55,
+      "lengthSec": 50,
+      "onScreen": "Bars [5, 2, 9, 1, 6, 3]; pass 1: j scans, \"min\" tag jumps 0 → 1 → 3",
+      "animation": "Scanning bar pastel blue; min bar outlined butter; one tomato swap 5 ↔ 1; 1 locks mint; tick per compare, swoosh per swap",
+      "sfx": [],
+      "narration": "Same array as last time: 5, 2, 9, 1, 6, 3. We start by assuming the first one, 5, is the smallest. Compare 2 with 5: 2 is smaller, so min moves to 2. 9: no. 1: smaller than 2, so min moves to 1. 6: no. 3: no. The smallest is 1, at index 3. Now one swap: 1 goes to the front, and 5 goes where 1 was. 1 is locked.",
+      "trace": [
+        {
+          "step": "1.1",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            1,
+            0
+          ]
+        },
+        {
+          "step": "1.2",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            2,
+            1
+          ]
+        },
+        {
+          "step": "1.3",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            3,
+            1
+          ]
+        },
+        {
+          "step": "1.4",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            4,
+            3
+          ]
+        },
+        {
+          "step": "1.5",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            5,
+            3
+          ]
+        },
+        {
+          "step": "1 end",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "2.1",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            2,
+            1
+          ]
+        },
+        {
+          "step": "2.2",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            3,
+            1
+          ]
+        },
+        {
+          "step": "2.3",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            4,
+            1
+          ]
+        },
+        {
+          "step": "2.4",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            5,
+            1
+          ]
+        },
+        {
+          "step": "2 end",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "3.1",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            3,
+            2
+          ]
+        },
+        {
+          "step": "3.2",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            4,
+            3
+          ]
+        },
+        {
+          "step": "3.3",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            5,
+            3
+          ]
+        },
+        {
+          "step": "3 end",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "4.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            4,
+            3
+          ]
+        },
+        {
+          "step": "4.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            5,
+            3
+          ]
+        },
+        {
+          "step": "4 end",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "5.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            5,
+            4
+          ]
+        },
+        {
+          "step": "5 end",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "template": "algorithm-bars",
+      "startSec": 105,
+      "lengthSec": 35,
+      "onScreen": "Passes 2–5 at 2x; \"no swap needed\" stamps on passes 2, 4, 5",
+      "animation": "Stamp thud",
+      "sfx": [
+        "stamp",
+        "thud"
+      ],
+      "narration": "Pass 2 scans 9, 5, 6, 3 and finds nothing smaller than 2. 2 is already in place, so no swap. Pass 3 finds 3 and swaps it with 9. Passes 4 and 5 find everything already in place. Five passes, but only two swaps.",
+      "trace": [
+        {
+          "step": "1.1",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            1,
+            0
+          ]
+        },
+        {
+          "step": "1.2",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            2,
+            1
+          ]
+        },
+        {
+          "step": "1.3",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            3,
+            1
+          ]
+        },
+        {
+          "step": "1.4",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            4,
+            3
+          ]
+        },
+        {
+          "step": "1.5",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            5,
+            3
+          ]
+        },
+        {
+          "step": "1 end",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "2.1",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            2,
+            1
+          ]
+        },
+        {
+          "step": "2.2",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            3,
+            1
+          ]
+        },
+        {
+          "step": "2.3",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            4,
+            1
+          ]
+        },
+        {
+          "step": "2.4",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            5,
+            1
+          ]
+        },
+        {
+          "step": "2 end",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "3.1",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            3,
+            2
+          ]
+        },
+        {
+          "step": "3.2",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            4,
+            3
+          ]
+        },
+        {
+          "step": "3.3",
+          "array": [
+            1,
+            2,
+            9,
+            5,
+            6,
+            3
+          ],
+          "compare": [
+            5,
+            3
+          ]
+        },
+        {
+          "step": "3 end",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "4.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            4,
+            3
+          ]
+        },
+        {
+          "step": "4.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            5,
+            3
+          ]
+        },
+        {
+          "step": "4 end",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        },
+        {
+          "step": "5.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            5,
+            4
+          ]
+        },
+        {
+          "step": "5 end",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 140,
+      "lengthSec": 25,
+      "onScreen": "Step-trace table (below)",
+      "animation": "Rows reveal with 4x replay",
+      "sfx": [],
+      "narration": "Here's the full trace. Fifteen comparisons and only two swaps. Count the comparisons per pass: 5, 4, 3, 2, 1. That adds up to 15, which is n times n minus 1 over 2."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 80,
+      "onScreen": "selection.c (36 lines); tracker for i, j, min, swaps",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 9] selection_sort returns an int this time: the number of swaps it made. [HL 10] swaps starts at zero. [TRACK swaps=0] [HL 11] i marks the first unsorted position. We stop at n minus 2, because when one item is left it must already be the largest. [TRACK i=0] [HL 12] We assume the smallest is at i. Note that min stores an index, not a value. [TRACK min=0] [HL 13] j scans the rest of the array. [HL 14] If a[j] is smaller than the current smallest, [HL 15] remember j. [TRACK j=1 min=1] [TRACK j=3 min=3] [HL 17] After the scan, if the smallest isn't already at i, [HL 18] we swap with temp, [HL 21] and count it. [TRACK swaps=1] [HL 23] We print the array after each pass. [HL 26] And return the swap count. [HL 30] In main, six heights. [HL 33] Sort and capture the swaps. [HL 34] Print them.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nint selection_sort(int a[], int n) {\n    int swaps = 0;\n    for (int i = 0; i < n - 1; i++) {\n        int min = i;\n        for (int j = i + 1; j < n; j++) {\n            if (a[j] < a[min])\n                min = j;\n        }\n        if (min != i) {\n            int temp = a[i];\n            a[i] = a[min];\n            a[min] = temp;\n            swaps++;\n        }\n        printf(\"Pass %d: \", i + 1);\n        print_array(a, n);\n    }\n    return swaps;\n}\n\nint main(void) {\n    int heights[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(heights) / sizeof(heights[0]);\n\n    int swaps = selection_sort(heights, n);\n    printf(\"Swaps: %d\\n\", swaps);\n    return 0;\n}",
+        "output": "$ gcc selection.c -o selection\n$ ./selection\nPass 1: 1 2 9 5 6 3\nPass 2: 1 2 9 5 6 3\nPass 3: 1 2 3 5 6 9\nPass 4: 1 2 3 5 6 9\nPass 5: 1 2 3 5 6 9\nSwaps: 2"
+      }
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 245,
+      "lengthSec": 20,
+      "onScreen": "gcc and 6 output lines",
+      "animation": "Lines type out; \"Swaps: 2\" boxed",
+      "sfx": [],
+      "narration": "Compile and run. After pass 1, the 1 is at the front. Pass 2 changes nothing. Pass 3 puts 3 in place, and the array is sorted. Passes 4 and 5 still run, because selection sort has no early exit. Swaps: 2."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why is selection sort so good at cricket team trials? It always picks the best, one at a time."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 270,
+      "lengthSec": 35,
+      "onScreen": "Complexity card + comparison with bubble on the same array: comparisons 15 vs 14, swaps 2 vs 8",
+      "animation": "Counters roll side by side",
+      "sfx": [],
+      "narration": "Selection sort always scans the whole unsorted part, even if the array is already sorted. So best, average and worst cases are all O(n²). Its strength is swaps: never more than n minus 1. If moving data is expensive, like heavy records, that matters. It uses O(1) extra memory. One catch: the long-distance swap can jump an item past an equal one, so this version is not stable. On our array: bubble sort made 14 comparisons and 8 swaps; selection made 15 comparisons and just 2 swaps."
+    },
+    {
+      "id": 11,
+      "template": "bug-of-the-day",
+      "startSec": 305,
+      "lengthSec": 60,
+      "onScreen": "Swap inside the inner loop; output 1 2 3 6 5 9, Swaps: 15",
+      "animation": "Red siren; bars jitter, swapping on every compare",
+      "sfx": [],
+      "narration": "Today's bug: swapping inside the inner loop. Someone moved the swap block up by one brace, so it runs on every single comparison, not once per pass. The output: 1, 2, 3, 6, 5, 9. Almost sorted, but 6 and 5 are wrong. And it made 15 swaps instead of 2. The swap was supposed to happen after we finished searching for the minimum, not while we were still searching. The fix: move the swap block below the closing brace of the inner loop."
+    },
+    {
+      "id": 12,
+      "template": "challenge",
+      "startSec": 365,
+      "lengthSec": 20,
+      "onScreen": "\"Count the swaps for 64, 25, 12, 22, 11\"",
+      "animation": "Timer",
+      "sfx": [],
+      "narration": "Your challenge: sort 64, 25, 12, 22, 11 with selection sort. How many swaps does it make? Predict first, then run your code to check."
+    },
+    {
+      "id": 13,
+      "template": "outro",
+      "startSec": 385,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 76 Insertion sort",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "Next episode, insertion sort: the way you already sort cards in your hand. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int heights[] = {5, 2, 9, 1, 6, 3};\n    int n = 6, swaps = 0;\n\n    for (int i = 0; i < n - 1; i++) {\n        int min = i;\n        for (int j = i + 1; j < n; j++) {\n            if (heights[j] < heights[min])\n                min = j;\n            int temp = heights[i];\n            heights[i] = heights[min];\n            heights[min] = temp;\n            swaps++;\n        }\n    }\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", heights[i]);\n    printf(\"\\nSwaps: %d\\n\", swaps);\n    return 0;\n}",
+    "error": "No error or warning from GCC. Wrong output:\n\n1 2 3 6 5 9\nSwaps: 15",
+    "fixed": "    for (int i = 0; i < n - 1; i++) {\n        int min = i;\n        for (int j = i + 1; j < n; j++) {\n            if (heights[j] < heights[min])\n                min = j;\n        }\n        if (min != i) {\n            int temp = heights[i];\n            heights[i] = heights[min];\n            heights[min] = temp;\n            swaps++;\n        }\n    }",
+    "why": "swapping during the scan moves values while min still points at an old position, so later comparisons compare the wrong things; swap only once the scan has finished."
+  },
+  "pun": "Why is selection sort so good at cricket team trials? It always picks the best, one at a time.",
+  "challenge": "Sort 64, 25, 12, 22, 11 with selection sort. Predict the number of swaps, then check with your code.",
+  "challengeAnswer": "3 swaps. Passes: 11 25 12 22 64 → 11 12 25 22 64 → 11 12 22 25 64 → (no swap).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The PT teacher's algorithm",
+      "hook": "\"Your PT teacher knows a sorting algorithm.\"",
+      "script": "Morning assembly. The PT teacher finds the shortest kid and sends them to the front. Then the next shortest. Then the next. Congratulations, he just ran selection sort. Here's how to write it in C.",
+      "onScreen": "SHORTEST TO THE FRONT",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "Assembly line, but make it code.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "selectionsort",
+        "sorting"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Selection sort in 30 seconds",
+      "hook": "\"Find the smallest. Swap once. Repeat.\"",
+      "script": "Selection sort scans the unsorted part and remembers where the smallest value is. Then it makes one swap to put it at the front. The sorted part grows by one each round. It always does about n squared over 2 comparisons, so it's O(n squared) every time, but it never makes more than n minus 1 swaps.",
+      "onScreen": "ONE SWAP PER ROUND",
+      "fromScenes": [
+        4,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Selection sort, animated.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "selectionsort",
+        "dsa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "15 swaps instead of 2",
+      "hook": "\"Right idea. Wrong brace.\"",
+      "script": "This selection sort swaps inside the inner loop, on every comparison. Result: 1, 2, 3, 6, 5, 9. Not sorted, and 15 swaps instead of 2. The swap must happen after the scan finishes. Move it below the inner loop's closing brace.",
+      "onScreen": "SWAP AFTER THE SCAN",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 35,
+      "caption": "One brace in the wrong place.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "selectionsort"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Cricket trials",
+      "hook": "\"Selection sort at cricket trials.\"",
+      "script": "Why is selection sort so good at cricket team trials? It always picks the best, one at a time.",
+      "onScreen": "PICKS THE BEST, ONE AT A TIME",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 10,
+      "caption": "Selectors hate this one trick.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "How many swaps?",
+      "hook": "\"Predict the swaps.\"",
+      "script": "Selection sort on 64, 25, 12, 22, 11. How many swaps will it make? Two, three, or four? Comment your guess, then run the code. Answer pinned on the full episode.",
+      "onScreen": "2? 3? 4?",
+      "fromScenes": [
+        12
+      ],
+      "lengthSec": 20,
+      "caption": "Comment before you run it.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "quiz",
+        "selectionsort"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nint selection_sort(int a[], int n) {\n    int swaps = 0;\n    for (int i = 0; i < n - 1; i++) {\n        int min = i;\n        for (int j = i + 1; j < n; j++) {\n            if (a[j] < a[min])\n                min = j;\n        }\n        if (min != i) {\n            int temp = a[i];\n            a[i] = a[min];\n            a[min] = temp;\n            swaps++;\n        }\n        printf(\"Pass %d: \", i + 1);\n        print_array(a, n);\n    }\n    return swaps;\n}\n\nint main(void) {\n    int heights[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(heights) / sizeof(heights[0]);\n\n    int swaps = selection_sort(heights, n);\n    printf(\"Swaps: %d\\n\", swaps);\n    return 0;\n}",
+      "output": "$ gcc selection.c -o selection\n$ ./selection\nPass 1: 1 2 9 5 6 3\nPass 2: 1 2 9 5 6 3\nPass 3: 1 2 3 5 6 9\nPass 4: 1 2 3 5 6 9\nPass 5: 1 2 3 5 6 9\nSwaps: 2",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "1 2 3 5 6 9\nSwaps: 2"
+  }
+}

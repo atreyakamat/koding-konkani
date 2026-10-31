@@ -1,0 +1,331 @@
+{
+  "ep": 65,
+  "title": "Stack vs Heap",
+  "module": 10,
+  "lengthSec": 405,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "name the three places a C variable can live (stack, heap, global area) and say how long each lasts",
+    "explain why a huge local array crashes the program",
+    "ask for one heap `int` with `malloc` and give it back with `free`"
+  ],
+  "youtube": {
+    "title": "Stack vs Heap Explained With a Godown | C Programming EP 65",
+    "description": "Your local variables live in a small, tidy room called the stack. When you need more space, or memory that outlives a function, you rent a godown called the heap. We draw both, print real addresses from each, and crash the stack on purpose. 0:00 Your room vs a godown · 0:20 Title · 0:25 The stack, frame by frame · 1:30 The heap · 2:20 Code, line by line · 3:45 Running it · 4:10 Pun · 4:15 Stack vs heap at a glance · 4:55 Bug of the Day: huge array on the stack · 6:00 Challenge · 6:25 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Your room vs a godown"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The stack, frame by frame"
+      },
+      {
+        "t": "1:30",
+        "label": "The heap"
+      },
+      {
+        "t": "2:20",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "3:45",
+        "label": "Running it"
+      },
+      {
+        "t": "4:10",
+        "label": "Pun"
+      },
+      {
+        "t": "4:15",
+        "label": "Stack vs heap at a glance"
+      },
+      {
+        "t": "4:55",
+        "label": "Bug of the Day: huge array on the stack"
+      },
+      {
+        "t": "6:00",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:25",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "stack vs heap in c",
+      "dynamic memory allocation c",
+      "malloc in c",
+      "stack overflow c",
+      "heap memory",
+      "memory layout c program",
+      "local variables stack",
+      "c programming tutorial",
+      "learn c",
+      "koding konkani",
+      "c programming india",
+      "engineering c"
+    ],
+    "thumbnail": {
+      "text": "STACK vs HEAP",
+      "visual": "big text \"STACK vs HEAP\"; left: a small tidy room with stacked plates labelled `main`, `visit`; right: a big godown with crates; a black arrow from a stack box `godown` to a heap crate; Xecxec carrying a crate, sweating; mint background, tomato text block",
+      "pose": "Xecxec carrying a crate, sweating"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Xecxec's small bedroom with a shelf; a large rented godown near Margao market with a padlock and a rent receipt",
+      "animation": "Xecxec stuffs boxes on the shelf until it overflows; cuts to him unlocking the godown; door creak",
+      "sfx": [],
+      "narration": "Your room has one small shelf. It's close, it's fast, and when you move out, it's cleared automatically. But try to keep fifty sacks of rice on it, and it collapses. For big things, you rent a godown. It's huge, you get the key, and it stays yours until you hand the key back. Your C program has both: a room called the stack, and a godown called the heap."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 65 · STACK VS HEAP",
+      "animation": "Title slams in on mint; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode sixty-five. Stack versus heap. Welcome to Module 10: dynamic memory."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 65,
+      "onScreen": "Tall column labelled STACK: frame `main` (room) at the bottom, frame `visit` (local) stacked on it",
+      "animation": "Frames stack like plates with a clink; `visit` frame lifts off and disappears when the function returns; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "You have already seen the stack, in EP 55 and EP 57. Every time a function is called, it gets a stack frame: a box for its local variables. When main starts, its frame goes on the stack, holding room. When main calls visit, visit's frame goes on top, holding local. Like plates stacked on a plate rack. When visit returns, its plate is removed, and local is gone. That's why, in EP 57, returning the address of a local array failed. The stack is very fast, and it cleans itself up. But it is small. On Windows, it's usually just 1 megabyte for the whole program. On Linux, it's usually 8."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 90,
+      "lengthSec": 50,
+      "onScreen": "Second region labelled HEAP, far from the stack; one crate holding 500; stack box `godown` with an arrow to it; small GLOBAL region with `global_count`",
+      "animation": "Crate drops into the heap with a thud; arrow draws from `godown`; padlock icon on the crate until `free`",
+      "sfx": [
+        "thud"
+      ],
+      "narration": "The heap is a separate, much bigger area of memory. Memory on the heap does not belong to any function. It stays until you give it back. To rent a piece, you call malloc, which means \"memory allocate\". You tell it how many bytes you want. malloc finds space in the heap and returns its address. So we store that address in a pointer: here, godown, a stack variable that points to a crate in the heap. Everything you learned in Module 8 now pays off: the heap is only reachable through pointers. When you're done, you call free with that address, and the crate goes back. There's also a third, small area for global variables, which live for the whole program, like global_count. So three places: stack for locals, heap for what you malloc, and the global area."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 140,
+      "lengthSec": 85,
+      "onScreen": "`places.c` (26 lines); tracker: room, local, godown, *godown",
+      "animation": "Butter highlights; corner map of the three regions lights up the right region per line",
+      "sfx": [],
+      "narration": "Here is the program. [HL 2] Line 2 includes stdlib dot h. That's where malloc and free live. Forget it, and you'll get warnings. [HL 4] Line 4 creates a global variable, global_count, outside every function. [HL 6] Lines 6 to 9 define visit. [HL 7] Line 7 makes a local int inside visit. [TRACK local=5] [HL 8] Line 8 prints its address. [HL 12] Now main. Line 12 makes room, a local in main's frame. [TRACK room=1] [HL 13] Line 13 is new: int star godown equals malloc of sizeof int. sizeof int is 4 on our computers, so we ask for 4 bytes. malloc returns the address of those bytes on the heap, and godown stores it. [TRACK godown=heap] [HL 14] Line 14 checks if godown is NULL. Remember EP 59: malloc returns NULL if it cannot find enough memory. [HL 15] If so, line 15 returns 1 to signal an error. [HL 17] Line 17 writes 500 through the pointer, into the heap crate. [TRACK *godown=500] [HL 19] Lines 19 to 22 print four addresses: room, visit's local, the global, and the heap crate. [HL 24] Line 24: free of godown. We hand the key back. [HL 25] Return zero.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <stdlib.h>\n\nint global_count = 0;\n\nvoid visit(void) {\n    int local = 5;\n    printf(\"local in visit() at   %p (stack)\\n\", (void *)&local);\n}\n\nint main(void) {\n    int room = 1;\n    int *godown = malloc(sizeof(int));\n    if (godown == NULL) {\n        return 1;\n    }\n    *godown = 500;\n\n    printf(\"room in main() at     %p (stack)\\n\", (void *)&room);\n    visit();\n    printf(\"global_count at       %p (global)\\n\", (void *)&global_count);\n    printf(\"heap int at           %p (heap), value %d\\n\", (void *)godown, *godown);\n\n    free(godown);\n    return 0;\n}",
+        "output": "room in main() at     0x7ffcd9774c2c (stack)\nlocal in visit() at   0x7ffcd9774c04 (stack)\nglobal_count at       0x56265c7e2014 (global)\nheap int at           0x56265e58e2a0 (heap), value 500"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 225,
+      "lengthSec": 25,
+      "onScreen": "Compile and run; sticky note \"your addresses will differ\"",
+      "animation": "Output prints; each line gets a coloured tag: stack (lilac), global (butter), heap (mint)",
+      "sfx": [],
+      "narration": "Compile and run. Look at the addresses. room and local are close together. They're both on the stack, and local is a little lower, because on most PCs the stack grows downward. The global and the heap crate are in completely different areas. Your exact numbers will differ, and on Windows they look different from Linux, but you'll still see the stack addresses grouped together and the heap somewhere else."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 250,
+      "lengthSec": 5,
+      "onScreen": "\"Why did the variable move to the heap? The stack was too crowded.\"",
+      "animation": "Card flips; Xecxec waves a rent receipt; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the variable move to the heap? The stack was too crowded."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 255,
+      "lengthSec": 40,
+      "onScreen": "Comparison table: size, speed, who frees it, lifetime",
+      "animation": "Rows slide in one by one; mint ticks and tomato crosses",
+      "sfx": [],
+      "narration": "Let's compare. Size: the stack is small, about 1 megabyte on Windows; the heap can use most of your RAM. Speed: the stack is faster, but the heap is still fast enough for almost everything. Cleaning up: the stack cleans itself when a function returns; the heap is your job, with free. Lifetime: stack memory dies with its function; heap memory lives until you free it. Rule of thumb: small and short-lived, use the stack. Big, or needs to outlive the function, or size known only while running, use the heap."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 295,
+      "lengthSec": 65,
+      "onScreen": "`int big[10000000];` inside `main`; crash; then the `malloc` fix",
+      "animation": "Stack column fills from the bottom and bursts through the top; crash crunch; fixed version moves the block to the heap with a crate drop",
+      "sfx": [],
+      "narration": "Today's bug: a huge array on the stack. int big square bracket ten million, inside main. Ten million ints is 40 megabytes. The stack on Windows is 1 megabyte. GCC compiles it without a warning. But when you run it, the stack overflows. This is the real \"stack overflow\". On Linux you see segmentation fault. On Windows the program just closes, without printing anything. The fix: put big data on the heap. int star big equals malloc of ten million times sizeof int. Check for NULL. Use it like an array, with big square bracket 0, because from EP 57 you know a square bracket i is just star of big plus i. And free it at the end."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 360,
+      "lengthSec": 25,
+      "onScreen": "\"Explain stack vs heap in 3 lines\" task card",
+      "animation": "Three blank lines fill with a typing sound; Xecxec taps",
+      "sfx": [],
+      "narration": "Your challenge is in words, not code. In the comments, explain stack versus heap in three lines: where locals go, where malloc memory goes, and who cleans up each one. Bonus: say which one you would use for an array of one lakh ints, and why."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 385,
+      "lengthSec": 20,
+      "onScreen": "\"Next: EP 66 · malloc & free — borrow memory, return it\"",
+      "animation": "A crate handed over and handed back; sign-off",
+      "sfx": [],
+      "narration": "Now you know where memory lives. Next episode, we master malloc and free properly, and allocate exactly as much memory as the user asks for. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int big[10000000];\n    big[0] = 1;\n    printf(\"%d\\n\", big[0]);\n    return 0;\n}",
+    "error": "`gcc -Wall bug.c` gives **no warning**. Running it overflows the stack (40 MB array, 1 MB default stack on Windows, 8 MB on Linux): `Segmentation fault` on Linux; on Windows the program exits without printing anything.",
+    "fixed": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int *big = malloc(10000000 * sizeof(int));\n    if (big == NULL) {\n        printf(\"Not enough memory\\n\");\n        return 1;\n    }\n    big[0] = 1;\n    printf(\"%d\\n\", big[0]);\n    free(big);\n    return 0;\n}",
+    "why": "local arrays live on the small stack; large data belongs on the heap, which can hold far more."
+  },
+  "pun": "\"Why did the variable move to the heap? The stack was too crowded.\"",
+  "challenge": "In three lines, explain stack vs heap: where locals go, where `malloc` memory goes, and who cleans up each. Bonus: where would you put an array of 1,00,000 ints, and why?",
+  "challengeAnswer": "Locals live on the stack and vanish automatically when their function returns. `malloc` memory lives on the heap and stays until you call `free`. The stack is small (about 1 MB on Windows), so 1,00,000 ints (400 KB) is risky there; use the heap with `malloc` and `free`.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Your room vs a godown",
+      "hook": "A shelf collapses under rice sacks: \"This is a stack overflow.\"",
+      "script": "Your C program has two places for data. The stack is your room: small, fast, and cleaned automatically when a function ends. The heap is a rented godown: big, and yours until you hand back the key. Locals go on the stack. malloc gives you heap memory.",
+      "onScreen": "STACK = ROOM · HEAP = GODOWN",
+      "fromScenes": [
+        1,
+        3,
+        4
+      ],
+      "lengthSec": 25,
+      "caption": "The easiest way to remember it.",
+      "hashtags": [
+        "cprogramming",
+        "memory",
+        "kodingkonkani",
+        "learntocode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Stack vs heap in 30 seconds",
+      "hook": "Two columns slam in: STACK and HEAP.",
+      "script": "Stack: small, about one megabyte on Windows, very fast, cleaned automatically, dies with the function. Heap: big, slightly slower, you clean it with free, lives until you free it. Small and short-lived? Stack. Big, or needs to outlive the function? Heap.",
+      "onScreen": "SMALL → STACK · BIG → HEAP",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 30,
+      "caption": "Screenshot this for your exam.",
+      "hashtags": [
+        "cprogramming",
+        "memory",
+        "kodingkonkani",
+        "codingtips",
+        "stackvsheap"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The real stack overflow",
+      "hook": "A stack column bursting through its top.",
+      "script": "int big of ten million, inside main. 40 megabytes. The Windows stack is 1 megabyte. No warning from GCC, but the program dies instantly. That's a real stack overflow. Fix: malloc it on the heap, check for NULL, and free it at the end.",
+      "onScreen": "40 MB DOES NOT FIT IN 1 MB",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Now you know where the website got its name.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "stackoverflow",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Too crowded",
+      "hook": "Xecxec squeezed between plates on a plate rack.",
+      "script": "Why did the variable move to the heap? The stack was too crowded.",
+      "onScreen": "THE STACK WAS TOO CROWDED",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Moving day for variables.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "memory"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: stack or heap?",
+      "hook": "\"1,00,000 ints. Stack or heap?\"",
+      "script": "Quick quiz. An int counter in a loop: stack or heap? Stack. An array of one lakh ints that a function must return: stack or heap? Heap, because it's big and must outlive the function. Explain stack versus heap in three lines in the comments.",
+      "onScreen": "STACK OR HEAP?",
+      "fromScenes": [
+        8,
+        10
+      ],
+      "lengthSec": 25,
+      "caption": "Comment your three lines.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "memory",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <stdlib.h>\n\nint global_count = 0;\n\nvoid visit(void) {\n    int local = 5;\n    printf(\"local in visit() at   %p (stack)\\n\", (void *)&local);\n}\n\nint main(void) {\n    int room = 1;\n    int *godown = malloc(sizeof(int));\n    if (godown == NULL) {\n        return 1;\n    }\n    *godown = 500;\n\n    printf(\"room in main() at     %p (stack)\\n\", (void *)&room);\n    visit();\n    printf(\"global_count at       %p (global)\\n\", (void *)&global_count);\n    printf(\"heap int at           %p (heap), value %d\\n\", (void *)godown, *godown);\n\n    free(godown);\n    return 0;\n}",
+      "output": "room in main() at     0x7ffcd9774c2c (stack)\nlocal in visit() at   0x7ffcd9774c04 (stack)\nglobal_count at       0x56265c7e2014 (global)\nheap int at           0x56265e58e2a0 (heap), value 500",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1"
+  }
+}

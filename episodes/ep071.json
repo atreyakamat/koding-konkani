@@ -1,0 +1,293 @@
+{
+  "ep": 71,
+  "title": "Binary Files and Records",
+  "module": 11,
+  "lengthSec": 450,
+  "colours": {
+    "bg": "#FFB88A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain the difference between text files and binary files",
+    "save and load an array of structs with `fwrite` and `fread`, checking how many records were transferred",
+    "jump straight to record N with `fseek` and measure a file with `ftell`",
+    "update one record in place with `\"r+b\"` mode, and always use `b` modes for binary data"
+  ],
+  "youtube": {
+    "title": "Build a Tiny Database in C: fwrite, fread, fseek | C EP 71",
+    "description": "Text files are great for people. Binary files are great for programs. We save three student structs in one fwrite call, read them back, jump straight to record 2 with fseek, edit one record in place, and fix the Windows text-mode bug that eats your data. 0:00 Challenge answer and hook 0:30 Text vs binary 1:15 Saving structs with fwrite 2:45 Reading records with fread 3:50 Jumping with fseek and ftell 4:40 Updating one record 5:30 Bug of the Day: text mode for binary data 6:55 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Challenge answer and hook 0:30 Text vs binary 1:15 Saving structs with fwrite 2:45 Reading records with fread 3:50 Jumping with fseek and ftell 4:40 Updating one record 5:30 Bug of the Day: text mode for binary data 6:55 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "binary file in c",
+      "fwrite in c",
+      "fread in c",
+      "fseek in c",
+      "ftell",
+      "file handling in c",
+      "structure in file",
+      "student record program c",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "TINY DATABASE",
+      "visual": "big text \"TINY DATABASE\"; three record cards stacked in a filing drawer with byte numbers 0, 28, 56 on the tabs; Xecxec as a librarian pulling out card 2; Apricot background, Dark blue blocks.",
+      "pose": "Xecxec as a librarian pulling out card 2"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 30,
+      "onScreen": "EP 70 challenge: line counter on `diary.txt`; then a school office clerk flipping through a huge register",
+      "animation": "Typing SFX; register pages flip, Xecxec yawns",
+      "sfx": [],
+      "narration": "Last challenge: ask for a file name, open it with \"r\", and count lines with fgets until it returns NULL. On diary dot txt, you get 4. Now think about the school office register. Hundreds of students, one row each. To find roll number 250, the clerk flips page after page. Today we build a tiny database in C, where we can jump straight to any record."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 30,
+      "lengthSec": 5,
+      "onScreen": "EP 71 · BINARY FILES & RECORDS",
+      "animation": "Apricot card, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode seventy-one. Binary files and records."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 35,
+      "lengthSec": 40,
+      "onScreen": "Number 1000 stored as text (4 characters '1','0','0','0') vs as an int (4 raw bytes in Lilac)",
+      "animation": "Characters type in; raw bytes slide in as hex boxes; \"people read\" vs \"programs read\" labels",
+      "sfx": [],
+      "narration": "So far our files were text: characters people can read. If we save the number 1000 as text, we store four characters: 1, 0, 0, 0. To get the number back, the program has to read the characters and convert them. A binary file stores the bytes exactly as they sit in memory. The int 1000 is just its 4 raw bytes, usually. Open it in Notepad and you'll see junk, but your program can load it back instantly. And every record is the same size, which is the secret to jumping straight to one."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 75,
+      "lengthSec": 90,
+      "onScreen": "`binwrite.c` with an array of 3 struct cards",
+      "animation": "Three cards fly into a file drawer in one move; size badge \"28 bytes each\" with \"your size may differ\" note",
+      "sfx": [],
+      "narration": "[HL 3] Here's our record: struct Student, with roll, an int, name, 20 characters, and marks, a float. You built structs like this in Module 9. [HL 10] An array of 3 students, filled in right here. [HL 16] fopen, \"students dot dat\", \"wb\". The b means binary. [HL 17] NULL check with perror, as always. [HL 22] size_t written equals fwrite, s, sizeof struct Student, 3, fp. fwrite takes four things: where the data starts, the size of one item, how many items, and the file. So: from the array s, write 3 items, each the size of one Student. It returns how many items it actually wrote. size_t is the unsigned type C uses for sizes and counts. [HL 23] fclose. [HL 25] Print \"Wrote\", percent z u, written. Percent z u is the format for size_t. We get 3. [HL 26] And the size of one record: 28 bytes on our machine. 4 for the int, 20 for the name, 4 for the float. Your size may differ on other machines, and padding can add extra bytes, as you saw in Episode 64. One call, three whole records saved."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 60,
+      "onScreen": "`binread.c` lines 1–22 (fread loop)",
+      "animation": "Cards pull out one at a time into the `st` box; return value badge shows 1, 1, 1, then 0",
+      "sfx": [],
+      "narration": "Now let's read them back. [HL 10] fopen with \"rb\", read binary. [HL 16] struct Student st, one empty record box. [HL 18] while fread, address of st, sizeof st, 1, fp, equals 1. fread is fwrite's twin: where to put the data, the size of one item, how many, and the file. We read one record at a time. It returns how many records it read. 1 means success. At the end of the file it returns 0, and the loop stops. Same rule as last episode: loop on the read function's result. [TRACK st.roll=1] [HL 19] Print roll, name and marks. 1, Ravi, 72.5. [TRACK st.roll=2] 2, Anjali, 88.0. [TRACK st.roll=3] 3, Xecxec, 95.5. Exactly what we saved."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 225,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec in a librarian bun, rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the binary file make a great librarian? It always kept its records straight."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 230,
+      "lengthSec": 50,
+      "onScreen": "`binread.c` lines 24–32 (fseek, ftell)",
+      "animation": "File position cursor jumps from byte 0 to 28; then to the end, ruler shows 84 bytes",
+      "sfx": [],
+      "narration": "Now the magic. Every record is 28 bytes. So record 1 starts at byte 0, record 2 at byte 28, record 3 at byte 56. To read record 2, we don't need to read record 1 first. [HL 25] fseek, fp, 1 times sizeof st, SEEK_SET. fseek moves the file's reading position. SEEK_SET means \"count from the start of the file\". So we jump to byte 28. We cast sizeof to long because fseek expects a long offset. [HL 26] fread one record. [HL 27] \"Record 2 is Anjali\". Straight there, no flipping pages. [HL 29] fseek, fp, 0, SEEK_END: jump to the very end. [HL 30] ftell tells us the current position in bytes. At the end, that's the file size: 84. [HL 31] 84 divided by 28 is 3 records. That's how a program can count records without reading them."
+    },
+    {
+      "id": 8,
+      "template": "code-explain",
+      "startSec": 280,
+      "lengthSec": 50,
+      "onScreen": "`update.c`",
+      "animation": "Cursor jumps to byte 56, card lifted, marks 95.5 → 99.0 in Mint, put back in the same slot",
+      "sfx": [],
+      "narration": "Last trick: changing one record without rewriting the whole file. Xecxec got a re-evaluation. [HL 11] fopen with \"r plus b\": read and write, binary, and the file must exist. [HL 18] pos equals 2 times sizeof st. Record 3 starts at byte 56. [HL 20] fseek to pos. [HL 21] fread the record into st. [TRACK st.marks=95.5] [HL 22] Change marks to 99. [TRACK st.marks=99.0] [HL 24] fseek back to pos. Why again? Reading moved the position forward by 28 bytes. We must go back to overwrite the same slot. Also, C requires a fseek between reading and writing on the same file. [HL 25] fwrite the record. [HL 26] fclose. Run the reader again: Xecxec now has 99.0, and the file is still 84 bytes. One record changed, nothing else touched. That's a tiny database."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 330,
+      "lengthSec": 85,
+      "onScreen": "`rolls.c` uses `\"w\"`/`\"r\"` for binary ints on Windows",
+      "animation": "Apricot frame with Butter highlight; byte strip: 0A becomes 0D 0A on write; 1A acts as a stop sign on read; \"Windows only\" badge; fix to `\"wb\"`/`\"rb\"` (Mint)",
+      "sfx": [],
+      "narration": "Today's bug only shows up on Windows, which is exactly where you're coding. This program saves three ints, 10, 26 and 30, but opens the file with \"w\" and \"r\" instead of \"wb\" and \"rb\". Compile: no error, no warning. On Linux it works fine. On Windows it prints \"Read 1 of 3 numbers\". Where did the other two go? In text mode, Windows does two conversions. When writing, every byte with value 10, the newline, becomes two bytes, 13 and 10. When reading, a byte with value 26, which is Control Z, is treated as end of file. Our int 10 contains a byte 10, and our int 26 contains a byte 26. So the file is corrupted on the way in, and reading stops early on the way out. The fix: always use \"wb\", \"rb\" and \"r plus b\" for binary data. In binary mode, bytes go to the disk exactly as they are."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 415,
+      "lengthSec": 20,
+      "onScreen": "\"Save 3 shop items as structs, then read and print them\"",
+      "animation": "Bebinca, kokad and feni cards appear, timer ring",
+      "sfx": [],
+      "narration": "Your challenge: make a struct Item with an id, a name and a quantity. Fill an array with three items from a Goan sweet shop: bebinca, kokad and feni. Save them to items dot dat with one fwrite, then open the file again and print every record with fread."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 435,
+      "lengthSec": 15,
+      "onScreen": "Module 11 complete badge; Next: EP 72",
+      "animation": "Badge stamp, Xecxec waves, end card",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "That's Module 11 complete! Your programs can now remember things after they close. Next episode, we start Module 12: algorithms, where we teach C to search and sort. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int rolls[3] = {10, 26, 30};\n\n    FILE *fp = fopen(\"rolls.dat\", \"w\");\n    if (fp == NULL) {\n        perror(\"rolls.dat\");\n        return 1;\n    }\n    fwrite(rolls, sizeof(int), 3, fp);\n    fclose(fp);\n\n    int back[3] = {0, 0, 0};\n    fp = fopen(\"rolls.dat\", \"r\");\n    if (fp == NULL) {\n        perror(\"rolls.dat\");\n        return 1;\n    }\n    size_t got = fread(back, sizeof(int), 3, fp);\n    fclose(fp);\n\n    printf(\"Read %zu of 3 numbers\\n\", got);\n    return 0;\n}",
+    "error": "No compiler error or warning. On Windows (MSYS2 UCRT64) the expected wrong output is below, and `rolls.dat` is 13 bytes instead of 12. On Linux and macOS text and binary modes are the same, so it prints `Read 3 of 3 numbers`. On screen: \"Windows only\".\n\nRead 1 of 3 numbers",
+    "fixed": "    FILE *fp = fopen(\"rolls.dat\", \"wb\");\n    ...\n    fp = fopen(\"rolls.dat\", \"rb\");",
+    "why": "In Windows text mode, byte 10 is written as 13 10 and byte 26 (Ctrl+Z) is read as end of file, so binary data must use `\"wb\"`/`\"rb\"`."
+  },
+  "pun": "Why did the binary file make a great librarian? It always kept its records straight.",
+  "challenge": "Make `struct Item { int id; char name[20]; int qty; }`, save 3 items (Bebinca 12, Kokad 30, Feni 5) to `items.dat` with one `fwrite`, then read and print them with `fread`.",
+  "challengeAnswer": "(worked example)\nstruct Item {\n    int id;\n    char name[20];\n    int qty;\n};\n\nint main(void) {\n    struct Item items[3] = {{1, \"Bebinca\", 12}, {2, \"Kokad\", 30}, {3, \"Feni\", 5}};\n\n    FILE *fp = fopen(\"items.dat\", \"wb\");\n    if (fp == NULL) { perror(\"items.dat\"); return 1; }\n    fwrite(items, sizeof(struct Item), 3, fp);\n    fclose(fp);\n\n    struct Item it;\n    fp = fopen(\"items.dat\", \"rb\");\n    if (fp == NULL) { perror(\"items.dat\"); return 1; }\n    while (fread(&it, sizeof it, 1, fp) == 1) {\n        printf(\"%d %-8s %d\\n\", it.id, it.name, it.qty);\n    }\n    fclose(fp);\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Find Roll Number 250 Instantly",
+      "hook": "A clerk flipping a giant register, sweating",
+      "script": "The office clerk flips 250 pages to find one student. In a binary file, every record is the same size. So record N starts at N times the record size. fseek jumps straight there. No flipping. Full episode on Koding Konkani.",
+      "onScreen": "FLIP 250 PAGES? / fseek / JUMP STRAIGHT THERE",
+      "fromScenes": [
+        1,
+        7
+      ],
+      "lengthSec": 20,
+      "caption": "A tiny database in C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "filehandling",
+        "fseek"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "fwrite and fread in 30 Seconds",
+      "hook": "Three record cards flying into a drawer",
+      "script": "fwrite saves raw bytes: where the data is, size of one item, how many, and the file. One call can save a whole array of structs. fread is its twin and loads them back. Both return how many items they handled, so loop while fread returns 1. Open with \"wb\" and \"rb\".",
+      "onScreen": "fwrite(data, size, count, fp) / fread = TWIN",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Save whole structs in one line.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "fwrite",
+        "fread"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Windows Ate My Data",
+      "hook": "\"Read 1 of 3 numbers\" in Tomato",
+      "script": "Saved three numbers, read back one. Why? I opened a binary file with \"w\" and \"r\". On Windows, text mode turns byte 10 into two bytes, and treats byte 26 as end of file. My numbers 10 and 26 broke it. Always use \"wb\" and \"rb\" for binary data.",
+      "onScreen": "3 SAVED, 1 READ?! / TEXT MODE / USE \"wb\" \"rb\"",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "One missing letter b.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "windows"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: Records Straight",
+      "hook": "Xecxec in a librarian bun",
+      "script": "Why did the binary file make a great librarian? It always kept its records straight.",
+      "onScreen": "RECORDS STRAIGHT",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 10,
+      "caption": "Organised to the byte.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Where Does Record 4 Start?",
+      "hook": "File ruler with byte marks",
+      "script": "Each record is 28 bytes. Record 1 starts at byte 0. Where does record 4 start? 3 times 28: byte 84. Comment if you got it.",
+      "onScreen": "28 BYTES EACH / RECORD 4 = ? / BYTE 84",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 15,
+      "caption": "fseek maths in 10 seconds.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "fseek"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nstruct Student {\n    int roll;\n    char name[20];\n    float marks;\n};\n\nint main(void) {\n    struct Student s[3] = {\n        {1, \"Ravi\", 72.5f},\n        {2, \"Anjali\", 88.0f},\n        {3, \"Xecxec\", 95.5f}\n    };\n\n    FILE *fp = fopen(\"students.dat\", \"wb\");\n    if (fp == NULL) {\n        perror(\"students.dat\");\n        return 1;\n    }\n\n    size_t written = fwrite(s, sizeof(struct Student), 3, fp);\n    fclose(fp);\n\n    printf(\"Wrote %zu records\\n\", written);\n    printf(\"Each record is %zu bytes\\n\", sizeof(struct Student));\n    return 0;\n}",
+      "output": "Wrote 3 records\nEach record is 28 bytes",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nstruct Student {\n    int roll;\n    char name[20];\n    float marks;\n};\n\nint main(void) {\n    FILE *fp = fopen(\"students.dat\", \"rb\");\n    if (fp == NULL) {\n        perror(\"students.dat\");\n        return 1;\n    }\n\n    struct Student st;\n\n    while (fread(&st, sizeof st, 1, fp) == 1) {\n        printf(\"%d  %-8s %.1f\\n\", st.roll, st.name, st.marks);\n    }\n\n    /* Jump straight to record 2 (index 1) */\n    fseek(fp, 1 * (long)sizeof st, SEEK_SET);\n    fread(&st, sizeof st, 1, fp);\n    printf(\"Record 2 is %s\\n\", st.name);\n\n    fseek(fp, 0, SEEK_END);\n    long size = ftell(fp);\n    printf(\"File size: %ld bytes, %ld records\\n\", size, size / (long)sizeof st);\n\n    fclose(fp);\n    return 0;\n}",
+      "output": "1  Ravi     72.5\n2  Anjali   88.0\n3  Xecxec   95.5\nRecord 2 is Anjali\nFile size: 84 bytes, 3 records",
+      "lang": "c"
+    },
+    {
+      "file": "file3.c",
+      "source": "#include <stdio.h>\n\nstruct Student {\n    int roll;\n    char name[20];\n    float marks;\n};\n\nint main(void) {\n    FILE *fp = fopen(\"students.dat\", \"r+b\");\n    if (fp == NULL) {\n        perror(\"students.dat\");\n        return 1;\n    }\n\n    struct Student st;\n    long pos = 2 * (long)sizeof st;\n\n    fseek(fp, pos, SEEK_SET);\n    fread(&st, sizeof st, 1, fp);\n    st.marks = 99.0f;\n\n    fseek(fp, pos, SEEK_SET);\n    fwrite(&st, sizeof st, 1, fp);\n    fclose(fp);\n\n    printf(\"Updated %s to %.1f\\n\", st.name, st.marks);\n    return 0;\n}",
+      "output": "Updated Xecxec to 99.0",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "Read 3 of 3 numbers"
+  }
+}

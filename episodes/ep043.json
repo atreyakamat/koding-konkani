@@ -1,0 +1,349 @@
+{
+  "ep": 43,
+  "title": "Searching: Finding Your Name in the Register",
+  "module": 6,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a linear search that returns the index or -1",
+    "explain how binary search halves the range with low, mid and high",
+    "write a correct binary search loop",
+    "know that binary search only works on a sorted array"
+  ],
+  "youtube": {
+    "title": "Linear vs Binary Search in C, Explained | EP 43",
+    "description": "How do you find one roll number among a thousand? Check every name, or cut the register in half again and again. Learn linear search and binary search in C, step by step, and why binary search gives wrong answers on unsorted data. 0:00 The register · 0:20 Title · 0:25 Linear search · 1:05 Linear code · 2:05 Binary search idea · 3:05 Binary code · 4:50 Running it · 5:10 How fast? · 5:30 Pun · 5:35 Bug of the Day · 6:25 Challenge · 6:50 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The register"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Linear search"
+      },
+      {
+        "t": "1:05",
+        "label": "Linear code"
+      },
+      {
+        "t": "2:05",
+        "label": "Binary search idea"
+      },
+      {
+        "t": "3:05",
+        "label": "Binary code"
+      },
+      {
+        "t": "4:50",
+        "label": "Running it"
+      },
+      {
+        "t": "5:10",
+        "label": "How fast?"
+      },
+      {
+        "t": "5:30",
+        "label": "Pun"
+      },
+      {
+        "t": "5:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:50",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "linear search in c",
+      "binary search in c",
+      "searching in c",
+      "binary search explained",
+      "arrays in c",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "data structures c",
+      "c interview questions"
+    ],
+    "thumbnail": {
+      "text": "FIND IT IN 10 STEPS",
+      "visual": "big text \"FIND IT IN 10 STEPS\"; a stack of 1000 roll-number cards being cut in half by a giant claw; Xecxec smug with arms crossed; dark-blue \"mid\" arrow",
+      "pose": "Xecxec smug with arms crossed"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Attendance register, 1000 roll numbers, \"Find roll 26\"",
+      "animation": "Pages flip fast; Xecxec yawning with a finger running down the page; page-flip SFX",
+      "sfx": [],
+      "narration": "The teacher hands you the attendance register and says, find roll number 26. You start at the top and go one by one. That works. But imagine the register had a thousand names. There is a smarter way, and by the end of this video your program will find any name in a thousand in about ten steps."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 43 · SEARCHING",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 43. Searching."
+    },
+    {
+      "id": 3,
+      "template": "algorithm-bars",
+      "startSec": 25,
+      "lengthSec": 40,
+      "onScreen": "Eight boxes 3 8 12 17 21 26 30 35; checker moves left to right",
+      "animation": "Current box in butter, match turns mint; tick per check, ding on match",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "The simple way is called linear search. Linear means in a line. Start at the first box. Is it 26? No. Next box. No. Keep going until you find it, or until you run out of boxes. Here, 26 sits at index five, so we checked six boxes. If the value is not there at all, we check every single box before we can say \"not found\"."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 65,
+      "lengthSec": 60,
+      "onScreen": "Linear search part of ep43_search.c",
+      "animation": "Line highlights; tracker shows i, found",
+      "sfx": [],
+      "narration": "Here is the code. [HL 4] Line four: eight roll numbers. [HL 6] Line six: target is the number we want, 26. [HL 9] Line nine: found starts at minus one. Minus one can never be a real index, so it is our signal for \"not found yet\". [TRACK found=-1] [HL 10] Line ten, the usual loop over every index. [HL 11] Line eleven: if rolls i equals target, [TRACK i=5] [HL 12] save the index in found, [TRACK found=5] [HL 13] and break, from EP 29, to stop the loop early. No need to keep looking once we have it. [HL 16] Line sixteen prints the result: index five. Simple, and it works on any array, sorted or not.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int rolls[8] = {3, 8, 12, 17, 21, 26, 30, 35};\n    int n = 8;\n    int target = 26;\n\n    /* Linear search */\n    int found = -1;\n    for (int i = 0; i < n; i++) {\n        if (rolls[i] == target) {\n            found = i;\n            break;\n        }\n    }\n    printf(\"Linear: found at index %d\\n\", found);\n\n    /* Binary search (array must be sorted) */\n    int low = 0, high = n - 1, pos = -1;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (rolls[mid] == target) {\n            pos = mid;\n            break;\n        } else if (rolls[mid] < target) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    printf(\"Binary: found at index %d\\n\", pos);\n    return 0;\n}",
+        "output": "Linear: found at index 5\nBinary: found at index 5"
+      }
+    },
+    {
+      "id": 5,
+      "template": "algorithm-bars",
+      "startSec": 125,
+      "lengthSec": 60,
+      "onScreen": "Same eight boxes; low, mid, high arrows; half greys out each step",
+      "animation": "Grey-out sweep; snip SFX per halving",
+      "sfx": [],
+      "narration": "Now the smart way. Notice our roll numbers are sorted, smallest to largest. That is the key. Binary search looks at the middle box first. low is the first index, zero. high is the last, seven. mid is zero plus seven, divided by two, which is three in integer division. rolls three is 17. Is 26 bigger than 17? Yes. So 26 cannot be anywhere on the left half. Throw that half away. Now low becomes four. New mid is four plus seven by two, five. rolls five is 26. Found it, in two steps instead of six. Every step cuts the remaining boxes in half. It is like the Kadamba bus conductor who knows the stops are in order: if you say Panjim, he does not check every seat; he knows exactly which half of the route you belong to."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 185,
+      "lengthSec": 105,
+      "onScreen": "Binary search part of ep43_search.c",
+      "animation": "Line highlights; tracker shows low, high, mid, pos",
+      "sfx": [],
+      "narration": "Let's read it. [HL 19] Line nineteen sets up three variables. low equals zero, high equals n minus one, and pos equals minus one for \"not found\". [TRACK low=0 high=7 pos=-1] [HL 20] Line twenty: while low is less than or equal to high. As long as there is at least one box left to check, keep going. [HL 21] Line twenty-one finds the middle. [TRACK mid=3] [HL 22] Line twenty-two: if the middle value is our target, [HL 23] save it and break. [HL 25] Line twenty-five: else if the middle value is smaller than the target, the target must be on the right side. [HL 26] So low becomes mid plus one. [TRACK low=4] Plus one, because we already checked mid. [HL 27] Otherwise, the middle value is bigger, the target is on the left, [HL 28] and high becomes mid minus one. [TRACK mid=5 pos=5] Back to the top of the loop, new mid is five, rolls five is 26, pos becomes five, and we break. [HL 31] Line thirty-one prints the answer. And if the target is not there at all, low and high cross over, the loop ends, and pos stays minus one.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int rolls[8] = {3, 8, 12, 17, 21, 26, 30, 35};\n    int n = 8;\n    int target = 26;\n\n    /* Linear search */\n    int found = -1;\n    for (int i = 0; i < n; i++) {\n        if (rolls[i] == target) {\n            found = i;\n            break;\n        }\n    }\n    printf(\"Linear: found at index %d\\n\", found);\n\n    /* Binary search (array must be sorted) */\n    int low = 0, high = n - 1, pos = -1;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (rolls[mid] == target) {\n            pos = mid;\n            break;\n        } else if (rolls[mid] < target) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    printf(\"Binary: found at index %d\\n\", pos);\n    return 0;\n}",
+        "output": "Linear: found at index 5\nBinary: found at index 5"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 290,
+      "lengthSec": 20,
+      "onScreen": "gcc ep43_search.c -o ep43 then ./ep43",
+      "animation": "Two lines print, both index 5",
+      "sfx": [],
+      "narration": "Compile and run. Linear: found at index five. Binary: found at index five. Same answer, but binary took two steps, linear took six."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 310,
+      "lengthSec": 20,
+      "onScreen": "Steps for 1,000 items: linear up to 1000, binary about 10",
+      "animation": "Two counters race; binary finishes in a blink; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "With a thousand sorted items, linear search may need a thousand checks. Binary search needs about ten, because halving a thousand ten times gets you down to one. With a million items, binary search needs about twenty. That is why it is one of the most famous ideas in computer science."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 330,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why is binary search so calm? It never gets more than half worried."
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 335,
+      "lengthSec": 50,
+      "onScreen": "Binary search on an unsorted array returns -1 for a value that is there",
+      "animation": "Boxes shuffled; arrows skip right past 21; alarm buzz",
+      "sfx": [],
+      "narration": "Today's bug. Same binary search code, but the array is not sorted: 21, 3, 35, 12, 30, 8, 26, 17. We search for 21. It is right there at index zero. Compile, no errors. Run it. Binary: found at index minus one. Not found! Here is why. mid is three, the value is 12. 21 is bigger, so binary search throws away the left half, including index zero, where 21 actually was. Binary search trusts that the array is sorted. If it is not, it throws away the wrong half. The fix: sort the array first, or use linear search. And how do we sort? That is next episode."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 385,
+      "lengthSec": 25,
+      "onScreen": "Search a roll number typed by the user",
+      "animation": "Keyboard icon, ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. Use the sorted roll numbers. Ask the user to type a roll number with scanf. Use binary search to find it. If found, print \"Roll 30 is at position 7\", where position is the index plus one. If not found, print \"Roll 9 is not in the class\"."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 410,
+      "lengthSec": 10,
+      "onScreen": "Next: EP 44 Sorting intro",
+      "animation": "Xecxec lining up shells by size; sign-off",
+      "sfx": [],
+      "narration": "Next episode: why order matters, and how to swap two values. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    int rolls[8] = {21, 3, 35, 12, 30, 8, 26, 17};\n    int n = 8;\n    int target = 21;\n    int low = 0, high = n - 1, pos = -1;\n\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (rolls[mid] == target) {\n            pos = mid;\n            break;\n        } else if (rolls[mid] < target) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    printf(\"Binary: found at index %d\\n\", pos);\n    return 0;\n}",
+    "error": "No error, no warning. Wrong output (21 is at index 0):\n\nBinary: found at index -1",
+    "fixed": "    int rolls[8] = {3, 8, 12, 17, 21, 26, 30, 35};",
+    "why": "binary search throws away half the array based on the middle value, which is only safe when every value on the left is smaller and every value on the right is bigger."
+  },
+  "pun": "Why is binary search so calm? It never gets more than half worried.",
+  "challenge": "Read a roll number with scanf, binary search the sorted array, and print its position (index + 1) or \"not in the class\".",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint main() {\n    int rolls[8] = {3, 8, 12, 17, 21, 26, 30, 35};\n    int n = 8;\n    int target;\n\n    printf(\"Enter roll number: \");\n    scanf(\"%d\", &target);\n\n    int low = 0, high = n - 1, pos = -1;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (rolls[mid] == target) {\n            pos = mid;\n            break;\n        } else if (rolls[mid] < target) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    if (pos == -1) {\n        printf(\"Roll %d is not in the class\\n\", target);\n    } else {\n        printf(\"Roll %d is at position %d\\n\", target, pos + 1);\n    }\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "1000 Names, 10 Steps",
+      "hook": "Giant register: \"Find one name in 1000. In 10 steps.\"",
+      "script": "Find one name in a thousand, in about ten steps. Impossible? Not if the list is sorted. Look at the middle. Too small? Throw away the left half. Too big? Throw away the right half. Repeat. That is binary search.",
+      "onScreen": "1000 NAMES → 10 STEPS",
+      "fromScenes": [
+        1,
+        5
+      ],
+      "lengthSec": 25,
+      "caption": "The trick behind every fast search.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "binarysearch",
+        "algorithms"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Binary Search in 30 Seconds",
+      "hook": "low, mid, high arrows over eight boxes.",
+      "script": "Three arrows: low, mid, high. mid is low plus high, divided by two. If the middle value is your target, done. If it is smaller, move low to mid plus one. If it is bigger, move high to mid minus one. Keep going while low is less than or equal to high.",
+      "onScreen": "low · mid · high",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "Binary search, the whole idea.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "binarysearch",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "It's Right There!",
+      "hook": "Terminal: \"found at index -1\" with 21 glowing at index 0.",
+      "script": "21 is right there at index zero, but binary search says not found. Why? The array is not sorted. The middle value was 12, 21 is bigger, so it threw away the left half, the half that had 21. Binary search only works on sorted data.",
+      "onScreen": "UNSORTED + BINARY SEARCH = WRONG",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Binary search has one rule. Break it and it lies.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "debugging"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Half Worried",
+      "hook": "Xecxec meditating on a split coconut half.",
+      "script": "Why is binary search so calm? It never gets more than half worried.",
+      "onScreen": "NEVER MORE THAN HALF WORRIED",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 12,
+      "caption": "Stay calm, cut in half.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "How Many Steps?",
+      "hook": "\"1,000,000 sorted items. Binary search needs how many steps?\"",
+      "script": "A million sorted items. How many steps does binary search need? Pause and guess. About twenty. Each step halves the list, and halving a million about twenty times leaves one item. Linear search could need a million.",
+      "onScreen": "1,000,000 → ABOUT 20",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 20,
+      "caption": "Halving is a superpower.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "algorithms"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int rolls[8] = {3, 8, 12, 17, 21, 26, 30, 35};\n    int n = 8;\n    int target = 26;\n\n    /* Linear search */\n    int found = -1;\n    for (int i = 0; i < n; i++) {\n        if (rolls[i] == target) {\n            found = i;\n            break;\n        }\n    }\n    printf(\"Linear: found at index %d\\n\", found);\n\n    /* Binary search (array must be sorted) */\n    int low = 0, high = n - 1, pos = -1;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (rolls[mid] == target) {\n            pos = mid;\n            break;\n        } else if (rolls[mid] < target) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    printf(\"Binary: found at index %d\\n\", pos);\n    return 0;\n}",
+      "output": "Linear: found at index 5\nBinary: found at index 5",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "Binary: found at index 4"
+  }
+}

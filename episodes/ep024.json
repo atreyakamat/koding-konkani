@@ -1,0 +1,301 @@
+{
+  "ep": 24,
+  "title": "Logic puzzles in C",
+  "module": 3,
+  "lengthSec": 375,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "combine `&&`, `||` and `!` inside if conditions",
+    "turn a word rule (\"the sum of any two sides must be greater than the third\") into a C condition",
+    "order checks so invalid cases are rejected first",
+    "recognise that `a == b == c` does not mean \"all three equal\""
+  ],
+  "youtube": {
+    "title": "Can You Solve Xecxec's Triangle Riddle? | C Programming EP 24",
+    "description": "Give a program three numbers. Is it a triangle? What kind? Today we solve Xecxec's riddle by combining AND, OR and NOT into clear conditions, and we meet a condition that looks perfectly right but quietly lies. Chapters: 0:00 The riddle · 0:25 Rules to conditions · 1:15 Code line by line · 3:05 Running it · 3:40 Keep conditions simple · 4:20 Bug of the Day · 5:25 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The riddle"
+      },
+      {
+        "t": "0:25",
+        "label": "Rules to conditions"
+      },
+      {
+        "t": "1:15",
+        "label": "Code line by line"
+      },
+      {
+        "t": "3:05",
+        "label": "Running it"
+      },
+      {
+        "t": "3:40",
+        "label": "Keep conditions simple"
+      },
+      {
+        "t": "4:20",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:25",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "logical operators in c",
+      "triangle program in c",
+      "and or not in c",
+      "if else in c",
+      "decision making in c",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "c logic puzzles"
+    ],
+    "thumbnail": {
+      "text": "a == b == c ?",
+      "visual": "big text \"a == b == c ?\"; three sticks forming a triangle with a red question mark in the middle; Xecxec in a detective cap with a magnifying glass; mint background, dark blue blocks",
+      "pose": "Xecxec in a detective cap with a magnifying glass"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Xecxec holds three sticks of driftwood: 1, 2 and 10. \"Make a triangle.\"",
+      "animation": "Sticks drop on sand, fail to meet; boing",
+      "sfx": [],
+      "narration": "Xecxec found three sticks of driftwood on Morjim beach. Lengths 1, 2 and 10. He tries to make a triangle. The two short sticks cannot even reach each other. So here is his riddle: given any three lengths, can your program tell if they make a triangle, and what kind? By the end of this video, it will."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 24 · LOGIC PUZZLES IN C",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 24. Logic puzzles in C."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "Four word rules on cards, each turning into a C condition",
+      "animation": "Card flips: words on front, C on back; clicks",
+      "sfx": [],
+      "narration": "A logic puzzle is just rules in words. Our job is to turn each rule into a C condition, using the operators from EP 16. Rule one: every side must be more than zero. In C: if a is less than or equal to 0, OR b is, OR c is, reject it. Rule two: any two sides together must be longer than the third. If even one pair fails, it is not a triangle. In C: a plus b less than or equal to c, OR b plus c less than or equal to a, OR a plus c less than or equal to b. Rule three: all sides equal is equilateral. That is a equals b AND b equals c. Rule four: exactly two sides equal is isosceles. a equals b, OR b equals c, OR a equals c. Notice the pattern. \"Any one of these\" becomes OR. \"All of these\" becomes AND."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 75,
+      "lengthSec": 110,
+      "onScreen": "ep24.c, 22 lines; trackers a, b, c",
+      "animation": "Line highlights; each sub-condition gets a true/false badge; key-tap SFX",
+      "sfx": [],
+      "narration": "Here is the solution. [HL 4] Line 4 makes three boxes, a, b and c. [HL 7] Line 7 reads all three with one scanf, three percent d's and three ampersands. The user types 5, 5 and 8. [TRACK a=5] [TRACK b=5] [TRACK c=8] [HL 9] Line 9 checks rule one. Is any side zero or less? 5, 5, 8. All positive, so false. Skip. [HL 11] Line 11 checks rule two. 5 plus 5 is 10. Is 10 less than or equal to 8? No. 5 plus 8 is 13, less than or equal to 5? No. 5 plus 8 again, less than or equal to 5? No. All three parts false, so the OR is false. It is a real triangle. [HL 13] Line 13: is a equal to b, AND b equal to c? 5 equals 5, true. 5 equals 8, false. True AND false is false. Not equilateral. [HL 15] Line 15: a equals b, OR b equals c, OR a equals c? The first part is already true. And here is a nice fact: with OR, once one part is true, C does not even check the rest. With AND, once one part is false, C stops too. This is called short-circuit evaluation. [HL 16] Line 16 prints \"Isosceles triangle\". Now notice the order of the ladder. Invalid first. Not-a-triangle second. Then the shapes. Why does line 15 not wrongly catch equilateral triangles? Because line 13 already caught them. First true wins, from EP 21. [HL 17] [HL 18] And the final else needs no condition at all. If we got here, it is a real triangle with no equal sides. Scalene.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    printf(\"Enter three sides: \");\n    scanf(\"%d %d %d\", &a, &b, &c);\n\n    if (a <= 0 || b <= 0 || c <= 0) {\n        printf(\"Sides must be positive.\\n\");\n    } else if (a + b <= c || b + c <= a || a + c <= b) {\n        printf(\"Not a triangle!\\n\");\n    } else if (a == b && b == c) {\n        printf(\"Equilateral triangle\\n\");\n    } else if (a == b || b == c || a == c) {\n        printf(\"Isosceles triangle\\n\");\n    } else {\n        printf(\"Scalene triangle\\n\");\n    }\n\n    return 0;\n}",
+        "output": "Enter three sides: 3 3 3\nEquilateral triangle\n\nEnter three sides: 5 5 8\nIsosceles triangle\n\nEnter three sides: 3 4 5\nScalene triangle\n\nEnter three sides: 1 2 10\nNot a triangle!\n\nEnter three sides: 0 4 4\nSides must be positive."
+      }
+    },
+    {
+      "id": 5,
+      "template": "terminal",
+      "startSec": 185,
+      "lengthSec": 30,
+      "onScreen": "Runs: 3 3 3, 5 5 8, 3 4 5, 1 2 10, 0 4 4",
+      "animation": "Typing SFX; matching triangle shape draws beside each output",
+      "sfx": [],
+      "narration": "Let's test every path. 3, 3, 3: equilateral. 5, 5, 8: isosceles. 3, 4, 5: scalene. 1, 2, 10: Xecxec's driftwood. Not a triangle! And 0, 4, 4: sides must be positive. Five inputs, five different paths. That is how you test a decision program: one input per path."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 215,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the triangle refuse to argue? Because it already had all the right angles. Well, the scalene one did."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "\"Keep it simple\": a long tangled condition untangled into three short rungs",
+      "animation": "Knot untangles animation",
+      "sfx": [],
+      "narration": "You could write this whole program as one giant if with ten ANDs and ORs. Please don't. Long conditions are hard to read and easy to get wrong. Three tips. One: one rule per rung of the ladder. Two: when you mix AND and OR, add brackets so the order is obvious. Remember EP 19, AND is checked before OR. Three: if a condition does not fit on one line, it is probably doing too much. Split it. Short rungs, clear answers."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 260,
+      "lengthSec": 65,
+      "onScreen": "a == b == c with 2, 2, 2 prints Not equilateral",
+      "animation": "Expression evaluates step by step in boxes; error buzz; fix swoosh",
+      "sfx": [],
+      "narration": "Today's bug looks perfectly right. a, b and c are all 2. The code says: if a equals equals b equals equals c, print equilateral. In maths, that reads \"all three are equal\". We run it, and it prints \"Not equilateral\"! Why? C does not read it like maths. It reads left to right, one comparison at a time. First, a equals b. 2 equals 2, true. And true in C is the number 1. Now C checks 1 equals c. Is 1 equal to 2? No. False. Plain gcc gives no error. With -Wall, GCC warns: suggest parentheses around comparison in operand of equals equals. That is GCC saying: are you sure this is what you meant? The fix: a equals b AND b equals c. Two separate comparisons joined with AND. Funny thing: with 1, 1 and 1, the broken version prints equilateral, by pure luck. That is why bugs like this survive testing."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 325,
+      "lengthSec": 30,
+      "onScreen": "Largest of 3 numbers",
+      "animation": "Three bars race up; timer ring",
+      "sfx": [],
+      "narration": "Your challenge: read three numbers and print the largest. Use AND to check if a is at least as big as both others. Then think: if a is not the largest, how many comparisons do you still need? Hint: only one. Answer in the comments."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 355,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 25 mini project quiz app; sign-off",
+      "animation": "Module tiles, claw-click, music out",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode is our first mini project of this module. We take if, else, switch and a score counter, and build a quiz app for your friends. EP 25. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int a = 2, b = 2, c = 2;\n\n    if (a == b == c) {\n        printf(\"Equilateral triangle\\n\");\n    } else {\n        printf(\"Not equilateral\\n\");\n    }\n\n    return 0;\n}",
+    "error": "Plain `gcc` gives no error. Wrong output:\n\nNot equilateral\n\nWith `gcc -Wall` (GCC 13):\n\nep24bug.c:6:11: warning: suggest parentheses around comparison in operand of '==' [-Wparentheses]\n    6 |     if (a == b == c) {\n      |         ~~^~~~",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int a = 2, b = 2, c = 2;\n\n    if (a == b && b == c) {\n        printf(\"Equilateral triangle\\n\");\n    } else {\n        printf(\"Not equilateral\\n\");\n    }\n\n    return 0;\n}",
+    "why": "`a == b == c` is read as `(a == b) == c`, which compares the result 1 (true) with `c`, so it only \"works\" when `c` happens to be 1."
+  },
+  "pun": "Why did the triangle refuse to argue? Because it already had all the right angles. Well, the scalene one did.",
+  "challenge": "Read three numbers and print the largest, using `&&` and as few comparisons as possible.",
+  "challengeAnswer": "(worked example)\nint a, b, c;\nscanf(\"%d %d %d\", &a, &b, &c);\nif (a >= b && a >= c)\n    printf(\"Largest: %d\\n\", a);\nelse if (b >= c)\n    printf(\"Largest: %d\\n\", b);\nelse\n    printf(\"Largest: %d\\n\", c);\n/* 4 9 2 -> Largest: 9 */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Xecxec's driftwood riddle",
+      "hook": "Three driftwood sticks (1, 2, 10) drop on sand and fail to meet. \"Triangle?\"",
+      "script": "Three sticks: 1, 2 and 10. Can they make a triangle? No. Any two sides together must be longer than the third. Your program can check that with one line of C: a plus b less than or equal to c, OR b plus c less than or equal to a, OR a plus c less than or equal to b. If any is true, it is not a triangle.",
+      "onScreen": "TRIANGLE OR NOT?",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Turning a maths rule into one line of C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "logicpuzzle",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "AND vs OR in 30 seconds",
+      "hook": "Two cards: \"ALL of these\" and \"ANY of these\"",
+      "script": "Turning words into conditions in 30 seconds. \"All of these are true\" becomes AND. \"Any one of these is true\" becomes OR. And C is lazy in a good way. With OR, the moment one part is true, it stops checking. With AND, the moment one part is false, it stops. That is called short-circuit evaluation.",
+      "onScreen": "ALL = && · ANY = ||",
+      "fromScenes": [
+        3,
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "The one trick for writing any condition in C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctutorial",
+        "programming"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "a == b == c lies",
+      "hook": "a = 2, b = 2, c = 2. Output: \"Not equilateral\". Xecxec drops his magnifying glass.",
+      "script": "All three are 2. The program says not equal. Why? C reads a equals b equals c left to right. a equals b is true, and true is 1. Then it checks: is 1 equal to c? c is 2. False. With -Wall, GCC warns: suggest parentheses around comparison. Fix: a equals b AND b equals c.",
+      "onScreen": "a == b == c IS NOT MATHS",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Looks right, compiles fine, totally wrong.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "All the right angles",
+      "hook": "A smug right triangle with sunglasses",
+      "script": "Why did the triangle refuse to argue? Because it already had all the right angles.",
+      "onScreen": "ALL THE RIGHT ANGLES",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 12,
+      "caption": "Geometry jokes, C edition.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What does 1 == 1 == 1 give?",
+      "hook": "\"1 == 1 == 1 → ?\"",
+      "script": "Quiz. In C, what is 1 equals equals 1 equals equals 1? Three, two, one. True! 1 equals 1 gives 1, and 1 equals 1 gives 1. So the broken code works by luck when the sides are 1. Try 2, 2, 2 and it fails. Now your challenge: print the largest of three numbers. Answer in the comments.",
+      "onScreen": "1 == 1 == 1 → ???",
+      "fromScenes": [
+        8,
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "Lucky bugs are the worst bugs.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "logicpuzzle"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int a, b, c;\n\n    printf(\"Enter three sides: \");\n    scanf(\"%d %d %d\", &a, &b, &c);\n\n    if (a <= 0 || b <= 0 || c <= 0) {\n        printf(\"Sides must be positive.\\n\");\n    } else if (a + b <= c || b + c <= a || a + c <= b) {\n        printf(\"Not a triangle!\\n\");\n    } else if (a == b && b == c) {\n        printf(\"Equilateral triangle\\n\");\n    } else if (a == b || b == c || a == c) {\n        printf(\"Isosceles triangle\\n\");\n    } else {\n        printf(\"Scalene triangle\\n\");\n    }\n\n    return 0;\n}",
+      "output": "Enter three sides: 3 3 3\nEquilateral triangle\n\nEnter three sides: 5 5 8\nIsosceles triangle\n\nEnter three sides: 3 4 5\nScalene triangle\n\nEnter three sides: 1 2 10\nNot a triangle!\n\nEnter three sides: 0 4 4\nSides must be positive.",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Equilateral triangle"
+  }
+}

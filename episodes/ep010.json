@@ -1,0 +1,300 @@
+{
+  "ep": 10,
+  "title": "Constants & #define",
+  "module": 1,
+  "lengthSec": 360,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "spot a magic number and replace it with a name",
+    "declare a `const` variable and know it cannot be changed",
+    "write a `#define` macro and know the preprocessor swaps it as text",
+    "avoid putting a semicolon at the end of a `#define`"
+  ],
+  "youtube": {
+    "title": "Pi Doesn't Change. Promise. | C Constants & #define EP 10",
+    "description": "Some values should never change: pi, a bus fare, the number of days in a week. Learn how to lock them with const and #define, why magic numbers make code hard to fix, and the semicolon that breaks every macro. 0:00 Pi doesn't change. Promise. 0:20 Magic numbers 1:00 const: a locked box 2:05 #define: find and replace 2:55 const or #define? 3:35 Bug of the Day: changing a const 4:30 Bonus bug: semicolon in #define 5:09 Challenge 5:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Pi doesn't change. Promise. 0:20 Magic numbers 1:00 const: a locked box 2:05 #define: find and replace 2:55 const or #define? 3:35 Bug of the Day: changing a const 4:30 Bonus bug: semicolon in #define 5:09 Challenge 5:44 Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "const in c",
+      "#define",
+      "macros in c",
+      "magic numbers",
+      "constants in c",
+      "preprocessor",
+      "read-only variable",
+      "c tutorial for beginners",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "LOCK IT",
+      "visual": "big text \"LOCK IT\"; a box with a padlock labelled PI = 3.14159; Xecxec trying to prise it open with a claw, failing.",
+      "pose": "Xecxec trying to prise it open with a claw, failing"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "code-explain",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "A program with `15` used in six places; \"Bus fare is now Rs 20. Find them all.\"",
+      "animation": "Search beam sweeps; five found, one missed blinks red; Xecxec facepalms",
+      "sfx": [],
+      "narration": "Here's a program for bus fares. The fare, fifteen rupees, appears in six places. Tomorrow, the fare goes up to twenty. You change five of them. You miss one. Now your program is wrong, and nobody knows why. There's a better way.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\n#define BUS_FARE 15          // macro: text swap before compiling\n\nint main(void)\n{\n    const float PI = 3.14159f;  // const: a variable that cannot change\n    float radius = 7.0f;\n\n    float area = PI * radius * radius;\n    printf(\"Area: %.2f\\n\", area);\n\n    int trips = 4;\n    printf(\"Bus cost: Rs %d\\n\", trips * BUS_FARE);\n\n    return 0;\n}",
+        "output": "Area: 153.94\nBus cost: Rs 60"
+      }
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 10 · CONSTANTS & #DEFINE",
+      "animation": "Title slams in, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode ten. Constants and hash define."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "Last challenge answer; \"magic number\" definition; `3.14159` vs `PI`",
+      "animation": "Number spins in a puff of smoke; replaced by a name tag",
+      "sfx": [],
+      "narration": "First, the challenge from episode nine. INT_MAX is two billion one hundred forty-seven million four hundred eighty-three thousand six hundred forty-seven. LLONG_MAX has nineteen digits. Now, a number that suddenly appears in code, with no name, is called a magic number. Like fifteen. Fifteen what? Rupees? Minutes? Students? Nobody knows. Or three point one four one five nine. You probably guessed pi, but why make people guess? The fix is to give the number a name, and lock it so it can't change by accident."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 65,
+      "onScreen": "ep10.c lines 7–11",
+      "animation": "Padlock icon snaps onto PI box with a click; tracker shows PI, radius, area",
+      "sfx": [],
+      "narration": "[HL 7] Line seven: const float PI equals three point one four one five nine f. [TRACK PI=3.14159] This is a normal float variable, with one extra word in front: const. const means \"read only\". Once PI gets its value, nobody can change it. By habit, we write constant names in capital letters, so they stand out. [HL 8] Line eight: float radius equals seven. [TRACK radius=7.0] [HL 10] Line ten: float area equals PI times radius times radius. The star means multiply. [TRACK area=153.94] [HL 11] Line eleven prints the area with two decimals. Area: 153.94. Now the code reads like the maths formula. Pi r squared.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\n#define BUS_FARE 15          // macro: text swap before compiling\n\nint main(void)\n{\n    const float PI = 3.14159f;  // const: a variable that cannot change\n    float radius = 7.0f;\n\n    float area = PI * radius * radius;\n    printf(\"Area: %.2f\\n\", area);\n\n    int trips = 4;\n    printf(\"Bus cost: Rs %d\\n\", trips * BUS_FARE);\n\n    return 0;\n}",
+        "output": "Area: 153.94\nBus cost: Rs 60"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 50,
+      "onScreen": "Line 3 `#define`; lines 13–14; then the preprocessed view shows `trips * 15`",
+      "animation": "BUS_FARE text slides out, 15 slides in (find-and-replace animation)",
+      "sfx": [],
+      "narration": "[HL 3] Now line three: hash define, BUS underscore FARE, fifteen. No equals sign. No semicolon. No type. This is not a variable at all. Remember the preprocessor from episode five? Before compiling, it does a find-and-replace. Every BUS_FARE in the file becomes the text fifteen. [HL 14] So line fourteen, trips times BUS_FARE, becomes trips times fifteen before the compiler even sees it. With four trips: Bus cost: Rs 60. And when the fare changes? You edit one line, line three. Every use updates. No missed spots.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\n#define BUS_FARE 15          // macro: text swap before compiling\n\nint main(void)\n{\n    const float PI = 3.14159f;  // const: a variable that cannot change\n    float radius = 7.0f;\n\n    float area = PI * radius * radius;\n    printf(\"Area: %.2f\\n\", area);\n\n    int trips = 4;\n    printf(\"Bus cost: Rs %d\\n\", trips * BUS_FARE);\n\n    return 0;\n}",
+        "output": "Area: 153.94\nBus cost: Rs 60"
+      }
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 175,
+      "lengthSec": 36,
+      "onScreen": "Comparison table: const vs #define",
+      "animation": "Two columns fill row by row with pop",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "So which should you use? const is a real variable with a type, so the compiler checks how you use it. A hash define is plain text replacement: no type, no checks, but it works anywhere in the file, even before main. Both are common in real code. A simple rule for this course: use const for values inside a function, and hash define for fixed settings at the top of the file."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 211,
+      "lengthSec": 4,
+      "onScreen": "Pun",
+      "animation": "Drum ba-dum, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "I asked PI to change, just once. It said, \"Sorry, I'm a constant. I don't do that.\""
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 215,
+      "lengthSec": 55,
+      "onScreen": "`PI = 3.0f;` and the real GCC error; fix",
+      "animation": "Butter stripe; claw bounces off padlock with a clang; buzzer",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Today's bug. Someone thinks three is \"close enough\" for pi. They write PI equals three point zero f, after the const line. Compile. GCC says: error, assignment of read-only variable PI. That's the padlock doing its job. The error isn't a problem; it's protection. The fix is to delete that line. If you really need a different value, change the const line itself, in one place."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 270,
+      "lengthSec": 39,
+      "onScreen": "`#define BUS_FARE 15;` breaks printf; error points at the macro",
+      "animation": "Semicolon highlighted in tomato; the swapped text shows `15;` inside printf",
+      "sfx": [],
+      "narration": "A bonus bug, because everyone does this one. You write hash define BUS_FARE fifteen, semicolon. Habit, right? Every line ends with a semicolon. Not this one. The preprocessor copies the semicolon too. So printf with trips times BUS_FARE becomes trips times fifteen semicolon, inside printf's brackets. GCC says: error, expected closing bracket before semicolon token. And it adds a note: in expansion of macro BUS_FARE. That note is your clue. The fix: no semicolon at the end of a hash define."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 309,
+      "lengthSec": 35,
+      "onScreen": "Circle area and circumference with `const` PI, radius 5",
+      "animation": "Timer ticks; a pizza circle draws itself",
+      "sfx": [],
+      "narration": "Your challenge. Use const float PI. Take a radius of five. Print the area of the circle, and also the circumference, which is two times PI times radius. Two decimals each."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 344,
+      "lengthSec": 16,
+      "onScreen": "Next: EP 11 · printf deep dive; sign-off",
+      "animation": "Xecxec waves; outro sting",
+      "sfx": [
+        "sting"
+      ],
+      "narration": "Next episode: a deep dive into printf. We'll make your output look rich. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void)\n{\n    const float PI = 3.14159f;\n    PI = 3.0f;\n    printf(\"PI: %.2f\\n\", PI);\n    return 0;\n}",
+    "error": "**GCC output:**\n\nbug10.c: In function 'main':\nbug10.c:6:8: error: assignment of read-only variable 'PI'\n    6 |     PI = 3.0f;\n      |        ^",
+    "fixed": "#include <stdio.h>\n\nint main(void)\n{\n    const float PI = 3.14159f;\n    printf(\"PI: %.2f\\n\", PI);\n    return 0;\n}",
+    "why": "Fix: `#define BUS_FARE 15` with no semicolon. The preprocessor copies everything after the name, semicolon included."
+  },
+  "pun": "\"I asked PI to change, just once. It said: sorry, I'm a constant.\"",
+  "challenge": "With `const float PI`, print the area and circumference of a circle of radius 5, two decimals each.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint main(void)\n{\n    const float PI = 3.14159f;\n    float radius = 5.0f;\n\n    printf(\"Area: %.2f\\n\", PI * radius * radius);\n    printf(\"Circumference: %.2f\\n\", 2 * PI * radius);\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The fare went up",
+      "hook": "\"The bus fare changed. Now fix six lines.\"",
+      "script": "The bus fare went from fifteen to twenty. It's in six places in your code. You fix five. One is still wrong. Instead, write hash define BUS_FARE fifteen at the top. Use the name everywhere. Next time, change one line. Done.",
+      "onScreen": "ONE NAME · ONE PLACE TO CHANGE",
+      "fromScenes": [
+        1,
+        5
+      ],
+      "lengthSec": 25,
+      "caption": "Stop using magic numbers.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cleancode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "const vs #define",
+      "hook": "\"Two ways to make a constant in C.\"",
+      "script": "Two ways to make a constant in C. const float PI equals three point one four: a real variable, with a type, that nobody can change. Hash define BUS_FARE fifteen: the preprocessor swaps the name for the text before compiling. No type, no semicolon.",
+      "onScreen": "const = LOCKED BOX · #define = FIND & REPLACE",
+      "fromScenes": [
+        4,
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "Constants in C, fast.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "coding",
+        "c"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The semicolon that breaks macros",
+      "hook": "\"One semicolon. Three errors.\"",
+      "script": "One semicolon, three lines of errors. Hash define BUS_FARE fifteen semicolon. The preprocessor copies the semicolon into printf, and GCC says expected closing bracket before semicolon. Look for \"in expansion of macro\". Fix: no semicolon after a hash define.",
+      "onScreen": "WRONG: #define X 15; · RIGHT: #define X 15",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "The macro mistake everyone makes once.",
+      "hashtags": [
+        "cprogramming",
+        "codingbugs",
+        "kodingkonkani",
+        "learntocode",
+        "gcc"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "PI won't change",
+      "hook": "\"I asked PI to change.\"",
+      "script": "I asked PI to change, just once. It said, sorry, I'm a constant. I don't do that.",
+      "onScreen": "error: read-only variable 'PI'",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 10,
+      "caption": "Some things never change.",
+      "hashtags": [
+        "programmingjokes",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Error or not?",
+      "hook": "\"Does this line compile?\"",
+      "script": "const int DAYS equals seven. Next line: DAYS equals eight. Does it compile? ... No. GCC says: assignment of read-only variable DAYS. const means locked.",
+      "onScreen": "const int DAYS = 7; DAYS = 8; · ?",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 20,
+      "caption": "Quick C quiz.",
+      "hashtags": [
+        "cquiz",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode",
+        "const"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\n#define BUS_FARE 15          // macro: text swap before compiling\n\nint main(void)\n{\n    const float PI = 3.14159f;  // const: a variable that cannot change\n    float radius = 7.0f;\n\n    float area = PI * radius * radius;\n    printf(\"Area: %.2f\\n\", area);\n\n    int trips = 4;\n    printf(\"Bus cost: Rs %d\\n\", trips * BUS_FARE);\n\n    return 0;\n}",
+      "output": "Area: 153.94\nBus cost: Rs 60",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "PI: 3.14\nbonus10.c: In function 'main':\nbonus10.c:2:20: error: expected ')' before ';' token\n    2 | #define BUS_FARE 15;\n      |                    ^\nbonus10.c:6:41: note: in expansion of macro 'BUS_FARE'\n    6 |     printf(\"Bus cost: Rs %d\\n\", trips * BUS_FARE);\n      |                                         ^~~~~~~~\nbonus10.c:6:11: note: to match this '('\n    6 |     printf(\"Bus cost: Rs %d\\n\", trips * BUS_FARE);\n      |           ^"
+  }
+}

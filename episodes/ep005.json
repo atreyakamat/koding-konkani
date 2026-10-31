@@ -1,0 +1,299 @@
+{
+  "ep": 5,
+  "title": "How a C Program Is Built",
+  "module": 1,
+  "lengthSec": 345,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "name the four stages GCC runs (preprocess, compile, assemble, link)",
+    "produce each stage's file with `-E`, `-S` and `-c`",
+    "tell a compile error from a link error",
+    "always recompile after editing"
+  ],
+  "youtube": {
+    "title": "What Happens When You Hit Enter? | C Programming EP 05",
+    "description": "You typed gcc hello.c and a program appeared. In this episode we open the box and watch the four stages GCC runs: preprocess, compile, assemble and link. You will also learn why your edits sometimes \"don't work\" (spoiler: you forgot to recompile). 0:00 What happens when you hit Enter? 0:20 The four stages 0:55 Stage 1: the preprocessor (gcc -E) 1:50 Stage 2: compiling to assembly (gcc -S) 2:35 Stages 3 and 4: object file and linker 3:19 Running it and the exit code 3:59 Bug of the Day: edited but not recompiled 4:54 Challenge 5:29 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "What happens when you hit Enter? 0:20 The four stages 0:55 Stage 1: the preprocessor (gcc -E) 1:50 Stage 2: compiling to assembly (gcc -S) 2:35 Stages 3 and 4: object file and linker 3:19 Running it and the exit code 3:59 Bug of the Day: edited but not recompiled 4:54 Challenge 5:29 Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "gcc",
+      "how compiler works",
+      "preprocessor",
+      "linker",
+      "object file",
+      "compile c program",
+      "c tutorial for beginners",
+      "koding konkani",
+      "learn c in english",
+      "msys2 gcc"
+    ],
+    "thumbnail": {
+      "text": "WHAT GCC DOES",
+      "visual": "big text \"WHAT GCC DOES\"; a four-step conveyor belt (.c to .i to .s to .o to .exe) in tomato boxes on pastel blue; Xecxec riding the belt with claws up, surprised face.",
+      "pose": "Xecxec riding the belt with claws up, surprised face"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "`gcc ep05.c -o ep05` typed, Enter pressed, freeze frame with \"?\"",
+      "animation": "Keystroke ticks; screen freezes on Enter; Xecxec peeks in, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "You type gcc, ep05 dot c, dash o, ep05. You press Enter. Half a second later, a program exists that did not exist before. But what actually happened in that half second? Today, we open the box."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 05 · HOW A C PROGRAM IS BUILT",
+      "animation": "Title slams in, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode five. How a C program is built."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 35,
+      "onScreen": "Last challenge answer, then a four-box pipeline: Preprocess, Compile, Assemble, Link",
+      "animation": "Boxes drop in one by one with pop; file icons slide between them",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "First, last episode's challenge: print your name and your village on two lines. Two printf calls, each ending with backslash n, and you're done. Now, the big idea. When you run gcc, it is not one step. It is four. Stage one, the preprocessor, cleans and prepares your file. Stage two, the compiler, turns C into assembly language. Stage three, the assembler, turns assembly into machine code, called an object file. Stage four, the linker, joins your code with library code to make the final program. Think of a Kadamba bus route: Panjim, Porvorim, Mapusa, then Calangute. Same bus, four stops. And we can get off at any stop."
+    },
+    {
+      "id": 4,
+      "template": "terminal",
+      "startSec": 55,
+      "lengthSec": 55,
+      "onScreen": "`gcc -E ep05.c -o ep05.i`; scroll the .i file to the bottom where `main` appears; comment gone",
+      "animation": "Fast scroll whoosh; comment line fades out in red",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Here is our small program. Look at line three: a comment. Line one: hash include, stdio dot h. Now type gcc, dash capital E, ep05 dot c, dash o, ep05 dot i. Dash E means: stop after the preprocessor. Open ep05 dot i. Whoa. Hundreds of lines. That's because hash include copied the whole stdio dot h file into ours. Scroll to the very bottom. There is our main. And notice: the comment is gone. The preprocessor deletes comments and pastes in included files. Your line count will be different from mine, and that's fine."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 110,
+      "lengthSec": 45,
+      "onScreen": "`gcc -S ep05.c -o ep05.s`; first lines of assembly with the string `Namaskar, Goa!` highlighted",
+      "animation": "Butter highlight on the string line; Xecxec squints",
+      "sfx": [],
+      "narration": "Next stop. Type gcc, dash capital S, ep05 dot c, dash o, ep05 dot s. Dash S means: stop after compiling. Open the dot s file. This is assembly language, very close to what the processor understands. [HL the .string / .ascii line] See this line? That's our text, Namaskar, Goa, stored as a string. You don't need to read assembly in this course. Just know that this is what your C turns into. Your file may look a bit different on Windows, and that's normal.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\n// The preprocessor deletes this comment\nint main(void)\n{\n    printf(\"Namaskar, Goa!\\n\");\n    return 0;\n}",
+        "output": "Namaskar, Goa!\n0"
+      }
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 155,
+      "lengthSec": 40,
+      "onScreen": "`gcc -c` makes ep05.o; linker joins ep05.o + C library (printf lives there) into ep05.exe; the `print` typo shows a link error",
+      "animation": "Puzzle pieces snap together; error box shakes in tomato",
+      "sfx": [],
+      "narration": "Stage three. Type gcc, dash c, small c, ep05 dot c, dash o, ep05 dot o. This makes an object file: real machine code, but not a complete program yet. Why not? Because printf is not in our file. It lives in the C library. Stage four, the linker, finds printf in the library and joins it to our object file. Watch what happens if we misspell printf as print. The compiler only gives a warning. But the linker gives a real error: undefined reference to print. That means \"I looked everywhere, and print does not exist.\" Now you know: \"undefined reference\" always comes from the linker."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 195,
+      "lengthSec": 4,
+      "onScreen": "Pun",
+      "animation": "Drum ba-dum, Xecxec claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the linker break up with the compiler? It said, \"I need someone who can complete me.\""
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 199,
+      "lengthSec": 40,
+      "onScreen": "`./ep05` prints `Namaskar, Goa!`; `echo $?` prints `0`",
+      "animation": "Ding on output; \"0 = all good\" tag",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Now we run it. Dot slash ep05. Namaskar, Goa! Then type echo, dollar, question mark. It prints zero. Remember return zero from episode four? This is where that zero goes. Zero means the program ended without problems."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 239,
+      "lengthSec": 55,
+      "onScreen": "Edit the text in VS Code, save, run old exe, old text prints; recompile, new text prints",
+      "animation": "Butter warning stripe; buzzer, then success chime",
+      "sfx": [
+        "buzzer",
+        "chime"
+      ],
+      "narration": "Today's bug catches everyone. You change the text to Namaskar, Mapusa. You save. You run dot slash ep05. And it still says Namaskar, Goa! Did VS Code lose your change? No. The program you ran is the old exe file. Your edit is in the dot c file, but the exe was built before the edit. The fix: after every edit, run gcc again, then run the program. Save, compile, run. Every single time."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 294,
+      "lengthSec": 35,
+      "onScreen": "Break the file two ways; name the stage that complains",
+      "animation": "Timer ticks; Xecxec holds up a sign",
+      "sfx": [],
+      "narration": "Your challenge. Take ep05 dot c and break it two ways. First, delete the semicolon after printf. Second, spell printf as print. Compile each one and read the message. For each, tell me which stage complained: the compiler or the linker. Put your answers in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 329,
+      "lengthSec": 16,
+      "onScreen": "Next: EP 06 · Comments & clean code; sign-off",
+      "animation": "Xecxec waves; outro sting",
+      "sfx": [
+        "sting"
+      ],
+      "narration": "Next episode: comments and clean code, so that future you does not hate present you. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void)\n{\n    printf(\"Namaskar, Mapusa!\\n\");   /* edited and saved */\n    return 0;\n}",
+    "error": "./ep05\n\n**Wrong output** (no error at all, which is why it is confusing):\n\nNamaskar, Goa!\n\ngcc ep05.c -o ep05\n./ep05\n\nNamaskar, Mapusa!\n\nThe .exe is a separate file built from the old source, so it only changes when you compile again.",
+    "fixed": "The .exe is a separate file built from the old source, so it only changes when you compile again.",
+    "why": "The .exe is a separate file built from the old source, so it only changes when you compile again."
+  },
+  "pun": "\"Why did the linker break up with the compiler? It needed someone who could complete it.\"",
+  "challenge": "Break ep05.c two ways (delete the semicolon; spell printf as print). Compile each and say which stage complains.",
+  "challengeAnswer": "Missing semicolon: the compiler, `error: expected ';' before 'return'`. `print`: the compiler only warns (implicit declaration), then the linker fails with `undefined reference to 'print'`.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What happens when you press Enter?",
+      "hook": "\"You press Enter. Four things happen.\"",
+      "script": "You press Enter. Four things happen. One: the preprocessor pastes in your include files and deletes comments. Two: the compiler turns C into assembly. Three: the assembler turns that into machine code. Four: the linker joins in library code like printf. Then you have a program. Full episode on the channel.",
+      "onScreen": "1 PREPROCESS · 2 COMPILE · 3 ASSEMBLE · 4 LINK",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 30,
+      "caption": "What GCC really does in half a second.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "gcc",
+        "compiler"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Four stages in 30 seconds",
+      "hook": "\"Dash E. Dash S. Dash c. Remember these.\"",
+      "script": "Want to see each stage yourself? gcc dash capital E stops after the preprocessor: you get a dot i file with hundreds of lines. gcc dash capital S stops after compiling: you get assembly in a dot s file. gcc dash small c stops after assembling: you get an object file. Plain gcc goes all the way and links. Four stops, one bus.",
+      "onScreen": "-E .i · -S .s · -c .o · gcc .exe",
+      "fromScenes": [
+        4,
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Get off the GCC bus at any stop.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "gcc",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "My edit didn't work?!",
+      "hook": "\"I changed the code. Why is the output the same?\"",
+      "script": "You change the text. You save. You run the program. Same old output. Your code didn't change? It did. But you ran the old exe. The exe only updates when you compile again. Save, compile, run. Every time.",
+      "onScreen": "SAVE · COMPILE · RUN",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "The most common beginner mistake in C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingbugs",
+        "gcc"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The linker's breakup",
+      "hook": "\"Why did the linker break up with the compiler?\"",
+      "script": "Why did the linker break up with the compiler? It needed someone who could complete it.",
+      "onScreen": "\"YOU COMPLETE ME\"",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 10,
+      "caption": "Linker humour, sorry.",
+      "hashtags": [
+        "cprogramming",
+        "programmingjokes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Compiler or linker?",
+      "hook": "\"Who throws this error: compiler or linker?\"",
+      "script": "Who throws this error? Undefined reference to print. Compiler or linker? Think. ... It's the linker. \"Undefined reference\" means the linker searched the libraries and found nothing called print. Comment if you got it.",
+      "onScreen": "undefined reference to `print' · COMPILER or LINKER?",
+      "fromScenes": [
+        6,
+        10
+      ],
+      "lengthSec": 20,
+      "caption": "Quick quiz: who complains?",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "gcc"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\n// The preprocessor deletes this comment\nint main(void)\n{\n    printf(\"Namaskar, Goa!\\n\");\n    return 0;\n}",
+      "output": "Namaskar, Goa!\n0",
+      "buildStep": "gcc -E ep05.c -o ep05.i     # stop after preprocessing\ngcc -S ep05.c -o ep05.s     # stop after compiling (assembly)\ngcc -c ep05.c -o ep05.o     # stop after assembling (object file)\ngcc ep05.o -o ep05          # link into a program\n./ep05\necho $?",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

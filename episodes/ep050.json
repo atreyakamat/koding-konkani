@@ -1,0 +1,338 @@
+{
+  "ep": 50,
+  "title": "String Manipulation: Is \"malayalam\" a Palindrome?",
+  "module": 7,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "reverse a string into a new array using the index len - 1 - i",
+    "end a hand-built string with '\\0'",
+    "check a palindrome by comparing a word with its reverse",
+    "count vowels by testing each char in a loop that stops at '\\0'"
+  ],
+  "youtube": {
+    "title": "Reverse a String & Check Palindrome in C | EP 50",
+    "description": "malayalam reads the same both ways. Learn to reverse a string in C, check if it is a palindrome, and count vowels, all with simple loops. Plus the off-by-one bug that turns your reversed string into nothing at all. 0:00 Read it backwards · 0:20 Title · 0:25 The mirror index · 1:15 Reverse code · 2:35 Palindrome check · 3:15 Counting vowels · 4:30 Running it · 4:50 Pun · 4:55 Bug of the Day · 6:05 Challenge · 6:40 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Read it backwards"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The mirror index"
+      },
+      {
+        "t": "1:15",
+        "label": "Reverse code"
+      },
+      {
+        "t": "2:35",
+        "label": "Palindrome check"
+      },
+      {
+        "t": "3:15",
+        "label": "Counting vowels"
+      },
+      {
+        "t": "4:30",
+        "label": "Running it"
+      },
+      {
+        "t": "4:50",
+        "label": "Pun"
+      },
+      {
+        "t": "4:55",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:05",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "reverse string in c",
+      "palindrome in c",
+      "count vowels in c",
+      "string programs in c",
+      "strings in c",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "c interview questions",
+      "class 12 computer science"
+    ],
+    "thumbnail": {
+      "text": "SAME BOTH WAYS?",
+      "visual": "big text \"SAME BOTH WAYS?\"; \"MALAYALAM\" in apricot letters with its mirror reflection below like water at a beach; Xecxec reading it upside down",
+      "pose": "Xecxec reading it upside down"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "\"malayalam\", \"level\", \"panjim\" with mirror reflections",
+      "animation": "Words flip in a mirror; two glow mint, panjim glows tomato; shimmer SFX",
+      "sfx": [],
+      "narration": "Read malayalam backwards. m, a, l, a, y, a, l, a, m. Same word. Level, same. Panjim? mijnap. Not the same. Words that read the same both ways are called palindromes. Today we teach C to spot them, using nothing but loops and the tools from the last three episodes."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 50 · STRING MANIPULATION",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 50. String manipulation."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "\"feni\" boxes 0–3 over rev boxes; arrows pair i with len - 1 - i",
+      "animation": "Crossing arrows draw one by one; \\0 box stays put; swoosh per arrow",
+      "sfx": [],
+      "narration": "To reverse a string, we need a mirror formula. Take feni. Length four, indexes zero to three. The first box of the reverse gets the last letter, index three. The second gets index two. Then one, then zero. Look at the pattern: index i in the reverse takes letter number len minus one minus i from the original. When i is zero, len minus one minus zero is three. The minus one is there because the last letter sits at len minus one, not at len. At index len, there is only the backslash zero."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 75,
+      "lengthSec": 80,
+      "onScreen": "Reverse part of ep50_strings.c",
+      "animation": "Line highlights; tracker shows i, len - 1 - i, rev",
+      "sfx": [],
+      "narration": "Let's read it. [HL 5] Line five, our word, malayalam. [HL 6] Line six, len equals strlen word: nine. [TRACK len=9] [HL 9] Line nine, rev, an array of twenty to hold the reverse. [HL 10] Line ten, i from zero while i is less than len. [HL 11] Line eleven, the mirror formula: rev i equals word len minus one minus i. [TRACK i=0 src=8 rev=\"m\"] When i is zero, we copy word eight, the last m. [TRACK i=1 src=7 rev=\"ma\"] When i is one, word seven. [TRACK i=8 src=0 rev=\"malayalam\"] And so on until i is eight, which copies word zero. [HL 13] Now line thirteen, and this one is easy to forget. rev len equals backslash zero. We built rev letter by letter ourselves, so nobody added the stop sign for us. Without it, printf would run past the end, like the bug from EP 47. [HL 14] Line fourteen prints the reverse.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char word[] = \"malayalam\";\n    int len = strlen(word);\n\n    /* Reverse into a new string */\n    char rev[20];\n    for (int i = 0; i < len; i++) {\n        rev[i] = word[len - 1 - i];\n    }\n    rev[len] = '\\0';\n    printf(\"Reversed: %s\\n\", rev);\n\n    /* Palindrome check */\n    if (strcmp(word, rev) == 0) {\n        printf(\"%s is a palindrome\\n\", word);\n    } else {\n        printf(\"%s is not a palindrome\\n\", word);\n    }\n\n    /* Count vowels */\n    int vowels = 0;\n    for (int i = 0; word[i] != '\\0'; i++) {\n        char c = word[i];\n        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {\n            vowels++;\n        }\n    }\n    printf(\"Vowels: %d\\n\", vowels);\n    return 0;\n}",
+        "output": "Reversed: malayalam\nmalayalam is a palindrome\nVowels: 4"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 155,
+      "lengthSec": 40,
+      "onScreen": "Palindrome part",
+      "animation": "strcmp result chip shows 0; mint tick",
+      "sfx": [],
+      "narration": "Now the palindrome check is one line. [HL 17] Line seventeen: if strcmp, word, rev, equals-equals zero, the word and its reverse are the same, so it is a palindrome. [HL 18] Line eighteen prints that. [HL 20] Otherwise line twenty prints not a palindrome. This is exactly why we learned strcmp in EP 49, and not equals-equals.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char word[] = \"malayalam\";\n    int len = strlen(word);\n\n    /* Reverse into a new string */\n    char rev[20];\n    for (int i = 0; i < len; i++) {\n        rev[i] = word[len - 1 - i];\n    }\n    rev[len] = '\\0';\n    printf(\"Reversed: %s\\n\", rev);\n\n    /* Palindrome check */\n    if (strcmp(word, rev) == 0) {\n        printf(\"%s is a palindrome\\n\", word);\n    } else {\n        printf(\"%s is not a palindrome\\n\", word);\n    }\n\n    /* Count vowels */\n    int vowels = 0;\n    for (int i = 0; word[i] != '\\0'; i++) {\n        char c = word[i];\n        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {\n            vowels++;\n        }\n    }\n    printf(\"Vowels: %d\\n\", vowels);\n    return 0;\n}",
+        "output": "Reversed: malayalam\nmalayalam is a palindrome\nVowels: 4"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 195,
+      "lengthSec": 75,
+      "onScreen": "Vowel-count part",
+      "animation": "Each vowel pops apricot as the loop passes it; tracker shows vowels",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Last tool: counting vowels. [HL 24] Line twenty-four, vowels starts at zero. [TRACK vowels=0] [HL 25] Line twenty-five, the loop from EP 47, which stops at backslash zero. [HL 26] Line twenty-six copies the current letter into c, just to keep the next line short. [HL 27] Line twenty-seven checks if c is a, or e, or i, or o, or u, joined with the OR operator. [TRACK i=1 c='a' vowels=1] [HL 28] If yes, vowels plus plus. [TRACK i=7 c='a' vowels=4] malayalam has four a's, and no other vowels. [HL 31] Line thirty-one prints the count. Note: this only checks small letters. Capital A would not count. Handling capitals is part of next episode's project.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char word[] = \"malayalam\";\n    int len = strlen(word);\n\n    /* Reverse into a new string */\n    char rev[20];\n    for (int i = 0; i < len; i++) {\n        rev[i] = word[len - 1 - i];\n    }\n    rev[len] = '\\0';\n    printf(\"Reversed: %s\\n\", rev);\n\n    /* Palindrome check */\n    if (strcmp(word, rev) == 0) {\n        printf(\"%s is a palindrome\\n\", word);\n    } else {\n        printf(\"%s is not a palindrome\\n\", word);\n    }\n\n    /* Count vowels */\n    int vowels = 0;\n    for (int i = 0; word[i] != '\\0'; i++) {\n        char c = word[i];\n        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {\n            vowels++;\n        }\n    }\n    printf(\"Vowels: %d\\n\", vowels);\n    return 0;\n}",
+        "output": "Reversed: malayalam\nmalayalam is a palindrome\nVowels: 4"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 270,
+      "lengthSec": 20,
+      "onScreen": "gcc ep50_strings.c -o ep50 then ./ep50",
+      "animation": "Three lines print",
+      "sfx": [],
+      "narration": "Compile and run. Reversed: malayalam. malayalam is a palindrome. Vowels: 4. Change the word to panjim and run again: Reversed mijnap, not a palindrome, 2 vowels."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 290,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why do palindromes make terrible spies? You can read them from both sides."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 295,
+      "lengthSec": 70,
+      "onScreen": "word[len - i] makes \"Reversed: []\"",
+      "animation": "First arrow lands on the \\0 box; empty brackets flash; alarm buzz",
+      "sfx": [],
+      "narration": "Today's bug. Someone reverses feni with rev i equals word len minus i. No minus one. GCC is happy. Run it: Reversed, and then empty brackets. Nothing at all. Let's trace it. When i is zero, word len minus zero is word four. And word four is the backslash zero. So the very first char of rev is the stop sign, and printf stops before it prints anything. The other letters are in there, but they are hidden behind the stop sign. The fix: len minus one minus i. The last letter is at len minus one."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 365,
+      "lengthSec": 35,
+      "onScreen": "Count words in a sentence",
+      "animation": "Sentence with words lighting up; ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. Count the words in the sentence: Keep coding says Xecxec. The answer is four. Hint: do not just count spaces, because two spaces in a row, or a space at the start, would fool you. Instead, keep a flag called inWord. When you see a letter and inWord is zero, you just started a new word: count it and set inWord to one. When you see a space, set inWord back to zero."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 400,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 51 Mini project: Text tools",
+      "animation": "Xecxec at a tiny typewriter; sign-off",
+      "sfx": [],
+      "narration": "Next episode, the Module 7 mini project: we build our own text tools, a case changer and a word counter, like a tiny Word. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char word[] = \"feni\";\n    int len = strlen(word);\n    char rev[20];\n\n    for (int i = 0; i < len; i++) {\n        rev[i] = word[len - i];\n    }\n    rev[len] = '\\0';\n    printf(\"Reversed: [%s]\\n\", rev);\n    return 0;\n}",
+    "error": "No error, no warning. Wrong output:\n\nReversed: []",
+    "fixed": "        rev[i] = word[len - 1 - i];",
+    "why": "word[len] is the '\\0', so copying it into rev[0] ends the reversed string before its first letter."
+  },
+  "pun": "Why do palindromes make terrible spies? You can read them from both sides.",
+  "challenge": "Count the words in \"Keep coding says Xecxec\" using an inWord flag, so extra spaces do not fool you.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint main() {\n    char line[] = \"Keep coding says Xecxec\";\n    int words = 0;\n    int inWord = 0;\n\n    for (int i = 0; line[i] != '\\0'; i++) {\n        if (line[i] == ' ') {\n            inWord = 0;\n        } else if (inWord == 0) {\n            inWord = 1;\n            words++;\n        }\n    }\n    printf(\"Words: %d\\n\", words);\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Can C Read Backwards?",
+      "hook": "\"MALAYALAM\" with its mirror image.",
+      "script": "malayalam reads the same backwards. So does level. Panjim does not. To make C check this, reverse the word with one formula, len minus one minus i, then compare it with the original. Full episode on the channel.",
+      "onScreen": "SAME BOTH WAYS = PALINDROME",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 22,
+      "caption": "Teaching C to read backwards.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "palindrome",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Reverse a String in 30 Seconds",
+      "hook": "Crossing arrows between \"feni\" and \"inef\".",
+      "script": "To reverse a string: rev i equals word len minus one minus i, for i from zero to len minus one. Then the step everyone forgets: rev len equals backslash zero. You built the string yourself, so you add the stop sign yourself.",
+      "onScreen": "rev[i] = word[len - 1 - i];",
+      "fromScenes": [
+        3,
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "One formula, any word, reversed.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "strings",
+        "cprogrammingtutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "My Reverse Printed Nothing",
+      "hook": "Terminal: \"Reversed: []\". \"Where did feni go?\"",
+      "script": "I reversed feni and got nothing. I wrote word len minus i. When i is zero, that is word four, the backslash zero. So the first char of my reverse was the stop sign, and printf stopped right away. Add minus one: len minus one minus i.",
+      "onScreen": "len - i ✗  len - 1 - i ✓",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "One missing minus one, one empty string.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "debugging"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Terrible Spies",
+      "hook": "Xecxec in a spy hat holding a note that reads the same both ways.",
+      "script": "Why do palindromes make terrible spies? You can read them from both sides.",
+      "onScreen": "YOU CAN READ THEM FROM BOTH SIDES",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Secret agent: failed.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "How Many Vowels?",
+      "hook": "\"Vowels in \"malayalam\"?\"",
+      "script": "How many vowels does malayalam have? Pause and count. Four. Four a's and nothing else. Our C loop checks each letter against a, e, i, o, u, and adds one every time it matches.",
+      "onScreen": "m A l A y A l A m → 4",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 20,
+      "caption": "Count them before the loop does.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "strings"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char word[] = \"malayalam\";\n    int len = strlen(word);\n\n    /* Reverse into a new string */\n    char rev[20];\n    for (int i = 0; i < len; i++) {\n        rev[i] = word[len - 1 - i];\n    }\n    rev[len] = '\\0';\n    printf(\"Reversed: %s\\n\", rev);\n\n    /* Palindrome check */\n    if (strcmp(word, rev) == 0) {\n        printf(\"%s is a palindrome\\n\", word);\n    } else {\n        printf(\"%s is not a palindrome\\n\", word);\n    }\n\n    /* Count vowels */\n    int vowels = 0;\n    for (int i = 0; word[i] != '\\0'; i++) {\n        char c = word[i];\n        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {\n            vowels++;\n        }\n    }\n    printf(\"Vowels: %d\\n\", vowels);\n    return 0;\n}",
+      "output": "Reversed: malayalam\nmalayalam is a palindrome\nVowels: 4",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "Reversed: [inef]"
+  }
+}

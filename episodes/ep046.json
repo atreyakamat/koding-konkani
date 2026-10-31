@@ -1,0 +1,327 @@
+{
+  "ep": 46,
+  "title": "Arrays & Functions: Hand Over the Whole Locker Row",
+  "module": 6,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a function that takes an array and its size",
+    "count elements with sizeof(arr) / sizeof(arr[0]) in the place where the array is declared",
+    "explain why a function can change the caller's array (unlike EP 38's ints)",
+    "avoid using sizeof on an array parameter"
+  ],
+  "youtube": {
+    "title": "Passing Arrays to Functions in C (sizeof Trap) | EP 46",
+    "description": "In EP 38 a function could not change your variables. Pass an array, and suddenly it can. Learn how to pass arrays to functions, why you must also pass the size, and why sizeof gives the wrong answer inside a function. 0:00 The surprise · 0:20 Title · 0:25 Passing the row · 1:05 Counting with sizeof · 1:50 Code walkthrough · 3:40 Running it · 4:00 Why it changed · 4:30 Pun · 4:35 Bug of the Day · 5:40 Challenge · 6:10 Module 6 wrap",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The surprise"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Passing the row"
+      },
+      {
+        "t": "1:05",
+        "label": "Counting with sizeof"
+      },
+      {
+        "t": "1:50",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "3:40",
+        "label": "Running it"
+      },
+      {
+        "t": "4:00",
+        "label": "Why it changed"
+      },
+      {
+        "t": "4:30",
+        "label": "Pun"
+      },
+      {
+        "t": "4:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:40",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:10",
+        "label": "Module 6 wrap"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "pass array to function in c",
+      "sizeof array",
+      "arrays and functions",
+      "array parameter c",
+      "call by value array",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "c interview questions",
+      "class 12 computer science"
+    ],
+    "thumbnail": {
+      "text": "sizeof LIES?",
+      "visual": "big text \"sizeof LIES?\"; a function box receiving a whole row of lockers through a door; Xecxec holding a ruler that shows the wrong length; dark-blue on peach",
+      "pose": "Xecxec holding a ruler that shows the wrong length"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Split screen: EP 38 int x unchanged vs today's array changed",
+      "animation": "Left box stays 5; right lockers all increase by 5; record-scratch SFX",
+      "sfx": [],
+      "narration": "Remember EP 38? We passed an int to a function, the function changed it, and back in main, nothing had changed. The function only got a copy. Today we pass an array to a function, the function adds five to every mark, and back in main... every mark has changed. What is going on?"
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 46 · ARRAYS & FUNCTIONS",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 46. Arrays and functions."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 40,
+      "onScreen": "Function header: void printArray(int arr[], int size)",
+      "animation": "arr[] and size labels pop out with arrows: \"which row\" and \"how many\"; pop SFX",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "To pass an array, write the type, the name, and empty square brackets: int arr, square brackets. That tells C, this function receives a row of ints. But here is the catch. The function does not know how many lockers are in the row. So we always pass a second parameter, int size. One parameter says which row. The other says how many lockers it has."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 65,
+      "lengthSec": 45,
+      "onScreen": "sizeof(marks) = 20 bytes, sizeof(marks[0]) = 4 bytes, 20 / 4 = 5",
+      "animation": "Byte ruler slides under the lockers; \"on most PCs\" sticker",
+      "sfx": [],
+      "narration": "In main, there is a neat trick to count the elements. sizeof marks gives the size of the whole array in bytes. On most PCs an int is four bytes, so five ints make twenty bytes. sizeof marks zero gives the size of one element, four. Twenty divided by four is five. The nice part: if you add a sixth mark later, n updates by itself. But remember where we did this: in main, where the array was declared. Hold that thought for the Bug of the Day."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 110,
+      "lengthSec": 110,
+      "onScreen": "ep46_arrfunc.c types itself",
+      "animation": "Line highlights; tracker shows n, i, marks[]",
+      "sfx": [],
+      "narration": "Let's read it. [HL 3] Line three, printArray takes int arr, brackets, and int size. It returns nothing, so void. [HL 4] Line four loops i from zero while i is less than size, [HL 5] and line five prints each element. Exactly the loop from EP 41, just inside a function now. [HL 10] Line ten, addBonus takes the array, the size, and a bonus. [HL 12] Line twelve: arr i plus equals bonus. This changes the actual elements. [HL 17] Down in main, line seventeen. marks with empty brackets; the compiler counts five values. [HL 18] Line eighteen, n equals sizeof marks divided by sizeof marks zero. [TRACK n=5] [HL 20] Line twenty calls printArray. Look at how we pass it: just the name, marks. No brackets. [TRACK marks={78,92,65,88,71}] [HL 21] Line twenty-one calls addBonus with marks, n and five. [TRACK marks={83,97,70,93,76}] [HL 22] Line twenty-two prints again.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid printArray(int arr[], int size) {\n    for (int i = 0; i < size; i++) {\n        printf(\"%d \", arr[i]);\n    }\n    printf(\"\\n\");\n}\n\nvoid addBonus(int arr[], int size, int bonus) {\n    for (int i = 0; i < size; i++) {\n        arr[i] += bonus;\n    }\n}\n\nint main() {\n    int marks[] = {78, 92, 65, 88, 71};\n    int n = sizeof(marks) / sizeof(marks[0]);\n\n    printArray(marks, n);\n    addBonus(marks, n, 5);\n    printArray(marks, n);\n    return 0;\n}",
+        "output": "78 92 65 88 71 \n83 97 70 93 76 "
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 220,
+      "lengthSec": 20,
+      "onScreen": "gcc ep46_arrfunc.c -o ep46 then ./ep46",
+      "animation": "Two lines print; second line glows mint",
+      "sfx": [],
+      "narration": "Compile and run. First line: 78, 92, 65, 88, 71. Second line: 83, 97, 70, 93, 76. Every mark went up by five, and the change happened in main's array."
+    },
+    {
+      "id": 7,
+      "template": "memory-boxes",
+      "startSec": 240,
+      "lengthSec": 30,
+      "onScreen": "main's marks and the function's arr both point to the same lockers",
+      "animation": "A single locker row with two name tags; arrow from arr to marks",
+      "sfx": [],
+      "narration": "Here is why. When you pass an int, C copies the value. But C never copies a whole array into a function. Instead, it passes the location of the array, where the lockers are. So arr inside the function and marks in main are two name tags on the same row of lockers. Change a locker through arr, and marks sees it. How exactly that works is a pointer story, and pointers get their own module, starting with EP 52."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 270,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why do arrays make great friends? They never come to a function alone; they always bring their size."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 275,
+      "lengthSec": 65,
+      "onScreen": "sizeof(arr) inside average(); warning, average 85.00",
+      "animation": "Ruler inside the function shrinks to 8 bytes; only 2 lockers counted; alarm buzz",
+      "sfx": [],
+      "narration": "Today's bug. Someone writes float average, int arr, brackets, and inside, n equals sizeof arr divided by sizeof arr zero. The trick from main, right? Compile it. GCC gives a warning: sizeof on array function parameter arr will return size of int star. Run it anyway. Average: 85.00. The real average is 78.80. Here is what happened. Inside the function, arr is not the whole array, it is only the location of the array. On a 64-bit PC that location takes eight bytes. Eight divided by four is two. So the function averaged only the first two marks: 78 and 92, which gives 85. The fix: count with sizeof in main, where the array lives, and pass the size in as a parameter."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 340,
+      "lengthSec": 30,
+      "onScreen": "Write float average(int arr[], int size)",
+      "animation": "Empty function box; ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. Write a function float average, int arr brackets, int size. It returns the average as a float, using the cast from EP 13. Call it from main with the five marks. The correct answer is 78.80."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 370,
+      "lengthSec": 20,
+      "onScreen": "Module 6 complete; next: EP 47 Strings",
+      "animation": "Lockers turn into letters H-E-L-L-O; Xecxec claps; sign-off",
+      "sfx": [],
+      "narration": "That is Module 6 done. You can store, search, swap and pass arrays. Next module, we look at a special kind of array, one full of letters. Strings. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nfloat average(int arr[]) {\n    int n = sizeof(arr) / sizeof(arr[0]);\n    int sum = 0;\n    for (int i = 0; i < n; i++) {\n        sum += arr[i];\n    }\n    return (float)sum / n;\n}\n\nint main() {\n    int marks[] = {78, 92, 65, 88, 71};\n    printf(\"Average: %.2f\\n\", average(marks));\n    return 0;\n}",
+    "error": "GCC warning (plain `gcc avg_bug.c -o avg_bug`, no flags needed):\n\navg_bug.c: In function 'average':\navg_bug.c:4:19: warning: 'sizeof' on array function parameter 'arr' will return size of 'int *' [-Wsizeof-array-argument]\n    4 |     int n = sizeof(arr) / sizeof(arr[0]);\n      |                   ^\navg_bug.c:3:19: note: declared here\n    3 | float average(int arr[]) {\n      |               ~~~~^~~~~\n\nWrong output on a 64-bit PC (8-byte address / 4-byte int = 2 elements; on screen: \"depends on your machine\"):\n\nAverage: 85.00",
+    "fixed": "float average(int arr[], int size) {\n    int sum = 0;\n    for (int i = 0; i < size; i++) {\n        sum += arr[i];\n    }\n    return (float)sum / size;\n}",
+    "why": "inside a function an array parameter is really just the array's address, so sizeof measures the address, not the array; count in the caller and pass the size."
+  },
+  "pun": "Why do arrays make great friends? They never come to a function alone; they always bring their size.",
+  "challenge": "Write float average(int arr[], int size) and call it from main with {78, 92, 65, 88, 71}.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nfloat average(int arr[], int size) {\n    int sum = 0;\n    for (int i = 0; i < size; i++) {\n        sum += arr[i];\n    }\n    return (float)sum / size;\n}\n\nint main() {\n    int marks[] = {78, 92, 65, 88, 71};\n    int n = sizeof(marks) / sizeof(marks[0]);\n    printf(\"Average: %.2f\\n\", average(marks, n));\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "This Function Changed My Array!",
+      "hook": "Split screen: int stays 5, array marks all jump by 5.",
+      "script": "Pass an int to a function, change it, and main does not see the change. Pass an array, change it, and main does see it. Same language, different rules. The reason is in the full episode.",
+      "onScreen": "int: NO CHANGE · ARRAY: CHANGED",
+      "fromScenes": [
+        1,
+        6
+      ],
+      "lengthSec": 25,
+      "caption": "Why arrays break the call-by-value rule.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "arrays",
+        "functions"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Count an Array in 30 Seconds",
+      "hook": "\"How many elements? Let C count.\"",
+      "script": "Want C to count your array for you? sizeof marks gives the total bytes. sizeof marks zero gives the bytes of one element. Divide them, and you get the number of elements. Twenty bytes divided by four is five. Only works where the array is declared.",
+      "onScreen": "sizeof(arr) / sizeof(arr[0])",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "The array-length trick every C coder uses.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "sizeof",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "sizeof Lied to Me",
+      "hook": "Terminal: \"Average: 85.00\" next to the real answer 78.80.",
+      "script": "My average says 85, but the real answer is 78.80. I used sizeof inside the function. There, the array is just an address, eight bytes on a 64-bit PC. Eight divided by four is two, so it averaged only two marks. GCC even warned me. Count in main, pass the size.",
+      "onScreen": "sizeof INSIDE A FUNCTION = WRONG",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 40,
+      "caption": "The warning you should never ignore.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "debugging"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bring Your Size",
+      "hook": "Xecxec walking a locker row on a leash, with a size tag.",
+      "script": "Why do arrays make great friends? They never come to a function alone; they always bring their size.",
+      "onScreen": "THEY ALWAYS BRING THEIR SIZE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Good manners, C style.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What Gets Printed?",
+      "hook": "\"addBonus(marks, 5, 10); marks[0] was 78. Now?\"",
+      "script": "marks zero is 78. We call addBonus with marks, five, and ten, which adds ten to every element. What is marks zero in main now? Pause and guess. 88. Arrays are not copied into functions, so the change sticks.",
+      "onScreen": "78 → ?   → 88",
+      "fromScenes": [
+        5,
+        7
+      ],
+      "lengthSec": 22,
+      "caption": "Did you think it would stay 78?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "arrays"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nvoid printArray(int arr[], int size) {\n    for (int i = 0; i < size; i++) {\n        printf(\"%d \", arr[i]);\n    }\n    printf(\"\\n\");\n}\n\nvoid addBonus(int arr[], int size, int bonus) {\n    for (int i = 0; i < size; i++) {\n        arr[i] += bonus;\n    }\n}\n\nint main() {\n    int marks[] = {78, 92, 65, 88, 71};\n    int n = sizeof(marks) / sizeof(marks[0]);\n\n    printArray(marks, n);\n    addBonus(marks, n, 5);\n    printArray(marks, n);\n    return 0;\n}",
+      "output": "78 92 65 88 71 \n83 97 70 93 76 ",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

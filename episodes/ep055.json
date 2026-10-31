@@ -1,0 +1,346 @@
+{
+  "ep": 55,
+  "title": "Call by Reference",
+  "module": 8,
+  "lengthSec": 450,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain, with a memory diagram, why the EP 38 `swap` failed",
+    "write a `swap(int *a, int *b)` that really swaps",
+    "call it correctly with `swap(&x, &y)`",
+    "use pointer parameters to get two results out of one function"
+  ],
+  "youtube": {
+    "title": "Fixing the Swap That Didn't Swap | C Programming EP 55",
+    "description": "In EP 38 our swap function failed because C passes copies. Now that we know pointers, we pass addresses instead and finally fix it. Every stack box and every arrow is drawn, step by step. 0:00 The broken swap returns · 0:20 Title · 0:25 Why EP 38 failed · 1:35 Send the address, not the copy · 2:35 Watch the swap happen · 3:35 Code, line by line · 4:50 Running it · 5:10 Pun · 5:15 Bug of the Day: passing the value, not the address · 6:20 Challenge: two results from one function · 7:05 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The broken swap returns"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Why EP 38 failed"
+      },
+      {
+        "t": "1:35",
+        "label": "Send the address, not the copy"
+      },
+      {
+        "t": "2:35",
+        "label": "Watch the swap happen"
+      },
+      {
+        "t": "3:35",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "4:50",
+        "label": "Running it"
+      },
+      {
+        "t": "5:10",
+        "label": "Pun"
+      },
+      {
+        "t": "5:15",
+        "label": "Bug of the Day: passing the value, not the address"
+      },
+      {
+        "t": "6:20",
+        "label": "Challenge: two results from one function"
+      },
+      {
+        "t": "7:05",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "call by reference in c",
+      "swap using pointers",
+      "pointers as function parameters",
+      "call by value vs call by reference",
+      "swap function c",
+      "c pointers tutorial",
+      "c programming for beginners",
+      "learn c",
+      "koding konkani",
+      "c programming india",
+      "class 12 c",
+      "engineering first year c"
+    ],
+    "thumbnail": {
+      "text": "SWAP FIXED!",
+      "visual": "big text \"SWAP FIXED!\"; two lilac boxes `x = 9` and `y = 5` with crossing black arrows from `a` and `b`; a tomato \"EP 38\" stamp crossed out; Xecxec holding two shells, one in each claw, grinning; lilac background, dark blue text block",
+      "pose": "Xecxec holding two shells, one in each claw, grinning"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "code-explain",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "EP 38's `swap(int a, int b)` and its output \"After: x = 5, y = 9\"",
+      "animation": "Old code slides in with a faded \"EP 38\" stamp; output line flashes tomato; sad trombone; Xecxec facepalms",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Remember this? EP 38. We wrote a swap function, called it with x equals 5 and y equals 9, and printed them. They were still 5 and 9. Our swap did not swap. We promised to fix it once we learned pointers. Today, we keep that promise.",
+      "code": {
+        "file": "swap.c",
+        "source": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint main(void) {\n    int x = 5, y = 9;\n    printf(\"Before: x = %d, y = %d\\n\", x, y);\n    swap(&x, &y);\n    printf(\"After:  x = %d, y = %d\\n\", x, y);\n    return 0;\n}",
+        "output": "Before: x = 5, y = 9\nAfter:  x = 9, y = 5"
+      }
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 55 · CALL BY REFERENCE",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode fifty-five. Call by reference."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 70,
+      "onScreen": "Two stack frames: `main` (x=5 at 1000, y=9 at 1004) and `swap` (a=5 at 3000, b=9 at 3004, temp at 3008)",
+      "animation": "`main` frame drops in; `swap` frame stacks above it; 5 and 9 photocopied across with a copier sound; a and b swap inside `swap`; `swap` frame dissolves; x and y unchanged; sad ding",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Let's draw what happened, very slowly. When main runs, it gets its own area of memory, called a stack frame. Inside it are x at address 1000, holding 5, and y at address 1004, holding 9. Now main calls swap of x comma y. C creates a new stack frame for swap, on top. Inside it are a, b and temp, at their own addresses: 3000, 3004 and 3008. And here is the key moment. C does not send x and y. It sends photocopies. 5 is copied into a, and 9 is copied into b. This is call by value. Now swap does its job perfectly. a becomes 9, b becomes 5. But look: these are the copies. x and y, down in main, never moved. Then swap ends, and its whole frame disappears. Gone. x is still 5. y is still 9. The swap happened, but on the photocopies."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 95,
+      "lengthSec": 60,
+      "onScreen": "Same `main` frame; new `swap` frame where a holds 1000 and b holds 1004; arrows from a to x and from b to y",
+      "animation": "Addresses 1000 and 1004 fly from x and y gate signs into a and b; numbers turn into arrows; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "So how do we let swap reach x and y? We give it their addresses. Instead of sending the values 5 and 9, main sends ampersand x and ampersand y, which are 1000 and 1004. Now swap's parameters must be pointers: int star a and int star b. Look at the frame. a holds 1000, so it points to x. b holds 1004, so it points to y. The arrows cross from the swap frame down into main's frame. We are still copying something, but this time we copy the addresses. And with an address, you can knock on the real door. This is called call by reference, or more exactly in C, passing a pointer."
+    },
+    {
+      "id": 5,
+      "template": "memory-boxes",
+      "startSec": 155,
+      "lengthSec": 60,
+      "onScreen": "Step counter 1/3, 2/3, 3/3; temp box; x and y changing through the arrows",
+      "animation": "Step 1: 5 travels from x along arrow into temp. Step 2: 9 travels from y to x. Step 3: 5 travels from temp to y. Each step a tick; final frame dissolves, x=9 and y=5 stay and flash mint; cheer",
+      "sfx": [],
+      "narration": "Three steps. Step one: int temp equals star a. Follow a's arrow to x, find 5, and put it in temp. Step two: star a equals star b. Follow b's arrow to y, find 9, then follow a's arrow and write 9 into x. Now x is 9. Step three: star b equals temp. Take the 5 from temp, follow b's arrow, and write it into y. Now y is 5. swap ends, its frame disappears, including a, b and temp. But this time x and y keep their new values, because we changed the real boxes. x is 9. y is 5. Finally!"
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 215,
+      "lengthSec": 75,
+      "onScreen": "`swap.c` (15 lines); tracker shows x, y, a, b, temp; corner diagram from scene 5 replays per line",
+      "animation": "Butter highlights; tracker values update in sync",
+      "sfx": [],
+      "narration": "Here is the full program. [HL 3] Line 3: void swap, bracket int star a, comma, int star b. Both parameters are pointers to int. The function returns nothing, because it does its work through the arrows. [HL 4] Line 4: temp gets star a, which is 5. [TRACK temp=5] [HL 5] Line 5: star a equals star b. x becomes 9. [TRACK x=9] [HL 6] Line 6: star b equals temp. y becomes 5. [TRACK y=5] [HL 9] Now main, from line 9. [HL 10] Line 10 creates x equals 5 and y equals 9. [TRACK x=5] [TRACK y=9] [HL 11] Line 11 prints them before. [HL 12] Line 12 is the important call: swap of ampersand x, comma, ampersand y. We send addresses. [TRACK a=&x] [TRACK b=&y] Then lines 4 to 6 run, as we just saw. [HL 13] Line 13 prints them after. [HL 14] Return zero. Here's a simple way to remember. If a function needs to change your variable, it needs your variable's address. Star in the function header, ampersand in the call.",
+      "code": {
+        "file": "swap.c",
+        "source": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint main(void) {\n    int x = 5, y = 9;\n    printf(\"Before: x = %d, y = %d\\n\", x, y);\n    swap(&x, &y);\n    printf(\"After:  x = %d, y = %d\\n\", x, y);\n    return 0;\n}",
+        "output": "Before: x = 5, y = 9\nAfter:  x = 9, y = 5"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 290,
+      "lengthSec": 20,
+      "onScreen": "Compile and run: Before 5 9, After 9 5",
+      "animation": "Output prints; \"After\" line flashes mint; party popper",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Compile and run. Before: x equals 5, y equals 9. After: x equals 9, y equals 5. Seventeen episodes later, swap finally swaps. You also already know one function that works like this: scanf. That is why we always wrote ampersand in scanf. scanf needs the address so it can write your input into your variable."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 310,
+      "lengthSec": 5,
+      "onScreen": "\"Call by value sends a photocopy. Call by reference sends your house keys.\"",
+      "animation": "Card flips; Xecxec jingles a key ring; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Call by value sends a photocopy. Call by reference sends your house keys."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 315,
+      "lengthSec": 65,
+      "onScreen": "`swap(x, y)` with the pointer version; GCC warning and a crash",
+      "animation": "a and b receive 5 and 9 as if they were addresses; arrows point to houses 5 and 9 in a dark zone; crash crunch; fix `swap(&x, &y)` slides in",
+      "sfx": [],
+      "narration": "Today's bug: you wrote the new pointer swap, but you call it the old way, swap of x comma y, without ampersands. GCC warns twice: passing argument 1 of swap makes pointer from integer without a cast, and a note: expected int star but argument is of type int. Now watch the diagram. a receives 5, and treats it as an address. So a points to house number 5. b points to house number 9. Our program does not own those houses. The moment swap knocks on them, the program crashes with a segmentation fault. The fix is just two ampersands: swap of ampersand x, comma, ampersand y. Star in the header, ampersand in the call. Note: newer GCC versions, 14 and up, make this an error instead of a warning, which is a good thing."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 380,
+      "lengthSec": 45,
+      "onScreen": "\"One function, two answers\" — `divide(17, 5, &q, &r)` task card",
+      "animation": "Two empty boxes q and r with arrows coming from a function machine; Xecxec taps",
+      "sfx": [],
+      "narration": "A C function can return only one value. But with pointers, it can give back as many as you like. Your challenge: write void divide, with int a, int b, int star q, int star r. It should store a divided by b in star q, and the remainder in star r. Call it from main with 17 and 5, and print \"17 / 5 = 3 remainder 2\". Pause and try."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 425,
+      "lengthSec": 25,
+      "onScreen": "\"Next: EP 56 · Pointer arithmetic — walking down the street\"",
+      "animation": "Arrow walks along a row of boxes; footstep SFX; sign-off",
+      "sfx": [],
+      "narration": "You just fixed the most famous bug in beginner C. Next episode, our arrows start walking: pointer arithmetic, and what p plus plus really does. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint main(void) {\n    int x = 5, y = 9;\n    swap(x, y);\n    printf(\"x = %d, y = %d\\n\", x, y);\n    return 0;\n}",
+    "error": "GCC 13 (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'main':\nbug.c:11:10: warning: passing argument 1 of 'swap' makes pointer from integer without a cast [-Wint-conversion]\n   11 |     swap(x, y);\n      |          ^\n      |          |\n      |          int\nbug.c:3:16: note: expected 'int *' but argument is of type 'int'\n    3 | void swap(int *a, int *b) {\n      |           ~~~~~^\nbug.c:11:13: warning: passing argument 2 of 'swap' makes pointer from integer without a cast [-Wint-conversion]\n   11 |     swap(x, y);\n      |             ^\n      |             |\n      |             int\nbug.c:3:24: note: expected 'int *' but argument is of type 'int'\n    3 | void swap(int *a, int *b) {\n      |                   ~~~~~^\n\nRunning it crashes with a segmentation fault before printing anything (on Windows it usually exits silently). GCC 14 and later report these as errors.",
+    "fixed": "    swap(&x, &y);",
+    "why": "the function expects addresses, but `x` and `y` send the values 5 and 9, which are then used as house numbers the program does not own."
+  },
+  "pun": "\"Call by value sends a photocopy. Call by reference sends your house keys.\"",
+  "challenge": "Write `void divide(int a, int b, int *q, int *r)` that stores the quotient in `*q` and the remainder in `*r`. Call it with 17 and 5 and print `17 / 5 = 3 remainder 2`.",
+  "challengeAnswer": "(worked example)\nvoid divide(int a, int b, int *q, int *r) {\n    *q = a / b;\n    *r = a % b;\n}\n\n/* in main */\nint q, r;\ndivide(17, 5, &q, &r);\nprintf(\"17 / 5 = %d remainder %d\\n\", q, r);",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Why your swap didn't swap",
+      "hook": "\"After: x = 5, y = 9\" flashes red: \"Your swap is lying to you.\"",
+      "script": "You wrote a swap function, and nothing swapped. Here is why. C sends photocopies of x and y into the function. The function swaps the copies perfectly. Then the function ends, and the copies are thrown away. Your real x and y never moved. The fix is one idea: send the address. Full episode on the channel.",
+      "onScreen": "C SENDS PHOTOCOPIES",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 30,
+      "caption": "The most famous beginner bug in C.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "learntocode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Call by reference in 30 seconds",
+      "hook": "Two arrows cross from `a` and `b` into `x` and `y`.",
+      "script": "To let a function change your variables, send their addresses. In the call: swap of ampersand x, ampersand y. In the function: int star a, int star b. Then temp equals star a, star a equals star b, star b equals temp. The function follows the arrows and changes the real boxes. x and y are swapped.",
+      "onScreen": "* IN THE HEADER · & IN THE CALL",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Write this on your exam sheet.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "codingtips",
+        "callbyreference"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Forgot the ampersands",
+      "hook": "`swap(x, y);` then the screen cracks.",
+      "script": "Your swap takes pointers, but you called swap of x comma y. GCC warns: makes pointer from integer without a cast. Now a points to house number 5, which your program does not own. Crash. The fix: swap of ampersand x, ampersand y. Two characters.",
+      "onScreen": "swap(&x, &y) NOT swap(x, y)",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Two characters, one crash.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "pointers",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Photocopy vs house keys",
+      "hook": "Xecxec holding a photocopy in one claw and keys in the other.",
+      "script": "Call by value sends a photocopy. Call by reference sends your house keys.",
+      "onScreen": "PHOTOCOPY vs HOUSE KEYS",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Choose wisely who gets your keys.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: why does scanf need &?",
+      "hook": "`scanf(\"%d\", &n);` with the ampersand glowing.",
+      "script": "Quick quiz. Why does scanf need ampersand n, but printf does not? Answer: scanf has to write into n, so it needs n's address. printf only reads n, so a copy is fine. Now your challenge: write one function that gives back both a quotient and a remainder. Comment your code.",
+      "onScreen": "WHY THE & IN scanf?",
+      "fromScenes": [
+        7,
+        10
+      ],
+      "lengthSec": 25,
+      "caption": "You have been using pointers since your first scanf.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "pointers",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "void swap(int a, int b) {\n    int temp = a;\n    a = b;\n    b = temp;\n}",
+      "output": "Before: x = 5, y = 9\nAfter:  x = 5, y = 9",
+      "lang": "c"
+    },
+    {
+      "file": "swap.c",
+      "source": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint main(void) {\n    int x = 5, y = 9;\n    printf(\"Before: x = %d, y = %d\\n\", x, y);\n    swap(&x, &y);\n    printf(\"After:  x = %d, y = %d\\n\", x, y);\n    return 0;\n}",
+      "output": "Before: x = 5, y = 9\nAfter:  x = 9, y = 5",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

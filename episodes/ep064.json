@@ -1,0 +1,318 @@
+{
+  "ep": 64,
+  "title": "union & memory layout",
+  "module": 9,
+  "lengthSec": 405,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "explain why `sizeof` a struct can be larger than the sum of its members (padding and alignment)",
+    "reorder members to shrink a struct",
+    "define a `union` and explain that all members share one memory block",
+    "predict a union's size",
+    "keep track of which union member is valid with an enum tag"
+  ],
+  "youtube": {
+    "title": "Why sizeof Lied to You: Padding and union | C Programming EP 64",
+    "description": "A char, an int and a char add up to 6 bytes. So why does sizeof say 12? Today we open the memory boxes, find the hidden padding, shrink the struct by reordering it, and meet union: the struct where every member lives in the same box. Chapters: 0:00 6 or 12? · 0:25 Padding and alignment · 1:25 Reorder to shrink · 1:55 What a union is · 2:35 Code line by line · 4:10 Running it · 4:35 Bug of the Day · 6:00 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "6 or 12?"
+      },
+      {
+        "t": "0:25",
+        "label": "Padding and alignment"
+      },
+      {
+        "t": "1:25",
+        "label": "Reorder to shrink"
+      },
+      {
+        "t": "1:55",
+        "label": "What a union is"
+      },
+      {
+        "t": "2:35",
+        "label": "Code line by line"
+      },
+      {
+        "t": "4:10",
+        "label": "Running it"
+      },
+      {
+        "t": "4:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:00",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "union in c",
+      "structure padding",
+      "memory alignment",
+      "sizeof struct",
+      "struct vs union",
+      "tagged union",
+      "learn c",
+      "koding konkani",
+      "c tutorial english"
+    ],
+    "thumbnail": {
+      "text": "6 + 0 = 12?",
+      "visual": "big text \"6 + 0 = 12?\"; a row of memory boxes with three grey \"padding\" boxes glowing; Xecxec holding a measuring tape, shocked; cream background, tomato blocks",
+      "pose": "Xecxec holding a measuring tape, shocked"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "`char + int + char = 6 bytes` then `sizeof(struct Order) = 12`",
+      "animation": "Typing SFX; record scratch on 12",
+      "sfx": [],
+      "narration": "Here is a struct called Order: a char for the size, an int for the quantity, and another char for the type. A char is 1 byte, an int is 4. One plus four plus one is 6. We ask sizeof. It says 12! Did sizeof just lie to us? No. It told the truth. We just did not know where to look."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 64 · UNION & MEMORY LAYOUT",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 64. union and memory layout."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 60,
+      "onScreen": "struct Order as 12 bytes: size, 3 padding, qty (4), type, 3 padding",
+      "animation": "Byte boxes fill; padding boxes appear in grey with a hiss; label \"typical x86/x64 GCC, your sizes may differ\"",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Think of a bus with seats in rows of four. A family of four wants to sit in one row together. If one person has already taken the first seat of a row, the family will not squeeze across two rows. They skip ahead to the next empty row. The processor is like that family with ints. It reads a 4-byte int fastest when the int starts at an address that is a multiple of 4. This is called alignment. So look at Order in memory. Byte 0: size, the char. Now qty, the int, needs to start at a multiple of 4. Bytes 1, 2 and 3 are left empty. These empty bytes are called padding. qty takes bytes 4 to 7. type, the char, takes byte 8. And then the whole struct is padded up to a multiple of 4 again, so that in an array of Orders, every int lines up. Bytes 9, 10 and 11: more padding. Total: 12. Six useful bytes, six empty ones. These are the numbers on a typical Windows or Linux machine with GCC. On other machines, the sizes may be different, so always use sizeof instead of guessing."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 85,
+      "lengthSec": 30,
+      "onScreen": "struct Packed: qty (4), size, type, 2 padding = 8",
+      "animation": "Members slide into new order; boxes snap tighter; satisfying click",
+      "sfx": [],
+      "narration": "Here is a trick. Same three members, different order. struct Packed puts the int first: qty in bytes 0 to 3. Then size at byte 4, type at byte 5. Two bytes of padding at the end to reach a multiple of 4. Total: 8. Same data, 4 bytes saved. A simple rule: put the biggest members first. For one struct, 4 bytes is nothing. For a million records, it is 4 megabytes."
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "Struct = three separate lockers; union = one locker shared by three tenants",
+      "animation": "Three locker doors merge into one; tenants swap in and out",
+      "sfx": [],
+      "narration": "Now meet union. It is written just like a struct, but with one big difference. In a struct, every member gets its own locker. In a union, all members share one single locker. The locker is as big as the biggest member. So a union of an int, a float and a char is 4 bytes, the size of the int or float. Not 9. You can store an int in it, or a float, or a char, but only one at a time. Putting in a new one replaces the old one. Why would anyone want that? To save memory when a value can be one of several types, but never two at once. Like a parking spot that can hold a car or a scooter, but not both."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 155,
+      "lengthSec": 95,
+      "onScreen": "ep64.c, 36 lines; tracker shows union v as one 4-byte box",
+      "animation": "Line highlights; the single box's label changes i / f / c; key-tap SFX",
+      "sfx": [],
+      "narration": "Let's measure everything. [HL 3] Lines 3 to 7: struct Order, char, int, char. [HL 9] Lines 9 to 13: struct Packed, the reordered version. [HL 15] Lines 15 to 19: union Value. It looks like a struct, but starts with the word union. Members i, f and c. [HL 22] Line 22 adds up the sizes of char, int and char. sizeof gives a value of type size_t, so we print it with percent z u. [HL 23] Line 23 prints sizeof struct Order: 12. [HL 24] Line 24, struct Packed: 8. [HL 25] Line 25, the union: 4. Now let's use the union. [HL 27] Line 27: union Value v. One 4-byte box. [HL 28] Line 28: v dot i equals 65. The box now holds the int 65. [TRACK v.i=65] [HL 29] Line 29 prints it. 65. [HL 30] Line 30: v dot f equals 2.5. The same box now holds a float, and the 65 is gone. Overwritten. [TRACK v.f=2.5] [HL 31] Line 31 prints 2.5. [HL 32] Line 32: v dot c equals X. Now the box holds a char. [TRACK v.c='X'] [HL 33] Line 33 prints X. Each time we read the member we wrote last, so each print is correct. That is the golden rule of unions. Remember it, because today's bug breaks it.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nstruct Order {\n    char size;\n    int qty;\n    char type;\n};\n\nstruct Packed {\n    int qty;\n    char size;\n    char type;\n};\n\nunion Value {\n    int i;\n    float f;\n    char c;\n};\n\nint main(void) {\n    printf(\"char + int + char = %zu bytes\\n\", sizeof(char) + sizeof(int) + sizeof(char));\n    printf(\"sizeof(struct Order)  = %zu\\n\", sizeof(struct Order));\n    printf(\"sizeof(struct Packed) = %zu\\n\", sizeof(struct Packed));\n    printf(\"sizeof(union Value)   = %zu\\n\\n\", sizeof(union Value));\n\n    union Value v;\n    v.i = 65;\n    printf(\"v.i = %d\\n\", v.i);\n    v.f = 2.5f;\n    printf(\"v.f = %.1f\\n\", v.f);\n    v.c = 'X';\n    printf(\"v.c = %c\\n\", v.c);\n\n    return 0;\n}",
+        "output": "char + int + char = 6 bytes\nsizeof(struct Order)  = 12\nsizeof(struct Packed) = 8\nsizeof(union Value)   = 4\n\nv.i = 65\nv.f = 2.5\nv.c = X"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 250,
+      "lengthSec": 20,
+      "onScreen": "Full program output, 8 lines",
+      "animation": "Typing SFX",
+      "sfx": [],
+      "narration": "Compile and run. char plus int plus char: 6 bytes. struct Order: 12. struct Packed: 8. union Value: 4. Then v dot i 65, v dot f 2.5, v dot c X. Remember, your sizes may differ on other systems, but on Windows with GCC you should see exactly these."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 270,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the union members never fight over the room? Because only one of them could be home at a time."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 275,
+      "lengthSec": 85,
+      "onScreen": "Write v.f = 2.5, read v.i, get 1075838976",
+      "animation": "Bits pour into the box as a float, read out as an int; error buzz; enum tag badge snaps on",
+      "sfx": [],
+      "narration": "Today's bug: reading the wrong union member. We write v dot f equals 2.5. Then we print v dot i. No error. No warning, even with -Wall and -Wextra. And the output is: 1075838976. Over one billion! Where did that come from? The box holds the bits of the float 2.5. A float stores numbers in a special pattern of sign, exponent and fraction. When we read those same 32 bits as an int, C does not convert anything. It just reads the pattern as if it were a whole number. And the pattern for 2.5 happens to look like 1075838976 on machines that use the standard float format, which is almost all of them. The union does not remember what you stored last. That is your job. The fix is a pattern called a tagged union. Put the union inside a struct, next to an enum from EP 63 that says what kind of value is inside. Set the tag every time you write. Check the tag every time you read. Now show checks the tag, sees IS_FLOAT, and prints float 2.5. The tag is like a name board on the shared locker saying who lives there today."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 360,
+      "lengthSec": 25,
+      "onScreen": "Compare struct vs union with the same members",
+      "animation": "Two boxes side by side, scale tips; timer ring",
+      "sfx": [],
+      "narration": "Your challenge: make a struct S and a union U with exactly the same three members: an int, a float, and a char array of 8. Print the sizeof of both. Before you run it, predict the numbers. Then explain the difference in one sentence. Answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 385,
+      "lengthSec": 20,
+      "onScreen": "Module 9 done; next: EP 65 Module 10 dynamic memory; sign-off",
+      "animation": "Module tiles, claw-click, music out",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "That completes Module 9! You can now build your own data types. But every array and struct so far had a fixed size, decided before the program runs. What if you do not know how many students there will be? Module 10: dynamic memory, starting with EP 65. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nunion Value {\n    int i;\n    float f;\n};\n\nint main(void) {\n    union Value v;\n    v.f = 2.5f;\n    printf(\"v.i = %d\\n\", v.i);\n    return 0;\n}",
+    "error": "No error and no warning, even with `gcc -Wall -Wextra`. Wrong output (on machines with 32-bit IEEE 754 floats and 32-bit int, which includes Windows x64):\n\nv.i = 1075838976",
+    "fixed": "#include <stdio.h>\n\ntypedef enum { IS_INT, IS_FLOAT } Kind;\n\ntypedef struct {\n    Kind kind;\n    union {\n        int i;\n        float f;\n    } data;\n} Value;\n\nvoid show(Value v) {\n    if (v.kind == IS_INT)\n        printf(\"int: %d\\n\", v.data.i);\n    else\n        printf(\"float: %.1f\\n\", v.data.f);\n}\n\nint main(void) {\n    Value v;\n    v.kind = IS_FLOAT;\n    v.data.f = 2.5f;\n    show(v);\n    return 0;\n}",
+    "why": "a union's members share the same bytes, so reading `i` after writing `f` reinterprets the float's bit pattern as an integer instead of converting the value; a tag records which member is currently valid."
+  },
+  "pun": "Why did the union members never fight over the room? Because only one of them could be home at a time.",
+  "challenge": "Make `struct S` and `union U`, each with `int i; float f; char c[8];`. Predict, then print both sizes, and explain the difference in one sentence.",
+  "challengeAnswer": "(worked example)\nstruct S { int i; float f; char c[8]; };\nunion  U { int i; float f; char c[8]; };\n\nprintf(\"struct S: %zu bytes\\n\", sizeof(struct S));  /* 16 = 4 + 4 + 8 */\nprintf(\"union  U: %zu bytes\\n\", sizeof(union U));   /* 8 = size of the biggest member */\n/* A struct gives every member its own space; a union gives all members one shared space. */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "1 + 4 + 1 = 12?",
+      "hook": "Terminal: \"6 bytes\" then \"sizeof = 12\". Record scratch.",
+      "script": "A char, an int and a char. 1 plus 4 plus 1 is 6. sizeof says 12. Why? The processor likes ints to start at a multiple of 4. So C adds empty bytes, called padding: 3 after the first char, 3 at the end. Six bytes of data, six bytes of air. Your sizes may differ, so always use sizeof.",
+      "onScreen": "1 + 4 + 1 = 12?!",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "The hidden bytes inside your struct.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "memory",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "union in 30 seconds",
+      "hook": "Three locker doors merge into one",
+      "script": "union in 30 seconds. A struct gives each member its own locker. A union gives all members one shared locker, as big as the biggest member. Store an int, then a float, and the int is gone. Only the last one you wrote is valid. Use it when a value can be one of several types, but never two at once.",
+      "onScreen": "STRUCT: ALL · UNION: ONE AT A TIME",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "Struct vs union in one picture.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "union",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "2.5 became 1075838976",
+      "hook": "\"v.f = 2.5\" then \"v.i = 1075838976\". Xecxec's eyes pop.",
+      "script": "We stored 2.5 as a float in a union. Then we read it as an int. Output: over one billion. No error, no warning. The union has no idea what is inside. C just reads the float's bit pattern as a whole number. Fix: a tagged union. Keep an enum next to it that says what is stored. Check it before you read.",
+      "onScreen": "WRONG MEMBER = WRONG NUMBER",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "Same bits, totally different number.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Only one home at a time",
+      "hook": "Three tenants peeking at one tiny locker",
+      "script": "Why did the union members never fight over the room? Because only one of them could be home at a time.",
+      "onScreen": "ONLY ONE HOME AT A TIME",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Peaceful shared living, C style.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Shrink the struct",
+      "hook": "\"char, int, char = 12 bytes. Can you make it 8?\"",
+      "script": "Quiz. A struct with char, int, char is 12 bytes. Can you make it smaller without removing anything? Three, two, one. Put the int first! int, char, char is 8 bytes. Biggest members first, less padding. Now your challenge: compare a struct and a union with the same members. Predict the sizes. Answer in the comments.",
+      "onScreen": "12 → 8 BYTES?",
+      "fromScenes": [
+        4,
+        10
+      ],
+      "lengthSec": 30,
+      "caption": "Free memory, just by reordering.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "memory"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nstruct Order {\n    char size;\n    int qty;\n    char type;\n};\n\nstruct Packed {\n    int qty;\n    char size;\n    char type;\n};\n\nunion Value {\n    int i;\n    float f;\n    char c;\n};\n\nint main(void) {\n    printf(\"char + int + char = %zu bytes\\n\", sizeof(char) + sizeof(int) + sizeof(char));\n    printf(\"sizeof(struct Order)  = %zu\\n\", sizeof(struct Order));\n    printf(\"sizeof(struct Packed) = %zu\\n\", sizeof(struct Packed));\n    printf(\"sizeof(union Value)   = %zu\\n\\n\", sizeof(union Value));\n\n    union Value v;\n    v.i = 65;\n    printf(\"v.i = %d\\n\", v.i);\n    v.f = 2.5f;\n    printf(\"v.f = %.1f\\n\", v.f);\n    v.c = 'X';\n    printf(\"v.c = %c\\n\", v.c);\n\n    return 0;\n}",
+      "output": "char + int + char = 6 bytes\nsizeof(struct Order)  = 12\nsizeof(struct Packed) = 8\nsizeof(union Value)   = 4\n\nv.i = 65\nv.f = 2.5\nv.c = X",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "float: 2.5"
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "ep": 54,
+  "title": "Dereferencing",
+  "module": 8,
+  "lengthSec": 405,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "read a value through a pointer with `*p`",
+    "write a value through a pointer with `*p = ...`",
+    "use `(*p)++` correctly and know why the brackets matter",
+    "tell `*` and `&` apart in any line of code"
+  ],
+  "youtube": {
+    "title": "Knock on the Door: Dereferencing in C | EP 54",
+    "description": "Dereferencing means following the arrow and reading or changing what lives at the other end. We change a variable without ever writing its name, one box at a time, and clear up the star-versus-ampersand confusion for good. 0:00 The fish stall · 0:20 Title · 0:25 Knock on the door · 1:15 Reading through a pointer · 1:45 Code, line by line · 3:25 Running it · 3:50 Pun · 3:55 Why (*p)++ needs brackets · 4:40 Bug of the Day: * vs & · 5:50 Challenge · 6:25 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The fish stall"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Knock on the door"
+      },
+      {
+        "t": "1:15",
+        "label": "Reading through a pointer"
+      },
+      {
+        "t": "1:45",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "3:25",
+        "label": "Running it"
+      },
+      {
+        "t": "3:50",
+        "label": "Pun"
+      },
+      {
+        "t": "3:55",
+        "label": "Why (*p)++ needs brackets"
+      },
+      {
+        "t": "4:40",
+        "label": "Bug of the Day: * vs &"
+      },
+      {
+        "t": "5:50",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:25",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "dereferencing pointer c",
+      "dereference operator",
+      "pointers in c",
+      "* and & in c",
+      "change value using pointer",
+      "c pointer examples",
+      "c programming tutorial",
+      "learn c",
+      "koding konkani",
+      "c for beginners india",
+      "pointer arithmetic basics",
+      "engineering c programming"
+    ],
+    "thumbnail": {
+      "text": "KNOCK KNOCK *p",
+      "visual": "big text \"KNOCK KNOCK *p\"; a claw knocking on a lilac box door with `fish = 31` behind it; black arrow from `p`; Xecxec mid-knock with a surprised face; lilac background, dark blue text block",
+      "pose": "Xecxec mid-knock with a surprised face"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Mapusa fish market stall with a crate of 10 mackerels; a slip of paper with \"Stall 1000\"",
+      "animation": "Slip flutters from a hand to Xecxec; market chatter ambience",
+      "sfx": [],
+      "narration": "At the Mapusa market, your mother gives you a slip of paper that says \"Stall 1000\". The slip is not the fish. It just tells you where the fish is. To get the fish, you have to walk to stall 1000 and look inside. In C, walking to the address and looking inside has a name: dereferencing."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 54 · DEREFERENCING",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode fifty-four. Dereferencing."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "Box `fish` at 1000 holding 10, with a door; box `p` at 2000 holding 1000, arrow to `fish`",
+      "animation": "Claw follows the arrow, knocks twice on `fish`'s door; door opens to show 10; knock-knock SFX",
+      "sfx": [],
+      "narration": "Here is our memory again. A box called fish, at address 1000, holding 10. A pointer called p, holding the address 1000, so we draw an arrow from p to fish. Last episode you saw that star p gives you 10. Let's slow down and see what really happens. First, the computer looks inside p and finds 1000. Second, it goes to house 1000. Third, it knocks on the door and looks inside. That is star p. Three steps: read the address, go there, use what is inside. Dereferencing is just a big word for \"knock on the door at the end of the arrow\"."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 75,
+      "lengthSec": 30,
+      "onScreen": "New box `copy` at 1004; 10 copied from `fish` into `copy` via the arrow",
+      "animation": "A glowing \"10\" travels along the arrow then drops into `copy`; soft pop",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "If we write int copy equals star p, the computer follows the arrow, sees 10, and puts a copy of 10 into a new box called copy. Notice: fish still has 10. Reading through a pointer does not change anything. It just looks."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 105,
+      "lengthSec": 100,
+      "onScreen": "`deref.c` (20 lines); tracker: fish, copy, p; corner memory diagram updates each write",
+      "animation": "Butter highlights; each write through `*p` makes the `fish` box flash tomato then settle; tick sound per change",
+      "sfx": [],
+      "narration": "Now the full program. [HL 4] Line 4: fish equals 10. [TRACK fish=10] [HL 5] Line 5: p is a pointer to an int, and it holds the address of fish. The arrow appears. [TRACK p=&fish] [HL 7] Line 7 prints fish: 10. [HL 9] Line 9 reads through the pointer. Star p is 10, so copy becomes 10. [TRACK copy=10] [HL 10] Line 10 prints it. Now the exciting part. [HL 12] Line 12: star p equals 25. When star p is on the left of the equals sign, we are not reading. We are writing. Follow the arrow, open the door, and replace what is inside with 25. Watch the fish box. [TRACK fish=25] We changed fish without ever writing the word fish! [HL 13] Line 13 proves it: fish is now 25. [HL 15] Line 15: star p equals star p plus 5. Read the right side first. Star p is 25, plus 5 is 30. Then write 30 through the pointer. [TRACK fish=30] [HL 16] Line 16 prints 30. [HL 18] Line 18: bracket star p bracket plus plus. This adds 1 to the value at the end of the arrow. [TRACK fish=31] [HL 19] Line 19 prints 31. [HL 20] And return zero.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int fish = 10;\n    int *p = &fish;\n\n    printf(\"Before: fish = %d\\n\", fish);\n\n    int copy = *p;\n    printf(\"Read through p: %d\\n\", copy);\n\n    *p = 25;\n    printf(\"After *p = 25: fish = %d\\n\", fish);\n\n    *p = *p + 5;\n    printf(\"After *p = *p + 5: fish = %d\\n\", fish);\n\n    (*p)++;\n    printf(\"After (*p)++: fish = %d\\n\", fish);\n    return 0;\n}",
+        "output": "Before: fish = 10\nRead through p: 10\nAfter *p = 25: fish = 25\nAfter *p = *p + 5: fish = 30\nAfter (*p)++: fish = 31"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 205,
+      "lengthSec": 25,
+      "onScreen": "Compile and run",
+      "animation": "Output lines print one by one; numbers 10, 25, 30, 31 flash mint",
+      "sfx": [],
+      "narration": "Compile and run. Before: 10. Read through p: 10. After star p equals 25: 25. Then 30. Then 31. Every change to fish happened through p. These are values, not addresses, so your output will match mine exactly."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 230,
+      "lengthSec": 5,
+      "onScreen": "\"Pointers are very polite. They always knock before they enter.\"",
+      "animation": "Card flips; Xecxec tips an imaginary hat; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Pointers are very polite. They always knock before they enter."
+    },
+    {
+      "id": 8,
+      "template": "memory-boxes",
+      "startSec": 235,
+      "lengthSec": 45,
+      "onScreen": "Two panels: `(*p)++` grows `fish` from 30 to 31; `*p++` moves the arrow one box right without changing `fish`",
+      "animation": "Left panel: number ticks up; right panel: arrow slides to the neighbour box, red X appears; buzzer",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Why did we write bracket star p bracket plus plus, and not just star p plus plus? Because in C, plus plus is applied before the star. So star p plus plus, without brackets, means: move p to the next box, and then read the old box. The arrow moves, and fish does not change at all. Look at the right panel: the arrow slides away to the neighbour. That is not what we wanted. With brackets, we say \"first follow the arrow, then add one to what is there\". So when you want to change the value, always use brackets. We'll see moving pointers on purpose in EP 56."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 280,
+      "lengthSec": 70,
+      "onScreen": "`int *p = fish;` with GCC warning and a crash; side card \"& makes a pin, * follows a pin\"",
+      "animation": "Arrow tries to point to address 10, lands in a dark zone; crash crunch; fixed line slides in",
+      "sfx": [],
+      "narration": "Today's bug: mixing up star and ampersand. Someone writes int star p equals fish. No ampersand. GCC warns: initialization of int star from int makes pointer from integer without a cast. What happened? p was given the value 10, not the address of fish. So the arrow points to house number 10, which does not belong to our program. Then star p tries to knock on that door, and the program crashes with a segmentation fault. On Windows it may just stop without printing anything. Here is the simple rule, on the card. Ampersand makes a pin. Star follows a pin. When you set up a pointer, you need ampersand. When you use a pointer to reach the value, you need star."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 350,
+      "lengthSec": 35,
+      "onScreen": "\"Swap the right way (no functions yet)\" task card",
+      "animation": "Two boxes with pointers; question mark between them; Xecxec juggles two shells",
+      "sfx": [],
+      "narration": "Your challenge. Make two ints, a equals 3 and b equals 7. Make two pointers, pa pointing to a and pb pointing to b. Now swap the values of a and b, using only pa and pb, and a temp variable. Then print a and b. If you get 7 and 3, you are ready for the next episode. Pause and try."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 385,
+      "lengthSec": 20,
+      "onScreen": "\"Next: EP 55 · Call by reference — fixing the swap from EP 38\"",
+      "animation": "The broken swap from EP 38 flashes; claw-click; sign-off",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "You can now read and write through a pointer. Remember EP 38, where our swap function did not swap? Next episode, we finally fix it. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int fish = 10;\n    int *p = fish;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+    "error": "GCC (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'main':\nbug.c:5:14: warning: initialization of 'int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]\n    5 |     int *p = fish;\n      |              ^~~~\n\nRunning it crashes with a segmentation fault (on Windows the program usually just exits without printing anything).\n\nNote: GCC 14 and later turn this warning into an error by default (`error: initialization of 'int *' from 'int' makes pointer from integer without a cast`).",
+    "fixed": "    int *p = &fish;",
+    "why": "without `&`, the pointer receives the value 10 instead of the address of `fish`, so `*p` knocks on house number 10, which the program does not own."
+  },
+  "pun": "\"Pointers are very polite. They always knock before they enter.\"",
+  "challenge": "With `int a = 3, b = 7;` and pointers `pa` and `pb`, swap `a` and `b` using only the pointers and a `temp` variable. Print `a` and `b`.",
+  "challengeAnswer": "(worked example)\nint a = 3, b = 7;\nint *pa = &a, *pb = &b;\nint temp = *pa;\n*pa = *pb;\n*pb = temp;\nprintf(\"a = %d, b = %d\\n\", a, b);   /* a = 7, b = 3 */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Change a variable without its name",
+      "hook": "`fish` box jumps from 10 to 25: \"I never wrote fish.\"",
+      "script": "Watch. fish is 10. p points to fish. Now: star p equals 25. Print fish. It is 25! We changed fish without ever writing its name. Star p on the left means follow the arrow and write there. That is dereferencing.",
+      "onScreen": "*p = 25 CHANGES fish",
+      "fromScenes": [
+        1,
+        5
+      ],
+      "lengthSec": 25,
+      "caption": "Spooky, but it is just a pointer.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "learntocode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Dereferencing in 30 seconds",
+      "hook": "Claw knocks on a box door: \"This is star p.\"",
+      "script": "Dereferencing has three steps. Read the address inside p. Go to that house. Knock and look inside. On the right side of equals, star p reads the value. On the left side, star p writes a new value. Same knock, two jobs.",
+      "onScreen": "READ · GO · KNOCK",
+      "fromScenes": [
+        3,
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Three steps, every time.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "codingtips",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Missing ampersand = crash",
+      "hook": "`int *p = fish;` then the screen cracks.",
+      "script": "int star p equals fish. One missing ampersand. Now p holds 10, not the address of fish. Star p knocks on house number 10, which your program does not own. Crash. Remember: ampersand makes a pin, star follows a pin.",
+      "onScreen": "& MAKES A PIN · * FOLLOWS IT",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "One symbol, one crash.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "pointers",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Polite pointers",
+      "hook": "Xecxec in a tiny bow tie at a door.",
+      "script": "Pointers are very polite. They always knock before they enter.",
+      "onScreen": "THEY ALWAYS KNOCK FIRST",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Manners matter, even in memory.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: brackets or not?",
+      "hook": "`(*p)++` vs `*p++` side by side: \"Same thing?\"",
+      "script": "fish is 30 and p points to it. Which line makes fish 31? Bracket star p bracket plus plus, or star p plus plus? Answer: only the one with brackets. Without brackets, the arrow moves and fish stays 30. Comment if you got it.",
+      "onScreen": "WHICH ONE MAKES 31?",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Brackets save lives.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "pointers",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int fish = 10;\n    int *p = &fish;\n\n    printf(\"Before: fish = %d\\n\", fish);\n\n    int copy = *p;\n    printf(\"Read through p: %d\\n\", copy);\n\n    *p = 25;\n    printf(\"After *p = 25: fish = %d\\n\", fish);\n\n    *p = *p + 5;\n    printf(\"After *p = *p + 5: fish = %d\\n\", fish);\n\n    (*p)++;\n    printf(\"After (*p)++: fish = %d\\n\", fish);\n    return 0;\n}",
+      "output": "Before: fish = 10\nRead through p: 10\nAfter *p = 25: fish = 25\nAfter *p = *p + 5: fish = 30\nAfter (*p)++: fish = 31",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "ep": 22,
+  "title": "Nested if",
+  "module": 3,
+  "lengthSec": 370,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "put an if inside another if when the second question only makes sense after the first",
+    "trace which inner and outer branches run",
+    "know that an `else` pairs with the nearest unmatched `if`",
+    "use braces to stop the dangling else"
+  ],
+  "youtube": {
+    "title": "Nested if and the Dangling else Trap | C Programming EP 22",
+    "description": "Some questions only make sense after another question says yes. First the bouncer checks your ticket, then your ID. Today we put an if inside an if, trace every path, and catch the dangling else that hides behind neat indentation. Chapters: 0:00 The beach concert gate · 0:25 If inside if · 1:10 Code line by line · 2:55 Running it · 3:30 Reading nested code · 4:10 Bug of the Day · 5:20 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The beach concert gate"
+      },
+      {
+        "t": "0:25",
+        "label": "If inside if"
+      },
+      {
+        "t": "1:10",
+        "label": "Code line by line"
+      },
+      {
+        "t": "2:55",
+        "label": "Running it"
+      },
+      {
+        "t": "3:30",
+        "label": "Reading nested code"
+      },
+      {
+        "t": "4:10",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:20",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "nested if in c",
+      "dangling else",
+      "if inside if",
+      "decision making in c",
+      "learn c",
+      "c for beginners",
+      "c tutorial english",
+      "koding konkani",
+      "leap year program"
+    ],
+    "thumbnail": {
+      "text": "WHICH IF?",
+      "visual": "big text \"WHICH IF?\"; one lonely else block with two if blocks pulling it from both sides; Xecxec as a bouncer with sunglasses at a gate; mint background, dark blue blocks",
+      "pose": "Xecxec as a bouncer with sunglasses at a gate"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Beach concert gate at Vagator; Xecxec bouncer checks ticket, then ID",
+      "animation": "Waves, crowd murmur; stamp SFX on ticket",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Saturday night at Vagator. There is a beach concert, and Xecxec is the bouncer. First question: do you have a ticket? If not, go home. If yes, second question: are you 18 or older? Notice something. He never asks a person without a ticket for their ID. The second question only happens after the first one says yes. That is a nested if."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 22 · NESTED IF",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 22. Nested if."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "Flowchart: \"ticket?\" diamond, YES leads into a second diamond \"age >= 18?\" drawn inside a box",
+      "animation": "Outer box draws, inner diamond zooms in like a door inside a door",
+      "sfx": [],
+      "narration": "Nested just means inside. A nest is a home inside a tree. A nested if is an if that lives inside the block of another if. Look at the flowchart. The outer diamond asks about the ticket. On the NO side, we print no entry, done. On the YES side, we walk into a box, and inside that box is a second diamond, asking about age. That inner question has its own YES and NO. So we have three possible endings, not two: welcome, adults only, or no ticket."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 70,
+      "lengthSec": 105,
+      "onScreen": "ep22.c, 23 lines; trackers hasTicket and age",
+      "animation": "Outer block tinted dark blue, inner block tinted mint; line highlights; key-tap SFX",
+      "sfx": [],
+      "narration": "Here is the gate in C. [HL 4] Line 4 makes two boxes, hasTicket and age. [HL 6] [HL 7] Lines 6 and 7 ask: do you have a ticket, 1 for yes, 0 for no, and read the answer. The user types 1. [TRACK hasTicket=1] [HL 9] Line 9 is the outer if: is hasTicket equal to 1? Double equals, a comparison, not single equals, remember EP 16. Yes, it is 1. So we enter the outer block, which runs from line 9 all the way to line 18. [HL 10] [HL 11] Lines 10 and 11 ask for the age and read it. Notice: we only ask for age inside the outer block. No ticket, no age question. The user types 20. [TRACK age=20] [HL 13] Line 13 is the inner if: is age greater than or equal to 18? Yes. [HL 14] Line 14 prints \"Welcome to the beach concert!\" [HL 15] C skips the inner else on lines 15 to 17. [HL 18] Then on line 18 we hit the outer else. The outer condition was true, so C skips that too. [HL 22] Return 0. Now run it again and type 0 for the ticket. [TRACK hasTicket=0] [HL 9] Line 9 is false. C skips the whole outer block, including the inner if. It never asks for age. [HL 19] It jumps to line 19: \"No ticket, no entry.\" See the indentation? Each level moves four spaces to the right. Your eyes can follow the nesting like steps going in.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int hasTicket, age;\n\n    printf(\"Do you have a ticket? (1 = yes, 0 = no): \");\n    scanf(\"%d\", &hasTicket);\n\n    if (hasTicket == 1) {\n        printf(\"Enter your age: \");\n        scanf(\"%d\", &age);\n\n        if (age >= 18) {\n            printf(\"Welcome to the beach concert!\\n\");\n        } else {\n            printf(\"Sorry, adults only tonight.\\n\");\n        }\n    } else {\n        printf(\"No ticket, no entry.\\n\");\n    }\n\n    return 0;\n}",
+        "output": "Do you have a ticket? (1 = yes, 0 = no): 1\nEnter your age: 20\nWelcome to the beach concert!\n\nDo you have a ticket? (1 = yes, 0 = no): 1\nEnter your age: 15\nSorry, adults only tonight.\n\nDo you have a ticket? (1 = yes, 0 = no): 0\nNo ticket, no entry."
+      }
+    },
+    {
+      "id": 5,
+      "template": "terminal",
+      "startSec": 175,
+      "lengthSec": 30,
+      "onScreen": "Runs: 1 + 20, 1 + 15, 0",
+      "animation": "Typing SFX; gate opens or closes per run",
+      "sfx": [],
+      "narration": "Compile and run three times. Ticket 1, age 20: welcome. Ticket 1, age 15: sorry, adults only tonight. Ticket 0: no ticket, no entry, and notice it never even asked for the age. Three runs, three different paths. When you test nested code, test every path at least once."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 205,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the nested if feel so safe? Because it was surrounded by a lot of support from its parent."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 210,
+      "lengthSec": 40,
+      "onScreen": "Three paths table: ticket and adult, ticket and minor, no ticket",
+      "animation": "Rows light up one by one",
+      "sfx": [],
+      "narration": "How do you read nested code without getting lost? Match the braces. Every opening brace has a closing brace at the same indentation level. VS Code helps: click next to a brace and its partner lights up. And a tip: if you are three or four levels deep, stop. Usually an else-if ladder or the AND operator can flatten it. For example, ticket AND adult could be one condition. We use nesting here because the inner question needs extra input that only makes sense after the outer yes."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 250,
+      "lengthSec": 70,
+      "onScreen": "Dangling else: no ticket prints nothing",
+      "animation": "Else block slides from outer if to inner if; error buzz; braces snap in",
+      "sfx": [],
+      "narration": "Today's bug is famous. It is called the dangling else. Look at this code. No braces. if hasTicket equals 1, then if age is 18 or more, print welcome. Then an else, lined up neatly under the first if, printing \"No ticket, no entry.\" hasTicket is 0. We run it. And it prints nothing. Nothing at all! Why? C does not care about your spaces. The rule is: an else belongs to the nearest if above it that does not already have an else. The nearest one is the inner if, the age check. So C actually reads this as: if ticket, then if age, welcome, else no ticket. With no ticket, the outer if is false, and the whole thing is skipped. Plain gcc stays silent. With -Wall, GCC says: suggest explicit braces to avoid ambiguous else. That is GCC telling you: I see the trap. The fix: braces. Put the inner if inside braces, and the else now clearly belongs to the outer if. Now it prints \"No ticket, no entry.\""
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 320,
+      "lengthSec": 30,
+      "onScreen": "Leap year checker",
+      "animation": "Calendar flip SFX, timer ring",
+      "sfx": [],
+      "narration": "Your challenge: the leap year checker. A year is a leap year if it divides by 4. But if it also divides by 100, it is not a leap year, unless it also divides by 400. So 2024 is a leap year. 1900 is not. 2000 is. Use nested ifs and the modulo operator from EP 15. Test with those three years. Answer in the comments."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 350,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 23 switch-case; sign-off",
+      "animation": "Module tiles, claw-click, music out",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: when you have one value and many exact choices, like a restaurant menu, there is a neater tool than a ladder. switch-case, in EP 23. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int hasTicket = 0;\n    int age = 20;\n\n    if (hasTicket == 1)\n        if (age >= 18)\n            printf(\"Welcome!\\n\");\n    else\n        printf(\"No ticket, no entry.\\n\");\n\n    return 0;\n}",
+    "error": "With plain `gcc` there is no error, and the program prints nothing (empty output). With `gcc -Wall` (GCC 13):\n\nep22bug.c:7:8: warning: suggest explicit braces to avoid ambiguous 'else' [-Wdangling-else]\n    7 |     if (hasTicket == 1)\n      |        ^",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int hasTicket = 0;\n    int age = 20;\n\n    if (hasTicket == 1) {\n        if (age >= 18)\n            printf(\"Welcome!\\n\");\n    } else {\n        printf(\"No ticket, no entry.\\n\");\n    }\n\n    return 0;\n}",
+    "why": "an `else` always pairs with the nearest unmatched `if`, whatever the indentation says, so braces are needed to attach it to the outer `if`."
+  },
+  "pun": "Why did the nested if feel so safe? Because it was surrounded by a lot of support from its parent.",
+  "challenge": "Leap year checker with nested ifs: divisible by 4 is a leap year, except years divisible by 100, unless also divisible by 400. Test 2024, 1900, 2000.",
+  "challengeAnswer": "(worked example)\nint year;\nscanf(\"%d\", &year);\nif (year % 4 == 0) {\n    if (year % 100 == 0) {\n        if (year % 400 == 0)\n            printf(\"%d is a leap year\\n\", year);\n        else\n            printf(\"%d is not a leap year\\n\", year);\n    } else {\n        printf(\"%d is a leap year\\n\", year);\n    }\n} else {\n    printf(\"%d is not a leap year\\n\", year);\n}\n/* 2024: leap, 1900: not leap, 2000: leap */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The bouncer's two questions",
+      "hook": "Xecxec in sunglasses blocks the gate: \"Ticket?\"",
+      "script": "A bouncer at a beach concert asks two questions. Ticket? Then ID. But he never asks for ID if you have no ticket. The second question lives inside the first. In C, that is a nested if: an if inside the block of another if. Three paths, one gate.",
+      "onScreen": "AN IF INSIDE AN IF",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Nested if, explained by a crab bouncer.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "nestedif",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Nested if in 30 seconds",
+      "hook": "Code with outer block tinted dark blue, inner block mint",
+      "script": "Nested if in 30 seconds. The outer if checks the ticket. Only if that is true do we enter its block, ask for age, and reach the inner if. Inner true: welcome. Inner false: adults only. Outer false: we skip everything inside, and go to the outer else. No ticket, no entry. Indent each level so your eyes can follow it.",
+      "onScreen": "OUTER FIRST, THEN INNER",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Three paths, two ifs, one clean program.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctutorial",
+        "programming"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The dangling else",
+      "hook": "Terminal shows an empty output. Xecxec taps the screen. \"Hello?\"",
+      "script": "This code should print no ticket, no entry. It prints nothing. The else is lined up with the outer if, but C ignores spaces. An else always belongs to the nearest if without an else. That is the inner if. So the whole thing is skipped. Compile with -Wall and GCC warns: suggest explicit braces to avoid ambiguous else. Add braces, and it works.",
+      "onScreen": "ELSE GOES TO THE NEAREST IF",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 40,
+      "caption": "Your indentation lied. C did not listen.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Support from its parent",
+      "hook": "Small if block hugged by a bigger if block",
+      "script": "Why did the nested if feel so safe? Because it was surrounded by a lot of support from its parent.",
+      "onScreen": "SUPPORT FROM ITS PARENT",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 12,
+      "caption": "Wholesome code content.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Is 1900 a leap year?",
+      "hook": "Calendar page \"1900\" with a big question mark",
+      "script": "Quick quiz. 1900 divides by 4. Is it a leap year? Three, two, one. No! Years that divide by 100 are not leap years, unless they also divide by 400. So 1900 is not, but 2000 is. Your challenge: write this rule in C with nested ifs. Answer in the comments.",
+      "onScreen": "1900: LEAP YEAR?",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "Most people get this wrong. Did you?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "leapyear"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int hasTicket, age;\n\n    printf(\"Do you have a ticket? (1 = yes, 0 = no): \");\n    scanf(\"%d\", &hasTicket);\n\n    if (hasTicket == 1) {\n        printf(\"Enter your age: \");\n        scanf(\"%d\", &age);\n\n        if (age >= 18) {\n            printf(\"Welcome to the beach concert!\\n\");\n        } else {\n            printf(\"Sorry, adults only tonight.\\n\");\n        }\n    } else {\n        printf(\"No ticket, no entry.\\n\");\n    }\n\n    return 0;\n}",
+      "output": "Do you have a ticket? (1 = yes, 0 = no): 1\nEnter your age: 20\nWelcome to the beach concert!\n\nDo you have a ticket? (1 = yes, 0 = no): 1\nEnter your age: 15\nSorry, adults only tonight.\n\nDo you have a ticket? (1 = yes, 0 = no): 0\nNo ticket, no entry.",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "No ticket, no entry."
+  }
+}

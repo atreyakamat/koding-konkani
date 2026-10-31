@@ -1,0 +1,343 @@
+{
+  "ep": 68,
+  "title": "Memory Bugs",
+  "module": 10,
+  "lengthSec": 450,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "recognise the three classic heap bugs (memory leak, dangling pointer / use after free, double free) from a memory diagram",
+    "read GCC 13's `-Wuse-after-free` warning",
+    "protect yourself by setting a pointer to `NULL` after `free`",
+    "know that `free(NULL)` is safe"
+  ],
+  "youtube": {
+    "title": "The Ghost Pointer: 3 Memory Bugs in C | C EP 68",
+    "description": "Leaks, dangling pointers and double free are the bugs that haunt every C programmer. We draw each one as a ghost in the heap, read GCC's warnings, crash a program on purpose, and learn the one-line habit that stops most of them. 0:00 Ghost story · 0:20 Title · 0:25 Bug 1: the leak · 1:10 Bug 2: the ghost pointer · 2:10 Bug 3: double free · 2:55 Code: the safe pattern · 4:15 Running it · 4:35 Pun · 4:40 Tools that catch ghosts · 5:15 Bug of the Day: use after free · 6:25 Challenge: find 3 bugs · 7:05 Module 10 complete",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Ghost story"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Bug 1: the leak"
+      },
+      {
+        "t": "1:10",
+        "label": "Bug 2: the ghost pointer"
+      },
+      {
+        "t": "2:10",
+        "label": "Bug 3: double free"
+      },
+      {
+        "t": "2:55",
+        "label": "Code: the safe pattern"
+      },
+      {
+        "t": "4:15",
+        "label": "Running it"
+      },
+      {
+        "t": "4:35",
+        "label": "Pun"
+      },
+      {
+        "t": "4:40",
+        "label": "Tools that catch ghosts"
+      },
+      {
+        "t": "5:15",
+        "label": "Bug of the Day: use after free"
+      },
+      {
+        "t": "6:25",
+        "label": "Challenge: find 3 bugs"
+      },
+      {
+        "t": "7:05",
+        "label": "Module 10 complete"
+      }
+    ],
+    "tags": [
+      "memory leak c",
+      "dangling pointer c",
+      "use after free",
+      "double free c",
+      "free null pointer",
+      "wuse-after-free gcc",
+      "valgrind",
+      "address sanitizer",
+      "c memory bugs",
+      "learn c",
+      "koding konkani",
+      "c programming india"
+    ],
+    "thumbnail": {
+      "text": "GHOST POINTER",
+      "visual": "big text \"GHOST POINTER\"; a greyed-out heap box with a faint ghost-shaped arrow still pointing at it; a tomato \"free()\" stamp; Xecxec hiding behind a crate, scared; mint background, tomato text block",
+      "pose": "Xecxec hiding behind a crate, scared"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Night scene of an old Portuguese house in Fontainhas; a ghost floats past a door marked \"Room returned\"",
+      "animation": "Wind howl; lantern flicker; Xecxec peeks from behind a pillar",
+      "sfx": [],
+      "narration": "Old Goan houses have ghost stories. A family moves out, but late at night, someone still knocks on the door of the empty room. In C, the heap has ghosts too. Tonight, we meet three of them."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 68 · MEMORY BUGS",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode sixty-eight. Memory bugs."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "Heap block with no arrows pointing at it; label \"LEAK: nobody can free me\"",
+      "animation": "Stack frame vanishes taking its pointer; heap block left floating; slow fade to grey; lonely echo",
+      "sfx": [],
+      "narration": "The first ghost you already met in EP 66: the memory leak. A function mallocs a block, then returns without calling free. Its local pointer disappears with its stack frame. Look: the heap block is still there, but no arrow points at it. Nobody knows its address, so nobody can ever free it. It just floats there until the program ends. One leak is small. A leak inside a loop, or in a program that runs for days, eats all your RAM."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 70,
+      "lengthSec": 60,
+      "onScreen": "`ticket` at stack holding 0x7000; heap block 101 at 0x7000; after `free(ticket)` block is greyed but arrow remains as a dotted ghost arrow",
+      "animation": "Grey wash on free; arrow turns dotted and translucent; ghost \"whoo\"; claw knocks on the grey box, gets garbage",
+      "sfx": [],
+      "narration": "The second ghost is the scariest. Here's ticket, a pointer on the stack, pointing at a heap block holding 101. We call free of ticket. The block goes back to the heap. But look at ticket. It still holds the old address. free does not change your pointer. That arrow is now a ghost: it points at memory you no longer own. This is called a dangling pointer. If you read star ticket now, you are knocking on the door of a returned room. You might see 101, you might see garbage, and if the heap has given that memory to someone else, you might even change their data. This is called \"use after free\". It's one of the most common security bugs in real software."
+    },
+    {
+      "id": 5,
+      "template": "memory-boxes",
+      "startSec": 130,
+      "lengthSec": 45,
+      "onScreen": "Same grey block; `free(p)` called a second time; heap ledger shows the same entry twice",
+      "animation": "Ledger page tears; alarm; \"double free detected\" banner in tomato",
+      "sfx": [],
+      "narration": "The third ghost: double free. You call free of p, and later, by mistake, free of p again. The heap keeps a ledger of what's been returned. Now the same block is being returned twice, which corrupts that ledger. Modern C libraries often catch this and stop the program on purpose, with a message like \"double free detected\". Sometimes they don't, and things go wrong much later."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 175,
+      "lengthSec": 80,
+      "onScreen": "`safe.c` (22 lines); tracker: ticket, *ticket",
+      "animation": "Butter highlights; after line 11 the ghost arrow is replaced with a NULL sign",
+      "sfx": [],
+      "narration": "Here's how to protect yourself. [HL 5] Line 5 mallocs one int for ticket. [TRACK ticket=0x7000] [HL 6] Line 6 checks for NULL, as always. [HL 7] Line 7 stores 101. [TRACK *ticket=101] [HL 8] Line 8 prints it. [HL 10] Line 10: free of ticket. The block is returned. [HL 11] Line 11 is the magic line: ticket equals NULL. Watch the diagram. The ghost arrow disappears and becomes a NULL sign. [TRACK ticket=NULL] Now the pointer clearly says \"nowhere\". [HL 13] Line 13: if ticket is not NULL, use it. [HL 14] It is NULL, so line 14 is skipped, [HL 16] and line 16 prints \"Ticket returned\". The NULL check from EP 59 now works as a ghost detector. [HL 19] Line 19: free of ticket, again! Isn't that a double free? No. ticket is now NULL, and the C standard says free of NULL does nothing at all. So setting the pointer to NULL also protects you from double free. [HL 20] Line 20 prints a message to prove we're still alive. [HL 21] Return zero.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int *ticket = malloc(sizeof(int));\n    if (ticket == NULL) return 1;\n    *ticket = 101;\n    printf(\"Ticket: %d\\n\", *ticket);\n\n    free(ticket);\n    ticket = NULL;\n\n    if (ticket != NULL) {\n        printf(\"Still have ticket %d\\n\", *ticket);\n    } else {\n        printf(\"Ticket returned, pointer set to NULL\\n\");\n    }\n\n    free(ticket);\n    printf(\"free(NULL) is safe and does nothing\\n\");\n    return 0;\n}",
+        "output": "Ticket: 101\nTicket returned, pointer set to NULL\nfree(NULL) is safe and does nothing"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 255,
+      "lengthSec": 20,
+      "onScreen": "Compile and run",
+      "animation": "Three lines print; mint shield icon",
+      "sfx": [],
+      "narration": "Compile and run. \"Ticket: 101\". \"Ticket returned, pointer set to NULL\". And \"free of NULL is safe and does nothing\". No crash, no ghosts. One line, ticket equals NULL, protects you from two of today's three bugs."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 275,
+      "lengthSec": 5,
+      "onScreen": "\"Why are C programmers scared of ghosts? They have seen what a dangling pointer can do.\"",
+      "animation": "Card flips; Xecxec wears a bedsheet ghost costume; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why are C programmers scared of ghosts? Because they've seen what a dangling pointer can do."
+    },
+    {
+      "id": 9,
+      "template": "concept-slide",
+      "startSec": 280,
+      "lengthSec": 35,
+      "onScreen": "Three tools: `gcc -Wall` (GCC 12+ use-after-free warnings), Valgrind (Linux/WSL), `-fsanitize=address` (Linux/WSL)",
+      "animation": "Tool icons slide in like ghost-hunting gear",
+      "sfx": [],
+      "narration": "You don't have to hunt ghosts alone. First, always compile with dash Wall. GCC 12 and newer can warn about some use-after-free mistakes. Second, on Linux, or WSL on Windows, a tool called Valgrind runs your program and reports leaks and bad reads. Third, also on Linux or WSL, compile with dash f sanitize equals address. Your program then stops right at the bad line and tells you what went wrong. These are optional for now, but very useful when your projects get bigger."
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 315,
+      "lengthSec": 70,
+      "onScreen": "`free(ticket); printf(\"%d\", *ticket);` with GCC 13 warning, garbage output; then the double-free version crashing with \"free(): double free detected in tcache 2\"",
+      "animation": "Warning types out in butter; garbage number flickers; second part: crash banner; fix with `ticket = NULL;` slides in",
+      "sfx": [],
+      "narration": "Today's bug: use after free. Someone frees ticket, then prints star ticket. GCC 13 with dash Wall catches it: warning, pointer ticket used after free, and a note pointing at the free call. If you ignore it and run, you get a garbage number, because the heap has already reused that memory for its own bookkeeping. Now the double free version: free p, then free p again. GCC gives a similar used-after-free warning on the second free. And when you run it, the C library stops the program: \"free: double free detected in tcache 2\", then \"Aborted\". On Windows, the program usually just closes without a message. The fix for both: right after free, set the pointer to NULL. And don't use a pointer after you free it."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 385,
+      "lengthSec": 40,
+      "onScreen": "\"Find 3 bugs\" code card with 10 lines",
+      "animation": "Three magnifying glasses hover over the code; Xecxec holds a detective cap",
+      "sfx": [],
+      "narration": "Your final challenge for this module: be a ghost hunter. This short program has three memory bugs. Find all three, explain each in one line, and write the fixed version. Hint: one is about malloc's result, one is about a loop, and one is about the order of two lines. Pause and hunt."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 425,
+      "lengthSec": 25,
+      "onScreen": "\"Module 10 complete!\" badge; \"Next: EP 69 · Files\"",
+      "animation": "Badge stamps on; confetti; sign-off",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "That's Module 10 complete. Stack and heap, malloc, free, calloc, realloc, and now the ghosts. You can manage memory like a real C programmer. Next module, we save data to files, so it survives even after your program ends. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int *ticket = malloc(sizeof(int));\n    if (ticket == NULL) return 1;\n    *ticket = 101;\n    free(ticket);\n    printf(\"Ticket: %d\\n\", *ticket);\n    return 0;\n}",
+    "error": "GCC 13 (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'main':\nbug.c:9:5: warning: pointer 'ticket' used after 'free' [-Wuse-after-free]\n    9 |     printf(\"Ticket: %d\\n\", *ticket);\n      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nbug.c:8:5: note: call to 'free' here\n    8 |     free(ticket);\n      |     ^~~~~~~~~~~~\n\nRunning it prints a garbage value that changes each run, for example `Ticket: 1668369363` (it may also happen to print 101, which hides the bug).\n\nPart 2, double free:",
+    "fixed": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int *p = malloc(sizeof(int));\n    if (p == NULL) return 1;\n    free(p);\n    free(p);\n    printf(\"Done\\n\");\n    return 0;\n}",
+    "why": "`free` returns the memory but leaves the old address in your pointer; setting it to `NULL` makes later mistakes detectable and makes a second `free` a no-op."
+  },
+  "pun": "\"Why are C programmers scared of ghosts? They have seen what a dangling pointer can do.\"",
+  "challenge": "Find the 3 memory bugs in this program, explain each in one line, and fix it:",
+  "challengeAnswer": "(1) The `malloc` result is never checked for NULL. (2) `i <= 3` writes `scores[3]`, one past the end of a 3-int block (heap overflow). (3) `scores[0]` is read after `free` (use after free; GCC 13 warns with `-Wuse-after-free`). Fixed:",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The ghost pointer",
+      "hook": "A dotted ghost arrow pointing at a grey box: \"This pointer is dead. It doesn't know.\"",
+      "script": "You call free on a pointer. The memory goes back to the heap. But your pointer still holds the old address. It's a ghost, pointing at a room you've already returned. Read through it, and you get garbage, or worse. Fix: right after free, set the pointer to NULL.",
+      "onScreen": "free() DOES NOT CLEAR YOUR POINTER",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "The scariest bug in C.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "learntocode",
+        "memorybugs"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "3 memory bugs in 30 seconds",
+      "hook": "Three ghosts line up: LEAK, DANGLING, DOUBLE FREE.",
+      "script": "Leak: you forgot to free, and lost the address. Dangling pointer: you freed it but kept using the old address. Double free: you freed the same block twice. The one habit that helps with two of them: free, then set the pointer to NULL.",
+      "onScreen": "LEAK · DANGLING · DOUBLE FREE",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Know your ghosts.",
+      "hashtags": [
+        "cprogramming",
+        "memory",
+        "kodingkonkani",
+        "codingtips",
+        "memorybugs"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "double free detected",
+      "hook": "Terminal: \"free(): double free detected in tcache 2 / Aborted\".",
+      "script": "free p. Then free p again. GCC 13 warns: pointer used after free. Run it on Linux and the program is killed: double free detected. Fix it with one line after the first free: p equals NULL. Freeing NULL is completely safe, it does nothing.",
+      "onScreen": "free(NULL) IS SAFE",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 30,
+      "caption": "One line saves you.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "doublefree",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Scared of ghosts",
+      "hook": "Xecxec in a bedsheet ghost costume.",
+      "script": "Why are C programmers scared of ghosts? Because they've seen what a dangling pointer can do.",
+      "onScreen": "THEY'VE SEEN A DANGLING POINTER",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Happy haunting.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Find 3 bugs",
+      "hook": "10 lines of code and three magnifying glasses: \"Three bugs. Can you find them?\"",
+      "script": "This program mallocs three ints, fills them in a loop, frees them and prints the first. It has three memory bugs. Hint one: what if malloc fails? Hint two: count the loop. Hint three: look at the order of the last two lines. Comment all three to become a ghost hunter.",
+      "onScreen": "FIND 3 BUGS",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 35,
+      "caption": "Only real ghost hunters get all three.",
+      "hashtags": [
+        "cprogramming",
+        "codingchallenge",
+        "kodingkonkani",
+        "memorybugs",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int *ticket = malloc(sizeof(int));\n    if (ticket == NULL) return 1;\n    *ticket = 101;\n    printf(\"Ticket: %d\\n\", *ticket);\n\n    free(ticket);\n    ticket = NULL;\n\n    if (ticket != NULL) {\n        printf(\"Still have ticket %d\\n\", *ticket);\n    } else {\n        printf(\"Ticket returned, pointer set to NULL\\n\");\n    }\n\n    free(ticket);\n    printf(\"free(NULL) is safe and does nothing\\n\");\n    return 0;\n}",
+      "output": "Ticket: 101\nTicket returned, pointer set to NULL\nfree(NULL) is safe and does nothing",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "free(): double free detected in tcache 2\nAborted"
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "ep": 27,
+  "title": "The for Loop",
+  "module": 4,
+  "lengthSec": 330,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a `for` loop and name its three parts (init, condition, update)",
+    "count up, count down and add up a range with `for`",
+    "choose between `for` and `while`",
+    "avoid off-by-one errors with `<` vs `<=`"
+  ],
+  "youtube": {
+    "title": "The for Loop: A Loop With a Plan | C Programming EP 27",
+    "description": "The for loop puts start, condition and update in one line, so you can see the whole plan at a glance. We count bus stops, add 1 to 10, do a countdown, and catch the off-by-one bug that costs students marks. 0:00 Last episode's challenge 0:25 Anatomy of a for loop 1:15 Three for loops, line by line 2:55 Run it 3:20 Bug of the Day: off-by-one 4:10 for or while? 4:50 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Last episode's challenge 0:25 Anatomy of a for loop 1:15 Three for loops, line by line 2:55 Run it 3:20 Bug of the Day: off-by-one 4:10 for or while? 4:50 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "for loop in c",
+      "loops in c",
+      "off by one error",
+      "c tutorial for beginners",
+      "learn c",
+      "c programming class 11",
+      "countdown loop",
+      "sum of numbers in c",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "ONE LINE PLAN",
+      "visual": "big text \"ONE LINE PLAN\"; the line `for (int i = 1; i <= 5; i++)` split into three coloured chunks labelled START / CHECK / STEP; Xecxec pointing with a claw like a teacher; Butter background, Dark blue blocks.",
+      "pose": "Xecxec pointing with a claw like a teacher"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "code-explain",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "EP 26 challenge answer (while loop 1 to 50), then the same thing as a `for` loop",
+      "animation": "Four scattered lines slide together into one line; snap SFX",
+      "sfx": [],
+      "narration": "Last time, the challenge was to print 1 to 50 with a while loop. Start i at 1, while i is at most 50, print i and a space, then i plus plus. And print the newline after the loop. Did you get it? Now look at this. The start, the check and the update were spread over three lines. Today we squeeze all three into one line.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 5; i++) {\n        printf(\"Bus stop %d\\n\", i);\n    }\n\n    int sum = 0;\n    for (int n = 1; n <= 10; n++) {\n        sum = sum + n;\n    }\n    printf(\"Sum of 1 to 10 = %d\\n\", sum);\n\n    for (int t = 3; t >= 1; t--) {\n        printf(\"%d... \", t);\n    }\n    printf(\"Go!\\n\");\n    return 0;\n}",
+        "output": "Bus stop 1\nBus stop 2\nBus stop 3\nBus stop 4\nBus stop 5\nSum of 1 to 10 = 55\n3... 2... 1... Go!"
+      }
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 27 · THE FOR LOOP",
+      "animation": "Butter card, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode twenty-seven. The for loop."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "`for (init; condition; update)` with three labelled boxes and arrows showing run order 1→2→body→3→2…",
+      "animation": "Numbers pop onto each part in order; arrow loops 3 times",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A for loop has three parts inside the round brackets, separated by semicolons. First, the init: int i equals 1. This runs only once, at the very start. Second, the condition: i less than or equal to 5. This is checked before every iteration. Third, the update: i plus plus. This runs after every iteration, at the end of the body. So the order is: init, check, body, update, check, body, update, and so on, until the check is false. It's like planning a trip: where you start, where you stop, and how big each step is. All on one line, before you even begin."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 75,
+      "lengthSec": 100,
+      "onScreen": "`for1.c` with trackers for `i`, `sum`, `t`",
+      "animation": "Bus icon moves stop to stop for loop 1; `sum` tracker climbs to 55; countdown digits shrink",
+      "sfx": [],
+      "narration": "Let's read three for loops. [HL 4] Line four: for, int i equals 1, i less than or equal to 5, i plus plus. The variable i is created right here, inside the for. [TRACK i=1] [HL 5] Line five prints \"Bus stop\" and i. So: Bus stop 1. Then update, i is 2. [TRACK i=2] Check, print Bus stop 2. And so on up to Bus stop 5. When i becomes 6, the check fails and we leave. One small thing: because i was declared inside the for, it only exists inside that loop. Outside, i is gone. Second loop. [HL 8] int sum equals 0. Always start a total at zero. [TRACK sum=0] [HL 9] for, int n equals 1, n less than or equal to 10, n plus plus. [HL 10] sum equals sum plus n. Watch the tracker. n is 1, sum is 1. [TRACK n=1 sum=1] n is 2, sum is 3. [TRACK n=2 sum=3] n is 3, sum is 6. Then 10, 15, 21, 28, 36, 45, and finally 55. [TRACK n=10 sum=55] [HL 12] Line twelve prints \"Sum of 1 to 10 = 55\". Third loop counts down. [HL 14] for, int t equals 3, t greater than or equal to 1, t minus minus. Start at 3, keep going while t is at least 1, and subtract one each time. [TRACK t=3] [HL 15] Print t, then three dots and a space, no newline. So we get 3, 2, 1 on the same line. [TRACK t=0] When t hits 0, the check fails. [HL 17] Then we print \"Go!\" and a newline.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 5; i++) {\n        printf(\"Bus stop %d\\n\", i);\n    }\n\n    int sum = 0;\n    for (int n = 1; n <= 10; n++) {\n        sum = sum + n;\n    }\n    printf(\"Sum of 1 to 10 = %d\\n\", sum);\n\n    for (int t = 3; t >= 1; t--) {\n        printf(\"%d... \", t);\n    }\n    printf(\"Go!\\n\");\n    return 0;\n}",
+        "output": "Bus stop 1\nBus stop 2\nBus stop 3\nBus stop 4\nBus stop 5\nSum of 1 to 10 = 55\n3... 2... 1... Go!"
+      }
+    },
+    {
+      "id": 5,
+      "template": "terminal",
+      "startSec": 175,
+      "lengthSec": 20,
+      "onScreen": "Compile and run `for1.c`",
+      "animation": "Typing SFX, output appears line by line, \"Go!\" with a horn honk",
+      "sfx": [],
+      "narration": "Compile with gcc for1 dot c dash o for1, and run. Five bus stops. The sum is 55. And three, two, one, Go!"
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 195,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec holds up a calendar, rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the for loop always arrive on time? Because it planned everything in advance."
+    },
+    {
+      "id": 7,
+      "template": "bug-of-the-day",
+      "startSec": 200,
+      "lengthSec": 50,
+      "onScreen": "`i < 10` prints 1 to 9",
+      "animation": "Butter frame, a missing \"10\" box blinks Tomato; buzzer",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Today's bug: off-by-one. The task says print 1 to 10. A student writes: for int i equals 1, i less than 10, i plus plus. Compile: no error. Run: 1 2 3 4 5 6 7 8 9. Where is 10? When i is 10, is 10 less than 10? No. So the loop stops one step early. The fix: use less than or equal to 10. A quick check that always works: ask \"what is the last value I want?\" and test that value in your condition by hand."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 250,
+      "lengthSec": 40,
+      "onScreen": "Two-column card: for = you know the count; while = you wait for a condition",
+      "animation": "Cards flip, Mint tick on each example",
+      "sfx": [],
+      "narration": "So when do you use which? If you know how many times, use for. Ten bus stops, fifty numbers, the length of a list. If you are waiting for something to happen, use while. Waiting until the fish count passes 100, or until the user types zero. Both can do the same job. Choose the one that makes your code easier to read."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 290,
+      "lengthSec": 25,
+      "onScreen": "\"Print the multiplication table of any number\"",
+      "animation": "Timer ring",
+      "sfx": [],
+      "narration": "Your challenge: ask the user for a number, and print its multiplication table from 1 to 10. For 7 it should print 7 x 1 = 7, all the way to 7 x 10 = 70. Use a for loop. Answer next episode."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 315,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 28, do-while",
+      "animation": "Xecxec waves, end card",
+      "sfx": [],
+      "narration": "Next episode: the do-while loop, the loop that acts first and asks questions later. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i < 10; i++) {\n        printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+    "error": "No compiler error or warning. Wrong output (task was 1 to 10):\n\n1 2 3 4 5 6 7 8 9",
+    "fixed": "    for (int i = 1; i <= 10; i++) {",
+    "why": "With `<`, the loop stops when `i` equals 10, so the last value is never printed; `<=` includes it."
+  },
+  "pun": "Why did the for loop always arrive on time? Because it planned everything in advance.",
+  "challenge": "Read a number and print its multiplication table from 1 to 10.",
+  "challengeAnswer": "(worked example)\nint n;\nprintf(\"Enter a number: \");\nscanf(\"%d\", &n);\nfor (int i = 1; i <= 10; i++) {\n    printf(\"%d x %d = %d\\n\", n, i, n * i);\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "One Line, Whole Plan",
+      "hook": "Three scattered code lines snapping into one",
+      "script": "This while loop needs three separate lines: start, check, update. The for loop puts all three in one line. for int i equals 1, i less than or equal to 50, i plus plus. Same job, cleaner code.",
+      "onScreen": "3 LINES / 1 LINE / for loop",
+      "fromScenes": [
+        1
+      ],
+      "lengthSec": 20,
+      "caption": "Same loop, half the clutter.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "forloop",
+        "cleancode"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The for Loop in 30 Seconds",
+      "hook": "The for line split into START / CHECK / STEP",
+      "script": "Three parts, two semicolons. Init runs once at the start. The condition is checked before every round. The update runs after every round. Init, check, body, update, check, body, update, until the check is false. That's the for loop.",
+      "onScreen": "START ; CHECK ; STEP",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 30,
+      "caption": "The for loop, decoded.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "forloop",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Where Did 10 Go?",
+      "hook": "Output \"1 2 3 4 5 6 7 8 9\" with a blinking empty box",
+      "script": "Task: print 1 to 10. Output: 1 to 9. Where did 10 go? The condition says i less than 10, and 10 is not less than 10. Off-by-one. Use less than or equal to, and always test your last value by hand.",
+      "onScreen": "WHERE IS 10? / i < 10 / i <= 10",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 25,
+      "caption": "The off-by-one bug costs marks.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "offbyone"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: Always on Time",
+      "hook": "Xecxec with a calendar and a watch",
+      "script": "Why did the for loop always arrive on time? Because it planned everything in advance.",
+      "onScreen": "PLANNED IN ADVANCE",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 10,
+      "caption": "The most organised loop in C.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "How Many Times Does It Run?",
+      "hook": "\"Count the iterations!\"",
+      "script": "Quiz. for int t equals 3, t greater than or equal to 1, t minus minus. How many times does the body run? Three. t is 3, then 2, then 1. At 0 the check fails. Did you say 4? Comment your answer.",
+      "onScreen": "HOW MANY TIMES? / ANSWER: 3",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 20,
+      "caption": "Count carefully.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "forloop"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 5; i++) {\n        printf(\"Bus stop %d\\n\", i);\n    }\n\n    int sum = 0;\n    for (int n = 1; n <= 10; n++) {\n        sum = sum + n;\n    }\n    printf(\"Sum of 1 to 10 = %d\\n\", sum);\n\n    for (int t = 3; t >= 1; t--) {\n        printf(\"%d... \", t);\n    }\n    printf(\"Go!\\n\");\n    return 0;\n}",
+      "output": "Bus stop 1\nBus stop 2\nBus stop 3\nBus stop 4\nBus stop 5\nSum of 1 to 10 = 55\n3... 2... 1... Go!",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

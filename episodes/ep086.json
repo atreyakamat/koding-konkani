@@ -1,0 +1,316 @@
+{
+  "ep": 86,
+  "title": "Finale: Exam Prep & What's Next",
+  "module": 13,
+  "lengthSec": 480,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#D9C9FF"
+  },
+  "learningGoals": [
+    "revise the 20 questions that come up most in C theory and viva exams, each mapped to its episode",
+    "predict the output of classic \"trick\" snippets (post-increment, integer division, sizeof a string)",
+    "use a calm 4-step method for output and debugging questions in an exam",
+    "see what C++ looks like and know what to learn next"
+  ],
+  "youtube": {
+    "title": "Xecxec's Final Exam: Top 20 C Questions | C Programming EP 86",
+    "description": "The grand finale of Koding Konkani. We revise the 20 C questions examiners love, solve three classic output puzzles, learn a calm method for the exam hall, and take a first look at C++. Take Xecxec's final exam and comment your score! Chapters: 0:00 Xecxec's final exam · 0:20 Look how far you've come · 1:00 Top 20 exam questions · 3:05 Predict the output · 4:30 Bug of the Day: exam panic · 5:45 What's next: C++ · 6:50 Final challenge · 7:30 Thank you",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Xecxec's final exam"
+      },
+      {
+        "t": "0:20",
+        "label": "Look how far you've come"
+      },
+      {
+        "t": "1:00",
+        "label": "Top 20 exam questions"
+      },
+      {
+        "t": "3:05",
+        "label": "Predict the output"
+      },
+      {
+        "t": "4:30",
+        "label": "Bug of the Day: exam panic"
+      },
+      {
+        "t": "5:45",
+        "label": "What's next: C++"
+      },
+      {
+        "t": "6:50",
+        "label": "Final challenge"
+      },
+      {
+        "t": "7:30",
+        "label": "Thank you"
+      }
+    ],
+    "tags": [
+      "c programming exam questions",
+      "c viva questions",
+      "c important questions",
+      "c output questions",
+      "c programming revision",
+      "c to c++",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "class 12 computer science exam",
+      "first year engineering c",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "FINAL EXAM",
+      "visual": "big text \"FINAL EXAM\"; an exam paper with \"C\" and a big lilac tick; Xecxec in a graduation cap holding a diploma; peach background, lilac accents",
+      "pose": "Xecxec in a graduation cap holding a diploma"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Exam hall: rows of desks, a clock ticking, Xecxec as invigilator handing out a paper titled \"Xecxec's Final Exam\"",
+      "animation": "Clock tick; paper rustle; school bell",
+      "sfx": [],
+      "narration": "Pens down. Phones away. Xecxec is your invigilator today, and he takes it very seriously. This is the last episode of Koding Konkani, and it ends the way every good course should: with an exam. Don't worry. You're ready."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 86 · FINALE: EXAM PREP & WHAT'S NEXT",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 86. Finale: exam prep, and what's next."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "Course map from EP 01: all 14 module tiles light up one by one in their colour pairs, ending with a \"86 / 86\" counter",
+      "animation": "Each tile pings; counter rolls up; confetti burst",
+      "sfx": [],
+      "narration": "Look at this map from EP 01. Back then, every tile was locked. Now look. Basics. Operators. Decisions. Loops. Functions. Arrays. Strings. Nine episodes of pointers. Structures, dynamic memory, files, six sorting algorithms, and two real projects. You went from printing \"Hello, World\" to building an ATM that refuses to be robbed. Eighty-six episodes. Give yourself a moment. That's real work."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 60,
+      "lengthSec": 125,
+      "onScreen": "Top 20 exam questions, shown 5 at a time on 4 cards; each question has an episode badge (e.g. \"EP 38\")",
+      "animation": "Cards flip in; tick SFX per question; Xecxec points at each badge",
+      "sfx": [],
+      "narration": "Here are the twenty questions that appear again and again in C theory papers and viva exams. If you can answer all twenty out loud, you're in great shape. Each one has its episode number, so you know exactly where to revise. Card one, the basics. One: what are the steps from source code to a running program? Preprocess, compile, link, run. EP 05. Two: what is the difference between a variable declaration and a definition? EP 36. Three: what is the difference between int, float, char and double, and how big is each? EP 08 and 09. Four: what is the difference between equals and double equals? EP 16. Five: what is the difference between i plus plus and plus plus i? EP 17. Card two, control and functions. Six: when do you use a for loop, a while loop, and a do-while loop? Module 4. Seven: what do break and continue do? Module 4. Eight: what is the difference between call by value and call by reference? EP 38 and EP 55. Nine: what is recursion, and why does it need a base case? EP 39. Ten: what is the difference between local, global and static variables? EP 37. Card three, arrays, strings and pointers. Eleven: how is an array stored in memory, and what happens if you go out of bounds? EP 41. Twelve: why does a string end with backslash zero? Module 7. Thirteen: what is a pointer, and what do the star and ampersand operators do? EP 53 and 54. Fourteen: how are arrays and pointers related? EP 57. Fifteen: what is a NULL pointer, and why must you check for it? EP 59. Card four, the advanced ones. Sixteen: what is the difference between a structure and a union? EP 64. Seventeen: what is the difference between malloc and calloc, and why do you need free? Module 10. Eighteen: what are the file opening modes, like r, w, a, r b and w b? EP 69 and 71. Nineteen: compare bubble, selection and insertion sort, and their Big-O. Module 12. Twenty: what is the difference between linear and binary search, and when can you use binary search? EP 73. Screenshot these cards. That's your revision list."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 185,
+      "lengthSec": 80,
+      "onScreen": "`predict.c` (14 lines), three puzzles revealed one by one",
+      "animation": "Answer boxes stay blank, 3-second countdown, then fill in mint; tracker for a, b, x, y",
+      "sfx": [],
+      "narration": "Output questions are where marks are won or lost. Let's do three. Pause before each answer. [HL 4] Puzzle one. int a equals 5. [HL 5] int b equals a plus plus, plus 2. Post-increment uses the old value first, then adds one. So b is 5 plus 2, [TRACK b=7] which is 7, and then [TRACK a=6] a becomes 6. [HL 6] Output: a equals 6, b equals 7. [HL 8] Puzzle two. int x equals 7 divided by 2. Both are integers, so the decimal is thrown away. [TRACK x=3] x is 3. [HL 9] float y equals 7 divided by 2.0f. Now one side is a float, so [TRACK y=3.5] y is 3.5. [HL 10] Output: x equals 3, y equals 3.5. [HL 12] Puzzle three. char s, empty brackets, equals \"Goa\". [HL 13] What is sizeof s? Three letters, so 3? No! The string also stores the hidden backslash zero at the end. So the answer is 4. A char is always one byte, so this is 4 on every machine. Three puzzles, three classic traps.",
+      "code": {
+        "file": "predict.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int a = 5;\n    int b = a++ + 2;\n    printf(\"a = %d, b = %d\\n\", a, b);\n\n    int x = 7 / 2;\n    float y = 7 / 2.0f;\n    printf(\"x = %d, y = %.1f\\n\", x, y);\n\n    char s[] = \"Goa\";\n    printf(\"sizeof = %zu\\n\", sizeof(s));\n    return 0;\n}",
+        "output": "a = 6, b = 7\nx = 3, y = 3.5\nsizeof = 4"
+      }
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec tosses graduation cap",
+      "sfx": [],
+      "narration": "Why did Xecxec pass the C exam with full marks? Because he never forgot to return."
+    },
+    {
+      "id": 7,
+      "template": "bug-of-the-day",
+      "startSec": 270,
+      "lengthSec": 75,
+      "onScreen": "Panic bug: `exam.c` with `if (marks = 40)` printing \"Pass\" for 35 marks; then the 4-step calm method card",
+      "animation": "Heartbeat SFX speeds up then slows; GCC warning in butter; fix with `==`, mint tick; 4 steps stamp down",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Today's bug isn't in your code. It's in your head: panicking in the exam. You see a question, your heart races, and you write this: if marks equals 40, with a single equals sign. marks is 35, and the program prints \"Pass\"! Why? A single equals is assignment. It sets marks to 40, and 40 is not zero, so the condition is true. That's EP 16's bug, and panic makes everyone repeat old bugs. GCC with dash Wall even warns: suggest parentheses around assignment used as truth value. In the exam hall there's no compiler, so you need a method instead. Four calm steps. One: breathe, and read the whole question twice. Two: for output questions, draw boxes for every variable, just like our memory boxes, and update them line by line. Three: for every line, ask, \"Which bug of the day lives here?\" Equals versus double equals, integer division, a missing break, an off-by-one loop. Four: write your answer, then check it once against your boxes. Slow is smooth, and smooth is fast. The fix in the code is just a double equals. The fix in the exam is staying calm."
+    },
+    {
+      "id": 8,
+      "template": "code-explain",
+      "startSec": 345,
+      "lengthSec": 65,
+      "onScreen": "Side by side: `hello.c` and `hello.cpp`; then a roadmap: C++, data structures, Python, projects",
+      "animation": "Lines from C morph into C++; roadmap path drawn along a Goan coastline",
+      "sfx": [],
+      "narration": "So what comes after C? Here's a small taste. On the left, C. On the right, C++. Hash include iostream instead of stdio dot h. cout with two less-than signs instead of printf. And look: a type called string, so no more char arrays and backslash zero. Compile it with g plus plus instead of gcc. The output: \"Hello from C++, Xecxec!\" The good news: almost everything you learned carries straight over. Variables, loops, functions, arrays, pointers, structs: C++ has all of them. On top, it adds classes and objects, and a big library of ready-made tools. Here's a road map. Next, C++ and object-oriented programming. Then data structures, like linked lists, trees and graphs, using the pointers you already understand. Then try another language, like Python, and notice how much easier it feels after C. And keep building projects. Projects teach more than any video.",
+      "code": {
+        "file": "hello.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    string name = \"Xecxec\";\n    cout << \"Hello from C++, \" << name << \"!\" << endl;\n    return 0;\n}",
+        "output": "Hello from C++, Xecxec!"
+      }
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 410,
+      "lengthSec": 40,
+      "onScreen": "Final challenge: 3 output questions, \"comment your score out of 3\"",
+      "animation": "Timer ticks; scoreboard",
+      "sfx": [],
+      "narration": "Your final challenge: Xecxec's exam. Three questions, no compiler, only your brain. int i equals 3. Question one: what does printf percent d, i plus plus times 2 print? Question two: on the next line, what does plus plus i times 2 print? Question three: what is 17 mod 5? Write your answers, then check them with the pinned comment. And comment your score out of 3. Xecxec reads every single one."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 450,
+      "lengthSec": 30,
+      "onScreen": "Thank-you card: \"86 episodes. You did it.\" Xecxec waves goodbye on the beach at sunset",
+      "animation": "Waves; sign-off jingle, extended",
+      "sfx": [],
+      "narration": "That's it. Eighty-six episodes. You came in not knowing what a compiler was, and you leave able to write real programs in one of the most important languages ever made. Thank you for learning with us, from all of us at Koding Konkani. Go build something. And one last time: keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int marks = 35;\n    if (marks = 40) {\n        printf(\"Pass\\n\");\n    }\n    return 0;\n}",
+    "error": "`gcc -Wall exam.c -o exam` warns but still builds:\n\nexam.c: In function 'main':\nexam.c:5:9: warning: suggest parentheses around assignment used as truth value [-Wparentheses]\n    5 |     if (marks = 40) {\n      |         ^~~~~\n\nWrong output:\n\nPass",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int marks = 35;\n    if (marks >= 40) {\n        printf(\"Pass\\n\");\n    } else {\n        printf(\"Try again\\n\");\n    }\n    return 0;\n}",
+    "why": "a single `=` assigns 40 to `marks` and the condition becomes 40, which is true; a comparison needs `==` (or `>=` for a pass mark), and under exam pressure the 4-step calm method catches it."
+  },
+  "pun": "Why did Xecxec pass the C exam with full marks? He never forgot to return.",
+  "challenge": "Without running it, predict all three lines, then comment your score out of 3:",
+  "challengeAnswer": "line 1 uses the old value 3, so 3 × 2 = 6 (then i becomes 4); line 2 increments first to 5, so 5 × 2 = 10; line 3: 17 = 3 × 5 + 2, so the remainder is 2.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Xecxec's Final Exam",
+      "hook": "a school bell and an exam paper landing on a desk",
+      "script": "Pens down. This is Xecxec's final exam. Eighty-six episodes. Basics, loops, functions, nine episodes of pointers, files, six sorting algorithms and two real projects. You went from Hello World to an ATM that can't be robbed. Now prove it. The final episode of Koding Konkani is out.",
+      "onScreen": "86 EPISODES. ONE FINAL EXAM.",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "The finale is here. Are you ready?",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "exams",
+        "codingjourney"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "3 Output Traps in 30 Seconds",
+      "hook": "`sizeof(\"Goa\")` = 3?",
+      "script": "Three traps examiners love. One: b equals a plus plus plus 2, with a equal to 5. b is 7, a is 6, because post-increment uses the old value first. Two: 7 divided by 2 in integers is 3, not 3.5. Three: the size of the char array \"Goa\" is 4, not 3, because of the hidden backslash zero.",
+      "onScreen": "7 · 3 · 4",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 40,
+      "caption": "Save this before your C exam.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "exams",
+        "computerscience"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The Exam Panic Bug",
+      "hook": "heartbeat sound and \"marks = 35 ... Pass?!\"",
+      "script": "Under pressure, you write if marks equals 40 with one equals sign. marks is 35, and it prints Pass. One equals assigns, two equals compares. Panic makes you repeat old bugs. So use four calm steps: read twice, draw boxes for every variable, check each line for a known bug, then verify once. Slow is smooth, smooth is fast.",
+      "onScreen": "= ASSIGNS · == COMPARES",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 40,
+      "caption": "The bug is in your head, not your code.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "examtips",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Never Forgot to Return",
+      "hook": "Xecxec in a graduation cap holding a report card with full marks",
+      "script": "Why did Xecxec pass the C exam with full marks? Because he never forgot to return.",
+      "onScreen": "NEVER FORGOT TO RETURN",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 12,
+      "caption": "Return 0, return champion.",
+      "hashtags": [
+        "codingmemes",
+        "programmerhumor",
+        "kodingkonkani",
+        "cprogramming",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: Score Out of 3",
+      "hook": "\"Can you get 3 out of 3?\"",
+      "script": "int i equals 3. What does i plus plus times 2 print? Then plus plus i times 2? And 17 mod 5? Answers: 6, because post-increment uses 3 first. Then 10, because i was 4 and becomes 5 before multiplying. And 2, the remainder. Comment your score out of 3.",
+      "onScreen": "i++ * 2 · ++i * 2 · 17 % 5",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "Comment your score before checking.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "exams"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "predict.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int a = 5;\n    int b = a++ + 2;\n    printf(\"a = %d, b = %d\\n\", a, b);\n\n    int x = 7 / 2;\n    float y = 7 / 2.0f;\n    printf(\"x = %d, y = %.1f\\n\", x, y);\n\n    char s[] = \"Goa\";\n    printf(\"sizeof = %zu\\n\", sizeof(s));\n    return 0;\n}",
+      "output": "a = 6, b = 7\nx = 3, y = 3.5\nsizeof = 4",
+      "lang": "c"
+    },
+    {
+      "file": "hello.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    string name = \"Xecxec\";\n    cout << \"Hello from C++, \" << name << \"!\" << endl;\n    return 0;\n}",
+      "output": "Hello from C++, Xecxec!",
+      "buildStep": "g++ hello.cpp -o hello\n./hello",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Try again"
+  }
+}

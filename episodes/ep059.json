@@ -1,0 +1,335 @@
+{
+  "ep": 59,
+  "title": "Pointer to Pointer & NULL",
+  "module": 8,
+  "lengthSec": 435,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "draw and read a two-level chain `int **pp = &p",
+    "`",
+    "use `**pp` to reach the final value",
+    "use `NULL` to mean \"points nowhere\" and always check it before dereferencing",
+    "use a pointer-to-pointer parameter to let a function change which variable a pointer points at"
+  ],
+  "youtube": {
+    "title": "Double Pointers and NULL, Drawn Slowly | C Programming EP 59",
+    "description": "A pointer is a variable, so it has an address too, and another pointer can point at it. We draw the chain from pp to p to the value, then meet NULL, the pointer that safely points nowhere, and the crash you get when you forget to check it. 0:00 A pin to a pin · 0:20 Title · 0:25 Pointers have addresses too · 1:30 Following two arrows · 2:20 Code, line by line · 3:45 Running it · 4:05 Pun · 4:10 Why you need a double pointer · 5:05 Bug of the Day: dereferencing NULL · 6:20 Challenge · 6:50 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "A pin to a pin"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Pointers have addresses too"
+      },
+      {
+        "t": "1:30",
+        "label": "Following two arrows"
+      },
+      {
+        "t": "2:20",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "3:45",
+        "label": "Running it"
+      },
+      {
+        "t": "4:05",
+        "label": "Pun"
+      },
+      {
+        "t": "4:10",
+        "label": "Why you need a double pointer"
+      },
+      {
+        "t": "5:05",
+        "label": "Bug of the Day: dereferencing NULL"
+      },
+      {
+        "t": "6:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:50",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "pointer to pointer in c",
+      "double pointer c",
+      "int ** in c",
+      "null pointer c",
+      "dereferencing null",
+      "segmentation fault c",
+      "null check c",
+      "c pointers tutorial",
+      "learn c",
+      "koding konkani",
+      "c programming for beginners",
+      "c programming india"
+    ],
+    "thumbnail": {
+      "text": "** AND NULL",
+      "visual": "big text \"** AND NULL\"; three lilac boxes in a row, `pp` to `p` to `bus = 42`, two thick black arrows; a fourth box `q` with a NULL sign and no arrow; Xecxec dizzy with two map pins over his head; lilac background, dark blue text block",
+      "pose": "Xecxec dizzy with two map pins over his head"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Phone chat: a friend shares a pin to \"Kadamba bus stand\"; Xecxec forwards that message to another friend",
+      "animation": "Pin drops; forward arrow; second phone receives a pin to the first pin; message pops",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your friend sends you a location pin for the Kadamba bus stand. You forward that message to another friend. Now the second friend has a message that leads to a message that leads to the bus stand. Two steps to reach the place. That is exactly a pointer to a pointer."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 59 · POINTER TO POINTER & NULL",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode fifty-nine. Pointer to pointer, and NULL."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 65,
+      "onScreen": "`bus` at 1000 holding 42; `p` at 2000 holding 1000; `pp` at 3000 holding 2000",
+      "animation": "Boxes build left to right; each address number flies into the next box, then turns into an arrow; two whooshes",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Let's build it one box at a time. First, an int called bus, at address 1000, holding 42. Next, a pointer p, at address 2000. p holds 1000, so it points to bus. You know this from EP 53. Now remember: p is also a variable. It lives in its own box, at 2000. So we can take its address too: ampersand p is 2000. To store that, we need a pointer to a pointer to an int. We write int star star pp. Two stars. pp lives at 3000 and holds 2000. So pp points to p, and p points to bus. A chain of two arrows."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 90,
+      "lengthSec": 50,
+      "onScreen": "Same chain; labels `pp` = 2000, `*pp` = 1000, `**pp` = 42",
+      "animation": "A glowing claw follows one arrow for `*pp` (one knock), then both for `**pp` (two knocks); knock SFX per hop",
+      "sfx": [],
+      "narration": "Now let's read the chain slowly. pp alone is 2000, the address of p. Star pp means: follow one arrow. We knock on p's door and find 1000. So star pp is the same as p. Star star pp means: follow two arrows. First to p, then to bus. We find 42. Each star is one knock, one hop along the chain. Count the stars, count the hops."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 140,
+      "lengthSec": 85,
+      "onScreen": "`double.c` (21 lines); tracker: bus, p, pp, q",
+      "animation": "Butter highlights; corner chain diagram updates; `q` box appears with a NULL sign",
+      "sfx": [],
+      "narration": "Here is the program. [HL 4] Line 4: bus equals 42. [TRACK bus=42] [HL 5] Line 5: p points to bus. [TRACK p=&bus] [HL 6] Line 6: int star star pp equals ampersand p. pp points to p. [TRACK pp=&p] [HL 8] Line 8 prints bus: 42. [HL 9] Line 9 prints star p, one hop: 42. [HL 10] Line 10 prints star star pp, two hops: also 42. [HL 12] Line 12: star star pp equals 50. Two hops, then write. [TRACK bus=50] We changed bus through two arrows. [HL 13] Line 13 prints bus: 50. [HL 15] Now line 15, a new idea. int star q equals NULL. NULL is a special pointer value that means \"points nowhere\". It is like a pin box that says \"no location set\". [TRACK q=NULL] It is the safe opposite of the garbage pointer from EP 53. A garbage pointer points somewhere random. A NULL pointer clearly points nowhere, and we can check for it. NULL comes from stdio dot h, and from other standard headers too. [HL 16] Line 16: if q equals equals NULL. [HL 17] Line 17 prints a message, and we do not touch star q. [HL 19] Line 19 returns zero."
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 225,
+      "lengthSec": 20,
+      "onScreen": "Compile and run",
+      "animation": "Output prints; 50 flashes mint",
+      "sfx": [],
+      "narration": "Compile and run. 42, 42, 42. Then 50, changed through the double pointer. And the NULL message. No addresses printed today, so your output will match mine exactly."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 5,
+      "onScreen": "\"My pointer said it was going nowhere in life. I said: that's fine, as long as you're NULL and not garbage.\"",
+      "animation": "Card flips; Xecxec pats a box labelled NULL; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My pointer said it was going nowhere in life. I told it: that's fine, as long as you're NULL, and not garbage."
+    },
+    {
+      "id": 8,
+      "template": "memory-boxes",
+      "startSec": 250,
+      "lengthSec": 55,
+      "onScreen": "Function `point_to_bigger(&big, &x, &y)`: `main` frame (x=12, y=30, big=NULL) and function frame (slot, a, b); `slot` arrow points to `big`",
+      "animation": "`slot` arrow reaches into main's `big`; `big` changes from NULL to an arrow pointing at y; ding",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Why would anyone need two stars? Here's a real reason. In EP 55, to let a function change an int, we passed a pointer to the int. Now suppose a function needs to change a pointer, to make it point somewhere new. Then we must pass a pointer to that pointer. Look at this function, point_to_bigger. main has x equals 12, y equals 30, and a pointer big, set to NULL. main calls point_to_bigger of ampersand big, ampersand x, ampersand y. Inside, slot is an int star star. It points at big, back in main's frame. a points to x, b points to y. Star a is 12, star b is 30. 30 is bigger, so the function does star slot equals b. Follow slot's arrow to big, and store b's address there. Now main's big points at y. Back in main, we check big is not NULL, and print star big: 30. Same rule as EP 55: to change something, send its address. Even if that something is a pointer."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 305,
+      "lengthSec": 75,
+      "onScreen": "`int *p = NULL; printf(\"%d\\n\", *p);` — crash; then the safe version with `if (p != NULL)`",
+      "animation": "Claw follows an arrow into a box marked 0 surrounded by a red fence; zap; crash crunch; safe version slides in with a mint shield",
+      "sfx": [],
+      "narration": "Today's bug: dereferencing NULL. int star p equals NULL, then print star p. GCC usually compiles this without any warning. But NULL means nowhere, so there is no door to knock on. The operating system protects address zero, and your program crashes with a segmentation fault. On Windows, it simply stops and prints nothing. NULL is safe only if you check it. So the fix is a habit: before you use star p, ask, is p not NULL? If p is not equal to NULL, then go ahead. This single check prevents a huge number of crashes in real software. And you'll need it a lot in Module 10, where malloc returns NULL when it fails."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 380,
+      "lengthSec": 30,
+      "onScreen": "\"Safe NULL check\" task card: `print_value(&n)` and `print_value(NULL)`",
+      "animation": "Two calls light up one after another; Xecxec holds a shield",
+      "sfx": [],
+      "narration": "Your challenge. Write void print_value with one parameter, const int star p. If p is NULL, print \"No value\". Otherwise, print \"Value:\" and star p. Call it twice from main: once with the address of an int holding 7, and once with NULL. You should see \"Value: 7\" and then \"No value\". Pause and try."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 410,
+      "lengthSec": 25,
+      "onScreen": "\"Next: EP 60 · Function pointers — a remote control for functions\"",
+      "animation": "A TV remote pointing at function boxes; click SFX; sign-off",
+      "sfx": [],
+      "narration": "You can now follow chains of arrows, and you know how to point nowhere safely. Next episode, the final pointer trick: pointers to functions. Like a TV remote for your code. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int *p = NULL;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+    "error": "`gcc -Wall bug.c` compiles with **no warning** at the default optimisation level. Running it crashes: `Segmentation fault` on Linux; on Windows the program exits without printing anything.",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int *p = NULL;\n    if (p != NULL) {\n        printf(\"%d\\n\", *p);\n    } else {\n        printf(\"p is NULL, nothing to print\\n\");\n    }\n    return 0;\n}",
+    "why": "NULL means \"points nowhere\", so there is no value to read; check for NULL before every dereference."
+  },
+  "pun": "\"My pointer said it was going nowhere in life. I said: that's fine, as long as you're NULL and not garbage.\"",
+  "challenge": "Write `void print_value(const int *p)` that prints `No value` if `p` is NULL, otherwise ` Value:  ` and the number. Call it with `&n` (n = 7) and with `NULL`.",
+  "challengeAnswer": "(worked example)\nvoid print_value(const int *p) {\n    if (p == NULL) {\n        printf(\"No value\\n\");\n        return;\n    }\n    printf(\"Value: %d\\n\", *p);\n}\n/* print_value(&n) prints Value: 7, print_value(NULL) prints No value */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A pin to a pin",
+      "hook": "Forwarded location message: \"This is int **.\"",
+      "script": "A pointer is a variable, so it has an address too. Store that address in another pointer, and you get a pointer to a pointer. int star star pp equals ampersand p. pp points to p, p points to the value. Like forwarding a location pin.",
+      "onScreen": "** = POINTER TO A POINTER",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Two arrows, one value.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "learntocode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Double pointers in 30 seconds",
+      "hook": "Claw hopping along two arrows with two knocks.",
+      "script": "pp holds the address of p. Star pp follows one arrow and gives p. Star star pp follows two arrows and gives the value. Each star is one hop. Count the stars, count the hops. And star star pp equals 50 changes the value at the end of the chain.",
+      "onScreen": "1 STAR = 1 HOP",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Count the stars.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "codingtips",
+        "doublepointer"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The NULL crash",
+      "hook": "`*p` on a NULL pointer, then the screen cracks.",
+      "script": "int star p equals NULL. Then print star p. No warning from GCC. But NULL points nowhere, so there's nothing to read. Segmentation fault. The fix is one habit: if p is not NULL, then use it. One check, a hundred crashes saved.",
+      "onScreen": "CHECK NULL FIRST",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "NULL is safe only when you check it.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "pointers",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "NULL, not garbage",
+      "hook": "A sad pointer box on a park bench, Xecxec sitting beside it.",
+      "script": "My pointer said it was going nowhere in life. I told it: that's fine, as long as you're NULL, and not garbage.",
+      "onScreen": "BE NULL, NOT GARBAGE",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 15,
+      "caption": "Life advice for pointers.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: how many stars?",
+      "hook": "\"A function must change WHERE a pointer points. What do you pass?\"",
+      "script": "To let a function change an int, you pass an int star. To let a function change an int star, what do you pass? Answer: an int star star, the address of the pointer. Now your challenge: write a function that safely handles NULL. Comment your code.",
+      "onScreen": "CHANGE A POINTER? PASS ITS ADDRESS",
+      "fromScenes": [
+        8,
+        10
+      ],
+      "lengthSec": 25,
+      "caption": "Same rule, one level up.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "pointers",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int bus = 42;\n    int *p = &bus;\n    int **pp = &p;\n\n    printf(\"bus   = %d\\n\", bus);\n    printf(\"*p    = %d\\n\", *p);\n    printf(\"**pp  = %d\\n\", **pp);\n\n    **pp = 50;\n    printf(\"After **pp = 50, bus = %d\\n\", bus);\n\n    int *q = NULL;\n    if (q == NULL) {\n        printf(\"q points nowhere, so we do not touch it.\\n\");\n    }\n    return 0;\n}",
+      "output": "bus   = 42\n*p    = 42\n**pp  = 42\nAfter **pp = 50, bus = 50\nq points nowhere, so we do not touch it.",
+      "lang": "c"
+    },
+    {
+      "file": "bigger.c",
+      "source": "#include <stdio.h>\n\nvoid point_to_bigger(int **slot, int *a, int *b) {\n    if (*a > *b) {\n        *slot = a;\n    } else {\n        *slot = b;\n    }\n}\n\nint main(void) {\n    int x = 12, y = 30;\n    int *big = NULL;\n    point_to_bigger(&big, &x, &y);\n    if (big != NULL) {\n        printf(\"Bigger value: %d\\n\", *big);\n    }\n    return 0;\n}",
+      "output": "Bigger value: 30",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "p is NULL, nothing to print"
+  }
+}

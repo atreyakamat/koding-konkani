@@ -1,0 +1,304 @@
+{
+  "ep": 21,
+  "title": "else-if ladders",
+  "module": 3,
+  "lengthSec": 365,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "chain several conditions with `else if`",
+    "explain that C stops at the first true condition",
+    "order checks from strictest to loosest",
+    "guard against invalid input as the first rung"
+  ],
+  "youtube": {
+    "title": "else if Ladder: Marks to Grades in C | C Programming EP 21",
+    "description": "Two roads were not enough. Today we build an else-if ladder that turns marks into grades A, B, C, D and one very special grade for crabs. You will also see why the order of your checks can turn a topper into a D student. Chapters: 0:00 Too many roads · 0:25 The ladder · 1:10 Code line by line · 3:00 Running it · 3:40 First true wins · 4:15 Bug of the Day · 5:15 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Too many roads"
+      },
+      {
+        "t": "0:25",
+        "label": "The ladder"
+      },
+      {
+        "t": "1:10",
+        "label": "Code line by line"
+      },
+      {
+        "t": "3:00",
+        "label": "Running it"
+      },
+      {
+        "t": "3:40",
+        "label": "First true wins"
+      },
+      {
+        "t": "4:15",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:15",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "else if in c",
+      "else if ladder",
+      "grade program in c",
+      "decision making in c",
+      "learn c",
+      "c for beginners",
+      "c tutorial english",
+      "koding konkani",
+      "conditional statements"
+    ],
+    "thumbnail": {
+      "text": "95 = GRADE D?!",
+      "visual": "big text \"95 = GRADE D?!\"; a ladder with rungs labelled A, B, C, D, CRAB; Xecxec hanging off the bottom rung looking shocked; mint background, dark blue blocks",
+      "pose": "Xecxec hanging off the bottom rung looking shocked"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A report card with 5 grade boxes; one if/else only fits 2",
+      "animation": "Card flips in, two boxes light, three stay grey; confused boing",
+      "sfx": [],
+      "narration": "In EP 20, our program could choose between two roads: pass or fail. But your report card does not say just pass or fail. It says A, B, C, D, or something your parents will not like. That is five roads. One if and one else cannot hold five roads. We need a ladder."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 21 · ELSE-IF LADDERS",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 21. else-if ladders."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "Ladder of diamonds: invalid? → >=90? → >=75? → >=60? → >=35? → else",
+      "animation": "Xecxec climbs down rung by rung, stops at the first green YES",
+      "sfx": [],
+      "narration": "Picture a ladder going down. On each rung there is a question. Xecxec starts at the top. Rung one: are the marks invalid, below 0 or above 100? If yes, stop and complain. If no, step down. Rung two: 90 or more? If yes, grade A, and stop. If no, step down. 75 or more? Grade B. 60 or more? Grade C. 35 or more? Grade D. And if he reaches the bottom without a single yes, he lands in the else: grade crab. The key word is stop. The moment one question says yes, Xecxec gets off the ladder. He never checks the rungs below."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 70,
+      "lengthSec": 110,
+      "onScreen": "ep21.c, 24 lines; tracker for marks",
+      "animation": "Line highlights; each checked rung ticks red or green; key-tap SFX",
+      "sfx": [],
+      "narration": "Here is the ladder in C. [HL 4] Line 4 makes our box, marks. [HL 6] [HL 7] Lines 6 and 7 print a prompt and read the number with scanf. The user types 80. [TRACK marks=80] [HL 9] Line 9 is the top rung. It says: if marks is less than 0, or marks is greater than 100. That is the double pipe, the OR operator from EP 16. 80 is neither, so the condition is false. We skip line 10. [HL 11] Line 11 starts with else if. That means: only check this if everything above was false. Is 80 greater than or equal to 90? No. Skip line 12. [HL 13] Line 13: is 80 greater than or equal to 75? Yes! [HL 14] So line 14 runs and prints Grade B. And now, the important part. C jumps straight past the rest of the ladder, lines 15 to 21. It does not check 60. It does not check 35. [HL 23] It lands on line 23, return 0. Notice something clever. On line 13 we did not write marks greater than or equal to 75 AND marks less than 90. We did not need to. If marks were 90 or more, the line 11 rung would have caught them already. Reaching line 13 already means the marks are below 90. The ladder does that work for free. [HL 19] [HL 20] Finally, lines 19 and 20: the plain else at the bottom. No condition. It catches everything that fell through every rung: any mark from 0 to 34. Grade crab. Please study.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int marks;\n\n    printf(\"Enter marks (0-100): \");\n    scanf(\"%d\", &marks);\n\n    if (marks < 0 || marks > 100) {\n        printf(\"Invalid marks!\\n\");\n    } else if (marks >= 90) {\n        printf(\"Grade A\\n\");\n    } else if (marks >= 75) {\n        printf(\"Grade B\\n\");\n    } else if (marks >= 60) {\n        printf(\"Grade C\\n\");\n    } else if (marks >= 35) {\n        printf(\"Grade D\\n\");\n    } else {\n        printf(\"Grade: CRAB (please study)\\n\");\n    }\n\n    return 0;\n}",
+        "output": "Enter marks (0-100): 95\nGrade A\n\nEnter marks (0-100): 80\nGrade B\n\nEnter marks (0-100): 60\nGrade C\n\nEnter marks (0-100): 40\nGrade D\n\nEnter marks (0-100): 12\nGrade: CRAB (please study)\n\nEnter marks (0-100): 150\nInvalid marks!"
+      }
+    },
+    {
+      "id": 5,
+      "template": "terminal",
+      "startSec": 180,
+      "lengthSec": 35,
+      "onScreen": "Runs: 95, 80, 60, 40, 12, 150",
+      "animation": "Typing SFX, grade badge stamps next to each run",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Let's run it six times. 95: Grade A. 80: Grade B. 60: exactly 60, greater than or equal, so Grade C. 40: Grade D. 12: Grade crab. And 150: the top rung catches it. Invalid marks. Always test the edges and at least one silly value. Users will type silly values. Trust me."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 215,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the else-if ladder never get lonely? It always had a few conditions to fall back on."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 220,
+      "lengthSec": 35,
+      "onScreen": "\"First true wins\" with 80 sliding down the ladder",
+      "animation": "80 stops at B; lower rungs grey out with a soft thud",
+      "sfx": [
+        "thud"
+      ],
+      "narration": "One rule to remember from today: first true wins. C checks the rungs from top to bottom, and only the first true condition runs. Even if three conditions below are also true, they are ignored. 80 is also greater than 60, and greater than 35. But B came first, so B wins. This is very different from writing five separate if statements. Five separate ifs would check all five, and 80 would print B, C and D. Three grades for one student. An else-if ladder gives exactly one answer."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 255,
+      "lengthSec": 60,
+      "onScreen": "Ladder upside down: 95 prints Grade D",
+      "animation": "Red flash, error buzz, rungs swap order with a swoosh",
+      "sfx": [],
+      "narration": "Today's bug has no error message. No warning, even with -Wall. Look at this ladder. The first rung checks 35 or more. Then 60. Then 90. Our topper has 95 marks. We run it, and it prints Grade D. Ninety-five, Grade D! Why? First true wins. Is 95 greater than or equal to 35? Yes. So the first rung catches it, and the program never reaches the 90 rung. The 60 and 90 rungs can never run for anyone. The fix: put the strictest check at the top. 90 first, then 75, then 60, then 35. When your conditions overlap, order is everything."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 315,
+      "lengthSec": 30,
+      "onScreen": "Kadamba bus fare by distance",
+      "animation": "Timer ring, bus horn SFX",
+      "sfx": [],
+      "narration": "Your challenge. A Kadamba bus charges by distance. Up to 5 kilometres: 10 rupees. Up to 15: 20 rupees. Up to 30: 35 rupees. More than 30: 50 rupees. And if the distance is 0 or negative, print Invalid distance. Read the distance and print the fare using one else-if ladder. Pause, type, run. The answer is in the comments."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 345,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 22 nested if; sign-off",
+      "animation": "Module tiles, claw-click, music out",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: what if one decision lives inside another? First check the ticket, then check the ID. That is nested if, in EP 22. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int marks = 95;\n\n    if (marks >= 35) {\n        printf(\"Grade D\\n\");\n    } else if (marks >= 60) {\n        printf(\"Grade C\\n\");\n    } else if (marks >= 90) {\n        printf(\"Grade A\\n\");\n    }\n\n    return 0;\n}",
+    "error": "No error and no warning, even with `gcc -Wall -Wextra`. Wrong output:\n\nGrade D",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int marks = 95;\n\n    if (marks >= 90) {\n        printf(\"Grade A\\n\");\n    } else if (marks >= 60) {\n        printf(\"Grade C\\n\");\n    } else if (marks >= 35) {\n        printf(\"Grade D\\n\");\n    }\n\n    return 0;\n}",
+    "why": "an else-if ladder stops at the first true condition, so with overlapping checks the strictest one must come first."
+  },
+  "pun": "Why did the else-if ladder never get lonely? It always had a few conditions to fall back on.",
+  "challenge": "Kadamba bus fare: distance up to 5 km costs Rs 10, up to 15 km Rs 20, up to 30 km Rs 35, above 30 km Rs 50; 0 or less prints \"Invalid distance\". Use one else-if ladder.",
+  "challengeAnswer": "(worked example)\nint km;\nscanf(\"%d\", &km);\nif (km <= 0) {\n    printf(\"Invalid distance\\n\");\n} else if (km <= 5) {\n    printf(\"Fare: Rs 10\\n\");\n} else if (km <= 15) {\n    printf(\"Fare: Rs 20\\n\");\n} else if (km <= 30) {\n    printf(\"Fare: Rs 35\\n\");\n} else {\n    printf(\"Fare: Rs 50\\n\");\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Five grades, one ladder",
+      "hook": "Report card slams down: \"A? B? C? D? ...CRAB?\"",
+      "script": "if and else give you two roads. Your report card needs five. So C gives you a ladder. Each rung asks one question. 90 or more? Grade A. 75 or more? Grade B. And so on, down to the bottom. The moment one rung says yes, you get off. That is the else-if ladder.",
+      "onScreen": "5 GRADES, 1 LADDER",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Turning marks into grades with one else-if ladder.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "elseif",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "First true wins",
+      "hook": "\"80\" slides down a ladder and stops at B.",
+      "script": "else-if in 30 seconds. C checks each condition from the top. 80: is it 90 or more? No. 75 or more? Yes. Print Grade B, and stop. It never checks 60 or 35, even though those are true too. First true wins. And because of that, you never need to write \"and less than 90\". The rung above already handled it.",
+      "onScreen": "FIRST TRUE WINS",
+      "fromScenes": [
+        4,
+        7
+      ],
+      "lengthSec": 30,
+      "caption": "The one rule that makes else-if ladders click.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctutorial",
+        "programming"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Topper gets a D",
+      "hook": "Terminal: \"marks = 95\" then \"Grade D\". Xecxec faints.",
+      "script": "95 marks. Grade D. No error. No warning. What happened? The first check was 35 or more. 95 is more than 35, so it is caught right there. The 90 check never runs, for anyone, ever. Fix: put the strictest check first. 90, then 75, then 60, then 35. In an else-if ladder, order is everything.",
+      "onScreen": "95 MARKS = GRADE D?!",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "No error, no warning, completely wrong grade.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Conditions to fall back on",
+      "hook": "Xecxec sitting alone on a ladder rung",
+      "script": "Why did the else-if ladder never get lonely? It always had a few conditions to fall back on.",
+      "onScreen": "CONDITIONS TO FALL BACK ON",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 12,
+      "caption": "Send this to your else-if friend.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Ladder or five ifs?",
+      "hook": "\"80 marks. How many grades print?\"",
+      "script": "Quiz. Five separate if statements: 90 or more prints A, 75 prints B, 60 prints C, 35 prints D. Marks are 80. How many lines print? Three, two, one. Three lines: B, C and D. Separate ifs check everything. An else-if ladder prints only B. Now try the challenge: a bus fare calculator by distance. Answer in the comments.",
+      "onScreen": "HOW MANY GRADES PRINT?",
+      "fromScenes": [
+        7,
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Separate ifs vs an else-if ladder. Did you get it?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "elseif"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int marks;\n\n    printf(\"Enter marks (0-100): \");\n    scanf(\"%d\", &marks);\n\n    if (marks < 0 || marks > 100) {\n        printf(\"Invalid marks!\\n\");\n    } else if (marks >= 90) {\n        printf(\"Grade A\\n\");\n    } else if (marks >= 75) {\n        printf(\"Grade B\\n\");\n    } else if (marks >= 60) {\n        printf(\"Grade C\\n\");\n    } else if (marks >= 35) {\n        printf(\"Grade D\\n\");\n    } else {\n        printf(\"Grade: CRAB (please study)\\n\");\n    }\n\n    return 0;\n}",
+      "output": "Enter marks (0-100): 95\nGrade A\n\nEnter marks (0-100): 80\nGrade B\n\nEnter marks (0-100): 60\nGrade C\n\nEnter marks (0-100): 40\nGrade D\n\nEnter marks (0-100): 12\nGrade: CRAB (please study)\n\nEnter marks (0-100): 150\nInvalid marks!",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true
+  }
+}

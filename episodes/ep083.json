@@ -1,0 +1,368 @@
+{
+  "ep": 83,
+  "title": "Stacks and queues with arrays",
+  "module": 12,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "explain LIFO (stack) and FIFO (queue) with everyday examples",
+    "implement push and pop on an array with a top index",
+    "implement a circular queue with front, count and the % operator",
+    "guard every operation against overflow and underflow"
+  ],
+  "youtube": {
+    "title": "Stacks vs Queues: Plates and the Bus Queue | C EP 83",
+    "description": "A pile of plates and the queue at Panjim bus stand are two of the most important data structures in computing. We build a stack and a circular queue from plain arrays in C, animate every push, pop, enqueue and dequeue, and catch the overflow and underflow bugs that silently corrupt memory. 0:00 Plates vs the bus queue · 0:20 Title · 0:25 LIFO and FIFO · 1:00 Stack, animated · 1:35 Code: the stack · 2:40 Queue, animated · 3:15 Code: the circular queue · 4:15 Run it · 4:35 Pun · 4:40 Where you meet them · 5:15 Bug of the Day · 6:20 Challenge · 6:45 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Plates vs the bus queue"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "LIFO and FIFO"
+      },
+      {
+        "t": "1:00",
+        "label": "Stack, animated"
+      },
+      {
+        "t": "1:35",
+        "label": "Code: the stack"
+      },
+      {
+        "t": "2:40",
+        "label": "Queue, animated"
+      },
+      {
+        "t": "3:15",
+        "label": "Code: the circular queue"
+      },
+      {
+        "t": "4:15",
+        "label": "Run it"
+      },
+      {
+        "t": "4:35",
+        "label": "Pun"
+      },
+      {
+        "t": "4:40",
+        "label": "Where you meet them"
+      },
+      {
+        "t": "5:15",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:45",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "stack in c",
+      "queue in c",
+      "circular queue",
+      "push pop",
+      "enqueue dequeue",
+      "lifo fifo",
+      "data structures in c",
+      "stack overflow underflow",
+      "c programming",
+      "learn c",
+      "koding konkani",
+      "dsa in c"
+    ],
+    "thumbnail": {
+      "text": "STACK vs QUEUE",
+      "visual": "big text \"STACK vs QUEUE\"; left: a pile of plates, right: a line of people at a bus; Xecxec balancing a plate on one claw; Dark blue background, Butter text.",
+      "pose": "Xecxec balancing a plate on one claw"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Split screen: wedding buffet plate pile; Panjim bus stand queue",
+      "animation": "Plate clink; bus horn",
+      "sfx": [],
+      "narration": "At a Goan wedding buffet, the plates are in a pile. The last plate the caterer put on top is the first one you pick up. At Panjim bus stand, it's the opposite: the first person in the queue is the first one on the bus. These two ideas are two of the most useful data structures in all of programming."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 83 · STACKS AND QUEUES",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 83. Stacks and queues with arrays."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 35,
+      "onScreen": "LIFO = Last In, First Out (stack); FIFO = First In, First Out (queue)",
+      "animation": "Letters drop in; arrows show in/out ends",
+      "sfx": [],
+      "narration": "A stack is LIFO: last in, first out. You only touch the top. Adding is called push, removing is called pop. A queue is FIFO: first in, first out. You add at the back, called enqueue, and remove from the front, called dequeue. We'll build both from a plain array, an index or two, and some careful checks."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 60,
+      "lengthSec": 35,
+      "onScreen": "Vertical array of 5 boxes, top arrow; steps ST1–ST7 below",
+      "animation": "Push: value drops in (thud), top arrow rises; pop: value lifts out (whoosh); overflow: box 6 flashes red, buzzer",
+      "sfx": [
+        "buzzer",
+        "pop",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "A stack of five boxes. top starts at minus 1: empty. Push 10: top becomes 0. Push 20, 30, 40, 50: top reaches 4, full. Push 60? No room. That's a stack overflow, and we must refuse it. Now pop: 50 comes out first, the last one in. Then 40, 30, 20, 10. Pop again? Empty. That's stack underflow."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 95,
+      "lengthSec": 65,
+      "onScreen": "stackqueue.c lines 1–26; tracker for top, stack[]",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 2] stdbool for true and false. [HL 4] SIZE is 5. [HL 7] The stack is just an int array, [HL 8] and top is the index of the top item. Minus 1 means empty. [TRACK top=-1] [HL 10] push returns true if it worked. [HL 11] If top is already SIZE minus 1, the stack is full: [HL 12] print a message [HL 13] and return false. [HL 15] Otherwise, stack of plus plus top equals value. Pre-increment: top goes up first, then we store at the new top. [TRACK top=0 stack[0]=10] [HL 19] pop gives back the value through a pointer, like in Episode 55, and returns true or false. [HL 20] If top is minus 1, it's empty: [HL 21] underflow. [HL 24] Otherwise, read stack of top, then top minus minus. Post-decrement: read first, then move down. [TRACK top=3] That's the whole stack: two functions, one index.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <stdbool.h>\n\n#define SIZE 5\n\n/* ---------- Stack: last in, first out ---------- */\nint stack[SIZE];\nint top = -1;\n\nbool push(int value) {\n    if (top == SIZE - 1) {\n        printf(\"Stack overflow! Can't push %d\\n\", value);\n        return false;\n    }\n    stack[++top] = value;\n    return true;\n}\n\nbool pop(int *value) {\n    if (top == -1) {\n        printf(\"Stack underflow! Nothing to pop\\n\");\n        return false;\n    }\n    *value = stack[top--];\n    return true;\n}\n\n/* ---------- Queue: first in, first out (circular) ---------- */\nint queue[SIZE];\nint front = 0, count = 0;\n\nbool enqueue(int value) {\n    if (count == SIZE) {\n        printf(\"Queue full! Can't add %d\\n\", value);\n        return false;\n    }\n    int rear = (front + count) % SIZE;\n    queue[rear] = value;\n    count++;\n    return true;\n}\n\nbool dequeue(int *value) {\n    if (count == 0) {\n        printf(\"Queue empty! Nobody to remove\\n\");\n        return false;\n    }\n    *value = queue[front];\n    front = (front + 1) % SIZE;\n    count--;\n    return true;\n}\n\nint main(void) {\n    int v;\n\n    for (int i = 1; i <= 6; i++)\n        push(i * 10);\n    while (pop(&v))\n        printf(\"Popped %d\\n\", v);\n\n    enqueue(10); enqueue(20); enqueue(30);\n    dequeue(&v);\n    printf(\"Dequeued %d\\n\", v);\n    enqueue(40);\n    while (dequeue(&v))\n        printf(\"Dequeued %d\\n\", v);\n\n    return 0;\n}",
+        "output": "$ gcc stackqueue.c -o stackqueue\n$ ./stackqueue\nStack overflow! Can't push 60\nPopped 50\nPopped 40\nPopped 30\nPopped 20\nPopped 10\nStack underflow! Nothing to pop\nDequeued 10\nDequeued 20\nDequeued 30\nDequeued 40\nQueue empty! Nobody to remove"
+      }
+    },
+    {
+      "id": 6,
+      "template": "memory-boxes",
+      "startSec": 160,
+      "lengthSec": 35,
+      "onScreen": "Horizontal ring of 5 boxes, front and rear arrows; steps Q1–Q5",
+      "animation": "Enqueue at rear (slide in), dequeue at front (slide out); index 4 wraps to 0 with a curved arrow",
+      "sfx": [],
+      "narration": "Now a queue of five boxes. Enqueue 10, 20, 30: they line up from index 0. Dequeue: 10 leaves from the front, and front moves to index 1. Enqueue 40: it goes to index 3. But what happens when we reach the end of the array while there's free space at the start? We wrap around to index 0, like seats on a Ferris wheel. This is called a circular queue."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 195,
+      "lengthSec": 60,
+      "onScreen": "stackqueue.c lines 28–52; tracker for front, count, rear, queue[]",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 29] The queue array, [HL 30] front, the index of the first person, and count, how many are waiting. [TRACK front=0 count=0] [HL 32] enqueue. [HL 33] If count equals SIZE, it's full. [HL 37] The back of the queue is front plus count, but we take it modulo SIZE, so 5 wraps to 0, 6 to 1, and so on. That percent sign is the remainder operator from Module 2, and it's the whole trick of a circular queue. [TRACK rear=0] [HL 38] Store the value there, [HL 39] and one more person is waiting. [TRACK count=1] [HL 43] dequeue. [HL 44] If count is 0, nobody's there. [HL 48] Otherwise, take the value at front, [HL 49] move front forward, again modulo SIZE, [TRACK front=1] [HL 50] and one fewer is waiting. [TRACK count=2]",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <stdbool.h>\n\n#define SIZE 5\n\n/* ---------- Stack: last in, first out ---------- */\nint stack[SIZE];\nint top = -1;\n\nbool push(int value) {\n    if (top == SIZE - 1) {\n        printf(\"Stack overflow! Can't push %d\\n\", value);\n        return false;\n    }\n    stack[++top] = value;\n    return true;\n}\n\nbool pop(int *value) {\n    if (top == -1) {\n        printf(\"Stack underflow! Nothing to pop\\n\");\n        return false;\n    }\n    *value = stack[top--];\n    return true;\n}\n\n/* ---------- Queue: first in, first out (circular) ---------- */\nint queue[SIZE];\nint front = 0, count = 0;\n\nbool enqueue(int value) {\n    if (count == SIZE) {\n        printf(\"Queue full! Can't add %d\\n\", value);\n        return false;\n    }\n    int rear = (front + count) % SIZE;\n    queue[rear] = value;\n    count++;\n    return true;\n}\n\nbool dequeue(int *value) {\n    if (count == 0) {\n        printf(\"Queue empty! Nobody to remove\\n\");\n        return false;\n    }\n    *value = queue[front];\n    front = (front + 1) % SIZE;\n    count--;\n    return true;\n}\n\nint main(void) {\n    int v;\n\n    for (int i = 1; i <= 6; i++)\n        push(i * 10);\n    while (pop(&v))\n        printf(\"Popped %d\\n\", v);\n\n    enqueue(10); enqueue(20); enqueue(30);\n    dequeue(&v);\n    printf(\"Dequeued %d\\n\", v);\n    enqueue(40);\n    while (dequeue(&v))\n        printf(\"Dequeued %d\\n\", v);\n\n    return 0;\n}",
+        "output": "$ gcc stackqueue.c -o stackqueue\n$ ./stackqueue\nStack overflow! Can't push 60\nPopped 50\nPopped 40\nPopped 30\nPopped 20\nPopped 10\nStack underflow! Nothing to pop\nDequeued 10\nDequeued 20\nDequeued 30\nDequeued 40\nQueue empty! Nobody to remove"
+      }
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 255,
+      "lengthSec": 20,
+      "onScreen": "gcc and 12 output lines (main is lines 54–70)",
+      "animation": "Lines type out; overflow and empty lines flash butter",
+      "sfx": [],
+      "narration": "[HL 57] main pushes 10, 20, 30, 40, 50 and 60. Run it. Stack overflow, can't push 60. Then pops 50, 40, 30, 20, 10, newest first. Then stack underflow. [HL 62] The queue: dequeued 10, then after adding 40, dequeued 20, 30, 40, oldest first. Then queue empty. Same numbers in, opposite order out."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 275,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the stack refuse to queue at the bus stand? It always wanted to be on top."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 280,
+      "lengthSec": 35,
+      "onScreen": "Stack: undo button, function call stack (EP 77), brackets in code. Queue: printer jobs, WhatsApp messages in order, ticket counters",
+      "animation": "Icons pop in two columns",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "You use stacks every day. The undo button is a stack: the last thing you did is the first thing undone. The call stack from Episode 77 is a stack of function frames. Code editors use a stack to check brackets. Queues are everywhere too: print jobs, messages delivered in the order they were sent, a ticket counter. Every operation we wrote is O(1): it takes the same time no matter how many items there are."
+    },
+    {
+      "id": 11,
+      "template": "bug-of-the-day",
+      "startSec": 315,
+      "lengthSec": 65,
+      "onScreen": "push/pop with no checks; 4 pushes into SIZE 3, 5 pops; top ends at -2",
+      "animation": "Red siren; 4th value lands outside the boxes; top arrow sinks below the floor",
+      "sfx": [],
+      "narration": "Today's bug: overflow and underflow with no checks. Here's a stack of size 3 with no if statements. We push four values. The fourth one goes into stack of 3, which doesn't exist. Then we pop five times. The fifth pop reads stack of minus 1, also outside the array. Our output: popped 4, 3, 2, 1, then 0, a value nobody pushed, and top ends at minus 2. GCC gives no warning, and on another machine you could see different garbage, or a crash. The fix: check top equals SIZE minus 1 before every push, and top equals minus 1 before every pop, exactly like our main code."
+    },
+    {
+      "id": 12,
+      "template": "challenge",
+      "startSec": 380,
+      "lengthSec": 25,
+      "onScreen": "\"Bracket checker: {a[i] = (b + c);} vs (x + y]\"",
+      "animation": "Brackets light up in pairs",
+      "sfx": [],
+      "narration": "Your challenge: build a bracket checker using a stack of chars. Push every opening bracket. For every closing bracket, pop and check it matches. At the end, the stack must be empty. Test it on curly a square i equals round b plus c, and on round x plus y square."
+    },
+    {
+      "id": 13,
+      "template": "outro",
+      "startSec": 405,
+      "lengthSec": 15,
+      "onScreen": "Module 12 complete; Next: EP 84 (Module 13, Projects)",
+      "animation": "Module badge stamps; sign-off",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "That's the end of Module 12! You can now measure algorithms, search, sort six different ways, build your own library and use stacks and queues. Next, Module 13: real projects that put everything together. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\n#define SIZE 3\n\nint stack[SIZE];\nint top = -1;\n\nvoid push(int value) {\n    stack[++top] = value;\n}\n\nint pop(void) {\n    return stack[top--];\n}\n\nint main(void) {\n    push(1); push(2); push(3); push(4);\n    for (int i = 0; i < 5; i++)\n        printf(\"Popped %d\\n\", pop());\n    printf(\"top is now %d\\n\", top);\n    return 0;\n}",
+    "error": "No error or warning from GCC. Output on our test machine (undefined behaviour; on screen: \"your output may differ, or it may crash\"):\n\nPopped 4\nPopped 3\nPopped 2\nPopped 1\nPopped 0\ntop is now -2",
+    "fixed": "Fixed: add the full and empty checks before touching the array (as push and pop in Code shown), so push(4) prints \"Stack overflow! Can't push 4\" and the 4th pop prints \"Stack underflow! Nothing to pop\".",
+    "why": "push(4) writes stack[3] and the 5th pop reads stack[-1], both outside the 3-element array, and top drifts to -2 so every later operation is wrong too."
+  },
+  "pun": "Why did the stack refuse to queue at the bus stand? It always wanted to be on top.",
+  "challenge": "Write `bool balanced(const char *s)` using a stack of chars to check that (), [] and {} are balanced and correctly nested. Test: `{a[i] = (b + c);}`, `(x + y]`, `((1 + 2)`.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n#include <stdbool.h>\n\n#define SIZE 100\n\nchar stack[SIZE];\nint top = -1;\n\nbool matches(char open, char close) {\n    return (open == '(' && close == ')') ||\n           (open == '[' && close == ']') ||\n           (open == '{' && close == '}');\n}\n\nbool balanced(const char *s) {\n    top = -1;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == '(' || c == '[' || c == '{') {\n            if (top == SIZE - 1)\n                return false;\n            stack[++top] = c;\n        } else if (c == ')' || c == ']' || c == '}') {\n            if (top == -1 || !matches(stack[top--], c))\n                return false;\n        }\n    }\n    return top == -1;\n}\n\nint main(void) {\n    const char *tests[] = {\"{a[i] = (b + c);}\", \"(x + y]\", \"((1 + 2)\"};\n    for (int i = 0; i < 3; i++)\n        printf(\"%-20s %s\\n\", tests[i], balanced(tests[i]) ? \"balanced\" : \"NOT balanced\");\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Plates vs the bus queue",
+      "hook": "\"The last plate is the first one taken.\"",
+      "script": "At the wedding buffet, the last plate stacked is the first plate taken. At the bus stand, the first person in line gets on first. Those are stacks and queues, two of the most important data structures in programming, and you can build both from a plain C array.",
+      "onScreen": "PLATES vs BUS QUEUE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "Data structures hiding in plain sight.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "datastructures",
+        "stack"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Stack and queue in 30 seconds",
+      "hook": "\"Last in, first out. First in, first out.\"",
+      "script": "A stack is an array plus a top index. Push: increase top, store. Pop: read, decrease top. A queue adds at the back and removes from the front. Use front plus count, modulo the size, and it wraps around like a ring. Every operation is O(1). Just check for full and empty first.",
+      "onScreen": "LIFO · FIFO · O(1)",
+      "fromScenes": [
+        4,
+        6
+      ],
+      "lengthSec": 40,
+      "caption": "Stack and circular queue, animated.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "queue",
+        "dsa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Popped a number nobody pushed",
+      "hook": "\"I popped a 0. I never pushed a 0.\"",
+      "script": "A stack of size 3 with no checks. Push four values: the fourth lands outside the array. Pop five times: the last pop reads stack of minus 1 and gives garbage, and top ends at minus 2. Always check for full before push and empty before pop.",
+      "onScreen": "CHECK FULL. CHECK EMPTY.",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 35,
+      "caption": "Overflow and underflow, caught.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "stack"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Always on top",
+      "hook": "\"Why won't the stack stand in a queue?\"",
+      "script": "Why did the stack refuse to queue at the bus stand? It always wanted to be on top.",
+      "onScreen": "ALWAYS WANTS TO BE ON TOP",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 10,
+      "caption": "LIFO lifestyle.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Are these brackets balanced?",
+      "hook": "\"Your code editor does this with a stack.\"",
+      "script": "Three strings: curly a square i equals round b plus c; round x plus y square; and two round opens with one close. Which are balanced? Comment your answers, then build the checker with a stack. Code pinned on the full episode.",
+      "onScreen": "BALANCED OR NOT?",
+      "fromScenes": [
+        12
+      ],
+      "lengthSec": 20,
+      "caption": "Build a bracket checker.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "challenge",
+        "stack"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <stdbool.h>\n\n#define SIZE 5\n\n/* ---------- Stack: last in, first out ---------- */\nint stack[SIZE];\nint top = -1;\n\nbool push(int value) {\n    if (top == SIZE - 1) {\n        printf(\"Stack overflow! Can't push %d\\n\", value);\n        return false;\n    }\n    stack[++top] = value;\n    return true;\n}\n\nbool pop(int *value) {\n    if (top == -1) {\n        printf(\"Stack underflow! Nothing to pop\\n\");\n        return false;\n    }\n    *value = stack[top--];\n    return true;\n}\n\n/* ---------- Queue: first in, first out (circular) ---------- */\nint queue[SIZE];\nint front = 0, count = 0;\n\nbool enqueue(int value) {\n    if (count == SIZE) {\n        printf(\"Queue full! Can't add %d\\n\", value);\n        return false;\n    }\n    int rear = (front + count) % SIZE;\n    queue[rear] = value;\n    count++;\n    return true;\n}\n\nbool dequeue(int *value) {\n    if (count == 0) {\n        printf(\"Queue empty! Nobody to remove\\n\");\n        return false;\n    }\n    *value = queue[front];\n    front = (front + 1) % SIZE;\n    count--;\n    return true;\n}\n\nint main(void) {\n    int v;\n\n    for (int i = 1; i <= 6; i++)\n        push(i * 10);\n    while (pop(&v))\n        printf(\"Popped %d\\n\", v);\n\n    enqueue(10); enqueue(20); enqueue(30);\n    dequeue(&v);\n    printf(\"Dequeued %d\\n\", v);\n    enqueue(40);\n    while (dequeue(&v))\n        printf(\"Dequeued %d\\n\", v);\n\n    return 0;\n}",
+      "output": "$ gcc stackqueue.c -o stackqueue\n$ ./stackqueue\nStack overflow! Can't push 60\nPopped 50\nPopped 40\nPopped 30\nPopped 20\nPopped 10\nStack underflow! Nothing to pop\nDequeued 10\nDequeued 20\nDequeued 30\nDequeued 40\nQueue empty! Nobody to remove",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

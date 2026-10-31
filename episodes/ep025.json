@@ -1,0 +1,345 @@
+{
+  "ep": 25,
+  "title": "Mini project: Quiz app",
+  "module": 3,
+  "lengthSec": 450,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "combine if, else-if, switch and a score counter in one complete program",
+    "read a single character answer with `scanf(\" %c\", ...)` and explain the leading space",
+    "accept both upper- and lower-case answers",
+    "plan a program in blocks before typing it"
+  ],
+  "youtube": {
+    "title": "Build a Quiz App in C (Beginner Project) | C Programming EP 25",
+    "description": "Module 3 ends with a real project. We plan and build Xecxec's Goa Quiz: questions, answers, a score and a final verdict, using everything from EP 20 to EP 24. You will also see why typing a capital B can make a correct answer wrong. Chapters: 0:00 Your first app · 0:25 Plan in blocks · 1:10 Question 1 with if · 2:35 Question 2 with switch · 3:45 The final verdict · 4:30 Full run · 5:10 Bug of the Day · 6:15 The space in \" %c\" · 6:50 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Your first app"
+      },
+      {
+        "t": "0:25",
+        "label": "Plan in blocks"
+      },
+      {
+        "t": "1:10",
+        "label": "Question 1 with if"
+      },
+      {
+        "t": "2:35",
+        "label": "Question 2 with switch"
+      },
+      {
+        "t": "3:45",
+        "label": "The final verdict"
+      },
+      {
+        "t": "4:30",
+        "label": "Full run"
+      },
+      {
+        "t": "5:10",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:15",
+        "label": "The space in \" %c\""
+      },
+      {
+        "t": "6:50",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "quiz program in c",
+      "c mini project",
+      "c project for beginners",
+      "switch case in c",
+      "if else in c",
+      "scanf char",
+      "learn c",
+      "koding konkani",
+      "c tutorial english"
+    ],
+    "thumbnail": {
+      "text": "BUILD A QUIZ APP",
+      "visual": "big text \"BUILD A QUIZ APP\"; a game-show screen with \"Q1\" and options a, b, c; Xecxec as quiz host with a microphone; mint background, dark blue blocks; small \"PROJECT\" badge",
+      "pose": "Xecxec as quiz host with a microphone"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Game-show stage, Xecxec as host, \"Xecxec's Goa Quiz\" sign",
+      "animation": "Spotlights, crowd cheer, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Lights! Music! Welcome to Xecxec's Goa Quiz! For five episodes we learnt how programs make decisions. Today we stop learning pieces and build something whole. A quiz app you can give to your friends. It asks questions, checks answers, keeps a score, and gives a verdict at the end."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 25 · MINI PROJECT: QUIZ APP",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 25. Mini project: quiz app."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "Plan in 4 blocks: setup, Q1, Q2, verdict",
+      "animation": "Blocks stack like Lego, click per block",
+      "sfx": [],
+      "narration": "Before typing a single line, plan. Real programmers do this. Our quiz has four blocks. Block one, setup: a box for the answer and a box for the score, starting at zero. Block two: question 1, checked with if and else. Block three: question 2, checked with switch. We use both on purpose, so you practise both. Block four, the verdict: an else-if ladder on the score. Four small blocks are easy. One big program in your head is hard."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 70,
+      "lengthSec": 85,
+      "onScreen": "quiz.c lines 1–20; trackers answer, score",
+      "animation": "Line highlights; score counter pops +1; key-tap SFX",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let's build it. [HL 4] Line 4: char answer. The answer is one letter, so a char is enough, from EP 8. [HL 5] Line 5: int score equals 0. Always start a counter at zero. An uninitialised score could start at any random number, as we saw in EP 7. [TRACK score=0] [HL 7] Line 7 prints the title. [HL 10] [HL 11] [HL 12] Lines 10 to 12 print question 1, the options, and a prompt. [HL 13] Line 13 reads the answer: scanf, space, percent c. Notice that space before percent c. It is important, and we will explain it at the end of the episode. The player types b. [TRACK answer='b'] [HL 15] Line 15: if answer equals small b, OR answer equals capital B. One letter, two ways to type it, so we accept both. [HL 16] Correct! [HL 17] Line 17: score plus plus, from EP 17. Score goes up by one. [TRACK score=1] [HL 18] [HL 19] If the answer was anything else, the else on line 18 prints the right answer, and score stays the same. That is teaching while testing.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    char answer;\n    int score = 0;\n\n    printf(\"=== Xecxec's Goa Quiz ===\\n\\n\");\n\n    /* Question 1 */\n    printf(\"Q1. What is the capital of Goa?\\n\");\n    printf(\"a) Margao  b) Panaji  c) Mapusa\\n\");\n    printf(\"Your answer: \");\n    scanf(\" %c\", &answer);\n\n    if (answer == 'b' || answer == 'B') {\n        printf(\"Correct!\\n\\n\");\n        score++;\n    } else {\n        printf(\"Wrong! It is Panaji.\\n\\n\");\n    }\n\n    /* Question 2 */\n    printf(\"Q2. Which operator gives the remainder in C?\\n\");\n    printf(\"a) /  b) %%  c) &\\n\");\n    printf(\"Your answer: \");\n    scanf(\" %c\", &answer);\n\n    switch (answer) {\n        case 'b':\n        case 'B':\n            printf(\"Correct!\\n\\n\");\n            score++;\n            break;\n        case 'a':\n        case 'A':\n        case 'c':\n        case 'C':\n            printf(\"Wrong! It is %%.\\n\\n\");\n            break;\n        default:\n            printf(\"That is not even an option!\\n\\n\");\n    }\n\n    /* Final result */\n    printf(\"You scored %d out of 2\\n\", score);\n\n    if (score == 2) {\n        printf(\"Perfect! Xecxec is proud.\\n\");\n    } else if (score == 1) {\n        printf(\"Not bad. One more try?\\n\");\n    } else {\n        printf(\"Back to the beach to study!\\n\");\n    }\n\n    return 0;\n}",
+        "output": "=== Xecxec's Goa Quiz ===\n\nQ1. What is the capital of Goa?\na) Margao  b) Panaji  c) Mapusa\nYour answer: a\nWrong! It is Panaji.\n\nQ2. Which operator gives the remainder in C?\na) /  b) %  c) &\nYour answer: z\nThat is not even an option!\n\nYou scored 0 out of 2\nBack to the beach to study!"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 155,
+      "lengthSec": 70,
+      "onScreen": "quiz.c lines 22–42",
+      "animation": "Case labels glow in groups; tracker updates",
+      "sfx": [],
+      "narration": "Question 2 uses switch. [HL 23] [HL 24] Lines 23 and 24 print the question and options. Look at line 24 carefully: percent percent. In printf, a single percent starts a format code. To print an actual percent sign, you write two. [HL 26] Line 26 reads the answer again, into the same box. The player types capital B. [TRACK answer='B'] [HL 28] Line 28: switch on answer. [HL 29] [HL 30] Lines 29 and 30: case small b and case capital B, stacked, just like the grouped cases from EP 23. [HL 31] [HL 32] [HL 33] Correct, score plus plus, break. [TRACK score=2] [HL 34] Now lines 34 to 37 group four cases: a, A, c, C. All the wrong options. [HL 38] They share one message. [HL 40] And default on line 40 catches anything that is not an option at all. If someone types z, they get \"That is not even an option!\" So switch gives us three kinds of answer: right, wrong, and nonsense. An if-else would need extra work for that.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    char answer;\n    int score = 0;\n\n    printf(\"=== Xecxec's Goa Quiz ===\\n\\n\");\n\n    /* Question 1 */\n    printf(\"Q1. What is the capital of Goa?\\n\");\n    printf(\"a) Margao  b) Panaji  c) Mapusa\\n\");\n    printf(\"Your answer: \");\n    scanf(\" %c\", &answer);\n\n    if (answer == 'b' || answer == 'B') {\n        printf(\"Correct!\\n\\n\");\n        score++;\n    } else {\n        printf(\"Wrong! It is Panaji.\\n\\n\");\n    }\n\n    /* Question 2 */\n    printf(\"Q2. Which operator gives the remainder in C?\\n\");\n    printf(\"a) /  b) %%  c) &\\n\");\n    printf(\"Your answer: \");\n    scanf(\" %c\", &answer);\n\n    switch (answer) {\n        case 'b':\n        case 'B':\n            printf(\"Correct!\\n\\n\");\n            score++;\n            break;\n        case 'a':\n        case 'A':\n        case 'c':\n        case 'C':\n            printf(\"Wrong! It is %%.\\n\\n\");\n            break;\n        default:\n            printf(\"That is not even an option!\\n\\n\");\n    }\n\n    /* Final result */\n    printf(\"You scored %d out of 2\\n\", score);\n\n    if (score == 2) {\n        printf(\"Perfect! Xecxec is proud.\\n\");\n    } else if (score == 1) {\n        printf(\"Not bad. One more try?\\n\");\n    } else {\n        printf(\"Back to the beach to study!\\n\");\n    }\n\n    return 0;\n}",
+        "output": "=== Xecxec's Goa Quiz ===\n\nQ1. What is the capital of Goa?\na) Margao  b) Panaji  c) Mapusa\nYour answer: a\nWrong! It is Panaji.\n\nQ2. Which operator gives the remainder in C?\na) /  b) %  c) &\nYour answer: z\nThat is not even an option!\n\nYou scored 0 out of 2\nBack to the beach to study!"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 225,
+      "lengthSec": 40,
+      "onScreen": "quiz.c lines 44–56",
+      "animation": "Verdict ladder; score badge; key-tap SFX",
+      "sfx": [],
+      "narration": "[HL 45] Line 45 prints the score: You scored 2 out of 2. [HL 47] Lines 47 to 53 are an else-if ladder on the score, from EP 21. [HL 48] 2 means perfect. [HL 50] 1 means not bad. [HL 52] Anything else, which here means 0: back to the beach to study. [HL 55] Return 0. Done. Fifty-six lines, and every single one is something you already know.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    char answer;\n    int score = 0;\n\n    printf(\"=== Xecxec's Goa Quiz ===\\n\\n\");\n\n    /* Question 1 */\n    printf(\"Q1. What is the capital of Goa?\\n\");\n    printf(\"a) Margao  b) Panaji  c) Mapusa\\n\");\n    printf(\"Your answer: \");\n    scanf(\" %c\", &answer);\n\n    if (answer == 'b' || answer == 'B') {\n        printf(\"Correct!\\n\\n\");\n        score++;\n    } else {\n        printf(\"Wrong! It is Panaji.\\n\\n\");\n    }\n\n    /* Question 2 */\n    printf(\"Q2. Which operator gives the remainder in C?\\n\");\n    printf(\"a) /  b) %%  c) &\\n\");\n    printf(\"Your answer: \");\n    scanf(\" %c\", &answer);\n\n    switch (answer) {\n        case 'b':\n        case 'B':\n            printf(\"Correct!\\n\\n\");\n            score++;\n            break;\n        case 'a':\n        case 'A':\n        case 'c':\n        case 'C':\n            printf(\"Wrong! It is %%.\\n\\n\");\n            break;\n        default:\n            printf(\"That is not even an option!\\n\\n\");\n    }\n\n    /* Final result */\n    printf(\"You scored %d out of 2\\n\", score);\n\n    if (score == 2) {\n        printf(\"Perfect! Xecxec is proud.\\n\");\n    } else if (score == 1) {\n        printf(\"Not bad. One more try?\\n\");\n    } else {\n        printf(\"Back to the beach to study!\\n\");\n    }\n\n    return 0;\n}",
+        "output": "=== Xecxec's Goa Quiz ===\n\nQ1. What is the capital of Goa?\na) Margao  b) Panaji  c) Mapusa\nYour answer: a\nWrong! It is Panaji.\n\nQ2. Which operator gives the remainder in C?\na) /  b) %  c) &\nYour answer: z\nThat is not even an option!\n\nYou scored 0 out of 2\nBack to the beach to study!"
+      }
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did Xecxec fail his own quiz? He kept answering every question with a crab-ital letter."
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 270,
+      "lengthSec": 40,
+      "onScreen": "Two full runs: B, b and a, z",
+      "animation": "Typing SFX; game-show ding on correct, buzzer on wrong",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Let's play. gcc quiz.c -o quiz, then dot slash quiz. Question 1: capital B. Correct! Question 2: small b. Correct! You scored 2 out of 2. Perfect, Xecxec is proud. Play again. Question 1: a. Wrong, it is Panaji. Question 2: z. That is not even an option! 0 out of 2. Back to the beach to study."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 310,
+      "lengthSec": 65,
+      "onScreen": "Q1 checks only 'b'; typing B prints Wrong",
+      "animation": "Capital B bounces off a lowercase lock; error buzz;",
+      "sfx": [],
+      "narration": "Today's bug: case-sensitive answers. Here is an early version of question 1. It only checks if answer equals small b. Your friend types capital B, because their caps lock is on. And the program says: Wrong! It is Panaji. But B is Panaji! No compiler error. No warning. The code does exactly what we wrote. Why? To C, small b and capital B are two different characters with two different numbers. Small b is 98. Capital B is 66. 66 is not 98, so the condition is false. The fix: answer equals small b, OR answer equals capital B. In later modules you will meet a function called tolower that turns any letter into small letters, but for now, OR does the job."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 375,
+      "lengthSec": 35,
+      "onScreen": "The space in \" %c\": input buffer shows B then the Enter key",
+      "animation": "Buffer boxes; newline box glows; space sweeps it away",
+      "sfx": [],
+      "narration": "Now the mystery space. When you type b and press Enter, the keyboard sends two characters: the b, and an invisible newline from the Enter key. The first scanf takes the b. The newline stays waiting. Without the space, the second scanf with percent c would grab that leftover newline as the answer, and skip question 2 completely. The space before percent c tells scanf: first, skip any spaces, tabs or newlines. Then read one character. One tiny space saves your whole quiz. Use it every time you read a char with scanf."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 410,
+      "lengthSec": 25,
+      "onScreen": "Add 3 more questions",
+      "animation": "Timer ring, crowd cheer",
+      "sfx": [],
+      "narration": "Your challenge: add three more questions to the quiz. Use if for some, switch for others. Then change the verdict ladder so it works out of 5. For example, 5 is perfect, 3 or 4 is good, and below 3 is back to the beach. Then send it to a friend and see who wins. Answer in the comments."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 435,
+      "lengthSec": 15,
+      "onScreen": "Module 3 complete badge; next: EP 26 Module 4 Loops; sign-off",
+      "animation": "Badge stamp, module tiles, music out",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "And that completes Module 3! Your programs can now make decisions. But they still do everything only once. What if the quiz should ask until you get it right? Next is Module 4: loops, starting with EP 26. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    char answer;\n    int score = 0;\n\n    printf(\"Q1. What is the capital of Goa?\\n\");\n    printf(\"a) Margao  b) Panaji  c) Mapusa\\n\");\n    printf(\"Your answer: \");\n    scanf(\" %c\", &answer);\n\n    if (answer == 'b') {\n        printf(\"Correct!\\n\");\n        score++;\n    } else {\n        printf(\"Wrong! It is Panaji.\\n\");\n    }\n\n    printf(\"Score: %d\\n\", score);\n    return 0;\n}",
+    "error": "No error and no warning, even with `gcc -Wall -Wextra`. Wrong output when the player types `B`:\n\nQ1. What is the capital of Goa?\na) Margao  b) Panaji  c) Mapusa\nYour answer: B\nWrong! It is Panaji.\nScore: 0",
+    "fixed": "    if (answer == 'b' || answer == 'B') {",
+    "why": "`'b'` (ASCII 98) and `'B'` (ASCII 66) are different characters, so a comparison with only one of them rejects the other."
+  },
+  "pun": "Why did Xecxec fail his own quiz? He kept answering every question with a crab-ital letter.",
+  "challenge": "Add 3 more questions (mix if and switch) and change the verdict to work out of 5: 5 is perfect, 3–4 is good, below 3 is \"back to the beach\".",
+  "challengeAnswer": "one extra question block (repeat the pattern for the other two), plus the new verdict:",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Build a quiz app in C",
+      "hook": "Game-show lights, Xecxec with a microphone: \"Q1!\"",
+      "script": "You know if, else, switch and a counter. That is enough to build a real app. A quiz for your friends. Plan it in four blocks: setup, question 1, question 2, verdict. Ask, check, add to the score, and give a verdict at the end. Fifty-six lines, all things you already know.",
+      "onScreen": "YOUR FIRST C APP",
+      "fromScenes": [
+        1,
+        3,
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Beginner C project: a quiz app for your friends.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cproject",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Right, wrong or nonsense",
+      "hook": "Three buttons: RIGHT, WRONG, ???",
+      "script": "Why use switch for a quiz question? Because it gives you three kinds of answer for free. Stack case small b and capital B for the right answer. Stack all the wrong letters for one wrong message. And default catches anything that is not even an option. Right, wrong or nonsense, in one switch.",
+      "onScreen": "RIGHT · WRONG · NONSENSE",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Grouped cases make quiz checking easy.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "switchcase",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "B is not b",
+      "hook": "Player types B. Screen: \"Wrong! It is Panaji.\" Xecxec: \"But that IS Panaji!\"",
+      "script": "The answer is b, Panaji. Your friend types capital B. The program says wrong. No error, no warning. To C, small b is 98 and capital B is 66. Different characters. Fix: check answer equals small b, OR answer equals capital B. Your users will always type the letter you did not expect.",
+      "onScreen": "'b' != 'B'",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Caps lock broke my quiz app.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Crab-ital letters",
+      "hook": "Xecxec holding a giant capital letter B with both claws",
+      "script": "Why did Xecxec fail his own quiz? He kept answering every question with a crab-ital letter.",
+      "onScreen": "CRAB-ITAL LETTERS",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Groan now, laugh later.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "The mystery space",
+      "hook": "`scanf(\" %c\")` with the space circled in red: \"Why is this here?\"",
+      "script": "Quiz. Why is there a space before percent c? Three, two, one. When you press Enter, a hidden newline character stays behind. Without the space, the next percent c reads that newline and skips your question. The space tells scanf to skip whitespace first. Now your challenge: add three more questions and score out of 5. Answer in the comments.",
+      "onScreen": "WHY THE SPACE?",
+      "fromScenes": [
+        10,
+        11
+      ],
+      "lengthSec": 35,
+      "caption": "One space that saves your whole program.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "scanf"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    char answer;\n    int score = 0;\n\n    printf(\"=== Xecxec's Goa Quiz ===\\n\\n\");\n\n    /* Question 1 */\n    printf(\"Q1. What is the capital of Goa?\\n\");\n    printf(\"a) Margao  b) Panaji  c) Mapusa\\n\");\n    printf(\"Your answer: \");\n    scanf(\" %c\", &answer);\n\n    if (answer == 'b' || answer == 'B') {\n        printf(\"Correct!\\n\\n\");\n        score++;\n    } else {\n        printf(\"Wrong! It is Panaji.\\n\\n\");\n    }\n\n    /* Question 2 */\n    printf(\"Q2. Which operator gives the remainder in C?\\n\");\n    printf(\"a) /  b) %%  c) &\\n\");\n    printf(\"Your answer: \");\n    scanf(\" %c\", &answer);\n\n    switch (answer) {\n        case 'b':\n        case 'B':\n            printf(\"Correct!\\n\\n\");\n            score++;\n            break;\n        case 'a':\n        case 'A':\n        case 'c':\n        case 'C':\n            printf(\"Wrong! It is %%.\\n\\n\");\n            break;\n        default:\n            printf(\"That is not even an option!\\n\\n\");\n    }\n\n    /* Final result */\n    printf(\"You scored %d out of 2\\n\", score);\n\n    if (score == 2) {\n        printf(\"Perfect! Xecxec is proud.\\n\");\n    } else if (score == 1) {\n        printf(\"Not bad. One more try?\\n\");\n    } else {\n        printf(\"Back to the beach to study!\\n\");\n    }\n\n    return 0;\n}",
+      "output": "=== Xecxec's Goa Quiz ===\n\nQ1. What is the capital of Goa?\na) Margao  b) Panaji  c) Mapusa\nYour answer: a\nWrong! It is Panaji.\n\nQ2. Which operator gives the remainder in C?\na) /  b) %  c) &\nYour answer: z\nThat is not even an option!\n\nYou scored 0 out of 2\nBack to the beach to study!",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

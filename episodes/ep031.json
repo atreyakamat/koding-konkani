@@ -1,0 +1,283 @@
+{
+  "ep": 31,
+  "title": "Pattern Printing 1: Stars and Triangles",
+  "module": 4,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "use a row table (row number → how many stars) to plan any pattern",
+    "print a left triangle and an inverted triangle with nested loops",
+    "right-align a triangle using a separate spaces loop",
+    "match the width of a space to the width of a star"
+  ],
+  "youtube": {
+    "title": "The Star Pattern Exam Question, Solved | C Programming EP 31",
+    "description": "Every C exam has a star pattern question. The secret is not memorising code: it is making a small row table first. We build a triangle, flip it upside down, push it to the right, and fix the spacing bug that turns a triangle into a pyramid. 0:00 Challenge answer and hook 0:30 The row table trick 1:20 Left triangle, line by line 2:45 Upside-down triangle 3:35 Right-aligned triangle 5:10 Bug of the Day: wrong spaces 6:20 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Challenge answer and hook 0:30 The row table trick 1:20 Left triangle, line by line 2:45 Upside-down triangle 3:35 Right-aligned triangle 5:10 Bug of the Day: wrong spaces 6:20 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "star pattern in c",
+      "pattern printing in c",
+      "triangle pattern c",
+      "nested loops",
+      "c programming exam questions",
+      "c tutorial for beginners",
+      "learn c",
+      "koding konkani",
+      "c programming class 11"
+    ],
+    "thumbnail": {
+      "text": "STAR PATTERNS EASY",
+      "visual": "big text \"STAR PATTERNS EASY\"; a glowing star triangle beside a small row table (row / stars); Xecxec wearing sunglasses holding a star; Butter background, Dark blue blocks.",
+      "pose": "Xecxec wearing sunglasses holding a star"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 30,
+      "onScreen": "EP 30 challenge: 3×5 grid of `#`, then an exam paper with \"Print this pattern\" and a star triangle",
+      "animation": "Grid prints; exam paper slides in, dramatic sting",
+      "sfx": [
+        "sting"
+      ],
+      "narration": "Last challenge: read rows and columns, then print a grid of hashes. Outer loop for rows, inner loop for columns, and a newline after each row. Three by five gives three lines of five hashes. Hold on to that grid. Because this question, \"print the following pattern\", appears in almost every C exam. And once you know the trick, it is free marks."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 30,
+      "lengthSec": 5,
+      "onScreen": "EP 31 · PATTERN PRINTING 1",
+      "animation": "Butter card, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode thirty-one. Pattern printing, part one."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 35,
+      "lengthSec": 45,
+      "onScreen": "Row table: row 1 → 1 star, row 2 → 2 … row 5 → 5; rule \"stars = i\"",
+      "animation": "Table rows appear beside the triangle; arrow links each row to its stars",
+      "sfx": [],
+      "narration": "Here is the trick. Don't look at the whole pattern. Look at it row by row, and make a little table. Row 1 has 1 star. Row 2 has 2 stars. Row 3, 3 stars. Row 5, 5 stars. So the rule is: in row i, print i stars. Outer loop: which row am I on. Inner loop: how many stars in this row. Every pattern in this episode and the next is just a different row table."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 80,
+      "lengthSec": 85,
+      "onScreen": "`tri.c` with trackers `i`, `j`",
+      "animation": "Stars drop in one by one; inner loop limit `j <= i` glows each row",
+      "sfx": [],
+      "narration": "[HL 4] int n equals 5, the height. [HL 6] Outer loop: for i from 1 to n. One round per row. [TRACK i=1] [HL 7] Inner loop: for j from 1 to i. This is the rule from our table: row i has i stars. On row 1, j goes from 1 to 1, so one star. [HL 8] printf star space. [HL 10] After the inner loop, printf newline. Row 1 done: one star. [TRACK i=2] Row 2: j goes 1 to 2, two stars, then newline. [TRACK i=3] Row 3: three stars. And so on until row 5, five stars. Compare this with last episode's grid. The only change is the inner limit: j less than or equal to i, instead of j less than or equal to cols. That one change turns a rectangle into a triangle."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 50,
+      "onScreen": "`invtri.c` (outer loop counts down)",
+      "animation": "Triangle flips upside down with a whoosh; tracker `i` 5 → 1",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Now flip it. Row table: row 1 has 5 stars, row 2 has 4, down to 1. [HL 6] The easy way: make the outer loop count down. for i equals n, i greater than or equal to 1, i minus minus. [TRACK i=5] [HL 7] The inner loop stays the same: j from 1 to i. So the first row prints 5 stars, [TRACK i=4] then 4, then 3, then 2, [TRACK i=1] then 1. One small change, and the triangle stands on its head."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 215,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec with stars circling his head, rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the star pattern pass the exam? Because it knew its place, row by row."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 220,
+      "lengthSec": 90,
+      "onScreen": "`rt4.c` right-aligned triangle; row table now has two columns: spaces and stars",
+      "animation": "Spaces drawn as dotted grey boxes, stars in Tomato; each row shows \"2 spaces per missing star\"",
+      "sfx": [],
+      "narration": "Now the harder one: a triangle leaning against the right wall. The stars are the same, 1, 2, 3, 4. But each row has empty space on the left. Our row table gets a second column. With n equals 4: row 1 has 3 missing stars, row 2 has 2, row 3 has 1, row 4 has none. So missing stars equals n minus i. [HL 6] Outer loop: i from 1 to n. [TRACK i=1] [HL 7] First inner loop: for s from 1 to n minus i. This one prints the blank space. [HL 8] printf, and in quotes, two spaces. Why two? Because each star we print is a star plus a space, which is two characters wide. So each missing star must be filled with two spaces. [HL 10] Second inner loop: for j from 1 to i, [HL 11] print star space. [HL 13] Then newline. Row 1: three gaps of two spaces, then one star. [TRACK i=2] Row 2: two gaps, two stars. [TRACK i=4] Row 4: no gaps, four stars. Two inner loops, one after the other, inside one outer loop. First the spaces, then the stars."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 310,
+      "lengthSec": 70,
+      "onScreen": "`printf(\" \")` instead of `printf(\"  \")`: a pyramid appears instead",
+      "animation": "Butter frame; triangle collapses into a pyramid; measuring tape shows `\"* \"` = 2 chars vs `\" \"` = 1 char",
+      "sfx": [],
+      "narration": "Today's bug: wrong spaces. Take the right-aligned triangle, and change the two spaces in line 8 to one space. Compile: no error. Run it. Surprise! Instead of a right-aligned triangle, we get a pyramid, nicely centred. Why? Each star is two characters wide, star plus space, but each gap is now only one character wide. So the gaps are half as wide as they should be, and the stars shift to the middle. The fix: the width of a gap must match the width of a star. Star space needs two spaces. Hold on to this accident, though. Next episode, we'll build pyramids on purpose."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 380,
+      "lengthSec": 25,
+      "onScreen": "\"Print the upside-down right-aligned triangle\" with target picture",
+      "animation": "Picture builds, timer ring",
+      "sfx": [],
+      "narration": "Your challenge: print this upside-down right-aligned triangle, with n equals 4. Four stars on top, then three, two, one, all touching the right wall. Hint: start from the right-aligned triangle and make the outer loop count down."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 405,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 32, pyramids",
+      "animation": "Xecxec waves, end card",
+      "sfx": [],
+      "narration": "Next episode: pyramids and number patterns, crab-style. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "        for (int s = 1; s <= n - i; s++) {\n            printf(\" \");\n        }",
+    "error": "No compiler error. Wrong output (a centred pyramid instead of a right-aligned triangle):\n\n   *\n  * *\n * * *\n* * * *",
+    "fixed": "        for (int s = 1; s <= n - i; s++) {\n            printf(\"  \");\n        }",
+    "why": "Each star is printed as `\"* \"` (2 characters), so each missing star must be filled with 2 spaces, not 1."
+  },
+  "pun": "Why did the star pattern pass the exam? Because it knew its place, row by row.",
+  "challenge": "With n = 4, print an upside-down right-aligned triangle (4 stars, then 3, 2, 1, all against the right edge).",
+  "challengeAnswer": "output is `* * * *` / `   * * * ` / `     * * ` / `       * `.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The Exam Question Everyone Fears",
+      "hook": "Exam paper: \"Print the following pattern\"",
+      "script": "\"Print the following pattern.\" Every C exam has it. Here's the secret: don't look at the whole triangle. Make a row table. Row 1, one star. Row 2, two stars. Row i, i stars. Now the code writes itself. Full episode on Koding Konkani.",
+      "onScreen": "EXAM QUESTION / MAKE A ROW TABLE / ROW i = i STARS",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 20,
+      "caption": "Free marks in every C exam.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "starpattern",
+        "exampreparation"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Star Triangle in 30 Seconds",
+      "hook": "Stars dropping into a triangle",
+      "script": "Outer loop: for i from 1 to 5, one round per row. Inner loop: for j from 1 to i, because row i has i stars. Print star space. After the inner loop, a newline. That's the triangle. Change the inner limit from a fixed number to i, and a rectangle becomes a triangle.",
+      "onScreen": "for i: ROWS / for j <= i: STARS",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "One change: rectangle to triangle.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "patternprinting",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "I Wanted a Triangle and Got a Pyramid",
+      "hook": "Triangle collapsing into a pyramid",
+      "script": "I wanted a triangle on the right. I got a pyramid in the middle. Why? Each star prints as star plus space, two characters wide. But I filled each gap with one space. Gaps half as wide, stars slide to the centre. Use two spaces, and the triangle snaps back to the right.",
+      "onScreen": "WRONG SPACES / \"* \" = 2 CHARS / USE \"  \"",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 30,
+      "caption": "The happiest accident in C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "starpattern"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: Knows Its Place",
+      "hook": "Xecxec dizzy with stars around his head",
+      "script": "Why did the star pattern pass the exam? Because it knew its place, row by row.",
+      "onScreen": "ROW BY ROW",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 10,
+      "caption": "Stars that study.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What Does This Print?",
+      "hook": "Code with `printf(\"%d \", j)` highlighted",
+      "script": "Same triangle code, but instead of a star, we print j. What do you get? Row 1: 1. Row 2: 1 2. Row 3: 1 2 3. Up to 1 2 3 4 5. A number triangle, for free. Comment if you guessed it.",
+      "onScreen": "PRINT j INSTEAD? / 1 / 1 2 / 1 2 3",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 20,
+      "caption": "Stars to numbers in one change.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "patternprinting"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= i; j++) {\n            printf(\"* \");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "output": "*\n* *\n* * *\n* * * *\n* * * * *",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n\n    for (int i = n; i >= 1; i--) {\n        for (int j = 1; j <= i; j++) {\n            printf(\"* \");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "output": "* * * * *\n* * * *\n* * *\n* *\n*",
+      "lang": "c"
+    },
+    {
+      "file": "file3.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 4;\n\n    for (int i = 1; i <= n; i++) {\n        for (int s = 1; s <= n - i; s++) {\n            printf(\"  \");\n        }\n        for (int j = 1; j <= i; j++) {\n            printf(\"* \");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "output": "      *\n    * *\n  * * *\n* * * *",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "ep": 67,
+  "title": "calloc & realloc",
+  "module": 10,
+  "lengthSec": 435,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "use `calloc(count, size)` to get memory that starts as zeros, and say how it differs from `malloc`",
+    "grow a heap array with `realloc`",
+    "always store `realloc`'s result in a temporary pointer first",
+    "build a list that doubles its capacity when full"
+  ],
+  "youtube": {
+    "title": "Need a Bigger Basket? calloc and realloc | C EP 67",
+    "description": "calloc gives you memory that is already cleaned to zero, and realloc lets a heap array grow while keeping what is inside. We fill a fish basket, watch it double in size, and see the one realloc mistake that throws away all your data. 0:00 The fish basket · 0:20 Title · 0:25 calloc: clean memory · 1:15 realloc: grow in place or move · 2:20 Code, line by line · 4:10 Running it · 4:30 Pun · 4:35 Why double the size? · 5:10 Bug of the Day: losing the pointer when realloc fails · 6:25 Challenge · 6:55 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The fish basket"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "calloc: clean memory"
+      },
+      {
+        "t": "1:15",
+        "label": "realloc: grow in place or move"
+      },
+      {
+        "t": "2:20",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "4:10",
+        "label": "Running it"
+      },
+      {
+        "t": "4:30",
+        "label": "Pun"
+      },
+      {
+        "t": "4:35",
+        "label": "Why double the size?"
+      },
+      {
+        "t": "5:10",
+        "label": "Bug of the Day: losing the pointer when realloc fails"
+      },
+      {
+        "t": "6:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:55",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "calloc in c",
+      "realloc in c",
+      "malloc vs calloc",
+      "dynamic array c",
+      "resize array c",
+      "realloc null",
+      "growing list c",
+      "dynamic memory allocation",
+      "learn c",
+      "koding konkani",
+      "c programming tutorial",
+      "c programming india"
+    ],
+    "thumbnail": {
+      "text": "BIGGER BASKET!",
+      "visual": "big text \"BIGGER BASKET!\"; a small mint basket of 2 fish next to a big one of 4 with arrows showing fish being moved across; Xecxec holding a fish in each claw; mint background, tomato text block",
+      "pose": "Xecxec holding a fish in each claw"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Fisherwoman at Mapusa market with a 2-fish basket; more mackerels arrive; she swaps to a bigger basket and moves the fish across",
+      "animation": "Fish flop in; basket overflows; swap to bigger basket; splash SFX",
+      "sfx": [],
+      "narration": "At the Mapusa fish market, a fisherwoman starts the morning with a small basket for two fish. Then the boats come in, and she has more fish than space. So she gets a bigger basket and moves her fish across. She does not throw away the fish she already had. That's exactly what realloc does with memory."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 67 · CALLOC & REALLOC",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode sixty-seven. calloc and realloc."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "Two heap blocks side by side: `malloc(3 * sizeof(int))` showing \"? ? ?\" and `calloc(3, sizeof(int))` showing \"0 0 0\"",
+      "animation": "malloc boxes flicker with random numbers; calloc boxes wipe clean to zero with a squeegee swipe",
+      "sfx": [],
+      "narration": "First, calloc. When malloc gives you memory, it's like a rented room that wasn't cleaned. Whatever the last program left there is still inside. So the boxes contain garbage until you fill them. calloc is different. It takes two arguments: how many items, and the size of each. calloc of 3 comma sizeof int. And it cleans the memory: every byte is set to zero. So all three ints start as 0. Use calloc when you want a fresh start, like counters or totals. Use malloc when you'll fill every box yourself straight away."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 75,
+      "lengthSec": 65,
+      "onScreen": "Heap block of 2 ints (10, 20) at 0x5000 with pointer `basket`. Case A: free space after it, block stretches to 4 boxes in place. Case B: no space, a new 4-box block appears at 0x6000, 10 and 20 copied, old block greyed; `bigger` arrow then `basket` arrow move to 0x6000",
+      "animation": "Case A: block stretches with a rubber sound. Case B: values fly across, old block greys out, arrow swings; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Now realloc. Our basket holds 2 ints, 10 and 20, at address 0x5000. We need room for 4. We call realloc, passing the old pointer and the new size in bytes. One of two things happens. Case A: if there is free space right after our block, realloc simply stretches it. Same address. Case B: if there's no space, realloc finds a new, bigger block somewhere else, say at 0x6000, copies 10 and 20 across, and frees the old block for you. It returns the new address. So you must always use the address realloc returns, because the basket may have moved. And if realloc can't find any space at all, it returns NULL, and your old block is left untouched."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 140,
+      "lengthSec": 110,
+      "onScreen": "`basket.c` (35 lines); tracker: capacity, count, basket, bigger",
+      "animation": "Butter highlights; corner heap diagram shows the basket growing 2 to 4 to 8",
+      "sfx": [],
+      "narration": "Here's our fish basket program. [HL 5] Line 5: capacity is 2, the size of the basket; count is 0, how many fish are in it. [TRACK capacity=2] [TRACK count=0] [HL 6] Line 6: calloc of capacity comma sizeof int. Two ints, both zero. [TRACK basket=0x5000] [HL 7] Lines 7 to 9 check for NULL. [HL 10] Line 10 prints the two zeros from calloc. [HL 12] Line 12: a loop where fish goes 10, 20, 30, 40, 50. [HL 13] Line 13: is the basket full? count equals capacity? For 10 and 20, no. [HL 24] So we jump to line 24 and put the fish in basket square bracket count, [HL 25] then line 25 adds 1 to count. [TRACK count=1] [TRACK count=2] Now fish is 30, and count equals capacity. The basket is full. [HL 14] Line 14: new_capacity is double: 4. [HL 15] Line 15, very important: int star bigger equals realloc of basket comma new_capacity times sizeof int. We store the result in a new pointer called bigger, not in basket. You'll see why in the Bug of the Day. [TRACK bigger=0x6000] [HL 16] Line 16: if bigger is NULL, realloc failed. [HL 17] Line 17 frees the old basket, which is still valid, [HL 18] and line 18 returns 1. [HL 20] Line 20: success. Now we update basket to the new address. [TRACK basket=0x6000] [HL 21] Line 21 updates capacity to 4. [TRACK capacity=4] [HL 22] Line 22 prints \"Basket grown to 4\". Then 30 and 40 go in. At 50 the basket is full again, so it grows to 8. [TRACK capacity=8] [HL 28] Lines 28 to 31 print all the fish. [HL 33] Line 33 frees the basket. [HL 34] Return zero.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int capacity = 2, count = 0;\n    int *basket = calloc(capacity, sizeof(int));\n    if (basket == NULL) {\n        return 1;\n    }\n    printf(\"calloc gives: %d %d\\n\", basket[0], basket[1]);\n\n    for (int fish = 10; fish <= 50; fish += 10) {\n        if (count == capacity) {\n            int new_capacity = capacity * 2;\n            int *bigger = realloc(basket, new_capacity * sizeof(int));\n            if (bigger == NULL) {\n                free(basket);\n                return 1;\n            }\n            basket = bigger;\n            capacity = new_capacity;\n            printf(\"Basket grown to %d\\n\", capacity);\n        }\n        basket[count] = fish;\n        count++;\n    }\n\n    for (int i = 0; i < count; i++) {\n        printf(\"%d \", basket[i]);\n    }\n    printf(\"\\n\");\n\n    free(basket);\n    return 0;\n}",
+        "output": "calloc gives: 0 0\nBasket grown to 4\nBasket grown to 8\n10 20 30 40 50 "
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 250,
+      "lengthSec": 20,
+      "onScreen": "Compile and run",
+      "animation": "Output prints; \"Basket grown\" lines flash mint",
+      "sfx": [],
+      "narration": "Compile and run. calloc gives 0 and 0. The basket grows to 4, then to 8. And all our fish are safe: 10, 20, 30, 40, 50. Nothing was lost when the basket moved."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 270,
+      "lengthSec": 5,
+      "onScreen": "\"realloc is like a Goan landlord: 'Need more space? Fine, but you might have to move house.'\"",
+      "animation": "Card flips; Xecxec carries a suitcase; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "realloc is like a Goan landlord. Need more space? Fine. But you might have to move house."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 275,
+      "lengthSec": 35,
+      "onScreen": "Bar chart: growing by +1 needs 4 resizes for 5 fish, growing by doubling needs 2; at 1,000 items: 999 vs 9",
+      "animation": "Bars rise; doubling bars stay short; tick SFX",
+      "sfx": [],
+      "narration": "Why do we double the capacity, and not just add one? Because each realloc may copy everything to a new place, which takes time. If you grow by one, you resize on almost every new item: for 1,000 items, that's 999 resizes. If you double, you only resize when you pass 2, 4, 8, 16 and so on: about 9 resizes for 1,000 items. Doubling is the standard trick used in real dynamic arrays."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 310,
+      "lengthSec": 75,
+      "onScreen": "`basket = realloc(basket, ...)` and realloc returns NULL; the 10 and 20 block is now unreachable",
+      "animation": "Arrow from `basket` snaps to NULL; old crate floats away, unreachable; sad trombone; fixed version with `bigger` slides in",
+      "sfx": [],
+      "narration": "Today's bug: losing your data when realloc fails. It's tempting to write basket equals realloc of basket comma new size. It compiles with no warning. And it works fine, until the day realloc fails. Then realloc returns NULL, and that NULL is stored straight into basket. Look at the diagram. The old block, with 10 and 20 inside, is still on the heap. But we just overwrote the only pointer to it. Our data is unreachable, and the block has leaked, because we can never free it. The fix is the pattern from our program: store realloc's answer in a temporary pointer like bigger. Check it. Only if it's not NULL, copy it into basket. If it is NULL, your old basket is still safe, and you can free it or keep using it."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 385,
+      "lengthSec": 30,
+      "onScreen": "\"Growing list: read numbers until -1\" task card",
+      "animation": "Numbers drop into a basket that doubles twice",
+      "sfx": [],
+      "narration": "Your challenge: a growing list. Start with malloc for 4 ints. Read numbers from the user until they type minus 1. Whenever the list is full, double it with realloc, using the safe temporary-pointer pattern. At the end, print how many numbers were entered and all of them, then free. Try typing 5, 8, 13, 21, 34, 55, then minus 1. Pause and try."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 415,
+      "lengthSec": 20,
+      "onScreen": "\"Next: EP 68 · Memory bugs — the ghost pointer\"",
+      "animation": "A faded ghost arrow floats over a greyed box; spooky whoo; sign-off",
+      "sfx": [],
+      "narration": "Your arrays can now grow as big as you need. Next episode, the bugs that haunt every C programmer: leaks, dangling pointers, and double free. Ghost stories for coders. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int *basket = malloc(2 * sizeof(int));\n    if (basket == NULL) return 1;\n    basket[0] = 10;\n    basket[1] = 20;\n\n    basket = realloc(basket, 4 * sizeof(int));\n    if (basket == NULL) {\n        printf(\"realloc failed, and our 10 and 20 are lost!\\n\");\n        return 1;\n    }\n    free(basket);\n    return 0;\n}",
+    "error": "`gcc -Wall -Wextra bug.c` gives **no warning**, and on a normal run nothing goes wrong. The bug only shows when `realloc` fails: it returns `NULL`, which overwrites `basket`, so the original block (holding 10 and 20) can no longer be used or freed.",
+    "fixed": "    int *bigger = realloc(basket, 4 * sizeof(int));\n    if (bigger == NULL) {\n        free(basket);          /* old block is still valid here */\n        return 1;\n    }\n    basket = bigger;",
+    "why": "on failure `realloc` leaves the old block alone and returns `NULL`, so assigning straight back to the only pointer throws that block away."
+  },
+  "pun": "\"realloc is like a Goan landlord: 'Need more space? Fine, but you might have to move house.'\"",
+  "challenge": "Start with room for 4 ints. Read numbers until `-1`, doubling with `realloc` (safe pattern) when full. Print the count and the numbers, then `free`.",
+  "challengeAnswer": "(worked example)\nint capacity = 4, count = 0, value;\nint *list = malloc(capacity * sizeof(int));\nif (list == NULL) return 1;\n\nprintf(\"Enter numbers, -1 to stop:\\n\");\nwhile (scanf(\"%d\", &value) == 1 && value != -1) {\n    if (count == capacity) {\n        int *bigger = realloc(list, capacity * 2 * sizeof(int));\n        if (bigger == NULL) {\n            free(list);\n            return 1;\n        }\n        list = bigger;\n        capacity *= 2;\n    }\n    list[count++] = value;\n}\n\nprintf(\"You entered %d numbers:\", count);\nfor (int i = 0; i < count; i++) {\n    printf(\" %d\", list[i]);\n}\nprintf(\"\\n\");\nfree(list);\n/* input 5 8 13 21 34 55 -1 prints: You entered 6 numbers: 5 8 13 21 34 55 */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Your array can grow",
+      "hook": "A fish basket overflowing: \"Out of space? Get a bigger basket.\"",
+      "script": "Normal C arrays can never change size. But heap memory can. realloc takes your old block and a new size. If there's room, it stretches the block. If not, it moves your data to a bigger block and gives you the new address. Your fish are never lost.",
+      "onScreen": "realloc = BIGGER BASKET",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 25,
+      "caption": "Arrays that grow.",
+      "hashtags": [
+        "cprogramming",
+        "realloc",
+        "kodingkonkani",
+        "learntocode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "malloc vs calloc in 30s",
+      "hook": "Two blocks: \"? ? ?\" and \"0 0 0\".",
+      "script": "malloc gives you memory but doesn't clean it, so it holds garbage until you fill it. calloc takes a count and a size, and sets every byte to zero. Need counters or totals that start at zero? Use calloc. Filling everything yourself right away? malloc is fine.",
+      "onScreen": "malloc = DIRTY · calloc = CLEAN",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 30,
+      "caption": "Know the difference for your viva.",
+      "hashtags": [
+        "cprogramming",
+        "calloc",
+        "kodingkonkani",
+        "codingtips",
+        "malloc"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The realloc trap",
+      "hook": "`basket = realloc(basket, ...)` with a red underline.",
+      "script": "basket equals realloc of basket. Looks fine, compiles fine. But if realloc fails, it returns NULL, and you just overwrote your only pointer to your data. Gone, and leaked. Always store the result in a temporary pointer first, check it, and only then update basket.",
+      "onScreen": "NEVER p = realloc(p, ...)",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "One line, all your data gone.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "realloc",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The Goan landlord",
+      "hook": "Xecxec with a suitcase at a house door.",
+      "script": "realloc is like a Goan landlord. Need more space? Fine. But you might have to move house.",
+      "onScreen": "YOU MIGHT HAVE TO MOVE HOUSE",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 15,
+      "caption": "Every tenant knows this feeling.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "realloc"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: +1 or double?",
+      "hook": "\"1,000 items. How many resizes?\"",
+      "script": "Your list starts with room for 1 item. You add 1,000 items. Growing by one each time, how many resizes? 999. Doubling each time? About 9. That's why real dynamic arrays double. Now build your own growing list. Comment your code.",
+      "onScreen": "999 vs 9",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Work smarter, not harder.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "realloc",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) {\n    int capacity = 2, count = 0;\n    int *basket = calloc(capacity, sizeof(int));\n    if (basket == NULL) {\n        return 1;\n    }\n    printf(\"calloc gives: %d %d\\n\", basket[0], basket[1]);\n\n    for (int fish = 10; fish <= 50; fish += 10) {\n        if (count == capacity) {\n            int new_capacity = capacity * 2;\n            int *bigger = realloc(basket, new_capacity * sizeof(int));\n            if (bigger == NULL) {\n                free(basket);\n                return 1;\n            }\n            basket = bigger;\n            capacity = new_capacity;\n            printf(\"Basket grown to %d\\n\", capacity);\n        }\n        basket[count] = fish;\n        count++;\n    }\n\n    for (int i = 0; i < count; i++) {\n        printf(\"%d \", basket[i]);\n    }\n    printf(\"\\n\");\n\n    free(basket);\n    return 0;\n}",
+      "output": "calloc gives: 0 0\nBasket grown to 4\nBasket grown to 8\n10 20 30 40 50 ",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

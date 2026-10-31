@@ -1,0 +1,871 @@
+{
+  "ep": 74,
+  "title": "Bubble sort",
+  "module": 12,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "trace bubble sort pass by pass on paper",
+    "write bubble_sort in C with the correct inner-loop bound n - 1 - pass",
+    "add an early-exit flag so a sorted array finishes in one pass",
+    "state its best, average and worst time complexity"
+  ],
+  "youtube": {
+    "title": "Bubble Sort, Animated Step by Step | C Programming EP 74",
+    "description": "The biggest value bubbles to the end on every pass. We animate bubble sort on six bars, trace every comparison and swap, then write it in C with an early-exit flag. Plus the inner-loop bug that reads past the end of your array. 0:00 The heaviest bubble · 0:20 Title · 0:25 The idea · 1:00 Pass 1 animated · 1:50 Passes 2 to 4 · 2:30 Step trace · 2:55 Code · 4:20 Run it · 4:40 Pun · 4:45 Complexity · 5:20 Bug of the Day · 6:20 Challenge · 6:45 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The heaviest bubble"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The idea"
+      },
+      {
+        "t": "1:00",
+        "label": "Pass 1 animated"
+      },
+      {
+        "t": "1:50",
+        "label": "Passes 2 to 4"
+      },
+      {
+        "t": "2:30",
+        "label": "Step trace"
+      },
+      {
+        "t": "2:55",
+        "label": "Code"
+      },
+      {
+        "t": "4:20",
+        "label": "Run it"
+      },
+      {
+        "t": "4:40",
+        "label": "Pun"
+      },
+      {
+        "t": "4:45",
+        "label": "Complexity"
+      },
+      {
+        "t": "5:20",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:45",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "bubble sort",
+      "bubble sort in c",
+      "sorting algorithms",
+      "c programming",
+      "sorting visualised",
+      "algorithms for beginners",
+      "learn c",
+      "koding konkani",
+      "dsa in c",
+      "time complexity",
+      "c tutorial"
+    ],
+    "thumbnail": {
+      "text": "BUBBLE SORT",
+      "visual": "big text \"BUBBLE SORT\"; six bars with the tallest one rising out of a bubble at the right end; Xecxec blowing a soap bubble; Dark blue background, Butter text.",
+      "pose": "Xecxec blowing a soap bubble"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Glass of soda; the biggest bubble rises to the top",
+      "animation": "Bubbles rise; pop SFX; Xecxec sips",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Pour a glass of soda and watch. The bubbles rise, and the biggest ones reach the top first. Today's sorting algorithm works exactly like that. On every pass, the biggest value floats to the end of the array."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 74 · BUBBLE SORT",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 74. Bubble sort."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 35,
+      "onScreen": "Rule card: \"Compare neighbours. If left > right, swap. Repeat.\"",
+      "animation": "Two bars wobble and swap; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Bubble sort has one simple rule. Look at two neighbours. If the left one is bigger than the right one, swap them. Then move one step right and do it again. When you reach the end, that's one pass. You already saw how to swap two values with a temp variable in Episode 44. Bubble sort is just that swap, used again and again."
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 60,
+      "lengthSec": 50,
+      "onScreen": "Bars [5, 2, 9, 1, 6, 3]; pass 1, steps 1.1–1.5",
+      "animation": "Compared pair in pastel blue; swap slides in tomato; 9 locks mint at the end; tick per compare, swoosh per swap",
+      "sfx": [],
+      "narration": "Our array: 5, 2, 9, 1, 6, 3. Compare 5 and 2. 5 is bigger, swap. Now 5 and 9: already in order, no swap. 9 and 1: swap. 9 and 6: swap. 9 and 3: swap. Look where 9 ended up: right at the end. The biggest value bubbled all the way up. It's now in its final place, so we lock it in green and never touch it again.",
+      "trace": [
+        {
+          "step": "start",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "1.1",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            0,
+            1
+          ],
+          "swap": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "1.2",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "1.3",
+          "array": [
+            2,
+            5,
+            1,
+            9,
+            6,
+            3
+          ],
+          "compare": [
+            2,
+            3
+          ],
+          "swap": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "1.4",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            9,
+            3
+          ],
+          "compare": [
+            3,
+            4
+          ],
+          "swap": [
+            3,
+            4
+          ]
+        },
+        {
+          "step": "1.5",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            4,
+            5
+          ],
+          "swap": [
+            4,
+            5
+          ]
+        },
+        {
+          "step": "2.1",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "2.2",
+          "array": [
+            2,
+            1,
+            5,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ],
+          "swap": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "2.3",
+          "array": [
+            2,
+            1,
+            5,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "2.4",
+          "array": [
+            2,
+            1,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            3,
+            4
+          ],
+          "swap": [
+            3,
+            4
+          ]
+        },
+        {
+          "step": "3.1",
+          "array": [
+            1,
+            2,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ],
+          "swap": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "3.2",
+          "array": [
+            1,
+            2,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "3.3",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            2,
+            3
+          ],
+          "swap": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "4.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "4.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "template": "algorithm-bars",
+      "startSec": 110,
+      "lengthSec": 40,
+      "onScreen": "Passes 2, 3, 4 at 2x speed; \"swapped = false\" badge in pass 4",
+      "animation": "Locked bars stay mint; pass 4 shows no tomato; bell on early exit",
+      "sfx": [],
+      "narration": "Pass 2 does the same on the first five bars, and 6 locks in place. Pass 3 locks 5. In pass 4 we compare 1 and 2, then 2 and 3, and nothing swaps. If a whole pass makes zero swaps, the array is already sorted, so we stop early. That's the early-exit flag.",
+      "trace": [
+        {
+          "step": "start",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "1.1",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            0,
+            1
+          ],
+          "swap": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "1.2",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "1.3",
+          "array": [
+            2,
+            5,
+            1,
+            9,
+            6,
+            3
+          ],
+          "compare": [
+            2,
+            3
+          ],
+          "swap": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "1.4",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            9,
+            3
+          ],
+          "compare": [
+            3,
+            4
+          ],
+          "swap": [
+            3,
+            4
+          ]
+        },
+        {
+          "step": "1.5",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            4,
+            5
+          ],
+          "swap": [
+            4,
+            5
+          ]
+        },
+        {
+          "step": "2.1",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "2.2",
+          "array": [
+            2,
+            1,
+            5,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ],
+          "swap": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "2.3",
+          "array": [
+            2,
+            1,
+            5,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "2.4",
+          "array": [
+            2,
+            1,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            3,
+            4
+          ],
+          "swap": [
+            3,
+            4
+          ]
+        },
+        {
+          "step": "3.1",
+          "array": [
+            1,
+            2,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ],
+          "swap": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "3.2",
+          "array": [
+            1,
+            2,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "3.3",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            2,
+            3
+          ],
+          "swap": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "4.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "4.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 150,
+      "lengthSec": 25,
+      "onScreen": "Full step-trace table (below)",
+      "animation": "Rows reveal in sync with a 4x replay",
+      "sfx": [],
+      "narration": "Here's every single step. Fourteen comparisons, eight swaps, four passes. Notice each pass is one step shorter than the last, because one more bar is locked at the end."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 175,
+      "lengthSec": 85,
+      "onScreen": "bubble.c (36 lines); tracker for pass, j, swapped, temp",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 2] We include stdbool.h so we can use bool, true and false. [HL 4] print_array is a helper that prints any int array. [HL 10] bubble_sort takes the array and its length. Arrays are passed as a pointer, so sorting inside the function changes the caller's array. [HL 11] The outer loop counts passes. Six elements need at most five passes. [TRACK pass=0] [HL 12] At the start of each pass, swapped is false. [TRACK swapped=false] [HL 13] The inner loop moves j along the array. Its limit is n minus 1 minus pass. Minus 1 because we look at j plus 1. Minus pass because that many bars are already locked at the end. [TRACK j=0] [HL 14] If the left neighbour is bigger, [HL 15] save it in temp, [TRACK temp=5] [HL 16] copy the right one left, [HL 17] put temp on the right, [HL 18] and remember that we swapped. [TRACK swapped=true] [HL 21] After each pass we print the array so you can watch it. [HL 23] If no swap happened, [HL 24] break out of the outer loop. [HL 29] In main, our six marks. [HL 30] sizeof the whole array divided by sizeof one element gives the count, 6. [HL 34] And we sort.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n#include <stdbool.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid bubble_sort(int a[], int n) {\n    for (int pass = 0; pass < n - 1; pass++) {\n        bool swapped = false;\n        for (int j = 0; j < n - 1 - pass; j++) {\n            if (a[j] > a[j + 1]) {\n                int temp = a[j];\n                a[j] = a[j + 1];\n                a[j + 1] = temp;\n                swapped = true;\n            }\n        }\n        printf(\"After pass %d: \", pass + 1);\n        print_array(a, n);\n        if (!swapped)\n            break;\n    }\n}\n\nint main(void) {\n    int marks[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(marks) / sizeof(marks[0]);\n\n    printf(\"Before:       \");\n    print_array(marks, n);\n    bubble_sort(marks, n);\n    return 0;\n}",
+        "output": "$ gcc bubble.c -o bubble\n$ ./bubble\nBefore:       5 2 9 1 6 3\nAfter pass 1: 2 5 1 6 3 9\nAfter pass 2: 2 1 5 3 6 9\nAfter pass 3: 1 2 3 5 6 9\nAfter pass 4: 1 2 3 5 6 9"
+      }
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 260,
+      "lengthSec": 20,
+      "onScreen": "gcc and 5 output lines",
+      "animation": "Lines type out",
+      "sfx": [],
+      "narration": "Compile and run. After pass 1, 9 is at the end. After pass 2, 6 and 9. After pass 3, the array is sorted, but the code doesn't know yet. Pass 4 makes no swaps, so it stops. Without the flag, it would waste a fifth pass."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 280,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot, bubble pop",
+      "sfx": [
+        "pop",
+        "rimshot"
+      ],
+      "narration": "Why did bubble sort go to the gym? It wanted to swap its weight around."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 285,
+      "lengthSec": 35,
+      "onScreen": "Complexity card: best O(n), average O(n²), worst O(n²), space O(1), stable",
+      "animation": "Each badge stamps in",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "For n elements, bubble sort makes about n squared over 2 comparisons in the average and worst case. That's O(n²). Its best case is a sorted array: one pass, no swaps, done, so O(n), but only because of our flag. It needs O(1) extra memory, just temp. And it's stable: two equal marks never jump past each other. Bubble sort is easy to understand but slow on big data. We will measure exactly how slow in Episode 81."
+    },
+    {
+      "id": 11,
+      "template": "bug-of-the-day",
+      "startSec": 320,
+      "lengthSec": 60,
+      "onScreen": "Inner loop j < n - pass; output 1 -1 2 3 5 6",
+      "animation": "Red siren; j arrow steps past the last bar into a grey \"not yours\" box",
+      "sfx": [],
+      "narration": "Today's bug: the inner loop running too far. Someone wrote j less than n minus pass, forgetting the minus 1. On the first pass, j reaches 5, and the code compares marks[5] with marks[6]. But a six-element array has no index 6. To make this visible, we gave the array a seventh slot holding minus 1. The result: 1, minus 1, 2, 3, 5, 6. The 9 has vanished, and a minus 1 that was never in our data has appeared. In a real program that extra slot is someone else's memory, so the output is unpredictable, or the program crashes. GCC gives no warning. The fix: j less than n minus 1 minus pass."
+    },
+    {
+      "id": 12,
+      "template": "challenge",
+      "startSec": 380,
+      "lengthSec": 25,
+      "onScreen": "Marks 72, 45, 98, 60, 85 sorted descending",
+      "animation": "Timer",
+      "sfx": [],
+      "narration": "Your challenge: sort these marks in descending order, highest first: 72, 45, 98, 60, 85. Hint: you only need to change one character."
+    },
+    {
+      "id": 13,
+      "template": "outro",
+      "startSec": 405,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 75 Selection sort",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "Bubble sort swaps a lot. Next episode, selection sort makes at most one swap per pass by picking the smallest every round. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int marks[7] = {5, 2, 9, 1, 6, 3, -1};   /* -1 marks the end */\n    int n = 6;\n\n    for (int pass = 0; pass < n - 1; pass++) {\n        for (int j = 0; j < n - pass; j++) {\n            if (marks[j] > marks[j + 1]) {\n                int temp = marks[j];\n                marks[j] = marks[j + 1];\n                marks[j + 1] = temp;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", marks[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+    "error": "No error or warning from GCC. Output:\n\n1 -1 2 3 5 6",
+    "fixed": "        for (int j = 0; j < n - 1 - pass; j++) {",
+    "why": "with `j < n - pass`, j reaches n - 1 and `marks[j + 1]` reads one element past the data, swapping a value from outside the array in. (With a real 6-element array this is undefined behaviour; on screen say \"your output may differ, or it may crash\".)"
+  },
+  "pun": "Why did bubble sort go to the gym? It wanted to swap its weight around.",
+  "challenge": "Sort the marks 72, 45, 98, 60, 85 in descending order using bubble sort.",
+  "challengeAnswer": "Change `a[j] > a[j + 1]` to `a[j] < a[j + 1]`. Output: `98 85 72 60 45`.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The heaviest bubble",
+      "hook": "\"Watch the biggest bubble.\"",
+      "script": "In a glass of soda, the biggest bubbles reach the top first. There's a sorting algorithm that works exactly like that: on every pass, the biggest number floats to the end. It's called bubble sort, and we animate every single swap.",
+      "onScreen": "BIGGEST FLOATS UP",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "Sorting, but make it soda.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bubblesort",
+        "sorting"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Bubble sort in 30 seconds",
+      "hook": "\"Compare. Swap. Repeat.\"",
+      "script": "Bubble sort compares neighbours. If the left is bigger, swap. Walk to the end and the biggest value is now last. Lock it. Repeat on the rest. If a whole pass makes no swaps, the array is sorted, so stop early. Average and worst case: O(n squared). Best case with that early stop: O(n).",
+      "onScreen": "COMPARE · SWAP · REPEAT",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Bubble sort, every swap animated.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bubblesort",
+        "dsa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Where did my 9 go?",
+      "hook": "\"I sorted six numbers and one disappeared.\"",
+      "script": "The inner loop says j less than n minus pass. Forgot the minus 1. So j reaches the last index and compares it with the slot after the array. Our 9 vanished and a minus 1 from outside the data appeared. GCC said nothing. Fix: j less than n minus 1 minus pass.",
+      "onScreen": "j < n - 1 - pass",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 35,
+      "caption": "One missing minus one.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "bubblesort"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bubble sort at the gym",
+      "hook": "\"Why did bubble sort join a gym?\"",
+      "script": "Why did bubble sort go to the gym? It wanted to swap its weight around.",
+      "onScreen": "SWAP ITS WEIGHT AROUND",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 10,
+      "caption": "Leg day is swap day.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "One-character challenge",
+      "hook": "\"Change one character. Sort backwards.\"",
+      "script": "Here's bubble sort sorting ascending. Your job: make it sort these marks highest first: 72, 45, 98, 60, 85. You only need to change one character. Which one? Comment below.",
+      "onScreen": "ONE CHARACTER. WHICH ONE?",
+      "fromScenes": [
+        12
+      ],
+      "lengthSec": 20,
+      "caption": "Comment the character.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "quiz",
+        "bubblesort"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n#include <stdbool.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid bubble_sort(int a[], int n) {\n    for (int pass = 0; pass < n - 1; pass++) {\n        bool swapped = false;\n        for (int j = 0; j < n - 1 - pass; j++) {\n            if (a[j] > a[j + 1]) {\n                int temp = a[j];\n                a[j] = a[j + 1];\n                a[j + 1] = temp;\n                swapped = true;\n            }\n        }\n        printf(\"After pass %d: \", pass + 1);\n        print_array(a, n);\n        if (!swapped)\n            break;\n    }\n}\n\nint main(void) {\n    int marks[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(marks) / sizeof(marks[0]);\n\n    printf(\"Before:       \");\n    print_array(marks, n);\n    bubble_sort(marks, n);\n    return 0;\n}",
+      "output": "$ gcc bubble.c -o bubble\n$ ./bubble\nBefore:       5 2 9 1 6 3\nAfter pass 1: 2 5 1 6 3 9\nAfter pass 2: 2 1 5 3 6 9\nAfter pass 3: 1 2 3 5 6 9\nAfter pass 4: 1 2 3 5 6 9",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "1 2 3 5 6 9"
+  }
+}

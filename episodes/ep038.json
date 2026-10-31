@@ -1,0 +1,299 @@
+{
+  "ep": 38,
+  "title": "Call by Value",
+  "module": 5,
+  "lengthSec": 370,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "explain that C passes a copy of each argument to a function",
+    "trace why a swap function changes only its own copies",
+    "get a changed value back to the caller using `return`",
+    "know that pointers (EP 55) are the real fix for swap"
+  ],
+  "youtube": {
+    "title": "Why My Swap Didn't Swap: Call by Value | C Programming EP 38",
+    "description": "You wrote a perfect swap function. Inside, it swaps. Back in main, nothing changed. Why? Because C gives every function a photocopy of your variables. We trace it in memory, fix a related bug with return, and set up the real fix that comes with pointers. Chapters: 0:00 The swap that didn't · 0:20 Photocopies · 1:05 Code walkthrough · 2:40 Memory view · 3:30 Running it · 3:55 Bug of the Day · 5:05 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The swap that didn't"
+      },
+      {
+        "t": "0:20",
+        "label": "Photocopies"
+      },
+      {
+        "t": "1:05",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "2:40",
+        "label": "Memory view"
+      },
+      {
+        "t": "3:30",
+        "label": "Running it"
+      },
+      {
+        "t": "3:55",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:05",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "call by value c",
+      "swap function c",
+      "why swap not working c",
+      "function arguments copy",
+      "pass by value",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "class 12 computer science",
+      "c interview question",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "SWAP FAILED?",
+      "visual": "big text \"SWAP FAILED?\"; two cups labelled x=5 and y=9 with a broken swap arrow between them; Xecxec confused, holding a photocopy; lilac background, tomato text",
+      "pose": "Xecxec confused, holding a photocopy"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Output: \"Inside swap: a = 9, b = 5\" then \"Back in main: x = 5, y = 9\"",
+      "animation": "Mint tick on line 1, tomato cross on line 2; record-scratch SFX",
+      "sfx": [],
+      "narration": "Inside the swap function: a is 9, b is 5. Swapped! Back in main: x is 5, y is 9. Not swapped. The function did its job, and still nothing changed. Today we find out who is lying."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 38 · CALL BY VALUE",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 38. Call by value."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 45,
+      "onScreen": "Photocopy machine: your class notes go in, a copy comes out; a friend scribbles on the copy; your original is clean",
+      "animation": "Photocopier whirr; pen scribble SFX",
+      "sfx": [],
+      "narration": "Your friend wants your physics notes. You don't hand over your only copy. You go to the xerox shop near college and give a photocopy. Your friend can write all over that photocopy. Your original stays clean. C does exactly this with function arguments. When you call a function, C copies the value of each argument into the function's parameter. This is called call by value. The function works on the copy. The caller's variable is never touched."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 65,
+      "lengthSec": 95,
+      "onScreen": "`swap.c` (15 lines)",
+      "animation": "Butter highlights; trackers for x, y, a, b, temp",
+      "sfx": [],
+      "narration": "[HL 3] Line three: void swap, int a, int b. Two parameters, nothing returned. [HL 4] Line four: int temp equals a. We save a in temp. [HL 5] Line five: a equals b. [HL 6] Line six: b equals temp. This is the classic three-step swap. Like swapping two glasses of drink using an empty third glass. [HL 7] Line seven prints a and b inside swap. [HL 11] Now main. Line eleven: [TRACK x=5] x is 5, [TRACK y=9] y is 9. [HL 12] Line twelve: swap of x and y. C copies the values: [TRACK a=5] a gets 5, [TRACK b=9] b gets 9. Inside swap, [TRACK temp=5] temp becomes 5, [TRACK a=9] a becomes 9, [TRACK b=5] b becomes 5. Printed: a equals 9, b equals 5. Then swap returns, and a, b and temp are destroyed, just like the locals in EP 37. [HL 13] Line thirteen prints x and y. [TRACK x=5] [TRACK y=9] Still 5 and 9. The swap really happened, but only to the photocopies.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid swap(int a, int b) {\n    int temp = a;\n    a = b;\n    b = temp;\n    printf(\"Inside swap: a = %d, b = %d\\n\", a, b);\n}\n\nint main(void) {\n    int x = 5, y = 9;\n    swap(x, y);\n    printf(\"Back in main: x = %d, y = %d\\n\", x, y);\n    return 0;\n}",
+        "output": "Inside swap: a = 9, b = 5\nBack in main: x = 5, y = 9"
+      }
+    },
+    {
+      "id": 5,
+      "template": "memory-boxes",
+      "startSec": 160,
+      "lengthSec": 50,
+      "onScreen": "Two frames: main's boxes x=5, y=9; swap's boxes a, b, temp; values copied across, swapped inside, then swap's frame vanishes",
+      "animation": "Copy arrows; swap's frame crumbles with a paper-tear SFX",
+      "sfx": [],
+      "narration": "Here's the same thing in memory. main has two boxes, x and y, at their own addresses. When swap is called, C builds a new set of boxes for swap: a, b and temp. The values 5 and 9 are copied across. Notice the arrows go one way only: from main into swap. Inside, a and b swap. When swap ends, its boxes are thrown away. Nothing ever travelled back to x and y. To change x and y themselves, swap would need their addresses, not their values. That's exactly what pointers give us, in EP 55."
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 210,
+      "lengthSec": 20,
+      "onScreen": "Compile and run; 2 output lines",
+      "animation": "Typing SFX",
+      "sfx": [],
+      "narration": "Compile and run. Inside swap: a equals 9, b equals 5. Back in main: x equals 5, y equals 9. Now you know why."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 230,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec holds up a photocopy of himself",
+      "sfx": [],
+      "narration": "Why did the variable refuse to change? It was told it was only being passed by value."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 235,
+      "lengthSec": 70,
+      "onScreen": "`bug.c`: addBonus changes its copy; marks stays 70; fix returns the new value",
+      "animation": "Two marks boxes; one turns 80 then vanishes; fix arrow carries 80 back, mint tick",
+      "sfx": [],
+      "narration": "Today's bug: expecting changes outside. Here, addBonus takes marks and adds 10. In main, marks is 70, we call addBonus, then print. Output: 70. No error, no warning. The function added 10 to its own copy, and the copy vanished. For a single value, the fix is easy: make the function return the new value, and assign it back. int addBonus returns marks plus 10, and in main we write marks equals addBonus of marks. Now it prints 80. The rule: a function can't change the caller's variables through normal parameters. If you want a result back, return it."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 305,
+      "lengthSec": 50,
+      "onScreen": "Challenge card: explain the swap bug in 2 sentences + teaser of `&x`",
+      "animation": "Timer ticks; lilac pointer arrow teaser",
+      "sfx": [],
+      "narration": "Your challenge is a thinking one. In two sentences, explain to a friend why our swap didn't swap. Write it in the comments. Bonus: return can only send back one value, but swap needs to change two. So how could we fix it? Here's a hint: the ampersand you've been typing in scanf since EP 12. scanf can change your variable because you give it the address. Hold on to that idea for the pointers module."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 355,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 39 · Recursion",
+      "animation": "Mirror inside a mirror; sign-off jingle",
+      "sfx": [],
+      "narration": "Next episode: a function that calls itself. Recursion. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nvoid addBonus(int marks) {\n    marks = marks + 10;\n}\n\nint main(void) {\n    int marks = 70;\n    addBonus(marks);\n    printf(\"Marks: %d\\n\", marks);\n    return 0;\n}",
+    "error": "No error or warning, even with `-Wall -Wextra`. Wrong output:\n\nMarks: 70",
+    "fixed": "#include <stdio.h>\n\nint addBonus(int marks) {\n    return marks + 10;\n}\n\nint main(void) {\n    int marks = 70;\n    marks = addBonus(marks);\n    printf(\"Marks: %d\\n\", marks);\n    return 0;\n}",
+    "why": "the parameter is a copy of main's `marks`, so the change must come back through `return` and be assigned."
+  },
+  "pun": "Why did the variable refuse to change? It was told it was only being passed by value.",
+  "challenge": "In two sentences, explain why `swap(x, y)` did not swap x and y. Bonus: how could a function change two of main's variables?",
+  "challengeAnswer": "C passes copies of x and y into a and b, so swap only swaps its own copies, which are destroyed when it returns. To change main's variables, pass their addresses (`swap(&x, &y)` with `int *a, int *b`), covered in EP 55.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Why My Swap Didn't Swap",
+      "hook": "\"Inside: swapped. Outside: not swapped.\"",
+      "script": "Inside swap, a is 9 and b is 5. Swapped. Back in main, x is still 5 and y is still 9. The function swapped perfectly, just not your variables. C handed it copies. It swapped the copies, then threw them away. That's call by value.",
+      "onScreen": "SWAPPED... THE COPIES",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "The most famous beginner bug in C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "functions",
+        "codinginterview"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Call by Value in 30 Seconds",
+      "hook": "a photocopier spitting out a sheet with `5` on it",
+      "script": "When you call a function in C, it gets a photocopy of each argument. It can scribble on the copy all it wants. Your original variable stays the same. When the function ends, the copies are thrown away. Want a result back? Use return. Want to change the original? You'll need its address. That's pointers.",
+      "onScreen": "FUNCTIONS GET PHOTOCOPIES",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Call by value, explained with a xerox shop.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "computerscience",
+        "exams"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The Bonus That Vanished",
+      "hook": "\"Marks: 70\" with a tomato cross",
+      "script": "addBonus adds 10 to marks. Marks was 70. After the call: still 70. The function added 10 to its copy, then the copy disappeared. Fix: return marks plus 10, and write marks equals addBonus of marks. Now it's 80.",
+      "onScreen": "WHERE DID MY 10 MARKS GO?",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 30,
+      "caption": "No error, no bonus.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "gcc",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Passed by Value",
+      "hook": "a variable box shrugging",
+      "script": "Why did the variable refuse to change? It was told it was only being passed by value.",
+      "onScreen": "ONLY PASSED BY VALUE",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Variables have feelings too.",
+      "hashtags": [
+        "codingmemes",
+        "programmerhumor",
+        "kodingkonkani",
+        "cprogramming",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: What Does It Print?",
+      "hook": "`addBonus(marks);` with marks = 70",
+      "script": "marks is 70. We call addBonus of marks, which adds 10 to its parameter. Then we print marks. A: 70. B: 80. C: error. The answer is A, 70. The function changed a copy, not the original.",
+      "onScreen": "70 · 80 · ERROR?",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Comment your answer before the reveal.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "functions"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nvoid swap(int a, int b) {\n    int temp = a;\n    a = b;\n    b = temp;\n    printf(\"Inside swap: a = %d, b = %d\\n\", a, b);\n}\n\nint main(void) {\n    int x = 5, y = 9;\n    swap(x, y);\n    printf(\"Back in main: x = %d, y = %d\\n\", x, y);\n    return 0;\n}",
+      "output": "Inside swap: a = 9, b = 5\nBack in main: x = 5, y = 9",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Marks: 80"
+  }
+}

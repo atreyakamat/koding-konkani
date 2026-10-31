@@ -1,0 +1,303 @@
+{
+  "ep": 7,
+  "title": "Variables",
+  "module": 1,
+  "lengthSec": 380,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "declare an `int` variable and assign a value to it",
+    "declare and initialise in one line",
+    "print a variable with `%d`",
+    "update a variable using its old value",
+    "always initialise before use and compile with `-Wall`"
+  ],
+  "youtube": {
+    "title": "Variables Are Labelled Fish Baskets | C Programming EP 07",
+    "description": "A variable is a named box in memory that holds a value. Learn how to declare, assign, print and update variables in C, with animated memory boxes. Plus the bug that prints random numbers: using a variable before giving it a value. 0:00 Variables are labelled fish baskets 0:20 What is a variable? 1:00 Declare and assign 2:00 Print with %d 2:45 Change a variable 3:35 Naming rules 4:14 Bug of the Day: uninitialised variable 5:24 Challenge 6:04 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Variables are labelled fish baskets 0:20 What is a variable? 1:00 Declare and assign 2:00 Print with %d 2:45 Change a variable 3:35 Naming rules 4:14 Bug of the Day: uninitialised variable 5:24 Challenge 6:04 Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "variables in c",
+      "int variable",
+      "declare variable c",
+      "printf %d",
+      "uninitialized variable",
+      "memory boxes",
+      "c tutorial for beginners",
+      "koding konkani",
+      "learn c"
+    ],
+    "thumbnail": {
+      "text": "VARIABLES",
+      "visual": "big text \"VARIABLES\"; three woven fish baskets labelled age, rollNo, marks with numbers 19, 42, 78 inside; Xecxec sitting in one basket, cheeky grin.",
+      "pose": "Xecxec sitting in one basket, cheeky grin"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "A Mapusa fish market stall with labelled baskets: Bangda, Pomfret, Prawns",
+      "animation": "Market ambience; baskets drop in; Xecxec peeks out of a basket",
+      "sfx": [],
+      "narration": "Walk into Mapusa market on a Friday. Every basket has a label: bangda, pomfret, prawns. You never have to guess what's inside. That is exactly what a variable is in C. A labelled basket that holds a value."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 07 · VARIABLES",
+      "animation": "Title slams in, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode seven. Variables."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "Last challenge answer; a row of memory boxes; one gets a label \"age\" and a value 19",
+      "animation": "Label tag swings on with a clack; number drops in with a plop",
+      "sfx": [],
+      "narration": "Last episode's challenge was to clean up an old program with a header comment, a few slash slash notes and four-space indents. If it still compiles and gives the same output, you nailed it. Now: your computer's memory is a long row of tiny boxes. A variable is one of those boxes, with a name stuck on it. We say, \"Give me a box called age.\" C finds a free box, labels it age, and from then on, whenever we say age, C knows which box we mean. We can put a number in it, read it, or change it."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 60,
+      "onScreen": "ep07.c lines 5–9",
+      "animation": "Line highlights; memory box appears per declaration; variable tracker panel on the right",
+      "sfx": [],
+      "narration": "Let's write it. [HL 5] Line five: int age, semicolon. This is a declaration. int means the box holds a whole number, an integer. age is the label. Right now the box exists, but we haven't put anything in it. [HL 6] Line six: age equals nineteen. This is an assignment. [TRACK age=19] The equals sign in C does not mean \"is equal to\". It means \"put the value on the right into the box on the left\". [HL 8] Line eight does both at once: int rollNo equals forty-two. [TRACK rollNo=42] This is called initialising: declare and give a starting value in one line. [HL 9] Line nine, same thing: int marks equals seventy-eight. [TRACK marks=78] Three baskets, three labels, three values.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int age;            // declare: make a box called age\n    age = 19;           // assign: put 19 in the box\n\n    int rollNo = 42;    // declare and assign together\n    int marks = 78;\n\n    printf(\"Age: %d\\n\", age);\n    printf(\"Roll no: %d\\n\", rollNo);\n\n    marks = marks + 5;  // bonus marks\n    printf(\"Marks after bonus: %d\\n\", marks);\n\n    return 0;\n}",
+        "output": "Age: 19\nRoll no: 42\nMarks after bonus: 83"
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 45,
+      "onScreen": "Lines 11–12, `%d` placeholder replaced by the value",
+      "animation": "`%d` flips like a card to show 19; terminal strip shows output",
+      "sfx": [],
+      "narration": "Now let's read a box. [HL 11] Line eleven: printf, \"Age: percent d\", comma, age. The percent d is a placeholder. It means \"put a whole number here\". After the closing quote, comma, age tells printf which number. So printf takes the value from the age box, nineteen, and puts it where percent d was. Output: Age: 19. [HL 12] Line twelve does the same with rollNo. Roll no: 42.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int age;            // declare: make a box called age\n    age = 19;           // assign: put 19 in the box\n\n    int rollNo = 42;    // declare and assign together\n    int marks = 78;\n\n    printf(\"Age: %d\\n\", age);\n    printf(\"Roll no: %d\\n\", rollNo);\n\n    marks = marks + 5;  // bonus marks\n    printf(\"Marks after bonus: %d\\n\", marks);\n\n    return 0;\n}",
+        "output": "Age: 19\nRoll no: 42\nMarks after bonus: 83"
+      }
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 50,
+      "onScreen": "Lines 14–15, `marks = marks + 5`",
+      "animation": "Box value 78 lifts out, +5 joins, 83 drops back in; tracker updates",
+      "sfx": [],
+      "narration": "The best part of a variable: it can vary. [HL 14] Line fourteen: marks equals marks plus five. In maths class, this line makes no sense. In C, read it right to left. First, take the value in marks, seventy-eight. Add five, eighty-three. Then put eighty-three back into marks. [TRACK marks=83] The old seventy-eight is gone. A box holds only one value at a time. [HL 15] Line fifteen prints it: Marks after bonus: 83.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int age;            // declare: make a box called age\n    age = 19;           // assign: put 19 in the box\n\n    int rollNo = 42;    // declare and assign together\n    int marks = 78;\n\n    printf(\"Age: %d\\n\", age);\n    printf(\"Roll no: %d\\n\", rollNo);\n\n    marks = marks + 5;  // bonus marks\n    printf(\"Marks after bonus: %d\\n\", marks);\n\n    return 0;\n}",
+        "output": "Age: 19\nRoll no: 42\nMarks after bonus: 83"
+      }
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 215,
+      "lengthSec": 35,
+      "onScreen": "Naming rules: letters, digits, underscore; no digit first; no spaces; case matters; no keywords",
+      "animation": "Bad names stamped with a red X; good names get a mint tick",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "A few rules for names. Use letters, digits and underscore. A name cannot start with a digit, so 2ndMarks is not allowed. No spaces, so roll no is not allowed; write rollNo or roll_no. Capital letters matter: Age and age are two different boxes. And you cannot use C's own words, like int or return. Pick names that say what's inside, like we learned in episode six."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 250,
+      "lengthSec": 4,
+      "onScreen": "Pun",
+      "animation": "Drum ba-dum, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the variable go to therapy? It had too many changes in its life."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 254,
+      "lengthSec": 70,
+      "onScreen": "`int total;` used before assigning; garbage output; `-Wall` warning; fix",
+      "animation": "Box shows \"???\" with dust; buzzer; then `= 0` drops in, success chime",
+      "sfx": [
+        "buzzer",
+        "chime"
+      ],
+      "narration": "Today's bug prints a random number. Look: int total, semicolon. Then total equals total plus fifty. Then print total. You expect fifty. Run it. I got thirty-two thousand something. You might get zero, or a huge number, or something else. Why? When you declare a box without a value, C does not clean it. It holds whatever junk was left in that memory before. Junk plus fifty is still junk. GCC can warn you, but only if you ask. Compile with dash capital W, all. Now GCC says: warning, total is used uninitialized. From today, always compile with dash Wall. The fix: give total a starting value. int total equals zero. Now the output is Total: 50. Every time."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 324,
+      "lengthSec": 40,
+      "onScreen": "Store age, height (in cm), roll number; print each on its own line",
+      "animation": "Timer ticks; three empty boxes wait",
+      "sfx": [],
+      "narration": "Your challenge. Create three variables: your age, your height in centimetres, and your roll number. Use whole numbers for all three. Print each one on its own line with a label. Compile with dash Wall, and make sure there are no warnings."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 364,
+      "lengthSec": 16,
+      "onScreen": "Next: EP 08 · Data types; sign-off",
+      "animation": "Xecxec waves; outro sting",
+      "sfx": [
+        "sting"
+      ],
+      "narration": "Next episode: data types. Why did two and a half kilos of fish become two kilos? Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void)\n{\n    int total;\n    total = total + 50;\n    printf(\"Total: %d\\n\", total);\n    return 0;\n}",
+    "error": "**Without `-Wall`:** no message at all. **Wrong output** (a garbage value; on screen: \"your number will differ\"):\n\nTotal: 32815\n\n**With `gcc -Wall`:**\n\nbug07.c: In function 'main':\nbug07.c:6:11: warning: 'total' is used uninitialized [-Wuninitialized]\n    6 |     total = total + 50;\n      |     ~~~~~~^~~~~~~~~~~~\nbug07.c:5:9: note: 'total' was declared here\n    5 |     int total;\n      |         ^~~~~",
+    "fixed": "#include <stdio.h>\n\nint main(void)\n{\n    int total = 0;\n    total = total + 50;\n    printf(\"Total: %d\\n\", total);\n    return 0;\n}",
+    "why": "A local variable without a starting value holds leftover junk from memory, so always initialise it."
+  },
+  "pun": "\"Why did the variable go to therapy? It had too many changes in its life.\"",
+  "challenge": "Store your age, height in cm and roll number in three `int` variables and print each on its own line with a label. Zero warnings with `-Wall`.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint main(void)\n{\n    int age = 17;\n    int heightCm = 168;\n    int rollNo = 23;\n\n    printf(\"Age: %d\\n\", age);\n    printf(\"Height: %d cm\\n\", heightCm);\n    printf(\"Roll no: %d\\n\", rollNo);\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Variables are fish baskets",
+      "hook": "\"Every basket in the fish market has a label.\"",
+      "script": "Every basket in the fish market has a label. You never guess what's inside. A variable in C is the same: a box in memory with a name on it. You can put a value in, read it, and change it. That's it. That's a variable.",
+      "onScreen": "VARIABLE = LABELLED BOX",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 20,
+      "caption": "The easiest way to understand variables.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "variables",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "marks = marks + 5?!",
+      "hook": "\"This line breaks maths. But not C.\"",
+      "script": "marks equals marks plus five. In maths, impossible. In C, read it right to left. Take the value in marks, seventy-eight. Add five. Put eighty-three back in the box. The equals sign in C means \"store\", not \"is equal to\".",
+      "onScreen": "= MEANS \"STORE\"",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "The equals sign is not what you think.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingbasics",
+        "c"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Why is my number random?",
+      "hook": "\"I added 50 to zero and got 32 thousand.\"",
+      "script": "I added fifty and got thirty-two thousand. Why? I declared int total without a value. In C, that box holds leftover junk. Junk plus fifty is junk. Compile with dash Wall and GCC warns you: total is used uninitialized. Fix: int total equals zero.",
+      "onScreen": "ALWAYS INITIALISE · gcc -Wall",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "The bug that prints random numbers.",
+      "hashtags": [
+        "cprogramming",
+        "codingbugs",
+        "kodingkonkani",
+        "learntocode",
+        "gcc"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Variable therapy",
+      "hook": "\"Why did the variable go to therapy?\"",
+      "script": "Why did the variable go to therapy? It had too many changes in its life.",
+      "onScreen": "TOO MANY CHANGES",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 10,
+      "caption": "It varies.",
+      "hashtags": [
+        "programmingjokes",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What does this print?",
+      "hook": "\"x is 10. What does this print?\"",
+      "script": "int x equals ten. x equals x plus x. x equals x plus one. Print x. What's the answer? ... Twenty-one. Ten plus ten is twenty, then plus one. Comment your answer before you check.",
+      "onScreen": "int x = 10; x = x + x; x = x + 1; · ?",
+      "fromScenes": [
+        6,
+        10
+      ],
+      "lengthSec": 20,
+      "caption": "Quick C quiz.",
+      "hashtags": [
+        "cquiz",
+        "cprogramming",
+        "kodingkonkani",
+        "learntocode",
+        "variables"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void)\n{\n    int age;            // declare: make a box called age\n    age = 19;           // assign: put 19 in the box\n\n    int rollNo = 42;    // declare and assign together\n    int marks = 78;\n\n    printf(\"Age: %d\\n\", age);\n    printf(\"Roll no: %d\\n\", rollNo);\n\n    marks = marks + 5;  // bonus marks\n    printf(\"Marks after bonus: %d\\n\", marks);\n\n    return 0;\n}",
+      "output": "Age: 19\nRoll no: 42\nMarks after bonus: 83",
+      "buildStep": "gcc -Wall ep07.c -o ep07\n./ep07",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Total: 50"
+  }
+}

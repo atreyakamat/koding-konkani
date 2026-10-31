@@ -1,0 +1,274 @@
+{
+  "ep": 70,
+  "title": "Reading Files",
+  "module": 11,
+  "lengthSec": 405,
+  "colours": {
+    "bg": "#FFB88A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "open a file in `\"r\"` mode and report a missing file with `perror`",
+    "read a file line by line with `fgets` until it returns `NULL`",
+    "read structured data with `fscanf` and use its return value to stop the loop",
+    "explain what `EOF` is and why loops must test the read function's result"
+  ],
+  "youtube": {
+    "title": "Read Your Diary Back: Reading Files in C | C EP 70",
+    "description": "Last episode we wrote a diary to a file. Today we read it back, line by line with fgets, and word by word with fscanf. Then we meet EOF and fix the loop that never stops reading. 0:00 Challenge answer and hook 0:25 Opening for reading 1:00 fgets: line by line 2:30 fscanf: a marks file 4:10 What is EOF? 4:45 Bug of the Day: infinite EOF loop 6:05 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Challenge answer and hook 0:25 Opening for reading 1:00 fgets: line by line 2:30 fscanf: a marks file 4:10 What is EOF? 4:45 Bug of the Day: infinite EOF loop 6:05 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "read file in c",
+      "fgets in c",
+      "fscanf in c",
+      "EOF in c",
+      "file handling in c",
+      "perror",
+      "read file line by line",
+      "learn c",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "READ IT BACK",
+      "visual": "big text \"READ IT BACK\"; an open diary with lines flying out into a terminal; Xecxec reading with tiny glasses; Apricot background, Dark blue blocks.",
+      "pose": "Xecxec reading with tiny glasses"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "EP 69 challenge: run, then `cat me.txt`",
+      "animation": "Typing SFX; then a closed diary appears, lock clicks open",
+      "sfx": [],
+      "narration": "Last challenge: read a name and age, then save them to me dot txt with fprintf, checking for NULL and closing the file. Run it, cat the file, and there it is. But a program that only writes is like a diary you can never open. Today we read files back into our program."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 70 · READING FILES",
+      "animation": "Apricot card, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode seventy. Reading files."
+    },
+    {
+      "id": 3,
+      "template": "terminal",
+      "startSec": 25,
+      "lengthSec": 35,
+      "onScreen": "`\"r\"` on a missing file: `perror` prints `nothere.txt: No such file or directory`",
+      "animation": "Empty folder icon, Tomato message slides in",
+      "sfx": [],
+      "narration": "To read, we open with mode \"r\". Unlike \"w\", \"r\" never creates a file. If the file isn't there, fopen returns NULL. So the NULL check matters even more. Here we use perror, which prints your message, then a colon, then the real reason from the system. Try opening nothere dot txt: \"nothere dot txt: No such file or directory\". Clear and honest."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 90,
+      "onScreen": "`readlines.c` with `diary.txt` panel and a reading cursor",
+      "animation": "Cursor highlights one line of the file per loop; `line` buffer box fills; `count` tracker 1 → 4; final `fgets` returns NULL (grey)",
+      "sfx": [],
+      "narration": "Let's read our diary from last episode, which now has four lines. [HL 4] fopen, \"diary dot txt\", \"r\". [HL 5] [HL 6] [HL 7] If fp is NULL, perror and return 1. [HL 10] char line, 100. A buffer, a box of 100 characters to hold one line at a time. [HL 11] count equals 0. [TRACK count=0] [HL 13] while, fgets, line, sizeof line, fp, not equal to NULL. fgets reads one line from fp into line. It stops at the newline, or when the buffer is full, so it never overflows. sizeof line tells it the size, 100. It keeps the newline character, and adds the null terminator at the end. When there is nothing left to read, fgets returns NULL, and the loop ends. [HL 14] count plus plus. [TRACK count=1] [HL 15] printf percent d, colon, percent s. No backslash n here, because line already ends with the newline from the file. First line: \"1: Day 1: Learned files in C\". [TRACK count=2] Then \"2: Fish caught: 7\". [TRACK count=3] \"3: Mood: happy\". [TRACK count=4] \"4: Day 2: Monsoon\". Then fgets returns NULL. [HL 18] fclose. [HL 19] \"Read 4 lines\". The pattern is: read inside the loop condition, and stop when the read fails."
+    },
+    {
+      "id": 5,
+      "template": "pun-card",
+      "startSec": 150,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec with a book, rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the C program love reading files? It could never put them down until it reached the end."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 155,
+      "lengthSec": 95,
+      "onScreen": "`marks.c` with `marks.txt` panel",
+      "animation": "Name and number tokens jump from the file into `name` and `mark` boxes; `total` and `students` trackers",
+      "sfx": [],
+      "narration": "fgets reads whole lines. But what if each line has a name and a number, like a marks list? Here is marks dot txt: Ravi 72, Anjali 88, Xecxec 95. We use fscanf, which is scanf for files. [HL 10] char name 30. [HL 11] int mark. [HL 12] total and students both start at 0. [HL 14] while fscanf, fp, \"percent 29 s, percent d\", name, address of mark, equals 2. fscanf returns how many items it filled. We asked for two, a word and a number. The 29 stops it from overflowing our 30-character name box. If it returns 2, we got a full line. First line: name is Ravi, mark is 72. [TRACK name=Ravi mark=72] [HL 15] printf percent minus 8 s and percent 3 d: the name left-aligned in 8 spaces, the number in 3, so the columns line up. [HL 16] total plus equals mark. [TRACK total=72] [HL 17] students plus plus. [TRACK students=1] Then Anjali, 88. [TRACK total=160 students=2] Then Xecxec, 95. [TRACK total=255 students=3] Next time, there's nothing left, fscanf does not return 2, and the loop stops. [HL 21] [HL 22] If students is more than 0, we print the average: total, cast to double, divided by students. 255 by 3 is 85 point 00. The cast is from Episode 13: without it, int division would drop the decimals."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 250,
+      "lengthSec": 35,
+      "onScreen": "\"EOF = end of file\", value `-1` on GCC; table: `fgets` → NULL, `fscanf` → EOF or fewer items, `fgetc` → EOF",
+      "animation": "Cards flip; \"EOF\" sign at the end of a road",
+      "sfx": [],
+      "narration": "So what is EOF? It stands for End Of File. It's a special value, defined in stdio dot h, which is minus 1 on GCC. It's not a character inside the file. It's a signal that reading functions return when there's nothing left. fgetc, which reads one character, returns EOF at the end. fscanf returns EOF if it hits the end before reading anything. And fgets returns NULL instead. The rule is simple: always loop on the result of the read function itself."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 285,
+      "lengthSec": 80,
+      "onScreen": "`!= 0` test: \"Xecxec 95\" repeats forever",
+      "animation": "Apricot frame with Butter highlight; return value box shows -1, and -1 != 0 is true (Tomato); output floods; Ctrl+C keycap",
+      "sfx": [],
+      "narration": "Today's bug: the infinite EOF loop. A student writes: while fscanf, and so on, not equal to 0. The idea: \"keep going until fscanf reads nothing\". Compile: no error. Run it. Ravi 72, Anjali 88, Xecxec 95, then Xecxec 95, Xecxec 95, forever. Press Control C. What happened? At the end of the file, fscanf does not return 0. It returns EOF, which is minus 1. And minus 1 is not equal to 0, so the condition stays true. fscanf keeps failing, name and mark keep their old values, and we print them again and again. The fix: test for exactly what you want. equals 2. If fscanf gives back anything other than 2, stop."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 365,
+      "lengthSec": 25,
+      "onScreen": "\"Ask for a file name and count its lines\"",
+      "animation": "Timer ring",
+      "sfx": [],
+      "narration": "Your challenge: ask the user for a file name, open it, and count how many lines it has using fgets. If the file can't be opened, use perror. Test it on diary dot txt; you should get 4."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 390,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 71, binary files",
+      "animation": "Xecxec waves, end card",
+      "sfx": [],
+      "narration": "Next episode: binary files, where we save whole structs and build a tiny database. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    FILE *fp = fopen(\"marks.txt\", \"r\");\n    if (fp == NULL) {\n        return 1;\n    }\n\n    char name[30];\n    int mark;\n\n    while (fscanf(fp, \"%29s %d\", name, &mark) != 0) {\n        printf(\"%s %d\\n\", name, mark);\n    }\n\n    fclose(fp);\n    return 0;\n}",
+    "error": "No compiler error or warning. Output never stops (Ctrl+C to quit):\n\nRavi 72\nAnjali 88\nXecxec 95\nXecxec 95\nXecxec 95\n...",
+    "fixed": "    while (fscanf(fp, \"%29s %d\", name, &mark) == 2) {",
+    "why": "At end of file `fscanf` returns `EOF` (-1), not 0, so `!= 0` stays true forever; testing `== 2` stops on any failed read."
+  },
+  "pun": "Why did the C program love reading files? It could never put them down until it reached the end.",
+  "challenge": "Ask for a file name, then count its lines with `fgets` (use `perror` if it can't be opened).",
+  "challengeAnswer": "Note: a line longer than 255 characters would be counted more than once; fine for this challenge.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Open Your Diary in C",
+      "hook": "A locked diary clicking open",
+      "script": "We saved a diary to a file. Now let's read it back. Open with \"r\", then loop: while fgets reads a line, print it. When fgets returns NULL, the file is done. Four lines, back on screen. Full episode on Koding Konkani.",
+      "onScreen": "OPEN WITH \"r\" / fgets LINE BY LINE",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 20,
+      "caption": "Reading files, the easy way.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "filehandling",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "fgets vs fscanf in 30 Seconds",
+      "hook": "A whole line vs separate words flying out of a file",
+      "script": "Two ways to read a file. fgets reads a whole line into a char array, and returns NULL at the end. fscanf reads values, like a name and a number, and returns how many it filled. Loop while fgets is not NULL, or while fscanf equals the count you asked for.",
+      "onScreen": "fgets = LINES / fscanf = VALUES",
+      "fromScenes": [
+        4,
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "Pick the right reader.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "fgets",
+        "fscanf"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "My File Loop Never Ends",
+      "hook": "\"Xecxec 95\" repeating down the screen",
+      "script": "Three lines in the file, but the last one prints forever. The loop says while fscanf is not 0. But at the end of the file, fscanf returns EOF, which is minus 1. Minus 1 is not 0, so the loop never stops. Test for exactly what you want: equals 2.",
+      "onScreen": "NEVER ENDS? / EOF = -1 / USE == 2",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 30,
+      "caption": "EOF is not zero.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "EOF"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: Can't Put It Down",
+      "hook": "Xecxec glued to a book",
+      "script": "Why did the C program love reading files? It could never put them down until it reached the end.",
+      "onScreen": "READ UNTIL EOF",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 10,
+      "caption": "A real page-turner.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "What Does EOF Equal?",
+      "hook": "\"EOF = ?\"",
+      "script": "Quick quiz. In GCC, what is the value of EOF? 0? 1? Minus 1? It's minus 1. And it's a signal from reading functions, not a character stored in the file.",
+      "onScreen": "EOF = ? / 0, 1, or -1? / -1",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 15,
+      "caption": "Viva question alert.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "EOF"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    FILE *fp = fopen(\"diary.txt\", \"r\");\n    if (fp == NULL) {\n        perror(\"diary.txt\");\n        return 1;\n    }\n\n    char line[100];\n    int count = 0;\n\n    while (fgets(line, sizeof line, fp) != NULL) {\n        count++;\n        printf(\"%d: %s\", count, line);\n    }\n\n    fclose(fp);\n    printf(\"Read %d lines\\n\", count);\n    return 0;\n}",
+      "output": "1: Day 1: Learned files in C\n2: Fish caught: 7\n3: Mood: happy\n4: Day 2: Monsoon, stayed home and coded\nRead 4 lines",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    FILE *fp = fopen(\"marks.txt\", \"r\");\n    if (fp == NULL) {\n        perror(\"marks.txt\");\n        return 1;\n    }\n\n    char name[30];\n    int mark;\n    int total = 0, students = 0;\n\n    while (fscanf(fp, \"%29s %d\", name, &mark) == 2) {\n        printf(\"%-8s %3d\\n\", name, mark);\n        total += mark;\n        students++;\n    }\n\n    fclose(fp);\n    if (students > 0) {\n        printf(\"Average: %.2f\\n\", (double)total / students);\n    }\n    return 0;\n}",
+      "output": "Ravi      72\nAnjali    88\nXecxec    95\nAverage: 85.00",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

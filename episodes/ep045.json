@@ -1,0 +1,335 @@
+{
+  "ep": 45,
+  "title": "2D Arrays: The Cinema Seat Map",
+  "module": 6,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "declare and initialise a 2D array with rows and columns",
+    "read and change one cell with [row][col]",
+    "visit every cell with nested loops (EP 30)",
+    "add two matrices cell by cell"
+  ],
+  "youtube": {
+    "title": "2D Arrays in C: Rows, Columns & Matrices | EP 45",
+    "description": "A cinema seat map is a 2D array: rows and columns of seats. Learn how to declare a grid in C, book a seat with [row][col], loop through every cell with nested loops, and avoid the bug where rows and columns get swapped. 0:00 Book seat B3 · 0:20 Title · 0:25 Rows and columns · 1:10 Grid in memory · 1:55 Code walkthrough · 3:35 Running it · 3:55 Matrices · 4:30 Pun · 4:35 Bug of the Day · 5:35 Challenge · 6:10 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Book seat B3"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Rows and columns"
+      },
+      {
+        "t": "1:10",
+        "label": "Grid in memory"
+      },
+      {
+        "t": "1:55",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "3:35",
+        "label": "Running it"
+      },
+      {
+        "t": "3:55",
+        "label": "Matrices"
+      },
+      {
+        "t": "4:30",
+        "label": "Pun"
+      },
+      {
+        "t": "4:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:35",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:10",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "2d array in c",
+      "two dimensional array",
+      "matrix in c",
+      "matrix addition in c",
+      "nested loops",
+      "arrays in c",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "class 12 computer science"
+    ],
+    "thumbnail": {
+      "text": "ROW FIRST!",
+      "visual": "big text \"ROW FIRST!\"; 3 by 4 grid of cinema seats on peach, one seat glowing mint; Xecxec in 3D glasses with popcorn; dark-blue [r][c] label",
+      "pose": "Xecxec in 3D glasses with popcorn"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Cinema booking screen: 3 rows, 4 seats each, \"Book row A, seat 3\"",
+      "animation": "Seats pop in row by row; Xecxec taps a seat; booking ding",
+      "sfx": [
+        "ding",
+        "pop"
+      ],
+      "narration": "You are booking movie tickets. The screen shows a seat map. Row A, row B, row C. Each row has four seats. You tap row A, seat 3. The app needs to remember which seats are taken. One row of lockers is not enough any more. We need a grid."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 45 · 2D ARRAYS",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 45. 2D arrays."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "\"An array of arrays\": each row is a 1D array from EP 41",
+      "animation": "Three locker rows stack into a grid; clack SFX",
+      "sfx": [],
+      "narration": "A 2D array is an array of arrays. Each row is a normal 1D array, like the lockers from EP 41. Stack three of those rows, and you get a grid. To reach one seat, you need two numbers: the row, and then the column. Always in that order. Row first, column second. Both start at zero, as usual."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 70,
+      "lengthSec": 45,
+      "onScreen": "seats[3][4] grid with row index on the left, column index on top; then the same 12 boxes laid out in one line in memory",
+      "animation": "Grid unrolls into a single row: row 0, then row 1, then row 2; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "We write int seats, bracket three, bracket four. Three rows, four columns, twelve boxes in total. On screen we draw it as a grid. But inside memory, there are no grids. C stores row zero first, then row one right after it, then row two. Twelve boxes in one long line. That is why the order matters: the first number picks which group of four, the second picks the box inside that group."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 100,
+      "onScreen": "ep45_seats.c types itself",
+      "animation": "Line highlights; tracker shows r, c, booked; current cell glows butter",
+      "sfx": [],
+      "narration": "Let's read it. [HL 4] Line four declares seats with three rows and four columns. [HL 5] Lines five to seven give the starting values, one curly-brace group per row. One means booked, zero means free. [HL 9] Line nine, booked starts at zero; we will count booked seats. [TRACK booked=0] [HL 11] Line eleven books a seat. seats zero, two, equals one. Row zero, column two. That is row A, seat 3, because humans count from one. [HL 13] Line thirteen, the outer loop. r goes over the rows, zero to two. [TRACK r=0] [HL 14] Line fourteen, the inner loop, from EP 30. c goes over the columns, zero to three. [TRACK c=0] For every one row, the inner loop runs all four columns. [HL 15] Line fifteen prints the seat at row r, column c. [HL 16] Line sixteen adds it to booked. Since booked seats are one and free seats are zero, adding them counts the booked ones. [TRACK r=0 c=3 booked=3] [HL 18] Line eighteen, after a full row, prints a new line, so the output looks like a grid. [TRACK r=2 c=3 booked=8] [HL 20] Line twenty prints booked out of three times four, twelve.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int seats[3][4] = {\n        {1, 0, 0, 1},\n        {1, 1, 0, 0},\n        {0, 1, 1, 1}\n    };\n    int booked = 0;\n\n    seats[0][2] = 1;\n\n    for (int r = 0; r < 3; r++) {\n        for (int c = 0; c < 4; c++) {\n            printf(\"%d \", seats[r][c]);\n            booked += seats[r][c];\n        }\n        printf(\"\\n\");\n    }\n    printf(\"Booked: %d of %d\\n\", booked, 3 * 4);\n    return 0;\n}",
+        "output": "1 0 1 1 \n1 1 0 0 \n0 1 1 1 \nBooked: 8 of 12"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 215,
+      "lengthSec": 20,
+      "onScreen": "gcc ep45_seats.c -o ep45 then ./ep45",
+      "animation": "Grid prints; \"Booked: 8 of 12\" stamps in",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Compile and run. Three rows of four. Row zero now shows 1 0 1 1, because we booked column two. And booked: 8 of 12."
+    },
+    {
+      "id": 7,
+      "template": "memory-boxes",
+      "startSec": 235,
+      "lengthSec": 35,
+      "onScreen": "Matrix A + Matrix B = Sum, cell by cell",
+      "animation": "Matching cells light up together and their sums drop in; plink per cell",
+      "sfx": [],
+      "narration": "In maths class, a grid of numbers is called a matrix. Adding two matrices is easy: add the cells that sit in the same position. Top-left plus top-left, and so on. In C, that is the same nested loop, with sum r c equals a r c plus b r c. You will write this in today's challenge."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 270,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the 2D array go to the cinema alone? It already had plenty of rows with its friends."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 275,
+      "lengthSec": 60,
+      "onScreen": "Loop bounds swapped for m[2][3]",
+      "animation": "Grid prints sideways, third row is junk; alarm buzz",
+      "sfx": [],
+      "narration": "Today's bug. m is declared as two rows, three columns. But the loops say r less than three and c less than two. Rows and columns got swapped. GCC compiles it happily. The output is 1 2, then 4 5, and then a third line of random numbers. Your numbers will differ. The 3 and the 6 never print, and the third row does not exist, so C reads memory past the end of the array. The fix: the outer loop matches the first size, the inner loop matches the second. r less than two, c less than three."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 335,
+      "lengthSec": 35,
+      "onScreen": "Add two 2x3 matrices",
+      "animation": "Two grids with a plus sign; ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. Make two 2 by 3 matrices. a is 1 2 3, 4 5 6. b is 6 5 4, 3 2 1. Make a third matrix, sum, and fill it with a plus b, cell by cell, then print it as a grid. If you get all sevens, you did it right."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 370,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 46 Arrays and functions",
+      "animation": "Xecxec handing over a whole locker row; sign-off",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Next episode: passing arrays to functions, and why sizeof suddenly lies to you inside a function. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    int m[2][3] = {\n        {1, 2, 3},\n        {4, 5, 6}\n    };\n\n    for (int r = 0; r < 3; r++) {\n        for (int c = 0; c < 2; c++) {\n            printf(\"%d \", m[r][c]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+    "error": "No error from plain `gcc`. Wrong output (third line is random; on screen: \"your numbers will differ\"):\n\n1 2 \n4 5 \n895724288 243280087",
+    "fixed": "    for (int r = 0; r < 2; r++) {\n        for (int c = 0; c < 3; c++) {",
+    "why": "m[2][3] means 2 rows and 3 columns, so the outer (row) loop must use the first size and the inner (column) loop the second."
+  },
+  "pun": "Why did the 2D array go to the cinema alone? It already had plenty of rows with its friends.",
+  "challenge": "Add two 2x3 matrices a = {1 2 3, 4 5 6} and b = {6 5 4, 3 2 1} into sum and print it as a grid.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint main() {\n    int a[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    int b[2][3] = {{6, 5, 4}, {3, 2, 1}};\n    int sum[2][3];\n\n    for (int r = 0; r < 2; r++) {\n        for (int c = 0; c < 3; c++) {\n            sum[r][c] = a[r][c] + b[r][c];\n            printf(\"%d \", sum[r][c]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Your Cinema Seat Is a 2D Array",
+      "hook": "Seat map with one glowing seat: \"This is code.\"",
+      "script": "Every cinema seat map is a 2D array. Rows and columns. To book row A, seat 3, the app writes seats zero, two, equals one. Row first, column second, both from zero. Full episode on the channel.",
+      "onScreen": "seats[0][2] = 1",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Movie night, but make it C.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "2darray",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "2D Arrays in 30 Seconds",
+      "hook": "A grid unrolls into one long line.",
+      "script": "int seats three four: three rows, four columns, twelve boxes. Memory stores row zero, then row one, then row two, in one long line. To visit every cell, use two loops: the outer for rows, the inner for columns.",
+      "onScreen": "[ROW][COLUMN]",
+      "fromScenes": [
+        4,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Grids are just rows in a line.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "2darray",
+        "nestedloops"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "My Matrix Printed Sideways",
+      "hook": "Terminal: \"1 2 / 4 5 / 895724288 ...\". \"Where did 3 and 6 go?\"",
+      "script": "Where did 3 and 6 go? The matrix is two rows, three columns, but the loops ran three rows and two columns. So it skipped real values and read a row that does not exist. Outer loop, first size. Inner loop, second size.",
+      "onScreen": "m[2][3] → r < 2, c < 3",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "Rows and columns are not interchangeable.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "debugging"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Plenty of Rows",
+      "hook": "Xecxec alone in a cinema with popcorn.",
+      "script": "Why did the 2D array go to the cinema alone? It already had plenty of rows with its friends.",
+      "onScreen": "PLENTY OF ROWS WITH ITS FRIENDS",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Arrays have drama too.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "How Many Boxes?",
+      "hook": "\"int x[4][5]; How many ints? What is the last cell?\"",
+      "script": "int x four five. How many ints is that, and what is the last cell? Pause and guess. Twenty ints, four rows times five columns. The last cell is x three, four, because both indexes start at zero.",
+      "onScreen": "20 · x[3][4]",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 20,
+      "caption": "Two answers, one trap.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "2darray"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int seats[3][4] = {\n        {1, 0, 0, 1},\n        {1, 1, 0, 0},\n        {0, 1, 1, 1}\n    };\n    int booked = 0;\n\n    seats[0][2] = 1;\n\n    for (int r = 0; r < 3; r++) {\n        for (int c = 0; c < 4; c++) {\n            printf(\"%d \", seats[r][c]);\n            booked += seats[r][c];\n        }\n        printf(\"\\n\");\n    }\n    printf(\"Booked: %d of %d\\n\", booked, 3 * 4);\n    return 0;\n}",
+      "output": "1 0 1 1 \n1 1 0 0 \n0 1 1 1 \nBooked: 8 of 12",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "1 2 3 \n4 5 6 "
+  }
+}

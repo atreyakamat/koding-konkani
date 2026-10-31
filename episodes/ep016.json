@@ -1,0 +1,353 @@
+{
+  "ep": 16,
+  "title": "Relational & logical operators",
+  "module": 2,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "use ==, !=, <, >, <=, >= and know each gives 1 (true) or 0 (false)",
+    "combine conditions with &&, || and !",
+    "explain short-circuit evaluation",
+    "spot = written where == was meant"
+  ],
+  "youtube": {
+    "title": "True or False, No Maybe: == && || ! | C Programming EP 16",
+    "description": "In C, every comparison answers with a number: 1 for true, 0 for false. This episode covers all six relational operators and the three logical ones (AND, OR, NOT), shows short-circuiting, and catches the most famous bug in C: one equals sign instead of two. 0:00 True or false, no maybe · 0:20 1 means true, 0 means false · 1:00 The six comparisons · 2:20 AND, OR, NOT · 3:05 Code: can you board the bus? · 4:00 Short-circuiting · 4:34 Bug of the Day: = vs == · 5:24 Challenge · 6:09 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "True or false, no maybe"
+      },
+      {
+        "t": "0:20",
+        "label": "1 means true, 0 means false"
+      },
+      {
+        "t": "1:00",
+        "label": "The six comparisons"
+      },
+      {
+        "t": "2:20",
+        "label": "AND, OR, NOT"
+      },
+      {
+        "t": "3:05",
+        "label": "Code: can you board the bus?"
+      },
+      {
+        "t": "4:00",
+        "label": "Short-circuiting"
+      },
+      {
+        "t": "4:34",
+        "label": "Bug of the Day: = vs =="
+      },
+      {
+        "t": "5:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:09",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "relational operators in c",
+      "logical operators in c",
+      "== vs = in c",
+      "and or not in c",
+      "short circuit evaluation",
+      "true false in c",
+      "c operators",
+      "c programming for beginners",
+      "koding konkani",
+      "learn c"
+    ],
+    "thumbnail": {
+      "text": "= OR ==?",
+      "visual": "big text \"= OR ==?\" in apricot on cream; one equals sign in tomato with a cross, two equals signs in mint with a tick; Xecxec squinting between them.",
+      "pose": "Xecxec squinting between them"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Question cards \"Is it raining?\", \"Is the bus here?\", \"Maybe?\"",
+      "animation": "First two cards flip to 1 and 0 with a ding each; the \"Maybe?\" card gets stamped \"NOT IN C\" in tomato with a thud; Xecxec shakes his head, claw-click",
+      "sfx": [
+        "claw-click",
+        "ding",
+        "stamp",
+        "thud"
+      ],
+      "narration": "Is it raining? Yes or no. Is the bus here? Yes or no. Maybe? Not in C. In C, every question has exactly two answers. True or false. No maybe."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 16 · RELATIONAL & LOGICAL OPERATORS",
+      "animation": "Title stamps in on cream with whoosh + thud; apricot underline wipe",
+      "sfx": [
+        "stamp",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Relational and logical operators."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "A light switch: ON = 1 = true, OFF = 0 = false; six operator tiles: == != < > <= >=",
+      "animation": "Switch flips with a click sound and the bulb lights; tiles pop in with marimba notes; == tile gets a \"TWO equals\" label",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "First, how C says true and false. When you compare two things, C answers with a number. 1 means true. 0 means false. Like a light switch: on or off. Now the six comparison operators, also called relational operators. Double equals: is equal to. Exclamation equals: is not equal to. Less than. Greater than. Less than or equal to. Greater than or equal to. Notice the first one: equal to is written with two equals signs, not one. Remember that. It comes back later in this episode."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 80,
+      "onScreen": "rel.c lines 1–10 with tracker and mini terminal",
+      "animation": "[HL n] per line; [TRACK] boxes for tide and age; each result 1 or 0 drops into the terminal, 1s in mint with a ding, 0s in tomato with a soft thud",
+      "sfx": [
+        "ding",
+        "thud"
+      ],
+      "narration": "Let's try them. [HL 4] int tide equals 3, the tide level in metres at Calangute. [TRACK tide=3] [HL 5] int age equals 19. [TRACK age=19] [HL 7] tide double-equals 3: is tide equal to 3? Yes, so this prints 1. [HL 8] tide not-equal 3: is tide different from 3? No, so 0. [HL 9] age greater-than-or-equal 18: 19 is at least 18, so 1. [HL 10] age less-than 13: 19 is not less than 13, so 0. Every comparison becomes a 1 or a 0, and percent d prints it like any other int.",
+      "code": {
+        "file": "rel.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int tide = 3;\n    int age = 19;\n\n    printf(\"tide == 3  -> %d\\n\", tide == 3);\n    printf(\"tide != 3  -> %d\\n\", tide != 3);\n    printf(\"age >= 18  -> %d\\n\", age >= 18);\n    printf(\"age < 13   -> %d\\n\", age < 13);\n\n    int hasTicket = 1;\n    int busFull = 0;\n\n    printf(\"can board  -> %d\\n\", hasTicket && !busFull);\n    printf(\"weekend or holiday -> %d\\n\", 0 || 1);\n    printf(\"!hasTicket -> %d\\n\", !hasTicket);\n    return 0;\n}",
+        "output": "tide == 3  -> 1\ntide != 3  -> 0\nage >= 18  -> 1\nage < 13   -> 0\ncan board  -> 1\nweekend or holiday -> 1\n!hasTicket -> 0"
+      }
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 140,
+      "lengthSec": 45,
+      "onScreen": "Truth tables for && and",
+      "animation": "",
+      "sfx": [],
+      "narration": "Real questions often have more than one part. For that, C has three logical operators. Double ampersand means AND: true only when both sides are true. Double pipe, the two vertical lines, means OR: true when at least one side is true. And a single exclamation mark means NOT: it flips true to false and false to true. Look at the tables. For AND, only one box out of four is true: both yes. For OR, three boxes are true: only both no gives false."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 185,
+      "lengthSec": 55,
+      "onScreen": "rel.c lines 12–19: bus boarding with a small Kadamba-style bus illustration",
+      "animation": "[HL n] per line; [TRACK] boxes hasTicket and busFull; bus door opens with a hiss SFX when the result is 1",
+      "sfx": [],
+      "narration": "Now a bus question. [HL 12] int hasTicket equals 1, so yes, you have a ticket. [TRACK hasTicket=1] [HL 13] int busFull equals 0, so the bus is not full. [TRACK busFull=0] [HL 15] Can you board? hasTicket AND not busFull. Not busFull flips 0 into 1. So it's 1 AND 1, which gives 1. Door opens. [HL 16] Weekend or holiday? 0 OR 1. Only one side needs to be true, so 1. [HL 17] Not hasTicket: not 1 is 0. [HL 18] Return zero.",
+      "code": {
+        "file": "rel.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int tide = 3;\n    int age = 19;\n\n    printf(\"tide == 3  -> %d\\n\", tide == 3);\n    printf(\"tide != 3  -> %d\\n\", tide != 3);\n    printf(\"age >= 18  -> %d\\n\", age >= 18);\n    printf(\"age < 13   -> %d\\n\", age < 13);\n\n    int hasTicket = 1;\n    int busFull = 0;\n\n    printf(\"can board  -> %d\\n\", hasTicket && !busFull);\n    printf(\"weekend or holiday -> %d\\n\", 0 || 1);\n    printf(\"!hasTicket -> %d\\n\", !hasTicket);\n    return 0;\n}",
+        "output": "tide == 3  -> 1\ntide != 3  -> 0\nage >= 18  -> 1\nage < 13   -> 0\ncan board  -> 1\nweekend or holiday -> 1\n!hasTicket -> 0"
+      }
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 240,
+      "lengthSec": 30,
+      "onScreen": "sc.c: `(x != 0) && (10 / x > 1)`",
+      "animation": "[HL 5] left side turns tomato 0; right side greys out with a \"SKIPPED\" stamp and a whoosh; a \"divide by zero\" bomb icon fizzles out harmlessly",
+      "sfx": [
+        "stamp",
+        "whoosh"
+      ],
+      "narration": "One clever detail. [HL 4] Here x is 0. [HL 5] We ask: x is not 0, AND 10 divided by x is more than 1. Dividing by zero would crash the program. But it never happens. The left side, x not equal to 0, is already false. With AND, if the left side is false, the answer must be false, so C skips the right side completely. This is called short-circuiting. OR does the same in reverse: if the left side is already true, C skips the right side. [HL 6] So r is 0, and nothing crashes.",
+      "code": {
+        "file": "sc.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int x = 0;\n    int r = (x != 0) && (10 / x > 1);\n    printf(\"r = %d\\n\", r);\n    return 0;\n}",
+        "output": "r = 0"
+      }
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 270,
+      "lengthSec": 4,
+      "onScreen": "\"Why did = fail the exam? It copied the answer instead of checking it.\"",
+      "animation": "Card flips, rimshot; Xecxec covers his eyes",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the single equals sign fail the exam? It copied the answer instead of checking it."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 274,
+      "lengthSec": 50,
+      "onScreen": "marks.c using `marks = 100` instead of `marks == 100`; wrong output",
+      "animation": "Butter banner + siren blip; marks tracker box is overwritten from 20 to 100 with a splash SFX; output shown in tomato with a buzzer; second = slides in, output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "And here's the bug that pun was about. [HL 4] marks is 20. [TRACK marks=20] [HL 6] You want to ask: is marks equal to 100? But you type one equals sign. GCC gives no error and no warning here. The program prints: Is it 100? 100. And then: marks is now 100. [TRACK marks=100] One equals sign doesn't compare. It assigns. It puts 100 into marks, and the whole expression has the value 100. Your student just got full marks for free. Fix: two equals signs. Now it prints 0, false, and marks stays 20. Read it aloud as \"is equal to\" every time you write double equals."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 324,
+      "lengthSec": 45,
+      "onScreen": "\"Is age between 18 and 60?\" with a number line, 18 and 60 marked",
+      "animation": "Number line draws in; a marker slides along with a whirr; bracket region glows apricot",
+      "sfx": [],
+      "narration": "Your challenge: read an age with scanf, and print 1 if the age is between 18 and 60, including both, and 0 if not. You need two comparisons and one logical operator. Which one, AND or OR? Comment your line of code."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 369,
+      "lengthSec": 21,
+      "onScreen": "Next: EP 17 · Increment, decrement, assignment + subscribe",
+      "animation": "Next card slides up; Xecxec waves, claw-click; sign-off types in",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: plus plus, minus minus, and the drama between i plus plus and plus plus i. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    int marks = 20;\n\n    printf(\"Is it 100? %d\\n\", marks = 100);\n    printf(\"marks is now %d\\n\", marks);\n    return 0;\n}",
+    "error": "No compile error and no warning, even with -Wall. Wrong output:\n\nIs it 100? 100\nmarks is now 100",
+    "fixed": "#include <stdio.h>\n\nint main() {\n    int marks = 20;\n\n    printf(\"Is it 100? %d\\n\", marks == 100);\n    printf(\"marks is now %d\\n\", marks);\n    return 0;\n}",
+    "why": "= stores a value and evaluates to it, while == compares and evaluates to 1 or 0; inside an if condition (EP 20) GCC with -Wall at least warns \"suggest parentheses around assignment used as truth value\"."
+  },
+  "pun": "\"Why did the single equals sign fail the exam? It copied the answer instead of checking it.\"",
+  "challenge": "Read an age and print 1 if it is between 18 and 60 (both included), otherwise 0.",
+  "challengeAnswer": "shown at the start of EP 17. Use AND, because both conditions must be true.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "True or false, no maybe",
+      "hook": "\"In C, \"maybe\" doesn't exist.\"",
+      "script": "In C, maybe doesn't exist. Is it raining? 1 or 0. Is the bus here? 1 or 0. Every question in C has exactly two answers: 1 for true, 0 for false. Learn the operators that ask those questions in the full episode.",
+      "onScreen": "1 = TRUE · 0 = FALSE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "C has no maybe. Only 1 and 0.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingtips",
+        "computerscience"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "AND, OR, NOT in 30 seconds",
+      "hook": "\"Can you board the bus? C decides with two symbols.\"",
+      "script": "Can you board the bus? C decides with two symbols. Double ampersand is AND: both sides must be true. Double pipe is OR: at least one side must be true. Exclamation mark is NOT: it flips true and false. hasTicket AND not busFull: 1 AND not 0, which is 1 AND 1. True. Door opens.",
+      "onScreen": "&& AND · || OR · ! NOT",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 40,
+      "caption": "Logical operators explained with a Goa bus.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "codingtips",
+        "goa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "One = changed the marks",
+      "hook": "\"This code gave a student full marks for free.\"",
+      "script": "This code gave a student full marks for free. marks was 20. We wanted to ask: is marks equal to 100? But we typed one equals sign. One equals assigns. Now marks is 100. No error, no warning. Fix: two equals signs to compare.",
+      "onScreen": "= ASSIGNS · == COMPARES",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "The most famous one-character bug in C.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codingtips"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The copy-cat equals sign",
+      "hook": "\"Why did = fail the exam?\"",
+      "script": "Why did the single equals sign fail the exam? It copied the answer instead of checking it.",
+      "onScreen": "= COPIES · == CHECKS",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Xecxec can't look.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Does this crash?",
+      "hook": "\"x is 0. We divide by x. Does it crash?\"",
+      "script": "x is 0. This line divides 10 by x. Does the program crash? Comment yes or no. Answer: no. The left side, x not equal to 0, is false, so AND skips the right side completely. That's called short-circuiting.",
+      "onScreen": "(x != 0) && (10 / x > 1)",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 20,
+      "caption": "Crash or no crash? Comment before the answer.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "shortcircuit"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "rel.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int tide = 3;\n    int age = 19;\n\n    printf(\"tide == 3  -> %d\\n\", tide == 3);\n    printf(\"tide != 3  -> %d\\n\", tide != 3);\n    printf(\"age >= 18  -> %d\\n\", age >= 18);\n    printf(\"age < 13   -> %d\\n\", age < 13);\n\n    int hasTicket = 1;\n    int busFull = 0;\n\n    printf(\"can board  -> %d\\n\", hasTicket && !busFull);\n    printf(\"weekend or holiday -> %d\\n\", 0 || 1);\n    printf(\"!hasTicket -> %d\\n\", !hasTicket);\n    return 0;\n}",
+      "output": "tide == 3  -> 1\ntide != 3  -> 0\nage >= 18  -> 1\nage < 13   -> 0\ncan board  -> 1\nweekend or holiday -> 1\n!hasTicket -> 0",
+      "lang": "c"
+    },
+    {
+      "file": "sc.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int x = 0;\n    int r = (x != 0) && (10 / x > 1);\n    printf(\"r = %d\\n\", r);\n    return 0;\n}",
+      "output": "r = 0",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Is it 100? 0\nmarks is now 20"
+  }
+}

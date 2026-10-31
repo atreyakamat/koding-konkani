@@ -1,0 +1,315 @@
+{
+  "ep": 2,
+  "title": "What is C, really?",
+  "module": 0,
+  "lengthSec": 360,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "say who made C, when and why",
+    "explain what a compiler does using the words source code and machine code",
+    "tell the difference between compiled and interpreted languages",
+    "name real places where C runs today"
+  ],
+  "youtube": {
+    "title": "Your Phone Runs 50-Year-Old Code | C Programming EP 02",
+    "description": "C was created in 1972, and it still runs inside your phone, your laptop and even your washing machine. In this episode you learn where C came from, what a compiler actually does, and why compiled C code is so fast. No code to type yet; just the big picture before we install everything in EP 03. 0:00 C is inside everything · 0:20 Born at Bell Labs, 1972 · 1:15 What a compiler does · 2:35 Compiled vs interpreted · 3:29 Where C runs today · 4:24 Myth: \"C is dead\" · 5:04 Challenge · 5:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "C is inside everything"
+      },
+      {
+        "t": "0:20",
+        "label": "Born at Bell Labs, 1972"
+      },
+      {
+        "t": "1:15",
+        "label": "What a compiler does"
+      },
+      {
+        "t": "2:35",
+        "label": "Compiled vs interpreted"
+      },
+      {
+        "t": "3:29",
+        "label": "Where C runs today"
+      },
+      {
+        "t": "4:24",
+        "label": "Myth: \"C is dead\""
+      },
+      {
+        "t": "5:04",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "what is c programming",
+      "history of c",
+      "dennis ritchie",
+      "compiler explained",
+      "compiled vs interpreted",
+      "c programming for beginners",
+      "koding konkani",
+      "learn c",
+      "how code runs",
+      "machine code"
+    ],
+    "thumbnail": {
+      "text": "50 YEARS OLD",
+      "visual": "big text \"50 YEARS OLD\" in tomato on peach; a phone with a tomato \"C INSIDE\" stamp; Xecxec peeking from behind the phone with wide eyes.",
+      "pose": "Xecxec peeking from behind the phone with wide eyes"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "Phone, laptop, car icons each stamped \"C INSIDE\"",
+      "animation": "Icons drop in one by one with a pop; tomato stamp thuds onto each; Xecxec gasps (eyes widen, claw-click)",
+      "sfx": [
+        "claw-click",
+        "pop",
+        "stamp",
+        "thud"
+      ],
+      "narration": "Your phone. Your laptop. Even the small computer inside a car engine. Under the hood, all of them run code written in a language born more than fifty years ago. That language is C."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 02 · WHAT IS C, REALLY?",
+      "animation": "Title stamps in with whoosh + thud; tomato underline wipe",
+      "sfx": [
+        "stamp",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "What is C, really?"
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 55,
+      "onScreen": "Timeline: 1969 Unix begins · 1972 C at Bell Labs (Dennis Ritchie) · 1978 \"The C Programming Language\" book · today",
+      "animation": "Timeline line draws left to right with a pencil SFX; year markers pop; an \"assembly\" card full of cryptic lines shakes and gets crossed out in tomato",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "In 1972, at Bell Labs in America, a programmer named Dennis Ritchie created C. He and Ken Thompson were building an operating system called Unix. Before C, that kind of software was written in assembly language: short, cryptic instructions that were painful to read and different for every type of machine. C was a new idea. Close enough to the hardware to be fast, but readable enough for humans. In 1978 Ritchie and Brian Kernighan wrote a small book about it, and C spread everywhere. That mix of speed and readability is why it's still here today."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 75,
+      "lengthSec": 80,
+      "onScreen": "Pipeline: hello.c → compiler → hello.exe (machine code) → CPU",
+      "animation": "hello.c card slides into a compiler \"machine\" with gear-whir SFX; out comes a strip of 1s and 0s; strip feeds into a CPU chip that lights up mint with a ding",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Here's the key idea of this whole episode. Computers don't understand C. A processor, the CPU, only understands machine code: patterns of ones and zeroes. So how does your C code run? You write it in a text file, like hello dot c. That file is called source code. Then a program called a compiler reads the whole file and translates it into machine code. On Windows you get a file like hello dot exe, which the CPU can run directly. Translate once, then run it as many times as you like, without the compiler. The compiler we will use is called GCC. We install it next episode."
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 155,
+      "lengthSec": 50,
+      "onScreen": "Split screen: compiled (chef reads whole recipe once, then cooks) vs interpreted (live translator, sentence by sentence)",
+      "animation": "Left side: recipe card flips once, chef cooks fast with sizzle SFX; right side: speech bubbles appear one at a time with a small delay and a tick each",
+      "sfx": [],
+      "narration": "Some languages work differently. Python normally uses an interpreter. Think of a live translator at a meeting, translating every sentence while you speak. It works, but there's always a small delay. C is like a chef who translates the whole recipe once, writes it down in his own language, and then cooks fast every single time. That is a big reason C programs run so quickly."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 205,
+      "lengthSec": 4,
+      "onScreen": "\"Why was the C program so calm? It had already been compiled.\"",
+      "animation": "Card flips in, rimshot; Xecxec lies in a beach chair",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why was the C program so calm? Because it had already been compiled. Nothing left to translate. Total beach mode."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 209,
+      "lengthSec": 55,
+      "onScreen": "\"Where C runs today\": 5 tiles: operating systems, databases, game engines, microcontrollers, other languages",
+      "animation": "Tiles pop in a 3+2 grid with marimba notes; each tile icon does a small idle wiggle",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "So where does C run today? The core of operating systems like Linux, and large parts of Windows and Android. Databases, like SQLite, which is inside almost every phone. Parts of game engines, where every millisecond counts. Microcontrollers, the tiny computers in washing machines, fans and remote controls. And the interpreters of other languages, including Python. Learn C, and you can read the code that runs the world."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 264,
+      "lengthSec": 40,
+      "onScreen": "Myth-buster card: \"C is old, so it's useless\"",
+      "animation": "Butter \"BUG OF THE DAY\" banner + siren blip; myth text in tomato gets a big \"MYTH\" stamp; three fact chips slide in mint",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Today's bug isn't in code. It's a myth. \"C is old, so it's useless.\" Wrong. Old means battle-tested. C is still used every day, in new projects and in huge old ones. Languages like C plus plus, Java and JavaScript borrowed their curly braces and semicolons from C. And C still sits at the bottom of almost everything. Old isn't dead. Ask any Goan grandmother's fish curry recipe."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 304,
+      "lengthSec": 40,
+      "onScreen": "\"Name 3 things near you that run C\" with a small home illustration (fan, TV, router)",
+      "animation": "Objects in the room glow one at a time with a soft chime; question marks float above them",
+      "sfx": [
+        "chime"
+      ],
+      "narration": "Your challenge: look around your room and name three things that probably run C code. Maybe the router, the TV, or the fan's remote. Put your three in the comments."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 344,
+      "lengthSec": 16,
+      "onScreen": "Next: EP 03 · Setting up VS Code + GCC + subscribe",
+      "animation": "Next card slides up; Xecxec waves, claw-click; sign-off types in",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode, we install everything you need to write C on your own Windows computer. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "\"C is from 1972, so it's useless today.\"",
+    "error": "\"C is from 1972, so it's useless today.\"\n\n1. Linux, SQLite and Python's main interpreter are written in C.\n2. Microcontrollers in everyday devices are mostly programmed in C.\n3. C++, Java and JavaScript borrowed C's syntax: braces, semicolons, operators.",
+    "fixed": "Fixed idea: \"C is old, so it's proven, and learning it makes every later language easier.\"",
+    "why": "a language's age doesn't decide its usefulness; what still runs on it does."
+  },
+  "pun": "\"Why was the C program so calm? It had already been compiled.\"",
+  "challenge": "Name three things around you that probably run C code.",
+  "challengeAnswer": "Good answers: Wi-Fi router, smart TV, washing machine, microwave, car, TV remote, phone. Pinned comment: \"Xecxec says: the Wi-Fi router, the ceiling fan remote, and the billing machine at the fish market.\"",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Your phone runs on C",
+      "hook": "\"Your phone is running 50-year-old code.\"",
+      "script": "Your phone is running 50-year-old code. So is your laptop. So is the small computer in a car engine. The language is C, created in 1972, and it's still everywhere. Want to know why? Full episode on the channel.",
+      "onScreen": "YOUR PHONE RUNS ON C",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "A language from 1972 is inside the phone you're holding.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "techfacts",
+        "computerscience"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "What a compiler does",
+      "hook": "\"Computers don't understand C. Here's the trick.\"",
+      "script": "Computers don't understand C. Here's the trick. A CPU only understands machine code: ones and zeroes. So you write C in a text file, called source code. A program called a compiler translates the whole file into machine code, an exe file the CPU runs directly. Translate once, run forever. That's why C is fast.",
+      "onScreen": "C → COMPILER → 1s AND 0s",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 40,
+      "caption": "What a compiler actually does, in 40 seconds.",
+      "hashtags": [
+        "cprogramming",
+        "compiler",
+        "learntocode",
+        "kodingkonkani",
+        "computerscience"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Is C dead?",
+      "hook": "\"People say C is dead. They're wrong.\"",
+      "script": "People say C is dead. They're wrong. Linux is written in C. SQLite, inside almost every phone, is written in C. Python's main interpreter is written in C. Old doesn't mean dead. Old means battle-tested.",
+      "onScreen": "C IS DEAD? MYTH.",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 25,
+      "caption": "Old isn't dead. Old is battle-tested.",
+      "hashtags": [
+        "cprogramming",
+        "programming",
+        "kodingkonkani",
+        "learntocode",
+        "mythbusting"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Calm compiled code",
+      "hook": "\"Why is C code always so calm?\"",
+      "script": "Why is C code always so calm? Because it's already been compiled. Nothing left to translate. Total beach mode.",
+      "onScreen": "ALREADY COMPILED. CHILL.",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 12,
+      "caption": "Xecxec in beach mode.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "goa"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Chef or translator?",
+      "hook": "\"Python or C: which one is the chef?\"",
+      "script": "Python or C: which one is the chef? One reads the whole recipe once, translates it, then cooks fast every time. The other translates sentence by sentence while it works. Comment chef or translator for C. Answer: C is the chef. It's compiled once, then runs fast.",
+      "onScreen": "CHEF OR TRANSLATOR?",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 25,
+      "caption": "Compiled vs interpreted, explained with a kitchen. Which one is C?",
+      "hashtags": [
+        "cprogramming",
+        "python",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "hello.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}",
+      "output": "Hello, World!",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "text",
+    "fixedHasFullProgram": true
+  }
+}

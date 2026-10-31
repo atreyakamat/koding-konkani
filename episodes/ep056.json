@@ -1,0 +1,334 @@
+{
+  "ep": 56,
+  "title": "Pointer Arithmetic",
+  "module": 8,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "predict how far `p++` and `p + 2` move for an `int *` and a `char *`",
+    "subtract two pointers to count the elements between them",
+    "walk an array with a pointer instead of an index",
+    "explain why arithmetic on a `void *` is not allowed in standard C"
+  ],
+  "youtube": {
+    "title": "What p++ Really Does to a Pointer | C Programming EP 56",
+    "description": "Adding 1 to a pointer does not add 1 to the address. It moves to the next element, and the step size depends on the type. We walk down a street of memory boxes, one int at a time, and see exactly how far each step goes. 0:00 Walking down the street · 0:20 Title · 0:25 One step = one element · 1:30 Different types, different steps · 2:20 Code, line by line · 3:50 Running it · 4:20 Pun · 4:25 Rules: what you can and cannot do · 5:10 Bug of the Day: arithmetic on void* · 6:10 Challenge · 6:40 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Walking down the street"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "One step = one element"
+      },
+      {
+        "t": "1:30",
+        "label": "Different types, different steps"
+      },
+      {
+        "t": "2:20",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "3:50",
+        "label": "Running it"
+      },
+      {
+        "t": "4:20",
+        "label": "Pun"
+      },
+      {
+        "t": "4:25",
+        "label": "Rules: what you can and cannot do"
+      },
+      {
+        "t": "5:10",
+        "label": "Bug of the Day: arithmetic on void*"
+      },
+      {
+        "t": "6:10",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "pointer arithmetic in c",
+      "p++ in c",
+      "pointer increment",
+      "pointer subtraction",
+      "void pointer arithmetic",
+      "pointers and arrays",
+      "c pointers tutorial",
+      "learn c",
+      "koding konkani",
+      "c programming for beginners",
+      "c programming india",
+      "engineering c"
+    ],
+    "thumbnail": {
+      "text": "p++ = +4 BYTES?",
+      "visual": "big text \"p++ = +4 BYTES?\"; a row of four lilac boxes with an arrow jumping from the first to the second, a curved \"+4\" above the jump; Xecxec walking with footprints; lilac background, dark blue text block",
+      "pose": "Xecxec walking with footprints"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A Goan street of houses where each house is 4 plots wide; Xecxec walks \"one house\" and covers 4 plots",
+      "animation": "Camera follows Xecxec; footstep per plot; ding at each gate",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Imagine a street where every house is four plots wide. If I say \"walk to the next house\", you do not walk one plot. You walk four. Pointers work exactly like this. When you add 1 to a pointer, it walks to the next house, not the next plot."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 56 · POINTER ARITHMETIC",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode fifty-six. Pointer arithmetic."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 65,
+      "onScreen": "`marks[4]` = 72, 85, 91, 64 at addresses 1000, 1004, 1008, 1012; byte ruler under them; pointer `p` with arrow to 1000",
+      "animation": "Boxes drop in; byte ruler ticks; `p` arrow jumps one box at a time on `p++`; a \"+4\" arc appears with each jump",
+      "sfx": [],
+      "narration": "Here is an array of four marks: 72, 85, 91 and 64. Each one is an int, so each one takes four bytes. Let's say the array starts at address 1000. Then 72 is at 1000, 85 is at 1004, 91 is at 1008, and 64 is at 1012. Under the boxes you can see the byte ruler, with every single byte marked. Now we make a pointer p that points to the first box, at 1000. What happens if we write p plus plus? You might think the address becomes 1001. But look. The arrow jumps a whole box, to 1004. Because p is an int pointer, C knows that one step means one int, which is four bytes. So p plus plus adds four to the address. Now star p is 85. Now p plus 2. That means two more ints, so eight more bytes: 1004 plus 8 is 1012. Star p is now 64. The rule is simple. Adding n to a pointer moves it n elements, not n bytes."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 90,
+      "lengthSec": 50,
+      "onScreen": "Second row: `char word[3]` = G, O, A at 2000, 2001, 2002, with pointer `c`; side table: char +1, int +4, double +8",
+      "animation": "`c` hops in tiny 1-byte steps; the side table fills row by row",
+      "sfx": [],
+      "narration": "The step size depends on the type. Here is a char array with the letters G, O, A. Each char is one byte. So a char pointer moves one byte per step. 2000, 2001, 2002. An int pointer moves four. A double pointer moves eight. The pointer always moves by the size of the thing it points to. That is why the type in int star matters so much. It tells C how big each step is."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 140,
+      "lengthSec": 90,
+      "onScreen": "`arith.c` (22 lines); tracker: p (as \"points to marks[i]\"), *p, c",
+      "animation": "Butter highlights; corner diagram arrow moves in sync with each line",
+      "sfx": [],
+      "narration": "Here is the program. [HL 4] Line 4 creates the marks array. [HL 5] Line 5: p points to marks of zero, the first box. [TRACK p=marks[0]] [HL 7] Line 7 prints where p points and what is there: 72. [TRACK *p=72] [HL 8] Line 8: p plus plus. The arrow jumps one int. [TRACK p=marks[1]] [TRACK *p=85] [HL 9] Line 9 prints the new address and 85. [HL 10] Line 10: p equals p plus 2. Two more ints. [TRACK p=marks[3]] [TRACK *p=64] [HL 11] Line 11 prints the address and 64. [HL 13] Line 13 makes a second pointer called first, pointing to the start. [HL 14] Line 14 subtracts the pointers: p minus first. You might expect 12, because the addresses are 12 bytes apart. But pointer subtraction also counts in elements, so the answer is 3. The format code for this is percent t d. [HL 16] Line 16 makes a char array with G, O, A. [HL 17] Line 17: c points to it. Notice we wrote just word, without ampersand and without square brackets. An array name already gives the address of its first element. We will explore that properly next episode. [TRACK c=word[0]] [HL 18] Line 18 prints c's address. [HL 19] Line 19: c plus plus. [TRACK c=word[1]] [HL 20] Line 20 prints the new address, which is only one byte further. [HL 21] Return zero.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int marks[4] = {72, 85, 91, 64};\n    int *p = &marks[0];\n\n    printf(\"p     points to %p, value %d\\n\", (void *)p, *p);\n    p++;\n    printf(\"p++   points to %p, value %d\\n\", (void *)p, *p);\n    p = p + 2;\n    printf(\"p + 2 points to %p, value %d\\n\", (void *)p, *p);\n\n    int *first = &marks[0];\n    printf(\"Distance: %td elements\\n\", p - first);\n\n    char word[3] = {'G', 'O', 'A'};\n    char *c = word;\n    printf(\"c   at %p\\n\", (void *)c);\n    c++;\n    printf(\"c++ at %p (moved 1 byte)\\n\", (void *)c);\n    return 0;\n}",
+        "output": "p     points to 0000009F8E9FFA80, value 72\np++   points to 0000009F8E9FFA84, value 85\np + 2 points to 0000009F8E9FFA8C, value 64\nDistance: 3 elements\nc   at 0000009F8E9FFA7D\nc++ at 0000009F8E9FFA7E (moved 1 byte)"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 230,
+      "lengthSec": 30,
+      "onScreen": "Compile and run; sticky note \"your addresses will differ, the gaps will not\"",
+      "animation": "Output prints; the last two hex digits of each address glow, with \"+4\" and \"+8\" tags between them",
+      "sfx": [],
+      "narration": "Compile and run. Look only at the last two digits of each address. From the first line to the second, the address grows by 4. From the second to the third, by 8. Remember, these are hexadecimal: 80, 84, 8C. 8C is 140 in decimal, and 84 is 132, so the gap is really 8. The distance prints as 3 elements. And the char pointer moves by just 1. Your full addresses will differ, but these gaps will be the same on your machine."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 5,
+      "onScreen": "\"My pointer joined a gym. Now it does p++ every morning.\"",
+      "animation": "Card flips; Xecxec lifts a tiny dumbbell; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My pointer joined a gym. Now it does p plus plus every morning."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 265,
+      "lengthSec": 45,
+      "onScreen": "Two columns: Allowed (p + n, p - n, p++, p--, p2 - p1, p1 < p2 in the same array) and Not allowed (p1 + p2, p * 2, going past the end)",
+      "animation": "Mint ticks pop next to allowed items; tomato crosses next to the others",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let's list what is allowed. You can add a whole number to a pointer, or subtract one. You can use plus plus and minus minus. You can subtract two pointers, if they point into the same array, and you get the number of elements between them. You can compare two pointers into the same array with less than or greater than. But you cannot add two pointers together. Address plus address means nothing, like adding two house numbers. You cannot multiply a pointer. And you must not walk past the end of the array and read there. C will not stop you, but you will read garbage or crash."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 310,
+      "lengthSec": 60,
+      "onScreen": "`void *v = marks; v++;` with a big garbage number output",
+      "animation": "Arrow moves only 1 byte, landing in the middle of a box; box splits in half; buzzer; fixed `int *v` slides in",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Today's bug: arithmetic on a void pointer. A void pointer is a general pointer that does not say what type it points to. We met it in EP 52 with percent p. Here, someone writes void star v equals marks, then v plus plus, and then reads it as an int. In standard C, this is not allowed, because C does not know how big a step should be. GCC allows it as an extension and treats the step as one byte, and with the default settings it does not even warn. So v moves only one byte, into the middle of the first int. Reading there gives a nonsense number, mixing bytes from 72 and 85. If you add the flag dash W pointer dash arith, GCC tells you: wrong type argument to increment. The fix: use a pointer of the real type, int star. Then plus plus moves one whole int, and you get 85."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 370,
+      "lengthSec": 30,
+      "onScreen": "\"Walk an array with p++\" task card",
+      "animation": "Arrow walks along 5 boxes, printing each value",
+      "sfx": [],
+      "narration": "Your challenge. Make an array of five ints: 3, 1, 4, 1, 5. Print all five values with a for loop, but do not use square brackets, and do not use an index i. Use only a pointer and p plus plus. Hint: the loop can stop when p reaches a plus 5. Pause and try."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 400,
+      "lengthSec": 20,
+      "onScreen": "\"Next: EP 57 · Pointers & arrays — the locker row's first key\"",
+      "animation": "A row of lockers; a key glows on the first one; sign-off",
+      "sfx": [],
+      "narration": "Now you know that pointers walk in steps the size of their type. Next episode, we see the big secret: an array name is already a pointer to its first element, almost. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int marks[4] = {72, 85, 91, 64};\n    void *v = marks;\n    v++;\n    printf(\"%d\\n\", *(int *)v);\n    return 0;\n}",
+    "error": "With plain `gcc -Wall bug.c`, GCC 13 gives no warning (void pointer arithmetic is a GCC extension). The program prints a nonsense number; on Windows and Linux PCs (little-endian) it is:\n\n1426063360\n\nWith `gcc -Wall -Wpointer-arith bug.c` (or `-Wpedantic`), GCC warns:\n\nbug.c: In function 'main':\nbug.c:6:6: warning: wrong type argument to increment [-Wpointer-arith]\n    6 |     v++;\n      |      ^~",
+    "fixed": "    int *v = marks;\n    v++;\n    printf(\"%d\\n\", *v);   /* prints 85 */",
+    "why": "a `void *` has no element size, so standard C forbids stepping it; GCC steps one byte, landing in the middle of an int."
+  },
+  "pun": "\"My pointer joined a gym. Now it does p++ every morning.\"",
+  "challenge": "Print all values of `int a[5] = {3, 1, 4, 1, 5};` using only a pointer and `p++` — no square brackets, no index.",
+  "challengeAnswer": "(worked example)\nint a[5] = {3, 1, 4, 1, 5};\nfor (int *p = a; p < a + 5; p++) {\n    printf(\"%d \", *p);\n}\nprintf(\"\\n\");   /* 3 1 4 1 5 */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "p++ does not add 1",
+      "hook": "Address 1000, then `p++`, then 1004: \"Wait, plus FOUR?\"",
+      "script": "p points to an int at address 1000. We do p plus plus. The new address is not 1001. It is 1004. Because an int is four bytes, and a pointer always steps one whole element. One house, not one plot. That is pointer arithmetic.",
+      "onScreen": "p++ = NEXT ELEMENT",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Pointers walk in houses, not plots.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "learntocode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Pointer arithmetic in 30 seconds",
+      "hook": "Three arrows hopping at three speeds: char, int, double.",
+      "script": "Add 1 to a char pointer, it moves 1 byte. To an int pointer, 4 bytes. To a double pointer, 8 bytes. The pointer always moves by the size of its type. And subtracting two pointers gives elements, not bytes. 12 bytes apart for ints means 3 elements.",
+      "onScreen": "STEP = sizeof(TYPE)",
+      "fromScenes": [
+        3,
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Save this for your viva.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "codingtips",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The void pointer trap",
+      "hook": "Output `1426063360`: \"Where did this come from?\"",
+      "script": "void star v points to an int array. v plus plus. Then read it as an int. You get one billion four hundred million. Why? A void pointer has no size, so GCC moves just one byte, into the middle of an int. Standard C does not even allow this. Use a real type like int star.",
+      "onScreen": "NO MATHS ON void*",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Half an int is not an int.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "pointers",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pointer gym",
+      "hook": "Xecxec lifting a dumbbell shaped like an arrow.",
+      "script": "My pointer joined a gym. Now it does p plus plus every morning.",
+      "onScreen": "p++ EVERY MORNING",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Gains: 4 bytes per rep.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: what does p - first give?",
+      "hook": "Two arrows on an int array, 12 bytes apart: \"12 or 3?\"",
+      "script": "Two int pointers into the same array. Their addresses are 12 bytes apart. What does p minus first print? 12, or 3? Answer: 3. Pointer subtraction counts elements. Now try the challenge: print an array using only p plus plus. Comment your loop.",
+      "onScreen": "12 OR 3?",
+      "fromScenes": [
+        5,
+        10
+      ],
+      "lengthSec": 25,
+      "caption": "Did you say 3?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "pointers",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int marks[4] = {72, 85, 91, 64};\n    int *p = &marks[0];\n\n    printf(\"p     points to %p, value %d\\n\", (void *)p, *p);\n    p++;\n    printf(\"p++   points to %p, value %d\\n\", (void *)p, *p);\n    p = p + 2;\n    printf(\"p + 2 points to %p, value %d\\n\", (void *)p, *p);\n\n    int *first = &marks[0];\n    printf(\"Distance: %td elements\\n\", p - first);\n\n    char word[3] = {'G', 'O', 'A'};\n    char *c = word;\n    printf(\"c   at %p\\n\", (void *)c);\n    c++;\n    printf(\"c++ at %p (moved 1 byte)\\n\", (void *)c);\n    return 0;\n}",
+      "output": "p     points to 0000009F8E9FFA80, value 72\np++   points to 0000009F8E9FFA84, value 85\np + 2 points to 0000009F8E9FFA8C, value 64\nDistance: 3 elements\nc   at 0000009F8E9FFA7D\nc++ at 0000009F8E9FFA7E (moved 1 byte)",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "ep": 3,
+  "title": "Setting up: VS Code + GCC on Windows",
+  "module": 0,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "install GCC through MSYS2 (UCRT64) on Windows",
+    "add C:\\msys64\\ucrt64\\bin to PATH and explain what PATH is",
+    "install VS Code with the C/C++ extension",
+    "prove the setup works with gcc --version and fix \"gcc is not recognized\""
+  ],
+  "youtube": {
+    "title": "Install GCC + VS Code on Windows (Fix PATH) | C EP 03",
+    "description": "Set up a real C compiler on Windows in about seven minutes: MSYS2, GCC (UCRT64), the PATH variable and VS Code. We also fix the most common setup error, \"'gcc' is not recognized\". On Mac or Linux? Mac: run xcode-select --install in Terminal. Ubuntu/Debian: sudo apt install build-essential. Then skip to 4:34 for VS Code. 0:00 'gcc' is not recognized · 0:20 What we install · 1:00 Install MSYS2 · 2:30 Install GCC with pacman · 3:20 Add GCC to PATH · 4:34 Install VS Code · 5:24 Test with gcc --version · 5:54 Bug of the Day · 6:29 Challenge · 6:45 Next episode",
+    "chapters": [
+      {
+        "t": "4:34",
+        "label": "for VS Code. 0:00 'gcc' is not recognized"
+      },
+      {
+        "t": "0:20",
+        "label": "What we install"
+      },
+      {
+        "t": "1:00",
+        "label": "Install MSYS2"
+      },
+      {
+        "t": "2:30",
+        "label": "Install GCC with pacman"
+      },
+      {
+        "t": "3:20",
+        "label": "Add GCC to PATH"
+      },
+      {
+        "t": "4:34",
+        "label": "Install VS Code"
+      },
+      {
+        "t": "5:24",
+        "label": "Test with gcc --version"
+      },
+      {
+        "t": "5:54",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:29",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "install gcc windows",
+      "msys2 gcc",
+      "vs code c setup",
+      "gcc is not recognized",
+      "add gcc to path",
+      "c programming setup",
+      "mingw ucrt64",
+      "koding konkani",
+      "c for beginners",
+      "windows c compiler"
+    ],
+    "thumbnail": {
+      "text": "GCC NOT FOUND?",
+      "visual": "big text \"GCC NOT FOUND?\" in tomato on peach; a dark-blue terminal card with the red error line; Xecxec holding a wrench, one claw raised in triumph.",
+      "pose": "Xecxec holding a wrench, one claw raised in triumph"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "`gcc --version` typed; reply \"'gcc' is not recognized...\" in tomato",
+      "animation": "Key clicks as command types; error appears with a buzzer; Xecxec facepalms with a claw-clack",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "You type gcc, press Enter, and Windows says it has never heard of it. Classic. By the end of this episode, that will never happen to you again."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 15,
+      "lengthSec": 5,
+      "onScreen": "EP 03 · SETTING UP",
+      "animation": "Title stamps in, whoosh + thud; a tiny wrench icon spins once",
+      "sfx": [
+        "stamp",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Setting up."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "Two boxes: \"Compiler: GCC (via MSYS2)\" and \"Editor: VS Code\"; price tag \"₹0\" on both",
+      "animation": "Boxes slide in from left and right; \"₹0\" tags swing in with a cash-register ding",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "We need two things. First, a compiler, to turn C into a program. Remember EP 02: the compiler is the chef who translates the recipe. We'll use GCC, installed through a free tool called MSYS2. Second, an editor, to write code comfortably. We'll use VS Code. Both are completely free. Zero rupees."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 60,
+      "lengthSec": 90,
+      "onScreen": "Mock-ups: msys2.org download page → installer → folder C:\\msys64 → Finish → UCRT64 terminal",
+      "animation": "Mock browser and installer windows slide in one after another; mouse cursor clicks Next with click SFX; progress bar fills with a rising tone",
+      "sfx": [],
+      "narration": "Open your browser and go to msys2 dot org. Download the installer and run it. Keep the default folder, C colon, msys64. Don't change it, because we'll need this exact path later. Click Next until it finishes, and leave the box ticked that says \"Run MSYS2 now\". A terminal window opens. Check its title bar says UCRT64. That's the MSYS2 terminal we'll use for installing."
+    },
+    {
+      "id": 5,
+      "template": "terminal",
+      "startSec": 150,
+      "lengthSec": 50,
+      "onScreen": "`pacman -S mingw-w64-ucrt-x86_64-gcc`, then \"Proceed with installation? [Y/n]\" and download bars",
+      "animation": "Command types with key clicks; Y pressed with a bigger click; progress bars fill with soft ticks; \"app store\" icon floats beside pacman",
+      "sfx": [],
+      "narration": "In that terminal, type this command carefully: pacman, space, dash, capital S, space, mingw dash w64 dash ucrt dash x86 underscore 64 dash gcc. Press Enter. It asks, proceed with installation? Type Y and press Enter. Pacman is a package manager: think of it as an app store for the terminal. It downloads GCC and everything GCC needs. Wait until the progress bars finish."
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 200,
+      "lengthSec": 70,
+      "onScreen": "Windows mock-ups: Edit the system environment variables → Environment Variables → Path → Edit → New → `C:\\msys64\\ucrt64\\bin`",
+      "animation": "Each window zooms in from the previous button; the new path row highlights butter; OK buttons click in sequence with three clicks",
+      "sfx": [],
+      "narration": "Now we tell Windows where GCC lives. Press the Windows key and search for \"Edit the system environment variables\". Open it and click Environment Variables. Under your user variables, select Path and click Edit. Click New, and type: C colon, backslash, msys64, backslash, ucrt64, backslash, bin. Then click OK on every window, all three. So what is this list? It's called PATH. When you type a command like gcc, Windows searches every folder in this list, in order, looking for a program with that name. If GCC's folder isn't on the list, Windows simply doesn't find it. It's like telling the bus conductor your stop. No stop, no bus."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 270,
+      "lengthSec": 4,
+      "onScreen": "\"Why did the compiler get lost? Nobody gave it a PATH.\"",
+      "animation": "Card flips in, rimshot; Xecxec holds a tiny map upside down",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the compiler get lost? Nobody gave it a PATH."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 274,
+      "lengthSec": 50,
+      "onScreen": "Mock-ups: code.visualstudio.com → install → Extensions panel → search \"C/C++\" → Install (Microsoft)",
+      "animation": "Cursor moves with whoosh; Install button turns mint with a ding",
+      "sfx": [
+        "ding",
+        "whoosh"
+      ],
+      "narration": "Next, go to code dot visualstudio dot com and install VS Code. Keep the default options. Open it, click the Extensions icon on the left, the one with four squares, and search for C slash C plus plus. Install the one made by Microsoft. This gives you colours for your code, suggestions while you type, and error hints."
+    },
+    {
+      "id": 9,
+      "template": "terminal",
+      "startSec": 324,
+      "lengthSec": 30,
+      "onScreen": "New terminal: `gcc --version` prints a version line in mint",
+      "animation": "Old terminal window closes with a swoosh, new one opens; version line types in; confetti burst + party horn; Xecxec dances",
+      "sfx": [],
+      "narration": "Moment of truth. Open a brand-new terminal. In VS Code, that's Terminal, New Terminal. Type gcc, space, dash dash version, and press Enter. If you see a line starting with gcc and a version number, you're ready. Your number may be different from ours, and that's fine. Shell yeah!"
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 354,
+      "lengthSec": 35,
+      "onScreen": "Two wrong PATH entries vs the right one; \"close and reopen\" arrow",
+      "animation": "Butter banner + siren blip; wrong rows shake with buzzer and get tomato crosses; correct row glows mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "If it still says gcc is not recognized, check two things. First, the PATH entry must be the bin folder exactly. Not C colon msys64 ucrt64 without bin. Not msys 6 4 with a typo. It must end in backslash bin, because that's the folder where gcc dot exe lives. Second, close and reopen your terminal, and VS Code too. A terminal reads PATH only when it starts, so an old window doesn't see your new entry."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 389,
+      "lengthSec": 16,
+      "onScreen": "\"Run gcc --version. Comment your version number.\"",
+      "animation": "Comment-bubble icon bounces; pencil scribble SFX",
+      "sfx": [],
+      "narration": "Your challenge: run gcc dash dash version and comment the version number you got. Let's see who has the newest one."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 405,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 04 · Hello, World! + subscribe",
+      "animation": "Next card slides up; Xecxec waves, claw-click; sign-off types in",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode, you write and run your first real C program. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "C:\\msys64\\ucrt64\nC:\\msys46\\ucrt64\\bin",
+    "error": "C:\\msys64\\ucrt64\nC:\\msys46\\ucrt64\\bin\n\n'gcc' is not recognized as an internal or external command,\noperable program or batch file.\n\ngcc : The term 'gcc' is not recognized as the name of a cmdlet, function, script file, or operable program.\n\nC:\\msys64\\ucrt64\\bin",
+    "fixed": "Fixed PATH entry, then close and reopen every terminal and VS Code:",
+    "why": "Windows only searches the exact folders listed in PATH, gcc.exe lives inside the bin folder, and a terminal reads PATH only when it opens."
+  },
+  "pun": "\"Why did the compiler get lost? Nobody gave it a PATH.\"",
+  "challenge": "Run gcc --version and comment the version number you got.",
+  "challengeAnswer": "Any version line starting \"gcc.exe (Rev..., Built by MSYS2 project)\" means success. Pinned comment: \"If you got 'not recognized', check that PATH ends in \\bin and reopen VS Code. Still stuck? Reply with a screenshot.\"",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "'gcc' is not recognized?",
+      "hook": "\"Windows doesn't know gcc? Fix it in 40 seconds.\"",
+      "script": "Windows doesn't know gcc? Fix it in 40 seconds. Search for \"Edit the system environment variables\". Click Environment Variables. Select Path, click Edit, then New. Type C colon, msys64, ucrt64, bin. OK, OK, OK. Now close your terminal and open a new one. Type gcc dash dash version. There's your version number. Fixed.",
+      "onScreen": "'gcc' NOT RECOGNIZED? FIX IT",
+      "fromScenes": [
+        1,
+        6,
+        9
+      ],
+      "lengthSec": 45,
+      "caption": "The fix for \"'gcc' is not recognized\" on Windows. Save this.",
+      "hashtags": [
+        "cprogramming",
+        "gcc",
+        "windows",
+        "kodingkonkani",
+        "codingtips",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "What is PATH?",
+      "hook": "\"Your computer has a secret list of folders.\"",
+      "script": "Your computer has a secret list of folders. It's called PATH. When you type a command like gcc, Windows searches every folder on that list, in order. If the program's folder isn't there, Windows says it has never heard of it. Add the folder, reopen the terminal, and it works.",
+      "onScreen": "PATH = WHERE WINDOWS LOOKS",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 30,
+      "caption": "PATH explained in 30 seconds.",
+      "hashtags": [
+        "cprogramming",
+        "windows",
+        "learntocode",
+        "kodingkonkani",
+        "computerscience"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Reopen the terminal!",
+      "hook": "\"You set PATH and it still fails. Here's why.\"",
+      "script": "You set PATH and gcc still isn't recognized. Here's why. A terminal reads PATH only when it opens. Your old window never saw the change. Close it, close VS Code, open them again. And check your entry ends in backslash bin.",
+      "onScreen": "CLOSE IT. REOPEN IT.",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 20,
+      "caption": "The 2-second fix nobody tells you.",
+      "hashtags": [
+        "cprogramming",
+        "gcc",
+        "debugging",
+        "kodingkonkani",
+        "codingtips"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Compiler got lost",
+      "hook": "\"Why did the compiler get lost?\"",
+      "script": "Why did the compiler get lost? Nobody gave it a PATH.",
+      "onScreen": "NOBODY GAVE IT A PATH",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 10,
+      "caption": "Xecxec is not sorry.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "windows"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Which folder goes in PATH?",
+      "hook": "\"Only one of these PATH entries works. Which one?\"",
+      "script": "Only one of these PATH entries works. A: C colon msys64 ucrt64. B: C colon msys64 ucrt64 bin. C: C colon msys46 ucrt64 bin. Comment your letter. Answer: B. gcc dot exe lives inside the bin folder, and option C has a typo.",
+      "onScreen": "A, B OR C?",
+      "fromScenes": [
+        6,
+        10
+      ],
+      "lengthSec": 20,
+      "caption": "Spot the one that works. Comment A, B or C.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "gcc",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [],
+  "bugExtra": {
+    "wrongLang": "text",
+    "fixedHasFullProgram": true
+  }
+}

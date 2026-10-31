@@ -1,0 +1,336 @@
+{
+  "ep": 36,
+  "title": "Prototypes & Header Files",
+  "module": 5,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "write a function prototype so a function can be defined below main",
+    "explain the difference between a declaration and a definition",
+    "split a program into `main.c`, `shapes.c` and `shapes.h` and compile them together with one gcc command",
+    "read a \"conflicting types\" error caused by a prototype that does not match"
+  ],
+  "youtube": {
+    "title": "Introduce Your Function First: Prototypes | C Programming EP 36",
+    "description": "Why does C complain when main calls a function written below it? Prototypes fix that, and they are also the secret behind every #include. We write our first prototypes, make our first header file, and compile a two-file program. Chapters: 0:00 Introduce yourself first · 0:25 Prototype vs definition · 1:15 Code walkthrough · 2:35 What is a .h file · 3:20 Splitting into files · 4:50 Compiling two files · 5:25 Bug of the Day · 6:25 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Introduce yourself first"
+      },
+      {
+        "t": "0:25",
+        "label": "Prototype vs definition"
+      },
+      {
+        "t": "1:15",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "2:35",
+        "label": "What is a .h file"
+      },
+      {
+        "t": "3:20",
+        "label": "Splitting into files"
+      },
+      {
+        "t": "4:50",
+        "label": "Compiling two files"
+      },
+      {
+        "t": "5:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:25",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "function prototype c",
+      "header files in c",
+      "declaration vs definition",
+      "multiple files c",
+      "gcc compile multiple files",
+      "include header c",
+      "learn c",
+      "c for beginners",
+      "conflicting types error",
+      "koding konkani",
+      "gcc"
+    ],
+    "thumbnail": {
+      "text": "INTRODUCE YOURSELF",
+      "visual": "big text \"INTRODUCE YOURSELF\"; a name-tag sticker reading `int cube(int n);`; Xecxec wearing the name tag and waving; lilac background, tomato text",
+      "pose": "Xecxec wearing the name tag and waving"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "First day of college: a stranger walks up and asks for your notes. Then the same stranger with a name tag",
+      "animation": "Crowd murmur; name tag sticks on with a slap",
+      "sfx": [],
+      "narration": "First day of college. A stranger walks up and says, \"Give me your notes.\" You'd say, \"Who are you?\" Now the same person walks up wearing a name tag: \"Hi, I'm Rohan, from your class.\" Much better. The C compiler feels the same way. In EP 34, calling a function before C had met it gave us an error. Today we learn how a function can introduce itself first."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 36 · PROTOTYPES & HEADER FILES",
+      "animation": "Tiles slam in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 36. Prototypes and header files."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 50,
+      "onScreen": "Two cards: \"Declaration (prototype)\" = `int cube(int n);` and \"Definition\" = full function with body",
+      "animation": "Semicolon on the prototype glows tomato; tick SFX",
+      "sfx": [],
+      "narration": "A function prototype is a one-line introduction. Look: int cube, open bracket, int n, close bracket, semicolon. It tells the compiler three things: the name, what goes in, and what comes out. No body, no curly braces, just a semicolon. This is called a declaration. The full function, with its body, is the definition. You can declare a function at the top of the file and define it anywhere below, even after main. The compiler reads the prototype, says \"OK, I know cube now\", and happily accepts calls to it."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 75,
+      "lengthSec": 80,
+      "onScreen": "`prototype.c` (18 lines): prototypes on top, main, definitions below",
+      "animation": "Butter highlights; arrows from prototypes to definitions",
+      "sfx": [],
+      "narration": "[HL 3] Line three: the prototype for cube. Takes an int, returns an int, ends with a semicolon. [HL 4] Line four: the prototype for showResult. Takes two ints, returns nothing. [HL 6] Line six: main. This time main sits near the top, so anyone opening the file sees the main story first. [HL 7] Line seven: int c equals cube of 4. The compiler has not seen cube's body yet, but it has seen the prototype, so it knows this call is correct. [TRACK c=64] [HL 8] Line eight calls showResult with 4 and c. [HL 12-14] Lines twelve to fourteen: the real definition of cube. Return n times n times n. [HL 16-18] Lines sixteen to eighteen: the definition of showResult, which prints \"Cube of 4 is 64\". One rule: the prototype and the definition must match exactly. Same return type, same name, same parameter types. Remember that rule; it is today's bug.",
+      "code": {
+        "file": "prototype.c",
+        "source": "#include <stdio.h>\n\nint cube(int n);\nvoid showResult(int n, int value);\n\nint main(void) {\n    int c = cube(4);\n    showResult(4, c);\n    return 0;\n}\n\nint cube(int n) {\n    return n * n * n;\n}\n\nvoid showResult(int n, int value) {\n    printf(\"Cube of %d is %d\\n\", n, value);\n}",
+        "output": "Cube of 4 is 64"
+      }
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 155,
+      "lengthSec": 45,
+      "onScreen": "`#include <stdio.h>` opens to reveal a file full of prototypes, including printf's",
+      "animation": "File icon unfolds like a menu card; paper rustle",
+      "sfx": [],
+      "narration": "Here's a secret. Since EP 04 you have typed hash include, stdio dot h. What is inside that file? Mostly prototypes! Somewhere inside it is the prototype for printf. The real body of printf lives in a library that gets linked in when you build. A file that ends in dot h is a header file. Its job is to introduce functions. When you write hash include, the preprocessor copies that file's text into yours, right at that line. So all those introductions arrive before your code uses them."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 200,
+      "lengthSec": 90,
+      "onScreen": "Three panels side by side: `shapes.h`, `shapes.c`, `main.c`",
+      "animation": "Each panel slides in; `#include \"shapes.h\"` line pastes the header's text in with a copy animation",
+      "sfx": [],
+      "narration": "Now let's make our own. Panel one, shapes dot h. It holds just two prototypes: rectArea and rectPerimeter, each taking a length and a width. No bodies. Panel two, shapes dot c. [HL shapes.c 1] It starts with hash include, \"shapes dot h\", in double quotes. Double quotes mean \"look in my own folder first\". Angle brackets, like stdio dot h, mean \"look in the system's folders\". [HL shapes.c 3-5] Then the definition of rectArea, returning length times width. [HL shapes.c 7-9] And rectPerimeter, returning 2 times, length plus width. Panel three, main dot c. [HL main.c 1-2] It includes stdio dot h for printf and shapes dot h for our functions. [HL main.c 5] l is 8, w is 5. [HL main.c 6-7] It prints the area and the perimeter. main dot c never sees the function bodies. It only needs the introductions. Think of it like a restaurant: the header is the menu, the dot c file is the kitchen, and main is the customer who orders from the menu.",
+      "code": {
+        "file": "shapes.h",
+        "source": "// shapes.h - prototypes only\nint rectArea(int length, int width);\nint rectPerimeter(int length, int width);"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 290,
+      "lengthSec": 30,
+      "onScreen": "`gcc main.c shapes.c -o shapes` then `./shapes`; then the linker error when shapes.c is left out",
+      "animation": "Typing SFX; tomato text for the error",
+      "sfx": [],
+      "narration": "To build it, list both dot c files: gcc main dot c, shapes dot c, dash o, shapes. Never list the dot h file; it is already pasted in by include. Run it: Area 40, Perimeter 26. What if you forget shapes dot c? Then the compiler is happy, because the prototypes are there, but the linker cannot find the kitchen. You get \"undefined reference to rectArea\". On Windows the path in the message looks longer, but the key words are the same. If you see \"undefined reference\", check that every dot c file is in your gcc command."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 320,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Drum hit; Xecxec adjusts his name tag",
+      "sfx": [],
+      "narration": "Why did the header file get invited to every party? Because it always made a great first declaration."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 325,
+      "lengthSec": 60,
+      "onScreen": "`bug.c`: prototype says int, definition says float",
+      "animation": "Error buzzer; prototype and definition shake side by side; fix makes them match, mint tick",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Today's bug: the mismatched prototype. The prototype at the top says int half, int n. But the definition below says float half, float n. The compiler compares them and stops: conflicting types for half; have float of float. Then a note: previous declaration of half with type int of int. The introduction and the real person don't match, so the compiler refuses. The fix: make the prototype an exact copy of the definition's first line, plus a semicolon. Now half of 9 gives 4.5. Pro tip: copy and paste the first line of the definition to make your prototype. No typing mistakes."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 385,
+      "lengthSec": 20,
+      "onScreen": "Challenge card: split EP 35's square and average into mymaths.h / mymaths.c",
+      "animation": "Timer ticks",
+      "sfx": [],
+      "narration": "Your challenge: take square and average from EP 35. Put their prototypes in mymaths dot h, their definitions in mymaths dot c, and call them from main dot c. Compile both dot c files together and get the same output as last episode."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 405,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 37 · Scope & lifetime",
+      "animation": "Variable in a locked room; sign-off jingle",
+      "sfx": [],
+      "narration": "Next episode: where do variables live, and when do they disappear? Scope and lifetime. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint half(int n);\n\nint main(void) {\n    printf(\"%d\\n\", half(9));\n    return 0;\n}\n\nfloat half(float n) {\n    return n / 2;\n}",
+    "error": "GCC error:\n\nbug.c:10:7: error: conflicting types for 'half'; have 'float(float)'\n   10 | float half(float n) {\n      |       ^~~~\nbug.c:3:5: note: previous declaration of 'half' with type 'int(int)'\n    3 | int half(int n);\n      |     ^~~~",
+    "fixed": "#include <stdio.h>\n\nfloat half(float n);\n\nint main(void) {\n    printf(\"%.1f\\n\", half(9));\n    return 0;\n}\n\nfloat half(float n) {\n    return n / 2;\n}",
+    "why": "a prototype is a promise about the function's types, so it must match the definition exactly (and the printf format must match the new float return)."
+  },
+  "pun": "Why did the header file get invited to every party? It always made a great first declaration.",
+  "challenge": "Move `square` and `average` from EP 35 into `mymaths.h` (prototypes) and `mymaths.c` (definitions); call them from `main.c`; build with `gcc main.c mymaths.c -o maths`.",
+  "challengeAnswer": "(worked example)\n// mymaths.h\nint square(int n);\nfloat average(int a, int b);",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Introduce Yourself First",
+      "hook": "a stranger asking \"Give me your notes\"",
+      "script": "A stranger asks for your notes. Who are you? Same with C. Call a function the compiler hasn't met, and it complains. The fix is a prototype: one line at the top, like int cube, int n, semicolon. Name, inputs, output. Now the compiler knows who cube is, and you can write the body anywhere below.",
+      "onScreen": "NAME TAG FOR YOUR FUNCTION",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "A prototype is your function's name tag.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "functions",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "What's Inside stdio.h?",
+      "hook": "`#include <stdio.h>` cracking open like a box",
+      "script": "You've typed include stdio dot h a hundred times. What's inside? Mostly prototypes. One of them introduces printf. The include line copies that file's text into your program, so the compiler meets printf before you use it. A dot h file is a list of introductions. A dot c file has the real code.",
+      "onScreen": ".h = MENU · .c = KITCHEN",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "The secret behind every .",
+      "hashtags": [
+        "include",
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "computerscience",
+        "headerfiles"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Conflicting Types Bug",
+      "hook": "tomato error \"conflicting types for 'half'\"",
+      "script": "The prototype says int half, int n. The definition says float half, float n. GCC stops: conflicting types for half. The introduction doesn't match the real function. Fix: copy the definition's first line, add a semicolon, and that's your prototype. Now they match and it compiles.",
+      "onScreen": "PROTOTYPE ≠ DEFINITION",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "Copy the first line, add a semicolon. Done.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "gcc",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The Party Guest",
+      "hook": "a `.h` file icon in a party hat",
+      "script": "Why did the header file get invited to every party? Because it always made a great first declaration.",
+      "onScreen": "A GREAT FIRST DECLARATION",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "Header files: the life of the party.",
+      "hashtags": [
+        "codingmemes",
+        "programmerhumor",
+        "kodingkonkani",
+        "cprogramming",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: Which Files Go in gcc?",
+      "hook": "three file icons: main.c, shapes.c, shapes.h",
+      "script": "Your program has main dot c, shapes dot c and shapes dot h. Which gcc command is right? A: gcc main dot c. B: gcc main dot c shapes dot c. C: gcc main dot c shapes dot h. The answer is B. List every dot c file. The header is already pulled in by include.",
+      "onScreen": "A · B · C — WHICH COMPILES?",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 25,
+      "caption": "Comment your answer, then check.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "gcc",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "prototype.c",
+      "source": "#include <stdio.h>\n\nint cube(int n);\nvoid showResult(int n, int value);\n\nint main(void) {\n    int c = cube(4);\n    showResult(4, c);\n    return 0;\n}\n\nint cube(int n) {\n    return n * n * n;\n}\n\nvoid showResult(int n, int value) {\n    printf(\"Cube of %d is %d\\n\", n, value);\n}",
+      "output": "Cube of 4 is 64",
+      "lang": "c"
+    },
+    {
+      "file": "shapes.h",
+      "source": "// shapes.h - prototypes only\nint rectArea(int length, int width);\nint rectPerimeter(int length, int width);",
+      "lang": "c"
+    },
+    {
+      "file": "shapes.c",
+      "source": "#include \"shapes.h\"\n\nint rectArea(int length, int width) {\n    return length * width;\n}\n\nint rectPerimeter(int length, int width) {\n    return 2 * (length + width);\n}",
+      "lang": "c"
+    },
+    {
+      "file": "main.c",
+      "source": "#include <stdio.h>\n#include \"shapes.h\"\n\nint main(void) {\n    int l = 8, w = 5;\n    printf(\"Area: %d\\n\", rectArea(l, w));\n    printf(\"Perimeter: %d\\n\", rectPerimeter(l, w));\n    return 0;\n}",
+      "output": "Area: 40\nPerimeter: 26",
+      "buildStep": "gcc main.c shapes.c -o shapes\n./shapes",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "4.5"
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "ep": 33,
+  "title": "Mini Project: Number Games",
+  "module": 4,
+  "lengthSec": 450,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "test whether a number is prime using a loop with an early `break`",
+    "compute a factorial with a `for` loop and `long long`",
+    "reverse a number's digits with `% 10` and `/ 10` in a `while` loop",
+    "choose the correct loop bound so a test does not defeat itself"
+  ],
+  "youtube": {
+    "title": "Is 97 Prime? Ask C! Loops Mini Project | C Programming EP 33",
+    "description": "Module 4 ends with a mini project: one program, three number games. Prime check, factorial and reverse digits, each built from the loops you've learned. Plus the loop-bound bug that makes C say 97 is not prime. 0:00 Challenge answer and hook 0:30 The plan 1:00 Game 1: prime check 2:45 Game 2: factorial 3:45 Game 3: reverse the digits 5:15 Run all three 5:45 Bug of the Day: wrong loop bound 6:55 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Challenge answer and hook 0:30 The plan 1:00 Game 1: prime check 2:45 Game 2: factorial 3:45 Game 3: reverse the digits 5:15 Run all three 5:45 Bug of the Day: wrong loop bound 6:55 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "prime number program in c",
+      "factorial program in c",
+      "reverse a number in c",
+      "loops mini project",
+      "c programming exam questions",
+      "while loop",
+      "for loop",
+      "learn c",
+      "koding konkani"
+    ],
+    "thumbnail": {
+      "text": "IS 97 PRIME?",
+      "visual": "big text \"IS 97 PRIME?\"; giant \"97\" with a question mark; Xecxec holding a magnifying glass over it; Butter background, Dark blue blocks.",
+      "pose": "Xecxec holding a magnifying glass over it"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "terminal",
+      "startSec": 0,
+      "lengthSec": 25,
+      "onScreen": "EP 32 challenge: number pyramid output; then \"Is 97 prime?\" in huge digits",
+      "animation": "Digits pop in; quiz-show sting",
+      "sfx": [
+        "pop",
+        "sting"
+      ],
+      "narration": "Last challenge: the number pyramid. Spaces first, then count up from 1 to i, then count down from i minus 1 to 1. You get 1, then 121, then 12321, up to 123454321. Now, a question for you. Is 97 a prime number? You could start dividing by hand. Or you could write a program once and ask it any number you like. Today, we build three number games in one program, using only loops you already know."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 25,
+      "lengthSec": 5,
+      "onScreen": "EP 33 · MINI PROJECT: NUMBER GAMES",
+      "animation": "Butter card, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode thirty-three. Mini project: number games."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 30,
+      "lengthSec": 30,
+      "onScreen": "Plan: read n → Game 1 prime → Game 2 factorial → Game 3 reverse",
+      "animation": "Three game tokens slide onto a board",
+      "sfx": [],
+      "narration": "Here's the plan. Read one number, n. Game one: is n prime? Game two: what is n factorial? Game three: what is n with its digits reversed? Each game is one loop. Factorial grows very fast, so for this program we accept numbers from 1 to 20."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 105,
+      "onScreen": "`games.c` lines 1–16 (prime check), trackers `n`, `d`, `isPrime`",
+      "animation": "Divisors 2, 3 tested against 12; `d * d <= n` shown as a square growing; break arrow",
+      "sfx": [],
+      "narration": "[HL 5] [HL 6] We ask for a number and read it into n. Say the user types 12. [TRACK n=12] [HL 9] int isPrime equals, in brackets, n greater than or equal to 2. A comparison gives 1 for true and 0 for false. 0 and 1 are not prime, so they start as 0. 12 is at least 2, so isPrime starts at 1. We assume it's prime until we find a divisor. [TRACK isPrime=1] [HL 10] for d from 2, while d times d is less than or equal to n, d plus plus. Why d times d? If 12 has a divisor bigger than its square root, it must also have a partner divisor smaller than its square root. Like 12 is 2 times 6. Checking up to the square root is enough. [TRACK d=2] [HL 11] if n mod d equals 0. 12 mod 2 is 0. So 2 divides 12. [HL 12] isPrime becomes 0. [TRACK isPrime=0] [HL 13] break. One divisor is enough proof, no need to check more. [HL 16] Print \"12 is not prime\". Here we use the ternary operator from Episode 19: if isPrime is true, print \"prime\", otherwise \"not prime\". For 97, d goes 2, 3, up to 9, because 10 times 10 is 100, which is more than 97. None of them divide 97, so isPrime stays 1. 97 is prime. Only 8 checks instead of 95.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    printf(\"Enter a number (1-20): \");\n    scanf(\"%d\", &n);\n\n    /* Game 1: is it prime? */\n    int isPrime = (n >= 2);\n    for (int d = 2; d * d <= n; d++) {\n        if (n % d == 0) {\n            isPrime = 0;\n            break;\n        }\n    }\n    printf(\"%d is %s\\n\", n, isPrime ? \"prime\" : \"not prime\");\n\n    /* Game 2: factorial */\n    long long fact = 1;\n    for (int i = 2; i <= n; i++) {\n        fact = fact * i;\n    }\n    printf(\"%d! = %lld\\n\", n, fact);\n\n    /* Game 3: reverse the digits */\n    int temp = n;\n    int reversed = 0;\n    while (temp > 0) {\n        int digit = temp % 10;\n        reversed = reversed * 10 + digit;\n        temp = temp / 10;\n    }\n    printf(\"Reversed: %d\\n\", reversed);\n\n    return 0;\n}",
+        "output": "Enter a number (1-20): 12\n12 is not prime\n12! = 479001600\nReversed: 21"
+      }
+    },
+    {
+      "id": 5,
+      "template": "pun-card",
+      "startSec": 165,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec counting on his claws, rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why was 7 so confident in maths class? Because it was in its prime."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 170,
+      "lengthSec": 55,
+      "onScreen": "`games.c` lines 18–23 (factorial), tracker `fact`",
+      "animation": "`fact` tracker climbs 1, 2, 6, 24 … 479001600; `long long` badge",
+      "sfx": [],
+      "narration": "Game two. Factorial of n means 1 times 2 times 3, all the way up to n. [HL 19] long long fact equals 1. Why long long? Factorials explode. 13 factorial is already more than six billion, too big for an int, which only goes up to about 2.1 billion. A long long can hold numbers up to about 9 quintillion, enough for 20 factorial. And we start at 1, not 0, because we're multiplying. Zero times anything is zero. [TRACK fact=1] [HL 20] for i from 2 to n. [HL 21] fact equals fact times i. For 12: 2, 6, 24, 120, 720, and on until 479001600. [TRACK fact=479001600] [HL 23] We print it with percent l l d, the format for long long.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    printf(\"Enter a number (1-20): \");\n    scanf(\"%d\", &n);\n\n    /* Game 1: is it prime? */\n    int isPrime = (n >= 2);\n    for (int d = 2; d * d <= n; d++) {\n        if (n % d == 0) {\n            isPrime = 0;\n            break;\n        }\n    }\n    printf(\"%d is %s\\n\", n, isPrime ? \"prime\" : \"not prime\");\n\n    /* Game 2: factorial */\n    long long fact = 1;\n    for (int i = 2; i <= n; i++) {\n        fact = fact * i;\n    }\n    printf(\"%d! = %lld\\n\", n, fact);\n\n    /* Game 3: reverse the digits */\n    int temp = n;\n    int reversed = 0;\n    while (temp > 0) {\n        int digit = temp % 10;\n        reversed = reversed * 10 + digit;\n        temp = temp / 10;\n    }\n    printf(\"Reversed: %d\\n\", reversed);\n\n    return 0;\n}",
+        "output": "Enter a number (1-20): 12\n12 is not prime\n12! = 479001600\nReversed: 21"
+      }
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 225,
+      "lengthSec": 90,
+      "onScreen": "`games.c` lines 25–33 (reverse), trackers `temp`, `digit`, `reversed`",
+      "animation": "Digits peel off the right end of 1234 and stack onto `reversed`",
+      "sfx": [],
+      "narration": "Game three, the cleverest one. Reverse the digits. We'll trace it with 1234 to make it clear. [HL 26] int temp equals n. We work on a copy so n stays safe. [TRACK temp=1234] [HL 27] reversed starts at 0. [TRACK reversed=0] [HL 28] while temp is greater than 0. [HL 29] digit equals temp mod 10. Mod 10 gives the last digit. 1234 mod 10 is 4. [TRACK digit=4] [HL 30] reversed equals reversed times 10, plus digit. 0 times 10 plus 4 is 4. [TRACK reversed=4] [HL 31] temp equals temp divided by 10. Integer division drops the last digit: 1234 becomes 123. [TRACK temp=123] Round two: digit is 3, reversed is 4 times 10 plus 3, 43. temp is 12. [TRACK reversed=43 temp=12] Round three: digit 2, reversed 432, temp 1. [TRACK reversed=432 temp=1] Round four: digit 1, reversed 4321, temp 0. [TRACK reversed=4321 temp=0] Now temp is not greater than 0, so we stop. [HL 33] Print \"Reversed: 4321\". Mod 10 takes the last digit off. Times 10 makes room for it on the other side. It's like moving people from the back of one bus queue to the front of another.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    printf(\"Enter a number (1-20): \");\n    scanf(\"%d\", &n);\n\n    /* Game 1: is it prime? */\n    int isPrime = (n >= 2);\n    for (int d = 2; d * d <= n; d++) {\n        if (n % d == 0) {\n            isPrime = 0;\n            break;\n        }\n    }\n    printf(\"%d is %s\\n\", n, isPrime ? \"prime\" : \"not prime\");\n\n    /* Game 2: factorial */\n    long long fact = 1;\n    for (int i = 2; i <= n; i++) {\n        fact = fact * i;\n    }\n    printf(\"%d! = %lld\\n\", n, fact);\n\n    /* Game 3: reverse the digits */\n    int temp = n;\n    int reversed = 0;\n    while (temp > 0) {\n        int digit = temp % 10;\n        reversed = reversed * 10 + digit;\n        temp = temp / 10;\n    }\n    printf(\"Reversed: %d\\n\", reversed);\n\n    return 0;\n}",
+        "output": "Enter a number (1-20): 12\n12 is not prime\n12! = 479001600\nReversed: 21"
+      }
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 315,
+      "lengthSec": 30,
+      "onScreen": "Run `games.c` with 12 and 17",
+      "animation": "Typing SFX, outputs appear",
+      "sfx": [],
+      "narration": "Let's run it. Type 12: 12 is not prime, 12 factorial is 479001600, reversed is 21. Run again with 17: 17 is prime, 17 factorial is 355687428096000, reversed is 71."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 345,
+      "lengthSec": 70,
+      "onScreen": "`prime97.c` with `d <= n` says 97 is not prime",
+      "animation": "Butter frame; divisor counter runs all the way to 97 and hits 97 % 97 == 0 (Tomato); fixed bound (Mint)",
+      "sfx": [],
+      "narration": "Today's bug: wrong loop bound. A student writes the prime check with for d from 2, d less than or equal to n. Compile: no error. Run with 97. Output: \"97 is not prime\". But 97 is prime! What went wrong? The loop goes all the way up to d equals 97. And 97 mod 97 is 0. Every number divides itself, so every number fails the test. The loop bound was one step too far. The fix: stop before n, with d less than n, or better, use d times d less than or equal to n, which is also much faster. Always ask: does my loop test values it should not?"
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 415,
+      "lengthSec": 20,
+      "onScreen": "\"Find all 3-digit Armstrong numbers\" with 153 = 1³ + 5³ + 3³",
+      "animation": "Cubes pop up, timer ring",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: find all three-digit Armstrong numbers. An Armstrong number equals the sum of the cubes of its digits. For example 153: 1 cubed is 1, 5 cubed is 125, 3 cubed is 27, and 1 plus 125 plus 27 is 153. Loop from 100 to 999, take the digits apart with mod 10 and divide by 10, and print each number that matches. There are exactly four. Can you find them all?"
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 435,
+      "lengthSec": 15,
+      "onScreen": "Module 4 complete badge; Next: EP 34",
+      "animation": "Badge stamp, Xecxec dance, end card",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "That's Module 4 complete! You can now repeat anything, skip, stop, nest and draw with loops. Next episode starts Module 5: functions, where we teach C to remember whole recipes. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int n = 97;\n    int isPrime = (n >= 2);\n\n    for (int d = 2; d <= n; d++) {\n        if (n % d == 0) {\n            isPrime = 0;\n            break;\n        }\n    }\n    printf(\"%d is %s\\n\", n, isPrime ? \"prime\" : \"not prime\");\n    return 0;\n}",
+    "error": "No compiler error. Wrong output:\n\n97 is not prime",
+    "fixed": "    for (int d = 2; d * d <= n; d++) {",
+    "why": "With `d <= n` the loop finally tests `d = 97`, and every number divides itself, so every number looks \"not prime\"."
+  },
+  "pun": "Why was 7 so confident in maths class? Because it was in its prime.",
+  "challenge": "Print all three-digit Armstrong numbers (a number equal to the sum of the cubes of its digits, like 153).",
+  "challengeAnswer": "`153 370 371 407`",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Is 97 Prime? Ask C",
+      "hook": "Giant \"97?\" with Xecxec and a magnifying glass",
+      "script": "Is 97 prime? You could divide by hand. Or write a loop: try every divisor from 2 up to the square root. If nothing divides it, it's prime. C checks 97 in eight steps. Answer: prime. Full episode on Koding Konkani.",
+      "onScreen": "IS 97 PRIME? / 8 CHECKS / YES!",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 20,
+      "caption": "Let the loop do the maths.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "primenumbers",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Reverse a Number in 30 Seconds",
+      "hook": "1234 turning into 4321",
+      "script": "Reverse 1234 with two tricks. Mod 10 gives the last digit: 4. Divide by 10 removes it: 123. Build the answer with reversed times 10 plus digit. 4, then 43, then 432, then 4321. Loop while the number is more than zero. Done.",
+      "onScreen": "% 10 = LAST DIGIT / / 10 = DROP IT / 1234 to 4321",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 30,
+      "caption": "The classic reverse-digits trick.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "whileloop",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "C Says 97 Is Not Prime?!",
+      "hook": "Terminal: \"97 is not prime\" in Tomato",
+      "script": "My program says 97 is not prime. That's wrong. The loop runs d up to n, so it finally tests 97 divided by 97, which has no remainder. Every number divides itself. Stop before n, or use d times d less than or equal to n.",
+      "onScreen": "97 NOT PRIME?! / d <= n / d * d <= n",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "One wrong bound, every answer wrong.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "primenumbers"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: In Its Prime",
+      "hook": "Number 7 in sunglasses",
+      "script": "Why was 7 so confident in maths class? Because it was in its prime.",
+      "onScreen": "IN ITS PRIME",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 10,
+      "caption": "7 is thriving.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "mathsjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Is 153 Special?",
+      "hook": "\"153\" with cubes floating around",
+      "script": "1 cubed plus 5 cubed plus 3 cubed. 1 plus 125 plus 27. That's 153, the number itself. It's called an Armstrong number. There are exactly four with three digits. Can you write a loop to find the other three? Comment your answer.",
+      "onScreen": "1³ + 5³ + 3³ = 153 / FIND THE OTHER 3",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 20,
+      "caption": "A number that equals its own digits.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "armstrongnumber"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int n;\n    printf(\"Enter a number (1-20): \");\n    scanf(\"%d\", &n);\n\n    /* Game 1: is it prime? */\n    int isPrime = (n >= 2);\n    for (int d = 2; d * d <= n; d++) {\n        if (n % d == 0) {\n            isPrime = 0;\n            break;\n        }\n    }\n    printf(\"%d is %s\\n\", n, isPrime ? \"prime\" : \"not prime\");\n\n    /* Game 2: factorial */\n    long long fact = 1;\n    for (int i = 2; i <= n; i++) {\n        fact = fact * i;\n    }\n    printf(\"%d! = %lld\\n\", n, fact);\n\n    /* Game 3: reverse the digits */\n    int temp = n;\n    int reversed = 0;\n    while (temp > 0) {\n        int digit = temp % 10;\n        reversed = reversed * 10 + digit;\n        temp = temp / 10;\n    }\n    printf(\"Reversed: %d\\n\", reversed);\n\n    return 0;\n}",
+      "output": "Enter a number (1-20): 12\n12 is not prime\n12! = 479001600\nReversed: 21",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "97 is prime"
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "ep": 53,
+  "title": "What Is a Pointer?",
+  "module": 8,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "declare a pointer with `int *p",
+    "`",
+    "store an address in it with `p = &age",
+    "`",
+    "read the value it points to with `*p`",
+    "explain why a pointer must point somewhere real before you use it"
+  ],
+  "youtube": {
+    "title": "Pointers Finally Make Sense | C Programming EP 53",
+    "description": "A pointer is just a variable that stores an address, like a GPS pin that stores a location. We draw every box and every arrow so you can see exactly what int *p = &age does. Then we meet the most common pointer crash: a pointer that points nowhere. 0:00 The GPS pin · 0:20 Title · 0:25 A variable that holds an address · 1:25 Drawing the arrow · 2:25 Code, line by line · 3:55 Running it · 4:25 Pun · 4:30 The two stars · 5:15 Bug of the Day: uninitialised pointer · 6:15 Challenge · 6:40 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The GPS pin"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "A variable that holds an address"
+      },
+      {
+        "t": "1:25",
+        "label": "Drawing the arrow"
+      },
+      {
+        "t": "2:25",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "3:55",
+        "label": "Running it"
+      },
+      {
+        "t": "4:25",
+        "label": "Pun"
+      },
+      {
+        "t": "4:30",
+        "label": "The two stars"
+      },
+      {
+        "t": "5:15",
+        "label": "Bug of the Day: uninitialised pointer"
+      },
+      {
+        "t": "6:15",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "pointers in c",
+      "what is a pointer",
+      "c pointer tutorial",
+      "int pointer",
+      "dereference operator",
+      "address of operator",
+      "uninitialized pointer",
+      "c programming for beginners",
+      "learn c",
+      "koding konkani",
+      "c programming india",
+      "btech c programming"
+    ],
+    "thumbnail": {
+      "text": "POINTERS = GPS PIN",
+      "visual": "big text \"POINTERS = GPS PIN\"; a lilac box `p` with a thick black arrow to box `age = 19`; a red map pin on top of `age`; Xecxec holding a phone with a map; lilac background, dark blue text block",
+      "pose": "Xecxec holding a phone with a map"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Phone map with a pin dropped on Calangute beach; WhatsApp \"Location shared\" bubble",
+      "animation": "Pin drops with a bounce; message pop sound; Xecxec taps the pin",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "When your friend asks where the party is, you do not send them the whole beach. You send a GPS pin. The pin is not the beach. It is just the location of the beach. Hold on to that idea, because a pointer is exactly that: a pin to a location in memory."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 53 · WHAT IS A POINTER?",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode fifty-three. What is a pointer?"
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 60,
+      "onScreen": "Box `age` at address 1000 holding 19; a new wider box `p` at address 2000, empty, labelled \"holds an address\"",
+      "animation": "`age` box from EP 52 slides back in; `p` box grows from a dot; label types out",
+      "sfx": [],
+      "narration": "Remember last episode. Our variable age lives in a box with the address 1000, and inside it is 19. We will use small, friendly numbers like 1000 on these diagrams. Real addresses are longer, but the idea is the same. Now, what if we want to save that address, 1000, for later? We need a variable that can hold an address. That kind of variable is called a pointer. Here it is: a new box, called p, living at address 2000. Notice it is wider. On a 64-bit computer, a pointer takes eight bytes, because addresses are big numbers. Right now p is empty. It is waiting for an address."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 85,
+      "lengthSec": 60,
+      "onScreen": "`p` now holds the number 1000; a thick black arrow from `p` to `age`; side caption \"p = &age\"",
+      "animation": "The number 1000 flies from `age`'s gate sign into `p`; then the number fades into an arrow that draws itself; whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Now we write p equals ampersand age. Ampersand age gives 1000. So the number 1000 goes into box p. That is all that happens. p now holds 1000. But programmers draw it differently. Instead of writing 1000 inside p, we draw an arrow from p to the box at 1000. The arrow means \"p points to age\". The number and the arrow mean the same thing. Every time you see an arrow in this module, remember: it is just an address stored in a box. Let's go slowly once more. age holds 19. p holds the address of age. The arrow shows that link."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 145,
+      "lengthSec": 90,
+      "onScreen": "`pointer.c` (13 lines) on cream panel; tracker shows age, p, *p",
+      "animation": "Butter line highlights; tracker rows; mini memory diagram in a corner that updates with each line",
+      "sfx": [],
+      "narration": "Here is the code. [HL 4] Line 4 creates age with the value 19. [TRACK age=19] [HL 5] Line 5 is the new line. Read it from the middle. int star p means: p is a pointer to an int. The star in a declaration means \"this is a pointer\". It is part of the type. Then equals ampersand age stores the address of age inside p. [TRACK p=&age] On the corner diagram, the arrow appears. [HL 7] Line 7 prints age: 19. [HL 8] Line 8 prints the address of age with percent p, just like EP 52. [HL 9] Line 9 prints p itself. p holds an address, so we use percent p and the void star cast again. This should print exactly the same number as line 8. [HL 10] Line 10 is the magic. star p, with no int in front. Here the star means \"go to the address stored in p and get what is there\". p holds 1000, so we go to box 1000 and find 19. [TRACK *p=19] This is called dereferencing, and we spend the whole next episode on it. [HL 11] Line 11 prints ampersand p, the address of p itself. Yes, a pointer is also a variable, so it also has its own house. [HL 12] Return zero.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int age = 19;\n    int *p = &age;\n\n    printf(\"age      = %d\\n\", age);\n    printf(\"&age     = %p\\n\", (void *)&age);\n    printf(\"p        = %p\\n\", (void *)p);\n    printf(\"*p       = %d\\n\", *p);\n    printf(\"&p       = %p\\n\", (void *)&p);\n    return 0;\n}",
+        "output": "age      = 19\n&age     = 000000E1D07FF8AC\np        = 000000E1D07FF8AC\n*p       = 19\n&p       = 000000E1D07FF8A0"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 235,
+      "lengthSec": 30,
+      "onScreen": "Compile and run; sticky note \"your addresses will differ\"",
+      "animation": "Output prints line by line; `&age` and `p` lines flash together in mint because they match",
+      "sfx": [],
+      "narration": "Compile with gcc pointer dot c dash o pointer, and run. age is 19. The address of age and the value of p are the same number. That is the proof: p really holds the address of age. star p gives 19. And the address of p is different, because p lives in its own box. Your numbers will differ from mine, but the two matching lines will always match."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 5,
+      "onScreen": "\"I asked my pointer for directions. It said: I can only point you to an address.\"",
+      "animation": "Card flips; Xecxec shrugs; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I asked my pointer for directions. It said: sorry, I can only point you to an address."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 270,
+      "lengthSec": 45,
+      "onScreen": "Two cards side by side: `int *p;` labelled \"declaration: p is a pointer\" and `*p` labelled \"use: go to the box\"",
+      "animation": "Each star glows in a different colour (tomato, mint); cards swap places then settle",
+      "sfx": [],
+      "narration": "Here is where many students get confused, so let's be very clear. The star has two jobs. In a declaration, like int star p, the star says \"p is a pointer\". It is part of the type. Anywhere else, like printf star p, the star says \"go to the box p points to\". Same symbol, two meanings. Think of it this way: when you make the pin, the star says \"this is a pin\". When you use the pin, the star says \"go there\"."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 315,
+      "lengthSec": 60,
+      "onScreen": "`int *p; *p = 5;` with GCC warning; memory diagram with `p` holding \"???\" and an arrow wobbling into a dark area",
+      "animation": "Arrow wiggles randomly; crash sound; screen shakes; fixed code slides in with ding",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Today's bug is the most dangerous one in this module. int star p, then star p equals 5. Look at the diagram. p was never given an address. So it holds some leftover garbage number. The arrow points to a random place in memory. Writing 5 there could crash your program, or quietly damage some other data. GCC with dash Wall warns you: p is used uninitialized. Sometimes the program even seems to work, which is worse, because the bug hides. The fix: always give a pointer a real address before you use it. Make a variable, and point to it."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 375,
+      "lengthSec": 25,
+      "onScreen": "\"Change a value through a pointer\" task card",
+      "animation": "Card unfolds; Xecxec points",
+      "sfx": [],
+      "narration": "Your challenge. Make an int called score with the value 40. Make a pointer to it. Then, using only the pointer, change score to 100, and print score. Hint: star p can also be on the left side of an equals sign. Pause and try."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 400,
+      "lengthSec": 20,
+      "onScreen": "\"Next: EP 54 · Dereferencing — knock on the door\"",
+      "animation": "A claw knocks on a box door; knock sound; sign-off",
+      "sfx": [],
+      "narration": "A pointer is a box that holds an address, drawn as an arrow. Next episode we knock on the door at the end of that arrow, and read and write what lives there. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int *p;\n    *p = 5;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+    "error": "GCC (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'main':\nbug.c:5:8: warning: 'p' is used uninitialized [-Wuninitialized]\n    5 |     *p = 5;\n      |     ~~~^~~\nbug.c:4:10: note: 'p' was declared here\n    4 |     int *p;\n      |          ^\n\nThe program has undefined behaviour: it may crash silently, crash with a segmentation fault, or even print `5` and hide the bug.",
+    "fixed": "#include <stdio.h>\n\nint main(void) {\n    int value = 0;\n    int *p = &value;\n    *p = 5;\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+    "why": "a pointer that was never given an address holds garbage, so `*p` writes to a random place; point it at a real variable first."
+  },
+  "pun": "\"I asked my pointer for directions. It said: I can only point you to an address.\"",
+  "challenge": "Make `int score = 40;` and a pointer to it. Using only the pointer, change `score` to 100, then print `score`.",
+  "challengeAnswer": "(worked example)\nint score = 40;\nint *p = &score;\n*p = 100;\nprintf(\"%d\\n\", score);   /* prints 100 */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A pointer is a GPS pin",
+      "hook": "Pin drops on a beach map: \"This is a pointer.\"",
+      "script": "When you share a location, you send a pin, not the beach. A pointer in C is the same. It does not hold the value. It holds the address of the value. int star p equals ampersand age means: p stores where age lives. We draw that as an arrow. That is a pointer.",
+      "onScreen": "POINTER = ADDRESS IN A BOX",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 25,
+      "caption": "The simplest way to picture a pointer.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "learntocode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Pointers in 30 seconds",
+      "hook": "Three boxes: age, p, arrow. \"Three lines. That's it.\"",
+      "script": "Line one: int age equals 19. A box holding 19. Line two: int star p equals ampersand age. A pointer box holding age's address, drawn as an arrow. Line three: print star p. Follow the arrow, find 19. Ampersand gives the address. Star follows it.",
+      "onScreen": "& GETS IT · * FOLLOWS IT",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 30,
+      "caption": "Save this for exam day.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "codingtips",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The pointer that points nowhere",
+      "hook": "An arrow wobbling into darkness: \"Where is this pointing?\"",
+      "script": "int star p. Then star p equals 5. Looks fine? It is not. p was never given an address, so it holds garbage and points somewhere random. Writing there can crash your program, or worse, seem to work. GCC warns: p is used uninitialized. Always point to a real variable first.",
+      "onScreen": "NEVER USE AN EMPTY POINTER",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "The number one pointer crash.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "pointers",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Asking a pointer for directions",
+      "hook": "Xecxec on a scooter, lost at a junction.",
+      "script": "I asked my pointer for directions. It said: sorry, I can only point you to an address.",
+      "onScreen": "I CAN ONLY POINT YOU TO AN ADDRESS",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Pointers are not tour guides.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: what does star-p print?",
+      "hook": "`int age = 19; int *p = &age;` and a big question mark.",
+      "script": "age is 19. p equals ampersand age. What does star p print? An address? Or 19? Answer: 19. Star follows the arrow to the value. Now your turn: change a variable using only its pointer. Comment your code.",
+      "onScreen": "*p = ?",
+      "fromScenes": [
+        5,
+        10
+      ],
+      "lengthSec": 20,
+      "caption": "Did you say 19?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "pointers",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int age = 19;\n    int *p = &age;\n\n    printf(\"age      = %d\\n\", age);\n    printf(\"&age     = %p\\n\", (void *)&age);\n    printf(\"p        = %p\\n\", (void *)p);\n    printf(\"*p       = %d\\n\", *p);\n    printf(\"&p       = %p\\n\", (void *)&p);\n    return 0;\n}",
+      "output": "age      = 19\n&age     = 000000E1D07FF8AC\np        = 000000E1D07FF8AC\n*p       = 19\n&p       = 000000E1D07FF8A0",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true
+  }
+}

@@ -1,0 +1,376 @@
+{
+  "ep": 78,
+  "title": "Merge sort",
+  "module": 12,
+  "lengthSec": 450,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "describe merge sort as split, sort each half recursively, merge",
+    "write a merge function that combines two sorted runs using a temp array, including the leftover loops",
+    "write recursive merge_sort with a correct base case and mid",
+    "explain why it is O(n log n) in every case and needs O(n) extra space"
+  ],
+  "youtube": {
+    "title": "Merge Sort: Split, Sort, Merge | C Programming EP 78",
+    "description": "Split the class in two, let each half sort itself, then merge the two lines. We animate merge sort as a split tree, trace every comparison of every merge, and write it in C with recursion. Plus the leftover-elements bug that duplicates your data. 0:00 Split the class · 0:20 Title · 0:25 Divide and conquer · 1:00 The split tree · 1:40 Merging, animated · 2:35 Step trace · 3:00 Code: merge · 4:00 Code: merge_sort · 4:35 Run it · 4:50 Pun · 4:55 Why n log n · 5:40 Bug of the Day · 6:50 Challenge · 7:15 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Split the class"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Divide and conquer"
+      },
+      {
+        "t": "1:00",
+        "label": "The split tree"
+      },
+      {
+        "t": "1:40",
+        "label": "Merging, animated"
+      },
+      {
+        "t": "2:35",
+        "label": "Step trace"
+      },
+      {
+        "t": "3:00",
+        "label": "Code: merge"
+      },
+      {
+        "t": "4:00",
+        "label": "Code: merge_sort"
+      },
+      {
+        "t": "4:35",
+        "label": "Run it"
+      },
+      {
+        "t": "4:50",
+        "label": "Pun"
+      },
+      {
+        "t": "4:55",
+        "label": "Why n log n"
+      },
+      {
+        "t": "5:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:50",
+        "label": "Challenge"
+      },
+      {
+        "t": "7:15",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "merge sort",
+      "merge sort in c",
+      "divide and conquer",
+      "sorting algorithms",
+      "recursion",
+      "n log n",
+      "c programming",
+      "algorithms for beginners",
+      "learn c",
+      "koding konkani",
+      "dsa in c"
+    ],
+    "thumbnail": {
+      "text": "SPLIT. SORT. MERGE.",
+      "visual": "big text \"SPLIT. SORT. MERGE.\"; a tree of bars splitting down and zipping back up; Xecxec holding two halves together like a zipper; Dark blue background, Butter text.",
+      "pose": "Xecxec holding two halves together like a zipper"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Class of 6 kids by roll number; teacher splits them into two groups",
+      "animation": "Whistle; groups slide apart",
+      "sfx": [],
+      "narration": "A teacher has to line up the whole class by roll number. Instead of doing it alone, she splits the class into two groups and says, \"Each group, sort yourselves.\" Then she merges the two sorted lines into one. Splitting the work is the secret behind one of the fastest sorts there is."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 78 · MERGE SORT",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 78. Merge sort."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 35,
+      "onScreen": "3 words: DIVIDE, CONQUER, COMBINE; link back to Hanoi's \"trust the smaller call\"",
+      "animation": "Words stamp in",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "Merge sort has three steps. Divide: cut the array in half. Conquer: sort each half, by calling merge sort on it. Yes, recursion, just like Hanoi in Episode 77, we trust the smaller call. Combine: merge the two sorted halves into one sorted array. The base case: an array of one element is already sorted."
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 60,
+      "lengthSec": 40,
+      "onScreen": "Split tree: [5,2,9,1,6,3] → [5,2,9] [1,6,3] → [5,2] [9] [1,6] [3] → singles",
+      "animation": "Bars drop down a level per split; snip SFX",
+      "sfx": [],
+      "narration": "Our array, 5, 2, 9, 1, 6, 3, splits into 5, 2, 9 and 1, 6, 3. Those split again: 5, 2 and 9; 1, 6 and 3. And again, until every piece is a single number. Single numbers are already sorted. Now the real work starts, on the way back up."
+    },
+    {
+      "id": 5,
+      "template": "algorithm-bars",
+      "startSec": 100,
+      "lengthSec": 55,
+      "onScreen": "Merges bottom-up, steps M1–M5 from the trace",
+      "animation": "Two front bars compared in pastel blue; smaller one drops into the temp row in butter; leftovers slide in tomato; merged run turns mint; tick per compare, zip SFX on finish",
+      "sfx": [],
+      "narration": "To merge two sorted lines, look only at the front of each. Merge 5 and 2: 2 is smaller, take it. The left line still has 5, so it comes along. 2, 5. Merge 2, 5 with 9: 2, then 5, then the leftover 9. On the right side: 1, 6. Then 1, 6 with 3: take 1, then 3 beats 6, then leftover 6. 1, 3, 6. The final merge: 2, 5, 9 with 1, 3, 6. Compare fronts: 1. Then 2. Then 3. Then 5. Then 6. And the leftover 9. Sorted!"
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 155,
+      "lengthSec": 25,
+      "onScreen": "Step-trace table (below)",
+      "animation": "Rows reveal with replay",
+      "sfx": [],
+      "narration": "Here's the whole story: five splits, five merges, eleven comparisons. Notice the leftovers. Every merge ends with one side empty and something left on the other side. Remember that; it's today's bug."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 180,
+      "lengthSec": 60,
+      "onScreen": "merge.c lines 9–26 (merge); tracker for i, j, k, temp",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 9] merge takes the array and three indexes: the left run goes from left to mid, the right run from mid plus 1 to right. [HL 10] A temp array to build the merged result. We use a fixed size of 100 to keep the code simple; Episode 66's malloc would make it any size. [HL 11] i walks the left run, j walks the right run, k fills temp. [TRACK i=0 j=3 k=0] [HL 13] While both runs still have items, [HL 14] if the left front is smaller or equal, [HL 15] copy it into temp and move both i and k forward. The k plus plus and i plus plus are post-increments: use the value, then add one. [HL 17] Otherwise take the right front. [TRACK temp=1] [HL 19] When one run runs out, this loop copies whatever is left in the left run, [HL 21] and this one copies whatever is left in the right run. Only one of them will actually do anything. [HL 24] Finally, copy temp back into the array, starting at left.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid merge(int a[], int left, int mid, int right) {\n    int temp[100];\n    int i = left, j = mid + 1, k = 0;\n\n    while (i <= mid && j <= right) {\n        if (a[i] <= a[j])\n            temp[k++] = a[i++];\n        else\n            temp[k++] = a[j++];\n    }\n    while (i <= mid)\n        temp[k++] = a[i++];\n    while (j <= right)\n        temp[k++] = a[j++];\n\n    for (int t = 0; t < k; t++)\n        a[left + t] = temp[t];\n}\n\nvoid merge_sort(int a[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_sort(a, left, mid);\n    merge_sort(a, mid + 1, right);\n    merge(a, left, mid, right);\n}\n\nint main(void) {\n    int roll[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(roll) / sizeof(roll[0]);\n\n    merge_sort(roll, 0, n - 1);\n    print_array(roll, n);\n    return 0;\n}",
+        "output": "$ gcc merge.c -o merge\n$ ./merge\n1 2 3 5 6 9"
+      }
+    },
+    {
+      "id": 8,
+      "template": "code-explain",
+      "startSec": 240,
+      "lengthSec": 35,
+      "onScreen": "merge.c lines 28–44 (merge_sort, main); tracker for left, mid, right",
+      "animation": "[HL]/[TRACK] cues; mini call tree in corner",
+      "sfx": [],
+      "narration": "[HL 28] merge_sort sorts the part of the array from left to right. [HL 29] Base case: if the part has one element or none, [HL 30] it's already sorted. [HL 31] Find the middle the safe way, from Episode 73. [TRACK left=0 mid=2 right=5] [HL 32] Sort the left half, [HL 33] sort the right half, [HL 34] then merge them. Three lines, and that's the entire algorithm. [HL 41] In main we sort from index 0 to n minus 1, [HL 42] and print.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid merge(int a[], int left, int mid, int right) {\n    int temp[100];\n    int i = left, j = mid + 1, k = 0;\n\n    while (i <= mid && j <= right) {\n        if (a[i] <= a[j])\n            temp[k++] = a[i++];\n        else\n            temp[k++] = a[j++];\n    }\n    while (i <= mid)\n        temp[k++] = a[i++];\n    while (j <= right)\n        temp[k++] = a[j++];\n\n    for (int t = 0; t < k; t++)\n        a[left + t] = temp[t];\n}\n\nvoid merge_sort(int a[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_sort(a, left, mid);\n    merge_sort(a, mid + 1, right);\n    merge(a, left, mid, right);\n}\n\nint main(void) {\n    int roll[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(roll) / sizeof(roll[0]);\n\n    merge_sort(roll, 0, n - 1);\n    print_array(roll, n);\n    return 0;\n}",
+        "output": "$ gcc merge.c -o merge\n$ ./merge\n1 2 3 5 6 9"
+      }
+    },
+    {
+      "id": 9,
+      "template": "terminal",
+      "startSec": 275,
+      "lengthSec": 15,
+      "onScreen": "gcc and 1 output line",
+      "animation": "Line types out",
+      "sfx": [],
+      "narration": "Compile and run: 1, 2, 3, 5, 6, 9."
+    },
+    {
+      "id": 10,
+      "template": "pun-card",
+      "startSec": 290,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the two sorted arrays get married? Because they were a perfect merge."
+    },
+    {
+      "id": 11,
+      "template": "concept-slide",
+      "startSec": 295,
+      "lengthSec": 45,
+      "onScreen": "Split tree with \"log₂ n levels\" on the side and \"n work per level\" along the bottom",
+      "animation": "Each level glows; total \"n × log n\" assembles",
+      "sfx": [],
+      "narration": "How fast is this? Look at the split tree. Each level halves the pieces, so there are about log base 2 of n levels. On every level, the merges together touch all n elements once. So the total work is n times log n. For a million numbers, that's about 20 million steps, compared with roughly 500 billion comparisons for bubble sort. And unlike quick sort, which is next, merge sort is O(n log n) in the best, average and worst case. The price: it needs an extra temp array, so O(n) extra memory. It's also stable."
+    },
+    {
+      "id": 12,
+      "template": "bug-of-the-day",
+      "startSec": 340,
+      "lengthSec": 70,
+      "onScreen": "merge without the two leftover loops; output 1 2 2 3 3 3",
+      "animation": "Red siren; leftover bars left behind, old values show through",
+      "sfx": [],
+      "narration": "Today's bug: forgetting the leftover elements. Someone deleted the two small while loops after the main merge loop. It compiles without any warning. But the output is 1, 2, 2, 3, 3, 3. When one run empties, the other run's remaining items never get copied into temp, and k is too small. So when temp is copied back, those positions keep old values from earlier. Our 5, 6 and 9 were all leftovers at some point, and they're gone. The fix: always drain both runs after the main loop."
+    },
+    {
+      "id": 13,
+      "template": "challenge",
+      "startSec": 410,
+      "lengthSec": 25,
+      "onScreen": "\"Merge {1, 4, 7} and {2, 3, 8, 9}\"",
+      "animation": "Timer",
+      "sfx": [],
+      "narration": "Your challenge: write a program that merges two already-sorted arrays, 1, 4, 7 and 2, 3, 8, 9, into a third array of size 7, and prints it. It's the merge step on its own."
+    },
+    {
+      "id": 14,
+      "template": "outro",
+      "startSec": 435,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 79 Quick sort",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "Merge sort splits in the middle and does the work on the way up. Next episode, quick sort does the work on the way down, by picking a captain. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nvoid merge(int a[], int left, int mid, int right) {\n    int temp[100];\n    int i = left, j = mid + 1, k = 0;\n\n    while (i <= mid && j <= right) {\n        if (a[i] <= a[j])\n            temp[k++] = a[i++];\n        else\n            temp[k++] = a[j++];\n    }\n\n    for (int t = 0; t < k; t++)\n        a[left + t] = temp[t];\n}\n\nvoid merge_sort(int a[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_sort(a, left, mid);\n    merge_sort(a, mid + 1, right);\n    merge(a, left, mid, right);\n}\n\nint main(void) {\n    int roll[] = {5, 2, 9, 1, 6, 3};\n    merge_sort(roll, 0, 5);\n    for (int i = 0; i < 6; i++)\n        printf(\"%d \", roll[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+    "error": "No error or warning from GCC. Wrong output:\n\n1 2 2 3 3 3",
+    "fixed": "    while (i <= mid)\n        temp[k++] = a[i++];\n    while (j <= right)\n        temp[k++] = a[j++];",
+    "why": "the main loop stops as soon as one run is empty, so the other run's remaining values never reach temp and the copy-back leaves stale values in those slots."
+  },
+  "pun": "Why did the two sorted arrays get married? Because they were a perfect merge.",
+  "challenge": "Merge the sorted arrays {1, 4, 7} and {2, 3, 8, 9} into c[7] and print it.",
+  "challengeAnswer": "Output: `1 2 3 4 7 8 9`",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Split the class",
+      "hook": "\"The laziest teacher has the fastest method.\"",
+      "script": "The teacher splits the class in two and says, sort yourselves. Each half splits again, and again. Then she merges the sorted lines back together. That's merge sort, and it sorts a million numbers in about 20 million steps.",
+      "onScreen": "SPLIT. SORT. MERGE.",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "Divide and conquer, classroom edition.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "mergesort",
+        "sorting"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Merge sort in 30 seconds",
+      "hook": "\"Split until it's trivial. Then zip it back up.\"",
+      "script": "Merge sort cuts the array in half, again and again, until every piece is one number. One number is already sorted. Then it merges pairs of sorted pieces by comparing just their front items. log n levels of splitting, n work per level: O(n log n) in every case. The cost: an extra temp array.",
+      "onScreen": "O(n log n) ALWAYS",
+      "fromScenes": [
+        4,
+        5,
+        11
+      ],
+      "lengthSec": 40,
+      "caption": "Merge sort, visualised.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "mergesort",
+        "dsa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Where did 5, 6 and 9 go?",
+      "hook": "\"My merge sort printed 3 three times.\"",
+      "script": "The merge loop stops when one side runs out. If you forget to copy what's left on the other side, those numbers never make it into temp. Our output: 1, 2, 2, 3, 3, 3. Always add the two leftover loops after the main merge loop.",
+      "onScreen": "DRAIN THE LEFTOVERS",
+      "fromScenes": [
+        12
+      ],
+      "lengthSec": 35,
+      "caption": "Don't leave anyone behind.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "mergesort"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "A perfect merge",
+      "hook": "\"Why did two arrays get married?\"",
+      "script": "Why did the two sorted arrays get married? Because they were a perfect merge.",
+      "onScreen": "A PERFECT MERGE",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 10,
+      "caption": "Wedding season in Goa hits different.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Merge these two",
+      "hook": "\"Two sorted lists. One pass.\"",
+      "script": "You have 1, 4, 7 and 2, 3, 8, 9, both sorted. Merge them into one sorted list of seven, comparing only the front of each. Write it in C. Solution pinned on the full episode.",
+      "onScreen": "{1,4,7} + {2,3,8,9}",
+      "fromScenes": [
+        13
+      ],
+      "lengthSec": 20,
+      "caption": "Code it, then check.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "challenge",
+        "mergesort"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid merge(int a[], int left, int mid, int right) {\n    int temp[100];\n    int i = left, j = mid + 1, k = 0;\n\n    while (i <= mid && j <= right) {\n        if (a[i] <= a[j])\n            temp[k++] = a[i++];\n        else\n            temp[k++] = a[j++];\n    }\n    while (i <= mid)\n        temp[k++] = a[i++];\n    while (j <= right)\n        temp[k++] = a[j++];\n\n    for (int t = 0; t < k; t++)\n        a[left + t] = temp[t];\n}\n\nvoid merge_sort(int a[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_sort(a, left, mid);\n    merge_sort(a, mid + 1, right);\n    merge(a, left, mid, right);\n}\n\nint main(void) {\n    int roll[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(roll) / sizeof(roll[0]);\n\n    merge_sort(roll, 0, n - 1);\n    print_array(roll, n);\n    return 0;\n}",
+      "output": "$ gcc merge.c -o merge\n$ ./merge\n1 2 3 5 6 9",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "1 2 3 5 6 9"
+  }
+}

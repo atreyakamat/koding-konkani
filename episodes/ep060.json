@@ -1,0 +1,338 @@
+{
+  "ep": 60,
+  "title": "Function Pointers",
+  "module": 8,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "read and write the declaration `int (*f)(int, int)`",
+    "point a function pointer at different functions and call through it",
+    "pass a function into another function as a parameter",
+    "match a function pointer's signature exactly"
+  ],
+  "youtube": {
+    "title": "Function Pointers: A Remote for Your Code | C EP 60",
+    "description": "Functions live in memory too, so a pointer can point at one. We build a remote control that can switch between add and sub, pass functions into other functions, and see what happens when the signature does not match. The last episode of the pointers module. 0:00 The TV remote · 0:20 Title · 0:25 Functions have addresses · 1:25 Reading the scary declaration · 2:15 Code, line by line · 3:45 Running it · 4:05 Pun · 4:10 Where this is used · 4:50 Bug of the Day: wrong signature · 6:00 Challenge: calculator · 6:35 Module 8 complete",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The TV remote"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Functions have addresses"
+      },
+      {
+        "t": "1:25",
+        "label": "Reading the scary declaration"
+      },
+      {
+        "t": "2:15",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "3:45",
+        "label": "Running it"
+      },
+      {
+        "t": "4:05",
+        "label": "Pun"
+      },
+      {
+        "t": "4:10",
+        "label": "Where this is used"
+      },
+      {
+        "t": "4:50",
+        "label": "Bug of the Day: wrong signature"
+      },
+      {
+        "t": "6:00",
+        "label": "Challenge: calculator"
+      },
+      {
+        "t": "6:35",
+        "label": "Module 8 complete"
+      }
+    ],
+    "tags": [
+      "function pointers in c",
+      "pointer to function c",
+      "int (*f)(int",
+      "int)",
+      "callback in c",
+      "passing function as argument c",
+      "array of function pointers",
+      "c pointers tutorial",
+      "learn c",
+      "koding konkani",
+      "c programming for beginners",
+      "c programming india",
+      "engineering c"
+    ],
+    "thumbnail": {
+      "text": "POINT AT A FUNCTION?",
+      "visual": "big text \"POINT AT A FUNCTION?\"; a TV remote with buttons labelled add, sub; a black arrow from remote `f` to a lilac function box; Xecxec pressing a button with a claw, excited; lilac background, dark blue text block",
+      "pose": "Xecxec pressing a button with a claw, excited"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A TV remote and a TV showing two channels: \"ADD\" and \"SUB\"; Xecxec on a sofa",
+      "animation": "Button press switches the TV channel; click SFX each time",
+      "sfx": [],
+      "narration": "A TV remote does not contain the channels. It just tells the TV which channel to show. Press one button, you get one channel. Press another, you switch. In C, you can build a remote for your functions. It's called a function pointer."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 60 · FUNCTION POINTERS",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode sixty. Function pointers."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 60,
+      "onScreen": "Code area of memory (dark blue boxes) holding `add` at 0x401500 and `sub` at 0x401520; stack box `f` with an arrow to `add`",
+      "animation": "Function boxes slide in as machines with gears; `f` arrow draws to `add`; then swings to `sub`; whoosh on each swing",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "All module long, we've pointed at variables. But your functions also live in memory. When your program runs, the machine code for add and sub is stored in a part of memory called the code area. So each function has an address too, just like a variable. The addresses on screen are made-up examples. And if functions have addresses, then a pointer can hold one. Here is f, a function pointer. Right now it points at add. If we write f equals sub, the arrow swings over to sub. Same remote, new channel. When we call f, whichever function it points to is the one that runs."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 85,
+      "lengthSec": 50,
+      "onScreen": "`int (*f)(int, int)` split into three coloured parts: return type, `(*f)`, parameter list; a second line `int *f(int, int)` crossed out with \"function returning int*\"",
+      "animation": "Each part lights up as narrated; brackets bounce; buzzer on the crossed-out line",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "This is the line that scares everyone: int, bracket star f bracket, bracket int comma int bracket. Let's read it in three parts. In the middle, bracket star f bracket: f is a pointer. On the right, bracket int comma int bracket: to a function that takes two ints. On the left, int: and returns an int. So: f is a pointer to a function that takes two ints and returns an int. The brackets around star f are very important. Without them, int star f, bracket int comma int bracket, means something completely different: a function called f that returns an int pointer. So keep those brackets."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 135,
+      "lengthSec": 90,
+      "onScreen": "`funcptr.c` (19 lines); tracker: f (points to add/sub), op",
+      "animation": "Butter highlights; corner diagram arrow swings between `add` and `sub`; for `apply`, a second frame shows `op` pointing at the function",
+      "sfx": [],
+      "narration": "Here is our program. [HL 3] Line 3 defines add, which takes two ints and returns their sum. [HL 4] Line 4 defines sub, which returns their difference. [HL 6] Line 6 defines apply. Its first parameter, op, is a function pointer: int bracket star op bracket, bracket int comma int bracket. The other two are normal ints. [HL 7] Line 7 calls op of x comma y and returns the result. apply does not know or care which function op is. It just presses the button. [HL 10] Now main. [HL 11] Line 11 creates f and points it at add. Notice: we write just add, with no brackets after it. A function name without brackets gives its address, similar to how an array name gives the address of its first element, from EP 57. [TRACK f=add] [HL 12] Line 12 calls f of 8 comma 3. f points at add, so we get 11. [HL 14] Line 14 points f at sub. [TRACK f=sub] [HL 15] Line 15 calls f of 8 comma 3 again. Same line of code, but now we get 5. [HL 17] Line 17 calls apply, passing add as the function. [TRACK op=add] Inside apply, op of 10 comma 4 is add of 10 comma 4: 14. [HL 18] Line 18 passes sub. [TRACK op=sub] We get 6. Passing a function into another function like this is called a callback. [HL 19] Return zero.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint add(int a, int b) { return a + b; }\nint sub(int a, int b) { return a - b; }\n\nint apply(int (*op)(int, int), int x, int y) {\n    return op(x, y);\n}\n\nint main(void) {\n    int (*f)(int, int) = add;\n    printf(\"f(8, 3) = %d\\n\", f(8, 3));\n\n    f = sub;\n    printf(\"f(8, 3) = %d\\n\", f(8, 3));\n\n    printf(\"apply(add, 10, 4) = %d\\n\", apply(add, 10, 4));\n    printf(\"apply(sub, 10, 4) = %d\\n\", apply(sub, 10, 4));\n    return 0;\n}",
+        "output": "f(8, 3) = 11\nf(8, 3) = 5\napply(add, 10, 4) = 14\napply(sub, 10, 4) = 6"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 225,
+      "lengthSec": 20,
+      "onScreen": "Compile and run",
+      "animation": "Output prints; 11, 5, 14, 6 pop in mint",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Compile and run. f of 8 comma 3 is 11, then 5. apply with add gives 14, with sub gives 6. Same code, different behaviour, depending on which button we pressed."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 5,
+      "onScreen": "\"Why did the function pointer get a job at the TV store? It's great with remotes.\"",
+      "animation": "Card flips; Xecxec channel-surfs; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the function pointer get a job at the TV store? Because it's great with remotes."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 250,
+      "lengthSec": 40,
+      "onScreen": "Three cards: `qsort` comparison, button click handlers, menu choices",
+      "animation": "Cards deal in one by one; each shows a small arrow to a function box",
+      "sfx": [],
+      "narration": "Where would you really use this? First, the standard library function qsort sorts any array, but you pass it a function that says how to compare two items. That's a function pointer. We'll use qsort in Module 12. Second, in apps and games, when you click a button, the program calls a function that was attached to that button earlier. Third, menus: instead of a long switch statement, keep an array of function pointers, and pick one by number. That's exactly today's challenge."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 290,
+      "lengthSec": 70,
+      "onScreen": "`int (*f)(int, int) = half;` where `half` is `double half(double)`; GCC warning; nonsense output",
+      "animation": "Remote with a plug that does not fit the socket; sparks; buzzer; matching signature slides in",
+      "sfx": [
+        "buzzer"
+      ],
+      "narration": "Today's bug: the wrong signature. Someone has a function double half, bracket double x bracket. Then they write int bracket star f bracket, bracket int comma int bracket, equals half. The remote's plug does not fit the socket. GCC warns: initialization of int bracket star bracket bracket int comma int bracket from incompatible pointer type double bracket star bracket bracket double bracket. If you ignore it and call f, the function receives its inputs in the wrong places and returns its answer in the wrong place, so you get a nonsense number. In GCC 14 and later, this is an error, which is good. The fix: the function pointer's type must match the function exactly. Same return type, same parameter types. For half, that's double bracket star f bracket, bracket double bracket."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 360,
+      "lengthSec": 35,
+      "onScreen": "\"Calculator with function pointers\" task card; an array of 4 remotes for + - * /",
+      "animation": "Four arrows from an array to four function boxes; buttons light up in turn",
+      "sfx": [],
+      "narration": "Your final pointer challenge. Write four functions: add, sub, mul and divide. Each takes two ints and returns an int. Make sure divide does not divide by zero. Then make an array of four function pointers: int bracket star ops square bracket 4 bracket, bracket int comma int bracket, and fill it with the four functions. Loop over the array with a equals 20 and b equals 5, and print all four results. You should see 25, 15, 100 and 4. Pause and try."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 395,
+      "lengthSec": 25,
+      "onScreen": "\"Module 8 complete!\" badge; \"Next: EP 61 · struct basics\"",
+      "animation": "Badge stamps on; confetti; claw-click; sign-off",
+      "sfx": [
+        "claw-click",
+        "stamp"
+      ],
+      "narration": "And that is Module 8, complete. Addresses, pointers, dereferencing, call by reference, arithmetic, arrays, strings, double pointers, NULL, and now function pointers. If you made it here, you have climbed the hardest hill in C. Be proud. Next episode, Module 9 begins: structures, where we group data together like a student ID card. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\ndouble half(double x) { return x / 2; }\n\nint main(void) {\n    int (*f)(int, int) = half;\n    printf(\"%d\\n\", f(10, 0));\n    return 0;\n}",
+    "error": "GCC 13 (`gcc -Wall bug.c`) prints:\n\nbug.c: In function 'main':\nbug.c:6:26: warning: initialization of 'int (*)(int,  int)' from incompatible pointer type 'double (*)(double)' [-Wincompatible-pointer-types]\n    6 |     int (*f)(int, int) = half;\n      |                          ^~~~\n\nIt still builds, and running it prints a nonsense number that changes from run to run (for example `1012736329`). GCC 14 and later report this as an error.",
+    "fixed": "#include <stdio.h>\n\ndouble half(double x) { return x / 2; }\n\nint main(void) {\n    double (*f)(double) = half;\n    printf(\"%.1f\\n\", f(10));\n    return 0;\n}",
+    "why": "calling a function through a pointer of the wrong type passes the arguments and reads the result in the wrong places, so the types must match exactly."
+  },
+  "pun": "\"Why did the function pointer get a job at the TV store? It's great with remotes.\"",
+  "challenge": "Write `add`, `sub`, `mul` and `divide` (safe for 0). Store them in `int (*ops[4])(int, int)` and loop over it with `a = 20`, `b = 5` to print all four results.",
+  "challengeAnswer": "(worked example)\nint add(int a, int b) { return a + b; }\nint sub(int a, int b) { return a - b; }\nint mul(int a, int b) { return a * b; }\nint divide(int a, int b) { return b != 0 ? a / b : 0; }\n\n/* in main */\nint (*ops[4])(int, int) = {add, sub, mul, divide};\nconst char symbols[4] = {'+', '-', '*', '/'};\nint a = 20, b = 5;\nfor (int i = 0; i < 4; i++) {\n    printf(\"%d %c %d = %d\\n\", a, symbols[i], b, ops[i](a, b));\n}\n/* 20 + 5 = 25, 20 - 5 = 15, 20 * 5 = 100, 20 / 5 = 4 */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "You can point at a function?!",
+      "hook": "Same line `f(8, 3)` prints 11, then 5: \"Same code. Different answer.\"",
+      "script": "f of 8 comma 3 gives 11. Then, the exact same line gives 5. How? f is a function pointer. First it pointed at add, then we pointed it at sub. Functions live in memory, so pointers can point at them. It's a remote control for your code.",
+      "onScreen": "SAME LINE, DIFFERENT FUNCTION",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Pointers can point at functions too.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "learntocode",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Read `int (*f)(int, int)` in 30s",
+      "hook": "The scary declaration in big letters, then it splits into three colours.",
+      "script": "Read it from the middle. Bracket star f bracket: f is a pointer. Bracket int comma int bracket: to a function taking two ints. int on the left: that returns an int. Keep the brackets around star f. Without them, it means a function returning a pointer.",
+      "onScreen": "MIDDLE · RIGHT · LEFT",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Never fear this line again.",
+      "hashtags": [
+        "cprogramming",
+        "pointers",
+        "kodingkonkani",
+        "codingtips",
+        "functionpointers"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The plug doesn't fit",
+      "hook": "A remote plug sparking in the wrong socket.",
+      "script": "A function pointer for int, int. A function that takes a double. GCC warns: incompatible pointer type. Run it anyway, and you get a nonsense number. The function pointer's type must match the function exactly: same return type, same parameters.",
+      "onScreen": "SIGNATURES MUST MATCH",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 30,
+      "caption": "Wrong plug, wrong answer.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "pointers",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Great with remotes",
+      "hook": "Xecxec in a TV store uniform, holding three remotes.",
+      "script": "Why did the function pointer get a job at the TV store? Because it's great with remotes.",
+      "onScreen": "GREAT WITH REMOTES",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Hired on the spot.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Build a calculator with 4 arrows",
+      "hook": "An array of four arrows pointing at +, -, *, / machines.",
+      "script": "Challenge time. Write add, sub, mul and divide. Put them in an array of function pointers. Loop over it with 20 and 5. You should print 25, 15, 100 and 4, with no switch statement at all. Comment your code, and Xecxec will check it.",
+      "onScreen": "CALCULATOR, NO switch",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 30,
+      "caption": "Can you do it in under 20 lines?",
+      "hashtags": [
+        "cprogramming",
+        "codingchallenge",
+        "kodingkonkani",
+        "functionpointers",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint add(int a, int b) { return a + b; }\nint sub(int a, int b) { return a - b; }\n\nint apply(int (*op)(int, int), int x, int y) {\n    return op(x, y);\n}\n\nint main(void) {\n    int (*f)(int, int) = add;\n    printf(\"f(8, 3) = %d\\n\", f(8, 3));\n\n    f = sub;\n    printf(\"f(8, 3) = %d\\n\", f(8, 3));\n\n    printf(\"apply(add, 10, 4) = %d\\n\", apply(add, 10, 4));\n    printf(\"apply(sub, 10, 4) = %d\\n\", apply(sub, 10, 4));\n    return 0;\n}",
+      "output": "f(8, 3) = 11\nf(8, 3) = 5\napply(add, 10, 4) = 14\napply(sub, 10, 4) = 6",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "5.0"
+  }
+}

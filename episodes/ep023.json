@@ -1,0 +1,312 @@
+{
+  "ep": 23,
+  "title": "switch-case",
+  "module": 3,
+  "lengthSec": 380,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a `switch` on an int or char with `case` labels, `break` and `default`",
+    "explain fall-through and why `break` stops it",
+    "group cases that share one action",
+    "know when switch fits (exact values) and when an else-if ladder fits (ranges)"
+  ],
+  "youtube": {
+    "title": "switch-case: Build a Restaurant Menu in C | C Programming EP 23",
+    "description": "When one value can match many exact choices, a long else-if ladder gets messy. Today we build Xecxec's beach shack menu with switch, case, break and default. Then we remove one break and watch the whole menu fall through onto your bill. Chapters: 0:00 The menu machine · 0:25 How switch works · 1:10 Code line by line · 3:00 Running it · 3:25 Grouping cases · 4:15 Bug of the Day · 5:30 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "The menu machine"
+      },
+      {
+        "t": "0:25",
+        "label": "How switch works"
+      },
+      {
+        "t": "1:10",
+        "label": "Code line by line"
+      },
+      {
+        "t": "3:00",
+        "label": "Running it"
+      },
+      {
+        "t": "3:25",
+        "label": "Grouping cases"
+      },
+      {
+        "t": "4:15",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:30",
+        "label": "Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "switch case in c",
+      "switch statement",
+      "break and default",
+      "fall through in c",
+      "menu program in c",
+      "learn c",
+      "c for beginners",
+      "koding konkani",
+      "c tutorial english"
+    ],
+    "thumbnail": {
+      "text": "WHO ORDERED ALL THIS?",
+      "visual": "big text \"WHO ORDERED ALL THIS?\"; a bill sliding out of a machine with 4 items; Xecxec as a waiter with a tray piled high, sweating; mint background, dark blue blocks",
+      "pose": "Xecxec as a waiter with a tray piled high, sweating"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Xecxec's beach shack menu board: 1 Fish thali, 2 Prawn curry rice, 3 Bebinca",
+      "animation": "Chalkboard draws in, waves SFX, order bell",
+      "sfx": [],
+      "narration": "Xecxec has opened a beach shack. The menu has numbers. 1 is fish thali, 2 is prawn curry rice, 3 is bebinca. A customer says a number, and the kitchen makes that dish. You could write this with the else-if ladder from EP 21. If choice is 1, else if choice is 2, else if choice is 3. It works. But C has a tool made exactly for this job."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 23 · SWITCH-CASE",
+      "animation": "Title slam, whoosh",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Episode 23. switch-case."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 45,
+      "onScreen": "A sorting machine: value drops in, lands on the matching case door; \"default\" door at the end",
+      "animation": "Value ball rolls, door clicks open, ding",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Think of a sorting machine. You drop one value in at the top. The machine looks at the value once, and jumps straight to the door with the same number on it. That door is called a case. Each case ends with a break, which is the exit. And if no door matches, the value rolls to the last door, called default. One value in, one exact match, one exit. Two rules: switch works only with whole-number values, like int and char. And each case must be a constant, like 1 or the letter A, not a variable and not a range."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 70,
+      "lengthSec": 110,
+      "onScreen": "ep23.c, 28 lines; tracker for choice",
+      "animation": "Line highlights; arrow jumps from switch to the matching case; break shown as an exit sign; key-tap SFX",
+      "sfx": [],
+      "narration": "Here is the shack in C. [HL 4] Line 4 makes the box choice. [HL 6] Lines 6 to 10 print the menu. [HL 11] Line 11 reads the number. The customer types 2. [TRACK choice=2] [HL 13] Line 13: switch, and inside the round brackets, the value we are checking: choice. Then an opening curly brace. Everything up to the closing brace on line 25 belongs to this switch. Now the jump. C looks at choice, sees 2, and goes directly to the label case 2. It does not check case 1 first. [HL 17] Line 17: case 2, then a colon. Notice the colon, not a semicolon. A case is a label, a sign on a door. [HL 18] Line 18 prints \"Prawn curry rice: Rs 300\". [HL 19] Line 19: break. Break means: leave the switch right now. C jumps to the closing brace on line 25 and carries on from line 27. [HL 23] Now look at line 23: default, with a colon. If the customer types 7, no case matches, so C jumps here and prints \"Not on the menu!\" Default is like the else at the bottom of a ladder. It is optional, but always add one. Customers will order things that do not exist.",
+      "code": {
+        "file": "ep23.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int choice;\n\n    printf(\"--- Xecxec's Shack ---\\n\");\n    printf(\"1. Fish thali\\n\");\n    printf(\"2. Prawn curry rice\\n\");\n    printf(\"3. Bebinca\\n\");\n    printf(\"Your choice: \");\n    scanf(\"%d\", &choice);\n\n    switch (choice) {\n        case 1:\n            printf(\"Fish thali: Rs 250\\n\");\n            break;\n        case 2:\n            printf(\"Prawn curry rice: Rs 300\\n\");\n            break;\n        case 3:\n            printf(\"Bebinca: Rs 120\\n\");\n            break;\n        default:\n            printf(\"Not on the menu!\\n\");\n    }\n\n    return 0;\n}",
+        "output": "--- Xecxec's Shack ---\n1. Fish thali\n2. Prawn curry rice\n3. Bebinca\nYour choice: 2\nPrawn curry rice: Rs 300"
+      }
+    },
+    {
+      "id": 5,
+      "template": "terminal",
+      "startSec": 180,
+      "lengthSec": 20,
+      "onScreen": "Runs: 1, 2, 3, 7",
+      "animation": "Typing SFX, a bill slip prints each time",
+      "sfx": [],
+      "narration": "Compile and run. 1: fish thali, 250 rupees. 2: prawn curry rice, 300. 3: bebinca, 120. And 7: not on the menu. Four runs, four correct bills."
+    },
+    {
+      "id": 6,
+      "template": "pun-card",
+      "startSec": 200,
+      "lengthSec": 5,
+      "onScreen": "Pun line",
+      "animation": "Drum hit, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Why did the switch statement never finish its meal? It kept taking a break."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 205,
+      "lengthSec": 50,
+      "onScreen": "ep23b.c, grouped cases 'A' and 'B' on a char",
+      "animation": "Two case labels glow together; tracker for grade",
+      "sfx": [],
+      "narration": "Sometimes two values should do the same thing. Here is ep23b.c. We switch on a char, grade, which holds the letter B. [TRACK grade='B'] [HL 6] Line 6: switch on grade. [HL 7] [HL 8] Lines 7 and 8 are case 'A' and case 'B', stacked with nothing between them. Character cases use single quotes, as in EP 8. C jumps to case 'B'. There is nothing under it except the next line, so it flows down into line 9 and prints \"Well done!\" [HL 10] Then break. So A and B share one action. Stacking empty case labels like this is normal and useful. Keep this idea of flowing down in mind. In a second it will bite us.",
+      "code": {
+        "file": "ep23b.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    char grade = 'B';\n\n    switch (grade) {\n        case 'A':\n        case 'B':\n            printf(\"Well done!\\n\");\n            break;\n        case 'C':\n            printf(\"Good effort.\\n\");\n            break;\n        default:\n            printf(\"Keep practising.\\n\");\n    }\n\n    return 0;\n}",
+        "output": "Well done!"
+      }
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 255,
+      "lengthSec": 75,
+      "onScreen": "Missing breaks: ordering 1 prints all four lines",
+      "animation": "Items pile onto the tray one by one; error buzz; break signs snap in",
+      "sfx": [],
+      "narration": "Today's bug: the missing break. Here is the shack code, but someone forgot every break. The customer orders 1. We run it. The output: fish thali, prawn curry rice, bebinca, and not on the menu! Four lines for one order. Why? A case is only a label. It is where C starts, not where C stops. Without a break, C keeps running every line below, through every other case, all the way to the end. This is called fall-through. In the last scene we used it on purpose. Here it is a disaster. Plain gcc compiles it silently. With -Wextra, GCC warns: this statement may fall through, and points at each case below. The fix: put break at the end of every case. You can skip it on the last one, default, but many programmers add it there too, so a new case added later is safe."
+    },
+    {
+      "id": 9,
+      "template": "challenge",
+      "startSec": 330,
+      "lengthSec": 30,
+      "onScreen": "Day number to day name",
+      "animation": "Calendar flip, timer ring",
+      "sfx": [],
+      "narration": "Your challenge: read a day number from 1 to 7 and print the day name. 1 is Monday, 7 is Sunday. Anything else prints Invalid day. Use switch, break and default. Answer in the comments."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 360,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 24 logic puzzles; sign-off",
+      "animation": "Module tiles, claw-click, music out",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Next episode: we put AND, OR and NOT together and solve real logic puzzles, including a triangle riddle from Xecxec. EP 24. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int choice = 1;\n\n    switch (choice) {\n        case 1:\n            printf(\"Fish thali: Rs 250\\n\");\n        case 2:\n            printf(\"Prawn curry rice: Rs 300\\n\");\n        case 3:\n            printf(\"Bebinca: Rs 120\\n\");\n        default:\n            printf(\"Not on the menu!\\n\");\n    }\n\n    return 0;\n}",
+    "error": "Plain `gcc` compiles it with no message. Wrong output:\n\nFish thali: Rs 250\nPrawn curry rice: Rs 300\nBebinca: Rs 120\nNot on the menu!\n\nWith `gcc -Wall -Wextra` (GCC 13), one warning per missing break, the first being:\n\nep23bug.c:8:13: warning: this statement may fall through [-Wimplicit-fallthrough=]\n    8 |             printf(\"Fish thali: Rs 250\\n\");\n      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nep23bug.c:9:9: note: here\n    9 |         case 2:\n      |         ^~~~",
+    "fixed": "Fixed code: identical to ep23.c above, with `break;` after each case's `printf`.",
+    "why": "a `case` is only a starting label, so without `break` C keeps running every statement below it until the switch ends."
+  },
+  "pun": "Why did the switch statement never finish its meal? It kept taking a break.",
+  "challenge": "Read a day number 1–7 and print the day name (1 = Monday ... 7 = Sunday); anything else prints \"Invalid day\". Use switch, break and default.",
+  "challengeAnswer": "(worked example)\nint day;\nscanf(\"%d\", &day);\nswitch (day) {\n    case 1: printf(\"Monday\\n\"); break;\n    case 2: printf(\"Tuesday\\n\"); break;\n    case 3: printf(\"Wednesday\\n\"); break;\n    case 4: printf(\"Thursday\\n\"); break;\n    case 5: printf(\"Friday\\n\"); break;\n    case 6: printf(\"Saturday\\n\"); break;\n    case 7: printf(\"Sunday\\n\"); break;\n    default: printf(\"Invalid day\\n\");\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The menu machine",
+      "hook": "Order bell rings, chalkboard menu: \"1, 2 or 3?\"",
+      "script": "A customer says a number. The kitchen makes that dish. You could write a long else-if ladder. Or you could use switch. Drop one value in, and C jumps straight to the matching case. No match? It goes to default. One value in, one exact match, one exit.",
+      "onScreen": "ONE VALUE, ONE DOOR",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Building a beach shack menu with switch-case.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "switchcase",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "switch in 30 seconds",
+      "hook": "Arrow jumps from \"switch (choice)\" straight to \"case 2:\"",
+      "script": "switch in 30 seconds. Write switch and the value in brackets. Each case is a label with a colon. C jumps straight to the matching case and runs from there. break means leave the switch now. default catches anything that does not match. It only works with whole numbers and characters, and each case must be a constant.",
+      "onScreen": "CASE · BREAK · DEFAULT",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Three keywords, one clean menu.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "ctutorial",
+        "programming"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Who ordered all this?",
+      "hook": "Xecxec's tray piles up with four dishes. \"I ordered ONE thing!\"",
+      "script": "Order number 1. The bill shows fish thali, prawn curry, bebinca, and not on the menu. Four lines! Someone forgot the breaks. A case is where C starts, not where it stops. Without break, it falls through every case below. Compile with -Wextra and GCC warns: this statement may fall through. Add break to every case.",
+      "onScreen": "NO BREAK = FALL-THROUGH",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "One missing word, four dishes on the bill.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "learntocode",
+        "codinglife"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Taking a break",
+      "hook": "Xecxec lounging on a beach chair beside a half-eaten thali",
+      "script": "Why did the switch statement never finish its meal? It kept taking a break.",
+      "onScreen": "IT KEPT TAKING A BREAK",
+      "fromScenes": [
+        6
+      ],
+      "lengthSec": 12,
+      "caption": "Relatable.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingjokes"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "switch or ladder?",
+      "hook": "\"case marks >= 90:\" with a red question mark",
+      "script": "Quiz. Can you write case marks greater than or equal to 90 in a switch? Three, two, one. No! Each case must be a constant value, not a range. For ranges, use an else-if ladder. For exact values, like menu numbers or day numbers, use switch. Challenge: print the day name from a number 1 to 7. Answer in the comments.",
+      "onScreen": "SWITCH: EXACT VALUES ONLY",
+      "fromScenes": [
+        3,
+        9
+      ],
+      "lengthSec": 25,
+      "caption": "Ranges go in ladders, exact values go in switch.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "switchcase"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "ep23.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int choice;\n\n    printf(\"--- Xecxec's Shack ---\\n\");\n    printf(\"1. Fish thali\\n\");\n    printf(\"2. Prawn curry rice\\n\");\n    printf(\"3. Bebinca\\n\");\n    printf(\"Your choice: \");\n    scanf(\"%d\", &choice);\n\n    switch (choice) {\n        case 1:\n            printf(\"Fish thali: Rs 250\\n\");\n            break;\n        case 2:\n            printf(\"Prawn curry rice: Rs 300\\n\");\n            break;\n        case 3:\n            printf(\"Bebinca: Rs 120\\n\");\n            break;\n        default:\n            printf(\"Not on the menu!\\n\");\n    }\n\n    return 0;\n}",
+      "output": "--- Xecxec's Shack ---\n1. Fish thali\n2. Prawn curry rice\n3. Bebinca\nYour choice: 2\nPrawn curry rice: Rs 300",
+      "lang": "c"
+    },
+    {
+      "file": "ep23b.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    char grade = 'B';\n\n    switch (grade) {\n        case 'A':\n        case 'B':\n            printf(\"Well done!\\n\");\n            break;\n        case 'C':\n            printf(\"Good effort.\\n\");\n            break;\n        default:\n            printf(\"Keep practising.\\n\");\n    }\n\n    return 0;\n}",
+      "output": "Well done!",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "ep": 28,
+  "title": "do-while: Ask First, Check Later",
+  "module": 4,
+  "lengthSec": 360,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a `do-while` loop and explain why its body always runs at least once",
+    "use `do-while` to re-ask for input until it is valid",
+    "build a repeating text menu",
+    "remember the semicolon after `while (...)`"
+  ],
+  "youtube": {
+    "title": "do-while: The Loop That Runs at Least Once | C EP 28",
+    "description": "Some things must happen once before you can check them, like asking a user for input. The do-while loop runs first and checks later. We build an input checker and a repeating menu, and fix the missing-semicolon error. 0:00 Challenge answer and hook 0:25 while vs do-while 1:20 Input validation, line by line 2:30 A menu that repeats 4:00 Bug of the Day: missing semicolon 4:50 Challenge",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Challenge answer and hook 0:25 while vs do-while 1:20 Input validation, line by line 2:30 A menu that repeats 4:00 Bug of the Day: missing semicolon 4:50 Challenge"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "do while loop in c",
+      "do while vs while",
+      "menu driven program in c",
+      "input validation c",
+      "c tutorial for beginners",
+      "learn c",
+      "c programming class 12",
+      "koding konkani",
+      "loops in c"
+    ],
+    "thumbnail": {
+      "text": "RUNS ONCE. ALWAYS.",
+      "visual": "big text \"RUNS ONCE. ALWAYS.\"; a door labelled `do` opening before a guard labelled `while`; Xecxec already inside, waving; Butter background, Dark blue blocks.",
+      "pose": "Xecxec already inside, waving"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "code-explain",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "EP 27 challenge answer: multiplication table of 7, then the hook \"What if the user types 150 as their age?\"",
+      "animation": "Table rows cascade in; \"150?!\" pops in Tomato",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Last episode's challenge: a multiplication table. Read n, then for i from 1 to 10, print n times i. For 7 you get 7, 14, 21, all the way to 70. Now, a new problem. You ask a user for their age, and they type 150. Or zero. You want to keep asking until they type something sensible. But you must ask at least once before you can check anything."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 28 · DO-WHILE",
+      "animation": "Butter card, claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode twenty-eight. The do-while loop."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 25,
+      "lengthSec": 55,
+      "onScreen": "`once.c`: while vs do-while with x = 10",
+      "animation": "Split screen; left guard blocks entry (Tomato X), right door opens then guard checks; terminal shows only \"do-while ran\"",
+      "sfx": [],
+      "narration": "Look at this program. [HL 4] x is 10. [TRACK x=10] [HL 6] A while loop: while x is less than 5. C checks first. 10 is not less than 5, so the body never runs. Zero times. [HL 10] Now a do-while. The word do, then the body in braces, [HL 12] then while and the condition at the bottom, with a semicolon. C runs the body first. It prints \"do-while ran\". Then it checks: is 10 less than 5? No. So it stops. But the body already ran once. That is the whole difference. while checks at the door. do-while lets you in, then checks."
+    },
+    {
+      "id": 4,
+      "template": "code-explain",
+      "startSec": 80,
+      "lengthSec": 70,
+      "onScreen": "`dowhile.c` age validation",
+      "animation": "Input bubbles 0, 150, 19 drop in; tracker for `age`; loop arrow turns Mint on 19",
+      "sfx": [],
+      "narration": "Here is where do-while really helps. [HL 4] int age, no value yet. [HL 6] do, open brace. [HL 7] Print \"Enter your age, 1 to 120\". [HL 8] scanf reads a number into age. Say the user types 0. [TRACK age=0] [HL 9] Now the check: while age less than 1, OR age greater than 120. Remember the OR from Episode 16: true if either side is true. 0 is less than 1, so the condition is true, and we loop back and ask again. The user types 150. [TRACK age=150] 150 is greater than 120: true again, ask again. The user types 19. [TRACK age=19] Is 19 less than 1? No. Greater than 120? No. Both false, so the condition is false. We exit. [HL 11] Print \"Thanks! You are 19\". We could not check age before reading it. That is why do-while fits."
+    },
+    {
+      "id": 5,
+      "template": "pun-card",
+      "startSec": 150,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec tastes a feni-cashew, nods, rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why does do-while love Goan feni? Because it always tries it once before deciding."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 155,
+      "lengthSec": 75,
+      "onScreen": "`menu.c` balance menu",
+      "animation": "Menu card appears, choice bubbles 1, 2, 7, 3; `balance` tracker 500 → 600",
+      "sfx": [],
+      "narration": "Now, a menu that repeats, like an ATM. [HL 4] int choice. [HL 5] balance starts at 500. [TRACK balance=500] [HL 7] do. [HL 8] Print the menu: 1, check balance. 2, add 100. 3, exit. [HL 9] [HL 10] Ask for the choice and read it. The user types 1. [TRACK choice=1] [HL 12] if choice equals 1, [HL 13] print the balance: 500. [HL 20] Now the check at the bottom: while choice is not equal to 3. 1 is not 3, so we show the menu again. The user types 2. [TRACK choice=2] [HL 14] else if choice equals 2, [HL 15] balance becomes 600, [TRACK balance=600] [HL 16] and we print \"Added! Balance: 600\". Not 3, so loop again. The user types 7. [TRACK choice=7] It is not 1, not 2. [HL 17] else if choice is not 3: [HL 18] \"Invalid choice\". Loop again. Finally, 3. [TRACK choice=3] None of the ifs print anything, and the check, choice not equal to 3, is false. We exit. [HL 22] \"Bye!\" Every menu-driven program in your practical exam follows this exact shape."
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 230,
+      "lengthSec": 10,
+      "onScreen": "Run `menu.c` with inputs 1, 2, 7, 3",
+      "animation": "Typing SFX, output scrolls",
+      "sfx": [],
+      "narration": "Let's run it and type 1, 2, 7 and 3. Balance 500. Added, 600. Invalid choice. Bye."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 240,
+      "lengthSec": 50,
+      "onScreen": "Missing `;` after `while (n <= 3)` with GCC error",
+      "animation": "Butter frame, caret `^` bounces under the gap, a semicolon drops in with a click",
+      "sfx": [],
+      "narration": "Today's bug is tiny. One semicolon. Look at line nine: close brace, while, n less than or equal to 3, and nothing after. Compile. GCC says: error, expected semicolon before return. And the caret points just after the closing bracket. In a while loop you never put a semicolon after the condition. In a do-while you must, because the while is the end of the statement. The fix: add the semicolon. Then it prints 1, 2, 3."
+    },
+    {
+      "id": 9,
+      "template": "concept-slide",
+      "startSec": 290,
+      "lengthSec": 55,
+      "onScreen": "Summary: while (check first, 0+ times), for (known count), do-while (1+ times)",
+      "animation": "Three cards, Xecxec stamps each",
+      "sfx": [
+        "stamp"
+      ],
+      "narration": "So now you have three loops. while checks first and may run zero times. for is while with a plan, best when you know the count. do-while runs at least once, best for menus and input checks. Same engine, three different shapes."
+    },
+    {
+      "id": 10,
+      "template": "outro",
+      "startSec": 345,
+      "lengthSec": 15,
+      "onScreen": "\"Build a chai shop menu\" and Next: EP 29",
+      "animation": "Timer ring, end card, wave",
+      "sfx": [],
+      "narration": "Your challenge: build a chai shop menu. 1 for tea, 2 for coffee, 3 to exit. Print a message for each choice, and \"Not on the menu\" for anything else. Keep showing it until the user picks 3. Next episode: break and continue, the emergency exit and the skip button. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int n = 1;\n\n    do {\n        printf(\"%d\\n\", n);\n        n++;\n    } while (n <= 3)\n\n    return 0;\n}",
+    "error": "count.c: In function 'main':\ncount.c:9:21: error: expected ';' before 'return'\n    9 |     } while (n <= 3)\n      |                     ^\n      |                     ;\n   10 |\n   11 |     return 0;\n      |     ~~~~~~",
+    "fixed": "    } while (n <= 3);",
+    "why": "The `while (...)` at the end of a do-while closes the whole statement, so it needs a semicolon, unlike a normal while loop."
+  },
+  "pun": "Why does do-while love Goan feni? Because it always tries it once before deciding.",
+  "challenge": "Build a chai shop menu: 1 = tea, 2 = coffee, 3 = exit, anything else = \"Not on the menu\". Repeat until the user picks 3.",
+  "challengeAnswer": "(worked example)\nint choice;\ndo {\n    printf(\"1. Tea  2. Coffee  3. Exit\\nChoice: \");\n    scanf(\"%d\", &choice);\n    if (choice == 1) printf(\"One chai coming!\\n\");\n    else if (choice == 2) printf(\"One coffee coming!\\n\");\n    else if (choice != 3) printf(\"Not on the menu\\n\");\n} while (choice != 3);\nprintf(\"Bye!\\n\");",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The User Typed 150 as Their Age",
+      "hook": "\"Age: 150\" in Tomato with a shocked Xecxec",
+      "script": "Your program asks for age. The user types 150. Then zero. You need to keep asking until the answer makes sense, and you must ask at least once first. That's the job of the do-while loop. It runs, then checks. Full episode on Koding Konkani.",
+      "onScreen": "AGE: 150?! / ASK AGAIN / do-while",
+      "fromScenes": [
+        1,
+        4
+      ],
+      "lengthSec": 25,
+      "caption": "Never trust user input.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "dowhile",
+        "inputvalidation"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "while vs do-while in 30 Seconds",
+      "hook": "Guard at a door vs an open door",
+      "script": "x is 10. while x is less than 5: the check happens first, it's false, the body runs zero times. do-while x is less than 5: the body runs first, prints once, then the check fails. while checks at the door. do-while lets you in, then checks. That's the only difference.",
+      "onScreen": "CHECK FIRST / RUN FIRST / 0 vs 1",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 30,
+      "caption": "One difference, many exam marks.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "dowhile",
+        "ctutorial"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "One Missing Semicolon",
+      "hook": "GCC error \"expected ';' before 'return'\"",
+      "script": "expected semicolon before return. The culprit? The do-while's last line. A normal while has no semicolon after the condition. A do-while must have one. Add it, and the error is gone.",
+      "onScreen": "} while (n <= 3); / DON'T FORGET ;",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 20,
+      "caption": "The semicolon that do-while needs.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "debugging",
+        "gcc"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Pun: Feni Logic",
+      "hook": "Xecxec holding a tiny cup",
+      "script": "Why does do-while love Goan feni? Because it always tries it once before deciding.",
+      "onScreen": "TRY ONCE, THEN DECIDE",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 10,
+      "caption": "do-while has a policy.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "goa",
+        "programmerhumor"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Which Loop Runs at Least Once?",
+      "hook": "Three loop cards face down",
+      "script": "Quiz: which loop is guaranteed to run its body at least once? while, for, or do-while? Answer: do-while. The other two can run zero times.",
+      "onScreen": "WHICH ONE? / ANSWER: do-while",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 15,
+      "caption": "Viva favourite.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "cquiz",
+        "loops"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int x = 10;\n\n    while (x < 5) {\n        printf(\"while ran\\n\");\n    }\n\n    do {\n        printf(\"do-while ran\\n\");\n    } while (x < 5);\n\n    return 0;\n}",
+      "output": "do-while ran",
+      "lang": "c"
+    },
+    {
+      "file": "file2.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int age;\n\n    do {\n        printf(\"Enter your age (1-120): \");\n        scanf(\"%d\", &age);\n    } while (age < 1 || age > 120);\n\n    printf(\"Thanks! You are %d.\\n\", age);\n    return 0;\n}",
+      "output": "Enter your age (1-120): 0\nEnter your age (1-120): 150\nEnter your age (1-120): 19\nThanks! You are 19.",
+      "lang": "c"
+    },
+    {
+      "file": "file3.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    int choice;\n    int balance = 500;\n\n    do {\n        printf(\"\\n1. Check balance\\n2. Add 100\\n3. Exit\\n\");\n        printf(\"Choice: \");\n        scanf(\"%d\", &choice);\n\n        if (choice == 1) {\n            printf(\"Balance: %d\\n\", balance);\n        } else if (choice == 2) {\n            balance = balance + 100;\n            printf(\"Added! Balance: %d\\n\", balance);\n        } else if (choice != 3) {\n            printf(\"Invalid choice\\n\");\n        }\n    } while (choice != 3);\n\n    printf(\"Bye!\\n\");\n    return 0;\n}",
+      "output": "\n1. Check balance\n2. Add 100\n3. Exit\nChoice: 1\nBalance: 500\n\n1. Check balance\n2. Add 100\n3. Exit\nChoice: 2\nAdded! Balance: 600\n\n1. Check balance\n2. Add 100\n3. Exit\nChoice: 7\nInvalid choice\n\n1. Check balance\n2. Add 100\n3. Exit\nChoice: 3\nBye!",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}

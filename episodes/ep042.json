@@ -1,0 +1,325 @@
+{
+  "ep": 42,
+  "title": "Array Operations: Who Topped the Class?",
+  "module": 6,
+  "lengthSec": 390,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "add up all elements of an array in one loop",
+    "find the largest and smallest value by starting from the first element",
+    "compute a correct decimal average with a float cast",
+    "explain why starting max at 0 fails for negative data"
+  ],
+  "youtube": {
+    "title": "Find Max, Min & Average of an Array in C | EP 42",
+    "description": "Who topped the class? One loop over an array answers it. Learn the sum, max, min and average patterns that show up in every exam and every interview, and the max = 0 bug that breaks on negative numbers. 0:00 Results day · 0:20 Title · 0:25 One walk, four answers · 1:05 Tracing max · 1:55 Code walkthrough · 3:35 Running it · 4:00 The average trap · 4:30 Pun · 4:35 Bug of the Day · 5:30 Challenge · 6:10 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Results day"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "One walk, four answers"
+      },
+      {
+        "t": "1:05",
+        "label": "Tracing max"
+      },
+      {
+        "t": "1:55",
+        "label": "Code walkthrough"
+      },
+      {
+        "t": "3:35",
+        "label": "Running it"
+      },
+      {
+        "t": "4:00",
+        "label": "The average trap"
+      },
+      {
+        "t": "4:30",
+        "label": "Pun"
+      },
+      {
+        "t": "4:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:30",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:10",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c programming",
+      "array sum in c",
+      "max and min in array",
+      "average of array c",
+      "arrays in c",
+      "learn c",
+      "c for beginners",
+      "c programming exercises",
+      "koding konkani",
+      "class 12 computer science",
+      "c interview questions"
+    ],
+    "thumbnail": {
+      "text": "WHO'S THE TOPPER?",
+      "visual": "big text \"WHO'S THE TOPPER?\"; six dark-blue bars on peach, the tallest one in mint with a crown; Xecxec on top of the tallest bar holding a trophy",
+      "pose": "Xecxec on top of the tallest bar holding a trophy"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Notice board: six marks pinned up, \"Topper? Lowest? Class average?\"",
+      "animation": "Papers flutter onto the board; Xecxec squints with a magnifying glass; paper rustle",
+      "sfx": [],
+      "narration": "Results day. Six marks are on the notice board. Everyone wants to know three things. Who topped? Who scored lowest? And what is the class average? You could check by eye for six students. But for six hundred? Let C do it, with one loop."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 42 · ARRAY OPERATIONS",
+      "animation": "Title slams in; claw click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode 42. Array operations."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 40,
+      "onScreen": "\"Walk the row once\": sum, max, min, average as four counters riding along",
+      "animation": "Four labelled jars ride on a bus past six lockers; bus horn",
+      "sfx": [],
+      "narration": "Here is the plan. We walk along the array once, from the first element to the last, like a bus stopping at every stop on its route. We carry a few variables with us. sum collects every mark. max remembers the biggest mark seen so far. min remembers the smallest so far. When the walk ends, sum divided by the count gives the average. One walk, four answers."
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 65,
+      "lengthSec": 50,
+      "onScreen": "Six bars 78 92 65 88 71 84; max pointer moves",
+      "animation": "Current bar in butter, max bar in mint, min bar in tomato; tick per step",
+      "sfx": [],
+      "narration": "Let's watch max. The big question is: what should max start as? We start it at the first element, 78. Now we walk. 92: bigger than 78? Yes. max becomes 92. 65: bigger than 92? No. 88? No. 71? No. 84? No. At the end, max is 92. min works the same way with less than. It starts at 78, drops to 65, and stays there. Notice that max always holds a real mark from the array, from the very first step."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 100,
+      "onScreen": "ep42_stats.c types itself",
+      "animation": "Line highlights in butter; tracker shows i, sum, max, min",
+      "sfx": [],
+      "narration": "Now the code. [HL 4] Line four, our six marks. [HL 5] Line five, n equals six, the number of elements, so we do not type six everywhere. [HL 6] Line six, sum starts at zero, because we have added nothing yet. [TRACK sum=0] [HL 7] Lines seven and eight, max and min both start at marks zero. [TRACK max=78 min=78] [HL 10] Line ten, our usual loop, i from zero while i is less than n. [HL 11] Line eleven, sum plus equals marks i. Each turn adds the current mark. [TRACK i=0 sum=78] [HL 12] Line twelve: if this mark is bigger than max, [HL 13] line thirteen makes it the new max. [HL 15] Lines fifteen and sixteen do the same for min, with less than. [TRACK i=1 sum=170 max=92] Watch the tracker as the loop runs. [TRACK i=2 sum=235 min=65] [TRACK i=5 sum=478 max=92 min=65] After the last turn, sum is 478, max is 92, min is 65. [HL 20] Line twenty, the average. float average equals, bracket float bracket sum, divided by n. That little float in brackets is a cast, from EP 13. We will see why we need it in a moment. [HL 22] Lines twenty-two to twenty-five print everything, and percent point two f shows the average with two decimal places.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int marks[6] = {78, 92, 65, 88, 71, 84};\n    int n = 6;\n    int sum = 0;\n    int max = marks[0];\n    int min = marks[0];\n\n    for (int i = 0; i < n; i++) {\n        sum += marks[i];\n        if (marks[i] > max) {\n            max = marks[i];\n        }\n        if (marks[i] < min) {\n            min = marks[i];\n        }\n    }\n\n    float average = (float)sum / n;\n\n    printf(\"Sum: %d\\n\", sum);\n    printf(\"Max: %d\\n\", max);\n    printf(\"Min: %d\\n\", min);\n    printf(\"Average: %.2f\\n\", average);\n    return 0;\n}",
+        "output": "Sum: 478\nMax: 92\nMin: 65\nAverage: 79.67"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 215,
+      "lengthSec": 25,
+      "onScreen": "gcc ep42_stats.c -o ep42 then ./ep42",
+      "animation": "Four lines print; \"Max: 92\" gets a crown",
+      "sfx": [],
+      "narration": "Compile and run. Sum 478. Max 92. Min 65. Average 79.67. Our topper scored 92."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 240,
+      "lengthSec": 30,
+      "onScreen": "478 / 6 = 79 (int) vs (float)478 / 6 = 79.67",
+      "animation": "The .67 falls off the int version and bounces away; boing SFX",
+      "sfx": [],
+      "narration": "Why the cast? sum is an int and n is an int. In C, int divided by int gives an int, and the decimal part is thrown away. 478 divided by 6 would give just 79. The student with 79.67 percent would not be happy. Putting float in front of sum turns it into 478.0 first, so the division keeps its decimals."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 270,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Xecxec rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the max variable feel lonely? Because everyone else was below it."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 275,
+      "lengthSec": 55,
+      "onScreen": "Freezer temperatures, max starts at 0",
+      "animation": "Thermometer icons in pastel blue; wrong answer 0 flashes tomato; alarm buzz",
+      "sfx": [],
+      "narration": "Today's bug. We want the warmest of four freezer temperatures: minus 18, minus 22, minus 15, minus 20. Someone writes int max equals zero. It compiles fine. But the output says: warmest freezer, zero. Zero is not even in the list. Every temperature is below zero, so no value ever beats the starting max, and max stays at zero. It works with exam marks only because marks are positive. The fix: start max at temps zero, the first real value. Then the answer is minus 15, which is correct."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 330,
+      "lengthSec": 40,
+      "onScreen": "Find the position of topper and lowest",
+      "animation": "Two empty name tags \"roll ?\"; ticking clock",
+      "sfx": [],
+      "narration": "Your challenge. Using the same six marks, do not just print the topper's mark. Print the topper's roll number. Roll number one is index zero. Hint: instead of remembering the biggest value, remember the index of the biggest value. Same for the lowest. Expected output: Topper, roll 2 with 92. Lowest, roll 3 with 65."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 370,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 43 Searching",
+      "animation": "Xecxec flipping through a register; sign-off",
+      "sfx": [],
+      "narration": "Next episode: searching. How does a program find your name in a register of a thousand students, and how can it do it in just ten steps? Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main() {\n    int temps[4] = {-18, -22, -15, -20};\n    int max = 0;\n\n    for (int i = 0; i < 4; i++) {\n        if (temps[i] > max) {\n            max = temps[i];\n        }\n    }\n    printf(\"Warmest freezer: %d\\n\", max);\n    return 0;\n}",
+    "error": "No error, no warning. Wrong output:\n\nWarmest freezer: 0",
+    "fixed": "    int max = temps[0];",
+    "why": "when every value is below the starting max, nothing ever replaces it, so always start max and min at the array's first element."
+  },
+  "pun": "Why did the max variable feel lonely? Because everyone else was below it.",
+  "challenge": "Print the roll number (index + 1) of the topper and of the lowest scorer, not just their marks.",
+  "challengeAnswer": "(worked example)\n#include <stdio.h>\n\nint main() {\n    int marks[6] = {78, 92, 65, 88, 71, 84};\n    int maxPos = 0;\n    int minPos = 0;\n\n    for (int i = 1; i < 6; i++) {\n        if (marks[i] > marks[maxPos]) {\n            maxPos = i;\n        }\n        if (marks[i] < marks[minPos]) {\n            minPos = i;\n        }\n    }\n    printf(\"Topper: roll %d with %d\\n\", maxPos + 1, marks[maxPos]);\n    printf(\"Lowest: roll %d with %d\\n\", minPos + 1, marks[minPos]);\n    return 0;\n}",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Find the Topper in One Loop",
+      "hook": "Notice board with six marks: \"Who topped? Find out with one loop.\"",
+      "script": "Who topped the class? Who scored lowest? What is the average? One loop answers all three. Walk the array once, carry sum, max and min with you, and divide at the end. Six students or six hundred, same code.",
+      "onScreen": "1 LOOP = SUM + MAX + MIN + AVG",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "The array pattern every exam asks for.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "arrays",
+        "codingforbeginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Max of an Array in 30 Seconds",
+      "hook": "Six bars, a crown hovering. \"How does C find the biggest?\"",
+      "script": "How does C find the biggest number? Start max at the first element. Then check each one. Bigger than max? It becomes the new max. Not bigger? Move on. At the end, max holds the biggest value. For the smallest, flip it to less than.",
+      "onScreen": "START AT marks[0], THEN COMPARE",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Finding max, explained with bars.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "algorithms",
+        "arrays"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The Freezer That Says 0",
+      "hook": "Terminal: \"Warmest freezer: 0\". \"Zero isn't even in my data.\"",
+      "script": "Zero is not even in my data. My temperatures are minus 18, minus 22, minus 15, minus 20. But I started max at zero, and no negative number is bigger than zero, so max never changed. Start max at the first element instead, and you get minus 15. Correct.",
+      "onScreen": "max = 0 ✗  max = temps[0] ✓",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "Works for marks, fails for negatives.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "debugging"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Lonely at the Top",
+      "hook": "Xecxec alone on the tallest bar, wind blowing.",
+      "script": "Why did the max variable feel lonely? Because everyone else was below it.",
+      "onScreen": "EVERYONE ELSE WAS BELOW IT",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 12,
+      "caption": "It is lonely at the top.",
+      "hashtags": [
+        "cprogramming",
+        "codingmemes",
+        "kodingkonkani",
+        "programmerhumor",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "79 or 79.67?",
+      "hook": "\"int sum = 478, n = 6; sum / n = ?\"",
+      "script": "sum is 478, n is 6, both ints. What does sum divided by n give? Pause and guess. It is 79, not 79.67. int divided by int throws away the decimals. Write bracket float sum divided by n to get 79.67.",
+      "onScreen": "478 / 6 = ?   → 79",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 22,
+      "caption": "Your average is lying to you.",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "learntocode",
+        "integerdivision"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main() {\n    int marks[6] = {78, 92, 65, 88, 71, 84};\n    int n = 6;\n    int sum = 0;\n    int max = marks[0];\n    int min = marks[0];\n\n    for (int i = 0; i < n; i++) {\n        sum += marks[i];\n        if (marks[i] > max) {\n            max = marks[i];\n        }\n        if (marks[i] < min) {\n            min = marks[i];\n        }\n    }\n\n    float average = (float)sum / n;\n\n    printf(\"Sum: %d\\n\", sum);\n    printf(\"Max: %d\\n\", max);\n    printf(\"Min: %d\\n\", min);\n    printf(\"Average: %.2f\\n\", average);\n    return 0;\n}",
+      "output": "Sum: 478\nMax: 92\nMin: 65\nAverage: 79.67",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "Warmest freezer: -15"
+  }
+}

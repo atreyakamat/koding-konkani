@@ -1,0 +1,457 @@
+{
+  "ep": 73,
+  "title": "Linear vs binary search, visualised",
+  "module": 12,
+  "lengthSec": 405,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "write linear search and binary search as C functions",
+    "trace binary search by hand using low, high and mid",
+    "explain why binary search needs a sorted array and is O(log n)",
+    "compute mid safely as low + (high - low) / 2"
+  ],
+  "youtube": {
+    "title": "Guess My Number in 7 Tries | Binary Search in C, EP 73",
+    "description": "Checking every box works, but halving the problem is magic. We animate linear search and binary search side by side on the same array, write both in C, and count their steps. Plus the one-character bug that makes binary search loop forever. 0:00 Guess my number · 0:20 Title · 0:25 Linear search, animated · 1:05 Binary search, animated · 2:00 Step trace · 2:30 Code: both functions · 3:55 Run it · 4:15 Pun · 4:20 Complexity compared · 4:55 Bug of the Day · 5:55 Challenge · 6:25 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Guess my number"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Linear search, animated"
+      },
+      {
+        "t": "1:05",
+        "label": "Binary search, animated"
+      },
+      {
+        "t": "2:00",
+        "label": "Step trace"
+      },
+      {
+        "t": "2:30",
+        "label": "Code: both functions"
+      },
+      {
+        "t": "3:55",
+        "label": "Run it"
+      },
+      {
+        "t": "4:15",
+        "label": "Pun"
+      },
+      {
+        "t": "4:20",
+        "label": "Complexity compared"
+      },
+      {
+        "t": "4:55",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:55",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:25",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "binary search",
+      "linear search",
+      "c programming",
+      "searching algorithms",
+      "binary search in c",
+      "O(log n)",
+      "algorithms for beginners",
+      "learn c",
+      "koding konkani",
+      "dsa in c",
+      "c tutorial"
+    ],
+    "thumbnail": {
+      "text": "7 TRIES. ANY NUMBER.",
+      "visual": "big text \"7 TRIES. ANY NUMBER.\"; a row of bars with half greyed out and a butter arrow on the middle bar; Xecxec holding up seven fingers-worth of claws (a \"7\" card); Dark blue background, Butter text.",
+      "pose": "Xecxec holding up seven fingers-worth of claws (a \"7\" card)"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "\"Think of a number from 1 to 100.\" Guesses 50, 75, 62… appear",
+      "animation": "Each guess crosses out half a number strip; ding on the hit",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "Think of a number from 1 to 100. Is it 50? Higher. 75? Lower. 62? Higher. 68, 71, 73. Got it in six. With this trick, I never need more than seven guesses for any number from 1 to 100. That trick is called binary search."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 73 · LINEAR vs BINARY SEARCH",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 73. Linear versus binary search, visualised."
+    },
+    {
+      "id": 3,
+      "template": "algorithm-bars",
+      "startSec": 25,
+      "lengthSec": 40,
+      "onScreen": "6 bars [3, 8, 15, 21, 34, 42], target 34; pointer i walks left to right",
+      "animation": "Each checked bar flashes pastel blue, then grey; found bar turns mint; blip per step",
+      "sfx": [],
+      "narration": "You met both searches briefly in Episode 43; today we watch them race. First, the simple way. Six fish boxes with weights 3, 8, 15, 21, 34 and 42, and we want 34. Linear search checks box zero: 3, no. Box one: 8, no. 15, no. 21, no. Box four: 34, yes! Five steps. Linear search is honest and works on any array, sorted or not. But in the worst case it checks every single box.",
+      "trace": [
+        {
+          "step": "1",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "step": "2",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "step": "3",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "step": "4",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "step": "5",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 65,
+      "lengthSec": 55,
+      "onScreen": "Same bars, labels low / mid / high under them",
+      "animation": "Out-of-range bars fade grey; mid arrow drops in butter; found bar mint; whoosh on each halving",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Now the clever way. Binary search only works if the array is sorted, and ours is. We keep two markers: low at index 0 and high at index 5. The middle, mid, is index 2, value 15. Is 15 our 34? No, and 15 is smaller. Since the array is sorted, 34 cannot be anywhere left of 15. So we throw away the whole left half in one step. Now low moves to 3. The new mid is index 4, value 34. Found it, in two steps. Every comparison cuts the remaining boxes in half.",
+      "trace": [
+        {
+          "step": "1",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "step": "2",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "step": "3",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "step": "4",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "step": "5",
+          "array": [
+            3,
+            8,
+            15,
+            21,
+            34,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "template": "concept-slide",
+      "startSec": 120,
+      "lengthSec": 30,
+      "onScreen": "Step-trace tables for both searches (below)",
+      "animation": "Rows reveal one at a time in sync with scenes 3–4 replay at 2x",
+      "sfx": [],
+      "narration": "Here are both traces side by side. Linear: five comparisons, one per box. Binary: two comparisons, and the range shrinks each time. Remember this table; you will see these exact frames in the animation."
+    },
+    {
+      "id": 6,
+      "template": "code-explain",
+      "startSec": 150,
+      "lengthSec": 85,
+      "onScreen": "search.c (38 lines); tracker for low, high, mid, steps",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 3] linear_search takes the array, its size n, the target, and a pointer to a step counter, so the caller can see how much work happened. That's the call-by-reference trick from Episode 55. [HL 4] Loop over every index. [HL 5] Add one to the steps through the pointer. [HL 6] If this element is the target, [HL 7] return its index. [HL 9] If the loop finishes, the target is missing, so return minus one. [HL 12] Now binary_search. [HL 13] low starts at 0, high at n minus 1. [TRACK low=0 high=5] [HL 14] Keep going while low is not past high. [HL 15] mid is low plus half the distance between them. [TRACK mid=2] [HL 16] Count a step. [HL 17] If a[mid] is the target, return it. [HL 19] If a[mid] is smaller, the target must be to the right, so low becomes mid plus one. [TRACK low=3] [HL 21] Otherwise it's to the left, so high becomes mid minus one. Back to the top: [TRACK mid=4] a[4] is 34, return 4. [HL 24] If low passes high, the range is empty: return minus one. [HL 28] In main, our sorted fish array. [HL 30] Two step counters. [HL 32] Call both functions with the address of each counter. [HL 35] And print the index and steps.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint linear_search(const int a[], int n, int target, int *steps) {\n    for (int i = 0; i < n; i++) {\n        (*steps)++;\n        if (a[i] == target)\n            return i;\n    }\n    return -1;\n}\n\nint binary_search(const int a[], int n, int target, int *steps) {\n    int low = 0, high = n - 1;\n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        (*steps)++;\n        if (a[mid] == target)\n            return mid;\n        else if (a[mid] < target)\n            low = mid + 1;\n        else\n            high = mid - 1;\n    }\n    return -1;\n}\n\nint main(void) {\n    int fish[] = {3, 8, 15, 21, 34, 42};\n    int n = 6;\n    int s1 = 0, s2 = 0;\n\n    int p1 = linear_search(fish, n, 34, &s1);\n    int p2 = binary_search(fish, n, 34, &s2);\n\n    printf(\"Linear: found at index %d in %d steps\\n\", p1, s1);\n    printf(\"Binary: found at index %d in %d steps\\n\", p2, s2);\n    return 0;\n}",
+        "output": "$ gcc search.c -o search\n$ ./search\nLinear: found at index 4 in 5 steps\nBinary: found at index 4 in 2 steps"
+      }
+    },
+    {
+      "id": 7,
+      "template": "terminal",
+      "startSec": 235,
+      "lengthSec": 20,
+      "onScreen": "gcc and 2 output lines",
+      "animation": "Lines type out; \"5 steps\" vs \"2 steps\" boxed",
+      "sfx": [],
+      "narration": "Compile and run. Linear: index 4 in 5 steps. Binary: index 4 in 2 steps. With six items the gap is small. Watch what happens with more."
+    },
+    {
+      "id": 8,
+      "template": "pun-card",
+      "startSec": 255,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why is binary search so calm in arguments? It always meets you halfway."
+    },
+    {
+      "id": 9,
+      "template": "concept-slide",
+      "startSec": 260,
+      "lengthSec": 35,
+      "onScreen": "Table: n = 6, 1000, 1,000,000 with worst-case steps linear vs binary",
+      "animation": "Linear column grows huge; binary column barely moves",
+      "sfx": [],
+      "narration": "Worst case for linear search is n steps: a thousand items, a thousand steps; a million items, a million steps. That's O(n). Binary search halves each time, so the worst case is about log base 2 of n: ten steps for a thousand items, twenty for a million. That's O(log n). Both use O(1) extra memory. The catch: binary search needs sorted data, which is exactly why the next eight episodes are about sorting."
+    },
+    {
+      "id": 10,
+      "template": "bug-of-the-day",
+      "startSec": 295,
+      "lengthSec": 60,
+      "onScreen": "mid = low + high / 2; terminal frozen with a spinning cursor",
+      "animation": "Red siren; mid arrow stuck on bar 5, bouncing",
+      "sfx": [],
+      "narration": "Today's bug: a wrong mid. Someone wrote low plus high divided by 2, without brackets. Division happens before addition, remember precedence from Module 2, so this is low plus half of high. Search for 21: first mid is 2, so low becomes 3. Next mid is 3 plus 5 divided by 2, which is 3 plus 2, which is 5. 42 is too big, so high becomes 4. Next mid is 3 plus 4 divided by 2, still 5. Again. And again. The program never finishes. The fix: low plus, in brackets, high minus low, divided by 2. We use this form instead of low plus high over 2 because on huge arrays low plus high can overflow an int."
+    },
+    {
+      "id": 11,
+      "template": "challenge",
+      "startSec": 355,
+      "lengthSec": 30,
+      "onScreen": "\"Binary search on 1–100: what's the most guesses ever needed?\"",
+      "animation": "Timer",
+      "sfx": [],
+      "narration": "Your challenge: write binary search for the numbers 1 to 100, and find the largest number of guesses it can ever need. Then print the guesses it makes for 73."
+    },
+    {
+      "id": 12,
+      "template": "outro",
+      "startSec": 385,
+      "lengthSec": 20,
+      "onScreen": "Next: EP 74 Bubble sort",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "Binary search needs sorted data. So next episode, we sort! Our first sort is bubble sort, where the heaviest value floats to the top. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint binary_search(const int a[], int n, int target) {\n    int low = 0, high = n - 1;\n    while (low <= high) {\n        int mid = low + high / 2;\n        if (a[mid] == target)\n            return mid;\n        else if (a[mid] < target)\n            low = mid + 1;\n        else\n            high = mid - 1;\n    }\n    return -1;\n}\n\nint main(void) {\n    int fish[] = {3, 8, 15, 21, 34, 42};\n    printf(\"21 is at index %d\\n\", binary_search(fish, 6, 21));\n    return 0;\n}",
+    "error": "No compiler error or warning. Output: nothing at all; the program hangs (press Ctrl+C to stop it). mid gets stuck at 5 while low = 3 and high = 4.",
+    "fixed": "        int mid = low + (high - low) / 2;",
+    "why": "`/` binds tighter than `+`, so `low + high / 2` is not the middle of the range; once mid falls outside low..high the range stops shrinking."
+  },
+  "pun": "Why is binary search so calm in arguments? It always meets you halfway.",
+  "challenge": "Binary search over the numbers 1 to 100 (low = 1, high = 100). What is the most guesses ever needed? Print every mid it tries when the secret number is 73.",
+  "challengeAnswer": "At most 7 guesses (2⁷ = 128 ≥ 100). For 73, with mid = low + (high - low) / 2 the guesses are 50, 75, 62, 68, 71, 73 (6 guesses).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Any number in 7 guesses",
+      "hook": "\"Think of a number from 1 to 100.\"",
+      "script": "Think of a number from 1 to 100. 50? Higher. 75? Lower. 62, 68, 71, 73. Got it. I never need more than seven guesses, for any number. The trick has a name: binary search. And it's how computers search sorted data.",
+      "onScreen": "1–100 IN 7 GUESSES",
+      "fromScenes": [
+        1
+      ],
+      "lengthSec": 20,
+      "caption": "The guessing trick computers use.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "binarysearch",
+        "algorithms"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Binary search in 30 seconds",
+      "hook": "\"Throw away half the array. Every step.\"",
+      "script": "Binary search needs a sorted array. Look at the middle. If it's your target, done. If it's too small, the target can only be on the right, so throw away the whole left half. Too big? Throw away the right half. Repeat. A thousand items: about ten steps. A million: about twenty. That's O(log n).",
+      "onScreen": "HALVE IT. AGAIN. AGAIN.",
+      "fromScenes": [
+        4,
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "Binary search, visualised.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "binarysearch",
+        "dsa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The bracket that froze my program",
+      "hook": "\"Missing brackets. Infinite loop.\"",
+      "script": "mid equals low plus high divided by two. Looks fine? Division happens first, so it's low plus half of high. Search for 21 and mid gets stuck on index 5 forever. The program just hangs. Fix: low plus, in brackets, high minus low, divided by two.",
+      "onScreen": "low + (high - low) / 2",
+      "fromScenes": [
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "One pair of brackets, one frozen program.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "binarysearch"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Meets you halfway",
+      "hook": "\"Why is binary search so calm?\"",
+      "script": "Why is binary search so calm in arguments? It always meets you halfway.",
+      "onScreen": "IT MEETS YOU HALFWAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 10,
+      "caption": "Peak diplomacy.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "How many guesses?",
+      "hook": "\"1 to 100. What's the worst case?\"",
+      "script": "Binary search on the numbers 1 to 100. What is the largest number of guesses it can ever need? Is it 7, 10, or 50? Comment your answer. The proof is pinned on the full episode.",
+      "onScreen": "7? 10? 50?",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 20,
+      "caption": "Comment your answer.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "quiz",
+        "binarysearch"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint linear_search(const int a[], int n, int target, int *steps) {\n    for (int i = 0; i < n; i++) {\n        (*steps)++;\n        if (a[i] == target)\n            return i;\n    }\n    return -1;\n}\n\nint binary_search(const int a[], int n, int target, int *steps) {\n    int low = 0, high = n - 1;\n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        (*steps)++;\n        if (a[mid] == target)\n            return mid;\n        else if (a[mid] < target)\n            low = mid + 1;\n        else\n            high = mid - 1;\n    }\n    return -1;\n}\n\nint main(void) {\n    int fish[] = {3, 8, 15, 21, 34, 42};\n    int n = 6;\n    int s1 = 0, s2 = 0;\n\n    int p1 = linear_search(fish, n, 34, &s1);\n    int p2 = binary_search(fish, n, 34, &s2);\n\n    printf(\"Linear: found at index %d in %d steps\\n\", p1, s1);\n    printf(\"Binary: found at index %d in %d steps\\n\", p2, s2);\n    return 0;\n}",
+      "output": "$ gcc search.c -o search\n$ ./search\nLinear: found at index 4 in 5 steps\nBinary: found at index 4 in 2 steps",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "21 is at index 3"
+  }
+}

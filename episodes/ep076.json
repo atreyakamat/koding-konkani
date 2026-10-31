@@ -1,0 +1,354 @@
+{
+  "ep": 76,
+  "title": "Insertion sort",
+  "module": 12,
+  "lengthSec": 400,
+  "colours": {
+    "bg": "#1E2A4A",
+    "accent": "#FFE58A"
+  },
+  "learningGoals": [
+    "trace insertion sort as \"take the next card, shift the bigger ones right, drop it in the gap\"",
+    "write insertion_sort in C with a saved key and a while loop",
+    "explain why the key must be saved before shifting",
+    "state why insertion sort is fast on nearly sorted data"
+  ],
+  "youtube": {
+    "title": "Insertion Sort = Sorting Playing Cards | C Programming EP 76",
+    "description": "You already know this algorithm: it's how you sort cards in your hand. We animate insertion sort on six bars, trace every shift, and write it in C. Plus the bug that overwrites your card before you've saved it. 0:00 Cards in your hand · 0:20 Title · 0:25 The idea · 0:55 Inserting 2, 9 and 1 · 1:45 Inserting 6 and 3 · 2:15 Step trace · 2:40 Code · 3:55 Run it · 4:15 Pun · 4:20 Complexity · 5:00 Bug of the Day · 6:00 Challenge · 6:25 Outro",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Cards in your hand"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "The idea"
+      },
+      {
+        "t": "0:55",
+        "label": "Inserting 2, 9 and 1"
+      },
+      {
+        "t": "1:45",
+        "label": "Inserting 6 and 3"
+      },
+      {
+        "t": "2:15",
+        "label": "Step trace"
+      },
+      {
+        "t": "2:40",
+        "label": "Code"
+      },
+      {
+        "t": "3:55",
+        "label": "Run it"
+      },
+      {
+        "t": "4:15",
+        "label": "Pun"
+      },
+      {
+        "t": "4:20",
+        "label": "Complexity"
+      },
+      {
+        "t": "5:00",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "6:00",
+        "label": "Challenge"
+      },
+      {
+        "t": "6:25",
+        "label": "Outro"
+      }
+    ],
+    "tags": [
+      "insertion sort",
+      "insertion sort in c",
+      "sorting algorithms",
+      "c programming",
+      "sorting visualised",
+      "playing cards sort",
+      "algorithms for beginners",
+      "learn c",
+      "koding konkani",
+      "dsa in c",
+      "c tutorial"
+    ],
+    "thumbnail": {
+      "text": "SORT LIKE CARDS",
+      "visual": "big text \"SORT LIKE CARDS\"; a fan of five playing cards with one card lifted and an arrow into a gap; Xecxec holding cards in both claws, smug; Dark blue background, Butter text.",
+      "pose": "Xecxec holding cards in both claws, smug"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "A hand of cards: 5, 2, 9, 1, 6, 3; Xecxec picks them up one at a time",
+      "animation": "Card flick SFX; each card slides into its spot",
+      "sfx": [],
+      "narration": "You're playing cards at a family get-together. You pick up your cards one at a time. Each new card, you slide into the right place among the cards you're already holding. You've been doing a sorting algorithm your whole life. It's called insertion sort."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 76 · INSERTION SORT",
+      "animation": "Stinger; claw-click",
+      "sfx": [
+        "claw-click",
+        "sting"
+      ],
+      "narration": "Episode 76. Insertion sort."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 25,
+      "lengthSec": 30,
+      "onScreen": "Rule card: \"Take the next item (key). Shift bigger items right. Drop key in the gap.\"",
+      "animation": "Sorted part on left grows; key lifts above the row",
+      "sfx": [],
+      "narration": "The left part of the array is your hand, already sorted. At first, the hand is just the first item. Then we take the next item and call it the key. We lift the key out, slide every bigger item in the hand one step right, and drop the key into the gap. Insertion sort doesn't swap pairs. It shifts."
+    },
+    {
+      "id": 4,
+      "template": "algorithm-bars",
+      "startSec": 55,
+      "lengthSec": 50,
+      "onScreen": "Bars [5, 2, 9, 1, 6, 3]; keys 2, 9, 1 (steps 1.1–3.4)",
+      "animation": "Key bar lifts in butter; compared bar pastel blue; shifting bar slides right in tomato; key drops into gap; sorted prefix mint; tick per compare, slide SFX per shift, thunk on drop",
+      "sfx": [],
+      "narration": "Our hand starts as just 5. The key is 2. Is 5 bigger than 2? Yes, so shift 5 right. We've reached the left edge, so drop 2 at the front. Hand: 2, 5. Next key: 9. Is 5 bigger than 9? No. 9 stays where it is. Next key: 1. 9 is bigger, shift. 5 is bigger, shift. 2 is bigger, shift. Left edge: drop 1 at the front. Hand: 1, 2, 5, 9."
+    },
+    {
+      "id": 5,
+      "template": "algorithm-bars",
+      "startSec": 105,
+      "lengthSec": 30,
+      "onScreen": "Keys 6 and 3 at 2x (steps 4.1–5.4)",
+      "animation": "Same colours",
+      "sfx": [],
+      "narration": "Key 6: shift 9, then 5 is smaller, so 6 drops after 5. Key 3: shift 9, shift 6, shift 5, then 2 is smaller, so 3 drops after 2. Sorted."
+    },
+    {
+      "id": 6,
+      "template": "concept-slide",
+      "startSec": 135,
+      "lengthSec": 25,
+      "onScreen": "Step-trace table (below)",
+      "animation": "Rows reveal with 4x replay",
+      "sfx": [],
+      "narration": "Here's every step: eleven comparisons and eight shifts. See the moments where a number appears twice, like 5, 5 at step 1.1? That's normal. The key is safely held in a variable, waiting to drop into the gap."
+    },
+    {
+      "id": 7,
+      "template": "code-explain",
+      "startSec": 160,
+      "lengthSec": 75,
+      "onScreen": "insertion.c (29 lines); tracker for i, key, j, array",
+      "animation": "[HL]/[TRACK] cues",
+      "sfx": [],
+      "narration": "[HL 9] insertion_sort takes the array and its length. [HL 10] i starts at 1, because a hand of one card is already sorted. [TRACK i=1] [HL 11] We save a[i] in key. This line is the most important one. [TRACK key=2] [HL 12] j starts just left of the key. [TRACK j=0] [HL 13] While j is still inside the array and a[j] is bigger than the key, [HL 14] copy a[j] one step right, [TRACK array=5,5,9,1,6,3] [HL 15] and move j left. [TRACK j=-1] The order of the two conditions matters: j greater or equal to 0 is checked first, so we never read a[-1]. That's short-circuit evaluation of the AND operator from Module 2. [HL 17] When the loop stops, j plus 1 is the gap. Drop the key there. [TRACK array=2,5,9,1,6,3] [HL 18] Print the array after each insert. [HL 24] In main, our six cards, [HL 27] and we sort.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid insertion_sort(int a[], int n) {\n    for (int i = 1; i < n; i++) {\n        int key = a[i];\n        int j = i - 1;\n        while (j >= 0 && a[j] > key) {\n            a[j + 1] = a[j];\n            j--;\n        }\n        a[j + 1] = key;\n        printf(\"Insert %d: \", key);\n        print_array(a, n);\n    }\n}\n\nint main(void) {\n    int cards[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(cards) / sizeof(cards[0]);\n\n    insertion_sort(cards, n);\n    return 0;\n}",
+        "output": "$ gcc insertion.c -o insertion\n$ ./insertion\nInsert 2: 2 5 9 1 6 3\nInsert 9: 2 5 9 1 6 3\nInsert 1: 1 2 5 9 6 3\nInsert 6: 1 2 5 6 9 3\nInsert 3: 1 2 3 5 6 9"
+      }
+    },
+    {
+      "id": 8,
+      "template": "terminal",
+      "startSec": 235,
+      "lengthSec": 20,
+      "onScreen": "gcc and 5 output lines",
+      "animation": "Lines type out",
+      "sfx": [],
+      "narration": "Compile and run. Insert 2: 2, 5 at the front. Insert 9: no change. Insert 1: it slides all the way to the front. Insert 6, then 3, and we're done."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 255,
+      "lengthSec": 5,
+      "onScreen": "Pun",
+      "animation": "Rimshot, card shuffle",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did insertion sort win the card game? It always knew where to put things."
+    },
+    {
+      "id": 10,
+      "template": "concept-slide",
+      "startSec": 260,
+      "lengthSec": 40,
+      "onScreen": "Complexity card; three sorts on our array: bubble 14 compares / 8 swaps, selection 15 / 2, insertion 11 compares / 8 shifts",
+      "animation": "Counters roll",
+      "sfx": [],
+      "narration": "In the worst case, a reverse-sorted array, every key shifts past every card in the hand: about n squared over 2 shifts, so O(n²). Average is also O(n²). But the best case is special. If the array is already sorted, each key does one comparison and no shifts, so O(n). Nearly sorted data, like adding a few new marks to a sorted list, is where insertion sort shines. Extra memory: just key, so O(1). And it's stable. On our array: bubble sort 14 comparisons and 8 swaps, selection 15 and 2, insertion 11 comparisons and 8 shifts."
+    },
+    {
+      "id": 11,
+      "template": "bug-of-the-day",
+      "startSec": 300,
+      "lengthSec": 60,
+      "onScreen": "Loop uses cards[i] instead of a saved key; output 5 5 9 9 9 9",
+      "animation": "Red siren; key bar gets squashed by the shifting bar, then copies spread",
+      "sfx": [],
+      "narration": "Today's bug: overwriting before shifting. Someone skipped the key variable and compared with cards[i] directly. But the very first shift writes into cards[i]! The card we were trying to insert is overwritten before we've placed it. The output: 5, 5, 9, 9, 9, 9. Two of our numbers are copied over and over, and 1, 2, 3 and 6 are gone. The fix: save cards[i] in key before the while loop, compare with key, and place key at the end."
+    },
+    {
+      "id": 12,
+      "template": "challenge",
+      "startSec": 360,
+      "lengthSec": 25,
+      "onScreen": "\"Insert 30 into 10 20 40 50\"",
+      "animation": "Timer",
+      "sfx": [],
+      "narration": "Your challenge: write a function insert_sorted that takes a sorted array 10, 20, 40, 50 with room to spare, inserts 30 in the right place, and returns the new length. It's just one pass of insertion sort."
+    },
+    {
+      "id": 13,
+      "template": "outro",
+      "startSec": 385,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 77 Recursion, visualised",
+      "animation": "Sign-off",
+      "sfx": [],
+      "narration": "Next episode, we take a break from sorting to understand recursion properly, with a call-stack animation and the Tower of Hanoi. We'll need it for merge sort and quick sort. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    int cards[] = {5, 2, 9, 1, 6, 3};\n    int n = 6;\n\n    for (int i = 1; i < n; i++) {\n        int j = i - 1;\n        while (j >= 0 && cards[j] > cards[i]) {\n            cards[j + 1] = cards[j];\n            j--;\n        }\n        cards[j + 1] = cards[i];\n    }\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", cards[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+    "error": "No error or warning from GCC. Wrong output:\n\n5 5 9 9 9 9",
+    "fixed": "    for (int i = 1; i < n; i++) {\n        int key = cards[i];\n        int j = i - 1;\n        while (j >= 0 && cards[j] > key) {\n            cards[j + 1] = cards[j];\n            j--;\n        }\n        cards[j + 1] = key;\n    }",
+    "why": "the first shift writes into cards[i] (because j + 1 == i), destroying the value being inserted, so it must be saved in key first."
+  },
+  "pun": "Why did insertion sort win the card game? It always knew where to put things.",
+  "challenge": "Write `int insert_sorted(int a[], int n, int value)` that inserts value into the sorted array a (which has room for one more) and returns the new length. Test: insert 30 into 10 20 40 50.",
+  "challengeAnswer": "With `int a[10] = {10, 20, 40, 50};` and `n = insert_sorted(a, 4, 30);` the array prints `10 20 30 40 50`.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "You already know this algorithm",
+      "hook": "\"You've been running this algorithm for years.\"",
+      "script": "You pick up playing cards one at a time and slide each one into the right place in your hand. That's a real sorting algorithm with a real name: insertion sort. Here it is, animated and in C.",
+      "onScreen": "YOU ALREADY KNOW IT",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 20,
+      "caption": "Card games taught you DSA.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "insertionsort",
+        "sorting"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Insertion sort in 30 seconds",
+      "hook": "\"Lift. Shift. Drop.\"",
+      "script": "Insertion sort keeps a sorted part on the left. Lift the next item, the key. Shift every bigger item one step right. Drop the key into the gap. Worst case O(n squared). But on data that's already nearly sorted, it's close to O(n), which is why real libraries use it for small or nearly sorted pieces.",
+      "onScreen": "LIFT · SHIFT · DROP",
+      "fromScenes": [
+        4,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Insertion sort, animated.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "insertionsort",
+        "dsa"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "5 5 9 9 9 9",
+      "hook": "\"My sort turned six numbers into two.\"",
+      "script": "This insertion sort compares with cards[i] directly. But the first shift writes over cards[i], so the card we're inserting is destroyed. Output: 5, 5, 9, 9, 9, 9. Fix: save cards[i] into a key variable before you shift anything.",
+      "onScreen": "SAVE THE KEY FIRST",
+      "fromScenes": [
+        11
+      ],
+      "lengthSec": 35,
+      "caption": "Save before you shift.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "bugoftheday",
+        "insertionsort"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Card game champion",
+      "hook": "\"Why does insertion sort win at cards?\"",
+      "script": "Why did insertion sort win the card game? It always knew where to put things.",
+      "onScreen": "KNEW WHERE TO PUT THINGS",
+      "fromScenes": [
+        9
+      ],
+      "lengthSec": 10,
+      "caption": "Undefeated at family card night.",
+      "hashtags": [
+        "cprogramming",
+        "programmingmemes",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Insert 30",
+      "hook": "\"One pass. One number. Where does it go?\"",
+      "script": "You have 10, 20, 40, 50, sorted. Write a C function that inserts 30 in the right place by shifting, and returns the new length. It's just one pass of insertion sort. Solution pinned on the full episode.",
+      "onScreen": "10 20 _ 40 50",
+      "fromScenes": [
+        12
+      ],
+      "lengthSec": 20,
+      "caption": "Try it before you peek.",
+      "hashtags": [
+        "cprogramming",
+        "learntocode",
+        "kodingkonkani",
+        "challenge",
+        "insertionsort"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nvoid print_array(const int a[], int n) {\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n}\n\nvoid insertion_sort(int a[], int n) {\n    for (int i = 1; i < n; i++) {\n        int key = a[i];\n        int j = i - 1;\n        while (j >= 0 && a[j] > key) {\n            a[j + 1] = a[j];\n            j--;\n        }\n        a[j + 1] = key;\n        printf(\"Insert %d: \", key);\n        print_array(a, n);\n    }\n}\n\nint main(void) {\n    int cards[] = {5, 2, 9, 1, 6, 3};\n    int n = sizeof(cards) / sizeof(cards[0]);\n\n    insertion_sort(cards, n);\n    return 0;\n}",
+      "output": "$ gcc insertion.c -o insertion\n$ ./insertion\nInsert 2: 2 5 9 1 6 3\nInsert 9: 2 5 9 1 6 3\nInsert 1: 1 2 5 9 6 3\nInsert 6: 1 2 5 6 9 3\nInsert 3: 1 2 3 5 6 9",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false,
+    "fixedOutput": "1 2 3 5 6 9"
+  }
+}

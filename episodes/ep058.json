@@ -1,0 +1,331 @@
+{
+  "ep": 58,
+  "title": "Pointers & Strings",
+  "module": 8,
+  "lengthSec": 420,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain the difference between `char town[] = \"Mapusa\"",
+    "` and `const char *beach = \"Baga\"",
+    "` with a memory diagram",
+    "walk a string with a `char` pointer until `'\\0'`",
+    "know why changing a string literal crashes, and use `const` to make GCC catch it"
+  ],
+  "youtube": {
+    "title": "Strings Were Pointers All Along | C Programming EP 58",
+    "description": "A string in C is just characters in a row ending with \\0, and a char pointer can walk along them. We draw the difference between a char array and a string literal, and see why changing \"Baga\" through a pointer crashes your program. 0:00 Beach name boards · 0:20 Title · 0:25 Array copy vs literal · 1:35 Walking a string · 2:20 Code, line by line · 3:55 Running it · 4:20 Pun · 4:25 The const habit · 5:05 Bug of the Day: modifying a string literal · 6:15 Challenge: your own strlen · 6:40 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Beach name boards"
+      },
+      {
+        "t": "0:20",
+        "label": "Title"
+      },
+      {
+        "t": "0:25",
+        "label": "Array copy vs literal"
+      },
+      {
+        "t": "1:35",
+        "label": "Walking a string"
+      },
+      {
+        "t": "2:20",
+        "label": "Code, line by line"
+      },
+      {
+        "t": "3:55",
+        "label": "Running it"
+      },
+      {
+        "t": "4:20",
+        "label": "Pun"
+      },
+      {
+        "t": "4:25",
+        "label": "The const habit"
+      },
+      {
+        "t": "5:05",
+        "label": "Bug of the Day: modifying a string literal"
+      },
+      {
+        "t": "6:15",
+        "label": "Challenge: your own strlen"
+      },
+      {
+        "t": "6:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "pointers and strings in c",
+      "char pointer",
+      "string literal c",
+      "char array vs char pointer",
+      "const char pointer",
+      "segmentation fault string",
+      "strlen with pointers",
+      "c strings tutorial",
+      "learn c",
+      "koding konkani",
+      "c programming for beginners",
+      "c programming india"
+    ],
+    "thumbnail": {
+      "text": "STRINGS = POINTERS?",
+      "visual": "big text \"STRINGS = POINTERS?\"; letters B-A-G-A-\\0 in lilac boxes with a black arrow from `beach`; a tomato padlock on the boxes; Xecxec in sunglasses on a beach towel; lilac background, dark blue text block",
+      "pose": "Xecxec in sunglasses on a beach towel"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "concept-slide",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "Two beach signs: a painted wooden \"Mapusa\" sign you own, and a government \"Baga\" board behind a fence",
+      "animation": "Xecxec repaints his own sign happily; tries the fenced board and gets a buzz; wave sounds",
+      "sfx": [],
+      "narration": "Here are two signs. One is a wooden \"Mapusa\" sign that you painted yourself. It's yours, so you can repaint it anytime. The other is a big \"Baga\" board put up by the government, behind a fence. You can look at it and point at it, but you are not allowed to change it. In C, strings come in these same two kinds."
+    },
+    {
+      "id": 2,
+      "template": "title-card",
+      "startSec": 20,
+      "lengthSec": 5,
+      "onScreen": "EP 58 · POINTERS & STRINGS",
+      "animation": "Title slams in; claw-click",
+      "sfx": [
+        "claw-click"
+      ],
+      "narration": "Episode fifty-eight. Pointers and strings."
+    },
+    {
+      "id": 3,
+      "template": "memory-boxes",
+      "startSec": 25,
+      "lengthSec": 70,
+      "onScreen": "Left: stack array `town` with 7 boxes M-a-p-u-s-a-\\0. Right: read-only area (grey, padlocked) with B-a-g-a-\\0, and a stack box `beach` (8 bytes) with an arrow to it",
+      "animation": "Left letters drop into the stack boxes, copied from a faded literal; right side padlock clicks; arrow draws from `beach`",
+      "sfx": [],
+      "narration": "First, remember from EP 45: a string in C is just characters in a row, ending with a special zero character, written backslash zero. Now look at two lines. Line one: char town square brackets equals \"Mapusa\". This creates an array of 7 chars on the stack, six letters plus the backslash zero, and copies the letters into it. town is your own wooden sign. You can change any letter. Line two: const char star beach equals \"Baga\". This time there is no array of our own. The text \"Baga\" is a string literal. The compiler stores it in a special read-only part of memory, shown here in grey with a padlock. beach is just a pointer, eight bytes on the stack, holding the address of the B. So beach points at the government board. You can read it, but you must not change it. The const at the front is our promise that we will not try."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 95,
+      "lengthSec": 45,
+      "onScreen": "Pointer `p` walking B, a, g, a, then stopping at \\0",
+      "animation": "Arrow hops one box per step with a footstep; each letter prints below with a dash; red stop sign at \\0",
+      "sfx": [],
+      "narration": "Since a string is chars in a row, we can walk it with a char pointer, just like EP 56. p starts at the B. Star p is B. p plus plus, star p is a. Then g. Then a. Next is backslash zero. That's our stop sign. A loop that runs while star p is not backslash zero will visit every letter and stop at the end. This is how printf, strlen and every string function in C really work."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 140,
+      "lengthSec": 95,
+      "onScreen": "`strings.c` (21 lines); tracker: town, p, *p",
+      "animation": "Butter highlights; scene 4 diagram replays in the corner during the loop",
+      "sfx": [],
+      "narration": "Here is the program. [HL 4] Line 4: town is an array, 7 chars, holding a copy of \"Mapusa\". [TRACK town=\"Mapusa\"] [HL 5] Line 5: beach is a pointer to a read-only literal. [TRACK beach=&\"Baga\"[0]] [HL 7] Line 7 prints both with percent s. percent s takes the address of the first char and prints until backslash zero. [HL 9] Line 9 changes town square bracket 0 to a small m. That's fine, because town is our own array. [TRACK town=\"mapusa\"] [HL 10] Line 10 prints \"mapusa\". [HL 12] Line 12: p is another const char pointer, starting where beach points. [TRACK p=&B] [HL 13] Line 13: while star p is not equal to backslash zero. [HL 14] Line 14 prints the current char and a dash. [TRACK *p='B'] [HL 15] Line 15: p plus plus, move to the next letter. [TRACK *p='a'] [TRACK *p='g'] [TRACK *p='a'] [TRACK *p='\\0'] Now star p is backslash zero, so the loop stops. [HL 17] Line 17 prints a newline. [HL 19] Line 19 prints two sizes. sizeof town is 7, the whole array. sizeof beach is 8, because beach is only a pointer. Same as EP 57. [HL 20] Return zero.",
+      "code": {
+        "file": "file1.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    char town[] = \"Mapusa\";\n    const char *beach = \"Baga\";\n\n    printf(\"%s and %s\\n\", town, beach);\n\n    town[0] = 'm';\n    printf(\"Changed: %s\\n\", town);\n\n    const char *p = beach;\n    while (*p != '\\0') {\n        printf(\"%c-\", *p);\n        p++;\n    }\n    printf(\"\\n\");\n\n    printf(\"sizeof town = %zu, sizeof beach = %zu\\n\", sizeof town, sizeof beach);\n    return 0;\n}",
+        "output": "Mapusa and Baga\nChanged: mapusa\nB-a-g-a-\nsizeof town = 7, sizeof beach = 8"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 235,
+      "lengthSec": 25,
+      "onScreen": "Compile and run",
+      "animation": "Output prints; `sizeof` line highlights 7 vs 8 with a balance-scale icon",
+      "sfx": [],
+      "narration": "Compile and run. \"Mapusa and Baga\". \"Changed: mapusa\". Then B dash a dash g dash a dash. And sizes 7 and 8. The 8 is for a 64-bit computer; it is the size of an address, not the length of \"Baga\"."
+    },
+    {
+      "id": 7,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 5,
+      "onScreen": "\"Why are strings so calm? They always know where to stop: at \\0.\"",
+      "animation": "Card flips; Xecxec does yoga on the beach; rimshot",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why are strings so calm? They always know where to stop."
+    },
+    {
+      "id": 8,
+      "template": "concept-slide",
+      "startSec": 265,
+      "lengthSec": 40,
+      "onScreen": "Rule card: \"Pointing at a literal? Write const char *\"",
+      "animation": "Word `const` stamps on with a thud; padlock icon",
+      "sfx": [
+        "stamp",
+        "thud"
+      ],
+      "narration": "One simple habit will save you from today's bug. Whenever a pointer points at a string literal, write const char star, not just char star. C allows plain char star for old reasons, but the literal is still read-only. Adding const lets the compiler catch your mistakes."
+    },
+    {
+      "id": 9,
+      "template": "bug-of-the-day",
+      "startSec": 305,
+      "lengthSec": 70,
+      "onScreen": "`char *beach = \"Baga\"; beach[0] = 'b';` — no warning, crash; then `const char *` version showing GCC error",
+      "animation": "Arrow tries to repaint the padlocked B; padlock zaps; crash; then error message types out in butter, Xecxec nods",
+      "sfx": [],
+      "narration": "Today's bug: changing a string literal. char star beach equals \"Baga\", then beach square bracket 0 equals small b. GCC compiles this with no warning at all, even with dash Wall. But when you run it, the program tries to repaint the government board. The memory is read-only, so the operating system stops it: segmentation fault. On Windows, the program just closes without printing. Now add const, as in scene 8. GCC now refuses to compile: error, assignment of read-only location star beach. That error is your friend. It caught the bug before you ran anything. And if you really need to change the letters, make your own copy with an array: char beach square brackets equals \"Baga\"."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 375,
+      "lengthSec": 25,
+      "onScreen": "\"Write your own strlen with pointers\" task card",
+      "animation": "Arrow races along \"Calangute\"; counter ticks to 9",
+      "sfx": [],
+      "narration": "Your challenge. Write your own strlen, called my_strlen. It takes const char star s and returns a size t. Use a pointer to walk until backslash zero, then return how far you walked. Hint: in EP 56 we learned that subtracting two pointers gives the number of elements between them. Test it with \"Calangute\", which should give 9, and an empty string, which should give 0. Pause and try."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 400,
+      "lengthSec": 20,
+      "onScreen": "\"Next: EP 59 · Pointer to pointer & NULL\"",
+      "animation": "A pin pointing at another pin; sign-off",
+      "sfx": [],
+      "narration": "Strings are just char pointers walking to a backslash zero. Next episode we go one level deeper: a pointer that points to another pointer, and the special value NULL. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <stdio.h>\n\nint main(void) {\n    char *beach = \"Baga\";\n    beach[0] = 'b';\n    printf(\"%s\\n\", beach);\n    return 0;\n}",
+    "error": "`gcc -Wall bug.c` gives **no warning**. Running it crashes: `Segmentation fault` on Linux; on Windows the program exits without printing anything.\n\nWith `const` added (`const char *beach = \"Baga\";`), GCC refuses to compile:\n\nbug.c: In function 'main':\nbug.c:5:14: error: assignment of read-only location '*beach'\n    5 |     beach[0] = 'b';\n      |              ^",
+    "fixed": "    char beach[] = \"Baga\";\n    beach[0] = 'b';\n    printf(\"%s\\n\", beach);   /* prints baga */",
+    "why": "a string literal lives in read-only memory, so writing to it is undefined behaviour; an array gives you your own writable copy."
+  },
+  "pun": "\"Why are strings so calm? They always know where to stop: at \\0.\"",
+  "challenge": "Write `size_t my_strlen(const char *s)` using a pointer that walks to `'\\0'`. Test it with `\"Calangute\"` (9) and `\"\"` (0).",
+  "challengeAnswer": "(worked example)\nsize_t my_strlen(const char *s) {\n    const char *p = s;\n    while (*p != '\\0') {\n        p++;\n    }\n    return p - s;\n}\n/* my_strlen(\"Calangute\") is 9, my_strlen(\"\") is 0 */",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "You cannot repaint the Baga board",
+      "hook": "A padlocked \"Baga\" board: \"You can point. You cannot paint.\"",
+      "script": "Two strings. char town brackets equals \"Mapusa\" makes your own copy in an array. You can change it. const char star beach equals \"Baga\" just points at a read-only literal. You can read it, never change it. Same text, very different memory.",
+      "onScreen": "ARRAY = YOURS · LITERAL = READ-ONLY",
+      "fromScenes": [
+        1,
+        3
+      ],
+      "lengthSec": 25,
+      "caption": "Know which sign you own.",
+      "hashtags": [
+        "cprogramming",
+        "strings",
+        "kodingkonkani",
+        "pointers",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "How strings really work in 30s",
+      "hook": "Arrow hopping B-a-g-a, then a stop sign at \\0.",
+      "script": "A string is just chars in a row, ending with backslash zero. A char pointer starts at the first letter. Print star p, then p plus plus. Repeat until star p is backslash zero. That's how printf, strlen and every string function in C work inside.",
+      "onScreen": "WALK UNTIL \\0",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 30,
+      "caption": "Every string function, in one loop.",
+      "hashtags": [
+        "cprogramming",
+        "strings",
+        "kodingkonkani",
+        "codingtips",
+        "pointers"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "No warning, still crashes",
+      "hook": "`beach[0] = 'b';` then the screen cracks.",
+      "script": "char star beach equals \"Baga\". Then change the first letter. GCC gives no warning. But the program crashes, because string literals are read-only. Now add const. GCC stops you with an error: assignment of read-only location. Always write const char star for literals.",
+      "onScreen": "ALWAYS const char* FOR LITERALS",
+      "fromScenes": [
+        8,
+        9
+      ],
+      "lengthSec": 35,
+      "caption": "Let the compiler catch it for you.",
+      "hashtags": [
+        "cprogramming",
+        "debugging",
+        "kodingkonkani",
+        "strings",
+        "cbugs"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Calm strings",
+      "hook": "Xecxec meditating on a beach towel.",
+      "script": "Why are strings so calm? They always know where to stop.",
+      "onScreen": "THEY KNOW WHERE TO STOP",
+      "fromScenes": [
+        7
+      ],
+      "lengthSec": 12,
+      "caption": "Inner peace, ending in \\0.",
+      "hashtags": [
+        "programmerhumor",
+        "cprogramming",
+        "kodingkonkani",
+        "codingmemes",
+        "strings"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Quiz: 7 or 8?",
+      "hook": "`sizeof town` and `sizeof beach` side by side with question marks.",
+      "script": "town is an array holding \"Mapusa\". beach is a pointer to \"Baga\". What is sizeof town? 7, six letters plus backslash zero. And sizeof beach? 8 on a 64-bit computer, the size of a pointer, not the length of Baga. Now write your own strlen with pointers. Comment your code.",
+      "onScreen": "7 vs 8",
+      "fromScenes": [
+        6,
+        10
+      ],
+      "lengthSec": 25,
+      "caption": "Did you get both?",
+      "hashtags": [
+        "cprogramming",
+        "codingquiz",
+        "kodingkonkani",
+        "strings",
+        "learntocode"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.c",
+      "source": "#include <stdio.h>\n\nint main(void) {\n    char town[] = \"Mapusa\";\n    const char *beach = \"Baga\";\n\n    printf(\"%s and %s\\n\", town, beach);\n\n    town[0] = 'm';\n    printf(\"Changed: %s\\n\", town);\n\n    const char *p = beach;\n    while (*p != '\\0') {\n        printf(\"%c-\", *p);\n        p++;\n    }\n    printf(\"\\n\");\n\n    printf(\"sizeof town = %zu, sizeof beach = %zu\\n\", sizeof town, sizeof beach);\n    return 0;\n}",
+      "output": "Mapusa and Baga\nChanged: mapusa\nB-a-g-a-\nsizeof town = 7, sizeof beach = 8",
+      "lang": "c"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "c",
+    "fixedHasFullProgram": false
+  }
+}
