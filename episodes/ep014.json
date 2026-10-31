@@ -87,7 +87,7 @@
       "code": {
         "file": "file1.c",
         "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
-        "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
+        "output": "=== Xecxec's Unit Converter ===\nDistance in km: Amount in rupees: Temperature in Celsius: \n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
       }
     },
     {
@@ -102,7 +102,7 @@
       "code": {
         "file": "file1.c",
         "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
-        "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
+        "output": "=== Xecxec's Unit Converter ===\nDistance in km: Amount in rupees: Temperature in Celsius: \n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
       }
     },
     {
@@ -117,7 +117,7 @@
       "code": {
         "file": "file1.c",
         "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
-        "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
+        "output": "=== Xecxec's Unit Converter ===\nDistance in km: Amount in rupees: Temperature in Celsius: \n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
       }
     },
     {
@@ -132,7 +132,7 @@
       "code": {
         "file": "file1.c",
         "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
-        "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
+        "output": "=== Xecxec's Unit Converter ===\nDistance in km: Amount in rupees: Temperature in Celsius: \n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit"
       }
     },
     {
@@ -295,8 +295,9 @@
     {
       "file": "file1.c",
       "source": "/*\n * converter.c\n * Converts km to miles, rupees to dollars,\n * and Celsius to Fahrenheit.\n * Koding Konkani, EP 14\n */\n#include <stdio.h>\n\n#define KM_PER_MILE 1.609344\n\nint main(void)\n{\n    const double RUPEES_PER_DOLLAR = 88.0;   // example rate only\n\n    double km, rupees;\n    int celsius;\n\n    printf(\"=== Xecxec's Unit Converter ===\\n\");\n\n    printf(\"Distance in km: \");\n    scanf(\"%lf\", &km);\n\n    printf(\"Amount in rupees: \");\n    scanf(\"%lf\", &rupees);\n\n    printf(\"Temperature in Celsius: \");\n    scanf(\"%d\", &celsius);\n\n    double miles = km / KM_PER_MILE;\n    double dollars = rupees / RUPEES_PER_DOLLAR;\n    double fahrenheit = celsius * 9.0 / 5 + 32;\n\n    printf(\"\\n--- Results ---\\n\");\n    printf(\"%8.2f km      = %8.2f miles\\n\", km, miles);\n    printf(\"%8.2f rupees  = %8.2f dollars\\n\", rupees, dollars);\n    printf(\"%8d Celsius = %8.1f Fahrenheit\\n\", celsius, fahrenheit);\n\n    return 0;\n}",
-      "output": "=== Xecxec's Unit Converter ===\nDistance in km: 60\nAmount in rupees: 500\nTemperature in Celsius: 37\n\n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit",
-      "lang": "c"
+      "output": "=== Xecxec's Unit Converter ===\nDistance in km: Amount in rupees: Temperature in Celsius: \n--- Results ---\n   60.00 km      =    37.28 miles\n  500.00 rupees  =     5.68 dollars\n      37 Celsius =     98.6 Fahrenheit",
+      "lang": "c",
+      "stdin": "60\n500\n37\n"
     }
   ],
   "bugExtra": {

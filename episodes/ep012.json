@@ -119,7 +119,7 @@
       "code": {
         "file": "ep12_sum.c",
         "source": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    printf(\"Enter two numbers: \");\n    scanf(\"%d %d\", &a, &b);\n    printf(\"Sum: %d\\n\", a + b);\n    return 0;\n}",
-        "output": "Enter two numbers: 12 30\nSum: 42"
+        "output": "Enter two numbers: Sum: 42"
       }
     },
     {
@@ -286,8 +286,9 @@
     {
       "file": "ep12_sum.c",
       "source": "#include <stdio.h>\n\nint main(void)\n{\n    int a, b;\n    printf(\"Enter two numbers: \");\n    scanf(\"%d %d\", &a, &b);\n    printf(\"Sum: %d\\n\", a + b);\n    return 0;\n}",
-      "output": "Enter two numbers: 12 30\nSum: 42",
-      "lang": "c"
+      "output": "Enter two numbers: Sum: 42",
+      "lang": "c",
+      "stdin": "12 30\n"
     }
   ],
   "bugExtra": {
