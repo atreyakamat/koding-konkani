@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { readableOn } from "../theme/contrast";
 import { Xecxec } from "../mascot/Xecxec";
 import { springs } from "../lib/motion";
 import type { BaseSceneProps } from "./types";
@@ -40,7 +41,7 @@ export const PunCard: React.FC<PunCardProps> = ({ pun }) => {
           opacity,
           fontFamily: fonts.title,
           fontSize: 64,
-          color: palette.white,
+          color: readableOn(palette.tomato),
           textAlign: "center",
           lineHeight: 1.3,
           maxWidth: "85%",

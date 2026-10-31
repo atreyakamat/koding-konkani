@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { palette, brutal } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { accentOn, readableOn } from "../theme/contrast";
 import { Panel } from "../ui";
 import { enterProgress } from "../lib/motion";
 import { defaultRevealCues, revealFrame } from "../lib/cues";
@@ -48,7 +49,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
             style={{
               fontFamily: fonts.title,
               fontSize: 56,
-              color: colours.accent,
+              color: accentOn(colours.bg, colours.accent),
               textTransform: "uppercase",
             }}
           >
@@ -82,7 +83,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                   justifyContent: "center",
                   fontFamily: fonts.title,
                   fontSize: 32,
-                  color: palette.ink,
+                  color: readableOn(colours.accent),
                 }}
               >
                 {index + 1}
@@ -92,7 +93,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                   fontFamily: fonts.body,
                   fontWeight: 700,
                   fontSize: 48,
-                  color: palette.ink,
+                  color: readableOn(colours.bg),
                   lineHeight: 1.25,
                 }}
               >
@@ -119,7 +120,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                     style={{
                       fontFamily: fonts.title,
                       fontSize: 32,
-                      color: colours.accent,
+                      color: accentOn(palette.cream, colours.accent),
                       marginBottom: 16,
                       textTransform: "uppercase",
                     }}

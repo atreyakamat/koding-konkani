@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { palette, brutal } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { readableOn } from "../theme/contrast";
 import { enterProgress } from "../lib/motion";
 import { defaultRevealCues, revealFrame } from "../lib/cues";
 import type { BaseSceneProps } from "./types";
@@ -37,6 +38,8 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
 
   const centerX = (index: number) => startX + index * (BOX_WIDTH + GAP) + BOX_WIDTH / 2;
   const indexOf = (name: string) => boxes.findIndex((box) => box.name === name);
+  const boxInk = (box: { isPointer?: boolean }) =>
+    readableOn(box.isPointer ? colours.accent : palette.cream);
 
   return (
     <AbsoluteFill style={{ background: colours.bg }}>
@@ -50,7 +53,7 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
             refY="5"
             orient="auto"
           >
-            <path d="M0,0 L10,5 L0,10 Z" fill={palette.ink} />
+            <path d="M0,0 L10,5 L0,10 Z" fill={readableOn(colours.bg)} />
           </marker>
         </defs>
 
@@ -77,7 +80,7 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
               key={`arrow-${index}`}
               d={`M ${fromX} ${ROW_Y + BOX_HEIGHT} Q ${(fromX + toX) / 2} ${dipY} ${toX} ${ROW_Y + BOX_HEIGHT}`}
               fill="none"
-              stroke={palette.ink}
+              stroke={readableOn(colours.bg)}
               strokeWidth={8}
               strokeLinecap="round"
               markerEnd="url(#memory-arrow)"
@@ -122,7 +125,7 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
                 textAnchor="middle"
                 fontFamily={fonts.title}
                 fontSize={28}
-                fill={palette.ink}
+                fill={boxInk(box)}
               >
                 {box.name}
               </text>
@@ -133,7 +136,7 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
                 fontFamily={fonts.code}
                 fontSize={44}
                 fontWeight={700}
-                fill={palette.ink}
+                fill={boxInk(box)}
               >
                 {box.value}
               </text>
@@ -143,7 +146,8 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
                 textAnchor="middle"
                 fontFamily={fonts.code}
                 fontSize={22}
-                fill="rgba(17, 17, 17, 0.55)"
+                fill={boxInk(box)}
+                fillOpacity={0.75}
               >
                 {box.address}
               </text>

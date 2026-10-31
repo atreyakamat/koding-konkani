@@ -1,64 +1,30 @@
-import { useCurrentFrame, interpolate } from "remotion";
-import { Audio } from "@remotion/media";
+import { Html5Audio, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { MUSIC_VOLUME } from "./sfx";
 
-const dbToLinear = (db: number): number => Math.pow(10, db / 20);
+export type FrameRange = { from: number; to: number };
+export type MusicBedProps = { src?: string; duckRanges?: FrameRange[]; rampFrames?: number };
 
-export type DuckRange = { from: number; durationInFrames: number };
-
-export type MusicBedProps = {
-  musicSrc: string;
-  /** Frame ranges (relative to this component) where narration plays; the bed ducks under these. */
-  duckRanges: DuckRange[];
-  /** dB level while nothing is talking (e.g. a pure-music intro). Default -14. */
-  bedVolumeDb?: number;
-  /** dB level under narration, per CLAUDE.md's "music bed ~-24dB under speech". Default -24. */
-  duckedVolumeDb?: number;
-  /** Frames to crossfade between bed and ducked levels. Default 15 (0.5s @30fps). */
-  fadeFrames?: number;
-  loop?: boolean;
+/** Volume (0 to 1) of the bed at `frame`: ducked inside any narration range, with short ramps. */
+export const musicVolumeAt = (frame: number, duckRanges: FrameRange[], rampFrames = 8): number => {
+  let duck = 0;
+  for (const { from, to } of duckRanges) {
+    const d = interpolate(frame, [from - rampFrames, from, to, to + rampFrames], [0, 1, 1, 0], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    });
+    duck = Math.max(duck, d);
+  }
+  return MUSIC_VOLUME.normal + (MUSIC_VOLUME.ducked - MUSIC_VOLUME.normal) * duck;
 };
 
-/**
- * Background music bed that ducks under narration. Plays at `bedVolumeDb` by
- * default and dips to `duckedVolumeDb` for each range in `duckRanges`, with a
- * short crossfade so the duck isn't an audible jump cut.
- */
+/** Looping music bed that ducks under the narrator. Phase 5 passes the narration ranges. */
 export const MusicBed: React.FC<MusicBedProps> = ({
-  musicSrc,
-  duckRanges,
-  bedVolumeDb = -14,
-  duckedVolumeDb = -24,
-  fadeFrames = 15,
-  loop = true,
+  src = "music/bed-01.wav",
+  duckRanges = [],
+  rampFrames = 8,
 }) => {
   const frame = useCurrentFrame();
-  const bedLinear = dbToLinear(bedVolumeDb);
-  const duckedLinear = dbToLinear(duckedVolumeDb);
-
-  let target = bedLinear;
-  for (const range of duckRanges) {
-    const rampIn = interpolate(
-      frame,
-      [range.from - fadeFrames, range.from],
-      [bedLinear, duckedLinear],
-      {
-        extrapolateLeft: "clamp",
-        extrapolateRight: "clamp",
-      },
-    );
-    const rampOutStart = range.from + range.durationInFrames;
-    const rampOut = interpolate(
-      frame,
-      [rampOutStart, rampOutStart + fadeFrames],
-      [duckedLinear, bedLinear],
-      { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
-    );
-    if (frame >= range.from - fadeFrames && frame < rampOutStart) {
-      target = Math.min(target, rampIn);
-    } else if (frame >= rampOutStart && frame < rampOutStart + fadeFrames) {
-      target = Math.min(target, rampOut);
-    }
-  }
-
-  return <Audio src={musicSrc} volume={target} loop={loop} />;
+  return (
+    <Html5Audio src={staticFile(src)} loop volume={musicVolumeAt(frame, duckRanges, rampFrames)} />
+  );
 };

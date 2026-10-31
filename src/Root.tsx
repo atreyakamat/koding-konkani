@@ -1,6 +1,7 @@
 import { Composition } from "remotion";
 import { LongVideo } from "./compositions/LongVideo";
 import { Short } from "./compositions/Short";
+import { AudioTest, AUDIO_TEST_DURATION } from "./compositions/AudioTest";
 import { SceneGallery, SCENE_GALLERY_DURATION } from "./compositions/SceneGallery";
 import { VoiceTest } from "./compositions/VoiceTest";
 
@@ -65,6 +66,14 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       ))}
+      <Composition
+        id="AudioTest"
+        component={AudioTest}
+        durationInFrames={AUDIO_TEST_DURATION}
+        fps={FPS}
+        width={1280}
+        height={720}
+      />
     </>
   );
 };

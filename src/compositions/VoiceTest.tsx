@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-import { AbsoluteFill, Sequence, staticFile, useDelayRender, useVideoConfig } from "remotion";
+import { AbsoluteFill, staticFile, useDelayRender, useVideoConfig } from "remotion";
 import { Audio } from "@remotion/media";
 import type { Caption } from "@remotion/captions";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
 import { Sticker } from "../ui";
 import { Xecxec } from "../mascot/Xecxec";
-import { MusicBed } from "../audio/MusicBed";
+import { MusicBed, Sfx } from "../audio";
 import { VoiceTestCaptions } from "./VoiceTestCaptions";
 
 export type VoiceTestProps = {
@@ -14,13 +14,6 @@ export type VoiceTestProps = {
   voiceSrc: string;
   captionsSrc: string;
 };
-
-const MUSIC_SRC = staticFile("voice-test/placeholder-pad.wav");
-const SFX = [
-  staticFile("voice-test/placeholder-whoosh.wav"),
-  staticFile("voice-test/placeholder-tick.wav"),
-  staticFile("voice-test/placeholder-chime.wav"),
-];
 
 /**
  * Phase 3 voice test harness: plays one narration sample over a ducked music
@@ -55,16 +48,10 @@ export const VoiceTest: React.FC<VoiceTestProps> = ({ voiceLabel, voiceSrc, capt
   return (
     <AbsoluteFill style={{ background: palette.peach }}>
       <Audio src={staticFile(voiceSrc)} />
-      <MusicBed musicSrc={MUSIC_SRC} duckRanges={[{ from: 0, durationInFrames }]} />
-      <Sequence>
-        <Audio src={SFX[0]} volume={0.7} />
-      </Sequence>
-      <Sequence from={Math.round(durationInFrames * 0.45)}>
-        <Audio src={SFX[1]} volume={0.6} />
-      </Sequence>
-      <Sequence from={Math.max(0, durationInFrames - 20)}>
-        <Audio src={SFX[2]} volume={0.6} />
-      </Sequence>
+      <MusicBed duckRanges={[{ from: 0, to: durationInFrames }]} />
+      <Sfx name="whoosh" at={0} />
+      <Sfx name="key-tick" at={Math.round(durationInFrames * 0.45)} />
+      <Sfx name="chime" at={Math.max(0, durationInFrames - 20)} />
 
       <AbsoluteFill style={{ padding: 96 }}>
         <Sticker
