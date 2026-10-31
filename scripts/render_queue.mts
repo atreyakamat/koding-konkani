@@ -115,7 +115,11 @@ const renderJob = (
     run("npx", ["remotion", "render", "src/index.ts", compositionId, rawPath, ...extraFlags]);
     pyEval(
       "import sys; sys.path.insert(0, 'scripts'); from loudness import master_video; " +
-        `master_video(r"${rawPath}", r"${outPath}", target_tp=-1.5, audio_bitrate="320k")`,
+        // -1.7 not -1.5: loudnorm's linear-gain pass has ~0.05dB precision slop on a
+        // long, complex multi-layer mix, and -1.5 was landing just over the ceiling
+        // on most long-video renders (confirmed across EP04/07/08/09/10) — -1.7
+        // reliably clears the actual -1.5 dBTP requirement with margin.
+        `master_video(r"${rawPath}", r"${outPath}", target_tp=-1.7, audio_bitrate="320k")`,
     );
     unlinkSync(rawPath);
     const seconds = (Date.now() - t0) / 1000;

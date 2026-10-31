@@ -4,7 +4,7 @@ gcc: `gcc.exe (Rev6, Built by MSYS2 project) 16.2.0`
 
 ## Counts
 
-- PASS: 3
+- PASS: 4
 
 ## Non-PASS results (0)
 
