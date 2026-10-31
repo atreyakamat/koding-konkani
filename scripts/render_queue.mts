@@ -237,7 +237,9 @@ for (const ep of episodeNumbers) {
   for (const shortId of ["S1", "S2", "S3", "S4", "S5"]) {
     const shortPropsFile = join(outDir, `.props-short-${shortId}.json`);
     writeFileSync(shortPropsFile, JSON.stringify({ episodeNumber: ep, shortId }), "utf-8");
-    const shortConcurrency = pickConcurrency(4, `${epId} ${shortId}`);
+    // Lowered from 4 after a live OOM kill mid-queue; 2/2 for both long and
+    // Shorts per the owner's explicit instruction following that.
+    const shortConcurrency = pickConcurrency(2, `${epId} ${shortId}`);
     const shortOut = join(outDir, `${epId}-${shortId}.mp4`);
     const shortStatus = renderJob(
       `${epId} ${shortId}`,
