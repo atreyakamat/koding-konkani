@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { accentOn } from "../theme/contrast";
 import { Panel, Chip } from "../ui";
 import { Xecxec } from "../mascot/Xecxec";
 import { enterProgress } from "../lib/motion";
@@ -42,7 +43,7 @@ export const Challenge: React.FC<ChallengeProps> = ({
             style={{
               fontFamily: fonts.title,
               fontSize: 36,
-              color: colours.accent,
+              color: accentOn(palette.cream, colours.accent),
               marginBottom: 16,
             }}
           >
@@ -76,7 +77,12 @@ export const Challenge: React.FC<ChallengeProps> = ({
         ) : null}
 
         <div
-          style={{ fontFamily: fonts.body, fontWeight: 700, fontSize: 32, color: colours.accent }}
+          style={{
+            fontFamily: fonts.body,
+            fontWeight: 700,
+            fontSize: 32,
+            color: accentOn(colours.bg, colours.accent),
+          }}
         >
           Comment your answer
         </div>

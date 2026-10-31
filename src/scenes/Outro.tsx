@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { readableOn } from "../theme/contrast";
 import { Panel, Chip } from "../ui";
 import { Xecxec } from "../mascot/Xecxec";
 import { typewriterChars, enterProgress } from "../lib/motion";
@@ -41,7 +42,11 @@ export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durati
           }}
         >
           <Panel background={palette.cream}>
-            <Chip text="Next episode" background={colours.accent} color={palette.white} />
+            <Chip
+              text="Next episode"
+              background={colours.accent}
+              color={readableOn(colours.accent)}
+            />
             <div
               style={{
                 fontFamily: fonts.title,
@@ -60,7 +65,12 @@ export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durati
         <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
           <Xecxec pose="wave" size={150} />
           <div
-            style={{ fontFamily: fonts.body, fontWeight: 700, fontSize: 38, color: palette.ink }}
+            style={{
+              fontFamily: fonts.body,
+              fontWeight: 700,
+              fontSize: 38,
+              color: readableOn(colours.bg),
+            }}
           >
             {SIGN_OFF.slice(0, visibleChars)}
           </div>

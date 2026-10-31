@@ -2,6 +2,7 @@ import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import { palette, brutal } from "../theme/palette";
 import { algorithmBarColours } from "../theme/modules";
 import { fonts } from "../theme/fonts";
+import { readableOn } from "../theme/contrast";
 import { Chip } from "../ui";
 import { springs } from "../lib/motion";
 import type { BaseSceneProps } from "./types";
@@ -50,7 +51,11 @@ export const AlgorithmBars: React.FC<AlgorithmBarsProps> = ({
   return (
     <AbsoluteFill style={{ background: colours.bg, padding: 96 }}>
       <div style={{ display: "flex", gap: 20, marginBottom: 32 }}>
-        <Chip text={`Pass ${passLabel}`} background={colours.accent} color={palette.white} />
+        <Chip
+          text={`Pass ${passLabel}`}
+          background={colours.accent}
+          color={readableOn(colours.accent)}
+        />
         <Chip text={`Compares: ${comparesSoFar}`} background={palette.white} />
         <Chip text={`Swaps: ${swapsSoFar}`} background={palette.white} />
       </div>
@@ -103,7 +108,7 @@ export const AlgorithmBars: React.FC<AlgorithmBarsProps> = ({
                 fontFamily={fonts.code}
                 fontSize={32}
                 fontWeight={700}
-                fill={palette.ink}
+                fill={readableOn(colours.bg)}
               >
                 {value}
               </text>
