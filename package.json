@@ -1,0 +1,29 @@
+{
+  "name": "koding-konkani",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Koding Konkani: a fully animated C-language course made with Remotion",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render:long": "remotion render src/index.ts LongVideo out/long.mp4 --concurrency=4",
+    "render:short": "remotion render src/index.ts Short out/short.mp4 --concurrency=4",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.539",
+    "@remotion/google-fonts": "4.0.539",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.539"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.539",
+    "@types/react": "19.0.0",
+    "eslint": "9.19.0",
+    "prettier": "3.4.2",
+    "typescript": "5.8.2"
+  }
+}
