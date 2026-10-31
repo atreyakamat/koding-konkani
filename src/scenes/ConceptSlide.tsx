@@ -1,0 +1,146 @@
+import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { palette, brutal } from "../theme/palette";
+import { fonts } from "../theme/fonts";
+import { Panel } from "../ui";
+import { enterProgress } from "../lib/motion";
+import { defaultRevealCues, revealFrame } from "../lib/cues";
+import type { BaseSceneProps } from "./types";
+
+export type ConceptSlideProps = BaseSceneProps & {
+  heading?: string;
+  lines: string[];
+  analogy?: { title: string; body: string };
+};
+
+/** Concept slide: 1-3 numbered lines spring in one by one; an analogy card slides in on the right. */
+export const ConceptSlide: React.FC<ConceptSlideProps> = ({
+  heading,
+  lines,
+  analogy,
+  colours,
+  durationInFrames,
+  cues,
+}) => {
+  const frame = useCurrentFrame();
+  const revealCues = cues?.length ? cues : defaultRevealCues(lines.length, durationInFrames * 0.6);
+  const lastReveal = revealFrame(
+    revealCues,
+    lines.length - 1,
+    lines.length,
+    durationInFrames * 0.6,
+  );
+  const analogyStart = lastReveal + 8;
+
+  return (
+    <AbsoluteFill
+      style={{
+        background: colours.bg,
+        padding: 96,
+        display: "flex",
+        flexDirection: "row",
+        gap: 56,
+        alignItems: "center",
+      }}
+    >
+      <div style={{ flex: analogy ? 1.3 : 1, display: "flex", flexDirection: "column", gap: 36 }}>
+        {heading ? (
+          <div
+            style={{
+              fontFamily: fonts.title,
+              fontSize: 56,
+              color: colours.accent,
+              textTransform: "uppercase",
+            }}
+          >
+            {heading}
+          </div>
+        ) : null}
+        {lines.map((line, index) => {
+          const start = revealFrame(revealCues, index, lines.length, durationInFrames * 0.6);
+          const progress = enterProgress(frame, start, 10);
+          return (
+            <div
+              key={index}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 24,
+                opacity: progress,
+                translate: `${(1 - progress) * -48}px 0`,
+              }}
+            >
+              <div
+                style={{
+                  flexShrink: 0,
+                  width: 56,
+                  height: 56,
+                  borderRadius: "50%",
+                  background: colours.accent,
+                  border: `${brutal.border}px solid ${palette.ink}`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: fonts.title,
+                  fontSize: 32,
+                  color: palette.ink,
+                }}
+              >
+                {index + 1}
+              </div>
+              <div
+                style={{
+                  fontFamily: fonts.body,
+                  fontWeight: 700,
+                  fontSize: 48,
+                  color: palette.ink,
+                  lineHeight: 1.25,
+                }}
+              >
+                {line}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {analogy
+        ? (() => {
+            const progress = enterProgress(frame, analogyStart, 12);
+            return (
+              <div
+                style={{
+                  flex: 1,
+                  opacity: progress,
+                  translate: `${(1 - progress) * 60}px 0`,
+                }}
+              >
+                <Panel background={palette.cream}>
+                  <div
+                    style={{
+                      fontFamily: fonts.title,
+                      fontSize: 32,
+                      color: colours.accent,
+                      marginBottom: 16,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {analogy.title}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: fonts.body,
+                      fontSize: 36,
+                      color: palette.ink,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {analogy.body}
+                  </div>
+                </Panel>
+              </div>
+            );
+          })()
+        : null}
+    </AbsoluteFill>
+  );
+};
