@@ -5,6 +5,7 @@ import { fonts } from "../theme/fonts";
 import { readableOn } from "../theme/contrast";
 import { Chip } from "../ui";
 import { springs } from "../lib/motion";
+import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
 export type TraceStep = {
@@ -49,73 +50,82 @@ export const AlgorithmBars: React.FC<AlgorithmBarsProps> = ({
   const passLabel = typeof step.step === "string" ? step.step.split(".")[0] : String(step.step);
 
   return (
-    <AbsoluteFill style={{ background: colours.bg, padding: 96 }}>
-      <div style={{ display: "flex", gap: 20, marginBottom: 32 }}>
-        <Chip
-          text={`Pass ${passLabel}`}
-          background={colours.accent}
-          color={readableOn(colours.accent)}
-        />
-        <Chip text={`Compares: ${comparesSoFar}`} background={palette.white} />
-        <Chip text={`Swaps: ${swapsSoFar}`} background={palette.white} />
-      </div>
+    <SceneFrame
+      colours={colours}
+      mascot={{
+        top: 24,
+        size: 190,
+        poses: [{ frame: Math.round(durationInFrames - framesPerStep), pose: "clawsUp" }],
+      }}
+    >
+      <AbsoluteFill style={{ padding: 96 }}>
+        <div style={{ display: "flex", gap: 20, marginBottom: 32 }}>
+          <Chip
+            text={`Pass ${passLabel}`}
+            background={colours.accent}
+            color={readableOn(colours.accent)}
+          />
+          <Chip text={`Compares: ${comparesSoFar}`} background={palette.white} />
+          <Chip text={`Swaps: ${swapsSoFar}`} background={palette.white} />
+        </div>
 
-      <svg
-        viewBox="0 0 1920 1080"
-        width="100%"
-        height="100%"
-        style={{ position: "absolute", inset: 0 }}
-      >
-        {step.array.map((value, index) => {
-          const previousValue = previous[index] ?? value;
-          const height =
-            interpolate(localFrame, [0, transitionFrames], [previousValue, value], {
-              easing: springs.pop,
-              extrapolateLeft: "clamp",
-              extrapolateRight: "clamp",
-            }) *
-            (MAX_BAR_HEIGHT / maxValue);
+        <svg
+          viewBox="0 0 1920 1080"
+          width="100%"
+          height="100%"
+          style={{ position: "absolute", inset: 0 }}
+        >
+          {step.array.map((value, index) => {
+            const previousValue = previous[index] ?? value;
+            const height =
+              interpolate(localFrame, [0, transitionFrames], [previousValue, value], {
+                easing: springs.pop,
+                extrapolateLeft: "clamp",
+                extrapolateRight: "clamp",
+              }) *
+              (MAX_BAR_HEIGHT / maxValue);
 
-          const isSorted = step.sorted?.includes(index);
-          const isSwap = step.swap?.includes(index);
-          const isCompare = step.compare?.includes(index);
-          const fill = isSorted
-            ? algorithmBarColours.sorted
-            : isSwap
-              ? algorithmBarColours.swap
-              : isCompare
-                ? algorithmBarColours.compare
-                : algorithmBarColours.idle;
+            const isSorted = step.sorted?.includes(index);
+            const isSwap = step.swap?.includes(index);
+            const isCompare = step.compare?.includes(index);
+            const fill = isSorted
+              ? algorithmBarColours.sorted
+              : isSwap
+                ? algorithmBarColours.swap
+                : isCompare
+                  ? algorithmBarColours.compare
+                  : algorithmBarColours.idle;
 
-          const x = 96 + index * (barWidth + gap);
-          const y = BASELINE_Y - height;
+            const x = 96 + index * (barWidth + gap);
+            const y = BASELINE_Y - height;
 
-          return (
-            <g key={index}>
-              <rect
-                x={x}
-                y={y}
-                width={barWidth}
-                height={height}
-                fill={fill}
-                stroke={palette.ink}
-                strokeWidth={brutal.border}
-              />
-              <text
-                x={x + barWidth / 2}
-                y={y - 18}
-                textAnchor="middle"
-                fontFamily={fonts.code}
-                fontSize={32}
-                fontWeight={700}
-                fill={readableOn(colours.bg)}
-              >
-                {value}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
-    </AbsoluteFill>
+            return (
+              <g key={index}>
+                <rect
+                  x={x}
+                  y={y}
+                  width={barWidth}
+                  height={height}
+                  fill={fill}
+                  stroke={palette.ink}
+                  strokeWidth={brutal.border}
+                />
+                <text
+                  x={x + barWidth / 2}
+                  y={y - 18}
+                  textAnchor="middle"
+                  fontFamily={fonts.code}
+                  fontSize={32}
+                  fontWeight={700}
+                  fill={readableOn(colours.bg)}
+                >
+                  {value}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
+      </AbsoluteFill>
+    </SceneFrame>
   );
 };

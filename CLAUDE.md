@@ -125,7 +125,7 @@ Timing rule: scene lengths in the Bible are targets. After voice generation, **t
 
 - Long videos: composition 1920×1080, 30 fps, H.264 (CRF 18). **4K masters:** same composition rendered with `--scale=2` (3840×2160). Design everything as vectors/CSS so 4K stays sharp.
 - Shorts: 1080×1920, 30 fps.
-- Concurrency: start at 4 on this machine; lower it if RAM goes above ~13 GB.
+- Render **one video at a time** (never two renders in parallel; queue them). Each render uses `--concurrency=4` for its own frames; lower that if RAM goes above ~13 GB.
 - Batch renders run overnight, one module at a time. Never render into the repo; output goes to `out/` (git-ignored).
 
 ## Working rules (owner's guardrails — always follow)

@@ -3,8 +3,8 @@ import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
 import { readableOn } from "../theme/contrast";
 import { Panel, Chip } from "../ui";
-import { Xecxec } from "../mascot/Xecxec";
 import { typewriterChars, enterProgress } from "../lib/motion";
+import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
 export type OutroProps = BaseSceneProps & {
@@ -25,60 +25,61 @@ export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durati
   const visibleChars = typewriterChars(SIGN_OFF, frame, signOffStart, 1);
 
   return (
-    <AbsoluteFill style={{ background: colours.bg, padding: 96, display: "flex" }}>
-      <div
-        style={{
-          width: "58%",
-          display: "flex",
-          flexDirection: "column",
-          gap: 32,
-          justifyContent: "center",
-        }}
-      >
+    <SceneFrame colours={colours} mascot={{ pose: "dance", side: "left", size: 380, bottom: 60 }}>
+      <AbsoluteFill style={{ padding: 96, display: "flex" }}>
         <div
           style={{
-            opacity: cardProgress,
-            translate: `0px ${(1 - cardProgress) * 40}px`,
+            width: "58%",
+            display: "flex",
+            flexDirection: "column",
+            gap: 32,
+            justifyContent: "center",
           }}
         >
-          <Panel background={palette.cream}>
-            <Chip
-              text="Next episode"
-              background={colours.accent}
-              color={readableOn(colours.accent)}
-            />
-            <div
-              style={{
-                fontFamily: fonts.title,
-                fontSize: 52,
-                color: palette.ink,
-                marginTop: 20,
-                textTransform: "uppercase",
-                lineHeight: 1.2,
-              }}
-            >
-              EP {String(nextEp).padStart(2, "0")} · {nextTitle}
-            </div>
-          </Panel>
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
-          <Xecxec pose="wave" size={150} />
           <div
             style={{
-              fontFamily: fonts.body,
-              fontWeight: 700,
-              fontSize: 38,
-              color: readableOn(colours.bg),
+              opacity: cardProgress,
+              translate: `0px ${(1 - cardProgress) * 40}px`,
             }}
           >
-            {SIGN_OFF.slice(0, visibleChars)}
+            <Panel background={palette.cream}>
+              <Chip
+                text="Next episode"
+                background={colours.accent}
+                color={readableOn(colours.accent)}
+              />
+              <div
+                style={{
+                  fontFamily: fonts.title,
+                  fontSize: 52,
+                  color: palette.ink,
+                  marginTop: 20,
+                  textTransform: "uppercase",
+                  lineHeight: 1.2,
+                }}
+              >
+                EP {String(nextEp).padStart(2, "0")} · {nextTitle}
+              </div>
+            </Panel>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+            <div
+              style={{
+                fontFamily: fonts.body,
+                fontWeight: 700,
+                fontSize: 38,
+                color: readableOn(colours.bg),
+              }}
+            >
+              {SIGN_OFF.slice(0, visibleChars)}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* right 42% intentionally empty: YouTube end-screen (next video + subscribe) */}
-      <div style={{ width: "42%" }} />
-    </AbsoluteFill>
+        {/* right 42% intentionally empty: YouTube end-screen (next video + subscribe) */}
+        <div style={{ width: "42%" }} />
+      </AbsoluteFill>
+    </SceneFrame>
   );
 };

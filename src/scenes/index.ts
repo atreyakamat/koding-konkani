@@ -10,3 +10,4 @@ export * from "./PunCard";
 export * from "./Challenge";
 export * from "./Outro";
 export * from "./ShortLayout";
+export * from "./SceneFrame";

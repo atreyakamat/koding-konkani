@@ -3,8 +3,8 @@ import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
 import { accentOn } from "../theme/contrast";
 import { Sticker, Chip } from "../ui";
-import { Xecxec } from "../mascot/Xecxec";
 import { enterProgress, springs } from "../lib/motion";
+import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
 export type TitleCardProps = BaseSceneProps & {
@@ -28,50 +28,47 @@ export const TitleCard: React.FC<TitleCardProps> = ({ ep, title, moduleLabel, co
   });
 
   return (
-    <AbsoluteFill
-      style={{
-        background: colours.bg,
-        padding: 96,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 32,
-      }}
-    >
-      <div style={{ position: "absolute", top: 96, left: 96, display: "flex", gap: 20 }}>
-        <Sticker text={`EP ${String(ep).padStart(2, "0")}`} background={palette.butter} />
-        {moduleLabel ? <Chip text={moduleLabel} background={palette.white} /> : null}
-      </div>
-
-      <div
+    <SceneFrame colours={colours} mascot={{ pose: "dance", size: 520, bottom: 40 }}>
+      <AbsoluteFill
         style={{
-          fontFamily: fonts.title,
-          fontSize: 128,
-          lineHeight: 1.05,
-          color: colours.bg,
-          WebkitTextStroke: `4px ${accentOn(colours.bg, colours.accent)}`,
-          paintOrder: "stroke fill",
-          textTransform: "uppercase",
-          textAlign: "center",
-          scale: `${titleScale} ${titleScale}`,
-          opacity: titleOpacity,
-          maxWidth: "90%",
+          padding: 96,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 32,
         }}
       >
-        {title}
-      </div>
-      <div
-        style={{
-          width: `${underlineWidth * 60}%`,
-          height: 10,
-          background: colours.accent,
-        }}
-      />
+        <div style={{ position: "absolute", top: 96, left: 96, display: "flex", gap: 20 }}>
+          <Sticker text={`EP ${String(ep).padStart(2, "0")}`} background={palette.butter} />
+          {moduleLabel ? <Chip text={moduleLabel} background={palette.white} /> : null}
+        </div>
 
-      <div style={{ position: "absolute", bottom: 72, right: 110 }}>
-        <Xecxec pose="scuttle" size={180} />
-      </div>
-    </AbsoluteFill>
+        <div
+          style={{
+            fontFamily: fonts.title,
+            fontSize: 128,
+            lineHeight: 1.05,
+            color: colours.bg,
+            WebkitTextStroke: `4px ${accentOn(colours.bg, colours.accent)}`,
+            paintOrder: "stroke fill",
+            textTransform: "uppercase",
+            textAlign: "center",
+            scale: `${titleScale} ${titleScale}`,
+            opacity: titleOpacity,
+            maxWidth: "90%",
+          }}
+        >
+          {title}
+        </div>
+        <div
+          style={{
+            width: `${underlineWidth * 60}%`,
+            height: 10,
+            background: colours.accent,
+          }}
+        />
+      </AbsoluteFill>
+    </SceneFrame>
   );
 };

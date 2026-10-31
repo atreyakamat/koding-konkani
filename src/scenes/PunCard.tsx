@@ -2,8 +2,8 @@ import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
 import { readableOn } from "../theme/contrast";
-import { Xecxec } from "../mascot/Xecxec";
 import { springs } from "../lib/motion";
+import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
 export type PunCardProps = BaseSceneProps & {
@@ -24,32 +24,35 @@ export const PunCard: React.FC<PunCardProps> = ({ pun }) => {
   });
 
   return (
-    <AbsoluteFill
-      style={{
-        background: palette.tomato,
-        padding: 120,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 48,
-      }}
+    <SceneFrame
+      colours={{ bg: palette.tomato, accent: palette.butter }}
+      mascot={{ pose: "snap", size: 460, bottom: 30 }}
     >
-      <div
+      <AbsoluteFill
         style={{
-          scale: `${flipScaleX} 1`,
-          opacity,
-          fontFamily: fonts.title,
-          fontSize: 64,
-          color: readableOn(palette.tomato),
-          textAlign: "center",
-          lineHeight: 1.3,
-          maxWidth: "85%",
+          padding: 120,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 48,
         }}
       >
-        {pun}
-      </div>
-      <Xecxec pose="snap" size={160} />
-    </AbsoluteFill>
+        <div
+          style={{
+            scale: `${flipScaleX} 1`,
+            opacity,
+            fontFamily: fonts.title,
+            fontSize: 64,
+            color: readableOn(palette.tomato),
+            textAlign: "center",
+            lineHeight: 1.3,
+            maxWidth: "85%",
+          }}
+        >
+          {pun}
+        </div>
+      </AbsoluteFill>
+    </SceneFrame>
   );
 };
