@@ -1,6 +1,6 @@
 import { Composition } from "remotion";
-import { LongVideo } from "./compositions/LongVideo";
-import { Short } from "./compositions/Short";
+import { LongVideo, calculateMetadata as calculateLongVideoMetadata } from "./compositions/LongVideo";
+import { Short, calculateMetadata as calculateShortMetadata } from "./compositions/Short";
 import { AudioTest, AUDIO_TEST_DURATION } from "./compositions/AudioTest";
 import { SceneGallery, SCENE_GALLERY_DURATION } from "./compositions/SceneGallery";
 import { VoiceTest } from "./compositions/VoiceTest";
@@ -27,21 +27,26 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="LongVideo"
         component={LongVideo}
-        durationInFrames={FPS * 10}
+        calculateMetadata={calculateLongVideoMetadata}
         fps={FPS}
         width={1920}
         height={1080}
-        defaultProps={{ ep: 1, title: "Welcome to Koding Konkani", module: 0 }}
+        defaultProps={{ episodeNumber: 1 }}
       />
-      <Composition
-        id="Short"
-        component={Short}
-        durationInFrames={FPS * 10}
-        fps={FPS}
-        width={1080}
-        height={1920}
-        defaultProps={{ ep: 1, id: "S1", hook: "A crab will teach you C", module: 0 }}
-      />
+      {/* Every episode has 5 Shorts, S1-S5 (CLAUDE.md). One composition id per slot; the
+          episode to render is picked via defaultProps / --props, same as LongVideo. */}
+      {(["S1", "S2", "S3", "S4", "S5"] as const).map((shortId) => (
+        <Composition
+          key={shortId}
+          id={`Short-${shortId}`}
+          component={Short}
+          calculateMetadata={calculateShortMetadata}
+          fps={FPS}
+          width={1080}
+          height={1920}
+          defaultProps={{ episodeNumber: 1, shortId }}
+        />
+      ))}
       <Composition
         id="SceneGallery"
         component={SceneGallery}
