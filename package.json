@@ -6,6 +6,8 @@
   "scripts": {
     "studio": "remotion studio src/index.ts",
     "render:long": "remotion render src/index.ts LongVideo out/long.mp4 --concurrency=4",
+    "render:long:1080": "remotion render src/index.ts LongVideo out/long-1080.mp4 --codec=h264 --crf=18 --concurrency=4",
+    "render:long:4k": "remotion render src/index.ts LongVideo out/long-4k.mp4 --codec=h264 --crf=18 --scale=2 --concurrency=4",
     "render:short": "remotion render src/index.ts Short out/short.mp4 --concurrency=4",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
