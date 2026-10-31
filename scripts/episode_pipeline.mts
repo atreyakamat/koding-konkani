@@ -221,13 +221,16 @@ const gccCheckPasses = (ep: number): boolean => {
 
 /** Don't start a new episode's job after 05:30 local time (overnight run
  * time-box). Uses local system time, which this machine already reports as
- * IST. Correctly handles the midnight crossing: "before cutoff" is true for
- * any hour from the run's start through 05:29, false from 05:30 onward. */
+ * IST. The run starts in the evening and crosses midnight, so "past cutoff"
+ * must mean specifically the 05:30-11:59 morning window — NOT every hour
+ * from 05:00 through 23:59, which would immediately (and wrongly) trip the
+ * very first check at e.g. 21:30 (caught live: this exact bug killed the
+ * first overnight run before it started EP05). */
 const pastCutoff = (): boolean => {
   const now = new Date();
   const h = now.getHours();
   const m = now.getMinutes();
-  return !(h < 5 || (h === 5 && m < 30));
+  return (h === 5 && m >= 30) || (h > 5 && h < 12);
 };
 
 for (let ep = startEp; ep <= endEp; ep++) {
