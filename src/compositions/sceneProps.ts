@@ -1,7 +1,7 @@
 import type { Episode, Scene } from "../lib/episode";
 
 const CUE_RE = /\[(HL|TRACK)\s+[^\]]*\]/g;
-const MAX_LINE_CHARS = 72;
+const MAX_LINE_CHARS = 48;
 const MAX_LINES = 3;
 
 /** Splits narration into sentences, strips [HL]/[TRACK] cues, and takes up to
@@ -25,6 +25,16 @@ const linesFromNarration = (narration: string): string[] => {
     lines.push(first.length > MAX_LINE_CHARS ? `${first.slice(0, MAX_LINE_CHARS - 1)}…` : first);
   }
   return lines;
+};
+
+/** Many (not all) concept-slide onScreen directions are shaped "Title": description
+ * (e.g. '"Why C?": laptop, washing machine, Python logo...') — a natural analogy
+ * card. Cold-open-style concept slides (no colon in their direction) get none,
+ * which is correct: they're narrative, not a numbered-point + analogy layout. */
+const analogyFromOnScreen = (onScreen: string): { title: string; body: string } | undefined => {
+  const m = onScreen.match(/^"?([^":]{2,40})"?:\s*(.+)$/);
+  if (!m) return undefined;
+  return { title: m[1].trim(), body: m[2].trim() };
 };
 
 const HL_CUE_RE = /\[HL\s+(\d+)\]/g;
@@ -62,10 +72,7 @@ const labelsFromNarration = (narration: string): Record<number, string> => {
  * present and a single onScreen line otherwise — flagged in review.md as
  * needing real refinement once Module 6+ episodes are rendered.
  */
-export const scenePropsFor = (
-  episode: Episode,
-  scene: Scene,
-): Record<string, unknown> => {
+export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, unknown> => {
   switch (scene.template) {
     case "title-card":
       return {
@@ -74,12 +81,16 @@ export const scenePropsFor = (
         moduleLabel: `M${String(episode.module).padStart(2, "0")}`,
       };
     case "concept-slide":
-      return { lines: linesFromNarration(scene.narration) };
+      return {
+        lines: linesFromNarration(scene.narration),
+        analogy: analogyFromOnScreen(scene.onScreen),
+      };
     case "code-explain":
       return {
         file: scene.code?.file ?? "code.c",
         source: scene.code?.source ?? scene.onScreen,
         labels: labelsFromNarration(scene.narration),
+        output: scene.code?.output,
       };
     case "terminal":
       return { lines: [{ text: scene.onScreen }] };

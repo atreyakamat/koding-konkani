@@ -14,7 +14,7 @@
  *     or: node scripts/episode.mts <episode-number>
  */
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([a-zA-Z]:)/, "$1");
@@ -33,7 +33,7 @@ mkdirSync(join(outDir, "shorts"), { recursive: true });
 type StepTiming = { step: string; seconds: number };
 const timings: StepTiming[] = [];
 
-const timed = <T>(step: string, fn: () => T): T => {
+const timed = <T,>(step: string, fn: () => T): T => {
   console.log(`\n=== ${step} ===`);
   const t0 = Date.now();
   const result = fn();
@@ -57,6 +57,32 @@ const propsFile = (name: string, data: unknown): string => {
   return p;
 };
 
+/** Renders to a `.raw.mp4` intermediate, then masters its audio in place (two-pass
+ * loudnorm, -c:v copy) to the real output path. A single clip's narration/SFX/music
+ * are each normalised on their own, but the combined mix can still peak hotter than
+ * any one of them — confirmed on EP01 (-15.86 LUFS / -0.59 dBTP pre-master, docs/reviews/
+ * ep001-pilot-review.md). Mastering the final render is what actually guarantees the
+ * CLAUDE.md target on the delivered file. */
+const renderAndMaster = (renderArgs: string[], outPath: string) => {
+  const rawPath = outPath.replace(/\.mp4$/, ".raw.mp4");
+  run("npx", [
+    "remotion",
+    "render",
+    "src/index.ts",
+    ...renderArgs,
+    rawPath,
+    "--codec=h264",
+    "--crf=18",
+    "--concurrency=2",
+  ]);
+  run(PYTHON, [
+    "-c",
+    "import sys; sys.path.insert(0, 'scripts'); from loudness import master_video; " +
+      `print(master_video(r"${rawPath}", r"${outPath}", target_tp=-1.5))`,
+  ]);
+  rmSync(rawPath);
+};
+
 // 1. Narration
 timed("narration", () => run(PYTHON, [join("scripts", "render_episode_audio.py"), String(epNum)]));
 
@@ -70,7 +96,9 @@ if (!nonPassMatch) {
   process.exit(1);
 }
 if (/## Non-PASS results \((?!0\))/.test(ccheckReport)) {
-  console.error(`GCC check found non-PASS results for ${epId} — see out/c-check-report.md. Aborting render.`);
+  console.error(
+    `GCC check found non-PASS results for ${epId} — see out/c-check-report.md. Aborting render.`,
+  );
   process.exit(1);
 }
 
@@ -87,31 +115,16 @@ const longVideoSec = manifest.timings
 const longVideoPropsFile = propsFile("longvideo", { episodeNumber: epNum });
 
 timed("render-long-1080p", () =>
-  run("npx", [
-    "remotion",
-    "render",
-    "src/index.ts",
-    "LongVideo",
+  renderAndMaster(
+    ["LongVideo", `--props=${longVideoPropsFile}`],
     join(outDir, `${epId}-1080p.mp4`),
-    `--props=${longVideoPropsFile}`,
-    "--codec=h264",
-    "--crf=18",
-    "--concurrency=2",
-  ]),
+  ),
 );
 timed("render-long-4k", () =>
-  run("npx", [
-    "remotion",
-    "render",
-    "src/index.ts",
-    "LongVideo",
+  renderAndMaster(
+    ["LongVideo", `--props=${longVideoPropsFile}`, "--scale=2"],
     join(outDir, `${epId}-4k.mp4`),
-    `--props=${longVideoPropsFile}`,
-    "--codec=h264",
-    "--crf=18",
-    "--scale=2",
-    "--concurrency=2",
-  ]),
+  ),
 );
 
 // 4. Render: the 5 Shorts, 1080x1920.
@@ -119,17 +132,10 @@ const shortIds = ["S1", "S2", "S3", "S4", "S5"];
 for (const shortId of shortIds) {
   const shortPropsFile = propsFile(`short-${shortId}`, { episodeNumber: epNum, shortId });
   timed(`render-short-${shortId}`, () =>
-    run("npx", [
-      "remotion",
-      "render",
-      "src/index.ts",
-      `Short-${shortId}`,
+    renderAndMaster(
+      [`Short-${shortId}`, `--props=${shortPropsFile}`],
       join(outDir, "shorts", `${epId}-${shortId}.mp4`),
-      `--props=${shortPropsFile}`,
-      "--codec=h264",
-      "--crf=18",
-      "--concurrency=2",
-    ]),
+    ),
   );
 }
 
@@ -145,5 +151,7 @@ const log = {
 };
 writeFileSync(join(outDir, "render-log.json"), JSON.stringify(log, null, 2), "utf-8");
 
-console.log(`\nDone. Episode ${epId}: ${longVideoSec.toFixed(1)}s video, 1080p render took ${render1080.seconds.toFixed(1)}s (${realTimeRatio1080.toFixed(2)}x real time).`);
+console.log(
+  `\nDone. Episode ${epId}: ${longVideoSec.toFixed(1)}s video, 1080p render took ${render1080.seconds.toFixed(1)}s (${realTimeRatio1080.toFixed(2)}x real time).`,
+);
 console.log(`Log written to out/${epId}/render-log.json`);

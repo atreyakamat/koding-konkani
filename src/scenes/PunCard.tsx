@@ -23,6 +23,11 @@ export const PunCard: React.FC<PunCardProps> = ({ pun }) => {
     extrapolateRight: "clamp",
   });
 
+  // Most puns are a short one-liner (the common case, sized big and centred).
+  // A longer quote-style pun (like EP01's) needs a smaller size so it doesn't
+  // grow tall enough to run into Xecxec's fixed bottom-right zone.
+  const fontSize = pun.length > 60 ? 46 : 64;
+
   return (
     <SceneFrame
       colours={{ bg: palette.tomato, accent: palette.butter }}
@@ -30,7 +35,7 @@ export const PunCard: React.FC<PunCardProps> = ({ pun }) => {
     >
       <AbsoluteFill
         style={{
-          padding: 120,
+          padding: "120px 120px 320px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -43,11 +48,11 @@ export const PunCard: React.FC<PunCardProps> = ({ pun }) => {
             scale: `${flipScaleX} 1`,
             opacity,
             fontFamily: fonts.title,
-            fontSize: 64,
+            fontSize,
             color: readableOn(palette.tomato),
             textAlign: "center",
             lineHeight: 1.3,
-            maxWidth: "85%",
+            maxWidth: "76%",
           }}
         >
           {pun}

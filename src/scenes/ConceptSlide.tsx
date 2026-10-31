@@ -32,6 +32,10 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
     durationInFrames * 0.6,
   );
   const analogyStart = lastReveal + 8;
+  // The analogy card narrows the text column to ~56%; the 58px size that fits
+  // 3 bullet lines comfortably at full width wraps to 3+ lines per bullet
+  // there and can overflow the frame. Narrower column -> smaller type.
+  const lineFontSize = analogy ? 40 : 58;
 
   return (
     <SceneFrame
@@ -52,7 +56,14 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
           alignItems: "center",
         }}
       >
-        <div style={{ flex: analogy ? 1.3 : 1, display: "flex", flexDirection: "column", gap: 36 }}>
+        <div
+          style={{
+            flex: analogy ? 1.3 : 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: analogy ? 24 : 36,
+          }}
+        >
           {heading ? (
             <div
               style={{
@@ -101,7 +112,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                   style={{
                     fontFamily: fonts.body,
                     fontWeight: 700,
-                    fontSize: 58,
+                    fontSize: lineFontSize,
                     color: readableOn(colours.bg),
                     lineHeight: 1.25,
                   }}

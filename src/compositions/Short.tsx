@@ -1,15 +1,13 @@
-import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Audio, staticFile } from "remotion";
 import type { CalculateMetadataFunction } from "remotion";
 import type { Episode } from "../lib/episode";
 import { ShortLayout } from "../scenes/ShortLayout";
 import { coloursForModule } from "../theme/modules";
-import { palette, brutal } from "../theme/palette";
+import { palette } from "../theme/palette";
+import { CodeBlock, Panel } from "../ui";
 import { fonts } from "../theme/fonts";
-import { readableOn } from "../theme/contrast";
-import { Xecxec } from "../mascot/Xecxec";
 
 const FPS = 30;
-const END_CARD_SEC = 2;
 
 export type ShortProps = {
   episodeNumber: number;
@@ -21,7 +19,9 @@ export type ShortProps = {
 
 export const calculateMetadata: CalculateMetadataFunction<ShortProps> = async ({ props }) => {
   const epId = `ep${String(props.episodeNumber).padStart(3, "0")}`;
-  const episode: Episode = await fetch(staticFile(`voice/${epId}/episode.json`)).then((r) => r.json());
+  const episode: Episode = await fetch(staticFile(`voice/${epId}/episode.json`)).then((r) =>
+    r.json(),
+  );
   const manifest: { timings: { short?: string; durationSec: number }[] } = await fetch(
     staticFile(`voice/${epId}/manifest.json`),
   ).then((r) => r.json());
@@ -36,40 +36,55 @@ export const calculateMetadata: CalculateMetadataFunction<ShortProps> = async ({
   };
 };
 
-/** The last 2 seconds of every Short, per docs/shorts-reels.md: FOLLOW / SUBSCRIBE + Full video badge.
- * Mounted inside a Sequence starting at that point, so frame 0 here is the card's own entrance. */
-const EndCard: React.FC<{ ep: number }> = ({ ep }) => {
-  const frame = useCurrentFrame();
-  const opacity = interpolate(frame, [0, 8], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-
-  return (
-    <AbsoluteFill style={{ background: palette.ink, opacity, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 28 }}>
-      <Xecxec pose="wave" size={160} />
-      <div style={{ fontFamily: fonts.title, fontSize: 56, color: palette.white, textAlign: "center", padding: "0 60px" }}>
-        FOLLOW @YOUR_IG_HANDLE
-      </div>
-      <div style={{ fontFamily: fonts.body, fontWeight: 700, fontSize: 36, color: palette.butter }}>
-        SUBSCRIBE: Koding Konkani
-      </div>
+/** The bug reveal (wrong code + GCC's first error line), for the "copy-paste bug" Short. */
+const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => (
+  <div style={{ display: "flex", flexDirection: "column", gap: 16, height: "100%" }}>
+    <CodeBlock source={episode.bug.wrong} width={860} fontSize={34} maxVisibleLines={6} />
+    <Panel background={palette.darkBlue} borderColor={palette.ink}>
       <div
         style={{
-          marginTop: 12,
-          background: palette.tomato,
-          border: `${brutal.border}px solid ${palette.ink}`,
-          padding: "14px 28px",
-          fontFamily: fonts.body,
-          fontWeight: 700,
-          fontSize: 32,
-          color: readableOn(palette.tomato),
+          fontFamily: fonts.code,
+          fontSize: 24,
+          color: palette.tomato,
+          whiteSpace: "pre-wrap",
         }}
       >
-        Full video: EP {String(ep).padStart(2, "0")}
+        {episode.bug.error.split("\n")[0]}
       </div>
-    </AbsoluteFill>
-  );
+    </Panel>
+  </div>
+);
+
+/** A code scene's source with its taught line highlighted, for a "what does X mean" Short. */
+const CodeVisual: React.FC<{ source: string; highlightLine?: number }> = ({
+  source,
+  highlightLine,
+}) => (
+  <CodeBlock
+    source={source}
+    width={860}
+    fontSize={36}
+    highlightLine={highlightLine}
+    maxVisibleLines={8}
+  />
+);
+
+/** Per-Short real visuals (animated code / bug), where the Short's source scene has code
+ * content to show. Shorts without a natural code/bug visual (intro, concept, joke) fall
+ * back to ShortLayout's own styled text card via `visualLabel` — see review.md. */
+const visualFor = (episode: Episode, shortId: string): React.ReactNode | undefined => {
+  if (shortId === "S3") {
+    return <BugVisual episode={episode} />;
+  }
+  if (shortId === "S5") {
+    const short = episode.shorts.find((s) => s.id === "S5");
+    const sceneId = short?.fromScenes[0];
+    const scene = episode.scenes.find((s) => s.id === sceneId);
+    if (scene?.code) {
+      return <CodeVisual source={scene.code.source} highlightLine={4} />;
+    }
+  }
+  return undefined;
 };
 
 export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames }) => {
@@ -89,10 +104,9 @@ export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames }
         caption={short.caption}
         colours={colours}
         durationInFrames={durationInFrames}
-      />
-      <Sequence from={Math.max(0, durationInFrames - END_CARD_SEC * FPS)} layout="none">
-        <EndCard ep={episode.ep} />
-      </Sequence>
+      >
+        {visualFor(episode, short.id)}
+      </ShortLayout>
     </AbsoluteFill>
   );
 };
