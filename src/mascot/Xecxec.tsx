@@ -2,7 +2,7 @@ import { useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
 import { palette } from "../theme/palette";
 import { impactShakeX } from "../lib/motion";
 
-export type XecxecPose = "idle" | "scuttle" | "clawsUp" | "shellShake" | "snap" | "wave";
+export type XecxecPose = "idle" | "scuttle" | "clawsUp" | "shellShake" | "snap" | "wave" | "dance";
 
 export type XecxecProps = {
   pose: XecxecPose;
@@ -36,6 +36,7 @@ export const Xecxec: React.FC<XecxecProps> = ({
   const bob = Math.sin((frame / fps) * Math.PI) * 3;
 
   let bodyTranslateX = 0;
+  let bodyTranslateY = 0;
   let bodyRotate = 0;
   let leftClawRotate = -18;
   let rightClawRotate = 18;
@@ -65,20 +66,32 @@ export const Xecxec: React.FC<XecxecProps> = ({
       extrapolateRight: "clamp",
     });
     rightClawRotate = 18 + snapProgress * 40;
+  } else if (pose === "dance") {
+    // Two bounces per second, body sways, claws pump alternately, legs stomp.
+    const beat = (frame / fps) * Math.PI * 2 * 1.5;
+    bodyTranslateY = -Math.abs(Math.sin(beat)) * 22;
+    bodyRotate = Math.sin(beat) * 7;
+    leftClawRotate = -18 - (Math.sin(beat) * 0.5 + 0.5) * 75;
+    rightClawRotate = 18 + (Math.cos(beat) * 0.5 + 0.5) * 75;
+    legPhase = frame * 2;
   } else if (pose === "wave") {
     rightClawRotate = 18 + Math.sin((frame / fps) * Math.PI * 2) * 30;
   }
 
   const legWiggle = Math.sin(legPhase / 2) * 10;
+  // Face: smile by default, worried frown while the shell shakes.
+  const mouthPath =
+    pose === "shellShake" ? "M102 152 Q120 136 138 152" : "M102 140 Q120 160 138 140";
 
   return (
     <svg
       viewBox="0 0 240 200"
       width={size}
       height={(size * 200) / 240}
+      overflow="visible"
       style={{
         scale: flip ? "-1 1" : "1 1",
-        translate: `${bodyTranslateX}px ${bob}px`,
+        translate: `${bodyTranslateX}px ${bob + bodyTranslateY}px`,
         rotate: `${bodyRotate}deg`,
       }}
     >
@@ -150,6 +163,11 @@ export const Xecxec: React.FC<XecxecProps> = ({
         stroke={palette.ink}
         strokeWidth={7}
       />
+
+      {/* cheeks and mouth */}
+      <ellipse cx={80} cy={138} rx={11} ry={7} fill={palette.apricot} opacity={0.9} />
+      <ellipse cx={160} cy={138} rx={11} ry={7} fill={palette.apricot} opacity={0.9} />
+      <path d={mouthPath} fill="none" stroke={palette.ink} strokeWidth={6} strokeLinecap="round" />
 
       {/* eye stalks */}
       <line

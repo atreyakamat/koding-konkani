@@ -18,7 +18,7 @@ The pipeline works (voice, captions, timing, audio, C content). The *visual laye
 4. **No interaction / life.** Scenes only fade-swap. No variable tracker, no output terminal after the code, no arrows, no sticker pops, no screen-shake, no background motion (shapes, grid, parallax). Style guide (docs/STYLE.md) camera moves and transitions are not visible.
 5. **Empty analogy card** at 0:40-ish (empty box next to code) — a bug, not a design choice.
 6. **Compression.** Video bitrate is ~245 kbps for 1080p. Flat colours hide it, but small code text will smear. Render with CRF 18 (CLAUDE.md) and check the output really used it.
-7. **Smart quotes in the panel**: explanation card shows curly quotes around "Hi" — the exact bug the episode teaches. Use straight quotes.
+7. ~~Smart quotes in the panel~~ — retracted: the explanation card uses Space Grotesk's straight quote glyph, not curly quotes. No change needed.
 8. **Black tail frames** after Outro in the sheet; trim.
 
 ## Shorts (all five share one template — "plain" is accurate)
@@ -47,12 +47,22 @@ The pipeline works (voice, captions, timing, audio, C content). The *visual laye
 
 **Fixes**
 - Replace `@YOUR_IG_HANDLE` everywhere (docs/shorts-reels.md, scripts/shorts_to_md.py, Short end card) once the owner confirms the handle — **open question**.
-- Straight quotes in explanation text; trim black tail; limiter to -1.5 dBTP; verify CRF 18.
+- Trim black tail; limiter to -1.5 dBTP; verify CRF 18.
 
 ## Pushback
 - Don't start Module 0 until EP 01 passes this list; fixing templates now is cheap, after 86 episodes it is not.
 - Ambient motion and mascot presence should be built once in shared components, not per scene, so all 86 episodes inherit it.
 
-## Open questions for owner
-1. Exact Instagram handle (e.g. `@kodingkonkani`)?
-2. Xecxec size: OK with ~22 % of frame height as default, hero-size on title/pun/outro?
+## Owner decisions (31 Oct)
+- Instagram handle: `@kodingkonkani` (placeholders replaced in docs/shorts-reels.md, scripts/shorts_to_md.py, Short end card via `src/brand.ts`).
+- Xecxec: ~22 % default, hero size on title/pun/outro, and he dances where it fits.
+- Renders: one video at a time (CLAUDE.md updated).
+
+## Status of this PR (shared building blocks, done)
+- Xecxec: new `dance` pose, smile, cheeks, frown on error; claws no longer clip.
+- `Backdrop` (drifting dot grid + pastel shapes) and `MascotCompanion` (scuttles in, pose timeline, speech bubbles) wrapped by `SceneFrame`; all 10 long scenes use it.
+- CodeExplain gains an optional `output` terminal; TitleCard/PunCard/Outro/Challenge use hero-size dancing Xecxec.
+- ShortLayout rewritten: frame-0 hook pop, progress bar, visual slot (`children`), dancing Xecxec, big word-by-word captions, end card with `@kodingkonkani`, no screen dimming.
+
+## Still needed (not in this repo yet)
+The pilot's real `LongVideo`/`Short` compositions (episode JSON wiring, captions, audio) exist only on the owner's PC branch `feat/pilot-ep001`, which was never pushed. Main still has placeholder compositions. To finish: push that branch, then wire `code.output` into CodeExplain, pass Short visuals as `children`, and fix the encode (CRF 18), black tail and -1.5 dBTP limiter there. Previews in docs/previews are stale; regenerate on the PC (Google Fonts are blocked in the cloud sandbox).

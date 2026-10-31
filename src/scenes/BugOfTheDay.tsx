@@ -3,6 +3,7 @@ import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
 import { CodeBlock, Panel, Sticker } from "../ui";
 import { impactShakeX, springs } from "../lib/motion";
+import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
 export type BugOfTheDayProps = BaseSceneProps & {
@@ -43,69 +44,87 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   });
 
   return (
-    <AbsoluteFill
-      style={{
-        background: colours.bg,
-        padding: 96,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 32,
+    <SceneFrame
+      colours={colours}
+      mascot={{
+        poses: [
+          { frame: phase2, pose: "shellShake" },
+          { frame: phase3, pose: "clawsUp" },
+        ],
+        bubbles: [
+          { at: phase2, text: "Oops!" },
+          { at: phase3, text: "Fixed!" },
+        ],
       }}
     >
-      <div style={{ translate: `0px ${bannerY}px` }}>
-        <Sticker text="Bug of the Day" background={palette.butter} rotateDeg={0} fontSize={44} />
-      </div>
+      <AbsoluteFill
+        style={{
+          padding: 96,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 32,
+        }}
+      >
+        <div style={{ translate: `0px ${bannerY}px` }}>
+          <Sticker text="Bug of the Day" background={palette.butter} rotateDeg={0} fontSize={44} />
+        </div>
 
-      <div style={{ display: "flex", gap: 48, width: "100%", justifyContent: "center" }}>
-        <div style={{ translate: `${isFixed ? 0 : shakeX}px 0px` }}>
-          <CodeBlock
-            source={isFixed ? fixedCode : wrongCode}
-            width={1100}
-            fontSize={36}
-            maxVisibleLines={Math.min(codeLines, 10)}
-          />
+        <div style={{ display: "flex", gap: 48, width: "100%", justifyContent: "center" }}>
+          <div style={{ translate: `${isFixed ? 0 : shakeX}px 0px` }}>
+            <CodeBlock
+              source={isFixed ? fixedCode : wrongCode}
+              width={1100}
+              fontSize={36}
+              maxVisibleLines={Math.min(codeLines, 10)}
+            />
+          </div>
         </div>
-      </div>
 
-      {!isFixed ? (
-        <div style={{ opacity: errorOpacity, width: "100%", maxWidth: 1100 }}>
-          <Panel background={palette.darkBlue} borderColor={palette.ink}>
-            <div
-              style={{
-                fontFamily: fonts.code,
-                fontSize: 28,
-                color: palette.tomato,
-                whiteSpace: "pre-wrap",
-              }}
-            >
-              {error}
-            </div>
-          </Panel>
-        </div>
-      ) : (
-        <div
-          style={{
-            opacity: fixOpacity,
-            width: "100%",
-            maxWidth: 1100,
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-          }}
-        >
-          <Panel background={palette.mint} borderColor={palette.ink}>
-            <div style={{ fontFamily: fonts.title, fontSize: 28, color: palette.ink }}>FIXED</div>
-          </Panel>
-          {why ? (
-            <div
-              style={{ fontFamily: fonts.body, fontSize: 32, color: palette.ink, lineHeight: 1.4 }}
-            >
-              {why}
-            </div>
-          ) : null}
-        </div>
-      )}
-    </AbsoluteFill>
+        {!isFixed ? (
+          <div style={{ opacity: errorOpacity, width: "100%", maxWidth: 1100 }}>
+            <Panel background={palette.darkBlue} borderColor={palette.ink}>
+              <div
+                style={{
+                  fontFamily: fonts.code,
+                  fontSize: 28,
+                  color: palette.tomato,
+                  whiteSpace: "pre-wrap",
+                }}
+              >
+                {error}
+              </div>
+            </Panel>
+          </div>
+        ) : (
+          <div
+            style={{
+              opacity: fixOpacity,
+              width: "100%",
+              maxWidth: 1100,
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+            }}
+          >
+            <Panel background={palette.mint} borderColor={palette.ink}>
+              <div style={{ fontFamily: fonts.title, fontSize: 28, color: palette.ink }}>FIXED</div>
+            </Panel>
+            {why ? (
+              <div
+                style={{
+                  fontFamily: fonts.body,
+                  fontSize: 32,
+                  color: palette.ink,
+                  lineHeight: 1.4,
+                }}
+              >
+                {why}
+              </div>
+            ) : null}
+          </div>
+        )}
+      </AbsoluteFill>
+    </SceneFrame>
   );
 };
