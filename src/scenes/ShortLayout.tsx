@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { palette, brutal } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { readableOn } from "../theme/contrast";
 import { Panel, Chip } from "../ui";
 import { enterProgress, typewriterChars } from "../lib/motion";
 import type { BaseSceneProps } from "./types";
@@ -45,7 +46,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
           style={{
             fontFamily: fonts.title,
             fontSize: 64,
-            color: palette.ink,
+            color: readableOn(colours.bg),
             lineHeight: 1.15,
             textTransform: "uppercase",
           }}
@@ -96,7 +97,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
               fontFamily: fonts.body,
               fontWeight: 700,
               fontSize: 42,
-              color: palette.white,
+              color: readableOn(colours.accent),
               lineHeight: 1.3,
             }}
           >

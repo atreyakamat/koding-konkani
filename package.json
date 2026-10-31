@@ -12,7 +12,9 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check:contrast": "esbuild scripts/check-contrast.ts --bundle --platform=node --log-level=error | node",
+    "test:audio": "remotion render src/audio-test-entry.tsx AudioTest out/audio-test.mp4 --concurrency=2"
   },
   "dependencies": {
     "@remotion/cli": "4.0.539",
