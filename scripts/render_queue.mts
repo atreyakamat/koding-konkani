@@ -242,6 +242,9 @@ for (const ep of episodeNumbers) {
       "--scale=2",
       "--x264-preset=medium",
       "--audio-bitrate=320k",
+      // Fonts are fetched from Google at render start; a DNS blip inside the default
+      // 30 s delayRender window failed every "~37 s" job on 1 Nov. Give it 2 minutes.
+      "--timeout=120000",
       `--concurrency=${longConcurrency}`,
     ],
     3840,
@@ -267,6 +270,7 @@ for (const ep of episodeNumbers) {
         "--crf=18",
         "--x264-preset=medium",
         "--audio-bitrate=320k",
+        "--timeout=120000",
         `--concurrency=${shortConcurrency}`,
       ],
       1080,

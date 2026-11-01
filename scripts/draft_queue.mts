@@ -40,6 +40,10 @@ const DRAFT_FLAGS = [
   `--scale=${SCALE}`,
   "--x264-preset=veryfast",
   "--audio-bitrate=192k",
+  // Fonts are fetched from Google at render start; a DNS blip inside the default 30 s
+  // delayRender window is what failed every "~37 s" job on 1 Nov (ERR_NAME_NOT_RESOLVED
+  // for fonts.gstatic.com). Two minutes rides out a short outage.
+  "--timeout=120000",
 ];
 const SHORT_IDS = ["S1", "S2", "S3", "S4", "S5"] as const;
 
