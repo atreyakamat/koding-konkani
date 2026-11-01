@@ -2,8 +2,13 @@
  * Full per-episode overnight pipeline: GCC check -> narration -> render
  * (long 4K + 5 Shorts, one job at a time) -> QA, for a range of episodes.
  * An episode whose C samples don't compile/match is logged and skipped
- * (not fatal to the run). Resumable: a render step is skipped only when its
- * output already exists at the expected resolution (not just exists).
+ * (not fatal to the run) — but 2 episode failures in a row (GCC check,
+ * narration, or the long-video render/QA) stop the whole run deliberately
+ * (exit code 2, distinct from a crash) rather than silently working through
+ * what might be a systemic problem. Resumable: a render step is skipped only
+ * when its output already exists at the expected resolution (not just
+ * exists). out/morning-report.md is rebuilt from current disk state after
+ * every episode, not just once at the end.
  *
  * Usage: node scripts/episode_pipeline.mts <start-ep> <end-ep>
  */
@@ -237,9 +242,57 @@ const pastCutoff = (): boolean => {
   return (h === 5 && m >= 30) || (h > 5 && h < 12);
 };
 
+/** Rebuilds out/morning-report.md from current disk state (every episode's
+ * qa.md, if present) — called after every episode so the report is always
+ * current, not just written once at the very end. */
+const writeMorningReport = (consecutiveFailures: number, stoppedReason: string | null): void => {
+  const lines: string[] = [
+    "# Overnight production run — status report",
+    "",
+    `Last updated ${new Date().toISOString()} (auto-updated after every episode).`,
+    "",
+    "| Episode | Long 4K | Shorts (5) | QA |",
+    "| --- | --- | --- | --- |",
+  ];
+  for (let ep = 1; ep <= 19; ep++) {
+    const epId = `ep${String(ep).padStart(3, "0")}`;
+    const qaPath = join(ROOT, "out", epId, "qa.md");
+    if (!existsSync(qaPath)) {
+      lines.push(`| ${epId} | not rendered | not rendered | — |`);
+      continue;
+    }
+    const qa = readFileSync(qaPath, "utf-8");
+    const rows = qa
+      .split("\n")
+      .filter((l) => l.startsWith("|") && !l.includes("---") && !l.includes("File"));
+    const longRow = rows.find((r) => r.includes("4k.mp4"));
+    const shortRows = rows.filter((r) => r.includes("-S"));
+    const longStatus = longRow ? longRow.split("|")[2].trim() : "?";
+    const longPass = longRow ? longRow.includes("| PASS |") : false;
+    const shortsPassCount = shortRows.filter((r) => r.includes("| PASS |")).length;
+    const allPass = longPass && shortsPassCount === shortRows.length && shortRows.length === 5;
+    lines.push(
+      `| ${epId} | ${longStatus} (${longPass ? "PASS" : "FAIL"}) | ${shortsPassCount}/5 PASS | ${allPass ? "PASS" : "CHECK"} |`,
+    );
+  }
+  lines.push("");
+  if (existsSync(SKIP_LOG_PATH)) {
+    lines.push("## Episode-level skips (GCC check or narration failure)", "");
+    lines.push("```", readFileSync(SKIP_LOG_PATH, "utf-8").trim(), "```", "");
+  }
+  lines.push(`## Status: ${stoppedReason ?? "in progress"}`, "");
+  if (consecutiveFailures > 0) {
+    lines.push(`Consecutive episode failures right now: ${consecutiveFailures}.`, "");
+  }
+  writeFileSync(join(ROOT, "out", "morning-report.md"), lines.join("\n"), "utf-8");
+};
+
+let consecutiveFailures = 0;
+
 for (let ep = startEp; ep <= endEp; ep++) {
   if (pastCutoff()) {
     log(`=== TIME-BOX: past 05:30, not starting ep${String(ep).padStart(3, "0")} or later ===`);
+    writeMorningReport(consecutiveFailures, "stopped at the 05:30 time-box");
     break;
   }
   const epId = `ep${String(ep).padStart(3, "0")}`;
@@ -247,6 +300,13 @@ for (let ep = startEp; ep <= endEp; ep++) {
 
   if (!gccCheckPasses(ep)) {
     log(`=== ${epId}: SKIPPED (GCC check failed) ===`);
+    consecutiveFailures++;
+    writeMorningReport(consecutiveFailures, null);
+    if (consecutiveFailures >= 2) {
+      log(`=== STOPPING: 2 episodes in a row failed (${epId} and the one before it) ===`);
+      writeMorningReport(consecutiveFailures, "stopped: 2 consecutive episode failures");
+      process.exit(2); // 2 = deliberate stop (2 episodes in a row failed), not a crash to retry
+    }
     continue;
   }
 
@@ -260,6 +320,13 @@ for (let ep = startEp; ep <= endEp; ep++) {
         ep,
         `narration generation failed: ${err instanceof Error ? err.message.slice(0, 150) : String(err)}`,
       );
+      consecutiveFailures++;
+      writeMorningReport(consecutiveFailures, null);
+      if (consecutiveFailures >= 2) {
+        log(`=== STOPPING: 2 episodes in a row failed (${epId} and the one before it) ===`);
+        writeMorningReport(consecutiveFailures, "stopped: 2 consecutive episode failures");
+        process.exit(2); // 2 = deliberate stop (2 episodes in a row failed), not a crash to retry
+      }
       continue;
     }
   } else {
@@ -291,7 +358,23 @@ for (let ep = startEp; ep <= endEp; ep++) {
     3840,
     2160,
   );
-  rows.push({ file: `${epId}-4k.mp4`, status: longStatus, ...qaCheck(longOut, 3840, 2160) });
+  const longQa = qaCheck(longOut, 3840, 2160);
+  rows.push({ file: `${epId}-4k.mp4`, status: longStatus, ...longQa });
+
+  if (longStatus === "FAILED" || !longQa.pass) {
+    consecutiveFailures++;
+    log(
+      `=== ${epId}: long-video render/QA failed (consecutive failures: ${consecutiveFailures}) ===`,
+    );
+    writeMorningReport(consecutiveFailures, null);
+    if (consecutiveFailures >= 2) {
+      log(`=== STOPPING: 2 episodes in a row failed (${epId} and the one before it) ===`);
+      writeMorningReport(consecutiveFailures, "stopped: 2 consecutive episode failures");
+      process.exit(2); // 2 = deliberate stop (2 episodes in a row failed), not a crash to retry
+    }
+  } else {
+    consecutiveFailures = 0;
+  }
 
   for (const shortId of ["S1", "S2", "S3", "S4", "S5"]) {
     const shortPropsFile = join(outDir, `.props-short-${shortId}.json`);
@@ -332,6 +415,8 @@ for (let ep = startEp; ep <= endEp; ep++) {
   ];
   writeFileSync(join(outDir, "qa.md"), qaLines.join("\n") + "\n", "utf-8");
   log(`=== ${epId}: done, QA written to out/${epId}/qa.md ===`);
+  writeMorningReport(consecutiveFailures, null);
 }
 
 log(`=== episode_pipeline: finished range ep${startEp}-ep${endEp} ===`);
+writeMorningReport(consecutiveFailures, `finished range ep${startEp}-ep${endEp}`);

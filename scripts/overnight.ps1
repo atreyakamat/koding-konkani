@@ -1,8 +1,10 @@
 # Overnight render-queue supervisor: restarts scripts/episode_pipeline.mts if it
 # exits early (e.g. an OOM kill), as long as each attempt makes progress (the
 # render-queue.log grows). Stops after 3 consecutive no-progress restarts, when
-# the pipeline finishes on its own (exit code 0), or past the 05:30 time-box
-# (which episode_pipeline.mts also enforces internally, per-episode).
+# the pipeline finishes on its own (exit code 0), when it stops deliberately
+# after 2 consecutive episode failures (exit code 2 - not retried, since that's
+# a quality signal to look at, not a crash), or past the 05:30 time-box (which
+# episode_pipeline.mts also enforces internally, per-episode).
 #
 # Usage: powershell -File scripts/overnight.ps1 -StartEp 5 -EndEp 19
 
@@ -61,6 +63,11 @@ while ($true) {
 
     if ($exitCode -eq 0) {
         Write-SupervisorLog "Pipeline finished cleanly. Supervisor done."
+        break
+    }
+
+    if ($exitCode -eq 2) {
+        Write-SupervisorLog "Pipeline stopped deliberately (2 consecutive episode failures) - not a crash, not retrying. Supervisor done."
         break
     }
 
