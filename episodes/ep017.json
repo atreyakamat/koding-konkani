@@ -80,9 +80,7 @@
       "lengthSec": 15,
       "onScreen": "Two boxers in corners labelled \"i++\" and \"++i\"; both print a different number",
       "animation": "Boxing bell SFX; labels bounce; scoreboards flip to 5 and 6 with a clack; Xecxec munches popcorn, crunch SFX",
-      "sfx": [
-        "pop"
-      ],
+      "sfx": ["pop"],
       "narration": "i plus plus. Plus plus i. Both add one. So why does one print 5, and the other print 6? Tonight's main event. Let's settle this."
     },
     {
@@ -92,11 +90,7 @@
       "lengthSec": 5,
       "onScreen": "EP 17 · INCREMENT, DECREMENT, ASSIGNMENT",
       "animation": "Title stamps in on cream with whoosh + thud; apricot underline wipe",
-      "sfx": [
-        "stamp",
-        "thud",
-        "whoosh"
-      ],
+      "sfx": ["stamp", "thud", "whoosh"],
       "narration": "Increment, decrement, assignment."
     },
     {
@@ -131,11 +125,30 @@
       "lengthSec": 60,
       "onScreen": "inc.c lines 11–17: boxes a, b, c, d; two-step timeline \"use\" and \"add\" swapping order",
       "animation": "Post: copy arrow from a to b first (whoosh), then a ticks up (click); Pre: c ticks up first (click), then copy arrow (whoosh); step labels \"1\" and \"2\" pop in apricot",
-      "sfx": [
-        "pop",
-        "whoosh"
-      ],
-      "narration": "Here's the drama. [HL 11] int a equals 5. [TRACK a=5] [HL 12] int b equals a plus plus. The plus plus is after a, so this is post-increment. Post means after. Step one: use the current value of a, which is 5, and copy it into b. [TRACK b=5] Step two: then add one to a. [TRACK a=6] [HL 13] So a is 6, but b is 5. [HL 15] Now int c equals 5. [TRACK c=5] [HL 16] int d equals plus plus c. The plus plus is before c, so this is pre-increment. Pre means before. Step one: add one to c first. [TRACK c=6] Step two: then use the new value, 6, and copy it into d. [TRACK d=6] [HL 17] So c is 6 and d is 6. The easy way to remember: read it left to right. a plus plus: you see a first, so you use a first. Plus plus c: you see plus plus first, so you add first."
+      "sfx": ["pop", "whoosh"],
+      "narration": "Here's the drama. [HL 11] int a equals 5. [TRACK a=5] [HL 12] int b equals a plus plus. The plus plus is after a, so this is post-increment. Post means after. Step one: use the current value of a, which is 5, and copy it into b. [TRACK b=5] Step two: then add one to a. [TRACK a=6] [HL 13] So a is 6, but b is 5. [HL 15] Now int c equals 5. [TRACK c=5] [HL 16] int d equals plus plus c. The plus plus is before c, so this is pre-increment. Pre means before. Step one: add one to c first. [TRACK c=6] Step two: then use the new value, 6, and copy it into d. [TRACK d=6] [HL 17] So c is 6 and d is 6. The easy way to remember: read it left to right. a plus plus: you see a first, so you use a first. Plus plus c: you see plus plus first, so you add first.",
+      "boxes": [
+        {
+          "name": "a",
+          "value": "6",
+          "address": "0x7ffd6f711400"
+        },
+        {
+          "name": "b",
+          "value": "5",
+          "address": "0x7ffd6f711404"
+        },
+        {
+          "name": "c",
+          "value": "6",
+          "address": "0x7ffd6f711408"
+        },
+        {
+          "name": "d",
+          "value": "6",
+          "address": "0x7ffd6f71140c"
+        }
+      ]
     },
     {
       "id": 6,
@@ -159,10 +172,7 @@
       "lengthSec": 30,
       "onScreen": "`i = i++ + ++i;` with a big tomato \"DON'T\" stamp and the GCC warning",
       "animation": "Line types in; warning text appears with a warning beep; stamp thuds; Xecxec backs away",
-      "sfx": [
-        "stamp",
-        "thud"
-      ],
+      "sfx": ["stamp", "thud"],
       "narration": "One warning. Sometimes you'll see puzzle questions like this: i equals i plus plus plus plus plus i. Don't write this. This line changes i more than once in one expression, and the C standard says the result is undefined. That means different compilers may give different answers, and none of them is wrong. GCC even warns you with dash Wall: operation on i may be undefined. The rule: in one expression, change a variable at most once."
     },
     {
@@ -172,9 +182,7 @@
       "lengthSec": 4,
       "onScreen": "\"Why did i++ arrive late? It always finishes what it's doing first, then moves on.\"",
       "animation": "Card flips, rimshot; Xecxec taps a tiny watch",
-      "sfx": [
-        "rimshot"
-      ],
+      "sfx": ["rimshot"],
       "narration": "Why is i plus plus always late? It finishes using what it has first, and only then moves on."
     },
     {
@@ -184,10 +192,7 @@
       "lengthSec": 50,
       "onScreen": "roll.c printing `roll++` shows 41 instead of 42",
       "animation": "Butter banner + siren blip; tracker shows roll 41 → 42 after printing; output 41 in tomato with buzzer; `++` slides to the front, output 42 in mint with a ding",
-      "sfx": [
-        "buzzer",
-        "ding"
-      ],
+      "sfx": ["buzzer", "ding"],
       "narration": "Today's bug. The last roll number in the class is 41. [TRACK roll=41] You want to print the next one, 42, so you write printf with roll plus plus. It prints: Next roll number: 41. Why? Post-increment. printf gets the old value, 41, first. Only after that does roll become 42. [TRACK roll=42] No error, no warning, just the wrong number. Fix: plus plus roll. Pre-increment adds first, so printf gets 42. Or, even clearer, do the increment on its own line, then print."
     },
     {
@@ -207,9 +212,7 @@
       "lengthSec": 21,
       "onScreen": "Next: EP 18 · Bitwise operators + subscribe",
       "animation": "Next card slides up; Xecxec waves, claw-click; sign-off types in",
-      "sfx": [
-        "claw-click"
-      ],
+      "sfx": ["claw-click"],
       "narration": "Next episode: the operators that work on the ones and zeroes inside a number. Bitwise. Keep coding, says Xecxec!"
     }
   ],
@@ -229,19 +232,10 @@
       "hook": "\"Both add one. So why do they print different numbers?\"",
       "script": "i plus plus. Plus plus i. Both add one. So why does one print 5 and the other print 6? It's all about when the adding happens. The full fight is on the channel.",
       "onScreen": "i++ vs ++i",
-      "fromScenes": [
-        1,
-        2
-      ],
+      "fromScenes": [1, 2],
       "lengthSec": 20,
       "caption": "The oldest rivalry in C.",
-      "hashtags": [
-        "cprogramming",
-        "learntocode",
-        "kodingkonkani",
-        "codingtips",
-        "programming"
-      ]
+      "hashtags": ["cprogramming", "learntocode", "kodingkonkani", "codingtips", "programming"]
     },
     {
       "id": "S2",
@@ -249,18 +243,10 @@
       "hook": "\"b = a++ and d = ++c. Watch the boxes.\"",
       "script": "b equals a plus plus, and d equals plus plus c. Watch the boxes. a is 5. Post-increment: use first, so b gets 5, then a becomes 6. c is 5. Pre-increment: add first, so c becomes 6, then d gets 6. Read left to right: whatever you see first happens first.",
       "onScreen": "a++ USE THEN ADD · ++c ADD THEN USE",
-      "fromScenes": [
-        5
-      ],
+      "fromScenes": [5],
       "lengthSec": 40,
       "caption": "Post-increment vs pre-increment, with boxes.",
-      "hashtags": [
-        "cprogramming",
-        "learntocode",
-        "kodingkonkani",
-        "codingtips",
-        "computerscience"
-      ]
+      "hashtags": ["cprogramming", "learntocode", "kodingkonkani", "codingtips", "computerscience"]
     },
     {
       "id": "S3",
@@ -268,18 +254,10 @@
       "hook": "\"We asked for roll number 42. C printed 41.\"",
       "script": "We asked for roll number 42. C printed 41. The code: printf with roll plus plus. Post-increment gives printf the old value, 41, and adds one after. Fix: plus plus roll. Add first, then print. Now it's 42.",
       "onScreen": "roll++ → 41 · ++roll → 42",
-      "fromScenes": [
-        9
-      ],
+      "fromScenes": [9],
       "lengthSec": 25,
       "caption": "One position change, different answer.",
-      "hashtags": [
-        "cprogramming",
-        "debugging",
-        "kodingkonkani",
-        "learntocode",
-        "codingtips"
-      ]
+      "hashtags": ["cprogramming", "debugging", "kodingkonkani", "learntocode", "codingtips"]
     },
     {
       "id": "S4",
@@ -287,18 +265,10 @@
       "hook": "\"Why is i++ always late?\"",
       "script": "Why is i plus plus always late? It finishes using what it has first, and only then moves on.",
       "onScreen": "i++: USE FIRST, MOVE LATER",
-      "fromScenes": [
-        8
-      ],
+      "fromScenes": [8],
       "lengthSec": 12,
       "caption": "Xecxec is still waiting.",
-      "hashtags": [
-        "programmerhumor",
-        "cprogramming",
-        "kodingkonkani",
-        "codingmemes",
-        "learntocode"
-      ]
+      "hashtags": ["programmerhumor", "cprogramming", "kodingkonkani", "codingmemes", "learntocode"]
     },
     {
       "id": "S5",
@@ -306,18 +276,10 @@
       "hook": "\"x is 3. What do these three lines print?\"",
       "script": "x is 3. Line one prints x plus plus. Line two prints x. Line three prints plus plus x. Comment your three numbers. Answer: 3, then 4, then 5. Post-increment prints the old value, pre-increment prints the new one.",
       "onScreen": "x++ · x · ++x → ?",
-      "fromScenes": [
-        10
-      ],
+      "fromScenes": [10],
       "lengthSec": 25,
       "caption": "Three lines, three numbers. Comment yours.",
-      "hashtags": [
-        "cprogramming",
-        "codingquiz",
-        "kodingkonkani",
-        "learntocode",
-        "programming"
-      ]
+      "hashtags": ["cprogramming", "codingquiz", "kodingkonkani", "learntocode", "programming"]
     }
   ],
   "codeFiles": [

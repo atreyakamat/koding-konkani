@@ -9,6 +9,8 @@ import { accentOn } from "../theme/contrast";
 import { CodeBlock, Panel } from "../ui";
 import { fonts } from "../theme/fonts";
 import { typewriterChars } from "../lib/motion";
+import { textTransformFor } from "../lib/textCase";
+import { defaultHlCues, hlLineAt } from "../lib/cues";
 import { analogyFromOnScreen } from "./sceneProps";
 
 const FPS = 30;
@@ -176,7 +178,7 @@ const AnalogyVisual: React.FC<{ title: string; body: string; accent: string }> =
           fontSize: 46,
           color: accentOn(palette.cream, accent),
           marginBottom: 24,
-          textTransform: "uppercase",
+          textTransform: textTransformFor(title),
         }}
       >
         {title}
@@ -240,12 +242,37 @@ const PronunciationVisual: React.FC<{ accent: string }> = ({ accent }) => {
   );
 };
 
+/** A code scene's source with the highlighted line advancing on its own, one line per
+ * even slice of the Short's duration - for a Short that walks through every line (no
+ * single HL cue fits), reusing CodeExplain's own line-by-line cue logic. */
+const LineByLineVisual: React.FC<{ source: string; durationInFrames: number }> = ({
+  source,
+  durationInFrames,
+}) => {
+  const frame = useCurrentFrame();
+  const sourceLines = source.split("\n");
+  const cues = defaultHlCues(sourceLines, durationInFrames);
+  const highlightLine = hlLineAt(cues, frame);
+  const visibleChars = typewriterChars(source, frame, 0, source.length / 30);
+  return (
+    <CodeBlock
+      source={source}
+      width={860}
+      fontSize={32}
+      visibleChars={visibleChars}
+      highlightLine={visibleChars >= source.length ? highlightLine : undefined}
+      maxVisibleLines={8}
+    />
+  );
+};
+
 /** Per-Short real visuals (animated code / bug / mascot / diagram), where the Short's
  * source scene has content to show. */
 const visualFor = (
   episode: Episode,
   shortId: string,
   accent: string,
+  durationInFrames: number,
 ): React.ReactNode | undefined => {
   if (shortId === "S1") {
     return <TypedLineVisual line='printf("Hi");' />;
@@ -257,6 +284,9 @@ const visualFor = (
     const analogy = scene ? analogyFromOnScreen(scene.onScreen) : undefined;
     if (analogy) {
       return <AnalogyVisual title={analogy.title} body={analogy.body} accent={accent} />;
+    }
+    if (scene?.code) {
+      return <LineByLineVisual source={scene.code.source} durationInFrames={durationInFrames} />;
     }
   }
   if (shortId === "S3") {
@@ -294,7 +324,7 @@ export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames }
         colours={colours}
         durationInFrames={durationInFrames}
       >
-        {visualFor(episode, short.id, colours.accent)}
+        {visualFor(episode, short.id, colours.accent, durationInFrames)}
       </ShortLayout>
     </AbsoluteFill>
   );

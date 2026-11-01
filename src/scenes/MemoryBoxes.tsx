@@ -136,7 +136,7 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
                   y={ROW_Y + 108}
                   textAnchor="middle"
                   fontFamily={fonts.code}
-                  fontSize={44}
+                  fontSize={box.value.length > 7 ? 26 : box.value.length > 5 ? 34 : 44}
                   fontWeight={700}
                   fill={boxInk(box)}
                 >

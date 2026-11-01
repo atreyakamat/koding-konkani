@@ -58,9 +58,7 @@
       "lengthSec": 5,
       "onScreen": "EP 09 · MORE TYPES",
       "animation": "Title slams in, whoosh",
-      "sfx": [
-        "whoosh"
-      ],
+      "sfx": ["whoosh"],
       "narration": "Episode nine. More types: long, double and unsigned."
     },
     {
@@ -71,7 +69,29 @@
       "onScreen": "Last challenge answer (sizes 1, 4, 4, 8); boxes of 4 and 8 bytes; a sign bit on int vs none on unsigned",
       "animation": "Boxes stretch from 4 to 8 bytes with a rubber-band sound; sign bit flashes",
       "sfx": [],
-      "narration": "Last episode's challenge: on a typical PC you got char 1, int 4, float 4 and double 8 bytes. Good. Remember, an int box is 4 bytes. That gives it room for about four billion different values. Half of them are used for negative numbers, so an int goes up to about two point one billion. Sometimes that's not enough, and sometimes we never need negatives. So C gives us more types. long long is a bigger whole-number box, 8 bytes. double is a bigger decimal box, 8 bytes, with about twice the precision of float. And unsigned means \"no negatives\", so all the space goes to positive numbers."
+      "narration": "Last episode's challenge: on a typical PC you got char 1, int 4, float 4 and double 8 bytes. Good. Remember, an int box is 4 bytes. That gives it room for about four billion different values. Half of them are used for negative numbers, so an int goes up to about two point one billion. Sometimes that's not enough, and sometimes we never need negatives. So C gives us more types. long long is a bigger whole-number box, 8 bytes. double is a bigger decimal box, 8 bytes, with about twice the precision of float. And unsigned means \"no negatives\", so all the space goes to positive numbers.",
+      "boxes": [
+        {
+          "name": "age",
+          "value": "-5",
+          "address": "0x7ffd3c4e0200"
+        },
+        {
+          "name": "likes",
+          "value": "4000000000",
+          "address": "0x7ffd3c4e0204"
+        },
+        {
+          "name": "distance",
+          "value": "384400000",
+          "address": "0x7ffd3c4e0208"
+        },
+        {
+          "name": "pi",
+          "value": "3.14159",
+          "address": "0x7ffd3c4e0210"
+        }
+      ]
     },
     {
       "id": 4,
@@ -125,9 +145,7 @@
       "lengthSec": 4,
       "onScreen": "Pun",
       "animation": "Drum ba-dum, claw-click",
-      "sfx": [
-        "claw-click"
-      ],
+      "sfx": ["claw-click"],
       "narration": "I told my int a really big number. It took it negatively."
     },
     {
@@ -137,10 +155,7 @@
       "lengthSec": 80,
       "onScreen": "`int total = 100000 * 100000;` prints 1410065408; GCC warning; fix with long long",
       "animation": "Butter stripe; number bursts out of its box; buzzer; bigger box arrives, success chime",
-      "sfx": [
-        "buzzer",
-        "chime"
-      ],
+      "sfx": ["buzzer", "chime"],
       "narration": "Today's bug. You want one lakh times one lakh. That's ten billion. int total equals one hundred thousand times one hundred thousand. Compile, and GCC warns even without dash Wall: integer overflow in expression of type int results in one billion four hundred ten million sixty-five thousand four hundred eight. Run it. Total: 1410065408. Not ten billion. Ten billion is far bigger than INT_MAX, so the int box overflowed. And here's the trap: making total a long long is not enough on its own. Both one lakhs are ints, so the multiplication still happens in int and overflows first. The fix: make one of the numbers a long long with LL. long long total equals one hundred thousand LL times one hundred thousand. Print with percent l l d. Now: Total: 10000000000. Ten billion. Correct."
     },
     {
@@ -160,9 +175,7 @@
       "lengthSec": 30,
       "onScreen": "Recap table: type, placeholder, typical size",
       "animation": "Rows slide in one by one with pop",
-      "sfx": [
-        "pop"
-      ],
+      "sfx": ["pop"],
       "narration": "Quick recap. int: percent d, usually 4 bytes. long long: percent l l d, 8 bytes. unsigned int: percent u, 4 bytes, no negatives. float: percent f, 4 bytes. double: percent f, 8 bytes, more precise. Screenshot this table."
     },
     {
@@ -172,9 +185,7 @@
       "lengthSec": 16,
       "onScreen": "Next: EP 10 · Constants & #define; sign-off",
       "animation": "Xecxec waves; outro sting",
-      "sfx": [
-        "sting"
-      ],
+      "sfx": ["sting"],
       "narration": "Next episode: constants and hash define. Because pi doesn't change. Promise. Keep coding, says Xecxec!"
     }
   ],
@@ -194,19 +205,10 @@
       "hook": "\"99999 plus 1 equals... zero?\"",
       "script": "Ninety-nine thousand nine hundred ninety-nine, plus one, equals zero? On an odometer, yes. It ran out of digits. C numbers do the same. An unsigned short holds up to sixty-five thousand five hundred thirty-five. Add one, and it wraps to zero.",
       "onScreen": "65535 + 1 = 0",
-      "fromScenes": [
-        1,
-        6
-      ],
+      "fromScenes": [1, 6],
       "lengthSec": 25,
       "caption": "Numbers in C have limits.",
-      "hashtags": [
-        "cprogramming",
-        "learntocode",
-        "kodingkonkani",
-        "overflow",
-        "ctutorial"
-      ]
+      "hashtags": ["cprogramming", "learntocode", "kodingkonkani", "overflow", "ctutorial"]
     },
     {
       "id": "S2",
@@ -214,19 +216,10 @@
       "hook": "\"int not big enough? Here's what to use.\"",
       "script": "int not big enough? Use long long, 8 bytes, printed with percent l l d. Never need negatives? Use unsigned, printed with percent u. Need precise decimals? Use double instead of float. Pick the box that fits your number.",
       "onScreen": "long long %lld · unsigned %u · double %f",
-      "fromScenes": [
-        3,
-        10
-      ],
+      "fromScenes": [3, 10],
       "lengthSec": 30,
       "caption": "C types cheat sheet.",
-      "hashtags": [
-        "cprogramming",
-        "learntocode",
-        "kodingkonkani",
-        "datatypes",
-        "coding"
-      ]
+      "hashtags": ["cprogramming", "learntocode", "kodingkonkani", "datatypes", "coding"]
     },
     {
       "id": "S3",
@@ -234,18 +227,10 @@
       "hook": "\"One lakh times one lakh. C says 1.4 billion.\"",
       "script": "One lakh times one lakh should be ten billion. C says one point four billion. Why? Both numbers are int, so the answer must fit in an int. It doesn't, so it overflows. Fix: one hundred thousand LL times one hundred thousand, stored in a long long.",
       "onScreen": "100000LL * 100000",
-      "fromScenes": [
-        8
-      ],
+      "fromScenes": [8],
       "lengthSec": 35,
       "caption": "Integer overflow, explained.",
-      "hashtags": [
-        "cprogramming",
-        "codingbugs",
-        "kodingkonkani",
-        "learntocode",
-        "overflow"
-      ]
+      "hashtags": ["cprogramming", "codingbugs", "kodingkonkani", "learntocode", "overflow"]
     },
     {
       "id": "S4",
@@ -253,17 +238,10 @@
       "hook": "\"I told my int a really big number.\"",
       "script": "I told my int a really big number. It took it negatively.",
       "onScreen": "INT_MAX + 1 = ?",
-      "fromScenes": [
-        7
-      ],
+      "fromScenes": [7],
       "lengthSec": 10,
       "caption": "Overflow humour.",
-      "hashtags": [
-        "programmingjokes",
-        "cprogramming",
-        "kodingkonkani",
-        "learntocode"
-      ]
+      "hashtags": ["programmingjokes", "cprogramming", "kodingkonkani", "learntocode"]
     },
     {
       "id": "S5",
@@ -271,19 +249,10 @@
       "hook": "\"What's the biggest number an int can hold?\"",
       "script": "What's the biggest number an int can hold on a normal PC? A: one million. B: about two point one billion. C: infinity. ... B. Two billion one hundred forty-seven million four hundred eighty-three thousand six hundred forty-seven. It's called INT_MAX.",
       "onScreen": "A) 1 million B) 2.1 billion C) infinity",
-      "fromScenes": [
-        5,
-        9
-      ],
+      "fromScenes": [5, 9],
       "lengthSec": 20,
       "caption": "Know your limits.",
-      "hashtags": [
-        "cquiz",
-        "cprogramming",
-        "kodingkonkani",
-        "learntocode",
-        "limits"
-      ]
+      "hashtags": ["cquiz", "cprogramming", "kodingkonkani", "learntocode", "limits"]
     }
   ],
   "codeFiles": [

@@ -40,7 +40,11 @@ const SFX_FOR: Record<TransitionName, SfxName> = {
 
 /** docs/STYLE.md section 2: From-template -> To-template -> named transition.
  * "Cold open" is scene id 1 specifically; everything else keys off template. */
-type Pair = { from: SceneTemplate | "cold-open" | "any"; to: SceneTemplate | "any"; name: TransitionName };
+type Pair = {
+  from: SceneTemplate | "cold-open" | "any";
+  to: SceneTemplate | "any";
+  name: TransitionName;
+};
 
 const RULES: Pair[] = [
   { from: "cold-open", to: "title-card", name: "hard-cut" },
@@ -92,7 +96,9 @@ export const resolveTransition = (
 
 export const sfxForTransition = (name: TransitionName): SfxName => SFX_FOR[name];
 
-export const presentationForTransition = (name: TransitionName): TransitionPresentation<Record<string, unknown>> => {
+export const presentationForTransition = (
+  name: TransitionName,
+): TransitionPresentation<Record<string, unknown>> => {
   switch (name) {
     case "hard-cut":
       return hardCutImpact() as TransitionPresentation<Record<string, unknown>>;
@@ -115,9 +121,18 @@ export const presentationForTransition = (name: TransitionName): TransitionPrese
     case "split":
       return split() as TransitionPresentation<Record<string, unknown>>;
     case "flip":
-      return flip({ direction: "from-right" }) as TransitionPresentation<Record<string, unknown>>;
+      // Mid-flip, both faces are edge-on and backface-hidden (nothing renders) - without an
+      // opaque outer background here, that gap shows the root black for a frame (1 Nov fix list,
+      // item 4). "any -> pun-card" is the only flip, and pun-card is always tomato, so this is safe.
+      return flip({
+        direction: "from-right",
+        outerEnterStyle: { backgroundColor: palette.tomato },
+        outerExitStyle: { backgroundColor: palette.tomato },
+      }) as TransitionPresentation<Record<string, unknown>>;
     case "clock-wipe":
-      return clockWipe({ width: 1920, height: 1080 }) as unknown as TransitionPresentation<Record<string, unknown>>;
+      return clockWipe({ width: 1920, height: 1080 }) as unknown as TransitionPresentation<
+        Record<string, unknown>
+      >;
     case "fade":
       return fade() as TransitionPresentation<Record<string, unknown>>;
     default:

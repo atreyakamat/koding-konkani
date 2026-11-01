@@ -128,7 +128,7 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
     case "algorithm-bars":
       return { trace: scene.trace ?? [] };
     case "memory-boxes":
-      return { boxes: [] };
+      return { boxes: scene.boxes ?? [] };
     case "bug-of-the-day":
       return {
         wrongCode: episode.bug.wrong,

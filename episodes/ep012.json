@@ -48,9 +48,7 @@
       "lengthSec": 15,
       "onScreen": "`Enter your age:` prompt, cursor blinks, user types 17",
       "animation": "Keyboard clacks; Xecxec leans in, claw-click",
-      "sfx": [
-        "claw-click"
-      ],
+      "sfx": ["claw-click"],
       "narration": "Every program so far has been a one-way conversation. It talks, you listen. Today, that changes. Your program will ask a question, and wait for you to answer."
     },
     {
@@ -60,9 +58,7 @@
       "lengthSec": 5,
       "onScreen": "EP 12 · SCANF: TAKING INPUT",
       "animation": "Title slams in, whoosh",
-      "sfx": [
-        "whoosh"
-      ],
+      "sfx": ["whoosh"],
       "narration": "Episode twelve. scanf: taking input."
     },
     {
@@ -93,7 +89,21 @@
       "onScreen": "Box `age` with an address tag on its side (e.g. 0x...); `&age` points to the tag",
       "animation": "Address tag flips out like a house number plate; on screen: \"your address will differ\"",
       "sfx": [],
-      "narration": "So what is that ampersand? Remember: every variable is a box in memory. Every box has an address, like a house number. The ampersand means \"the address of\". So and-age means \"the address of the age box\". Why does scanf need it? printf only needs the value, so you hand it the value. But scanf must put a value into your box. So you tell it where the box lives. Without the address, scanf has nowhere to deliver. Like ordering from a delivery app without giving your address. The addresses on screen are just examples. Yours will differ. We'll go much deeper into addresses in the pointers module."
+      "narration": "So what is that ampersand? Remember: every variable is a box in memory. Every box has an address, like a house number. The ampersand means \"the address of\". So and-age means \"the address of the age box\". Why does scanf need it? printf only needs the value, so you hand it the value. But scanf must put a value into your box. So you tell it where the box lives. Without the address, scanf has nowhere to deliver. Like ordering from a delivery app without giving your address. The addresses on screen are just examples. Yours will differ. We'll go much deeper into addresses in the pointers module.",
+      "boxes": [
+        {
+          "name": "age",
+          "value": "17",
+          "address": "0x7ffd4d5f1020"
+        },
+        {
+          "name": "&age",
+          "value": "0x7ffd4d5f1020",
+          "address": "points to age",
+          "isPointer": true,
+          "pointsTo": "age"
+        }
+      ]
     },
     {
       "id": 6,
@@ -112,9 +122,7 @@
       "lengthSec": 40,
       "onScreen": "ep12_sum.c reading two numbers in one call",
       "animation": "Two values fly into two boxes; sum appears with ding",
-      "sfx": [
-        "ding"
-      ],
+      "sfx": ["ding"],
       "narration": "One scanf can read more than one value. [HL 6] Line six: printf, \"Enter two numbers: \". [HL 7] Line seven: scanf, \"percent d space percent d\", ampersand a, ampersand b. The user can type twelve, space, thirty, or twelve, Enter, thirty. Both work, because percent d skips spaces and Enters on its own. [TRACK a=12] [TRACK b=30] [HL 8] Line eight prints a plus b. Sum: 42.",
       "code": {
         "file": "ep12_sum.c",
@@ -129,9 +137,7 @@
       "lengthSec": 4,
       "onScreen": "Pun",
       "animation": "Drum ba-dum, claw-click",
-      "sfx": [
-        "claw-click"
-      ],
+      "sfx": ["claw-click"],
       "narration": "scanf asked for my address. I said, \"Aren't we moving a bit fast?\""
     },
     {
@@ -141,10 +147,7 @@
       "lengthSec": 95,
       "onScreen": "`scanf(\"%d\", age);` without &; GCC warnings; program crashes",
       "animation": "Butter stripe; value flies to a random address and explodes; buzzer; fix with & and success chime",
-      "sfx": [
-        "buzzer",
-        "chime"
-      ],
+      "sfx": ["buzzer", "chime"],
       "narration": "Today's bug is the most famous scanf mistake in the world. scanf, \"percent d\", age. No ampersand. With dash Wall, GCC warns twice. First: format percent d expects argument of type int star, but argument 2 has type int. int star means \"an address of an int\". GCC wanted an address and got a plain number. Second: age is used uninitialized. Because without the ampersand, we're passing the junk value inside age. Run it anyway. Type seventeen. And the program crashes. On Linux you see \"Segmentation fault\". On Windows, the program usually just stops, and Age is never printed. What happened? scanf treated the junk value as an address, and tried to write seventeen into some random place in memory that doesn't belong to us. The operating system stopped it. The fix is one character: ampersand age. Now it prints Age: 17. Rule: printf takes values. scanf takes addresses."
     },
     {
@@ -164,9 +167,7 @@
       "lengthSec": 16,
       "onScreen": "Next: EP 13 · Type casting; sign-off",
       "animation": "Xecxec waves; outro sting",
-      "sfx": [
-        "sting"
-      ],
+      "sfx": ["sting"],
       "narration": "Next episode: type casting. Why does five divided by two give two? Keep coding, says Xecxec!"
     }
   ],
@@ -186,19 +187,10 @@
       "hook": "\"Your program can finally listen.\"",
       "script": "Your program can finally listen. printf asks, \"Enter your age\". scanf, percent d, ampersand age, waits for you to type. You type seventeen, press Enter, and it's stored in age. Two lines. Your first interactive program.",
       "onScreen": "scanf(\"%d\", &age);",
-      "fromScenes": [
-        1,
-        4
-      ],
+      "fromScenes": [1, 4],
       "lengthSec": 20,
       "caption": "User input in C, made simple.",
-      "hashtags": [
-        "cprogramming",
-        "learntocode",
-        "kodingkonkani",
-        "scanf",
-        "ctutorial"
-      ]
+      "hashtags": ["cprogramming", "learntocode", "kodingkonkani", "scanf", "ctutorial"]
     },
     {
       "id": "S2",
@@ -206,18 +198,10 @@
       "hook": "\"Why does scanf need this & sign?\"",
       "script": "Why does scanf need the ampersand? Every variable lives at an address in memory, like a house number. Ampersand age means \"the address of age\". printf only needs the value. But scanf has to deliver a value into your box, so it needs the address. No address, no delivery.",
       "onScreen": "& = \"ADDRESS OF\"",
-      "fromScenes": [
-        5
-      ],
+      "fromScenes": [5],
       "lengthSec": 30,
       "caption": "The & in scanf, explained.",
-      "hashtags": [
-        "cprogramming",
-        "learntocode",
-        "kodingkonkani",
-        "scanf",
-        "pointers"
-      ]
+      "hashtags": ["cprogramming", "learntocode", "kodingkonkani", "scanf", "pointers"]
     },
     {
       "id": "S3",
@@ -225,18 +209,10 @@
       "hook": "\"One missing character crashed my program.\"",
       "script": "One missing character crashed my program. scanf, percent d, age. No ampersand. scanf used the junk inside age as an address and wrote into random memory. Crash. GCC with dash Wall warned me: expects int star, but argument has type int. Fix: ampersand age.",
       "onScreen": "scanf(\"%d\", age); → CRASH",
-      "fromScenes": [
-        9
-      ],
+      "fromScenes": [9],
       "lengthSec": 30,
       "caption": "The most famous scanf bug.",
-      "hashtags": [
-        "cprogramming",
-        "codingbugs",
-        "kodingkonkani",
-        "learntocode",
-        "scanf"
-      ]
+      "hashtags": ["cprogramming", "codingbugs", "kodingkonkani", "learntocode", "scanf"]
     },
     {
       "id": "S4",
@@ -244,17 +220,10 @@
       "hook": "\"scanf asked for my address.\"",
       "script": "scanf asked for my address. I said, aren't we moving a bit fast?",
       "onScreen": "&you",
-      "fromScenes": [
-        8
-      ],
+      "fromScenes": [8],
       "lengthSec": 10,
       "caption": "Address-of humour.",
-      "hashtags": [
-        "programmingjokes",
-        "cprogramming",
-        "kodingkonkani",
-        "learntocode"
-      ]
+      "hashtags": ["programmingjokes", "cprogramming", "kodingkonkani", "learntocode"]
     },
     {
       "id": "S5",
@@ -262,18 +231,10 @@
       "hook": "\"Spot the difference: \"%c\" vs \" %c\"\"",
       "script": "Spot the difference. scanf, percent c, versus scanf, space percent c. After you type a number and press Enter, that Enter is still waiting. Plain percent c grabs it, and your letter is skipped. Space percent c skips the Enter first. Which one should you use? Space percent c.",
       "onScreen": "\"%c\" vs \" %c\" · WHICH ONE?",
-      "fromScenes": [
-        6
-      ],
+      "fromScenes": [6],
       "lengthSec": 25,
       "caption": "The invisible Enter key bug.",
-      "hashtags": [
-        "cquiz",
-        "cprogramming",
-        "kodingkonkani",
-        "learntocode",
-        "scanf"
-      ]
+      "hashtags": ["cquiz", "cprogramming", "kodingkonkani", "learntocode", "scanf"]
     }
   ],
   "codeFiles": [

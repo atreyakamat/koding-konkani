@@ -7,6 +7,7 @@ import { BRAND } from "../brand";
 import { Backdrop, Panel, Sticker } from "../ui";
 import { Xecxec } from "../mascot/Xecxec";
 import { enterProgress } from "../lib/motion";
+import { textTransformFor } from "../lib/textCase";
 import type { BaseSceneProps } from "./types";
 
 export type ShortLayoutProps = PropsWithChildren<
@@ -61,6 +62,11 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
   const activeWord = Math.floor((frame - CAPTION_START) / FRAMES_PER_WORD);
   const hookInk = readableOn(colours.bg);
 
+  // A long hook wraps to more lines at the default 76px — shrink it and push the
+  // visual slot down so even a 4-line hook can't run into it (item 2, 1 Nov fix list).
+  const hookFontSize = hook.length > 70 ? 56 : hook.length > 45 ? 64 : 76;
+  const visualTop = hook.length > 70 ? 500 : hook.length > 45 ? 470 : 440;
+
   return (
     <AbsoluteFill>
       <Backdrop background={colours.bg} accent={colours.accent} />
@@ -94,10 +100,10 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
         <div
           style={{
             fontFamily: fonts.title,
-            fontSize: 76,
+            fontSize: hookFontSize,
             color: hookInk,
             lineHeight: 1.12,
-            textTransform: "uppercase",
+            textTransform: textTransformFor(hook),
           }}
         >
           {hook}
@@ -108,7 +114,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
       <div
         style={{
           position: "absolute",
-          top: 440,
+          top: visualTop,
           left: 60,
           width: 860,
           height: 540,
@@ -125,7 +131,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
                 fontSize: 56,
                 color: palette.ink,
                 textAlign: "center",
-                textTransform: "uppercase",
+                textTransform: textTransformFor(visualLabel ?? ""),
                 lineHeight: 1.2,
                 display: "flex",
                 alignItems: "center",
@@ -144,7 +150,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
         <div
           style={{
             position: "absolute",
-            top: 440,
+            top: visualTop,
             left: 60,
             width: 860,
             height: 540,

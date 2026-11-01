@@ -4,6 +4,7 @@ import { fonts } from "../theme/fonts";
 import { readableOn } from "../theme/contrast";
 import { Panel, Chip } from "../ui";
 import { typewriterChars, enterProgress } from "../lib/motion";
+import { textTransformFor } from "../lib/textCase";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -54,7 +55,7 @@ export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durati
                   fontSize: 52,
                   color: palette.ink,
                   marginTop: 20,
-                  textTransform: "uppercase",
+                  textTransform: textTransformFor(nextTitle),
                   lineHeight: 1.2,
                 }}
               >

@@ -4,6 +4,7 @@ import { fonts } from "../theme/fonts";
 import { accentOn } from "../theme/contrast";
 import { Sticker, Chip } from "../ui";
 import { enterProgress, springs } from "../lib/motion";
+import { textTransformFor } from "../lib/textCase";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -52,7 +53,7 @@ export const TitleCard: React.FC<TitleCardProps> = ({ ep, title, moduleLabel, co
             color: colours.bg,
             WebkitTextStroke: `4px ${accentOn(colours.bg, colours.accent)}`,
             paintOrder: "stroke fill",
-            textTransform: "uppercase",
+            textTransform: textTransformFor(title),
             textAlign: "center",
             scale: `${titleScale} ${titleScale}`,
             opacity: titleOpacity,

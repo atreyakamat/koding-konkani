@@ -4,6 +4,7 @@ import { fonts } from "../theme/fonts";
 import { accentOn, readableOn } from "../theme/contrast";
 import { Panel } from "../ui";
 import { enterProgress } from "../lib/motion";
+import { textTransformFor } from "../lib/textCase";
 import { defaultRevealCues, revealFrame } from "../lib/cues";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
@@ -69,7 +70,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                 fontFamily: fonts.title,
                 fontSize: 56,
                 color: accentOn(colours.bg, colours.accent),
-                textTransform: "uppercase",
+                textTransform: textTransformFor(heading),
               }}
             >
               {heading}
@@ -172,7 +173,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                         fontSize: 32,
                         color: accentOn(palette.cream, colours.accent),
                         marginBottom: 16,
-                        textTransform: "uppercase",
+                        textTransform: textTransformFor(analogy.title),
                       }}
                     >
                       {analogy.title}

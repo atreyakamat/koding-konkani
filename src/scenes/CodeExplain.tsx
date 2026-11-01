@@ -92,7 +92,16 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
           ) : null}
         </div>
 
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 24 }}>
+        <div
+          style={{
+            flex: 1,
+            minWidth: 560,
+            flexShrink: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: 24,
+          }}
+        >
           <Panel background={palette.cream} style={{ minHeight: 160 }}>
             <div
               style={{ fontFamily: fonts.body, fontSize: 36, color: palette.ink, lineHeight: 1.4 }}

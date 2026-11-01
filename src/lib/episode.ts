@@ -63,6 +63,17 @@ const TraceStepSchema = z.object({
   sorted: z.array(z.number()).optional(),
 });
 
+/** One MemoryBoxes box: a variable's name, current value, and an illustrative
+ * (not real, not run-to-run stable) stack address. `pointsTo` names another
+ * box in the same scene for a pointer arrow. */
+const MemoryBoxSchema = z.object({
+  name: z.string().min(1),
+  value: z.string().min(1),
+  address: z.string().min(1),
+  isPointer: z.boolean().optional(),
+  pointsTo: z.string().optional(),
+});
+
 const SceneSchema = z.object({
   id: z.number().int().positive(),
   template: SceneTemplateSchema,
@@ -75,6 +86,7 @@ const SceneSchema = z.object({
   narration: z.string(),
   code: CodeSchema.optional(),
   trace: z.array(TraceStepSchema).optional(),
+  boxes: z.array(MemoryBoxSchema).optional(),
 });
 
 const ChapterSchema = z.object({
