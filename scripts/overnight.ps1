@@ -10,7 +10,8 @@
 
 param(
     [Parameter(Mandatory = $true)][int]$StartEp,
-    [Parameter(Mandatory = $true)][int]$EndEp
+    [Parameter(Mandatory = $true)][int]$EndEp,
+    [switch]$NoTimebox
 )
 
 $ErrorActionPreference = "Continue"
@@ -32,6 +33,7 @@ function Get-LogSize {
 }
 
 function Past-Cutoff {
+    if ($NoTimebox) { return $false }  # actively supervised right now, not unattended overnight
     $now = Get-Date
     $cutoff = Get-Date -Hour 5 -Minute 30 -Second 0
     # Before midnight (e.g. started at 21:00), "now" > "today's 05:30" is
@@ -55,7 +57,11 @@ while ($true) {
     $beforeSize = Get-LogSize
     Write-SupervisorLog "Launching episode_pipeline.mts $StartEp $EndEp (log size before: $beforeSize)"
 
-    & node scripts/episode_pipeline.mts $StartEp $EndEp
+    if ($NoTimebox) {
+        & node scripts/episode_pipeline.mts $StartEp $EndEp --no-timebox
+    } else {
+        & node scripts/episode_pipeline.mts $StartEp $EndEp
+    }
     $exitCode = $LASTEXITCODE
 
     $afterSize = Get-LogSize

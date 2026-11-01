@@ -30,9 +30,11 @@ const PYTHON = join(ROOT, ".venv", "Scripts", "python.exe");
 const LOG_PATH = join(ROOT, "out", "render-queue.log");
 const SKIP_LOG_PATH = join(ROOT, "out", "episode-skips.log");
 
-const [startEp, endEp] = process.argv.slice(2).map(Number);
+const args = process.argv.slice(2);
+const noTimebox = args.includes("--no-timebox");
+const [startEp, endEp] = args.filter((a) => a !== "--no-timebox").map(Number);
 if (!Number.isInteger(startEp) || !Number.isInteger(endEp) || startEp > endEp) {
-  console.error("usage: node scripts/episode_pipeline.mts <start-ep> <end-ep>");
+  console.error("usage: node scripts/episode_pipeline.mts <start-ep> <end-ep> [--no-timebox]");
   process.exit(1);
 }
 
@@ -236,6 +238,7 @@ const gccCheckPasses = (ep: number): boolean => {
  * very first check at e.g. 21:30 (caught live: this exact bug killed the
  * first overnight run before it started EP05). */
 const pastCutoff = (): boolean => {
+  if (noTimebox) return false; // actively supervised right now, not an unattended overnight run
   const now = new Date();
   const h = now.getHours();
   const m = now.getMinutes();
