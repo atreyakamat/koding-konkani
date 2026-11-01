@@ -19,25 +19,42 @@ export type MemoryBoxesProps = BaseSceneProps & {
   boxes: MemoryBox[];
 };
 
-const BOX_WIDTH = 240;
-const BOX_HEIGHT = 190;
-const GAP = 48;
-const ROW_Y = 460;
+const CONTENT_WIDTH = 1920 - 2 * 96;
+const GAP = 56;
+const MIN_BOX_WIDTH = 260;
+const MAX_BOX_WIDTH = 520;
+/** Vertical centre of the band free of the top-right mascot and the lower-third captions. */
+const BAND_CENTER_Y = 560;
+const ARROW_DIP = 70;
+/** All boxes are on screen within this many frames of the scene start (1 s at 30 fps). */
+const REVEAL_WINDOW = 24;
 
-/** Variables as labelled boxes with addresses; pointers as thick arrows that draw on. */
-export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
-  boxes,
-  colours,
-  durationInFrames,
-  cues,
-}) => {
+/** Variables as labelled boxes with addresses; pointers as thick arrows that draw on.
+ * Box size adapts to the count: 2-3 boxes get ~2x the original 240px, 5 boxes stay at
+ * the 260px floor so the row still fits. The row (plus any arrow dip) is centred in
+ * the free band, and every box has appeared within the first second. */
+export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({ boxes, colours }) => {
   const frame = useCurrentFrame();
-  const revealCues = cues?.length ? cues : defaultRevealCues(boxes.length, durationInFrames * 0.5);
+  const count = Math.max(1, boxes.length);
+  const boxWidth = Math.round(
+    Math.min(MAX_BOX_WIDTH, Math.max(MIN_BOX_WIDTH, (CONTENT_WIDTH - (count - 1) * GAP) / count)),
+  );
+  const boxHeight = Math.round(boxWidth * 0.8);
+  const hasArrows = boxes.some((box) => box.isPointer && box.pointsTo);
+  const rowY = Math.round(BAND_CENTER_Y - boxHeight / 2 - (hasArrows ? ARROW_DIP / 2 : 0));
 
-  const totalWidth = boxes.length * BOX_WIDTH + (boxes.length - 1) * GAP;
+  const nameSize = Math.round(boxWidth * 0.11);
+  const addressSize = Math.max(28, Math.round(boxWidth * 0.075));
+  const valueSize = (value: string) => {
+    const base = boxWidth * 0.18;
+    const factor = value.length > 7 ? 0.55 : value.length > 5 ? 0.75 : 1;
+    return Math.round(base * factor);
+  };
+
+  const revealCues = defaultRevealCues(count, REVEAL_WINDOW);
+  const totalWidth = count * boxWidth + (count - 1) * GAP;
   const startX = Math.max(96, (1920 - totalWidth) / 2);
-
-  const centerX = (index: number) => startX + index * (BOX_WIDTH + GAP) + BOX_WIDTH / 2;
+  const centerX = (index: number) => startX + index * (boxWidth + GAP) + boxWidth / 2;
   const indexOf = (name: string) => boxes.findIndex((box) => box.name === name);
   const boxInk = (box: { isPointer?: boolean }) =>
     readableOn(box.isPointer ? colours.accent : palette.cream);
@@ -69,21 +86,21 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
             }
             const fromX = centerX(index);
             const toX = centerX(targetIndex);
-            const dipY = ROW_Y + BOX_HEIGHT + 70;
+            const bottomY = rowY + boxHeight;
             const pathLength = Math.abs(toX - fromX) + 160;
             const start =
               Math.max(
-                revealFrame(revealCues, index, boxes.length, durationInFrames * 0.5),
-                revealFrame(revealCues, targetIndex, boxes.length, durationInFrames * 0.5),
-              ) + 8;
+                revealFrame(revealCues, index, count, REVEAL_WINDOW),
+                revealFrame(revealCues, targetIndex, count, REVEAL_WINDOW),
+              ) + 6;
             const draw = enterProgress(frame, start, 14);
             return (
               <path
                 key={`arrow-${index}`}
-                d={`M ${fromX} ${ROW_Y + BOX_HEIGHT} Q ${(fromX + toX) / 2} ${dipY} ${toX} ${ROW_Y + BOX_HEIGHT}`}
+                d={`M ${fromX} ${bottomY} Q ${(fromX + toX) / 2} ${bottomY + ARROW_DIP} ${toX} ${bottomY}`}
                 fill="none"
                 stroke={readableOn(colours.bg)}
-                strokeWidth={8}
+                strokeWidth={10}
                 strokeLinecap="round"
                 markerEnd="url(#memory-arrow)"
                 strokeDasharray={pathLength}
@@ -93,12 +110,12 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
           })}
 
           {boxes.map((box, index) => {
-            const start = revealFrame(revealCues, index, boxes.length, durationInFrames * 0.5);
+            const start = revealFrame(revealCues, index, count, REVEAL_WINDOW);
             const progress = enterProgress(frame, start, 10);
-            const x = startX + index * (BOX_WIDTH + GAP);
+            const x = startX + index * (boxWidth + GAP);
             const scale = 0.8 + progress * 0.2;
-            const cx = x + BOX_WIDTH / 2;
-            const cy = ROW_Y + BOX_HEIGHT / 2;
+            const cx = x + boxWidth / 2;
+            const cy = rowY + boxHeight / 2;
             return (
               <g
                 key={box.name}
@@ -107,36 +124,36 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
               >
                 <rect
                   x={x + brutal.shadow}
-                  y={ROW_Y + brutal.shadow}
-                  width={BOX_WIDTH}
-                  height={BOX_HEIGHT}
+                  y={rowY + brutal.shadow}
+                  width={boxWidth}
+                  height={boxHeight}
                   fill={palette.ink}
                 />
                 <rect
                   x={x}
-                  y={ROW_Y}
-                  width={BOX_WIDTH}
-                  height={BOX_HEIGHT}
+                  y={rowY}
+                  width={boxWidth}
+                  height={boxHeight}
                   fill={box.isPointer ? colours.accent : palette.cream}
                   stroke={palette.ink}
                   strokeWidth={brutal.borderThick}
                 />
                 <text
                   x={cx}
-                  y={ROW_Y + 42}
+                  y={rowY + boxHeight * 0.24}
                   textAnchor="middle"
                   fontFamily={fonts.title}
-                  fontSize={28}
+                  fontSize={nameSize}
                   fill={boxInk(box)}
                 >
                   {box.name}
                 </text>
                 <text
                   x={cx}
-                  y={ROW_Y + 108}
+                  y={rowY + boxHeight * 0.6}
                   textAnchor="middle"
                   fontFamily={fonts.code}
-                  fontSize={box.value.length > 7 ? 26 : box.value.length > 5 ? 34 : 44}
+                  fontSize={valueSize(box.value)}
                   fontWeight={700}
                   fill={boxInk(box)}
                 >
@@ -144,10 +161,10 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({
                 </text>
                 <text
                   x={cx}
-                  y={ROW_Y + 158}
+                  y={rowY + boxHeight * 0.86}
                   textAnchor="middle"
                   fontFamily={fonts.code}
-                  fontSize={22}
+                  fontSize={addressSize}
                   fill={boxInk(box)}
                   fillOpacity={0.75}
                 >

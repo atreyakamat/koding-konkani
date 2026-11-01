@@ -97,7 +97,11 @@
       "onScreen": "ep08.c lines 5–7",
       "animation": "Highlights; variable tracker shows fishCount=12, weight=2.5, grade='A'",
       "sfx": [],
-      "narration": "[HL 5] Line five: int fishCount equals twelve. [TRACK fishCount=12] A whole number of fish. Nothing new. [HL 6] Line six: float weight equals two point five f. [TRACK weight=2.5] float means this box can hold a decimal. The small f at the end tells C this number is a float. Without it, C treats 2.5 as a bigger type called double, which we meet next episode. [HL 7] Line seven: char grade equals A, in single quotes. [TRACK grade='A'] A char holds exactly one character, and it always goes in single quotes. Double quotes are for text, like in printf. Single quotes are for one character. Mix them up and you'll get errors."
+      "narration": "[HL 5] Line five: int fishCount equals twelve. [TRACK fishCount=12] A whole number of fish. Nothing new. [HL 6] Line six: float weight equals two point five f. [TRACK weight=2.5] float means this box can hold a decimal. The small f at the end tells C this number is a float. Without it, C treats 2.5 as a bigger type called double, which we meet next episode. [HL 7] Line seven: char grade equals A, in single quotes. [TRACK grade='A'] A char holds exactly one character, and it always goes in single quotes. Double quotes are for text, like in printf. Single quotes are for one character. Mix them up and you'll get errors.",
+      "code": {
+        "file": "ep08.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int fishCount = 12;\n    float weight = 2.5f;\n    char grade = 'A';\n\n    printf(\"Fish: %d\\n\", fishCount);\n    printf(\"Weight: %f kg\\n\", weight);\n    printf(\"Weight: %.1f kg\\n\", weight);\n    printf(\"Grade: %c\\n\", grade);\n\n    printf(\"int uses %zu bytes\\n\", sizeof(int));\n    printf(\"float uses %zu bytes\\n\", sizeof(float));\n    printf(\"char uses %zu byte\\n\", sizeof(char));\n\n    return 0;\n}"
+      }
     },
     {
       "id": 5,
@@ -107,7 +111,12 @@
       "onScreen": "Lines 9–12 with output strip",
       "animation": "`%d`, `%f`, `%.1f`, `%c` each flip to the value; output types out",
       "sfx": [],
-      "narration": "Each type has its own placeholder. [HL 9] Line nine: percent d for the int. Fish: 12. [HL 10] Line ten: percent f for the float. Weight: 2.500000 kg. Six digits after the point. That's the default, and it looks ugly. [HL 11] So line eleven uses percent point one f: show only one digit after the point. Weight: 2.5 kg. Much better. We'll learn more of these tricks in episode eleven. [HL 12] Line twelve: percent c for a char. Grade: A."
+      "narration": "Each type has its own placeholder. [HL 9] Line nine: percent d for the int. Fish: 12. [HL 10] Line ten: percent f for the float. Weight: 2.500000 kg. Six digits after the point. That's the default, and it looks ugly. [HL 11] So line eleven uses percent point one f: show only one digit after the point. Weight: 2.5 kg. Much better. We'll learn more of these tricks in episode eleven. [HL 12] Line twelve: percent c for a char. Grade: A.",
+      "code": {
+        "file": "ep08.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int fishCount = 12;\n    float weight = 2.5f;\n    char grade = 'A';\n\n    printf(\"Fish: %d\\n\", fishCount);\n    printf(\"Weight: %f kg\\n\", weight);\n    printf(\"Weight: %.1f kg\\n\", weight);\n    printf(\"Grade: %c\\n\", grade);\n\n    printf(\"int uses %zu bytes\\n\", sizeof(int));\n    printf(\"float uses %zu bytes\\n\", sizeof(float));\n    printf(\"char uses %zu byte\\n\", sizeof(char));\n\n    return 0;\n}",
+        "output": "Fish: 12\nWeight: 2.500000 kg\nWeight: 2.5 kg\nGrade: A\nint uses 4 bytes\nfloat uses 4 bytes\nchar uses 1 byte"
+      }
     },
     {
       "id": 6,
@@ -117,7 +126,11 @@
       "onScreen": "Lines 14–16 sizeof; byte blocks 4, 4, 1 drawn as squares",
       "animation": "Byte squares stack with a tick per byte; note \"sizes can differ on other machines\"",
       "sfx": [],
-      "narration": "How big is each box? C has a tool for that: sizeof. [HL 14] Line fourteen: sizeof, int. It gives the size in bytes. To print it, we use percent z u, a placeholder made for sizes. On my machine: int uses 4 bytes. [HL 15] float: 4 bytes. [HL 16] char: 1 byte. A byte is 8 bits, 8 tiny on-off switches. These sizes are normal for Windows and Linux PCs today, but C does not promise them on every machine. That's exactly why sizeof exists: you ask, instead of guessing."
+      "narration": "How big is each box? C has a tool for that: sizeof. [HL 14] Line fourteen: sizeof, int. It gives the size in bytes. To print it, we use percent z u, a placeholder made for sizes. On my machine: int uses 4 bytes. [HL 15] float: 4 bytes. [HL 16] char: 1 byte. A byte is 8 bits, 8 tiny on-off switches. These sizes are normal for Windows and Linux PCs today, but C does not promise them on every machine. That's exactly why sizeof exists: you ask, instead of guessing.",
+      "code": {
+        "file": "ep08.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int fishCount = 12;\n    float weight = 2.5f;\n    char grade = 'A';\n\n    printf(\"Fish: %d\\n\", fishCount);\n    printf(\"Weight: %f kg\\n\", weight);\n    printf(\"Weight: %.1f kg\\n\", weight);\n    printf(\"Grade: %c\\n\", grade);\n\n    printf(\"int uses %zu bytes\\n\", sizeof(int));\n    printf(\"float uses %zu bytes\\n\", sizeof(float));\n    printf(\"char uses %zu byte\\n\", sizeof(char));\n\n    return 0;\n}"
+      }
     },
     {
       "id": 7,

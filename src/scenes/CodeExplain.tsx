@@ -11,17 +11,29 @@ import type { BaseSceneProps } from "./types";
 
 export type CodeExplainProps = BaseSceneProps & {
   file: string;
-  source: string;
+  /** The code to type in. Absent for a scene whose JSON has no `code` field; then
+   * `onScreen` is shown as a text card instead of being mistaken for code. */
+  source?: string;
+  onScreen?: string;
   /** Short explanation shown for a given highlighted line, e.g. {4: "function · text · end of statement"}. */
   labels?: Record<number, string>;
   /** Program output. Prints in a terminal under the code near the end of the scene. */
   output?: string;
 };
 
+/** 58% of the 1728px content width: the code panel never grows past this, so the
+ * explanation card on the right is always fully on screen. */
+const CODE_COLUMN_WIDTH = 1002;
+/** Whole code lines that fit the column at CodeBlock's largest font (38px -> 57px/line),
+ * leaving room for the file chip, and for the output terminal when there is one. */
+const MAX_LINES = 13;
+const MAX_LINES_WITH_OUTPUT = 10;
+
 /** Code explain: code types itself, then the active line gets a butter highlight with a live variable tracker. */
 export const CodeExplain: React.FC<CodeExplainProps> = ({
   file,
   source,
+  onScreen,
   labels,
   output,
   colours,
@@ -29,12 +41,13 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
   cues,
 }) => {
   const frame = useCurrentFrame();
+  const code = source ?? "";
 
   const typingEnd = Math.round(durationInFrames * 0.35);
-  const charsPerFrame = Math.max(0.5, source.length / typingEnd);
-  const visibleChars = typewriterChars(source, frame, 0, charsPerFrame);
+  const charsPerFrame = Math.max(0.5, code.length / typingEnd);
+  const visibleChars = typewriterChars(code, frame, 0, charsPerFrame);
 
-  const sourceLines = source.split("\n");
+  const sourceLines = code.split("\n");
   const defaultCues = defaultHlCues(sourceLines, durationInFrames - typingEnd).map((cue) => ({
     ...cue,
     frame: cue.frame + typingEnd,
@@ -63,14 +76,43 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
           alignItems: "stretch",
         }}
       >
-        <div style={{ flex: 1.5, display: "flex", flexDirection: "column", gap: 20 }}>
+        <div
+          style={{
+            flex: `0 0 ${CODE_COLUMN_WIDTH}px`,
+            maxWidth: CODE_COLUMN_WIDTH,
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+          }}
+        >
           <Chip text={file} background={colours.accent} color={readableOn(colours.accent)} />
-          <CodeBlock
-            source={source}
-            highlightLine={highlightLine}
-            visibleChars={visibleChars}
-            maxVisibleLines={Math.min(sourceLines.length, 13)}
-          />
+          {source ? (
+            <CodeBlock
+              source={source}
+              width={CODE_COLUMN_WIDTH}
+              highlightLine={highlightLine}
+              visibleChars={visibleChars}
+              maxVisibleLines={Math.min(
+                sourceLines.length,
+                output ? MAX_LINES_WITH_OUTPUT : MAX_LINES,
+              )}
+            />
+          ) : (
+            <Panel background={palette.cream}>
+              <div
+                style={{
+                  fontFamily: fonts.body,
+                  fontWeight: 700,
+                  fontSize: 40,
+                  lineHeight: 1.4,
+                  color: palette.ink,
+                  whiteSpace: "pre-wrap",
+                }}
+              >
+                {onScreen ?? ""}
+              </div>
+            </Panel>
+          )}
           {output ? (
             <div
               style={{
@@ -92,16 +134,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
           ) : null}
         </div>
 
-        <div
-          style={{
-            flex: 1,
-            minWidth: 560,
-            flexShrink: 0,
-            display: "flex",
-            flexDirection: "column",
-            gap: 24,
-          }}
-        >
+        <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 24 }}>
           <Panel background={palette.cream} style={{ minHeight: 160 }}>
             <div
               style={{ fontFamily: fonts.body, fontSize: 36, color: palette.ink, lineHeight: 1.4 }}

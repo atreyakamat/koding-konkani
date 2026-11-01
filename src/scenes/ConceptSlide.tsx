@@ -47,9 +47,12 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
         ],
       }}
     >
+      {/* Xecxec only uses the bottom-right corner (right: 72, ~300px square), so only the
+          analogy column reserves space for him; the bullets column uses the full height
+          instead of leaving the lower third of the frame empty. */}
       <AbsoluteFill
         style={{
-          padding: "96px 96px 340px",
+          padding: "96px 96px 140px",
           display: "flex",
           flexDirection: "row",
           gap: 56,
@@ -61,7 +64,8 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
             flex: analogy ? 1.3 : 1,
             display: "flex",
             flexDirection: "column",
-            gap: analogy ? 36 : 48,
+            justifyContent: "center",
+            gap: analogy ? 44 : 56,
           }}
         >
           {heading ? (
@@ -112,7 +116,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                   style={{
                     fontFamily: fonts.body,
                     fontWeight: 700,
-                    fontSize: analogy ? 58 : 68,
+                    fontSize: analogy ? 64 : 72,
                     color: readableOn(colours.bg),
                     lineHeight: 1.25,
                   }}
@@ -162,17 +166,21 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                 <div
                   style={{
                     flex: 1,
+                    alignSelf: "stretch",
+                    display: "flex",
+                    alignItems: "center",
+                    paddingBottom: 260,
                     opacity: progress,
                     translate: `${(1 - progress) * 60}px 0`,
                   }}
                 >
-                  <Panel background={palette.cream}>
+                  <Panel background={palette.cream} padding={40} style={{ width: "100%" }}>
                     <div
                       style={{
                         fontFamily: fonts.title,
-                        fontSize: 32,
+                        fontSize: 36,
                         color: accentOn(palette.cream, colours.accent),
-                        marginBottom: 16,
+                        marginBottom: 20,
                         textTransform: textTransformFor(analogy.title),
                       }}
                     >
@@ -181,7 +189,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                     <div
                       style={{
                         fontFamily: fonts.body,
-                        fontSize: 36,
+                        fontSize: 40,
                         color: palette.ink,
                         lineHeight: 1.4,
                       }}

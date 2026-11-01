@@ -119,7 +119,8 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
     case "code-explain":
       return {
         file: scene.code?.file ?? "code.c",
-        source: scene.code?.source ?? scene.onScreen,
+        source: scene.code?.source,
+        onScreen: scene.onScreen,
         labels: labelsFromNarration(scene.narration),
         output: scene.code?.output,
       };

@@ -79,7 +79,11 @@
       "onScreen": "ep12.c lines 5, 9–10",
       "animation": "Prompt types out; value 17 flies from keyboard into the age box; tracker age=17",
       "sfx": [],
-      "narration": "[HL 5] Line five: int age. An empty box, waiting. [HL 9] Line nine: printf, \"Enter your age: \". Notice there's no backslash n, so the cursor stays on the same line, right after the question. That looks nicer. [HL 10] Line ten: scanf, \"percent d\", comma, ampersand age. When the program reaches this line, it stops and waits. The user types seventeen and presses Enter. scanf reads it as a whole number, because of percent d, and stores it in age. [TRACK age=17] The program continues."
+      "narration": "[HL 5] Line five: int age. An empty box, waiting. [HL 9] Line nine: printf, \"Enter your age: \". Notice there's no backslash n, so the cursor stays on the same line, right after the question. That looks nicer. [HL 10] Line ten: scanf, \"percent d\", comma, ampersand age. When the program reaches this line, it stops and waits. The user types seventeen and presses Enter. scanf reads it as a whole number, because of percent d, and stores it in age. [TRACK age=17] The program continues.",
+      "code": {
+        "file": "ep12.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int age;\n    float height;\n    char section;\n\n    printf(\"Enter your age: \");\n    scanf(\"%d\", &age);\n\n    printf(\"Enter your height in metres: \");\n    scanf(\"%f\", &height);\n\n    printf(\"Enter your section: \");\n    scanf(\" %c\", &section);     // space skips the leftover Enter\n\n    printf(\"Age %d, height %.2f m, section %c\\n\", age, height, section);\n    return 0;\n}"
+      }
     },
     {
       "id": 5,
@@ -113,7 +117,11 @@
       "onScreen": "Lines 12–16: `%f` with &height, `\" %c\"` with &section",
       "animation": "Leftover Enter shown as a small \"\\n\" block sitting in the input queue, swept away by the space",
       "sfx": [],
-      "narration": "[HL 12] Line twelve asks for height. [HL 13] Line thirteen: scanf with percent f and ampersand height. The user types one point six eight. [TRACK height=1.68] [HL 15] Line fifteen asks for the section. [HL 16] Now look closely at line sixteen. The quote has a space, then percent c. Why the space? When the user typed one point six eight, they also pressed Enter. scanf took the number, but the Enter key is still sitting there, waiting. percent c reads any single character, including Enter. Without the space, section would get the Enter, not the letter. The space tells scanf: skip any spaces and Enters first, then read the character. [TRACK section='B'] [HL 18] Line eighteen prints everything: Age 17, height 1.68 m, section B."
+      "narration": "[HL 12] Line twelve asks for height. [HL 13] Line thirteen: scanf with percent f and ampersand height. The user types one point six eight. [TRACK height=1.68] [HL 15] Line fifteen asks for the section. [HL 16] Now look closely at line sixteen. The quote has a space, then percent c. Why the space? When the user typed one point six eight, they also pressed Enter. scanf took the number, but the Enter key is still sitting there, waiting. percent c reads any single character, including Enter. Without the space, section would get the Enter, not the letter. The space tells scanf: skip any spaces and Enters first, then read the character. [TRACK section='B'] [HL 18] Line eighteen prints everything: Age 17, height 1.68 m, section B.",
+      "code": {
+        "file": "ep12.c",
+        "source": "#include <stdio.h>\n\nint main(void)\n{\n    int age;\n    float height;\n    char section;\n\n    printf(\"Enter your age: \");\n    scanf(\"%d\", &age);\n\n    printf(\"Enter your height in metres: \");\n    scanf(\"%f\", &height);\n\n    printf(\"Enter your section: \");\n    scanf(\" %c\", &section);     // space skips the leftover Enter\n\n    printf(\"Age %d, height %.2f m, section %c\\n\", age, height, section);\n    return 0;\n}"
+      }
     },
     {
       "id": 7,

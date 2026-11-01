@@ -10,6 +10,7 @@
 import { execFileSync } from "node:child_process";
 import {
   appendFileSync,
+  copyFileSync,
   existsSync,
   mkdirSync,
   statSync,
@@ -213,6 +214,17 @@ for (const ep of episodeNumbers) {
   const outDir = join(ROOT, "out", epId);
   mkdirSync(outDir, { recursive: true });
   const rows: QaRow[] = [];
+
+  // The compositions read audio/voice/<ep>/episode.json, a copy taken when narration
+  // was generated. Narration is skipped once it exists, so without this refresh any
+  // later edit to episodes/<ep>.json (box data, code fields, outputs) never reaches a
+  // render — which is exactly how EP07-09 rendered empty memory-boxes scenes on 1 Nov.
+  // Only the JSON is refreshed; the audio, cues and captions are untouched.
+  const voiceDir = join(ROOT, "audio", "voice", epId);
+  if (existsSync(voiceDir)) {
+    copyFileSync(join(ROOT, "episodes", `${epId}.json`), join(voiceDir, "episode.json"));
+    log(`REFRESH ${epId} episode.json -> audio/voice/${epId}/episode.json`);
+  }
 
   const propsFile = join(outDir, ".props-longvideo.json");
   writeFileSync(propsFile, JSON.stringify({ episodeNumber: ep }), "utf-8");

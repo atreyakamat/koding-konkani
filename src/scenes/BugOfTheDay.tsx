@@ -13,6 +13,19 @@ export type BugOfTheDayProps = BaseSceneProps & {
   why?: string;
 };
 
+/** Keeps every `error:` line (the teaching point), fills the rest of the budget with the
+ * earliest other lines in order, and marks anything dropped with an ellipsis line. */
+const fitErrorLines = (lines: string[], max: number): string[] => {
+  if (lines.length <= max) return lines;
+  const keep = new Set<number>();
+  lines.forEach((line, i) => {
+    if (line.includes("error:")) keep.add(i);
+  });
+  for (let i = 0; i < lines.length && keep.size < max - 1; i++) keep.add(i);
+  const kept = [...keep].sort((a, b) => a - b).slice(0, max - 1);
+  return [...kept.map((i) => lines[i]), "…"];
+};
+
 /** Butter banner drops in; wrong code shakes and the GCC error appears; then the fix lands in mint. */
 export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   wrongCode,
@@ -29,10 +42,16 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   // reliably has `;`, `{` or `#include`; prose/paths don't.
   const isCode = /[;{]|#include/.test(wrongCode) || /[;{]|#include/.test(fixedCode);
   const codeLines = Math.max(wrongCode.split("\n").length, fixedCode.split("\n").length);
-  const errorLines = error.split("\n").length;
-  // GCC output can run long (EP01: 10 lines) — a compact size keeps the full, real error
-  // visible (truncating a teaching moment would be worse) while clearing the caption band.
-  const errorFontSize = errorLines > 6 ? 22 : 28;
+  const allErrorLines = error.split("\n");
+  // The error panel has to fit under the code panel and above the caption band. Budget:
+  // 1080 - 80 top - 200 bottom = 800, minus banner (~70), two gaps (48), the code panel
+  // (min(codeLines, 8) lines at 32px*1.5 + 40 + 10 border), and the panel's own 64px
+  // padding + 10px border. Whatever is left, in whole lines, is the budget.
+  const codePanelHeight = Math.min(codeLines, 8) * 48 + 50;
+  const errorTextBudget = 800 - 70 - 48 - codePanelHeight - 74;
+  const errorFontSize = allErrorLines.length > 6 ? 22 : 28;
+  const maxErrorLines = Math.max(2, Math.floor(errorTextBudget / (errorFontSize * 1.3)));
+  const errorText = fitErrorLines(allErrorLines, maxErrorLines).join("\n");
   const phase2 = Math.round(durationInFrames * 0.4);
   const phase3 = Math.round(durationInFrames * 0.68);
   const isFixed = frame >= phase3;
@@ -121,7 +140,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
                   whiteSpace: "pre-wrap",
                 }}
               >
-                {error}
+                {errorText}
               </div>
             </Panel>
           </div>
