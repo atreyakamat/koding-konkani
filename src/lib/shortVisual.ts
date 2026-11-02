@@ -120,7 +120,7 @@ const quizOf = (episode: Episode, short: Short): ShortVisual => {
       );
   }
   // A compiler/linker message is something to name, not code to run: show it on the card.
-  if (code.length > 0 && code.every((l) => /undefined reference|error:|warning:/i.test(l))) {
+  if (code.length > 0 && code.every((l) => /undefined reference|error:|warning:/i.test(l))) {
     options.unshift(...code);
     code.length = 0;
   }
