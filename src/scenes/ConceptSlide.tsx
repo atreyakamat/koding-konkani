@@ -15,6 +15,28 @@ export type ConceptSlideProps = BaseSceneProps & {
   analogy?: { title: string; body: string };
 };
 
+/** Free height beside the analogy card; without a card the stack also stays above Xecxec's corner. */
+const FREE_HEIGHT_WITH_ANALOGY = 1080 - 96 - 140;
+const FREE_HEIGHT_NO_ANALOGY = 1080 - 96 - 340;
+const LINE_GAP = 44;
+
+/** Largest body size in [64, maxSize] at which the wrapped lines fit `width` and the free height. */
+const fitBodySize = (
+  lines: string[],
+  width: number,
+  maxSize: number,
+  freeHeight: number,
+): number => {
+  const fits = (size: number): boolean => {
+    const badge = Math.round(size * 0.9);
+    const perRow = Math.max(4, Math.floor((width - badge - 24) / (size * 0.52)));
+    const rows = lines.reduce((n, l) => n + Math.max(1, Math.ceil(l.length / perRow)), 0);
+    return rows * size * 1.25 + Math.max(0, lines.length - 1) * LINE_GAP <= freeHeight;
+  };
+  for (let size = maxSize; size > 64; size -= 4) if (fits(size)) return size;
+  return 64;
+};
+
 /** Concept slide: 1-3 numbered lines spring in one by one; an analogy card slides in on the right. */
 export const ConceptSlide: React.FC<ConceptSlideProps> = ({
   heading,
@@ -36,9 +58,16 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
   // whole point, not just a payoff after the bullets finish. Xecxec's claws-up beat
   // still lands on the last bullet reveal, independent of the card's own timing.
   const analogyStart = 14;
-  // Fill the frame: with no analogy card the numbered lines own the whole slide, so the type
-  // scales up with how few lines there are (a lone line is huge, three still >= 80px).
-  const bodySize = analogy ? 64 : lines.length <= 1 ? 112 : lines.length === 2 ? 96 : 84;
+  // Fill the frame: pick the largest type at which every numbered line fits its column (wrapped)
+  // and the whole stack fits the free height. With no analogy card the lines own the full width
+  // (a lone short line gets huge type); with one they share it, at 64-80px.
+  const columnWidth = analogy ? 945 : 1728;
+  const bodySize = fitBodySize(
+    lines,
+    columnWidth,
+    analogy ? 80 : 140,
+    analogy ? FREE_HEIGHT_WITH_ANALOGY : FREE_HEIGHT_NO_ANALOGY,
+  );
   const badge = analogy ? 56 : Math.round(bodySize * 0.9);
 
   return (
@@ -56,7 +85,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
           instead of leaving the lower third of the frame empty. */}
       <AbsoluteFill
         style={{
-          padding: "96px 96px 140px",
+          padding: analogy ? "96px 96px 140px" : "96px 96px 340px",
           display: "flex",
           flexDirection: "row",
           gap: 56,

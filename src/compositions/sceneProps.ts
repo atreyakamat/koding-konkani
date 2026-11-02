@@ -1,5 +1,6 @@
 import type { Episode, Scene } from "../lib/episode";
 import { stripMarkdown } from "../lib/sanitize.ts";
+import { terminalLinesFor } from "../lib/terminalLines.ts";
 
 const CUE_RE = /\[(HL|TRACK)\s+[^\]]*\]/g;
 const MAX_LINE_CHARS = 48;
@@ -26,35 +27,6 @@ const linesFromNarration = (narration: string): string[] => {
     lines.push(first.length > MAX_LINE_CHARS ? `${first.slice(0, MAX_LINE_CHARS - 1)}…` : first);
   }
   return lines.map(stripMarkdown);
-};
-
-/** Terminal onScreen directions are shot descriptions ("`cmd` typed; reply "text"
- * in tomato"), not a literal transcript — pull the backtick-quoted command(s) as
- * input lines and the double-quoted reply as an output line, colouring it from
- * whichever of tomato/mint/error/success the description mentions. Falls back to
- * the whole direction as one output line when neither pattern matches, rather
- * than silently dropping content. */
-const terminalLinesFromOnScreen = (
-  onScreen: string,
-): { text: string; kind?: "input" | "output" | "success" | "error" }[] => {
-  const lines: { text: string; kind?: "input" | "output" | "success" | "error" }[] = [];
-  for (const m of onScreen.matchAll(/`([^`]+)`/g)) {
-    lines.push({ text: m[1], kind: "input" });
-  }
-  const lower = onScreen.toLowerCase();
-  const kind: "output" | "success" | "error" =
-    lower.includes("tomato") || lower.includes("error")
-      ? "error"
-      : lower.includes("mint") || lower.includes("success")
-        ? "success"
-        : "output";
-  for (const m of onScreen.matchAll(/"([^"]+)"/g)) {
-    lines.push({ text: m[1], kind });
-  }
-  if (lines.length === 0) {
-    lines.push({ text: onScreen, kind: "output" });
-  }
-  return lines.map((line) => ({ ...line, text: stripMarkdown(line.text) }));
 };
 
 /** Many (not all) concept-slide onScreen directions are shaped "Title": description
@@ -130,7 +102,7 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
         output: scene.code?.output,
       };
     case "terminal":
-      return { lines: terminalLinesFromOnScreen(scene.onScreen) };
+      return { lines: terminalLinesFor(episode, scene) };
     case "algorithm-bars":
       return { trace: scene.trace ?? [] };
     case "memory-boxes":

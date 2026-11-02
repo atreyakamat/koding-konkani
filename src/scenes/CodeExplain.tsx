@@ -30,6 +30,18 @@ const CODE_COLUMN_WIDTH = 1002;
  * padding + ~64px chip + gap, and the burnt-in caption bar starts near y=905. */
 const COLUMN_BOTTOM = 900;
 const PANEL_TOP = 96 + 64 + 20;
+/** With program output on screen Xecxec is 240px at the bottom-right (top of his head ~y 820,
+ * his "It runs!" bubble above to ~y 720), so the right column ends at y 700 and the output
+ * panel is sized to the room left under the explanation card and tracker. */
+const MASCOT_SIZE_WITH_OUTPUT = 240;
+const RIGHT_COLUMN_BOTTOM = 700;
+const OUTPUT_ROOM = RIGHT_COLUMN_BOTTOM - 96 - 160 - 24 - 90 - 24;
+
+const pickOutputFont = (output: string): number => {
+  const rows = output.split("\n").length + 1;
+  const sizes = [34, 30, 28, 26, 24];
+  return sizes.find((f) => rows * f * 1.35 + 40 <= OUTPUT_ROOM) ?? 24;
+};
 
 /** Code explain: code types itself, then the active line gets a butter highlight with a live variable tracker. */
 export const CodeExplain: React.FC<CodeExplainProps> = ({
@@ -71,6 +83,8 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
   const outputChars = output ? typewriterChars(output, frame, outputStart + 6, 1) : 0;
   const mascot: MascotConfig = output
     ? {
+        size: MASCOT_SIZE_WITH_OUTPUT,
+        bottom: 60,
         poses: [{ frame: outputStart, pose: "clawsUp" }],
         bubbles: [{ at: outputStart + 10, text: "It runs!" }],
       }
@@ -125,7 +139,16 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
           )}
         </div>
 
-        <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 24 }}>
+        <div
+          style={{
+            flex: 1,
+            minWidth: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: 24,
+            paddingBottom: output ? 1080 - 96 - RIGHT_COLUMN_BOTTOM : 0,
+          }}
+        >
           {labelText ? (
             <Panel background={palette.cream} style={{ minHeight: 160 }}>
               <div
@@ -174,7 +197,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
                 boxShadow: `8px 8px 0 0 ${palette.ink}`,
                 padding: "20px 32px",
                 fontFamily: fonts.code,
-                fontSize: 34,
+                fontSize: pickOutputFont(output),
                 color: palette.mint,
                 whiteSpace: "pre-wrap",
               }}

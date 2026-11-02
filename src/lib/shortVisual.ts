@@ -11,7 +11,7 @@ type Scene = Episode["scenes"][number];
 export type Bits = { label: string; bits: string };
 export type ShortVisual =
   | { kind: "pun"; text: string }
-  | { kind: "quiz"; code: string[]; options: string[]; question: string }
+  | { kind: "quiz"; code: string[]; options: string[]; question: string; card: string }
   | { kind: "pron"; written: string; spoken: string }
   | { kind: "boxes"; boxes: { name: string; value: string; address?: string }[] }
   | { kind: "bits"; rows: Bits[]; result?: Bits; sum?: string }
@@ -46,11 +46,17 @@ export const signature = (v: ShortVisual): string => {
   }
 };
 
+/** Card text comes from ONE source string: GCC-style `name' quotes become 'name', then
+ * Markdown and stray backticks are stripped. Never a concatenation of two strings. */
+export const cardText = (text: string): string =>
+  stripMarkdown(text.replace(/`([^`'\n]*)'/g, "'$1'")).replace(/`/g, "");
+
 const unquote = (s: string): string => s.trim().replace(/^["“]+|["”]+$/g, "");
 
 /** A fragment that is clearly C (or a terminal command), not a label. */
 const isCodey = (part: string): boolean => {
   const p = part.trim();
+  if (/_{3,}/.test(p)) return false; // a fill-in-the-blank question, not code
   if (!p || (/^[A-Z0-9 ,.'’:?!-]+$/.test(p) && !/[;(){}<>=%*/+&|^]/.test(p))) return false;
   if (/[;{}]/.test(p) || /^#/.test(p) || /\b[A-Za-z_]\w*\s*\(/.test(p)) return true;
   if (/^gcc\b|^\.\//.test(p)) return true;
@@ -125,7 +131,13 @@ const quizOf = (episode: Episode, short: Short): ShortVisual => {
     code.length = 0;
   }
   if (code.length === 0 && options.length === 0 && !question) question = unquote(short.hook);
-  return { kind: "quiz", code, options, question };
+  return {
+    kind: "quiz",
+    code,
+    options,
+    question,
+    card: cardText(short.onScreen.trim() || unquote(short.hook)),
+  };
 };
 
 const BIN_WORDS = /\bbinary\b|\bbits?\b|<<|>>|\b[01]{4,}\b/i;
@@ -262,14 +274,16 @@ const candidatesFor = (episode: Episode, short: Short): ShortVisual[] => {
 const cleanVisual = (v: ShortVisual): ShortVisual => {
   switch (v.kind) {
     case "pun":
-    case "text":
       return { ...v, text: stripMarkdown(v.text) };
+    case "text":
+      return { ...v, text: cardText(v.text) };
     case "quiz":
       return {
         ...v,
         code: v.code.map((l) => stripMarkdown(l)),
         options: v.options.map(stripMarkdown),
         question: stripMarkdown(v.question),
+        card: cardText(v.card),
       };
     case "analogy":
       return { ...v, title: stripMarkdown(v.title), body: stripMarkdown(v.body) };

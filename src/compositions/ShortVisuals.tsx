@@ -27,8 +27,40 @@ const fitText = (chars: number, base = 72): number =>
         ? Math.round(base * 0.85)
         : base;
 
-/** Big text card. "s·s" separated parts stack as their own lines (a list reads as a list),
- * sized to fill the slot; long words wrap instead of clipping. */
+/** Inner size of a Panel filling the slot (padding 32 + border 5, both sides). */
+const CARD_INNER = { width: W - 74, height: H - 74 } as const;
+const CARD_MIN_PX = 56;
+const CARD_MAX_PX = 140;
+const CARD_GAP = 28;
+
+/** Largest title-font size (>= CARD_MIN_PX) at which every part, word-wrapped, fits the card.
+ * Archivo Black caps average ~0.74em per character. A card of one or two short lines
+ * therefore gets the biggest size; a long sentence steps down toward the 56px floor. */
+const fitCardText = (parts: string[]): number => {
+  const fits = (size: number): boolean => {
+    const perRow = Math.max(1, Math.floor(CARD_INNER.width / (size * 0.74)));
+    let rows = 0;
+    for (const part of parts) {
+      let row = 0;
+      let used = 0;
+      for (const word of part.split(/\s+/)) {
+        const need = word.length + (used ? 1 : 0);
+        if (used && used + need > perRow) {
+          row++;
+          used = word.length;
+        } else used += need;
+        if (word.length > perRow) row += Math.floor(word.length / perRow);
+      }
+      rows += row + 1;
+    }
+    return rows * size * 1.2 + (parts.length - 1) * CARD_GAP <= CARD_INNER.height;
+  };
+  for (let size = CARD_MAX_PX; size > CARD_MIN_PX; size -= 4) if (fits(size)) return size;
+  return CARD_MIN_PX;
+};
+
+/** Big text card, filling its slot. " · " separated parts stack as their own lines (a list
+ * reads as a list); long words wrap instead of clipping. */
 const TextCard: React.FC<{ text: string; background?: string }> = ({
   text,
   background = palette.cream,
@@ -37,11 +69,8 @@ const TextCard: React.FC<{ text: string; background?: string }> = ({
     .split(/\s·\s|\n/)
     .map((p) => p.trim())
     .filter(Boolean);
-  const longest = Math.max(...parts.map((p) => p.length), 1);
-  const base = parts.length >= 3 ? 76 : parts.length === 2 ? 88 : 96;
-  const size = Math.min(
-    fitText(parts.join(" ").length, base),
-    Math.floor(W / (longest * 0.62)) + 40,
+  const size = fitCardText(
+    parts.map((p) => (textTransformFor(p) === "uppercase" ? p.toUpperCase() : p)),
   );
   return (
     <Panel
@@ -53,7 +82,7 @@ const TextCard: React.FC<{ text: string; background?: string }> = ({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: 28,
+        gap: CARD_GAP,
       }}
     >
       {parts.map((part, i) => (
@@ -61,7 +90,7 @@ const TextCard: React.FC<{ text: string; background?: string }> = ({
           key={i}
           style={{
             fontFamily: fonts.title,
-            fontSize: Math.max(56, size),
+            fontSize: size,
             lineHeight: 1.2,
             textAlign: "center",
             color: readableOn(background),
@@ -236,7 +265,8 @@ const CodeVisual: React.FC<{
   durationInFrames: number;
 }> = ({ source, mode, durationInFrames }) => {
   const frame = useCurrentFrame();
-  const font = chooseFontSize(source, W, H);
+  // Short snippets (one or two lines) get a much larger font to fill the slot.
+  const font = chooseFontSize(source, W, H, 96);
   const visibleChars = typewriterChars(source, frame, 6, Math.max(1, source.length / 36));
   const typed = visibleChars >= source.length;
   const hl =
@@ -263,7 +293,7 @@ const QuizVisual: React.FC<{ visual: Extract<ShortVisual, { kind: "quiz" }>; acc
   const frame = useCurrentFrame();
   // No code to run, so no OUTPUT panel: the question and its options are the whole card.
   if (visual.code.length === 0) {
-    return <TextCard text={[...visual.options, visual.question].filter(Boolean).join("s·s")} />;
+    return <TextCard text={visual.card} />;
   }
   const outputH = visual.options.length ? 120 : 170;
   const optionsH = visual.options.length ? 150 : 0;
@@ -310,7 +340,7 @@ const QuizVisual: React.FC<{ visual: Extract<ShortVisual, { kind: "quiz" }>; acc
             color: palette.ink,
           }}
         >
-          {text.join(" s·s ")}
+          {text.join(" · ")}
         </div>
       ) : null}
       <Panel
@@ -561,7 +591,13 @@ const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16, height: "100%" }}>
       {isCode ? (
-        <CodeBlock source={wrongText} width={W} fontSize={40} maxHeight={H - errorH - 16} />
+        <CodeBlock
+          source={wrongText}
+          width={W}
+          fontSize={chooseFontSize(wrongText, W, H - errorH - 16, 64)}
+          maxHeight={H - errorH - 16}
+          fillHeight={H - errorH - 16}
+        />
       ) : (
         <Panel background={palette.cream} style={{ flex: 1 }}>
           <div

@@ -17,6 +17,23 @@ export type TerminalProps = BaseSceneProps & {
 /** Vertical space kept clear at the bottom for the mascot and his bubble. */
 const MASCOT_ZONE = 410;
 
+/** Free height inside the window (frame minus 96 top, mascot zone, header 55, padding 64). */
+const WINDOW_TEXT_HEIGHT = 1080 - 96 - 410 - 55 - 64;
+const WINDOW_TEXT_WIDTH = 1500 - 80 - 10;
+
+const pickTerminalFont = (texts: string[]): number => {
+  const sizes = [40, 36, 34, 30, 28, 26, 24, 22];
+  const fits = (size: number): boolean => {
+    const perRow = Math.floor(WINDOW_TEXT_WIDTH / (size * 0.6));
+    const rows = texts.reduce(
+      (n, t) => n + Math.max(1, Math.ceil((t.length + 2) / Math.max(1, perRow))),
+      0,
+    );
+    return rows * (size * 1.3 + 14) <= WINDOW_TEXT_HEIGHT;
+  };
+  return sizes.find(fits) ?? 22;
+};
+
 const colourFor = (kind: TerminalLineKind | undefined): string => {
   if (kind === "success") return palette.mint;
   if (kind === "error") return palette.tomato;
@@ -34,11 +51,9 @@ export const Terminal: React.FC<TerminalProps> = ({ lines, colours, durationInFr
     durationInFrames * 0.8,
   );
   const hasError = lines.some((line) => line.kind === "error");
-  // Fixed-size terminal text clipped past the window's right edge on a long
-  // command/output line (STYLE.md fix, 31 Oct) — scale down for long content
-  // instead, same window every time.
-  const longestLine = Math.max(0, ...lines.map((l) => l.text.length));
-  const fontSize = longestLine > 60 ? 22 : longestLine > 40 ? 28 : 34;
+  // The window must fit the zone above Xecxec: pick the largest size at which every row
+  // (long lines wrap) fits both the width and the height of that zone, never below 22px.
+  const fontSize = pickTerminalFont(lines.map((l) => l.text));
 
   return (
     <SceneFrame

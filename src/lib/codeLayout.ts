@@ -68,9 +68,14 @@ export const layoutRows = (source: string, width: number, fontSize: number): Cod
 /** Largest font in [MIN_FONT, MAX_FONT] (4px steps) whose layout has no wrapped lines and
  * fits `maxHeight`; failing that the largest that fits with wrapping; failing that
  * MIN_FONT (the panel then scrolls by whole rows). */
-export const chooseFontSize = (source: string, width: number, maxHeight: number): number => {
+export const chooseFontSize = (
+  source: string,
+  width: number,
+  maxHeight: number,
+  maxFont: number = MAX_FONT,
+): number => {
   const fonts: number[] = [];
-  for (let f = MAX_FONT; f >= MIN_FONT; f -= 4) fonts.push(f);
+  for (let f = maxFont; f >= MIN_FONT; f -= 4) fonts.push(f);
   const lineCount = source.split("\n").length;
   const fits = (f: number, allowWrap: boolean): boolean => {
     const rows = layoutRows(source, width, f);

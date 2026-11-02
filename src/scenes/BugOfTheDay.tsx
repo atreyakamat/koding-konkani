@@ -13,6 +13,9 @@ export type BugOfTheDayProps = BaseSceneProps & {
   why?: string;
 };
 
+/** Real C reliably has `;`, `{` or `#include`; prose and paths do not. */
+const looksLikeCode = (text: string): boolean => /[;{]|#include/.test(text);
+
 const MIN_BODY_PX = 22;
 const ERROR_SIZES = [28, 26, 24, MIN_BODY_PX];
 const WHY_SIZES = [34, 32, 30, 28, 26, 24, MIN_BODY_PX];
@@ -54,12 +57,16 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   durationInFrames,
 }) => {
   const frame = useCurrentFrame();
-  // Not every "bug" is broken code — some are a wrong mental model (EP02: a quoted
-  // claim) or a config/path value (EP03). Rendering those through CodeBlock's C
-  // syntax highlighting looked wrong and didn't wrap long lines. A real C snippet
-  // reliably has `;`, `{` or `#include`; prose/paths don't.
-  const isCode = /[;{]|#include/.test(wrongCode) || /[;{]|#include/.test(fixedCode);
-  const codeLines = Math.max(wrongCode.split("\n").length, fixedCode.split("\n").length);
+  const isFixed = frame >= Math.round(durationInFrames * 0.68);
+  // Not every bug slot holds C: EP02's "wrong" is a quoted claim, EP03's a path, and EP05's
+  // "fixed" is a sentence. Each side is judged on its own, so prose becomes a text card and
+  // only real code goes through CodeBlock's C highlighting.
+  const wrongIsCode = looksLikeCode(wrongCode);
+  const fixedIsCode = looksLikeCode(fixedCode);
+  const shownIsCode = isFixed ? fixedIsCode : wrongIsCode;
+  const lineCount = (text: string, isCode: boolean): number =>
+    isCode ? text.split("\n").length : 3;
+  const codeLines = Math.max(lineCount(wrongCode, wrongIsCode), lineCount(fixedCode, fixedIsCode));
   const allErrorLines = error.split("\n");
   // The error panel has to fit under the code panel and above the caption band. Budget:
   // 1080 - 80 top - 200 bottom = 800, minus banner (~70), two gaps (48), the code panel
@@ -83,7 +90,6 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   });
   const phase2 = Math.round(durationInFrames * 0.4);
   const phase3 = Math.round(durationInFrames * 0.68);
-  const isFixed = frame >= phase3;
 
   const bannerY = interpolate(frame, [0, 10], [-140, 0], {
     easing: springs.slam,
@@ -131,7 +137,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
           <div
             style={{ translate: `${isFixed ? 0 : shakeX}px 0px`, width: "100%", maxWidth: 1100 }}
           >
-            {isCode ? (
+            {shownIsCode ? (
               <CodeBlock
                 source={isFixed ? fixedCode : wrongCode}
                 width={1100}
@@ -144,7 +150,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
                   style={{
                     fontFamily: fonts.body,
                     fontWeight: 700,
-                    fontSize: 36,
+                    fontSize: 44,
                     lineHeight: 1.4,
                     color: palette.ink,
                     whiteSpace: "pre-wrap",
@@ -188,7 +194,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
             <Panel background={palette.mint} borderColor={palette.ink}>
               <div style={{ fontFamily: fonts.title, fontSize: 28, color: palette.ink }}>FIXED</div>
             </Panel>
-            {why ? (
+            {why && why.trim() !== fixedCode.trim() ? (
               <div
                 style={{
                   fontFamily: fonts.body,
