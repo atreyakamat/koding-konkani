@@ -28,9 +28,9 @@ FIX = repair the Bible or episode JSON BEFORE rendering that episode. WATCH = lo
 | 39 | Module 5 | 11 | 24x50 | 5 | - | WATCH: code 24 rows > 22: split or scroll whole rows |
 | 40 | Module 5 | 11 | 29x60 | 5 | - | WATCH: code line 60 cols > 52: Shorts must wrap; WATCH: code 29 rows > 22: split or scroll whole rows |
 | 41 | Module 6 | 11 | 15x48 | 5 | - | ok |
-| 42 | Module 6 | 11 | 27x44 | 5 | - | WATCH: code 27 rows > 22: split or scroll whole rows; FIX: Algorithm bars scene but no Step trace table (add one, or use Memory boxes) |
-| 43 | Module 6 | 12 | 33x50 | 5 | - | WATCH: code 33 rows > 22: split or scroll whole rows; FIX: Algorithm bars scene but no Step trace table (add one, or use Memory boxes) |
-| 44 | Module 6 | 11 | 28x60 | 5 | - | WATCH: code line 60 cols > 52: Shorts must wrap; WATCH: code 28 rows > 22: split or scroll whole rows; FIX: Algorithm bars scene but no Step trace table (add one, or use Memory boxes) |
+| 42 | Module 6 | 11 | 27x44 | 5 | yes | WATCH: code 27 rows > 22: split or scroll whole rows |
+| 43 | Module 6 | 12 | 33x50 | 5 | yes | WATCH: code 33 rows > 22: split or scroll whole rows |
+| 44 | Module 6 | 11 | 28x60 | 5 | yes | WATCH: code line 60 cols > 52: Shorts must wrap; WATCH: code 28 rows > 22: split or scroll whole rows |
 | 45 | Module 6 | 11 | 22x48 | 5 | - | ok |
 | 46 | Module 6 | 11 | 24x47 | 5 | - | WATCH: code 24 rows > 22: split or scroll whole rows |
 | 47 | Module 7 | 11 | 14x53 | 5 | - | WATCH: code line 53 cols > 52: Shorts must wrap |
@@ -58,12 +58,12 @@ FIX = repair the Bible or episode JSON BEFORE rendering that episode. WATCH = lo
 | 69 | Module 11 | 12 | 18x59 | 5 | - | WATCH: code line 59 cols > 52: Shorts must wrap |
 | 70 | Module 11 | 10 | 25x60 | 5 | - | WATCH: code line 60 cols > 52: Shorts must wrap; WATCH: code 25 rows > 22: split or scroll whole rows |
 | 71 | Module 11 | 11 | 33x80 | 5 | - | WATCH: code line 80 cols > 52: Shorts must wrap; WATCH: code 33 rows > 22: split or scroll whole rows |
-| 72 | Module 12 | 12 | 26x75 | 5 | - | WATCH: code line 75 cols > 52: Shorts must wrap; WATCH: code 26 rows > 22: split or scroll whole rows; FIX: Algorithm bars scene but no Step trace table (add one, or use Memory boxes) |
+| 72 | Module 12 | 12 | 26x75 | 5 | yes | WATCH: code line 75 cols > 52: Shorts must wrap; WATCH: code 26 rows > 22: split or scroll whole rows |
 | 73 | Module 12 | 12 | 38x65 | 5 | yes | WATCH: code line 65 cols > 52: Shorts must wrap; WATCH: code 38 rows > 22: split or scroll whole rows |
 | 74 | Module 12 | 13 | 36x48 | 5 | yes | WATCH: code 36 rows > 22: split or scroll whole rows |
 | 75 | Module 12 | 13 | 36x49 | 5 | yes | WATCH: code 36 rows > 22: split or scroll whole rows |
 | 76 | Module 12 | 13 | 29x45 | 5 | yes | WATCH: code 29 rows > 22: split or scroll whole rows |
-| 77 | Module 12 | 13 | 18x67 | 5 | - | WATCH: code line 67 cols > 52: Shorts must wrap; FIX: Algorithm bars scene but no Step trace table (add one, or use Memory boxes) |
+| 77 | Module 12 | 13 | 18x67 | 5 | yes | WATCH: code line 67 cols > 52: Shorts must wrap |
 | 78 | Module 12 | 14 | 44x51 | 5 | yes | WATCH: code 44 rows > 22: split or scroll whole rows |
 | 79 | Module 12 | 14 | 43x45 | 5 | yes | WATCH: code 43 rows > 22: split or scroll whole rows |
 | 80 | Module 12 | 13 | 33x45 | 5 | yes | WATCH: code 33 rows > 22: split or scroll whole rows |
@@ -74,4 +74,4 @@ FIX = repair the Bible or episode JSON BEFORE rendering that episode. WATCH = lo
 | 85 | Module 13 | 12 | 85x81 | 5 | - | WATCH: code line 81 cols > 52: Shorts must wrap; WATCH: code 85 rows > 22: split or scroll whole rows |
 | 86 | Module 13 | 10 | 15x40 | 5 | - | ok |
 
-68 episodes checked, 5 with FIX flags. WATCH = renderer must handle it (wrap, scroll); not a Bible error.
+68 episodes checked, 0 with FIX flags. WATCH = renderer must handle it (wrap, scroll); not a Bible error.
