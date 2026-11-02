@@ -5,6 +5,7 @@ import { accentOn, readableOn } from "../theme/contrast";
 import { Panel, Chip, CodeBlock } from "../ui";
 import type { MascotConfig } from "../mascot/MascotCompanion";
 import { typewriterChars } from "../lib/motion";
+import { stripMarkdown as sanitizeText } from "../lib/sanitize";
 import { chooseFontSize } from "../lib/codeLayout";
 import { defaultHlCues, hlLineAt, trackValuesAt } from "../lib/cues";
 import { SceneFrame } from "./SceneFrame";
@@ -58,6 +59,13 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
   const activeCues = cues?.length ? cues : defaultCues;
   const highlightLine = hlLineAt(activeCues, frame);
   const trackedValues = trackValuesAt(activeCues, frame);
+  // The explanation of the latest highlighted line that has one: the card holds that text
+  // through lines without a label, and does not exist at all before the first label.
+  const labelText = [...activeCues]
+    .filter((cue) => cue.type === "hl" && cue.frame <= frame)
+    .reverse()
+    .map((cue) => (cue.type === "hl" ? labels?.[cue.line] : undefined))
+    .find((text): text is string => !!text);
 
   const outputStart = Math.round(durationInFrames * 0.78);
   const outputChars = output ? typewriterChars(output, frame, outputStart + 6, 1) : 0;
@@ -111,20 +119,27 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
                   whiteSpace: "pre-wrap",
                 }}
               >
-                {onScreen ?? ""}
+                {sanitizeText(onScreen ?? "")}
               </div>
             </Panel>
           )}
         </div>
 
         <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 24 }}>
-          <Panel background={palette.cream} style={{ minHeight: 160 }}>
-            <div
-              style={{ fontFamily: fonts.body, fontSize: 44, color: palette.ink, lineHeight: 1.35 }}
-            >
-              {highlightLine && labels?.[highlightLine] ? labels[highlightLine] : ""}
-            </div>
-          </Panel>
+          {labelText ? (
+            <Panel background={palette.cream} style={{ minHeight: 160 }}>
+              <div
+                style={{
+                  fontFamily: fonts.body,
+                  fontSize: 44,
+                  color: palette.ink,
+                  lineHeight: 1.35,
+                }}
+              >
+                {sanitizeText(labelText)}
+              </div>
+            </Panel>
+          ) : null}
 
           {Object.keys(trackedValues).length > 0 ? (
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>

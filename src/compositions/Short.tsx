@@ -3,6 +3,7 @@ import type { CalculateMetadataFunction } from "remotion";
 import type { Episode } from "../lib/episode";
 import { ShortLayout } from "../scenes/ShortLayout";
 import { coloursForModule } from "../theme/modules";
+import { stripMarkdown } from "../lib/sanitize";
 import { deriveShortVisuals } from "../lib/shortVisual";
 import { ShortVisualView } from "./ShortVisuals";
 
@@ -48,9 +49,9 @@ export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames }
       <Audio src={staticFile(`voice/${epId}/${short.id}.wav`)} />
       <ShortLayout
         ep={episode.ep}
-        hook={short.hook}
-        visualLabel={short.onScreen}
-        caption={short.caption}
+        hook={stripMarkdown(short.hook)}
+        visualLabel={stripMarkdown(short.onScreen)}
+        caption={stripMarkdown(short.caption)}
         colours={colours}
         durationInFrames={durationInFrames}
         mascotPose={visual?.kind === "pun" ? "snap" : "dance"}

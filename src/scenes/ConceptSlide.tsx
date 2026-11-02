@@ -36,6 +36,10 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
   // whole point, not just a payoff after the bullets finish. Xecxec's claws-up beat
   // still lands on the last bullet reveal, independent of the card's own timing.
   const analogyStart = 14;
+  // Fill the frame: with no analogy card the numbered lines own the whole slide, so the type
+  // scales up with how few lines there are (a lone line is huge, three still >= 80px).
+  const bodySize = analogy ? 64 : lines.length <= 1 ? 112 : lines.length === 2 ? 96 : 84;
+  const badge = analogy ? 56 : Math.round(bodySize * 0.9);
 
   return (
     <SceneFrame
@@ -97,8 +101,8 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                 <div
                   style={{
                     flexShrink: 0,
-                    width: 56,
-                    height: 56,
+                    width: badge,
+                    height: badge,
                     borderRadius: "50%",
                     background: colours.accent,
                     border: `${brutal.border}px solid ${palette.ink}`,
@@ -106,7 +110,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                     alignItems: "center",
                     justifyContent: "center",
                     fontFamily: fonts.title,
-                    fontSize: 32,
+                    fontSize: Math.round(badge * 0.57),
                     color: readableOn(colours.accent),
                   }}
                 >
@@ -116,7 +120,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                   style={{
                     fontFamily: fonts.body,
                     fontWeight: 700,
-                    fontSize: analogy ? 64 : 72,
+                    fontSize: bodySize,
                     color: readableOn(colours.bg),
                     lineHeight: 1.25,
                   }}
@@ -126,37 +130,6 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
               </div>
             );
           })}
-          {!analogy ? (
-            <div style={{ display: "flex", gap: 28, marginTop: 24 }}>
-              {["{ }", "#", "01"].map((glyph, i) => {
-                const start = lastReveal + 10 + i * 8;
-                const progress = enterProgress(frame, start, 10);
-                return (
-                  <div
-                    key={glyph}
-                    style={{
-                      width: 120,
-                      height: 120,
-                      borderRadius: "50%",
-                      background: colours.accent,
-                      border: `${brutal.border}px solid ${palette.ink}`,
-                      boxShadow: `${brutal.shadow}px ${brutal.shadow}px 0 0 ${palette.ink}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontFamily: fonts.code,
-                      fontWeight: 700,
-                      fontSize: 40,
-                      color: readableOn(colours.accent),
-                      scale: `${progress} ${progress}`,
-                    }}
-                  >
-                    {glyph}
-                  </div>
-                );
-              })}
-            </div>
-          ) : null}
         </div>
 
         {analogy

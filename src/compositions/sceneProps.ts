@@ -1,4 +1,5 @@
 import type { Episode, Scene } from "../lib/episode";
+import { stripMarkdown } from "../lib/sanitize.ts";
 
 const CUE_RE = /\[(HL|TRACK)\s+[^\]]*\]/g;
 const MAX_LINE_CHARS = 48;
@@ -24,7 +25,7 @@ const linesFromNarration = (narration: string): string[] => {
     const first = sentences[0];
     lines.push(first.length > MAX_LINE_CHARS ? `${first.slice(0, MAX_LINE_CHARS - 1)}…` : first);
   }
-  return lines;
+  return lines.map(stripMarkdown);
 };
 
 /** Terminal onScreen directions are shot descriptions ("`cmd` typed; reply "text"
@@ -53,7 +54,7 @@ const terminalLinesFromOnScreen = (
   if (lines.length === 0) {
     lines.push({ text: onScreen, kind: "output" });
   }
-  return lines;
+  return lines.map((line) => ({ ...line, text: stripMarkdown(line.text) }));
 };
 
 /** Many (not all) concept-slide onScreen directions are shaped "Title": description
@@ -65,8 +66,12 @@ export const analogyFromOnScreen = (
 ): { title: string; body: string } | undefined => {
   const m = onScreen.match(/^"?([^":]{2,40})"?:\s*(.+)$/);
   if (!m) return undefined;
-  return { title: m[1].trim(), body: m[2].trim() };
+  return { title: stripMarkdown(m[1]), body: stripMarkdown(m[2]) };
 };
+
+/** Bug code fields hold real C most of the time (left untouched); when one is prose (a wrong
+ * claim, a path) it is Markdown-stripped like every other on-screen string. */
+const bugText = (text: string): string => (/[;{]|#include/.test(text) ? text : stripMarkdown(text));
 
 const HL_CUE_RE = /\[HL\s+(\d+)\]/g;
 const MAX_LABEL_CHARS = 140;
@@ -87,7 +92,7 @@ const labelsFromNarration = (narration: string): Record<number, string> => {
     const sentenceEnd = segment.search(/[.?!](\s|$)/);
     if (sentenceEnd !== -1) segment = segment.slice(0, sentenceEnd + 1);
     if (segment.length > MAX_LABEL_CHARS) segment = `${segment.slice(0, MAX_LABEL_CHARS - 1)}…`;
-    if (segment) labels[line] = segment;
+    if (segment) labels[line] = stripMarkdown(segment);
   }
   return labels;
 };
@@ -120,7 +125,7 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
       return {
         file: scene.code?.file ?? "code.c",
         source: scene.code?.source,
-        onScreen: scene.onScreen,
+        onScreen: stripMarkdown(scene.onScreen),
         labels: labelsFromNarration(scene.narration),
         output: scene.code?.output,
       };
@@ -132,20 +137,20 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
       return { boxes: scene.boxes ?? [] };
     case "bug-of-the-day":
       return {
-        wrongCode: episode.bug.wrong,
-        error: episode.bug.error,
-        fixedCode: episode.bug.fixed,
-        why: episode.bug.why,
+        wrongCode: bugText(episode.bug.wrong),
+        error: stripMarkdown(episode.bug.error),
+        fixedCode: bugText(episode.bug.fixed),
+        why: stripMarkdown(episode.bug.why),
       };
     case "pun-card":
-      return { pun: episode.pun };
+      return { pun: stripMarkdown(episode.pun) };
     case "challenge":
-      return { task: episode.challenge };
+      return { task: stripMarkdown(episode.challenge) };
     case "outro": {
       const m = scene.onScreen.match(/EP\s*(\d+)\s*[·-]\s*(.+?)(?:\s*\+|$)/);
       return {
         nextEp: m ? Number(m[1]) : episode.ep + 1,
-        nextTitle: m ? m[2].trim() : "Next episode",
+        nextTitle: m ? stripMarkdown(m[2]) : "Next episode",
       };
     }
     default:

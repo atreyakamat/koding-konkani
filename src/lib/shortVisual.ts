@@ -1,4 +1,5 @@
 import type { Episode } from "./episode";
+import { stripMarkdown } from "./sanitize.ts";
 
 /** Pure (no React, no imports beyond types) so scripts/check_short_visuals.mts can run it too.
  * Every Short's visual is derived from ITS OWN data (hook, onScreen, script, fromScenes and
@@ -118,6 +119,11 @@ const quizOf = (episode: Episode, short: Short): ShortVisual => {
           .slice(0, 6),
       );
   }
+  // A compiler/linker message is something to name, not code to run: show it on the card.
+  if (code.length > 0 && code.every((l) => /undefined reference|error:|warning:/i.test(l))) {
+    options.unshift(...code);
+    code.length = 0;
+  }
   if (code.length === 0 && options.length === 0 && !question) question = unquote(short.hook);
   return { kind: "quiz", code, options, question };
 };
@@ -159,6 +165,38 @@ const bitsOf = (short: Short): ShortVisual | undefined => {
     rows: [{ label: String(value), bits }],
     sum: `${on.join(" + ")} = ${value}`,
   };
+};
+
+const words = (s: string): string[] =>
+  (s.toLowerCase().match(/[a-z0-9]{3,}/g) ?? []).filter((w) => w.length > 2);
+
+/** True when `text` just restates the hook (most of its words already appear in it), so a
+ * card showing it would repeat what is printed above (EP01 S1). */
+const repeatsHook = (text: string, hook: string): boolean => {
+  const t = words(text);
+  if (t.length === 0) return false;
+  const h = new Set(words(hook));
+  return t.filter((w) => h.has(w)).length / t.length >= 0.6;
+};
+
+/** The first one or two script sentences that say something the hook does not: no call to
+ * action, no restated hook, no pronunciation line (that has its own Short). */
+const takeawayOf = (short: Short, hook: string): string | undefined => {
+  const sentences = stripMarkdown(short.script)
+    .replace(/\s+/g, " ")
+    .split(/(?<=[.?!])\s+/)
+    .map((x) => x.trim())
+    .filter((x) => x.length >= 12);
+  const usable = sentences.filter(
+    (x) => !repeatsHook(x, hook) && !/full (series|episode|video)|comment|say it|pronounc/i.test(x),
+  );
+  const out: string[] = [];
+  for (const x of usable) {
+    if ([...out, x].join(" ").length > 140) break;
+    out.push(x);
+    if (out.length === 2) break;
+  }
+  return out.length ? out.join(" ") : undefined;
 };
 
 const candidatesFor = (episode: Episode, short: Short): ShortVisual[] => {
@@ -204,15 +242,40 @@ const candidatesFor = (episode: Episode, short: Short): ShortVisual[] => {
       out.push({ kind: "code", source: scene.code.source, mode: "advance" });
     } else if (scene.template === "terminal") {
       const lines = [...scene.onScreen.matchAll(/`([^`]+)`/g)].map((m) => m[1]);
-      if (lines.length) out.push({ kind: "terminal", lines });
+      // A single command is too sparse to be a visual (EP05 S1): let a richer candidate win.
+      if (lines.length >= 2) out.push({ kind: "terminal", lines });
     } else if (scene.template === "concept-slide") {
       const a = analogyOf(scene.onScreen);
       if (a) out.push({ kind: "analogy", ...a });
     }
   }
-  out.push({ kind: "text", text: short.onScreen.trim() || hook });
+  const own = short.onScreen.trim();
+  if (own && !repeatsHook(own, hook)) out.push({ kind: "text", text: own });
+  const takeaway = takeawayOf(short, hook);
+  if (takeaway) out.push({ kind: "text", text: takeaway });
+  if (own) out.push({ kind: "text", text: own });
   out.push({ kind: "text", text: hook });
   return out;
+};
+
+/** Strips Markdown from every prose field (never from code lines). */
+const cleanVisual = (v: ShortVisual): ShortVisual => {
+  switch (v.kind) {
+    case "pun":
+    case "text":
+      return { ...v, text: stripMarkdown(v.text) };
+    case "quiz":
+      return {
+        ...v,
+        code: v.code.map((l) => stripMarkdown(l)),
+        options: v.options.map(stripMarkdown),
+        question: stripMarkdown(v.question),
+      };
+    case "analogy":
+      return { ...v, title: stripMarkdown(v.title), body: stripMarkdown(v.body) };
+    default:
+      return v;
+  }
 };
 
 /** The visual for each of an episode's Shorts. Shorts are resolved S5, S4, S3, S2, S1 so the
@@ -229,7 +292,7 @@ export const deriveShortVisuals = (episode: Episode): Record<string, ShortVisual
     const pick =
       candidates.find((c) => !used.has(signature(c))) ?? candidates[candidates.length - 1];
     used.add(signature(pick));
-    result[id] = pick;
+    result[id] = cleanVisual(pick);
   }
   return result;
 };

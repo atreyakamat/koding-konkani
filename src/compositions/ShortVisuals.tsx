@@ -4,6 +4,7 @@ import type { ShortVisual } from "../lib/shortVisual";
 import { chooseFontSize } from "../lib/codeLayout";
 import { defaultHlCues, hlLineAt } from "../lib/cues";
 import { typewriterChars } from "../lib/motion";
+import { stripMarkdown } from "../lib/sanitize";
 import { textTransformFor } from "../lib/textCase";
 import { accentOn, readableOn } from "../theme/contrast";
 import { fonts } from "../theme/fonts";
@@ -26,34 +27,54 @@ const fitText = (chars: number, base = 72): number =>
         ? Math.round(base * 0.85)
         : base;
 
+/** Big text card. "s·s" separated parts stack as their own lines (a list reads as a list),
+ * sized to fill the slot; long words wrap instead of clipping. */
 const TextCard: React.FC<{ text: string; background?: string }> = ({
   text,
   background = palette.cream,
-}) => (
-  <Panel
-    background={background}
-    style={{
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    <div
+}) => {
+  const parts = text
+    .split(/\s·\s|\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  const longest = Math.max(...parts.map((p) => p.length), 1);
+  const base = parts.length >= 3 ? 76 : parts.length === 2 ? 88 : 96;
+  const size = Math.min(
+    fitText(parts.join(" ").length, base),
+    Math.floor(W / (longest * 0.62)) + 40,
+  );
+  return (
+    <Panel
+      background={background}
       style={{
-        fontFamily: fonts.title,
-        fontSize: fitText(text.length, 68),
-        lineHeight: 1.2,
-        textAlign: "center",
-        color: readableOn(background),
-        textTransform: textTransformFor(text),
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 28,
       }}
     >
-      {text}
-    </div>
-  </Panel>
-);
+      {parts.map((part, i) => (
+        <div
+          key={i}
+          style={{
+            fontFamily: fonts.title,
+            fontSize: Math.max(56, size),
+            lineHeight: 1.2,
+            textAlign: "center",
+            color: readableOn(background),
+            textTransform: textTransformFor(part),
+            overflowWrap: "anywhere",
+          }}
+        >
+          {part}
+        </div>
+      ))}
+    </Panel>
+  );
+};
 
 const PunVisual: React.FC<{ text: string }> = ({ text }) => {
   const frame = useCurrentFrame();
@@ -197,6 +218,7 @@ const TerminalVisual: React.FC<{ lines: string[] }> = ({ lines }) => {
             fontSize: line.length > 24 ? 40 : 48,
             color: palette.white,
             whiteSpace: "pre-wrap",
+            overflowWrap: "anywhere",
             opacity: reveal(frame, 8 + i * 14, 8),
           }}
         >
@@ -239,6 +261,10 @@ const QuizVisual: React.FC<{ visual: Extract<ShortVisual, { kind: "quiz" }>; acc
   accent,
 }) => {
   const frame = useCurrentFrame();
+  // No code to run, so no OUTPUT panel: the question and its options are the whole card.
+  if (visual.code.length === 0) {
+    return <TextCard text={[...visual.options, visual.question].filter(Boolean).join("s·s")} />;
+  }
   const outputH = visual.options.length ? 120 : 170;
   const optionsH = visual.options.length ? 150 : 0;
   const codeMax = H - outputH - optionsH - 32;
@@ -284,7 +310,7 @@ const QuizVisual: React.FC<{ visual: Extract<ShortVisual, { kind: "quiz" }>; acc
             color: palette.ink,
           }}
         >
-          {text.join("  ·  ")}
+          {text.join(" s·s ")}
         </div>
       ) : null}
       <Panel
@@ -526,13 +552,16 @@ const briefErrorLines = (error: string, wrong: string, isCode: boolean): string 
 const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
   const frame = useCurrentFrame();
   const isCode = /[;{]|#include/.test(episode.bug.wrong);
-  const errorText = briefErrorLines(episode.bug.error, episode.bug.wrong, isCode);
+  const wrongText = isCode ? episode.bug.wrong : stripMarkdown(episode.bug.wrong);
+  const errorText = stripMarkdown(
+    briefErrorLines(stripMarkdown(episode.bug.error), episode.bug.wrong, isCode),
+  );
   const errorChars = typewriterChars(errorText, frame, 24, 1.1);
   const errorH = 200;
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16, height: "100%" }}>
       {isCode ? (
-        <CodeBlock source={episode.bug.wrong} width={W} fontSize={40} maxHeight={H - errorH - 16} />
+        <CodeBlock source={wrongText} width={W} fontSize={40} maxHeight={H - errorH - 16} />
       ) : (
         <Panel background={palette.cream} style={{ flex: 1 }}>
           <div
@@ -545,7 +574,7 @@ const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
               whiteSpace: "pre-wrap",
             }}
           >
-            {episode.bug.wrong}
+            {wrongText}
           </div>
         </Panel>
       )}
@@ -558,6 +587,7 @@ const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
             lineHeight: 1.3,
             color: palette.tomato,
             whiteSpace: "pre-wrap",
+            overflowWrap: "anywhere",
           }}
         >
           {errorText.slice(0, errorChars)}

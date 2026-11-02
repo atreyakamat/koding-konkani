@@ -14,6 +14,9 @@ export type TerminalProps = BaseSceneProps & {
   lines: TerminalLine[];
 };
 
+/** Vertical space kept clear at the bottom for the mascot and his bubble. */
+const MASCOT_ZONE = 410;
+
 const colourFor = (kind: TerminalLineKind | undefined): string => {
   if (kind === "success") return palette.mint;
   if (kind === "error") return palette.tomato;
@@ -48,7 +51,9 @@ export const Terminal: React.FC<TerminalProps> = ({ lines, colours, durationInFr
     >
       <AbsoluteFill
         style={{
-          padding: 96,
+          // Reserve Xecxec's zone (bottom-right: 260px mascot + his speech bubble above him,
+          // ~y 680 down) so the window never sits behind him (EP14).
+          padding: `96px 96px ${MASCOT_ZONE}px`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

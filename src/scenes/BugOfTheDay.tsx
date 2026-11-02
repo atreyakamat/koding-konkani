@@ -13,17 +13,35 @@ export type BugOfTheDayProps = BaseSceneProps & {
   why?: string;
 };
 
-/** Keeps every `error:` line (the teaching point), fills the rest of the budget with the
- * earliest other lines in order, and marks anything dropped with an ellipsis line. */
-const fitErrorLines = (lines: string[], max: number): string[] => {
-  if (lines.length <= max) return lines;
+const MIN_BODY_PX = 22;
+const ERROR_SIZES = [28, 26, 24, MIN_BODY_PX];
+const WHY_SIZES = [34, 32, 30, 28, 26, 24, MIN_BODY_PX];
+/** Inner text width of a 1100px Panel (padding 32 + border 5, both sides). */
+const PANEL_TEXT_WIDTH = 1100 - 74;
+
+/** Largest size in the (descending) list that fits; the smallest (>= MIN_BODY_PX) otherwise. */
+const pickFont = (sizes: number[], fits: (size: number) => boolean): number =>
+  sizes.find(fits) ?? sizes[sizes.length - 1];
+
+/** Rows the lines occupy when each wraps at `perRow` characters. */
+const wrappedRows = (lines: string[], perRow: number): number =>
+  lines.reduce((n, line) => n + Math.max(1, Math.ceil(line.length / Math.max(1, perRow))), 0);
+
+/** Keeps every `error:` line (the teaching point), then the earliest other lines in order,
+ * while the wrapped rows fit `maxRows`; whole lines only, with an ellipsis for anything dropped. */
+const fitErrorLines = (lines: string[], perRow: number, maxRows: number): string[] => {
+  if (wrappedRows(lines, perRow) <= maxRows) return lines;
   const keep = new Set<number>();
   lines.forEach((line, i) => {
     if (line.includes("error:")) keep.add(i);
   });
-  for (let i = 0; i < lines.length && keep.size < max - 1; i++) keep.add(i);
-  const kept = [...keep].sort((a, b) => a - b).slice(0, max - 1);
-  return [...kept.map((i) => lines[i]), "…"];
+  for (let i = 0; i < lines.length; i++) {
+    if (keep.has(i)) continue;
+    const next = [...keep, i].sort((x, y) => x - y).map((k) => lines[k]);
+    if (wrappedRows(next, perRow) + 1 > maxRows) break;
+    keep.add(i);
+  }
+  return [...[...keep].sort((x, y) => x - y).map((k) => lines[k]), "…"];
 };
 
 /** Butter banner drops in; wrong code shakes and the GCC error appears; then the fix lands in mint. */
@@ -45,13 +63,24 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   const allErrorLines = error.split("\n");
   // The error panel has to fit under the code panel and above the caption band. Budget:
   // 1080 - 80 top - 200 bottom = 800, minus banner (~70), two gaps (48), the code panel
-  // (min(codeLines, 8) lines at 32px*1.5 + 40 + 10 border), and the panel's own 64px
-  // padding + 10px border. Whatever is left, in whole lines, is the budget.
+  // (min(codeLines, 8) rows at 40px*1.5 + chrome), and the panel's own 64px padding + 10px
+  // border. Text is never shrunk below MIN_BODY_PX: long lines WRAP (counted here, so the
+  // budget sees every wrapped row) and only whole lines are dropped.
   const codePanelHeight = Math.min(codeLines * 60 + 50, 410);
   const errorTextBudget = 800 - 70 - 48 - codePanelHeight - 74;
-  const errorFontSize = allErrorLines.length > 6 ? 22 : 28;
-  const maxErrorLines = Math.max(2, Math.floor(errorTextBudget / (errorFontSize * 1.3)));
-  const errorText = fitErrorLines(allErrorLines, maxErrorLines).join("\n");
+  const errorFontSize = pickFont(ERROR_SIZES, (f) => {
+    const perRow = Math.floor(PANEL_TEXT_WIDTH / (f * 0.6));
+    return wrappedRows(allErrorLines, perRow) * f * 1.3 <= errorTextBudget;
+  });
+  const errorPerRow = Math.floor(PANEL_TEXT_WIDTH / (errorFontSize * 0.6));
+  const maxErrorRows = Math.max(2, Math.floor(errorTextBudget / (errorFontSize * 1.3)));
+  const errorText = fitErrorLines(allErrorLines, errorPerRow, maxErrorRows).join("\n");
+  // "Why" sits under the FIXED chip (~110px) once the fix lands.
+  const whyBudget = 800 - 70 - 48 - codePanelHeight - 110 - 16;
+  const whyFontSize = pickFont(WHY_SIZES, (f) => {
+    const perRow = Math.floor((1100 - 8) / (f * 0.52));
+    return wrappedRows((why ?? "").split("\n"), perRow) * f * 1.4 <= whyBudget;
+  });
   const phase2 = Math.round(durationInFrames * 0.4);
   const phase3 = Math.round(durationInFrames * 0.68);
   const isFixed = frame >= phase3;
@@ -138,6 +167,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
                   lineHeight: 1.3,
                   color: palette.tomato,
                   whiteSpace: "pre-wrap",
+                  overflowWrap: "anywhere",
                 }}
               >
                 {errorText}
@@ -162,7 +192,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
               <div
                 style={{
                   fontFamily: fonts.body,
-                  fontSize: 32,
+                  fontSize: whyFontSize,
                   color: palette.ink,
                   lineHeight: 1.4,
                 }}
