@@ -43,16 +43,17 @@ export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durati
               translate: `0px ${(1 - cardProgress) * 40}px`,
             }}
           >
-            <Panel background={palette.cream}>
+            <Panel background={palette.cream} padding={44}>
               <Chip
                 text="Next episode"
+                fontSize={44}
                 background={colours.accent}
                 color={readableOn(colours.accent)}
               />
               <div
                 style={{
                   fontFamily: fonts.title,
-                  fontSize: 52,
+                  fontSize: 76,
                   color: palette.ink,
                   marginTop: 20,
                   textTransform: textTransformFor(nextTitle),
@@ -69,7 +70,7 @@ export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durati
               style={{
                 fontFamily: fonts.body,
                 fontWeight: 700,
-                fontSize: 38,
+                fontSize: 60,
                 color: readableOn(colours.bg),
               }}
             >

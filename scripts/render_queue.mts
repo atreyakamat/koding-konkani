@@ -30,6 +30,19 @@ if (episodeNumbers.length === 0 || episodeNumbers.some((n) => !Number.isInteger(
   process.exit(1);
 }
 
+// Two Shorts in one episode must never show the same visual (and none may fall back to the
+// old generic printf("Hi"); card): fail before spending render time.
+try {
+  execFileSync(
+    process.execPath,
+    ["scripts/check_short_visuals.mts", ...episodeNumbers.map(String)],
+    { cwd: ROOT, stdio: "inherit" },
+  );
+} catch {
+  console.error("check_short_visuals failed: duplicate or generic Short visuals. Not rendering.");
+  process.exit(1);
+}
+
 mkdirSync(join(ROOT, "out"), { recursive: true });
 
 const log = (line: string): void => {

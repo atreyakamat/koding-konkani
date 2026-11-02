@@ -8,7 +8,12 @@ import { Backdrop, Panel, Sticker } from "../ui";
 import { Xecxec } from "../mascot/Xecxec";
 import { enterProgress } from "../lib/motion";
 import { textTransformFor } from "../lib/textCase";
+import type { XecxecPose } from "../mascot/Xecxec";
 import type { BaseSceneProps } from "./types";
+
+/** The visual slot every Short visual is laid out for (px, 1080x1920 design). Ends at y=1070,
+ * just above Xecxec, so a visual can use the whole free height. */
+export const SHORT_SLOT = { top: 470, width: 860, height: 600 } as const;
 
 export type ShortLayoutProps = PropsWithChildren<
   BaseSceneProps & {
@@ -19,6 +24,8 @@ export type ShortLayoutProps = PropsWithChildren<
     caption?: string;
     /** Frames the follow/subscribe end card is on screen (default 66 = 2.2 s at 30 fps). */
     endCardFrames?: number;
+    /** Xecxec's pose (default dancing; pun Shorts snap). */
+    mascotPose?: XecxecPose;
   }
 >;
 
@@ -44,6 +51,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
   colours,
   durationInFrames,
   endCardFrames = 66,
+  mascotPose = "dance",
   children,
 }) => {
   const frame = useCurrentFrame();
@@ -62,10 +70,9 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
   const activeWord = Math.floor((frame - CAPTION_START) / FRAMES_PER_WORD);
   const hookInk = readableOn(colours.bg);
 
-  // A long hook wraps to more lines at the default 76px — shrink it and push the
-  // visual slot down so even a 4-line hook can't run into it (item 2, 1 Nov fix list).
+  // Shrink long hooks so even four lines clear the visual slot.
   const hookFontSize = hook.length > 70 ? 56 : hook.length > 45 ? 64 : 76;
-  const visualTop = hook.length > 70 ? 500 : hook.length > 45 ? 470 : 440;
+  const visualTop = SHORT_SLOT.top;
 
   return (
     <AbsoluteFill>
@@ -91,8 +98,8 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
         style={{
           position: "absolute",
           top: 120,
-          left: 60,
-          width: 860,
+          left: 100,
+          width: 820,
           scale: `${hookScale} ${hookScale}`,
           transformOrigin: "top left",
         }}
@@ -116,8 +123,8 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
           position: "absolute",
           top: visualTop,
           left: 60,
-          width: 860,
-          height: 540,
+          width: SHORT_SLOT.width,
+          height: SHORT_SLOT.height,
           scale: `${visualProgress} ${visualProgress}`,
           opacity: showEnd ? 0 : 1,
           transformOrigin: "center top",
@@ -152,8 +159,8 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
             position: "absolute",
             top: visualTop,
             left: 60,
-            width: 860,
-            height: 540,
+            width: SHORT_SLOT.width,
+            height: SHORT_SLOT.height,
             scale: `${endProgress} ${endProgress}`,
             transformOrigin: "center top",
           }}
@@ -202,7 +209,11 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
 
       {/* mascot, always dancing, always in frame */}
       <div style={{ position: "absolute", top: 1085, left: 40 }}>
-        <Xecxec pose="dance" size={420} />
+        <Xecxec
+          pose={mascotPose}
+          size={420}
+          frame={mascotPose === "snap" ? frame % 45 : undefined}
+        />
       </div>
       <div style={{ position: "absolute", top: 1170, left: 520 }}>
         <Sticker

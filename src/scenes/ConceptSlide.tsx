@@ -174,13 +174,13 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                     translate: `${(1 - progress) * 60}px 0`,
                   }}
                 >
-                  <Panel background={palette.cream} padding={40} style={{ width: "100%" }}>
+                  <Panel background={palette.cream} padding={44} style={{ width: "100%" }}>
                     <div
                       style={{
                         fontFamily: fonts.title,
-                        fontSize: 36,
+                        fontSize: 48,
                         color: accentOn(palette.cream, colours.accent),
-                        marginBottom: 20,
+                        marginBottom: 24,
                         textTransform: textTransformFor(analogy.title),
                       }}
                     >
@@ -189,9 +189,10 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
                     <div
                       style={{
                         fontFamily: fonts.body,
-                        fontSize: 40,
+                        fontSize: analogy.body.length > 70 ? 56 : 64,
+                        fontWeight: 700,
                         color: palette.ink,
-                        lineHeight: 1.4,
+                        lineHeight: 1.3,
                       }}
                     >
                       {analogy.body}

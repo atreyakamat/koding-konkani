@@ -2,7 +2,6 @@ import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
 import { readableOn } from "../theme/contrast";
-import { springs } from "../lib/motion";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -13,11 +12,6 @@ export type PunCardProps = BaseSceneProps & {
 /** Full tomato screen, one pun, Xecxec snaps. The card flips in, rimshot on landing. */
 export const PunCard: React.FC<PunCardProps> = ({ pun }) => {
   const frame = useCurrentFrame();
-  const flipScaleX = interpolate(frame, [0, 12], [0, 1], {
-    easing: springs.slam,
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
   const opacity = interpolate(frame, [0, 6], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -40,7 +34,6 @@ export const PunCard: React.FC<PunCardProps> = ({ pun }) => {
       >
         <div
           style={{
-            scale: `${flipScaleX} 1`,
             opacity,
             fontFamily: fonts.title,
             fontSize: 64,

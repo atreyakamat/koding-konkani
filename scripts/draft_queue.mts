@@ -8,7 +8,8 @@
  * out/draft720/report.md is rebuilt after every episode from results.json, so a
  * restart carries earlier episodes' rows forward.
  *
- * Usage: node scripts/draft_queue.mts [episode-number...]   (default: 1..19)
+ * Usage: node scripts/draft_queue.mts [episode-number...] [--only=S1,S2] [--no-long] [--no-shorts]
+ * (default: episodes 1..19, long + all Shorts; --only implies --no-long and merges into earlier results)
  */
 import { execSync } from "node:child_process";
 import {
@@ -47,10 +48,33 @@ const DRAFT_FLAGS = [
 ];
 const SHORT_IDS = ["S1", "S2", "S3", "S4", "S5"] as const;
 
-const argEps = process.argv.slice(2).map(Number);
+const flagArgs = process.argv.slice(2).filter((a) => a.startsWith("--"));
+const only =
+  flagArgs
+    .find((a) => a.startsWith("--only="))
+    ?.slice(7)
+    .split(",") ?? [];
+const skipLong = flagArgs.includes("--no-long") || only.length > 0;
+const skipShorts = flagArgs.includes("--no-shorts");
+const argEps = process.argv
+  .slice(2)
+  .filter((a) => !a.startsWith("--"))
+  .map(Number);
 const episodeNumbers = argEps.length ? argEps : Array.from({ length: 19 }, (_, i) => i + 1);
 if (episodeNumbers.some((n) => !Number.isInteger(n) || n < 1)) {
   console.error("usage: node scripts/draft_queue.mts [episode-number...]");
+  process.exit(1);
+}
+
+// Two Shorts in one episode must never show the same visual (and none may fall back to the
+// old generic printf("Hi"); card): fail before spending render time.
+try {
+  execSync(`node scripts/check_short_visuals.mts ${episodeNumbers.join(" ")}`, {
+    cwd: ROOT,
+    stdio: "inherit",
+  });
+} catch {
+  console.error("check_short_visuals failed: duplicate or generic Short visuals. Not rendering.");
   process.exit(1);
 }
 
@@ -292,8 +316,12 @@ for (const ep of episodeNumbers) {
   const longProps = join(outDir, ".props-longvideo.json");
   writeFileSync(longProps, JSON.stringify({ episodeNumber: ep }), "utf-8");
   const longOut = join(outDir, `${epId}-720p.mp4`);
-  const long = renderJob(`${epId} long 720p`, "LongVideo", longProps, longOut, 1280, 720);
-  if (long.status === "DONE") {
+  const prev = results[epId];
+  const long: FileResult =
+    skipLong && prev
+      ? prev.long
+      : renderJob(`${epId} long 720p`, "LongVideo", longProps, longOut, 1280, 720);
+  if (!(skipLong && prev) && long.status === "DONE") {
     long.blackFrames = blackDetect(longOut);
     const loud = measureLoudness(longOut);
     if (loud) Object.assign(long, { lufs: loud.lufs, tp: loud.tp, loudnessPass: loud.pass });
@@ -304,8 +332,9 @@ for (const ep of episodeNumbers) {
     );
   }
 
-  const shorts: FileResult[] = [];
+  const shorts: FileResult[] = prev ? [...prev.shorts] : [];
   for (const shortId of SHORT_IDS) {
+    if (skipShorts || (only.length > 0 && !only.includes(shortId))) continue;
     const props = join(outDir, `.props-short-${shortId}.json`);
     writeFileSync(props, JSON.stringify({ episodeNumber: ep, shortId }), "utf-8");
     const shortOut = join(outDir, `${epId}-${shortId}-720p.mp4`);
@@ -316,7 +345,9 @@ for (const ep of episodeNumbers) {
       const sheet = shortOut.replace(/\.mp4$/, ".sheet.png");
       if (contactSheet(shortOut, sheet, 2.5, 180)) result.sheet = sheet;
     }
-    shorts.push(result);
+    const at = shorts.findIndex((x) => x.file === result.file);
+    if (at >= 0) shorts[at] = result;
+    else shorts.push(result);
   }
 
   results[epId] = { ep, long, shorts, finishedAt: new Date().toISOString() };

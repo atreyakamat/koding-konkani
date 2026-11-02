@@ -47,7 +47,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   // 1080 - 80 top - 200 bottom = 800, minus banner (~70), two gaps (48), the code panel
   // (min(codeLines, 8) lines at 32px*1.5 + 40 + 10 border), and the panel's own 64px
   // padding + 10px border. Whatever is left, in whole lines, is the budget.
-  const codePanelHeight = Math.min(codeLines, 8) * 48 + 50;
+  const codePanelHeight = Math.min(codeLines * 60 + 50, 410);
   const errorTextBudget = 800 - 70 - 48 - codePanelHeight - 74;
   const errorFontSize = allErrorLines.length > 6 ? 22 : 28;
   const maxErrorLines = Math.max(2, Math.floor(errorTextBudget / (errorFontSize * 1.3)));
@@ -106,8 +106,8 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
               <CodeBlock
                 source={isFixed ? fixedCode : wrongCode}
                 width={1100}
-                fontSize={32}
-                maxVisibleLines={Math.min(codeLines, 8)}
+                fontSize={40}
+                maxHeight={410}
               />
             ) : (
               <Panel background={isFixed ? palette.mint : palette.cream} borderColor={palette.ink}>

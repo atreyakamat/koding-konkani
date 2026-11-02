@@ -41,15 +41,15 @@ export const Challenge: React.FC<ChallengeProps> = ({
         }}
       >
         <div
-          style={{ flex: 1, maxWidth: "62%", display: "flex", flexDirection: "column", gap: 28 }}
+          style={{ flex: 1, maxWidth: "68%", display: "flex", flexDirection: "column", gap: 28 }}
         >
-          <Panel background={palette.cream}>
+          <Panel background={palette.cream} padding={44}>
             <div
               style={{
                 fontFamily: fonts.title,
-                fontSize: 36,
+                fontSize: 56,
                 color: accentOn(palette.cream, colours.accent),
-                marginBottom: 16,
+                marginBottom: 20,
               }}
             >
               CHALLENGE
@@ -58,9 +58,9 @@ export const Challenge: React.FC<ChallengeProps> = ({
               style={{
                 fontFamily: fonts.body,
                 fontWeight: 700,
-                fontSize: 44,
+                fontSize: 64,
                 color: palette.ink,
-                lineHeight: 1.35,
+                lineHeight: 1.3,
               }}
             >
               {task}
@@ -82,7 +82,7 @@ export const Challenge: React.FC<ChallengeProps> = ({
                     key={example}
                     style={{ scale: `${progress} ${progress}`, opacity: progress }}
                   >
-                    <Chip text={example} background={palette.white} />
+                    <Chip text={example} background={palette.white} fontSize={48} />
                   </div>
                 );
               })}
@@ -93,7 +93,7 @@ export const Challenge: React.FC<ChallengeProps> = ({
             style={{
               fontFamily: fonts.body,
               fontWeight: 700,
-              fontSize: 32,
+              fontSize: 56,
               color: accentOn(colours.bg, colours.accent),
             }}
           >

@@ -1,7 +1,6 @@
 import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
-import { accentOn } from "../theme/contrast";
 import { Sticker, Chip } from "../ui";
 import { enterProgress, springs } from "../lib/motion";
 import { textTransformFor } from "../lib/textCase";
@@ -50,9 +49,10 @@ export const TitleCard: React.FC<TitleCardProps> = ({ ep, title, moduleLabel, co
             fontFamily: fonts.title,
             fontSize: 128,
             lineHeight: 1.05,
-            color: colours.bg,
-            WebkitTextStroke: `4px ${accentOn(colours.bg, colours.accent)}`,
+            color: palette.white,
+            WebkitTextStroke: `10px ${palette.ink}`,
             paintOrder: "stroke fill",
+            textShadow: `8px 8px 0 ${palette.ink}`,
             textTransform: textTransformFor(title),
             textAlign: "center",
             scale: `${titleScale} ${titleScale}`,

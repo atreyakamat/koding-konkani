@@ -123,11 +123,11 @@ export const presentationForTransition = (
     case "flip":
       // Mid-flip, both faces are edge-on and backface-hidden (nothing renders) - without an
       // opaque outer background here, that gap shows the root black for a frame (1 Nov fix list,
-      // item 4). "any -> pun-card" is the only flip, and pun-card is always tomato, so this is safe.
+      // item 4). Butter, not tomato: tomato-on-tomato hid the rotating card's edge, so the pun text looked clipped mid-flip (EP18).
       return flip({
         direction: "from-right",
-        outerEnterStyle: { backgroundColor: palette.tomato },
-        outerExitStyle: { backgroundColor: palette.tomato },
+        outerEnterStyle: { backgroundColor: palette.butter },
+        outerExitStyle: { backgroundColor: palette.butter },
       }) as TransitionPresentation<Record<string, unknown>>;
     case "clock-wipe":
       return clockWipe({ width: 1920, height: 1080 }) as unknown as TransitionPresentation<
