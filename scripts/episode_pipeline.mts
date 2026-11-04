@@ -416,6 +416,12 @@ const qaFile = (
   return qa;
 };
 
+/** Non-PASS check_c rows approved as checker limits by the owner (4 Nov 2026): the episode still renders. */
+const KNOWN_CHECKER_LIMITS: Record<number, { files: string[]; why: string }> = {
+  41: { files: ["file3.c"], why: "file3.c (copy.c) is a deliberate compile-error teaching example" },
+  48: { files: ["file1.c"], why: "file1.c needs typed stdin; the checker gives none" },
+};
+
 /** GCC-checks one episode. Returns true (proceed) or false (log + skip episode). */
 const gccCheckPasses = (ep: number): boolean => {
   try {
@@ -429,6 +435,16 @@ const gccCheckPasses = (ep: number): boolean => {
   }
   const report = readFileSync(join(ROOT, "out", "c-check-report.md"), "utf-8");
   if (/## Non-PASS results \((?!0\))/.test(report)) {
+    // Checker limits the owner has approved (not defects in the episode): only these exact files.
+    const known = KNOWN_CHECKER_LIMITS[ep];
+    if (known) {
+      const rows = report.split("\n").filter((l) => l.startsWith(`| ${ep} |`));
+      const unexpected = rows.filter((l) => !known.files.some((f) => l.includes(`| ${f} |`)));
+      if (unexpected.length === 0) {
+        log(`GCC   ep${String(ep).padStart(3, "0")}: non-PASS accepted (checker limit: ${known.why})`);
+        return true;
+      }
+    }
     logSkip(ep, "GCC check found non-PASS results — see out/c-check-report.md for this run");
     return false;
   }
@@ -594,7 +610,7 @@ for (let ep = startEp; ep <= endEp; ep++) {
         "--x264-preset=medium",
         "--audio-bitrate=320k",
         "--timeout=120000",
-        `--concurrency=${pickConcurrency(2, `${epId} long`)}`,
+        `--concurrency=${pickConcurrency(4, `${epId} long`)}`,
       ],
       3840,
       2160,
@@ -620,7 +636,7 @@ for (let ep = startEp; ep <= endEp; ep++) {
           "--x264-preset=medium",
           "--audio-bitrate=320k",
           "--timeout=120000",
-          `--concurrency=${pickConcurrency(2, `${epId} ${shortId}`)}`,
+          `--concurrency=${pickConcurrency(4, `${epId} ${shortId}`)}`,
         ],
         1080,
         1920,
