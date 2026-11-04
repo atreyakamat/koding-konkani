@@ -76,7 +76,7 @@ def analyse(ep: int, title: str, body: str, module: str) -> Row:
         row.max_cols = max(row.max_cols, max((len(l.expandtabs(4)) for l in lines), default=0))
     row.has_expected = "```text" in code
 
-    row.has_trace = any(k.startswith("Step trace") for k in secs)
+    row.has_trace = any(k.startswith(("Step trace", "Move trace")) for k in secs)
     row.shorts = len(re.findall(r"^\*\*S[1-5] ·", body, flags=re.M))
 
     # flags: each one names the fix so a small model can act on it
@@ -95,7 +95,7 @@ def analyse(ep: int, title: str, body: str, module: str) -> Row:
     if any("Terminal" in t for t in row.templates) and not row.has_expected:
         row.flags.append("FIX: Terminal scene but no expected output block")
     if any("Algorithm" in t for t in row.templates) and not row.has_trace:
-        row.flags.append("FIX: Algorithm bars scene but no Step trace table (add one, or use Memory boxes)")
+        row.flags.append("FIX: Algorithm bars scene but no Step/Move trace table (add one, or use Memory boxes)")
     if "**" in title or "`" in title:
         row.flags.append("FIX: markdown in title")
     return row
