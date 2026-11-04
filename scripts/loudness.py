@@ -53,6 +53,24 @@ def _sample_rate(in_path: str) -> str:
     return subprocess.run(cmd, capture_output=True, text=True, check=True).stdout.strip()
 
 
+_AAC_ENCODER: str | None = None
+
+
+def _aac_encoder() -> str:
+    """Windows's aac_mf (MediaFoundation) hits the requested -b:a exactly; the
+    native "aac" encoder caps out around ~230kbps regardless of what's asked
+    for (confirmed: 320k and 400k both land ~235k on this build, which has no
+    libfdk_aac). aac_mf only exists on Windows, so pick whichever ffmpeg here
+    actually has."""
+    global _AAC_ENCODER
+    if _AAC_ENCODER is None:
+        listed = subprocess.run(
+            ["ffmpeg", "-hide_banner", "-encoders"], capture_output=True, text=True, check=True
+        ).stdout
+        _AAC_ENCODER = "aac_mf" if "aac_mf" in listed else "aac"
+    return _AAC_ENCODER
+
+
 def normalize(in_path: str, out_path: str) -> dict:
     return normalize_file(in_path, out_path)
 
@@ -97,11 +115,7 @@ def normalize_file(
     if copy_video:
         cmd += ["-c:v", "copy"]
     if audio_bitrate:
-        # ffmpeg's native "aac" encoder caps out around ~230kbps regardless of the
-        # requested -b:a (confirmed: asking for 320k or 400k both land ~235k) — this
-        # build has no libfdk_aac, but Windows's own aac_mf encoder (via
-        # MediaFoundation) hits the requested bitrate correctly.
-        cmd += ["-c:a", "aac_mf", "-b:a", audio_bitrate]
+        cmd += ["-c:a", _aac_encoder(), "-b:a", audio_bitrate]
     cmd += [out_path]
     subprocess.run(cmd, capture_output=True, text=True, check=True)
     return measured
