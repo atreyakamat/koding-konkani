@@ -266,7 +266,8 @@ const CodeVisual: React.FC<{
 }> = ({ source, mode, durationInFrames }) => {
   const frame = useCurrentFrame();
   // Short snippets (one or two lines) get a much larger font to fill the slot.
-  const font = chooseFontSize(source, W, H, 96);
+  const numbered = source.includes("\n");
+  const font = chooseFontSize(source, W, H, 120, numbered);
   const visibleChars = typewriterChars(source, frame, 6, Math.max(1, source.length / 36));
   const typed = visibleChars >= source.length;
   const hl =
@@ -282,6 +283,7 @@ const CodeVisual: React.FC<{
       fillHeight={H}
       visibleChars={visibleChars}
       highlightLine={hl}
+      lineNumbers={numbered}
     />
   );
 };

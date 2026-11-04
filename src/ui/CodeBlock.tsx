@@ -29,6 +29,8 @@ export type CodeBlockProps = {
   maxHeight?: number;
   /** Stretch the panel up to this height (code centred) so it uses the free space. */
   fillHeight?: number;
+  /** Show the line-number gutter (default). A one-line snippet has nothing to number. */
+  lineNumbers?: boolean;
 };
 
 /** Code panel: cream background, JetBrains Mono, line numbers, token colours, butter line highlight.
@@ -42,8 +44,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   maxVisibleLines,
   maxHeight,
   fillHeight,
+  lineNumbers = true,
 }) => {
-  const rows = layoutRows(source, width, fontSize);
+  const rows = layoutRows(source, width, fontSize, lineNumbers);
   const rowH = rowHeightPx(fontSize);
   const chrome = chromePx();
 
@@ -134,18 +137,20 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                   height: rowH,
                 }}
               >
-                <span
-                  style={{
-                    color: "rgba(17, 17, 17, 0.4)",
-                    width: `${GUTTER_CH}ch`,
-                    textAlign: "right",
-                    marginRight: GUTTER_GAP,
-                    userSelect: "none",
-                    flexShrink: 0,
-                  }}
-                >
-                  {row.first ? row.line : ""}
-                </span>
+                {lineNumbers ? (
+                  <span
+                    style={{
+                      color: "rgba(17, 17, 17, 0.4)",
+                      width: `${GUTTER_CH}ch`,
+                      textAlign: "right",
+                      marginRight: GUTTER_GAP,
+                      userSelect: "none",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {row.first ? row.line : ""}
+                  </span>
+                ) : null}
                 <span style={{ whiteSpace: "pre" }}>
                   {tokenizeLine(shown).map((token, tokenIndex) => (
                     <span

@@ -29,8 +29,9 @@ export const rowHeightPx = (fontSize: number): number => Math.round(fontSize * L
 export const chromePx = (): number => 2 * PADDING_Y + 2 * BORDER + BOTTOM_EXTRA;
 
 /** Characters that fit on one row at `fontSize` inside a panel `width` px wide. */
-export const charsPerRow = (width: number, fontSize: number): number => {
-  const text = width - 2 * PADDING_X - 2 * BORDER - GUTTER_GAP - GUTTER_CH * CHAR_EM * fontSize;
+export const charsPerRow = (width: number, fontSize: number, lineNumbers = true): number => {
+  const gutter = lineNumbers ? GUTTER_GAP + GUTTER_CH * CHAR_EM * fontSize : 0;
+  const text = width - 2 * PADDING_X - 2 * BORDER - gutter;
   return Math.max(8, Math.floor(text / (CHAR_EM * fontSize)));
 };
 
@@ -54,8 +55,13 @@ const wrapLine = (text: string, limit: number): { text: string; hang: number }[]
   return out;
 };
 
-export const layoutRows = (source: string, width: number, fontSize: number): CodeRow[] => {
-  const limit = charsPerRow(width, fontSize);
+export const layoutRows = (
+  source: string,
+  width: number,
+  fontSize: number,
+  lineNumbers = true,
+): CodeRow[] => {
+  const limit = charsPerRow(width, fontSize, lineNumbers);
   const rows: CodeRow[] = [];
   source.split("\n").forEach((text, i) => {
     wrapLine(text, limit).forEach((chunk, k) => {
@@ -73,12 +79,13 @@ export const chooseFontSize = (
   width: number,
   maxHeight: number,
   maxFont: number = MAX_FONT,
+  lineNumbers = true,
 ): number => {
   const fonts: number[] = [];
   for (let f = maxFont; f >= MIN_FONT; f -= 4) fonts.push(f);
   const lineCount = source.split("\n").length;
   const fits = (f: number, allowWrap: boolean): boolean => {
-    const rows = layoutRows(source, width, f);
+    const rows = layoutRows(source, width, f, lineNumbers);
     if (!allowWrap && rows.length > lineCount) return false;
     return rows.length * rowHeightPx(f) + chromePx() <= maxHeight;
   };
