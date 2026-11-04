@@ -8,6 +8,7 @@ import { typewriterChars } from "../lib/motion";
 import { stripMarkdown as sanitizeText } from "../lib/sanitize";
 import { chooseFontSize } from "../lib/codeLayout";
 import { defaultHlCues, hlLineAt, trackValuesAt } from "../lib/cues";
+import { layoutOutput } from "../lib/outputFit";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -36,12 +37,6 @@ const PANEL_TOP = 96 + 64 + 20;
 const MASCOT_SIZE_WITH_OUTPUT = 240;
 const RIGHT_COLUMN_BOTTOM = 700;
 const OUTPUT_ROOM = RIGHT_COLUMN_BOTTOM - 96 - 160 - 24 - 90 - 24;
-
-const pickOutputFont = (output: string): number => {
-  const rows = output.split("\n").length + 1;
-  const sizes = [34, 30, 28, 26, 24];
-  return sizes.find((f) => rows * f * 1.35 + 40 <= OUTPUT_ROOM) ?? 24;
-};
 
 /** Code explain: code types itself, then the active line gets a butter highlight with a live variable tracker. */
 export const CodeExplain: React.FC<CodeExplainProps> = ({
@@ -80,7 +75,15 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
     .find((text): text is string => !!text);
 
   const outputStart = Math.round(durationInFrames * 0.78);
-  const outputChars = output ? typewriterChars(output, frame, outputStart + 6, 1) : 0;
+  // Long outputs (EP20: 11 lines, EP25: 14) take the whole right column once they print, so the
+  // text stays readable; the explanation card and tracker give way for the last 22% of the scene.
+  const outputLayout = output
+    ? layoutOutput(output, OUTPUT_ROOM, RIGHT_COLUMN_BOTTOM - 96)
+    : undefined;
+  const outputTakesColumn = !!outputLayout?.fullColumn && frame >= outputStart;
+  const outputChars = outputLayout
+    ? typewriterChars(outputLayout.text, frame, outputStart + 6, 1)
+    : 0;
   const mascot: MascotConfig = output
     ? {
         size: MASCOT_SIZE_WITH_OUTPUT,
@@ -149,7 +152,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
             paddingBottom: output ? 1080 - 96 - RIGHT_COLUMN_BOTTOM : 0,
           }}
         >
-          {labelText ? (
+          {labelText && !outputTakesColumn ? (
             <Panel background={palette.cream} style={{ minHeight: 160 }}>
               <div
                 style={{
@@ -164,7 +167,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
             </Panel>
           ) : null}
 
-          {Object.keys(trackedValues).length > 0 ? (
+          {Object.keys(trackedValues).length > 0 && !outputTakesColumn ? (
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               <div
                 style={{
@@ -188,7 +191,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
               </div>
             </div>
           ) : null}
-          {output ? (
+          {outputLayout ? (
             <div
               style={{
                 opacity: frame >= outputStart ? 1 : 0,
@@ -197,14 +200,14 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
                 boxShadow: `8px 8px 0 0 ${palette.ink}`,
                 padding: "20px 32px",
                 fontFamily: fonts.code,
-                fontSize: pickOutputFont(output),
+                fontSize: outputLayout.size,
                 color: palette.mint,
                 whiteSpace: "pre-wrap",
               }}
             >
               <span style={{ color: palette.white }}>{"$ ./program"}</span>
               {"\n"}
-              {output.slice(0, outputChars)}
+              {outputLayout.text.slice(0, outputChars)}
             </div>
           ) : null}
         </div>
