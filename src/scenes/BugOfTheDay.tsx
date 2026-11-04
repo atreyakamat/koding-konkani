@@ -3,6 +3,7 @@ import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
 import { CodeBlock, Panel, Sticker } from "../ui";
 import { impactShakeX, springs } from "../lib/motion";
+import { errorExcerpt } from "../lib/errorExcerpt";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -17,7 +18,8 @@ export type BugOfTheDayProps = BaseSceneProps & {
 const looksLikeCode = (text: string): boolean => /[;{]|#include/.test(text);
 
 const MIN_BODY_PX = 22;
-const ERROR_SIZES = [28, 26, 24, MIN_BODY_PX];
+/** The error panel shows at most two lines (errorExcerpt), so it can be big. */
+const ERROR_SIZES = [44, 40, 36, 32, 28, 26, 24, MIN_BODY_PX];
 const WHY_SIZES = [34, 32, 30, 28, 26, 24, MIN_BODY_PX];
 /** Inner text width of a 1100px Panel (padding 32 + border 5, both sides). */
 const PANEL_TEXT_WIDTH = 1100 - 74;
@@ -67,7 +69,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   const lineCount = (text: string, isCode: boolean): number =>
     isCode ? text.split("\n").length : 3;
   const codeLines = Math.max(lineCount(wrongCode, wrongIsCode), lineCount(fixedCode, fixedIsCode));
-  const allErrorLines = error.split("\n");
+  const allErrorLines = errorExcerpt(error);
   // The error panel has to fit under the code panel and above the caption band. Budget:
   // 1080 - 80 top - 200 bottom = 800, minus banner (~70), two gaps (48), the code panel
   // (min(codeLines, 8) rows at 40px*1.5 + chrome), and the panel's own 64px padding + 10px
