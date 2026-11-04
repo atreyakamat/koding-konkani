@@ -1,6 +1,7 @@
 import type { Episode, Scene } from "../lib/episode";
 import { stripMarkdown } from "../lib/sanitize.ts";
 import { terminalLinesFor } from "../lib/terminalLines.ts";
+import { EPISODE_TITLES } from "../lib/episodeTitles.ts";
 
 const CUE_RE = /\[(HL|TRACK)\s+[^\]]*\]/g;
 const MAX_LINE_CHARS = 48;
@@ -119,11 +120,11 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
     case "challenge":
       return { task: stripMarkdown(episode.challenge) };
     case "outro": {
-      const m = scene.onScreen.match(/EP\s*(\d+)\s*[·-]\s*(.+?)(?:\s*\+|$)/);
-      return {
-        nextEp: m ? Number(m[1]) : episode.ep + 1,
-        nextTitle: m ? stripMarkdown(m[2]) : "Next episode",
-      };
+      // The next episode is always ep + 1 (checked against every Bible wording of the outro
+      // line). Its title comes from the generated table, not from the free-text onScreen line,
+      // which has many shapes ("Next: EP 43 Searching", "Next: EP 27, the for loop", ...).
+      const nextEp = episode.ep + 1;
+      return { nextEp, nextTitle: EPISODE_TITLES[nextEp] };
     }
     default:
       return {};
