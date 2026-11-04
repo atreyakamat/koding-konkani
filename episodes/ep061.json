@@ -145,7 +145,12 @@
       "onScreen": "s3 = s1; then s3.rollNo = 99",
       "animation": "Photocopier animation; two cards side by side",
       "sfx": [],
-      "narration": "One more superpower. Arrays cannot be copied with equals, remember EP 41. But structs can. Write struct Student s3 equals s1, and every member is copied, even the name array inside. It is a photocopy. Then change s3 dot rollNo to 99. Print both roll numbers: 17 and 99. The original card is untouched. Two separate cards, two separate memories."
+      "narration": "One more superpower. Arrays cannot be copied with equals, remember EP 41. But structs can. Write struct Student s3 equals s1, and every member is copied, even the name array inside. It is a photocopy. Then change s3 dot rollNo to 99. Print both roll numbers: 17 and 99. The original card is untouched. Two separate cards, two separate memories.",
+      "code": {
+        "file": "ep61copy.c",
+        "source": "#include <stdio.h>\n\nstruct Student {\n    char name[30];\n    int rollNo;\n    float percentage;\n};\n\nint main(void) {\n    struct Student s1 = {\"Anya Naik\", 17, 88.5f};\n    struct Student s3 = s1;\n\n    s3.rollNo = 99;\n    printf(\"s1 roll: %d, s3 roll: %d\\n\", s1.rollNo, s3.rollNo);\n\n    return 0;\n}",
+        "output": "s1 roll: 17, s3 roll: 99"
+      }
     },
     {
       "id": 8,

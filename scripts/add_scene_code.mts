@@ -18,13 +18,21 @@
  *
  * Usage: node scripts/add_scene_code.mts [--write]
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const ROOT = process.cwd();
 const WRITE = process.argv.includes("--write");
 
-type Target = { ep: number; scenes: number[] };
+/** `pick`: when the Bible's "Code shown" has more pairs than target scenes, the 1-based pair each
+ * target scene shows (same order as `scenes`; a pair may repeat, e.g. EP71 shows binread.c twice).
+ * `names`: file name to show for a scene whose onScreen text does not name a `x.c` file. */
+type Target = {
+  ep: number;
+  scenes: number[];
+  pick?: number[];
+  names?: Record<number, string>;
+};
 const TARGETS: Target[] = [
   { ep: 26, scenes: [5, 8] },
   { ep: 28, scenes: [1, 3, 4, 6] },
@@ -32,10 +40,27 @@ const TARGETS: Target[] = [
   { ep: 30, scenes: [4, 6] },
   { ep: 31, scenes: [4, 5, 7] },
   { ep: 32, scenes: [4, 5, 7] },
+  // Fix pass 4. EP41/EP44: scene names the file without backticks; the Bible has several programs.
+  { ep: 41, scenes: [5], pick: [1] },
+  // EP44 scene 6 narrates lines 4-25 of the first program (swap + one bubble pass).
+  { ep: 44, scenes: [6], pick: [1] },
+  { ep: 59, scenes: [5], pick: [1] },
+  { ep: 61, scenes: [7], pick: [2], names: { 7: "ep61copy.c" } },
+  { ep: 69, scenes: [6, 9] },
+  { ep: 70, scenes: [4, 6] },
+  { ep: 71, scenes: [4, 5, 7, 8], pick: [1, 2, 2, 3] },
 ];
 
-const BIBLE_PATH = join(ROOT, "docs", "bible", "m04.md");
-const bible = readFileSync(BIBLE_PATH, "utf-8");
+/** The module file that holds an episode's "## EP n" heading. */
+const bibleFor = (ep: number): { path: string; text: string } => {
+  const dir = join(ROOT, "docs", "bible");
+  for (const name of readdirSync(dir).filter((f) => /^m\d+\.md$/.test(f))) {
+    // Some module files are CRLF; the fence regexes below expect LF.
+    const text = readFileSync(join(dir, name), "utf-8").split("\r\n").join("\n");
+    if (new RegExp(`^## EP ${ep} — `, "m").test(text)) return { path: join(dir, name), text };
+  }
+  throw new Error(`EP ${ep} heading not found in docs/bible`);
+};
 
 // Cross-episode special cases: scene content that lives in a different
 // episode's Bible section (e.g. "EP 27 challenge answer" recapped at the
@@ -61,9 +86,10 @@ const SPECIAL: Record<string, { file: string; source: string }> = {
 };
 
 const getEpSection = (ep: number): string => {
+  const bible = bibleFor(ep).text;
   const re = new RegExp(`^## EP ${ep} — .*$`, "m");
   const m = re.exec(bible);
-  if (!m) throw new Error(`EP ${ep} heading not found in ${BIBLE_PATH}`);
+  if (!m) throw new Error(`EP ${ep} heading not found`);
   const start = m.index + m[0].length;
   const rest = bible.slice(start);
   const next = /^## EP \d+/m.exec(rest);
@@ -98,7 +124,8 @@ const getCodeShownPairs = (section: string): { code: string; output?: string }[]
 };
 
 const extractFilename = (onScreen: string): string | null => {
-  const m = /`([\w-]+\.c)`/.exec(onScreen);
+  // Backticked (`sorry.c`) or bare at the start of the text (ep41_arrays.c types itself).
+  const m = /`([\w-]+\.c)`/.exec(onScreen) ?? /^([\w-]+\.c)/.exec(onScreen);
   return m ? m[1] : null;
 };
 
@@ -113,11 +140,13 @@ type EpisodeReport = {
 
 const reports: EpisodeReport[] = [];
 
-for (const { ep, scenes } of TARGETS) {
+for (const { ep, scenes, pick, names } of TARGETS) {
   const epPath = join(ROOT, "episodes", `ep${String(ep).padStart(3, "0")}.json`);
   const data = JSON.parse(readFileSync(epPath, "utf-8"));
   const section = getEpSection(ep);
-  const pairs = getCodeShownPairs(section);
+  const allPairs = getCodeShownPairs(section);
+  const pairs = pick ? pick.map((n) => allPairs[n - 1]) : allPairs;
+  if (pairs.some((p) => p === undefined)) throw new Error(`ep${ep}: pick ${pick} is outside ${allPairs.length} pairs`);
 
   const normalScenes = scenes.filter((sid) => !SPECIAL[`${ep}:${sid}`]);
   const specialScenes = scenes.filter((sid) => SPECIAL[`${ep}:${sid}`]);
@@ -127,7 +156,7 @@ for (const { ep, scenes } of TARGETS) {
     if (!s) throw new Error(`ep${ep} scene ${sid} not found in episode JSON`);
     return s;
   });
-  const filenames = sceneObjs.map((s: any) => extractFilename(s.onScreen));
+  const filenames = sceneObjs.map((s: any) => names?.[s.id] ?? extractFilename(s.onScreen));
 
   let mismatch: string | undefined;
   let usedFallback = false;
