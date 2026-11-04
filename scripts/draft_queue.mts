@@ -1,14 +1,15 @@
 /**
- * 720p draft review pass: for each episode, one job at a time, render the long
- * video at --scale=2/3 (1280x720) and the 5 Shorts (720x1280) with fast draft
+ * Draft review pass (default 720p): for each episode, one job at a time, render the long
+ * video at --scale (default 2/3: 1280x720) and the 5 Shorts (720x1280) with fast draft
  * settings, master the audio, then build review aids: blackdetect on the long
  * video, ebur128 loudness for every file, and contact sheets (long: one frame
  * every 10 s, 6 columns; Shorts: one frame every 2.5 s). Nothing is skipped —
  * every draft must reflect the current code. Time per job is logged.
- * out/draft720/report.md is rebuilt after every episode from results.json, so a
+ * <out>/report.md (default out/draft720) is rebuilt after every episode from results.json, so a
  * restart carries earlier episodes' rows forward.
  *
  * Usage: node scripts/draft_queue.mts [episode-number...] [--only=S1,S2] [--no-long] [--no-shorts]
+ *   [--scale=0.5] [--out=out/draft540]   (defaults: 2/3 scale, out/draft720; --scale=0.5 is 960x540)
  * (default: episodes 1..19, long + all Shorts; --only implies --no-long and merges into earlier results)
  */
 import { execSync } from "node:child_process";
@@ -22,19 +23,49 @@ import {
   unlinkSync,
   writeFileSync,
 } from "node:fs";
-import { join } from "node:path";
+import { join, relative, resolve, sep } from "node:path";
 import os from "node:os";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([a-zA-Z]:)/, "$1");
 const PYTHON = join(ROOT, ".venv", "Scripts", "python.exe");
-const DRAFT_DIR = join(ROOT, "out", "draft720");
+// Optional --scale=<0..1] and --out=<dir>; defaults are the 720p review pass (out/draft720).
+const cliFlag = (name: string): string | undefined =>
+  process.argv
+    .slice(2)
+    .find((a) => a.startsWith(`--${name}=`))
+    ?.slice(name.length + 3);
+const DRAFT_DIR = cliFlag("out")
+  ? resolve(ROOT, cliFlag("out") as string)
+  : join(ROOT, "out", "draft720");
 const LOG_PATH = join(DRAFT_DIR, "draft-queue.log");
 const RESULTS_PATH = join(DRAFT_DIR, "results.json");
 const REPORT_PATH = join(DRAFT_DIR, "report.md");
 
 // 2/3 at full float precision: a rounded 0.6667 gives a non-integer frame size
 // that Remotion's stitcher rejects (found the hard way on 31 Oct).
-const SCALE = "0.6666666666666666";
+const SCALE = cliFlag("scale") ?? "0.6666666666666666";
+const scaleNumber = Number(SCALE);
+if (!(scaleNumber > 0 && scaleNumber <= 1)) {
+  console.error(`--scale must be a number in (0, 1], got "${SCALE}"`);
+  process.exit(1);
+}
+const scaled = (px: number): number => Math.round(px * scaleNumber);
+// The stitcher needs whole-pixel frames: 1920x and 1080x must both land on integers.
+if (
+  Math.abs(1920 * scaleNumber - scaled(1920)) > 1e-6 ||
+  Math.abs(1080 * scaleNumber - scaled(1080)) > 1e-6
+) {
+  console.error(
+    `--scale=${SCALE} gives non-integer frame sizes; pick e.g. 0.5 or 0.6666666666666666`,
+  );
+  process.exit(1);
+}
+/** Real output sizes at this scale: long 16:9, Shorts 9:16. */
+const LONG_W = scaled(1920);
+const LONG_H = scaled(1080);
+const SHORT_W = scaled(1080);
+const SHORT_H = scaled(1920);
+const LABEL = `${LONG_H}p`;
 const DRAFT_FLAGS = [
   "--codec=h264",
   "--crf=20",
@@ -62,7 +93,9 @@ const argEps = process.argv
   .map(Number);
 const episodeNumbers = argEps.length ? argEps : Array.from({ length: 19 }, (_, i) => i + 1);
 if (episodeNumbers.some((n) => !Number.isInteger(n) || n < 1)) {
-  console.error("usage: node scripts/draft_queue.mts [episode-number...]");
+  console.error(
+    "usage: node scripts/draft_queue.mts [episode-number...] [--scale=0.5] [--out=out/draft540]",
+  );
   process.exit(1);
 }
 
@@ -245,9 +278,9 @@ const fmtLoud = (r: FileResult): string =>
 const writeReport = (results: Record<string, EpisodeResult>): void => {
   const eps = Object.values(results).sort((a, b) => a.ep - b.ep);
   const lines: string[] = [
-    "# 720p draft review pass — report",
+    `# ${LABEL} draft review pass — report`,
     "",
-    `Last updated ${new Date().toISOString()}. Drafts in out/draft720/epNNN/ (long: 1280x720, Shorts: 720x1280; crf 20, veryfast, 192k AAC, audio mastered to -16 LUFS / -1.7 dBTP target). Contact sheets next to each file (*.sheet.png).`,
+    `Last updated ${new Date().toISOString()}. Drafts in ${relative(ROOT, DRAFT_DIR).split(sep).join("/")}/epNNN/ (long: ${LONG_W}x${LONG_H}, Shorts: ${SHORT_W}x${SHORT_H}; crf 20, veryfast, 192k AAC, audio mastered to -16 LUFS / -1.7 dBTP target). Contact sheets next to each file (*.sheet.png).`,
     "",
     "| Episode | Long (time, size) | Black frames | Long loudness | Shorts (time each) | Shorts loudness | Anything odd |",
     "| --- | --- | --- | --- | --- | --- | --- |",
@@ -315,12 +348,12 @@ for (const ep of episodeNumbers) {
 
   const longProps = join(outDir, ".props-longvideo.json");
   writeFileSync(longProps, JSON.stringify({ episodeNumber: ep }), "utf-8");
-  const longOut = join(outDir, `${epId}-720p.mp4`);
+  const longOut = join(outDir, `${epId}-${LABEL}.mp4`);
   const prev = results[epId];
   const long: FileResult =
     skipLong && prev
       ? prev.long
-      : renderJob(`${epId} long 720p`, "LongVideo", longProps, longOut, 1280, 720);
+      : renderJob(`${epId} long ${LABEL}`, "LongVideo", longProps, longOut, LONG_W, LONG_H);
   if (!(skipLong && prev) && long.status === "DONE") {
     long.blackFrames = blackDetect(longOut);
     const loud = measureLoudness(longOut);
@@ -337,8 +370,15 @@ for (const ep of episodeNumbers) {
     if (skipShorts || (only.length > 0 && !only.includes(shortId))) continue;
     const props = join(outDir, `.props-short-${shortId}.json`);
     writeFileSync(props, JSON.stringify({ episodeNumber: ep, shortId }), "utf-8");
-    const shortOut = join(outDir, `${epId}-${shortId}-720p.mp4`);
-    const result = renderJob(`${epId} ${shortId}`, `Short-${shortId}`, props, shortOut, 720, 1280);
+    const shortOut = join(outDir, `${epId}-${shortId}-${LABEL}.mp4`);
+    const result = renderJob(
+      `${epId} ${shortId}`,
+      `Short-${shortId}`,
+      props,
+      shortOut,
+      SHORT_W,
+      SHORT_H,
+    );
     if (result.status === "DONE") {
       const loud = measureLoudness(shortOut);
       if (loud) Object.assign(result, { lufs: loud.lufs, tp: loud.tp, loudnessPass: loud.pass });
