@@ -118,7 +118,87 @@
       "sfx": [
         "ding"
       ],
-      "narration": "The simple way is called linear search. Linear means in a line. Start at the first box. Is it 26? No. Next box. No. Keep going until you find it, or until you run out of boxes. Here, 26 sits at index five, so we checked six boxes. If the value is not there at all, we check every single box before we can say \"not found\"."
+      "narration": "The simple way is called linear search. Linear means in a line. Start at the first box. Is it 26? No. Next box. No. Keep going until you find it, or until you run out of boxes. Here, 26 sits at index five, so we checked six boxes. If the value is not there at all, we check every single box before we can say \"not found\".",
+      "trace": [
+        {
+          "step": "1",
+          "array": [
+            3,
+            8,
+            12,
+            17,
+            21,
+            26,
+            30,
+            35
+          ]
+        },
+        {
+          "step": "2",
+          "array": [
+            3,
+            8,
+            12,
+            17,
+            21,
+            26,
+            30,
+            35
+          ]
+        },
+        {
+          "step": "3",
+          "array": [
+            3,
+            8,
+            12,
+            17,
+            21,
+            26,
+            30,
+            35
+          ]
+        },
+        {
+          "step": "4",
+          "array": [
+            3,
+            8,
+            12,
+            17,
+            21,
+            26,
+            30,
+            35
+          ]
+        },
+        {
+          "step": "5",
+          "array": [
+            3,
+            8,
+            12,
+            17,
+            21,
+            26,
+            30,
+            35
+          ]
+        },
+        {
+          "step": "6",
+          "array": [
+            3,
+            8,
+            12,
+            17,
+            21,
+            26,
+            30,
+            35
+          ]
+        }
+      ]
     },
     {
       "id": 4,
@@ -143,7 +223,35 @@
       "onScreen": "Same eight boxes; low, mid, high arrows; half greys out each step",
       "animation": "Grey-out sweep; snip SFX per halving",
       "sfx": [],
-      "narration": "Now the smart way. Notice our roll numbers are sorted, smallest to largest. That is the key. Binary search looks at the middle box first. low is the first index, zero. high is the last, seven. mid is zero plus seven, divided by two, which is three in integer division. rolls three is 17. Is 26 bigger than 17? Yes. So 26 cannot be anywhere on the left half. Throw that half away. Now low becomes four. New mid is four plus seven by two, five. rolls five is 26. Found it, in two steps instead of six. Every step cuts the remaining boxes in half. It is like the Kadamba bus conductor who knows the stops are in order: if you say Panjim, he does not check every seat; he knows exactly which half of the route you belong to."
+      "narration": "Now the smart way. Notice our roll numbers are sorted, smallest to largest. That is the key. Binary search looks at the middle box first. low is the first index, zero. high is the last, seven. mid is zero plus seven, divided by two, which is three in integer division. rolls three is 17. Is 26 bigger than 17? Yes. So 26 cannot be anywhere on the left half. Throw that half away. Now low becomes four. New mid is four plus seven by two, five. rolls five is 26. Found it, in two steps instead of six. Every step cuts the remaining boxes in half. It is like the Kadamba bus conductor who knows the stops are in order: if you say Panjim, he does not check every seat; he knows exactly which half of the route you belong to.",
+      "trace": [
+        {
+          "step": "1",
+          "array": [
+            3,
+            8,
+            12,
+            17,
+            21,
+            26,
+            30,
+            35
+          ]
+        },
+        {
+          "step": "2",
+          "array": [
+            3,
+            8,
+            12,
+            17,
+            21,
+            26,
+            30,
+            35
+          ]
+        }
+      ]
     },
     {
       "id": 6,
