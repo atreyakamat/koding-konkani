@@ -14,8 +14,9 @@ export const wrapLineCount = (
   text: string,
   size: number,
   width: number = PUN_BOX.width,
+  charEm: number = CHAR_EM,
 ): number => {
-  const perRow = Math.max(1, Math.floor(width / (size * CHAR_EM)));
+  const perRow = Math.max(1, Math.floor(width / (size * charEm)));
   let rows = 1;
   let used = 0;
   for (const word of text.split(/\s+/).filter(Boolean)) {
