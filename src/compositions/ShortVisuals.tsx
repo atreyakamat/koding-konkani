@@ -224,8 +224,23 @@ const AnalogyVisual: React.FC<{ title: string; body: string; accent: string }> =
   );
 };
 
+const TERMINAL_SIZES = [80, 72, 64, 56, 48, 44, 40];
+const TERMINAL_GAP = 18;
+
+/** Largest mono size at which every "$ line", wrapped, fits the card (JetBrains Mono ~0.6em/char),
+ * so one or two short commands fill the card instead of sitting small in a corner. */
+const fitTerminalFont = (lines: string[]): number => {
+  const fits = (size: number): boolean => {
+    const perRow = Math.max(1, Math.floor(CARD_INNER.width / (size * 0.6)));
+    const rows = lines.reduce((n, l) => n + Math.ceil((l.length + 2) / perRow), 0);
+    return rows * size * 1.3 + (lines.length - 1) * TERMINAL_GAP <= CARD_INNER.height;
+  };
+  return TERMINAL_SIZES.find(fits) ?? TERMINAL_SIZES[TERMINAL_SIZES.length - 1];
+};
+
 const TerminalVisual: React.FC<{ lines: string[] }> = ({ lines }) => {
   const frame = useCurrentFrame();
+  const font = fitTerminalFont(lines);
   return (
     <Panel
       background={palette.darkBlue}
@@ -235,7 +250,7 @@ const TerminalVisual: React.FC<{ lines: string[] }> = ({ lines }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        gap: 18,
+        gap: TERMINAL_GAP,
       }}
     >
       {lines.map((line, i) => (
@@ -244,7 +259,7 @@ const TerminalVisual: React.FC<{ lines: string[] }> = ({ lines }) => {
           style={{
             fontFamily: fonts.code,
             fontWeight: 700,
-            fontSize: line.length > 24 ? 40 : 48,
+            fontSize: font,
             color: palette.white,
             whiteSpace: "pre-wrap",
             overflowWrap: "anywhere",

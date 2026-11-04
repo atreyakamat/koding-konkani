@@ -140,12 +140,14 @@ const quizOf = (episode: Episode, short: Short): ShortVisual => {
   };
 };
 
-const BIN_WORDS = /\bbinary\b|\bbits?\b|<<|>>|\b[01]{4,}\b/i;
+/** A bare run of 0/1 digits ("1000 names") is a count, not bits: only "= 1100" counts. */
+const BIN_WORDS = /\bbinary\b|\bbits?\b|<<|>>|=\s*[01]{4,8}\b/i;
 const toBits = (n: number, width: number): string => n.toString(2).padStart(width, "0");
 
 const bitsOf = (short: Short): ShortVisual | undefined => {
   const text = `${unquote(short.hook)} ${short.onScreen}`;
-  const pair = text.match(/(\d{1,3})\s*(AND|OR|XOR|&|\||\^)\s*(\d{1,3})/i);
+  // Word operators must be written in capitals ("12 AND 10"): "2 or 3" is plain English.
+  const pair = text.match(/(\d{1,3})\s*(AND|OR|XOR|&|\||\^)\s*(\d{1,3})/);
   if (pair) {
     const a = Number(pair[1]);
     const b = Number(pair[3]);
