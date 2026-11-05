@@ -124,7 +124,54 @@
       "onScreen": "sizeof(marks) = 20 bytes, sizeof(marks[0]) = 4 bytes, 20 / 4 = 5",
       "animation": "Byte ruler slides under the lockers; \"on most PCs\" sticker",
       "sfx": [],
-      "narration": "In main, there is a neat trick to count the elements. sizeof marks gives the size of the whole array in bytes. On most PCs an int is four bytes, so five ints make twenty bytes. sizeof marks zero gives the size of one element, four. Twenty divided by four is five. The nice part: if you add a sixth mark later, n updates by itself. But remember where we did this: in main, where the array was declared. Hold that thought for the Bug of the Day."
+      "narration": "In main, there is a neat trick to count the elements. sizeof marks gives the size of the whole array in bytes. On most PCs an int is four bytes, so five ints make twenty bytes. sizeof marks zero gives the size of one element, four. Twenty divided by four is five. The nice part: if you add a sixth mark later, n updates by itself. But remember where we did this: in main, where the array was declared. Hold that thought for the Bug of the Day.",
+      "memory": {
+        "frames": [
+          {
+            "badges": [
+              "sizeof(marks) = 20 bytes",
+              "sizeof(marks[0]) = 4 bytes",
+              "20 / 4 = 5"
+            ],
+            "groups": [
+              {
+                "name": "marks",
+                "ruler": {
+                  "each": "4 bytes",
+                  "total": "20 bytes"
+                },
+                "cells": [
+                  {
+                    "value": "78",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "92",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "65",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08"
+                  },
+                  {
+                    "value": "88",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c"
+                  },
+                  {
+                    "value": "71",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -159,7 +206,92 @@
       "onScreen": "main's marks and the function's arr both point to the same lockers",
       "animation": "A single locker row with two name tags; arrow from arr to marks",
       "sfx": [],
-      "narration": "Here is why. When you pass an int, C copies the value. But C never copies a whole array into a function. Instead, it passes the location of the array, where the lockers are. So arr inside the function and marks in main are two name tags on the same row of lockers. Change a locker through arr, and marks sees it. How exactly that works is a pointer story, and pointers get their own module, starting with EP 52."
+      "narration": "Here is why. When you pass an int, C copies the value. But C never copies a whole array into a function. Instead, it passes the location of the array, where the lockers are. So arr inside the function and marks in main are two name tags on the same row of lockers. Change a locker through arr, and marks sees it. How exactly that works is a pointer story, and pointers get their own module, starting with EP 52.",
+      "memory": {
+        "frames": [
+          {
+            "label": "main's marks and the function's arr: the same lockers",
+            "groups": [
+              {
+                "tags": [
+                  "marks (in main)",
+                  "arr (in the function)"
+                ],
+                "cells": [
+                  {
+                    "value": "78",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "92",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "65",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08"
+                  },
+                  {
+                    "value": "88",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c"
+                  },
+                  {
+                    "value": "71",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "addBonus(marks, n, 5) changes them through arr; marks sees it",
+            "groups": [
+              {
+                "tags": [
+                  "marks (in main)",
+                  "arr (in the function)"
+                ],
+                "cells": [
+                  {
+                    "value": "83",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "97",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "70",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "93",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "76",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 8,

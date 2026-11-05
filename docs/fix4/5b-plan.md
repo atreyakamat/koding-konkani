@@ -1,4 +1,14 @@
-# Fix pass 5b: MemoryBoxes for the 14 blank EP41–50 scenes (plan only)
+# Fix pass 5b: MemoryBoxes for the 14 blank EP41–50 scenes
+
+## Short plan (as built, phase A)
+1. One new optional scene field, `memory` = `{ frames: [{ label?, badges?, arrange?, joiners?, groups: [{ name?, tags?, cols?, ruler?, cells: [{ value, name?, index?, address?, mark?, lost? }] }], arrows? }] }` (`src/lib/memory.ts`, zod). The flat `boxes` of EP7–18 is untouched.
+2. `src/lib/memoryLayout.ts` (pure) picks the largest cell width (up to 220px) at which a frame fits the free band; `MemoryBoxes` renders `memory` through `MemoryFrames` + `MemoryCell` and keeps the old flat path as `FlatBoxes`.
+3. Reused: `SceneFrame`, the box look, `enterProgress` pops, the pointer-arrow draw-on style, `Chip`, `readableOn`, the free-band position. New: index row, grids, stacked groups, frames, joiners, arrows between cells, byte ruler, name tags, marks.
+4. `scripts/derive_boxes.mts` (gcc-run probes) → `scripts/apply_boxes.mts` writes the 14 scenes into `episodes/ep041..ep050.json` after checking every number against the scene's narration, `onScreen`, the challenge text and fresh gcc runs.
+5. `scripts/check_boxes.mts` (schema, arrows, layout fits at ≥96px) and `scripts/check_scenes.mts` (accepts `memory.frames`) must pass; `tsc`, `eslint src` and `validate_episodes` clean. Shorts: the boxes visual reads the first group of the first frame when it has at most 6 cells.
+6. Stills and the 4K render wait for PHASE B (after the EP1–19 job); the original, longer plan follows.
+
+---
 
 Status: **plan, nothing coded.** Branch `fix/5b-data`. Data drafts already exist: `docs/fix4/boxes-draft-ep41-50.json`
 (made by `scripts/derive_boxes.mts`, every value from a C probe compiled with `gcc -Wall -Wextra` and run, cross-checked against the numbers each scene states).
@@ -61,7 +71,7 @@ One new optional field on a scene, `memory`. The existing `boxes` stays valid an
 
 - A frame is shown from its reveal cue (the existing `revealFrame` / `defaultRevealCues` spreading over the scene) until the next one.
 - Cell values are strings, addresses illustrative as today (`0x7ffd1a2c3f00 + offset`).
-- A zod schema for the above; the size limits (at most 12 cells per group, at most 3 groups per frame) are enforced by the preflight check below.
+- A zod schema for the above; the size limits (at most 13 cells per group (EP48's 13-key buffer), at most 3 groups per frame) are enforced by the preflight check below.
 - `scripts/derive_boxes.mts` already produces the data; a small converter (`scripts/apply_boxes.mts`) maps the draft layouts onto `memory.frames` and writes the 14 scenes, in the repo's 2-space CRLF JSON format.
 - Preflight and Shorts: `check_scenes.mts` accepts a scene with `memory.frames.length > 0`; `shortVisual.ts` builds its `boxes` visual from the first frame's first group when it has at most 6 cells (else it keeps its current fallback).
 
@@ -82,7 +92,7 @@ Not changed: `boxes` rendering, the other scenes, `CodeExplain`, `BugOfTheDay`.
 
 **Preflight / checks (Node only, can run any time):**
 - `scripts/check_scenes.mts`: a memory-boxes scene passes with `boxes` **or** `memory.frames`; after the data lands `check_scenes 41 50` must pass (it fails 14 scenes today).
-- `scripts/check_boxes.mts` (new): zod-validates `memory`; at most 12 cells per group, at most 3 groups per frame; every cell value is a short string; every arrow references an existing group and cell; the layout helper says every frame of every scene fits inside the 1728px-wide free band without overlap.
+- `scripts/check_boxes.mts` (new): zod-validates `memory`; at most 13 cells per group (EP48's 13-key buffer), at most 3 groups per frame; every cell value is a short string; every arrow references an existing group and cell; the layout helper says every frame of every scene fits inside the 1728px-wide free band without overlap.
 - `scripts/derive_boxes.mts` is re-run and its output is diffed against what is stored in the episode JSON (recompiles every C probe with gcc, so a changed value cannot slip in).
 
 **540p stills after the EP1–19 job ends** (`remotion still` with the real props through `scenePropsFor`, one still per frame at about 60% of the frame's time, about 26 stills, plus one contact sheet of all of them for your review):

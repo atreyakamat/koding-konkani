@@ -127,7 +127,49 @@
       "sfx": [
         "stamp"
       ],
-      "narration": "Here is how we write it. int marks, square bracket, five, square bracket. This asks C for five int boxes, sitting next to each other in memory. Now the important part. The first box is not number one. It is number zero. So the five boxes are marks zero, marks one, marks two, marks three, and marks four. Size five, last index four. Say it with me: the last index is always size minus one. Remember this, because almost every array bug comes from forgetting it."
+      "narration": "Here is how we write it. int marks, square bracket, five, square bracket. This asks C for five int boxes, sitting next to each other in memory. Now the important part. The first box is not number one. It is number zero. So the five boxes are marks zero, marks one, marks two, marks three, and marks four. Size five, last index four. Say it with me: the last index is always size minus one. Remember this, because almost every array bug comes from forgetting it.",
+      "memory": {
+        "frames": [
+          {
+            "badges": [
+              "size 5, last index 4"
+            ],
+            "groups": [
+              {
+                "name": "marks[5]",
+                "cells": [
+                  {
+                    "value": "78",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "92",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "65",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08"
+                  },
+                  {
+                    "value": "88",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c"
+                  },
+                  {
+                    "value": "71",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -164,7 +206,188 @@
       "sfx": [
         "stamp"
       ],
-      "narration": "Two quick tricks. If you give fewer values than the size, like int a five equals one comma two, C fills the rest with zeros. So you get 1, 2, 0, 0, 0. And if you give all the values, you can leave the size empty. int b, empty brackets, equals 4, 5, 6. The compiler counts them and makes the size three. But be careful: an array with no starting values at all, inside main, holds random leftover numbers. Always fill it before you read it. And one rule that surprises everyone: you cannot copy a whole array with equals. Write b equals a, and GCC stops with an error: assignment to expression with array type. To copy an array, use a loop and copy it one element at a time: b i equals a i. Remember this; it comes back when we meet structures."
+      "narration": "Two quick tricks. If you give fewer values than the size, like int a five equals one comma two, C fills the rest with zeros. So you get 1, 2, 0, 0, 0. And if you give all the values, you can leave the size empty. int b, empty brackets, equals 4, 5, 6. The compiler counts them and makes the size three. But be careful: an array with no starting values at all, inside main, holds random leftover numbers. Always fill it before you read it. And one rule that surprises everyone: you cannot copy a whole array with equals. Write b equals a, and GCC stops with an error: assignment to expression with array type. To copy an array, use a loop and copy it one element at a time: b i equals a i. Remember this; it comes back when we meet structures.",
+      "memory": {
+        "frames": [
+          {
+            "label": "int a[5] = {1, 2};   int b[] = {4, 5, 6};",
+            "groups": [
+              {
+                "name": "a[5]",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "0",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "b[] (size 3)",
+                "cells": [
+                  {
+                    "value": "4",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f40"
+                  },
+                  {
+                    "value": "5",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f44"
+                  },
+                  {
+                    "value": "6",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f48"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "b = a;   error: assignment to expression with array type",
+            "groups": [
+              {
+                "name": "a[5]",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "0",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "b[] (size 3)",
+                "cells": [
+                  {
+                    "value": "4",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f40"
+                  },
+                  {
+                    "value": "5",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f44"
+                  },
+                  {
+                    "value": "6",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f48"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "copy one box at a time: b[i] = a[i]",
+            "groups": [
+              {
+                "name": "a[5]",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "0",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "b[] (size 3)",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f40",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f44",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "0",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f48",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 8,

@@ -1,6 +1,6 @@
 /**
  * Preflight gate: an episode whose scenes would render blank or crash must not be rendered.
- *  - memory-boxes with no `boxes`  -> the scene draws nothing (EP37-83 before fix pass 5);
+ *  - memory-boxes with no `boxes` and no `memory` frames -> the scene draws nothing (EP37-83 before fix pass 5);
  *  - algorithm-bars with no `trace` -> the component throws and the whole render fails.
  * Prints every offending scene and exits 1 if any episode in the range has one.
  * Called by scripts/overnight.ps1 (prints the list up front) and by scripts/episode_pipeline.mts (skips the episode).
@@ -16,9 +16,9 @@ export type SceneProblem = { ep: number; scene: number; template: string; proble
 export const sceneProblems = (ep: number): SceneProblem[] => {
   const episode = JSON.parse(readFileSync(join(ROOT, "episodes", `ep${String(ep).padStart(3, "0")}.json`), "utf-8"));
   const out: SceneProblem[] = [];
-  for (const s of episode.scenes as { id: number; template: string; boxes?: unknown[]; trace?: unknown[] }[]) {
-    if (s.template === "memory-boxes" && !(s.boxes && s.boxes.length))
-      out.push({ ep, scene: s.id, template: s.template, problem: "no boxes: the scene would render blank" });
+  for (const s of episode.scenes as { id: number; template: string; boxes?: unknown[]; memory?: { frames?: unknown[] }; trace?: unknown[] }[]) {
+    if (s.template === "memory-boxes" && !(s.boxes && s.boxes.length) && !(s.memory?.frames && s.memory.frames.length))
+      out.push({ ep, scene: s.id, template: s.template, problem: "no boxes and no memory frames: the scene would render blank" });
     if (s.template === "algorithm-bars" && !(s.trace && s.trace.length))
       out.push({ ep, scene: s.id, template: s.template, problem: "no trace: the scene would crash the render" });
   }
