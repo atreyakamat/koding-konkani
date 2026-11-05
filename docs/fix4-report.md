@@ -206,7 +206,7 @@ near 22px. Changes (`src/lib/outputFit.ts`, `src/scenes/CodeExplain.tsx`):
   Xecxec's "It runs!" bubble is not shown in takeover mode, because it would sit on the panel's bottom edge.
 - **Type.** Takeover sizes are 30, 28, 26 and 24px (minimum 24, was 22). The largest that fits is used. "…" with the last lines kept
   applies only if 24px does not fit. The normal slot (short outputs under the explanation card) is unchanged.
-- **Result over EP1–86** (the 45 takeover outputs): 36 at 30px, 7 at 26–28px, EP21 s4 at 26px with nothing cut, and **only EP28 scene 6
+- **Result over EP1–86** (the 45 takeover outputs): 43 at 30px, EP21 s4 at 26px with nothing cut, EP28 s6 at 24px, and **only EP28 scene 6
   is cut**: 24px, the first 6 of its 23 lines dropped (a blank line, the first menu `1. Check balance / 2. Add 100 / 3. Exit`,
   `Choice: 1`, `Balance: 500`); "…" is shown on top and the last 17 lines are kept.
 
