@@ -194,3 +194,31 @@ Re-rendered with all fix-pass-4 changes (queue order EP42–50, then EP41; one j
 | EP50 | 3m45s | 25.0 MB | -15.99 | -1.64 dBTP | 5 | -3.81 dBTP | PASS |
 
 Contact sheets: `out/draft540/epNNN/*.sheet.png`. EP43 sheet shows the Checks chip, the moving butter box, the mint found box and the two-line bug panel.
+
+## 11. Terminal takeover: wider, taller, larger type (follow-up)
+
+Laptop frames showed the takeover panel at about 36% of the width and 45% of the height with the lower half empty and type
+near 22px. Changes (`src/lib/outputFit.ts`, `src/scenes/CodeExplain.tsx`):
+
+- **Width.** When an output takes over the right column, the code panel is narrower for the whole scene (870px, was 1002px; no
+  reflow mid-scene) and the terminal is 810px wide, 42.2% of the 1920px frame (was 678px, 35%).
+- **Height.** The panel stretches over the full column, y 96 to 790 (694px, 64% of the frame; was content-sized at about 486px).
+  Xecxec's "It runs!" bubble is not shown in takeover mode, because it would sit on the panel's bottom edge.
+- **Type.** Takeover sizes are 30, 28, 26 and 24px (minimum 24, was 22). The largest that fits is used. "…" with the last lines kept
+  applies only if 24px does not fit. The normal slot (short outputs under the explanation card) is unchanged.
+- **Result over EP1–86** (the 45 takeover outputs): 36 at 30px, 7 at 26–28px, EP21 s4 at 26px with nothing cut, and **only EP28 scene 6
+  is cut**: 24px, the first 6 of its 23 lines dropped (a blank line, the first menu `1. Check balance / 2. Add 100 / 3. Exit`,
+  `Choice: 1`, `Balance: 500`); "…" is shown on top and the last 17 lines are kept.
+
+540p stills of the real props, at the end of each scene (`docs/fix4/takeover-*.png`):
+
+| Scene | Lines | Size | Cut | Still |
+|---|---|---|---|---|
+| EP20 s4 | 11 | 30px | none | ![](fix4/takeover-e20-s4.png) |
+| EP21 s4 | 17 | 26px | none (was 2 cut) | ![](fix4/takeover-e21-s4.png) |
+| EP25 s4 | 14 | 30px | none | ![](fix4/takeover-e25-s4.png) |
+| EP28 s6 | 23 | 24px | first 6 lines | ![](fix4/takeover-e28-s6.png) |
+| EP83 s5 (other long output) | 14 | 30px | none | ![](fix4/takeover-e83-s5.png) |
+
+Nothing was re-rendered. Which episodes pick this up is for you to say. Takeover scenes exist in EP8, 9, 11, 14, 16, 20–22, 24, 25, 27–29,
+32, 41, 47, 51, 52, 56, 61, 64, 65, 72, 74–77, 81, 83 and 84.

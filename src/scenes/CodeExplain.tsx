@@ -8,7 +8,7 @@ import { typewriterChars } from "../lib/motion";
 import { stripMarkdown as sanitizeText } from "../lib/sanitize";
 import { chooseFontSize } from "../lib/codeLayout";
 import { defaultHlCues, hlLineAt, trackValuesAt } from "../lib/cues";
-import { layoutOutput } from "../lib/outputFit";
+import { layoutOutput, TAKEOVER_PANEL_WIDTH } from "../lib/outputFit";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -36,6 +36,9 @@ const PANEL_TOP = 96 + 64 + 20;
  * panel is sized to the room left under the explanation card and tracker. */
 const MASCOT_SIZE_WITH_OUTPUT = 240;
 const RIGHT_COLUMN_BOTTOM = 700;
+/** In takeover the panel runs down to y 790: Xecxec's head tops out near y 840 and his bubble is
+ * dropped, so nothing else needs the space. */
+const TAKEOVER_BOTTOM = 790;
 const OUTPUT_ROOM = RIGHT_COLUMN_BOTTOM - 96 - 160 - 24 - 90 - 24;
 
 /** Code explain: code types itself, then the active line gets a butter highlight with a live variable tracker. */
@@ -56,9 +59,17 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
   const charsPerFrame = Math.max(0.5, code.length / typingEnd);
   const visibleChars = typewriterChars(code, frame, 0, charsPerFrame);
 
+  const outputLayout = output
+    ? layoutOutput(output, OUTPUT_ROOM, TAKEOVER_BOTTOM - 96)
+    : undefined;
+  // When the output will take over the right column, the code panel is narrower for the whole scene
+  // (no mid-scene reflow) so the terminal gets TAKEOVER_PANEL_WIDTH.
+  const codeWidth = outputLayout?.fullColumn
+    ? 1920 - 192 - 48 - TAKEOVER_PANEL_WIDTH
+    : CODE_COLUMN_WIDTH;
   const sourceLines = code.split("\n");
   const freeHeight = COLUMN_BOTTOM - PANEL_TOP;
-  const codeFont = chooseFontSize(code, CODE_COLUMN_WIDTH, freeHeight);
+  const codeFont = chooseFontSize(code, codeWidth, freeHeight);
   const defaultCues = defaultHlCues(sourceLines, durationInFrames - typingEnd).map((cue) => ({
     ...cue,
     frame: cue.frame + typingEnd,
@@ -77,9 +88,6 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
   const outputStart = Math.round(durationInFrames * 0.78);
   // Long outputs (EP20: 11 lines, EP25: 14) take the whole right column once they print, so the
   // text stays readable; the explanation card and tracker give way for the last 22% of the scene.
-  const outputLayout = output
-    ? layoutOutput(output, OUTPUT_ROOM, RIGHT_COLUMN_BOTTOM - 96)
-    : undefined;
   const outputTakesColumn = !!outputLayout?.fullColumn && frame >= outputStart;
   const outputChars = outputLayout
     ? typewriterChars(outputLayout.text, frame, outputStart + 6, 1)
@@ -89,7 +97,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
         size: MASCOT_SIZE_WITH_OUTPUT,
         bottom: 60,
         poses: [{ frame: outputStart, pose: "clawsUp" }],
-        bubbles: [{ at: outputStart + 10, text: "It runs!" }],
+        bubbles: outputLayout?.fullColumn ? [] : [{ at: outputStart + 10, text: "It runs!" }],
       }
     : {};
 
@@ -106,8 +114,8 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
       >
         <div
           style={{
-            flex: `0 0 ${CODE_COLUMN_WIDTH}px`,
-            maxWidth: CODE_COLUMN_WIDTH,
+            flex: `0 0 ${codeWidth}px`,
+            maxWidth: codeWidth,
             display: "flex",
             flexDirection: "column",
             gap: 20,
@@ -117,7 +125,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
           {source ? (
             <CodeBlock
               source={source}
-              width={CODE_COLUMN_WIDTH}
+              width={codeWidth}
               fontSize={codeFont}
               maxHeight={freeHeight}
               fillHeight={freeHeight}
@@ -149,7 +157,9 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
             display: "flex",
             flexDirection: "column",
             gap: 24,
-            paddingBottom: output ? 1080 - 96 - RIGHT_COLUMN_BOTTOM : 0,
+            paddingBottom: output
+              ? 1080 - 96 - (outputLayout?.fullColumn ? TAKEOVER_BOTTOM : RIGHT_COLUMN_BOTTOM)
+              : 0,
           }}
         >
           {labelText && !outputTakesColumn ? (
@@ -199,6 +209,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
                 border: `5px solid ${palette.ink}`,
                 boxShadow: `8px 8px 0 0 ${palette.ink}`,
                 padding: "20px 32px",
+                ...(outputTakesColumn ? { flex: 1, minHeight: 0, overflow: "hidden" } : {}),
                 fontFamily: fonts.code,
                 fontSize: outputLayout.size,
                 color: palette.mint,
