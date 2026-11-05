@@ -2,6 +2,7 @@ import type { Episode, Scene } from "../lib/episode";
 import { stripMarkdown } from "../lib/sanitize.ts";
 import { terminalLinesFor } from "../lib/terminalLines.ts";
 import { EPISODE_TITLES } from "../lib/episodeTitles.ts";
+import { BUG_OVERRIDES } from "../lib/bugOverrides.ts";
 
 const CUE_RE = /\[(HL|TRACK)\s+[^\]]*\]/g;
 const MAX_LINE_CHARS = 48;
@@ -112,6 +113,7 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
       return {
         wrongCode: bugText(episode.bug.wrong),
         error: stripMarkdown(episode.bug.error),
+        errorOverride: BUG_OVERRIDES[episode.ep],
         fixedCode: bugText(episode.bug.fixed),
         why: stripMarkdown(episode.bug.why),
       };

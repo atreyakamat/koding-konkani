@@ -9,7 +9,7 @@ import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { stripMarkdown } from "../src/lib/sanitize.ts";
-import { classifyError } from "../src/lib/errorExcerpt.ts";
+import { bugPanel } from "../src/lib/bugOverrides.ts";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([a-zA-Z]:)/, "$1");
 const oldArg = process.argv.find((a) => a.startsWith("--old="))?.slice(6);
@@ -22,7 +22,7 @@ const changed: string[] = [];
 for (let n = 1; n <= 86; n++) {
   const ep = JSON.parse(readFileSync(join(ROOT, "episodes", `ep${String(n).padStart(3, "0")}.json`), "utf-8"));
   const error = stripMarkdown(ep.bug?.error ?? "");
-  const { kind, lines } = classifyError(error);
+  const { kind, lines } = bugPanel(n, error);
   const flag = kind === "prose" || kind === "empty" ? "FLAG" : "";
   const old = oldFn ? JSON.stringify(oldFn(error)) : null;
   const differs = old !== null && old !== JSON.stringify(lines);
