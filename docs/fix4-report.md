@@ -391,3 +391,116 @@ The six EP72–81 bars episodes and every blank-MemoryBoxes episode from EP37 on
 
 **Recommendation.** Do not run the EP1–19 move script and render yet: with pass 5 first, EP1–19 are rendered once (14 episodes) instead of twice. If you want EP1–19 sooner, split the pass: **5a** = B (excerpts + window) and C (card), code only, then render EP1–19 (14 episodes, no data authoring needed);
 **5b** = A (boxes and traces), then EP41–50 (all 10), and EP20+ later.
+
+## 15. Fix pass 5a: implemented (local, not pushed), EP1–19 evidence, Shorts, and 5b on paper
+
+Merged locally into `feat/module-0` as `438f7af` (merge of `fix/bug-excerpts`), with two small follow-ups after it. No push, no move script, no EP1–19 render.
+
+### 15.1 What changed
+
+- **Bug window centred on the culprit** (`src/lib/bugCulprit.ts`, `BugOfTheDay`, `sceneProps`). The culprit is computed at build time: an override table first (EP5, EP64, EP83, where alignment cannot work),
+  then the compiler's own line, then the first changed line of the fix aligned to the wrong code (an added `#include`/`#define` is never the culprit; for a pure deletion the fixed panel points at the line after the gap).
+  `BugOfTheDay` passes it as `highlightLine`, so `CodeBlock` centres the 5-row window on it and draws the butter highlight, in the wrong panel and in the fixed panel.
+  `node scripts/bug_windows.mts --old` (the old rule, window = last rows): the culprit is hidden in **46 episodes** and the changed fixed line in 34; the new rule: **0 and 0** (EP2, EP3 are prose cards with no window).
+- **Explanation card fits its room** (`src/lib/cardFit.ts`, `CodeExplain`). The card no longer shrinks (`flexShrink: 0`). One font size per scene, the largest of 44 / 40 / 36 / 32 / 28 px at which every label fits what the column has left after the tracker
+  (measured from the scene's tracked names) and the output panel; a label that still does not fit at 28px is cut to its first clause (a break at least 20 characters in, else 90 characters).
+  Across the 147 code-explain scenes that have labels: 49 stay at 44px, 13 at 40, 12 at 36, 16 at 32, 57 at 28; **32 labels in 20 episodes** are cut (EP14, 23, 25, 37, 42, 47, 49, 52, 61–63, 66, 67, 70, 78–81, 83, 84).
+  The old rule overflowed in 98 scenes, 71 episodes (`node scripts/scan_label_overflow.mts --old`).
+- **Found on the way: raw `[TRACK ...]` cues were showing inside the card text** when the cue sits in the middle of the explained sentence: 14 labels in 9 scenes (EP28 s6, EP37 s5, **EP43 s4**, EP51 s6, EP74 s7, EP76 s7, EP79 s7, EP80 s7, EP83 s7).
+  `labelsFromNarration` now strips them. EP43 s4 is in the EP41–50 4K master, so that master shows the raw text too.
+- **Preflight gate** `scripts/check_scenes.mts`: a memory-boxes scene with no `boxes` or an algorithm-bars scene with no `trace` fails its episode. `episode_pipeline.mts` runs it before the GCC check, logs each scene, writes the skip log and skips the episode
+  (it does not count toward the two-failures-in-a-row stop, so one data gap does not halt the range); `overnight.ps1` prints the list up front. `check_scenes 41 50` currently fails 14 scenes in 8 episodes; `check_scenes 1 19` passes.
+
+### 15.2 540p stills (real props)
+
+| Panel | Still |
+|---|---|
+| EP41 bug window, wrong panel: the `<=` loop (line 6) is highlighted and in view | ![](fix4/pass5-bug-ep41-w.png) |
+| EP43 bug window: the unsorted array (line 4) is highlighted and in view | ![](fix4/pass5-bug-ep43-w.png) |
+| EP10 wrong panel: `PI = 3.0f;` highlighted | ![](fix4/pass5-bug-ep10-w.png) |
+| EP10 fixed panel: the line where the fix removed the assignment (the `printf` after the gap) is highlighted | ![](fix4/pass5-bug-ep10-f.png) |
+| EP42 card (was overflowing, 28px, cut to its first clause) | ![](fix4/pass5-card-ep42-s5.png) |
+| EP45 card (fits at 28px, full text) | ![](fix4/pass5-card-ep45-s5.png) |
+| EP49 card (28px, cut to its first clause) | ![](fix4/pass5-card-ep49-s7.png) |
+| EP7 MemoryBoxes with data still works | ![](fix4/pass5-mem-ep7.png) |
+
+Seen in these stills: the EP10 fixed panel shows `FIXED: #define BUS_FARE 15 with no semicolon...` under code about `PI`. EP10 has two bug scenes (s8 `PI`, s9 `#define BUS_FARE`) but the episode has one `bug` record, so both scenes draw the same code and `why` mixes the two.
+That is a data gap in EP10 (the second bug's wrong/fixed code is not in the JSON), not a layout bug.
+
+### 15.3 Do the old EP1–19 masters have pass-4 defects? Yes, in every one: all 19 need the re-render
+
+Proof by timestamp: every EP1–19 master was written between 3 Nov 04:49 UTC and 4 Nov 02:02 UTC (3 Nov 10:19 IST to 4 Nov 07:32 IST), before the pass-4 commits (Outro `2bfcf2c`, TitleCard `b7596ea`, BugOfTheDay `e38bc63` were authored 4 Nov 13:04–13:06 IST, the output layout `92a7255` 4 Nov 22:53 IST).
+Proof by frame, from the old 4K files themselves: `docs/fix4/oldmaster-ep05-outro.png` (outro of EP5: "EP 06 · COMMENTS & CLEAN CODE; SIGN-OFF"), `oldmaster-ep12-outro.png`, and `oldmaster-ep03-bug.png`
+(EP3's bug panel: seven lines of 22px text, where the new panel shows two lines at up to 44px).
+
+| Episode | Master written (UTC) | Old outro shows | Bug panel: old -> new | Scenes with program output (old terminal layout) | Re-render |
+|---|---|---|---|---|---|
+| EP1 | 11-03 04:49 | ok | 9 lines at 22-28px -> 2 lines at 22-44px | 1 | yes |
+| EP2 | 11-03 05:06 | ok | 4 lines at 22-28px -> 1 line at 22-44px | 0 | yes |
+| EP3 | 11-03 05:24 | ok | 6 lines at 22-28px -> 2 lines at 22-44px | 0 | yes |
+| EP4 | 11-03 05:41 | ok | 8 lines at 22-28px -> 2 lines at 22-44px | 3 | yes |
+| EP5 | 11-03 06:00 | **COMMENTS & CLEAN CODE; SIGN-OFF** | 7 lines at 22-28px -> 1 line at 22-44px | 1 | yes |
+| EP6 | 11-03 06:17 | **VARIABLES; SIGN-OFF** | 8 lines at 22-28px -> 2 lines at 22-44px | 1 | yes |
+| EP7 | 11-03 06:35 | **DATA TYPES; SIGN-OFF** | 10 lines at 22-28px -> 2 lines at 22-44px | 3 | yes |
+| EP8 | 11-03 06:54 | **MORE TYPES; SIGN-OFF** | 7 lines at 22-28px -> 2 lines at 22-44px | 1 | yes |
+| EP9 | 11-03 15:37 | **CONSTANTS & #DEFINE; SIGN-OFF** | 7 lines at 22-28px -> 2 lines at 22-44px | 3 | yes |
+| EP10 | 11-03 15:52 | **PRINTF DEEP DIVE; SIGN-OFF** | 5 lines at 22-28px -> 2 lines at 22-44px | 3 | yes |
+| EP11 | 11-03 16:09 | **SCANF; SIGN-OFF** | 10 lines at 22-28px -> 2 lines at 22-44px | 2 | yes |
+| EP12 | 11-03 16:26 | **TYPE CASTING; SIGN-OFF** | 16 lines at 22-28px -> 2 lines at 22-44px | 1 | yes |
+| EP13 | 11-03 16:42 | **MINI PROJECT: UNIT CONVERTER; SIGN-OFF** | 2 lines at 22-28px -> 1 line at 22-44px | 5 | yes |
+| EP14 | 11-03 17:02 | **MODULE 2 OPERATORS; SIGN-OFF** | 2 lines at 22-28px -> 1 line at 22-44px | 4 | yes |
+| EP15 | 11-04 02:02 | ok | 5 lines at 22-28px -> 2 lines at 22-44px | 2 | yes |
+| EP16 | 11-03 17:34 | ok | 3 lines at 22-28px -> 2 lines at 22-44px | 3 | yes |
+| EP17 | 11-03 17:49 | ok | 2 lines at 22-28px -> 1 line at 22-44px | 2 | yes |
+| EP18 | 11-03 18:09 | ok | 2 lines at 22-28px -> 1 line at 22-44px | 2 | yes |
+| EP19 | 11-03 18:30 | **IF AND ELSE (MODULE 3: DECISIONS, MINT** | 2 lines at 22-28px -> 1 line at 22-44px | 3 | yes |
+
+Even the episodes whose old outro was fine (EP1–4, 15–18) have the old small bug panel, and the ones with code scenes that print program output (EP1, 4, 15, 16, 17, 18; the counts are in the table) also have the old terminal strip, so none of EP1, 3, 4, 12, 17 can be proved clean:
+EP1, 4, 17 have the old terminal strip and bug panel; EP3 has the old bug panel (7 lines of 22px text) and no program output; EP12 has the "; SIGN-OFF" outro and the 16-line bug panel.
+Outro defects, by what the old master shows: EP5–14 print "; SIGN-OFF", EP14 prints "MODULE 2 OPERATORS" (the new table says ARITHMETIC OPERATORS), EP19 prints a garbled "IF AND ELSE (MODULE 3: DECISIONS, MINT…".
+The old EP2 outro printed "SETTING UP VS CODE", the new one prints the episode title "SETTING UP"; I have not changed that.
+**Conclusion: re-render all 19** (EP1–19 are one run; nothing is saved by leaving five out, and none of the five can be shown to be clean).
+
+### 15.4 Shorts: which of the 430 involve memory-boxes or algorithm-bars scenes?
+
+A Short never draws those scenes: `deriveShortVisuals` builds each Short's visual from its own data (`boxes` only when the source memory-boxes scene has `boxes`; there is no bars visual). So **no Short can render blank or crash**.
+What happens instead: 68 Shorts have such a scene in `fromScenes`; in 54 of them the source scene has no data and the Short falls back to another visual: `text` 22, `code` 21, `quiz` 11, `analogy` 8, `boxes` 6 (the six with data: EP7 S1, EP8 S2, EP9 S2, EP12 S2, EP15 S2, EP17 S2; EP18 S5 has data and shows a quiz).
+Once boxes data exists, the EP41–50 Shorts listed here would switch to the boxes visual, so those Shorts change in the 5b re-render too (EP41 S2 S5, EP44 S1 S2, EP45 S2 S5, EP46 S2 S5, EP47 S1 S2, EP48 S1, EP49 S5, EP50 S1 S2: 14 Shorts).
+Per episode (Short -> source scene -> visual it gets now):
+
+- **No data, fallback visual:** EP37 S1 (text) S5 (quiz); EP38 S2 (analogy); EP39 S2 (code); EP41 S2 (code) S5 (quiz); EP44 S1 S2 (code); EP45 S2 (code) S5 (quiz); EP46 S2 (code) S5 (quiz); EP47 S1 (text) S2 (code); EP48 S1 (text); EP49 S5 (quiz); EP50 S1 (text) S2 (code);
+  EP52 S1 (text) S2 (code) S5 (quiz); EP53 S1 (text) S2 (code); EP54 S2 (text) S5 (quiz); EP55 S1 (code) S2 (text); EP56 S1 (text) S2 (code); EP57 S1 (text) S2 (code); EP58 S1 (analogy) S2 (text); EP59 S1 (analogy) S2 (text) S5 (quiz); EP60 S1 (code); EP62 S1 (text) S2 (code);
+  EP64 S1 (code) S5 (quiz); EP65 S1 (text); EP66 S1 (analogy) S2 (analogy) S5 (quiz); EP67 S1 S2 (text); EP68 S1 (code) S2 (text); EP77 S2 (analogy); EP83 S2 (code); and the bars scenes with an empty trace: EP76 S2 (text), EP78 S2 (code), EP80 S2 (code), EP44 S1 also cites bars s1.
+- **Bars scene has a trace (fine):** EP42 S2 (text), EP43 S1 (text) S2 (code), EP73 S2 (analogy), EP74 S2 (text), EP75 S2 (text), EP79 S2 (analogy).
+
+### 15.5 Fix pass 5b, on paper: MemoryBoxes data for EP41–50
+
+`node scripts/derive_boxes.mts` derives data for all 14 blank scenes with no hand-authoring (output: `docs/fix4/boxes-draft-ep41-50.json`; `episodes/*.json` untouched; nothing rendered).
+Every value comes out of a C probe that is **compiled with `gcc -Wall -Wextra` and run** (GCC 6.3, MinGW, with `-D__USE_MINGW_ANSI_STDIO=1` so `%zu` is valid), built from the episode's own code samples, the scene's on-screen text and narration, and the challenge text, and is then cross-checked against the numbers the scene states.
+All 14 compiled without warnings and all cross-checks passed.
+
+| Scene | Layout | What it shows, and where the values come from |
+|---|---|---|
+| EP41 s4 | cells | `marks[5]` = 78 92 65 88 71, index under each box, badge "size 5, last index 4", from the scene 5 code |
+| EP41 s7 | cells ×2 | `a[5] = {1, 2}` prints 1 2 0 0 0 (zero-filled cells flagged), `b[] = {4, 5, 6}` has size 3 (from sizeof), then the `b = a;` error and a copy loop |
+| EP44 s4 | scalars, 3 steps | a = 10, b = 20 (from the narration) then `a = b;` then `b = a;`: both 20, the 10 lost |
+| EP44 s5 | scalars, 4 steps | a, b, temp: `temp = a; a = b; b = temp;` ends with a = 20, b = 10 |
+| EP45 s4 | grid 3×4 + flat | `seats` values from the scene 5 code; the row-major flat order is checked to equal memory order; sizeof = 48 |
+| EP45 s7 | matrices | a = {1 2 3, 4 5 6}, b = {6 5 4, 3 2 1} (challenge text), sum = all 7 (the challenge says "all sevens") |
+| EP46 s4 | cells + byte ruler | `marks[5]`, sizeof 20, element 4, n = 5: all three equal the numbers on the scene |
+| EP46 s7 | alias | main's `marks` and the function's `arr` are one row; `addBonus` from the sample code is run so before/after cells are real |
+| EP47 s3 | cells | `char word[6]` = G O A N S `\0`, from the quoted characters on screen |
+| EP47 s4 | cells | "Panjim" = 7 boxes, last `\0` (stop sign); the on-screen count 7 matches sizeof |
+| EP48 s3 | buffer | "Atreya Kamat\n": `sscanf("%s")` really consumes 6 characters and leaves " Kamat\n" |
+| EP49 s4 | cells | "Xecxec": strlen 6, sizeof 7 (the narration's numbers) |
+| EP49 s5 | strings, steps | the sample's `strcpy`/`strcat` statements executed: copy "Xecxec", first "Crab " then "Crab Xecxec" (the program's own output says "Joined: Crab Xecxec") |
+| EP50 s3 | mirror | "feni" over `rev`: arrows pair i with len − 1 − i; the reverse loop is run and its result "inef" is checked against the reversed word |
+
+**The component is the larger job, not the data.** Today's `MemoryBoxes` draws only one row of up to about 6 name/value/address boxes, 260px minimum each (7 boxes overflow the 1728px content width), no index row, no grid, no steps, no byte ruler, no arrows between rows.
+So 5b needs a `cells` layout (index under each box, grey zero fill, `\0` stop sign, byte ruler, steps, alias arrows), a `grid`, `scalars` with steps, and `matrices`; the data above maps onto those. The 43 blank scenes of EP52–83 need the same generator extended to pointers and structs.
+Nothing is hand-authored so far; if the generator cannot derive a scene for EP52+, I will list it before authoring.
+
+### 15.6 Re-render list after 5a (unchanged from section 14, now with proof)
+
+EP1–19: all 19 (see 15.3). EP41–50: all 10 (bug window; card overflow in 41–45, 47–50; raw TRACK text in EP43; blank memory-boxes in 41, 44–50; Shorts change for 14 of them after 5b).
+EP20–40 and EP51–86 have no 4K masters, so these fixes only have to be in place before their first render; `check_scenes` now blocks the ones that would still be blank or crash (EP37+).

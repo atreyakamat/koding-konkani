@@ -37,8 +37,9 @@ export const cardHeight = (text: string, size: number, columnWidth: number): num
 /** The text up to its first clause break (comma, colon or semicolon after at least 20 characters), else the first 90
  * characters at a word boundary; "…" marks the cut. */
 export const firstClause = (text: string): string => {
-  const at = text.search(/[,:;]\s/);
-  if (at >= 20) return `${text.slice(0, at)}…`;
+  // The first break at least 20 characters in ("Line 13: switch, ..." breaks at the comma, not the early colon).
+  const at = [...text.matchAll(/[,:;]\s/g)].map((m) => m.index ?? 0).find((i) => i >= 20);
+  if (at !== undefined) return `${text.slice(0, at)}…`;
   if (text.length <= 90) return text;
   const cut = text.lastIndexOf(" ", 90);
   return `${text.slice(0, cut > 20 ? cut : 90)}…`;

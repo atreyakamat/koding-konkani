@@ -121,7 +121,17 @@ export const culpritLines = (wrong: string[], fixed: string[]): Culprits => {
     }
   }
   const core = wrongSide.size ? wrongSide : neighbours;
-  return { wrongSide: [...core].sort((x, y) => x - y), fixedSide: [...fixedSide].sort((x, y) => x - y) };
+  const sortedCore = [...core].sort((x, y) => x - y);
+  // A pure deletion (the fix only removes wrong lines): point at the fixed line that follows the gap
+  // (else the one before it), so the fixed panel still shows where the fix happened.
+  if (fixedSide.size === 0 && sortedCore.length > 0 && pairs.length > 0) {
+    const a = sortedCore[0] - 1;
+    const after = pairs.find((p) => p[0] > a);
+    const before = [...pairs].reverse().find((p) => p[0] < a);
+    const near = after ?? before;
+    if (near) fixedSide.add(near[1] + 1);
+  }
+  return { wrongSide: sortedCore, fixedSide: [...fixedSide].sort((x, y) => x - y) };
 };
 
 /** The compiler's line from an error text like `bug.c:6:11: warning: ...` plus `    6 |     total = ...`, if it matches the code. */
