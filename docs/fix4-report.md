@@ -222,3 +222,37 @@ near 22px. Changes (`src/lib/outputFit.ts`, `src/scenes/CodeExplain.tsx`):
 
 Nothing was re-rendered. Which episodes pick this up is for you to say. Takeover scenes exist in EP8, 9, 11, 14, 16, 20–22, 24, 25, 27–29,
 32, 41, 47, 51, 52, 56, 61, 64, 65, 72, 74–77, 81, 83 and 84.
+
+## 12. Bug of the Day panels: excerpt rules (branch `fix/bug-excerpts`, not merged yet)
+
+`src/lib/errorExcerpt.ts` now classifies the Bible's "error" text instead of taking the second block blindly.
+`node scripts/bug_excerpts.mts --old=<old errorExcerpt.ts>` prints the panel text for all 86 episodes and marks changes.
+
+| Rule | Shows | Episodes that use it |
+|---|---|---|
+| diagnostic | the `file:line:col: error/warning: text` line + the echoed source line (a bare heading like "GCC error:" no longer counts) | EP1, 4, 6–12, 15, 20, 22–24, 28, 34–37, 39, 44, 46, 49, 51–58, 60–63, 68, 77, 81, 82, 86 (EP36 changed) |
+| myth | a quoted claim + the first numbered proof | EP2 (changed) |
+| output | the last two lines of the program-output block, skipping shell commands and prose lead-ins | the rest; EP5 changed |
+| crash | prose-only text that names a crash: that message | EP59, 65, 69, 79 (changed) |
+| override | hand-written table `src/lib/bugOverrides.ts` | EP67, EP73 (changed) |
+
+**Only nine episodes change: EP2, 5, 36, 59, 65, 67, 69, 73, 79.** The other 77 are identical to the old output (checked by the script). Outside
+EP1–19: EP36, 59, 65, 67, 69, 73, 79; none are in EP41–50. Nothing is flagged prose-only any more.
+
+540p stills of the nine panels (real props, taken at 60% of the scene, while the error is on screen):
+
+| Episode | Panel text | Still |
+|---|---|---|
+| EP2 s8 | the myth + first proof | ![](fix4/bugpanel-ep2.png) |
+| EP5 s9 | `Namaskar, Goa!` (the old exe's wrong output) | ![](fix4/bugpanel-ep5.png) |
+| EP36 | the real GCC error + source line (was "GCC error:") | ![](fix4/bugpanel-ep36.png) |
+| EP59 | `Segmentation fault` | ![](fix4/bugpanel-ep59.png) |
+| EP65 | `Segmentation fault` | ![](fix4/bugpanel-ep65.png) |
+| EP67 | override: `realloc returns NULL and overwrites basket` | ![](fix4/bugpanel-ep67.png) |
+| EP69 | `Segmentation fault` | ![](fix4/bugpanel-ep69.png) |
+| EP73 | override: `$ ./program`, blinking cursor, `^C`, caption "no output, program hangs" (cursor is in its "on" half in this frame) | ![](fix4/bugpanel-ep73.png) |
+| EP79 | `Segmentation fault` | ![](fix4/bugpanel-ep79.png) |
+
+Two things seen in the stills: in EP2 the quoted myth appears twice (the code card above already shows it; the panel repeats it before the proof),
+and the EP73 caption was first drawn in ink on the dark-blue background and was unreadable; it now uses the readable colour for the scene background
+(fixed in the branch).
