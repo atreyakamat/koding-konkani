@@ -127,7 +127,161 @@
       "onScreen": "Row of 8 fish boxes, a pointer checks each in turn; counter \"steps: 1…8\"",
       "animation": "Pointer hops box to box; counter rolls; blip per step",
       "sfx": [],
-      "narration": "Here are eight boxes at the fish market, and we are looking for the kingfish. We check box one, box two, box three, and so on. In the worst case, the kingfish is in the last box, and we check all eight. Eight boxes, eight steps. If the market had a thousand boxes, it would be a thousand steps. The number of steps grows with n, the size of the input. That idea, how the steps grow as n grows, is what Big-O describes."
+      "narration": "Here are eight boxes at the fish market, and we are looking for the kingfish. We check box one, box two, box three, and so on. In the worst case, the kingfish is in the last box, and we check all eight. Eight boxes, eight steps. If the market had a thousand boxes, it would be a thousand steps. The number of steps grows with n, the size of the input. That idea, how the steps grow as n grows, is what Big-O describes.",
+      "trace": [
+        {
+          "step": "start",
+          "array": [
+            3,
+            8,
+            2,
+            9,
+            5,
+            4,
+            7,
+            6
+          ]
+        },
+        {
+          "step": 1,
+          "array": [
+            3,
+            8,
+            2,
+            9,
+            5,
+            4,
+            7,
+            6
+          ],
+          "compare": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "array": [
+            3,
+            8,
+            2,
+            9,
+            5,
+            4,
+            7,
+            6
+          ],
+          "compare": [
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "array": [
+            3,
+            8,
+            2,
+            9,
+            5,
+            4,
+            7,
+            6
+          ],
+          "compare": [
+            2,
+            2
+          ]
+        },
+        {
+          "step": 4,
+          "array": [
+            3,
+            8,
+            2,
+            9,
+            5,
+            4,
+            7,
+            6
+          ],
+          "compare": [
+            3,
+            3
+          ]
+        },
+        {
+          "step": 5,
+          "array": [
+            3,
+            8,
+            2,
+            9,
+            5,
+            4,
+            7,
+            6
+          ],
+          "compare": [
+            4,
+            4
+          ]
+        },
+        {
+          "step": 6,
+          "array": [
+            3,
+            8,
+            2,
+            9,
+            5,
+            4,
+            7,
+            6
+          ],
+          "compare": [
+            5,
+            5
+          ]
+        },
+        {
+          "step": 7,
+          "array": [
+            3,
+            8,
+            2,
+            9,
+            5,
+            4,
+            7,
+            6
+          ],
+          "compare": [
+            6,
+            6
+          ]
+        },
+        {
+          "step": 8,
+          "array": [
+            3,
+            8,
+            2,
+            9,
+            5,
+            4,
+            7,
+            6
+          ],
+          "compare": [
+            7,
+            7
+          ],
+          "sorted": [
+            7
+          ]
+        }
+      ]
     },
     {
       "id": 5,
