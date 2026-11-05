@@ -231,7 +231,7 @@ Nothing was re-rendered. Which episodes pick this up is for you to say. Takeover
 | Rule | Shows | Episodes that use it |
 |---|---|---|
 | diagnostic | the `file:line:col: error/warning: text` line + the echoed source line (a bare heading like "GCC error:" no longer counts) | EP1, 4, 6–12, 15, 20, 22–24, 28, 34–37, 39, 44, 46, 49, 51–58, 60–63, 68, 77, 81, 82, 86 (EP36 changed) |
-| myth | a quoted claim + the first numbered proof | EP2 (changed) |
+| myth | the first numbered proof; the quoted claim is added above it only if the code card does not already show it (compared after normalising quotes) | EP2 (changed) |
 | output | the last two lines of the program-output block, skipping shell commands and prose lead-ins | the rest; EP5 changed |
 | crash | prose-only text that names a crash: that message | EP59, 65, 69, 79 (changed) |
 | override | hand-written table `src/lib/bugOverrides.ts` | EP67, EP73 (changed) |
@@ -243,7 +243,7 @@ EP1–19: EP36, 59, 65, 67, 69, 73, 79; none are in EP41–50. Nothing is flagge
 
 | Episode | Panel text | Still |
 |---|---|---|
-| EP2 s8 | the myth + first proof | ![](fix4/bugpanel-ep2.png) |
+| EP2 s8 | only the proof line (the claim is already in the card above) | ![](fix4/bugpanel-ep2.png) |
 | EP5 s9 | `Namaskar, Goa!` (the old exe's wrong output) | ![](fix4/bugpanel-ep5.png) |
 | EP36 | the real GCC error + source line (was "GCC error:") | ![](fix4/bugpanel-ep36.png) |
 | EP59 | `Segmentation fault` | ![](fix4/bugpanel-ep59.png) |
@@ -253,6 +253,26 @@ EP1–19: EP36, 59, 65, 67, 69, 73, 79; none are in EP41–50. Nothing is flagge
 | EP73 | override: `$ ./program`, blinking cursor, `^C`, caption "no output, program hangs" (cursor is in its "on" half in this frame) | ![](fix4/bugpanel-ep73.png) |
 | EP79 | `Segmentation fault` | ![](fix4/bugpanel-ep79.png) |
 
-Two things seen in the stills: in EP2 the quoted myth appears twice (the code card above already shows it; the panel repeats it before the proof),
-and the EP73 caption was first drawn in ink on the dark-blue background and was unreadable; it now uses the readable colour for the scene background
-(fixed in the branch).
+Two things seen in the stills: in EP2 the quoted myth appeared twice, so the rule now drops the claim when the code card already shows it (still re-rendered above),
+and the EP73 caption was first drawn in ink on the dark-blue background and was unreadable; it now uses the readable colour for the scene background.
+
+## 13. Bug of the Day code window: does it show the culprit? (report only, nothing changed)
+
+**How the window is chosen.** `BugOfTheDay` draws the wrong code in `CodeBlock` with `maxHeight 410`, font 40, width 1100, and passes no `highlightLine` and no `visibleChars`.
+The panel is capped to `floor((410 − chrome) / row height)` rows, which is 5 rows (a wrapped line takes 2 rows, so sometimes only 3–4 lines). With nothing to follow, the panel
+scrolls to the end, so the window is always **the last rows of the file**, snapped to whole lines. The fixed code gets the same window. The window never looks at where the bug is.
+
+`node scripts/bug_windows.mts` (pure Node, reads `episodes/*.json` and `src/lib/codeLayout.ts`) mirrors that rule for all 86 episodes and checks the window against the bug's line.
+The line is the compiler's own line when the error text has `file:LINE:col: error|warning` and the echoed source matches the code, otherwise the line(s) that differ from the fix
+(for a pure insertion, the lines around the gap; for a short fragment fix, the wrong line sharing the most identifiers with the fragment). It is a heuristic; the cases below were spot-checked.
+
+- **Wrong-code window does not contain the culprit: 35 episodes** — EP20, 22, 23, 24, 27, 30, 33, 34, 35, 37, 39, 42, 43, 44, 45, 46, 47, 49, 50, 57, 62, 63, 67, 69, 70, 71, 73, 74, 76, 77, 78, 79, 82, 84, 85.
+  Checked by hand: EP67 (culprit line 10, the `realloc` line; window 13–17), EP69 (the `fopen` result is used at lines 4–6; window 7–11), EP43 (the unsorted array is line 4; window 19–22).
+- **Culprit not decidable by the script: 3** (no compiler line, no matching line) — EP5, EP25, EP83.
+- **Wrong slot is prose, so there is no window: 2** — EP2, EP3.
+- **Fixed-code window does not contain a changed line: 18** — EP10, 20, 24, 30, 34, 35, 36, 37, 39, 40, 49, 69, 71, 75, 76, 78, 84, 85.
+- The other 45 episodes show the culprit.
+
+Of the 35, 19 are in EP20–50 (EP20, 22, 23, 24, 27, 30, 33, 34, 35, 37, 39, 42–47, 49, 50), and 8 of those (EP42–47, 49, 50) are in the EP41–50 4K masters already rendered.
+**EP1–19: no wrong-code window misses its culprit.** EP5 is undecidable by the script, EP2 and EP3 have no code window, and EP10's fixed-code window (4–8) does not show the changed line 6.
+The window logic is unchanged. A fix would be to centre the window on the culprit (pass it as `highlightLine`) or show more rows.
