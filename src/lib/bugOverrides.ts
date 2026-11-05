@@ -17,7 +17,7 @@ export const BUG_OVERRIDES: Record<number, BugOverride> = {
 export type BugPanel = Excerpt | { kind: "override"; lines: string[]; override: BugOverride };
 
 /** What the Bug-of-the-Day panel shows for an episode: its override if it has one, else the excerpt rules. */
-export const bugPanel = (ep: number, error: string): BugPanel => {
+export const bugPanel = (ep: number, error: string, shown?: string): BugPanel => {
   const override = BUG_OVERRIDES[ep];
-  return override ? { kind: "override", lines: override.lines, override } : classifyError(error);
+  return override ? { kind: "override", lines: override.lines, override } : classifyError(error, shown);
 };

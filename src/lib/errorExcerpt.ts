@@ -1,7 +1,8 @@
 /** Picks the lines of a Bug-of-the-Day "error" text worth showing big in the terminal panel (at most two).
  * The Bible text mixes prose ("GCC gives no error ..."), GCC diagnostics, shell commands and program output.
  *  - diagnostic: the first `file:line:col: error|warning: message` line plus the echoed source line after it.
- *  - myth: a quoted claim followed by a numbered list (EP02): the claim and the first item.
+ *  - myth: a quoted claim followed by a numbered list (EP02): the first item, with the claim above it
+ *    unless the code card already shows the claim (`shown`, compared after normalising quotes).
  *  - output: the last two lines of the program-output block. Shell commands (`./a`, `gcc ...`) and
  *    prose lead-ins ("Wrong output (...):", "GCC gives no error ...") are skipped; the block that follows
  *    the lead-in is the wrong output. With no lead-in the first block is context (paths, a command)
@@ -42,7 +43,17 @@ const sentences = (text: string): string[] =>
     .map((s) => s.trim())
     .filter(Boolean);
 
-export const classifyError = (error: string): Excerpt => {
+/** Lower-case, curly quotes straightened, quotes and spacing dropped: two spellings of one sentence compare equal. */
+export const normaliseClaim = (text: string): string =>
+  text
+    .replace(/[‘’“”]/g, "'")
+    .replace(/["']/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+
+/** `shown` is the text of the code card above the panel, used to avoid repeating it. */
+export const classifyError = (error: string, shown?: string): Excerpt => {
   const lines = error.split("\n").map((l) => l.trimEnd()).filter((l) => l.trim() !== "");
   const at = lines.findIndex((l) => DIAGNOSTIC.test(l));
   if (at >= 0) {
@@ -56,7 +67,9 @@ export const classifyError = (error: string): Excerpt => {
   const all = blocksOf(error);
   // Myth-buster: a quoted claim, then a numbered list of evidence.
   if (all.length > 1 && all[0].length === 1 && QUOTED.test(all[0][0].trim()) && LIST_ITEM.test(all[1][0])) {
-    return { kind: "myth", lines: [all[0][0], all[1][0].replace(LIST_ITEM, "")] };
+    const proof = all[1][0].replace(LIST_ITEM, "");
+    const claimShown = shown !== undefined && normaliseClaim(shown) === normaliseClaim(all[0][0]);
+    return { kind: "myth", lines: claimShown ? [proof] : [all[0][0], proof] };
   }
 
   const blocks = all.filter((b) => !isCommandBlock(b));
@@ -77,4 +90,4 @@ export const classifyError = (error: string): Excerpt => {
   return sentence ? { kind: "prose", lines: [sentence] } : { kind: "empty", lines: [] };
 };
 
-export const errorExcerpt = (error: string): string[] => classifyError(error).lines;
+export const errorExcerpt = (error: string, shown?: string): string[] => classifyError(error, shown).lines;

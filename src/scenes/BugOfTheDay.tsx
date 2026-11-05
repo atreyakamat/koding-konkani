@@ -74,7 +74,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   const lineCount = (text: string, isCode: boolean): number =>
     isCode ? text.split("\n").length : 3;
   const codeLines = Math.max(lineCount(wrongCode, wrongIsCode), lineCount(fixedCode, fixedIsCode));
-  const allErrorLines = errorOverride ? errorOverride.lines : errorExcerpt(error);
+  const allErrorLines = errorOverride ? errorOverride.lines : errorExcerpt(error, wrongCode);
   // The error panel has to fit under the code panel and above the caption band. Budget:
   // 1080 - 80 top - 200 bottom = 800, minus banner (~70), two gaps (48), the code panel
   // (min(codeLines, 8) rows at 40px*1.5 + chrome), and the panel's own 64px padding + 10px

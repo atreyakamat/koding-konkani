@@ -22,7 +22,8 @@ const changed: string[] = [];
 for (let n = 1; n <= 86; n++) {
   const ep = JSON.parse(readFileSync(join(ROOT, "episodes", `ep${String(n).padStart(3, "0")}.json`), "utf-8"));
   const error = stripMarkdown(ep.bug?.error ?? "");
-  const { kind, lines } = bugPanel(n, error);
+  const shown = ep.bug?.wrong ?? "";
+  const { kind, lines } = bugPanel(n, error, stripMarkdown(shown));
   const flag = kind === "prose" || kind === "empty" ? "FLAG" : "";
   const old = oldFn ? JSON.stringify(oldFn(error)) : null;
   const differs = old !== null && old !== JSON.stringify(lines);
