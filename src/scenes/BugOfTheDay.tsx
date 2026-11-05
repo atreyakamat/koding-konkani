@@ -1,15 +1,22 @@
 import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { readableOn } from "../theme/contrast";
 import { CodeBlock, Panel, Sticker } from "../ui";
 import { impactShakeX, springs } from "../lib/motion";
 import { errorExcerpt } from "../lib/errorExcerpt";
+import type { BugOverride } from "../lib/bugOverrides";
+import type { BugCulprit } from "../lib/bugCulprit";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
 export type BugOfTheDayProps = BaseSceneProps & {
   wrongCode: string;
   error: string;
+  /** Hand-written panel for a bug whose Bible text has nothing to show (see lib/bugOverrides.ts). */
+  errorOverride?: BugOverride;
+  /** 1-based lines to centre and highlight in the wrong and the fixed code (see lib/bugCulprit.ts). */
+  culprit?: BugCulprit;
   fixedCode: string;
   why?: string;
 };
@@ -53,6 +60,8 @@ const fitErrorLines = (lines: string[], perRow: number, maxRows: number): string
 export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   wrongCode,
   error,
+  errorOverride,
+  culprit,
   fixedCode,
   why,
   colours,
@@ -69,7 +78,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   const lineCount = (text: string, isCode: boolean): number =>
     isCode ? text.split("\n").length : 3;
   const codeLines = Math.max(lineCount(wrongCode, wrongIsCode), lineCount(fixedCode, fixedIsCode));
-  const allErrorLines = errorExcerpt(error);
+  const allErrorLines = errorOverride ? errorOverride.lines : errorExcerpt(error, wrongCode);
   // The error panel has to fit under the code panel and above the caption band. Budget:
   // 1080 - 80 top - 200 bottom = 800, minus banner (~70), two gaps (48), the code panel
   // (min(codeLines, 8) rows at 40px*1.5 + chrome), and the panel's own 64px padding + 10px
@@ -92,6 +101,8 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   });
   const phase2 = Math.round(durationInFrames * 0.4);
   const phase3 = Math.round(durationInFrames * 0.68);
+  // A hang prints nothing: the cursor blinks for about 2s, then the viewer presses Ctrl+C.
+  const ctrlCFrame = phase2 + 60;
 
   const bannerY = interpolate(frame, [0, 10], [-140, 0], {
     easing: springs.slam,
@@ -145,6 +156,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
                 width={1100}
                 fontSize={40}
                 maxHeight={410}
+                highlightLine={isFixed ? culprit?.fixed : culprit?.wrong}
               />
             ) : (
               <Panel background={isFixed ? palette.mint : palette.cream} borderColor={palette.ink}>
@@ -178,9 +190,31 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
                   overflowWrap: "anywhere",
                 }}
               >
-                {errorText}
+                {errorOverride?.hang ? (
+                  <>
+                    <span style={{ color: palette.white }}>{"$ ./program"}</span>
+                    {"\n"}
+                    {frame >= ctrlCFrame ? "^C" : ""}
+                    {Math.floor((frame - phase2) / 15) % 2 === 0 ? "█" : " "}
+                  </>
+                ) : (
+                  errorText
+                )}
               </div>
             </Panel>
+            {errorOverride?.caption ? (
+              <div
+                style={{
+                  marginTop: 16,
+                  fontFamily: fonts.body,
+                  fontWeight: 700,
+                  fontSize: 36,
+                  color: readableOn(colours.bg),
+                }}
+              >
+                {errorOverride.caption}
+              </div>
+            ) : null}
           </div>
         ) : (
           <div

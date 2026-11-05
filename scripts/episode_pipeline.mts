@@ -19,6 +19,7 @@
  *
  * Usage: node scripts/episode_pipeline.mts <start-ep> <end-ep> [--no-timebox]
  */
+import { sceneProblems } from "./check_scenes.mts";
 import { execFileSync, spawnSync } from "node:child_process";
 import {
   appendFileSync,
@@ -550,6 +551,17 @@ for (let ep = startEp; ep <= endEp; ep++) {
   }
   const epId = epName(ep);
   log(`=== ${epId}: starting ===`);
+
+  // Preflight: blank or crashing scenes (memory-boxes with no boxes, algorithm-bars with no trace). The episode is skipped.
+  // This does not count toward the two-failures-in-a-row stop: it is a data gap, the next episode may be fine.
+  const sceneProblemsFound = sceneProblems(ep);
+  if (sceneProblemsFound.length > 0) {
+    for (const p of sceneProblemsFound) log(`SCENES ${epId} scene ${p.scene} [${p.template}]: ${p.problem}`);
+    logSkip(ep, `scene data missing: ${sceneProblemsFound.map((p) => `s${p.scene} ${p.template}`).join(", ")}`);
+    log(`=== ${epId}: SKIPPED (scene check failed) ===`);
+    writeMorningReport(consecutiveFailures, null);
+    continue;
+  }
 
   if (!gccCheckPasses(ep)) {
     log(`=== ${epId}: SKIPPED (GCC check failed) ===`);
