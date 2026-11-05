@@ -1,6 +1,7 @@
 import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import { palette } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { readableOn } from "../theme/contrast";
 import { CodeBlock, Panel, Sticker } from "../ui";
 import { impactShakeX, springs } from "../lib/motion";
 import { errorExcerpt } from "../lib/errorExcerpt";
@@ -203,7 +204,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
                   fontFamily: fonts.body,
                   fontWeight: 700,
                   fontSize: 36,
-                  color: palette.ink,
+                  color: readableOn(colours.bg),
                 }}
               >
                 {errorOverride.caption}
