@@ -113,9 +113,11 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
     case "memory-boxes":
       return { boxes: scene.boxes ?? [] };
     case "bug-of-the-day": {
-      const wrongCode = bugText(episode.bug.wrong);
-      const fixedCode = bugText(episode.bug.fixed);
-      const error = stripMarkdown(episode.bug.error);
+      // A second bug scene (EP10's bonus bug) carries its own record; the others use the episode's.
+      const bug = scene.bug ?? episode.bug;
+      const wrongCode = bugText(bug.wrong);
+      const fixedCode = bugText(bug.fixed);
+      const error = stripMarkdown(bug.error);
       return {
         wrongCode,
         error,
@@ -123,7 +125,7 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
         // Lines the code windows centre on (and highlight); only code has lines to point at.
         culprit: looksLikeCode(wrongCode) ? bugCulprit(episode.ep, wrongCode, looksLikeCode(fixedCode) ? fixedCode : "", error) : undefined,
         fixedCode,
-        why: stripMarkdown(episode.bug.why),
+        why: stripMarkdown(bug.why),
       };
     }
     case "pun-card":

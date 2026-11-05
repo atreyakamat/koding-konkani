@@ -9,7 +9,7 @@ import { stripMarkdown as sanitizeText } from "../lib/sanitize";
 import { chooseFontSize } from "../lib/codeLayout";
 import { defaultHlCues, hlLineAt, trackValuesAt } from "../lib/cues";
 import { layoutOutput, outputPanelHeight, TAKEOVER_PANEL_WIDTH } from "../lib/outputFit";
-import { COLUMN_GAP, fitLabels, trackerHeight } from "../lib/cardFit";
+import { CARD_MIN_HEIGHT, COLUMN_GAP, cardHeight, fitLabels, trackerHeight } from "../lib/cardFit";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -81,9 +81,10 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
   // The card never shrinks (it used to be squeezed to 160px, and its text spilled over the tracker): one
   // font size for the whole scene, chosen so every label fits the room the column has left for the card.
   const columnWidth = outputLayout?.fullColumn ? TAKEOVER_PANEL_WIDTH : 1920 - 192 - 48 - CODE_COLUMN_WIDTH;
-  const columnHeight = output
-    ? (outputLayout?.fullColumn ? TAKEOVER_BOTTOM : RIGHT_COLUMN_BOTTOM) - 96
-    : 1080 - 192;
+  // The column runs down to y 790 in every scene with output (it used to stop at 700 outside takeover), so the card can use
+  // the space under the output panel. Xecxec's head tops out near y 840; his "It runs!" bubble is dropped when the
+  // layout reaches below the old y 700 limit (see `bubbleFits`).
+  const columnHeight = output ? TAKEOVER_BOTTOM - 96 : 1080 - 192;
   const trackerH = trackerHeight(
     [...new Set(activeCues.map((cue) => cue.frame))].map((f) => trackValuesAt(activeCues, f)),
     columnWidth,
@@ -91,6 +92,8 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
   const outputH = outputLayout ? outputPanelHeight(outputLayout) : 0;
   const gaps = ((trackerH ? 1 : 0) + (outputLayout ? 1 : 0)) * COLUMN_GAP;
   const fitted = fitLabels(labels ?? {}, columnHeight - trackerH - outputH - gaps, columnWidth);
+  const worstCard = Math.max(CARD_MIN_HEIGHT, ...Object.values(fitted.labels).map((t) => cardHeight(t, fitted.size, columnWidth)));
+  const bubbleFits = 96 + worstCard + trackerH + outputH + gaps <= RIGHT_COLUMN_BOTTOM;
   // The explanation of the latest highlighted line that has one: the card holds that text
   // through lines without a label, and does not exist at all before the first label.
   const labelText = [...activeCues]
@@ -111,7 +114,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
         size: MASCOT_SIZE_WITH_OUTPUT,
         bottom: 60,
         poses: [{ frame: outputStart, pose: "clawsUp" }],
-        bubbles: outputLayout?.fullColumn ? [] : [{ at: outputStart + 10, text: "It runs!" }],
+        bubbles: outputLayout?.fullColumn || !bubbleFits ? [] : [{ at: outputStart + 10, text: "It runs!" }],
       }
     : {};
 
@@ -172,7 +175,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
             flexDirection: "column",
             gap: 24,
             paddingBottom: output
-              ? 1080 - 96 - (outputLayout?.fullColumn ? TAKEOVER_BOTTOM : RIGHT_COLUMN_BOTTOM)
+              ? 1080 - 96 - TAKEOVER_BOTTOM
               : 0,
           }}
         >

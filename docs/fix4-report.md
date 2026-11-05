@@ -504,3 +504,44 @@ Nothing is hand-authored so far; if the generator cannot derive a scene for EP52
 
 EP1–19: all 19 (see 15.3). EP41–50: all 10 (bug window; card overflow in 41–45, 47–50; raw TRACK text in EP43; blank memory-boxes in 41, 44–50; Shorts change for 14 of them after 5b).
 EP20–40 and EP51–86 have no 4K masters, so these fixes only have to be in place before their first render; `check_scenes` now blocks the ones that would still be blank or crash (EP37+).
+
+## 16. EP10 second bug, no ligatures in code, card uses the space below the output panel
+
+### 16.1 EP10 bonus bug authored; the same pattern elsewhere: none
+
+EP10 has two Bug of the Day scenes (s8 `PI`, s9 `#define BUS_FARE 15;`) but the JSON had one `bug` record, whose `why` was the second bug's text. Now:
+the schema gives a scene an optional `bug` record (`src/lib/episode.ts`), `scenePropsFor` uses `scene.bug ?? episode.bug`, `episodes/ep010.json` has the bonus bug on scene 9 (wrong code, the GCC error and notes, fixed code, `Fix:` line, all from `docs/bible/m01.md`, EP 10), and the main record's `why` is now its own sentence
+("A `const` variable is read-only after it is initialised, so any later assignment is a compile error.").
+GCC check (GCC 6.3, MinGW): the `PI` program fails with `error: assignment of read-only variable 'PI'` and the fixed one prints `PI: 3.14`; the bonus program fails with `bonus10.c:2:20: error: expected ')' before ';' token` and `note: in expansion of macro 'BUS_FARE'`, the fixed one prints `Bus cost: Rs 60`.
+The Bible's extra note `to match this '('` comes from a newer GCC than the local one, so it is in the data but the panel only shows the first diagnostic and its source line.
+
+`node scripts/scan_bug_records.mts` (counts Bug of the Day scenes, scene-level records, the Bible's scene-table rows and "Bonus bug" blocks for all 86 episodes): **EP10 was the only one** (87 bug scenes = 86 + this one). Now every bug scene has its own record and the counts match the Bible.
+`bug_windows.mts` and `bug_excerpts.mts` now check both EP10 bugs: culprit visible in both windows (0 misses), excerpts correct.
+
+| Panel | Still |
+|---|---|
+| EP10 s8 wrong: `PI = 3.0f;` highlighted | ![](fix4/p16-B10s8-w.png) |
+| EP10 s8 fixed, now with its own explanation | ![](fix4/p16-B10s8-f.png) |
+| EP10 s9 wrong: `#define BUS_FARE 15;` highlighted, GCC error | ![](fix4/p16-B10s9-w.png) |
+| EP10 s9 fixed: the line without the semicolon | ![](fix4/p16-B10s9-f.png) |
+
+### 16.2 Ligatures off in every code face
+
+`src/theme/fonts.ts`: every font face loads with `featureSettings: '"liga" 0, "calt" 0'`, and a global rule `*, *::before, *::after { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0 }` is added to the composition,
+so CodeBlock, CodeExplain (code, output panel, tracker), BugOfTheDay, Terminal, MemoryBoxes, AlgorithmBars and the Short visuals all get it, including SVG text.
+Before, `<=` was drawn as a single "less-or-equal" glyph and `!=` as "not equal" (visible in the old EP41 bug panel and the EP41–50 masters). Now:
+
+| Frame | Still |
+|---|---|
+| EP41 bug panel: `i <= 5` is plain ASCII `<=` | ![](fix4/p16-B41-w.png) |
+| EP50 s6: `!=` (line 25) and `==` (line 27) as typed | ![](fix4/p16-ep50-s6-ne-eq.png) |
+| EP48 s5: `!= '\n'` (line 12) | ![](fix4/p16-ep48-s5-ne.png) |
+
+(EP48 has no `strcmp`; `strcmp` is in EP49 s7. The frames with both `!=` and `==` are in EP50, and `!=` alone is in EP47 s5 and EP48 s5.) **Every master rendered before this change shows the old glyphs in its code panels, so all EP1–19 and EP41–50 masters need the re-render, which they already do.**
+
+### 16.3 Explanation card uses the space below the output panel
+
+In scenes with program output the right column now runs to y 790 in every scene (it stopped at 700 outside takeover), so the card can take what the output panel leaves.
+The scene still picks takeover by the old room rule, so the takeover set is unchanged. Xecxec's "It runs!" bubble is dropped when the layout reaches below the old y 700 line (as in takeover).
+Result (`scripts/scan_label_overflow.mts`): font size per scene 44px **81** (was 49), 40px 14, 36px 12, 32px 5, 28px 35 (was 57); labels cut to their first clause **13 in 10 episodes** (was 32 in 20): EP14, 25, 47, 49, 52, 61, 66, 81, 83, 84.
+EP42 is no longer cut; the EP50 frame above shows a 3-row card at 44px with the full text and the tracker below it.

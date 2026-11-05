@@ -52,15 +52,17 @@ const fixedMissing: string[] = [];
 const noCode: string[] = [];
 for (let n = 1; n <= 86; n++) {
   const ep = JSON.parse(readFileSync(join(ROOT, "episodes", `ep${String(n).padStart(3, "0")}.json`), "utf-8"));
-  const wrong = bugText(ep.bug?.wrong ?? "");
-  const fixed = bugText(ep.bug?.fixed ?? "");
-  const tag = `EP${String(n).padStart(2, "0")}`;
+  const records = [{ tag: "", bug: ep.bug }, ...(ep.scenes as { id: number; bug?: typeof ep.bug }[]).filter((s) => s.bug).map((s) => ({ tag: ` s${s.id}`, bug: s.bug }))];
+  for (const r of records) {
+  const wrong = bugText(r.bug?.wrong ?? "");
+  const fixed = bugText(r.bug?.fixed ?? "");
+  const tag = `EP${String(n).padStart(2, "0")}${r.tag}`;
   if (!isCode(wrong)) {
     noCode.push(tag);
     if (show) console.log(`${tag} (prose: text card)`);
     continue;
   }
-  const c = bugCulprit(n, wrong, isCode(fixed) ? fixed : "", stripMarkdown(ep.bug?.error ?? ""));
+  const c = bugCulprit(n, wrong, isCode(fixed) ? fixed : "", stripMarkdown(r.bug?.error ?? ""));
   const w = windowLines(wrong, old ? undefined : c.wrong);
   const inW = c.wrong !== undefined && c.wrong >= w.from && c.wrong <= w.to;
   const fw = isCode(fixed) ? windowLines(fixed, old ? undefined : c.fixed) : undefined;
@@ -72,6 +74,7 @@ for (let n = 1; n <= 86; n++) {
     console.log(
       `${tag} wrong ${c.wrong ?? "-"} (window ${w.from}-${w.to}/${w.total}) ${wrong.split("\n")[(c.wrong ?? 1) - 1]?.trim().slice(0, 60) ?? ""} | fixed ${c.fixed ?? "-"}${fw ? ` (window ${fw.from}-${fw.to}/${fw.total})` : ""}`,
     );
+  }
 }
 const l = (xs: string[]): string => xs.join(", ") || "none";
 console.log(`${old ? "OLD window (last rows)" : "NEW window (centred on the culprit)"}:`);

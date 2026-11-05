@@ -10,7 +10,7 @@ import { scenePropsFor } from "../src/compositions/sceneProps.ts";
 import { layoutOutput, outputPanelHeight, TAKEOVER_PANEL_WIDTH } from "../src/lib/outputFit.ts";
 import { cardHeight, COLUMN_GAP, fitLabels, trackerHeight } from "../src/lib/cardFit.ts";
 
-const RIGHT_COLUMN_BOTTOM = 700;
+const RIGHT_COLUMN_BOTTOM = 700; // only for OUTPUT_ROOM (which scenes take over)
 const TAKEOVER_BOTTOM = 790;
 const OUTPUT_ROOM = RIGHT_COLUMN_BOTTOM - 96 - 160 - 24 - 90 - 24;
 const oldMode = process.argv.includes("--old");
@@ -32,7 +32,7 @@ for (let n = 1; n <= 86; n++) {
     if (!Object.keys(labels).length) continue;
     const lay = s.code.output ? layoutOutput(s.code.output, OUTPUT_ROOM, TAKEOVER_BOTTOM - 96) : undefined;
     const columnWidth = lay?.fullColumn ? TAKEOVER_PANEL_WIDTH : 1920 - 192 - 48 - 1002;
-    const columnHeight = lay ? (lay.fullColumn ? TAKEOVER_BOTTOM : RIGHT_COLUMN_BOTTOM) - 96 : 1080 - 192;
+    const columnHeight = lay ? TAKEOVER_BOTTOM - 96 : 1080 - 192;
     // Tracker block: every tracked name at once with a 5-character value (a close estimate for a scan).
     const tracked = new Set(
       (s.narration.match(/\[TRACK\s+([^\]]*)\]/g) ?? []).flatMap((m: string) =>
