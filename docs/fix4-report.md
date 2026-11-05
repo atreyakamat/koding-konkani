@@ -271,7 +271,7 @@ The line is the compiler's own line when the error text has `file:LINE:col: erro
 - **Culprit not decidable by the script: 3** (no compiler line, no matching line) — EP5, EP25, EP83.
 - **Wrong slot is prose, so there is no window: 2** — EP2, EP3.
 - **Fixed-code window does not contain a changed line: 18** — EP10, 20, 24, 30, 34, 35, 36, 37, 39, 40, 49, 69, 71, 75, 76, 78, 84, 85.
-- The other 45 episodes show the culprit.
+- The other 46 episodes show the culprit.
 
 Of the 35, 19 are in EP20–50 (EP20, 22, 23, 24, 27, 30, 33, 34, 35, 37, 39, 42–47, 49, 50), and 8 of those (EP42–47, 49, 50) are in the EP41–50 4K masters already rendered.
 **EP1–19: no wrong-code window misses its culprit.** EP5 is undecidable by the script, EP2 and EP3 have no code window, and EP10's fixed-code window (4–8) does not show the changed line 6.
