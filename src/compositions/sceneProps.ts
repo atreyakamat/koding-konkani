@@ -3,6 +3,7 @@ import { stripMarkdown } from "../lib/sanitize.ts";
 import { terminalLinesFor } from "../lib/terminalLines.ts";
 import { EPISODE_TITLES } from "../lib/episodeTitles.ts";
 import { BUG_OVERRIDES } from "../lib/bugOverrides.ts";
+import { bugCulprit } from "../lib/bugCulprit.ts";
 
 const CUE_RE = /\[(HL|TRACK)\s+[^\]]*\]/g;
 const MAX_LINE_CHARS = 48;
@@ -45,7 +46,8 @@ export const analogyFromOnScreen = (
 
 /** Bug code fields hold real C most of the time (left untouched); when one is prose (a wrong
  * claim, a path) it is Markdown-stripped like every other on-screen string. */
-const bugText = (text: string): string => (/[;{]|#include/.test(text) ? text : stripMarkdown(text));
+const looksLikeCode = (text: string): boolean => /[;{]|#include/.test(text);
+const bugText = (text: string): string => (looksLikeCode(text) ? text : stripMarkdown(text));
 
 const HL_CUE_RE = /\[HL\s+(\d+)\]/g;
 const MAX_LABEL_CHARS = 140;
@@ -62,7 +64,8 @@ const labelsFromNarration = (narration: string): Record<number, string> => {
     const line = Number(m[1]);
     const start = m.index! + m[0].length;
     const end = i + 1 < matches.length ? matches[i + 1].index! : narration.length;
-    let segment = narration.slice(start, end).replace(/\s+/g, " ").trim();
+    // [TRACK ...] cues inside the sentence are for the tracker, not for the card text (EP28, 37, 43, ... showed them raw).
+    let segment = narration.slice(start, end).replace(CUE_RE, "").replace(/\s+/g, " ").trim();
     const sentenceEnd = segment.search(/[.?!](\s|$)/);
     if (sentenceEnd !== -1) segment = segment.slice(0, sentenceEnd + 1);
     if (segment.length > MAX_LABEL_CHARS) segment = `${segment.slice(0, MAX_LABEL_CHARS - 1)}…`;
@@ -109,14 +112,20 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
       return { trace: scene.trace ?? [] };
     case "memory-boxes":
       return { boxes: scene.boxes ?? [] };
-    case "bug-of-the-day":
+    case "bug-of-the-day": {
+      const wrongCode = bugText(episode.bug.wrong);
+      const fixedCode = bugText(episode.bug.fixed);
+      const error = stripMarkdown(episode.bug.error);
       return {
-        wrongCode: bugText(episode.bug.wrong),
-        error: stripMarkdown(episode.bug.error),
+        wrongCode,
+        error,
         errorOverride: BUG_OVERRIDES[episode.ep],
-        fixedCode: bugText(episode.bug.fixed),
+        // Lines the code windows centre on (and highlight); only code has lines to point at.
+        culprit: looksLikeCode(wrongCode) ? bugCulprit(episode.ep, wrongCode, looksLikeCode(fixedCode) ? fixedCode : "", error) : undefined,
+        fixedCode,
         why: stripMarkdown(episode.bug.why),
       };
+    }
     case "pun-card":
       return { pun: stripMarkdown(episode.pun) };
     case "challenge":

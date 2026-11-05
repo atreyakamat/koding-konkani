@@ -48,6 +48,9 @@ $maxNoProgressRestarts = 3
 
 Write-SupervisorLog "Overnight supervisor starting: ep$StartEp..ep$EndEp"
 
+# Preflight: list scenes that would render blank or crash. episode_pipeline.mts skips those episodes.
+& node scripts/check_scenes.mts $StartEp $EndEp | ForEach-Object { Write-SupervisorLog $_ }
+
 while ($true) {
     if (Past-Cutoff) {
         Write-SupervisorLog "Past 05:30 time-box, stopping supervisor."

@@ -6,6 +6,7 @@ import { CodeBlock, Panel, Sticker } from "../ui";
 import { impactShakeX, springs } from "../lib/motion";
 import { errorExcerpt } from "../lib/errorExcerpt";
 import type { BugOverride } from "../lib/bugOverrides";
+import type { BugCulprit } from "../lib/bugCulprit";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -14,6 +15,8 @@ export type BugOfTheDayProps = BaseSceneProps & {
   error: string;
   /** Hand-written panel for a bug whose Bible text has nothing to show (see lib/bugOverrides.ts). */
   errorOverride?: BugOverride;
+  /** 1-based lines to centre and highlight in the wrong and the fixed code (see lib/bugCulprit.ts). */
+  culprit?: BugCulprit;
   fixedCode: string;
   why?: string;
 };
@@ -58,6 +61,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   wrongCode,
   error,
   errorOverride,
+  culprit,
   fixedCode,
   why,
   colours,
@@ -152,6 +156,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
                 width={1100}
                 fontSize={40}
                 maxHeight={410}
+                highlightLine={isFixed ? culprit?.fixed : culprit?.wrong}
               />
             ) : (
               <Panel background={isFixed ? palette.mint : palette.cream} borderColor={palette.ink}>

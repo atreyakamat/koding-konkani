@@ -29,6 +29,13 @@ const rowsFor = (lines: string[], size: number, width: number = OUTPUT_TEXT_WIDT
   return 1 + lines.reduce((n, l) => n + Math.max(1, Math.ceil(l.length / perRow)), 0); // +1 prompt line
 };
 
+/** Natural height of the output panel for a layout (what it takes in the column before it stretches). */
+export const outputPanelHeight = (layout: OutputLayout): number => {
+  const lines = layout.text.replace(/\n+$/, "").split("\n");
+  const width = layout.fullColumn ? TAKEOVER_TEXT_WIDTH : OUTPUT_TEXT_WIDTH;
+  return Math.ceil(rowsFor(lines, layout.size, width) * layout.size * LINE_HEIGHT) + CHROME;
+};
+
 export const layoutOutput = (output: string, normalRoom: number, fullRoom: number): OutputLayout => {
   const lines = output.replace(/\n+$/, "").split("\n");
   const fits = (all: string[], size: number, room: number, width: number = OUTPUT_TEXT_WIDTH): boolean =>

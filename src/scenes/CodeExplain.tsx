@@ -8,7 +8,8 @@ import { typewriterChars } from "../lib/motion";
 import { stripMarkdown as sanitizeText } from "../lib/sanitize";
 import { chooseFontSize } from "../lib/codeLayout";
 import { defaultHlCues, hlLineAt, trackValuesAt } from "../lib/cues";
-import { layoutOutput, TAKEOVER_PANEL_WIDTH } from "../lib/outputFit";
+import { layoutOutput, outputPanelHeight, TAKEOVER_PANEL_WIDTH } from "../lib/outputFit";
+import { COLUMN_GAP, fitLabels, trackerHeight } from "../lib/cardFit";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -77,12 +78,25 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
   const activeCues = cues?.length ? cues : defaultCues;
   const highlightLine = hlLineAt(activeCues, frame);
   const trackedValues = trackValuesAt(activeCues, frame);
+  // The card never shrinks (it used to be squeezed to 160px, and its text spilled over the tracker): one
+  // font size for the whole scene, chosen so every label fits the room the column has left for the card.
+  const columnWidth = outputLayout?.fullColumn ? TAKEOVER_PANEL_WIDTH : 1920 - 192 - 48 - CODE_COLUMN_WIDTH;
+  const columnHeight = output
+    ? (outputLayout?.fullColumn ? TAKEOVER_BOTTOM : RIGHT_COLUMN_BOTTOM) - 96
+    : 1080 - 192;
+  const trackerH = trackerHeight(
+    [...new Set(activeCues.map((cue) => cue.frame))].map((f) => trackValuesAt(activeCues, f)),
+    columnWidth,
+  );
+  const outputH = outputLayout ? outputPanelHeight(outputLayout) : 0;
+  const gaps = ((trackerH ? 1 : 0) + (outputLayout ? 1 : 0)) * COLUMN_GAP;
+  const fitted = fitLabels(labels ?? {}, columnHeight - trackerH - outputH - gaps, columnWidth);
   // The explanation of the latest highlighted line that has one: the card holds that text
   // through lines without a label, and does not exist at all before the first label.
   const labelText = [...activeCues]
     .filter((cue) => cue.type === "hl" && cue.frame <= frame)
     .reverse()
-    .map((cue) => (cue.type === "hl" ? labels?.[cue.line] : undefined))
+    .map((cue) => (cue.type === "hl" ? fitted.labels[cue.line] : undefined))
     .find((text): text is string => !!text);
 
   const outputStart = Math.round(durationInFrames * 0.78);
@@ -163,11 +177,11 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
           }}
         >
           {labelText && !outputTakesColumn ? (
-            <Panel background={palette.cream} style={{ minHeight: 160 }}>
+            <Panel background={palette.cream} style={{ minHeight: 160, flexShrink: 0 }}>
               <div
                 style={{
                   fontFamily: fonts.body,
-                  fontSize: 44,
+                  fontSize: fitted.size,
                   color: palette.ink,
                   lineHeight: 1.35,
                 }}
