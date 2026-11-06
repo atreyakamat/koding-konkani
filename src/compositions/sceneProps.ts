@@ -111,7 +111,7 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
     case "algorithm-bars":
       return { trace: scene.trace ?? [] };
     case "memory-boxes":
-      return { boxes: scene.boxes ?? [] };
+      return { boxes: scene.boxes, memory: scene.memory };
     case "bug-of-the-day": {
       // A second bug scene (EP10's bonus bug) carries its own record; the others use the episode's.
       const bug = scene.bug ?? episode.bug;

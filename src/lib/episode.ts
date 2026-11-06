@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { MemoryDataSchema } from "./memory.ts";
 
 /**
  * The 10 scene templates from CLAUDE.md, as the schema's canonical slugs.
@@ -95,6 +96,8 @@ const SceneSchema = z.object({
   code: CodeSchema.optional(),
   trace: z.array(TraceStepSchema).optional(),
   boxes: z.array(MemoryBoxSchema).optional(),
+  /** Arrays, strings, grids and steps for a memory-boxes scene (see lib/memory.ts); instead of `boxes`. */
+  memory: MemoryDataSchema.optional(),
   /** Only for a bug-of-the-day scene that is not the episode's main bug. */
   bug: BugSchema.optional(),
 });

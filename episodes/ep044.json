@@ -202,7 +202,69 @@
       "onScreen": "a = b; b = a; both boxes end as 20",
       "animation": "10 gets overwritten and vanishes in smoke; sad trombone",
       "sfx": [],
-      "narration": "Let's try swapping a equals 10 and b equals 20. The obvious way: a equals b, then b equals a. After the first line, a is 20. Good. After the second line, b gets a, which is now 20. So both are 20. The 10 is gone forever. When you write into a box, whatever was inside is lost."
+      "narration": "Let's try swapping a equals 10 and b equals 20. The obvious way: a equals b, then b equals a. After the first line, a is 20. Good. After the second line, b gets a, which is now 20. So both are 20. The 10 is gone forever. When you write into a box, whatever was inside is lost.",
+      "memory": {
+        "frames": [
+          {
+            "label": "a = 10, b = 20",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "10",
+                    "name": "a",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "20",
+                    "name": "b",
+                    "address": "0x7ffd1a2c3f04"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "a = b;",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "20",
+                    "name": "a",
+                    "address": "0x7ffd1a2c3f00",
+                    "lost": "10"
+                  },
+                  {
+                    "value": "20",
+                    "name": "b",
+                    "address": "0x7ffd1a2c3f04"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "b = a;",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "20",
+                    "name": "a",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "20",
+                    "name": "b",
+                    "address": "0x7ffd1a2c3f04"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -212,7 +274,107 @@
       "onScreen": "Three glasses: a, b, temp; kokum and feni swap via the empty glass",
       "animation": "Pour animation in three steps with step numbers; liquid pour SFX",
       "sfx": [],
-      "narration": "Think of two glasses: one with kokum, one with feni. You want to swap them. You cannot pour one straight into the other. You need a third, empty glass. Step one: pour a into temp. Step two: pour b into a. Step three: pour temp into b. Three steps, nothing spilled. In C, that third glass is a variable called temp."
+      "narration": "Think of two glasses: one with kokum, one with feni. You want to swap them. You cannot pour one straight into the other. You need a third, empty glass. Step one: pour a into temp. Step two: pour b into a. Step three: pour temp into b. Three steps, nothing spilled. In C, that third glass is a variable called temp.",
+      "memory": {
+        "frames": [
+          {
+            "label": "start",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "10",
+                    "name": "a",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "20",
+                    "name": "b",
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "?",
+                    "name": "temp",
+                    "address": "0x7ffd1a2c3f08"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "step 1: temp = a;",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "10",
+                    "name": "a",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "20",
+                    "name": "b",
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "10",
+                    "name": "temp",
+                    "address": "0x7ffd1a2c3f08"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "step 2: a = b;",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "20",
+                    "name": "a",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "20",
+                    "name": "b",
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "10",
+                    "name": "temp",
+                    "address": "0x7ffd1a2c3f08"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "step 3: b = temp;",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "20",
+                    "name": "a",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "10",
+                    "name": "b",
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "10",
+                    "name": "temp",
+                    "address": "0x7ffd1a2c3f08"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 6,

@@ -4,6 +4,8 @@ import { fonts } from "../theme/fonts";
 import { readableOn } from "../theme/contrast";
 import { enterProgress } from "../lib/motion";
 import { defaultRevealCues, revealFrame } from "../lib/cues";
+import type { MemoryData } from "../lib/memory";
+import { MemoryFrames } from "./MemoryFrames";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -15,8 +17,11 @@ export type MemoryBox = {
   pointsTo?: string;
 };
 
+/** A scene has `memory` (frames of groups of cells: arrays, strings, grids, steps; see lib/memory.ts) or the older
+ * flat `boxes` (variables with addresses and pointer arrows). */
 export type MemoryBoxesProps = BaseSceneProps & {
-  boxes: MemoryBox[];
+  boxes?: MemoryBox[];
+  memory?: MemoryData;
 };
 
 const CONTENT_WIDTH = 1920 - 2 * 96;
@@ -33,7 +38,7 @@ const REVEAL_WINDOW = 24;
  * Box size adapts to the count: 2-3 boxes get ~2x the original 240px, 5 boxes stay at
  * the 260px floor so the row still fits. The row (plus any arrow dip) is centred in
  * the free band, and every box has appeared within the first second. */
-export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({ boxes, colours }) => {
+const FlatBoxes: React.FC<BaseSceneProps & { boxes: MemoryBox[] }> = ({ boxes, colours }) => {
   const frame = useCurrentFrame();
   const count = Math.max(1, boxes.length);
   const boxWidth = Math.round(
@@ -178,3 +183,6 @@ export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({ boxes, colours }) => {
     </SceneFrame>
   );
 };
+
+export const MemoryBoxes: React.FC<MemoryBoxesProps> = ({ boxes, memory, ...rest }) =>
+  memory ? <MemoryFrames memory={memory} {...rest} /> : <FlatBoxes boxes={boxes ?? []} {...rest} />;

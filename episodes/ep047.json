@@ -114,7 +114,52 @@
       "onScreen": "char word[6] filled with 'G' 'O' 'A' 'N' 'S' '\\0'",
       "animation": "Letters drop into lockers one by one like beach pebbles; plink per letter",
       "sfx": [],
-      "narration": "Many languages have a special string type. C does not. In C, a string is just an array of chars, the lockers from EP 41, with one letter in each. Here is char word six, filled with G, O, A, N, S, one character in single quotes per locker. And in the last locker, something odd: backslash zero."
+      "narration": "Many languages have a special string type. C does not. In C, a string is just an array of chars, the lockers from EP 41, with one letter in each. Here is char word six, filled with G, O, A, N, S, one character in single quotes per locker. And in the last locker, something odd: backslash zero.",
+      "memory": {
+        "frames": [
+          {
+            "label": "one letter per box; the last box holds \\0",
+            "groups": [
+              {
+                "name": "word[6]",
+                "cells": [
+                  {
+                    "value": "G",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "O",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f01"
+                  },
+                  {
+                    "value": "A",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f02"
+                  },
+                  {
+                    "value": "N",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f03"
+                  },
+                  {
+                    "value": "S",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 5,
+                    "address": "0x7ffd1a2c3f05",
+                    "mark": "stop"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -124,7 +169,57 @@
       "onScreen": "\"Panjim\" laid out in 7 boxes, last box \\0 = the stop sign",
       "animation": "Bus drives along the boxes and brakes at the \\0 stop sign; bus brake SFX",
       "sfx": [],
-      "narration": "Backslash zero is called the null character. Its value is zero. It is not the digit zero; it is a char whose number is zero. And it is the stop sign of every string. When printf prints a string, it does not know the size of the array. It just starts at the first letter and keeps printing until it hits backslash zero. Like a bus that keeps going until it reaches the last stop. That is why Panjim needs seven bytes: six letters, plus one stop sign. The rule: a string of length n needs n plus one bytes."
+      "narration": "Backslash zero is called the null character. Its value is zero. It is not the digit zero; it is a char whose number is zero. And it is the stop sign of every string. When printf prints a string, it does not know the size of the array. It just starts at the first letter and keeps printing until it hits backslash zero. Like a bus that keeps going until it reaches the last stop. That is why Panjim needs seven bytes: six letters, plus one stop sign. The rule: a string of length n needs n plus one bytes.",
+      "memory": {
+        "frames": [
+          {
+            "label": "\\0 is the stop sign: printf keeps printing until it hits it",
+            "groups": [
+              {
+                "name": "\"Panjim\"",
+                "cells": [
+                  {
+                    "value": "P",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "a",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f01"
+                  },
+                  {
+                    "value": "n",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f02"
+                  },
+                  {
+                    "value": "j",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f03"
+                  },
+                  {
+                    "value": "i",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "m",
+                    "index": 5,
+                    "address": "0x7ffd1a2c3f05"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "address": "0x7ffd1a2c3f06",
+                    "mark": "stop"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

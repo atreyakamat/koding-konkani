@@ -128,7 +128,113 @@
       "onScreen": "\"Xecxec\" in 7 boxes; strlen counts 6, skips \\0",
       "animation": "Counter ticks 1 to 6, \\0 box greys out",
       "sfx": [],
-      "narration": "strlen gives the length of a string. It starts at the first letter and counts until backslash zero. The backslash zero itself is not counted. So strlen of Xecxec is six, while sizeof the array is seven. strlen counts letters. sizeof counts bytes in the array."
+      "narration": "strlen gives the length of a string. It starts at the first letter and counts until backslash zero. The backslash zero itself is not counted. So strlen of Xecxec is six, while sizeof the array is seven. strlen counts letters. sizeof counts bytes in the array.",
+      "memory": {
+        "frames": [
+          {
+            "label": "char second[] = \"Xecxec\";",
+            "groups": [
+              {
+                "name": "second[]",
+                "cells": [
+                  {
+                    "value": "X",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "e",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f01"
+                  },
+                  {
+                    "value": "c",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f02"
+                  },
+                  {
+                    "value": "x",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f03"
+                  },
+                  {
+                    "value": "e",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "c",
+                    "index": 5,
+                    "address": "0x7ffd1a2c3f05"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "address": "0x7ffd1a2c3f06",
+                    "mark": "stop"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "strlen counts letters up to \\0; the \\0 itself is not counted",
+            "badges": [
+              "strlen = 6",
+              "sizeof = 7"
+            ],
+            "groups": [
+              {
+                "name": "second[]",
+                "cells": [
+                  {
+                    "value": "X",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00",
+                    "mark": "taken"
+                  },
+                  {
+                    "value": "e",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f01",
+                    "mark": "taken"
+                  },
+                  {
+                    "value": "c",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f02",
+                    "mark": "taken"
+                  },
+                  {
+                    "value": "x",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f03",
+                    "mark": "taken"
+                  },
+                  {
+                    "value": "e",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f04",
+                    "mark": "taken"
+                  },
+                  {
+                    "value": "c",
+                    "index": 5,
+                    "address": "0x7ffd1a2c3f05",
+                    "mark": "taken"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "address": "0x7ffd1a2c3f06",
+                    "mark": "stop"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -140,7 +246,509 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "strcpy, destination, source, copies the source string into the destination, including backslash zero. It is how you do \"equals\" for strings. strcat, destination, source, adds the source to the end of the destination. It finds the backslash zero, writes the new letters over it, and puts a fresh backslash zero at the new end. One big rule for both: the destination array must be big enough. These functions do not check. If it does not fit, they write past the end, just like gets."
+      "narration": "strcpy, destination, source, copies the source string into the destination, including backslash zero. It is how you do \"equals\" for strings. strcat, destination, source, adds the source to the end of the destination. It finds the backslash zero, writes the new letters over it, and puts a fresh backslash zero at the new end. One big rule for both: the destination array must be big enough. These functions do not check. If it does not fit, they write past the end, just like gets.",
+      "memory": {
+        "frames": [
+          {
+            "label": "first = \"Crab\", copy not set yet (first 12 of 20 boxes shown)",
+            "groups": [
+              {
+                "name": "first[20]",
+                "cells": [
+                  {
+                    "value": "C",
+                    "index": 0
+                  },
+                  {
+                    "value": "r",
+                    "index": 1
+                  },
+                  {
+                    "value": "a",
+                    "index": 2
+                  },
+                  {
+                    "value": "b",
+                    "index": 3
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 4,
+                    "mark": "stop"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 5,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 7,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 8,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 9,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 10,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 11,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "copy[20]",
+                "cells": [
+                  {
+                    "value": "?",
+                    "index": 0,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 1,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 2,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 3,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 4,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 5,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 6,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 7,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 8,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 9,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 10,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 11,
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "strcpy(copy, second);",
+            "groups": [
+              {
+                "name": "first[20]",
+                "cells": [
+                  {
+                    "value": "C",
+                    "index": 0
+                  },
+                  {
+                    "value": "r",
+                    "index": 1
+                  },
+                  {
+                    "value": "a",
+                    "index": 2
+                  },
+                  {
+                    "value": "b",
+                    "index": 3
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 4,
+                    "mark": "stop"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 5,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 7,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 8,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 9,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 10,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 11,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "copy[20]",
+                "cells": [
+                  {
+                    "value": "X",
+                    "index": 0
+                  },
+                  {
+                    "value": "e",
+                    "index": 1
+                  },
+                  {
+                    "value": "c",
+                    "index": 2
+                  },
+                  {
+                    "value": "x",
+                    "index": 3
+                  },
+                  {
+                    "value": "e",
+                    "index": 4
+                  },
+                  {
+                    "value": "c",
+                    "index": 5
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "mark": "stop"
+                  },
+                  {
+                    "value": "?",
+                    "index": 7,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 8,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 9,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 10,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 11,
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "strcat(first, \" \");",
+            "groups": [
+              {
+                "name": "first[20]",
+                "cells": [
+                  {
+                    "value": "C",
+                    "index": 0
+                  },
+                  {
+                    "value": "r",
+                    "index": 1
+                  },
+                  {
+                    "value": "a",
+                    "index": 2
+                  },
+                  {
+                    "value": "b",
+                    "index": 3
+                  },
+                  {
+                    "value": "␠",
+                    "index": 4
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 5,
+                    "mark": "stop"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 7,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 8,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 9,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 10,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 11,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "copy[20]",
+                "cells": [
+                  {
+                    "value": "X",
+                    "index": 0
+                  },
+                  {
+                    "value": "e",
+                    "index": 1
+                  },
+                  {
+                    "value": "c",
+                    "index": 2
+                  },
+                  {
+                    "value": "x",
+                    "index": 3
+                  },
+                  {
+                    "value": "e",
+                    "index": 4
+                  },
+                  {
+                    "value": "c",
+                    "index": 5
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "mark": "stop"
+                  },
+                  {
+                    "value": "?",
+                    "index": 7,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 8,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 9,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 10,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 11,
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "strcat(first, second);",
+            "groups": [
+              {
+                "name": "first[20]",
+                "cells": [
+                  {
+                    "value": "C",
+                    "index": 0
+                  },
+                  {
+                    "value": "r",
+                    "index": 1
+                  },
+                  {
+                    "value": "a",
+                    "index": 2
+                  },
+                  {
+                    "value": "b",
+                    "index": 3
+                  },
+                  {
+                    "value": "␠",
+                    "index": 4
+                  },
+                  {
+                    "value": "X",
+                    "index": 5
+                  },
+                  {
+                    "value": "e",
+                    "index": 6
+                  },
+                  {
+                    "value": "c",
+                    "index": 7
+                  },
+                  {
+                    "value": "x",
+                    "index": 8
+                  },
+                  {
+                    "value": "e",
+                    "index": 9
+                  },
+                  {
+                    "value": "c",
+                    "index": 10
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 11,
+                    "mark": "stop"
+                  }
+                ]
+              },
+              {
+                "name": "copy[20]",
+                "cells": [
+                  {
+                    "value": "X",
+                    "index": 0
+                  },
+                  {
+                    "value": "e",
+                    "index": 1
+                  },
+                  {
+                    "value": "c",
+                    "index": 2
+                  },
+                  {
+                    "value": "x",
+                    "index": 3
+                  },
+                  {
+                    "value": "e",
+                    "index": 4
+                  },
+                  {
+                    "value": "c",
+                    "index": 5
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "mark": "stop"
+                  },
+                  {
+                    "value": "?",
+                    "index": 7,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 8,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 9,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 10,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "?",
+                    "index": 11,
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 6,

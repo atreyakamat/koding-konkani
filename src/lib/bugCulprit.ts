@@ -98,7 +98,7 @@ export const culpritLines = (wrong: string[], fixed: string[]): Culprits => {
   };
   for (let b = 0; b < m; b++) {
     // An added #include / #define is not the bug: it neither counts nor points at its neighbours.
-    if (matchedF.has(b) || fixed[b].trim() === "" || /^[ 	]*#/.test(fixed[b])) continue;
+    if (matchedF.has(b) || fixed[b].trim() === "" || /^\s*#/.test(fixed[b])) continue;
     fixedSide.add(b + 1);
     const before = [...pairs].reverse().find((p) => p[1] < b);
     const after = pairs.find((p) => p[1] > b);

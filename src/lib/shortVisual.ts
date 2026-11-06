@@ -46,6 +46,26 @@ export const signature = (v: ShortVisual): string => {
   }
 };
 
+/** At most this many boxes fit the Short's boxes visual. */
+const SHORT_MAX_BOXES = 6;
+
+/** The boxes a Short can draw from a memory-boxes scene: its flat `boxes`, or the first group of the first
+ * `memory` frame when it has at most 6 cells (an array of 5 or a few scalars). Longer rows (7-13 cells, grids)
+ * have no Short visual and the Short keeps its other visual. */
+const boxesOf = (scene: Scene): { name: string; value: string; address?: string }[] | undefined => {
+  if (scene.template !== "memory-boxes") return undefined;
+  if (scene.boxes?.length) return scene.boxes.map((b) => ({ name: b.name, value: b.value, address: b.address }));
+  const g = scene.memory?.frames[0]?.groups[0];
+  if (!g || g.cells.length > SHORT_MAX_BOXES) return undefined;
+  // "word[6]" -> "word", "marks" -> "marks"; an unnamed group borrows the first name tag ("marks (in main)").
+  const base = (g.name ?? g.tags?.[0] ?? "").replace(/\s*\(.*\)$/, "").replace(/\[\d*\]$/, "");
+  return g.cells.map((c, i) => ({
+    name: c.name ?? `${base}${typeof c.index === "string" ? c.index : `[${c.index ?? i}]`}`,
+    value: c.value,
+    address: c.address,
+  }));
+};
+
 /** Card text comes from ONE source string: GCC-style `name' quotes become 'name', then
  * Markdown and stray backticks are stripped. Never a concatenation of two strings. */
 export const cardText = (text: string): string =>
@@ -228,13 +248,8 @@ const candidatesFor = (episode: Episode, short: Short): ShortVisual[] => {
   }
   if (short.id === "S5") out.push(quizOf(episode, short));
 
-  const boxScene = sources.find((s) => s.template === "memory-boxes" && s.boxes?.length);
-  if (boxScene?.boxes) {
-    out.push({
-      kind: "boxes",
-      boxes: boxScene.boxes.map((b) => ({ name: b.name, value: b.value, address: b.address })),
-    });
-  }
+  const shortBoxes = sources.map(boxesOf).find((b) => b !== undefined);
+  if (shortBoxes) out.push({ kind: "boxes", boxes: shortBoxes });
   if (sources.some((s) => s.template === "bug-of-the-day")) out.push({ kind: "bug" });
   const bits = bitsOf(short);
   if (bits) out.push(bits);
