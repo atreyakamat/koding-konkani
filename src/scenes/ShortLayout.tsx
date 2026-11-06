@@ -161,7 +161,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
             left: 60,
             width: SHORT_SLOT.width,
             height: SHORT_SLOT.height,
-            scale: `${endProgress} ${endProgress}`,
+            scale: `${0.9 + 0.1 * endProgress} ${0.9 + 0.1 * endProgress}`,
             transformOrigin: "center top",
           }}
         >

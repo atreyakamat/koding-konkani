@@ -599,3 +599,13 @@ powershell -NoProfile -File scripts/prep_shorts_rerender.ps1 -StartEp 41 -EndEp 
 powershell -NoProfile -File scripts/overnight.ps1 -StartEp 41 -EndEp 50 -NoTimebox *>&1 | Tee-Object -Append -FilePath out\overnight-shorts-41-50.stdout.log
 ```
 Caveats: the morning report is rewritten for the range and keeps its old title; the long videos are not re-QA'd by a new render, only re-measured.
+
+## 19b. Fixes after the 5c review (local, not pushed; no render)
+
+Stills (540x960, Shorts; 960x540, scenes) are in `docs/fix4/5c-fixes/`.
+
+1. **EP44 S2 steps.** The narration pours the glasses ("Pour a into temp. Pour b into a. Pour temp into b.") 5 s before it reads the C, so the frames were keyed to the C words and the start state stayed up for 11 s. `frameStarts` (`src/lib/shortFrames.ts`) now also accepts the spoken story form of a statement ("temp = a;" is also "pour a into temp") and takes the earlier match. Frames now start at 0.0 / 5.6 / 6.7 / 8.3 s; the end card starts at 14.8 s, so the final state a=20, b=10, temp=10 is held 6.6 s (more than the 2 s asked). Stills: `ep044-S2-0.4` (step 2: a = b), `-0.5`, `-0.65` (step 3: 20 / 10 / 10), `-0.8`, `-0.9` (already the end card).
+2. **EP49 S4 empty visual at 0.6.** Not a regression of the Shorts change. This Short is 5.53 s long and 0.6 lands on the first frame of the end card (frame 100): the pun card is hidden at that frame and the end card was scaling up from 0, so nothing showed for one frame. The end card now starts at 90% scale (`src/scenes/ShortLayout.tsx`), so no frame is empty. Stills: `ep049-S4-0.2`, `-0.4` (pun card), `-0.6`, `-0.62`, `-0.8` (end card).
+3. **End-card handle.** `ep044-S2-0.9`, `-0.97` and `ep044-S1-0.97`: white text on the dark-blue sticker, readable. (The EP41–50 Shorts on disk predate this and still need the re-render.)
+4. **EP37-39 boxes.** When every group of a frame has 3 cells or fewer, the cells may grow up to 320 px wide (was 220; `SMALL_CELL_WIDTH` in `src/lib/memoryLayout.ts`); they still shrink to fit the band. EP38 s5 swap frame now 292 px (limited by the two stacked groups), EP39 s6 plate 320 px. Stills `ep037-scene4-*`, `ep038-scene5-*`, `ep039-scene6-*`. This applies to every memory frame, so EP41-50 long videos would also get larger small frames if they were re-rendered (they are not).
+5. **Other Shorts with stepping frames.** New `scripts/check_short_steps.mts [startEp endEp]` lists the Shorts whose boxes step and when each frame starts against the end card. Over every episode that has narration (EP1-19, 41-50), only EP44 S1 (0.0 / 0.8 / 1.6 s, end card 11.7 s) and EP44 S2 (above) step. None has its last frame less than 2 s before the end card. EP37-39 have no narration, so their Shorts cannot be checked yet.

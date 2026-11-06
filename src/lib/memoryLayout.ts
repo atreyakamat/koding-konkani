@@ -5,6 +5,9 @@ import type { MemoryFrame } from "./memory.ts";
  * Xecxec, the label strip at the top and the burnt-in caption bar at the bottom (starts near y 905). */
 export const BAND = { x: 96, width: 1728, top: 270, bottom: 880 } as const;
 export const MAX_CELL_WIDTH = 220;
+/** A frame whose largest group has at most SMALL_GROUP_CELLS cells scales its boxes up to this width. */
+export const SMALL_CELL_WIDTH = 320;
+export const SMALL_GROUP_CELLS = 3;
 export const MIN_CELL_WIDTH = 64;
 /** Cell height as a fraction of its width (the value and the address line sit inside). */
 export const CELL_ASPECT = 0.8;
@@ -74,7 +77,8 @@ export const layoutFrame = (frame: MemoryFrame): FrameLayout => {
     const total = sizes.reduce((n, s) => n + s.height, 0) + (sizes.length - 1) * GROUP_GAP;
     return Math.max(...sizes.map((s) => s.width)) <= BAND.width && total <= areaHeight;
   };
-  let w = MAX_CELL_WIDTH;
+  const small = frame.groups.every((g) => g.cells.length <= SMALL_GROUP_CELLS);
+  let w = small ? SMALL_CELL_WIDTH : MAX_CELL_WIDTH;
   while (w > MIN_CELL_WIDTH && !fitsAt(w)) w -= 2;
   const fits = fitsAt(w);
   const cellHeight = Math.round(w * CELL_ASPECT);

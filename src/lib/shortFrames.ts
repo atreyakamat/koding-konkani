@@ -18,6 +18,13 @@ export const cueTokens = (label: string | undefined): string[] =>
     .map(norm)
     .filter((t) => t !== "");
 
+/** Alternative spoken cues of a label. A statement "X = Y;" may also be told as the story "pour Y into X", which the
+ * narration often says first (EP44 pours glasses before it reads the C). */
+export const altCues = (label: string | undefined): string[][] => {
+  const m = /(\w+)\s*=\s*(\w+)\s*;/.exec(label ?? "");
+  return m ? [["pour", norm(m[2]), "into", norm(m[1])]] : [];
+};
+
 const findRun = (words: string[], tokens: string[], from: number): number => {
   for (let i = from; i + tokens.length <= words.length; i++)
     if (tokens.every((t, k) => words[i + k] === t)) return i;
@@ -41,6 +48,10 @@ export const frameStarts = (
       if (n < 2 && !(n === 1 && all[0].length >= 4)) continue;
       idx = findRun(spoken, all.slice(0, n), from);
       if (idx >= 0) break;
+    }
+    for (const alt of altCues(labels[k])) {
+      const j = findRun(spoken, alt, from);
+      if (j >= 0 && (idx < 0 || j < idx)) idx = j;
     }
     let start = Math.round((k * durationInFrames) / count);
     if (idx >= 0) {
