@@ -5,6 +5,7 @@ import { ShortLayout } from "../scenes/ShortLayout";
 import { coloursForModule } from "../theme/modules";
 import { stripMarkdown } from "../lib/sanitize";
 import { deriveShortVisuals } from "../lib/shortVisual";
+import type { WordTime } from "../lib/shortFrames";
 import { ShortVisualView } from "./ShortVisuals";
 
 const FPS = 30;
@@ -15,6 +16,8 @@ export type ShortProps = {
   episode?: Episode;
   short?: Episode["shorts"][number];
   durationInFrames?: number;
+  /** Narration word times (S<n>.captions.json), for visuals that step in sync with the script. */
+  words?: WordTime[];
 };
 
 export const calculateMetadata: CalculateMetadataFunction<ShortProps> = async ({ props }) => {
@@ -30,13 +33,20 @@ export const calculateMetadata: CalculateMetadataFunction<ShortProps> = async ({
   const timing = manifest.timings.find((t) => t.short === props.shortId);
   const durationInFrames = Math.round((timing?.durationSec ?? short?.lengthSec ?? 15) * FPS);
 
+  const captions: { text: string; startMs: number }[] = await fetch(
+    staticFile(`voice/${epId}/${props.shortId}.captions.json`),
+  )
+    .then((r) => r.json())
+    .catch(() => []);
+  const words = captions.map((c) => ({ text: c.text, startMs: c.startMs }));
+
   return {
     durationInFrames,
-    props: { ...props, episode, short, durationInFrames },
+    props: { ...props, episode, short, durationInFrames, words },
   };
 };
 
-export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames }) => {
+export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames, words }) => {
   if (!episode || !short || !durationInFrames) {
     return null;
   }
@@ -62,6 +72,7 @@ export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames }
             episode={episode}
             accent={colours.accent}
             durationInFrames={durationInFrames}
+            words={words ?? []}
           />
         ) : undefined}
       </ShortLayout>

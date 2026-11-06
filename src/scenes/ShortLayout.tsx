@@ -190,6 +190,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
             <Sticker
               text={BRAND.instagramHandle}
               background={colours.accent}
+              color={readableOn(colours.accent)}
               rotateDeg={-2}
               fontSize={64}
             />

@@ -50,7 +50,7 @@ export type LongVideoProps = {
   sceneTimings?: SceneTiming[];
 };
 
-const TEMPLATE_COMPONENTS: Record<SceneTemplate, React.FC<Record<string, unknown>>> = {
+export const TEMPLATE_COMPONENTS: Record<SceneTemplate, React.FC<Record<string, unknown>>> = {
   "title-card": TitleCard as React.FC<Record<string, unknown>>,
   "concept-slide": ConceptSlide as React.FC<Record<string, unknown>>,
   "code-explain": CodeExplain as React.FC<Record<string, unknown>>,

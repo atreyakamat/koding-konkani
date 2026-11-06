@@ -4,6 +4,7 @@ import { Short, calculateMetadata as calculateShortMetadata } from "./compositio
 import { AudioTest, AUDIO_TEST_DURATION } from "./compositions/AudioTest";
 import { SceneGallery, SCENE_GALLERY_DURATION } from "./compositions/SceneGallery";
 import { VoiceTest } from "./compositions/VoiceTest";
+import { ScenePreview } from "./compositions/ScenePreview";
 
 export const FPS = 30;
 
@@ -47,6 +48,7 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{ episodeNumber: 1, shortId }}
         />
       ))}
+      <Composition id="ScenePreview" component={ScenePreview} durationInFrames={3600} fps={FPS} width={1920} height={1080} />
       <Composition
         id="SceneGallery"
         component={SceneGallery}

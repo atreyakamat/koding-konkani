@@ -1,4 +1,5 @@
 import type { Episode } from "./episode";
+import type { MemoryGroup } from "./memory.ts";
 import { stripMarkdown } from "./sanitize.ts";
 
 /** Pure (no React, no imports beyond types) so scripts/check_short_visuals.mts can run it too.
@@ -8,12 +9,13 @@ import { stripMarkdown } from "./sanitize.ts";
 type Short = Episode["shorts"][number];
 type Scene = Episode["scenes"][number];
 
+export type ShortBox = { name: string; value: string; address?: string; mark?: string; lost?: string };
 export type Bits = { label: string; bits: string };
 export type ShortVisual =
   | { kind: "pun"; text: string }
   | { kind: "quiz"; code: string[]; options: string[]; question: string; card: string }
   | { kind: "pron"; written: string; spoken: string }
-  | { kind: "boxes"; boxes: { name: string; value: string; address?: string }[] }
+  | { kind: "boxes"; boxes: ShortBox[]; frames?: { label?: string; boxes: ShortBox[] }[] }
   | { kind: "bits"; rows: Bits[]; result?: Bits; sum?: string }
   | { kind: "code"; source: string; mode: "advance" | "static" }
   | { kind: "bug" }
@@ -49,21 +51,32 @@ export const signature = (v: ShortVisual): string => {
 /** At most this many boxes fit the Short's boxes visual. */
 const SHORT_MAX_BOXES = 6;
 
-/** The boxes a Short can draw from a memory-boxes scene: its flat `boxes`, or the first group of the first
- * `memory` frame when it has at most 6 cells (an array of 5 or a few scalars). Longer rows (7-13 cells, grids)
- * have no Short visual and the Short keeps its other visual. */
-const boxesOf = (scene: Scene): { name: string; value: string; address?: string }[] | undefined => {
-  if (scene.template !== "memory-boxes") return undefined;
-  if (scene.boxes?.length) return scene.boxes.map((b) => ({ name: b.name, value: b.value, address: b.address }));
-  const g = scene.memory?.frames[0]?.groups[0];
-  if (!g || g.cells.length > SHORT_MAX_BOXES) return undefined;
+const groupBoxes = (g: MemoryGroup): ShortBox[] => {
   // "word[6]" -> "word", "marks" -> "marks"; an unnamed group borrows the first name tag ("marks (in main)").
-  const base = (g.name ?? g.tags?.[0] ?? "").replace(/\s*\(.*\)$/, "").replace(/\[\d*\]$/, "");
+  const base = (g.name ?? g.tags?.[0] ?? "").replace(/s*(.*)$/, "").replace(/[d*]$/, "");
   return g.cells.map((c, i) => ({
     name: c.name ?? `${base}${typeof c.index === "string" ? c.index : `[${c.index ?? i}]`}`,
     value: c.value,
     address: c.address,
+    mark: c.mark,
+    lost: c.lost,
   }));
+};
+
+/** The boxes a Short can draw from a memory-boxes scene: its flat `boxes`, or the first group of the first `memory`
+ * frame when it has at most 6 cells (an array of 5 or a few scalars; longer rows and grids keep the Short's other visual).
+ * Every frame of a memory scene gives its first group, when all frames have the same count of at most 6 cells. */
+const boxesOf = (scene: Scene): { boxes: ShortBox[]; frames?: { label?: string; boxes: ShortBox[] }[] } | undefined => {
+  if (scene.template !== "memory-boxes") return undefined;
+  if (scene.boxes?.length) return { boxes: scene.boxes.map((b) => ({ name: b.name, value: b.value, address: b.address })) };
+  const frames = scene.memory?.frames ?? [];
+  const first = frames[0]?.groups[0];
+  if (!first || first.cells.length > SHORT_MAX_BOXES) return undefined;
+  const all = frames.map((f) => ({ label: f.label, boxes: f.groups[0] ? groupBoxes(f.groups[0]) : [] }));
+  // Stepping needs frames of the same shape in which some value actually changes (else the label alone would change).
+  const changes = all.some((f, k) => k > 0 && f.boxes.some((b, i) => b.value !== all[k - 1].boxes[i]?.value));
+  const steppable = all.length > 1 && changes && all.every((f) => f.boxes.length === first.cells.length);
+  return { boxes: all[0].boxes, ...(steppable ? { frames: all } : {}) };
 };
 
 /** Card text comes from ONE source string: GCC-style `name' quotes become 'name', then
@@ -249,7 +262,7 @@ const candidatesFor = (episode: Episode, short: Short): ShortVisual[] => {
   if (short.id === "S5") out.push(quizOf(episode, short));
 
   const shortBoxes = sources.map(boxesOf).find((b) => b !== undefined);
-  if (shortBoxes) out.push({ kind: "boxes", boxes: shortBoxes });
+  if (shortBoxes) out.push({ kind: "boxes", ...shortBoxes });
   if (sources.some((s) => s.template === "bug-of-the-day")) out.push({ kind: "bug" });
   const bits = bitsOf(short);
   if (bits) out.push(bits);

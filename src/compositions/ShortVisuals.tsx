@@ -1,6 +1,8 @@
 import { useCurrentFrame } from "remotion";
 import type { Episode } from "../lib/episode";
-import type { ShortVisual } from "../lib/shortVisual";
+import type { ShortBox, ShortVisual } from "../lib/shortVisual";
+import { frameAt, frameStarts, type WordTime } from "../lib/shortFrames";
+import { bugCulprit } from "../lib/bugCulprit";
 import { chooseFontSize } from "../lib/codeLayout";
 import { defaultHlCues, hlLineAt } from "../lib/cues";
 import { typewriterChars } from "../lib/motion";
@@ -386,68 +388,89 @@ const QuizVisual: React.FC<{ visual: Extract<ShortVisual, { kind: "quiz" }>; acc
   );
 };
 
-const BoxesVisual: React.FC<{
-  boxes: { name: string; value: string; address?: string }[];
-}> = ({ boxes }) => {
+type BoxesVisualProps = {
+  boxes: ShortBox[];
+  frames?: { label?: string; boxes: ShortBox[] }[];
+  words: WordTime[];
+  durationInFrames: number;
+};
+
+/** The label under the boxes is code, so it is set big enough to read on a phone. */
+const STEP_LABEL_FONT = 44;
+
+/** Boxes of a memory scene. With several frames it steps through them in sync with the narration (frameStarts);
+ * only the boxes whose value changed pop again. */
+const BoxesVisual: React.FC<BoxesVisualProps> = ({ boxes: first, frames, words, durationInFrames }) => {
   const frame = useCurrentFrame();
+  const steps = frames ?? [{ boxes: first }];
+  const starts = frameStarts(
+    steps.map((st) => st.label),
+    words,
+    30,
+    durationInFrames,
+  );
+  const k = frameAt(starts, frame);
+  const boxes = steps[k].boxes;
+  const label = steps[k].label;
   const n = boxes.length;
   const gap = 20;
   const boxW = Math.floor((W - gap * (n - 1)) / n);
   const boxH = Math.min(340, Math.round(boxW * 1.25));
   return (
-    <div
-      style={{
-        display: "flex",
-        gap,
-        height: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {boxes.map((box, i) => {
-        const p = reveal(frame, 6 + i * 5, 8);
-        const valueFont = Math.max(
-          28,
-          Math.min(72, Math.floor((boxW - 24) / (Math.max(2, box.value.length) * 0.6))),
-        );
-        const nameFont = Math.max(
-          28,
-          Math.min(40, Math.floor((boxW - 16) / (Math.max(3, box.name.length) * 0.62))),
-        );
-        return (
-          <div
-            key={`${box.name}-${i}`}
-            style={{
-              width: boxW,
-              height: boxH,
-              background: palette.cream,
-              border: `${brutal.borderThick}px solid ${palette.ink}`,
-              boxShadow: `${brutal.shadow}px ${brutal.shadow}px 0 0 ${palette.ink}`,
-              boxSizing: "border-box",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "space-evenly",
-              opacity: p,
-              scale: `${0.85 + 0.15 * p}`,
-            }}
-          >
-            <div style={{ fontFamily: fonts.title, fontSize: nameFont, color: palette.ink }}>
-              {box.name}
-            </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: 36, height: "100%", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ display: "flex", gap }}>
+        {boxes.map((box, i) => {
+          // The frame in which this box last changed its value decides when it pops.
+          let born = 0;
+          for (let j = 1; j <= k; j++) if (steps[j].boxes[i]?.value !== steps[j - 1].boxes[i]?.value) born = j;
+          const p = reveal(frame, born === 0 ? 6 + i * 5 : starts[born], 8);
+          const valueFont = Math.max(
+            28,
+            Math.min(72, Math.floor((boxW - 24) / (Math.max(2, box.value.length) * 0.6))),
+          );
+          const nameFont = Math.max(
+            28,
+            Math.min(40, Math.floor((boxW - 16) / (Math.max(3, box.name.length) * 0.62))),
+          );
+          return (
             <div
+              key={`${box.name}-${i}`}
               style={{
-                fontFamily: fonts.code,
-                fontWeight: 700,
-                fontSize: valueFont,
-                color: palette.ink,
+                width: boxW,
+                height: boxH,
+                background: box.mark === "hl" ? palette.butter : palette.cream,
+                border: `${brutal.borderThick}px solid ${palette.ink}`,
+                boxShadow: `${brutal.shadow}px ${brutal.shadow}px 0 0 ${palette.ink}`,
+                boxSizing: "border-box",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-evenly",
+                opacity: p,
+                scale: `${0.85 + 0.15 * p}`,
               }}
             >
-              {box.value}
+              <div style={{ fontFamily: fonts.title, fontSize: nameFont, color: palette.ink }}>{box.name}</div>
+              <div style={{ fontFamily: fonts.code, fontWeight: 700, fontSize: valueFont, color: palette.ink }}>{box.value}</div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+      {label && steps.length > 1 ? (
+        <div
+          style={{
+            fontFamily: fonts.code,
+            fontWeight: 700,
+            fontSize: STEP_LABEL_FONT,
+            color: palette.ink,
+            textAlign: "center",
+            maxWidth: W,
+            overflowWrap: "anywhere",
+          }}
+        >
+          {label}
+        </div>
+      ) : null}
     </div>
   );
 };
@@ -595,6 +618,27 @@ const briefErrorLines = (error: string, wrong: string, isCode: boolean): string 
     .join("\n");
 };
 
+const ERROR_SIZES = [44, 40, 36, 32, 30];
+const ERROR_MAX_HEIGHT = 380;
+const ERROR_PAD = 74;
+
+/** The error text for the Bug Short's card: the largest size (30px at the least, so it reads on a phone) at which
+ * every error line fits ERROR_MAX_HEIGHT; when even 30px is too much, only the first error line is kept. */
+export const fitError = (text: string, mono: boolean): { text: string; size: number; height: number } => {
+  const width = W - ERROR_PAD;
+  const rowsAt = (t: string, size: number): number =>
+    t.split("\n").reduce((n, l) => n + Math.max(1, Math.ceil(l.length / Math.max(1, Math.floor(width / (size * (mono ? 0.6 : 0.55)))))), 0);
+  const heightOf = (t: string, size: number): number => rowsAt(t, size) * size * 1.3 + ERROR_PAD;
+  const lines = text.split("\n").filter((l) => l.trim() !== "");
+  for (const candidate of [lines.join("\n"), lines[0] ?? ""]) {
+    const size = ERROR_SIZES.find((sz) => heightOf(candidate, sz) <= ERROR_MAX_HEIGHT);
+    if (size) return { text: candidate, size, height: Math.max(200, Math.round(heightOf(candidate, size))) };
+  }
+  const first = lines[0] ?? "";
+  const size = ERROR_SIZES[ERROR_SIZES.length - 1];
+  return { text: first, size, height: ERROR_MAX_HEIGHT };
+};
+
 /** The bug reveal: the wrong code/claim/value, then the key error line underneath. */
 const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
   const frame = useCurrentFrame();
@@ -603,8 +647,11 @@ const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
   const errorText = stripMarkdown(
     briefErrorLines(stripMarkdown(episode.bug.error), episode.bug.wrong, isCode),
   );
-  const errorChars = typewriterChars(errorText, frame, 24, 1.1);
-  const errorH = 200;
+  // The code window centres on the culprit line, like the long video's Bug of the Day.
+  const culprit = isCode ? bugCulprit(episode.ep, episode.bug.wrong, episode.bug.fixed, episode.bug.error).wrong : undefined;
+  const fitted = fitError(errorText, isCode);
+  const errorChars = typewriterChars(fitted.text, frame, 24, 1.1);
+  const errorH = fitted.height;
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16, height: "100%" }}>
       {isCode ? (
@@ -614,6 +661,7 @@ const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
           fontSize={chooseFontSize(wrongText, W, H - errorH - 16, 64)}
           maxHeight={H - errorH - 16}
           fillHeight={H - errorH - 16}
+          highlightLine={culprit}
         />
       ) : (
         <Panel background={palette.cream} style={{ flex: 1 }}>
@@ -636,14 +684,14 @@ const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
           style={{
             fontFamily: isCode ? fonts.code : fonts.body,
             fontWeight: isCode ? 500 : 700,
-            fontSize: 30,
+            fontSize: fitted.size,
             lineHeight: 1.3,
             color: palette.tomato,
             whiteSpace: "pre-wrap",
             overflowWrap: "anywhere",
           }}
         >
-          {errorText.slice(0, errorChars)}
+          {fitted.text.slice(0, errorChars)}
         </div>
       </Panel>
     </div>
@@ -655,7 +703,8 @@ export const ShortVisualView: React.FC<{
   episode: Episode;
   accent: string;
   durationInFrames: number;
-}> = ({ visual, episode, accent, durationInFrames }) => {
+  words?: WordTime[];
+}> = ({ visual, episode, accent, durationInFrames, words }) => {
   switch (visual.kind) {
     case "pun":
       return <PunVisual text={visual.text} />;
@@ -666,7 +715,7 @@ export const ShortVisualView: React.FC<{
         <PronunciationVisual written={visual.written} spoken={visual.spoken} accent={accent} />
       );
     case "boxes":
-      return <BoxesVisual boxes={visual.boxes} />;
+      return <BoxesVisual boxes={visual.boxes} frames={visual.frames} words={words ?? []} durationInFrames={durationInFrames} />;
     case "bits":
       return <BitsVisual visual={visual} accent={accent} />;
     case "code":

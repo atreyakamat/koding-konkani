@@ -571,3 +571,31 @@ No 4K render was started. Waiting for your review of the stills.
 3. **EP50 arrows:** stroke 8 → 4px and head 96 → 24px; the four arrows still cross in the middle (they pair index i with len − 1 − i) but are now readable.
 
 Stills: EP45 s4 (2), EP45 s7 (2), EP48 s3 (2), EP49 s4, EP49 s5 last frame, EP50 s3. `tsc`, `eslint src` and `check_boxes` are clean.
+
+## 19. Fix pass 5c: Shorts stepping and large error cards, MemoryBoxes for EP37–39 (stills in `docs/fix4/5c-stills/`)
+
+### 19.1 Shorts: the boxes visual steps through `memory.frames` in sync with the script
+- `src/lib/shortFrames.ts` (pure) decides when each frame starts. A frame's cue is the spoken form of its label (`temp = a;` becomes "temp equals a", a leading "step 2:" is dropped); the frame starts at the first narrated word run that matches in `S<n>.captions.json` (word times), searching forward so frames stay in order. A frame whose cue is not found starts at its even share of the Short; each frame is held at least 24 frames (0.8 s).
+- The Short fetches the captions in `calculateMetadata` (`words` prop), the boxes visual shows the current frame's boxes plus the frame label in the code face (44px), and only boxes whose value changed pop again. A Short only steps when all frames have the same box count (at most 6) and a value changes; otherwise it shows frame 1 as before.
+- Stills: EP44 S1 (frame 1 `a = b;` then `b = a;` at the words "a equals b", "b equals a"), EP44 S2 (a, b, temp stepping with "step N: temp = a;" labels).
+- **Limit:** cues are matched on the spoken statement. EP44 S2 says "Pour a into temp..." first and the C statements last, so its frames move late, with the C sentence; frame 1 (start) is therefore shown most of the Short.
+
+### 19.2 Shorts: text size on a phone
+- **Terminal card:** already 80–40px at 1080 wide (`fitTerminalFont`, floor 40); no change.
+- **GCC / bug card:** was a fixed 30px. Now `fitError`: the largest of 44/40/36/32/30px at which every error line fits (card up to 380px), and only the first error line is kept if even 30px does not fit. EP44 S3's compiler text now reads at about 34px.
+- Also fixed while there: the Bug Short's code window now centres on the culprit line (`bugCulprit`) instead of showing the end of the program (EP44 S3 showed `return 0;`), and the end card's `@kodingkonkani` sticker used dark ink on a dark-blue accent (module accent `darkBlue`, unreadable); it now uses `readableOn(accent)`. **This end card is in every Short of the dark-accent modules, including the approved EP41–50 Shorts**, which is why they would be re-rendered (section 19.4).
+
+### 19.3 MemoryBoxes data for EP37–39 (`scripts/apply_boxes_37_39.mts`)
+Three blank scenes, filled from gcc runs of the episodes' own code (each sample reproduces its `code.output`; a probe prints the values of each step; every narrated number is checked): EP37 s4 (local `basket` 5 then a brand-new 3, global `total` 8, static `visits` 1 2 3 with `fresh` always 1; 6 frames), EP38 s5 (`main` x = 5, y = 9; swap's a, b, temp copied across with two arrows, swapped, then swap's boxes gone; 4 frames), EP39 s6 (call stack of four factorial plates, then plates coming off with `return 1`, `return 2`, `return 6`, `return 24 to main`; 6 frames).
+`check_scenes.mts 37 40` passes (it failed 3 scenes), `check_boxes.mts` 17 scenes OK, `validate_episodes` 86/0, `tsc` and `eslint src` clean.
+**EP37–39 have no generated narration yet** (no `audio/voice/ep037..039`), so the long-video stills use a new `ScenePreview` composition (`scripts/preview_stills.mts`): the scene alone at its planned length, no audio, nothing written to `audio/` (a fake manifest would make the pipeline skip narration). Timing in the real render will follow the narration; the frames are spread evenly. Their Shorts could not be rendered for the same reason.
+Seen in the stills: values and names read correctly; with 1 to 3 cells the boxes are at most 220px wide and look small in the middle of the frame (a larger maximum for small frames is an option).
+Not done: EP40 has no blank scene; the Bible's puff / paper-tear / thunk animations.
+
+### 19.4 Re-rendering only the Shorts of EP41–50
+Yes. `renderJob` skips any output that already exists at the right resolution, and `archiveOldEpisode` does nothing while the `.rerender-4k-2026-11-03` marker is in the folder. So moving only `epNNN-S1..S5.mp4` out of each `out\epNNN` makes the pipeline skip the long 4K and render the 5 Shorts, then redo QA and the Shorts contact sheets. `scripts/prep_shorts_rerender.ps1` does that move (to `out\old-shorts-<tag>\epNNN\`, throws if the folder exists or if an episode has no long 4K) and is not run yet. About 2 min per episode, about 20 min for 50 files at concurrency 2 (EP41–50 Shorts took 1:50 to 2:05 per episode in the last run).
+```powershell
+powershell -NoProfile -File scripts/prep_shorts_rerender.ps1 -StartEp 41 -EndEp 50 -Tag 2026-11-06
+powershell -NoProfile -File scripts/overnight.ps1 -StartEp 41 -EndEp 50 -NoTimebox *>&1 | Tee-Object -Append -FilePath out\overnight-shorts-41-50.stdout.log
+```
+Caveats: the morning report is rewritten for the range and keeps its old title; the long videos are not re-QA'd by a new render, only re-measured.
