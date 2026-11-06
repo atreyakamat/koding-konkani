@@ -545,3 +545,21 @@ In scenes with program output the right column now runs to y 790 in every scene 
 The scene still picks takeover by the old room rule, so the takeover set is unchanged. Xecxec's "It runs!" bubble is dropped when the layout reaches below the old y 700 line (as in takeover).
 Result (`scripts/scan_label_overflow.mts`): font size per scene 44px **81** (was 49), 40px 14, 36px 12, 32px 5, 28px 35 (was 57); labels cut to their first clause **13 in 10 episodes** (was 32 in 20): EP14, 25, 47, 49, 52, 61, 66, 81, 83, 84.
 EP42 is no longer cut; the EP50 frame above shows a 3-row card at 44px with the full text and the tracker below it.
+
+## 17. Fix pass 5b: MemoryBoxes for the 14 blank EP41–50 scenes (540p stills, no 4K yet)
+
+`fix/5b-data` is merged into `feat/module-0` locally (nothing pushed). Stills are in `docs/fix4/5b-stills/` (32 PNGs at 540p, one per frame of each scene at 75% of that frame's slot, plus 3 regression stills: EP7 s3 flat boxes, EP43 s10 bug panel, EP42 s5 card).
+
+### 17.1 What the stills showed
+- First run: all 14 scenes came out blank. Cause: the compositions read `audio/voice/epNNN/episode.json`, a copy taken at narration time, and `scene_stills.mts` did not refresh it (the 4K pipeline does, `render_queue.mts`). `scene_stills.mts` now copies `episodes/epNNN.json` over it first, like the pipeline, and takes `STILL_OUT` and `STILL_SCALE`. The stills were re-rendered; the blank ones were discarded.
+- Regressions OK: EP7 s3 flat boxes unchanged; EP43 bug panel and EP42 card unchanged.
+- Looked at (so far): EP41 s4 and s7, EP45 s7, EP46 s4 and s7, EP49 s5, EP50 s3 read correctly: values, indexes, marks, badges, name tags and the byte ruler are right.
+
+### 17.2 Defects seen, not fixed (for your review)
+1. **EP50 s3:** the four arrows cross in the middle and their heads are oversized.
+2. **EP45 s7:** the index labels of the top row touch the cells of the second row (row gap too small).
+3. **EP46 s4:** the "20 bytes" total sits close to the lower bracket line; works, but tight.
+4. Addresses are very small at 540p (readable at 4K); frame timing is even, not narration-synced (as in `5b-status.md`).
+5. The remaining stills (EP44 s4/s5, EP45 s4, EP47, EP48, EP49 s4, other frames) are rendered but not yet reviewed by me.
+
+No 4K render was started. Waiting for your review of the stills.
