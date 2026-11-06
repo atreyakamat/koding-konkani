@@ -609,3 +609,14 @@ Stills (540x960, Shorts; 960x540, scenes) are in `docs/fix4/5c-fixes/`.
 3. **End-card handle.** `ep044-S2-0.9`, `-0.97` and `ep044-S1-0.97`: white text on the dark-blue sticker, readable. (The EP41–50 Shorts on disk predate this and still need the re-render.)
 4. **EP37-39 boxes.** When every group of a frame has 3 cells or fewer, the cells may grow up to 320 px wide (was 220; `SMALL_CELL_WIDTH` in `src/lib/memoryLayout.ts`); they still shrink to fit the band. EP38 s5 swap frame now 292 px (limited by the two stacked groups), EP39 s6 plate 320 px. Stills `ep037-scene4-*`, `ep038-scene5-*`, `ep039-scene6-*`. This applies to every memory frame, so EP41-50 long videos would also get larger small frames if they were re-rendered (they are not).
 5. **Other Shorts with stepping frames.** New `scripts/check_short_steps.mts [startEp endEp]` lists the Shorts whose boxes step and when each frame starts against the end card. Over every episode that has narration (EP1-19, 41-50), only EP44 S1 (0.0 / 0.8 / 1.6 s, end card 11.7 s) and EP44 S2 (above) step. None has its last frame less than 2 s before the end card. EP37-39 have no narration, so their Shorts cannot be checked yet.
+
+## 19c. Fixes after the second 5c review (local, not pushed; no render)
+
+All stills in `docs/fix4/5c-2/` were rendered after the last `src/` edit.
+
+1. **End-card handle.** The shared `Sticker` (`src/ui/Sticker.tsx`) now defaults its text colour to `readableOn(background)`, so any sticker on a dark plate gets white text (the Short end card also passes it explicitly). Stills: `ep044-S1-0.9`, `ep044-S2-0.9`, `ep044-S2-0.95` (white on darkBlue); a light plate, EP49 (apricot): `ep049-S4-0.8`, `-0.95` (ink on apricot). The earlier stills you saw predate the fix.
+2. **Small memory frames.** Frames whose groups all have 3 cells or fewer now grow to 440 px cells (2x the old 220 px cap), centred, shrinking only if the band needs it. Address text scales with the cell. Stills: `ep037-scene4-memory-boxes-0.46` (single "total" box), `ep038-scene5-memory-boxes-0.4`.
+3. **EP49 S4 at 0.6.** Real cause: this Short is 166 frames and the end card takes the last 66, so 0.6 (frame 100) is the first frame of the end card; the pun card was hidden and the end card was still at scale 0, so the slot was empty for that frame. Fixed by starting the end card at 90% scale. Stills `ep049-S4-0.2`, `-0.4` (pun card), `-0.6` (end card, no hole), `-0.8`, `-0.95`.
+4. **EP44 S2.** Frames start at 0.0 / 5.6 / 6.7 / 8.3 s; the end card covers the boxes from 14.8 s, so a=20, b=10, temp=10 is on screen 6.6 s. Stills `ep044-S2-0.4`, `-0.45` (step 2: a = b), `-0.5`, `-0.65`, `-0.75`, `-0.85` (step 3, final 20/10/10), `-0.9`, `-0.95` (end card). Step 2 is on screen only from 0.39 to 0.49, so your 0.5 still is already step 3.
+
+Checks: `tsc`, `eslint src`, `check_boxes` (17 OK), `check_short_visuals 41 50` and `check_short_steps 41 50` (none late) all pass.

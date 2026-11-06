@@ -6,7 +6,7 @@ import type { MemoryFrame } from "./memory.ts";
 export const BAND = { x: 96, width: 1728, top: 270, bottom: 880 } as const;
 export const MAX_CELL_WIDTH = 220;
 /** A frame whose largest group has at most SMALL_GROUP_CELLS cells scales its boxes up to this width. */
-export const SMALL_CELL_WIDTH = 320;
+export const SMALL_CELL_WIDTH = 440;
 export const SMALL_GROUP_CELLS = 3;
 export const MIN_CELL_WIDTH = 64;
 /** Cell height as a fraction of its width (the value and the address line sit inside). */
