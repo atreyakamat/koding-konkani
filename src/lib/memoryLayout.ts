@@ -13,7 +13,8 @@ const INDEX_ROW = 36;
 const RULER_ROW = 86;
 const GROUP_GAP = 36;
 const JOINER_GAP = 90;
-const ROW_GAP = 26;
+/** Gap between rows of a grid; a group with an index under each cell needs room for that label. */
+const rowGapFor = (indexed: boolean): number => (indexed ? INDEX_ROW + 22 : 26);
 
 export type PlacedGroup = {
   x: number;
@@ -25,6 +26,7 @@ export type PlacedGroup = {
   gapX: number;
   headerHeight: number;
   hasIndex: boolean;
+  rowGap: number;
 };
 
 export type FrameLayout = {
@@ -54,7 +56,7 @@ const sizeOf = (s: Shape, w: number): { width: number; height: number } => {
   const gap = gapFor(w);
   return {
     width: s.cols * w + (s.cols - 1) * gap,
-    height: (s.header ? HEADER : 0) + s.rows * h + (s.rows - 1) * ROW_GAP + (s.index ? INDEX_ROW : 0) + (s.ruler ? RULER_ROW : 0),
+    height: (s.header ? HEADER : 0) + s.rows * h + (s.rows - 1) * rowGapFor(s.index) + (s.index ? INDEX_ROW : 0) + (s.ruler ? RULER_ROW : 0),
   };
 };
 
@@ -85,7 +87,7 @@ export const layoutFrame = (frame: MemoryFrame): FrameLayout => {
     const maxH = Math.max(...sizes.map((s) => s.height));
     const y = BAND.top + (areaHeight - maxH) / 2;
     sizes.forEach((s, k) => {
-      placed.push({ x, y, ...s, cols: sh[k].cols, rows: sh[k].rows, gapX: gapFor(w), headerHeight: sh[k].header ? HEADER : 0, hasIndex: sh[k].index });
+      placed.push({ x, y, ...s, cols: sh[k].cols, rows: sh[k].rows, gapX: gapFor(w), headerHeight: sh[k].header ? HEADER : 0, hasIndex: sh[k].index, rowGap: rowGapFor(sh[k].index) });
       x += s.width;
       if (k < sizes.length - 1) joinerX.push(x + JOINER_GAP / 2);
       x += JOINER_GAP;
@@ -95,7 +97,7 @@ export const layoutFrame = (frame: MemoryFrame): FrameLayout => {
     let y = BAND.top + (areaHeight - total) / 2;
     sizes.forEach((s, k) => {
       const x = BAND.x + (BAND.width - s.width) / 2;
-      placed.push({ x, y, ...s, cols: sh[k].cols, rows: sh[k].rows, gapX: gapFor(w), headerHeight: sh[k].header ? HEADER : 0, hasIndex: sh[k].index });
+      placed.push({ x, y, ...s, cols: sh[k].cols, rows: sh[k].rows, gapX: gapFor(w), headerHeight: sh[k].header ? HEADER : 0, hasIndex: sh[k].index, rowGap: rowGapFor(sh[k].index) });
       y += s.height + GROUP_GAP;
     });
   }
@@ -109,7 +111,7 @@ export const cellOrigin = (layout: FrameLayout, g: number, i: number): { x: numb
   const row = Math.floor(i / p.cols);
   return {
     x: p.x + col * (layout.cellWidth + p.gapX),
-    y: p.y + p.headerHeight + row * (layout.cellHeight + ROW_GAP),
+    y: p.y + p.headerHeight + row * (layout.cellHeight + p.rowGap),
   };
 };
 

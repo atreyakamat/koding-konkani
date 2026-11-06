@@ -563,3 +563,11 @@ EP42 is no longer cut; the EP50 frame above shows a 3-row card at 44px with the 
 5. The remaining stills (EP44 s4/s5, EP45 s4, EP47, EP48, EP49 s4, other frames) are rendered but not yet reviewed by me.
 
 No 4K render was started. Waiting for your review of the stills.
+
+## 18. Fix pass 5b polish (540p stills in `docs/fix4/5b-polish/`)
+
+1. **EP45 grid:** a group with an index under each cell now has a 58px row gap (was 26px), so `[r][c]` no longer touches the next row (EP45 s4 grid, s7 matrices; the byte ruler follows the same gap). `check_boxes` still passes (narrowest cell unchanged, 120px).
+2. **Quotes:** every `"quoted"` span in a memory label, quote marks included, is set in the code face, so the quotes are straight and mono (EP48 s3 `scanf("%s") takes "Atreya"; " Kamat\n" ...`, EP49 `char second[] = "Xecxec";` and `strcat(first, " ");`).
+3. **EP50 arrows:** stroke 8 → 4px and head 96 → 24px; the four arrows still cross in the middle (they pair index i with len − 1 − i) but are now readable.
+
+Stills: EP45 s4 (2), EP45 s7 (2), EP48 s3 (2), EP49 s4, EP49 s5 last frame, EP50 s3. `tsc`, `eslint src` and `check_boxes` are clean.

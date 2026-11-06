@@ -33,6 +33,21 @@ const regrouped = (frame: MemoryFrame, prev: MemoryFrame | undefined, g: number)
   return !b || a.cells.length !== b.cells.length || a.cols !== b.cols;
 };
 
+/** Text where each "quoted" span (quotes included) is set in the code face, so the quote marks are straight and mono. */
+const QuotedText: React.FC<{ text: string }> = ({ text }) => (
+  <>
+    {text.split(/("[^"]*")/).map((part, i) =>
+      part.startsWith("\"") ? (
+        <span key={`q-${i}`} style={{ fontFamily: fonts.code }}>
+          {part}
+        </span>
+      ) : (
+        part
+      ),
+    )}
+  </>
+);
+
 type ArrowViewProps = { from: string; to: string; layout: FrameLayout; start: number; frame: number; ink: string };
 
 const ArrowView: React.FC<ArrowViewProps> = ({ from, to, layout, start, frame, ink }) => {
@@ -54,7 +69,7 @@ const ArrowView: React.FC<ArrowViewProps> = ({ from, to, layout, start, frame, i
       d={`M ${x1} ${y1} Q ${(x1 + x2) / 2 + (x2 > x1 ? -30 : 30)} ${(y1 + y2) / 2} ${x2} ${y2}`}
       fill="none"
       stroke={ink}
-      strokeWidth={8}
+      strokeWidth={4}
       strokeLinecap="round"
       markerEnd="url(#memory-cell-arrow)"
       strokeDasharray={length}
@@ -129,7 +144,7 @@ export const MemoryFrames: React.FC<MemoryFramesProps> = ({ memory, colours, dur
         <div style={{ position: "absolute", left: 96, top: 120, width: 1540, display: "flex", flexDirection: "column", gap: 16 }}>
           {current.label ? (
             <div style={{ fontFamily: fonts.body, fontWeight: 700, fontSize: current.label.length > 60 ? 34 : 42, lineHeight: 1.25, color: ink }}>
-              {current.label}
+              <QuotedText text={current.label} />
             </div>
           ) : null}
           {current.badges?.length ? (
@@ -142,7 +157,7 @@ export const MemoryFrames: React.FC<MemoryFramesProps> = ({ memory, colours, dur
         </div>
         <svg viewBox="0 0 1920 1080" width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
           <defs>
-            <marker id="memory-cell-arrow" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+            <marker id="memory-cell-arrow" viewBox="0 0 10 10" markerWidth="6" markerHeight="6" refX="9" refY="5" orient="auto">
               <path d="M0,0 L10,5 L0,10 Z" fill={ink} />
             </marker>
           </defs>
@@ -178,7 +193,7 @@ export const MemoryFrames: React.FC<MemoryFramesProps> = ({ memory, colours, dur
                 <Ruler
                   group={group}
                   x={placed.x}
-                  y={placed.y + placed.headerHeight + placed.rows * layout.cellHeight + (placed.rows - 1) * 26 + 40}
+                  y={placed.y + placed.headerHeight + placed.rows * layout.cellHeight + (placed.rows - 1) * placed.rowGap + 40}
                   cellWidth={layout.cellWidth}
                   gap={placed.gapX}
                   ink={ink}
