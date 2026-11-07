@@ -421,6 +421,21 @@ const qaFile = (
 const KNOWN_CHECKER_LIMITS: Record<number, { files: string[]; why: string }> = {
   41: { files: ["file3.c"], why: "file3.c (copy.c) is a deliberate compile-error teaching example" },
   48: { files: ["file1.c"], why: "file1.c needs typed stdin; the checker gives none" },
+  // EP51-86 (8 Nov 2026). Each program below was compiled and run by hand with the right stdin / files and its
+  // output matched the episode JSON (see docs/RUNBOOK-ep51-86.md, section "Checker limits"). Owner to confirm in the PR.
+  51: { files: ["file1.c"], why: "needs a typed line on stdin" },
+  52: { files: ["file1.c"], why: "prints real %p addresses, different every run" },
+  53: { files: ["file1.c"], why: "prints real %p addresses" },
+  56: { files: ["file1.c"], why: "prints real %p addresses" },
+  57: { files: ["file1.c"], why: "prints real %p addresses" },
+  65: { files: ["file1.c"], why: "prints real stack/heap/global %p addresses" },
+  66: { files: ["file1.c"], why: "needs typed stdin (count and marks)" },
+  70: { files: ["file1.c", "file2.c"], why: "read diary.txt / marks.txt that earlier episodes create" },
+  71: { files: ["file2.c", "file3.c"], why: "read students.dat that file1.c writes" },
+  73: { files: ["wrong.c"], why: "the bug IS an infinite loop (binary search hangs); the checker times out as expected" },
+  81: { files: ["file1.c"], why: "prints measured milliseconds, different every run" },
+  84: { files: ["students.c", "wrong.c", "fixed.c"], why: "interactive menu program: needs typed stdin" },
+  85: { files: ["atm.c"], why: "interactive menu program: needs typed stdin" },
 };
 
 /** GCC-checks one episode. Returns true (proceed) or false (log + skip episode). */
