@@ -113,7 +113,75 @@
       "onScreen": "Two heap blocks side by side: `malloc(3 * sizeof(int))` showing \"? ? ?\" and `calloc(3, sizeof(int))` showing \"0 0 0\"",
       "animation": "malloc boxes flicker with random numbers; calloc boxes wipe clean to zero with a squeegee swipe",
       "sfx": [],
-      "narration": "First, calloc. When malloc gives you memory, it's like a rented room that wasn't cleaned. Whatever the last program left there is still inside. So the boxes contain garbage until you fill them. calloc is different. It takes two arguments: how many items, and the size of each. calloc of 3 comma sizeof int. And it cleans the memory: every byte is set to zero. So all three ints start as 0. Use calloc when you want a fresh start, like counters or totals. Use malloc when you'll fill every box yourself straight away."
+      "narration": "First, calloc. When malloc gives you memory, it's like a rented room that wasn't cleaned. Whatever the last program left there is still inside. So the boxes contain garbage until you fill them. calloc is different. It takes two arguments: how many items, and the size of each. calloc of 3 comma sizeof int. And it cleans the memory: every byte is set to zero. So all three ints start as 0. Use calloc when you want a fresh start, like counters or totals. Use malloc when you'll fill every box yourself straight away.",
+      "memory": {
+        "frames": [
+          {
+            "label": "malloc: a rented room that was not cleaned",
+            "groups": [
+              {
+                "name": "malloc(3 * sizeof(int)) : not cleaned",
+                "cells": [
+                  {
+                    "value": "?",
+                    "index": 0
+                  },
+                  {
+                    "value": "?",
+                    "index": 1
+                  },
+                  {
+                    "value": "?",
+                    "index": 2
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "calloc cleans every byte to zero",
+            "groups": [
+              {
+                "name": "malloc(3 * sizeof(int)) : not cleaned",
+                "cells": [
+                  {
+                    "value": "?",
+                    "index": 0
+                  },
+                  {
+                    "value": "?",
+                    "index": 1
+                  },
+                  {
+                    "value": "?",
+                    "index": 2
+                  }
+                ]
+              },
+              {
+                "name": "calloc(3, sizeof(int)) : all zero",
+                "cells": [
+                  {
+                    "value": "0",
+                    "index": 0,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 1,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 2,
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -125,7 +193,234 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Now realloc. Our basket holds 2 ints, 10 and 20, at address 0x5000. We need room for 4. We call realloc, passing the old pointer and the new size in bytes. One of two things happens. Case A: if there is free space right after our block, realloc simply stretches it. Same address. Case B: if there's no space, realloc finds a new, bigger block somewhere else, say at 0x6000, copies 10 and 20 across, and frees the old block for you. It returns the new address. So you must always use the address realloc returns, because the basket may have moved. And if realloc can't find any space at all, it returns NULL, and your old block is left untouched."
+      "narration": "Now realloc. Our basket holds 2 ints, 10 and 20, at address 0x5000. We need room for 4. We call realloc, passing the old pointer and the new size in bytes. One of two things happens. Case A: if there is free space right after our block, realloc simply stretches it. Same address. Case B: if there's no space, realloc finds a new, bigger block somewhere else, say at 0x6000, copies 10 and 20 across, and frees the old block for you. It returns the new address. So you must always use the address realloc returns, because the basket may have moved. And if realloc can't find any space at all, it returns NULL, and your old block is left untouched.",
+      "memory": {
+        "frames": [
+          {
+            "label": "basket holds 2 ints at 0x5000",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x5000",
+                    "name": "basket"
+                  }
+                ]
+              },
+              {
+                "name": "heap block",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0,
+                    "address": "0x5000"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1,
+                    "address": "0x5004"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          },
+          {
+            "label": "Case A: free space after it, stretched in place, same address",
+            "badges": [
+              "Case A"
+            ],
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x5000",
+                    "name": "basket"
+                  }
+                ]
+              },
+              {
+                "name": "heap block",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0,
+                    "address": "0x5000"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1,
+                    "address": "0x5004"
+                  },
+                  {
+                    "value": "?",
+                    "index": 2,
+                    "address": "0x5008"
+                  },
+                  {
+                    "value": "?",
+                    "index": 3,
+                    "address": "0x500c"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          },
+          {
+            "label": "Case B: no room, new block at 0x6000, 10 and 20 copied, old block freed",
+            "badges": [
+              "Case B"
+            ],
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x5000",
+                    "name": "basket"
+                  },
+                  {
+                    "value": "0x6000",
+                    "name": "bigger"
+                  }
+                ]
+              },
+              {
+                "name": "old block",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0,
+                    "address": "0x5000",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1,
+                    "address": "0x5004",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "new block",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0,
+                    "address": "0x6000"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1,
+                    "address": "0x6004"
+                  },
+                  {
+                    "value": "?",
+                    "index": 2,
+                    "address": "0x6008"
+                  },
+                  {
+                    "value": "?",
+                    "index": 3,
+                    "address": "0x600c"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:1",
+                "to": "2:0"
+              }
+            ]
+          },
+          {
+            "label": "Always use the address realloc returns: basket moves to 0x6000",
+            "badges": [
+              "Case B"
+            ],
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x6000",
+                    "name": "basket",
+                    "mark": "hl",
+                    "lost": "0x5000"
+                  },
+                  {
+                    "value": "0x6000",
+                    "name": "bigger"
+                  }
+                ]
+              },
+              {
+                "name": "old block",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0,
+                    "address": "0x5000",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1,
+                    "address": "0x5004",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "new block",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0,
+                    "address": "0x6000"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1,
+                    "address": "0x6004"
+                  },
+                  {
+                    "value": "?",
+                    "index": 2,
+                    "address": "0x6008"
+                  },
+                  {
+                    "value": "?",
+                    "index": 3,
+                    "address": "0x600c"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "2:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

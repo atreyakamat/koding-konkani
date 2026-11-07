@@ -81,7 +81,72 @@
       "onScreen": "`FILE *fp` as a pointer box pointing to a \"file handle\" card linked to `diary.txt`",
       "animation": "Arrow draws from `fp` to the handle; link chain SFX",
       "sfx": [],
-      "narration": "To work with a file, C gives us a type called FILE, in capital letters, from stdio dot h. We never use a FILE directly. We use a pointer to one: FILE star fp. You learned pointers in Module 8. fp doesn't hold the file's text. It points to a handle that C uses to keep track of the open file: which file, and where we are in it. The function fopen opens the file and gives us that pointer."
+      "narration": "To work with a file, C gives us a type called FILE, in capital letters, from stdio dot h. We never use a FILE directly. We use a pointer to one: FILE star fp. You learned pointers in Module 8. fp doesn't hold the file's text. It points to a handle that C uses to keep track of the open file: which file, and where we are in it. The function fopen opens the file and gives us that pointer.",
+      "memory": {
+        "frames": [
+          {
+            "label": "fp is only a pointer; the handle lives inside C",
+            "groups": [
+              {
+                "name": "FILE *fp",
+                "cells": [
+                  {
+                    "value": "NULL",
+                    "name": "fp"
+                  }
+                ]
+              },
+              {
+                "name": "file handle",
+                "cells": [
+                  {
+                    "value": "diary.txt",
+                    "name": "file"
+                  },
+                  {
+                    "value": "0",
+                    "name": "position"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "fopen gives fp the handle: which file, where we are",
+            "groups": [
+              {
+                "name": "FILE *fp",
+                "cells": [
+                  {
+                    "value": "→ handle",
+                    "name": "fp",
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "name": "file handle",
+                "cells": [
+                  {
+                    "value": "diary.txt",
+                    "name": "file"
+                  },
+                  {
+                    "value": "0",
+                    "name": "position"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

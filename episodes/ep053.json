@@ -117,7 +117,38 @@
       "onScreen": "Box `age` at address 1000 holding 19; a new wider box `p` at address 2000, empty, labelled \"holds an address\"",
       "animation": "`age` box from EP 52 slides back in; `p` box grows from a dot; label types out",
       "sfx": [],
-      "narration": "Remember last episode. Our variable age lives in a box with the address 1000, and inside it is 19. We will use small, friendly numbers like 1000 on these diagrams. Real addresses are longer, but the idea is the same. Now, what if we want to save that address, 1000, for later? We need a variable that can hold an address. That kind of variable is called a pointer. Here it is: a new box, called p, living at address 2000. Notice it is wider. On a 64-bit computer, a pointer takes eight bytes, because addresses are big numbers. Right now p is empty. It is waiting for an address."
+      "narration": "Remember last episode. Our variable age lives in a box with the address 1000, and inside it is 19. We will use small, friendly numbers like 1000 on these diagrams. Real addresses are longer, but the idea is the same. Now, what if we want to save that address, 1000, for later? We need a variable that can hold an address. That kind of variable is called a pointer. Here it is: a new box, called p, living at address 2000. Notice it is wider. On a 64-bit computer, a pointer takes eight bytes, because addresses are big numbers. Right now p is empty. It is waiting for an address.",
+      "memory": {
+        "frames": [
+          {
+            "label": "p is a pointer: it holds an address",
+            "badges": [
+              "pointer = 8 bytes"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "19",
+                    "name": "age",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "name": "holds an address",
+                "cells": [
+                  {
+                    "value": "?",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -129,7 +160,67 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Now we write p equals ampersand age. Ampersand age gives 1000. So the number 1000 goes into box p. That is all that happens. p now holds 1000. But programmers draw it differently. Instead of writing 1000 inside p, we draw an arrow from p to the box at 1000. The arrow means \"p points to age\". The number and the arrow mean the same thing. Every time you see an arrow in this module, remember: it is just an address stored in a box. Let's go slowly once more. age holds 19. p holds the address of age. The arrow shows that link."
+      "narration": "Now we write p equals ampersand age. Ampersand age gives 1000. So the number 1000 goes into box p. That is all that happens. p now holds 1000. But programmers draw it differently. Instead of writing 1000 inside p, we draw an arrow from p to the box at 1000. The arrow means \"p points to age\". The number and the arrow mean the same thing. Every time you see an arrow in this module, remember: it is just an address stored in a box. Let's go slowly once more. age holds 19. p holds the address of age. The arrow shows that link.",
+      "memory": {
+        "frames": [
+          {
+            "label": "p is empty, waiting for an address",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "19",
+                    "name": "age",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "?",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "p = &age puts 1000 into p",
+            "badges": [
+              "p = &age"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "19",
+                    "name": "age",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

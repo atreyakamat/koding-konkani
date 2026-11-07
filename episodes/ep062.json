@@ -102,7 +102,127 @@
       "sfx": [
         "pop"
       ],
-      "narration": "An array of structs is a row of lockers, where every locker holds a whole ID card. cls zero is the first card, cls one the second, cls two the third. To reach one field, you combine what you know. First the index in square brackets to pick the card, then the dot to pick the field. cls one dot marks means: the marks of the second student. Read it left to right: which card, then which field."
+      "narration": "An array of structs is a row of lockers, where every locker holds a whole ID card. cls zero is the first card, cls one the second, cls two the third. To reach one field, you combine what you know. First the index in square brackets to pick the card, then the dot to pick the field. cls one dot marks means: the marks of the second student. Read it left to right: which card, then which field.",
+      "memory": {
+        "frames": [
+          {
+            "label": "A row of lockers; each holds a whole ID card",
+            "groups": [
+              {
+                "name": "cls[0]",
+                "cells": [
+                  {
+                    "value": "Anya",
+                    "name": "name"
+                  },
+                  {
+                    "value": "1",
+                    "name": "rollNo"
+                  },
+                  {
+                    "value": "78.0",
+                    "name": "marks"
+                  }
+                ]
+              },
+              {
+                "name": "cls[1]",
+                "cells": [
+                  {
+                    "value": "Rohan",
+                    "name": "name"
+                  },
+                  {
+                    "value": "2",
+                    "name": "rollNo"
+                  },
+                  {
+                    "value": "64.5",
+                    "name": "marks"
+                  }
+                ]
+              },
+              {
+                "name": "cls[2]",
+                "cells": [
+                  {
+                    "value": "Sneha",
+                    "name": "name"
+                  },
+                  {
+                    "value": "3",
+                    "name": "rollNo"
+                  },
+                  {
+                    "value": "91.0",
+                    "name": "marks"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "cls[1].marks : pick the card, then the field",
+            "badges": [
+              "cls[1].marks"
+            ],
+            "groups": [
+              {
+                "name": "cls[0]",
+                "cells": [
+                  {
+                    "value": "Anya",
+                    "name": "name"
+                  },
+                  {
+                    "value": "1",
+                    "name": "rollNo"
+                  },
+                  {
+                    "value": "78.0",
+                    "name": "marks"
+                  }
+                ]
+              },
+              {
+                "name": "cls[1]",
+                "cells": [
+                  {
+                    "value": "Rohan",
+                    "name": "name"
+                  },
+                  {
+                    "value": "2",
+                    "name": "rollNo"
+                  },
+                  {
+                    "value": "64.5",
+                    "name": "marks",
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "name": "cls[2]",
+                "cells": [
+                  {
+                    "value": "Sneha",
+                    "name": "name"
+                  },
+                  {
+                    "value": "3",
+                    "name": "rollNo"
+                  },
+                  {
+                    "value": "91.0",
+                    "name": "marks"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -112,7 +232,87 @@
       "onScreen": "Pointer p (GPS pin from EP 53) aimed at cls[1]; p->marks highlights the marks field",
       "animation": "Pin drops, arrow draws, ping",
       "sfx": [],
-      "narration": "Now pointers. In EP 53, a pointer was a GPS pin holding an address. A pointer can hold the address of a whole struct too. Say p points to cls one. To get the marks, you could write star p in brackets, dot marks: first go to the address, then pick the field. The brackets are needed because the dot is stronger than the star. That is ugly, and programmers write it all the time. So C gives a shortcut: p arrow marks. A minus sign and a greater-than sign, and it means exactly the same thing. Go to the struct p points at, and take its marks."
+      "narration": "Now pointers. In EP 53, a pointer was a GPS pin holding an address. A pointer can hold the address of a whole struct too. Say p points to cls one. To get the marks, you could write star p in brackets, dot marks: first go to the address, then pick the field. The brackets are needed because the dot is stronger than the star. That is ugly, and programmers write it all the time. So C gives a shortcut: p arrow marks. A minus sign and a greater-than sign, and it means exactly the same thing. Go to the struct p points at, and take its marks.",
+      "memory": {
+        "frames": [
+          {
+            "label": "p points at the whole struct cls[1]",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "&cls[1]",
+                    "name": "p"
+                  }
+                ]
+              },
+              {
+                "name": "cls[1]",
+                "cells": [
+                  {
+                    "value": "Rohan",
+                    "name": "name"
+                  },
+                  {
+                    "value": "2",
+                    "name": "rollNo"
+                  },
+                  {
+                    "value": "64.5",
+                    "name": "marks"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          },
+          {
+            "label": "p->marks : go to the struct, take its marks",
+            "badges": [
+              "(*p).marks = p->marks"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "&cls[1]",
+                    "name": "p"
+                  }
+                ]
+              },
+              {
+                "name": "cls[1]",
+                "cells": [
+                  {
+                    "value": "Rohan",
+                    "name": "name"
+                  },
+                  {
+                    "value": "2",
+                    "name": "rollNo"
+                  },
+                  {
+                    "value": "64.5",
+                    "name": "marks",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

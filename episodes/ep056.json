@@ -115,7 +115,169 @@
       "onScreen": "`marks[4]` = 72, 85, 91, 64 at addresses 1000, 1004, 1008, 1012; byte ruler under them; pointer `p` with arrow to 1000",
       "animation": "Boxes drop in; byte ruler ticks; `p` arrow jumps one box at a time on `p++`; a \"+4\" arc appears with each jump",
       "sfx": [],
-      "narration": "Here is an array of four marks: 72, 85, 91 and 64. Each one is an int, so each one takes four bytes. Let's say the array starts at address 1000. Then 72 is at 1000, 85 is at 1004, 91 is at 1008, and 64 is at 1012. Under the boxes you can see the byte ruler, with every single byte marked. Now we make a pointer p that points to the first box, at 1000. What happens if we write p plus plus? You might think the address becomes 1001. But look. The arrow jumps a whole box, to 1004. Because p is an int pointer, C knows that one step means one int, which is four bytes. So p plus plus adds four to the address. Now star p is 85. Now p plus 2. That means two more ints, so eight more bytes: 1004 plus 8 is 1012. Star p is now 64. The rule is simple. Adding n to a pointer moves it n elements, not n bytes."
+      "narration": "Here is an array of four marks: 72, 85, 91 and 64. Each one is an int, so each one takes four bytes. Let's say the array starts at address 1000. Then 72 is at 1000, 85 is at 1004, 91 is at 1008, and 64 is at 1012. Under the boxes you can see the byte ruler, with every single byte marked. Now we make a pointer p that points to the first box, at 1000. What happens if we write p plus plus? You might think the address becomes 1001. But look. The arrow jumps a whole box, to 1004. Because p is an int pointer, C knows that one step means one int, which is four bytes. So p plus plus adds four to the address. Now star p is 85. Now p plus 2. That means two more ints, so eight more bytes: 1004 plus 8 is 1012. Star p is now 64. The rule is simple. Adding n to a pointer moves it n elements, not n bytes.",
+      "memory": {
+        "frames": [
+          {
+            "label": "p points at the first box: *p = 72",
+            "groups": [
+              {
+                "name": "marks[4]",
+                "ruler": {
+                  "each": "1 byte",
+                  "total": "4 bytes = 1 int"
+                },
+                "cells": [
+                  {
+                    "value": "72",
+                    "index": 0,
+                    "address": "1000",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "85",
+                    "index": 1,
+                    "address": "1004"
+                  },
+                  {
+                    "value": "91",
+                    "index": 2,
+                    "address": "1008"
+                  },
+                  {
+                    "value": "64",
+                    "index": 3,
+                    "address": "1012"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "p++ jumps a whole int: 1004, *p = 85",
+            "badges": [
+              "+1 element = +4 bytes"
+            ],
+            "groups": [
+              {
+                "name": "marks[4]",
+                "ruler": {
+                  "each": "1 byte",
+                  "total": "4 bytes = 1 int"
+                },
+                "cells": [
+                  {
+                    "value": "72",
+                    "index": 0,
+                    "address": "1000"
+                  },
+                  {
+                    "value": "85",
+                    "index": 1,
+                    "address": "1004",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "91",
+                    "index": 2,
+                    "address": "1008"
+                  },
+                  {
+                    "value": "64",
+                    "index": 3,
+                    "address": "1012"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1004",
+                    "name": "p",
+                    "address": "2000",
+                    "lost": "1000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:1"
+              }
+            ]
+          },
+          {
+            "label": "p + 2 more ints = 8 bytes: 1012, *p = 64",
+            "badges": [
+              "+n elements = +4n bytes"
+            ],
+            "groups": [
+              {
+                "name": "marks[4]",
+                "ruler": {
+                  "each": "1 byte",
+                  "total": "4 bytes = 1 int"
+                },
+                "cells": [
+                  {
+                    "value": "72",
+                    "index": 0,
+                    "address": "1000"
+                  },
+                  {
+                    "value": "85",
+                    "index": 1,
+                    "address": "1004"
+                  },
+                  {
+                    "value": "91",
+                    "index": 2,
+                    "address": "1008"
+                  },
+                  {
+                    "value": "64",
+                    "index": 3,
+                    "address": "1012",
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1012",
+                    "name": "p",
+                    "address": "2000",
+                    "lost": "1004"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:3"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -125,7 +287,148 @@
       "onScreen": "Second row: `char word[3]` = G, O, A at 2000, 2001, 2002, with pointer `c`; side table: char +1, int +4, double +8",
       "animation": "`c` hops in tiny 1-byte steps; the side table fills row by row",
       "sfx": [],
-      "narration": "The step size depends on the type. Here is a char array with the letters G, O, A. Each char is one byte. So a char pointer moves one byte per step. 2000, 2001, 2002. An int pointer moves four. A double pointer moves eight. The pointer always moves by the size of the thing it points to. That is why the type in int star matters so much. It tells C how big each step is."
+      "narration": "The step size depends on the type. Here is a char array with the letters G, O, A. Each char is one byte. So a char pointer moves one byte per step. 2000, 2001, 2002. An int pointer moves four. A double pointer moves eight. The pointer always moves by the size of the thing it points to. That is why the type in int star matters so much. It tells C how big each step is.",
+      "memory": {
+        "frames": [
+          {
+            "label": "char pointer: 1 byte per step",
+            "badges": [
+              "char +1",
+              "int +4",
+              "double +8"
+            ],
+            "groups": [
+              {
+                "name": "char word[3]",
+                "cells": [
+                  {
+                    "value": "G",
+                    "index": 0,
+                    "address": "2000"
+                  },
+                  {
+                    "value": "O",
+                    "index": 1,
+                    "address": "2001"
+                  },
+                  {
+                    "value": "A",
+                    "index": 2,
+                    "address": "2002"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "2000",
+                    "name": "c",
+                    "address": "3000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "c++ : 2001",
+            "badges": [
+              "char +1",
+              "int +4",
+              "double +8"
+            ],
+            "groups": [
+              {
+                "name": "char word[3]",
+                "cells": [
+                  {
+                    "value": "G",
+                    "index": 0,
+                    "address": "2000"
+                  },
+                  {
+                    "value": "O",
+                    "index": 1,
+                    "address": "2001"
+                  },
+                  {
+                    "value": "A",
+                    "index": 2,
+                    "address": "2002"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "2001",
+                    "name": "c",
+                    "address": "3000",
+                    "lost": "2000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:1"
+              }
+            ]
+          },
+          {
+            "label": "c++ : 2002",
+            "badges": [
+              "char +1",
+              "int +4",
+              "double +8"
+            ],
+            "groups": [
+              {
+                "name": "char word[3]",
+                "cells": [
+                  {
+                    "value": "G",
+                    "index": 0,
+                    "address": "2000"
+                  },
+                  {
+                    "value": "O",
+                    "index": 1,
+                    "address": "2001"
+                  },
+                  {
+                    "value": "A",
+                    "index": 2,
+                    "address": "2002"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "2002",
+                    "name": "c",
+                    "address": "3000",
+                    "lost": "2001"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:2"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

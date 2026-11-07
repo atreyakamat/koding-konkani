@@ -116,7 +116,72 @@
         "ding",
         "stamp"
       ],
-      "narration": "Here is an array called marks, with five ints: 72, 85, 91, 64 and 88. Remember from EP 56: ints are four bytes, so the boxes are at 1000, 1004, 1008, 1012 and 1016. Now, the big secret. When you use the name marks in an expression, C quietly turns it into the address of the first element. So marks gives you 1000. And ampersand marks of zero also gives 1000. Same arrow, same box. This automatic change is often called \"array decay\": the array name decays into a pointer to its first element. That is why in EP 56 we could write char star c equals word, with no ampersand."
+      "narration": "Here is an array called marks, with five ints: 72, 85, 91, 64 and 88. Remember from EP 56: ints are four bytes, so the boxes are at 1000, 1004, 1008, 1012 and 1016. Now, the big secret. When you use the name marks in an expression, C quietly turns it into the address of the first element. So marks gives you 1000. And ampersand marks of zero also gives 1000. Same arrow, same box. This automatic change is often called \"array decay\": the array name decays into a pointer to its first element. That is why in EP 56 we could write char star c equals word, with no ampersand.",
+      "memory": {
+        "frames": [
+          {
+            "label": "The name marks decays to the address of the first element",
+            "badges": [
+              "array decay"
+            ],
+            "groups": [
+              {
+                "name": "marks[5]",
+                "cells": [
+                  {
+                    "value": "72",
+                    "index": 0,
+                    "address": "1000",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "85",
+                    "index": 1,
+                    "address": "1004"
+                  },
+                  {
+                    "value": "91",
+                    "index": 2,
+                    "address": "1008"
+                  },
+                  {
+                    "value": "64",
+                    "index": 3,
+                    "address": "1012"
+                  },
+                  {
+                    "value": "88",
+                    "index": 4,
+                    "address": "1016"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "marks"
+                  },
+                  {
+                    "value": "1000",
+                    "name": "&marks[0]"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              },
+              {
+                "from": "1:1",
+                "to": "0:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -126,7 +191,176 @@
       "onScreen": "Expression ladder: `marks + 2` = 1008, `*(marks + 2)` = 91, `marks[2]` = 91",
       "animation": "Arrow walks two boxes; the box opens to show 91; `marks[2]` slides down to sit next to `*(marks + 2)` with an equals sign",
       "sfx": [],
-      "narration": "Now let's use EP 56's pointer arithmetic. marks plus 2 means: start at the first box, walk two ints. That is address 1008. Star of marks plus 2 knocks on that door and finds 91. And what is marks square bracket 2? Also 91. That's not a coincidence. In C, a square bracket i is defined to mean star of a plus i. Every time you have used square brackets since EP 41, C was doing pointer arithmetic behind your back. The square brackets are just a nicer way to write it."
+      "narration": "Now let's use EP 56's pointer arithmetic. marks plus 2 means: start at the first box, walk two ints. That is address 1008. Star of marks plus 2 knocks on that door and finds 91. And what is marks square bracket 2? Also 91. That's not a coincidence. In C, a square bracket i is defined to mean star of a plus i. Every time you have used square brackets since EP 41, C was doing pointer arithmetic behind your back. The square brackets are just a nicer way to write it.",
+      "memory": {
+        "frames": [
+          {
+            "label": "marks + 2 : walk two ints, address 1008",
+            "groups": [
+              {
+                "name": "marks[5]",
+                "cells": [
+                  {
+                    "value": "72",
+                    "index": 0,
+                    "address": "1000"
+                  },
+                  {
+                    "value": "85",
+                    "index": 1,
+                    "address": "1004"
+                  },
+                  {
+                    "value": "91",
+                    "index": 2,
+                    "address": "1008",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "64",
+                    "index": 3,
+                    "address": "1012"
+                  },
+                  {
+                    "value": "88",
+                    "index": 4,
+                    "address": "1016"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1008",
+                    "name": "marks + 2"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:2"
+              }
+            ]
+          },
+          {
+            "label": "*(marks + 2) knocks on 1008 and finds 91",
+            "groups": [
+              {
+                "name": "marks[5]",
+                "cells": [
+                  {
+                    "value": "72",
+                    "index": 0,
+                    "address": "1000"
+                  },
+                  {
+                    "value": "85",
+                    "index": 1,
+                    "address": "1004"
+                  },
+                  {
+                    "value": "91",
+                    "index": 2,
+                    "address": "1008",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "64",
+                    "index": 3,
+                    "address": "1012"
+                  },
+                  {
+                    "value": "88",
+                    "index": 4,
+                    "address": "1016"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1008",
+                    "name": "marks + 2"
+                  },
+                  {
+                    "value": "91",
+                    "name": "*(marks + 2)"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:2"
+              }
+            ]
+          },
+          {
+            "label": "marks[2] means exactly the same thing",
+            "badges": [
+              "a[i] = *(a + i)"
+            ],
+            "groups": [
+              {
+                "name": "marks[5]",
+                "cells": [
+                  {
+                    "value": "72",
+                    "index": 0,
+                    "address": "1000"
+                  },
+                  {
+                    "value": "85",
+                    "index": 1,
+                    "address": "1004"
+                  },
+                  {
+                    "value": "91",
+                    "index": 2,
+                    "address": "1008",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "64",
+                    "index": 3,
+                    "address": "1012"
+                  },
+                  {
+                    "value": "88",
+                    "index": 4,
+                    "address": "1016"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1008",
+                    "name": "marks + 2"
+                  },
+                  {
+                    "value": "91",
+                    "name": "*(marks + 2)"
+                  },
+                  {
+                    "value": "91",
+                    "name": "marks[2]"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:2"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

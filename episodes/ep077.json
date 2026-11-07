@@ -131,10 +131,180 @@
       "template": "algorithm-bars",
       "startSec": 60,
       "lengthSec": 55,
-      "onScreen": "Discs as horizontal butter bars on pegs; solve n = 1, 2, 3",
+      "onScreen": "Three bars = discs 1, 2, 3; bar height = peg (A = 1, B = 2, C = 3); the disc being moved lights up. Solve n = 1, 2, 3",
       "animation": "Each move slides a disc; move counter 1, 3, 7; clack per move",
       "sfx": [],
-      "narration": "One disc? Easy: A to C. One move. Two discs? Small one to B, big one to C, small one to C. Three moves. Three discs takes more thinking: small to C, middle to B, small to B, big to C, small to A, middle to C, small to C. Seven moves. Four discs by hand gets confusing fast. We need a better way to think."
+      "narration": "One disc? Easy: A to C. One move. Two discs? Small one to B, big one to C, small one to C. Three moves. Three discs takes more thinking: small to C, middle to B, small to B, big to C, small to A, middle to C, small to C. Seven moves. Four discs by hand gets confusing fast. We need a better way to think.",
+      "trace": [
+        {
+          "step": "n=1 start",
+          "array": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": "n=1 move 1",
+          "array": [
+            3,
+            1,
+            1
+          ],
+          "compare": [
+            0,
+            0
+          ],
+          "sorted": [
+            0
+          ]
+        },
+        {
+          "step": "n=2 start",
+          "array": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": "n=2 move 1",
+          "array": [
+            2,
+            1,
+            1
+          ],
+          "compare": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": "n=2 move 2",
+          "array": [
+            2,
+            3,
+            1
+          ],
+          "compare": [
+            1,
+            1
+          ]
+        },
+        {
+          "step": "n=2 move 3",
+          "array": [
+            3,
+            3,
+            1
+          ],
+          "compare": [
+            0,
+            0
+          ],
+          "sorted": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "n=3 start",
+          "array": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": "n=3 move 1",
+          "array": [
+            3,
+            1,
+            1
+          ],
+          "compare": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": "n=3 move 2",
+          "array": [
+            3,
+            2,
+            1
+          ],
+          "compare": [
+            1,
+            1
+          ]
+        },
+        {
+          "step": "n=3 move 3",
+          "array": [
+            2,
+            2,
+            1
+          ],
+          "compare": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": "n=3 move 4",
+          "array": [
+            2,
+            2,
+            3
+          ],
+          "compare": [
+            2,
+            2
+          ]
+        },
+        {
+          "step": "n=3 move 5",
+          "array": [
+            1,
+            2,
+            3
+          ],
+          "compare": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": "n=3 move 6",
+          "array": [
+            1,
+            3,
+            3
+          ],
+          "compare": [
+            1,
+            1
+          ]
+        },
+        {
+          "step": "n=3 move 7",
+          "array": [
+            3,
+            3,
+            3
+          ],
+          "compare": [
+            0,
+            0
+          ],
+          "sorted": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
     },
     {
       "id": 5,
@@ -173,7 +343,158 @@
         "thud",
         "whoosh"
       ],
-      "narration": "Let's watch the call stack, the memory C uses to remember unfinished function calls. main calls hanoi 3. That frame is pushed on the stack. hanoi 3 calls hanoi 2, pushed on top. hanoi 2 calls hanoi 1. hanoi 1 calls hanoi 0, which returns at once, popped. Now hanoi 1 prints: move 1, disc 1, A to C. It calls hanoi 0 again, popped, and hanoi 1 finishes, popped. Back in hanoi 2, which was waiting patiently: move 2, disc 2, A to B. And so on. Each frame remembers its own n, from, to and via. That's why the same function can be at four different stages at the same time. The stack is never more than five frames deep here, including main."
+      "narration": "Let's watch the call stack, the memory C uses to remember unfinished function calls. main calls hanoi 3. That frame is pushed on the stack. hanoi 3 calls hanoi 2, pushed on top. hanoi 2 calls hanoi 1. hanoi 1 calls hanoi 0, which returns at once, popped. Now hanoi 1 prints: move 1, disc 1, A to C. It calls hanoi 0 again, popped, and hanoi 1 finishes, popped. Back in hanoi 2, which was waiting patiently: move 2, disc 2, A to B. And so on. Each frame remembers its own n, from, to and via. That's why the same function can be at four different stages at the same time. The stack is never more than five frames deep here, including main.",
+      "memory": {
+        "frames": [
+          {
+            "label": "main calls hanoi(3): frame pushed",
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "-",
+                    "name": "main"
+                  },
+                  {
+                    "value": "3,A,C,B",
+                    "name": "hanoi"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "hanoi 3 calls hanoi 2: pushed on top",
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "-",
+                    "name": "main"
+                  },
+                  {
+                    "value": "3,A,C,B",
+                    "name": "hanoi"
+                  },
+                  {
+                    "value": "2,A,B,C",
+                    "name": "hanoi"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "hanoi 2 calls hanoi 1: pushed on top",
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "-",
+                    "name": "main"
+                  },
+                  {
+                    "value": "3,A,C,B",
+                    "name": "hanoi"
+                  },
+                  {
+                    "value": "2,A,B,C",
+                    "name": "hanoi"
+                  },
+                  {
+                    "value": "1,A,C,B",
+                    "name": "hanoi"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "hanoi 1 calls hanoi 0: five frames deep, returns at once",
+            "badges": [
+              "depth 5 (with main)"
+            ],
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "-",
+                    "name": "main"
+                  },
+                  {
+                    "value": "3,A,C,B",
+                    "name": "hanoi"
+                  },
+                  {
+                    "value": "2,A,B,C",
+                    "name": "hanoi"
+                  },
+                  {
+                    "value": "1,A,C,B",
+                    "name": "hanoi"
+                  },
+                  {
+                    "value": "0,A,B,C",
+                    "name": "hanoi"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "hanoi 0 popped. hanoi 1 prints: Move 1: disc 1 from A to C",
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "-",
+                    "name": "main"
+                  },
+                  {
+                    "value": "3,A,C,B",
+                    "name": "hanoi"
+                  },
+                  {
+                    "value": "2,A,B,C",
+                    "name": "hanoi"
+                  },
+                  {
+                    "value": "1,A,C,B",
+                    "name": "hanoi"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "hanoi 1 finished, popped. hanoi 2 prints: Move 2: disc 2 from A to B",
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "-",
+                    "name": "main"
+                  },
+                  {
+                    "value": "3,A,C,B",
+                    "name": "hanoi"
+                  },
+                  {
+                    "value": "2,A,B,C",
+                    "name": "hanoi"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 8,

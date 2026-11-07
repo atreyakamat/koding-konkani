@@ -71,7 +71,95 @@
       "onScreen": "Number 1000 stored as text (4 characters '1','0','0','0') vs as an int (4 raw bytes in Lilac)",
       "animation": "Characters type in; raw bytes slide in as hex boxes; \"people read\" vs \"programs read\" labels",
       "sfx": [],
-      "narration": "So far our files were text: characters people can read. If we save the number 1000 as text, we store four characters: 1, 0, 0, 0. To get the number back, the program has to read the characters and convert them. A binary file stores the bytes exactly as they sit in memory. The int 1000 is just its 4 raw bytes, usually. Open it in Notepad and you'll see junk, but your program can load it back instantly. And every record is the same size, which is the secret to jumping straight to one."
+      "narration": "So far our files were text: characters people can read. If we save the number 1000 as text, we store four characters: 1, 0, 0, 0. To get the number back, the program has to read the characters and convert them. A binary file stores the bytes exactly as they sit in memory. The int 1000 is just its 4 raw bytes, usually. Open it in Notepad and you'll see junk, but your program can load it back instantly. And every record is the same size, which is the secret to jumping straight to one.",
+      "memory": {
+        "frames": [
+          {
+            "label": "As text: four characters, converted back when read",
+            "badges": [
+              "readable"
+            ],
+            "groups": [
+              {
+                "name": "text file: '1' '0' '0' '0'",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0
+                  },
+                  {
+                    "value": "0",
+                    "index": 1
+                  },
+                  {
+                    "value": "0",
+                    "index": 2
+                  },
+                  {
+                    "value": "0",
+                    "index": 3
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "As an int: the bytes exactly as they sit in memory",
+            "badges": [
+              "junk in Notepad",
+              "loads instantly"
+            ],
+            "groups": [
+              {
+                "name": "text file: '1' '0' '0' '0'",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0
+                  },
+                  {
+                    "value": "0",
+                    "index": 1
+                  },
+                  {
+                    "value": "0",
+                    "index": 2
+                  },
+                  {
+                    "value": "0",
+                    "index": 3
+                  }
+                ]
+              },
+              {
+                "name": "binary file: int 1000, 4 raw bytes",
+                "cells": [
+                  {
+                    "value": "E8",
+                    "index": 0,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "03",
+                    "index": 1,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "00",
+                    "index": 2,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "00",
+                    "index": 3,
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,

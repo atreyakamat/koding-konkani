@@ -102,7 +102,164 @@
       "sfx": [
         "ding"
       ],
-      "narration": "Think of a bus with seats in rows of four. A family of four wants to sit in one row together. If one person has already taken the first seat of a row, the family will not squeeze across two rows. They skip ahead to the next empty row. The processor is like that family with ints. It reads a 4-byte int fastest when the int starts at an address that is a multiple of 4. This is called alignment. So look at Order in memory. Byte 0: size, the char. Now qty, the int, needs to start at a multiple of 4. Bytes 1, 2 and 3 are left empty. These empty bytes are called padding. qty takes bytes 4 to 7. type, the char, takes byte 8. And then the whole struct is padded up to a multiple of 4 again, so that in an array of Orders, every int lines up. Bytes 9, 10 and 11: more padding. Total: 12. Six useful bytes, six empty ones. These are the numbers on a typical Windows or Linux machine with GCC. On other machines, the sizes may be different, so always use sizeof instead of guessing."
+      "narration": "Think of a bus with seats in rows of four. A family of four wants to sit in one row together. If one person has already taken the first seat of a row, the family will not squeeze across two rows. They skip ahead to the next empty row. The processor is like that family with ints. It reads a 4-byte int fastest when the int starts at an address that is a multiple of 4. This is called alignment. So look at Order in memory. Byte 0: size, the char. Now qty, the int, needs to start at a multiple of 4. Bytes 1, 2 and 3 are left empty. These empty bytes are called padding. qty takes bytes 4 to 7. type, the char, takes byte 8. And then the whole struct is padded up to a multiple of 4 again, so that in an array of Orders, every int lines up. Bytes 9, 10 and 11: more padding. Total: 12. Six useful bytes, six empty ones. These are the numbers on a typical Windows or Linux machine with GCC. On other machines, the sizes may be different, so always use sizeof instead of guessing.",
+      "memory": {
+        "frames": [
+          {
+            "label": "size at byte 0; qty must start at a multiple of 4, so bytes 1-3 are padding",
+            "groups": [
+              {
+                "name": "struct Order",
+                "cells": [
+                  {
+                    "value": "size",
+                    "index": 0,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 1,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 2,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 3,
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "qty takes bytes 4-7",
+            "groups": [
+              {
+                "name": "struct Order",
+                "cells": [
+                  {
+                    "value": "size",
+                    "index": 0,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 1,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 2,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 3,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 4,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 5,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 6,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 7,
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "type at byte 8, then padding up to a multiple of 4",
+            "badges": [
+              "6 useful + 6 padding = 12"
+            ],
+            "groups": [
+              {
+                "name": "struct Order",
+                "cells": [
+                  {
+                    "value": "size",
+                    "index": 0,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 1,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 2,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 3,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 4,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 5,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 6,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 7,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "type",
+                    "index": 8,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 9,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 10,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 11,
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -112,7 +269,95 @@
       "onScreen": "struct Packed: qty (4), size, type, 2 padding = 8",
       "animation": "Members slide into new order; boxes snap tighter; satisfying click",
       "sfx": [],
-      "narration": "Here is a trick. Same three members, different order. struct Packed puts the int first: qty in bytes 0 to 3. Then size at byte 4, type at byte 5. Two bytes of padding at the end to reach a multiple of 4. Total: 8. Same data, 4 bytes saved. A simple rule: put the biggest members first. For one struct, 4 bytes is nothing. For a million records, it is 4 megabytes."
+      "narration": "Here is a trick. Same three members, different order. struct Packed puts the int first: qty in bytes 0 to 3. Then size at byte 4, type at byte 5. Two bytes of padding at the end to reach a multiple of 4. Total: 8. Same data, 4 bytes saved. A simple rule: put the biggest members first. For one struct, 4 bytes is nothing. For a million records, it is 4 megabytes.",
+      "memory": {
+        "frames": [
+          {
+            "label": "Biggest member first: qty in bytes 0-3",
+            "groups": [
+              {
+                "name": "struct Packed",
+                "cells": [
+                  {
+                    "value": "qty",
+                    "index": 0,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 1,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 2,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 3,
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "size at 4, type at 5, 2 bytes of padding",
+            "badges": [
+              "8 bytes",
+              "4 bytes saved"
+            ],
+            "groups": [
+              {
+                "name": "struct Packed",
+                "cells": [
+                  {
+                    "value": "qty",
+                    "index": 0,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 1,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 2,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "qty",
+                    "index": 3,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "size",
+                    "index": 4,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "type",
+                    "index": 5,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 6,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "pad",
+                    "index": 7,
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

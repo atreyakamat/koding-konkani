@@ -123,7 +123,68 @@
       "onScreen": "s1 as one long box split into name[30], rollNo, percentage",
       "animation": "Boxes slide together; size labels \"your sizes may differ\"",
       "sfx": [],
-      "narration": "What does s1 look like in memory? One block. Inside it, side by side: 30 bytes for the name, then the int, then the float. All of s1 lives together, in one piece. When you write s1 dot rollNo, C goes to the start of s1 and jumps to where rollNo sits inside it. On a typical machine this struct is 40 bytes, but your size may differ, and in EP 64 we will see why struct sizes sometimes surprise you."
+      "narration": "What does s1 look like in memory? One block. Inside it, side by side: 30 bytes for the name, then the int, then the float. All of s1 lives together, in one piece. When you write s1 dot rollNo, C goes to the start of s1 and jumps to where rollNo sits inside it. On a typical machine this struct is 40 bytes, but your size may differ, and in EP 64 we will see why struct sizes sometimes surprise you.",
+      "memory": {
+        "frames": [
+          {
+            "label": "s1 is one block: name, rollNo, percentage side by side",
+            "badges": [
+              "typically 40 bytes"
+            ],
+            "groups": [
+              {
+                "name": "s1",
+                "cells": [
+                  {
+                    "value": "30 bytes",
+                    "name": "name",
+                    "address": "+0"
+                  },
+                  {
+                    "value": "4 bytes",
+                    "name": "rollNo",
+                    "address": "+32"
+                  },
+                  {
+                    "value": "4 bytes",
+                    "name": "percentage",
+                    "address": "+36"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "s1.rollNo : start of s1, then jump to rollNo",
+            "badges": [
+              "typically 40 bytes"
+            ],
+            "groups": [
+              {
+                "name": "s1",
+                "cells": [
+                  {
+                    "value": "30 bytes",
+                    "name": "name",
+                    "address": "+0"
+                  },
+                  {
+                    "value": "4 bytes",
+                    "name": "rollNo",
+                    "address": "+32",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "4 bytes",
+                    "name": "percentage",
+                    "address": "+36"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 6,

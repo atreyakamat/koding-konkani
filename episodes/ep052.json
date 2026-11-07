@@ -115,7 +115,175 @@
       "onScreen": "The houses flatten into a row of 16 small lilac boxes labelled 1000 to 1015; caption \"1 box = 1 byte\"",
       "animation": "Boxes slide in one by one with soft ticks; numbers count up under each box",
       "sfx": [],
-      "narration": "Many students say this module is where C gets hard. So we will go slowly, one box at a time, and you will see every step. First question: what is memory? Your RAM is a very long street of tiny houses. Each house holds exactly one byte, which is eight bits. And every house has a number, called its address. The numbers go up one by one: house 1000, house 1001, house 1002, and so on. When you write int age equals 19, the computer picks some houses on this street, puts 19 inside, and remembers where it put it. Until now you only used the name, age. Today you learn that behind every name, there is a number."
+      "narration": "Many students say this module is where C gets hard. So we will go slowly, one box at a time, and you will see every step. First question: what is memory? Your RAM is a very long street of tiny houses. Each house holds exactly one byte, which is eight bits. And every house has a number, called its address. The numbers go up one by one: house 1000, house 1001, house 1002, and so on. When you write int age equals 19, the computer picks some houses on this street, puts 19 inside, and remembers where it put it. Until now you only used the name, age. Today you learn that behind every name, there is a number.",
+      "memory": {
+        "frames": [
+          {
+            "label": "RAM = a long street of tiny houses",
+            "badges": [
+              "1 box = 1 byte"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "?",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1001"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1002"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1003"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1004"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1005"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1006"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1007"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "?",
+                    "address": "1008"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1009"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1010"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1011"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1012"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1013"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1014"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1015"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "int age = 19 takes houses 1000-1003",
+            "badges": [
+              "1 box = 1 byte"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "19",
+                    "address": "1000",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1001",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1002",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1003",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1004"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1005"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1006"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1007"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "?",
+                    "address": "1008"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1009"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1010"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1011"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1012"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1013"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1014"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1015"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -125,7 +293,288 @@
       "onScreen": "`age` fills boxes 1000–1003 (19), `grade` fills 1004 (A), `cgpa` fills 1008–1015 (8.5), with 1005–1007 greyed out as unused gap; gate sign shows the first house number",
       "animation": "Each variable drops in as a coloured block spanning its bytes; a gate sign flips up showing `&age = 1000`; Xecxec holds the sign",
       "sfx": [],
-      "narration": "Let's make three variables. An int called age, holding 19. A char called grade, holding the letter A. And a double called cgpa, holding 8.5. Look at how many houses each one needs. The int takes four houses, so four bytes. The char takes just one. The double takes eight. Now the key rule: the address of a variable is the number of its first house. If age starts at house 1000, its address is 1000, even though it also uses 1001, 1002 and 1003. Xecxec is holding up the gate sign. In C, the operator that gives you this number is the ampersand, the \"and\" sign. Ampersand age means \"the address of age\". Say it with me: ampersand means address of."
+      "narration": "Let's make three variables. An int called age, holding 19. A char called grade, holding the letter A. And a double called cgpa, holding 8.5. Look at how many houses each one needs. The int takes four houses, so four bytes. The char takes just one. The double takes eight. Now the key rule: the address of a variable is the number of its first house. If age starts at house 1000, its address is 1000, even though it also uses 1001, 1002 and 1003. Xecxec is holding up the gate sign. In C, the operator that gives you this number is the ampersand, the \"and\" sign. Ampersand age means \"the address of age\". Say it with me: ampersand means address of.",
+      "memory": {
+        "frames": [
+          {
+            "label": "int age: 4 bytes, address = first house = 1000",
+            "badges": [
+              "&age = 1000"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "19",
+                    "name": "age",
+                    "address": "1000",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1001",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1002",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1003",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1004"
+                  },
+                  {
+                    "value": "gap",
+                    "address": "1005",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "gap",
+                    "address": "1006",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "gap",
+                    "address": "1007",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "?",
+                    "address": "1008"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1009"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1010"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1011"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1012"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1013"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1014"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1015"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "char grade: 1 byte at 1004",
+            "badges": [
+              "&grade = 1004"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "19",
+                    "name": "age",
+                    "address": "1000",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1001",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1002",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1003",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "A",
+                    "name": "grade",
+                    "address": "1004",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "gap",
+                    "address": "1005",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "gap",
+                    "address": "1006",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "gap",
+                    "address": "1007",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "?",
+                    "address": "1008"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1009"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1010"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1011"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1012"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1013"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1014"
+                  },
+                  {
+                    "value": "?",
+                    "address": "1015"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "double cgpa: 8 bytes, 1008-1015",
+            "badges": [
+              "&cgpa = 1008"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "19",
+                    "name": "age",
+                    "address": "1000",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1001",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1002",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1003",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "A",
+                    "name": "grade",
+                    "address": "1004",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "gap",
+                    "address": "1005",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "gap",
+                    "address": "1006",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "gap",
+                    "address": "1007",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "8.5",
+                    "name": "cgpa",
+                    "address": "1008",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1009",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1010",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1011",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1012",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1013",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1014",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "address": "1015",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -172,7 +621,69 @@
       "onScreen": "Hex digit strip 0–9, A–F; the real output addresses placed above the three blocks; `grade` and `age` touching",
       "animation": "Hex strip lights up digit by digit; arrow labels \"next door neighbours\"; question mark over the order",
       "sfx": [],
-      "narration": "Why do the addresses have letters in them? Because they are written in hexadecimal, base sixteen. After 9, hex keeps counting with A, B, C, D, E and F. So the letter F just means fifteen. You do not need to convert these by hand. Just know they are numbers. Now compare the last two digits. grade's address ends in 9B, and age's ends in 9C. They are next-door neighbours! The compiler decided to place them side by side. But which variable goes first is the compiler's choice, not yours. Never write code that depends on that order."
+      "narration": "Why do the addresses have letters in them? Because they are written in hexadecimal, base sixteen. After 9, hex keeps counting with A, B, C, D, E and F. So the letter F just means fifteen. You do not need to convert these by hand. Just know they are numbers. Now compare the last two digits. grade's address ends in 9B, and age's ends in 9C. They are next-door neighbours! The compiler decided to place them side by side. But which variable goes first is the compiler's choice, not yours. Never write code that depends on that order.",
+      "memory": {
+        "frames": [
+          {
+            "label": "Hex counts 0-9 then A-F (F = 15)",
+            "badges": [
+              "cgpa ...FB90",
+              "grade ...FB9B",
+              "age ...FB9C"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "8.5",
+                    "name": "cgpa",
+                    "address": "...FB90"
+                  },
+                  {
+                    "value": "A",
+                    "name": "grade",
+                    "address": "...FB9B"
+                  },
+                  {
+                    "value": "19",
+                    "name": "age",
+                    "address": "...FB9C"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "9B and 9C are next-door neighbours",
+            "badges": [
+              "compiler picks the order"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "8.5",
+                    "name": "cgpa",
+                    "address": "...FB90"
+                  },
+                  {
+                    "value": "A",
+                    "name": "grade",
+                    "address": "...FB9B",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "19",
+                    "name": "age",
+                    "address": "...FB9C",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 9,
