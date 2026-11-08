@@ -46,18 +46,20 @@ export const pushIn = () =>
     );
   });
 
-/** Window pop: the incoming scene springs up from a small centred rectangle. */
+/** Window pop: the incoming scene springs up from a thin centred strip over the exiting scene, which stays fully
+ * visible underneath (never a black background). A 4 px ink border makes the growing strip read as a window. */
 export const windowPop = () =>
   presentation(({ presentationProgress, children, presentationDirection }) => {
-    if (presentationDirection === "exiting") {
-      return presentationProgress > 0.5 ? null : children;
-    }
+    if (presentationDirection === "exiting") return children;
     const t = Math.min(1, presentationProgress / 0.7);
     const eased = 1 - (1 - t) * (1 - t);
     const scaleY = 0.05 + 0.95 * eased;
     return (
-      <AbsoluteFill style={{ background: palette.ink, display: "flex", alignItems: "center" }}>
-        <AbsoluteFill style={{ scale: `1 ${scaleY}`, transformOrigin: "center" }}>{children}</AbsoluteFill>
+      <AbsoluteFill style={{ scale: `1 ${scaleY}`, transformOrigin: "center" }}>
+        {children}
+        {t < 1 ? (
+          <AbsoluteFill style={{ border: `4px solid ${palette.ink}`, boxSizing: "border-box", pointerEvents: "none" }} />
+        ) : null}
       </AbsoluteFill>
     );
   });
