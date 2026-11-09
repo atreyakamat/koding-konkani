@@ -375,7 +375,7 @@ def factorial(n):
     return n * factorial(n - 1)
 print(factorial(5))
 ''',
-           narr="[HL 1] A function that takes n. [HL 2] The base case. If n is one, the answer is one, and no more calls are made. [HL 3] The recursive case. Five times factorial of four. Python must first find factorial of four, which needs factorial of three, and so on, down to one. [HL 4] Then the answers come back up. One, two, six, twenty four, one hundred twenty. Five factorial is one hundred twenty."),
+           narr="[HL 1] A function that takes n. [HL 2] The base case. If n is one, [HL 3] the answer is one, and no more calls are made. [HL 4] The recursive case. Five times factorial of four. Python must first find factorial of four, which needs factorial of three, and so on, down to one. [HL 5] Call it with five. Then the answers come back up. One, two, six, twenty four, one hundred twenty. Five factorial is one hundred twenty."),
     c2=dict(label="The call stack", on="Five boxes stacked: factorial(5) at the bottom waiting, up to factorial(1) at the top; then answers flow back down", narr="Here is the stack. Factorial of five calls factorial of four, and waits. That calls factorial of three, and waits. Down to factorial of one, which answers at once, with one. Now the waiting calls finish, one by one, from the top down. Two, six, twenty four, one hundred twenty. Each call keeps its own n.", anim="Boxes stack up with a pop for each call; the top box returns 1 and the boxes pop off one by one, each passing a value down"),
     B=dict(file="countdown.py", label="A countdown", on="count down, then stop at the base case",
            src='''

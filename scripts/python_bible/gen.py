@@ -207,7 +207,7 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None) -> str:
         if not to:
             raise SystemExit(f"EP {n}: hang bug did not hang")
         lines = cp.norm(out).split("\n")[:5]
-        shown = "\n".join(lines + ["(keeps printing forever; press Ctrl+C to stop)"])
+        shown = "\n".join(lines + ["(the program never finishes; press Ctrl+C to stop)"])
         tr, label = "", "Python output (the first lines; it never stops by itself):"
     L.append(f"Wrong code ({bug['wrong_note']}):\n")
     for fn, body in bfiles.items():
@@ -241,14 +241,14 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None) -> str:
                    "Say it out loud once, and it will stick.", "Then run it, and compare with what you predicted."]
         base = script
         k = 0
-        while cp.words(base + " Keep coding, says Xecxec!" + (f" Full video: EP {n}." if sid == "S5" else "")) < 62 and k < len(closers):
+        while cp.words(base + " Keep coding, says Xecxec!" + (f" Full video: EP {n:02d}." if sid == "S5" else "")) < 62 and k < len(closers):
             base += " " + closers[(i + k) % len(closers)]
             k += 1
         script = base
         if "Keep coding, says Xecxec!" not in script:
             script += " Keep coding, says Xecxec!"
-        if sid == "S5" and not script.endswith(f"Full video: EP {n}."):
-            script += f" Full video: EP {n}."
+        if sid == "S5" and not script.endswith(f"Full video: EP {n:02d}."):
+            script += f" Full video: EP {n:02d}."
         w = cp.words(script)
         length = math.ceil(w / 2) + 4
         hook = re.split(r"(?<=[.?!])\s", script, maxsplit=1)[0]

@@ -270,7 +270,7 @@ except ValueError as e:
     print("Error:", e)
 print(set_age(20))
 ''',
-           narr="[HL 1] A function that sets an age. [HL 2] If the age is negative, [HL 3] raise a value error, with a message. The function stops right here. [HL 4] Otherwise, return the age. [HL 5] We try a bad value. [HL 6] Except value error as e catches it, and ties the error to e. [HL 7] Printing e shows our message. [HL 8] A good age goes straight through, and prints twenty."),
+           narr="[HL 1] A function that sets an age. [HL 2] If the age is negative, [HL 3] raise a value error, with a message. The function stops right here. [HL 4] Otherwise, return the age. [HL 5] We try. [HL 6] A bad value. [HL 7] Except value error as e catches it, and ties the error to e. [HL 8] Printing e shows our message. [HL 9] A good age goes straight through, and prints twenty."),
     c2=dict(label="The error travels up", on="A raise inside a function; the arrow leaves the function and lands in the except block of the caller", narr="Here is what raise does. The error starts inside the function, at the line that raised it. The function stops there. The error travels up to the caller, and looks for a matching except. If it finds one, that block runs. If not, it keeps travelling, and finally stops the program with a traceback. You decide who handles the error.", anim="A red arrow leaves a function box upward and lands in an except box; a second arrow shows the error passing through if no match"),
     B=dict(file="custom.py", label="A custom exception", on="BillError extends Exception",
            src='''
@@ -285,7 +285,7 @@ try:
 except BillError as e:
     print("Bill problem:", e)
 ''',
-           narr="[HL 1] A new exception type. The name in brackets says it builds on Exception. We will study classes properly soon. [HL 2] Pass means, nothing more is needed. [HL 3] A payment function. [HL 4] If the amount is zero or less, [HL 5] raise our own error, with a message. [HL 6] Return the amount otherwise. [HL 7] Try a bad payment. [HL 8] Except bill error as e catches only our type. [HL 9] Bill problem, amount must be positive."),
+           narr="[HL 1] A new exception type. The name in brackets says it builds on Exception. We will study classes properly soon. [HL 2] Pass means, nothing more is needed. [HL 3] A payment function. [HL 4] If the amount is zero or less, [HL 5] raise our own error, with a message. [HL 6] Return the amount otherwise. [HL 7] Try. [HL 8] A bad payment. [HL 9] Except bill error as e catches only our type. [HL 10] Bill problem, amount must be positive."),
     term="Bill problem, amount must be positive.",
     recap=["raise Type(message) stops the code with an error.", "except Type as e gives you the error to print.", "A custom exception is a class that extends Exception.", "Put the most specific except first."],
     bug=dict(title="the except blocks are in the wrong order", kind="output", file="raiseit.py", wrong='''
@@ -449,7 +449,7 @@ try:
 except ModuleNotFoundError:
     print("pyfiglet is missing")
 ''',
-           narr="[HL 1] A try block. [HL 2] We try to import a package called pyfiglet. [HL 3] If it works, [HL 4] we say so. [HL 5] If Python cannot find it, we say it is missing, in the last line. On a fresh computer, the answer is missing. After pip install pyfiglet, the same program says installed. The terminal commands are shown on screen."),
+           narr="[HL 1] A try block. [HL 2] We try to import a package called pyfiglet. [HL 3] If it works, we say so. [HL 4] If Python cannot find it, [HL 5] we say it is missing. On a fresh computer, the answer is missing. After pip install pyfiglet, the same program says installed. The terminal commands are shown on screen."),
     ref=[("Terminal commands", "python -m venv .venv\n.venv\\Scripts\\activate        (Windows)\nsource .venv/bin/activate      (Mac and Linux)\npython -m pip install pyfiglet\npython -m pip list\ndeactivate")],
     c2=dict(label="One kitchen per recipe", on="Two project boxes, each with its own packages folder; a global Python sits outside both", narr="Here is the picture. Python sits in the middle. Project one has its own private folder of packages. Project two has another. They can even use different versions of the same package, without clashing. A virtual environment is just that private folder, plus a small script that points Python at it. Activate it, and every pip install goes inside.", anim="Two project boxes with separate package shelves; a global Python box stays unchanged"),
     B=dict(file="inenv.py", label="Am I inside a venv?", on="compare prefix and base prefix",
