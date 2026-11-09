@@ -254,9 +254,9 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None, cxx: str) -> str:
     bstdin = bug.get("stdin", "")
     wr = cc.compile_run(wrong, bname, bstdin, cxx=cxx)
     L.append(f"**Bug kind:** {bkind} · **Bug file:** {bname}\n")
-    L.append(f"Wrong code ({bug['wrong_note']}):\n")
     if bstdin:
         L.append(f"**Typed input:** (the terminal scene shows these characters, then Enter)\n\n```text\n{bstdin.rstrip(chr(10))}\n```\n")
+    L.append(f"Wrong code ({bug['wrong_note']}):\n")
     L.append(fence(wrong) + "\n")
     if bkind == "compile":
         if wr.compile_rc == 0:

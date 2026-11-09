@@ -68,7 +68,7 @@ def check_illustration(d: dict, errs: list[str]) -> None:
             for key in ("id", "name", "type", "value", "bytes", "addr", "region"):
                 if b.get(key) in (None, ""):
                     errs.append(f"memory: box {b.get('id')} lacks {key}")
-            t = b.get("type", "")
+            t = re.sub(r"^(constexpr|const) ", "", b.get("type", "").strip())
             if t in SIZES and b.get("bytes") != SIZES[t]:
                 errs.append(f"memory: {b['id']} type {t} must be {SIZES[t]} bytes, not {b.get('bytes')}")
             if t.endswith("*") and b.get("bytes") != 8:

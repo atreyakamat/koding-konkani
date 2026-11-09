@@ -18,7 +18,7 @@ REGION_BASE = {"stack": 0x1000, "heap": 0x5000, "static": 0x9000}
 
 
 def size_of(type_: str) -> int:
-    t = type_.strip()
+    t = re.sub(r"^(constexpr|const) ", "", type_.strip())
     if t.endswith("*") or t.endswith("&"):
         return 8
     if t.startswith("std::unique_ptr"):

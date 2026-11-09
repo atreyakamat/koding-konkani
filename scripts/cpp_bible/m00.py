@@ -2,7 +2,7 @@
 from lib import flow, table
 
 MODULE = {"id": 0, "name": "Meet C++", "range": "1–4", "colours": "Peach + Tomato", "bg": "peach"}
-NEXT_AFTER = ("Next: EP 05 · Variables and types", "Module zero is done. Next time: variables and types.")
+NEXT_AFTER = ("Next: EP 05 · Variables and types", "We end module zero here. Next time: variables and types.")
 EPISODES = []
 
 EPISODES.append(dict(
