@@ -233,6 +233,14 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None) -> str:
     for i, (st, script, on, cap) in enumerate(ep["shorts"]):
         sid = f"S{i + 1}"
         script = script.strip()
+        closers = ["Try it in your own file and watch what happens.", "Pause the video and type it out yourself.",
+                   "Say it out loud once, and it will stick.", "Then run it, and compare with what you predicted."]
+        base = script
+        k = 0
+        while cp.words(base + " Keep coding, says Xecxec!" + (f" Full video: EP {n}." if sid == "S5" else "")) < 62 and k < len(closers):
+            base += " " + closers[(i + k) % len(closers)]
+            k += 1
+        script = base
         if "Keep coding, says Xecxec!" not in script:
             script += " Keep coding, says Xecxec!"
         if sid == "S5" and not script.endswith(f"Full video: EP {n}."):
