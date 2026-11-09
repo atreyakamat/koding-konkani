@@ -79,6 +79,8 @@ def _setup(d: str, files: dict[str, str]) -> None:
 
 def norm(s: str) -> str:
     s = s.replace("\r\n", "\n").rstrip("\n")
+    # Windows is the audience: show and accept the Windows wording for a missing file or folder.
+    s = s.replace("[Errno 2] No such file or directory", "[WinError 2] The system cannot find the file specified")
     s = FILE_LINE.sub(lambda m: f'File "{os.path.basename(m.group(1))}"', s)
     return ADDR.sub("0x...", s)
 

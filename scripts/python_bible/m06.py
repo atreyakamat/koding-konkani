@@ -54,7 +54,7 @@ print(f.read())
 f.close()
 ''', wrong_note="note.txt is a typo", fixed_note="the real name notes.txt",
              why="Python can only open a file that exists in the folder it is running from, so a wrong name or a wrong folder gives a FileNotFoundError.",
-             narr="Bug of the Day. We open note dot txt, but the file is called notes dot txt. Python says, file not found error, no such file or directory, and shows the exact name it tried. Check the spelling, and check that you are running the program from the folder that holds the file."),
+             narr="Bug of the Day. We open note dot txt, but the file is called notes dot txt. Python says, file not found error, the system cannot find the file specified, and shows the exact name it tried. Check the spelling, and check that you are running the program from the folder that holds the file."),
     pun="Why did the file get promoted? It always knew how to open up.",
     task="read a file and count its lines", challenge="Read notes.txt and print how many lines it has.",
     answer="Use lines = open(\"notes.txt\").readlines() and print(len(lines)), which prints 3.",
