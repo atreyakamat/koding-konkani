@@ -535,7 +535,7 @@ int main() {
     return 0;
 }
 ''',
-           narr="[HL 3] The string header gives us the string type. [HL 6] First holds Goa. [HL 7] Second holds a space and then beach. "
+           narr="[HL 2] The string header gives us the string type. [HL 6] First holds Goa. [HL 7] Second holds a space and then beach. "
                 "[HL 8] Plus joins them into full. [HL 9] The print shows Goa beach. [HL 10] The size is nine letters, and the space counts. "
                 "[HL 11] Index zero is the first letter, which is G."),
     ill=dict(label="Counting letters", on="a table of string calls and their results for the text Goa beach",
@@ -558,8 +558,8 @@ int main() {
     return 0;
 }
 ''',
-           narr="[HL 6] The find function looks for the word sunny. It returns the index where the word starts. [TRACK pos=7] Here that index is seven. "
-                "[HL 8] The substr function cuts five letters from that index. It prints sunny. [HL 9] The append function adds an exclamation mark at the end. [HL 10] The full line is printed."),
+           narr="[HL 6] The string holds a short sentence. [HL 7] The find function looks for the word sunny. It returns the index where the word starts. [TRACK pos=7] Here that index is seven. "
+                "[HL 9] The substr function cuts five letters from that index. It prints sunny. [HL 10] The append function adds an exclamation mark at the end. [HL 11] The full line prints."),
     term="The program prints seven, then sunny, then the whole line with the exclamation mark.",
     recap=["The std string type holds text of any length.", "Plus joins two strings.",
            "The first index is zero.", "The functions size, find, substr and append do the common jobs."],
@@ -640,8 +640,8 @@ int main() {
     return 0;
 }
 ''',
-           narr="[HL 3] The format header gives us std format. [HL 8] The pattern has two holes, written as curly braces. "
-                "The first hole takes the name. The second hole takes the price. The code colon dot two f means two decimals. [HL 9] Cout prints the finished line."),
+           narr="[HL 1] The format header gives us std format. [HL 7] The pattern has two holes, written as curly braces. "
+                "The first hole takes the name. The second hole takes the price. The code colon dot two f means two decimals. [HL 8] Cout prints the finished line."),
     term="The program prints, Fish costs one hundred twenty point five zero rupees.",
     recap=["Fixed and setprecision control the decimals.", "Setw sets the width of the next item.",
            "Both live in the iomanip header.", "Std format builds a line from a pattern."],

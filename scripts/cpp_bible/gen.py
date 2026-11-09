@@ -72,6 +72,25 @@ def paragraphs(narr: str, per: int = 4) -> list[str]:
     return out
 
 
+def resolve_hl(ep: int, narr: str, src: str) -> str:
+    """Turn [HL: some code text] cues into [HL n]. The line is the first one, at or after the previous
+    cue's line, that contains the text. This avoids hand-counted line numbers."""
+    lines = src.rstrip("\n").split("\n")
+    last = 0
+
+    def sub(m: re.Match) -> str:
+        nonlocal last
+        needle = m.group(1).strip()
+        for start in (last, 0):
+            for i in range(start, len(lines)):
+                if needle in lines[i]:
+                    last = i
+                    return f"[HL {i + 1}]"
+        raise SystemExit(f"EP {ep}: [HL: {needle}] not found in the code")
+
+    return re.sub(r"\[HL: ([^\]]+)\]", sub, narr)
+
+
 def say_file(name: str) -> str:
     stem, ext = name.rsplit(".", 1)
     if not stem.isalpha():
@@ -138,6 +157,7 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None, cxx: str) -> str:
     n = ep["n"]
     A, B, bug, ill = ep["A"], ep["B"], ep["bug"], ep["ill"]
     A["src"], B["src"] = dd(A["src"]), dd(B["src"])
+    A["narr"], B["narr"] = resolve_hl(n, A["narr"], A["src"]), resolve_hl(n, B["narr"], B["src"])
     sc: list[dict] = []
 
     def add(template, label, on, narr, minimum, anim, fixed=None, exempt=False):
@@ -299,10 +319,10 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None, cxx: str) -> str:
     narr = {i + 1: s["narr"] for i, s in enumerate(sc)}
     recap_s = [f"{r}" for r in ords]
     plan = [
-        ("S1", f"What you will learn: {ep['title']}", [ep["hook"]] + sents(narr[1]) + sents(narr[2]), [1, 2]),
-        ("S2", f"{ep['title']} in one minute", sents(narr[2]) + sents(narr[3]), [2, 3]),
+        ("S1", f"What you will learn: {ep['title']}", [ep["hook"]] + sents(narr[1]) + sents(narr[2]) + recap_s, [1, 2]),
+        ("S2", f"{ep['title']} in one minute", sents(narr[2]) + sents(narr[3]) + recap_s, [2, 3]),
         ("S3", "Inside the second program", sents(narr[5]) + sents(ep["term"]) + recap_s, [5, 6]),
-        ("S4", f"Bug of the Day: {bug['title']}", sents(narr[8]) + sents(bug["why"]), [8]),
+        ("S4", f"Bug of the Day: {bug['title']}", sents(narr[8]) + sents(bug["why"]) + recap_s, [8]),
         ("S5", "Pun and challenge", [ep["pun"]] + sents(ep["challenge"]) + ["Write your answer in the comments."] + recap_s, [9, 10]),
     ]
     slug = re.sub(r"[^a-z0-9]", "", ep["title"].lower())
