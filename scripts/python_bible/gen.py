@@ -42,6 +42,28 @@ def sentence_words(t: str) -> int:
     return cp.words(t)
 
 
+
+def spoken(text: str) -> str:
+    """Turn code-like text (on-screen form) into words a narrator can say."""
+    t = text
+    t = re.sub(r"\*\*(\w+)", r"star star \1", t)
+    t = re.sub(r"\*(\w+)", r"star \1", t)
+    t = re.sub(r"__(\w+?)__", lambda m: "dunder " + m.group(1).replace("_", " "), t)
+    t = re.sub(r"@(\w+)", r"at \1", t)
+    t = re.sub(r"%(\w)", r"percent \1", t)
+    t = re.sub(r"(\w+)\(\)", r"\1", t)
+    t = re.sub(r"(\w+)\(([^()]*)\)", r"\1 of \2", t)
+    t = t.replace("==", " equals equals ").replace("!=", " not equals ").replace("->", " arrow ")
+    t = re.sub(r"(?<=\w) ?= ?(?=\S)", " equals ", t)
+    t = t.replace(" + ", " plus ")
+    t = re.sub(r"(?<=\d)\.(?=\d)", " point ", t)
+    t = re.sub(r"(?<=[A-Za-z0-9_])\.(?=[A-Za-z_])", " dot ", t)
+    t = re.sub(r"(?<=\w)_(?=\w)", " ", t)
+    t = t.replace("[", "").replace("]", "").replace("(", "").replace(")", "")
+    t = re.sub(r";\s*(\w)", lambda m: ". " + m.group(1).upper(), t)
+    t = t.replace("\"", "").replace("'", "") if False else t.replace("\"", "")
+    return re.sub(r"\s+", " ", t).strip()
+
 def need(sec_words: str, minimum: int, pad: int = 4) -> int:
     return max(minimum, math.ceil(cp.words(sec_words) / 2) + pad)
 
@@ -107,14 +129,14 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None) -> str:
         "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding")
     rec = ep["recap"]
     ords = ["One", "Two", "Three", "Four"]
-    recap_narr = "Let us recap. " + " ".join(f"{ords[i]}: {r}" for i, r in enumerate(rec)) + " Pause the video, and say these ideas out loud, once, slowly."
+    recap_narr = "Let us recap. " + " ".join(f"{ords[i]}: {spoken(r)}" for i, r in enumerate(rec)) + " Pause the video, and say these ideas out loud, once, slowly."
     add("Concept slide", "Recap", f"Recap: {len(rec)} ideas on one card", recap_narr, 30,
         "Recap lines tick in one by one with a pop; Xecxec nods after each tick")
     add("Bug of the Day", bug["title"], f"BUG OF THE DAY: {bug['title']}", bug["narr"], 40,
         "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding")
     add("Pun card", "Pun", ep["pun"], ep["pun"], 8,
         "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw", fixed=8)
-    add("Challenge", "Challenge", f"Task card: {ep['task']}", f"Your challenge: {ep['challenge']} Comment your answer below.", 20,
+    add("Challenge", "Challenge", f"Task card: {ep['task']}", f"Your challenge. {spoken(ep['challenge'])} Comment your answer below.", 20,
         "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen")
     nxt_line = (f"Next: EP {nxt['n']:02d} · {nxt['title']}" if nxt else ep["next_line"])
     nxt_say = (f"Next time: {nxt['spoken']}." if nxt else ep["next_say"])
@@ -238,7 +260,7 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None) -> str:
         sid = f"S{i + 1}"
         script = script.strip()
         closers = ["Try it in your own file and watch what happens.", "Pause the video and type it out yourself.",
-                   "Say it out loud once, and it will stick.", "Then run it, and compare with what you predicted."]
+                   "Say it out loud once. Then you remember it.", "Then run it, and compare with what you predicted."]
         base = script
         k = 0
         while cp.words(base + " Keep coding, says Xecxec!" + (f" Full video: EP {n:02d}." if sid == "S5" else "")) < 62 and k < len(closers):

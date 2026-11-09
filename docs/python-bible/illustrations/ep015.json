@@ -1,0 +1,197 @@
+{
+  "ep": 15,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "r1",
+      "shape": "card",
+      "text": "True and True gives True",
+      "colour": "mint",
+      "col": 1,
+      "row": 0,
+      "w": 6,
+      "h": 1
+    },
+    {
+      "id": "r2",
+      "shape": "card",
+      "text": "True and False gives False",
+      "colour": "peach",
+      "col": 1,
+      "row": 1,
+      "w": 6,
+      "h": 1
+    },
+    {
+      "id": "r3",
+      "shape": "card",
+      "text": "False and True gives False",
+      "colour": "peach",
+      "col": 1,
+      "row": 2,
+      "w": 6,
+      "h": 1
+    },
+    {
+      "id": "r4",
+      "shape": "card",
+      "text": "False and False gives False",
+      "colour": "peach",
+      "col": 1,
+      "row": 3,
+      "w": 6,
+      "h": 1
+    },
+    {
+      "id": "f",
+      "shape": "card",
+      "text": "Falsy values",
+      "colour": "butter",
+      "col": 8,
+      "row": 0,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "z1",
+      "shape": "token",
+      "text": "0",
+      "colour": "cream",
+      "col": 8,
+      "row": 1,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "z2",
+      "shape": "token",
+      "text": "empty text",
+      "colour": "cream",
+      "col": 9,
+      "row": 1,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "z3",
+      "shape": "token",
+      "text": "empty list",
+      "colour": "cream",
+      "col": 8,
+      "row": 2,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "z4",
+      "shape": "token",
+      "text": "None",
+      "colour": "cream",
+      "col": 10,
+      "row": 2,
+      "w": 1,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "r1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.08,
+      "do": "show",
+      "target": "r2",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.16,
+      "do": "show",
+      "target": "r3",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.24,
+      "do": "show",
+      "target": "r4",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.3,
+      "do": "glow",
+      "target": "r1",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.4,
+      "do": "glow",
+      "target": "r2"
+    },
+    {
+      "t": 0.5,
+      "do": "glow",
+      "target": "r3"
+    },
+    {
+      "t": 0.6,
+      "do": "glow",
+      "target": "r4"
+    },
+    {
+      "t": 0.7,
+      "do": "show",
+      "target": "f",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.72,
+      "do": "show",
+      "target": "z1"
+    },
+    {
+      "t": 0.74,
+      "do": "show",
+      "target": "z2"
+    },
+    {
+      "t": 0.76,
+      "do": "show",
+      "target": "z3"
+    },
+    {
+      "t": 0.78,
+      "do": "show",
+      "target": "z4"
+    },
+    {
+      "t": 0.82,
+      "do": "cross",
+      "target": "z1",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.86,
+      "do": "cross",
+      "target": "z2",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.9,
+      "do": "cross",
+      "target": "z3",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.94,
+      "do": "cross",
+      "target": "z4",
+      "sfx": "buzzer"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "ep": 47,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "f1",
+      "shape": "box",
+      "text": "factorial(1) = 1",
+      "colour": "mint",
+      "col": 4,
+      "row": 0,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "f2",
+      "shape": "box",
+      "text": "factorial(2) = 2 * factorial(1)",
+      "colour": "butter",
+      "col": 4,
+      "row": 1,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "f3",
+      "shape": "box",
+      "text": "factorial(3) = 3 * factorial(2)",
+      "colour": "butter",
+      "col": 4,
+      "row": 2,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "f4",
+      "shape": "box",
+      "text": "factorial(4) = 4 * factorial(3)",
+      "colour": "butter",
+      "col": 4,
+      "row": 3,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "f5",
+      "shape": "box",
+      "text": "factorial(5) = 5 * factorial(4)",
+      "colour": "butter",
+      "col": 4,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "f5",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.12,
+      "do": "show",
+      "target": "f4",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.24,
+      "do": "show",
+      "target": "f3",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.36,
+      "do": "show",
+      "target": "f2",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.48,
+      "do": "show",
+      "target": "f1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.55,
+      "do": "glow",
+      "target": "f1",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.62,
+      "do": "hide",
+      "target": "f1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.7,
+      "do": "hide",
+      "target": "f2",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.78,
+      "do": "hide",
+      "target": "f3",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.86,
+      "do": "hide",
+      "target": "f4",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.94,
+      "do": "glow",
+      "target": "f5",
+      "sfx": "chime"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "ep": 78,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "in",
+      "shape": "box",
+      "text": "door in: __enter__",
+      "colour": "mint",
+      "col": 0,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "room",
+      "shape": "box",
+      "text": "with block",
+      "colour": "cream",
+      "col": 4,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "out",
+      "shape": "box",
+      "text": "door out: __exit__",
+      "colour": "mint",
+      "col": 8,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "err",
+      "shape": "token",
+      "text": "error",
+      "colour": "tomato",
+      "col": 5,
+      "row": 0,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "in",
+      "to": "room"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "room",
+      "to": "out"
+    },
+    {
+      "id": "a3",
+      "shape": "arrow",
+      "text": "",
+      "colour": "tomato",
+      "from": "err",
+      "to": "out"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "in",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "room"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "out"
+    },
+    {
+      "t": 0.2,
+      "do": "glow",
+      "target": "in",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.3,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.5,
+      "do": "show",
+      "target": "err",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.6,
+      "do": "draw",
+      "target": "a3",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.75,
+      "do": "draw",
+      "target": "a2"
+    },
+    {
+      "t": 0.85,
+      "do": "glow",
+      "target": "out",
+      "sfx": "ding"
+    }
+  ]
+}

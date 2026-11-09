@@ -1,0 +1,71 @@
+{
+  "ep": 88,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "scale",
+      "shape": "box",
+      "text": "float: 0.29 * 100 = 28.999999",
+      "colour": "peach",
+      "col": 0,
+      "row": 1,
+      "w": 5,
+      "h": 1
+    },
+    {
+      "id": "coins",
+      "shape": "box",
+      "text": "cents: 29 whole coins",
+      "colour": "mint",
+      "col": 6,
+      "row": 1,
+      "w": 5,
+      "h": 1
+    },
+    {
+      "id": "x",
+      "shape": "token",
+      "text": "lost 1 cent",
+      "colour": "tomato",
+      "col": 1,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "scale",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.3,
+      "do": "show",
+      "target": "x",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.5,
+      "do": "show",
+      "target": "coins",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.7,
+      "do": "hide",
+      "target": "x"
+    },
+    {
+      "t": 0.85,
+      "do": "glow",
+      "target": "coins",
+      "sfx": "ding"
+    }
+  ]
+}

@@ -15,7 +15,7 @@ EPISODES.append(dict(
     c_title="One thing, one bundle",
     c_pts=["Data about one thing belongs together", "A class is a blueprint for such a bundle", "An object is one real bundle made from it"],
     intro="Until now, one student meant a name in one list and marks in another. Today we bundle them together.",
-    concept="Imagine you track students. One list holds the names. Another list holds the marks. They line up only by position. Move one item, and everything goes wrong. A class fixes this. It is a blueprint for one kind of thing. It says what data each thing carries, and what it can do. An object is one real thing built from the blueprint. Think of a student file. Name, marks and class live in one folder, so they can never get separated.",
+    concept="Imagine you track students. One list holds the names. Another list holds the marks. They line up only by position. Move one item, and everything goes wrong. A class fixes this. It is a blueprint for one type of thing. It says what data each thing carries, and what it can do. An object is one real thing built from the blueprint. Think of a student file. Name, marks and class live in one folder, so they can never get separated.",
     A=dict(file="parallel.py", label="Parallel lists", on="names and marks kept in two separate lists",
            src='''
 names = ["Asha", "Ravi", "Meera"]
@@ -43,7 +43,7 @@ print(b.name, b.marks)
 ''',
            narr="[HL 1] The word class starts a blueprint. The name is Student, with a capital letter. [HL 2] Pass means, nothing inside yet. [HL 4] Student with brackets builds one object, tied to a. [HL 5] We give it a name. [HL 6] And marks. [HL 7] A second student, tied to b. [HL 8] With its own name. [HL 9] And its own marks. [HL 10] Each object keeps its own data. Asha ninety one. [HL 11] Ravi seventy eight. Next episodes make this tidier."),
     term="Asha 91, then Ravi 78.",
-    recap=["Parallel lists only match by position, so they break easily.", "A class is a blueprint for one kind of thing.", "An object is one real thing built from the class.", "Each object keeps its own data."],
+    recap=["Parallel lists only match by position, so they break easily.", "A class is a blueprint for one type of thing.", "An object is one real thing built from the class.", "Each object keeps its own data."],
     bug=dict(title="parallel lists out of sync", kind="output", file="sync.py", wrong='''
 names = ["Asha", "Ravi", "Meera"]
 marks = [91, 78, 85]
@@ -57,13 +57,13 @@ for name, mark in students:
     print(name, mark)
 ''', wrong_note="Ravi has Asha's marks now", fixed_note="each name travels with its marks",
              why="Sorting one list moved the names but not the marks, so the pairs broke. Keeping each name and mark together in one bundle makes that impossible.",
-             narr="Bug of the Day. We sort only the names. The marks stay where they were. Now Ravi is shown with ninety one, which belongs to Asha. No error appears, only wrong answers, which is the worst kind of bug. Keep each name and its marks together in one bundle, and they can never drift apart."),
+             narr="Bug of the Day. We sort only the names. The marks stay where they were. Now Ravi is shown with ninety one, which belongs to Asha. No error appears. You get only wrong answers. That is the worst type of bug. Keep each name and its marks together in one bundle, and they can never drift apart."),
     pun="Why did the two lists break up? They could never stay in step.",
     task="bundle your own data", challenge="Make a class called Book, and two objects. Give each a title and a price, and print them.",
     answer="class Book: pass. Then b1 = Book(), b1.title = ..., b1.price = ..., and the same for b2. Print the attributes.",
     shorts=[
         ("Parallel lists", "Two lists, one for names, one for marks. They match only by position. Sort one list, and the match is gone. Asha gets Ravi's marks, and Python says nothing. Parallel lists are fragile. There is a better way, and it is called a class.", "Two lists + sort = wrong pairs", "Parallel lists break easily."),
-        ("What is a class", "A class is a blueprint. It describes one kind of thing, such as a student, a book or a bank account. Think of a cookie cutter. The cutter is the class. Each cookie you press out is an object. One blueprint, as many objects as you like.", "class = blueprint", "A class is a blueprint."),
+        ("What is a class", "A class is a blueprint. It describes one type of thing, such as a student, a book or a bank account. Think of a cookie cutter. The cutter is the class. Each cookie you press out is an object. One blueprint, as many objects as you like.", "class = blueprint", "A class is a blueprint."),
         ("What is an object", "An object is one real thing made from a class. Write the class name with brackets, and Python builds one. Student with brackets gives a student. Do it twice, and you get two separate students. Each keeps its own name and its own marks.", "Student() builds an object", "An object is one thing made from a class."),
         ("The silent bug", "Here is a sneaky bug. You sort the names list, but not the marks list. No error appears. The output simply pairs the wrong name with the wrong marks. Silent bugs are the hardest. Keep each name and its marks in one bundle, and this cannot happen.", "No error, wrong answer", "Silent bugs are the worst."),
         ("Pun and challenge", "Why did the two lists break up? They could never stay in step. Your challenge. Make a class called Book, and two objects. Give each a title and a price, then print them. Write class, a name, and pass. Then set the attributes with a dot. Show me your books.", "Challenge: class Book", "Make two Book objects."),
@@ -472,7 +472,7 @@ print(str(b))
 print([b])
 ''',
            narr="[HL 1] A Book class. [HL 2] Init stores the title. [HL 5] Only repr is written. [HL 6] The exclamation r asks for the repr of the title, so quotes appear. [HL 8] A book. [HL 9] Print has no str to use, so it falls back to repr. [HL 10] And str gives the same. [HL 11] A list shows the same text. One method, and every place is tidy."),
-    term="(3, 4), Point(3, 4), a list of two points, then Corner (3, 4). Then Book('Python') three times.",
+    term="Three comma four, then Point of three comma four, a list of two points, then Corner three comma four. Then the book Python three times.",
     recap=["print(obj) calls __str__, for people.", "repr(obj) and lists call __repr__, for programmers.", "If only __repr__ exists, str falls back to it.", "Both methods must return a string."],
     bug=dict(title="printing an object shows an address", kind="output", file="point.py", wrong='''
 class Point:
@@ -562,7 +562,7 @@ print(isinstance(d, Cat))
 print(issubclass(Cat, Animal))
 print(Dog.__bases__[0].__name__)
 ''',
-           narr="[HL 1] An empty Animal class. [HL 4] Dog inherits from Animal. [HL 7] And so does Cat. [HL 10] One dog. [HL 11] Is it a Dog? True. [HL 12] Is it an Animal? Also True, because a dog is a kind of animal. [HL 13] Is it a Cat? False. [HL 14] Is Cat a subclass of Animal? True. [HL 15] And the parent of Dog is named Animal."),
+           narr="[HL 1] An empty Animal class. [HL 4] Dog inherits from Animal. [HL 7] And so does Cat. [HL 10] One dog. [HL 11] Is it a Dog? True. [HL 12] Is it an Animal? Also True. A dog is a type of animal. [HL 13] Is it a Cat? False. [HL 14] Is Cat a subclass of Animal? True. [HL 15] And the parent of Dog is named Animal."),
     term="Rex is eating, Rex says Woof, Labrador. Then True, True, False, True, Animal.",
     recap=["class Child(Parent): inherits all of the parent's methods.", "The child can add its own attributes and methods.", "super().__init__() runs the parent's setup.", "isinstance(obj, Parent) is True for child objects too."],
     bug=dict(title="forgot super().__init__()", file="animals.py", wrong='''
@@ -742,7 +742,7 @@ print(talk(Duck()))
 print(talk(Robot()))
 print(hasattr(Rock(), "speak"))
 ''',
-           narr="[HL 1] A Duck that can speak. [HL 2] It says Quack. [HL 5] A Robot, with no relation to Duck. [HL 6] It says Beep. [HL 9] A Rock that cannot speak. [HL 12] A function that takes anything. [HL 13] And simply calls speak on it. [HL 15] A duck quacks. [HL 16] A robot beeps. [HL 17] Has attribute asks, does a rock have speak? False. Calling talk on a rock would fail."),
+           narr="[HL 1] A Duck that can speak. [HL 2] It says Quack. [HL 5] A Robot, with no relation to Duck. [HL 6] It says Beep. [HL 9] A Rock that cannot speak. [HL 12] A function that takes anything. [HL 13] And simply calls speak on it. [HL 15] A duck quacks. [HL 16] A robot beeps. [HL 17] Has attribute asks, does a rock have speak? False. Calling talk on a rock fails."),
     term="Square 9, Circle 12.57, Square 16. Then Quack, Beep, False.",
     recap=["Polymorphism: the same call behaves differently on different objects.", "Python checks only that the method exists.", "That is duck typing: if it quacks, treat it as a duck.", "Use hasattr to test for a method."],
     bug=dict(title="calling a missing method", file="talk.py", wrong='''
@@ -874,7 +874,7 @@ print(item.price)
     answer="Use @property price, and @price.setter with if value < 0: raise ValueError(\"price must not be negative\").",
     shorts=[
         ("Encapsulation", "Encapsulation means keeping data safe inside the object. Outsiders go through checks. Think of a bank. You do not reach into the vault. You ask the clerk, who checks your request first. Your class can be the clerk.", "keep data behind a guard", "Guard your data."),
-        ("The underscore", "In Python, a name with a leading underscore, like underscore marks, is a polite sign. It says, please do not touch this directly. Python will not stop you, but everyone reading the code knows the rule.", "_marks = private by habit", "One underscore means careful."),
+        ("The underscore", "In Python, a name with a leading underscore, like underscore marks, is a polite sign. It says, please do not touch this directly. Python does not stop you. But everyone who reads the code knows the rule.", "_marks = private by habit", "One underscore means careful."),
         ("The property", "At property turns a method into something you read like an attribute, with no brackets. The grade of a student can be worked out from the marks each time. Nothing extra is stored, and nothing can drift out of date.", "@property", "Read it like an attribute."),
         ("No setter", "A property with only a getter is read-only. Try item dot price equals sixty, and Python says, attribute error, property price of Item object has no setter. Want to allow changes? Add a setter with the same name.", "AttributeError: no setter", "Add a setter."),
         ("Pun and challenge", "Why did the property get a setter? Because it was tired of being read-only. Your challenge. Write an Item class with a price property. Its setter must reject negative values by raising a value error. Test it with minus ten.", "Challenge: price setter", "Reject negative prices."),
@@ -945,7 +945,7 @@ print(sorted(boxes))
 print(max(boxes))
 ''',
            narr="[HL 1] A Deck class. [HL 2] Init stores a list of cards. [HL 5] Dunder len. [HL 6] It returns how many cards there are. [HL 8] A Box class. [HL 9] Init stores the size. [HL 12] Dunder lt, the handshake for less than. [HL 13] A box is less when its size is smaller. [HL 15] Repr for a readable print. [HL 18] A deck of three cards. [HL 19] Len works on our own object. Three. [HL 20] Three boxes. [HL 21] Sorted only needs less than. Two, five, nine. [HL 22] And max finds the biggest. Box nine."),
-    term="Vector(4, 6), True, False. Then 3, the sorted boxes, and Box(9).",
+    term="Vector of four comma six, True, False. Then 3, the sorted boxes, and Box of nine.",
     recap=["Dunder methods are special names Python looks for.", "__add__, __eq__ and __lt__ teach operators to our objects.", "__len__ makes len() work.", "Operators build new objects; they do not change the old ones."],
     bug=dict(title="__eq__ without __hash__", file="points.py", wrong='''
 class Point:
@@ -980,7 +980,7 @@ print(Point(1, 2) in seen)
     shorts=[
         ("Dunder methods", "Dunder means double underscore. These are special method names that Python looks for. When you write a plus b, Python quietly calls a dot add with b. Define the method, and your own objects can use plus.", "a + b calls __add__", "Python's secret handshakes."),
         ("Add and eq", "Dunder add tells Python how to add two of your objects. It should return a new object. Dunder eq tells Python what equal means. Write both for a Vector, and then a plus b, and a equals equals b, both just work.", "__add__ and __eq__", "Teach operators."),
-        ("Len and sorting", "Dunder len makes the len function work on your object. Dunder lt, for less than, is all that sorted needs. Define lt for a box class, and a list of boxes sorts, and max finds the biggest. Two small methods, a lot of power.", "__len__ and __lt__", "Len and sorting."),
+        ("Len and sorting", "Dunder len makes the len function work on your object. Dunder lt, for less than, is all that sorted needs. Define lt for a box class, and a list of boxes sorts, and max finds the biggest. Two small methods give you much power.", "__len__ and __lt__", "Len and sorting."),
         ("Unhashable", "A surprise bug. You define dunder eq, and then put the object into a set. Python says, type error, unhashable type. Defining eq removes the default hash. Add dunder hash that uses the same values, and sets and dictionary keys work again.", "TypeError: unhashable type", "Define hash with eq."),
         ("Pun and challenge", "Why did the object learn dunder methods? It wanted to be on speaking terms with Python. Your challenge. Write a Money class. Add dunder add, so that Money five plus Money three gives Money eight. Add a repr, so that you can see it.", "Challenge: Money + Money", "Teach plus to Money."),
     ],
@@ -997,7 +997,7 @@ EPISODES.append(dict(
     c_title="Two classes, one idea",
     c_pts=["Book: title, author, whether it is borrowed", "Library: a list of books and the actions on them", "Library methods use Book methods"],
     intro="Time to put classes together. We build a tiny library with books you can borrow and return.",
-    concept="A good design starts by listing the things. Here we have books, and a library. A Book knows its title, its author, and whether it is out. A Library holds a list of books, and has actions, such as add a book, borrow, and list what is available. The library does not need to know how a book tracks borrowing. It just asks the book. Think of a real library. The books are things. The library looks after them.",
+    concept="A good design starts by listing the things. Here we have books, and a library. A Book knows its title, its author, and whether it is out. A Library holds a list of books. It has actions, such as add a book, borrow, and list what is available. The library does not need to know how a book tracks borrowing. It just asks the book. Think of a real library. The books are things. The library looks after them.",
     A=dict(file="library.py", label="Book and Library", on="two classes working together",
            src='''
 class Book:

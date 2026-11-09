@@ -106,7 +106,7 @@ EPISODES.append(dict(
     c_title="Money in cents",
     c_pts=["Floats cannot store most decimals exactly", "Keep money as whole cents", "Save the list as JSON, load it back at the start"],
     intro="Today we build the real thing. First, the one thing computers get wrong: money.",
-    concept="Floats store most decimals as tiny approximations. For money, that leads to errors in the last digit. The safe way is to keep money as whole cents, in an integer. To read text such as one twenty point five zero, use the Decimal type, which is exact, and multiply by one hundred. To show it, divide by one hundred with floor division, and the remainder with two digits. Then save the list to a JSON file, and load it when the program starts. Think of counting coins instead of weighing money.",
+    concept="Floats store most decimals as tiny approximations. For money, that leads to errors in the last digit. The safe way is to keep money as whole cents, in an integer. To read text such as one twenty point five zero, use the Decimal type. It is exact. Then multiply by one hundred. To show it, divide by one hundred with floor division, and the remainder with two digits. Then save the list to a JSON file, and load it when the program starts. Think of counting coins instead of weighing money.",
     A=dict(file="money.py", label="Cents and Decimal", on="convert text to cents and back; dataclass to JSON",
            src='''
 from dataclasses import dataclass, asdict
@@ -170,7 +170,7 @@ print(int(Decimal("0.29") * 100))
              why="Floats store point two nine as an approximation just below it, so multiplying and cutting off the end loses a cent. Decimal reads the text exactly.",
              narr="Bug of the Day. Point two nine times one hundred should be twenty nine. Python prints twenty eight. The float is a hair below point two nine, and int cuts off the end. A cent vanishes, and no error appears. Read money as text with Decimal instead, and the answer is exactly twenty nine."),
     pun="Why did the programmer count in cents? Every penny counts.",
-    task="show a total", challenge="Write a function total_cents(items) that adds the cents of a list of dictionaries, and print the total with money().",
+    task="show a total", challenge="Write a function total_cents(items). It adds the cents of a list of dictionaries. Print the total with money().",
     answer="def total_cents(items): return sum(i[\"cents\"] for i in items). Then print(money(total_cents(items))).",
     shorts=[
         ("Float trouble", "Here is the money trap. Point two nine times one hundred is not twenty nine. Python prints twenty eight, after you cut off the end. The float is a tiny bit below point two nine. Never use floats for money.", "int(0.29 * 100) = 28", "Floats lose cents."),
@@ -224,7 +224,7 @@ result = unittest.TextTestRunner(stream=io.StringIO()).run(suite)
 print(result.testsRun, result.wasSuccessful())
 ''',
            narr="[HL 1] We need io. [HL 2] And unittest. [HL 3] And Decimal. [HL 5] The same to cents function. [HL 11] And the money function. [HL 14] A test case. [HL 15] The first test. [HL 16] Point two nine must become exactly twenty nine. This is the very bug from last time. [HL 18] The second test. [HL 19] Twelve thousand fifty cents must read one twenty point five zero. [HL 21] The third test. [HL 22] Assert raises, as a with block, passes only if the code inside raises a value error. [HL 23] Minus five must be rejected. [HL 25] Load the tests. [HL 26] Run them, quietly. [HL 27] Three tests, all passing."),
-    c2=dict(label="Tests as a safety net", on="A tightrope walker with a net labelled tests; a change causes a red cross and the net catches it", narr="Here is why we test. Imagine you change the money function next month. Without tests, you hope nothing broke. With tests, you run them, and in a second you see a green tick, or a red cross with the name of the test that failed. The net catches the fall before your users see it. Good tests are small, fast, and each checks one thing, with a name that says what.", anim="A walker on a rope steps, wobbles, and a net labelled tests catches a falling red cross card"),
+    c2=dict(label="Tests as a safety net", on="A tightrope walker with a net labelled tests; a change causes a red cross and the net catches it", narr="Here is why we test. Imagine you change the money function next month. Without tests, you hope nothing broke. With tests, you run them. In a second you see a green tick, or a red cross with the name of the failed test. The net catches the fall before your users see it. Good tests are small, fast, and each checks one thing, with a name that says what.", anim="A walker on a rope steps, wobbles, and a net labelled tests catches a falling red cross card"),
     B=dict(file="report.py", label="A tidy report", on="align columns with f-string format specs",
            src='''
 expenses = [("food", 12050), ("travel", 6000), ("food", 8000)]
@@ -270,7 +270,7 @@ except AssertionError:
     task="test the report", challenge="Write one test that checks money(5) returns \"0.05\", and run it.",
     answer="self.assertEqual(money(5), \"0.05\"). Cents 5 gives 0 whole, and 05 as the remainder.",
     shorts=[
-        ("Test money code", "Money code deserves tests. Write a test case with unittest. Assert equal checks exact answers. Point two nine must become twenty nine cents. Run the tests after every change, and bugs will not sneak back in.", "assertEqual(to_cents(\"0.29\"), 29)", "Test your money code."),
+        ("Test money code", "Money code deserves tests. Write a test case with unittest. Assert equal checks exact answers. Point two nine must become twenty nine cents. Run the tests after every change. Then old bugs do not come back.", "assertEqual(to_cents(\"0.29\"), 29)", "Test your money code."),
         ("assertRaises", "To test that bad input is rejected, use assert raises, as a with block. If the code inside raises a value error, the test passes. If it does not raise, the test fails. It checks the error, not just the answer.", "with self.assertRaises(ValueError)", "Test the errors too."),
         ("Align columns", "Make reports tidy with f string formats. Colon, less than, ten, left aligns in ten columns. Greater than aligns right. And dot two f shows two decimals. Together, the columns line up like a real table.", "f\"{name:<10}{total:>10.2f}\"", "Line up the columns."),
         ("Useless test", "A test that always passes is worse than no test. Comparing a result with the same function's result can never fail. A real test compares with a known answer you wrote yourself. Then a wrong function fails the test.", "assert result == 29", "Compare with a known answer."),
@@ -279,7 +279,7 @@ except AssertionError:
 ))
 
 EPISODES.append(dict(
-    n=90, title="What's next", spoken="what's next",
+    n=90, title="What's next", spoken="what comes next",
     yt="Python: What to Learn Next After This Course", thumb="WHAT'S NEXT?",
     vis="Xecxec standing at a crossroads with signs for web, data, games and automation",
     goals=["review the big ideas of the course", "spot a classic bug in a quiz", "choose your next project"],
@@ -289,7 +289,7 @@ EPISODES.append(dict(
     c_title="You can code now",
     c_pts=["You know variables, loops, functions, classes and files", "You can read errors and fix them", "The best next step is a project of your own"],
     intro="You made it to the end. Here is what you can do now, and where to go next.",
-    concept="Look at how far you have come. You can store data in variables, lists, dictionaries and sets. You can make decisions and repeat work with loops. You can write functions, classes, and generators, read and write files, handle errors, test your code, and use the standard library. Most of all, you can read an error message, and fix the problem. That is the real skill. The best next step is a project of your own. Pick something small that you would use yourself. Think of a map with several roads. You have learned to drive. Now choose where to go.",
+    concept="Look at how far you have come. You can store data in variables, lists, dictionaries and sets. You can make decisions and repeat work with loops. You can write functions, classes, and generators. You can read and write files, handle errors, and test your code. You can use the standard library. Most of all, you can read an error message, and fix the problem. That is the real skill. The best next step is a project of your own. Pick something small that you use yourself. Think of a map with several roads. You have learned to drive. Now choose where to go.",
     A=dict(file="review.py", label="A taste of everything", on="a small program that mixes several ideas from the course",
            src='''
 from collections import Counter
@@ -320,7 +320,7 @@ for i, topic in enumerate(topics, start=1):
 print("Pick one, and build something small this week.")
 ''',
            narr="[HL 1] A list of next steps. [HL 2] Web, with Flask. [HL 3] Data, with pandas. [HL 4] Games, with pygame. [HL 5] Automation, with scripts of your own. [HL 6] Testing, with pytest. [HL 8] Enumerate numbers the topics from one. [HL 9] Print each. [HL 10] And one last line. Pick one, and build something small this week. A small finished project teaches more than ten unfinished big ones."),
-    term="[('tea', 3)], Bill: 70, ['chai', 'coffee']. Then the five numbered topics and the final line.",
+    term="Tea three times, then Bill 70, then chai and coffee. Then the five numbered topics and the final line.",
     recap=["You can write and read Python programs.", "You can use lists, dictionaries, functions, classes and files.", "You can read errors, test your code, and fix bugs.", "Next: build one small project of your own."],
     bug=dict(title="quiz: spot the bug", kind="output", file="quiz.py", wrong='''
 nums = [2, 4, 6, 8]
@@ -336,12 +336,12 @@ print(nums)
              why="Removing items from a list while looping over it shifts the remaining items, so the loop skips some. Build a new list with a comprehension instead.",
              narr="Final quiz. Spot the bug. We remove every even number from the list, and print. We expect an empty list. We get four and eight. The loop walks the list by position. When we remove an item, the next one slides into its place, and the loop jumps over it. Never change a list while looping over it. Build a new list with a comprehension instead."),
     pun="Why did the student finish the course with a smile? Because they finally got the last laugh, and the last loop.",
-    task="start your project", challenge="Write down one small project you would use yourself, and write its first three functions as empty def lines with pass.",
+    task="start your project", challenge="Write down one small project that you use yourself. Write its first three functions as empty def lines with pass.",
     answer="Any small idea works: a habit tracker, a quiz, a budget. List three functions, such as add_item, show_items and save, each with pass.",
     shorts=[
         ("Look how far you came", "Look how far you have come. Variables, loops, functions, classes, files, errors, tests and the standard library. You can read an error message, and fix the problem. That is the real skill of a programmer. Well done.", "You can code now", "You came a long way."),
         ("Choose a road", "Where next? For websites, try Flask. For data, pandas. For games, pygame. For automation, write scripts that tidy your folders. For testing, pytest. Pick one road, build something small, and see if you enjoy it.", "web, data, games, automation", "Pick one road."),
-        ("Build something small", "The best way to learn is to build. Pick a small project you would really use. A habit tracker, a quiz, a budget. Write its first three functions as empty def lines. Then fill them in, one at a time.", "small project, finished", "Finish something small."),
+        ("Build something small", "The best way to learn is to build. Pick a small project that you really use. A habit tracker, a quiz, a budget. Write its first three functions as empty def lines. Then fill them in, one at a time.", "small project, finished", "Finish something small."),
         ("Spot the bug", "A final quiz. We remove every even number from a list while looping over it. We expect an empty list. We get four and eight. The loop skipped items, because the list shifted. Build a new list instead.", "remove while looping = skips", "Never edit while looping."),
         ("Thank you", "Thank you for learning Python with me. Every expert was once a beginner who kept going. Pick one small project this week, and build it. Your challenge. Write down your idea, and its first three functions. Show me what you build.", "Challenge: your own project", "Keep building."),
     ],

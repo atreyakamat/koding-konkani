@@ -18,3 +18,9 @@ Source of truth: this repo (`docs/python-bible/mNN.md`, generated from `scripts/
 4. Recompute YouTube chapters from the final audio.
 5. Narrator pronunciation test (~40 words) before generating audio: `__init__`, `**kwargs`, `elif`, `strptime`, `argparse`, `venv`, `pip`, `sys.argv`, `lambda`, `f-string`, `def`, `self`.
 6. Render budget: about 19 min per episode on the PC, so about 29 h for 90; plan the PC and laptop split.
+
+## Writing rules and illustrations
+
+- Writing style: Simplified Technical English subset. Rules and commands: [STE.md](STE.md). Linter: `scripts/ste_lint.py`.
+- Drawn explanations are structured data: [ILLUSTRATIONS.md](ILLUSTRATIONS.md). Files: `illustrations/epNNN.json`. Validator: `scripts/check_illustrations.py`.
+- Run all three checks before every render: `check_py.py`, `ste_lint.py`, `check_illustrations.py`.

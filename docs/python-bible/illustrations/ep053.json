@@ -1,0 +1,93 @@
+{
+  "ep": 53,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "prog",
+      "shape": "box",
+      "text": "Program",
+      "colour": "cream",
+      "col": 0,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "file",
+      "shape": "box",
+      "text": "notes.txt",
+      "colour": "butter",
+      "col": 8,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "lock",
+      "shape": "token",
+      "text": "open",
+      "colour": "tomato",
+      "col": 6,
+      "row": 1,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "with open",
+      "colour": "ink",
+      "from": "prog",
+      "to": "file"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "text",
+      "colour": "ink",
+      "from": "file",
+      "to": "prog"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "prog",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "file"
+    },
+    {
+      "t": 0.2,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.3,
+      "do": "show",
+      "target": "lock",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.5,
+      "do": "draw",
+      "target": "a2",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.75,
+      "do": "hide",
+      "target": "lock",
+      "sfx": "ding"
+    }
+  ]
+}

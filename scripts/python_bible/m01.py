@@ -51,9 +51,9 @@ print(total)
     answer="Use city = \"Panjim\" and friend = \"Asha\", then city, friend = friend, city and print(city, friend), which shows Asha Panjim.",
     shorts=[
         ("A name is a tag", "A name is a tag, not a box. You write the name, an equals sign, and a value, and Python ties the two together. Beach equals Calangute makes a tag called beach on the text Calangute. Later you can move that tag to a new value. If no name points at the old value any more, Python quietly tidies it away. That is all a variable really is.", "NAMES ARE TAGS", "A variable explained in one picture."),
-        ("Naming rules", "Four rules for good names. Use letters, digits and underscores. Never start a name with a digit. Never use spaces, so write open underscore shacks, not open shacks. And remember that capital and small letters are different, so Beach and beach are two different names. Pick a name that says what the value is, and your future self will thank you.", "NAMING RULES", "Name things well."),
-        ("Reuse a name", "Watch this line. Visitors equals visitors plus thirty. Python first reads the old value, one hundred twenty, adds thirty, and only then ties the name to the answer, one hundred fifty. So the right side runs first, and the left side receives the result. The equals sign means tie, not equal. That one idea clears up most of the confusion for beginners.", "VISITORS = VISITORS + 30", "Read the right side first."),
-        ("Name before value", "A very common first bug. You print a name before you ever make it. Python reads from the top, so at that line the name does not exist yet, and you get a name error, name total is not defined. The fix is simple. Put the assignment above the print. Always make a name first, then use it, and this bug disappears.", "NAMEERROR: NAME NOT DEFINED", "Make it first, then use it."),
+        ("Naming rules", "Four rules for good names. Use letters, digits and underscores. Never start a name with a digit. Never use spaces, so write open underscore shacks, not open shacks. And remember that capital and small letters are different, so Beach and beach are two different names. Pick a name that says what the value is. Then you can read your code later.", "NAMING RULES", "Name things well."),
+        ("Reuse a name", "Watch this line. Visitors equals visitors plus thirty. Python first reads the old value, one hundred twenty, and adds thirty. Only then does it tie the name to the answer, one hundred fifty. So the right side runs first, and the left side receives the result. The equals sign means tie, not equal. That one idea clears up most of the confusion for beginners.", "VISITORS = VISITORS + 30", "Read the right side first."),
+        ("Name before value", "A very common first bug. You print a name before you ever make it. Python reads from the top. At that line the name does not exist yet. You get a name error, name total is not defined. The fix is simple. Put the assignment above the print. Always make a name first, then use it, and this bug disappears.", "NAMEERROR: NAME NOT DEFINED", "Make it first, then use it."),
         ("Pun and challenge", "I named my variable after a crab. It keeps scuttling to a new value. Now your challenge. Make two names, city and friend, with any values you like. Then swap them with one single line, and print both. Remember, Python can swap two names without needing a third helper name. Write your answer in the comments, and see who can do it fastest.", "SWAP TWO NAMES", "Try the swap."),
     ],
 ))
@@ -79,7 +79,7 @@ print(total)
 print(type(fish))
 print(type(price))
 ''',
-           narr="[HL 1] Fish is three, a whole number, so an int. [HL 2] Price is one hundred twenty and a half. The decimal point makes it a float. [HL 3] We multiply. An int times a float gives a float. [HL 4] Print the total. [HL 5] The type function tells us what kind of object a name points at. [HL 6] And again for price. Int first, then float.",
+           narr="[HL 1] Fish is three, a whole number, so an int. [HL 2] Price is one hundred twenty and a half. The decimal point makes it a float. [HL 3] We multiply. An int times a float gives a float. [HL 4] Print the total. [HL 5] The type function tells us the type of the object that a name points at. [HL 6] And again for price. Int first, then float.",
            label2="Reading the output", narr2="Predict first. Three times one hundred twenty and a half is three hundred sixty one and a half. [TRACK total=361.5] The total is a float, so it keeps its decimal part. Then the two type lines print, int and float. Notice that the type belongs to the value, not to the name."),
     mem=dict(label="Names and their number objects", on="Three tags, fish, price and total, tied to an int, a float and a float", names=["fish", "price", "total"], **{"from": "A"},
              narr="Look at the picture. Fish is tied to an int, three. Price is tied to a float, one hundred twenty and a half. Total is tied to a new float, three hundred sixty one and a half. Python made that new object when it multiplied. The type is stored with the object, not with the name."),
@@ -91,7 +91,7 @@ print(share)
 print(type(share))
 print(round(1234.5678, 2))
 ''',
-           narr="[HL 1] [TRACK people=4] Four people. [HL 2] [TRACK share=250.0] A thousand divided by four. Division with a slash always gives a float, even when the answer looks whole. [HL 3] So it prints two hundred fifty point zero. [HL 4] The type is float. [HL 5] The round function cuts a number to the places you ask for. Two places turns one thousand two hundred thirty four point five six seven eight into one thousand two hundred thirty four point five seven."),
+           narr="[HL 1] [TRACK people=4] Four people. [HL 2] [TRACK share=250.0] A thousand divided by four. Division with a slash always gives a float, even when the answer looks whole. [HL 3] So it prints two hundred fifty point zero. [HL 4] The type is float. [HL 5] The round function cuts a number to the places you ask for. Two places cuts the number to two digits after the point. The answer is one thousand two hundred thirty four point five seven."),
     term="Two hundred fifty point zero, the word float, then one thousand two hundred thirty four point five seven.",
     recap=["An int is a whole number and a float has a decimal point.", "An int mixed with a float gives a float.", "Division with a slash always gives a float.", "The round function tidies a float to the places you choose."],
     bug=dict(title="zero point one plus zero point two", kind="output", wrong='''
@@ -106,8 +106,8 @@ print(round(0.1 + 0.2, 2))
     answer="Write print(round(1250.50 / 3, 2)), which shows 416.83.",
     shorts=[
         ("Two kinds of numbers", "Python has two kinds of numbers. An int is a whole number, like three fish. A float has a decimal point, like one hundred twenty and a half rupees. You can mix them in one sum, and Python gives you a float whenever a float is in the sum. Whole things get ints, and measured things get floats. Simple as that.", "INT OR FLOAT?", "int and float in 40 seconds."),
-        ("Division is a float", "A small surprise. Ten divided by two is five, but Python prints five point zero. Division with a single slash always gives a float, even when the answer looks whole. That is on purpose, because a division can give a decimal in general, so Python keeps the type the same every time. Remember it when you print.", "1000 / 4 = 250.0", "Slash always gives a float."),
-        ("What is type?", "The type function tells you what kind of object a name points at. Type of three says int. Type of one hundred twenty and a half says float. The type belongs to the value, not to the name. So the same name can point at an int now, and a float later. Use type whenever you are unsure what you are holding.", "TYPE(3) = INT", "Check the type."),
+        ("Division is a float", "A small surprise. Ten divided by two is five, but Python prints five point zero. Division with a single slash always gives a float, even when the answer looks whole. That is on purpose. A division can give a decimal, so Python always gives a float. Remember it when you print.", "1000 / 4 = 250.0", "Slash always gives a float."),
+        ("What is type?", "The type function tells you the type of the object that a name points at. Type of three says int. Type of one hundred twenty and a half says float. The type belongs to the value, not to the name. So the same name can point at an int now, and a float later. Use type whenever you are unsure what you are holding.", "TYPE(3) = INT", "Check the type."),
         ("Point one plus point two", "Zero point one plus zero point two is not zero point three in Python. It prints zero point three, then a long tail ending in four. Computers store decimals in binary, and some decimals cannot be stored exactly. It is not a bug in Python. The fix is easy. Round the answer to two places before you show it.", "0.1 + 0.2 = ?", "Floats are close, not exact."),
         ("Pun and challenge", "Why did the float get invited to every party? It always brings the extra point. Your challenge. Split a bill of twelve fifty and fifty paise among three friends. Print each share, rounded to two decimals. Use division with a slash, then the round function. Write your answer in the comments, and check it twice.", "SPLIT THE BILL", "Try the bill split."),
     ],
@@ -136,7 +136,7 @@ print("ha" * 3)
            narr="[HL 1] The name is the text Xecxec, in double quotes. [HL 2] Now we join. Hello, comma, space, plus the name, makes one longer string. Mind the space inside the quotes. [HL 3] Print it. [HL 4] The len function counts the characters in Xecxec. Six. [HL 5] And a string times three repeats it three times.",
            label2="Reading the output", narr2="Predict first. [TRACK greeting=Hello, Xecxec] The greeting reads Hello, Xecxec. Next, six. Last, ha ha ha, with no spaces, because we did not put any in. A string is just a row of characters, and plus and star make new rows."),
     mem=dict(label="Strings are objects", on="Two tags, name and greeting, tied to two string objects", names=["name", "greeting"], **{"from": "A"},
-             narr="Here is the picture. The name tag points at the string Xecxec. The greeting tag points at a new string, Hello, Xecxec. Joining did not change the old string. It made a new one. Strings never change in place. You will use that fact in a few episodes."),
+             narr="Here is the picture. The name tag points at the string Xecxec. The greeting tag points at a new string, Hello, Xecxec. Joining did not change the old string. It made a new one. Strings never change in place. You use that fact in a few episodes."),
     B=dict(file="quotes.py", label="Single and double quotes", on="single quotes, an apostrophe inside double quotes, and len",
            src='''
 a = 'Goa'
@@ -145,8 +145,8 @@ print(a)
 print(b)
 print(len(b))
 ''',
-           narr="[HL 1] Single quotes work. [HL 2] This text has an apostrophe inside it. So we wrap it in double quotes, and the apostrophe is safe. [HL 3] Goa prints. [HL 4] It's Goa prints. [HL 5] And len counts every character, spaces and the apostrophe too. That is eight. Choose the quote style that lets you type the text without a clash."),
-    term="Goa, then It's Goa, then eight.",
+           narr="[HL 1] Single quotes work. [HL 2] This text has an apostrophe inside it. So we wrap it in double quotes, and the apostrophe is safe. [HL 3] Goa prints. [HL 4] The text with the apostrophe prints. [HL 5] And len counts every character, spaces and the apostrophe too. That is eight. Choose the quote style that lets you type the text without a clash."),
+    term="Goa, then the text with the apostrophe, then eight.",
     recap=["Text in quotes is a string.", "Single and double quotes both work, as long as the ends match.", "The len function counts every character, spaces included.", "Plus joins strings and star repeats them."],
     bug=dict(title="adding a string and a number", wrong='''
 beaches = 5
@@ -156,15 +156,15 @@ beaches = 5
 print("Beaches:", beaches)
 ''', wrong_note="the plus sign meets a number", fixed_note="print with a comma",
              why="Plus joins two strings or adds two numbers, but it cannot mix a string and a number; pass both to print with a comma instead.",
-             narr="Bug of the Day. We try to add text and a number. Python says, type error. It can only concatenate a string, not an int, to a string. Plus joins text to text, or adds number to number. It will not guess. Give print both values with a comma instead, and Python handles the rest."),
+             narr="Bug of the Day. We try to add text and a number. Python says, type error. It can only concatenate a string, not an int, to a string. Plus joins text to text, or adds number to number. It does not guess. Give print both values with a comma instead, and Python handles the rest."),
     pun="Why did the string go to the beach? It wanted to catch some waves in its quotes.",
-    task="join two strings and repeat one", challenge="Make two names, first and last, then print them joined with a space between, and print the first name three times.",
+    task="join two strings and repeat one", challenge="Make two names, first and last. Print them joined with a space between. Then print the first name three times.",
     answer="Use first = \"Asha\" and last = \"Naik\", then print(first + \" \" + last) and print(first * 3), which show Asha Naik and AshaAshaAsha.",
     shorts=[
         ("What is a string?", "Text in Python is called a string. You put it inside quotes, single or double, and both ends must match. Hello is a string. A name is a string. Even a number inside quotes is a string, and not a number any more. Think of a string of beads, where every character is one bead. That is why we call it a string.", "A STRING IS TEXT", "Strings in 40 seconds."),
-        ("Count with len", "The len function counts the characters in a string. Len of Xecxec is six, one for each letter. Spaces count too, and so do commas and apostrophes. So len of It's Goa is eight. Use len when you need to know how long a word is. Say the characters out loud as you count, and you will never miscount again.", "LEN(\"XECXEC\") = 6", "Counting characters."),
+        ("Count with len", "The len function counts the characters in a string. Len of Xecxec is six, one for each letter. Spaces count too, and so do commas and apostrophes. So len of the text with the apostrophe is eight. Use len when you need to know how long a word is. Say the characters out loud as you count. Then you do not miscount.", "LEN(\"XECXEC\") = 6", "Counting characters."),
         ("Join and repeat", "Two string tricks. A plus sign joins two strings into one longer string, so Hello comma space plus Xecxec makes Hello, Xecxec. A star repeats a string, so ha times three makes ha ha ha with no spaces. Joining and repeating never change the old strings. They make brand new ones every single time. Try both in your own file and see.", "\"HA\" * 3", "Plus joins, star repeats."),
-        ("String plus number", "Very common bug. You write text plus a number, and Python says type error. It can only concatenate a string, not an int, to a string. Plus joins text to text, or adds number to number, and it will not guess. The easy fix is to give print both values with a comma. Then print does the joining for you.", "TYPEERROR: STR + INT", "Plus will not guess."),
+        ("String plus number", "Very common bug. You write text plus a number, and Python says type error. It can only concatenate a string, not an int, to a string. Plus joins text to text, or adds number to number. It does not guess. The easy fix is to give print both values with a comma. Then print does the joining for you.", "TYPEERROR: STR + INT", "Plus will not guess."),
         ("Pun and challenge", "Why did the string go to the beach? It wanted to catch some waves in its quotes. Now your challenge. Make two names, first and last. Print them joined with a space between them. Then print the first name three times in a row. Use plus for the joining and star for the repeating. Share your answer in the comments.", "JOIN + REPEAT", "Try joining strings."),
     ],
 ))
@@ -180,7 +180,7 @@ EPISODES.append(dict(
     c_title="Asking questions",
     c_pts=["input() shows a question and waits", "The answer comes back as a string", "Save the answer in a name"],
     intro="So far our programs talk, but they never listen. Today your program asks a question and waits for an answer.",
-    concept="The input function shows a question on the screen, then waits. You type an answer and press Enter. Python hands the answer back. Think of a waiter at a beach shack. The waiter asks, what would you like, and writes your answer on a pad. Your answer comes back as text, always. Even if you type a number, it arrives as a string. Save it in a name, and it is yours to use.",
+    concept="The input function shows a question on the screen, then waits. You type an answer and press Enter. Python hands the answer back. Think of a waiter at a beach shack. The waiter asks a question and writes your answer on a pad. Your answer comes back as text, always. Even if you type a number, it arrives as a string. Save it in a name, and it is yours to use.",
     A=dict(file="ask.py", label="Ask two questions", on="two questions, two answers, two replies",
            src='''
 name = input("Your name? ")
@@ -192,7 +192,7 @@ print(name, "loves", beach)
            narr="[HL 1] The input function shows the question in brackets, and waits. Whatever you type is tied to the name called name. [HL 2] A second question, and a second name. [HL 3] We greet the person by name. [HL 4] And print both answers in one line. The program now feels like a conversation.",
            label2="Reading the output", narr2="Predict first. Say the user types Asha, then Palolem. [TRACK name=Asha] The first answer goes into name. [TRACK beach=Palolem] The second goes into beach. The screen shows, Hello, Asha. Then, Asha loves Palolem. Run it with your own answers, and the output changes."),
     mem=dict(label="Typed text becomes a string", on="Two tags, word and its answer, tied to a string object", names=["word"], **{"from": "B"},
-             narr="Here is what input gives back. Whatever the user types, the answer is a string object. The name word is tied to the string crab. If the user typed a number, it would still be a string of digits. Remember this. It causes the bug of the day."),
+             narr="Here is what input gives back. Whatever the user types, the answer is a string object. The name word is tied to the string crab. If the user types a number, it is still a string of digits. Remember this. It causes the bug of the day."),
     B=dict(file="double.py", label="Input is always a string", on="repeat the typed word and count its characters",
            src='''
 word = input("Word? ")
@@ -213,16 +213,16 @@ b = input("Second: ")
 print(int(a) + int(b))
 ''', wrong_note="the user types 5 and 3", fixed_note="convert with int first",
              why="input always returns a string, and plus joins strings, so the digits are joined instead of added; int() turns them into numbers first.",
-             narr="Bug of the Day. The user types five, then three. Our program prints fifty three, not eight. Why? Input gives strings. Plus joins strings. So the text five and the text three are joined. Wrap each answer in int, and Python adds the numbers. We will look at int properly in four episodes."),
-    pun="Why did the program wait so patiently? It had a lot of input.",
+             narr="Bug of the Day. The user types five, then three. Our program prints fifty three, not eight. Why? Input gives strings. Plus joins strings. So the text five and the text three are joined. Wrap each answer in int, and Python adds the numbers. We look at int in four episodes."),
+    pun="Why did the program wait so patiently? It had too much input.",
     task="ask for a name and a number, then print both", challenge="Ask the user for their city and their favourite number, then print both in one sentence.",
     answer="Use city = input(\"City? \") and number = input(\"Number? \"), then print(city, \"and\", number). Input stays as text, which is fine for printing.",
     shorts=[
         ("Make your program listen", "Until now your program only talked. The input function lets it listen. It shows a question on the screen, then waits. You type an answer and press Enter. Python gives the answer back, and you save it in a name. Name equals input, open bracket, your question in quotes, close bracket. That is how every quiz and every form begins.", "INPUT(\"QUESTION\")", "Make your program listen."),
-        ("Input is always text", "Here is the surprise about input. Whatever the user types comes back as a string. Even if they type a number, you get the characters of that number, as text. Type four two, and you get the string four two, not the number. So you cannot do maths with it yet. First convert it, and you will learn how very soon.", "INPUT ALWAYS GIVES TEXT", "Typed numbers are text."),
+        ("Input is always text", "Here is the surprise about input. Whatever the user types comes back as a string. Even if they type a number, you get the characters of that number, as text. Type four two, and you get the string four two, not the number. So you cannot do maths with it yet. First convert it. You learn how very soon.", "INPUT ALWAYS GIVES TEXT", "Typed numbers are text."),
         ("Use the answer", "Look at this program. Name equals input, your name question. Then print, hello, comma, name. The answer from the user is tied to a name, so you can use it anywhere below. Ask once, use many times. You can even ask two questions, save both answers, and print them in one sentence. Try it with your own name.", "NAME = INPUT(...)", "Ask once, use many times."),
         ("Five plus three is fifty three", "A famous beginner bug. The user types five and three, and your program prints fifty three. Why? Input gives strings, and plus joins strings. So the text five and the text three are joined into fifty three. The fix is to wrap each answer in int, so Python adds numbers instead. Always convert before you do maths.", "\"5\" + \"3\" = \"53\"", "Input gives strings."),
-        ("Pun and challenge", "Why did the program wait so patiently? It had a lot of input. Your challenge. Ask the user for their city and for their favourite number. Then print both in one sentence, like, I love city and number. Do not worry about maths today, because we are only printing. Post your answer in the comments below.", "ASK TWO QUESTIONS", "Try two questions."),
+        ("Pun and challenge", "Why did the program wait so patiently? It had too much input. Your challenge. Ask the user for their city and for their favourite number. Then print both in one sentence, like, I love city and number. Do not worry about maths today, because we are only printing. Post your answer in the comments below.", "ASK TWO QUESTIONS", "Try two questions."),
     ],
 ))
 
@@ -271,14 +271,14 @@ print(2 ^ 3)
 print(2 ** 3)
 ''', wrong_note="the caret instead of a power", fixed_note="double star",
              why="In Python the caret is a bit operator called XOR, not a power; use ** for powers.",
-             narr="Bug of the Day. We want two to the power three, which is eight. In maths class, the caret means power. In Python, it does something else, a bit operation. We get one, with no error at all. Use double star for powers, and you get eight. Watch for bugs that run quietly."),
+             narr="Bug of the Day. We want two to the power three, which is eight. In maths class, the caret means power. In Python, it does something else. It works on binary digits. We get one, with no error at all. Use double star for powers, and you get eight. Watch for bugs that run quietly."),
     pun="Why was the remainder so calm? It never let the division get to it.",
     task="find buses and remainder with // and %", challenge="A van seats 7 people. For 30 people, print how many full vans there are and how many people are left over.",
     answer="Use print(30 // 7) for 4 full vans and print(30 % 7) for 2 people left over.",
     shorts=[
         ("Seven operators", "Python is a very good calculator. Plus, minus, star and slash do the usual arithmetic. Double slash gives the whole part of a division. Percent gives the remainder. And double star raises a number to a power. That is seven symbols. Learn these seven, and you can do almost any calculation that appears in beginner programs. Practise them one by one.", "7 OPERATORS", "The seven symbols."),
         ("Floor division and remainder", "Seventeen divided by three is five, with two left over. Python gives you both pieces. Double slash gives the five, the whole groups. Percent gives the two, the remainder. Think of a bus with three seats. Five buses are full, and two students still stand. Use these two together whenever you split things into groups. They are a very handy pair.", "17 // 3 = 5 · 17 % 3 = 2", "Groups and leftovers."),
-        ("The slash gives a float", "Here is a small detail. Ten divided by two with a single slash gives five point zero, not five. A slash always gives a float, even when the answer looks whole. If you want a whole number, use the double slash. So ten double slash two gives plain five. Pick the operator that matches the kind of answer you want.", "10 / 2 = 5.0", "Slash versus double slash."),
+        ("The slash gives a float", "Here is a small detail. Ten divided by two with a single slash gives five point zero, not five. A slash always gives a float, even when the answer looks whole. If you want a whole number, use the double slash. So ten double slash two gives plain five. Pick the operator that matches the answer you want.", "10 / 2 = 5.0", "Slash versus double slash."),
         ("The caret trap", "In maths class, the caret means power. In Python, two caret three does not give eight. It gives one, and there is no error at all. The caret is a different operation called XOR. For a power, use double star. Two double star three gives eight. Bugs that run quietly are the hardest ones to spot, so remember this.", "2 ^ 3 = 1 ?!", "Caret is not power."),
         ("Pun and challenge", "Why was the remainder so calm? It never let the division get to it. Your challenge. A van seats seven people, and thirty people want to travel. Print how many full vans there are, then print how many people are left over. Use double slash and percent. Write your two answers in the comments, and show your code.", "VANS AND LEFTOVERS", "Try the van sum."),
     ],
@@ -329,7 +329,7 @@ print(f"Hello, {name}")
              why="Without the f prefix the curly brackets are plain characters, so Python prints them exactly as typed.",
              narr="Bug of the Day. We forgot the f. Python does not complain. It prints Hello, curly bracket name curly bracket, exactly as typed, because without the f the brackets are just characters. Add the f in front of the opening quote, and Python fills in the name. When you see curly brackets in your output, check for the f."),
     pun="Why did the f-string get promoted? It always knew what to fill in.",
-    task="print a bill line with two decimals", challenge="Make price = 99.5 and qty = 3, then print a line like Total: 298.50 using an f-string with two decimals.",
+    task="print a bill line with two decimals", challenge="Make price = 99.5 and qty = 3. Then print a line like Total: 298.50. Use an f-string with two decimals.",
     answer="Use print(f\"Total: {price * qty:.2f}\"), which shows Total: 298.50.",
     shorts=[
         ("What is an f-string?", "An f-string is a string with the letter f in front of the opening quote. Inside it, curly brackets hold names or small sums, and Python fills them in. So f, quote, Hello comma, curly name curly, quote, prints Hello and the real name. It is neater than joining with plus, and you never need to convert numbers first.", "F\"HELLO {NAME}\"", "The friendliest way to print."),
@@ -389,7 +389,7 @@ if age == 18:
     task="print whether a score passes", challenge="Make score = 55 and print True or False for score >= 40, and print whether score == 55.",
     answer="Use print(score >= 40) which shows True, and print(score == 55) which also shows True.",
     shorts=[
-        ("True or False", "A boolean is a value that is either True or False. Python gives you one every time you compare two things. Is seventeen bigger than eighteen? False. Is seventeen equal to seventeen? True. The first letter is always a capital. A boolean is a value like any other, so you can save it in a name and print it whenever you like.", "TRUE OR FALSE", "Booleans in 40 seconds."),
+        ("True or False", "A boolean is a value that is either True or False. Python gives you one every time you compare two things. Is seventeen bigger than eighteen? False. Is seventeen equal to seventeen? True. The first letter is always a capital. A boolean is a value like any other. You can save it in a name and print it.", "TRUE OR FALSE", "Booleans in 40 seconds."),
         ("Six comparison symbols", "Six symbols make comparisons. Double equals asks, are they the same. Not equals asks, are they different. Less than and greater than compare size. Less than or equal, and greater than or equal, include the same number too. Each one gives back True or False. Learn these six, and you are ready for decisions with if and else.", "== != < > <= >=", "Six ways to ask."),
         ("One equals or two", "One equals sign and two equals signs are very different. One equals sign ties a name to a value. It is an instruction. Two equals signs ask a question, are these the same, and give True or False. Say it in your head, equals means tie, double equals means ask. This tiny difference is behind many beginner bugs, so learn it now.", "= TIES · == ASKS", "Tie or ask?"),
         ("Invalid syntax", "Here is the bug. You write if age equals eighteen with one equals sign. Python says syntax error, invalid syntax. It even adds a hint, maybe you meant double equals. The if line needs a question, and one equals sign is an instruction, not a question. Use two equals signs, and the program runs. Read the hint, it is very friendly.", "SYNTAXERROR: MAYBE ==", "Python gives a hint."),

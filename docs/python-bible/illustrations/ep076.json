@@ -1,0 +1,75 @@
+{
+  "ep": 76,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "wrap",
+      "shape": "box",
+      "text": "wrapper",
+      "colour": "butter",
+      "col": 3,
+      "row": 1,
+      "w": 5,
+      "h": 3
+    },
+    {
+      "id": "orig",
+      "shape": "box",
+      "text": "hello (original)",
+      "colour": "cream",
+      "col": 4,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "name",
+      "shape": "label",
+      "text": "name: hello",
+      "colour": "tomato",
+      "col": 0,
+      "row": 0,
+      "w": 3,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "orig",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "name"
+    },
+    {
+      "t": 0.3,
+      "do": "show",
+      "target": "wrap",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.5,
+      "do": "move",
+      "target": "name",
+      "sfx": "whoosh",
+      "to": [
+        3,
+        0
+      ]
+    },
+    {
+      "t": 0.7,
+      "do": "glow",
+      "target": "wrap",
+      "sfx": "ding"
+    }
+  ]
+}

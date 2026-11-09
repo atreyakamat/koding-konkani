@@ -1,0 +1,144 @@
+{
+  "ep": 87,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "list",
+      "shape": "card",
+      "text": "list of Expense cards",
+      "colour": "butter",
+      "col": 4,
+      "row": 2,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "add",
+      "shape": "box",
+      "text": "add",
+      "colour": "mint",
+      "col": 0,
+      "row": 0,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "show",
+      "shape": "box",
+      "text": "list",
+      "colour": "mint",
+      "col": 8,
+      "row": 0,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "sum",
+      "shape": "box",
+      "text": "summary",
+      "colour": "mint",
+      "col": 0,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "save",
+      "shape": "box",
+      "text": "save",
+      "colour": "mint",
+      "col": 8,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "add",
+      "to": "list"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "list",
+      "to": "show"
+    },
+    {
+      "id": "a3",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "list",
+      "to": "sum"
+    },
+    {
+      "id": "a4",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "list",
+      "to": "save"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "list",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.2,
+      "do": "show",
+      "target": "add"
+    },
+    {
+      "t": 0.3,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.4,
+      "do": "show",
+      "target": "show"
+    },
+    {
+      "t": 0.5,
+      "do": "draw",
+      "target": "a2",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.6,
+      "do": "show",
+      "target": "sum"
+    },
+    {
+      "t": 0.7,
+      "do": "draw",
+      "target": "a3",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.8,
+      "do": "show",
+      "target": "save"
+    },
+    {
+      "t": 0.9,
+      "do": "draw",
+      "target": "a4",
+      "sfx": "whoosh"
+    }
+  ]
+}

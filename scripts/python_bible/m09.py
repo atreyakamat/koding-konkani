@@ -15,7 +15,7 @@ EPISODES.append(dict(
     c_title="Calendar and clock",
     c_pts=["date holds a day; datetime holds a day and a time", "timedelta is a length of time you can add", "strftime writes text; strptime reads text"],
     intro="Birthdays, deadlines, timers. Python's datetime module handles them all, without mistakes.",
-    concept="The datetime module has three main tools. A date holds a year, a month and a day. A datetime also holds hours, minutes and seconds. A timedelta is a length of time, such as thirty days, which you can add to a date, or get by subtracting two dates. To turn a date into text, use strftime, with a format string such as percent d percent B. To read text into a date, use strptime, with the same kind of format. Think of a wall calendar and a pocket watch, both able to count forward.",
+    concept="The datetime module has three main tools. A date holds a year, a month and a day. A datetime also holds hours, minutes and seconds. A timedelta is a length of time, such as thirty days. You can add it to a date. You also get one when you subtract two dates. To turn a date into text, use strftime, with a format string such as percent d percent B. To read text into a date, use strptime, with the same type of format. Think of a wall calendar and a pocket watch, both able to count forward.",
     A=dict(file="dates.py", label="Dates and timedelta", on="create a date, format it, and add thirty days",
            src='''
 from datetime import date, datetime, timedelta
@@ -96,7 +96,7 @@ random.shuffle(items)
 print(items)
 print(random.sample(range(1, 50), 3))
 ''',
-           narr="[HL 1] Import random. [HL 3] The seed. With the same seed, the same numbers appear on every run. [HL 4] A die roll, one to six. Both ends are possible. [HL 5] Another roll. [HL 6] Choice picks one item from the list. [HL 7] A list of five numbers. [HL 8] Shuffle mixes it in place. [HL 9] The shuffled list. [HL 10] Sample picks three different numbers from one to forty nine. Remove the seed line, and every run would give different answers."),
+           narr="[HL 1] Import random. [HL 3] The seed. With the same seed, the same numbers appear on every run. [HL 4] A die roll, one to six. Both ends are possible. [HL 5] Another roll. [HL 6] Choice picks one item from the list. [HL 7] A list of five numbers. [HL 8] Shuffle mixes it in place. [HL 9] The shuffled list. [HL 10] Sample picks three different numbers from one to forty nine. Remove the seed line, and every run gives different answers."),
     mem=dict(label="Shuffle changes the same list", on="The name items tied to one list; shuffle reorders that very list instead of making a new one", names=["items"], **{"from": "A"},
              narr="Here is the picture. The name items is tied to one list. Shuffle does not build a new list. It mixes the very same list in place. So the name items, tied to that list, now sees the new order. That is why shuffle returns nothing. It changes the list that you already hold."),
     B=dict(file="maths.py", label="The math module", on="exact functions and constants",
@@ -111,7 +111,7 @@ print(math.isclose(0.1 + 0.2, 0.3))
 print(math.factorial(5))
 ''',
            narr="[HL 1] Import math. [HL 3] Square root. Twelve point zero. [HL 4] Ceil rounds up, floor rounds down. Five and four. [HL 5] Pi, rounded to four places. Three point one four one six. [HL 6] The greatest common divisor of twelve and eighteen. Six. [HL 7] Is close compares floats safely. True. [HL 8] And factorial of five is one hundred twenty."),
-    term="Two dice and a drink, a shuffled list and three numbers; the same every run. Then 12.0, 5 4, 3.1416, 6, True, 120.",
+    term="Two dice and a drink, a shuffled list and three numbers. The same every run. Then 12.0, 5 4, 3.1416, 6, True, 120.",
     recap=["random.randint(a, b) includes both a and b.", "random.seed(n) makes the sequence repeat.", "choice, shuffle and sample work on lists.", "math gives sqrt, ceil, floor, gcd, pi and isclose."],
     bug=dict(title="randint includes both ends", kind="output", file="dice.py", wrong='''
 import random
@@ -151,7 +151,7 @@ EPISODES.append(dict(
     c_title="Three handy tools",
     c_pts=["Counter counts how often each item appears", "defaultdict makes missing keys for you", "deque adds and removes at both ends quickly"],
     intro="Counting words, grouping names, running a queue. The collections module has a tool for each.",
-    concept="The collections module has smarter containers. A Counter counts how many times each item appears, and most common gives the top ones. A defaultdict is a dictionary that creates a missing key for you, with a default such as an empty list, so grouping needs no if statement. A deque is a double ended queue. It adds and removes at both ends quickly, which a list cannot do at the front. Think of three handy tools in a drawer. A tally counter, a sorting tray, and a ticket queue.",
+    concept="The collections module has smarter containers. A Counter counts how many times each item appears, and most common gives the top ones. A defaultdict is a dictionary that creates a missing key for you. The default is, for example, an empty list. So grouping needs no if statement. A deque is a double ended queue. It adds and removes at both ends quickly, which a list cannot do at the front. Think of three handy tools in a drawer. A tally counter, a sorting tray, and a ticket queue.",
     A=dict(file="coll.py", label="Counter and defaultdict", on="count words, then group them by length",
            src='''
 from collections import Counter, defaultdict
@@ -233,7 +233,7 @@ print(data["tags"][0])
 print(type(data).__name__)
 ''',
            ref=[("What the live request looks like (needs the requests package and internet)", "import requests\n\nresponse = requests.get(\"https://example.com/weather?city=Panaji\", timeout=5)\nresponse.raise_for_status()\ndata = response.json()")],
-           narr="[HL 1] Import json. [HL 3] A comment says this is a recorded response. The real answer would arrive over the internet, but ours was saved earlier, so it works for everyone. [HL 4] The raw text is JSON. [HL 5] Json loads turns it into a dictionary. [HL 6] Read the city and the temperature. Panaji, thirty one. [HL 7] A list inside the dictionary. The first tag is humid. [HL 8] And the type is dict. With requests, the same last step is response dot json. Check the on screen code for the live version."),
+           narr="[HL 1] Import json. [HL 3] A comment says this is a recorded response. The real answer arrives over the internet. Ours was saved earlier, so it works for everyone. [HL 4] The raw text is JSON. [HL 5] Json loads turns it into a dictionary. [HL 6] Read the city and the temperature. Panaji, thirty one. [HL 7] A list inside the dictionary. The first tag is humid. [HL 8] And the type is dict. With requests, the same last step is response dot json. Check the on screen code for the live version."),
     mem=dict(label="JSON becomes a dictionary", on="The name data tied to a dictionary holding text, a number and a list", names=["data"], **{"from": "A"},
              narr="Here is the picture. The name data is tied to one dictionary. Its keys are city, temp c and tags. The values are text, a number, and a list. JSON objects become dictionaries, JSON lists become lists, and JSON numbers and text become Python numbers and strings. After loading, you work with ordinary Python objects."),
     B=dict(file="todos.py", label="Looping over recorded data", on="list of JSON items, ticked or not",
@@ -305,7 +305,7 @@ EPISODES.append(dict(
     c_title="Paths as objects",
     c_pts=["Path(\"a\") / \"b\" joins pieces with the right slash", "p.exists(), p.read_text(), p.write_text()", "glob finds files by pattern"],
     intro="Windows uses backslashes, Mac and Linux use slashes. Pathlib makes your code work on all of them.",
-    concept="Pathlib gives you a Path object for every file and folder. Join pieces with the slash operator, and Python uses the right separator for the computer it is running on. A Path can tell you its name, its stem, its suffix and its parent. It can check if it exists, read text, write text, and list the files in a folder with glob. Think of a street address that works on every map, built from pieces. And never write a full path like C colon backslash Users by hand, because it will break on another computer.",
+    concept="Pathlib gives you a Path object for every file and folder. Join pieces with the slash operator, and Python uses the right separator for the computer it is running on. A Path can tell you its name, its stem, its suffix and its parent. It can check if it exists, read text, write text, and list the files in a folder with glob. Think of a street address that works on every map, built from pieces. Never write a full path like C colon backslash Users by hand. It breaks on another computer.",
     A=dict(file="paths.py", label="Path objects", on="build a path, and ask it questions",
            files={"notes.txt": "Baga\nColva\n"},
            src='''
@@ -320,7 +320,7 @@ print(log.as_posix())
 print(log.parent.name, log.name)
 ''',
            narr="[HL 1] Import Path. [HL 3] A path to a file. [HL 4] Does it exist? True. [HL 5] The stem is the name without the extension. The suffix is the extension. Notes, and dot txt. [HL 6] Read text gives the content in one step, with no open and no close. Two lines. [HL 7] The slash operator joins pieces, so the separator is always right for your computer. [HL 8] As posix shows the path with forward slashes, the same everywhere. [HL 9] The parent is the folder. The name is the last part."),
-    c2=dict(label="Build, do not type", on="Folder pieces snap together into a path; a Windows computer and a Linux computer each use their own separator", narr="Here is the idea. You never write the separator yourself. You give Path the pieces, and the slash operator joins them. On Windows, Python joins with a backslash. On Mac and Linux, with a slash. The same code works on both. A path typed by hand, such as C colon backslash Users backslash Asha, only works on one computer, and often only for one person.", anim="Folder blocks labelled data and log.txt snap together with a slash symbol; two computers show different separators from the same code"),
+    c2=dict(label="Build, do not type", on="Folder pieces snap together into a path; a Windows computer and a Linux computer each use their own separator", narr="Here is the idea. You never write the separator yourself. You give Path the pieces, and the slash operator joins them. On Windows, Python joins with a backslash. On Mac and Linux, with a slash. The same code works on both. A path typed by hand works on one computer only. An example is C colon backslash Users backslash Asha. It often works for one person only.", anim="Folder blocks labelled data and log.txt snap together with a slash symbol; two computers show different separators from the same code"),
     B=dict(file="folder.py", label="Listing and writing", on="glob, stat, write_text and iterdir",
            files={"data/a.txt": "aa\n", "data/b.txt": "bbbb\n"},
            src='''
@@ -370,7 +370,7 @@ EPISODES.append(dict(
     analogy="a restaurant order: the dish and the extras are given when you order, not after you sit down",
     c_title="Arguments from outside",
     c_pts=["sys.argv is a list: script name first, then arguments", "Every argument arrives as text", "argparse adds help, defaults and types"],
-    intro="Real tools take their input from the command line. Today our scripts will too.",
+    intro="Real tools take their input from the command line. Today our scripts do the same.",
     concept="When you type python greet dot py Asha three, Python stores the words in sys dot argv. It is a list. The first item is the script name, and the rest are your arguments, always as text. For small scripts, that is enough. For bigger ones, the argparse module handles names, types, defaults, and a free help message. Think of a restaurant order. The dish and the extras are given when you order, not after you sit down. In this episode we simulate the command inside the script, so it runs on any computer.",
     A=dict(file="greet.py", label="sys.argv", on="read arguments from the list",
            src='''
@@ -421,7 +421,7 @@ else:
     answer="print(sum(int(a) for a in sys.argv[1:])). Remember to skip index zero.",
     shorts=[
         ("sys.argv", "When you type python greet dot py Asha, Python stores the words in sys dot argv. It is a list. Index zero is the script name. Index one is the first argument, Asha. Everything arrives as text.", "sys.argv[1]", "Arguments are in a list."),
-        ("Text to number", "Every command line argument is text, even three. To use it as a number, convert it. Int of sys dot argv two gives the integer. Forget this, and a loop that wants a number will fail with a type error.", "int(sys.argv[2])", "Convert with int."),
+        ("Text to number", "Every command line argument is text, even three. To use it as a number, convert it. Int of sys dot argv two gives the integer. Forget this, and a loop that needs a number fails with a type error.", "int(sys.argv[2])", "Convert with int."),
         ("argparse", "For bigger scripts, use argparse. Add an argument called name, and an option dash dash times, with type int and a default. It reads the command line for you, and writes the help message too.", "parser.add_argument(...)", "argparse does the work."),
         ("Missing argument", "You run the script with no name, and Python says, index error, list index out of range. The list holds only the script name. Check the length of sys dot argv first, and print a usage line. Or let argparse check it.", "IndexError: list index out of range", "Check the length."),
         ("Pun and challenge", "Why did the script go to the restaurant? It wanted to take an argument. Your challenge. Write a script that adds up all the numbers given on the command line. Use sys dot argv, skip index zero, and convert each one to an int.", "Challenge: add up arguments", "Sum the arguments."),

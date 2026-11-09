@@ -1,0 +1,113 @@
+{
+  "ep": 80,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "t1",
+      "shape": "card",
+      "text": "test_small",
+      "colour": "cream",
+      "col": 0,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "t2",
+      "shape": "card",
+      "text": "test_negative",
+      "colour": "cream",
+      "col": 4,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "t3",
+      "shape": "card",
+      "text": "test_text",
+      "colour": "cream",
+      "col": 8,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "t4",
+      "shape": "card",
+      "text": "test_bug",
+      "colour": "cream",
+      "col": 4,
+      "row": 3,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "msg",
+      "shape": "label",
+      "text": "3 != 5",
+      "colour": "peach",
+      "col": 8,
+      "row": 4,
+      "w": 2,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "t1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "t2"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "t3"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "t4"
+    },
+    {
+      "t": 0.2,
+      "do": "tick",
+      "target": "t1",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.35,
+      "do": "tick",
+      "target": "t2",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.5,
+      "do": "tick",
+      "target": "t3",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.7,
+      "do": "cross",
+      "target": "t4",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.8,
+      "do": "show",
+      "target": "msg",
+      "sfx": "pop"
+    }
+  ]
+}

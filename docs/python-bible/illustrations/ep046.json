@@ -1,0 +1,153 @@
+{
+  "ep": 46,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "t1",
+      "shape": "token",
+      "text": "1",
+      "colour": "butter",
+      "col": 0,
+      "row": 2,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "t2",
+      "shape": "token",
+      "text": "2",
+      "colour": "butter",
+      "col": 0,
+      "row": 3,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "t3",
+      "shape": "token",
+      "text": "3",
+      "colour": "butter",
+      "col": 0,
+      "row": 4,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "t4",
+      "shape": "token",
+      "text": "4",
+      "colour": "butter",
+      "col": 0,
+      "row": 5,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "tr",
+      "shape": "box",
+      "text": "n * 2",
+      "colour": "lilac",
+      "col": 3,
+      "row": 3,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "gate",
+      "shape": "box",
+      "text": "keep if even",
+      "colour": "mint",
+      "col": 7,
+      "row": 3,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "out",
+      "shape": "card",
+      "text": "[2, 4]",
+      "colour": "cream",
+      "col": 9,
+      "row": 5,
+      "w": 2,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "tr",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "gate"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "t1"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "t2"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "t3"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "t4"
+    },
+    {
+      "t": 0.25,
+      "do": "move",
+      "target": "t1",
+      "sfx": "whoosh",
+      "to": [
+        3,
+        2
+      ]
+    },
+    {
+      "t": 0.4,
+      "do": "move",
+      "target": "t1",
+      "to": [
+        7,
+        2
+      ]
+    },
+    {
+      "t": 0.5,
+      "do": "move",
+      "target": "t2",
+      "to": [
+        7,
+        3
+      ]
+    },
+    {
+      "t": 0.6,
+      "do": "cross",
+      "target": "t3",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.7,
+      "do": "show",
+      "target": "out",
+      "sfx": "ding"
+    }
+  ]
+}

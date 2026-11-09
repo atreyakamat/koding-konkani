@@ -88,7 +88,7 @@ EPISODES.append(dict(
     c_title="Pause and resume",
     c_pts=["yield hands out a value and pauses", "The function resumes where it stopped", "Values are made one at a time"],
     intro="Writing a whole iterator class is long. A generator does the same job in a few lines.",
-    concept="A generator is a function that uses yield instead of return. Calling it does not run the body. It gives back a generator object. Each time you ask for the next value, the function runs until the next yield, hands the value out, and pauses. The next request resumes right after the yield. Nothing is stored in a big list, so a generator can even be endless. Think of a conveyor belt that makes the next cookie only when you reach for it.",
+    concept="A generator is a function that uses yield instead of return. Calling it does not run the body. It gives back a generator object. Each time you ask for the next value, the function runs to the next yield. It hands the value out, and pauses. The next request resumes right after the yield. Nothing is stored in a big list, so a generator can even be endless. Think of a conveyor belt that makes the next cookie only when you reach for it.",
     A=dict(file="gen.py", label="A generator function", on="yield pauses the function",
            src='''
 def countdown(n):
@@ -106,7 +106,7 @@ for x in g:
     print(x)
 ''',
            narr="[HL 1] A function with yield. [HL 2] This print only runs when we first ask. [HL 3] Loop while n is above zero. [HL 4] Yield hands out n, and pauses here. [HL 5] When resumed, count down. [HL 6] After the loop, print done. [HL 8] Calling countdown runs nothing yet. We only get a generator object. [HL 9] Made it. Nothing has started. [HL 10] The first next runs the body. Start. Then yield three. [HL 11] The second next resumes after the yield. Two. [HL 12] A for loop takes the rest. [HL 13] One. Then done, and the loop ends."),
-    c2=dict(label="Pause and resume", on="A function box with a bookmark at the yield line; each next moves the bookmark forward", narr="Here is the picture. A generator keeps a bookmark at the yield line. Each next call resumes from the bookmark, runs until the next yield, hands out a value, and places the bookmark again. All local variables stay alive between calls. When the function ends, the bookmark is gone, and the generator raises StopIteration.", anim="A function box with a bookmark at the yield line; each next call hops the bookmark one step and ejects a value ticket"),
+    c2=dict(label="Pause and resume", on="A function box with a bookmark at the yield line; each next moves the bookmark forward", narr="Here is the picture. A generator keeps a bookmark at the yield line. Each next call resumes from the bookmark. It runs to the next yield, hands out a value, and places the bookmark again. All local variables stay alive between calls. When the function ends, the bookmark is gone, and the generator raises StopIteration.", anim="A function box with a bookmark at the yield line; each next call hops the bookmark one step and ejects a value ticket"),
     B=dict(file="squares.py", label="Lazy and endless", on="a generator that never ends, and a take-three loop",
            src='''
 def naturals():
@@ -146,7 +146,7 @@ print(list(evens()))
              why="A generator runs once. When it finishes, it stays empty. Call the generator function again to get a fresh one.",
              narr="Bug of the Day. We turn the same generator into a list twice. The first list is zero, two, four. The second list is empty, with no error. The generator was used up. To loop again, call evens again, and get a fresh generator."),
     pun="Why did the generator get tired? It kept giving without getting anything back.",
-    task="generate evens", challenge="Write a generator evens(limit) that yields the even numbers from 0 up to limit, including limit if it is even.",
+    task="generate evens", challenge="Write a generator evens(limit). It yields the even numbers from 0 up to limit. It includes limit if limit is even.",
     answer="def evens(limit): for n in range(0, limit + 1, 2): yield n.",
     shorts=[
         ("What is yield", "Yield works like return, but the function pauses instead of ending. It hands out one value, and waits. The next request resumes right after the yield. A function with yield is called a generator.", "yield = give and pause", "Yield pauses the function."),
@@ -209,7 +209,7 @@ print(list(squares))
     shorts=[
         ("Round brackets", "Take a list comprehension, and swap the square brackets for round ones. You get a generator expression. It builds nothing up front. It makes each value only when something asks for it. Same recipe, cooked one dish at a time.", "(n * n for n in nums)", "Round brackets are lazy."),
         ("Sum a generator", "Sum, max, min, any and all can read a generator directly. Write sum of n times n for n in nums. When it is the only argument, you can skip the extra brackets. No list is ever built in memory.", "sum(n * n for n in nums)", "No list needed."),
-        ("any and all", "Any is True as soon as one item matches. All is False as soon as one item fails. With a generator, they stop looking right there. For a million words, that can save a lot of time.", "any(...) stops early", "Stop as soon as you know."),
+        ("any and all", "Any is True as soon as one item matches. All is False as soon as one item fails. With a generator, they stop looking right there. For a million words, that saves much time.", "any(...) stops early", "Stop as soon as you know."),
         ("Printing a generator", "Print a generator, and you see generator object genexpr at an address. That is not a bug in Python. A generator holds a recipe, not the values. Wrap it in list to see the values, or loop over it.", "<generator object ...>", "Use list to see values."),
         ("Pun and challenge", "Why did the list comprehension envy the generator expression? It was so much lighter. Your challenge. Use a generator expression with sum to add the squares of all the even numbers from one to ten. What total do you get?", "Challenge: sum of even squares", "Use sum and a genexpr."),
     ],
@@ -295,9 +295,9 @@ print(hello.__name__)
 print(hello.__doc__)
 ''', wrong_note="hello is now called wrapper", fixed_note="wraps copies the name and doc",
              why="The decorated name points at the wrapper, so it reports the wrapper's name and no docstring. functools.wraps copies those details across.",
-             narr="Bug of the Day. After decoration, the name hello points at the wrapper. So dunder name says wrapper, and the doc string is gone. Tools and error messages will show the wrong name. Add functools dot wraps above the wrapper, and the original name and notes are copied across."),
+             narr="Bug of the Day. After decoration, the name hello points at the wrapper. So dunder name says wrapper, and the doc string is gone. Tools and error messages show the wrong name. Add functools dot wraps above the wrapper, and the original name and notes are copied across."),
     pun="Why was the function so well dressed? It had a great decorator.",
-    task="count the calls", challenge="Write a decorator count_calls that counts how many times a function was called, and stores it in wrapper.calls.",
+    task="count the calls", challenge="Write a decorator count_calls. It counts how many times a function is called. It stores the count in wrapper.calls.",
     answer="Define wrapper(*args, **kwargs): wrapper.calls += 1; return func(*args, **kwargs). Set wrapper.calls = 0 before returning wrapper.",
     shorts=[
         ("What is a decorator", "A decorator is a function that takes a function, and returns a new one that wraps it. The wrapper can act before and after the original. Think of gift wrap. The gift is the same, with something added around it.", "func in, wrapper out", "Decorators wrap functions."),
@@ -396,7 +396,7 @@ hello()
     shorts=[
         ("Why three levels", "A decorator with arguments has three levels. The outer function takes the setting. It returns the decorator. The decorator takes the function, and returns the wrapper. Setting first, function second, wrapper last.", "outer -> decorator -> wrapper", "Three levels, in order."),
         ("What the at line does", "When you write at repeat of three, Python first calls repeat with three. That returns a decorator. Then Python calls that decorator with your function. So the brackets in the at line tell you there is an extra level.", "@repeat(3) = repeat(3)(func)", "Brackets mean an extra level."),
-        ("Keep the name", "Do not forget functools dot wraps. Put it above the inner wrapper, even in a decorator with arguments. Then the decorated function keeps its name and its doc string. Tools and error messages will thank you.", "@functools.wraps(func)", "Always use wraps."),
+        ("Keep the name", "Do not forget functools dot wraps. Put it above the inner wrapper, even in a decorator with arguments. Then the decorated function keeps its name and its doc string. Tools and error messages then show the right name.", "@functools.wraps(func)", "Always use wraps."),
         ("Missing level", "A bug that confuses everyone. Repeat returns the wrapper directly. At repeat of three then calls the wrapper with hello, and Python says, name error, name func is not defined. Add the middle level that takes func.", "NameError: name 'func'", "Add the middle level."),
         ("Pun and challenge", "Why did the decorator need three levels? It was a big fan of nesting. Your challenge. Write a decorator called shout that takes a number n. It prints the function's result in capital letters, n times. Try it with a greeting function.", "Challenge: @shout(2)", "Write @shout(n)."),
     ],
@@ -490,7 +490,7 @@ print("finished")
     answer="def __enter__(self): print(\"-----\"); return self. def __exit__(self, *a): print(\"-----\"); return False.",
     shorts=[
         ("What with does", "The with statement guarantees a cleanup. Python calls dunder enter when the block starts. It calls dunder exit when the block ends, even if an error happened inside. That is why with is the safe way to open files.", "__enter__ / __exit__", "With always cleans up."),
-        ("Write your own", "To write your own context manager, make a class with two methods. Enter does the setup, and returns what as will name. Exit does the cleanup. Now with your class gives the same safety as with open.", "class with __enter__ and __exit__", "Make your own."),
+        ("Write your own", "To write your own context manager, make a class with two methods. Enter does the setup. It returns the value that the name after as gets. Exit does the cleanup. Now with your class gives the same safety as with open.", "class with __enter__ and __exit__", "Make your own."),
         ("The shortcut", "The contextlib module has a shortcut. Write a generator with one yield, and add at contextmanager. Everything before the yield is the setup. Everything after it, in a finally block, is the cleanup. Short and tidy.", "@contextmanager + yield", "A shortcut with yield."),
         ("Swallowed error", "A dangerous bug. Dunder exit returns True. Python takes that to mean, I handled the error. Your divide by zero disappears, and the program says finished. Return False, or nothing, so errors are never swallowed by accident.", "return True hides errors", "Never swallow errors."),
         ("Pun and challenge", "Why did the context manager never forget anything? It always cleaned up after itself. Your challenge. Write a class called Banner. On enter, it prints a line of dashes. On exit, it prints another. Use it with a with statement.", "Challenge: Banner", "Write a Banner."),
@@ -559,7 +559,7 @@ class Team:
 print(Team())
 ''', wrong_note="a list as a plain default", fixed_note="default_factory builds a new list each time",
              why="A default list would be shared by every object, so a dataclass refuses it. default_factory calls list for each new object.",
-             narr="Bug of the Day. We give the members field a list as its default. A dataclass stops us at once. Value error, mutable default list for field members is not allowed, use default factory. A shared list would be the bug from episode sixty five. Use field with default factory equals list, and every team gets its own list."),
+             narr="Bug of the Day. We give the members field a list as its default. A dataclass stops us at once. Value error, mutable default list for field members is not allowed, use default factory. A shared list is the bug from episode sixty five. Use field with default factory equals list, and every team gets its own list."),
     pun="Why did the dataclass go to the gym? It wanted to cut some boilerplate.",
     task="a Book dataclass", challenge="Write a dataclass Book with a title, an author, and a price that defaults to 0. Print one book.",
     answer="@dataclass class Book: title: str; author: str; price: float = 0. print(Book(\"Python 101\", \"Rao\")).",
@@ -567,7 +567,7 @@ print(Team())
         ("Type hints", "A type hint is a label. Write a colon and a type after a parameter, and an arrow and a type for the answer. Hints make code easier to read, and your editor can warn you about mistakes before you run anything.", "def area(w: float) -> float", "Hints are labels."),
         ("Not enforced", "Here is a surprise. Python does not enforce type hints when the program runs. Pass text to a function that says float, and Python carries on. Tools such as mypy read the hints, and warn you before you run the program.", "hints are not locks", "Python does not check hints."),
         ("Dataclass", "At dataclass above a class writes init, repr and eq for you, from the labelled fields. Five lines give you a class that builds, prints and compares itself. No boilerplate, and fewer typing mistakes.", "@dataclass", "Less boilerplate."),
-        ("Mutable default", "Give a dataclass field a list as its default, and Python says, value error, mutable default list is not allowed, use default factory. It protects you from the shared list bug. Write field with default factory equals list.", "field(default_factory=list)", "Use default_factory."),
+        ("Mutable default", "Give a dataclass field a list as its default. Python says, value error, mutable default list is not allowed, use default factory. It protects you from the shared list bug. Write field with default factory equals list.", "field(default_factory=list)", "Use default_factory."),
         ("Pun and challenge", "Why did the dataclass go to the gym? It wanted to cut some boilerplate. Your challenge. Write a dataclass called Book. It has a title, an author, and a price that defaults to zero. Make one book, and print it.", "Challenge: Book dataclass", "Write a Book dataclass."),
     ],
 ))

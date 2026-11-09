@@ -1,0 +1,107 @@
+{
+  "ep": 70,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "vault",
+      "shape": "box",
+      "text": "_marks = 91 (private)",
+      "colour": "darkBlue",
+      "col": 8,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "clerk",
+      "shape": "box",
+      "text": "property: check first",
+      "colour": "butter",
+      "col": 4,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "ok",
+      "shape": "card",
+      "text": "set marks = 95",
+      "colour": "mint",
+      "col": 0,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "bad",
+      "shape": "card",
+      "text": "set marks = -5",
+      "colour": "peach",
+      "col": 0,
+      "row": 3,
+      "w": 3,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "vault",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "clerk"
+    },
+    {
+      "t": 0.25,
+      "do": "show",
+      "target": "ok",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.35,
+      "do": "move",
+      "target": "ok",
+      "sfx": "whoosh",
+      "to": [
+        4,
+        1
+      ]
+    },
+    {
+      "t": 0.45,
+      "do": "stamp",
+      "target": "ok",
+      "sfx": "stamp"
+    },
+    {
+      "t": 0.55,
+      "do": "show",
+      "target": "bad",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.65,
+      "do": "move",
+      "target": "bad",
+      "sfx": "whoosh",
+      "to": [
+        4,
+        3
+      ]
+    },
+    {
+      "t": 0.75,
+      "do": "cross",
+      "target": "bad",
+      "sfx": "buzzer"
+    }
+  ]
+}
