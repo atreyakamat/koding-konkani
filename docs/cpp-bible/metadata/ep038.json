@@ -1,0 +1,173 @@
+{
+  "ep": 38,
+  "title": "C-style strings",
+  "module": 4,
+  "moduleName": "Arrays, vectors and sorting",
+  "lengthSec": 292,
+  "colours": "Butter + Dark blue",
+  "prerequisite": "EP 37",
+  "youtube": {
+    "title": "C++ C-Style Strings: char Arrays and strlen | C++ Programming EP 38",
+    "description": "In this episode you will explain what a char array is, use strlen and strcmp and avoid comparing C strings with equals equals, with Xecxec the crab.\n\n0:00 Intro\n0:15 C-style strings\n0:49 A char array\n1:29 Four boxes for three letters\n1:59 Second program\n2:59 Recap\n3:29 Bug of the Day\n4:17 Challenge\n4:37 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "C-style strings"
+      },
+      {
+        "t": "0:49",
+        "label": "A char array"
+      },
+      {
+        "t": "1:29",
+        "label": "Four boxes for three letters"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:17",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:37",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c style string",
+      "char array",
+      "strlen strcmp",
+      "null terminator"
+    ],
+    "thumbnail": {
+      "raw": "big text \"CHAR ARRAYS\" in tomato on butter; Xecxec next to a necklace of letters ending in a null bead; thin black border and drop shadow.",
+      "text": "CHAR ARRAYS",
+      "colours": "tomato on butter",
+      "visual": "next to a necklace of letters ending in a null bead",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: C-style strings",
+      "lengthSec": 36,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Old C strings still hide in modern code.",
+      "script": "Old C strings still hide in modern code. Today we look at the old way to store text. C strings are everywhere, so you must know how they work. A C string is an array of chars. The last char is a special null character. It marks the end of the text. The null character has the code zero. Keep coding, says Xecxec!",
+      "onScreen": "C-STYLE STRINGS",
+      "caption": "What you will learn: C-style strings.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#cstylestrings",
+        "#beginners"
+      ],
+      "link": "Full video: EP 38"
+    },
+    {
+      "id": "S2",
+      "title": "C-style strings in one minute",
+      "lengthSec": 39,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A C string is an array of chars.",
+      "script": "A C string is an array of chars. The last char is a special null character. It marks the end of the text. The null character has the code zero. The cstring header has helpers. Strlen counts the letters. Strcmp compares two strings. Think of a necklace of letter beads that ends with one blank bead. The compiler counts the letters and makes room for them. Keep coding, says Xecxec!",
+      "onScreen": "C-STYLE STRINGS IN ONE MINUTE",
+      "caption": "C-style strings in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#cstylestrings",
+        "#coding"
+      ],
+      "link": "Full video: EP 38"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Two arrays hold the same text.",
+      "script": "Two arrays hold the same text. Strcmp compares the letters. It returns zero when the texts are equal. So we test the answer against zero. The result is true, so cout prints one. The program prints one. A C string is a char array that ends with a null character. Strlen counts the letters. Sizeof counts all the bytes. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#cstylestrings",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 38"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Comparing C strings with equals",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. Both arrays hold goa, but the test is never true. Two equals signs compare addresses, not letters. The compiler warns that comparing two arrays is deprecated. Use strcmp, or better, use std string. Two equals signs compare the addresses of the two arrays, not their letters. The addresses always differ. Use strcmp, or use std string. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: COMPARING C STRINGS WITH EQUALS",
+      "caption": "Bug of the Day: Comparing C strings with equals.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#cstylestrings",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 38"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 36,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why did the C string feel empty? Its last bead was always null.",
+      "script": "Why did the C string feel empty? Its last bead was always null. Write a loop that counts the letters of a char array, without strlen. Stop at the null character. Write your answer in the comments. A C string is a char array that ends with a null character. Strlen counts the letters. Sizeof counts all the bytes. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#cstylestrings",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 38"
+    }
+  ]
+}

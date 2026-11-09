@@ -1,0 +1,173 @@
+{
+  "ep": 48,
+  "title": "Leaks and RAII",
+  "module": 5,
+  "moduleName": "Memory and pointers",
+  "lengthSec": 299,
+  "colours": "Lilac + Tomato",
+  "prerequisite": "EP 47",
+  "youtube": {
+    "title": "C++ Memory Leaks and RAII Explained | C++ Programming EP 48",
+    "description": "In this episode you will explain what a memory leak is, explain RAII and see how a destructor cleans up, with Xecxec the crab.\n\n0:00 Intro\n0:15 Leaks and RAII\n0:55 A destructor runs\n1:35 The life of a variable\n2:05 Second program\n3:05 Recap\n3:36 Bug of the Day\n4:24 Challenge\n4:44 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Leaks and RAII"
+      },
+      {
+        "t": "0:55",
+        "label": "A destructor runs"
+      },
+      {
+        "t": "1:35",
+        "label": "The life of a variable"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "memory leak c++",
+      "raii",
+      "destructor",
+      "resource management"
+    ],
+    "thumbnail": {
+      "raw": "big text \"NO LEAKS\" in tomato on lilac; Xecxec next to a leaking tap and a locked cupboard; thin black border and drop shadow.",
+      "text": "NO LEAKS",
+      "colours": "tomato on lilac",
+      "visual": "next to a leaking tap and a locked cupboard",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Leaks and RAII",
+      "lengthSec": 39,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Let the variable clean up for you.",
+      "script": "Let the variable clean up for you. Today we stop leaks for good. The trick is simple. Let a variable do the cleaning when it dies. A memory leak happens when you lose the address of a heap box before you free it. An early return or an error can cause it. The cure is RAII. It means that a resource belongs to a variable. Keep coding, says Xecxec!",
+      "onScreen": "LEAKS AND RAII",
+      "caption": "What you will learn: Leaks and RAII.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#leaksandraii",
+        "#beginners"
+      ],
+      "link": "Full video: EP 48"
+    },
+    {
+      "id": "S2",
+      "title": "Leaks and RAII in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A memory leak happens when you lose the address of a heap box before you free it.",
+      "script": "A memory leak happens when you lose the address of a heap box before you free it. An early return or an error can cause it. The cure is RAII. It means that a resource belongs to a variable. When the variable dies, a special function called the destructor runs, and it frees the resource. Think of a hotel room. Keep coding, says Xecxec!",
+      "onScreen": "LEAKS AND RAII IN ONE MINUTE",
+      "caption": "Leaks and RAII in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#leaksandraii",
+        "#coding"
+      ],
+      "link": "Full video: EP 48"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "This function makes a Noisy on the heap with new.",
+      "script": "This function makes a Noisy on the heap with new. If fail is true, the function returns early. The delete is skipped. The first call prints open and close. The second call prints open only. The close is missing. That box is leaked. The program prints open, close, and then open. The last close is missing. A leak means that memory is never freed. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#leaksandraii",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 48"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A leak you cannot see",
+      "lengthSec": 39,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. The program prints open, but it never prints close. The early return skips the delete, so the destructor never runs. That is a leak. Use an ordinary local variable instead. Its destructor runs on every way out. The early return skips the delete, so the destructor never runs. An ordinary local variable runs its destructor on every way out of the function. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A LEAK YOU CANNOT SEE",
+      "caption": "Bug of the Day: A leak you cannot see.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#leaksandraii",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 48"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap.",
+      "script": "My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap. Write a function with new and two return statements. Show which return leaks. Then fix it with a local variable. Write your answer in the comments. A leak means that memory is never freed. An early return can skip a delete. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#leaksandraii",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 48"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "ep": 66,
+  "title": "Virtual destructors",
+  "module": 7,
+  "moduleName": "Inheritance and polymorphism",
+  "lengthSec": 298,
+  "colours": "Pastel blue + Apricot",
+  "prerequisite": "EP 65",
+  "youtube": {
+    "title": "C++ Virtual Destructors: Avoid This Bug | C++ Programming EP 66",
+    "description": "In this episode you will explain why a base destructor must be virtual, predict the output with and without virtual and read the compiler warning, with Xecxec the crab.\n\n0:00 Intro\n0:15 Virtual destructors\n0:54 A virtual destructor\n1:34 What delete runs\n2:04 Second program\n3:04 Recap\n3:35 Bug of the Day\n4:23 Challenge\n4:43 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Virtual destructors"
+      },
+      {
+        "t": "0:54",
+        "label": "A virtual destructor"
+      },
+      {
+        "t": "1:34",
+        "label": "What delete runs"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:23",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:43",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "virtual destructor",
+      "delete base pointer",
+      "polymorphic delete",
+      "undefined behavior"
+    ],
+    "thumbnail": {
+      "raw": "big text \"VIRTUAL ~\" in tomato on pastel blue; Xecxec next to a tilde wearing a crown; thin black border and drop shadow.",
+      "text": "VIRTUAL ~",
+      "colours": "tomato on pastel blue",
+      "visual": "next to a tilde wearing a crown",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Virtual destructors",
+      "lengthSec": 36,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Without virtual, half of your object is never cleaned.",
+      "script": "Without virtual, half of your object is never cleaned. Today we fix a classic bug. It hides in code that looks right, and it leaks memory. When you delete an object through a base pointer, the compiler must find the right destructor. If the base destructor is not virtual, only the base destructor runs. The derived part is never cleaned. Keep coding, says Xecxec!",
+      "onScreen": "VIRTUAL DESTRUCTORS",
+      "caption": "What you will learn: Virtual destructors.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#virtualdestructors",
+        "#beginners"
+      ],
+      "link": "Full video: EP 66"
+    },
+    {
+      "id": "S2",
+      "title": "Virtual destructors in one minute",
+      "lengthSec": 39,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "When you delete an object through a base pointer, the compiler must find the right destructor.",
+      "script": "When you delete an object through a base pointer, the compiler must find the right destructor. If the base destructor is not virtual, only the base destructor runs. The derived part is never cleaned. The rule is simple. A class with any virtual function gets a virtual destructor. Think of a cleaning crew. If the manager only knows the lobby, the back room is never cleaned. Keep coding, says Xecxec!",
+      "onScreen": "VIRTUAL DESTRUCTORS IN ONE MINUTE",
+      "caption": "Virtual destructors in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#virtualdestructors",
+        "#coding"
+      ],
+      "link": "Full video: EP 66"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "A smart pointer to Animal holds a Dog.",
+      "script": "A smart pointer to Animal holds a Dog. The program prints working. At the end, the unique pointer deletes the object through the base type. Because the destructor is virtual, both Dog gone and Animal gone print. The rule is the same for smart pointers. The program prints working, then Dog gone, then Animal gone. Deleting through a base pointer needs a virtual destructor. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#virtualdestructors",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 66"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A base destructor that is not virtual",
+      "lengthSec": 38,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. The class has a virtual function, but the destructor is not virtual. The compiler warns that deleting an object of polymorphic class type might cause undefined behaviour. Only the Animal part would be destroyed. Make the destructor virtual. Delete through a base pointer only runs the base destructor, when it is not virtual. The Dog part is never destroyed. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A BASE DESTRUCTOR THAT IS NOT VIRTUAL",
+      "caption": "Bug of the Day: A base destructor that is not virtual.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#virtualdestructors",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 66"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 40,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why was the destructor so tired? It had to clean up after the whole family.",
+      "script": "Why was the destructor so tired? It had to clean up after the whole family. Write a base class with one virtual function. Add a virtual destructor. Explain in a comment why it is needed. Write your answer in the comments. Deleting through a base pointer needs a virtual destructor. Without it, only the base destructor runs. A class with a virtual function needs a virtual destructor. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#virtualdestructors",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 66"
+    }
+  ]
+}

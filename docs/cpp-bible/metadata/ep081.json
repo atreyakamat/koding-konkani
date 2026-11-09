@@ -1,0 +1,174 @@
+{
+  "ep": 81,
+  "title": "optional and variant",
+  "module": 9,
+  "moduleName": "Library and modern C++",
+  "lengthSec": 288,
+  "colours": "Cream + Tomato",
+  "prerequisite": "EP 80",
+  "youtube": {
+    "title": "C++ std::optional and std::variant | C++ Programming EP 81",
+    "description": "In this episode you will return a value that may be missing, use value_or and store one of several types in a variant, with Xecxec the crab.\n\n0:00 Intro\n0:15 optional and variant\n0:45 A search that may fail\n1:25 Two optionals\n1:55 Second program\n2:55 Recap\n3:25 Bug of the Day\n4:13 Challenge\n4:33 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "optional and variant"
+      },
+      {
+        "t": "0:45",
+        "label": "A search that may fail"
+      },
+      {
+        "t": "1:25",
+        "label": "Two optionals"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::optional",
+      "std::variant",
+      "std::visit",
+      "modern c++",
+      "nullopt"
+    ],
+    "thumbnail": {
+      "raw": "big text \"MAYBE\" in tomato on cream; Xecxec next to a gift box that may be empty, and a box with two shapes; thin black border and drop shadow.",
+      "text": "MAYBE",
+      "colours": "tomato on cream",
+      "visual": "next to a gift box that may be empty, and a box with two shapes",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: optional and variant",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Return a value that may not exist.",
+      "script": "Return a value that may not exist. Today we handle missing values the safe way. Optional holds a value or nothing. Variant holds one of several types. Some functions may have no answer. Old code returned minus one, or a null pointer. That is easy to misuse. Optional says it in the type. It holds a value, or it holds nothing. Keep coding, says Xecxec!",
+      "onScreen": "OPTIONAL AND VARIANT",
+      "caption": "What you will learn: optional and variant.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#optionalandvariant",
+        "#beginners"
+      ],
+      "link": "Full video: EP 81"
+    },
+    {
+      "id": "S2",
+      "title": "optional and variant in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Some functions may have no answer.",
+      "script": "Some functions may have no answer. Old code returned minus one, or a null pointer. That is easy to misuse. Optional says it in the type. It holds a value, or it holds nothing. Variant holds exactly one value from a list of types. The function returns an optional int. When it finds the value, it returns the index. Keep coding, says Xecxec!",
+      "onScreen": "OPTIONAL AND VARIANT IN ONE MINUTE",
+      "caption": "optional and variant in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#optionalandvariant",
+        "#coding"
+      ],
+      "link": "Full video: EP 81"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The variant holds an int or a string.",
+      "script": "The variant holds an int or a string. Right now it holds an int. Get with a type reads that type. The output is forty-two. Now the variant holds a string. Holds alternative checks the current type. It prints one for true. Visit calls the lambda with whatever type is inside. It prints hello. The program prints forty-two, then one, then hello. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#optionalandvariant",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 81"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Reading the wrong type",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. The variant holds an int, but we read a string. The program stops with a bad variant access error. Check the type first with holds alternative. Get throws an exception when the variant holds another type. Check with holds alternative first, or use visit. Optional holds a value or nothing. Value or gives a default. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: READING THE WRONG TYPE",
+      "caption": "Bug of the Day: Reading the wrong type.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#optionalandvariant",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 81"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why did the optional feel calm? It never promised to hold anything.",
+      "script": "Why did the optional feel calm? It never promised to hold anything. Write a function that returns an optional double. It returns nothing for a negative input. Write your answer in the comments. Optional holds a value or nothing. Value or gives a default. Variant holds one value from a list of types. Check the type before you read a variant. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#optionalandvariant",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 81"
+    }
+  ]
+}

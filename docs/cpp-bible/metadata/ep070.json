@@ -1,0 +1,173 @@
+{
+  "ep": 70,
+  "title": "Class templates",
+  "module": 8,
+  "moduleName": "Templates and containers",
+  "lengthSec": 295,
+  "colours": "Lilac + Dark blue",
+  "prerequisite": "EP 69",
+  "youtube": {
+    "title": "C++ Class Templates: Build Your Own Container | C++ Programming EP 70",
+    "description": "In this episode you will write a class template, make objects with a type in angle brackets and build a small stack, with Xecxec the crab.\n\n0:00 Intro\n0:15 Class templates\n0:52 A Box template\n1:32 One template, two classes\n2:02 Second program\n3:02 Recap\n3:32 Bug of the Day\n4:20 Challenge\n4:40 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Class templates"
+      },
+      {
+        "t": "0:52",
+        "label": "A Box template"
+      },
+      {
+        "t": "1:32",
+        "label": "One template, two classes"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:02",
+        "label": "Recap"
+      },
+      {
+        "t": "3:32",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "class template",
+      "c++ template class",
+      "generic container",
+      "stack class"
+    ],
+    "thumbnail": {
+      "raw": "big text \"BOX<T>\" in tomato on lilac; Xecxec next to a labelled box that can hold anything; thin black border and drop shadow.",
+      "text": "BOX<T>",
+      "colours": "tomato on lilac",
+      "visual": "next to a labelled box that can hold anything",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Class templates",
+      "lengthSec": 40,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Build your own container for any type.",
+      "script": "Build your own container for any type. Today we build a container. With a class template, the same class can hold ints, doubles or strings. A class template puts a type placeholder on the whole class. When you make an object, you name the type in angle brackets. The compiler then builds a class for that type. The standard library containers, such as vector, are class templates. Keep coding, says Xecxec!",
+      "onScreen": "CLASS TEMPLATES",
+      "caption": "What you will learn: Class templates.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#classtemplates",
+        "#beginners"
+      ],
+      "link": "Full video: EP 70"
+    },
+    {
+      "id": "S2",
+      "title": "Class templates in one minute",
+      "lengthSec": 38,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A class template puts a type placeholder on the whole class.",
+      "script": "A class template puts a type placeholder on the whole class. When you make an object, you name the type in angle brackets. The compiler then builds a class for that type. The standard library containers, such as vector, are class templates. Think of a storage box with a blank label. You write int, double or string on it when you use it. Keep coding, says Xecxec!",
+      "onScreen": "CLASS TEMPLATES IN ONE MINUTE",
+      "caption": "Class templates in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#classtemplates",
+        "#coding"
+      ],
+      "link": "Full video: EP 70"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Inside, a vector of T holds the items.",
+      "script": "Inside, a vector of T holds the items. Push adds an item at the end. Pop removes the last item, and returns it. Here we make a stack of ints. We push one, two and three. Pop gives the last item first. The output is three, two, one. The program prints three, two and one. A class template has a type placeholder. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#classtemplates",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 70"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A missing template argument",
+      "lengthSec": 35,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. We make a Box with no type. The compiler says class template argument deduction failed. It has nothing to learn T from. Write the type in angle brackets, as in Box of int. The compiler cannot guess T when there is no constructor argument to learn it from. Write the type in angle brackets. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A MISSING TEMPLATE ARGUMENT",
+      "caption": "Bug of the Day: A missing template argument.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#classtemplates",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 70"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "My template is an open-minded class. It accepts any type, but it still wants a label.",
+      "script": "My template is an open-minded class. It accepts any type, but it still wants a label. Write a class template Pair with two members of the same type T. Add a function that returns the bigger one. Write your answer in the comments. A class template has a type placeholder. Name the type in angle brackets when you make an object. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#classtemplates",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 70"
+    }
+  ]
+}

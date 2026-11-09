@@ -1,0 +1,174 @@
+{
+  "ep": 80,
+  "title": "Move semantics",
+  "module": 9,
+  "moduleName": "Library and modern C++",
+  "lengthSec": 288,
+  "colours": "Cream + Tomato",
+  "prerequisite": "EP 79",
+  "youtube": {
+    "title": "C++ Move Semantics: std::move Explained | C++ Programming EP 80",
+    "description": "In this episode you will tell a copy from a move, use std move and write a move constructor, with Xecxec the crab.\n\n0:00 Intro\n0:15 Move semantics\n0:45 Move a vector\n1:25 Before and after the move\n1:55 Second program\n2:55 Recap\n3:25 Bug of the Day\n4:13 Challenge\n4:33 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Move semantics"
+      },
+      {
+        "t": "0:45",
+        "label": "Move a vector"
+      },
+      {
+        "t": "1:25",
+        "label": "Before and after the move"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ move semantics",
+      "std::move",
+      "move constructor",
+      "rvalue reference",
+      "unique_ptr"
+    ],
+    "thumbnail": {
+      "raw": "big text \"MOVE\" in tomato on cream; Xecxec next to a crab handing over a treasure chest instead of copying it; thin black border and drop shadow.",
+      "text": "MOVE",
+      "colours": "tomato on cream",
+      "visual": "next to a crab handing over a treasure chest instead of copying it",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Move semantics",
+      "lengthSec": 36,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Move the data. Do not copy it.",
+      "script": "Move the data. Do not copy it. Today we learn to move data. A move hands over the data instead of copying it, so big objects stay fast. A copy makes a second set of data. A move hands the data to the new owner, and leaves the old owner empty. Think of handing over the keys of a house. Keep coding, says Xecxec!",
+      "onScreen": "MOVE SEMANTICS",
+      "caption": "What you will learn: Move semantics.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#movesemantics",
+        "#beginners"
+      ],
+      "link": "Full video: EP 80"
+    },
+    {
+      "id": "S2",
+      "title": "Move semantics in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A copy makes a second set of data.",
+      "script": "A copy makes a second set of data. A move hands the data to the new owner, and leaves the old owner empty. Think of handing over the keys of a house. You do not build a second house. Vector a owns three numbers on the heap. Move does not move anything by itself. It marks a as safe to steal from. Keep coding, says Xecxec!",
+      "onScreen": "MOVE SEMANTICS IN ONE MINUTE",
+      "caption": "Move semantics in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#movesemantics",
+        "#coding"
+      ],
+      "link": "Full video: EP 80"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Two ampersands make an rvalue reference.",
+      "script": "Two ampersands make an rvalue reference. This is the move constructor. It copies only the pointer. Then it sets the old pointer to null, so the old object frees nothing. We delete the copy constructor, because a copy would be wrong here. This line calls the move constructor. The output is made, moved, and then one hundred and zero. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#movesemantics",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 80"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Copying a unique pointer",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. We copy a unique pointer. The compiler says the copy constructor is deleted. One owner only. Use move to hand over the ownership. A unique pointer has one owner only, so it cannot be copied. Move it to give the ownership to another pointer. A copy duplicates the data. A move hands over the data. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: COPYING A UNIQUE POINTER",
+      "caption": "Bug of the Day: Copying a unique pointer.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#movesemantics",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 80"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 38,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why did the string move out? It wanted its own space, with no copies.",
+      "script": "Why did the string move out? It wanted its own space, with no copies. Make a string, and push it into a vector of strings with move. Print the vector size. Write your answer in the comments. A copy duplicates the data. A move hands over the data. Move leaves the old object empty. Do not use an object after you move it. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#movesemantics",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 80"
+    }
+  ]
+}

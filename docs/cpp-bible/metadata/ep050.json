@@ -1,0 +1,173 @@
+{
+  "ep": 50,
+  "title": "shared_ptr and weak_ptr",
+  "module": 5,
+  "moduleName": "Memory and pointers",
+  "lengthSec": 298,
+  "colours": "Lilac + Tomato",
+  "prerequisite": "EP 49",
+  "youtube": {
+    "title": "C++ shared_ptr and weak_ptr Explained | C++ Programming EP 50",
+    "description": "In this episode you will share ownership with shared_ptr, read use_count and use weak_ptr to look without owning, with Xecxec the crab.\n\n0:00 Intro\n0:15 shared_ptr and weak_ptr\n0:51 Count the owners\n1:31 Two owners, one object\n2:01 Second program\n3:01 Recap\n3:35 Bug of the Day\n4:23 Challenge\n4:43 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "shared_ptr and weak_ptr"
+      },
+      {
+        "t": "0:51",
+        "label": "Count the owners"
+      },
+      {
+        "t": "1:31",
+        "label": "Two owners, one object"
+      },
+      {
+        "t": "2:01",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:23",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:43",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "shared_ptr",
+      "weak_ptr",
+      "use_count",
+      "reference counting"
+    ],
+    "thumbnail": {
+      "raw": "big text \"SHARED_PTR\" in tomato on lilac; Xecxec next to three keys for one shared locker; thin black border and drop shadow.",
+      "text": "SHARED_PTR",
+      "colours": "tomato on lilac",
+      "visual": "next to three keys for one shared locker",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: shared_ptr and weak_ptr",
+      "lengthSec": 38,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Many owners, one object, deleted exactly once.",
+      "script": "Many owners, one object, deleted exactly once. Today the ownership is shared. Many pointers own one object, and the last one to leave switches off the light. A shared pointer lets many owners share one object. A counter inside tracks the owners. When the last owner dies, the object is deleted. A weak pointer looks at the object but does not own it. Keep coding, says Xecxec!",
+      "onScreen": "SHARED_PTR AND WEAK_PTR",
+      "caption": "What you will learn: shared_ptr and weak_ptr.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#sharedptrandweakptr",
+        "#beginners"
+      ],
+      "link": "Full video: EP 50"
+    },
+    {
+      "id": "S2",
+      "title": "shared_ptr and weak_ptr in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A shared pointer lets many owners share one object.",
+      "script": "A shared pointer lets many owners share one object. A counter inside tracks the owners. When the last owner dies, the object is deleted. A weak pointer looks at the object but does not own it. It does not change the counter. Think of a Wi-Fi password. Many people share it, and the router stays on until the last person leaves. Keep coding, says Xecxec!",
+      "onScreen": "SHARED_PTR AND WEAK_PTR IN ONE MINUTE",
+      "caption": "shared_ptr and weak_ptr in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#sharedptrandweakptr",
+        "#coding"
+      ],
+      "link": "Full video: EP 50"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "W is a weak pointer.",
+      "script": "W is a weak pointer. It owns nothing. S owns an int with the value seven. W now watches the same object. Expired asks if the object is gone. Not yet, so zero. Lock gives a shared pointer, if the object is alive. It reads seven. After the block, s is dead. The object is deleted, and expired is one. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#sharedptrandweakptr",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 50"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A raw pointer into a shared_ptr",
+      "lengthSec": 38,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. We assign a raw new result to a shared pointer. The compiler says it cannot convert int star to shared pointer. Use make shared instead. It builds the object and the counter in one safe step. The shared pointer constructor from a raw pointer is explicit, so an equals sign does not work. Make shared is also faster and safer. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A RAW POINTER INTO A SHARED_PTR",
+      "caption": "Bug of the Day: A raw pointer into a shared_ptr.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#sharedptrandweakptr",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 50"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Shared pointers are polite. The last one out always turns off the light.",
+      "script": "Shared pointers are polite. The last one out always turns off the light. Make a shared pointer to an int. Copy it into a second shared pointer. Print use count. Write your answer in the comments. Many shared pointers can own one object. A counter tracks the owners, and the last owner deletes the object. A weak pointer watches without owning. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#sharedptrandweakptr",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 50"
+    }
+  ]
+}

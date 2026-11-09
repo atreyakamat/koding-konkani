@@ -1,0 +1,173 @@
+{
+  "ep": 72,
+  "title": "std::map",
+  "module": 8,
+  "moduleName": "Templates and containers",
+  "lengthSec": 294,
+  "colours": "Lilac + Dark blue",
+  "prerequisite": "EP 71",
+  "youtube": {
+    "title": "C++ std::map: Key and Value | C++ Programming EP 72",
+    "description": "In this episode you will store key and value pairs, read and write with square brackets and loop over a map in sorted order, with Xecxec the crab.\n\n0:00 Intro\n0:15 std::map\n0:51 A phone book\n1:31 Sorted by key\n2:01 Second program\n3:01 Recap\n3:31 Bug of the Day\n4:19 Challenge\n4:39 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "std::map"
+      },
+      {
+        "t": "0:51",
+        "label": "A phone book"
+      },
+      {
+        "t": "1:31",
+        "label": "Sorted by key"
+      },
+      {
+        "t": "2:01",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:31",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:19",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:39",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::map",
+      "c++ map",
+      "key value",
+      "associative container"
+    ],
+    "thumbnail": {
+      "raw": "big text \"STD::MAP\" in tomato on lilac; Xecxec next to a phone book with names and numbers; thin black border and drop shadow.",
+      "text": "STD::MAP",
+      "colours": "tomato on lilac",
+      "visual": "next to a phone book with names and numbers",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: std::map",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Look up a value by its name.",
+      "script": "Look up a value by its name. Today we look things up by name. A map stores keys and values, and keeps the keys in sorted order. A map stores pairs. Each pair has a key and a value. Keys are unique, and the map keeps them sorted. You use the key to find the value. Square brackets read a value. Keep coding, says Xecxec!",
+      "onScreen": "STD::MAP",
+      "caption": "What you will learn: std::map.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdmap",
+        "#beginners"
+      ],
+      "link": "Full video: EP 72"
+    },
+    {
+      "id": "S2",
+      "title": "std::map in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A map stores pairs.",
+      "script": "A map stores pairs. Each pair has a key and a value. Keys are unique, and the map keeps them sorted. You use the key to find the value. Square brackets read a value. But beware. If the key is missing, square brackets create it. Think of a phone book. You look up a name, and you get a number. Keep coding, says Xecxec!",
+      "onScreen": "STD::MAP IN ONE MINUTE",
+      "caption": "std::map in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdmap",
+        "#coding"
+      ],
+      "link": "Full video: EP 72"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "We start the map with a list of pairs.",
+      "script": "We start the map with a list of pairs. The loop unpacks each pair into a name and marks. The order is sorted by key. Asha, Meera, then Ravi. Find looks up a key without creating it. If it equals end, the key is missing. Otherwise, second is the value. The program prints Asha, Meera and Ravi with their marks, and then Found eighty-eight. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdmap",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 72"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A lookup that creates a key",
+      "lengthSec": 37,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. We only wanted to check for Ravi. But the size is two, not one. Square brackets created the key Ravi, with the value zero. Use count or find to check without changing the map. Square brackets create a missing key with a default value. So a simple look-up grows the map. Use find or count to check. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A LOOKUP THAT CREATES A KEY",
+      "caption": "Bug of the Day: A lookup that creates a key.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdmap",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 72"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "My map was lost. It had all the keys, but no values.",
+      "script": "My map was lost. It had all the keys, but no values. Make a map from names to marks. Add three students. Print the one with the highest marks. Write your answer in the comments. A map stores key and value pairs. Keys are unique and sorted. Square brackets read or create a key. Find looks up a key without creating it. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdmap",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 72"
+    }
+  ]
+}

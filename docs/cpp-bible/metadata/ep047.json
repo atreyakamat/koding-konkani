@@ -1,0 +1,173 @@
+{
+  "ep": 47,
+  "title": "Dynamic arrays",
+  "module": 5,
+  "moduleName": "Memory and pointers",
+  "lengthSec": 302,
+  "colours": "Lilac + Tomato",
+  "prerequisite": "EP 46",
+  "youtube": {
+    "title": "C++ Dynamic Arrays: Size Chosen at Run Time | C++ Programming EP 47",
+    "description": "In this episode you will make an array with a size known only at run time, free it correctly and explain why vector is safer, with Xecxec the crab.\n\n0:00 Intro\n0:15 Dynamic arrays\n0:57 Size from the user\n1:37 A pointer to n boxes\n2:07 Second program\n3:07 Recap\n3:39 Bug of the Day\n4:27 Challenge\n4:47 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Dynamic arrays"
+      },
+      {
+        "t": "0:57",
+        "label": "Size from the user"
+      },
+      {
+        "t": "1:37",
+        "label": "A pointer to n boxes"
+      },
+      {
+        "t": "2:07",
+        "label": "Second program"
+      },
+      {
+        "t": "3:07",
+        "label": "Recap"
+      },
+      {
+        "t": "3:39",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:27",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:47",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "dynamic array c++",
+      "new int[n]",
+      "run time size",
+      "vector vs array"
+    ],
+    "thumbnail": {
+      "raw": "big text \"ANY SIZE\" in tomato on lilac; Xecxec next to a box that grows to fit the order; thin black border and drop shadow.",
+      "text": "ANY SIZE",
+      "colours": "tomato on lilac",
+      "visual": "next to a box that grows to fit the order",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Dynamic arrays",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "The user decides the size, and the array fits.",
+      "script": "The user decides the size, and the array fits. Today the user chooses the size. A plain array cannot do this, but an array on the heap can. A plain array needs a size that the compiler knows. An array on the heap can use a size that you read at run time. Use new with the size in square brackets. Keep coding, says Xecxec!",
+      "onScreen": "DYNAMIC ARRAYS",
+      "caption": "What you will learn: Dynamic arrays.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#dynamicarrays",
+        "#beginners"
+      ],
+      "link": "Full video: EP 47"
+    },
+    {
+      "id": "S2",
+      "title": "Dynamic arrays in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A plain array needs a size that the compiler knows.",
+      "script": "A plain array needs a size that the compiler knows. An array on the heap can use a size that you read at run time. Use new with the size in square brackets. You must free it with delete square brackets. You must also remember its size yourself. This is why most programmers prefer a vector. Think of a tailor. Keep coding, says Xecxec!",
+      "onScreen": "DYNAMIC ARRAYS IN ONE MINUTE",
+      "caption": "Dynamic arrays in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#dynamicarrays",
+        "#coding"
+      ],
+      "link": "Full video: EP 47"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 39,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "A vector with n items does the same job.",
+      "script": "A vector with n items does the same job. We fill it in the same way. A range-based for works too. There is no new and no delete. The vector frees its own memory. It also knows its size. Type four and press Enter. The program prints one, four, nine and sixteen. New with a size makes an array of any size at run time. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#dynamicarrays",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 47"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Delete on a pointer to a local",
+      "lengthSec": 39,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. We call delete on n, which is a plain int. The compiler says the type int was given to delete, but a pointer is expected. Delete must get the pointer that new returned. Here that is a, and it needs square brackets. Delete needs a pointer. The variable n is a plain int. Free the pointer that new returned, which is a. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: DELETE ON A POINTER TO A LOCAL",
+      "caption": "Bug of the Day: Delete on a pointer to a local.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#dynamicarrays",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 47"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 40,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "A tailor and a programmer have one thing in common. They both measure twice and cut once.",
+      "script": "A tailor and a programmer have one thing in common. They both measure twice and cut once. Ask for n. Make a vector of n numbers, read them, and print their average. Write your answer in the comments. New with a size makes an array of any size at run time. Free it with delete square brackets. A pointer does not know the size of the array. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#dynamicarrays",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 47"
+    }
+  ]
+}

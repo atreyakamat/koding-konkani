@@ -1,0 +1,173 @@
+{
+  "ep": 28,
+  "title": "Recursion",
+  "module": 3,
+  "moduleName": "Functions",
+  "lengthSec": 293,
+  "colours": "Mint + Dark blue",
+  "prerequisite": "EP 27",
+  "youtube": {
+    "title": "C++ Recursion: A Function That Calls Itself | C++ Programming EP 28",
+    "description": "In this episode you will explain base case and recursive case, trace a recursive call on the stack and fix a wrong base case, with Xecxec the crab.\n\n0:00 Intro\n0:15 Recursion\n0:50 Factorial\n1:30 The call stack\n2:00 Second program\n3:00 Recap\n3:30 Bug of the Day\n4:18 Challenge\n4:38 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Recursion"
+      },
+      {
+        "t": "0:50",
+        "label": "Factorial"
+      },
+      {
+        "t": "1:30",
+        "label": "The call stack"
+      },
+      {
+        "t": "2:00",
+        "label": "Second program"
+      },
+      {
+        "t": "3:00",
+        "label": "Recap"
+      },
+      {
+        "t": "3:30",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:18",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:38",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ recursion",
+      "factorial",
+      "base case",
+      "call stack"
+    ],
+    "thumbnail": {
+      "raw": "big text \"RECURSION\" in tomato on mint; Xecxec next to a stack of nested boxes, each smaller than the last; thin black border and drop shadow.",
+      "text": "RECURSION",
+      "colours": "tomato on mint",
+      "visual": "next to a stack of nested boxes, each smaller than the last",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Recursion",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "A function that calls itself needs a way to stop.",
+      "script": "A function that calls itself needs a way to stop. Today a function calls itself. It sounds strange, but it solves many problems with little code. A recursive function calls itself on a smaller problem. It needs a base case. The base case is the simplest problem, and it stops the calls. Each call has its own variables on the stack. Keep coding, says Xecxec!",
+      "onScreen": "RECURSION",
+      "caption": "What you will learn: Recursion.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#recursion",
+        "#beginners"
+      ],
+      "link": "Full video: EP 28"
+    },
+    {
+      "id": "S2",
+      "title": "Recursion in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A recursive function calls itself on a smaller problem.",
+      "script": "A recursive function calls itself on a smaller problem. It needs a base case. The base case is the simplest problem, and it stops the calls. Each call has its own variables on the stack. When the base case returns, the calls finish one by one. Think of Russian dolls. You open one, and a smaller one sits inside. Keep coding, says Xecxec!",
+      "onScreen": "RECURSION IN ONE MINUTE",
+      "caption": "Recursion in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#recursion",
+        "#coding"
+      ],
+      "link": "Full video: EP 28"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The base case is zero.",
+      "script": "The base case is zero. The sum of nothing is zero. Otherwise, the sum to n is n plus the sum to n minus one. Sum to four is four plus sum to three. That goes on down to zero. The answer is ten. The program prints ten. A recursive function calls itself. The base case stops the calls. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#recursion",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 28"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A wrong base case",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. The program prints zero for factorial of five. The base case returns zero, and zero goes into every multiplication. The whole answer becomes zero. For a product, the base case must return one. The base case value goes into every multiplication. With zero, every product becomes zero. For factorial the base value must be one. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A WRONG BASE CASE",
+      "caption": "Bug of the Day: A wrong base case.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#recursion",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 28"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 35,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "To understand recursion, you must first understand recursion.",
+      "script": "To understand recursion, you must first understand recursion. Write a recursive function that prints the numbers from n down to one. Call it with four. Write your answer in the comments. A recursive function calls itself. The base case stops the calls. Each call has its own variables. Every recursive call must move toward the base case. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#recursion",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 28"
+    }
+  ]
+}

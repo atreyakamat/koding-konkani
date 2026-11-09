@@ -1,0 +1,173 @@
+{
+  "ep": 57,
+  "title": "this and const methods",
+  "module": 6,
+  "moduleName": "Classes and objects",
+  "lengthSec": 294,
+  "colours": "Peach + Dark blue",
+  "prerequisite": "EP 56",
+  "youtube": {
+    "title": "C++ this Pointer and const Member Functions | C++ Programming EP 57",
+    "description": "In this episode you will explain the this pointer, chain calls by returning a reference and mark read-only functions const, with Xecxec the crab.\n\n0:00 Intro\n0:15 this and const methods\n0:49 Chain the calls\n1:29 Where this points\n1:59 Second program\n2:59 Recap\n3:30 Bug of the Day\n4:18 Challenge\n4:39 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "this and const methods"
+      },
+      {
+        "t": "0:49",
+        "label": "Chain the calls"
+      },
+      {
+        "t": "1:29",
+        "label": "Where this points"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:30",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:18",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:39",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "this pointer",
+      "const member function",
+      "method chaining",
+      "c++ const correctness"
+    ],
+    "thumbnail": {
+      "raw": "big text \"THIS + CONST\" in tomato on peach; Xecxec next to a crab pointing at itself; thin black border and drop shadow.",
+      "text": "THIS + CONST",
+      "colours": "tomato on peach",
+      "visual": "next to a crab pointing at itself",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: this and const methods",
+      "lengthSec": 38,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Every object knows its own address.",
+      "script": "Every object knows its own address. Today we meet the hidden pointer that every member function receives. It points to the object that made the call. Inside a member function, the name this is a pointer to the current object. You rarely need to write it, but it explains how member functions work. A function that returns star this lets you chain calls. Keep coding, says Xecxec!",
+      "onScreen": "THIS AND CONST METHODS",
+      "caption": "What you will learn: this and const methods.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#thisandconstmethods",
+        "#beginners"
+      ],
+      "link": "Full video: EP 57"
+    },
+    {
+      "id": "S2",
+      "title": "this and const methods in one minute",
+      "lengthSec": 38,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Inside a member function, the name this is a pointer to the current object.",
+      "script": "Inside a member function, the name this is a pointer to the current object. You rarely need to write it, but it explains how member functions work. A function that returns star this lets you chain calls. A const function promises not to change the object. Think of the word me. Every object can talk about itself. Add returns a reference to a Counter. Keep coding, says Xecxec!",
+      "onScreen": "THIS AND CONST METHODS IN ONE MINUTE",
+      "caption": "this and const methods in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#thisandconstmethods",
+        "#coding"
+      ],
+      "link": "Full video: EP 57"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "This function changes the object, so it is not const.",
+      "script": "This function changes the object, so it is not const. The word const after the brackets is a promise. This function does not change the object. Here the object is const. A const object may only call const functions. Get is const, so the call is fine. The program prints seven. This is a pointer to the current object. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#thisandconstmethods",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 57"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A non-const call on a const object",
+      "lengthSec": 35,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. The object is const, but we call increment. The compiler says passing const Counter as this argument discards qualifiers. That sounds hard, but it means this. A const object cannot call a function that may change it. A const object may not change, so it may not call a function that can change it. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A NON-CONST CALL ON A CONST OBJECT",
+      "caption": "Bug of the Day: A non-const call on a const object.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#thisandconstmethods",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 57"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 40,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "The object looked in the mirror and said, I like this.",
+      "script": "The object looked in the mirror and said, I like this. Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const. Write your answer in the comments. This is a pointer to the current object. Return star this to chain calls. Const after the brackets is a promise not to change the object. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#thisandconstmethods",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 57"
+    }
+  ]
+}

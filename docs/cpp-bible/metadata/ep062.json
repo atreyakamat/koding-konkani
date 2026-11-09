@@ -1,0 +1,173 @@
+{
+  "ep": 62,
+  "title": "Constructor and destructor order",
+  "module": 7,
+  "moduleName": "Inheritance and polymorphism",
+  "lengthSec": 299,
+  "colours": "Pastel blue + Apricot",
+  "prerequisite": "EP 61",
+  "youtube": {
+    "title": "C++ Inheritance: Constructor and Destructor Order | C++ Programming EP 62",
+    "description": "In this episode you will predict the order of constructors, pass arguments to the base constructor and predict the order of destructors, with Xecxec the crab.\n\n0:00 Intro\n0:15 Constructor and destructor order\n0:55 Build and destroy\n1:35 Life of a Derived object\n2:05 Second program\n3:05 Recap\n3:35 Bug of the Day\n4:23 Challenge\n4:44 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Constructor and destructor order"
+      },
+      {
+        "t": "0:55",
+        "label": "Build and destroy"
+      },
+      {
+        "t": "1:35",
+        "label": "Life of a Derived object"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:23",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "constructor order inheritance",
+      "base class constructor",
+      "destructor order",
+      "initializer list base"
+    ],
+    "thumbnail": {
+      "raw": "big text \"WHO IS FIRST?\" in tomato on pastel blue; Xecxec next to a stack of nesting dolls opening in order; thin black border and drop shadow.",
+      "text": "WHO IS FIRST?",
+      "colours": "tomato on pastel blue",
+      "visual": "next to a stack of nesting dolls opening in order",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Constructor and destructor order",
+      "lengthSec": 36,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "The base is always built first.",
+      "script": "The base is always built first. Today we learn who is built first. The order matters a lot when classes depend on each other. When you make a derived object, the base part is built first. Then the derived part is built. When the object dies, the order reverses. The derived part goes first, and then the base part. Keep coding, says Xecxec!",
+      "onScreen": "CONSTRUCTOR AND DESTRUCTOR ORDER",
+      "caption": "What you will learn: Constructor and destructor order.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constructoranddestructororder",
+        "#beginners"
+      ],
+      "link": "Full video: EP 62"
+    },
+    {
+      "id": "S2",
+      "title": "Constructor and destructor order in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "When you make a derived object, the base part is built first.",
+      "script": "When you make a derived object, the base part is built first. Then the derived part is built. When the object dies, the order reverses. The derived part goes first, and then the base part. To give arguments to the base constructor, call it in the initializer list. Think of building a house. The foundation comes first, and the roof comes last. Keep coding, says Xecxec!",
+      "onScreen": "CONSTRUCTOR AND DESTRUCTOR ORDER IN ONE MINUTE",
+      "caption": "Constructor and destructor order in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constructoranddestructororder",
+        "#coding"
+      ],
+      "link": "Full video: EP 62"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The base constructor needs a name.",
+      "script": "The base constructor needs a name. The derived constructor takes a name and an age. In the initializer list, we call the base constructor first. Then we set the age. Main passes both values. The output is Moti, three. The program prints Moti and three. The base part is built first. The derived part is built next. Destruction runs in the reverse order. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constructoranddestructororder",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 62"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A base with no default constructor",
+      "lengthSec": 40,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. Animal needs a name, but Dog does not give one. The compiler says no matching function for call to Animal. The base part is built first, so the compiler must call a base constructor. Name it in the initializer list. The base part must be built first. If the base has no default constructor, the derived constructor must say which one to call. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A BASE WITH NO DEFAULT CONSTRUCTOR",
+      "caption": "Bug of the Day: A base with no default constructor.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constructoranddestructororder",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 62"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "The base class was always first in line. It said, I was here before you were derived.",
+      "script": "The base class was always first in line. It said, I was here before you were derived. Write three classes: A, B inherits from A, and C inherits from B. Print a message in each constructor. Predict the order for a C object. Write your answer in the comments. The base part is built first. The derived part is built next. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constructoranddestructororder",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 62"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "ep": 87,
+  "title": "Threads and mutex",
+  "module": 10,
+  "moduleName": "Data structures and projects",
+  "lengthSec": 296,
+  "colours": "Mint + Tomato",
+  "prerequisite": "EP 86",
+  "youtube": {
+    "title": "C++ Threads and Mutex: Concurrency Basics | C++ Programming EP 87",
+    "description": "In this episode you will start a thread and join it, share data between threads and protect shared data with a mutex, with Xecxec the crab.\n\n0:00 Intro\n0:15 Threads and mutex\n0:50 Start and join a thread\n1:30 Start, work, join\n2:00 Second program\n3:01 Recap\n3:33 Bug of the Day\n4:21 Challenge\n4:41 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Threads and mutex"
+      },
+      {
+        "t": "0:50",
+        "label": "Start and join a thread"
+      },
+      {
+        "t": "1:30",
+        "label": "Start, work, join"
+      },
+      {
+        "t": "2:00",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:33",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:21",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:41",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ thread",
+      "std::mutex",
+      "lock_guard",
+      "concurrency",
+      "join"
+    ],
+    "thumbnail": {
+      "raw": "big text \"THREADS\" in tomato on mint; Xecxec next to two crabs working on one pile, with a lock on the door; thin black border and drop shadow.",
+      "text": "THREADS",
+      "colours": "tomato on mint",
+      "visual": "next to two crabs working on one pile, with a lock on the door",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Threads and mutex",
+      "lengthSec": 38,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Run two jobs at the same time.",
+      "script": "Run two jobs at the same time. Today we run code on two threads at once. We also learn the lock that keeps shared data safe. A thread is a second path of execution. Two threads can run at the same time. You must join each thread before it goes out of scope. When two threads change the same data, they can clash. Keep coding, says Xecxec!",
+      "onScreen": "THREADS AND MUTEX",
+      "caption": "What you will learn: Threads and mutex.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#threadsandmutex",
+        "#beginners"
+      ],
+      "link": "Full video: EP 87"
+    },
+    {
+      "id": "S2",
+      "title": "Threads and mutex in one minute",
+      "lengthSec": 35,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A thread is a second path of execution.",
+      "script": "A thread is a second path of execution. Two threads can run at the same time. You must join each thread before it goes out of scope. When two threads change the same data, they can clash. A mutex is a key. Only the thread that holds the key may enter. Think of two cooks and one pantry. Keep coding, says Xecxec!",
+      "onScreen": "THREADS AND MUTEX IN ONE MINUTE",
+      "caption": "Threads and mutex in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#threadsandmutex",
+        "#coding"
+      ],
+      "link": "Full video: EP 87"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The mutex is the key to the pantry.",
+      "script": "The mutex is the key to the pantry. Both threads run this same lambda. Each one adds one to the counter, one thousand times. Lock guard takes the key. It gives the key back at the end of each pass. While one thread holds the key, the other thread waits. So the two threads never change the counter together. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#threadsandmutex",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 87"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A thread that is never joined",
+      "lengthSec": 37,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. We start a thread and never join it. The program stops with terminate called without an active exception. Join every thread before main ends. A thread that goes out of scope while it is still joinable ends the program. Always join the thread, or detach it on purpose. A thread runs code at the same time as main. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A THREAD THAT IS NEVER JOINED",
+      "caption": "Bug of the Day: A thread that is never joined.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#threadsandmutex",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 87"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 35,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why did two threads share one door? They took turns, because one had the key.",
+      "script": "Why did two threads share one door? They took turns, because one had the key. Start two threads. Each thread adds half of a vector into its own variable. Join both, and print the total. Write your answer in the comments. A thread runs code at the same time as main. Join waits for a thread to finish. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#threadsandmutex",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 87"
+    }
+  ]
+}

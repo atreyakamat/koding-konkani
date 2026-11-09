@@ -1,0 +1,174 @@
+{
+  "ep": 88,
+  "title": "Project: student records",
+  "module": 10,
+  "moduleName": "Data structures and projects",
+  "lengthSec": 297,
+  "colours": "Mint + Tomato",
+  "prerequisite": "EP 87",
+  "youtube": {
+    "title": "C++ Project: Student Records Program | C++ Programming EP 88",
+    "description": "In this episode you will design a small class, combine a vector, a lambda and algorithms and write a const correct class, with Xecxec the crab.\n\n0:00 Intro\n0:16 Project: student records\n0:46 The Roster class\n1:34 Class design\n2:04 Second program\n3:04 Recap\n3:34 Bug of the Day\n4:22 Challenge\n4:42 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:16",
+        "label": "Project: student records"
+      },
+      {
+        "t": "0:46",
+        "label": "The Roster class"
+      },
+      {
+        "t": "1:34",
+        "label": "Class design"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:34",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:22",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:42",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ project",
+      "student records",
+      "class design",
+      "const correctness",
+      "beginner project"
+    ],
+    "thumbnail": {
+      "raw": "big text \"PROJECT\" in tomato on mint; Xecxec next to a crab with a clipboard and a stack of report cards; thin black border and drop shadow.",
+      "text": "PROJECT",
+      "colours": "tomato on mint",
+      "visual": "next to a crab with a clipboard and a stack of report cards",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Project: student records",
+      "lengthSec": 35,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Build a real program from the parts you know.",
+      "script": "Build a real program from the parts you know. Today we build a small project. A roster class holds student marks. It can add a student, print a ranking, and find the best student. A good class owns its data and hides it. It offers a few clear methods. Methods that only read the data are marked const. Keep coding, says Xecxec!",
+      "onScreen": "PROJECT: STUDENT RECORDS",
+      "caption": "What you will learn: Project: student records.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#projectstudentrecords",
+        "#beginners"
+      ],
+      "link": "Full video: EP 88"
+    },
+    {
+      "id": "S2",
+      "title": "Project: student records in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A good class owns its data and hides it.",
+      "script": "A good class owns its data and hides it. It offers a few clear methods. Methods that only read the data are marked const. We use a vector to store students, a lambda to sort them, and an optional for the best student. Add stores one student at the back of the vector. Average only reads the data, so it is const. Keep coding, says Xecxec!",
+      "onScreen": "PROJECT: STUDENT RECORDS IN ONE MINUTE",
+      "caption": "Project: student records in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#projectstudentrecords",
+        "#coding"
+      ],
+      "link": "Full video: EP 88"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Best returns an optional, because an empty roster has no best student.",
+      "script": "Best returns an optional, because an empty roster has no best student. For an empty roster, it returns nullopt. Max element finds the student with the highest marks. The lambda says that a is smaller than b when a has fewer marks. The first call is on an empty roster, so it prints zero. After two adds, the optional holds a value. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#projectstudentrecords",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 88"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A const object calls a non const method",
+      "lengthSec": 37,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. The function gets a const reference, and calls average. The compiler says this discards qualifiers. Average does not change the object, so mark it const. A const reference may call only const methods. Add const after the parameter list of every method that does not change the object. A class owns its data and keeps it private. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A CONST OBJECT CALLS A NON CONST METHOD",
+      "caption": "Bug of the Day: A const object calls a non const method.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#projectstudentrecords",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 88"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 38,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why did the roster stay calm? Everything inside it was in order.",
+      "script": "Why did the roster stay calm? Everything inside it was in order. Add a method that takes a name and returns the marks of that student as an optional. Write your answer in the comments. A class owns its data and keeps it private. Mark read only methods const. A lambda gives sort its rule. Optional says that a result may not exist. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#projectstudentrecords",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 88"
+    }
+  ]
+}

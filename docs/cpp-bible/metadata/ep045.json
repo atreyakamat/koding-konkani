@@ -1,0 +1,173 @@
+{
+  "ep": 45,
+  "title": "nullptr and dangling pointers",
+  "module": 5,
+  "moduleName": "Memory and pointers",
+  "lengthSec": 293,
+  "colours": "Lilac + Tomato",
+  "prerequisite": "EP 44",
+  "youtube": {
+    "title": "C++ nullptr and Dangling Pointers | C++ Programming EP 45",
+    "description": "In this episode you will use nullptr for a pointer that points nowhere, check a pointer before you use it and spot a dangling pointer, with Xecxec the crab.\n\n0:00 Intro\n0:15 nullptr and dangling pointers\n0:50 Check before you follow\n1:30 Null and dangling\n2:00 Second program\n3:00 Recap\n3:30 Bug of the Day\n4:18 Challenge\n4:38 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "nullptr and dangling pointers"
+      },
+      {
+        "t": "0:50",
+        "label": "Check before you follow"
+      },
+      {
+        "t": "1:30",
+        "label": "Null and dangling"
+      },
+      {
+        "t": "2:00",
+        "label": "Second program"
+      },
+      {
+        "t": "3:00",
+        "label": "Recap"
+      },
+      {
+        "t": "3:30",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:18",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:38",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "nullptr",
+      "dangling pointer",
+      "null pointer check",
+      "return local address"
+    ],
+    "thumbnail": {
+      "raw": "big text \"DANGER!\" in tomato on lilac; Xecxec next to a signpost that points at an empty field; thin black border and drop shadow.",
+      "text": "DANGER!",
+      "colours": "tomato on lilac",
+      "visual": "next to a signpost that points at an empty field",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: nullptr and dangling pointers",
+      "lengthSec": 40,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "A pointer can point at something that no longer exists.",
+      "script": "A pointer can point at something that no longer exists. Today we learn about two dangerous pointers. One points nowhere. The other points at something that is gone. Nullptr is a pointer that points to nothing. You can test it in an if. Never follow a null pointer. The program will crash. A dangling pointer is worse. It holds the address of a variable that no longer exists. Keep coding, says Xecxec!",
+      "onScreen": "NULLPTR AND DANGLING POINTERS",
+      "caption": "What you will learn: nullptr and dangling pointers.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#nullptranddanglingpointers",
+        "#beginners"
+      ],
+      "link": "Full video: EP 45"
+    },
+    {
+      "id": "S2",
+      "title": "nullptr and dangling pointers in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Nullptr is a pointer that points to nothing.",
+      "script": "Nullptr is a pointer that points to nothing. You can test it in an if. Never follow a null pointer. The program will crash. A dangling pointer is worse. It holds the address of a variable that no longer exists. Think of a letter sent to a house that was pulled down. The address exists, but nobody lives there. Keep coding, says Xecxec!",
+      "onScreen": "NULLPTR AND DANGLING POINTERS IN ONE MINUTE",
+      "caption": "nullptr and dangling pointers in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#nullptranddanglingpointers",
+        "#coding"
+      ],
+      "link": "Full video: EP 45"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "This function returns a pointer.",
+      "script": "This function returns a pointer. When it finds the target, it returns the address of that item. When nothing matches, it returns nullptr. The caller must check the result first. Eight is in the array, so the program prints Found eight. Ninety-nine is not there, so the program prints Not found. The program prints Found eight, and then Not found. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#nullptranddanglingpointers",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 45"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Returning the address of a local",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. The function returns the address of its local variable x. But x dies when the function ends. The compiler warns that the address of a local variable is returned. The pointer now dangles. Return the value instead. The local variable x dies when the function ends. The returned address then points to a dead box. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: RETURNING THE ADDRESS OF A LOCAL",
+      "caption": "Bug of the Day: Returning the address of a local.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#nullptranddanglingpointers",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 45"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 39,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why did the pointer see a therapist? It had too many unresolved references.",
+      "script": "Why did the pointer see a therapist? It had too many unresolved references. Write a function that takes a pointer to an int. If the pointer is null, print an error. Otherwise print the value. Write your answer in the comments. Nullptr is a pointer that points to nothing. Test a pointer before you follow it. A dangling pointer points to something that is gone. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#nullptranddanglingpointers",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 45"
+    }
+  ]
+}

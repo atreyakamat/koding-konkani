@@ -1,0 +1,174 @@
+{
+  "ep": 83,
+  "title": "File input and output",
+  "module": 9,
+  "moduleName": "Library and modern C++",
+  "lengthSec": 288,
+  "colours": "Cream + Tomato",
+  "prerequisite": "EP 82",
+  "youtube": {
+    "title": "C++ File I/O: ifstream and ofstream | C++ Programming EP 83",
+    "description": "In this episode you will write text to a file, read lines from a file and check that a file opened, with Xecxec the crab.\n\n0:00 Intro\n0:15 File input and output\n0:45 Write then read lines\n1:25 Stream directions\n1:55 Second program\n2:55 Recap\n3:25 Bug of the Day\n4:13 Challenge\n4:33 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "File input and output"
+      },
+      {
+        "t": "0:45",
+        "label": "Write then read lines"
+      },
+      {
+        "t": "1:25",
+        "label": "Stream directions"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ file io",
+      "ofstream",
+      "ifstream",
+      "getline",
+      "read file"
+    ],
+    "thumbnail": {
+      "raw": "big text \"FILES\" in tomato on cream; Xecxec next to a notebook being written, closed and read back; thin black border and drop shadow.",
+      "text": "FILES",
+      "colours": "tomato on cream",
+      "visual": "next to a notebook being written, closed and read back",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: File input and output",
+      "lengthSec": 38,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Save data so it survives after the program ends.",
+      "script": "Save data so it survives after the program ends. Today we save data in files. A file keeps its data after the program ends, so you can read it again later. Ofstream writes to a file. Ifstream reads from a file. You use them like cout and cin. Think of a notebook. You write in it, close it, and open it again later. Keep coding, says Xecxec!",
+      "onScreen": "FILE INPUT AND OUTPUT",
+      "caption": "What you will learn: File input and output.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#fileinputandoutput",
+        "#beginners"
+      ],
+      "link": "Full video: EP 83"
+    },
+    {
+      "id": "S2",
+      "title": "File input and output in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Ofstream writes to a file.",
+      "script": "Ofstream writes to a file. Ifstream reads from a file. You use them like cout and cin. Think of a notebook. You write in it, close it, and open it again later. Ofstream opens the file for writing. It makes the file if it does not exist. We write to it with the insert operator, like cout. Close saves the data. Keep coding, says Xecxec!",
+      "onScreen": "FILE INPUT AND OUTPUT IN ONE MINUTE",
+      "caption": "File input and output in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#fileinputandoutput",
+        "#coding"
+      ],
+      "link": "Full video: EP 83"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 41,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "We write three names with marks into a file.",
+      "script": "We write three names with marks into a file. The extraction operator reads one word and then one number. It works like cin. The loop ends when a read fails, at the end of the file. Each mark goes into the total. The total is ninety-one plus seventy-eight plus eighty-five, which is two hundred and fifty-four. The program prints Asha ninety-one, Ravi seventy-eight, and then two hundred and fifty-four. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#fileinputandoutput",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 83"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A file that did not open",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. The file does not exist, but the program prints First line and nothing else. No error shows up. Always check that the file opened. A stream that fails to open gives no error. It reads nothing. Check is open, or the stream itself, before you read. Ofstream writes to a file. Ifstream reads from a file. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: A FILE THAT DID NOT OPEN",
+      "caption": "Bug of the Day: A file that did not open.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#fileinputandoutput",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 83"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 35,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why did the file feel safe? Someone always closed it properly.",
+      "script": "Why did the file feel safe? Someone always closed it properly. Write a program that saves three lines to a file. Then read them back, and print how many lines you found. Write your answer in the comments. Ofstream writes to a file. Ifstream reads from a file. Getline reads a whole line. Check that the file opened. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#fileinputandoutput",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 83"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "ep": 44,
+  "title": "Pointer arithmetic",
+  "module": 5,
+  "moduleName": "Memory and pointers",
+  "lengthSec": 299,
+  "colours": "Lilac + Tomato",
+  "prerequisite": "EP 43",
+  "youtube": {
+    "title": "C++ Pointer Arithmetic: p + 1 Explained | C++ Programming EP 44",
+    "description": "In this episode you will explain what p plus one means, subtract two pointers and know which operations are allowed, with Xecxec the crab.\n\n0:00 Intro\n0:15 Pointer arithmetic\n0:56 Hop by one item\n1:36 One step is one item\n2:06 Second program\n3:06 Recap\n3:36 Bug of the Day\n4:24 Challenge\n4:44 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Pointer arithmetic"
+      },
+      {
+        "t": "0:56",
+        "label": "Hop by one item"
+      },
+      {
+        "t": "1:36",
+        "label": "One step is one item"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "pointer arithmetic",
+      "c++ pointer increment",
+      "pointer difference",
+      "pointer plus"
+    ],
+    "thumbnail": {
+      "raw": "big text \"P + 1\" in tomato on lilac; Xecxec next to a pointer hopping along a row of boxes; thin black border and drop shadow.",
+      "text": "P + 1",
+      "colours": "tomato on lilac",
+      "visual": "next to a pointer hopping along a row of boxes",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Pointer arithmetic",
+      "lengthSec": 39,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "P plus one does not add one byte.",
+      "script": "P plus one does not add one byte. Today we do maths with addresses. The rules are simple, but they surprise most beginners. When you add one to a pointer, it moves by one item, not by one byte. For an int pointer, the address grows by four. For a double pointer, it grows by eight. You may subtract two pointers into the same array. Keep coding, says Xecxec!",
+      "onScreen": "POINTER ARITHMETIC",
+      "caption": "What you will learn: Pointer arithmetic.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointerarithmetic",
+        "#beginners"
+      ],
+      "link": "Full video: EP 44"
+    },
+    {
+      "id": "S2",
+      "title": "Pointer arithmetic in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "When you add one to a pointer, it moves by one item, not by one byte.",
+      "script": "When you add one to a pointer, it moves by one item, not by one byte. For an int pointer, the address grows by four. For a double pointer, it grows by eight. You may subtract two pointers into the same array. You get the number of items between them. You may not add two pointers. Think of a bus conductor. Keep coding, says Xecxec!",
+      "onScreen": "POINTER ARITHMETIC IN ONE MINUTE",
+      "caption": "Pointer arithmetic in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointerarithmetic",
+        "#coding"
+      ],
+      "link": "Full video: EP 44"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Start points to the first item.",
+      "script": "Start points to the first item. End points right after the last item. The difference is five. That is the number of items. End minus one points to the last item. It reads five. This idea powers many library functions. The program prints five and five. P plus one moves by one item. The compiler scales the step by the size of the type. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointerarithmetic",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 44"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Adding two pointers",
+      "lengthSec": 39,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. We add two pointers to find the middle. The compiler says invalid operands to binary plus. The sum of two addresses has no meaning. Take the distance between them, halve it, and add it to the low pointer. The sum of two addresses has no meaning. The distance between two addresses does. Add half of the distance to the low pointer. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: ADDING TWO POINTERS",
+      "caption": "Bug of the Day: Adding two pointers.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointerarithmetic",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 44"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 35,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "A pointer asked for directions. The answer was, just add one.",
+      "script": "A pointer asked for directions. The answer was, just add one. Use a pointer that starts at the last item. Print the array in reverse order. Write your answer in the comments. P plus one moves by one item. The compiler scales the step by the size of the type. Subtracting two pointers gives a count of items. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointerarithmetic",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 44"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "ep": 82,
+  "title": "Exceptions",
+  "module": 9,
+  "moduleName": "Library and modern C++",
+  "lengthSec": 289,
+  "colours": "Cream + Tomato",
+  "prerequisite": "EP 81",
+  "youtube": {
+    "title": "C++ Exceptions: try, catch and throw | C++ Programming EP 82",
+    "description": "In this episode you will throw an exception, catch it with try and catch and order catch blocks correctly, with Xecxec the crab.\n\n0:00 Intro\n0:15 Exceptions\n0:45 Throw and catch\n1:26 The path of an exception\n1:56 Second program\n2:56 Recap\n3:26 Bug of the Day\n4:14 Challenge\n4:34 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Exceptions"
+      },
+      {
+        "t": "0:45",
+        "label": "Throw and catch"
+      },
+      {
+        "t": "1:26",
+        "label": "The path of an exception"
+      },
+      {
+        "t": "1:56",
+        "label": "Second program"
+      },
+      {
+        "t": "2:56",
+        "label": "Recap"
+      },
+      {
+        "t": "3:26",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:14",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:34",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ exceptions",
+      "try catch",
+      "throw",
+      "runtime_error",
+      "error handling"
+    ],
+    "thumbnail": {
+      "raw": "big text \"TRY / CATCH\" in tomato on cream; Xecxec next to a crab catching a falling red ball with a net; thin black border and drop shadow.",
+      "text": "TRY / CATCH",
+      "colours": "tomato on cream",
+      "visual": "next to a crab catching a falling red ball with a net",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Exceptions",
+      "lengthSec": 36,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Stop a crash before it happens.",
+      "script": "Stop a crash before it happens. Today we handle errors without crashing. We throw an exception, and we catch it where we know what to do. When code cannot go on, it throws an exception. The program leaves the current function, and looks up the stack for a matching catch block. Think of a ball thrown up the stairs. Keep coding, says Xecxec!",
+      "onScreen": "EXCEPTIONS",
+      "caption": "What you will learn: Exceptions.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#exceptions",
+        "#beginners"
+      ],
+      "link": "Full video: EP 82"
+    },
+    {
+      "id": "S2",
+      "title": "Exceptions in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "When code cannot go on, it throws an exception.",
+      "script": "When code cannot go on, it throws an exception. The program leaves the current function, and looks up the stack for a matching catch block. Think of a ball thrown up the stairs. It goes up until someone catches it. If nobody catches it, the program stops. The function checks for a bad input. Throw raises a runtime error with a message. Keep coding, says Xecxec!",
+      "onScreen": "EXCEPTIONS IN ONE MINUTE",
+      "caption": "Exceptions in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#exceptions",
+        "#coding"
+      ],
+      "link": "Full video: EP 82"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Stoi cannot read a number from this text, so it throws invalid argument.",
+      "script": "Stoi cannot read a number from this text, so it throws invalid argument. The first catch is specific, so it matches. It prints bad number. The general catch comes last. It catches every other standard error. Always put the specific catch first. The program prints bad number. Throw raises an exception. Catch handles it. The program unwinds until a catch matches. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#exceptions",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 82"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: An exception nobody catches",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. We throw, and nobody catches. The program ends with terminate called after throwing. Add a try block and a catch block. An exception that nobody catches ends the program. Catch it where you can recover, or at the top of main. Throw raises an exception. Catch handles it. The program unwinds until a catch matches. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: AN EXCEPTION NOBODY CATCHES",
+      "caption": "Bug of the Day: An exception nobody catches.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#exceptions",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 82"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why did the exception get a medal? It was thrown, and someone finally caught it.",
+      "script": "Why did the exception get a medal? It was thrown, and someone finally caught it. Call at with a bad index on a vector. Catch the out of range exception, and print a friendly message. Write your answer in the comments. Throw raises an exception. Catch handles it. The program unwinds until a catch matches. Put specific catch blocks before general ones. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#exceptions",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 82"
+    }
+  ]
+}

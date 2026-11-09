@@ -1,0 +1,173 @@
+{
+  "ep": 10,
+  "title": "auto, const and constexpr",
+  "module": 1,
+  "moduleName": "Variables and types",
+  "lengthSec": 295,
+  "colours": "Pastel blue + Tomato",
+  "prerequisite": "EP 09",
+  "youtube": {
+    "title": "C++ auto, const and constexpr Explained | C++ Programming EP 10",
+    "description": "In this episode you will let the compiler pick a type with auto, protect a value with const and explain what constexpr adds, with Xecxec the crab.\n\n0:00 Intro\n0:15 auto, const and constexpr\n0:52 Three keywords\n1:32 Types and locks\n2:02 Second program\n3:02 Recap\n3:32 Bug of the Day\n4:20 Challenge\n4:40 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "auto, const and constexpr"
+      },
+      {
+        "t": "0:52",
+        "label": "Three keywords"
+      },
+      {
+        "t": "1:32",
+        "label": "Types and locks"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:02",
+        "label": "Recap"
+      },
+      {
+        "t": "3:32",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ auto keyword",
+      "const in c++",
+      "constexpr",
+      "read-only variable"
+    ],
+    "thumbnail": {
+      "raw": "big text \"LOCK IT DOWN\" in tomato on pastel blue; Xecxec next to a padlock on a box; thin black border and drop shadow.",
+      "text": "LOCK IT DOWN",
+      "colours": "tomato on pastel blue",
+      "visual": "next to a padlock on a box",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: auto, const and constexpr",
+      "lengthSec": 38,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Some values must never change.",
+      "script": "Some values must never change. Today we learn three keywords. One saves typing, and two protect your values from mistakes. The keyword auto tells the compiler to find the type from the value. The keyword const makes a variable read-only. You cannot change it after you set it. The keyword constexpr is stronger. The value must be known when the program is compiled. Keep coding, says Xecxec!",
+      "onScreen": "AUTO, CONST AND CONSTEXPR",
+      "caption": "What you will learn: auto, const and constexpr.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#autoconstandconstexpr",
+        "#beginners"
+      ],
+      "link": "Full video: EP 10"
+    },
+    {
+      "id": "S2",
+      "title": "auto, const and constexpr in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "The keyword auto tells the compiler to find the type from the value.",
+      "script": "The keyword auto tells the compiler to find the type from the value. The keyword const makes a variable read-only. You cannot change it after you set it. The keyword constexpr is stronger. The value must be known when the program is compiled. Think of a sealed jar of masala. You can look at it, but you cannot change what is inside. Keep coding, says Xecxec!",
+      "onScreen": "AUTO, CONST AND CONSTEXPR IN ONE MINUTE",
+      "caption": "auto, const and constexpr in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#autoconstandconstexpr",
+        "#coding"
+      ],
+      "link": "Full video: EP 10"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Pi is a constexpr.",
+      "script": "Pi is a constexpr. The radius is const. We promise not to change it. Auto picks double for the area, because pi and radius are doubles. The area is twelve point five six. The program prints the area, twelve point five six. Auto lets the compiler find the type. Const makes a variable read-only. Constexpr needs a value known at compile time. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#autoconstandconstexpr",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 10"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Changing a const",
+      "lengthSec": 37,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. Max seats is const, but line six tries to change it. The compiler says assignment of read-only variable. That is a good error. It stops a real bug before the program runs. Remove the line, or remove const if the value must change. A const variable is read-only. The compiler refuses any line that tries to change it. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: CHANGING A CONST",
+      "caption": "Bug of the Day: Changing a const.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#autoconstandconstexpr",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 10"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "I put a const on my bank balance. Now it will never change, and that is the problem.",
+      "script": "I put a const on my bank balance. Now it will never change, and that is the problem. Use constexpr for pi and const for a radius that you choose. Print the area and the circumference. Write your answer in the comments. Auto lets the compiler find the type. Const makes a variable read-only. Constexpr needs a value known at compile time. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#autoconstandconstexpr",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 10"
+    }
+  ]
+}

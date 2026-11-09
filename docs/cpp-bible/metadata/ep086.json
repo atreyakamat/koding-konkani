@@ -1,0 +1,174 @@
+{
+  "ep": 86,
+  "title": "Binary tree",
+  "module": 10,
+  "moduleName": "Data structures and projects",
+  "lengthSec": 296,
+  "colours": "Mint + Tomato",
+  "prerequisite": "EP 85",
+  "youtube": {
+    "title": "C++ Binary Search Tree: Insert, Search, Traverse | C++ Programming EP 86",
+    "description": "In this episode you will insert into a binary search tree, print a tree in sorted order and search a tree and find its height, with Xecxec the crab.\n\n0:00 Intro\n0:15 Binary tree\n0:45 Insert and print in order\n1:32 The tree\n2:02 Second program\n3:03 Recap\n3:33 Bug of the Day\n4:21 Challenge\n4:41 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Binary tree"
+      },
+      {
+        "t": "0:45",
+        "label": "Insert and print in order"
+      },
+      {
+        "t": "1:32",
+        "label": "The tree"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:03",
+        "label": "Recap"
+      },
+      {
+        "t": "3:33",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:21",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:41",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ binary tree",
+      "binary search tree",
+      "recursion",
+      "inorder traversal",
+      "data structures"
+    ],
+    "thumbnail": {
+      "raw": "big text \"BINARY TREE\" in tomato on mint; Xecxec next to an upside down tree with numbers on its branches; thin black border and drop shadow.",
+      "text": "BINARY TREE",
+      "colours": "tomato on mint",
+      "visual": "next to an upside down tree with numbers on its branches",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Binary tree",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Print numbers in sorted order with no sort call.",
+      "script": "Print numbers in sorted order with no sort call. Today we build a tree. Each node has two children. Small numbers go left, and big numbers go right. A binary search tree keeps its keys in order. For each node, every key in the left side is smaller, and every key in the right side is bigger. Recursion fits trees well. Keep coding, says Xecxec!",
+      "onScreen": "BINARY TREE",
+      "caption": "What you will learn: Binary tree.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#binarytree",
+        "#beginners"
+      ],
+      "link": "Full video: EP 86"
+    },
+    {
+      "id": "S2",
+      "title": "Binary tree in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A binary search tree keeps its keys in order.",
+      "script": "A binary search tree keeps its keys in order. For each node, every key in the left side is smaller, and every key in the right side is bigger. Recursion fits trees well. To insert, compare the key, then go left or right, and repeat. Insert returns the root of the tree after the change. An empty spot is the base case. Keep coding, says Xecxec!",
+      "onScreen": "BINARY TREE IN ONE MINUTE",
+      "caption": "Binary tree in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#binarytree",
+        "#coding"
+      ],
+      "link": "Full video: EP 86"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Contains follows one path only.",
+      "script": "Contains follows one path only. An empty spot means the key is not in the tree. A match means the key is in the tree. Otherwise it goes left or right, as insert did. Four is in the tree, so we get true. Seven is not, so we get false. Height is one plus the height of the taller child. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#binarytree",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 86"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Printing before the left side",
+      "lengthSec": 39,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. The keys come out as five three one four, which is not sorted. The code prints the node before the left side. Visit left first, then print, then visit right. The order of the three lines decides the traversal. Left, node, right gives sorted order. Node first gives preorder, which is not sorted. A binary search tree keeps keys in order. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: PRINTING BEFORE THE LEFT SIDE",
+      "caption": "Bug of the Day: Printing before the left side.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#binarytree",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 86"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 39,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Why did the tree win the race? It had strong roots, and it never lost its balance.",
+      "script": "Why did the tree win the race? It had strong roots, and it never lost its balance. Write a function that returns the smallest key in a binary search tree. Hint: keep going left. Write your answer in the comments. A binary search tree keeps keys in order. Smaller keys go left, and bigger keys go right. Inorder traversal prints the keys in sorted order. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#binarytree",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 86"
+    }
+  ]
+}

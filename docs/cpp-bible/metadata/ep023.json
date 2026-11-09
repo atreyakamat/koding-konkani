@@ -1,0 +1,173 @@
+{
+  "ep": 23,
+  "title": "Pass by value",
+  "module": 3,
+  "moduleName": "Functions",
+  "lengthSec": 290,
+  "colours": "Mint + Dark blue",
+  "prerequisite": "EP 22",
+  "youtube": {
+    "title": "C++ Pass by Value: Why Your Change Disappears | C++ Programming EP 23",
+    "description": "In this episode you will explain that arguments are copied, show that the original does not change and return a result instead, with Xecxec the crab.\n\n0:00 Intro\n0:15 Pass by value\n0:47 A copy is changed\n1:27 Two separate boxes\n1:57 Second program\n2:57 Recap\n3:27 Bug of the Day\n4:15 Challenge\n4:35 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Pass by value"
+      },
+      {
+        "t": "0:47",
+        "label": "A copy is changed"
+      },
+      {
+        "t": "1:27",
+        "label": "Two separate boxes"
+      },
+      {
+        "t": "1:57",
+        "label": "Second program"
+      },
+      {
+        "t": "2:57",
+        "label": "Recap"
+      },
+      {
+        "t": "3:27",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:15",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:35",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "pass by value",
+      "function copy",
+      "c++ parameters",
+      "swap function"
+    ],
+    "thumbnail": {
+      "raw": "big text \"A COPY!\" in tomato on mint; Xecxec next to a photocopier making a copy of a box; thin black border and drop shadow.",
+      "text": "A COPY!",
+      "colours": "tomato on mint",
+      "visual": "next to a photocopier making a copy of a box",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Pass by value",
+      "lengthSec": 38,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "A function changes a copy, not your variable.",
+      "script": "A function changes a copy, not your variable. Today we meet a surprise. A function can change its input, and your variable still stays the same. When you pass a value to a function, C plus plus makes a copy. The function works on the copy. The original variable never changes. This is called pass by value. To send a result out, use return. Keep coding, says Xecxec!",
+      "onScreen": "PASS BY VALUE",
+      "caption": "What you will learn: Pass by value.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#passbyvalue",
+        "#beginners"
+      ],
+      "link": "Full video: EP 23"
+    },
+    {
+      "id": "S2",
+      "title": "Pass by value in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "When you pass a value to a function, C plus plus makes a copy.",
+      "script": "When you pass a value to a function, C plus plus makes a copy. The function works on the copy. The original variable never changes. This is called pass by value. To send a result out, use return. Think of a photocopy. You can scribble on the copy, and the original stays clean. Number is ten. We call double it with number. Keep coding, says Xecxec!",
+      "onScreen": "PASS BY VALUE IN ONE MINUTE",
+      "caption": "Pass by value in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#passbyvalue",
+        "#coding"
+      ],
+      "link": "Full video: EP 23"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The function swaps a and b.",
+      "script": "The function swaps a and b. It uses a helper box t. Main calls it with x and y. The function swaps only its copies. So x is still one, and y is still two. We need another way to change the originals. That is the next episode. The program prints one and two. Nothing was swapped. Arguments are copied into the parameters. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#passbyvalue",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 23"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Expecting the original to change",
+      "lengthSec": 39,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. Add tax should raise the price to one hundred and five. But the program prints one hundred. The function changed only a copy. Return the new price, and store it in the variable. Now the answer is right. The function changes its own copy of price, and then the copy disappears. Return the new value and store it in the variable. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: EXPECTING THE ORIGINAL TO CHANGE",
+      "caption": "Bug of the Day: Expecting the original to change.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#passbyvalue",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 23"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "I gave my function a copy of my homework. It said, nice try, I will only change the copy.",
+      "script": "I gave my function a copy of my homework. It said, nice try, I will only change the copy. Write a function that adds one to its int parameter. Call it from main. Print the variable before and after. Write your answer in the comments. Arguments are copied into the parameters. A change to the copy does not reach the original. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#passbyvalue",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 23"
+    }
+  ]
+}

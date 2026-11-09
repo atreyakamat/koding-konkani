@@ -1,0 +1,173 @@
+{
+  "ep": 65,
+  "title": "Abstract classes",
+  "module": 7,
+  "moduleName": "Inheritance and polymorphism",
+  "lengthSec": 293,
+  "colours": "Pastel blue + Apricot",
+  "prerequisite": "EP 64",
+  "youtube": {
+    "title": "C++ Abstract Classes and Interfaces | C++ Programming EP 65",
+    "description": "In this episode you will write a pure virtual function, explain that an abstract class cannot be built and use a class as an interface, with Xecxec the crab.\n\n0:00 Intro\n0:15 Abstract classes\n0:50 A Shape interface\n1:30 Shape and its children\n2:00 Second program\n3:00 Recap\n3:30 Bug of the Day\n4:18 Challenge\n4:38 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Abstract classes"
+      },
+      {
+        "t": "0:50",
+        "label": "A Shape interface"
+      },
+      {
+        "t": "1:30",
+        "label": "Shape and its children"
+      },
+      {
+        "t": "2:00",
+        "label": "Second program"
+      },
+      {
+        "t": "3:00",
+        "label": "Recap"
+      },
+      {
+        "t": "3:30",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:18",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:38",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "abstract class",
+      "pure virtual function",
+      "interface c++",
+      "shape example"
+    ],
+    "thumbnail": {
+      "raw": "big text \"ABSTRACT\" in tomato on pastel blue; Xecxec next to a blueprint with a blank where the details go; thin black border and drop shadow.",
+      "text": "ABSTRACT",
+      "colours": "tomato on pastel blue",
+      "visual": "next to a blueprint with a blank where the details go",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Abstract classes",
+      "lengthSec": 36,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Some classes are only a promise.",
+      "script": "Some classes are only a promise. Today we write a class that is only a promise. It says what every shape must do, but not how. A pure virtual function has equals zero after its declaration. It has no body in the base. A class with a pure virtual function is abstract. You cannot make an object of it. Keep coding, says Xecxec!",
+      "onScreen": "ABSTRACT CLASSES",
+      "caption": "What you will learn: Abstract classes.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#abstractclasses",
+        "#beginners"
+      ],
+      "link": "Full video: EP 65"
+    },
+    {
+      "id": "S2",
+      "title": "Abstract classes in one minute",
+      "lengthSec": 35,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A pure virtual function has equals zero after its declaration.",
+      "script": "A pure virtual function has equals zero after its declaration. It has no body in the base. A class with a pure virtual function is abstract. You cannot make an object of it. Derived classes must override every pure function. Then they can be built. Think of a contract. It says what must be done, but not how. Keep coding, says Xecxec!",
+      "onScreen": "ABSTRACT CLASSES IN ONE MINUTE",
+      "caption": "Abstract classes in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#abstractclasses",
+        "#coding"
+      ],
+      "link": "Full video: EP 65"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 35,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Rect fills the blank one way.",
+      "script": "Rect fills the blank one way. Square fills it another way. The vector holds shapes of both kinds. The loop adds their areas. It does not need to know which shape is which. Twelve plus twenty-five gives thirty-seven. The program prints thirty-seven. Equals zero makes a function pure virtual. A class with a pure virtual function is abstract. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#abstractclasses",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 65"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Building an abstract class",
+      "lengthSec": 37,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Bug of the Day.",
+      "script": "Bug of the Day. Main makes a plain Shape. The compiler says it cannot declare a variable of abstract type Shape. A pure function has no body, so an object could never call it. Build a derived class instead. A shape with no area has no meaning. The compiler blocks the object. Build a derived class that fills in every pure function. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY: BUILDING AN ABSTRACT CLASS",
+      "caption": "Bug of the Day: Building an abstract class.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#abstractclasses",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 65"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 39,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "An abstract class is like a promise. It says, I will do it, but not how.",
+      "script": "An abstract class is like a promise. It says, I will do it, but not how. Add a class Circle to the shapes program. Its area is three point one four times the radius squared. Write your answer in the comments. Equals zero makes a function pure virtual. A class with a pure virtual function is abstract. You cannot make an object of an abstract class. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#abstractclasses",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 65"
+    }
+  ]
+}
