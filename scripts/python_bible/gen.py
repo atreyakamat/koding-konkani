@@ -171,6 +171,8 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None) -> str:
         L.append(code_fence(p["src"]) + "\n")
         L.append("**Expected output:**\n")
         L.append(code_fence(pretty_run(p), "text") + "\n")
+    for lab, body in ep.get("ref", []):
+        L.append(f"**{lab} (reference only, not run in checks):**\n\n```text\n{body.rstrip(chr(10))}\n```\n")
     if has_mem:
         k = 1 if mem.get("from", "A") == "A" else 2
         p = progs[k - 1]
@@ -217,6 +219,8 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None) -> str:
         L.append(tr)
     L.append(label + "\n")
     L.append(code_fence(shown, "text") + "\n")
+    for fn, body in (bug.get("fixed_files") or {}).items():
+        L.append(f"**Fixed input file {fn}:**\n\n```text\n{body.rstrip(chr(10))}\n```\n")
     L.append(f"Fixed code ({bug['fixed_note']}):\n")
     L.append(code_fence(dd(bug["fixed"])) + "\n")
     L.append(f"**Why:** {bug['why']}\n")

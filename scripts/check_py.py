@@ -67,8 +67,8 @@ sys.stderr.write("@@TRACE" + json.dumps({"rec": {k: sorted(v) for k, v in rec.it
 '''
 
 
-def _env() -> dict[str, str]:
-    return {"PYTHONIOENCODING": "utf-8", "PYTHONHASHSEED": "0", "PYTHONUNBUFFERED": "1", "PYTHONWARNINGS": "ignore",
+def _env(extra: str = "") -> dict[str, str]:
+    return {"PYTHONPATH": extra, "PYTHONIOENCODING": "utf-8", "PYTHONHASHSEED": "0", "PYTHONUNBUFFERED": "1", "PYTHONWARNINGS": "ignore",
             "PATH": os.environ.get("PATH", "")}
 
 
@@ -91,7 +91,7 @@ def run(src: str, name: str, stdin: str = "", files: dict[str, str] | None = Non
         Path(d, name).write_text(src, encoding="utf-8")
         try:
             r = subprocess.run([sys.executable, "-s", "-P", name], cwd=d, input=stdin, capture_output=True,
-                               text=True, timeout=timeout, env=_env())
+                               text=True, timeout=timeout, env=_env(d if files else ""))
             return r.returncode, r.stdout, r.stderr, False
         except subprocess.TimeoutExpired as e:
             out = e.stdout.decode() if isinstance(e.stdout, bytes) else (e.stdout or "")
@@ -105,7 +105,7 @@ def trace(src: str, name: str, names: list[str], stdin: str = "",
         Path(d, name).write_text(src, encoding="utf-8")
         Path(d, "_tracer.py").write_text("import os\n" + TRACER, encoding="utf-8")
         r = subprocess.run([sys.executable, "-s", "-P", "_tracer.py", name, json.dumps(names)], cwd=d,
-                           input=stdin, capture_output=True, text=True, timeout=30, env=_env())
+                           input=stdin, capture_output=True, text=True, timeout=30, env=_env(d if files else ""))
         m = re.search(r"@@TRACE(.*)$", r.stderr, re.S)
         if not m:
             raise RuntimeError(f"trace failed for {name}: {r.stderr[-300:]}")
@@ -181,6 +181,7 @@ def spoken_variants(err: str) -> list[str]:
         "UnboundLocalError": ["unbound local"],
         "ModuleNotFoundError": ["module not found"],
         "FileNotFoundError": ["file not found"],
+        "JSONDecodeError": ["json decode error"],
     }
     return v + alias.get(err, [])
 
@@ -247,7 +248,7 @@ def check_episode(ep: str, title: str, body: str) -> list[str]:
     trimm = re.search(r"\*\*Trace trimmed:\*\* last (\d+) lines", bug)
     bl = blocks(bug)
     pys = [b for b in bl if b[1] == "python"]
-    outs = [b for b in bl if b[1] == "text" and not b[0].startswith(("**Input file", "**Typed input"))]
+    outs = [b for b in bl if b[1] == "text" and not b[0].startswith(("**Input file", "**Typed input", "**Fixed input file"))]
     bfiles, bstdin = parse_files(bug)
     name = progs[0]["name"] if progs else "main.py"
     bf_m = re.search(r"\*\*Bug file:\*\* (\S+)", bug)
@@ -268,7 +269,7 @@ def check_episode(ep: str, title: str, body: str) -> list[str]:
                     got = "\n".join(got.split("\n")[-int(trimm.group(1)):])
                 if got != want.rstrip("\n"):
                     errs.append(f"{tag}: traceback mismatch\n  expected: {want!r}\n  got:      {got!r}")
-                spoken_err = norm(err).split("\n")[-1].split(":")[0].strip()
+                spoken_err = norm(err).split("\n")[-1].split(":")[0].strip().split(".")[-1]
         elif kind == "output":
             if rc != 0 or norm(out) != want.rstrip("\n"):
                 errs.append(f"{tag}: bug output mismatch\n  expected: {want!r}\n  got:      {norm(out)!r}")
@@ -281,7 +282,12 @@ def check_episode(ep: str, title: str, body: str) -> list[str]:
                     errs.append(f"{tag}: hang output does not start with the shown lines")
         else:
             errs.append(f"{tag}: unknown bug kind {kind}")
-        rc, out, err, to = run(pys[1][2] + "\n", name, bstdin, bfiles)
+        ffiles = dict(bfiles)
+        for label, lang, fbody in blocks(bug):
+            m = re.match(r"\*\*Fixed input file (\S+?):\*\*", label)
+            if m:
+                ffiles[m.group(1)] = fbody + "\n"
+        rc, out, err, to = run(pys[1][2] + "\n", name, bstdin, ffiles)
         if rc != 0 or to:
             errs.append(f"{tag}: fixed code fails: {err[-200:]!r}")
 
