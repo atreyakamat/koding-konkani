@@ -182,7 +182,7 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None) -> str:
 
     L.append("### Bug of the Day\n")
     kind = bug.get("kind", "error")
-    L.append(f"**Bug kind:** {kind}\n")
+    L.append(f"**Bug kind:** {kind} · **Bug file:** {bug.get('file', A['file'])}\n")
     bname = bug.get("file", A["file"])
     wrong = dd(bug["wrong"])
     bfiles, bstdin = bug.get("files") or {}, bug.get("stdin", "")

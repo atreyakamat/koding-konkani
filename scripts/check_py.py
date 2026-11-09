@@ -68,7 +68,7 @@ sys.stderr.write("@@TRACE" + json.dumps({"rec": {k: sorted(v) for k, v in rec.it
 
 
 def _env() -> dict[str, str]:
-    return {"PYTHONIOENCODING": "utf-8", "PYTHONHASHSEED": "0", "PYTHONWARNINGS": "ignore",
+    return {"PYTHONIOENCODING": "utf-8", "PYTHONHASHSEED": "0", "PYTHONUNBUFFERED": "1", "PYTHONWARNINGS": "ignore",
             "PATH": os.environ.get("PATH", "")}
 
 
@@ -250,6 +250,9 @@ def check_episode(ep: str, title: str, body: str) -> list[str]:
     outs = [b for b in bl if b[1] == "text" and not b[0].startswith(("**Input file", "**Typed input"))]
     bfiles, bstdin = parse_files(bug)
     name = progs[0]["name"] if progs else "main.py"
+    bf_m = re.search(r"\*\*Bug file:\*\* (\S+)", bug)
+    if bf_m:
+        name = bf_m.group(1)
     spoken_err = ""
     if len(pys) != 2 or len(outs) != 1:
         errs.append(f"{tag}: Bug of the Day needs wrong code, one output, fixed code")
