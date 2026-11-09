@@ -74,6 +74,7 @@ def _env(extra: str = "") -> dict[str, str]:
 
 def _setup(d: str, files: dict[str, str]) -> None:
     for n, body in files.items():
+        Path(d, n).parent.mkdir(parents=True, exist_ok=True)
         Path(d, n).write_text(body, encoding="utf-8")
 
 
