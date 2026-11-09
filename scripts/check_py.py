@@ -126,6 +126,7 @@ def mem_block(src: str, name: str, names: list[str], stdin: str = "",
         if n not in t:
             raise RuntimeError(f"memory name {n!r} not found in {name}")
         rep, typ, oid = t[n]
+        rep = re.sub(r"<(?:__main__\.)?(\w+) object at 0x[0-9a-f]+>", r"<\1 object>", rep)
         if oid in seen and typ not in IMMUTABLE:
             groups[seen[oid]][0].append(n)
         else:
