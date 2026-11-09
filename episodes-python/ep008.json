@@ -1,0 +1,342 @@
+{
+  "ep": 8,
+  "title": "Input from the user",
+  "module": 1,
+  "lengthSec": 302,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "read text typed by the user with input()",
+    "use the answer in a later line",
+    "know that input always gives a string"
+  ],
+  "youtube": {
+    "title": "Python input(): Ask the User a Question | Python Programming EP 08",
+    "description": "In this episode you will read text typed by the user with input(), use the answer in a later line and know that input always gives a string, with Xecxec the crab. 0:00 Intro · 0:15 Asking questions · 0:55 Ask two questions · 1:35 Typed text becomes a string · 2:05 Second program · 3:05 Recap · 3:39 Bug of the Day · 4:27 Challenge · 4:47 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Asking questions"
+      },
+      {
+        "t": "0:55",
+        "label": "Ask two questions"
+      },
+      {
+        "t": "1:35",
+        "label": "Typed text becomes a string"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:39",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:27",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:47",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python input",
+      "user input python",
+      "input function",
+      "string concatenation"
+    ],
+    "thumbnail": {
+      "text": "ASK THE USER",
+      "visual": "big text \"ASK THE USER\" in tomato on peach; Xecxec holding a speech bubble that says Your name? beside a blinking cursor; thin black border and drop shadow.",
+      "pose": "Xecxec holding a speech bubble that says Your name? beside a blinking cursor"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 08 · ASK THE USER",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "So far our programs talk, but they never listen. Today your program asks a question and waits for an answer."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"Asking questions\": three numbered lines (1. input() shows a question and waits; 2. The answer comes back as a string; 3. Save the answer in a name) and an analogy card: a beach-shack order pad: the waiter asks, you answer, and the answer is written down as text",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The input function shows a question on the screen, then waits. You type an answer and press Enter. Python hands the answer back. Think of a waiter at a beach shack. The waiter asks a question and writes your answer on a pad. Your answer comes back as text, always. Even if you type a number, it arrives as a string. Save it in a name, and it is yours to use."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "ask.py: two questions, two answers, two replies",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The input function shows the question in brackets, and waits. Whatever you type is tied to the name called name. [HL 2] A second question, and a second name. [HL 3] We greet the person by name. [HL 4] And print both answers in one line. The program now feels like a conversation."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 95,
+      "lengthSec": 30,
+      "onScreen": "Two tags, word and its answer, tied to a string object",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is what input gives back. Whatever the user types, the answer is a string object. The name word is tied to the string crab. If the user types a number, it is still a string of digits. Remember this. It causes the bug of the day."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "double.py: repeat the typed word and count its characters",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK word=crab] We ask for a word. The user types crab. [HL 2] A string times two repeats the text. So we get crabcrab. [HL 3] The len function counts the characters, four. Here is the key point. Anything you type with input is text. Even when you type a number."
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python double.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as double dot py. In the terminal, type python, space, double dot py. You type crab and press Enter. It prints crabcrab, then four."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 185,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: input shows a question and waits for the user. Two: The answer comes back as a string, always. Three: Save the answer in a name so you can use it later. Four: A number typed by the user is still text until you convert it. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 219,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: five plus three is fifty three",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The user types five, then three. Our program prints fifty three, not eight. Why? Input gives strings. Plus joins strings. So the text five and the text three are joined. Wrap each answer in int, and Python adds the numbers. We look at int in four episodes."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 259,
+      "lengthSec": 8,
+      "onScreen": "Why did the program wait so patiently? It had too much input.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the program wait so patiently? It had too much input."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 267,
+      "lengthSec": 20,
+      "onScreen": "Task card: ask for a name and a number, then print both",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Ask the user for their city and their favourite number, then print both in one sentence. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 287,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 09 · Operators",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: operators. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "a = input(\"First: \")\nb = input(\"Second: \")\nprint(a + b)",
+    "error": "5\n3\n\nPython output (it runs, but the answer is wrong):\n\nFirst: Second: 53",
+    "fixed": "a = input(\"First: \")\nb = input(\"Second: \")\nprint(int(a) + int(b))",
+    "why": "input always returns a string, and plus joins strings, so the digits are joined instead of added; int() turns them into numbers first."
+  },
+  "pun": "\"Why did the program wait so patiently? It had too much input.\"",
+  "challenge": "Ask the user for their city and their favourite number, then print both in one sentence.",
+  "challengeAnswer": "Use city = input(\"City? \") and number = input(\"Number? \"), then print(city, \"and\", number). Input stays as text, which is fine for printing.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Make your program listen",
+      "hook": "\"Until now your program only talked.\"",
+      "script": "Until now your program only talked. The input function lets it listen. It shows a question on the screen, then waits. You type an answer and press Enter. Python gives the answer back, and you save it in a name. Name equals input, open bracket, your question in quotes, close bracket. That is how every quiz and every form begins. Keep coding, says Xecxec!",
+      "onScreen": "INPUT(\"QUESTION\")",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Make your program listen.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "input",
+        "userinput",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Input is always text",
+      "hook": "\"Here is the surprise about input.\"",
+      "script": "Here is the surprise about input. Whatever the user types comes back as a string. Even if they type a number, you get the characters of that number, as text. Type four two, and you get the string four two, not the number. So you cannot do maths with it yet. First convert it. You learn how very soon. Keep coding, says Xecxec!",
+      "onScreen": "INPUT ALWAYS GIVES TEXT",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Typed numbers are text.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "input",
+        "userinput",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Use the answer",
+      "hook": "\"Look at this program.\"",
+      "script": "Look at this program. Name equals input, your name question. Then print, hello, comma, name. The answer from the user is tied to a name, so you can use it anywhere below. Ask once, use many times. You can even ask two questions, save both answers, and print them in one sentence. Try it with your own name. Keep coding, says Xecxec!",
+      "onScreen": "NAME = INPUT(...)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Ask once, use many times.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "input",
+        "userinput",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Five plus three is fifty three",
+      "hook": "\"A famous beginner bug.\"",
+      "script": "A famous beginner bug. The user types five and three, and your program prints fifty three. Why? Input gives strings, and plus joins strings. So the text five and the text three are joined into fifty three. The fix is to wrap each answer in int, so Python adds numbers instead. Always convert before you do maths. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "\"5\" + \"3\" = \"53\"",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Input gives strings.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "input",
+        "userinput",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the program wait so patiently?\"",
+      "script": "Why did the program wait so patiently? It had too much input. Your challenge. Ask the user for their city and for their favourite number. Then print both in one sentence, like, I love city and number. Do not worry about maths today, because we are only printing. Post your answer in the comments below. Keep coding, says Xecxec! Full video: EP 08.",
+      "onScreen": "ASK TWO QUESTIONS",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Try two questions.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "input",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "name = input(\"Your name? \")\nbeach = input(\"Favourite beach? \")\nprint(\"Hello,\", name)\nprint(name, \"loves\", beach)",
+      "output": "Your name? Favourite beach? Hello, Asha\nAsha loves Palolem",
+      "lang": "python"
+    },
+    {
+      "file": "file2.python",
+      "source": "word = input(\"Word? \")\nprint(word * 2)\nprint(len(word))",
+      "output": "Word? crabcrab\n4",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

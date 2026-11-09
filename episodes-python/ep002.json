@@ -1,0 +1,342 @@
+{
+  "ep": 2,
+  "title": "Installing Python and running scripts",
+  "module": 0,
+  "lengthSec": 319,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "install Python and check it with python --version",
+    "tell the REPL from a script file",
+    "run a script with python file.py"
+  ],
+  "youtube": {
+    "title": "Install Python and Run Your First Script | Python Programming EP 02",
+    "description": "Set up Python and VS Code on Windows, Mac or Linux, then run scripts with Xecxec. 0:00 Intro · 0:20 What you need · 1:00 Install and check · 1:40 REPL versus script · 2:15 A script with numbers · 2:55 Run it · 3:15 Recap · 3:55 Bug of the Day · 4:44 Challenge · 5:04 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:20",
+        "label": "What you need"
+      },
+      {
+        "t": "1:00",
+        "label": "Install and check"
+      },
+      {
+        "t": "1:40",
+        "label": "REPL versus script"
+      },
+      {
+        "t": "2:15",
+        "label": "A script with numbers"
+      },
+      {
+        "t": "2:55",
+        "label": "Run it"
+      },
+      {
+        "t": "3:15",
+        "label": "Recap"
+      },
+      {
+        "t": "3:55",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:44",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:04",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "install python",
+      "python setup",
+      "vs code python",
+      "run python script",
+      "python for beginners",
+      "koding konkani",
+      "python tutorial",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python"
+    ],
+    "thumbnail": {
+      "text": "SET UP PYTHON",
+      "visual": "big text \"SET UP PYTHON\" in tomato on peach; Xecxec raising both claws beside a terminal showing `python --version`; thin black border and drop shadow.",
+      "pose": "Xecxec raising both claws beside a terminal showing `python --version`"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "EP 02 · SET UP PYTHON",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Welcome back! Last time we ran one program. Today we set up your computer so you can run your own. It takes about ten minutes, and you only do it once."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "\"What you need\": three numbered lines and a kitchen analogy card",
+      "animation": "Lines spring in one by one with a pop; the kitchen card slides in with a chopping board, a stove and a chef",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "You need three things. Python itself. An editor, where you type, like VS Code. And a terminal, where you give commands. Think of a kitchen. Python is the stove, the editor is the chopping board, and the terminal is you, giving the orders. Do not worry if the names sound strange. By the end of today, you have typed every one of these commands yourself."
+    },
+    {
+      "id": 3,
+      "template": "concept-slide",
+      "startSec": 60,
+      "lengthSec": 40,
+      "onScreen": "Install steps for Windows, Mac and Linux, shown as three tabs",
+      "animation": "Three tabs (Windows, Mac, Linux) switch with a pop; the active steps tick in one by one",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Go to python dot org, open Downloads, and install the latest version. On Windows, tick the box that says, add Python to PATH. On a Mac, run the installer. On Linux, Python is usually already there. Then open a terminal and type python, space, dash dash version. If a number appears, you are ready. On some Macs and Linux machines, the command is python three."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 100,
+      "lengthSec": 35,
+      "onScreen": "Two boxes: the REPL, one line and an answer at once; a script, many lines in a saved .py file",
+      "animation": "Two boxes pop in side by side; in the left box a line types and its answer appears at once; in the right box a saved file runs top to bottom",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Python has two ways to run code. In the REPL, you type one line and get the answer at once. It is great for tiny tests. In a script, you save many lines in a file that ends in dot py, and run the whole file. We mostly use scripts. You can keep them, fix them, and run them again."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 135,
+      "lengthSec": 40,
+      "onScreen": "fish.py: two names, a label and a total",
+      "animation": "Same code; the output panel fills line by line with a ding per output line; [TRACK] cards update",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK fish=3] Make a name called fish, and put three in it. [HL 2] [TRACK price=120] A name called price, one hundred twenty. [HL 3] Print a label, then the value. Print puts a space between the things for you. [HL 4] And Python does the maths: fish times price. Three times one hundred twenty is three hundred sixty.",
+      "code": {
+        "file": "fish.py",
+        "source": "fish = 3\nprice = 120\nprint(\"Fish:\", fish)\nprint(\"Total:\", fish * price)",
+        "output": "Fish: 3\nTotal: 360"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 175,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python fish.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as fish dot py. In the terminal, type python, space, fish dot py. Fish, three. Total, three hundred sixty. Always check that you are in the same folder as the file."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 195,
+      "lengthSec": 40,
+      "onScreen": "Recap: four steps on one card",
+      "animation": "Four recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Recap time. One: you need Python, an editor and a terminal. Two: check Python with python, dash dash version. Three: save your code in a file that ends in dot py. Four: run it with python, a space, and the file name. If any step fails, do not panic. Read the message, check the spelling, and try again. Every programmer does this, every single day."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 235,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: print with a capital P",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We wrote print with a capital P. Python says, name error, Print is not defined. And it even asks, did you mean print, with a small p? Python is case sensitive. Capital P and small p are different names. Fix the letter, and it works."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 275,
+      "lengthSec": 9,
+      "onScreen": "Why did the snake get lost in the folder? It kept running the wrong dot py.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the snake get lost in the folder? It kept running the wrong dot py."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 284,
+      "lengthSec": 20,
+      "onScreen": "Task card: install, check the version, run fish.py, change the price",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: install Python, check the version, and run fish dot py. Then change the price and run it again."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 304,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 03 · How Python reads your code",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next: how Python reads your code. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "fish = 3\nPrint(\"Fish:\", fish)",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"fish.py\", line 2, in <module>\n    Print(\"Fish:\", fish)\n    ^^^^^\nNameError: name 'Print' is not defined. Did you mean: 'print'?",
+    "fixed": "fish = 3\nprint(\"Fish:\", fish)",
+    "why": "Python treats upper and lower case as different letters, so Print and print are two different names."
+  },
+  "pun": "\"Why did the snake get lost in the folder? It kept running the wrong .py.\"",
+  "challenge": "Install Python, check the version, run fish.py, then change the price and run it again.",
+  "challengeAnswer": "Change price = 120 to price = 150 and run again: the total becomes 450.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you need for Python",
+      "hook": "\"Three tools, ten minutes.\"",
+      "script": "Three tools, ten minutes. To write Python you need Python itself, an editor like VS Code, and a terminal. Think of a kitchen. Python is the stove, the editor is the chopping board, and the terminal is you, giving the orders. You only set this up once. After that, you can run your own programs whenever you like. Keep coding, says Xecxec!",
+      "onScreen": "3 TOOLS FOR PYTHON",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "Set up Python in three steps.",
+      "hashtags": [
+        "python",
+        "setup",
+        "beginners",
+        "kodingkonkani",
+        "goa"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Check your install",
+      "hook": "\"Is Python really installed?\"",
+      "script": "Is Python really installed? Open a terminal and type python, space, dash dash version. If a number appears, you are ready to go. On some Macs and Linux machines, the command is python three instead. On Windows, remember to tick the box that says, add Python to PATH, when you install. One quick command tells you everything. Keep coding, says Xecxec!",
+      "onScreen": "PYTHON --VERSION",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "One command to check.",
+      "hashtags": [
+        "python",
+        "terminal",
+        "setup",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "REPL versus script",
+      "hook": "\"Two ways to run Python.\"",
+      "script": "Two ways to run Python. The REPL runs one line at a time, and shows the answer at once, which is great for tiny tests. A script is a saved file that ends in dot py, and it runs from top to bottom. Use the REPL to experiment, and use scripts for real programs you want to keep. Keep coding, says Xecxec!",
+      "onScreen": "REPL OR SCRIPT?",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 35,
+      "caption": "REPL or script?",
+      "hashtags": [
+        "python",
+        "repl",
+        "script",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Print is not defined",
+      "hook": "\"One capital letter breaks everything.\"",
+      "script": "One capital letter breaks everything. Write Print with a capital P, and Python says, name error, Print is not defined. It even asks, did you mean print with a small p? Python is case sensitive, so capital and small letters are different names. The fix is just one letter. Read the hint at the bottom of the error. Keep coding, says Xecxec!",
+      "onScreen": "NAMEERROR: PRINT IS NOT DEFINED",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Python is case sensitive.",
+      "hashtags": [
+        "python",
+        "bugfix",
+        "nameerror",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"A snake lost in a folder.\"",
+      "script": "A snake lost in a folder. Why? It kept running the wrong dot py. Now your challenge. Install Python, and check the version. Then run fish dot py from the same folder, and read the output. Change the price to one hundred fifty, and run it again. What total do you get? Tell us in the comments. Keep coding, says Xecxec! Full video: EP 02.",
+      "onScreen": "RUN FISH.PY + CHANGE THE PRICE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Do the challenge.",
+      "hashtags": [
+        "python",
+        "codingchallenge",
+        "kodingkonkani",
+        "programmingjokes",
+        "goa"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "fish.py",
+      "source": "fish = 3\nprice = 120\nprint(\"Fish:\", fish)\nprint(\"Total:\", fish * price)",
+      "output": "Fish: 3\nTotal: 360",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

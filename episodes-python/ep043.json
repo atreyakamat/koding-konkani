@@ -1,0 +1,350 @@
+{
+  "ep": 43,
+  "title": "Default and keyword arguments",
+  "module": 5,
+  "lengthSec": 300,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "give a parameter a default value",
+    "pass arguments by keyword",
+    "avoid mutable default arguments"
+  ],
+  "youtube": {
+    "title": "Python Default and Keyword Arguments | Python Programming EP 43",
+    "description": "In this episode you will give a parameter a default value, pass arguments by keyword and avoid mutable default arguments, with Xecxec the crab. 0:00 Intro · 0:15 Optional and named · 0:55 Defaults and keywords · 1:35 Which value wins? · 2:06 Second program · 3:06 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Optional and named"
+      },
+      {
+        "t": "0:55",
+        "label": "Defaults and keywords"
+      },
+      {
+        "t": "1:35",
+        "label": "Which value wins?"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:37",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python default arguments",
+      "python keyword arguments",
+      "mutable default argument",
+      "python function defaults"
+    ],
+    "thumbnail": {
+      "text": "DEFAULTS",
+      "visual": "big text \"DEFAULTS\" in tomato on peach; Xecxec holding a coffee order card with a pre-ticked box labelled default; thin black border and drop shadow.",
+      "pose": "Xecxec holding a coffee order card with a pre-ticked box labelled default"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 43 · DEFAULTS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Some inputs are almost always the same. Today we give parameters default values, and name arguments in calls."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"Optional and named\": three numbered lines (1. name=value in the def gives a default; 2. Callers can leave the argument out; 3. Keyword arguments name the parameter in the call) and an analogy card: a tea stall order: tea comes with sugar by default, unless you say 'no sugar'",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A default value goes in the def line. Greeting equals Hello. If the caller leaves that argument out, the default is used. Think of a tea stall. Tea comes with sugar by default, unless you say, no sugar. You can also pass arguments by name. Greeting equals Hi. Then the order does not matter, and the call explains itself. Be careful with one thing. Never use a list as a default."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "defaults.py: a greeting with a default word",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Two parameters. The second has a default, Hello. [HL 2] Join the greeting and the name. [HL 3] Only the name is passed, so the default greeting is used. Hello, Asha. [HL 4] Two values by position. Namaste replaces the default. [HL 5] Keyword arguments. We name each one, so the order does not matter. Hi, Maya.",
+      "code": {
+        "file": "defaults.py",
+        "source": "def greet(name, greeting=\"Hello\"):\n    return greeting + \", \" + name\nprint(greet(\"Asha\"))\nprint(greet(\"Ravi\", \"Namaste\"))\nprint(greet(greeting=\"Hi\", name=\"Maya\"))",
+        "output": "Hello, Asha\nNamaste, Ravi\nHi, Maya"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 31,
+      "onScreen": "Three calls side by side; the default is crossed out when a value is passed",
+      "animation": "Three call cards; the default value glows when used and fades when replaced",
+      "sfx": [],
+      "narration": "Here is the rule. If the caller gives a value, that value wins. If not, the default is used. Parameters with defaults must come after the ones without. In the call, positional arguments come first, then keyword ones. Keyword arguments make long calls much easier to read, because every value carries its own label."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "power.py: power defaults to squaring",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Exp defaults to two. [HL 2] Return base to the power exp. [HL 3] One value, so exp is two. Five squared is twenty five. [HL 4] Two values. Two to the power ten is one thousand twenty four. [HL 5] By keyword, in any order. Two cubed is eight.",
+      "code": {
+        "file": "power.py",
+        "source": "def power(base, exp=2):\n    return base ** exp\nprint(power(5))\nprint(power(2, 10))\nprint(power(exp=3, base=2))",
+        "output": "25\n1024\n8"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python power.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as power dot py. In the terminal, type python, space, power dot py. Twenty five, then one thousand twenty four, then eight."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: name equals value in the def line sets a default. Two: Callers can omit an argument that has a default. Three: Keyword arguments carry their own labels. Four: Never use a list or dictionary as a default value. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 217,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a list as a default",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We add fish, then rice, to two separate baskets. But the second basket also holds fish. The default list was made only once, when the def ran. Every call shares it. Use None as the default instead. Inside, if basket is None, make a brand new list, and each call gets its own."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 257,
+      "lengthSec": 8,
+      "onScreen": "Why did the parameter relax? It already had a default plan.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the parameter relax? It already had a default plan."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 265,
+      "lengthSec": 20,
+      "onScreen": "Task card: a greeting with a default",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write welcome of name, place equals Goa that returns a welcome message, and call it with and without place. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 285,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 44 · *args and **kwargs",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: args and kwargs. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def add_item(item, basket=[]):\n    basket.append(item)\n    return basket\nprint(add_item(\"fish\"))\nprint(add_item(\"rice\"))",
+    "error": "Python output (it runs, but the answer is wrong):\n\n['fish']\n['fish', 'rice']",
+    "fixed": "def add_item(item, basket=None):\n    if basket is None:\n        basket = []\n    basket.append(item)\n    return basket\nprint(add_item(\"fish\"))\nprint(add_item(\"rice\"))",
+    "why": "A default value is created once, when the def runs, so every call shares the same list; use None and make a fresh list inside."
+  },
+  "pun": "\"Why did the parameter relax? It already had a default plan.\"",
+  "challenge": "Write welcome(name, place=\"Goa\") that returns a welcome message, and call it with and without place.",
+  "challengeAnswer": "Use def welcome(name, place=\"Goa\"): return \"Welcome \" + name + \" to \" + place, then call welcome(\"Asha\") and welcome(\"Ravi\", \"Pune\").",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Default values",
+      "hook": "\"A default value goes in the def line.\"",
+      "script": "A default value goes in the def line. Greeting equals Hello. If the caller leaves that argument out, Python uses the default. Think of a tea stall, where tea comes with sugar unless you ask for none. Defaults make functions flexible. They keep simple calls short, and still allow special cases. Parameters with defaults must come after the ones without. Keep coding, says Xecxec!",
+      "onScreen": "GREETING=\"HELLO\"",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Optional arguments.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "defaults",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Keyword arguments",
+      "hook": "\"In a call, you can name each argument.\"",
+      "script": "In a call, you can name each argument. Greet, greeting equals Hi, name equals Maya. Because each value carries its label, the order does not matter. Keyword arguments make long calls much easier to read. Anyone looking at the line can see what each value means, without checking the def. Use them when a call has several values. Keep coding, says Xecxec!",
+      "onScreen": "GREET(NAME=\"MAYA\")",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "Name your arguments.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "defaults",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Which value wins",
+      "hook": "\"The rule is simple.\"",
+      "script": "The rule is simple. If the caller passes a value, that value wins. If not, the default is used. Power of five gives five squared, because the default exponent is two. Power of two, ten, uses the ten instead. One function can serve many cases, and the call shows exactly which one you want. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "POWER(5) · POWER(2, 10)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Caller first.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "defaults",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The shared basket",
+      "hook": "\"The most famous Python trap.\"",
+      "script": "The most famous Python trap. A list as a default value. The list is made once, when the def runs, so every call shares it. Add fish, then add rice, and the second basket also holds fish. Use None as the default. Inside, if it is None, make a fresh list. Then each call gets its own. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "BASKET=[] IS SHARED",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Use None.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "defaults",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the parameter relax?\"",
+      "script": "Why did the parameter relax? It already had a default plan. Your challenge. Write a function called welcome, with a name, and a place that defaults to Goa. It should return a welcome message. Call it once with only a name, and once with a name and a place. Check both messages. Post your function in the comments below. Keep coding, says Xecxec! Full video: EP 43.",
+      "onScreen": "WELCOME(NAME, PLACE)",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try defaults.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "defaults.py",
+      "source": "def greet(name, greeting=\"Hello\"):\n    return greeting + \", \" + name\nprint(greet(\"Asha\"))\nprint(greet(\"Ravi\", \"Namaste\"))\nprint(greet(greeting=\"Hi\", name=\"Maya\"))",
+      "output": "Hello, Asha\nNamaste, Ravi\nHi, Maya",
+      "lang": "python"
+    },
+    {
+      "file": "power.py",
+      "source": "def power(base, exp=2):\n    return base ** exp\nprint(power(5))\nprint(power(2, 10))\nprint(power(exp=3, base=2))",
+      "output": "25\n1024\n8",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

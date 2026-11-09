@@ -33,6 +33,11 @@ BIBLE_DIR = ROOT / "docs" / "bible"
 EPISODES_DIR = ROOT / "episodes"
 SFX_DIR = ROOT / "audio" / "sfx"
 
+# Course language. "c" is the default; `--lang python` switches the parser to the Python Bible
+# (docs/python-bible -> episodes-python). Code fences in these languages count as program code.
+DEFAULT_LANG = "c"
+CODE_LANGS: tuple[str, ...] = ("c", "cpp", "")
+
 EM_DASH = "\u2014"
 EN_DASH = "\u2013"
 MID_DOT = "\u00b7"
@@ -491,10 +496,10 @@ def parse_code_shown(section_text: str, ep: str, warnings: Warnings) -> list[Cod
             continue
 
         lang, content = fence_content(raw)
-        if lang in ("c", "cpp", ""):
+        if lang in CODE_LANGS:
             unlabeled_index += 1
-            name = pending_name or f"file{unlabeled_index}.{lang or 'c'}"
-            current = CodeFile(file=name, source=content, stdin=pending_stdin, lang=lang or "c")
+            name = pending_name or f"file{unlabeled_index}.{lang or DEFAULT_LANG}"
+            current = CodeFile(file=name, source=content, stdin=pending_stdin, lang=lang or DEFAULT_LANG)
             files.append(current)
             pending_name = None
             pending_stdin = None
@@ -576,7 +581,7 @@ def parse_bug(section_text: str, ep: str, warnings: Warnings) -> Bug | None:
     why_was_labelled = bool(why)
 
     wrong: str | None = None
-    wrong_lang = "c"
+    wrong_lang = DEFAULT_LANG
     error_parts: list[str] = []
     fixed: str | None = None
     fixed_output: str | None = None
@@ -607,7 +612,7 @@ def parse_bug(section_text: str, ep: str, warnings: Warnings) -> Bug | None:
             continue
 
         lang, content = fence_content(raw)
-        if lang in ("c", "cpp"):
+        if lang in CODE_LANGS:
             if wrong is None:
                 wrong = content
                 wrong_lang = lang
@@ -654,8 +659,8 @@ def parse_bug(section_text: str, ep: str, warnings: Warnings) -> Bug | None:
     if not seen_fixed_marker:
         warnings.add(ep, "Bug of the Day: no 'Fixed' marker text found before the fixed block")
 
-    fixed_has_full_program = ("#include" in fixed) or ("int main" in fixed) or (wrong_lang != "c")
-    if wrong_lang == "c" and fixed and not fixed_has_full_program:
+    fixed_has_full_program = ("#include" in fixed) or ("int main" in fixed) or (wrong_lang != DEFAULT_LANG)
+    if wrong_lang == DEFAULT_LANG and DEFAULT_LANG == "c" and fixed and not fixed_has_full_program:
         warnings.add(
             ep,
             "Bug of the Day: fixed block looks like a snippet, not a full program "
@@ -696,7 +701,7 @@ def parse_pun_challenge(section_text: str, ep: str, warnings: Warnings) -> dict:
         for is_code, raw in chunks:
             if is_code:
                 lang, content = fence_content(raw)
-                if lang in ("c", "cpp"):
+                if lang in CODE_LANGS:
                     answer = f"(worked example)\n{content}"
                     warnings.add(ep, "Challenge answer is a code example, not a sentence; captured verbatim")
                     break
@@ -914,7 +919,11 @@ def colours_text_to_names(colours_text: str) -> tuple[str, str] | None:
         if not words:
             return None
         key = words[0].lower() + "".join(w.capitalize() for w in words[1:])
-        return key if key in THEME_PALETTE_HEX else None
+        if key in THEME_PALETTE_HEX:
+            return key
+        # Accept "PastelBlue" / "DarkBlue" (CamelCase without spaces) too.
+        folded = {k.lower(): k for k in THEME_PALETTE_HEX}
+        return folded.get(name.replace(" ", "").lower())
 
     bg, accent = to_key(parts[0]), to_key(parts[1])
     if bg is None or accent is None:
@@ -1033,7 +1042,7 @@ def assemble_episode(raw: RawEpisode, warnings: Warnings) -> dict | None:
             for c in code_files
         ],
         "bugExtra": {
-            "wrongLang": bug.wrong_lang if bug else "c",
+            "wrongLang": bug.wrong_lang if bug else DEFAULT_LANG,
             "fixedHasFullProgram": bug.fixed_has_full_program if bug else True,
             **({"fixedOutput": bug.fixed_output} if bug and bug.fixed_output else {}),
         },
@@ -1044,7 +1053,20 @@ def assemble_episode(raw: RawEpisode, warnings: Warnings) -> dict | None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--report", default=str(ROOT / "out" / "bible-to-json-report.md"))
+    parser.add_argument("--lang", choices=["c", "python"], default="c")
+    parser.add_argument("--bible-dir", default=None, help="default docs/bible (docs/python-bible for --lang python)")
+    parser.add_argument("--out-dir", default=None, help="default episodes (episodes-python for --lang python)")
     args = parser.parse_args()
+
+    global BIBLE_DIR, EPISODES_DIR, DEFAULT_LANG, CODE_LANGS
+    if args.lang == "python":
+        DEFAULT_LANG, CODE_LANGS = "python", ("python", "py", "")
+        BIBLE_DIR = ROOT / "docs" / "python-bible"
+        EPISODES_DIR = ROOT / "episodes-python"
+    if args.bible_dir:
+        BIBLE_DIR = Path(args.bible_dir)
+    if args.out_dir:
+        EPISODES_DIR = Path(args.out_dir)
 
     warnings = Warnings()
     EPISODES_DIR.mkdir(parents=True, exist_ok=True)

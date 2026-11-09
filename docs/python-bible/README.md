@@ -24,3 +24,10 @@ Source of truth: this repo (`docs/python-bible/mNN.md`, generated from `scripts/
 - Writing style: Simplified Technical English subset. Rules and commands: [STE.md](STE.md). Linter: `scripts/ste_lint.py`.
 - Drawn explanations are structured data: [ILLUSTRATIONS.md](ILLUSTRATIONS.md). Files: `illustrations/epNNN.json`. Validator: `scripts/check_illustrations.py`.
 - Run all three checks before every render: `check_py.py docs/python-bible/m*.md`, `ste_lint.py docs/python-bible/m*.md`, `check_illustrations.py`.
+
+## Build chain for the Remotion run
+
+1. `python3 scripts/bible_to_json.py --lang python` writes `episodes-python/epNNN.json` (90 files, 0 warnings). Each file has scenes, narration cues, code files, bug, pun, challenge, 5 Shorts, and the `youtube` block (title, description, chapters, tags, thumbnail text and art).
+2. Illustration specs for drawn scenes are in `illustrations/epNNN.json` (see ILLUSTRATIONS.md).
+3. `python3 scripts/publish_pack.py` writes copy-ready upload sheets to `publish/mNN.md`: title, description, tags, thumbnail text, and caption and hashtags for every Short.
+4. After voice generation, recompute chapters from the final audio, then upload by hand. Nothing in this repo uploads or publishes.

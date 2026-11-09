@@ -1,0 +1,345 @@
+{
+  "ep": 56,
+  "title": "Modules and import",
+  "module": 6,
+  "lengthSec": 303,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "import a module and use its names",
+    "import a single name with from",
+    "import your own file as a module"
+  ],
+  "youtube": {
+    "title": "Python Modules and import Explained | Python Programming EP 56",
+    "description": "In this episode you will import a module and use its names, import a single name with from and import your own file as a module, with Xecxec the crab. 0:00 Intro · 0:15 Borrowing code · 1:00 Import in action · 1:40 Where import looks · 2:10 Second program · 3:10 Recap · 3:40 Bug of the Day · 4:28 Challenge · 4:48 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Borrowing code"
+      },
+      {
+        "t": "1:00",
+        "label": "Import in action"
+      },
+      {
+        "t": "1:40",
+        "label": "Where import looks"
+      },
+      {
+        "t": "2:10",
+        "label": "Second program"
+      },
+      {
+        "t": "3:10",
+        "label": "Recap"
+      },
+      {
+        "t": "3:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:28",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:48",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python import",
+      "python modules",
+      "python from import",
+      "modulenotfounderror"
+    ],
+    "thumbnail": {
+      "text": "IMPORT A TOOL",
+      "visual": "big text \"IMPORT A TOOL\" in tomato on peach; Xecxec opening a toolbox labelled math and pulling out a calculator; thin black border and drop shadow.",
+      "pose": "Xecxec opening a toolbox labelled math and pulling out a calculator"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 56 · IMPORT A TOOL",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Nobody writes everything from scratch. Today we learn to borrow code, from Python and from our own files."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 45,
+      "onScreen": "\"Borrowing code\": three numbered lines (1. import module makes its names available as module.name; 2. from module import name brings one name in directly; 3. Every .py file is a module) and an analogy card: a toolbox in a garage: you fetch the box you need, and use the tools inside",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A module is a file of ready-made code. Import brings it in. After import math, you write math, a dot, and the name you want. From math import floor brings floor in directly, with no prefix. Python ships with hundreds of modules, called the standard library. Think of a toolbox in a garage. You fetch the box you need, and use the tools inside. Any dot py file you write is also a module, if it sits in the same folder."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 40,
+      "onScreen": "usemod.py: import your own module, and two standard ones",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Import our own file, shacktools dot py, from the same folder. [HL 2] Use its function with the module name and a dot. [HL 3] Import the math module from the standard library. [HL 4] Square root of sixteen is four point zero. [HL 5] From, the module, import, a name. Now label works without the prefix. [HL 6] Colva in brackets. [HL 7] And pi, with every digit a float can hold."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 100,
+      "lengthSec": 30,
+      "onScreen": "A search path: the current folder first, then the standard library, then installed packages",
+      "animation": "A path of three boxes lights up in order; a matching box stops the search",
+      "sfx": [],
+      "narration": "Here is where Python looks. First, the folder of your script. Then the standard library. Then the packages you installed. The first match wins. So never name your own file the same as a standard module, like random or math. Your file hides the real one. Then strange errors follow."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 130,
+      "lengthSec": 40,
+      "onScreen": "alias.py: import with as, and from with several names",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Import math, and give it the short name m. [HL 2] From math, import floor and ceil, two names at once. [HL 3] Use the alias. Floor of two point seven is two. [HL 4] Use the names directly. Floor gives two, ceil of two point one gives three. Aliases save typing, and from imports save more. Use whichever keeps your code clear.",
+      "code": {
+        "file": "alias.py",
+        "source": "import math as m\nfrom math import floor, ceil\nprint(m.floor(2.7))\nprint(floor(2.7), ceil(2.1))",
+        "output": "2\n2 3"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 170,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python alias.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as alias dot py. In the terminal, type python, space, alias dot py. Two, then two three."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 190,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: import module gives you module dot name. Two: from module import name gives you name directly. Three: as gives a module a shorter name. Four: Your own dot py file is a module too. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a module that does not exist",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We import maths, with an s. There is no such module. Python says, module not found error, no module named maths. Check the spelling of the module name. The error shows exactly what it looked for. Fix the name, and the import works."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 8,
+      "onScreen": "Why did the programmer love imports? Someone else had already done the hard work.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the programmer love imports? Someone else had already done the hard work."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 268,
+      "lengthSec": 20,
+      "onScreen": "Task card: use math for a circle area",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Import math and print the area of a circle of radius 3, rounded to 2 decimals. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 288,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 57 · Writing your own module",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: writing your own module. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "import maths\nprint(maths.sqrt(16))",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"usemod.py\", line 1, in <module>\n    import maths\nModuleNotFoundError: No module named 'maths'",
+    "fixed": "import math\nprint(math.sqrt(16))",
+    "why": "Python can only import a module it can find; a misspelled name is not found, so Python raises ModuleNotFoundError."
+  },
+  "pun": "\"Why did the programmer love imports? Someone else had already done the hard work.\"",
+  "challenge": "Import math and print the area of a circle of radius 3, rounded to 2 decimals.",
+  "challengeAnswer": "Use import math and print(round(math.pi * 3 ** 2, 2)), which prints 28.27.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a module?",
+      "hook": "\"A module is a file of ready-made code.\"",
+      "script": "A module is a file of ready-made code. Import brings it in. After import math, you write math dot sqrt, and Python finds the square root tool inside. Python ships with hundreds of modules, called the standard library. Think of a toolbox in a garage. You fetch the box you need, and use the tools inside, without building them yourself. Keep coding, says Xecxec!",
+      "onScreen": "IMPORT MATH",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Borrow ready-made code.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "import",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "From import",
+      "hook": "\"Sometimes you want just one tool from a module.\"",
+      "script": "Sometimes you want just one tool from a module. From math import floor. Now you can write floor directly, with no math prefix. You can import several names at once, separated by commas. It makes code shorter, but the prefix form tells readers where a name came from. Use from imports for a few well-known names, and the prefix form otherwise. Keep coding, says Xecxec!",
+      "onScreen": "FROM MATH IMPORT FLOOR",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "Bring one name in.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "import",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Your own modules",
+      "hook": "\"Every dot py file you write is a module.\"",
+      "script": "Every dot py file you write is a module. Put a function in shacktools dot py. In another file, in the same folder, write import shacktools. Then call shacktools dot label. That is how big programs are split into small files. Never name your file the same as a standard module, like random or math. If you do, you hide the real one. Keep coding, says Xecxec!",
+      "onScreen": "IMPORT SHACKTOOLS",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Your files are modules.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "import",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Module not found",
+      "hook": "\"The import bug.\"",
+      "script": "The import bug. You write import maths, with an s. Python says, module not found error, no module named maths. The error shows exactly the name it looked for. Check the spelling. Check that the file is in the same folder, if it is your own. And if it is a package, check that you installed it, which we cover in a few episodes. Keep coding, says Xecxec!",
+      "onScreen": "MODULENOTFOUNDERROR",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Check the name.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "import",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the programmer love imports?\"",
+      "script": "Why did the programmer love imports? Someone else had already done the hard work. Your challenge. Import the math module. Print the area of a circle with radius three. The formula is pi times radius squared. Round the answer to two decimals. You should see twenty eight point two seven. Share your line of code in the comments below. Keep coding, says Xecxec! Full video: EP 56.",
+      "onScreen": "A CIRCLE'S AREA",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try math.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "import shacktools\nprint(shacktools.label(\"Baga\"))\nimport math\nprint(math.sqrt(16))\nfrom shacktools import label\nprint(label(\"Colva\"))\nprint(math.pi)",
+      "output": "[Baga]\n4.0\n[Colva]\n3.141592653589793",
+      "lang": "python"
+    },
+    {
+      "file": "alias.py",
+      "source": "import math as m\nfrom math import floor, ceil\nprint(m.floor(2.7))\nprint(floor(2.7), ceil(2.1))",
+      "output": "2\n2 3",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

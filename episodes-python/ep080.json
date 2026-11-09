@@ -1,0 +1,352 @@
+{
+  "ep": 80,
+  "title": "Testing your code (assert, unittest, pytest)",
+  "module": 8,
+  "lengthSec": 326,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "check code with assert",
+    "write a small unittest test case",
+    "know what a pytest test looks like"
+  ],
+  "youtube": {
+    "title": "Python Testing: assert, unittest and pytest for Beginners | Python Programming EP 80",
+    "description": "In this episode you will check code with assert, write a small unittest test case and know what a pytest test looks like, with Xecxec the crab. 0:00 Intro · 0:15 Check before you ship · 0:57 assert · 1:40 Green tick, red cross · 2:21 Second program · 3:33 Recap · 4:03 Bug of the Day · 4:51 Challenge · 5:11 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Check before you ship"
+      },
+      {
+        "t": "0:57",
+        "label": "assert"
+      },
+      {
+        "t": "1:40",
+        "label": "Green tick, red cross"
+      },
+      {
+        "t": "2:21",
+        "label": "Second program"
+      },
+      {
+        "t": "3:33",
+        "label": "Recap"
+      },
+      {
+        "t": "4:03",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:51",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:11",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python testing",
+      "python unittest",
+      "python assert",
+      "python pytest beginners"
+    ],
+    "thumbnail": {
+      "text": "TEST YOUR CODE",
+      "visual": "big text \"TEST YOUR CODE\" in tomato on peach; Xecxec holding a green tick stamp and a red cross stamp over a row of functions; thin black border and drop shadow.",
+      "pose": "Xecxec holding a green tick stamp and a red cross stamp over a row of functions"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 80 · TEST YOUR CODE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "How do you know your function still works after you change it? You test it, automatically."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 42,
+      "onScreen": "\"Check before you ship\": three numbered lines (1. assert stops the program if a claim is false; 2. unittest groups checks into test methods; 3. pytest needs only plain functions and assert) and an analogy card: a quality stamp on every function: tick if it behaves, cross if it does not, before it reaches the customer",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A test is code that checks your code. The simplest tool is assert. Write assert, then a claim. If the claim is False, Python raises an AssertionError. The unittest module in the standard library groups checks into a class, with methods whose names start with test. Another tool, pytest, needs only plain functions and assert, and is very popular. Think of a quality stamp on every function. Tick if it behaves, cross if it does not."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 57,
+      "lengthSec": 43,
+      "onScreen": "asserts.py: claims that must be true",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A small function. [HL 2] True when the number is even. [HL 4] Assert that four is even. It is, so nothing happens. [HL 5] Assert that seven is not even. Also fine. [HL 6] All good. [HL 7] Now a claim that is false. [HL 8] Assert, a claim, and an optional message. Three is not even, so this raises. [HL 9] We catch the assertion error. [HL 10] And print the message. Failed, three should be even question mark. Normally you do not catch it. The program stops, and shows you where.",
+      "code": {
+        "file": "asserts.py",
+        "source": "def is_even(n):\n    return n % 2 == 0\n\nassert is_even(4)\nassert not is_even(7)\nprint(\"all good\")\ntry:\n    assert is_even(3), \"3 should be even?\"\nexcept AssertionError as e:\n    print(\"failed:\", e)",
+        "output": "all good\nfailed: 3 should be even?"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 100,
+      "lengthSec": 41,
+      "onScreen": "A row of test cards; passing ones get a green tick, a failing one gets a red cross and a message",
+      "animation": "Test cards flip one by one; green ticks pop on most, one red cross with a message bubble appears",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the idea of a test run. Each test is a small card with a claim. The runner flips every card. If the claim is true, it gets a green tick. If not, a red cross, and the message. After every change to your code, you run all the cards again, in a second. If something that worked yesterday breaks today, you see a red cross at once, before your users do."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 141,
+      "lengthSec": 52,
+      "onScreen": "test_add.py: a test case with three test methods",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] We need io. [HL 2] And unittest. [HL 4] The function under test. [HL 7] A test case class, built on unittest dot TestCase. [HL 8] Every test method name starts with test. [HL 9] Assert equal compares the two values. Two plus three is five. [HL 11] A second test. [HL 12] Minus one plus one is zero. [HL 14] A third test. [HL 15] It even works on text. [HL 17] Load every test in the class. [HL 18] Run them, with the report sent to a string, to keep this screen tidy. [HL 19] Three tests ran, and all passed. True. The pytest version, shown on screen, is even shorter. A plain function, and a plain assert.",
+      "code": {
+        "file": "test_add.py",
+        "source": "import io\nimport unittest\n\ndef add(a, b):\n    return a + b\n\nclass TestAdd(unittest.TestCase):\n    def test_small(self):\n        self.assertEqual(add(2, 3), 5)\n\n    def test_negative(self):\n        self.assertEqual(add(-1, 1), 0)\n\n    def test_text(self):\n        self.assertEqual(add(\"a\", \"b\"), \"ab\")\n\nsuite = unittest.defaultTestLoader.loadTestsFromTestCase(TestAdd)\nresult = unittest.TextTestRunner(stream=io.StringIO()).run(suite)\nprint(result.testsRun, result.wasSuccessful())",
+        "output": "3 True"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 193,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python test_add.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as test_add dot py. In the terminal, type python, space, test_add dot py. all good, failed: 3 should be even?. Then 3 True."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 213,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: assert claim raises AssertionError if the claim is False. Two: unittest groups tests in a TestCase class. Names start with test. Three: pytest uses plain functions and assert. Four: Run tests after every change. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 243,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: assert on floats",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We assert that point one plus point two equals point three. It fails. Assertion error, with no message. Computers store decimals as tiny approximations, and the sum is point three, followed by a long tail ending in four. Compare floats with math dot is close instead. It allows a tiny difference."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 283,
+      "lengthSec": 8,
+      "onScreen": "Why did the test pass the interview? It always checked its assertions.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the test pass the interview? It always checked its assertions."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 291,
+      "lengthSec": 20,
+      "onScreen": "Task card: test your own function",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a function double of n and an assert for double of 4 that proves it returns 8. Then write a unittest version. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 311,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 81 · Dates and times",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Module eight is done! Next time: dates and times, and the standard library. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "assert 0.1 + 0.2 == 0.3",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"floats.py\", line 1, in <module>\n    assert 0.1 + 0.2 == 0.3\n           ^^^^^^^^^^^^^^^^\nAssertionError",
+    "fixed": "import math\n\nassert math.isclose(0.1 + 0.2, 0.3)\nprint(\"ok\")",
+    "why": "Computers store most decimals as tiny approximations, so equal-looking numbers may differ in the last digits. Compare floats with math.isclose, not with equals."
+  },
+  "pun": "\"Why did the test pass the interview? It always checked its assertions.\"",
+  "challenge": "Write a function double(n) and an assert for double(4) that proves it returns 8. Then write a unittest version.",
+  "challengeAnswer": "assert double(4) == 8. For unittest, a TestCase with self.assertEqual(double(4), 8) inside a test method.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a test",
+      "hook": "\"A test is code that checks your code.\"",
+      "script": "A test is code that checks your code. After every change, you run your tests, and see at once if something broke. The simplest tool is assert. Write assert and a claim. If the claim is false, Python stops with an assertion error. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "assert claim",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Tests check your code.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "testing",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "unittest",
+      "hook": "\"The unittest module is built into Python.\"",
+      "script": "The unittest module is built into Python. Write a class that extends TestCase. Each method that starts with test is one test. Use assert equal to compare an answer with what you expect. Run them all in one go. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "class TestAdd(unittest.TestCase)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "unittest is built in.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "testing",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "pytest",
+      "hook": "\"Pytest is a popular tool you install with pip.\"",
+      "script": "Pytest is a popular tool you install with pip. A test is a plain function, with a plain assert. No class needed. Name your file starting with test, and run pytest in the terminal. It finds every test and shows green or red. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "def test_add(): assert ...",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Pytest keeps it short.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "testing",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Float trap",
+      "hook": "\"Here is a trap.\"",
+      "script": "Here is a trap. Assert point one plus point two equals point three, and it fails. Decimals are stored as tiny approximations. The sum has a long tail. Use math dot is close, which allows a tiny difference. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "assert math.isclose(...)",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Never compare floats with equals.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "testing",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the test pass the interview?\"",
+      "script": "Why did the test pass the interview? It always checked its assertions. Your challenge. Write a function called double. Then write an assert that proves double of four is eight. Bonus, write the same check as a unittest test. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 80.",
+      "onScreen": "Challenge: test double()",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Write your own test.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "asserts.py",
+      "source": "def is_even(n):\n    return n % 2 == 0\n\nassert is_even(4)\nassert not is_even(7)\nprint(\"all good\")\ntry:\n    assert is_even(3), \"3 should be even?\"\nexcept AssertionError as e:\n    print(\"failed:\", e)",
+      "output": "all good\nfailed: 3 should be even?",
+      "lang": "python"
+    },
+    {
+      "file": "test_add.py",
+      "source": "import io\nimport unittest\n\ndef add(a, b):\n    return a + b\n\nclass TestAdd(unittest.TestCase):\n    def test_small(self):\n        self.assertEqual(add(2, 3), 5)\n\n    def test_negative(self):\n        self.assertEqual(add(-1, 1), 0)\n\n    def test_text(self):\n        self.assertEqual(add(\"a\", \"b\"), \"ab\")\n\nsuite = unittest.defaultTestLoader.loadTestsFromTestCase(TestAdd)\nresult = unittest.TextTestRunner(stream=io.StringIO()).run(suite)\nprint(result.testsRun, result.wasSuccessful())",
+      "output": "3 True",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "ep": 87,
+  "title": "Capstone 1: Expense tracker design",
+  "module": 10,
+  "lengthSec": 317,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "break a project into data and actions",
+    "model one expense with a dataclass",
+    "validate input before it enters the data"
+  ],
+  "youtube": {
+    "title": "Python Capstone: Design an Expense Tracker | Python Programming EP 87",
+    "description": "In this episode you will break a project into data and actions, model one expense with a dataclass and validate input before it enters the data, with Xecxec the crab. 0:00 Intro · 0:15 Plan before you type · 1:03 The data model · 1:45 The whole plan on one page · 2:24 Second program · 3:24 Recap · 3:54 Bug of the Day · 4:42 Challenge · 5:02 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Plan before you type"
+      },
+      {
+        "t": "1:03",
+        "label": "The data model"
+      },
+      {
+        "t": "1:45",
+        "label": "The whole plan on one page"
+      },
+      {
+        "t": "2:24",
+        "label": "Second program"
+      },
+      {
+        "t": "3:24",
+        "label": "Recap"
+      },
+      {
+        "t": "3:54",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:42",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:02",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python capstone project",
+      "python expense tracker",
+      "python project design",
+      "python dataclass project"
+    ],
+    "thumbnail": {
+      "text": "EXPENSE TRACKER",
+      "visual": "big text \"EXPENSE TRACKER\" in tomato on peach; Xecxec drawing boxes and arrows on a whiteboard next to a piggy bank; thin black border and drop shadow.",
+      "pose": "Xecxec drawing boxes and arrows on a whiteboard next to a piggy bank"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 87 · EXPENSE TRACKER",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Time for a real project. Over three episodes we build an expense tracker, starting with the plan."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 48,
+      "onScreen": "\"Plan before you type\": three numbered lines (1. List what the program must do; 2. Decide what one expense looks like; 3. Reject bad input at the door) and an analogy card: a blueprint before building a house: walls, doors and wiring decided on paper first",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Before writing code, write the plan. Our expense tracker must add an expense, list the expenses, show totals by category, and save everything in a file. First decide what one expense looks like. It has a day, a category, an amount and an optional note. A dataclass is perfect for that. Then decide the actions, each as a small function. Finally, decide the rules. For example, an amount must be positive. Think of a blueprint before building a house. Walls, doors and wiring are decided on paper first."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 63,
+      "lengthSec": 42,
+      "onScreen": "design.py: one Expense, and a function that adds it",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] We use a dataclass. [HL 3] One Expense is a small bundle. [HL 4] The class. [HL 5] A day, written as text. [HL 6] A category, such as food. [HL 7] An amount. For now, a plain number. We improve money in the next episode. [HL 8] An optional note. [HL 10] All expenses live in one list. [HL 12] Add expense builds an Expense, [HL 13] and appends it to the list. [HL 15] Lunch. [HL 16] A bus pass. [HL 17] And another food expense. [HL 18] Three expenses. [HL 19] And the first one prints itself, thanks to the dataclass.",
+      "code": {
+        "file": "design.py",
+        "source": "from dataclasses import dataclass\n\n@dataclass\nclass Expense:\n    day: str\n    category: str\n    amount: float\n    note: str = \"\"\n\nexpenses = []\n\ndef add_expense(day, category, amount, note=\"\"):\n    expenses.append(Expense(day, category, amount, note))\n\nadd_expense(\"2025-03-01\", \"food\", 120.5, \"lunch\")\nadd_expense(\"2025-03-02\", \"travel\", 60, \"bus pass\")\nadd_expense(\"2025-03-03\", \"food\", 80)\nprint(len(expenses))\nprint(expenses[0])",
+        "output": "3\nExpense(day='2025-03-01', category='food', amount=120.5, note='lunch')"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 105,
+      "lengthSec": 39,
+      "onScreen": "Four boxes in a row: add, list, summary, save, each pointing to one shared list of Expense cards",
+      "animation": "A central list of expense cards with four arrows labelled add, list, summary and save, each pointing to a function box",
+      "sfx": [],
+      "narration": "Here is the plan on one page. In the middle sits one list of Expense cards. Around it, four actions. Add puts a new card in the list. List shows the cards. Summary adds the amounts by category. Save writes the cards to a file, and loads them back at the start. Each action is a small function. If every function does one job, the project stays easy to change."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 144,
+      "lengthSec": 40,
+      "onScreen": "totals.py: group the amounts with a dictionary",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A few expenses, as pairs. [HL 2] Food. [HL 3] Travel. [HL 4] More food. [HL 6] An empty dictionary for the totals. [HL 7] Loop over the pairs. [HL 8] Get the total so far for this category, or zero, and add the amount. [HL 9] Sort the categories, so the order is steady. [HL 10] Print each total. Food two hundred point five, travel sixty. [HL 11] And the grand total. Two sixty point five.",
+      "code": {
+        "file": "totals.py",
+        "source": "expenses = [\n    (\"food\", 120.5),\n    (\"travel\", 60.0),\n    (\"food\", 80.0),\n]\ntotals = {}\nfor category, amount in expenses:\n    totals[category] = totals.get(category, 0) + amount\nfor category in sorted(totals):\n    print(category, totals[category])\nprint(sum(totals.values()))",
+        "output": "food 200.5\ntravel 60.0\n260.5"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 184,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python totals.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as totals dot py. In the terminal, type python, space, totals dot py. 3 and the first Expense line. Then food 200.5, travel 60.0, 260.5."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 204,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Plan first: what the program must do. Two: Model one thing with a dataclass. Three: Each action is one small function. Four: Check the rules before data enters the list. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 234,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: negative amounts are accepted",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We add a travel expense of minus five hundred. Nothing stops it, and the total becomes minus four hundred. No error, just a wrong answer. Validate at the door. If the amount is zero or less, raise a value error, and let the caller decide what to do."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 274,
+      "lengthSec": 8,
+      "onScreen": "Why did the expense tracker go to design school? It wanted a better balance sheet.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the expense tracker go to design school? It wanted a better balance sheet."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 282,
+      "lengthSec": 20,
+      "onScreen": "Task card: one more rule",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Add a rule that the category must not be empty, and test it with a try and except. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 302,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 88 · Capstone 2: Expense tracker build",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: capstone two, expense tracker build. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "expenses = []\n\ndef add_expense(category, amount):\n    expenses.append((category, amount))\n\nadd_expense(\"food\", 100)\nadd_expense(\"travel\", -500)\nprint(sum(a for _, a in expenses))",
+    "error": "Python output (it runs, but the answer is wrong):\n\n-400",
+    "fixed": "expenses = []\n\ndef add_expense(category, amount):\n    if amount <= 0:\n        raise ValueError(\"amount must be positive\")\n    expenses.append((category, amount))\n\nadd_expense(\"food\", 100)\ntry:\n    add_expense(\"travel\", -500)\nexcept ValueError as e:\n    print(\"rejected:\", e)\nprint(sum(a for _, a in expenses))",
+    "why": "Nothing stopped a negative amount, so the total silently became wrong. Validate input in one place, before it enters your data."
+  },
+  "pun": "\"Why did the expense tracker go to design school? It wanted a better balance sheet.\"",
+  "challenge": "Add a rule that the category must not be empty, and test it with a try and except.",
+  "challengeAnswer": "if not category: raise ValueError(\"category is required\"), placed inside add_expense before the append.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Plan first",
+      "hook": "\"Before you type, plan.\"",
+      "script": "Before you type, plan. Our expense tracker must add, list, summarise and save. Write those four actions down, each as one small function. A plan on paper takes five minutes, and saves hours of rewriting later. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "add, list, summary, save",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Plan before you type.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "One expense",
+      "hook": "\"What does one expense look like?\"",
+      "script": "What does one expense look like? A day, a category, an amount, and a note. That is a perfect dataclass. Three lines of fields, and Python writes init, repr and eq for you. One small class, the heart of the project. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "@dataclass class Expense",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "Model one thing.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Totals",
+      "hook": "\"To total by category, use a dictionary.\"",
+      "script": "To total by category, use a dictionary. Loop over the expenses. For each one, get the total so far, or zero, and add the amount. Sort the keys when printing, so the order is steady every time. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "totals.get(category, 0) + amount",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Group with a dict.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Validate",
+      "hook": "\"A bug hides in many projects.\"",
+      "script": "A bug hides in many projects. Nothing stops a negative amount, and the total silently goes wrong. Check at the door. If the amount is zero or less, raise a value error. One check, in one place, protects everything. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "if amount <= 0: raise ValueError",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Validate at the door.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the expense tracker go to design school?\"",
+      "script": "Why did the expense tracker go to design school? It wanted a better balance sheet. Your challenge. Add one more rule. The category must not be empty. Raise a value error if it is, and test your rule with try and except. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 87.",
+      "onScreen": "Challenge: category required",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Add one more rule.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "design.py",
+      "source": "from dataclasses import dataclass\n\n@dataclass\nclass Expense:\n    day: str\n    category: str\n    amount: float\n    note: str = \"\"\n\nexpenses = []\n\ndef add_expense(day, category, amount, note=\"\"):\n    expenses.append(Expense(day, category, amount, note))\n\nadd_expense(\"2025-03-01\", \"food\", 120.5, \"lunch\")\nadd_expense(\"2025-03-02\", \"travel\", 60, \"bus pass\")\nadd_expense(\"2025-03-03\", \"food\", 80)\nprint(len(expenses))\nprint(expenses[0])",
+      "output": "3\nExpense(day='2025-03-01', category='food', amount=120.5, note='lunch')",
+      "lang": "python"
+    },
+    {
+      "file": "totals.py",
+      "source": "expenses = [\n    (\"food\", 120.5),\n    (\"travel\", 60.0),\n    (\"food\", 80.0),\n]\ntotals = {}\nfor category, amount in expenses:\n    totals[category] = totals.get(category, 0) + amount\nfor category in sorted(totals):\n    print(category, totals[category])\nprint(sum(totals.values()))",
+      "output": "food 200.5\ntravel 60.0\n260.5",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

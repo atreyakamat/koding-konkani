@@ -1,0 +1,352 @@
+{
+  "ep": 29,
+  "title": "Tuples and unpacking",
+  "module": 3,
+  "lengthSec": 299,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "make a tuple with round brackets",
+    "unpack a tuple into names",
+    "know that a tuple cannot be changed"
+  ],
+  "youtube": {
+    "title": "Python Tuples and Unpacking Explained | Python Programming EP 29",
+    "description": "In this episode you will make a tuple with round brackets, unpack a tuple into names and know that a tuple cannot be changed, with Xecxec the crab. 0:00 Intro · 0:15 A fixed list · 0:55 Make and unpack · 1:35 A tuple and its unpacked names · 2:06 Second program · 3:06 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "A fixed list"
+      },
+      {
+        "t": "0:55",
+        "label": "Make and unpack"
+      },
+      {
+        "t": "1:35",
+        "label": "A tuple and its unpacked names"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python tuples",
+      "python tuple unpacking",
+      "immutable tuple",
+      "tuple item assignment error"
+    ],
+    "thumbnail": {
+      "text": "TUPLES",
+      "visual": "big text \"TUPLES\" in tomato on peach; Xecxec holding a sealed gift box labelled (15, 73) that cannot be opened and changed; thin black border and drop shadow.",
+      "pose": "Xecxec holding a sealed gift box labelled (15, 73) that cannot be opened and changed"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 29 · TUPLES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Lists can change. Sometimes you want a collection that cannot. Today we meet the tuple."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"A fixed list\": three numbered lines (1. A tuple uses round brackets; 2. It can be read like a list but never changed; 3. Unpacking ties each item to its own name) and an analogy card: a sealed envelope with a fixed set of papers inside: you can read them, but you cannot swap one",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A tuple is like a list that cannot change. It uses round brackets. You can read items by index, count them with len, and loop over them. But you cannot assign to an item, append, or remove. Think of a sealed envelope. You can read the papers, but you cannot swap one. Unpacking is a neat trick. Write several names on the left, and Python ties one item to each name."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "point.py: a tuple of latitude and longitude, unpacked",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A tuple with two numbers, in round brackets. [HL 2] Printing it shows the brackets. [HL 3] Index zero works, just like a list. Fifteen. [HL 4] Unpacking. Two names on the left, one tuple on the right. Python ties lat to the first item, and lon to the second. [HL 5] Print both names. Fifteen, seventy three.",
+      "code": {
+        "file": "point.py",
+        "source": "spot = (15, 73)\nprint(spot)\nprint(spot[0])\nlat, lon = spot\nprint(lat, lon)",
+        "output": "(15, 73)\n15\n15 73"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 95,
+      "lengthSec": 31,
+      "onScreen": "Names spot, lat and lon tied to a tuple and two ints",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. Spot is tied to a tuple object holding fifteen and seventy three. Lat and lon are tied to the same two int objects that sit inside the tuple. Unpacking did not copy the numbers. It just tied a new name to each one. The tuple itself can never change."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "rest.py: a star name collects the rest of the items",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A tuple of three marks. [HL 2] Unpack into three names. Low, mid and high. [HL 3] Print the first and the last. Seventy two, ninety. [HL 4] A star in front of a name means, collect whatever is left, into a list. First gets seventy two. Rest gets eighty five and ninety. [HL 5] Print both. The rest is a list.",
+      "code": {
+        "file": "rest.py",
+        "source": "marks = (72, 85, 90)\nlow, mid, high = marks\nprint(low, high)\nfirst, *rest = marks\nprint(first, rest)",
+        "output": "72 90\n72 [85, 90]"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python rest.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as rest dot py. In the terminal, type python, space, rest dot py. Seventy two, ninety, then seventy two and a list with eighty five and ninety."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A tuple uses round brackets and cannot be changed. Two: Index, len and loops work on tuples. Three: Unpacking ties each item to its own name. Four: A star name collects the leftover items into a list. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 216,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: changing a tuple item",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We try to change the first number of the tuple. Python says, type error. A tuple object does not support item assignment. Tuples are sealed. If you need a different tuple, build a new one, and tie the name to it. If you need to change items often, use a list instead."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 256,
+      "lengthSec": 8,
+      "onScreen": "Why did the tuple refuse to change? It was already set in its ways.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the tuple refuse to change? It was already set in its ways."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 264,
+      "lengthSec": 20,
+      "onScreen": "Task card: unpack a tuple of three",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make rgb equals 255, 128, 0. Unpack it into r, g and b, and print the three names. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 284,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 30 · Sorting",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: sorting. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "spot = (15, 73)\nspot[0] = 20",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"point.py\", line 2, in <module>\n    spot[0] = 20\n    ~~~~^^^\nTypeError: 'tuple' object does not support item assignment",
+    "fixed": "spot = (15, 73)\nspot = (20, spot[1])\nprint(spot)",
+    "why": "Tuples are immutable, so an item cannot be assigned; build a new tuple and tie the name to it."
+  },
+  "pun": "\"Why did the tuple refuse to change? It was already set in its ways.\"",
+  "challenge": "Make rgb = (255, 128, 0). Unpack it into r, g and b, and print the three names.",
+  "challengeAnswer": "Use r, g, b = rgb and then print(r, g, b), which shows 255 128 0.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a tuple?",
+      "hook": "\"A tuple is like a list that cannot change.\"",
+      "script": "A tuple is like a list that cannot change. It uses round brackets. You can read items by index, count them with len, and loop over them. But you cannot assign to an item, or append, or remove. Use a tuple when the values belong together and should never change, like a latitude and longitude. It tells every reader, this is fixed. Keep coding, says Xecxec!",
+      "onScreen": "(15, 73)",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "A list that is sealed.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "tuples",
+        "unpacking",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Unpacking",
+      "hook": "\"Unpacking is a lovely trick.\"",
+      "script": "Unpacking is a lovely trick. Write several names on the left, and a tuple on the right. Python ties the first name to the first item. It ties the second name to the second item, and continues like this. Lat, comma, lon, equals spot. Two names, two values, one line. The number of names must match the number of items, or Python raises an error. Keep coding, says Xecxec!",
+      "onScreen": "LAT, LON = SPOT",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 39,
+      "caption": "Many names, one line.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "tuples",
+        "unpacking",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The star name",
+      "hook": "\"A star in front of a name means, collect everything that is left.\"",
+      "script": "A star in front of a name means, collect everything that is left. First, comma, star rest, equals a tuple of three marks. First gets the first mark. Rest gets a list of the others. This is useful when you only care about the head of a collection, and want the tail as a bundle. It works with lists too. Keep coding, says Xecxec!",
+      "onScreen": "FIRST, *REST = MARKS",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Collect the leftovers.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "tuples",
+        "unpacking",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Tuples are sealed",
+      "hook": "\"Here is the bug.\"",
+      "script": "Here is the bug. You try to change one item of a tuple. Spot, bracket zero, equals twenty. Python says, type error, tuple object does not support item assignment. Tuples are immutable. They are sealed on purpose. Build a new tuple if you need different values. Or use a list, if the values must change often. Pick the right tool. Keep coding, says Xecxec!",
+      "onScreen": "TYPEERROR: TUPLE ITEM",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Sealed on purpose.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "tuples",
+        "unpacking",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the tuple refuse to change?\"",
+      "script": "Why did the tuple refuse to change? It was already set in its ways. Your challenge. Make a tuple called rgb, holding two fifty five, one twenty eight, and zero. Unpack it into three names, r, g and b. Then print the three names on one line. You should see the three numbers, in order. Post your code in the comments. Keep coding, says Xecxec! Full video: EP 29.",
+      "onScreen": "UNPACK THREE COLOURS",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Try unpacking.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "tuples",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "point.py",
+      "source": "spot = (15, 73)\nprint(spot)\nprint(spot[0])\nlat, lon = spot\nprint(lat, lon)",
+      "output": "(15, 73)\n15\n15 73",
+      "lang": "python"
+    },
+    {
+      "file": "rest.py",
+      "source": "marks = (72, 85, 90)\nlow, mid, high = marks\nprint(low, high)\nfirst, *rest = marks\nprint(first, rest)",
+      "output": "72 90\n72 [85, 90]",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,340 @@
+{
+  "ep": 85,
+  "title": "pathlib and os",
+  "module": 9,
+  "lengthSec": 324,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "build paths with pathlib",
+    "read, write and list files",
+    "avoid hard-coded paths"
+  ],
+  "youtube": {
+    "title": "Python pathlib: Work with Files and Folders the Right Way | Python Programming EP 85",
+    "description": "In this episode you will build paths with pathlib, read, write and list files and avoid hard-coded paths, with Xecxec the crab. 0:00 Intro · 0:15 Paths as objects · 1:06 Path objects · 1:50 Build, do not type · 2:28 Second program · 3:31 Recap · 4:01 Bug of the Day · 4:49 Challenge · 5:09 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Paths as objects"
+      },
+      {
+        "t": "1:06",
+        "label": "Path objects"
+      },
+      {
+        "t": "1:50",
+        "label": "Build, do not type"
+      },
+      {
+        "t": "2:28",
+        "label": "Second program"
+      },
+      {
+        "t": "3:31",
+        "label": "Recap"
+      },
+      {
+        "t": "4:01",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:49",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:09",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python pathlib",
+      "python os path",
+      "python glob files",
+      "python file path windows"
+    ],
+    "thumbnail": {
+      "text": "PATHLIB",
+      "visual": "big text \"PATHLIB\" in tomato on peach; Xecxec following a trail of footprints through folders to a file; thin black border and drop shadow.",
+      "pose": "Xecxec following a trail of footprints through folders to a file"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 85 · PATHLIB",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Windows uses backslashes, Mac and Linux use slashes. Pathlib makes your code work on all of them."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 51,
+      "onScreen": "\"Paths as objects\": three numbered lines (1. Path(\"a\") / \"b\" joins pieces with the right slash; 2. p.exists(), p.read_text(), p.write_text(); 3. glob finds files by pattern) and an analogy card: a street address that works on every map: you build it from pieces, instead of writing the full road by hand",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Pathlib gives you a Path object for every file and folder. Join pieces with the slash operator, and Python uses the right separator for the computer it is running on. A Path can tell you its name, its stem, its suffix and its parent. It can check if it exists, read text, write text, and list the files in a folder with glob. Think of a street address that works on every map, built from pieces. Never write a full path like C colon backslash Users by hand. It breaks on another computer."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 66,
+      "lengthSec": 44,
+      "onScreen": "paths.py: build a path, and ask it questions",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Import Path. [HL 3] A path to a file. [HL 4] Does it exist? True. [HL 5] The stem is the name without the extension. The suffix is the extension. Notes, and dot txt. [HL 6] Read text gives the content in one step, with no open and no close. Two lines. [HL 7] The slash operator joins pieces, so the separator is always right for your computer. [HL 8] As posix shows the path with forward slashes, the same everywhere. [HL 9] The parent is the folder. The name is the last part."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 110,
+      "lengthSec": 38,
+      "onScreen": "Folder pieces snap together into a path; a Windows computer and a Linux computer each use their own separator",
+      "animation": "Folder blocks labelled data and log.txt snap together with a slash symbol; two computers show different separators from the same code",
+      "sfx": [],
+      "narration": "Here is the idea. You never write the separator yourself. You give Path the pieces, and the slash operator joins them. On Windows, Python joins with a backslash. On Mac and Linux, with a slash. The same code works on both. A path typed by hand works on one computer only. An example is C colon backslash Users backslash Asha. It often works for one person only."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 148,
+      "lengthSec": 40,
+      "onScreen": "folder.py: glob, stat, write_text and iterdir",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Import Path. [HL 3] A folder called data. [HL 4] Glob finds every file that ends in dot txt. Sorted gives a steady order. [HL 5] The name, and the size in bytes. A dot txt has three, b dot txt has five. [HL 6] A new path inside the folder. [HL 7] Write text creates the file. [HL 8] It exists now. True. [HL 9] Iterdir lists everything in the folder. Now there are three files."
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 188,
+      "lengthSec": 23,
+      "onScreen": "Terminal: python folder.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as folder dot py. In the terminal, type python, space, folder dot py. True, notes .txt, the two lines, data/log.txt, data log.txt. Then a.txt 3, b.txt 5, True, and the three file names."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 211,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Path objects know their name, stem, suffix and parent. Two: The slash operator joins pieces with the right separator. Three: read text, write text, exists and glob save many lines. Four: Never hard-code a full path. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 241,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a hard-coded Windows path",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The path says C colon, Users, Asha, notes. It works on Asha's laptop. On any other computer, with another user name, or on a Mac, there is no such folder. File not found error. Build the path from where your script lives, with pathlib, and it works anywhere."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 281,
+      "lengthSec": 8,
+      "onScreen": "Why did the path get lost? It was hard-coded to the wrong address.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the path get lost? It was hard-coded to the wrong address."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 289,
+      "lengthSec": 20,
+      "onScreen": "Task card: list your pictures",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Print the names of all dot png files in a folder called images, sorted, using pathlib. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 309,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 86 · Command-line scripts (sys.argv, argparse)",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: command-line scripts, sys dot argv and argparse. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "with open(\"C:\\\\Users\\\\Asha\\\\notes.txt\") as f:\n    print(f.read())",
+    "error": "Baga\n\nPython output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"read.py\", line 1, in <module>\n    with open(\"C:\\\\Users\\\\Asha\\\\notes.txt\") as f:\n         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\\\Users\\\\Asha\\\\notes.txt'",
+    "fixed": "from pathlib import Path\n\nfolder = Path(__file__).parent\nprint((folder / \"notes.txt\").read_text().strip())",
+    "why": "A full path typed by hand works only on the computer that has exactly that folder. Build the path from something your program knows, such as its own folder."
+  },
+  "pun": "\"Why did the path get lost? It was hard-coded to the wrong address.\"",
+  "challenge": "Print the names of all dot png files in a folder called images, sorted, using pathlib.",
+  "challengeAnswer": "for f in sorted(Path(\"images\").glob(\"*.png\")): print(f.name).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Path objects",
+      "hook": "\"Pathlib gives you a Path object for every file.\"",
+      "script": "Pathlib gives you a Path object for every file. It knows its name, its stem, its suffix and its folder. It can check if it exists, and read its text in one line, with no open and no close. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "Path(\"notes.txt\").read_text()",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "Paths are objects.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "pathlib",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The slash",
+      "hook": "\"Join path pieces with the slash operator.\"",
+      "script": "Join path pieces with the slash operator. Path of data, slash, log dot txt. Python uses a backslash on Windows, and a slash on Mac and Linux. The same code works on every computer. Never type the separator yourself. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "Path(\"data\") / \"log.txt\"",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "Slash joins pieces.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "pathlib",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "glob",
+      "hook": "\"Glob finds files by pattern.\"",
+      "script": "Glob finds files by pattern. Path of data, dot glob, star dot txt, gives every text file in the folder. Wrap it in sorted for a steady order. Each item is a Path, with its own name and size. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "folder.glob(\"*.txt\")",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 40,
+      "caption": "Find files by pattern.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "pathlib",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Hard-coded path",
+      "hook": "\"A path like C colon, Users, Asha, notes dot txt only works on one computer.\"",
+      "script": "A path like C colon, Users, Asha, notes dot txt only works on one computer. On any other, you get file not found error. Build the path from your script's own folder instead, and your program works everywhere. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "FileNotFoundError on other PCs",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Never hard-code paths.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "pathlib",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the path get lost?\"",
+      "script": "Why did the path get lost? It was hard-coded to the wrong address. Your challenge. Print the names of all the dot png files in a folder called images. Use pathlib, and glob, and sort the names. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 85.",
+      "onScreen": "Challenge: list .png files",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Use glob and sorted.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "from pathlib import Path\n\np = Path(\"notes.txt\")\nprint(p.exists())\nprint(p.stem, p.suffix)\nprint(p.read_text().splitlines())\nlog = Path(\"data\") / \"log.txt\"\nprint(log.as_posix())\nprint(log.parent.name, log.name)",
+      "output": "True\nnotes .txt\n['Baga', 'Colva']\ndata/log.txt\ndata log.txt",
+      "lang": "python"
+    },
+    {
+      "file": "file2.python",
+      "source": "from pathlib import Path\n\nfolder = Path(\"data\")\nfor f in sorted(folder.glob(\"*.txt\")):\n    print(f.name, f.stat().st_size)\nout = folder / \"new.txt\"\nout.write_text(\"hello\")\nprint(out.exists())\nprint(sorted(p.name for p in folder.iterdir()))",
+      "output": "a.txt 3\nb.txt 5\nTrue\n['a.txt', 'b.txt', 'new.txt']",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

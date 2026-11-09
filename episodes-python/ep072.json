@@ -1,0 +1,352 @@
+{
+  "ep": 72,
+  "title": "Mini project: Library system",
+  "module": 7,
+  "lengthSec": 321,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "design a small program with two classes",
+    "let one object hold other objects",
+    "avoid a shared mutable default"
+  ],
+  "youtube": {
+    "title": "Python OOP Project: Build a Library System | Python Programming EP 72",
+    "description": "In this episode you will design a small program with two classes, let one object hold other objects and avoid a shared mutable default, with Xecxec the crab. 0:00 Intro · 0:15 Two classes, one idea · 0:59 Book and Library · 1:53 A library holds books · 2:25 Second program · 3:28 Recap · 3:58 Bug of the Day · 4:46 Challenge · 5:06 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Two classes, one idea"
+      },
+      {
+        "t": "0:59",
+        "label": "Book and Library"
+      },
+      {
+        "t": "1:53",
+        "label": "A library holds books"
+      },
+      {
+        "t": "2:25",
+        "label": "Second program"
+      },
+      {
+        "t": "3:28",
+        "label": "Recap"
+      },
+      {
+        "t": "3:58",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:46",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:06",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python oop project",
+      "python library system",
+      "python class project beginners",
+      "python mutable default argument"
+    ],
+    "thumbnail": {
+      "text": "LIBRARY PROJECT",
+      "visual": "big text \"LIBRARY PROJECT\" in tomato on peach; Xecxec stamping due dates in a library, with books on tiny shelves; thin black border and drop shadow.",
+      "pose": "Xecxec stamping due dates in a library, with books on tiny shelves"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 72 · LIBRARY PROJECT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Time to put classes together. We build a tiny library with books you can borrow and return."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 44,
+      "onScreen": "\"Two classes, one idea\": three numbered lines (1. Book: title, author, whether it is borrowed; 2. Library: a list of books and the actions on them; 3. Library methods use Book methods) and an analogy card: a real library: books are things, and the library is the thing that looks after them",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A good design starts by listing the things. Here we have books, and a library. A Book knows its title, its author, and whether it is out. A Library holds a list of books. It has actions, such as add a book, borrow, and list what is available. The library does not need to know how a book tracks borrowing. It just asks the book. Think of a real library. The books are things. The library looks after them."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 59,
+      "lengthSec": 54,
+      "onScreen": "library.py: two classes working together",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The Book class. [HL 2] Init stores a title and an author. [HL 5] And that the book is not borrowed. [HL 7] Repr gives a readable line. [HL 10] The Library class. [HL 12] Its own list of books, fresh for every library. [HL 14] Add puts a book on the list. [HL 17] Borrow looks through the books. [HL 19] Right title, and not already out. [HL 20] Mark it as borrowed. [HL 21] And hand it over. [HL 22] Otherwise, nothing, which is None. [HL 24] Available builds a list of books still on the shelf. [HL 27] A library. [HL 28] Add two books. [HL 30] Borrow Python 101. We get the book. [HL 31] Borrow again. It is out, so None. [HL 32] And only Crab Tales is available.",
+      "code": {
+        "file": "library.py",
+        "source": "class Book:\n    def __init__(self, title, author):\n        self.title = title\n        self.author = author\n        self.borrowed = False\n\n    def __repr__(self):\n        return f\"{self.title} by {self.author}\"\n\nclass Library:\n    def __init__(self):\n        self.books = []\n\n    def add(self, book):\n        self.books.append(book)\n\n    def borrow(self, title):\n        for book in self.books:\n            if book.title == title and not book.borrowed:\n                book.borrowed = True\n                return book\n        return None\n\n    def available(self):\n        return [b for b in self.books if not b.borrowed]\n\nlib = Library()\nlib.add(Book(\"Python 101\", \"Rao\"))\nlib.add(Book(\"Crab Tales\", \"Xecxec\"))\nprint(lib.borrow(\"Python 101\"))\nprint(lib.borrow(\"Python 101\"))\nprint(lib.available())",
+        "output": "Python 101 by Rao\nNone\n[Crab Tales by Xecxec]"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 113,
+      "lengthSec": 32,
+      "onScreen": "The name lib tied to a Library object; its list holds two Book objects",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name lib is tied to a library object. Inside it sits a list of books. Each book is its own object, with a title, an author, and a borrowed flag. Objects can hold other objects. That is how bigger programs are built, from small objects that each do one job."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 145,
+      "lengthSec": 40,
+      "onScreen": "members.py: a Member class that uses the library",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A small Book class. [HL 3] A title. [HL 4] And a borrowed flag. [HL 6] A Member class. [HL 8] Each member has a name. [HL 9] And a list of loans, new for each member. [HL 11] Borrow checks the book. [HL 12] Already out, so [HL 13] False. [HL 14] Otherwise mark it borrowed. [HL 15] Remember the title in the loans. [HL 16] And return True. [HL 18] One book. [HL 19] Two members. [HL 21] Asha borrows. True. [HL 22] Ravi tries the same book, and gets False. [HL 23] Only Asha has a loan.",
+      "code": {
+        "file": "members.py",
+        "source": "class Book:\n    def __init__(self, title):\n        self.title = title\n        self.borrowed = False\n\nclass Member:\n    def __init__(self, name):\n        self.name = name\n        self.loans = []\n\n    def borrow(self, book):\n        if book.borrowed:\n            return False\n        book.borrowed = True\n        self.loans.append(book.title)\n        return True\n\nb = Book(\"Python 101\")\nm1 = Member(\"Asha\")\nm2 = Member(\"Ravi\")\nprint(m1.borrow(b))\nprint(m2.borrow(b))\nprint(m1.loans, m2.loans)",
+        "output": "True\nFalse\n['Python 101'] []"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 185,
+      "lengthSec": 23,
+      "onScreen": "Terminal: python members.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as members dot py. In the terminal, type python, space, members dot py. Python 101 by Rao, then None, then a list with Crab Tales by Xecxec. Then True, False, and the two loan lists."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 208,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Design by listing the things: Book and Library. Two: A Library object holds a list of Book objects. Three: Each class does one job. Four: Create lists inside init, not in a default argument. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 238,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a mutable default shared by every library",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We add a book to the north library, and it appears in the south library too. The default list in the init brackets is built only once, and every library without its own list shares it. No error appears. Use None as the default, and create a fresh list inside init."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 278,
+      "lengthSec": 8,
+      "onScreen": "Why did the library project get a good grade? It was well catalogued.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the library project get a good grade? It was well catalogued."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 286,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a return method",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Add a give back of title method to the Library that marks a borrowed book as available again. Test it. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 306,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 73 · Iterators",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Module seven is done! Next time: iterators, and how a for loop really works. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Library:\n    def __init__(self, books=[]):\n        self.books = books\n\n    def add(self, title):\n        self.books.append(title)\n\nnorth = Library()\nsouth = Library()\nnorth.add(\"Python 101\")\nprint(south.books)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n['Python 101']",
+    "fixed": "class Library:\n    def __init__(self, books=None):\n        self.books = [] if books is None else books\n\n    def add(self, title):\n        self.books.append(title)\n\nnorth = Library()\nsouth = Library()\nnorth.add(\"Python 101\")\nprint(south.books)",
+    "why": "A default value is built once, when the function is defined. A list as a default is therefore shared by every call. Use None, and build a fresh list inside."
+  },
+  "pun": "\"Why did the library project get a good grade? It was well catalogued.\"",
+  "challenge": "Add a give_back(title) method to the Library that marks a borrowed book as available again. Test it.",
+  "challengeAnswer": "def give_back(self, title): for book in self.books: if book.title == title: book.borrowed = False.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Design first",
+      "hook": "\"Start a program by listing the things.\"",
+      "script": "Start a program by listing the things. In a library, we have books, and the library itself. A book knows its title and whether it is out. A library holds the books and offers actions. List the things, then write one class for each. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "Book + Library",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Design by listing things.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Objects hold objects",
+      "hook": "\"A library object holds a list of book objects.\"",
+      "script": "A library object holds a list of book objects. Objects can hold other objects, and that is how bigger programs are built. Each class does one small job. The library asks the book, is this one borrowed, and the book answers for itself. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "Library holds Books",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Objects hold objects.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Borrow method",
+      "hook": "\"The borrow method loops over the books.\"",
+      "script": "The borrow method loops over the books. If the title matches, and the book is not already out, it marks the book as borrowed, and returns it. If nothing matches, it returns None. The second borrow of the same book gives None. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "borrow() returns book or None",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Borrow and check.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Shared default",
+      "hook": "\"A tricky bug.\"",
+      "script": "A tricky bug. You write init with books equals empty list in the brackets. Add a book to the north library, and the south library has it too. A default value is built once, and shared. Use None, and build a new list inside. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "books=[] is shared",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Never default to a list.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the library project get a good grade?\"",
+      "script": "Why did the library project get a good grade? It was well catalogued. Your challenge. Add a method called give back to the Library. It takes a title, and marks the borrowed book as available again. Test it by borrowing and returning. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 72.",
+      "onScreen": "Challenge: give_back()",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Add give back.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "library.py",
+      "source": "class Book:\n    def __init__(self, title, author):\n        self.title = title\n        self.author = author\n        self.borrowed = False\n\n    def __repr__(self):\n        return f\"{self.title} by {self.author}\"\n\nclass Library:\n    def __init__(self):\n        self.books = []\n\n    def add(self, book):\n        self.books.append(book)\n\n    def borrow(self, title):\n        for book in self.books:\n            if book.title == title and not book.borrowed:\n                book.borrowed = True\n                return book\n        return None\n\n    def available(self):\n        return [b for b in self.books if not b.borrowed]\n\nlib = Library()\nlib.add(Book(\"Python 101\", \"Rao\"))\nlib.add(Book(\"Crab Tales\", \"Xecxec\"))\nprint(lib.borrow(\"Python 101\"))\nprint(lib.borrow(\"Python 101\"))\nprint(lib.available())",
+      "output": "Python 101 by Rao\nNone\n[Crab Tales by Xecxec]",
+      "lang": "python"
+    },
+    {
+      "file": "members.py",
+      "source": "class Book:\n    def __init__(self, title):\n        self.title = title\n        self.borrowed = False\n\nclass Member:\n    def __init__(self, name):\n        self.name = name\n        self.loans = []\n\n    def borrow(self, book):\n        if book.borrowed:\n            return False\n        book.borrowed = True\n        self.loans.append(book.title)\n        return True\n\nb = Book(\"Python 101\")\nm1 = Member(\"Asha\")\nm2 = Member(\"Ravi\")\nprint(m1.borrow(b))\nprint(m2.borrow(b))\nprint(m1.loans, m2.loans)",
+      "output": "True\nFalse\n['Python 101'] []",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

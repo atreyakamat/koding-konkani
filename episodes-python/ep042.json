@@ -1,0 +1,352 @@
+{
+  "ep": 42,
+  "title": "Parameters and return values",
+  "module": 5,
+  "lengthSec": 300,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "pass values in with parameters",
+    "send a value back with return",
+    "tell return from print"
+  ],
+  "youtube": {
+    "title": "Python Parameters and return Explained | Python Programming EP 42",
+    "description": "In this episode you will pass values in with parameters, send a value back with return and tell return from print, with Xecxec the crab. 0:00 Intro · 0:15 Values in, values out · 0:55 Parameter and return · 1:35 The returned value gets a name · 2:05 Second program · 3:05 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Values in, values out"
+      },
+      {
+        "t": "0:55",
+        "label": "Parameter and return"
+      },
+      {
+        "t": "1:35",
+        "label": "The returned value gets a name"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:37",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python return",
+      "python parameters",
+      "python function arguments",
+      "print vs return"
+    ],
+    "thumbnail": {
+      "text": "IN AND OUT",
+      "visual": "big text \"IN AND OUT\" in tomato on peach; Xecxec feeding a number into a machine labelled double() and catching the answer; thin black border and drop shadow.",
+      "pose": "Xecxec feeding a number into a machine labelled double() and catching the answer"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 42 · IN AND OUT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "A function becomes truly useful when it takes values in, and hands a result back. Today we learn both."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"Values in, values out\": three numbered lines (1. Parameters are names for the values you pass in; 2. return sends a value back to the caller; 3. print only shows a value; it does not give it back) and an analogy card: a fish-weighing machine: you put the fish in, and a number comes out that you can write down",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Parameters are names in the brackets of the def line. They receive the values you pass when you call. Return sends a value back to the caller, so you can save it or use it. Think of a fish weighing machine. You put the fish in, and a number comes out that you can write down. Print only shows a value on the screen. Return hands the value over to your program."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "double.py: a function that doubles a number",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] One parameter, n. It is a name for whatever value we pass in. [HL 2] Return sends n times two back. [HL 3] We call double with four. Four is tied to n, the body runs, and the answer eight comes back. We tie it to answer. [HL 4] Print the answer, eight. [HL 5] We can use a call straight inside print. Ten doubled is twenty.",
+      "code": {
+        "file": "double.py",
+        "source": "def double(n):\n    return n * 2\nanswer = double(4)\nprint(answer)\nprint(double(10))",
+        "output": "8\n20"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 95,
+      "lengthSec": 30,
+      "onScreen": "The name answer tied to the int 8, which came back from double(4)",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name answer is tied to the int eight. That int was made inside the function, and returned. The parameter n is gone now, because it only lived while the function ran. Only the returned value survived, and only because we tied a name to it."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "area.py: a function with width and height",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Two parameters, separated by a comma. Values are matched by position. [HL 2] Return the product. [HL 3] Three and four give twelve. [HL 4] A function call is a value, so we can add two calls together. Two times five is ten, and one times one is one. [HL 5] Eleven. Since return gives the value back, we can use it anywhere a value fits.",
+      "code": {
+        "file": "area.py",
+        "source": "def area(width, height):\n    return width * height\nprint(area(3, 4))\ntotal = area(2, 5) + area(1, 1)\nprint(total)",
+        "output": "12\n11"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python area.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as area dot py. In the terminal, type python, space, area dot py. Twelve, then eleven."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 185,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Parameters are names in the def line that receive the passed values. Two: Arguments are matched to parameters by position. Three: return sends a value back to the caller. Four: print shows a value but does not give it back. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 217,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: print instead of return",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Our function prints eight, which looks right. But the result we saved prints None. The function used print, not return. Print shows the value on the screen, and the function hands back nothing, which Python calls None. Use return, and the value travels back to the caller."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 257,
+      "lengthSec": 8,
+      "onScreen": "Why did the function get a medal? It always returned what it was given.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the function get a medal? It always returned what it was given."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 265,
+      "lengthSec": 20,
+      "onScreen": "Task card: write a function that adds two numbers",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a function add of a, b that returns the sum, then print add of 7, 8. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 285,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 43 · Default and keyword arguments",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: default and keyword arguments. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def double(n):\n    print(n * 2)\nresult = double(4)\nprint(result)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n8\nNone",
+    "fixed": "def double(n):\n    return n * 2\nresult = double(4)\nprint(result)",
+    "why": "print only shows the value; a function with no return gives back None, so the name result holds None."
+  },
+  "pun": "\"Why did the function get a medal? It always returned what it was given.\"",
+  "challenge": "Write a function add(a, b) that returns the sum, then print add(7, 8).",
+  "challengeAnswer": "Use def add(a, b): return a + b, then print(add(7, 8)), which shows 15.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Parameters",
+      "hook": "\"Parameters are names in the brackets of the def line.\"",
+      "script": "Parameters are names in the brackets of the def line. They receive the values you pass in when you call the function. Def double, open bracket, n. When you call double with four, the value four is tied to the name n inside the function. The function can then use n, like any other name. Different calls pass different values. Keep coding, says Xecxec!",
+      "onScreen": "DEF DOUBLE(N):",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Names for the inputs.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "return",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Return",
+      "hook": "\"Return sends a value back to whoever called the function.\"",
+      "script": "Return sends a value back to whoever called the function. Return n times two. Then you can save the result in a name, print it, or use it in a sum. A function call is itself a value. That is what lets you build big calculations out of small functions. The caller gets the answer, and decides what to do with it. Keep coding, says Xecxec!",
+      "onScreen": "RETURN N * 2",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Hand the answer back.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "return",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Positional arguments",
+      "hook": "\"When a function has two parameters, the values you pass are matched by position.\"",
+      "script": "When a function has two parameters, the values you pass are matched by position. Area, three, four. Three goes to width, and four goes to height. The first value goes to the first parameter, the second to the second. Mix up the order, and you may get the wrong answer. For multiplication it does not matter, but for subtraction it does. Keep coding, says Xecxec!",
+      "onScreen": "AREA(3, 4)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Order matters.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "return",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Print versus return",
+      "hook": "\"A very common bug.\"",
+      "script": "A very common bug. Your function uses print, and you save the result. Then the result is None. Print only shows a value on the screen. It does not give it back. Only return gives a value back. If you want to use the answer later, return it. Print is for people, and return is for your program. Keep coding, says Xecxec!",
+      "onScreen": "PRINT ≠ RETURN",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Show or give?",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "return",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the function get a medal?\"",
+      "script": "Why did the function get a medal? It always returned what it was given. Your challenge. Write a function called add, with two parameters, a and b. It should return the sum. Then print the result of add, seven, eight. You should see fifteen. Try calling it with bigger numbers, and with decimals. Share your function in the comments. Keep coding, says Xecxec! Full video: EP 42.",
+      "onScreen": "WRITE ADD(A, B)",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try return.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "double.py",
+      "source": "def double(n):\n    return n * 2\nanswer = double(4)\nprint(answer)\nprint(double(10))",
+      "output": "8\n20",
+      "lang": "python"
+    },
+    {
+      "file": "area.py",
+      "source": "def area(width, height):\n    return width * height\nprint(area(3, 4))\ntotal = area(2, 5) + area(1, 1)\nprint(total)",
+      "output": "12\n11",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

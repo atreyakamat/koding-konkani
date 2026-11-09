@@ -1,0 +1,350 @@
+{
+  "ep": 49,
+  "title": "Higher-order functions",
+  "module": 5,
+  "lengthSec": 301,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "pass a function as an argument",
+    "return a function from a function",
+    "tell passing a function from calling it"
+  ],
+  "youtube": {
+    "title": "Python Higher-Order Functions: Functions as Values | Python Programming EP 49",
+    "description": "In this episode you will pass a function as an argument, return a function from a function and tell passing a function from calling it, with Xecxec the crab. 0:00 Intro · 0:15 Functions are values · 0:57 Passing functions · 1:37 Passing versus calling · 2:08 Second program · 3:08 Recap · 3:38 Bug of the Day · 4:26 Challenge · 4:46 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Functions are values"
+      },
+      {
+        "t": "0:57",
+        "label": "Passing functions"
+      },
+      {
+        "t": "1:37",
+        "label": "Passing versus calling"
+      },
+      {
+        "t": "2:08",
+        "label": "Second program"
+      },
+      {
+        "t": "3:08",
+        "label": "Recap"
+      },
+      {
+        "t": "3:38",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:26",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:46",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python higher order functions",
+      "python functions as values",
+      "python closures",
+      "pass function as argument"
+    ],
+    "thumbnail": {
+      "text": "FUNCTIONS AS VALUES",
+      "visual": "big text \"FUNCTIONS AS VALUES\" in tomato on peach; Xecxec passing a function card like a baton to another function; thin black border and drop shadow.",
+      "pose": "Xecxec passing a function card like a baton to another function"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 49 · FUNCTIONS AS VALUES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "In Python, a function is a value, like a number or a string. Today we use that idea."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 42,
+      "onScreen": "\"Functions are values\": three numbered lines (1. A function name is a value you can pass around; 2. Brackets mean call it now; 3. A function can return another function) and an analogy card: a chef handing a recipe card to an assistant: the card is passed around, and the cooking happens only when someone follows it",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A function name, without brackets, is a value. You can tie it to another name, put it in a list, or pass it to another function. Brackets mean, call it now. No brackets means, here is the function itself. Think of a chef handing a recipe card to an assistant. The card is passed around, and the cooking happens only when someone follows it. A function that takes or returns functions is called higher order."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 57,
+      "lengthSec": 40,
+      "onScreen": "hof.py: apply takes a function and a value",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Apply takes a function and a value. [HL 2] It calls the function on the value. [HL 3] Double. [HL 4] Returns n times two. [HL 5] Square. [HL 6] Returns n times n. [HL 7] We pass double, with no brackets. Python gives it to apply, which calls it with five. Ten. [HL 8] Pass square instead, and the same apply gives twenty five. The behaviour is now a choice we make at the call.",
+      "code": {
+        "file": "hof.py",
+        "source": "def apply(func, value):\n    return func(value)\ndef double(n):\n    return n * 2\ndef square(n):\n    return n * n\nprint(apply(double, 5))\nprint(apply(square, 5))",
+        "output": "10\n25"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 97,
+      "lengthSec": 31,
+      "onScreen": "Two cards: double (the function itself, handed over) and double(5) (the answer 10)",
+      "animation": "A function card slides to another box; a second card with brackets turns into a number",
+      "sfx": [],
+      "narration": "Here is the distinction. Double, with no brackets, is the function itself, a card you can hand to someone. Double of five, with brackets, is the result of running it, the number ten. Passing and calling are different things. When a function wants a function, hand over the card. Do not run it first."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 128,
+      "lengthSec": 40,
+      "onScreen": "compose.py: make_adder returns a new function",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A function that takes k. [HL 2] Inside, another function, add. [HL 3] It adds x and k. It remembers k from the outer function. [HL 4] We return add itself, with no brackets. [HL 5] Calling make adder with five gives back a new function, tied to add five. [HL 6] Add five of ten is fifteen. [HL 7] Or call twice in one line. Make adder one, then call it with one. Two.",
+      "code": {
+        "file": "compose.py",
+        "source": "def make_adder(k):\n    def add(x):\n        return x + k\n    return add\nadd5 = make_adder(5)\nprint(add5(10))\nprint(make_adder(1)(1))",
+        "output": "15\n2"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 168,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python compose.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as compose dot py. In the terminal, type python, space, compose dot py. Fifteen, then two."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 188,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A function name without brackets is a value. Two: Brackets call the function. Three: A function can take another function as an argument. Four: A function can return a new function that remembers its values. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 218,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: calling instead of passing",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We wrote double with brackets. That calls double right now, with no number. Python says, type error, double is missing one required positional argument, n. We wanted to hand over the function, not run it. Remove the brackets, and apply receives the function itself."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 258,
+      "lengthSec": 8,
+      "onScreen": "Why did the function pass the baton? It believed in teamwork.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the function pass the baton? It believed in teamwork."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 266,
+      "lengthSec": 20,
+      "onScreen": "Task card: pass a function into another",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write apply twice of f, x that returns ff of x. Use it with a function that adds 3 to 10. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 286,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 50 · Mini project: Calculator",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: the calculator mini project. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def apply(func, value):\n    return func(value)\ndef double(n):\n    return n * 2\nprint(apply(double(), 5))",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"hof.py\", line 5, in <module>\n    print(apply(double(), 5))\n                ~~~~~~^^\nTypeError: double() missing 1 required positional argument: 'n'",
+    "fixed": "def apply(func, value):\n    return func(value)\ndef double(n):\n    return n * 2\nprint(apply(double, 5))",
+    "why": "double() calls the function immediately, with no argument, instead of handing the function itself to apply."
+  },
+  "pun": "\"Why did the function pass the baton? It believed in teamwork.\"",
+  "challenge": "Write apply_twice(f, x) that returns f(f(x)). Use it with a function that adds 3 to 10.",
+  "challengeAnswer": "Use def apply_twice(f, x): return f(f(x)) and def add3(n): return n + 3. print(apply_twice(add3, 10)) shows 16.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Functions are values",
+      "hook": "\"In Python, a function is a value, like a number or a string.\"",
+      "script": "In Python, a function is a value, like a number or a string. Write the name without brackets, and you have the function itself. You can tie it to another name, put it in a list, or pass it to another function. This is the idea behind map, filter, and sorted with a key. It makes your code flexible, because behaviour becomes a choice. Keep coding, says Xecxec!",
+      "onScreen": "DOUBLE (NO BRACKETS)",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "A function is a value.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "higherorder",
+        "functions",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Passing versus calling",
+      "hook": "\"Brackets make all the difference.\"",
+      "script": "Brackets make all the difference. Double, with no brackets, is the function itself, like a recipe card. Double of five, with brackets, runs the recipe, and gives the number ten. When another function wants a function, hand over the card. Do not run it first. Most errors in this topic come from adding brackets where they do not belong. Keep coding, says Xecxec!",
+      "onScreen": "DOUBLE vs DOUBLE(5)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "Card or cooked dish?",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "higherorder",
+        "functions",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Return a function",
+      "hook": "\"A function can build and return another function.\"",
+      "script": "A function can build and return another function. Make adder takes k, and defines a small function add, which uses k. It returns add itself. Make adder of five gives you a function that adds five. The inner function remembers k, even after make adder has finished. That memory is called a closure. It is a neat way to make custom tools. Keep coding, says Xecxec!",
+      "onScreen": "MAKE_ADDER(5)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Build a tool.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "higherorder",
+        "functions",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Missing argument",
+      "hook": "\"Here is the bug.\"",
+      "script": "Here is the bug. You write apply, open bracket, double, empty brackets, comma, five. Those empty brackets call double right now, without a number. Python says, type error, double is missing one required positional argument. You meant to pass the function, not run it. Remove the brackets, and apply gets the function it asked for. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "TYPEERROR: MISSING 'N'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Drop the brackets.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "higherorder",
+        "functions",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the function pass the baton?\"",
+      "script": "Why did the function pass the baton? It believed in teamwork. Your challenge. Write a function called apply twice. It takes a function f and a value x. It returns f of f of x. Then write a function that adds three. Call apply twice with it, and ten. You should see sixteen. Share your solution in the comments below. Keep coding, says Xecxec! Full video: EP 49.",
+      "onScreen": "APPLY A FUNCTION TWICE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try passing functions.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "higherorder",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "hof.py",
+      "source": "def apply(func, value):\n    return func(value)\ndef double(n):\n    return n * 2\ndef square(n):\n    return n * n\nprint(apply(double, 5))\nprint(apply(square, 5))",
+      "output": "10\n25",
+      "lang": "python"
+    },
+    {
+      "file": "compose.py",
+      "source": "def make_adder(k):\n    def add(x):\n        return x + k\n    return add\nadd5 = make_adder(5)\nprint(add5(10))\nprint(make_adder(1)(1))",
+      "output": "15\n2",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

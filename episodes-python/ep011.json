@@ -1,0 +1,352 @@
+{
+  "ep": 11,
+  "title": "Booleans and comparisons",
+  "module": 1,
+  "lengthSec": 297,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "use comparison operators to get True or False",
+    "tell == from =",
+    "store a comparison in a name"
+  ],
+  "youtube": {
+    "title": "Python Booleans: True, False and == | Python Programming EP 11",
+    "description": "In this episode you will use comparison operators to get True or False, tell == from = and store a comparison in a name, with Xecxec the crab. 0:00 Intro · 0:15 Yes or no answers · 0:54 Comparisons · 1:34 A boolean is an object too · 2:04 Second program · 3:04 Recap · 3:34 Bug of the Day · 4:22 Challenge · 4:42 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Yes or no answers"
+      },
+      {
+        "t": "0:54",
+        "label": "Comparisons"
+      },
+      {
+        "t": "1:34",
+        "label": "A boolean is an object too"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:34",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:22",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:42",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python booleans",
+      "python comparison operators",
+      "equals vs assignment",
+      "syntaxerror"
+    ],
+    "thumbnail": {
+      "text": "TRUE OR FALSE?",
+      "visual": "big text \"TRUE OR FALSE?\" in tomato on peach; Xecxec holding a green TRUE card in one claw and a red FALSE card in the other; thin black border and drop shadow.",
+      "pose": "Xecxec holding a green TRUE card in one claw and a red FALSE card in the other"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 11 · TRUE OR FALSE?",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Computers make decisions with yes or no answers. Today we meet True and False, and the symbols that produce them."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 39,
+      "onScreen": "\"Yes or no answers\": three numbered lines (1. A boolean is True or False; 2. Compare with == != < > <= >=; 3. One equals sign ties a name; two compare) and an analogy card: a bouncer at a beach club who only answers yes or no: are you eighteen or older?",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A boolean is a value that is either True or False. Python makes one whenever you compare two things. Double equals asks, are these the same? Not equals, less than, greater than, and their or equal versions ask other questions. Think of a bouncer at a beach club. The bouncer only says yes or no. One equals sign ties a name to a value. Two equals signs ask a question."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "compare.py: a comparison saved in a name",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Age is seventeen. [HL 2] Greater than or equal to eighteen is a question. The answer is False, and we tie that answer to the name adult. [HL 3] Printing adult shows False. [HL 4] Double equals asks, is age seventeen? That is True. [HL 5] Not equals asks, is age different from seventeen? That is False.",
+      "code": {
+        "file": "compare.py",
+        "source": "age = 17\nadult = age >= 18\nprint(adult)\nprint(age == 17)\nprint(age != 17)",
+        "output": "False\nTrue\nFalse"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 94,
+      "lengthSec": 30,
+      "onScreen": "Two tags, age and adult, tied to an int and a bool",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. Age is tied to the int seventeen. Adult is tied to a bool, False. A boolean is an object like any number or string. Its type is bool, and it has only two possible values, True and False. Write them with a capital first letter."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 124,
+      "lengthSec": 40,
+      "onScreen": "beaches.py: comparing strings, and a chained comparison",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A name tied to Palolem. [HL 2] The same text on both sides, so True. [HL 3] A small letter p is a different character. So this comparison is False. Python is case sensitive for text too. [HL 4] Python even lets you chain. Five is less than ten, and ten is less than twenty. Both are true, so the answer is True.",
+      "code": {
+        "file": "beaches.py",
+        "source": "beach = \"Palolem\"\nprint(beach == \"Palolem\")\nprint(beach == \"palolem\")\nprint(5 < 10 < 20)",
+        "output": "True\nFalse\nTrue"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 164,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python beaches.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as beaches dot py. In the terminal, type python, space, beaches dot py. True, then False, then True."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 184,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A boolean is True or False, with a capital first letter. Two: Comparison operators give back booleans. Three: One equals sign ties a name. Two equals signs compare. Four: Text comparisons are case sensitive. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 214,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: one equals sign instead of two",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Inside the if we wrote one equals sign. Python says, syntax error, invalid syntax. It even guesses what you meant, maybe you meant double equals. One equals sign is an instruction, tie this name to that value. A question needs two. Fix it, and the program runs."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 254,
+      "lengthSec": 8,
+      "onScreen": "Why did the boolean break up with the string? It only wanted a True relationship.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the boolean break up with the string? It only wanted a True relationship."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 262,
+      "lengthSec": 20,
+      "onScreen": "Task card: print whether a score passes",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make score equals 55 and print True or False for score >= 40, and print whether score equals equals 55. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 282,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 12 · Type conversion",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: type conversion. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "age = 17\nif age = 18:\n    print(\"Adult\")",
+    "error": "Python output (exactly as Python prints it):\n\n  File \"compare.py\", line 2\n    if age = 18:\n       ^^^^^^^^\nSyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?",
+    "fixed": "age = 17\nif age == 18:\n    print(\"Adult\")",
+    "why": "A single equals ties a name to a value, so it cannot be used as a question; double equals compares two values."
+  },
+  "pun": "\"Why did the boolean break up with the string? It only wanted a True relationship.\"",
+  "challenge": "Make score = 55 and print True or False for score >= 40, and print whether score == 55.",
+  "challengeAnswer": "Use print(score >= 40) which shows True, and print(score == 55) which also shows True.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "True or False",
+      "hook": "\"A boolean is a value that is either True or False.\"",
+      "script": "A boolean is a value that is either True or False. Python gives you one every time you compare two things. Is seventeen bigger than eighteen? False. Is seventeen equal to seventeen? True. The first letter is always a capital. A boolean is a value like any other. You can save it in a name and print it. Keep coding, says Xecxec!",
+      "onScreen": "TRUE OR FALSE",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Booleans in 40 seconds.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "booleans",
+        "comparisons",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Six comparison symbols",
+      "hook": "\"Six symbols make comparisons.\"",
+      "script": "Six symbols make comparisons. Double equals asks, are they the same. Not equals asks, are they different. Less than and greater than compare size. Less than or equal, and greater than or equal, include the same number too. Each one gives back True or False. Learn these six, and you are ready for decisions with if and else. Keep coding, says Xecxec!",
+      "onScreen": "== != < > <= >=",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 35,
+      "caption": "Six ways to ask.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "booleans",
+        "comparisons",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "One equals or two",
+      "hook": "\"One equals sign and two equals signs are very different.\"",
+      "script": "One equals sign and two equals signs are very different. One equals sign ties a name to a value. It is an instruction. Two equals signs ask a question, are these the same, and give True or False. Say it in your head, equals means tie, double equals means ask. This tiny difference is behind many beginner bugs, so learn it now. Keep coding, says Xecxec!",
+      "onScreen": "= TIES · == ASKS",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Tie or ask?",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "booleans",
+        "comparisons",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Invalid syntax",
+      "hook": "\"Here is the bug.\"",
+      "script": "Here is the bug. You write if age equals eighteen with one equals sign. Python says syntax error, invalid syntax. It even adds a hint, maybe you meant double equals. The if line needs a question, and one equals sign is an instruction, not a question. Use two equals signs, and the program runs. Read the hint, it is very friendly. Keep coding, says Xecxec!",
+      "onScreen": "SYNTAXERROR: MAYBE ==",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Python gives a hint.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "booleans",
+        "comparisons",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the boolean break up with the string?\"",
+      "script": "Why did the boolean break up with the string? It only wanted a True relationship. Your challenge. Make score equal fifty five. Print whether score is at least forty, and print whether score equals fifty five. You should see two words, in capital letters. Try changing score to thirty, and run again. Post your code in the comments. Keep coding, says Xecxec! Full video: EP 11.",
+      "onScreen": "COMPARE A SCORE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try the comparisons.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "booleans",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "compare.py",
+      "source": "age = 17\nadult = age >= 18\nprint(adult)\nprint(age == 17)\nprint(age != 17)",
+      "output": "False\nTrue\nFalse",
+      "lang": "python"
+    },
+    {
+      "file": "beaches.py",
+      "source": "beach = \"Palolem\"\nprint(beach == \"Palolem\")\nprint(beach == \"palolem\")\nprint(5 < 10 < 20)",
+      "output": "True\nFalse\nTrue",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

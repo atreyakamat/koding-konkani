@@ -1,0 +1,350 @@
+{
+  "ep": 19,
+  "title": "Nested loops and patterns",
+  "module": 2,
+  "lengthSec": 301,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "put one loop inside another",
+    "follow how the inner loop restarts every round",
+    "print patterns on one line with end="
+  ],
+  "youtube": {
+    "title": "Python Nested Loops and Star Patterns | Python Programming EP 19",
+    "description": "In this episode you will put one loop inside another, follow how the inner loop restarts every round and print patterns on one line with end=, with Xecxec the crab. 0:00 Intro · 0:15 A loop inside a loop · 0:53 Two loops, six lines · 1:33 Rows and columns · 2:06 Second program · 3:06 Recap · 3:38 Bug of the Day · 4:26 Challenge · 4:46 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "A loop inside a loop"
+      },
+      {
+        "t": "0:53",
+        "label": "Two loops, six lines"
+      },
+      {
+        "t": "1:33",
+        "label": "Rows and columns"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:38",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:26",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:46",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python nested loops",
+      "python star pattern",
+      "python print end",
+      "pattern programs python"
+    ],
+    "thumbnail": {
+      "text": "LOOPS IN LOOPS",
+      "visual": "big text \"LOOPS IN LOOPS\" in tomato on peach; Xecxec drawing a triangle of stars with his claw; thin black border and drop shadow.",
+      "pose": "Xecxec drawing a triangle of stars with his claw"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 19 · LOOPS IN LOOPS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "One loop is good. A loop inside a loop is powerful. Today we draw patterns with nested loops."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 38,
+      "onScreen": "\"A loop inside a loop\": three numbered lines (1. The outer loop runs once per round; 2. The inner loop runs fully each round; 3. print adds a newline unless you set end) and an analogy card: a clock: the minute hand does a full circle for every single step of the hour hand",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A nested loop is a loop inside a loop. The outer loop takes one step. Then the inner loop runs all the way through. Then the outer loop takes its next step, and the inner loop starts again from the beginning. Think of a clock. The minute hand does a full circle for each step of the hour hand. Nested loops are how programs draw grids and patterns."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 53,
+      "lengthSec": 40,
+      "onScreen": "grid.py: rows and columns printed as pairs",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The outer loop gives two rows. [HL 2] The inner loop gives three columns, and it is indented inside the outer loop. [HL 3] This line is inside both loops, so it runs two times three, six times. Watch the order. Row one runs with columns one, two, three. Only then does row two begin.",
+      "code": {
+        "file": "grid.py",
+        "source": "for row in range(1, 3):\n    for col in range(1, 4):\n        print(\"row\", row, \"col\", col)",
+        "output": "row 1 col 1\nrow 1 col 2\nrow 1 col 3\nrow 2 col 1\nrow 2 col 2\nrow 2 col 3"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 93,
+      "lengthSec": 33,
+      "onScreen": "A 2 by 3 grid; a highlight sweeps column one to three along row one, then restarts along row two",
+      "animation": "A grid of cells; a butter highlight sweeps each row left to right with a tick per cell, then drops to the next row",
+      "sfx": [],
+      "narration": "Picture a grid with two rows and three columns. The highlight walks across row one, one column at a time. When the row is finished, it jumps to row two, and walks the columns again, starting at column one. That restart is the key idea. The inner loop begins fresh every time the outer loop takes a step."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "triangle.py: print stars on one line with end",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Four rows. [HL 2] The inner loop runs row times. Row one gives one star. Row two gives two. [HL 3] Print with end equal to empty quotes. Normally print finishes with a new line. Here we ask it to add nothing, so the stars stay on the same line. [HL 4] An empty print at the outer level adds one new line, after each row of stars is complete.",
+      "code": {
+        "file": "triangle.py",
+        "source": "for row in range(1, 5):\n    for col in range(row):\n        print(\"*\", end=\"\")\n    print()",
+        "output": "*\n**\n***\n****"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python triangle.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as triangle dot py. In the terminal, type python, space, triangle dot py. A triangle of stars: one, two, three, four stars in each row."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: The inner loop runs fully for every step of the outer loop. Two: Indent the inner loop inside the outer loop. Three: print ends with a new line unless you set end. Four: An empty print starts the next line. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 218,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: print adds a new line",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We wanted a triangle. We got a long column of stars, with blank lines in between. Print adds a new line after every call, even inside the inner loop. Tell print to add nothing, with end equal to empty quotes. Then the stars of a row stay together, and the empty print starts the next row."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 258,
+      "lengthSec": 8,
+      "onScreen": "Why did the nested loop get dizzy? It kept going round in circles inside circles.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the nested loop get dizzy? It kept going round in circles inside circles."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 266,
+      "lengthSec": 20,
+      "onScreen": "Task card: print a square of 3 by 3 stars",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Print a 3 by 3 square of stars, three stars in each of three rows. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 286,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 20 · The match statement",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: the match statement. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "for row in range(1, 4):\n    for col in range(row):\n        print(\"*\")\n    print()",
+    "error": "Python output (it runs, but the answer is wrong):\n\n*\n\n*\n*\n\n*\n*\n*",
+    "fixed": "for row in range(1, 4):\n    for col in range(row):\n        print(\"*\", end=\"\")\n    print()",
+    "why": "print ends every call with a new line by default, so stars printed one per call land on separate lines unless end is set to an empty string."
+  },
+  "pun": "\"Why did the nested loop get dizzy? It kept going round in circles inside circles.\"",
+  "challenge": "Print a 3 by 3 square of stars, three stars in each of three rows.",
+  "challengeAnswer": "Use for row in range(3): for col in range(3): print(\"*\", end=\"\") then print(). It prints ***, three times.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A loop in a loop",
+      "hook": "\"A nested loop is a loop inside a loop.\"",
+      "script": "A nested loop is a loop inside a loop. The outer loop takes one step. Then the inner loop runs all the way through. Then the outer loop takes the next step, and the inner loop begins again. It is like a clock. The minute hand makes a full circle for every step of the hour hand. Nested loops draw grids and patterns. Keep coding, says Xecxec!",
+      "onScreen": "LOOP IN A LOOP",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Nested loops explained.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nestedloops",
+        "patterns",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Count the lines",
+      "hook": "\"Here is a quick way to count.\"",
+      "script": "Here is a quick way to count. An outer loop of two, and an inner loop of three. The inner line runs two times three, which is six times. Row one runs columns one, two, three. Then row two runs the columns again, from one. So always multiply the two loop sizes. The answer is the number of lines. Keep coding, says Xecxec!",
+      "onScreen": "2 × 3 = 6 LINES",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "Multiply the loops.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nestedloops",
+        "patterns",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Stay on one line",
+      "hook": "\"Normally print adds a new line at the end.\"",
+      "script": "Normally print adds a new line at the end. To keep printing on the same line, add end equal to empty quotes. The stars of one row now stay together. Then an empty print call, at the end of each row, adds the new line. That is the secret of every pattern program. Stars on a row, then a new line. Keep coding, says Xecxec!",
+      "onScreen": "PRINT(\"*\", END=\"\")",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Use end.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nestedloops",
+        "patterns",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "A column of stars",
+      "hook": "\"Here is the bug every pattern beginner meets.\"",
+      "script": "Here is the bug every pattern beginner meets. You want a triangle, but you get a tall column of stars. Print adds a new line after every call, so each star lands on its own line. Fix it by adding end equal to empty quotes to the inner print. Then the rows of stars stay together, and the empty print starts each new row. Keep coding, says Xecxec!",
+      "onScreen": "A COLUMN, NOT A TRIANGLE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Set end.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nestedloops",
+        "patterns",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the nested loop get dizzy?\"",
+      "script": "Why did the nested loop get dizzy? It kept going round in circles inside circles. Your challenge. Print a square of stars, three stars across, and three rows down. You need an outer loop for the rows, and an inner loop for the stars. Remember end equal to empty quotes, and an empty print to start a new row. Post your pattern below. Keep coding, says Xecxec! Full video: EP 19.",
+      "onScreen": "A 3 BY 3 SQUARE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 40,
+      "caption": "Try a star square.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nestedloops",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "grid.py",
+      "source": "for row in range(1, 3):\n    for col in range(1, 4):\n        print(\"row\", row, \"col\", col)",
+      "output": "row 1 col 1\nrow 1 col 2\nrow 1 col 3\nrow 2 col 1\nrow 2 col 2\nrow 2 col 3",
+      "lang": "python"
+    },
+    {
+      "file": "triangle.py",
+      "source": "for row in range(1, 5):\n    for col in range(row):\n        print(\"*\", end=\"\")\n    print()",
+      "output": "*\n**\n***\n****",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

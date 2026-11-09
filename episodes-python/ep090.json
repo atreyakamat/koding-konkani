@@ -1,0 +1,350 @@
+{
+  "ep": 90,
+  "title": "What's next",
+  "module": 10,
+  "lengthSec": 333,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "review the big ideas of the course",
+    "spot a classic bug in a quiz",
+    "choose your next project"
+  ],
+  "youtube": {
+    "title": "Python: What to Learn Next After This Course | Python Programming EP 90",
+    "description": "In this episode you will review the big ideas of the course, spot a classic bug in a quiz and choose your next project, with Xecxec the crab. 0:00 Intro · 0:15 You can code now · 1:11 A taste of everything · 1:58 Roads to choose from · 2:35 Second program · 3:37 Recap · 4:07 Bug of the Day · 4:55 Challenge · 5:15 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "You can code now"
+      },
+      {
+        "t": "1:11",
+        "label": "A taste of everything"
+      },
+      {
+        "t": "1:58",
+        "label": "Roads to choose from"
+      },
+      {
+        "t": "2:35",
+        "label": "Second program"
+      },
+      {
+        "t": "3:37",
+        "label": "Recap"
+      },
+      {
+        "t": "4:07",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:55",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:15",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python what to learn next",
+      "python roadmap",
+      "python after beginner",
+      "python project ideas"
+    ],
+    "thumbnail": {
+      "text": "WHAT'S NEXT?",
+      "visual": "big text \"WHAT'S NEXT?\" in tomato on peach; Xecxec standing at a crossroads with signs for web, data, games and automation; thin black border and drop shadow.",
+      "pose": "Xecxec standing at a crossroads with signs for web, data, games and automation"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 90 · WHAT'S NEXT?",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "You made it to the end. Here is what you can do now, and where to go next."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 56,
+      "onScreen": "\"You can code now\": three numbered lines (1. You know variables, loops, functions, classes and files; 2. You can read errors and fix them; 3. The best next step is a project of your own) and an analogy card: a map with several roads: you have learned to drive, now choose where to go",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at how far you have come. You can store data in variables, lists, dictionaries and sets. You can make decisions and repeat work with loops. You can write functions, classes, and generators. You can read and write files, handle errors, and test your code. You can use the standard library. Most of all, you can read an error message, and fix the problem. That is the real skill. The best next step is a project of your own. Pick something small that you use yourself. Think of a map with several roads. You have learned to drive. Now choose where to go."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 71,
+      "lengthSec": 47,
+      "onScreen": "review.py: a small program that mixes several ideas from the course",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A tool from the standard library. [HL 3] A function, with a default argument. [HL 4] It uses Counter, and returns the top items. [HL 6] A dictionary for prices. [HL 7] A list of orders. [HL 8] A generator expression adds the prices. [HL 9] The most common order. Tea, three times. [HL 10] An f string for the bill. Seventy. [HL 11] A set removes duplicates, a condition filters, and sorted makes the order steady. Chai and coffee. Dictionaries, lists, sets, functions, f strings, generators and a standard library module, all in eleven lines. You learned every one of them.",
+      "code": {
+        "file": "review.py",
+        "source": "from collections import Counter\n\ndef top(words, n=1):\n    return Counter(words).most_common(n)\n\nmenu = {\"tea\": 10, \"chai\": 15, \"coffee\": 25}\norders = [\"tea\", \"chai\", \"tea\", \"coffee\", \"tea\"]\nbill = sum(menu[o] for o in orders)\nprint(top(orders))\nprint(f\"Bill: {bill}\")\nprint(sorted(o for o in set(orders) if menu[o] > 12))",
+        "output": "[('tea', 3)]\nBill: 70\n['chai', 'coffee']"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 118,
+      "lengthSec": 37,
+      "onScreen": "A crossroads with signs: web with Flask, data with pandas, games with pygame, automation, and testing with pytest",
+      "animation": "A crossroads with five signposts, each lighting up in turn with a small icon",
+      "sfx": [],
+      "narration": "Here are the roads. For websites, look at Flask or Django. For data and charts, try pandas and matplotlib. For games, there is pygame. For automation, write scripts that rename files, send reports or tidy your folders. For testing, learn pytest. You do not have to choose forever. Pick one road, build a small project, and see if you enjoy it. If not, try another."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 155,
+      "lengthSec": 40,
+      "onScreen": "roadmap.py: a numbered list of next steps",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A list of next steps. [HL 2] Web, with Flask. [HL 3] Data, with pandas. [HL 4] Games, with pygame. [HL 5] Automation, with scripts of your own. [HL 6] Testing, with pytest. [HL 8] Enumerate numbers the topics from one. [HL 9] Print each. [HL 10] And one last line. Pick one, and build something small this week. A small finished project teaches more than ten unfinished big ones.",
+      "code": {
+        "file": "roadmap.py",
+        "source": "topics = [\n    \"web: Flask\",\n    \"data: pandas\",\n    \"games: pygame\",\n    \"automation: your own scripts\",\n    \"testing: pytest\",\n]\nfor i, topic in enumerate(topics, start=1):\n    print(i, topic)\nprint(\"Pick one, and build something small this week.\")",
+        "output": "1 web: Flask\n2 data: pandas\n3 games: pygame\n4 automation: your own scripts\n5 testing: pytest\nPick one, and build something small this week."
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 195,
+      "lengthSec": 22,
+      "onScreen": "Terminal: python roadmap.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as roadmap dot py. In the terminal, type python, space, roadmap dot py. Tea three times, then Bill 70, then chai and coffee. Then the five numbered topics and the final line."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 217,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: You can write and read Python programs. Two: You can use lists, dictionaries, functions, classes and files. Three: You can read errors, test your code, and fix bugs. Four: Next: build one small project of your own. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 247,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: quiz: spot the bug",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Final quiz. Spot the bug. We remove every even number from the list, and print. We expect an empty list. We get four and eight. The loop walks the list by position. When we remove an item, the next one slides into its place, and the loop jumps over it. Never change a list while looping over it. Build a new list with a comprehension instead."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 287,
+      "lengthSec": 8,
+      "onScreen": "Why did the student finish the course with a smile? Because they finally got the last laugh, and the last loop.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the student finish the course with a smile? Because they finally got the last laugh, and the last loop."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 295,
+      "lengthSec": 20,
+      "onScreen": "Task card: start your project",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write down one small project that you use yourself. Write its first three functions as empty def lines with pass. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 315,
+      "lengthSec": 18,
+      "onScreen": "That is the course! Keep building.",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "That is the whole Python course. Pick a small project of your own, and start building today. See you in the next course. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "nums = [2, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        nums.remove(n)\nprint(nums)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n[4, 8]",
+    "fixed": "nums = [2, 4, 6, 8]\nnums = [n for n in nums if n % 2 != 0]\nprint(nums)",
+    "why": "Removing items from a list while looping over it shifts the remaining items, so the loop skips some. Build a new list with a comprehension instead."
+  },
+  "pun": "\"Why did the student finish the course with a smile? Because they finally got the last laugh, and the last loop.\"",
+  "challenge": "Write down one small project that you use yourself. Write its first three functions as empty def lines with pass.",
+  "challengeAnswer": "Any small idea works: a habit tracker, a quiz, a budget. List three functions, such as add_item, show_items and save, each with pass.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Look how far you came",
+      "hook": "\"Look how far you have come.\"",
+      "script": "Look how far you have come. Variables, loops, functions, classes, files, errors, tests and the standard library. You can read an error message, and fix the problem. That is the real skill of a programmer. Well done. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "You can code now",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "You came a long way.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "roadmap",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Choose a road",
+      "hook": "\"Where next?\"",
+      "script": "Where next? For websites, try Flask. For data, pandas. For games, pygame. For automation, write scripts that tidy your folders. For testing, pytest. Pick one road, build something small, and see if you enjoy it. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "web, data, games, automation",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "Pick one road.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "roadmap",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Build something small",
+      "hook": "\"The best way to learn is to build.\"",
+      "script": "The best way to learn is to build. Pick a small project that you really use. A habit tracker, a quiz, a budget. Write its first three functions as empty def lines. Then fill them in, one at a time. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "small project, finished",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Finish something small.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "roadmap",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Spot the bug",
+      "hook": "\"A final quiz.\"",
+      "script": "A final quiz. We remove every even number from a list while looping over it. We expect an empty list. We get four and eight. The loop skipped items, because the list shifted. Build a new list instead. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "remove while looping = skips",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Never edit while looping.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "roadmap",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Thank you",
+      "hook": "\"Thank you for learning Python with me.\"",
+      "script": "Thank you for learning Python with me. Every expert was once a beginner who kept going. Pick one small project this week, and build it. Your challenge. Write down your idea, and its first three functions. Show me what you build. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 90.",
+      "onScreen": "Challenge: your own project",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Keep building.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "review.py",
+      "source": "from collections import Counter\n\ndef top(words, n=1):\n    return Counter(words).most_common(n)\n\nmenu = {\"tea\": 10, \"chai\": 15, \"coffee\": 25}\norders = [\"tea\", \"chai\", \"tea\", \"coffee\", \"tea\"]\nbill = sum(menu[o] for o in orders)\nprint(top(orders))\nprint(f\"Bill: {bill}\")\nprint(sorted(o for o in set(orders) if menu[o] > 12))",
+      "output": "[('tea', 3)]\nBill: 70\n['chai', 'coffee']",
+      "lang": "python"
+    },
+    {
+      "file": "roadmap.py",
+      "source": "topics = [\n    \"web: Flask\",\n    \"data: pandas\",\n    \"games: pygame\",\n    \"automation: your own scripts\",\n    \"testing: pytest\",\n]\nfor i, topic in enumerate(topics, start=1):\n    print(i, topic)\nprint(\"Pick one, and build something small this week.\")",
+      "output": "1 web: Flask\n2 data: pandas\n3 games: pygame\n4 automation: your own scripts\n5 testing: pytest\nPick one, and build something small this week.",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

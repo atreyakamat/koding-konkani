@@ -1,0 +1,352 @@
+{
+  "ep": 69,
+  "title": "Polymorphism and duck typing",
+  "module": 7,
+  "lengthSec": 307,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "call the same method on different objects",
+    "explain duck typing",
+    "recognise an AttributeError from a missing method"
+  ],
+  "youtube": {
+    "title": "Python Polymorphism and Duck Typing | Python Programming EP 69",
+    "description": "In this episode you will call the same method on different objects, explain duck typing and recognise an AttributeError from a missing method, with Xecxec the crab. 0:00 Intro · 0:15 Same call, many shapes · 1:00 One loop, many shapes · 1:40 One list, different objects · 2:13 Second program · 3:13 Recap · 3:44 Bug of the Day · 4:32 Challenge · 4:52 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Same call, many shapes"
+      },
+      {
+        "t": "1:00",
+        "label": "One loop, many shapes"
+      },
+      {
+        "t": "1:40",
+        "label": "One list, different objects"
+      },
+      {
+        "t": "2:13",
+        "label": "Second program"
+      },
+      {
+        "t": "3:13",
+        "label": "Recap"
+      },
+      {
+        "t": "3:44",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:32",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:52",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python polymorphism",
+      "python duck typing",
+      "python oop polymorphism",
+      "attributeerror python"
+    ],
+    "thumbnail": {
+      "text": "DUCK TYPING",
+      "visual": "big text \"DUCK TYPING\" in tomato on peach; Xecxec holding a duck mask: if it quacks like a duck, it is a duck; thin black border and drop shadow.",
+      "pose": "Xecxec holding a duck mask: if it quacks like a duck, it is a duck"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 69 · DUCK TYPING",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "One loop, many kinds of objects, each doing its own thing. That is polymorphism."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 45,
+      "onScreen": "\"Same call, many shapes\": three numbered lines (1. Polymorphism: one call, many behaviours; 2. Python does not check the class, only the method; 3. If it quacks like a duck, treat it as a duck) and an analogy card: a remote with a play button: it works on any device that knows how to play, whatever the brand",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Polymorphism means many shapes. You call the same method on different objects, and each one responds in its own way. Python goes further. It does not check the class at all. It only asks, does this object have the method I am calling? This is called duck typing. If it walks like a duck, and quacks like a duck, treat it as a duck. Think of a remote with a play button. It works on any device that knows how to play."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 40,
+      "onScreen": "shapes.py: different classes with the same area method",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A Square class. [HL 2] Init stores the side. [HL 5] Its area method. [HL 6] Side times side. [HL 8] A Circle class. [HL 9] Init stores the radius. [HL 12] Its own area method. [HL 13] Pi times radius squared, rounded. [HL 15] A list with different kinds of shapes. [HL 16] Loop over them. [HL 17] The same call, shape dot area, on every object. Square nine. Circle twelve point five seven. Square sixteen. No class check anywhere.",
+      "code": {
+        "file": "shapes.py",
+        "source": "class Square:\n    def __init__(self, side):\n        self.side = side\n\n    def area(self):\n        return self.side * self.side\n\nclass Circle:\n    def __init__(self, radius):\n        self.radius = radius\n\n    def area(self):\n        return round(3.14159 * self.radius ** 2, 2)\n\nshapes = [Square(3), Circle(2), Square(4)]\nfor shape in shapes:\n    print(type(shape).__name__, shape.area())",
+        "output": "Square 9\nCircle 12.57\nSquare 16"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 100,
+      "lengthSec": 33,
+      "onScreen": "The name shapes tied to a list holding two Square objects and a Circle object",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name shapes is tied to one list. Inside the list sit three objects, two squares and a circle. The classes are unrelated, there is no parent class at all. But all three know area, so the loop works. Python cares only about what an object can do, not what it is called."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 133,
+      "lengthSec": 40,
+      "onScreen": "ducks.py: a function that works with any object that has speak",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A Duck that can speak. [HL 2] It says Quack. [HL 5] A Robot, with no relation to Duck. [HL 6] It says Beep. [HL 9] A Rock that cannot speak. [HL 12] A function that takes anything. [HL 13] And simply calls speak on it. [HL 15] A duck quacks. [HL 16] A robot beeps. [HL 17] Has attribute asks, does a rock have speak? False. Calling talk on a rock fails.",
+      "code": {
+        "file": "ducks.py",
+        "source": "class Duck:\n    def speak(self):\n        return \"Quack\"\n\nclass Robot:\n    def speak(self):\n        return \"Beep\"\n\nclass Rock:\n    pass\n\ndef talk(thing):\n    return thing.speak()\n\nprint(talk(Duck()))\nprint(talk(Robot()))\nprint(hasattr(Rock(), \"speak\"))",
+        "output": "Quack\nBeep\nFalse"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 173,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python ducks.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as ducks dot py. In the terminal, type python, space, ducks dot py. Square 9, Circle 12.57, Square 16. Then Quack, Beep, False."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 193,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Polymorphism: the same call behaves differently on different objects. Two: Python checks only that the method exists. Three: That is duck typing: if it quacks, treat it as a duck. Four: Use hasattr to test for a method. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 224,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: calling a missing method",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The talk function calls speak, but our Robot only has a method named beep. Python finds out at the moment of the call. Attribute error, Robot object has no attribute speak. Duck typing needs every object to offer the method that the function calls."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 264,
+      "lengthSec": 8,
+      "onScreen": "Why did the duck get promoted? It really knew how to quack under pressure.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the duck get promoted? It really knew how to quack under pressure."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 272,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a new shape",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Add a Triangle class with a base and a height, and an area method. Add one to the shapes list and run the same loop. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 292,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 70 · Encapsulation and properties",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: encapsulation and properties. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Robot:\n    def beep(self):\n        return \"Beep\"\n\ndef talk(thing):\n    return thing.speak()\n\nprint(talk(Robot()))",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"talk.py\", line 8, in <module>\n    print(talk(Robot()))\n          ~~~~^^^^^^^^^\n  File \"talk.py\", line 6, in talk\n    return thing.speak()\n           ^^^^^^^^^^^\nAttributeError: 'Robot' object has no attribute 'speak'",
+    "fixed": "class Robot:\n    def speak(self):\n        return \"Beep\"\n\ndef talk(thing):\n    return thing.speak()\n\nprint(talk(Robot()))",
+    "why": "Duck typing only works if the object really has the method you call. Python finds out when the call happens, and raises an AttributeError."
+  },
+  "pun": "\"Why did the duck get promoted? It really knew how to quack under pressure.\"",
+  "challenge": "Add a Triangle class with a base and a height, and an area method. Add one to the shapes list and run the same loop.",
+  "challengeAnswer": "class Triangle: def __init__(self, base, height): ...; def area(self): return self.base * self.height / 2.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Many shapes",
+      "hook": "\"Polymorphism means many shapes.\"",
+      "script": "Polymorphism means many shapes. You call the same method on different objects, and each answers in its own way. Square area, circle area, triangle area. One loop, one call, three different calculations. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "shape.area()",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "One call, many behaviours.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "polymorphism",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Duck typing",
+      "hook": "\"Python does not ask, what class are you?\"",
+      "script": "Python does not ask, what class are you? It asks, do you have the method I want to call? If it walks like a duck, and quacks like a duck, treat it as a duck. The class does not matter at all. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "if it quacks, it is a duck",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Python trusts methods.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "polymorphism",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "No parent needed",
+      "hook": "\"Notice that Square and Circle share no parent class.\"",
+      "script": "Notice that Square and Circle share no parent class. They are unrelated. Yet one loop works on both, because both have an area method. Duck typing needs no inheritance. Just the right method name. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "no shared parent needed",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Only the method matters.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "polymorphism",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Missing method",
+      "hook": "\"What if an object lacks the method?\"",
+      "script": "What if an object lacks the method? Calling thing dot speak on a robot that only has beep raises, attribute error, Robot object has no attribute speak. You can test first with hasattr, or just make sure every class offers the method. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "AttributeError: no attribute 'speak'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Check the method name.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "polymorphism",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the duck get promoted?\"",
+      "script": "Why did the duck get promoted? It really knew how to quack under pressure. Your challenge. Add a Triangle class with a base, a height and an area method. Put one in the shapes list, and run the same loop. Did you change the loop? Try it in your own file and watch what happens. Keep coding, says Xecxec! Full video: EP 69.",
+      "onScreen": "Challenge: add a Triangle",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Add a new shape.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "shapes.py",
+      "source": "class Square:\n    def __init__(self, side):\n        self.side = side\n\n    def area(self):\n        return self.side * self.side\n\nclass Circle:\n    def __init__(self, radius):\n        self.radius = radius\n\n    def area(self):\n        return round(3.14159 * self.radius ** 2, 2)\n\nshapes = [Square(3), Circle(2), Square(4)]\nfor shape in shapes:\n    print(type(shape).__name__, shape.area())",
+      "output": "Square 9\nCircle 12.57\nSquare 16",
+      "lang": "python"
+    },
+    {
+      "file": "ducks.py",
+      "source": "class Duck:\n    def speak(self):\n        return \"Quack\"\n\nclass Robot:\n    def speak(self):\n        return \"Beep\"\n\nclass Rock:\n    pass\n\ndef talk(thing):\n    return thing.speak()\n\nprint(talk(Duck()))\nprint(talk(Robot()))\nprint(hasattr(Rock(), \"speak\"))",
+      "output": "Quack\nBeep\nFalse",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

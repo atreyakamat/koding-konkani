@@ -1,0 +1,352 @@
+{
+  "ep": 71,
+  "title": "Dunder methods",
+  "module": 7,
+  "lengthSec": 305,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "make objects work with + and ==",
+    "write __len__ and __lt__",
+    "know that __eq__ needs __hash__ for sets"
+  ],
+  "youtube": {
+    "title": "Python Dunder (Magic) Methods Explained | Python Programming EP 71",
+    "description": "In this episode you will make objects work with + and ==, write __len__ and __lt__ and know that __eq__ needs __hash__ for sets, with Xecxec the crab. 0:00 Intro · 0:15 Python's secret handshakes · 0:57 Teaching plus and equals · 1:37 Plus builds a new object · 2:07 Second program · 3:09 Recap · 3:40 Bug of the Day · 4:28 Challenge · 4:50 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Python's secret handshakes"
+      },
+      {
+        "t": "0:57",
+        "label": "Teaching plus and equals"
+      },
+      {
+        "t": "1:37",
+        "label": "Plus builds a new object"
+      },
+      {
+        "t": "2:07",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:28",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:50",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python dunder methods",
+      "python magic methods",
+      "python __eq__",
+      "python operator overloading"
+    ],
+    "thumbnail": {
+      "text": "DUNDER METHODS",
+      "visual": "big text \"DUNDER METHODS\" in tomato on peach; Xecxec waving a wand over a Point so that plus, equals and len work on it; thin black border and drop shadow.",
+      "pose": "Xecxec waving a wand over a Point so that plus, equals and len work on it"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 71 · DUNDER METHODS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "How does plus know how to add two numbers? And how can we teach it to add two of our own objects?"
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 42,
+      "onScreen": "\"Python's secret handshakes\": three numbered lines (1. __add__ makes + work; 2. __eq__ makes == work; 3. __len__ makes len() work) and an analogy card: secret handshakes: when Python sees a plus sign, it knocks on your object and asks for the add handshake",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Dunder methods, short for double underscore, are special names Python looks for. When you write a plus b, Python calls a dot add of b. When you write a equals equals b, it calls eq. And len of a calls len. Define them in your class, and your objects work with operators, just like numbers. Think of secret handshakes. When Python sees a plus, it knocks on your object, and asks for the add handshake."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 57,
+      "lengthSec": 40,
+      "onScreen": "vector.py: a Vector that adds and compares",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A Vector class. [HL 2] Init stores x and y. [HL 6] Dunder add, the handshake for plus. [HL 7] It returns a new vector, with the sums. [HL 9] Dunder eq, the handshake for equals equals. [HL 10] Equal when both parts match. [HL 12] Repr, so that printing is readable. [HL 15] A vector one, two. [HL 16] And three, four. [HL 17] Plus calls add. [HL 18] We get Vector four, six. [HL 19] Equals compares the parts. True. [HL 20] And a is not equal to b. False.",
+      "code": {
+        "file": "vector.py",
+        "source": "class Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\n    def __repr__(self):\n        return f\"Vector({self.x}, {self.y})\"\n\na = Vector(1, 2)\nb = Vector(3, 4)\nc = a + b\nprint(c)\nprint(c == Vector(4, 6))\nprint(a == b)",
+        "output": "Vector(4, 6)\nTrue\nFalse"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 97,
+      "lengthSec": 30,
+      "onScreen": "The names a, b and c tied to three separate Vector objects; c is built from a and b",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The names a and b are tied to two vectors. Plus does not change either of them. It builds a third vector, a brand new object, and the name c is tied to it. Three names, three objects. Dunder add only decides how the new object is built."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 127,
+      "lengthSec": 42,
+      "onScreen": "deck.py: a Deck that supports len and sorting",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A Deck class. [HL 2] Init stores a list of cards. [HL 5] Dunder len. [HL 6] It returns how many cards there are. [HL 8] A Box class. [HL 9] Init stores the size. [HL 12] Dunder lt, the handshake for less than. [HL 13] A box is less when its size is smaller. [HL 15] Repr for a readable print. [HL 18] A deck of three cards. [HL 19] Len works on our own object. Three. [HL 20] Three boxes. [HL 21] Sorted only needs less than. Two, five, nine. [HL 22] And max finds the biggest. Box nine.",
+      "code": {
+        "file": "deck.py",
+        "source": "class Deck:\n    def __init__(self, cards):\n        self.cards = cards\n\n    def __len__(self):\n        return len(self.cards)\n\nclass Box:\n    def __init__(self, size):\n        self.size = size\n\n    def __lt__(self, other):\n        return self.size < other.size\n\n    def __repr__(self):\n        return f\"Box({self.size})\"\n\nd = Deck([\"A\", \"K\", \"Q\"])\nprint(len(d))\nboxes = [Box(5), Box(2), Box(9)]\nprint(sorted(boxes))\nprint(max(boxes))",
+        "output": "3\n[Box(2), Box(5), Box(9)]\nBox(9)"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python deck.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as deck dot py. In the terminal, type python, space, deck dot py. Vector of four comma six, True, False. Then 3, the sorted boxes, and Box of nine."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Dunder methods are special names Python looks for. Two: dunder add, dunder eq and dunder lt teach operators to our objects. Three: dunder len makes len work. Four: Operators build new objects. They do not change the old ones. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: __eq__ without __hash__",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We defined eq, and then tried to put a Point in a set. Type error, unhashable type, Point. When you define eq, Python removes the default hash, so equal objects cannot be placed in the wrong bucket. Add a hash method that uses the same values as eq, and sets work again."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 8,
+      "onScreen": "Why did the object learn dunder methods? It wanted to be on speaking terms with Python.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the object learn dunder methods? It wanted to be on speaking terms with Python."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 268,
+      "lengthSec": 22,
+      "onScreen": "Task card: make plus work for Money",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a Money class with an amount. Add dunder add so that Money of 5 plus Money of 3 gives a new Money with 8. Add dunder repr too. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 290,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 72 · Mini project: Library system",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: mini project, library system. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\nseen = {Point(1, 2)}",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"points.py\", line 9, in <module>\n    seen = {Point(1, 2)}\n           ^^^^^^^^^^^^^\nTypeError: unhashable type: 'Point'",
+    "fixed": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\n    def __hash__(self):\n        return hash((self.x, self.y))\n\nseen = {Point(1, 2)}\nprint(Point(1, 2) in seen)",
+    "why": "When you define eq, Python removes the default hash, because equal objects must have equal hashes. Define hash too, from the same values, to use the object in sets and as dictionary keys."
+  },
+  "pun": "\"Why did the object learn dunder methods? It wanted to be on speaking terms with Python.\"",
+  "challenge": "Write a Money class with an amount. Add __add__ so that Money(5) + Money(3) gives a new Money with 8. Add __repr__ too.",
+  "challengeAnswer": "def __add__(self, other): return Money(self.amount + other.amount). def __repr__(self): return f\"Money({self.amount})\".",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Dunder methods",
+      "hook": "\"Dunder means double underscore.\"",
+      "script": "Dunder means double underscore. These are special method names that Python looks for. When you write a plus b, Python quietly calls a dot add with b. Define the method, and your own objects can use plus. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "a + b calls __add__",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Python's secret handshakes.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "dunder",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Add and eq",
+      "hook": "\"Dunder add tells Python how to add two of your objects.\"",
+      "script": "Dunder add tells Python how to add two of your objects. It should return a new object. Dunder eq tells Python what equal means. Write both for a Vector, and then a plus b, and a equals equals b, both just work. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "__add__ and __eq__",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Teach operators.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "dunder",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Len and sorting",
+      "hook": "\"Dunder len makes the len function work on your object.\"",
+      "script": "Dunder len makes the len function work on your object. Dunder lt, for less than, is all that sorted needs. Define lt for a box class, and a list of boxes sorts, and max finds the biggest. Two small methods give you much power. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "__len__ and __lt__",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Len and sorting.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "dunder",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Unhashable",
+      "hook": "\"A surprise bug.\"",
+      "script": "A surprise bug. You define dunder eq, and then put the object into a set. Python says, type error, unhashable type. Defining eq removes the default hash. Add dunder hash that uses the same values, and sets and dictionary keys work again. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "TypeError: unhashable type",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Define hash with eq.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "dunder",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the object learn dunder methods?\"",
+      "script": "Why did the object learn dunder methods? It wanted to be on speaking terms with Python. Your challenge. Write a Money class. Add dunder add, so that Money five plus Money three gives Money eight. Add a repr, so that you can see it. Try it in your own file and watch what happens. Keep coding, says Xecxec! Full video: EP 71.",
+      "onScreen": "Challenge: Money + Money",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Teach plus to Money.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "vector.py",
+      "source": "class Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\n    def __repr__(self):\n        return f\"Vector({self.x}, {self.y})\"\n\na = Vector(1, 2)\nb = Vector(3, 4)\nc = a + b\nprint(c)\nprint(c == Vector(4, 6))\nprint(a == b)",
+      "output": "Vector(4, 6)\nTrue\nFalse",
+      "lang": "python"
+    },
+    {
+      "file": "deck.py",
+      "source": "class Deck:\n    def __init__(self, cards):\n        self.cards = cards\n\n    def __len__(self):\n        return len(self.cards)\n\nclass Box:\n    def __init__(self, size):\n        self.size = size\n\n    def __lt__(self, other):\n        return self.size < other.size\n\n    def __repr__(self):\n        return f\"Box({self.size})\"\n\nd = Deck([\"A\", \"K\", \"Q\"])\nprint(len(d))\nboxes = [Box(5), Box(2), Box(9)]\nprint(sorted(boxes))\nprint(max(boxes))",
+      "output": "3\n[Box(2), Box(5), Box(9)]\nBox(9)",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

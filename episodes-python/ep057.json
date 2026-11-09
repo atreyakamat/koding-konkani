@@ -1,0 +1,345 @@
+{
+  "ep": 57,
+  "title": "Writing your own module",
+  "module": 6,
+  "lengthSec": 303,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "put reusable functions in a module",
+    "explain what __name__ holds",
+    "keep test code from running on import"
+  ],
+  "youtube": {
+    "title": "Python: if __name__ == \"__main__\" Explained | Python Programming EP 57",
+    "description": "In this episode you will put reusable functions in a module, explain what __name__ holds and keep test code from running on import, with Xecxec the crab. 0:00 Intro · 0:16 Run or imported? · 0:55 A module with a guard · 1:35 Two ways to start a file · 2:09 Second program · 3:09 Recap · 3:40 Bug of the Day · 4:28 Challenge · 4:48 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:16",
+        "label": "Run or imported?"
+      },
+      {
+        "t": "0:55",
+        "label": "A module with a guard"
+      },
+      {
+        "t": "1:35",
+        "label": "Two ways to start a file"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:28",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:48",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python __name__ main",
+      "python write module",
+      "python import side effects",
+      "if name equals main"
+    ],
+    "thumbnail": {
+      "text": "__NAME__ == MAIN",
+      "visual": "big text \"__NAME__ == MAIN\" in tomato on peach; Xecxec holding a sign that says MAIN in one claw and a sign that says IMPORTED in the other; thin black border and drop shadow.",
+      "pose": "Xecxec holding a sign that says MAIN in one claw and a sign that says IMPORTED in the other"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 16,
+      "onScreen": "EP 57 · __NAME__ == MAIN",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "A module often has test code at the bottom. Today we learn how to stop it running every time someone imports the file."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 16,
+      "lengthSec": 39,
+      "onScreen": "\"Run or imported?\": three numbered lines (1. Python sets __name__ for every file; 2. A file run directly has __name__ equal to \"__main__\"; 3. An imported file has its own file name instead) and an analogy card: a shop with a front counter and a storeroom: the demo runs only when the shop is opened directly, not when someone borrows a tool",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "When Python runs a file, it sets a special name called dunder name. If you run the file directly, dunder name is the text, dunder main. If another file imports it, dunder name is the module's own name. So you can put an if at the bottom, if dunder name equals dunder main. Code under that if runs only when the file is run directly, not when it is imported."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "usearea.py: importing shape.py does not run its demo",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Import our module. Python runs shape dot py from top to bottom. It defines area, and then reaches the guard. Dunder name is shape here, not main, so the test line is skipped. [HL 2] Use the module's function. Twenty. [HL 3] The module's name is simply shape. If you run shape dot py directly, you see its test print instead."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 34,
+      "onScreen": "Two panels: running shape.py directly gives __name__ = '__main__' and the demo runs; importing it gives __name__ = 'shape' and the demo is skipped",
+      "animation": "Two panels with the value of __name__ flipping; the guarded line lights up on the left and stays grey on the right",
+      "sfx": [],
+      "narration": "Here are the two cases side by side. On the left, you run the file directly. The name is main, the guard is True, and the test code runs. On the right, another file imports it. The name is the module's own name, the guard is False, and the test is skipped. One file, two behaviours, chosen by one if."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "shape_run.py: print __name__ and use the guard in a script",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A small function. [HL 2] Return the product. [HL 3] Print the special name. When we run this file directly, it says dunder main. [HL 4] The guard. [HL 5] True, so the test line runs. Six. If another file imports this file, the guard is False. Only the function is defined.",
+      "code": {
+        "file": "shape_run.py",
+        "source": "def area(w, h):\n    return w * h\nprint(__name__)\nif __name__ == \"__main__\":\n    print(area(2, 3))",
+        "output": "__main__\n6"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python shape_run.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as shape_run dot py. In the terminal, type python, space, shape_run dot py. Dunder main, then six."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Python sets dunder name for every file. Two: A file run directly has dunder name equal to dunder main. Three: An imported file has its own name instead. Four: Put test or demo code under the main guard. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: test code runs on import",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Our module prints a test line at the top level. We import it, and the test line appears in our own program's output. Every top level line of a module runs when it is imported. Wrap the test in the main guard, and now it runs only when you run the module directly."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 8,
+      "onScreen": "Why was the module so well behaved? It knew when it was main, and when it was only a guest.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why was the module so well behaved? It knew when it was main, and when it was only a guest."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 268,
+      "lengthSec": 20,
+      "onScreen": "Task card: guard a demo",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a module file with one function, and a demo print guarded by the main guard. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 288,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 58 · pip and virtual environments",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: pip and virtual environments. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "import shape\nprint(shape.area(4, 5))",
+    "error": "def area(w, h):\n    return w * h\n\nprint(\"Testing:\", area(2, 3))\n\nPython output (it runs, but the answer is wrong):\n\nTesting: 6\n20\n\ndef area(w, h):\n    return w * h\n\nif __name__ == \"__main__\":\n    print(\"Testing:\", area(2, 3))",
+    "fixed": "import shape\nprint(shape.area(4, 5))",
+    "why": "Every line at the top level of a module runs when it is imported, so a stray print appears in every program that imports it; guard it with if __name__ == \"__main__\"."
+  },
+  "pun": "\"Why was the module so well behaved? It knew when it was main, and when it was only a guest.\"",
+  "challenge": "Write a module file with one function, and a demo print guarded by the main guard.",
+  "challengeAnswer": "Put the function first, then if __name__ == \"__main__\": print(demo_call).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is __name__?",
+      "hook": "\"Every Python file has a special name called dunder name.\"",
+      "script": "Every Python file has a special name called dunder name. If you run the file directly, dunder name is the text, dunder main. If another file imports it, dunder name is the file's own name instead. It is Python's way of telling the file how it is being used. One small value, and a very useful trick. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "__NAME__",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 40,
+      "caption": "How was I started?",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "main",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The main guard",
+      "hook": "\"Put this at the bottom of a module.\"",
+      "script": "Put this at the bottom of a module. If dunder name equals dunder main, colon. Everything below it runs only when you run the file directly. When another file imports it, the guard is False, and the code is skipped. It is the standard way to keep test code and demos in a module. The files that import it do not run them. Keep coding, says Xecxec!",
+      "onScreen": "IF __NAME__ == \"__MAIN__\":",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "Run only when main.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "main",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Reusable code",
+      "hook": "\"Modules let you split a big program into small files.\"",
+      "script": "Modules let you split a big program into small files. Put your functions in one file, and import them everywhere. Every file only needs to know the names it uses. If you fix a function once, every file that imports it gets the fix. That is why professional code is split into modules, and not written as one huge file. Keep coding, says Xecxec!",
+      "onScreen": "ONE FIX, EVERYWHERE",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Split into files.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "main",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Surprise output",
+      "hook": "\"A bug that confuses beginners.\"",
+      "script": "A bug that confuses beginners. You import a module, and extra lines appear in your output. The module has print statements at the top level, and every top level line runs on import. Wrap test code in the main guard, and it only runs when you run the module itself. Your imports become quiet, and predictable. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "TEST LINE ON IMPORT",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Hide the demo.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "main",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why was the module so well behaved?\"",
+      "script": "Why was the module so well behaved? It knew when it was main, and when it was only a guest. Your challenge. Write a module with one function, and a demo call to it, guarded by if dunder name equals dunder main. Then import it from another file, and check that the demo does not run. Share your module below. Keep coding, says Xecxec! Full video: EP 57.",
+      "onScreen": "GUARD YOUR DEMO",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try the main guard.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "modules",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "import shape\nprint(shape.area(4, 5))\nprint(shape.__name__)",
+      "output": "20\nshape",
+      "lang": "python"
+    },
+    {
+      "file": "shape_run.py",
+      "source": "def area(w, h):\n    return w * h\nprint(__name__)\nif __name__ == \"__main__\":\n    print(area(2, 3))",
+      "output": "__main__\n6",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

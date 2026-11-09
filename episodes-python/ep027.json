@@ -1,0 +1,352 @@
+{
+  "ep": 27,
+  "title": "Looping with enumerate and zip",
+  "module": 3,
+  "lengthSec": 299,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "loop over a list directly",
+    "number items with enumerate",
+    "walk two lists together with zip"
+  ],
+  "youtube": {
+    "title": "Python enumerate and zip: Loop Like a Pro | Python Programming EP 27",
+    "description": "In this episode you will loop over a list directly, number items with enumerate and walk two lists together with zip, with Xecxec the crab. 0:00 Intro · 0:15 Better loops over lists · 0:54 Numbering items · 1:34 Two loop names · 2:06 Second program · 3:06 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Better loops over lists"
+      },
+      {
+        "t": "0:54",
+        "label": "Numbering items"
+      },
+      {
+        "t": "1:34",
+        "label": "Two loop names"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python enumerate",
+      "python zip",
+      "python loop over list",
+      "modify list while looping"
+    ],
+    "thumbnail": {
+      "text": "ENUMERATE + ZIP",
+      "visual": "big text \"ENUMERATE + ZIP\" in tomato on peach; Xecxec zipping two lists together like a jacket zip; thin black border and drop shadow.",
+      "pose": "Xecxec zipping two lists together like a jacket zip"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 27 · ENUMERATE + ZIP",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Lists and loops are best friends. Today we meet two helpers that make list loops neat."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 39,
+      "onScreen": "\"Better loops over lists\": three numbered lines (1. for item in list visits every item; 2. enumerate adds a counter; 3. zip pairs up two lists) and an analogy card: a class register: each student has a roll number, and each roll number has a mark beside it",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "You can loop over a list directly. For item in the list. No index needed. When you also want the position, use enumerate. It gives you a counter and the item together. When you have two lists that go together, use zip. It pairs them up, one from each. Think of a class register. Each student has a roll number, and each roll number has a mark beside it."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "enum.py: enumerate gives a counter and an item",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A list of three beaches. [HL 2] Enumerate hands us two things each round, a counter and an item. We tie them to i and beach. Start equals one makes the count begin at one, not zero. [HL 3] Print both. One, Baga. Two, Colva. Three, Anjuna.",
+      "code": {
+        "file": "enum.py",
+        "source": "beaches = [\"Baga\", \"Colva\", \"Anjuna\"]\nfor i, beach in enumerate(beaches, start=1):\n    print(i, beach)",
+        "output": "1 Baga\n2 Colva\n3 Anjuna"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 94,
+      "lengthSec": 32,
+      "onScreen": "After the loop, i tied to 3 and beach tied to the string Anjuna",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the end state. After the loop, i is tied to the int three, and beach is tied to the string Anjuna. Both names were retied each round. The list itself was never touched. The beach name points to the same string that sits at the end of the list. No copy was made."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "zip_demo.py: zip pairs a name with its mark",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A list of names. [HL 2] And a list of marks, in the same order. [HL 3] Zip pairs them up. Round one gives Asha and eighty eight. Round two gives Ravi and ninety two. [HL 4] Print a sentence for each pair. If the lists have different lengths, zip stops at the shorter one.",
+      "code": {
+        "file": "zip_demo.py",
+        "source": "names = [\"Asha\", \"Ravi\"]\nmarks = [88, 92]\nfor name, mark in zip(names, marks):\n    print(name, \"scored\", mark)",
+        "output": "Asha scored 88\nRavi scored 92"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python zip_demo.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as zip_demo dot py. In the terminal, type python, space, zip_demo dot py. Asha scored eighty eight. Ravi scored ninety two."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: for item in list visits each item without an index. Two: enumerate gives a counter and the item together. Three: zip walks two lists in step. Four: Do not change a list while you loop over it. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 216,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: changing a list while looping",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We want to remove every even number. All four are even, so the list should be empty. But it prints four and eight. Why? When we remove an item, the rest shift left. The loop moves on and skips the next one. Never change a list while looping over it. Loop over a copy instead, and change the original."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 256,
+      "lengthSec": 8,
+      "onScreen": "Why did the list love enumerate? It finally got a number of its own.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the list love enumerate? It finally got a number of its own."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 264,
+      "lengthSec": 20,
+      "onScreen": "Task card: print a numbered list of foods",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make a list of three foods, and print them numbered 1, 2, 3 using enumerate. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 284,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 28 · Copying lists",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: copying lists. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "nums = [2, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        nums.remove(n)\nprint(nums)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n[4, 8]",
+    "fixed": "nums = [2, 4, 6, 8]\nfor n in nums.copy():\n    if n % 2 == 0:\n        nums.remove(n)\nprint(nums)",
+    "why": "Removing items shifts the later items left, so the loop skips some; looping over a copy lets the original change safely."
+  },
+  "pun": "\"Why did the list love enumerate? It finally got a number of its own.\"",
+  "challenge": "Make a list of three foods, and print them numbered 1, 2, 3 using enumerate.",
+  "challengeAnswer": "Use for i, food in enumerate(foods, start=1): print(i, food).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Loop over a list",
+      "hook": "\"You can loop directly over a list.\"",
+      "script": "You can loop directly over a list. For beach in beaches. Python hands you each item in turn, and you never need an index. It reads like English, and it is hard to get wrong. Use this form whenever you only need the items. If you also need their position, there is a helper for that, and it is called enumerate. Keep coding, says Xecxec!",
+      "onScreen": "FOR BEACH IN BEACHES",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "No index needed.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "enumerate",
+        "zip",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Enumerate",
+      "hook": "\"When you need both the position and the item, use enumerate.\"",
+      "script": "When you need both the position and the item, use enumerate. For i, beach in enumerate of beaches. Each round gives you a counter and an item together. By default the counter starts at zero. Write start equals one to begin at one. It replaces the counter that you keep by hand. It is much safer. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "FOR I, X IN ENUMERATE(L)",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 38,
+      "caption": "Count as you loop.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "enumerate",
+        "zip",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Zip",
+      "hook": "\"When two lists go together, use zip.\"",
+      "script": "When two lists go together, use zip. Names and marks, in the same order. For name, mark in zip of names, marks. Round one gives the first name and the first mark. Round two gives the second of each. Zip stops at the shorter list. Think of a class register, with names on one side and marks on the other. Keep coding, says Xecxec!",
+      "onScreen": "ZIP(NAMES, MARKS)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Two lists in step.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "enumerate",
+        "zip",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The skipping bug",
+      "hook": "\"A sneaky bug.\"",
+      "script": "A sneaky bug. You loop over a list, and remove items while you loop. The list shrinks, the items shift left, and the loop skips the next one. Four even numbers, and two are left behind, with no error at all. Loop over a copy instead, and change the original list. The fix is just dot copy. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "FOR N IN NUMS.COPY():",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Loop over a copy.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "enumerate",
+        "zip",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the list love enumerate?\"",
+      "script": "Why did the list love enumerate? It finally got a number of its own. Your challenge. Make a list of three foods. Print them numbered one, two, three, using enumerate. Remember to set start equals one. Otherwise your list starts at zero. Then try with five foods, and check that your code still works. Share your code in the comments. Keep coding, says Xecxec! Full video: EP 27.",
+      "onScreen": "A NUMBERED MENU",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try enumerate.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "enumerate",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "enum.py",
+      "source": "beaches = [\"Baga\", \"Colva\", \"Anjuna\"]\nfor i, beach in enumerate(beaches, start=1):\n    print(i, beach)",
+      "output": "1 Baga\n2 Colva\n3 Anjuna",
+      "lang": "python"
+    },
+    {
+      "file": "zip_demo.py",
+      "source": "names = [\"Asha\", \"Ravi\"]\nmarks = [88, 92]\nfor name, mark in zip(names, marks):\n    print(name, \"scored\", mark)",
+      "output": "Asha scored 88\nRavi scored 92",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "ep": 55,
+  "title": "Raising and custom exceptions",
+  "module": 6,
+  "lengthSec": 303,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "raise an exception with raise",
+    "read the message with as e",
+    "define your own exception type"
+  ],
+  "youtube": {
+    "title": "Python raise and Custom Exceptions | Python Programming EP 55",
+    "description": "In this episode you will raise an exception with raise, read the message with as e and define your own exception type, with Xecxec the crab. 0:00 Intro · 0:15 Blowing the whistle · 0:55 Raise a ValueError · 1:35 The error travels up · 2:09 Second program · 3:09 Recap · 3:40 Bug of the Day · 4:28 Challenge · 4:48 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Blowing the whistle"
+      },
+      {
+        "t": "0:55",
+        "label": "Raise a ValueError"
+      },
+      {
+        "t": "1:35",
+        "label": "The error travels up"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:28",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:48",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python raise",
+      "python custom exception",
+      "python exception order",
+      "except order python"
+    ],
+    "thumbnail": {
+      "text": "RAISE YOUR OWN",
+      "visual": "big text \"RAISE YOUR OWN\" in tomato on peach; Xecxec raising a red flag labelled ValueError; thin black border and drop shadow.",
+      "pose": "Xecxec raising a red flag labelled ValueError"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 55 · RAISE YOUR OWN",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Python raises errors for you. Today we raise our own, when our rules are broken."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"Blowing the whistle\": three numbered lines (1. raise stops the function with an error; 2. except ... as e gives you the error object; 3. A custom exception is a class that extends Exception) and an analogy card: a referee: when a rule is broken, the referee blows the whistle and stops the play",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "You can raise an error yourself. Raise, an exception type, and a message. It stops the function, and travels to the nearest matching except. Think of a referee. When a rule is broken, the referee blows the whistle and stops the play. Except as e gives you the error object, so you can print its message. For your own error type, make a class that extends Exception. It needs only one line."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "raiseit.py: set_age rejects a negative age",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A function that sets an age. [HL 2] If the age is negative, [HL 3] raise a value error, with a message. The function stops right here. [HL 4] Otherwise, return the age. [HL 5] We try. [HL 6] A bad value. [HL 7] Except value error as e catches it, and ties the error to e. [HL 8] Printing e shows our message. [HL 9] A good age goes straight through, and prints twenty.",
+      "code": {
+        "file": "raiseit.py",
+        "source": "def set_age(age):\n    if age < 0:\n        raise ValueError(\"age cannot be negative\")\n    return age\ntry:\n    set_age(-5)\nexcept ValueError as e:\n    print(\"Error:\", e)\nprint(set_age(20))",
+        "output": "Error: age cannot be negative\n20"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 34,
+      "onScreen": "A raise inside a function; the arrow leaves the function and lands in the except block of the caller",
+      "animation": "A red arrow leaves a function box upward and lands in an except box; a second arrow shows the error passing through if no match",
+      "sfx": [],
+      "narration": "Here is what raise does. The error starts inside the function, at the line that raised it. The function stops there. The error travels up to the caller, and looks for a matching except. If it finds one, that block runs. If not, it keeps travelling, and finally stops the program with a traceback. You decide who handles the error."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "custom.py: BillError extends Exception",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A new exception type. The name in brackets says it builds on Exception. We study classes soon. [HL 2] Pass means, nothing more is needed. [HL 3] A payment function. [HL 4] If the amount is zero or less, [HL 5] raise our own error, with a message. [HL 6] Return the amount otherwise. [HL 7] Try. [HL 8] A bad payment. [HL 9] Except bill error as e catches only our type. [HL 10] Bill problem, amount must be positive.",
+      "code": {
+        "file": "custom.py",
+        "source": "class BillError(Exception):\n    pass\ndef pay(amount):\n    if amount <= 0:\n        raise BillError(\"amount must be positive\")\n    return amount\ntry:\n    pay(0)\nexcept BillError as e:\n    print(\"Bill problem:\", e)",
+        "output": "Bill problem: amount must be positive"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python custom.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as custom dot py. In the terminal, type python, space, custom dot py. Bill problem, amount must be positive."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: raise Type of message stops the code with an error. Two: except Type as e gives you the error to print. Three: A custom exception is a class that extends Exception. Four: Put the most specific except first. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: the except blocks are in the wrong order",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We have a value error block, but the output says general. Python tries the except blocks in order, and uses the first match. Exception matches every error, so it wins, and the value error block never runs. Put the most specific block first, and the general one last."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 8,
+      "onScreen": "Why was the referee so good at coding? It knew when to raise a flag.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why was the referee so good at coding? It knew when to raise a flag."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 268,
+      "lengthSec": 20,
+      "onScreen": "Task card: raise an error for a bad score",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write check score of score that raises ValueError if score is above 100, and test it with 120. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 288,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 56 · Modules and import",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: modules and import. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "try:\n    int(\"x\")\nexcept Exception:\n    print(\"general\")\nexcept ValueError:\n    print(\"value\")",
+    "error": "Python output (it runs, but the answer is wrong):\n\ngeneral",
+    "fixed": "try:\n    int(\"x\")\nexcept ValueError:\n    print(\"value\")\nexcept Exception:\n    print(\"general\")",
+    "why": "Python uses the first except that matches, and Exception matches everything, so a later more specific block never runs."
+  },
+  "pun": "\"Why was the referee so good at coding? It knew when to raise a flag.\"",
+  "challenge": "Write check_score(score) that raises ValueError if score is above 100, and test it with 120.",
+  "challengeAnswer": "Use def check_score(score): if score > 100: raise ValueError(\"score too high\"), then wrap check_score(120) in try and except ValueError.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Raise",
+      "hook": "\"You can raise an error yourself.\"",
+      "script": "You can raise an error yourself. Raise, an exception type, and a message. Raise value error, age cannot be negative. The function stops at that line, and the error travels up to the nearest except. Think of a referee blowing a whistle when a rule is broken. Use raise when your function receives a value it cannot accept. Keep coding, says Xecxec!",
+      "onScreen": "RAISE VALUEERROR(\"...\")",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Blow the whistle.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "raise",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Except as e",
+      "hook": "\"To read the error message, add as e to the except line.\"",
+      "script": "To read the error message, add as e to the except line. Except value error as e. Now e holds the error object. Printing e shows the message you passed to raise. It is a good way to tell the user what went wrong, in your own words. It also helps when you log errors, to find bugs later. Keep coding, says Xecxec!",
+      "onScreen": "EXCEPT VALUEERROR AS E:",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "Read the message.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "raise",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Your own exception",
+      "hook": "\"You can make your own type of exception.\"",
+      "script": "You can make your own type of exception. Write class, a name, then Exception in brackets, and a colon, and the word pass. That is the whole thing. Now you can raise it, and catch it by name. It makes your code read clearly, because bill error says exactly what went wrong, better than a plain value error. Keep coding, says Xecxec!",
+      "onScreen": "CLASS BILLERROR(EXCEPTION):",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "A custom error type.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "raise",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Order of except blocks",
+      "hook": "\"Here is a quiet bug.\"",
+      "script": "Here is a quiet bug. You write an except for exception first, and an except for value error after it. Python uses the first match. Exception matches everything, so it wins, and the second block never runs. No error, only the wrong message. Put the most specific block first, and the general one last. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "SPECIFIC FIRST",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Order matters.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "raise",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why was the referee so good at coding?\"",
+      "script": "Why was the referee so good at coding? It knew when to raise a flag. Your challenge. Write a function called check score, that raises a value error if the score is above one hundred. Then call it with one twenty inside a try block, and print the error message in the except block. Share your code in the comments below. Keep coding, says Xecxec! Full video: EP 55.",
+      "onScreen": "RAISE FOR A BAD SCORE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Try raise.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "raiseit.py",
+      "source": "def set_age(age):\n    if age < 0:\n        raise ValueError(\"age cannot be negative\")\n    return age\ntry:\n    set_age(-5)\nexcept ValueError as e:\n    print(\"Error:\", e)\nprint(set_age(20))",
+      "output": "Error: age cannot be negative\n20",
+      "lang": "python"
+    },
+    {
+      "file": "custom.py",
+      "source": "class BillError(Exception):\n    pass\ndef pay(amount):\n    if amount <= 0:\n        raise BillError(\"amount must be positive\")\n    return amount\ntry:\n    pay(0)\nexcept BillError as e:\n    print(\"Bill problem:\", e)",
+      "output": "Bill problem: amount must be positive",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

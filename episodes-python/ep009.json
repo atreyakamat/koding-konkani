@@ -1,0 +1,352 @@
+{
+  "ep": 9,
+  "title": "Operators",
+  "module": 1,
+  "lengthSec": 296,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "use + - * / for arithmetic",
+    "use // and % for whole-number division and remainder",
+    "use ** for powers and avoid ^"
+  ],
+  "youtube": {
+    "title": "Python Operators: + - * / // % ** | Python Programming EP 09",
+    "description": "In this episode you will use + - * / for arithmetic, use // and % for whole-number division and remainder and use ** for powers and avoid ^, with Xecxec the crab. 0:00 Intro · 0:15 Seven operators · 0:52 The seven operators · 1:32 One name, many results · 2:02 Second program · 3:02 Recap · 3:33 Bug of the Day · 4:21 Challenge · 4:41 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Seven operators"
+      },
+      {
+        "t": "0:52",
+        "label": "The seven operators"
+      },
+      {
+        "t": "1:32",
+        "label": "One name, many results"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:02",
+        "label": "Recap"
+      },
+      {
+        "t": "3:33",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:21",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:41",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python operators",
+      "floor division",
+      "modulo python",
+      "power operator"
+    ],
+    "thumbnail": {
+      "text": "SEVEN OPERATORS",
+      "visual": "big text \"SEVEN OPERATORS\" in tomato on peach; Xecxec wearing a tool belt holding seven symbols: plus, minus, star, slash, double slash, percent, double star; thin black border and drop shadow.",
+      "pose": "Xecxec wearing a tool belt holding seven symbols: plus, minus, star, slash, double slash, percent, double star"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 09 · SEVEN OPERATORS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Python is a very good calculator. Today we learn seven symbols that do all the maths you need."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 37,
+      "onScreen": "\"Seven operators\": three numbered lines (1. + - * / are the maths you know; 2. // gives whole-number division, % gives the remainder; 3. ** is power; ^ is something else) and an analogy card: a school bus: floor division counts the full buses, and the remainder counts the students left standing",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "An operator is a symbol that does a job. Plus, minus, star and slash you know. Two more are useful. Double slash divides and drops the decimal part. Percent gives the remainder. And double star raises to a power. Think of a school bus with ten seats. Floor division counts the full buses. The remainder counts the students left standing. Seven symbols, and you are ready."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 52,
+      "lengthSec": 40,
+      "onScreen": "ops.py: one number and seven results",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Total is seventeen. [HL 2] Plus three gives twenty. [HL 3] Minus three gives fourteen. [HL 4] Star three gives fifty one. [HL 5] The slash gives a float, five point six six six and a long tail. [HL 6] Double slash drops the decimal part, so five. [HL 7] Percent keeps what is left over, so two. [HL 8] And two double star five is two to the power five, thirty two.",
+      "code": {
+        "file": "ops.py",
+        "source": "total = 17\nprint(total + 3)\nprint(total - 3)\nprint(total * 3)\nprint(total / 3)\nprint(total // 3)\nprint(total % 3)\nprint(2 ** 5)",
+        "output": "20\n14\n51\n5.666666666666667\n5\n2\n32"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 92,
+      "lengthSec": 30,
+      "onScreen": "The name total tied to the int 17",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at what Python holds after the run. Only one name, total, tied to seventeen. All the other results were printed and forgotten, because we never gave them a name. If you want to keep a result, tie it to a name. We do that in the next program."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 122,
+      "lengthSec": 40,
+      "onScreen": "bus.py: floor division and remainder together",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK students=47] Forty seven students. [HL 2] [TRACK seats=10] Ten seats per bus. [HL 3] [TRACK buses=4] Double slash gives the full buses. Four. [HL 4] [TRACK left=7] Percent gives the rest. Seven students have no seat in those four buses. [HL 5] Print the buses. [HL 6] Print the standing students.",
+      "code": {
+        "file": "bus.py",
+        "source": "students = 47\nseats = 10\nbuses = students // seats\nleft = students % seats\nprint(\"Full buses:\", buses)\nprint(\"Standing:\", left)",
+        "output": "Full buses: 4\nStanding: 7"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 162,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python bus.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as bus dot py. In the terminal, type python, space, bus dot py. Full buses, four. Standing, seven."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 182,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Plus, minus, star and slash are the usual arithmetic. Two: Double slash gives the whole part and percent gives the remainder. Three: Double star raises a number to a power. Four: The caret symbol is not power in Python. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 213,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: the caret is not a power",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We want two to the power three, which is eight. In maths class, the caret means power. In Python, it does something else. It works on binary digits. We get one, with no error at all. Use double star for powers, and you get eight. Watch for bugs that run quietly."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 253,
+      "lengthSec": 8,
+      "onScreen": "Why was the remainder so calm? It never let the division get to it.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why was the remainder so calm? It never let the division get to it."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 261,
+      "lengthSec": 20,
+      "onScreen": "Task card: find buses and remainder with // and %",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. A van seats 7 people. For 30 people, print how many full vans there are and how many people are left over. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 281,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 10 · f-strings and formatting",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: f-strings and formatting. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "print(2 ^ 3)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n1",
+    "fixed": "print(2 ** 3)",
+    "why": "In Python the caret is a bit operator called XOR, not a power; use ** for powers."
+  },
+  "pun": "\"Why was the remainder so calm? It never let the division get to it.\"",
+  "challenge": "A van seats 7 people. For 30 people, print how many full vans there are and how many people are left over.",
+  "challengeAnswer": "Use print(30 // 7) for 4 full vans and print(30 % 7) for 2 people left over.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Seven operators",
+      "hook": "\"Python is a very good calculator.\"",
+      "script": "Python is a very good calculator. Plus, minus, star and slash do the usual arithmetic. Double slash gives the whole part of a division. Percent gives the remainder. And double star raises a number to a power. That is seven symbols. Learn these seven, and you can do almost any calculation that appears in beginner programs. Practise them one by one. Keep coding, says Xecxec!",
+      "onScreen": "7 OPERATORS",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "The seven symbols.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "operators",
+        "maths",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Floor division and remainder",
+      "hook": "\"Seventeen divided by three is five, with two left over.\"",
+      "script": "Seventeen divided by three is five, with two left over. Python gives you both pieces. Double slash gives the five, the whole groups. Percent gives the two, the remainder. Think of a bus with three seats. Five buses are full, and two students still stand. Use these two together whenever you split things into groups. They are a very handy pair. Keep coding, says Xecxec!",
+      "onScreen": "17 // 3 = 5 · 17 % 3 = 2",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Groups and leftovers.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "operators",
+        "maths",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The slash gives a float",
+      "hook": "\"Here is a small detail.\"",
+      "script": "Here is a small detail. Ten divided by two with a single slash gives five point zero, not five. A slash always gives a float, even when the answer looks whole. If you want a whole number, use the double slash. So ten double slash two gives plain five. Pick the operator that matches the answer you want. Keep coding, says Xecxec!",
+      "onScreen": "10 / 2 = 5.0",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Slash versus double slash.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "operators",
+        "maths",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The caret trap",
+      "hook": "\"In maths class, the caret means power.\"",
+      "script": "In maths class, the caret means power. In Python, two caret three does not give eight. It gives one, and there is no error at all. The caret is a different operation called XOR. For a power, use double star. Two double star three gives eight. Bugs that run quietly are the hardest ones to spot, so remember this. Keep coding, says Xecxec!",
+      "onScreen": "2 ^ 3 = 1 ?!",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Caret is not power.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "operators",
+        "maths",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why was the remainder so calm?\"",
+      "script": "Why was the remainder so calm? It never let the division get to it. Your challenge. A van seats seven people, and thirty people want to travel. Print how many full vans there are, then print how many people are left over. Use double slash and percent. Write your two answers in the comments, and show your code. Keep coding, says Xecxec! Full video: EP 09.",
+      "onScreen": "VANS AND LEFTOVERS",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try the van sum.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "operators",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "ops.py",
+      "source": "total = 17\nprint(total + 3)\nprint(total - 3)\nprint(total * 3)\nprint(total / 3)\nprint(total // 3)\nprint(total % 3)\nprint(2 ** 5)",
+      "output": "20\n14\n51\n5.666666666666667\n5\n2\n32",
+      "lang": "python"
+    },
+    {
+      "file": "bus.py",
+      "source": "students = 47\nseats = 10\nbuses = students // seats\nleft = students % seats\nprint(\"Full buses:\", buses)\nprint(\"Standing:\", left)",
+      "output": "Full buses: 4\nStanding: 7",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

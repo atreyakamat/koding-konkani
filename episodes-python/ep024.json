@@ -1,0 +1,352 @@
+{
+  "ep": 24,
+  "title": "Indexing and slicing",
+  "module": 3,
+  "lengthSec": 301,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "pick one character with an index",
+    "use negative indexes from the end",
+    "cut a piece with a slice"
+  ],
+  "youtube": {
+    "title": "Python Indexing and Slicing: word[1:4] | Python Programming EP 24",
+    "description": "In this episode you will pick one character with an index, use negative indexes from the end and cut a piece with a slice, with Xecxec the crab. 0:00 Intro · 0:15 Positions in a string · 0:56 Index and slice · 1:36 Slices make new strings · 2:08 Second program · 3:08 Recap · 3:38 Bug of the Day · 4:26 Challenge · 4:46 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Positions in a string"
+      },
+      {
+        "t": "0:56",
+        "label": "Index and slice"
+      },
+      {
+        "t": "1:36",
+        "label": "Slices make new strings"
+      },
+      {
+        "t": "2:08",
+        "label": "Second program"
+      },
+      {
+        "t": "3:08",
+        "label": "Recap"
+      },
+      {
+        "t": "3:38",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:26",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:46",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python string indexing",
+      "python slicing",
+      "negative index python",
+      "indexerror"
+    ],
+    "thumbnail": {
+      "text": "INDEX AND SLICE",
+      "visual": "big text \"INDEX AND SLICE\" in tomato on peach; Xecxec holding a long word with numbered boxes under each letter, from 0 at the left; thin black border and drop shadow.",
+      "pose": "Xecxec holding a long word with numbered boxes under each letter, from 0 at the left"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 24 · INDEX AND SLICE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Every character in a string has an address. Today we learn to pick characters and slices by position."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 41,
+      "onScreen": "\"Positions in a string\": three numbered lines (1. Every character has a position, starting at 0; 2. Negative positions count from the end; 3. word[start:stop] cuts a slice and stops before stop) and an analogy card: a row of beach huts, each with a number painted on the door, starting from zero",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Every character in a string has a position, called an index. It starts at zero. Think of a row of beach huts, each with a number on the door. The first hut is zero. You pick one with square brackets. Negative numbers count from the end, so minus one is the last character. A slice cuts a piece. Start, colon, stop. It includes the start, and stops before the stop, just like range."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 56,
+      "lengthSec": 40,
+      "onScreen": "slice.py: one letter, the last letter, and three slices of Palolem",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The word Palolem has seven letters, with positions zero to six. [HL 2] Position zero is the first letter, P. [HL 3] Minus one is the last letter, m. [HL 4] A slice from one to four takes positions one, two and three. That is a, l, o. The four is not included. [HL 5] Leaving out the start means, from the beginning. Pal. [HL 6] Leaving out the stop means, to the end. O, l, e, m.",
+      "code": {
+        "file": "slice.py",
+        "source": "word = \"Palolem\"\nprint(word[0])\nprint(word[-1])\nprint(word[1:4])\nprint(word[:3])\nprint(word[3:])",
+        "output": "P\nm\nalo\nPal\nolem"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 96,
+      "lengthSec": 32,
+      "onScreen": "The name word tied to the string Palolem",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the one name we have. Word is tied to the string Palolem. Indexing and slicing do not change that string. Every slice makes a new string, and prints it, and forgets it, unless we tie a name to it. The original string is untouched. That fits with what we learned in the last episode."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 128,
+      "lengthSec": 40,
+      "onScreen": "reverse.py: a third number in the slice sets the step",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] The same word. [HL 2] A slice can have a third number, the step. A step of minus one walks backwards. So the word prints reversed, m, e, l, o, l, a, P. [HL 3] A step of two takes every second letter, positions zero, two, four, six. P, l, l, m. [HL 4] The length is seven. The last valid index is always the length minus one.",
+      "code": {
+        "file": "reverse.py",
+        "source": "word = \"Palolem\"\nprint(word[::-1])\nprint(word[::2])\nprint(len(word))",
+        "output": "melolaP\nPllm\n7"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 168,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python reverse.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as reverse dot py. In the terminal, type python, space, reverse dot py. Melolap, reversed, then P l l m, then seven."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 188,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Indexes start at zero. Two: Negative indexes count from the end, with minus one as the last. Three: A slice wordstart:stop stops before the stop. Four: The last valid index is the length minus one. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 218,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: an index too far",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Palolem has seven letters, but the last index is six, because we start at zero. We ask for index seven. Python says, index error, string index out of range. The fix is to count from zero. Or use minus one, to always get the last letter, whatever the length."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 258,
+      "lengthSec": 8,
+      "onScreen": "Why did the string stay calm in the slicing class? It knew where to cut.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the string stay calm in the slicing class? It knew where to cut."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 266,
+      "lengthSec": 20,
+      "onScreen": "Task card: print the first three and last three letters",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Print the first three letters and the last three letters of the word Calangute. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 286,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 25 · Lists",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: lists. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "word = \"Palolem\"\nprint(word[7])",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"slice.py\", line 2, in <module>\n    print(word[7])\n          ~~~~^^^\nIndexError: string index out of range",
+    "fixed": "word = \"Palolem\"\nprint(word[6])",
+    "why": "A string of length 7 has indexes 0 to 6, so index 7 does not exist; the last valid index is always the length minus one."
+  },
+  "pun": "\"Why did the string stay calm in the slicing class? It knew where to cut.\"",
+  "challenge": "Print the first three letters and the last three letters of the word \"Calangute\".",
+  "challengeAnswer": "Use word = \"Calangute\", then print(word[:3]) for Cal and print(word[-3:]) for ute.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Positions start at zero",
+      "hook": "\"Every character in a string has a position, called an index.\"",
+      "script": "Every character in a string has a position, called an index. The first one is zero, not one. So the word Palolem has indexes zero to six. Pick one with square brackets. Word, bracket zero, gives P. Think of a row of beach huts, numbered from zero. This is the same in almost every programming language, so learn it once. Keep coding, says Xecxec!",
+      "onScreen": "WORD[0]",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Counting from zero.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "slicing",
+        "indexing",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Negative indexes",
+      "hook": "\"Negative indexes count from the end.\"",
+      "script": "Negative indexes count from the end. Minus one is the last character. Minus two is the second last. So word, bracket, minus one, gives m, whatever the length of the word. It is the easiest way to grab the last letter, and you never need to count. Use negative indexes whenever you care about the end of a string. Keep coding, says Xecxec!",
+      "onScreen": "WORD[-1]",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Count from the end.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "slicing",
+        "indexing",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Slices",
+      "hook": "\"A slice cuts a piece of a string.\"",
+      "script": "A slice cuts a piece of a string. Word, bracket, one, colon, four, gives positions one, two and three. The start is included, and the stop is not, just like range. Leave out the start, and it begins at the beginning. Leave out the stop, and it runs to the end. One tool, many pieces, and the original is untouched. Keep coding, says Xecxec!",
+      "onScreen": "WORD[1:4]",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Start included, stop not.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "slicing",
+        "indexing",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Index error",
+      "hook": "\"Here is the classic out of range bug.\"",
+      "script": "Here is the classic out of range bug. Palolem has seven letters, so the indexes are zero to six. Ask for index seven, and Python says, index error, string index out of range. The last index is always the length minus one. Or just use minus one. When you see this error, count again, starting from zero. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "INDEXERROR: OUT OF RANGE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Count from zero.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "slicing",
+        "indexing",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the string stay calm in the slicing class?\"",
+      "script": "Why did the string stay calm in the slicing class? It knew where to cut. Your challenge. Take the word Calangute. Print the first three letters using a slice. Then print the last three letters, using a negative index inside the slice. Remember, you can leave out the start or the stop. Post your two answers in the comments. Keep coding, says Xecxec! Full video: EP 24.",
+      "onScreen": "FIRST 3 AND LAST 3",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try slicing.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "slicing",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "slice.py",
+      "source": "word = \"Palolem\"\nprint(word[0])\nprint(word[-1])\nprint(word[1:4])\nprint(word[:3])\nprint(word[3:])",
+      "output": "P\nm\nalo\nPal\nolem",
+      "lang": "python"
+    },
+    {
+      "file": "reverse.py",
+      "source": "word = \"Palolem\"\nprint(word[::-1])\nprint(word[::2])\nprint(len(word))",
+      "output": "melolaP\nPllm\n7",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

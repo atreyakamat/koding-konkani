@@ -1,0 +1,350 @@
+{
+  "ep": 89,
+  "title": "Capstone 3: Tests and polish",
+  "module": 10,
+  "lengthSec": 323,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "test the money functions with unittest",
+    "check that a function raises the right error",
+    "print a tidy report with f-string alignment"
+  ],
+  "youtube": {
+    "title": "Python Capstone: Tests and Polish for Your Project | Python Programming EP 89",
+    "description": "In this episode you will test the money functions with unittest, check that a function raises the right error and print a tidy report with f-string alignment, with Xecxec the crab. 0:00 Intro · 0:15 Check, then shine · 1:04 Testing the money functions · 1:51 Tests as a safety net · 2:30 Second program · 3:30 Recap · 4:00 Bug of the Day · 4:48 Challenge · 5:08 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Check, then shine"
+      },
+      {
+        "t": "1:04",
+        "label": "Testing the money functions"
+      },
+      {
+        "t": "1:51",
+        "label": "Tests as a safety net"
+      },
+      {
+        "t": "2:30",
+        "label": "Second program"
+      },
+      {
+        "t": "3:30",
+        "label": "Recap"
+      },
+      {
+        "t": "4:00",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:48",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:08",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python capstone tests",
+      "python unittest assertraises",
+      "python f-string alignment",
+      "python project polish"
+    ],
+    "thumbnail": {
+      "text": "TEST + POLISH",
+      "visual": "big text \"TEST + POLISH\" in tomato on peach; Xecxec polishing a coin with a cloth beside a row of green ticks; thin black border and drop shadow.",
+      "pose": "Xecxec polishing a coin with a cloth beside a row of green ticks"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 89 · TEST + POLISH",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Our tracker works. Now we make sure it keeps working, and make its report look good."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 49,
+      "onScreen": "\"Check, then shine\": three numbered lines (1. Tests keep money code honest; 2. assertRaises checks that bad input is rejected; 3. f-string alignment makes a neat report) and an analogy card: a final inspection before the shop opens: everything checked, then polished",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Money code deserves tests. We write a test case with a few checks. Assert equal for exact answers. Assert raises, as a context manager, to check that bad input raises the right error. Run the tests after every change. Then polish the report. Inside an f string, a colon, a less than sign and a number left aligns text in a column. A greater than sign right aligns, and dot two f shows two decimals. Think of a final inspection before the shop opens. Everything is checked, then polished."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 64,
+      "lengthSec": 47,
+      "onScreen": "test_money.py: three tests, including one for bad input",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] We need io. [HL 2] And unittest. [HL 3] And Decimal. [HL 5] The same to cents function. [HL 11] And the money function. [HL 14] A test case. [HL 15] The first test. [HL 16] Point two nine must become exactly twenty nine. This is the very bug from last time. [HL 18] The second test. [HL 19] Twelve thousand fifty cents must read one twenty point five zero. [HL 21] The third test. [HL 22] Assert raises, as a with block, passes only if the code inside raises a value error. [HL 23] Minus five must be rejected. [HL 25] Load the tests. [HL 26] Run them, quietly. [HL 27] Three tests, all passing.",
+      "code": {
+        "file": "test_money.py",
+        "source": "import io\nimport unittest\nfrom decimal import Decimal\n\ndef to_cents(text):\n    value = Decimal(text)\n    if value <= 0:\n        raise ValueError(\"amount must be positive\")\n    return int(value * 100)\n\ndef money(cents):\n    return f\"{cents // 100}.{cents % 100:02d}\"\n\nclass TestMoney(unittest.TestCase):\n    def test_exact(self):\n        self.assertEqual(to_cents(\"0.29\"), 29)\n\n    def test_format(self):\n        self.assertEqual(money(12050), \"120.50\")\n\n    def test_rejects_negative(self):\n        with self.assertRaises(ValueError):\n            to_cents(\"-5\")\n\nsuite = unittest.defaultTestLoader.loadTestsFromTestCase(TestMoney)\nresult = unittest.TextTestRunner(stream=io.StringIO()).run(suite)\nprint(result.testsRun, result.wasSuccessful())",
+        "output": "3 True"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 111,
+      "lengthSec": 39,
+      "onScreen": "A tightrope walker with a net labelled tests; a change causes a red cross and the net catches it",
+      "animation": "A walker on a rope steps, wobbles, and a net labelled tests catches a falling red cross card",
+      "sfx": [],
+      "narration": "Here is why we test. Imagine you change the money function next month. Without tests, you hope nothing broke. With tests, you run them. In a second you see a green tick, or a red cross with the name of the failed test. The net catches the fall before your users see it. Good tests are small, fast, and each checks one thing, with a name that says what."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 150,
+      "lengthSec": 40,
+      "onScreen": "report.py: align columns with f-string format specs",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Expenses in cents. [HL 2] Totals by category. [HL 3] Loop over the expenses. [HL 4] Add the cents. [HL 5] A header. Less than ten, left aligns in ten columns. Greater than ten right aligns the total. [HL 6] For each category, in order. [HL 7] The name, left aligned. The total, divided by one hundred, right aligned, with two decimals. [HL 8] A line of twenty dashes. [HL 9] The grand total, in the same columns. The columns line up, and the report looks professional.",
+      "code": {
+        "file": "report.py",
+        "source": "expenses = [(\"food\", 12050), (\"travel\", 6000), (\"food\", 8000)]\ntotals = {}\nfor category, cents in expenses:\n    totals[category] = totals.get(category, 0) + cents\nprint(f\"{'Category':<10}{'Total':>10}\")\nfor category in sorted(totals):\n    print(f\"{category:<10}{totals[category] / 100:>10.2f}\")\nprint(\"-\" * 20)\nprint(f\"{'All':<10}{sum(totals.values()) / 100:>10.2f}\")",
+        "output": "Category       Total\nfood          200.50\ntravel         60.00\n--------------------\nAll           260.50"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 190,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python report.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as report dot py. In the terminal, type python, space, report dot py. 3 True. Then the aligned table, food 200.50, travel 60.00, and All 260.50."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 210,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Test the money code with unittest. Two: assertRaises checks that bad input is rejected. Three: f-string formats such as <10 and >10 point 2f align columns. Four: Run the tests after every change. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 240,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a test that always passes",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The test passes, and the function is wrong. It turns point two nine into twenty eight. The test compares the result with the same function called again, so it can never fail. A test needs a known answer, written by you. Compare with twenty nine, and the bug is caught at once."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 280,
+      "lengthSec": 8,
+      "onScreen": "Why did the test never fail? It was always comparing itself with itself.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the test never fail? It was always comparing itself with itself."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 288,
+      "lengthSec": 20,
+      "onScreen": "Task card: test the report",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write one test that checks money of 5 returns 0 point 05, and run it. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 308,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 90 · What's next",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: what comes next. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def to_cents(text):\n    return int(float(text) * 100)\n\ndef test_cents():\n    result = to_cents(\"0.29\")\n    assert result == to_cents(\"0.29\")\n\ntest_cents()\nprint(\"test passed\")",
+    "error": "Python output (it runs, but the answer is wrong):\n\ntest passed",
+    "fixed": "def to_cents(text):\n    return int(float(text) * 100)\n\ndef test_cents():\n    result = to_cents(\"0.29\")\n    assert result == 29\n\ntry:\n    test_cents()\n    print(\"test passed\")\nexcept AssertionError:\n    print(\"test failed: caught the bug\")",
+    "why": "A test must compare against an independent, known answer. Comparing a result with the same function's result can never fail, so it proves nothing."
+  },
+  "pun": "\"Why did the test never fail? It was always comparing itself with itself.\"",
+  "challenge": "Write one test that checks money(5) returns \"0.05\", and run it.",
+  "challengeAnswer": "self.assertEqual(money(5), \"0.05\"). Cents 5 gives 0 whole, and 05 as the remainder.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Test money code",
+      "hook": "\"Money code deserves tests.\"",
+      "script": "Money code deserves tests. Write a test case with unittest. Assert equal checks exact answers. Point two nine must become twenty nine cents. Run the tests after every change. Then old bugs do not come back. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "assertEqual(to_cents(\"0.29\"), 29)",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Test your money code.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "testing",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "assertRaises",
+      "hook": "\"To test that bad input is rejected, use assert raises, as a with block.\"",
+      "script": "To test that bad input is rejected, use assert raises, as a with block. If the code inside raises a value error, the test passes. If it does not raise, the test fails. It checks the error, not just the answer. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "with self.assertRaises(ValueError)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "Test the errors too.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "testing",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Align columns",
+      "hook": "\"Make reports tidy with f string formats.\"",
+      "script": "Make reports tidy with f string formats. Colon, less than, ten, left aligns in ten columns. Greater than aligns right. And dot two f shows two decimals. Together, the columns line up like a real table. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "f\"{name:<10}{total:>10.2f}\"",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Line up the columns.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "testing",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Useless test",
+      "hook": "\"A test that always passes is worse than no test.\"",
+      "script": "A test that always passes is worse than no test. Comparing a result with the same function's result can never fail. A real test compares with a known answer you wrote yourself. Then a wrong function fails the test. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "assert result == 29",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Compare with a known answer.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "testing",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the test never fail?\"",
+      "script": "Why did the test never fail? It was always comparing itself with itself. Your challenge. Write one test that checks money of five returns zero point zero five. Make sure you compare with a string you typed yourself. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 89.",
+      "onScreen": "Challenge: test money(5)",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Write one test.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "test_money.py",
+      "source": "import io\nimport unittest\nfrom decimal import Decimal\n\ndef to_cents(text):\n    value = Decimal(text)\n    if value <= 0:\n        raise ValueError(\"amount must be positive\")\n    return int(value * 100)\n\ndef money(cents):\n    return f\"{cents // 100}.{cents % 100:02d}\"\n\nclass TestMoney(unittest.TestCase):\n    def test_exact(self):\n        self.assertEqual(to_cents(\"0.29\"), 29)\n\n    def test_format(self):\n        self.assertEqual(money(12050), \"120.50\")\n\n    def test_rejects_negative(self):\n        with self.assertRaises(ValueError):\n            to_cents(\"-5\")\n\nsuite = unittest.defaultTestLoader.loadTestsFromTestCase(TestMoney)\nresult = unittest.TextTestRunner(stream=io.StringIO()).run(suite)\nprint(result.testsRun, result.wasSuccessful())",
+      "output": "3 True",
+      "lang": "python"
+    },
+    {
+      "file": "report.py",
+      "source": "expenses = [(\"food\", 12050), (\"travel\", 6000), (\"food\", 8000)]\ntotals = {}\nfor category, cents in expenses:\n    totals[category] = totals.get(category, 0) + cents\nprint(f\"{'Category':<10}{'Total':>10}\")\nfor category in sorted(totals):\n    print(f\"{category:<10}{totals[category] / 100:>10.2f}\")\nprint(\"-\" * 20)\nprint(f\"{'All':<10}{sum(totals.values()) / 100:>10.2f}\")",
+      "output": "Category       Total\nfood          200.50\ntravel         60.00\n--------------------\nAll           260.50",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

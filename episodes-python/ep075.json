@@ -1,0 +1,350 @@
+{
+  "ep": 75,
+  "title": "Generator expressions",
+  "module": 8,
+  "lengthSec": 305,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a generator expression",
+    "use it with sum, any and all",
+    "tell round brackets from square brackets"
+  ],
+  "youtube": {
+    "title": "Python Generator Expressions Explained | Python Programming EP 75",
+    "description": "In this episode you will write a generator expression, use it with sum, any and all and tell round brackets from square brackets, with Xecxec the crab. 0:00 Intro · 0:15 Brackets decide · 0:58 Round brackets · 1:38 List versus generator · 2:12 Second program · 3:12 Recap · 3:42 Bug of the Day · 4:30 Challenge · 4:50 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Brackets decide"
+      },
+      {
+        "t": "0:58",
+        "label": "Round brackets"
+      },
+      {
+        "t": "1:38",
+        "label": "List versus generator"
+      },
+      {
+        "t": "2:12",
+        "label": "Second program"
+      },
+      {
+        "t": "3:12",
+        "label": "Recap"
+      },
+      {
+        "t": "3:42",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:30",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:50",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python generator expression",
+      "python genexpr",
+      "python sum generator",
+      "list comprehension vs generator"
+    ],
+    "thumbnail": {
+      "text": "GENEXPR",
+      "visual": "big text \"GENEXPR\" in tomato on peach; Xecxec with a tiny conveyor belt built from round brackets; thin black border and drop shadow.",
+      "pose": "Xecxec with a tiny conveyor belt built from round brackets"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 75 · GENEXPR",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "A list comprehension builds everything at once. Swap the square brackets for round ones, and it becomes lazy."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 43,
+      "onScreen": "\"Brackets decide\": three numbered lines (1. [x for ...] builds a whole list; 2. (x for ...) makes values on demand; 3. sum, any, all, max accept generators) and an analogy card: a list comprehension with its coat swapped: same recipe, but cooked one dish at a time",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A generator expression looks like a list comprehension, but with round brackets. Instead of building the whole list, it makes values one at a time, as they are needed. Functions that read a sequence once, such as sum, max, any and all, work perfectly with it. When it is the only argument, you can even drop the extra brackets. Think of a list comprehension with its coat swapped. Same recipe, but cooked one dish at a time."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 58,
+      "lengthSec": 40,
+      "onScreen": "genexpr.py: the same recipe, list versus generator",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A list of five numbers. [HL 2] Square brackets build the whole list at once. [HL 3] Round brackets build nothing yet. We get a generator. [HL 4] The list prints one, four, nine, sixteen, twenty five. [HL 5] Sum pulls values from the generator, one at a time. Fifty five. [HL 6] As the only argument, we can drop the extra brackets. Only the odd numbers, squared and added. Thirty five. [HL 7] The longest word length. Five.",
+      "code": {
+        "file": "genexpr.py",
+        "source": "nums = [1, 2, 3, 4, 5]\nsquares_list = [n * n for n in nums]\nsquares_gen = (n * n for n in nums)\nprint(squares_list)\nprint(sum(squares_gen))\nprint(sum(n * n for n in nums if n % 2 == 1))\nprint(max(len(w) for w in [\"sun\", \"beach\", \"sea\"]))",
+        "output": "[1, 4, 9, 16, 25]\n55\n35\n5"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 98,
+      "lengthSec": 34,
+      "onScreen": "A full shelf of boxes next to a single box passing along a belt",
+      "animation": "A shelf of five filled boxes beside a belt where one box is made at a time and passed to a sum meter",
+      "sfx": [],
+      "narration": "Here is the difference. A list comprehension fills a whole shelf with finished results, and holds them all in memory. A generator expression keeps a single box on a belt, and makes the next result only when you ask. For small data, either works. For a big or endless source, the generator saves memory, and can start working at once."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 132,
+      "lengthSec": 40,
+      "onScreen": "anyall.py: any and all stop as soon as the answer is known",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Four words. [HL 2] Any asks, does at least one word start with c? Crab does. True, and it stops looking there. [HL 3] All asks, is every word longer than three? Sun is not. False, and it stops at once. [HL 4] Next with a generator finds the first match, and gives None if there is none. [HL 5] The first word of length five. Beach. [HL 6] Sum adds the lengths. [HL 7] Fifteen.",
+      "code": {
+        "file": "anyall.py",
+        "source": "words = [\"sun\", \"beach\", \"sea\", \"crab\"]\nprint(any(w.startswith(\"c\") for w in words))\nprint(all(len(w) > 3 for w in words))\nfirst = next((w for w in words if len(w) == 5), None)\nprint(first)\ntotal = sum(len(w) for w in words)\nprint(total)",
+        "output": "True\nFalse\nbeach\n15"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 172,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python anyall.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as anyall dot py. In the terminal, type python, space, anyall dot py. The list of squares, then 55, 35, 5. Then True, False, beach, 15."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 192,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Round brackets make a generator expression. Two: It produces values one at a time, on demand. Three: sum, max, any and all accept it directly. Four: Square brackets build the whole list at once. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 222,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: printing the generator object",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We print the generator, and see generator object genexpr at a memory address. It holds the recipe, not the values. To see the values, ask for them. Wrap it in list, or loop over it. Remember, doing that uses it up."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 262,
+      "lengthSec": 8,
+      "onScreen": "Why did the list comprehension envy the generator expression? It was so much lighter.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the list comprehension envy the generator expression? It was so much lighter."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 270,
+      "lengthSec": 20,
+      "onScreen": "Task card: total with a genexpr",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Use a generator expression with sum to add the squares of the even numbers from 1 to 10. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 290,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 76 · Decorators",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: decorators. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "squares = (n * n for n in range(4))\nprint(squares)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n<generator object <genexpr> at 0x...>",
+    "fixed": "squares = (n * n for n in range(4))\nprint(list(squares))",
+    "why": "A generator holds a recipe, not the values. To see them, loop over it, or pass it to list, sum, or another function that reads it."
+  },
+  "pun": "\"Why did the list comprehension envy the generator expression? It was so much lighter.\"",
+  "challenge": "Use a generator expression with sum to add the squares of the even numbers from 1 to 10.",
+  "challengeAnswer": "sum(n * n for n in range(1, 11) if n % 2 == 0), which is 220.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Round brackets",
+      "hook": "\"Take a list comprehension, and swap the square brackets for round ones.\"",
+      "script": "Take a list comprehension, and swap the square brackets for round ones. You get a generator expression. It builds nothing up front. It makes each value only when something asks for it. Same recipe, cooked one dish at a time. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "(n * n for n in nums)",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Round brackets are lazy.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "generators",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Sum a generator",
+      "hook": "\"Sum, max, min, any and all can read a generator directly.\"",
+      "script": "Sum, max, min, any and all can read a generator directly. Write sum of n times n for n in nums. When it is the only argument, you can skip the extra brackets. No list is ever built in memory. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "sum(n * n for n in nums)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "No list needed.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "generators",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "any and all",
+      "hook": "\"Any is True as soon as one item matches.\"",
+      "script": "Any is True as soon as one item matches. All is False as soon as one item fails. With a generator, they stop looking right there. For a million words, that saves much time. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "any(...) stops early",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Stop as soon as you know.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "generators",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Printing a generator",
+      "hook": "\"Print a generator, and you see generator object genexpr at an address.\"",
+      "script": "Print a generator, and you see generator object genexpr at an address. That is not a bug in Python. A generator holds a recipe, not the values. Wrap it in list to see the values, or loop over it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "<generator object ...>",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Use list to see values.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "generators",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the list comprehension envy the generator expression?\"",
+      "script": "Why did the list comprehension envy the generator expression? It was so much lighter. Your challenge. Use a generator expression with sum to add the squares of all the even numbers from one to ten. What total do you get? Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 75.",
+      "onScreen": "Challenge: sum of even squares",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Use sum and a genexpr.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "genexpr.py",
+      "source": "nums = [1, 2, 3, 4, 5]\nsquares_list = [n * n for n in nums]\nsquares_gen = (n * n for n in nums)\nprint(squares_list)\nprint(sum(squares_gen))\nprint(sum(n * n for n in nums if n % 2 == 1))\nprint(max(len(w) for w in [\"sun\", \"beach\", \"sea\"]))",
+      "output": "[1, 4, 9, 16, 25]\n55\n35\n5",
+      "lang": "python"
+    },
+    {
+      "file": "anyall.py",
+      "source": "words = [\"sun\", \"beach\", \"sea\", \"crab\"]\nprint(any(w.startswith(\"c\") for w in words))\nprint(all(len(w) > 3 for w in words))\nfirst = next((w for w in words if len(w) == 5), None)\nprint(first)\ntotal = sum(len(w) for w in words)\nprint(total)",
+      "output": "True\nFalse\nbeach\n15",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

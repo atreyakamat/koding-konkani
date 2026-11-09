@@ -1,0 +1,347 @@
+{
+  "ep": 12,
+  "title": "Type conversion",
+  "module": 1,
+  "lengthSec": 300,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "convert text to numbers with int() and float()",
+    "convert numbers to text with str()",
+    "read a ValueError when text is not a number"
+  ],
+  "youtube": {
+    "title": "Python Type Conversion: int(), float(), str() | Python Programming EP 12",
+    "description": "In this episode you will convert text to numbers with int() and float(), convert numbers to text with str() and read a ValueError when text is not a number, with Xecxec the crab. 0:00 Intro · 0:16 Changing types · 0:53 int, float and str · 1:33 Convert makes a new object · 2:06 Second program · 3:06 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:16",
+        "label": "Changing types"
+      },
+      {
+        "t": "0:53",
+        "label": "int, float and str"
+      },
+      {
+        "t": "1:33",
+        "label": "Convert makes a new object"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:37",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python type conversion",
+      "int float str python",
+      "valueerror python",
+      "input to number"
+    ],
+    "thumbnail": {
+      "text": "CHANGE THE TYPE",
+      "visual": "big text \"CHANGE THE TYPE\" in tomato on peach; Xecxec turning a string 42 into a number with a crank labelled int(); thin black border and drop shadow.",
+      "pose": "Xecxec turning a string 42 into a number with a crank labelled int()"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 16,
+      "onScreen": "EP 12 · CHANGE THE TYPE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Input gives text, and maths needs numbers. Today we learn how to change one type into another, and what happens when it goes wrong."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 16,
+      "lengthSec": 37,
+      "onScreen": "\"Changing types\": three numbered lines (1. int() makes a whole number; 2. float() makes a decimal; 3. str() makes text) and an analogy card: a currency counter: the same value, written in a different note",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Python has three conversion tools. The int function makes a whole number. The float function makes a decimal. The str function makes text. Think of a currency counter. The value is the same, but it is written on a different note. The conversion makes a new object. The old one is left as it was. If the text cannot be a number, Python raises an error."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 53,
+      "lengthSec": 40,
+      "onScreen": "convert.py: three conversions in three lines",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The name text is tied to the string forty two. [HL 2] The int function makes a new object, the number forty two, tied to number. [HL 3] Now plus eight works. It prints fifty. [HL 4] The float function turns three point five text into a float, and times two gives seven point zero. [HL 5] The str function turns seven into text, so plus can join it with the word beaches.",
+      "code": {
+        "file": "convert.py",
+        "source": "text = \"42\"\nnumber = int(text)\nprint(number + 8)\nprint(float(\"3.5\") * 2)\nprint(str(7) + \" beaches\")",
+        "output": "50\n7.0\n7 beaches"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 93,
+      "lengthSec": 33,
+      "onScreen": "The name text tied to a string, and number tied to an int",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name text is still tied to the string forty two. The name number is tied to a brand new int, forty two. They look alike when printed, but they are different objects of different types. A string can join, and an int can add. Conversion is how you move between the two."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "age_next.py: convert typed text to a number, then add one",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK age=17] Read this from the inside out. First input asks the question. The answer arrives as the string seventeen. Then int turns that string into the number seventeen. [HL 2] Now plus one works, and Next year, eighteen prints. This pattern, int wrapped around input, is how every program reads a number."
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python age_next.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as age_next dot py. In the terminal, type python, space, age_next dot py. You type seventeen. It prints, Next year, eighteen."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: int, float and str convert between types. Two: Conversion makes a new object and leaves the old one alone. Three: Wrap int around input to read a number. Four: Text that is not a number raises a ValueError. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 217,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: int of a word",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We ask int to turn the word abc into a number. Python says, value error, invalid literal for int. The text must look like a whole number. Digits are fine. Letters are not. The last line tells you the exact text that failed, which makes the bug easy to find. Fix the text, and it works."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 257,
+      "lengthSec": 8,
+      "onScreen": "Why did the string go to therapy? It had trouble converting its feelings into numbers.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the string go to therapy? It had trouble converting its feelings into numbers."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 265,
+      "lengthSec": 20,
+      "onScreen": "Task card: read a number and print double",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Ask the user for a number with input, then print double that number using int. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 285,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 13 · if and else",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Module one is done! Next time: making decisions with if and else. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "count = int(\"abc\")",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"convert.py\", line 1, in <module>\n    count = int(\"abc\")\nValueError: invalid literal for int() with base 10: 'abc'",
+    "fixed": "count = int(\"42\")",
+    "why": "int() can only convert text that looks like a whole number, so a word raises a ValueError."
+  },
+  "pun": "\"Why did the string go to therapy? It had trouble converting its feelings into numbers.\"",
+  "challenge": "Ask the user for a number with input, then print double that number using int().",
+  "challengeAnswer": "Use n = int(input(\"Number? \")) and print(n * 2). If the user types 21, it prints 42.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Three conversion tools",
+      "hook": "\"Python has three conversion tools.\"",
+      "script": "Python has three conversion tools. The int function makes a whole number. The float function makes a decimal. The str function makes text. Each one gives you a brand new object, and leaves the old one as it was. So int of the string forty two gives the number forty two. Learn these three, and you can move between types easily. Keep coding, says Xecxec!",
+      "onScreen": "INT · FLOAT · STR",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Change the type.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typeconversion",
+        "int",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Read a number",
+      "hook": "\"Here is the pattern every program uses to read a number.\"",
+      "script": "Here is the pattern every program uses to read a number. Age equals int, open bracket, input, open bracket, the question, close bracket, close bracket. Input asks and gives text. Int turns the text into a number. Then you can add, compare and multiply as much as you like. Read it from the inside out, and it makes sense. Keep coding, says Xecxec!",
+      "onScreen": "INT(INPUT(...))",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "The read-a-number pattern.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typeconversion",
+        "int",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "A new object",
+      "hook": "\"When you convert, Python makes a new object.\"",
+      "script": "When you convert, Python makes a new object. The name text still points at the string forty two. The name number points at a new int, forty two. They print the same, but they behave differently. A string can join with another string. An int can do maths. Pick the type that does the job you need. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "TEXT 42 → NUMBER 42",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Conversion makes a new value.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typeconversion",
+        "int",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Value error",
+      "hook": "\"What if the text is not a number?\"",
+      "script": "What if the text is not a number? Int of the word abc does not work. Python says value error, invalid literal for int. The text must look like a whole number, so digits are fine, and letters are not. The last line shows the exact text that failed. Check what your user typed, and the bug becomes easy to see. Keep coding, says Xecxec!",
+      "onScreen": "VALUEERROR: INVALID LITERAL",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Letters are not digits.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typeconversion",
+        "int",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the string go to therapy?\"",
+      "script": "Why did the string go to therapy? It had trouble converting its feelings into numbers. Your challenge. Ask the user for a number. Then print double that number. Remember, input gives text, so convert it with int first. If the user types twenty one, your program should print forty two. Share your code in the comments, please. Keep coding, says Xecxec! Full video: EP 12.",
+      "onScreen": "DOUBLE THE NUMBER",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try the conversion.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typeconversion",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "convert.py",
+      "source": "text = \"42\"\nnumber = int(text)\nprint(number + 8)\nprint(float(\"3.5\") * 2)\nprint(str(7) + \" beaches\")",
+      "output": "50\n7.0\n7 beaches",
+      "lang": "python"
+    },
+    {
+      "file": "file2.python",
+      "source": "age = int(input(\"Age? \"))\nprint(\"Next year:\", age + 1)",
+      "output": "Age? Next year: 18",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "ep": 4,
+  "title": "Comments and reading a traceback",
+  "module": 0,
+  "lengthSec": 293,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "write a comment with #",
+    "read a traceback from the bottom up",
+    "fix a NameError caused by a typo"
+  ],
+  "youtube": {
+    "title": "Comments and How to Read Python Errors | Python Programming EP 04",
+    "description": "Learn to write comments and to read a Python traceback without panic, with Xecxec. 0:00 Intro · 0:15 Comments · 0:45 A small program · 1:25 Names as tags · 1:55 Reading the output · 2:35 Run it · 2:55 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:38 Next module",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Comments"
+      },
+      {
+        "t": "0:45",
+        "label": "A small program"
+      },
+      {
+        "t": "1:25",
+        "label": "Names as tags"
+      },
+      {
+        "t": "1:55",
+        "label": "Reading the output"
+      },
+      {
+        "t": "2:35",
+        "label": "Run it"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:30",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:18",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:38",
+        "label": "Next module"
+      }
+    ],
+    "tags": [
+      "python comments",
+      "python traceback",
+      "nameerror",
+      "python for beginners",
+      "koding konkani",
+      "python tutorial",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python errors"
+    ],
+    "thumbnail": {
+      "text": "READ THE ERROR",
+      "visual": "big text \"READ THE ERROR\" in tomato on peach; Xecxec holding a magnifying glass over a traceback with the last line circled; thin black border and drop shadow.",
+      "pose": "Xecxec holding a magnifying glass over a traceback with the last line circled"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 04 · READ THE ERROR",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today, two small skills that you use every day. You write comments, and you read error messages without panic."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"Comments\": three numbered lines and a sticky-notes analogy card",
+      "animation": "Lines spring in with a pop; the sticky-notes card slides in with a recipe book and yellow notes",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A comment is a sticky note in your code. It starts with a hash sign. Python ignores it completely, but the next human reads it, and that human might be you, next month. Good comments say why you did something. The code already shows what it does."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 40,
+      "onScreen": "shacks.py: a comment and two names; the comment line glows",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] This line starts with a hash, so it is a comment. Python skips it. [HL 2] Twelve shacks. [HL 3] Nine are open. Notice the name, open underscore shacks. Names can have underscores but no spaces. [HL 4] Print the label and the total. [HL 5] Print how many are open. [HL 6] And closed is shacks minus open shacks, which is three.",
+      "code": {
+        "file": "shacks.py",
+        "source": "# Xecxec counts the beach shacks\nshacks = 12\nopen_shacks = 9\nprint(\"Shacks:\", shacks)\nprint(\"Open:\", open_shacks)\nprint(\"Closed:\", shacks - open_shacks)",
+        "output": "Shacks: 12\nOpen: 9\nClosed: 3"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 85,
+      "lengthSec": 30,
+      "onScreen": "Two name tags, shacks and open_shacks, tied by arrows to the values 12 and 9",
+      "animation": "Two tags pop in with their arrows to the values; when Python reads a name, the arrow glows and the value lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "In Python, a name is like a tag tied to a value. Shacks is a tag on twelve. Open underscore shacks is a tag on nine. When you write shacks, Python follows the tag to find the value. Remember this picture. It explains many puzzles later."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "shacks.py again with the output panel on the right",
+      "animation": "Same code; the output panel fills line by line with a ding per output line; [TRACK] cards update",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 6] [TRACK shacks=12] [TRACK open_shacks=9] Python follows both tags, twelve and nine, subtracts, and prints three. Comments explain why you did something. Predict first. What does closed print if only five shacks are open? Seven. Always predict before you run.",
+      "code": {
+        "file": "shacks.py",
+        "source": "# Xecxec counts the beach shacks\nshacks = 12\nopen_shacks = 9\nprint(\"Shacks:\", shacks)\nprint(\"Open:\", open_shacks)\nprint(\"Closed:\", shacks - open_shacks)",
+        "output": "Shacks: 12\nOpen: 9\nClosed: 3"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 155,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python shacks.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Run it. Shacks, twelve. Open, nine. Closed, three. The comment never shows up in the output, because Python skipped it."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 175,
+      "lengthSec": 35,
+      "onScreen": "Recap: four rules on one card",
+      "animation": "Four recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Recap. One: a comment starts with a hash, and Python ignores it. Two: a name is a tag tied to a value. Three: read a traceback from the bottom. Four: the last line names the error, and often suggests the fix. Say these four rules out loud, and you can handle most beginner errors. Try it on the shacks program, line by line."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 210,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a typo in a name",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Read a traceback from the bottom. The last line says it all: name error, shack is not defined. Did you mean shacks? The line above shows where it happened: line two. We typed shack, but our tag is called shacks. Fix the spelling, and it works."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 250,
+      "lengthSec": 8,
+      "onScreen": "I put a comment on my code that said: this works. The traceback disagreed.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I put a comment on my code that said: this works. The traceback disagreed."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 258,
+      "lengthSec": 20,
+      "onScreen": "Task card: a comment, boys and girls, print the total",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: write a program with a comment, two names called boys and girls, and print the total."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 278,
+      "lengthSec": 15,
+      "onScreen": "Next: Module 1 · Variables, types and input",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Module zero is done! Next: variables and names in depth. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "shacks = 12\nprint(\"Shacks:\", shack)",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"shacks.py\", line 2, in <module>\n    print(\"Shacks:\", shack)\n                     ^^^^^\nNameError: name 'shack' is not defined. Did you mean: 'shacks'?",
+    "fixed": "shacks = 12\nprint(\"Shacks:\", shacks)",
+    "why": "Read a traceback from the bottom: the last line names the error and often suggests the fix, and the line above it shows where it happened."
+  },
+  "pun": "\"I put a comment on my code that said: this works. The traceback disagreed.\"",
+  "challenge": "Write a program with a comment, two names (boys and girls) and print the total.",
+  "challengeAnswer": "Use boys = 20 and girls = 18, then print Total with boys + girls, which gives 38.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Sticky notes for code",
+      "hook": "\"The line Python ignores.\"",
+      "script": "The line Python ignores. A hash sign makes a comment. Python skips it completely, but the next human reads it, and that human might be you, next month. Good comments say why you did something, not what the code does. The code already shows what it does. Write a comment above any line that surprises you, and keep it short. Keep coding, says Xecxec!",
+      "onScreen": "# COMMENTS",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "Comment your code.",
+      "hashtags": [
+        "python",
+        "comments",
+        "beginners",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Names are tags",
+      "hook": "\"A name is a tag on a value.\"",
+      "script": "A name is a tag on a value. Shacks is a tag on twelve. Open underscore shacks is a tag on nine. When you write shacks in your code, Python follows the tag to find the value. Names are not boxes that hold things. They are tags that point at things. Keep this picture in mind, because it explains a lot later. Keep coding, says Xecxec!",
+      "onScreen": "NAMES ARE TAGS",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Names as tags.",
+      "hashtags": [
+        "python",
+        "variables",
+        "coding",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Underscores in names",
+      "hook": "\"open_shacks, not open shacks.\"",
+      "script": "Open underscore shacks, not open shacks. A name can have letters, digits and underscores, but never spaces. It cannot start with a digit either. Pick names that say what they hold, so you can read your program like a sentence. Shacks and open underscore shacks tell a clear story. Short, clear names make every bug easier to find. Keep coding, says Xecxec!",
+      "onScreen": "OPEN_SHACKS",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Name things well.",
+      "hashtags": [
+        "python",
+        "naming",
+        "learntocode",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Read a traceback",
+      "hook": "\"Start at the bottom.\"",
+      "script": "Start at the bottom. When Python stops with a traceback, read it from the last line up. The last line names the error and often suggests the fix. The line above shows where it happened. Python even asks, did you mean, and offers the correct spelling. Read the hint before you change anything. Then you fix bugs much faster. Keep coding, says Xecxec!",
+      "onScreen": "READ FROM THE BOTTOM",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bottom first.",
+      "hashtags": [
+        "python",
+        "traceback",
+        "nameerror",
+        "kodingkonkani",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"A comment that lied.\"",
+      "script": "A comment that lied. I wrote, this works, and the traceback disagreed. Your challenge. Write a program with a comment at the top. Make two names, boys and girls, with any numbers you like. Then print the total number of students. Use a plus sign to add them. Share your answer in the comments below. Keep coding, says Xecxec! Full video: EP 04.",
+      "onScreen": "BOYS + GIRLS = ?",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Try it.",
+      "hashtags": [
+        "python",
+        "challenge",
+        "kodingkonkani",
+        "programmingjokes",
+        "goa"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "shacks.py",
+      "source": "# Xecxec counts the beach shacks\nshacks = 12\nopen_shacks = 9\nprint(\"Shacks:\", shacks)\nprint(\"Open:\", open_shacks)\nprint(\"Closed:\", shacks - open_shacks)",
+      "output": "Shacks: 12\nOpen: 9\nClosed: 3",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "ep": 3,
+  "title": "How Python reads your code",
+  "module": 0,
+  "lengthSec": 303,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "explain that Python runs lines in order, top to bottom",
+    "see that indentation is part of the code",
+    "write a first if and else with a correct indent"
+  ],
+  "youtube": {
+    "title": "How Python Reads Your Code: Lines and Indentation | Python Programming EP 03",
+    "description": "Learn why Python cares about spaces at the start of a line, with Xecxec. 0:00 Intro · 0:20 Top to bottom · 0:55 Indentation · 1:35 The two rooms · 2:05 Follow the path · 2:45 Run it · 3:05 Recap · 3:40 Bug of the Day · 4:28 Challenge · 4:48 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:20",
+        "label": "Top to bottom"
+      },
+      {
+        "t": "0:55",
+        "label": "Indentation"
+      },
+      {
+        "t": "1:35",
+        "label": "The two rooms"
+      },
+      {
+        "t": "2:05",
+        "label": "Follow the path"
+      },
+      {
+        "t": "2:45",
+        "label": "Run it"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:28",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:48",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python indentation",
+      "python syntax",
+      "if else python",
+      "python for beginners",
+      "koding konkani",
+      "python tutorial",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "indentationerror"
+    ],
+    "thumbnail": {
+      "text": "SPACES MATTER",
+      "visual": "big text \"SPACES MATTER\" in tomato on peach; Xecxec shaking his shell beside a code card with indent guide lines; thin black border and drop shadow.",
+      "pose": "Xecxec shaking his shell beside a code card with indent guide lines"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "EP 03 · SPACES MATTER",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we learn why Python cares about spaces at the start of a line. In many languages they are decoration. In Python, they are part of the code."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 35,
+      "onScreen": "\"Top to bottom\": three numbered lines and a family-tree analogy card",
+      "animation": "Lines spring in with a pop; the family-tree card slides in with parents and indented children",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Python reads from top to bottom. When a line ends with a colon, the lines below it, moved four spaces to the right, belong to it. Like a family tree: the children are drawn indented under their parent. Four spaces is the standard. Your editor adds them when you press the tab key."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "age.py: a decision with an indented line; faint guide lines show the indent",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] First a name, age, holding seventeen. [HL 2] This line asks a question: is age greater than or equal to eighteen? It ends with a colon. [HL 3] This line is moved four spaces to the right. That says, I belong to the if. It only runs if the answer is yes.",
+      "code": {
+        "file": "age.py",
+        "source": "age = 17\nif age >= 18:\n    print(\"You can vote.\")\nelse:\n    print(\"Not yet.\")\nprint(\"Done.\")",
+        "output": "Not yet.\nDone."
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 30,
+      "onScreen": "Two coloured rooms: the if room and the else room; a door arrow between them",
+      "animation": "Two rooms pop in side by side; a yes-arrow lights the if room and a no-arrow lights the else room; only one room glows at a time",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Think of two rooms. The if room runs when the answer is yes. The else room runs when it is no. Only one room is entered. After that, we step back out to the left, and the program carries on. Just remember: the colon opens a room, and the indent shows who lives inside."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "age.py again with the path highlighted and the output panel on the right",
+      "animation": "Same code; the output panel fills line by line with a ding per output line; [TRACK] cards update",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[TRACK age=17] [HL 2] Seventeen is not greater than or equal to eighteen. So the answer is no. [HL 4] Python skips the if room and goes to else. [HL 5] Not yet appears. [HL 6] This last line is not indented, so it is outside both rooms, and it always runs. Done. Before we run it, predict the output with age twenty. The first line says, you can vote.",
+      "code": {
+        "file": "age.py",
+        "source": "age = 17\nif age >= 18:\n    print(\"You can vote.\")\nelse:\n    print(\"Not yet.\")\nprint(\"Done.\")",
+        "output": "Not yet.\nDone."
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python age.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Run it. Not yet. Done. Change age to twenty and run again. Now you see, you can vote, and then, done."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 185,
+      "lengthSec": 35,
+      "onScreen": "Recap: four ideas on one card",
+      "animation": "Four recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Recap. One: Python reads top to bottom. Two: a colon opens a room, and the lines moved four spaces to the right live inside it. Three: only one of if and else runs, and then Python steps back out. Four: if the indent is wrong, you get an indentation error. Say these four ideas out loud. That is a lot already. Well done."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: else indented two spaces",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We put else two spaces in, instead of lining it up with if. Python says, indentation error, unindent does not match any outer indentation level. The fix: line else up exactly under if."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 8,
+      "onScreen": "Python programmers are never lost. They just have a bad indent of direction.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Python programmers are never lost. They just have a bad indent of direction."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 268,
+      "lengthSec": 20,
+      "onScreen": "Task card: Eligible or Too young; test with 16, 18 and 20",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: change the program so it prints Eligible for age eighteen or more, and Too young otherwise. Test it with sixteen, eighteen and twenty."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 288,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 04 · Comments and reading a traceback",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next: comments, and how to read an error message. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "age = 17\nif age >= 18:\n    print(\"You can vote.\")\n  else:\n    print(\"Not yet.\")",
+    "error": "Python output (exactly as Python prints it):\n\n  File \"age.py\", line 4\n    else:\n         ^\nIndentationError: unindent does not match any outer indentation level",
+    "fixed": "age = 17\nif age >= 18:\n    print(\"You can vote.\")\nelse:\n    print(\"Not yet.\")",
+    "why": "Python uses indentation to decide which lines belong together, so else must line up exactly under its if."
+  },
+  "pun": "\"Python programmers are never lost. They just have a bad indent of direction.\"",
+  "challenge": "Change the program so it prints Eligible for age 18 or more and Too young otherwise. Test with 16, 18 and 20.",
+  "challengeAnswer": "Use if age >= 18 with print Eligible, and else with print Too young; 16 gives Too young, 18 and 20 give Eligible.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Spaces are code",
+      "hook": "\"In Python, spaces matter.\"",
+      "script": "In Python, spaces matter. Python uses the spaces at the start of a line, called indentation, to know which lines belong together. A line that ends with a colon opens a room. The lines moved four spaces to the right live inside that room. Four spaces is the standard. Your editor adds them when you press the tab key. Keep coding, says Xecxec!",
+      "onScreen": "SPACES ARE CODE",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "Indentation in 30 seconds.",
+      "hashtags": [
+        "python",
+        "indentation",
+        "beginners",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The two rooms",
+      "hook": "\"If room, else room.\"",
+      "script": "If room, else room. Think of two rooms side by side. The colon opens a room, and the indent shows who lives inside. The if room runs when the answer is yes. The else room runs when the answer is no. Only one room runs, and then Python steps back out to the left and carries on. Keep coding, says Xecxec!",
+      "onScreen": "IF ROOM + ELSE ROOM",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 35,
+      "caption": "Two rooms, one runs.",
+      "hashtags": [
+        "python",
+        "ifelse",
+        "coding",
+        "kodingkonkani",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Follow the path",
+      "hook": "\"Which line prints?\"",
+      "script": "Which line prints? Age is seventeen, and the question asks, is age eighteen or more? The answer is no, so Python skips the if room and goes to else. Not yet appears. The last line is not indented, so it sits outside both rooms, and it always runs. Trace the path with your finger on the screen, line by line. Keep coding, says Xecxec!",
+      "onScreen": "WHICH LINE PRINTS?",
+      "fromScenes": [
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Trace the path.",
+      "hashtags": [
+        "python",
+        "trace",
+        "learntocode",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "IndentationError",
+      "hook": "\"Two spaces too few.\"",
+      "script": "Two spaces too few. Put else in the wrong place, and Python says, indentation error, unindent does not match any outer indentation level. The rule is simple. The word else must line up exactly under its if. Same column, no more, no less. Fix the spaces, and the error disappears. Your editor can show you faint guide lines to help. Keep coding, says Xecxec!",
+      "onScreen": "INDENTATIONERROR",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Line them up.",
+      "hashtags": [
+        "python",
+        "bugfix",
+        "indentationerror",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"A bad indent of direction.\"",
+      "script": "A bad indent of direction. Python programmers are never lost, they just have one. Now your challenge. Change the program so it prints Eligible when age is eighteen or more, and Too young otherwise. Test it with sixteen, eighteen and twenty. Which ages print Eligible? Write your answer in the comments, and show us your code. Keep coding, says Xecxec! Full video: EP 03.",
+      "onScreen": "ELIGIBLE OR TOO YOUNG?",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Try it.",
+      "hashtags": [
+        "python",
+        "challenge",
+        "kodingkonkani",
+        "programmingjokes",
+        "goa"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "age.py",
+      "source": "age = 17\nif age >= 18:\n    print(\"You can vote.\")\nelse:\n    print(\"Not yet.\")\nprint(\"Done.\")",
+      "output": "Not yet.\nDone.",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

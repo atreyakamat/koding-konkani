@@ -1,0 +1,352 @@
+{
+  "ep": 10,
+  "title": "f-strings and formatting",
+  "module": 1,
+  "lengthSec": 297,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "put values inside text with f-strings",
+    "do a small calculation inside curly brackets",
+    "format decimals and align columns"
+  ],
+  "youtube": {
+    "title": "Python f-strings: Print Values the Easy Way | Python Programming EP 10",
+    "description": "In this episode you will put values inside text with f-strings, do a small calculation inside curly brackets and format decimals and align columns, with Xecxec the crab. 0:00 Intro · 0:16 Fill in the blanks · 0:54 f-strings in action · 1:34 Values stay in their names · 2:04 Second program · 3:04 Recap · 3:34 Bug of the Day · 4:22 Challenge · 4:42 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:16",
+        "label": "Fill in the blanks"
+      },
+      {
+        "t": "0:54",
+        "label": "f-strings in action"
+      },
+      {
+        "t": "1:34",
+        "label": "Values stay in their names"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:34",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:22",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:42",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python f-strings",
+      "string formatting python",
+      "format decimals python",
+      "print formatting"
+    ],
+    "thumbnail": {
+      "text": "F-STRINGS",
+      "visual": "big text \"F-STRINGS\" in tomato on peach; Xecxec pointing at the letter f in front of a string with curly brackets glowing; thin black border and drop shadow.",
+      "pose": "Xecxec pointing at the letter f in front of a string with curly brackets glowing"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 16,
+      "onScreen": "EP 10 · F-STRINGS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Joining text and numbers with commas works, but there is a neater way. Today we meet f-strings, the favourite tool of Python programmers."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 16,
+      "lengthSec": 38,
+      "onScreen": "\"Fill in the blanks\": three numbered lines (1. Put f before the opening quote; 2. Write values inside curly brackets; 3. Add a format after a colon, like :.2f) and an analogy card: a printed bill with blank spaces: the f tells Python to fill the spaces with real values",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "An f-string is a string with the letter f in front. Inside it, curly brackets hold names or sums. Python fills them in. Think of a printed bill with blank spaces. The f tells Python to fill the blanks with real values. After a colon inside the brackets, you can add a format. A colon, dot, two, f means, show two decimal places. Neat bills, no extra effort."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "fstr.py: a value, a sum and a two-decimal format",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Fish is three. [HL 2] Price is one hundred twenty and a half. [HL 3] The f before the quote turns the string into an f-string. The curly brackets hold the name fish, and Python puts the value in. [HL 4] Brackets can hold a sum too. Python works it out first. [HL 5] After the colon, dot two f says, show two decimal places. So we get three hundred sixty one point five zero.",
+      "code": {
+        "file": "fstr.py",
+        "source": "fish = 3\nprice = 120.5\nprint(f\"Fish: {fish}\")\nprint(f\"Total: {fish * price}\")\nprint(f\"Total: {fish * price:.2f}\")",
+        "output": "Fish: 3\nTotal: 361.5\nTotal: 361.50"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 94,
+      "lengthSec": 30,
+      "onScreen": "Two name tags, fish and price, tied to an int and a float",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Nothing changes in memory when we print. Fish stays tied to the int three. Price stays tied to the float one hundred twenty and a half. The f-string builds a brand new string for each print line, and then that string is gone. The names and values you made are untouched."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 124,
+      "lengthSec": 40,
+      "onScreen": "receipt.py: aligning a name and an amount in columns",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK item=Fish thali] The item name. [HL 2] [TRACK cost=249.5] The cost. [HL 3] [TRACK qty=2] The quantity. [HL 4] Less than twelve pads the text on the right to twelve spaces. Greater than eight pads the number on the left, with two decimals. The bars let us see the columns. [HL 5] The total uses a sum inside the brackets. Notice the single quotes inside the double quotes, so the quotes do not clash.",
+      "code": {
+        "file": "receipt.py",
+        "source": "item = \"Fish thali\"\ncost = 249.5\nqty = 2\nprint(f\"{item:<12}|{cost:>8.2f}|\")\nprint(f\"{'Total':<12}|{cost * qty:>8.2f}|\")",
+        "output": "Fish thali  |  249.50|\nTotal       |  499.00|"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 164,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python receipt.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as receipt dot py. In the terminal, type python, space, receipt dot py. Two neat lines, with the bars lined up under each other."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 184,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Put f before the opening quote to make an f-string. Two: Curly brackets hold names or small sums. Three: Colon, dot, two, f shows two decimals. Four: Less than and greater than set the alignment. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 214,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: forgetting the f",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We forgot the f. Python does not complain. It prints Hello, curly bracket name curly bracket, exactly as typed, because without the f the brackets are just characters. Add the f in front of the opening quote, and Python fills in the name. When you see curly brackets in your output, check for the f."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 254,
+      "lengthSec": 8,
+      "onScreen": "Why did the f-string get promoted? It always knew what to fill in.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the f-string get promoted? It always knew what to fill in."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 262,
+      "lengthSec": 20,
+      "onScreen": "Task card: print a bill line with two decimals",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make price equals 99 point 5 and qty equals 3. Then print a line like Total: 298 point 50. Use an f-string with two decimals. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 282,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 11 · Booleans and comparisons",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: booleans and comparisons. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "name = \"Asha\"\nprint(\"Hello, {name}\")",
+    "error": "Python output (it runs, but the answer is wrong):\n\nHello, {name}",
+    "fixed": "name = \"Asha\"\nprint(f\"Hello, {name}\")",
+    "why": "Without the f prefix the curly brackets are plain characters, so Python prints them exactly as typed."
+  },
+  "pun": "\"Why did the f-string get promoted? It always knew what to fill in.\"",
+  "challenge": "Make price = 99.5 and qty = 3. Then print a line like Total: 298.50. Use an f-string with two decimals.",
+  "challengeAnswer": "Use print(f\"Total: {price * qty:.2f}\"), which shows Total: 298.50.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is an f-string?",
+      "hook": "\"An f-string is a string with the letter f in front of the opening quote.\"",
+      "script": "An f-string is a string with the letter f in front of the opening quote. Inside it, curly brackets hold names or small sums, and Python fills them in. So f, quote, Hello comma, curly name curly, quote, prints Hello and the real name. It is neater than joining with plus, and you never need to convert numbers first. Keep coding, says Xecxec!",
+      "onScreen": "F\"HELLO {NAME}\"",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "The friendliest way to print.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "fstrings",
+        "formatting",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "A sum inside the brackets",
+      "hook": "\"You can put a calculation inside the curly brackets.\"",
+      "script": "You can put a calculation inside the curly brackets. Fish times price, inside the brackets, and Python works it out, then puts the answer in the text. You do not need a separate name for the answer. Short programs look much tidier this way. Try it with your own numbers, and watch Python do the sum in the middle of a sentence. Keep coding, says Xecxec!",
+      "onScreen": "{FISH * PRICE}",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Maths inside the text.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "fstrings",
+        "formatting",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Two decimals",
+      "hook": "\"After a colon inside the brackets, you can add a format.\"",
+      "script": "After a colon inside the brackets, you can add a format. Colon, dot, two, f means show two decimal places. So three hundred sixty one point five becomes three hundred sixty one point five zero. This is perfect for money. It only changes how the number looks. The number itself stays exactly the same in the program. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "{TOTAL:.2F}",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Money with two decimals.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "fstrings",
+        "formatting",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Forgot the f",
+      "hook": "\"Here is the quiet bug.\"",
+      "script": "Here is the quiet bug. You write print, quote, Hello, curly name curly, quote, but you forget the f. Python does not complain. It prints the curly brackets exactly as typed, with the word name between them. Whenever you see curly brackets in your output, check the front of the string. One small letter fixes it, and the magic returns. Keep coding, says Xecxec!",
+      "onScreen": "NO F, NO MAGIC",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Check the f.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "fstrings",
+        "formatting",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the f-string get promoted?\"",
+      "script": "Why did the f-string get promoted? It always knew what to fill in. Your challenge. Make price equal ninety nine point five, and qty equal three. Then print a line that says Total, colon, and the answer with two decimals, using an f-string. The answer should have a zero at the end. Write your code in the comments. Keep coding, says Xecxec! Full video: EP 10.",
+      "onScreen": "PRINT A NEAT TOTAL",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try the f-string.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "fstrings",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "fstr.py",
+      "source": "fish = 3\nprice = 120.5\nprint(f\"Fish: {fish}\")\nprint(f\"Total: {fish * price}\")\nprint(f\"Total: {fish * price:.2f}\")",
+      "output": "Fish: 3\nTotal: 361.5\nTotal: 361.50",
+      "lang": "python"
+    },
+    {
+      "file": "receipt.py",
+      "source": "item = \"Fish thali\"\ncost = 249.5\nqty = 2\nprint(f\"{item:<12}|{cost:>8.2f}|\")\nprint(f\"{'Total':<12}|{cost * qty:>8.2f}|\")",
+      "output": "Fish thali  |  249.50|\nTotal       |  499.00|",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

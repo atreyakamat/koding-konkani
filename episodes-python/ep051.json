@@ -1,0 +1,342 @@
+{
+  "ep": 51,
+  "title": "Reading files",
+  "module": 6,
+  "lengthSec": 313,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "open a text file and read it",
+    "loop over the lines of a file",
+    "close the file when done"
+  ],
+  "youtube": {
+    "title": "Python Reading Files: open, read, readlines | Python Programming EP 51",
+    "description": "In this episode you will open a text file and read it, loop over the lines of a file and close the file when done, with Xecxec the crab. 0:00 Intro · 0:15 Programs and files · 1:01 Open, read, close · 1:41 The file text is a string · 2:16 Second program · 3:16 Recap · 3:50 Bug of the Day · 4:38 Challenge · 4:58 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Programs and files"
+      },
+      {
+        "t": "1:01",
+        "label": "Open, read, close"
+      },
+      {
+        "t": "1:41",
+        "label": "The file text is a string"
+      },
+      {
+        "t": "2:16",
+        "label": "Second program"
+      },
+      {
+        "t": "3:16",
+        "label": "Recap"
+      },
+      {
+        "t": "3:50",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:38",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:58",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python read file",
+      "python open function",
+      "python readlines",
+      "filenotfounderror"
+    ],
+    "thumbnail": {
+      "text": "READ A FILE",
+      "visual": "big text \"READ A FILE\" in tomato on peach; Xecxec opening a folder and reading a paper labelled notes.txt; thin black border and drop shadow.",
+      "pose": "Xecxec opening a folder and reading a paper labelled notes"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 51 · READ A FILE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "So far our data vanished when the program ended. Today we read data from a file on disk."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 46,
+      "onScreen": "\"Programs and files\": three numbered lines (1. open(name) opens a file for reading; 2. read() gives all the text as one string; 3. close() returns the file to the system) and an analogy card: a library book: you open it, read it, and return it to the shelf when you are done",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A file is a named piece of data on your disk. Open takes the file name, and gives you a file object. Read gives you all the text as one string. Think of a library book. You open it, read it, and return it when you are done. Calling close tells the system you have finished. You can also loop over a file, line by line. The file must be in the folder where the program runs, or you must give its path."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 61,
+      "lengthSec": 40,
+      "onScreen": "readfile.py: read all of notes.txt into one string",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Open the file by name. We get a file object, tied to f. [HL 2] Read gives all the text as one string. Three lines, with new line characters between them. [HL 3] Close the file. We have our text now. [HL 4] Print it. Baga, Colva, Anjuna. An extra blank line follows, because the last line ends with a new line, and print adds another. [HL 5] Eighteen characters in all, new lines included."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 101,
+      "lengthSec": 35,
+      "onScreen": "The name text tied to one string containing the whole file",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. Once the file is closed, only the string remains. The name text is tied to one string, holding all three lines and their new line characters. The file object f is finished. It was only a doorway to the disk. After read, all the data lives in the string, and we can use it like any other text."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 136,
+      "lengthSec": 40,
+      "onScreen": "lines.py: loop over a file; readlines gives a list",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Open the file. [HL 2] A for loop over a file gives one line at a time. [HL 3] Each line still ends with a new line. Strip removes it, so the print is tidy. [HL 4] Close. [HL 5] Readlines gives a list with one string per line. [HL 6] Three lines. [HL 7] The first line, stripped. Baga."
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 176,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python lines.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as lines dot py. In the terminal, type python, space, lines dot py. Baga, Colva, Anjuna. Then three. Then Baga again."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 196,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: open of name gives a file object, and read gives its text. Two: A for loop over a file gives one line at a time. Three: Lines end with a new line character, so use strip. Four: Close the file when you are finished. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 230,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: the file name is wrong",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We open note dot txt, but the file is called notes dot txt. Python says, file not found error, the system cannot find the file specified, and shows the exact name it tried. Check the spelling, and check that you are running the program from the folder that holds the file."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 270,
+      "lengthSec": 8,
+      "onScreen": "Why did the file get promoted? It always knew how to open up.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the file get promoted? It always knew how to open up."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 278,
+      "lengthSec": 20,
+      "onScreen": "Task card: read a file and count its lines",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Read notes dot txt and print how many lines it has. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 298,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 52 · Writing files",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: writing files. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "f = open(\"note.txt\")\nprint(f.read())",
+    "error": "Baga\nColva\nAnjuna\n\nPython output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"readfile.py\", line 1, in <module>\n    f = open(\"note.txt\")\nFileNotFoundError: [WinError 2] The system cannot find the file specified: 'note.txt'",
+    "fixed": "f = open(\"notes.txt\")\nprint(f.read())\nf.close()",
+    "why": "Python can only open a file that exists in the folder it is running from, so a wrong name or a wrong folder gives a FileNotFoundError."
+  },
+  "pun": "\"Why did the file get promoted? It always knew how to open up.\"",
+  "challenge": "Read notes.txt and print how many lines it has.",
+  "challengeAnswer": "Use lines = open(\"notes.txt\").readlines() and print(len(lines)), which prints 3.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Open and read",
+      "hook": "\"To read a file, call open with its name.\"",
+      "script": "To read a file, call open with its name. You get a file object. Call read on it, and you get all the text as one string. Then close the file. Think of a library book. You open it, read it, and return it. The file must be in the folder where your program runs, so check your folder first. Keep coding, says Xecxec!",
+      "onScreen": "OPEN · READ · CLOSE",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Reading a text file.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "readfile",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Line by line",
+      "hook": "\"For big files, read one line at a time.\"",
+      "script": "For big files, read one line at a time. A for loop over the file gives you each line in turn. Each line ends with a new line character, so call strip before you print it. Or call readlines, to get all the lines as a list. Both ways let you process a file without loading everything as one big string. Keep coding, says Xecxec!",
+      "onScreen": "FOR LINE IN F:",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "One line at a time.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "readfile",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Strip the newline",
+      "hook": "\"Why does print show a blank line after each file line?\"",
+      "script": "Why does print show a blank line after each file line? Each line ends with a new line character, and print adds another. The fix is strip. Line dot strip removes the new line, along with spaces at both ends. Use it whenever you read lines from a file. Then your output looks right. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "LINE.STRIP()",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Tidy the lines.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "readfile",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "File not found",
+      "hook": "\"The first file bug everyone meets.\"",
+      "script": "The first file bug everyone meets. You open a file, and Python says, file not found error, no such file or directory. Check two things. Is the name spelled exactly right? And is your program running from the folder that holds the file? The error even shows the name Python tried. Compare it with your real file. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "FILENOTFOUNDERROR",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Check name and folder.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "readfile",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the file get promoted?\"",
+      "script": "Why did the file get promoted? It always knew how to open up. Your challenge. Make a text file called notes dot txt, with three lines of beach names. Write a program that opens it, reads the lines, and prints how many there are. You should see three. Then print each line in capital letters. Share your code in the comments. Keep coding, says Xecxec! Full video: EP 51.",
+      "onScreen": "COUNT THE LINES",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Try reading a file.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "f = open(\"notes.txt\")\ntext = f.read()\nf.close()\nprint(text)\nprint(len(text))",
+      "output": "Baga\nColva\nAnjuna\n\n18",
+      "lang": "python"
+    },
+    {
+      "file": "file2.python",
+      "source": "f = open(\"notes.txt\")\nfor line in f:\n    print(line.strip())\nf.close()\nlines = open(\"notes.txt\").readlines()\nprint(len(lines))\nprint(lines[0].strip())",
+      "output": "Baga\nColva\nAnjuna\n3\nBaga",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

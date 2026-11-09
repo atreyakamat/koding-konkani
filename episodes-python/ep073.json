@@ -1,0 +1,352 @@
+{
+  "ep": 73,
+  "title": "Iterators",
+  "module": 8,
+  "lengthSec": 305,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain what iter() and next() do",
+    "see how a for loop uses an iterator",
+    "write a class with __iter__ and __next__"
+  ],
+  "youtube": {
+    "title": "Python Iterators: How a for Loop Really Works | Python Programming EP 73",
+    "description": "In this episode you will explain what iter() and next() do, see how a for loop uses an iterator and write a class with __iter__ and __next__, with Xecxec the crab. 0:00 Intro · 0:15 One at a time · 0:59 A for loop by hand · 1:39 The list and its iterator · 2:09 Second program · 3:09 Recap · 3:42 Bug of the Day · 4:30 Challenge · 4:50 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "One at a time"
+      },
+      {
+        "t": "0:59",
+        "label": "A for loop by hand"
+      },
+      {
+        "t": "1:39",
+        "label": "The list and its iterator"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:42",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:30",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:50",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python iterators",
+      "python iter next",
+      "python stopiteration",
+      "how for loop works python"
+    ],
+    "thumbnail": {
+      "text": "ITERATORS",
+      "visual": "big text \"ITERATORS\" in tomato on peach; Xecxec pulling beach balls one by one out of a tube; thin black border and drop shadow.",
+      "pose": "Xecxec pulling beach balls one by one out of a tube"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 73 · ITERATORS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Every for loop you have written secretly uses an iterator. Today we open the box."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 44,
+      "onScreen": "\"One at a time\": three numbered lines (1. iter(x) gives an iterator; 2. next(it) gives the next item; 3. StopIteration means: no more) and an analogy card: a ticket machine: each press gives you the next ticket, until the roll is empty",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "An iterable is anything you can loop over, such as a list or a string. The iter function turns it into an iterator, which hands out items one at a time. Each call to next gives the next item. When there are no more, Python raises a StopIteration, and the for loop quietly stops. Think of a ticket machine. Each press gives you the next ticket, until the roll is empty. And once the roll is empty, it stays empty."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 59,
+      "lengthSec": 40,
+      "onScreen": "manual.py: iter and next, one step at a time",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A list of three numbers. [HL 2] The iter function gives us an iterator, tied to it. [HL 3] Next gives the first item. Ten. [HL 4] The second. Twenty. [HL 5] The third. Thirty. [HL 6] Now the roll is empty. [HL 7] Next raises a StopIteration. [HL 8] We catch it, and print, no more. A for loop does exactly this, and catches the StopIteration for you.",
+      "code": {
+        "file": "manual.py",
+        "source": "nums = [10, 20, 30]\nit = iter(nums)\nprint(next(it))\nprint(next(it))\nprint(next(it))\ntry:\n    print(next(it))\nexcept StopIteration:\n    print(\"no more\")",
+        "output": "10\n20\n30\nno more"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 99,
+      "lengthSec": 30,
+      "onScreen": "The name nums tied to a list; the name it tied to a separate list iterator that remembers its place",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name nums is tied to the list. The name it is tied to a different object, a list iterator. The iterator does not copy the list. It points at it, and remembers how far it has walked. The list stays the same. Only the iterator moves forward."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "countdown.py: a class with __iter__ and __next__",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A Countdown class. [HL 2] Init remembers where to start. [HL 5] Dunder iter returns the iterator. Here, the object itself. [HL 8] Dunder next hands out the next value. [HL 9] When we reach zero, [HL 10] raise StopIteration. [HL 11] Otherwise, keep the current value. [HL 12] Count down by one. [HL 13] And return it. [HL 15] A for loop uses the class like a list. [HL 16] Three, two, one. [HL 17] List can also consume an iterator. Five, four, three, two, one.",
+      "code": {
+        "file": "countdown.py",
+        "source": "class Countdown:\n    def __init__(self, start):\n        self.n = start\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.n <= 0:\n            raise StopIteration\n        value = self.n\n        self.n -= 1\n        return value\n\nfor i in Countdown(3):\n    print(i)\nprint(list(Countdown(5)))",
+        "output": "3\n2\n1\n[5, 4, 3, 2, 1]"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python countdown.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as countdown dot py. In the terminal, type python, space, countdown dot py. 10, 20, 30, no more. Then 3, 2, 1, and the list 5 to 1."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: iter of x gives an iterator. Next of it gives the next item. Two: StopIteration means there is nothing left. Three: A for loop calls iter once, then next again and again. Four: Your own class needs dunder iter and dunder next. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 222,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: an iterator is used up after one loop",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We sum the iterator twice. The first sum gives six. The second gives zero, with no error. The iterator was used up by the first sum. It never rewinds. Keep the data in a list, and every loop gets a fresh iterator. Or call iter again."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 262,
+      "lengthSec": 8,
+      "onScreen": "Why did the iterator go home early? It had nothing next to do.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the iterator go home early? It had nothing next to do."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 270,
+      "lengthSec": 20,
+      "onScreen": "Task card: walk a string",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Use iter and next on the string abc, and print each letter. Catch the StopIteration after the third. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 290,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 74 · Generators",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: generators. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "it = iter([1, 2, 3])\nprint(sum(it))\nprint(sum(it))",
+    "error": "Python output (it runs, but the answer is wrong):\n\n6\n0",
+    "fixed": "nums = [1, 2, 3]\nprint(sum(nums))\nprint(sum(nums))",
+    "why": "An iterator walks forward once and never rewinds. After the first loop it is empty. A list creates a fresh iterator every time you loop over it."
+  },
+  "pun": "\"Why did the iterator go home early? It had nothing next to do.\"",
+  "challenge": "Use iter and next on the string \"abc\", and print each letter. Catch the StopIteration after the third.",
+  "challengeAnswer": "it = iter(\"abc\"); print(next(it)) three times; then try: next(it) except StopIteration: print(\"done\").",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "iter and next",
+      "hook": "\"Every for loop secretly uses an iterator.\"",
+      "script": "Every for loop secretly uses an iterator. Call iter on a list to get one. Each call to next gives the next item. Ten, twenty, thirty. A ticket machine, pressing once for each ticket. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "next(it) -> next item",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Iterators give one at a time.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "iterators",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "StopIteration",
+      "hook": "\"When an iterator has nothing left, next raises StopIteration.\"",
+      "script": "When an iterator has nothing left, next raises StopIteration. A for loop catches it quietly, and ends. That is how a for loop knows when to stop. You can catch it yourself with try and except. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "StopIteration = no more",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "That is how loops end.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "iterators",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Your own iterator",
+      "hook": "\"To build your own iterator, write a class with two methods.\"",
+      "script": "To build your own iterator, write a class with two methods. Dunder iter returns the iterator, usually self. Dunder next returns the next value, or raises StopIteration. Now your object works in a for loop, like a list. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "__iter__ and __next__",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Two methods make an iterator.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "iterators",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Used up",
+      "hook": "\"A sneaky bug.\"",
+      "script": "A sneaky bug. You sum an iterator twice. The first sum is six. The second is zero, with no error. An iterator walks forward once, and never rewinds. Keep a list, and each loop starts fresh. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "second sum = 0",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Iterators never rewind.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "iterators",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the iterator go home early?\"",
+      "script": "Why did the iterator go home early? It had nothing next to do. Your challenge. Use iter and next on the string abc. Print each letter, then catch the StopIteration after the third. Which three letters do you see? Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 73.",
+      "onScreen": "Challenge: walk a string",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Use iter and next.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "manual.py",
+      "source": "nums = [10, 20, 30]\nit = iter(nums)\nprint(next(it))\nprint(next(it))\nprint(next(it))\ntry:\n    print(next(it))\nexcept StopIteration:\n    print(\"no more\")",
+      "output": "10\n20\n30\nno more",
+      "lang": "python"
+    },
+    {
+      "file": "countdown.py",
+      "source": "class Countdown:\n    def __init__(self, start):\n        self.n = start\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.n <= 0:\n            raise StopIteration\n        value = self.n\n        self.n -= 1\n        return value\n\nfor i in Countdown(3):\n    print(i)\nprint(list(Countdown(5)))",
+      "output": "3\n2\n1\n[5, 4, 3, 2, 1]",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "ep": 39,
+  "title": "Counting with dicts",
+  "module": 4,
+  "lengthSec": 306,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "count items with a dictionary",
+    "start a new key with get(key, 0)",
+    "use Counter for the same job"
+  ],
+  "youtube": {
+    "title": "Python Counting With Dictionaries and Counter | Python Programming EP 39",
+    "description": "In this episode you will count items with a dictionary, start a new key with get(key, 0) and use Counter for the same job, with Xecxec the crab. 0:00 Intro · 0:15 Tally with a dictionary · 0:56 Counting letters · 1:36 Counts stored in a dictionary · 2:09 Second program · 3:09 Recap · 3:43 Bug of the Day · 4:31 Challenge · 4:51 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Tally with a dictionary"
+      },
+      {
+        "t": "0:56",
+        "label": "Counting letters"
+      },
+      {
+        "t": "1:36",
+        "label": "Counts stored in a dictionary"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:43",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:31",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:51",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python count with dictionary",
+      "python counter",
+      "python get default",
+      "frequency count python"
+    ],
+    "thumbnail": {
+      "text": "COUNT WITH DICTS",
+      "visual": "big text \"COUNT WITH DICTS\" in tomato on peach; Xecxec making tally marks next to each letter of the word banana; thin black border and drop shadow.",
+      "pose": "Xecxec making tally marks next to each letter of the word banana"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 39 · COUNT WITH DICTS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "One of the most useful jobs for a dictionary is counting. Today we count letters, and learn the pattern."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 41,
+      "onScreen": "\"Tally with a dictionary\": three numbered lines (1. Keys are the things, values are the counts; 2. A new key must start at 0; 3. get(key, 0) + 1 does it in one line) and an analogy card: a tally sheet: each time you see a letter, you add one mark next to it",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Counting is a classic dictionary job. The keys are the things you count. The values are the counts. Think of a tally sheet. Each time you see a letter, you add one mark next to it. But a new letter has no mark yet. You must start it at zero, or one. The get method with a default zero does this in one line. And Python has a ready made helper called Counter."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 56,
+      "lengthSec": 40,
+      "onScreen": "count.py: count the letters of banana with if and else",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The text, banana. [HL 2] An empty dictionary for the tallies. [HL 3] Loop over each letter. [HL 4] If we have seen the letter before, [HL 5] add one to its count. [HL 6] Otherwise, [HL 7] this is the first time, so start its count at one. [HL 8] Print the tallies. B once, a three times, n twice.",
+      "code": {
+        "file": "count.py",
+        "source": "text = \"banana\"\ncounts = {}\nfor ch in text:\n    if ch in counts:\n        counts[ch] = counts[ch] + 1\n    else:\n        counts[ch] = 1\nprint(counts)",
+        "output": "{'b': 1, 'a': 3, 'n': 2}"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 96,
+      "lengthSec": 33,
+      "onScreen": "counts tied to a dict from letters to ints",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. Counts is tied to one dictionary. Each key is a letter, and each value is an int tally. When we added one, the tag inside the dictionary moved to a new int. The dictionary kept its shape, and only the numbers changed. This is how most word counts and letter counts are built."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "getcount.py: the same count with get, then with Counter",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Counter lives in a toolbox called collections. We import it. [HL 2] The text. [HL 3] An empty dictionary. [HL 4] Loop over the letters. [HL 5] Get the current count, or zero if the letter is new, and add one. Two lines of the earlier version became one. [HL 6] Same result. [HL 7] Counter does the whole job in one call. Most common, one, gives the top letter and its count. A, three.",
+      "code": {
+        "file": "count.py",
+        "source": "text = \"banana\"\ncounts = {}\nfor ch in text:\n    if ch in counts:\n        counts[ch] = counts[ch] + 1\n    else:\n        counts[ch] = 1\nprint(counts)",
+        "output": "{'b': 1, 'a': 3, 'n': 2}"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python getcount.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as getcount dot py. In the terminal, type python, space, getcount dot py. The same tallies, then a, three."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Keys are the things being counted and values are the counts. Two: A new key must have a starting value before you add to it. Three: counts dot get of key, 0 plus 1 is the one-line pattern. Four: Counter from collections counts for you. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 223,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: no starting value",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We try to add one to a count that does not exist yet. Python says, key error, g. The plus equals line reads the old count first, and a brand new letter has none. Use get with a default of zero, and the first time gives zero plus one. Then every later time just adds one more."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 263,
+      "lengthSec": 8,
+      "onScreen": "Why did the dictionary count on everyone? It never lost track.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the dictionary count on everyone? It never lost track."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 271,
+      "lengthSec": 20,
+      "onScreen": "Task card: count the vowels in a word",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Count how many times each letter appears in coconut and print the dictionary. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 291,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 40 · Mini project: Word counter",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: the word counter mini project. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "counts = {}\nfor ch in \"goa\":\n    counts[ch] += 1",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"count.py\", line 3, in <module>\n    counts[ch] += 1\n    ~~~~~~^^^^\nKeyError: 'g'",
+    "fixed": "counts = {}\nfor ch in \"goa\":\n    counts[ch] = counts.get(ch, 0) + 1\nprint(counts)",
+    "why": "counts[ch] += 1 reads the key before it exists, which raises a KeyError; get with a default gives a starting value."
+  },
+  "pun": "\"Why did the dictionary count on everyone? It never lost track.\"",
+  "challenge": "Count how many times each letter appears in \"coconut\" and print the dictionary.",
+  "challengeAnswer": "Use counts = {} with counts[ch] = counts.get(ch, 0) + 1 in a loop. It prints {'c': 2, 'o': 2, 'n': 1, 'u': 1, 't': 1}.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Counting with a dictionary",
+      "hook": "\"Counting is a classic dictionary job.\"",
+      "script": "Counting is a classic dictionary job. The keys are the things you count. The values are the counts. Think of a tally sheet, where you add a mark for each letter you see. Loop over the text, and for each letter, add one to its count. At the end, the dictionary shows how many times each letter appeared. It is the base of every word counter. Keep coding, says Xecxec!",
+      "onScreen": "LETTER → COUNT",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "A tally sheet in code.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "counter",
+        "dictionary",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The if and else way",
+      "hook": "\"The simple way to count is with if and else.\"",
+      "script": "The simple way to count is with if and else. If the letter is already a key, add one to its count. Otherwise, this is the first time, so set its count to one. It is clear and easy to read, and it works. Many beginners start here, and that is a perfectly good way to learn the idea. Keep coding, says Xecxec!",
+      "onScreen": "IF CH IN COUNTS: ... ELSE: ...",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "The clear way.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "counter",
+        "dictionary",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The get way",
+      "hook": "\"The shorter way uses get.\"",
+      "script": "The shorter way uses get. Counts of ch equals counts dot get, ch, zero, plus one. Get returns the current count, or zero if the letter is new. Then we add one, and save it back. Two lines become one. You see this pattern in most real Python code. Learn to read it, and to write it. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "COUNTS.GET(CH, 0) + 1",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "One line to count.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "counter",
+        "dictionary",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Key error on a new key",
+      "hook": "\"The bug.\"",
+      "script": "The bug. You write counts of ch, plus equals one, but the key does not exist yet. Python says, key error. The line tries to read the old count first, and a brand new letter has none. Use get with a default of zero, and the first time works. Every key needs a starting value before you add to it. Keep coding, says Xecxec!",
+      "onScreen": "KEYERROR: 'G'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Start at zero.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "counter",
+        "dictionary",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the dictionary count on everyone?\"",
+      "script": "Why did the dictionary count on everyone? It never lost track. Your challenge. Count how many times each letter appears in the word coconut. Use a dictionary and a loop. Print the final dictionary. You should see c twice, and o twice. Then try the Counter helper from the collections module, and check that you get the same answer. Share your result below. Keep coding, says Xecxec! Full video: EP 39.",
+      "onScreen": "COUNT THE LETTERS",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 40,
+      "caption": "Try counting.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "counter",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "count.py",
+      "source": "text = \"banana\"\ncounts = {}\nfor ch in text:\n    if ch in counts:\n        counts[ch] = counts[ch] + 1\n    else:\n        counts[ch] = 1\nprint(counts)",
+      "output": "{'b': 1, 'a': 3, 'n': 2}",
+      "lang": "python"
+    },
+    {
+      "file": "getcount.py",
+      "source": "from collections import Counter\ntext = \"banana\"\ncounts = {}\nfor ch in text:\n    counts[ch] = counts.get(ch, 0) + 1\nprint(counts)\nprint(Counter(text).most_common(1))",
+      "output": "{'b': 1, 'a': 3, 'n': 2}\n[('a', 3)]",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}
