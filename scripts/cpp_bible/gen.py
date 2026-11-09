@@ -74,21 +74,43 @@ def paragraphs(narr: str, per: int = 4) -> list[str]:
 
 def resolve_hl(ep: int, narr: str, src: str) -> str:
     """Turn [HL: some code text] cues into [HL n]. The line is the first one, at or after the previous
-    cue's line, that contains the text. This avoids hand-counted line numbers."""
+    cue's line, that contains the text. The text may contain balanced square brackets.
+    This avoids hand-counted line numbers."""
     lines = src.rstrip("\n").split("\n")
     last = 0
-
-    def sub(m: re.Match) -> str:
-        nonlocal last
-        needle = m.group(1).strip()
-        for start in (last, 0):
-            for i in range(start, len(lines)):
-                if needle in lines[i]:
-                    last = i
-                    return f"[HL {i + 1}]"
-        raise SystemExit(f"EP {ep}: [HL: {needle}] not found in the code")
-
-    return re.sub(r"\[HL: ([^\]]+)\]", sub, narr)
+    out: list[str] = []
+    i = 0
+    while i < len(narr):
+        if narr.startswith("[HL:", i):
+            j, depth = i + 4, 0
+            while j < len(narr):
+                if narr[j] == "[":
+                    depth += 1
+                elif narr[j] == "]":
+                    if depth == 0:
+                        break
+                    depth -= 1
+                j += 1
+            else:
+                raise SystemExit(f"EP {ep}: unclosed [HL: cue")
+            needle = narr[i + 4:j].strip()
+            hit = None
+            for start in (last, 0):
+                for k in range(start, len(lines)):
+                    if needle in lines[k]:
+                        hit = k
+                        break
+                if hit is not None:
+                    break
+            if hit is None:
+                raise SystemExit(f"EP {ep}: [HL: {needle}] not found in the code")
+            last = hit
+            out.append(f"[HL {hit + 1}]")
+            i = j + 1
+        else:
+            out.append(narr[i])
+            i += 1
+    return "".join(out)
 
 
 def say_file(name: str) -> str:
