@@ -90,7 +90,7 @@ def run(src: str, name: str, stdin: str = "", files: dict[str, str] | None = Non
         _setup(d, files or {})
         Path(d, name).write_text(src, encoding="utf-8")
         try:
-            r = subprocess.run([sys.executable, "-I", name], cwd=d, input=stdin, capture_output=True,
+            r = subprocess.run([sys.executable, "-s", name], cwd=d, input=stdin, capture_output=True,
                                text=True, timeout=timeout, env=_env())
             return r.returncode, r.stdout, r.stderr, False
         except subprocess.TimeoutExpired as e:
@@ -104,7 +104,7 @@ def trace(src: str, name: str, names: list[str], stdin: str = "",
         _setup(d, files or {})
         Path(d, name).write_text(src, encoding="utf-8")
         Path(d, "_tracer.py").write_text("import os\n" + TRACER, encoding="utf-8")
-        r = subprocess.run([sys.executable, "-I", "_tracer.py", name, json.dumps(names)], cwd=d,
+        r = subprocess.run([sys.executable, "-s", "_tracer.py", name, json.dumps(names)], cwd=d,
                            input=stdin, capture_output=True, text=True, timeout=30, env=_env())
         m = re.search(r"@@TRACE(.*)$", r.stderr, re.S)
         if not m:
