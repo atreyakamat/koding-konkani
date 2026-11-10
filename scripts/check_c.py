@@ -250,7 +250,7 @@ def compile_and_run(
 
         exe = work_dir / "a.exe"
         c_files = [name for name in files if name.endswith(".c")]
-        cmd = [str(gcc_path), "-Wall", "-Wextra", "-std=c17", *c_files, "-o", str(exe)]
+        cmd = [str(gcc_path), "-Wall", "-Wextra", "-std=c17", *c_files, "-o", str(exe), "-lm"]
         proc = subprocess.run(cmd, cwd=work_dir, capture_output=True, text=True, encoding="utf-8", errors="replace", env=env, timeout=30)
         if proc.returncode != 0:
             return "compile-error", proc.stderr, ""

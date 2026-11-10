@@ -419,6 +419,12 @@ const qaFile = (
 
 /** Non-PASS check_c rows approved as checker limits by the owner (4 Nov 2026): the episode still renders. */
 const KNOWN_CHECKER_LIMITS: Record<number, { files: string[]; why: string }> = {
+  // EP24-33 (10 Nov 2026). Each was compiled and run by hand with the typed stdin shown in the episode JSON and the output matched.
+  24: { files: ["file1.c"], why: "needs typed stdin (five triangle runs)" },
+  25: { files: ["file1.c"], why: "needs typed stdin (quiz answers)" },
+  26: { files: ["wrong.c"], why: "the bug IS an infinite loop (i never changes); the checker times out as expected" },
+  28: { files: ["file3.c"], why: "interactive menu: needs typed stdin" },
+  33: { files: ["file1.c"], why: "needs typed stdin (12)" },
   41: { files: ["file3.c"], why: "file3.c (copy.c) is a deliberate compile-error teaching example" },
   48: { files: ["file1.c"], why: "file1.c needs typed stdin; the checker gives none" },
   // EP51-86 (8 Nov 2026). Each program below was compiled and run by hand with the right stdin / files and its
