@@ -100,7 +100,7 @@
       ],
       "hook": "Copying a big string for every call is slow.",
       "script": "Copying a big string for every call is slow. A reference avoids the copy. But a reference lets the function change the original. Add const, and the function may only read it. So a const reference is fast and safe. Think of a museum. You may look at the painting, but you may not touch it. The parameter is a const reference to a string. Keep coding, says Xecxec!",
-      "onScreen": "CONST REFERENCES IN ONE MINUTE",
+      "onScreen": "CONST REFERENCES",
       "caption": "const references in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: Changing a const reference",
-      "lengthSec": 37,
+      "lengthSec": 38,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. The function takes a const reference, and then tries to add one. The compiler says increment of read-only reference. Const means look, but do not touch. If the function must change the value, remove const. A const reference is read-only. If the function must change the value, use a plain reference. If it must not, remove the change. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: CHANGING A CONST REFERENCE",
+      "hook": "Can you spot the bug in const references?",
+      "script": "Can you spot the bug in const references? Bug of the Day. The function takes a const reference, and then tries to add one. The compiler says increment of read-only reference. Const means look, but do not touch. If the function must change the value, remove const. A const reference is read-only. If the function must change the value, use a plain reference. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: Changing a const reference.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 36,
+      "lengthSec": 38,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "The museum guard loves const references. He says, look all you want, but do not touch the exhibit.",
-      "script": "The museum guard loves const references. He says, look all you want, but do not touch the exhibit. Write a function that prints the size of a string. Choose the best parameter style, and explain your choice in a comment. Write your answer in the comments. A copy of a big value is slow. A const reference makes no copy. Keep coding, says Xecxec!",
+      "hook": "Can you choose the right parameter style in const references?",
+      "script": "Can you choose the right parameter style in const references? The museum guard loves const references. He says, look all you want, but do not touch the exhibit. Write a function that prints the size of a string. Choose the best parameter style, and explain your choice in a comment. Write your answer in the comments. A copy of a big value is slow. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

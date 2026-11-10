@@ -100,7 +100,7 @@
       ],
       "hook": "A unique pointer owns one heap object.",
       "script": "A unique pointer owns one heap object. When the unique pointer dies, it deletes the object. You never write delete. This is RAII for heap memory. A unique pointer has one owner. You cannot copy it, but you can move it to a new owner. Think of a house key with one owner. You can hand it over, but you cannot copy it. Keep coding, says Xecxec!",
-      "onScreen": "UNIQUE_PTR IN ONE MINUTE",
+      "onScreen": "UNIQUE_PTR",
       "caption": "unique_ptr in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: Copying a unique_ptr",
-      "lengthSec": 35,
+      "lengthSec": 36,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. We copy a unique pointer. The compiler says use of deleted function. The copy is blocked on purpose. Two owners would delete the object twice. Use move to hand over the ownership. Two unique pointers must never own the same object, or it would be deleted twice. The compiler blocks the copy. Use move. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: COPYING A UNIQUE_PTR",
+      "hook": "Can you spot the bug in unique pointers?",
+      "script": "Can you spot the bug in unique pointers? Bug of the Day. We copy a unique pointer. The compiler says use of deleted function. The copy is blocked on purpose. Two owners would delete the object twice. Use move to hand over the ownership. Two unique pointers must never own the same object, or it would be deleted twice. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: Copying a unique_ptr.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 38,
+      "lengthSec": 37,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "A unique pointer never shares its umbrella. It is all about ownership.",
-      "script": "A unique pointer never shares its umbrella. It is all about ownership. Make a unique pointer to an int with the value twenty. Add one through the pointer, and print the result. Write your answer in the comments. A unique pointer owns one heap object. It deletes the object when it dies. It cannot be copied. Use move to hand over the ownership. Keep coding, says Xecxec!",
+      "hook": "Can you own a heap int in unique pointers?",
+      "script": "Can you own a heap int in unique pointers? A unique pointer never shares its umbrella. It is all about ownership. Make a unique pointer to an int with the value twenty. Add one through the pointer, and print the result. Write your answer in the comments. A unique pointer owns one heap object. It deletes the object when it dies. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

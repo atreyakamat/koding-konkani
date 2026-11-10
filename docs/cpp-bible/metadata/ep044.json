@@ -98,9 +98,9 @@
         2,
         3
       ],
-      "hook": "When you add one to a pointer, it moves by one item, not by one byte.",
+      "hook": "When you add one to a pointer",
       "script": "When you add one to a pointer, it moves by one item, not by one byte. For an int pointer, the address grows by four. For a double pointer, it grows by eight. You may subtract two pointers into the same array. You get the number of items between them. You may not add two pointers. Think of a bus conductor. Keep coding, says Xecxec!",
-      "onScreen": "POINTER ARITHMETIC IN ONE MINUTE",
+      "onScreen": "POINTER ARITHMETIC",
       "caption": "Pointer arithmetic in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: Adding two pointers",
-      "lengthSec": 39,
+      "lengthSec": 35,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. We add two pointers to find the middle. The compiler says invalid operands to binary plus. The sum of two addresses has no meaning. Take the distance between them, halve it, and add it to the low pointer. The sum of two addresses has no meaning. The distance between two addresses does. Add half of the distance to the low pointer. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: ADDING TWO POINTERS",
+      "hook": "Can you spot the bug in pointer arithmetic?",
+      "script": "Can you spot the bug in pointer arithmetic? Bug of the Day. We add two pointers to find the middle. The compiler says invalid operands to binary plus. The sum of two addresses has no meaning. Take the distance between them, halve it, and add it to the low pointer. The sum of two addresses has no meaning. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: Adding two pointers.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 35,
+      "lengthSec": 37,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "A pointer asked for directions. The answer was, just add one.",
-      "script": "A pointer asked for directions. The answer was, just add one. Use a pointer that starts at the last item. Print the array in reverse order. Write your answer in the comments. P plus one moves by one item. The compiler scales the step by the size of the type. Subtracting two pointers gives a count of items. Keep coding, says Xecxec!",
+      "hook": "Can you print an array backwards with a pointer in pointer arithmetic?",
+      "script": "Can you print an array backwards with a pointer in pointer arithmetic? A pointer asked for directions. The answer was, just add one. Use a pointer that starts at the last item. Print the array in reverse order. Write your answer in the comments. P plus one moves by one item. The compiler scales the step by the size of the type. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

@@ -98,9 +98,9 @@
         2,
         3
       ],
-      "hook": "A virtual function is chosen at run time, by the real type of the object.",
+      "hook": "A virtual function is chosen at run time",
       "script": "A virtual function is chosen at run time, by the real type of the object. You can hold a Dog in an Animal pointer, and a call to speak still runs the Dog version. Write virtual in the base. Write override in the derived class, so that the compiler checks your spelling. Think of a remote control. One button, and each TV does its own thing. Keep coding, says Xecxec!",
-      "onScreen": "VIRTUAL FUNCTIONS IN ONE MINUTE",
+      "onScreen": "VIRTUAL FUNCTIONS",
       "caption": "Virtual functions in one minute.",
       "hashtags": [
         "#cpp",
@@ -137,9 +137,9 @@
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. We call speak through an Animal pointer to a Dog. The program prints three dots, not Woof. Speak is not virtual, so the pointer type decides. Add virtual in the base, and override in Dog. Without virtual, the compiler picks the function by the pointer type, which is Animal. With virtual, it picks by the real object. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: A FUNCTION THAT IS NOT VIRTUAL",
+      "hook": "Can you spot the bug in virtual functions?",
+      "script": "Can you spot the bug in virtual functions? Bug of the Day. We call speak through an Animal pointer to a Dog. The program prints three dots, not Woof. Speak is not virtual, so the pointer type decides. Add virtual in the base, and override in Dog. Without virtual, the compiler picks the function by the pointer type, which is Animal. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: A function that is not virtual.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 36,
+      "lengthSec": 37,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "Why did the virtual function get a promotion? It always knew who it really was.",
-      "script": "Why did the virtual function get a promotion? It always knew who it really was. Add a class Cow to the zoo program. Its speak prints Moo. Add one cow to the vector. Write your answer in the comments. A virtual function is chosen by the real type, at run time. A base pointer can hold a derived object. Keep coding, says Xecxec!",
+      "hook": "Can you add a Cow to the zoo in virtual functions?",
+      "script": "Can you add a Cow to the zoo in virtual functions? Why did the virtual function get a promotion? It always knew who it really was. Add a class Cow to the zoo program. Its speak prints Moo. Add one cow to the vector. Write your answer in the comments. A virtual function is chosen by the real type, at run time. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

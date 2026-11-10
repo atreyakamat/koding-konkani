@@ -100,7 +100,7 @@
       ],
       "hook": "The std array type wraps a plain array.",
       "script": "The std array type wraps a plain array. It knows its own size. The size function tells you. The at function checks the index. If the index is wrong, it stops with an error. A plain array does not check anything, and a wrong index gives garbage. Think of a locker row with a guard. If you ask for door nine, the guard says there is no such door. Keep coding, says Xecxec!",
-      "onScreen": "STD::ARRAY IN ONE MINUTE",
+      "onScreen": "STD::ARRAY",
       "caption": "std::array in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: An index that is too big",
-      "lengthSec": 37,
+      "lengthSec": 41,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. The array has three items, and we ask for index five. At stops the program. It says terminate called after throwing an instance of out of range. That is better than reading garbage. Check the index against the size before you use it. The array has three items, so the valid indexes are zero, one and two. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: AN INDEX THAT IS TOO BIG",
+      "hook": "Can you spot the bug in std array?",
+      "script": "Can you spot the bug in std array? Bug of the Day. The array has three items, and we ask for index five. At stops the program. It says terminate called after throwing an instance of out of range. That is better than reading garbage. Check the index against the size before you use it. The array has three items, so the valid indexes are zero, one and two. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: An index that is too big.",
       "hashtags": [
         "#cpp",
@@ -157,8 +157,8 @@
         9,
         10
       ],
-      "hook": "Std array put on a helmet. Now it has a safe place to fall.",
-      "script": "Std array put on a helmet. Now it has a safe place to fall. Make a std array of four ints. Fill it with the number seven. Print every item with a range-based for. Write your answer in the comments. Std array wraps a plain array. It knows its own size. At checks the index and stops on a wrong one. Keep coding, says Xecxec!",
+      "hook": "Can you fill and print a std array in std array?",
+      "script": "Can you fill and print a std array in std array? Std array put on a helmet. Now it has a safe place to fall. Make a std array of four ints. Fill it with the number seven. Print every item with a range-based for. Write your answer in the comments. Std array wraps a plain array. It knows its own size. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

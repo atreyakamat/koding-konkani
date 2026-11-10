@@ -50,18 +50,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Hello, C++! in one minute** (37 s)
   - Caption: Hello, C++! in one minute. #cpp #kodingkonkani #helloc #coding
   - Hook: C plus plus is a programming language.
-  - On screen: HELLO, C++! IN ONE MINUTE
+  - On screen: HELLO, C++!
 - **S3 · Inside the second program** (35 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #helloc #learntocode
   - Hook: The first cout prints a line about you.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A missing semicolon** (36 s)
+- **S4 · Bug of the Day: A missing semicolon** (37 s)
   - Caption: Bug of the Day: A missing semicolon. #cpp #kodingkonkani #helloc #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING SEMICOLON
+  - Hook: Can you spot the bug in your first program
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #helloc #codingchallenge
-  - Hook: I told my compiler a joke. It said, I do not get it. Expected semicolon.
+  - Hook: Can you print your name and your village in your first program
   - On screen: PUN AND CHALLENGE
 
 ## EP 02 — Setting up and compiling
@@ -112,18 +112,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Setting up and compiling in one minute** (35 s)
   - Caption: Setting up and compiling in one minute. #cpp #kodingkonkani #settingupandcompiling #coding
   - Hook: You need three tools.
-  - On screen: SETTING UP AND COMPILING IN ONE MINUTE
+  - On screen: SETTING UP AND COMPILING
 - **S3 · Inside the second program** (42 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #settingupandcompiling #learntocode
   - Hook: A built-in name holds a number for the language version.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A missing include** (35 s)
+- **S4 · Bug of the Day: A missing include** (40 s)
   - Caption: Bug of the Day: A missing include. #cpp #kodingkonkani #settingupandcompiling #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING INCLUDE
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in setting up and compiling?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (39 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #settingupandcompiling #codingchallenge
-  - Hook: Why did the programmer install three tools? Because two was a bug, and four was a feature.
+  - Hook: Can you compile and run setup dot cpp in setting
   - On screen: PUN AND CHALLENGE
 
 ## EP 03 — C vs C++: what changed
@@ -174,18 +174,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · C vs C++: what changed in one minute** (36 s)
   - Caption: C vs C++: what changed in one minute. #cpp #kodingkonkani #cvscwhatchanged #coding
   - Hook: C plus plus grew out of the C language.
-  - On screen: C VS C++: WHAT CHANGED IN ONE MINUTE
+  - On screen: C VS C++: WHAT CHANGED
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #cvscwhatchanged #learntocode
   - Hook: Now the C plus plus way.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Forgetting std** (41 s)
+- **S4 · Bug of the Day: Forgetting std** (35 s)
   - Caption: Bug of the Day: Forgetting std. #cpp #kodingkonkani #cvscwhatchanged #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: FORGETTING STD
+  - Hook: Can you spot the bug in what changed from C
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #cvscwhatchanged #codingchallenge
-  - Hook: Why did C plus plus not invite C to the party? C said, I will be there, but only as a subset.
+  - Hook: Can you print with printf and cout in one program
   - On screen: PUN AND CHALLENGE
 
 ## EP 04 — Anatomy of a C++ program
@@ -233,21 +233,21 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - Caption: What you will learn: Anatomy of a C++ program. #cpp #kodingkonkani #anatomyofacprogram #beginners
   - Hook: Every C plus plus program has the same parts.
   - On screen: ANATOMY OF A C++ PROGRAM
-- **S2 · Anatomy of a C++ program in one minute** (35 s)
+- **S2 · Anatomy of a C++ program in one minute** (36 s)
   - Caption: Anatomy of a C++ program in one minute. #cpp #kodingkonkani #anatomyofacprogram #coding
-  - Hook: Every C plus plus program has the same parts.
-  - On screen: ANATOMY OF A C++ PROGRAM IN ONE MINUTE
+  - Hook: A comment is a note for people.
+  - On screen: ANATOMY OF A C++ PROGRAM
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #anatomyofacprogram #learntocode
   - Hook: This using line tells the compiler to look inside std.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A missing closing brace** (39 s)
+- **S4 · Bug of the Day: A missing closing brace** (35 s)
   - Caption: Bug of the Day: A missing closing brace. #cpp #kodingkonkani #anatomyofacprogram #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING CLOSING BRACE
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in the parts of a
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #anatomyofacprogram #codingchallenge
-  - Hook: My program has a comment, an include, and a main. It is a very well-balanced meal.
+  - Hook: Can you label the parts of your own program in
   - On screen: PUN AND CHALLENGE
 
 ## EP 05 — Variables and types
@@ -298,18 +298,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Variables and types in one minute** (38 s)
   - Caption: Variables and types in one minute. #cpp #kodingkonkani #variablesandtypes #coding
   - Hook: A variable is a named box in memory.
-  - On screen: VARIABLES AND TYPES IN ONE MINUTE
+  - On screen: VARIABLES AND TYPES
 - **S3 · Inside the second program** (39 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #variablesandtypes #learntocode
   - Hook: The sizeof operator tells us how many bytes a type needs.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A variable with no starting value** (40 s)
+- **S4 · Bug of the Day: A variable with no starting value** (37 s)
   - Caption: Bug of the Day: A variable with no starting value. #cpp #kodingkonkani #variablesandtypes #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A VARIABLE WITH NO STARTING VALUE
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in variables and types?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #variablesandtypes #codingchallenge
-  - Hook: An uninitialised variable walks into a bar. The bartender asks, what will you have? It says, whatever was there before.
+  - Hook: Can you make four variables and print them in variables and types?
   - On screen: PUN AND CHALLENGE
 
 ## EP 06 — Reading input with cin
@@ -360,18 +360,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Reading input with cin in one minute** (37 s)
   - Caption: Reading input with cin in one minute. #cpp #kodingkonkani #readinginputwithcin #coding
   - Hook: Cout sends data out to the screen.
-  - On screen: READING INPUT WITH CIN IN ONE MINUTE
+  - On screen: READING INPUT WITH CIN
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #readinginputwithcin #learntocode
   - Hook: We make two ints in one line.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: The arrows point the wrong way** (38 s)
+- **S4 · Bug of the Day: The arrows point the wrong way** (39 s)
   - Caption: Bug of the Day: The arrows point the wrong way. #cpp #kodingkonkani #readinginputwithcin #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: THE ARROWS POINT THE WRONG WAY
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in reading input with cin?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #readinginputwithcin #codingchallenge
-  - Hook: Why did the program wait for the user? It had a lot of input about commitment.
+  - Hook: Can you ask for two numbers and print their product
   - On screen: PUN AND CHALLENGE
 
 ## EP 07 — Operators and expressions
@@ -422,18 +422,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Operators and expressions in one minute** (35 s)
   - Caption: Operators and expressions in one minute. #cpp #kodingkonkani #operatorsandexpressions #coding
   - Hook: C plus plus has five arithmetic operators.
-  - On screen: OPERATORS AND EXPRESSIONS IN ONE MINUTE
+  - On screen: OPERATORS AND EXPRESSIONS
 - **S3 · Inside the second program** (39 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #operatorsandexpressions #learntocode
   - Hook: Visitors starts at ten.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: Integer division cuts the decimals** (37 s)
   - Caption: Bug of the Day: Integer division cuts the decimals. #cpp #kodingkonkani #operatorsandexpressions #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: INTEGER DIVISION CUTS THE DECIMALS
-- **S5 · Pun and challenge** (40 s)
+  - Hook: Can you spot the bug in operators and expressions?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #operatorsandexpressions #codingchallenge
-  - Hook: Why was the number seven so calm? It had no remainder.
+  - Hook: Can you split a bill between friends in operators and expressions?
   - On screen: PUN AND CHALLENGE
 
 ## EP 08 — Comparison and logical operators
@@ -484,18 +484,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Comparison and logical operators in one minute** (35 s)
   - Caption: Comparison and logical operators in one minute. #cpp #kodingkonkani #comparisonandlogicaloperators #coding
   - Hook: A comparison asks a question about two values.
-  - On screen: COMPARISON AND LOGICAL OPERATORS IN ONE MINUTE
+  - On screen: COMPARISON AND LOGICAL OPERATORS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #comparisonandlogicaloperators #learntocode
   - Hook: The mark is seventy-two.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: One equals sign instead of two** (35 s)
+- **S4 · Bug of the Day: One equals sign instead of two** (38 s)
   - Caption: Bug of the Day: One equals sign instead of two. #cpp #kodingkonkani #comparisonandlogicaloperators #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: ONE EQUALS SIGN INSTEAD OF TWO
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in comparison and logical operators?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #comparisonandlogicaloperators #codingchallenge
-  - Hook: Why was the boolean so honest? It only knew true or false.
+  - Hook: Can you test whether a year is a leap year
   - On screen: PUN AND CHALLENGE
 
 ## EP 09 — Type conversion and casting
@@ -546,18 +546,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Type conversion and casting in one minute** (40 s)
   - Caption: Type conversion and casting in one minute. #cpp #kodingkonkani #typeconversionandcasting #coding
   - Hook: C plus plus converts types when you mix them.
-  - On screen: TYPE CONVERSION AND CASTING IN ONE MINUTE
+  - On screen: TYPE CONVERSION AND CASTING
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #typeconversionandcasting #learntocode
   - Hook: We have seven passed students out of eight.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Casting too late** (36 s)
+- **S4 · Bug of the Day: Casting too late** (35 s)
   - Caption: Bug of the Day: Casting too late. #cpp #kodingkonkani #typeconversionandcasting #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: CASTING TOO LATE
+  - Hook: Can you spot the bug in type conversion and casting?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #typeconversionandcasting #codingchallenge
-  - Hook: I tried to cast a spell on my double. It lost its decimals and its magic.
+  - Hook: Can you find the average of three marks in type
   - On screen: PUN AND CHALLENGE
 
 ## EP 10 — auto, const and constexpr
@@ -607,19 +607,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: AUTO, CONST AND CONSTEXPR
 - **S2 · auto, const and constexpr in one minute** (37 s)
   - Caption: auto, const and constexpr in one minute. #cpp #kodingkonkani #autoconstandconstexpr #coding
-  - Hook: The keyword auto tells the compiler to find the type from the value.
-  - On screen: AUTO, CONST AND CONSTEXPR IN ONE MINUTE
+  - Hook: The keyword auto tells the compiler to find the type
+  - On screen: AUTO, CONST AND CONSTEXPR
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #autoconstandconstexpr #learntocode
   - Hook: Pi is a constexpr.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: Changing a const** (37 s)
   - Caption: Bug of the Day: Changing a const. #cpp #kodingkonkani #autoconstandconstexpr #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: CHANGING A CONST
+  - Hook: Can you spot the bug in auto, const and constexpr?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #autoconstandconstexpr #codingchallenge
-  - Hook: I put a const on my bank balance. Now it will never change, and that is the problem.
+  - Hook: Can you make a circle program with const in auto
   - On screen: PUN AND CHALLENGE
 
 ## EP 11 — Strings with std::string
@@ -670,18 +670,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Strings with std::string in one minute** (35 s)
   - Caption: Strings with std::string in one minute. #cpp #kodingkonkani #stringswithstdstring #coding
   - Hook: The std string type holds text of any length.
-  - On screen: STRINGS WITH STD::STRING IN ONE MINUTE
+  - On screen: STRINGS WITH STD::STRING
 - **S3 · Inside the second program** (40 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #stringswithstdstring #learntocode
   - Hook: The string holds a short sentence.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Adding two quoted texts** (37 s)
+- **S4 · Bug of the Day: Adding two quoted texts** (35 s)
   - Caption: Bug of the Day: Adding two quoted texts. #cpp #kodingkonkani #stringswithstdstring #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: ADDING TWO QUOTED TEXTS
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in strings with std string?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #stringswithstdstring #codingchallenge
-  - Hook: Why did the string go to therapy? It could not stop feeling cut off.
+  - Hook: Can you build a greeting from two strings in strings
   - On screen: PUN AND CHALLENGE
 
 ## EP 12 — Formatting output
@@ -732,18 +732,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Formatting output in one minute** (36 s)
   - Caption: Formatting output in one minute. #cpp #kodingkonkani #formattingoutput #coding
   - Hook: Raw output can look messy.
-  - On screen: FORMATTING OUTPUT IN ONE MINUTE
+  - On screen: FORMATTING OUTPUT
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #formattingoutput #learntocode
   - Hook: The format header gives us std format.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Precision without fixed** (40 s)
+- **S4 · Bug of the Day: Precision without fixed** (36 s)
   - Caption: Bug of the Day: Precision without fixed. #cpp #kodingkonkani #formattingoutput #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: PRECISION WITHOUT FIXED
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in formatting output?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #formattingoutput #codingchallenge
-  - Hook: My output was so untidy that even cout asked for a setw.
+  - Hook: Can you print a three-row bill in formatting output?
   - On screen: PUN AND CHALLENGE
 
 ## EP 13 — if and else
@@ -794,18 +794,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · if and else in one minute** (39 s)
   - Caption: if and else in one minute. #cpp #kodingkonkani #ifandelse #coding
   - Hook: An if statement tests a condition.
-  - On screen: IF AND ELSE IN ONE MINUTE
+  - On screen: IF AND ELSE
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #ifandelse #learntocode
   - Hook: Cin reads a number.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A semicolon after the if** (41 s)
+- **S4 · Bug of the Day: A semicolon after the if** (39 s)
   - Caption: Bug of the Day: A semicolon after the if. #cpp #kodingkonkani #ifandelse #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A SEMICOLON AFTER THE IF
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in if and else?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #ifandelse #codingchallenge
-  - Hook: Why did the if statement break up with else? It said, you are always my second choice.
+  - Hook: Can you decide if a number is positive in if and else?
   - On screen: PUN AND CHALLENGE
 
 ## EP 14 — else if ladders
@@ -856,18 +856,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · else if ladders in one minute** (36 s)
   - Caption: else if ladders in one minute. #cpp #kodingkonkani #elseifladders #coding
   - Hook: An else if ladder checks tests from the top down.
-  - On screen: ELSE IF LADDERS IN ONE MINUTE
+  - On screen: ELSE IF LADDERS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #elseifladders #learntocode
   - Hook: The age is sixty-five.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: Tests in the wrong order** (36 s)
   - Caption: Bug of the Day: Tests in the wrong order. #cpp #kodingkonkani #elseifladders #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: TESTS IN THE WRONG ORDER
+  - Hook: Can you spot the bug in else if ladders?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #elseifladders #codingchallenge
-  - Hook: I built a ladder of else ifs. Now I cannot find the right rung to get down.
+  - Hook: Can you write a ladder for temperature in else if ladders?
   - On screen: PUN AND CHALLENGE
 
 ## EP 15 — switch and case
@@ -918,18 +918,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · switch and case in one minute** (39 s)
   - Caption: switch and case in one minute. #cpp #kodingkonkani #switchandcase #coding
   - Hook: A switch statement compares one value with many case labels.
-  - On screen: SWITCH AND CASE IN ONE MINUTE
+  - On screen: SWITCH AND CASE
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #switchandcase #learntocode
   - Hook: The choice is the letter b.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A missing break** (36 s)
+- **S4 · Bug of the Day: A missing break** (39 s)
   - Caption: Bug of the Day: A missing break. #cpp #kodingkonkani #switchandcase #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING BREAK
+  - Hook: Can you spot the bug in switch and case?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #switchandcase #codingchallenge
-  - Hook: I asked the switch for a table at the restaurant. It gave me two, because I forgot the break.
+  - Hook: Can you make a calculator menu in switch and case?
   - On screen: PUN AND CHALLENGE
 
 ## EP 16 — while loops
@@ -979,19 +979,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: WHILE LOOPS
 - **S2 · while loops in one minute** (37 s)
   - Caption: while loops in one minute. #cpp #kodingkonkani #whileloops #coding
-  - Hook: A while loop repeats a block as long as its test is true.
-  - On screen: WHILE LOOPS IN ONE MINUTE
+  - Hook: A while loop repeats a block as long as its
+  - On screen: WHILE LOOPS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #whileloops #learntocode
   - Hook: The counter i starts at one.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: An off-by-one error** (37 s)
+- **S4 · Bug of the Day: An off-by-one error** (35 s)
   - Caption: Bug of the Day: An off-by-one error. #cpp #kodingkonkani #whileloops #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: AN OFF-BY-ONE ERROR
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in while loops?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #whileloops #codingchallenge
-  - Hook: Why did the loop go to the doctor? It had a problem with its condition, and it kept coming back.
+  - Hook: Can you print a table of two in while loops?
   - On screen: PUN AND CHALLENGE
 
 ## EP 17 — for loops
@@ -1042,18 +1042,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · for loops in one minute** (38 s)
   - Caption: for loops in one minute. #cpp #kodingkonkani #forloops #coding
   - Hook: A for loop has three parts in its round brackets.
-  - On screen: FOR LOOPS IN ONE MINUTE
+  - On screen: FOR LOOPS
 - **S3 · Inside the second program** (40 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #forloops #learntocode
   - Hook: The body prints one row of the table.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A semicolon after the for** (37 s)
+- **S4 · Bug of the Day: A semicolon after the for** (38 s)
   - Caption: Bug of the Day: A semicolon after the for. #cpp #kodingkonkani #forloops #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A SEMICOLON AFTER THE FOR
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in for loops?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (39 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #forloops #codingchallenge
-  - Hook: Why do for loops make good friends? They always count on you.
+  - Hook: Can you print a triangle of numbers in for loops?
   - On screen: PUN AND CHALLENGE
 
 ## EP 18 — Range-based for
@@ -1104,18 +1104,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Range-based for in one minute** (38 s)
   - Caption: Range-based for in one minute. #cpp #kodingkonkani #rangebasedfor #coding
   - Hook: A range-based for loop visits every item in a group.
-  - On screen: RANGE-BASED FOR IN ONE MINUTE
+  - On screen: RANGE-BASED FOR
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #rangebasedfor #learntocode
   - Hook: Word holds Konkani.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Changing a copy** (41 s)
+- **S4 · Bug of the Day: Changing a copy** (39 s)
   - Caption: Bug of the Day: Changing a copy. #cpp #kodingkonkani #rangebasedfor #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: CHANGING A COPY
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in range-based for loops?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #rangebasedfor #codingchallenge
-  - Hook: I wrote a for-each loop for my fish. Now every fish gets visited exactly once.
+  - Hook: Can you count the letter a in range-based for loops?
   - On screen: PUN AND CHALLENGE
 
 ## EP 19 — break and continue
@@ -1166,18 +1166,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · break and continue in one minute** (36 s)
   - Caption: break and continue in one minute. #cpp #kodingkonkani #breakandcontinue #coding
   - Hook: Break leaves the loop at once.
-  - On screen: BREAK AND CONTINUE IN ONE MINUTE
+  - On screen: BREAK AND CONTINUE
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #breakandcontinue #learntocode
   - Hook: The loop counts from one to five.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Break instead of continue** (36 s)
+- **S4 · Bug of the Day: Break instead of continue** (37 s)
   - Caption: Bug of the Day: Break instead of continue. #cpp #kodingkonkani #breakandcontinue #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: BREAK INSTEAD OF CONTINUE
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in break and continue?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #breakandcontinue #codingchallenge
-  - Hook: Break and continue had an argument. Break left. Continue just kept going.
+  - Hook: Can you skip the multiples of three in break and continue?
   - On screen: PUN AND CHALLENGE
 
 ## EP 20 — Nested loops and patterns
@@ -1228,18 +1228,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Nested loops and patterns in one minute** (40 s)
   - Caption: Nested loops and patterns in one minute. #cpp #kodingkonkani #nestedloopsandpatterns #coding
   - Hook: A nested loop is a loop inside another loop.
-  - On screen: NESTED LOOPS AND PATTERNS IN ONE MINUTE
+  - On screen: NESTED LOOPS AND PATTERNS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #nestedloopsandpatterns #learntocode
   - Hook: The outer loop gives the row r.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A missing line break** (36 s)
+- **S4 · Bug of the Day: A missing line break** (41 s)
   - Caption: Bug of the Day: A missing line break. #cpp #kodingkonkani #nestedloopsandpatterns #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING LINE BREAK
-- **S5 · Pun and challenge** (39 s)
+  - Hook: Can you spot the bug in nested loops and patterns?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #nestedloopsandpatterns #codingchallenge
-  - Hook: I printed a triangle of stars. It was a very sharp piece of code.
+  - Hook: Can you print a number triangle in nested loops and patterns?
   - On screen: PUN AND CHALLENGE
 
 ## EP 21 — Functions
@@ -1290,18 +1290,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Functions in one minute** (36 s)
   - Caption: Functions in one minute. #cpp #kodingkonkani #functions #coding
   - Hook: A function is a named block of code.
-  - On screen: FUNCTIONS IN ONE MINUTE
+  - On screen: FUNCTIONS
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #functions #learntocode
   - Hook: This line is a declaration.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Calling a function before it exists** (38 s)
+- **S4 · Bug of the Day: Calling a function before it exists** (35 s)
   - Caption: Bug of the Day: Calling a function before it exists. #cpp #kodingkonkani #functions #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: CALLING A FUNCTION BEFORE IT EXISTS
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in functions?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #functions #codingchallenge
-  - Hook: I wrote a function to make tea. It returns void, and my cup is empty.
+  - Hook: Can you write a function that prints a banner in functions?
   - On screen: PUN AND CHALLENGE
 
 ## EP 22 — Parameters and return values
@@ -1352,18 +1352,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Parameters and return values in one minute** (40 s)
   - Caption: Parameters and return values in one minute. #cpp #kodingkonkani #parametersandreturnvalues #coding
   - Hook: Parameters are the inputs of a function.
-  - On screen: PARAMETERS AND RETURN VALUES IN ONE MINUTE
+  - On screen: PARAMETERS AND RETURN VALUES
 - **S3 · Inside the second program** (35 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #parametersandreturnvalues #learntocode
   - Hook: If a is bigger, the function returns a and ends at once.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: No return in a function** (35 s)
+- **S4 · Bug of the Day: No return in a function** (37 s)
   - Caption: Bug of the Day: No return in a function. #cpp #kodingkonkani #parametersandreturnvalues #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: NO RETURN IN A FUNCTION
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in parameters and return values?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #parametersandreturnvalues #codingchallenge
-  - Hook: My function took two numbers and gave me back a headache.
+  - Hook: Can you write a function that finds the smaller number
   - On screen: PUN AND CHALLENGE
 
 ## EP 23 — Pass by value
@@ -1413,19 +1413,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: PASS BY VALUE
 - **S2 · Pass by value in one minute** (37 s)
   - Caption: Pass by value in one minute. #cpp #kodingkonkani #passbyvalue #coding
-  - Hook: When you pass a value to a function, C plus plus makes a copy.
-  - On screen: PASS BY VALUE IN ONE MINUTE
+  - Hook: When you pass a value to a function
+  - On screen: PASS BY VALUE
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #passbyvalue #learntocode
   - Hook: The function swaps a and b.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Expecting the original to change** (39 s)
+- **S4 · Bug of the Day: Expecting the original to change** (38 s)
   - Caption: Bug of the Day: Expecting the original to change. #cpp #kodingkonkani #passbyvalue #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: EXPECTING THE ORIGINAL TO CHANGE
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in pass by value?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #passbyvalue #codingchallenge
-  - Hook: I gave my function a copy of my homework. It said, nice try, I will only change the copy.
+  - Hook: Can you predict the output before you run in pass by value?
   - On screen: PUN AND CHALLENGE
 
 ## EP 24 — Pass by reference
@@ -1476,18 +1476,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Pass by reference in one minute** (36 s)
   - Caption: Pass by reference in one minute. #cpp #kodingkonkani #passbyreference #coding
   - Hook: A reference is another name for an existing variable.
-  - On screen: PASS BY REFERENCE IN ONE MINUTE
+  - On screen: PASS BY REFERENCE
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #passbyreference #learntocode
   - Hook: Both parameters are references.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A number cannot be a reference** (35 s)
+- **S4 · Bug of the Day: A number cannot be a reference** (40 s)
   - Caption: Bug of the Day: A number cannot be a reference. #cpp #kodingkonkani #passbyreference #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A NUMBER CANNOT BE A REFERENCE
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in pass by reference?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #passbyreference #codingchallenge
-  - Hook: A reference told a variable, I will always have your back. The variable said, I know, you are my alias.
+  - Hook: Can you write a function that doubles two numbers in
   - On screen: PUN AND CHALLENGE
 
 ## EP 25 — const references
@@ -1538,18 +1538,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · const references in one minute** (39 s)
   - Caption: const references in one minute. #cpp #kodingkonkani #constreferences #coding
   - Hook: Copying a big string for every call is slow.
-  - On screen: CONST REFERENCES IN ONE MINUTE
+  - On screen: CONST REFERENCES
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #constreferences #learntocode
   - Hook: Both parameters are const references.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Changing a const reference** (37 s)
+- **S4 · Bug of the Day: Changing a const reference** (38 s)
   - Caption: Bug of the Day: Changing a const reference. #cpp #kodingkonkani #constreferences #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: CHANGING A CONST REFERENCE
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in const references?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #constreferences #codingchallenge
-  - Hook: The museum guard loves const references. He says, look all you want, but do not touch the exhibit.
+  - Hook: Can you choose the right parameter style in const references?
   - On screen: PUN AND CHALLENGE
 
 ## EP 26 — Default arguments and overloading
@@ -1599,19 +1599,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: DEFAULT ARGUMENTS AND OVERLOADING
 - **S2 · Default arguments and overloading in one minute** (37 s)
   - Caption: Default arguments and overloading in one minute. #cpp #kodingkonkani #defaultargumentsandoverloading #coding
-  - Hook: A default argument is a value that the compiler uses when the caller leaves it out.
-  - On screen: DEFAULT ARGUMENTS AND OVERLOADING IN ONE MINUTE
+  - Hook: A default argument is a value that the compiler uses
+  - On screen: DEFAULT ARGUMENTS AND OVERLOADING
 - **S3 · Inside the second program** (39 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #defaultargumentsandoverloading #learntocode
   - Hook: Area of one int is a square.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: An ambiguous call** (37 s)
+- **S4 · Bug of the Day: An ambiguous call** (42 s)
   - Caption: Bug of the Day: An ambiguous call. #cpp #kodingkonkani #defaultargumentsandoverloading #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: AN AMBIGUOUS CALL
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in default arguments and overloading?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #defaultargumentsandoverloading #codingchallenge
-  - Hook: I overloaded my function. Now it has a lot on its plate, but it keeps its name.
+  - Hook: Can you overload a print function in default arguments and overloading?
   - On screen: PUN AND CHALLENGE
 
 ## EP 27 — Scope and lifetime
@@ -1662,18 +1662,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Scope and lifetime in one minute** (38 s)
   - Caption: Scope and lifetime in one minute. #cpp #kodingkonkani #scopeandlifetime #coding
   - Hook: Scope is the part of the program where a name is visible.
-  - On screen: SCOPE AND LIFETIME IN ONE MINUTE
+  - On screen: SCOPE AND LIFETIME
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #scopeandlifetime #learntocode
   - Hook: The word static makes ticket live for the whole program.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Using a variable outside its block** (37 s)
+- **S4 · Bug of the Day: Using a variable outside its block** (41 s)
   - Caption: Bug of the Day: Using a variable outside its block. #cpp #kodingkonkani #scopeandlifetime #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: USING A VARIABLE OUTSIDE ITS BLOCK
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in scope and lifetime?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #scopeandlifetime #codingchallenge
-  - Hook: Why was the local variable sad? It knew that it would be gone at the closing brace.
+  - Hook: Can you count function calls in scope and lifetime?
   - On screen: PUN AND CHALLENGE
 
 ## EP 28 — Recursion
@@ -1724,18 +1724,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Recursion in one minute** (36 s)
   - Caption: Recursion in one minute. #cpp #kodingkonkani #recursion #coding
   - Hook: A recursive function calls itself on a smaller problem.
-  - On screen: RECURSION IN ONE MINUTE
+  - On screen: RECURSION
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #recursion #learntocode
   - Hook: The base case is zero.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A wrong base case** (36 s)
+- **S4 · Bug of the Day: A wrong base case** (35 s)
   - Caption: Bug of the Day: A wrong base case. #cpp #kodingkonkani #recursion #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A WRONG BASE CASE
+  - Hook: Can you spot the bug in recursion?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #recursion #codingchallenge
-  - Hook: To understand recursion, you must first understand recursion.
+  - Hook: Can you trace a recursive call by hand in recursion?
   - On screen: PUN AND CHALLENGE
 
 ## EP 29 — Lambda functions
@@ -1786,18 +1786,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Lambda functions in one minute** (36 s)
   - Caption: Lambda functions in one minute. #cpp #kodingkonkani #lambdafunctions #coding
   - Hook: A lambda is a small function without a name.
-  - On screen: LAMBDA FUNCTIONS IN ONE MINUTE
+  - On screen: LAMBDA FUNCTIONS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #lambdafunctions #learntocode
   - Hook: Offset is one hundred.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A variable that is not captured** (39 s)
+- **S4 · Bug of the Day: A variable that is not captured** (36 s)
   - Caption: Bug of the Day: A variable that is not captured. #cpp #kodingkonkani #lambdafunctions #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A VARIABLE THAT IS NOT CAPTURED
+  - Hook: Can you spot the bug in lambda functions?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #lambdafunctions #codingchallenge
-  - Hook: My lambda did not want to share. It said, I will only capture what I need.
+  - Hook: Can you write a lambda that doubles a number in lambda functions?
   - On screen: PUN AND CHALLENGE
 
 ## EP 30 — Mini project: calculator
@@ -1848,18 +1848,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Mini project: calculator in one minute** (35 s)
   - Caption: Mini project: calculator in one minute. #cpp #kodingkonkani #miniprojectcalculator #coding
   - Hook: Good programs are made of small functions.
-  - On screen: MINI PROJECT: CALCULATOR IN ONE MINUTE
+  - On screen: MINI PROJECT: CALCULATOR
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #miniprojectcalculator #learntocode
   - Hook: This function turns kilometres into miles.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A function that forgets to return** (35 s)
+- **S4 · Bug of the Day: A function that forgets to return** (41 s)
   - Caption: Bug of the Day: A function that forgets to return. #cpp #kodingkonkani #miniprojectcalculator #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A FUNCTION THAT FORGETS TO RETURN
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in a mini project, a calculator?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #miniprojectcalculator #codingchallenge
-  - Hook: My calculator and I have a great relationship. We always add up.
+  - Hook: Can you add a power option to the calculator in
   - On screen: PUN AND CHALLENGE
 
 ## EP 31 — Arrays
@@ -1910,18 +1910,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Arrays in one minute** (35 s)
   - Caption: Arrays in one minute. #cpp #kodingkonkani #arrays #coding
   - Hook: An array holds many values of the same type.
-  - On screen: ARRAYS IN ONE MINUTE
+  - On screen: ARRAYS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #arrays #learntocode
   - Hook: The sum starts at zero.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Too many starting values** (36 s)
+- **S4 · Bug of the Day: Too many starting values** (39 s)
   - Caption: Bug of the Day: Too many starting values. #cpp #kodingkonkani #arrays #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: TOO MANY STARTING VALUES
-- **S5 · Pun and challenge** (39 s)
+  - Hook: Can you spot the bug in arrays?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #arrays #codingchallenge
-  - Hook: I asked my array how it feels. It said, I am fine, but I count from zero.
+  - Hook: Can you store and print five numbers in arrays?
   - On screen: PUN AND CHALLENGE
 
 ## EP 32 — Looping over arrays
@@ -1972,18 +1972,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Looping over arrays in one minute** (36 s)
   - Caption: Looping over arrays in one minute. #cpp #kodingkonkani #loopingoverarrays #coding
   - Hook: A for loop with an index lets you read and change items.
-  - On screen: LOOPING OVER ARRAYS IN ONE MINUTE
+  - On screen: LOOPING OVER ARRAYS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #loopingoverarrays #learntocode
   - Hook: The loop starts at the last index, four.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A maximum that starts at zero** (38 s)
+- **S4 · Bug of the Day: A maximum that starts at zero** (39 s)
   - Caption: Bug of the Day: A maximum that starts at zero. #cpp #kodingkonkani #loopingoverarrays #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MAXIMUM THAT STARTS AT ZERO
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in looping over arrays?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #loopingoverarrays #codingchallenge
-  - Hook: I asked the array who the biggest item is. It said, I will let you compare.
+  - Hook: Can you find the smallest value in looping over arrays?
   - On screen: PUN AND CHALLENGE
 
 ## EP 33 — Two-dimensional arrays
@@ -2034,18 +2034,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Two-dimensional arrays in one minute** (37 s)
   - Caption: Two-dimensional arrays in one minute. #cpp #kodingkonkani #twodimensionalarrays #coding
   - Hook: A two-dimensional array is an array of rows.
-  - On screen: TWO-DIMENSIONAL ARRAYS IN ONE MINUTE
+  - On screen: TWO-DIMENSIONAL ARRAYS
 - **S3 · Inside the second program** (35 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #twodimensionalarrays #learntocode
   - Hook: The outer loop picks the row.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A missing column size** (39 s)
+- **S4 · Bug of the Day: A missing column size** (37 s)
   - Caption: Bug of the Day: A missing column size. #cpp #kodingkonkani #twodimensionalarrays #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING COLUMN SIZE
-- **S5 · Pun and challenge** (39 s)
+  - Hook: Can you spot the bug in two-dimensional arrays?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #twodimensionalarrays #codingchallenge
-  - Hook: I made a grid of jokes. Every row had a punchline, and every column had a groan.
+  - Hook: Can you print a multiplication grid in two-dimensional arrays?
   - On screen: PUN AND CHALLENGE
 
 ## EP 34 — std::array
@@ -2096,18 +2096,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · std::array in one minute** (41 s)
   - Caption: std::array in one minute. #cpp #kodingkonkani #stdarray #coding
   - Hook: The std array type wraps a plain array.
-  - On screen: STD::ARRAY IN ONE MINUTE
+  - On screen: STD::ARRAY
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #stdarray #learntocode
   - Hook: This line copies the whole array.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: An index that is too big** (37 s)
+- **S4 · Bug of the Day: An index that is too big** (41 s)
   - Caption: Bug of the Day: An index that is too big. #cpp #kodingkonkani #stdarray #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: AN INDEX THAT IS TOO BIG
+  - Hook: Can you spot the bug in std array?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #stdarray #codingchallenge
-  - Hook: Std array put on a helmet. Now it has a safe place to fall.
+  - Hook: Can you fill and print a std array in std array?
   - On screen: PUN AND CHALLENGE
 
 ## EP 35 — std::vector
@@ -2158,18 +2158,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · std::vector in one minute** (37 s)
   - Caption: std::vector in one minute. #cpp #kodingkonkani #stdvector #coding
   - Hook: A vector is an array that can grow and shrink.
-  - On screen: STD::VECTOR IN ONE MINUTE
+  - On screen: STD::VECTOR
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #stdvector #learntocode
   - Hook: A vector can start with a list of values.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A missing vector header** (37 s)
+- **S4 · Bug of the Day: A missing vector header** (35 s)
   - Caption: Bug of the Day: A missing vector header. #cpp #kodingkonkani #stdvector #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING VECTOR HEADER
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in std vector?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #stdvector #codingchallenge
-  - Hook: My vector told me it needs space. I said, you can grow, I believe in you.
+  - Hook: Can you collect numbers in a vector in std vector?
   - On screen: PUN AND CHALLENGE
 
 ## EP 36 — Vector operations
@@ -2220,18 +2220,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Vector operations in one minute** (36 s)
   - Caption: Vector operations in one minute. #cpp #kodingkonkani #vectoroperations #coding
   - Hook: A vector has many tools.
-  - On screen: VECTOR OPERATIONS IN ONE MINUTE
+  - On screen: VECTOR OPERATIONS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #vectoroperations #learntocode
   - Hook: Sort takes the start and the end of the vector.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Erase with a number** (36 s)
+- **S4 · Bug of the Day: Erase with a number** (35 s)
   - Caption: Bug of the Day: Erase with a number. #cpp #kodingkonkani #vectoroperations #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: ERASE WITH A NUMBER
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in vector operations?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #vectoroperations #codingchallenge
-  - Hook: I tried to find my lost sock in a sorted vector. It was at the end, as always.
+  - Hook: Can you sort and print in vector operations?
   - On screen: PUN AND CHALLENGE
 
 ## EP 37 — More string tools
@@ -2282,18 +2282,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · More string tools in one minute** (40 s)
   - Caption: More string tools in one minute. #cpp #kodingkonkani #morestringtools #coding
   - Hook: A string has editing tools.
-  - On screen: MORE STRING TOOLS IN ONE MINUTE
+  - On screen: MORE STRING TOOLS
 - **S3 · Inside the second program** (39 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #morestringtools #learntocode
   - Hook: The text holds the two characters four and two.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Stoi on text that is not a number** (38 s)
+- **S4 · Bug of the Day: Stoi on text that is not a number** (39 s)
   - Caption: Bug of the Day: Stoi on text that is not a number. #cpp #kodingkonkani #morestringtools #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: STOI ON TEXT THAT IS NOT A NUMBER
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in more string tools?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #morestringtools #codingchallenge
-  - Hook: I asked a string to become a number. It said, I need a moment to digit.
+  - Hook: Can you add two numbers from text in more string tools?
   - On screen: PUN AND CHALLENGE
 
 ## EP 38 — C-style strings
@@ -2344,18 +2344,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · C-style strings in one minute** (39 s)
   - Caption: C-style strings in one minute. #cpp #kodingkonkani #cstylestrings #coding
   - Hook: A C string is an array of chars.
-  - On screen: C-STYLE STRINGS IN ONE MINUTE
+  - On screen: C-STYLE STRINGS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #cstylestrings #learntocode
   - Hook: Two arrays hold the same text.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Comparing C strings with equals** (36 s)
+- **S4 · Bug of the Day: Comparing C strings with equals** (35 s)
   - Caption: Bug of the Day: Comparing C strings with equals. #cpp #kodingkonkani #cstylestrings #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: COMPARING C STRINGS WITH EQUALS
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in C-style strings?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #cstylestrings #codingchallenge
-  - Hook: Why did the C string feel empty? Its last bead was always null.
+  - Hook: Can you count the letters with a loop in C-style strings?
   - On screen: PUN AND CHALLENGE
 
 ## EP 39 — Searching
@@ -2406,18 +2406,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Searching in one minute** (36 s)
   - Caption: Searching in one minute. #cpp #kodingkonkani #searching #coding
   - Hook: Linear search checks the items one by one, from the start.
-  - On screen: SEARCHING IN ONE MINUTE
+  - On screen: SEARCHING
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #searching #learntocode
-  - Hook: Low and high mark the part of the array that is still possible.
+  - Hook: Low and high mark the part of the array that
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Binary search on unsorted data** (39 s)
+- **S4 · Bug of the Day: Binary search on unsorted data** (35 s)
   - Caption: Bug of the Day: Binary search on unsorted data. #cpp #kodingkonkani #searching #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: BINARY SEARCH ON UNSORTED DATA
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in searching?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #searching #codingchallenge
-  - Hook: I use binary search to find my socks. Half of the drawer is always wrong.
+  - Hook: Can you search for a name in searching?
   - On screen: PUN AND CHALLENGE
 
 ## EP 40 — Sorting: bubble and selection
@@ -2468,18 +2468,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Sorting: bubble and selection in one minute** (41 s)
   - Caption: Sorting: bubble and selection in one minute. #cpp #kodingkonkani #sortingbubbleandselection #coding
   - Hook: Sorting puts items in order.
-  - On screen: SORTING: BUBBLE AND SELECTION IN ONE MINUTE
+  - On screen: SORTING: BUBBLE AND SELECTION
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #sortingbubbleandselection #learntocode
-  - Hook: M holds the index of the smallest item that we know so far.
+  - Hook: M holds the index of the smallest item that we
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A swap that loses a value** (43 s)
+- **S4 · Bug of the Day: A swap that loses a value** (36 s)
   - Caption: Bug of the Day: A swap that loses a value. #cpp #kodingkonkani #sortingbubbleandselection #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A SWAP THAT LOSES A VALUE
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in sorting, bubble and selection?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #sortingbubbleandselection #codingchallenge
-  - Hook: Bubble sort is a patient algorithm. It takes many passes, and it never complains.
+  - Hook: Can you count the swaps in sorting, bubble and selection?
   - On screen: PUN AND CHALLENGE
 
 ## EP 41 — Memory and addresses
@@ -2530,18 +2530,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Memory and addresses in one minute** (37 s)
   - Caption: Memory and addresses in one minute. #cpp #kodingkonkani #memoryandaddresses #coding
   - Hook: Memory is a long row of bytes.
-  - On screen: MEMORY AND ADDRESSES IN ONE MINUTE
+  - On screen: MEMORY AND ADDRESSES
 - **S3 · Inside the second program** (39 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #memoryandaddresses #learntocode
   - Hook: A char takes one byte.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Storing an address in an int** (37 s)
+- **S4 · Bug of the Day: Storing an address in an int** (38 s)
   - Caption: Bug of the Day: Storing an address in an int. #cpp #kodingkonkani #memoryandaddresses #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: STORING AN ADDRESS IN AN INT
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in memory and addresses?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #memoryandaddresses #codingchallenge
-  - Hook: My variable moved house. It left a new address, but it forgot to tell its neighbours.
+  - Hook: Can you find the gap between two doubles in memory and addresses?
   - On screen: PUN AND CHALLENGE
 
 ## EP 42 — Pointers
@@ -2589,21 +2589,21 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - Caption: What you will learn: Pointers. #cpp #kodingkonkani #pointers #beginners
   - Hook: A pointer is a variable that holds an address.
   - On screen: POINTERS
-- **S2 · Pointers in one minute** (36 s)
+- **S2 · Pointers in one minute** (38 s)
   - Caption: Pointers in one minute. #cpp #kodingkonkani #pointers #coding
-  - Hook: A pointer is a variable that holds an address.
-  - On screen: POINTERS IN ONE MINUTE
+  - Hook: You declare it with a star after the type.
+  - On screen: POINTERS
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #pointers #learntocode
   - Hook: The function takes two pointers.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A pointer to the wrong type** (38 s)
+- **S4 · Bug of the Day: A pointer to the wrong type** (37 s)
   - Caption: Bug of the Day: A pointer to the wrong type. #cpp #kodingkonkani #pointers #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A POINTER TO THE WRONG TYPE
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in pointers?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #pointers #codingchallenge
-  - Hook: A pointer walked into a bar. It said, I am just here to point out the drinks.
+  - Hook: Can you change a variable through a pointer in pointers?
   - On screen: PUN AND CHALLENGE
 
 ## EP 43 — Pointers and arrays
@@ -2653,19 +2653,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: POINTERS AND ARRAYS
 - **S2 · Pointers and arrays in one minute** (37 s)
   - Caption: Pointers and arrays in one minute. #cpp #kodingkonkani #pointersandarrays #coding
-  - Hook: In most places, an array name turns into the address of its first item.
-  - On screen: POINTERS AND ARRAYS IN ONE MINUTE
+  - Hook: In most places
+  - On screen: POINTERS AND ARRAYS
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #pointersandarrays #learntocode
   - Hook: Q starts at the first item.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Sizeof on an array parameter** (40 s)
+- **S4 · Bug of the Day: Sizeof on an array parameter** (38 s)
   - Caption: Bug of the Day: Sizeof on an array parameter. #cpp #kodingkonkani #pointersandarrays #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: SIZEOF ON AN ARRAY PARAMETER
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in pointers and arrays?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #pointersandarrays #codingchallenge
-  - Hook: The array told the pointer, you complete me. The pointer said, I only know where you start.
+  - Hook: Can you sum an array through a pointer in pointers and arrays?
   - On screen: PUN AND CHALLENGE
 
 ## EP 44 — Pointer arithmetic
@@ -2715,19 +2715,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: POINTER ARITHMETIC
 - **S2 · Pointer arithmetic in one minute** (37 s)
   - Caption: Pointer arithmetic in one minute. #cpp #kodingkonkani #pointerarithmetic #coding
-  - Hook: When you add one to a pointer, it moves by one item, not by one byte.
-  - On screen: POINTER ARITHMETIC IN ONE MINUTE
+  - Hook: When you add one to a pointer
+  - On screen: POINTER ARITHMETIC
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #pointerarithmetic #learntocode
   - Hook: Start points to the first item.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Adding two pointers** (39 s)
+- **S4 · Bug of the Day: Adding two pointers** (35 s)
   - Caption: Bug of the Day: Adding two pointers. #cpp #kodingkonkani #pointerarithmetic #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: ADDING TWO POINTERS
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in pointer arithmetic?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #pointerarithmetic #codingchallenge
-  - Hook: A pointer asked for directions. The answer was, just add one.
+  - Hook: Can you print an array backwards with a pointer in pointer arithmetic?
   - On screen: PUN AND CHALLENGE
 
 ## EP 45 — nullptr and dangling pointers
@@ -2778,18 +2778,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · nullptr and dangling pointers in one minute** (36 s)
   - Caption: nullptr and dangling pointers in one minute. #cpp #kodingkonkani #nullptranddanglingpointers #coding
   - Hook: Nullptr is a pointer that points to nothing.
-  - On screen: NULLPTR AND DANGLING POINTERS IN ONE MINUTE
+  - On screen: NULLPTR AND DANGLING POINTERS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #nullptranddanglingpointers #learntocode
   - Hook: This function returns a pointer.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: Returning the address of a local** (36 s)
   - Caption: Bug of the Day: Returning the address of a local. #cpp #kodingkonkani #nullptranddanglingpointers #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: RETURNING THE ADDRESS OF A LOCAL
-- **S5 · Pun and challenge** (39 s)
+  - Hook: Can you spot the bug in nullptr and dangling pointers?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #nullptranddanglingpointers #codingchallenge
-  - Hook: Why did the pointer see a therapist? It had too many unresolved references.
+  - Hook: Can you write a safe function in nullptr and dangling pointers?
   - On screen: PUN AND CHALLENGE
 
 ## EP 46 — new and delete
@@ -2840,18 +2840,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · new and delete in one minute** (37 s)
   - Caption: new and delete in one minute. #cpp #kodingkonkani #newanddelete #coding
   - Hook: Local variables live on the stack.
-  - On screen: NEW AND DELETE IN ONE MINUTE
+  - On screen: NEW AND DELETE
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #newanddelete #learntocode
-  - Hook: New with square brackets makes an array of three ints on the heap.
+  - Hook: New with square brackets makes an array of three ints
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: The wrong delete** (39 s)
+- **S4 · Bug of the Day: The wrong delete** (36 s)
   - Caption: Bug of the Day: The wrong delete. #cpp #kodingkonkani #newanddelete #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: THE WRONG DELETE
+  - Hook: Can you spot the bug in new and delete?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #newanddelete #codingchallenge
-  - Hook: I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget.
+  - Hook: Can you make and free a heap array in new and delete?
   - On screen: PUN AND CHALLENGE
 
 ## EP 47 — Dynamic arrays
@@ -2902,18 +2902,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Dynamic arrays in one minute** (36 s)
   - Caption: Dynamic arrays in one minute. #cpp #kodingkonkani #dynamicarrays #coding
   - Hook: A plain array needs a size that the compiler knows.
-  - On screen: DYNAMIC ARRAYS IN ONE MINUTE
+  - On screen: DYNAMIC ARRAYS
 - **S3 · Inside the second program** (39 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #dynamicarrays #learntocode
   - Hook: A vector with n items does the same job.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Delete on a pointer to a local** (39 s)
+- **S4 · Bug of the Day: Delete on a pointer to a local** (35 s)
   - Caption: Bug of the Day: Delete on a pointer to a local. #cpp #kodingkonkani #dynamicarrays #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: DELETE ON A POINTER TO A LOCAL
-- **S5 · Pun and challenge** (40 s)
+  - Hook: Can you spot the bug in dynamic arrays?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #dynamicarrays #codingchallenge
-  - Hook: A tailor and a programmer have one thing in common. They both measure twice and cut once.
+  - Hook: Can you average of n numbers in dynamic arrays?
   - On screen: PUN AND CHALLENGE
 
 ## EP 48 — Leaks and RAII
@@ -2963,19 +2963,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: LEAKS AND RAII
 - **S2 · Leaks and RAII in one minute** (36 s)
   - Caption: Leaks and RAII in one minute. #cpp #kodingkonkani #leaksandraii #coding
-  - Hook: A memory leak happens when you lose the address of a heap box before you free it.
-  - On screen: LEAKS AND RAII IN ONE MINUTE
+  - Hook: A memory leak happens when you lose the address of
+  - On screen: LEAKS AND RAII
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #leaksandraii #learntocode
   - Hook: This function makes a Noisy on the heap with new.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A leak you cannot see** (39 s)
+- **S4 · Bug of the Day: A leak you cannot see** (37 s)
   - Caption: Bug of the Day: A leak you cannot see. #cpp #kodingkonkani #leaksandraii #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A LEAK YOU CANNOT SEE
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in memory leaks and RAII?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #leaksandraii #codingchallenge
-  - Hook: My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap.
+  - Hook: Can you spot the leak in memory leaks and RAII?
   - On screen: PUN AND CHALLENGE
 
 ## EP 49 — unique_ptr
@@ -3026,18 +3026,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · unique_ptr in one minute** (38 s)
   - Caption: unique_ptr in one minute. #cpp #kodingkonkani #uniqueptr #coding
   - Hook: A unique pointer owns one heap object.
-  - On screen: UNIQUE_PTR IN ONE MINUTE
+  - On screen: UNIQUE_PTR
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #uniqueptr #learntocode
   - Hook: A owns an int with the value five.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Copying a unique_ptr** (35 s)
+- **S4 · Bug of the Day: Copying a unique_ptr** (36 s)
   - Caption: Bug of the Day: Copying a unique_ptr. #cpp #kodingkonkani #uniqueptr #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: COPYING A UNIQUE_PTR
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in unique pointers?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #uniqueptr #codingchallenge
-  - Hook: A unique pointer never shares its umbrella. It is all about ownership.
+  - Hook: Can you own a heap int in unique pointers?
   - On screen: PUN AND CHALLENGE
 
 ## EP 50 — shared_ptr and weak_ptr
@@ -3088,18 +3088,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · shared_ptr and weak_ptr in one minute** (37 s)
   - Caption: shared_ptr and weak_ptr in one minute. #cpp #kodingkonkani #sharedptrandweakptr #coding
   - Hook: A shared pointer lets many owners share one object.
-  - On screen: SHARED_PTR AND WEAK_PTR IN ONE MINUTE
+  - On screen: SHARED_PTR AND WEAK_PTR
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #sharedptrandweakptr #learntocode
   - Hook: W is a weak pointer.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A raw pointer into a shared_ptr** (38 s)
+- **S4 · Bug of the Day: A raw pointer into a shared_ptr** (40 s)
   - Caption: Bug of the Day: A raw pointer into a shared_ptr. #cpp #kodingkonkani #sharedptrandweakptr #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A RAW POINTER INTO A SHARED_PTR
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in shared pointers and weak pointers?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #sharedptrandweakptr #codingchallenge
-  - Hook: Shared pointers are polite. The last one out always turns off the light.
+  - Hook: Can you share a heap int between two owners in
   - On screen: PUN AND CHALLENGE
 
 ## EP 51 — Structs
@@ -3150,18 +3150,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Structs in one minute** (39 s)
   - Caption: Structs in one minute. #cpp #kodingkonkani #structs #coding
   - Hook: A struct groups related variables under one name.
-  - On screen: STRUCTS IN ONE MINUTE
+  - On screen: STRUCTS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #structs #learntocode
   - Hook: The function takes a const reference, as in episode twenty-five.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: A missing semicolon after a struct** (36 s)
   - Caption: Bug of the Day: A missing semicolon after a struct. #cpp #kodingkonkani #structs #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING SEMICOLON AFTER A STRUCT
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in structs?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #structs #codingchallenge
-  - Hook: I made a struct for my fish. It has two fields: name and price. The price is always a catch.
+  - Hook: Can you make a book struct in structs?
   - On screen: PUN AND CHALLENGE
 
 ## EP 52 — Classes and objects
@@ -3212,18 +3212,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Classes and objects in one minute** (37 s)
   - Caption: Classes and objects in one minute. #cpp #kodingkonkani #classesandobjects #coding
   - Hook: A class is a blueprint.
-  - On screen: CLASSES AND OBJECTS IN ONE MINUTE
+  - On screen: CLASSES AND OBJECTS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #classesandobjects #learntocode
   - Hook: We make two objects from one class.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Touching private data** (38 s)
+- **S4 · Bug of the Day: Touching private data** (35 s)
   - Caption: Bug of the Day: Touching private data. #cpp #kodingkonkani #classesandobjects #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: TOUCHING PRIVATE DATA
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in classes and objects?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #classesandobjects #codingchallenge
-  - Hook: I tried to read my class private data. It said, mind your own members.
+  - Hook: Can you build a Light class in classes and objects?
   - On screen: PUN AND CHALLENGE
 
 ## EP 53 — Constructors
@@ -3274,18 +3274,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Constructors in one minute** (40 s)
   - Caption: Constructors in one minute. #cpp #kodingkonkani #constructors #coding
   - Hook: A constructor is a special function.
-  - On screen: CONSTRUCTORS IN ONE MINUTE
+  - On screen: CONSTRUCTORS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #constructors #learntocode
   - Hook: One constructor has two default values.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: No default constructor** (37 s)
   - Caption: Bug of the Day: No default constructor. #cpp #kodingkonkani #constructors #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: NO DEFAULT CONSTRUCTOR
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in constructors?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (39 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #constructors #codingchallenge
-  - Hook: The constructor told the object, do not worry. I will get you started.
+  - Hook: Can you write a Rectangle constructor in constructors?
   - On screen: PUN AND CHALLENGE
 
 ## EP 54 — Member initializer lists
@@ -3336,18 +3336,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Member initializer lists in one minute** (38 s)
   - Caption: Member initializer lists in one minute. #cpp #kodingkonkani #memberinitializerlists #coding
   - Hook: A member initializer list sits after the constructor brackets.
-  - On screen: MEMBER INITIALIZER LISTS IN ONE MINUTE
+  - On screen: MEMBER INITIALIZER LISTS
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #memberinitializerlists #learntocode
   - Hook: The id is const.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A list in the wrong order** (37 s)
+- **S4 · Bug of the Day: A list in the wrong order** (42 s)
   - Caption: Bug of the Day: A list in the wrong order. #cpp #kodingkonkani #memberinitializerlists #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A LIST IN THE WRONG ORDER
+  - Hook: Can you spot the bug in member initializer lists?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #memberinitializerlists #codingchallenge
-  - Hook: The initializer list is like a packing list. It never lets the constructor forget its socks.
+  - Hook: Can you use an initializer list with a const in
   - On screen: PUN AND CHALLENGE
 
 ## EP 55 — Destructors
@@ -3398,18 +3398,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Destructors in one minute** (36 s)
   - Caption: Destructors in one minute. #cpp #kodingkonkani #destructors #coding
   - Hook: A destructor has a tilde, then the class name.
-  - On screen: DESTRUCTORS IN ONE MINUTE
+  - On screen: DESTRUCTORS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #destructors #learntocode
   - Hook: Three tags are made in the order A, B, C.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A destructor with a parameter** (37 s)
+- **S4 · Bug of the Day: A destructor with a parameter** (36 s)
   - Caption: Bug of the Day: A destructor with a parameter. #cpp #kodingkonkani #destructors #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A DESTRUCTOR WITH A PARAMETER
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in destructors?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #destructors #codingchallenge
-  - Hook: The destructor never gets invited to the party. It only comes at the end to clean up.
+  - Hook: Can you watch the order of destruction in destructors?
   - On screen: PUN AND CHALLENGE
 
 ## EP 56 — Encapsulation
@@ -3460,18 +3460,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Encapsulation in one minute** (39 s)
   - Caption: Encapsulation in one minute. #cpp #kodingkonkani #encapsulation #coding
   - Hook: Encapsulation means hiding the data and offering checked functions.
-  - On screen: ENCAPSULATION IN ONE MINUTE
+  - On screen: ENCAPSULATION
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #encapsulation #learntocode
   - Hook: The getter reads the age.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A setter that does not check** (36 s)
+- **S4 · Bug of the Day: A setter that does not check** (39 s)
   - Caption: Bug of the Day: A setter that does not check. #cpp #kodingkonkani #encapsulation #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A SETTER THAT DOES NOT CHECK
+  - Hook: Can you spot the bug in encapsulation?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #encapsulation #codingchallenge
-  - Hook: The vault told the thief, you can only deposit your complaints at the window.
+  - Hook: Can you write a safe class in encapsulation?
   - On screen: PUN AND CHALLENGE
 
 ## EP 57 — this and const methods
@@ -3521,19 +3521,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: THIS AND CONST METHODS
 - **S2 · this and const methods in one minute** (38 s)
   - Caption: this and const methods in one minute. #cpp #kodingkonkani #thisandconstmethods #coding
-  - Hook: Inside a member function, the name this is a pointer to the current object.
-  - On screen: THIS AND CONST METHODS IN ONE MINUTE
+  - Hook: Inside a member function
+  - On screen: THIS AND CONST METHODS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #thisandconstmethods #learntocode
   - Hook: This function changes the object, so it is not const.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A non-const call on a const object** (35 s)
+- **S4 · Bug of the Day: A non-const call on a const object** (40 s)
   - Caption: Bug of the Day: A non-const call on a const object. #cpp #kodingkonkani #thisandconstmethods #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A NON-CONST CALL ON A CONST OBJECT
-- **S5 · Pun and challenge** (40 s)
+  - Hook: Can you spot the bug in this and const methods?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #thisandconstmethods #codingchallenge
-  - Hook: The object looked in the mirror and said, I like this.
+  - Hook: Can you mark the right functions const in this and const methods?
   - On screen: PUN AND CHALLENGE
 
 ## EP 58 — Static members
@@ -3584,18 +3584,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Static members in one minute** (37 s)
   - Caption: Static members in one minute. #cpp #kodingkonkani #staticmembers #coding
   - Hook: A normal member belongs to each object.
-  - On screen: STATIC MEMBERS IN ONE MINUTE
+  - On screen: STATIC MEMBERS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #staticmembers #learntocode
   - Hook: A static function belongs to the class.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A static function that uses a normal member** (39 s)
+- **S4 · Bug of the Day: A static function that uses a normal member** (36 s)
   - Caption: Bug of the Day: A static function that uses a normal member. #cpp #kodingkonkani #staticmembers #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A STATIC FUNCTION THAT USES A NORMAL MEMBER
+  - Hook: Can you spot the bug in static members?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #staticmembers #codingchallenge
-  - Hook: Why is the static member so popular? Everybody shares it, and nobody pays rent.
+  - Hook: Can you count the objects in static members?
   - On screen: PUN AND CHALLENGE
 
 ## EP 59 — Operator overloading
@@ -3646,18 +3646,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Operator overloading in one minute** (37 s)
   - Caption: Operator overloading in one minute. #cpp #kodingkonkani #operatoroverloading #coding
   - Hook: An operator is a function with a special name.
-  - On screen: OPERATOR OVERLOADING IN ONE MINUTE
+  - On screen: OPERATOR OVERLOADING
 - **S3 · Inside the second program** (35 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #operatoroverloading #learntocode
   - Hook: The first parameter is the output stream.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: An operator that does not exist** (36 s)
+- **S4 · Bug of the Day: An operator that does not exist** (40 s)
   - Caption: Bug of the Day: An operator that does not exist. #cpp #kodingkonkani #operatoroverloading #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: AN OPERATOR THAT DOES NOT EXIST
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in operator overloading?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (39 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #operatoroverloading #codingchallenge
-  - Hook: I overloaded plus so that it adds fish. Now my program is full of surplus.
+  - Hook: Can you overload minus in operator overloading?
   - On screen: PUN AND CHALLENGE
 
 ## EP 60 — Rule of three, five and zero
@@ -3708,18 +3708,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Rule of three, five and zero in one minute** (36 s)
   - Caption: Rule of three, five and zero in one minute. #cpp #kodingkonkani #ruleofthreefiveandzero #coding
   - Hook: A class that owns heap memory needs care.
-  - On screen: RULE OF THREE, FIVE AND ZERO IN ONE MINUTE
+  - On screen: RULE OF THREE, FIVE AND ZERO
 - **S3 · Inside the second program** (40 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #ruleofthreefiveandzero #learntocode
   - Hook: The vector owns the memory.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A copy that was switched off** (36 s)
+- **S4 · Bug of the Day: A copy that was switched off** (39 s)
   - Caption: Bug of the Day: A copy that was switched off. #cpp #kodingkonkani #ruleofthreefiveandzero #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A COPY THAT WAS SWITCHED OFF
-- **S5 · Pun and challenge** (39 s)
+  - Hook: Can you spot the bug in the rule of three
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #ruleofthreefiveandzero #codingchallenge
-  - Hook: The programmer said, I will copy my homework. The compiler replied, that is a shallow excuse.
+  - Hook: Can you decide: rule of three or zero in the
   - On screen: PUN AND CHALLENGE
 
 ## EP 61 — Inheritance
@@ -3770,18 +3770,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Inheritance in one minute** (39 s)
   - Caption: Inheritance in one minute. #cpp #kodingkonkani #inheritance #coding
   - Hook: Inheritance lets a new class build on an existing class.
-  - On screen: INHERITANCE IN ONE MINUTE
+  - On screen: INHERITANCE
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #inheritance #learntocode
   - Hook: The base speak prints three dots.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: Touching a private base member** (37 s)
   - Caption: Bug of the Day: Touching a private base member. #cpp #kodingkonkani #inheritance #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: TOUCHING A PRIVATE BASE MEMBER
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in inheritance?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #inheritance #codingchallenge
-  - Hook: The base class told the derived class, you have your mother's functions.
+  - Hook: Can you build a Vehicle and a Bus in inheritance?
   - On screen: PUN AND CHALLENGE
 
 ## EP 62 — Constructor and destructor order
@@ -3832,18 +3832,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Constructor and destructor order in one minute** (37 s)
   - Caption: Constructor and destructor order in one minute. #cpp #kodingkonkani #constructoranddestructororder #coding
   - Hook: When you make a derived object, the base part is built first.
-  - On screen: CONSTRUCTOR AND DESTRUCTOR ORDER IN ONE MINUTE
+  - On screen: CONSTRUCTOR AND DESTRUCTOR ORDER
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #constructoranddestructororder #learntocode
   - Hook: The base constructor needs a name.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A base with no default constructor** (40 s)
+- **S4 · Bug of the Day: A base with no default constructor** (37 s)
   - Caption: Bug of the Day: A base with no default constructor. #cpp #kodingkonkani #constructoranddestructororder #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A BASE WITH NO DEFAULT CONSTRUCTOR
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in constructor and destructor order?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #constructoranddestructororder #codingchallenge
-  - Hook: The base class was always first in line. It said, I was here before you were derived.
+  - Hook: Can you trace the order in constructor and destructor order?
   - On screen: PUN AND CHALLENGE
 
 ## EP 63 — protected and access control
@@ -3894,18 +3894,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · protected and access control in one minute** (35 s)
   - Caption: protected and access control in one minute. #cpp #kodingkonkani #protectedandaccesscontrol #coding
   - Hook: Public members are open to everyone.
-  - On screen: PROTECTED AND ACCESS CONTROL IN ONE MINUTE
+  - On screen: PROTECTED AND ACCESS CONTROL
 - **S3 · Inside the second program** (35 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #protectedandaccesscontrol #learntocode
   - Hook: Open is public.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Reaching protected data from outside** (38 s)
+- **S4 · Bug of the Day: Reaching protected data from outside** (36 s)
   - Caption: Bug of the Day: Reaching protected data from outside. #cpp #kodingkonkani #protectedandaccesscontrol #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: REACHING PROTECTED DATA FROM OUTSIDE
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in protected and access control?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #protectedandaccesscontrol #codingchallenge
-  - Hook: Protected is the middle child of access labels. It always gets along with the family.
+  - Hook: Can you pick the right label in protected and access control?
   - On screen: PUN AND CHALLENGE
 
 ## EP 64 — Virtual functions
@@ -3955,19 +3955,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: VIRTUAL FUNCTIONS
 - **S2 · Virtual functions in one minute** (39 s)
   - Caption: Virtual functions in one minute. #cpp #kodingkonkani #virtualfunctions #coding
-  - Hook: A virtual function is chosen at run time, by the real type of the object.
-  - On screen: VIRTUAL FUNCTIONS IN ONE MINUTE
+  - Hook: A virtual function is chosen at run time
+  - On screen: VIRTUAL FUNCTIONS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #virtualfunctions #learntocode
   - Hook: The vector holds pointers to Animal.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: A function that is not virtual** (37 s)
   - Caption: Bug of the Day: A function that is not virtual. #cpp #kodingkonkani #virtualfunctions #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A FUNCTION THAT IS NOT VIRTUAL
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in virtual functions?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #virtualfunctions #codingchallenge
-  - Hook: Why did the virtual function get a promotion? It always knew who it really was.
+  - Hook: Can you add a Cow to the zoo in virtual functions?
   - On screen: PUN AND CHALLENGE
 
 ## EP 65 — Abstract classes
@@ -4018,18 +4018,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Abstract classes in one minute** (35 s)
   - Caption: Abstract classes in one minute. #cpp #kodingkonkani #abstractclasses #coding
   - Hook: A pure virtual function has equals zero after its declaration.
-  - On screen: ABSTRACT CLASSES IN ONE MINUTE
+  - On screen: ABSTRACT CLASSES
 - **S3 · Inside the second program** (35 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #abstractclasses #learntocode
   - Hook: Rect fills the blank one way.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: Building an abstract class** (37 s)
   - Caption: Bug of the Day: Building an abstract class. #cpp #kodingkonkani #abstractclasses #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: BUILDING AN ABSTRACT CLASS
-- **S5 · Pun and challenge** (39 s)
+  - Hook: Can you spot the bug in abstract classes and interfaces?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #abstractclasses #codingchallenge
-  - Hook: An abstract class is like a promise. It says, I will do it, but not how.
+  - Hook: Can you add a Circle in abstract classes and interfaces?
   - On screen: PUN AND CHALLENGE
 
 ## EP 66 — Virtual destructors
@@ -4079,19 +4079,19 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
   - On screen: VIRTUAL DESTRUCTORS
 - **S2 · Virtual destructors in one minute** (39 s)
   - Caption: Virtual destructors in one minute. #cpp #kodingkonkani #virtualdestructors #coding
-  - Hook: When you delete an object through a base pointer, the compiler must find the right destructor.
-  - On screen: VIRTUAL DESTRUCTORS IN ONE MINUTE
+  - Hook: When you delete an object through a base pointer
+  - On screen: VIRTUAL DESTRUCTORS
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #virtualdestructors #learntocode
   - Hook: A smart pointer to Animal holds a Dog.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A base destructor that is not virtual** (38 s)
+- **S4 · Bug of the Day: A base destructor that is not virtual** (39 s)
   - Caption: Bug of the Day: A base destructor that is not virtual. #cpp #kodingkonkani #virtualdestructors #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A BASE DESTRUCTOR THAT IS NOT VIRTUAL
-- **S5 · Pun and challenge** (40 s)
+  - Hook: Can you spot the bug in virtual destructors?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #virtualdestructors #codingchallenge
-  - Hook: Why was the destructor so tired? It had to clean up after the whole family.
+  - Hook: Can you check the rule in virtual destructors?
   - On screen: PUN AND CHALLENGE
 
 ## EP 67 — Multiple inheritance
@@ -4142,18 +4142,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Multiple inheritance in one minute** (36 s)
   - Caption: Multiple inheritance in one minute. #cpp #kodingkonkani #multipleinheritance #coding
   - Hook: C plus plus lets a class inherit from more than one base.
-  - On screen: MULTIPLE INHERITANCE IN ONE MINUTE
+  - On screen: MULTIPLE INHERITANCE
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #multipleinheritance #learntocode
   - Hook: Animal has one member, legs.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: An ambiguous member** (36 s)
+- **S4 · Bug of the Day: An ambiguous member** (35 s)
   - Caption: Bug of the Day: An ambiguous member. #cpp #kodingkonkani #multipleinheritance #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: AN AMBIGUOUS MEMBER
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in multiple inheritance and the diamond?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #multipleinheritance #codingchallenge
-  - Hook: A diamond is forever. So is the ambiguity, until you add virtual.
+  - Hook: Can you resolve an ambiguity in multiple inheritance and the diamond?
   - On screen: PUN AND CHALLENGE
 
 ## EP 68 — Composition and slicing
@@ -4204,18 +4204,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Composition and slicing in one minute** (36 s)
   - Caption: Composition and slicing in one minute. #cpp #kodingkonkani #compositionandslicing #coding
   - Hook: Use inheritance for an is-a relationship.
-  - On screen: COMPOSITION AND SLICING IN ONE MINUTE
+  - On screen: COMPOSITION AND SLICING
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #compositionandslicing #learntocode
   - Hook: This function takes an Animal by value.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Slicing in a function call** (36 s)
+- **S4 · Bug of the Day: Slicing in a function call** (35 s)
   - Caption: Bug of the Day: Slicing in a function call. #cpp #kodingkonkani #compositionandslicing #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: SLICING IN A FUNCTION CALL
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in composition and slicing?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #compositionandslicing #codingchallenge
-  - Hook: Object slicing is a bad deal. You asked for a whole dog, and you got half a dog.
+  - Hook: Can you redesign with composition in composition and slicing?
   - On screen: PUN AND CHALLENGE
 
 ## EP 69 — Function templates
@@ -4266,18 +4266,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Function templates in one minute** (35 s)
   - Caption: Function templates in one minute. #cpp #kodingkonkani #functiontemplates #coding
   - Hook: A function template is a recipe.
-  - On screen: FUNCTION TEMPLATES IN ONE MINUTE
+  - On screen: FUNCTION TEMPLATES
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #functiontemplates #learntocode
   - Hook: We can name the type in angle brackets.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Two different types** (37 s)
+- **S4 · Bug of the Day: Two different types** (35 s)
   - Caption: Bug of the Day: Two different types. #cpp #kodingkonkani #functiontemplates #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: TWO DIFFERENT TYPES
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in function templates?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #functiontemplates #codingchallenge
-  - Hook: I wrote a template for jokes. It works with any type of audience, but not always with the right one.
+  - Hook: Can you write a template for a smaller value in function templates?
   - On screen: PUN AND CHALLENGE
 
 ## EP 70 — Class templates
@@ -4328,18 +4328,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Class templates in one minute** (38 s)
   - Caption: Class templates in one minute. #cpp #kodingkonkani #classtemplates #coding
   - Hook: A class template puts a type placeholder on the whole class.
-  - On screen: CLASS TEMPLATES IN ONE MINUTE
+  - On screen: CLASS TEMPLATES
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #classtemplates #learntocode
   - Hook: Inside, a vector of T holds the items.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A missing template argument** (35 s)
+- **S4 · Bug of the Day: A missing template argument** (36 s)
   - Caption: Bug of the Day: A missing template argument. #cpp #kodingkonkani #classtemplates #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING TEMPLATE ARGUMENT
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in class templates?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #classtemplates #codingchallenge
-  - Hook: My template is an open-minded class. It accepts any type, but it still wants a label.
+  - Hook: Can you make a Pair template in class templates?
   - On screen: PUN AND CHALLENGE
 
 ## EP 71 — pair and tuple
@@ -4390,18 +4390,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · pair and tuple in one minute** (35 s)
   - Caption: pair and tuple in one minute. #cpp #kodingkonkani #pairandtuple #coding
   - Hook: A pair holds two values, called first and second.
-  - On screen: PAIR AND TUPLE IN ONE MINUTE
+  - On screen: PAIR AND TUPLE
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #pairandtuple #learntocode
   - Hook: A tuple can hold values of different types.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A member that does not exist** (37 s)
+- **S4 · Bug of the Day: A member that does not exist** (42 s)
   - Caption: Bug of the Day: A member that does not exist. #cpp #kodingkonkani #pairandtuple #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MEMBER THAT DOES NOT EXIST
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in pair and tuple?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (39 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #pairandtuple #codingchallenge
-  - Hook: Two values walked into a pair. They said, we are a perfect match, first and second.
+  - Hook: Can you return the quotient and the remainder in pair and tuple?
   - On screen: PUN AND CHALLENGE
 
 ## EP 72 — std::map
@@ -4452,18 +4452,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · std::map in one minute** (36 s)
   - Caption: std::map in one minute. #cpp #kodingkonkani #stdmap #coding
   - Hook: A map stores pairs.
-  - On screen: STD::MAP IN ONE MINUTE
+  - On screen: STD::MAP
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #stdmap #learntocode
   - Hook: We start the map with a list of pairs.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A lookup that creates a key** (37 s)
+- **S4 · Bug of the Day: A lookup that creates a key** (38 s)
   - Caption: Bug of the Day: A lookup that creates a key. #cpp #kodingkonkani #stdmap #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A LOOKUP THAT CREATES A KEY
+  - Hook: Can you spot the bug in std map?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #stdmap #codingchallenge
-  - Hook: My map was lost. It had all the keys, but no values.
+  - Hook: Can you count the marks in std map?
   - On screen: PUN AND CHALLENGE
 
 ## EP 73 — unordered_map
@@ -4514,18 +4514,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · unordered_map in one minute** (39 s)
   - Caption: unordered_map in one minute. #cpp #kodingkonkani #unorderedmap #coding
   - Hook: An unordered map uses a hash table.
-  - On screen: UNORDERED_MAP IN ONE MINUTE
+  - On screen: UNORDERED_MAP
 - **S3 · Inside the second program** (38 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #unorderedmap #learntocode
   - Hook: The map holds two prices.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: At with a missing key** (37 s)
+- **S4 · Bug of the Day: At with a missing key** (41 s)
   - Caption: Bug of the Day: At with a missing key. #cpp #kodingkonkani #unorderedmap #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: AT WITH A MISSING KEY
+  - Hook: Can you spot the bug in unordered map?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #unorderedmap #codingchallenge
-  - Hook: The hash map said, I do not care about order. I only care that you find me fast.
+  - Hook: Can you count letters in unordered map?
   - On screen: PUN AND CHALLENGE
 
 ## EP 74 — set and unordered_set
@@ -4576,18 +4576,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · set and unordered_set in one minute** (37 s)
   - Caption: set and unordered_set in one minute. #cpp #kodingkonkani #setandunorderedset #coding
   - Hook: A set stores unique values.
-  - On screen: SET AND UNORDERED_SET IN ONE MINUTE
+  - On screen: SET AND UNORDERED_SET
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #setandunorderedset #learntocode
   - Hook: The first insert adds four.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Expecting duplicates** (36 s)
+- **S4 · Bug of the Day: Expecting duplicates** (38 s)
   - Caption: Bug of the Day: Expecting duplicates. #cpp #kodingkonkani #setandunorderedset #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: EXPECTING DUPLICATES
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in set and unordered set?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #setandunorderedset #codingchallenge
-  - Hook: A set told a joke twice. Nobody heard it the second time.
+  - Hook: Can you remove the duplicates from a vector in set
   - On screen: PUN AND CHALLENGE
 
 ## EP 75 — stack, queue and deque
@@ -4638,18 +4638,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · stack, queue and deque in one minute** (38 s)
   - Caption: stack, queue and deque in one minute. #cpp #kodingkonkani #stackqueueanddeque #coding
   - Hook: A stack is last in, first out.
-  - On screen: STACK, QUEUE AND DEQUE IN ONE MINUTE
+  - On screen: STACK, QUEUE AND DEQUE
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #stackqueueanddeque #learntocode
   - Hook: Asha joins the queue first.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Expecting pop to return the item** (37 s)
+- **S4 · Bug of the Day: Expecting pop to return the item** (36 s)
   - Caption: Bug of the Day: Expecting pop to return the item. #cpp #kodingkonkani #stackqueueanddeque #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: EXPECTING POP TO RETURN THE ITEM
+  - Hook: Can you spot the bug in stack, queue and deque?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #stackqueueanddeque #codingchallenge
-  - Hook: The stack was proud. It said, I am always on top of things.
+  - Hook: Can you reverse a word with a stack in stack
   - On screen: PUN AND CHALLENGE
 
 ## EP 76 — Iterators
@@ -4700,18 +4700,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Iterators in one minute** (40 s)
   - Caption: Iterators in one minute. #cpp #kodingkonkani #iterators #coding
   - Hook: An iterator points at one item in a container.
-  - On screen: ITERATORS IN ONE MINUTE
+  - On screen: ITERATORS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #iterators #learntocode
   - Hook: A list is not an array.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: Erasing and skipping** (38 s)
   - Caption: Bug of the Day: Erasing and skipping. #cpp #kodingkonkani #iterators #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: ERASING AND SKIPPING
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in iterators?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #iterators #codingchallenge
-  - Hook: Why did the iterator never get lost? It always knew where end was.
+  - Hook: Can you remove all negative numbers in iterators?
   - On screen: PUN AND CHALLENGE
 
 ## EP 77 — Algorithms from the library
@@ -4762,18 +4762,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Algorithms from the library in one minute** (35 s)
   - Caption: Algorithms from the library in one minute. #cpp #kodingkonkani #algorithmsfromthelibrary #coding
   - Hook: The algorithm header holds many ready tools.
-  - On screen: ALGORITHMS FROM THE LIBRARY IN ONE MINUTE
+  - On screen: ALGORITHMS FROM THE LIBRARY
 - **S3 · Inside the second program** (35 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #algorithmsfromthelibrary #learntocode
   - Hook: Find returns an iterator to the first match.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Sort with no iterators** (37 s)
+- **S4 · Bug of the Day: Sort with no iterators** (38 s)
   - Caption: Bug of the Day: Sort with no iterators. #cpp #kodingkonkani #algorithmsfromthelibrary #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: SORT WITH NO ITERATORS
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in algorithms from the library?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #algorithmsfromthelibrary #codingchallenge
-  - Hook: Why did the vector go to the library? It wanted to be sorted out.
+  - Hook: Can you find the smallest value in algorithms from the library?
   - On screen: PUN AND CHALLENGE
 
 ## EP 78 — Lambdas with algorithms
@@ -4824,18 +4824,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Lambdas with algorithms in one minute** (37 s)
   - Caption: Lambdas with algorithms in one minute. #cpp #kodingkonkani #lambdaswithalgorithms #coding
   - Hook: A lambda has square brackets, a parameter list and a body.
-  - On screen: LAMBDAS WITH ALGORITHMS IN ONE MINUTE
+  - On screen: LAMBDAS WITH ALGORITHMS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #lambdaswithalgorithms #learntocode
   - Hook: A student has a name and marks.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: A variable that is not captured** (38 s)
   - Caption: Bug of the Day: A variable that is not captured. #cpp #kodingkonkani #lambdaswithalgorithms #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A VARIABLE THAT IS NOT CAPTURED
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in lambdas with algorithms?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #lambdaswithalgorithms #codingchallenge
-  - Hook: Why did the lambda join the party? Nobody had to give it a name.
+  - Hook: Can you count the even numbers in lambdas with algorithms?
   - On screen: PUN AND CHALLENGE
 
 ## EP 79 — Ranges in C++20
@@ -4886,18 +4886,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Ranges in C++20 in one minute** (37 s)
   - Caption: Ranges in C++20 in one minute. #cpp #kodingkonkani #rangesinc20 #coding
   - Hook: A view is a lazy window on a range.
-  - On screen: RANGES IN C++20 IN ONE MINUTE
+  - On screen: RANGES IN C++20
 - **S3 · Inside the second program** (35 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #rangesinc20 #learntocode
   - Hook: Iota makes an endless counter that starts at one.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: A missing header** (36 s)
+- **S4 · Bug of the Day: A missing header** (38 s)
   - Caption: Bug of the Day: A missing header. #cpp #kodingkonkani #rangesinc20 #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A MISSING HEADER
-- **S5 · Pun and challenge** (36 s)
+  - Hook: Can you spot the bug in ranges in C plus plus twenty?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #rangesinc20 #codingchallenge
-  - Hook: Why did the view stay calm? It never copied anything, so it had nothing to lose.
+  - Hook: Can you keep the odd numbers in ranges in C
   - On screen: PUN AND CHALLENGE
 
 ## EP 80 — Move semantics
@@ -4948,18 +4948,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Move semantics in one minute** (37 s)
   - Caption: Move semantics in one minute. #cpp #kodingkonkani #movesemantics #coding
   - Hook: A copy makes a second set of data.
-  - On screen: MOVE SEMANTICS IN ONE MINUTE
+  - On screen: MOVE SEMANTICS
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #movesemantics #learntocode
   - Hook: Two ampersands make an rvalue reference.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Copying a unique pointer** (36 s)
+- **S4 · Bug of the Day: Copying a unique pointer** (37 s)
   - Caption: Bug of the Day: Copying a unique pointer. #cpp #kodingkonkani #movesemantics #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: COPYING A UNIQUE POINTER
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in move semantics?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #movesemantics #codingchallenge
-  - Hook: Why did the string move out? It wanted its own space, with no copies.
+  - Hook: Can you move a string into a vector in move semantics?
   - On screen: PUN AND CHALLENGE
 
 ## EP 81 — optional and variant
@@ -5010,18 +5010,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · optional and variant in one minute** (36 s)
   - Caption: optional and variant in one minute. #cpp #kodingkonkani #optionalandvariant #coding
   - Hook: Some functions may have no answer.
-  - On screen: OPTIONAL AND VARIANT IN ONE MINUTE
+  - On screen: OPTIONAL AND VARIANT
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #optionalandvariant #learntocode
   - Hook: The variant holds an int or a string.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: Reading the wrong type** (36 s)
+- **S4 · Bug of the Day: Reading the wrong type** (38 s)
   - Caption: Bug of the Day: Reading the wrong type. #cpp #kodingkonkani #optionalandvariant #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: READING THE WRONG TYPE
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in optional and variant?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (38 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #optionalandvariant #codingchallenge
-  - Hook: Why did the optional feel calm? It never promised to hold anything.
+  - Hook: Can you return a safe square root in optional and variant?
   - On screen: PUN AND CHALLENGE
 
 ## EP 82 — Exceptions
@@ -5072,18 +5072,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Exceptions in one minute** (37 s)
   - Caption: Exceptions in one minute. #cpp #kodingkonkani #exceptions #coding
   - Hook: When code cannot go on, it throws an exception.
-  - On screen: EXCEPTIONS IN ONE MINUTE
+  - On screen: EXCEPTIONS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #exceptions #learntocode
-  - Hook: Stoi cannot read a number from this text, so it throws invalid argument.
+  - Hook: Stoi cannot read a number from this text
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: An exception nobody catches** (36 s)
   - Caption: Bug of the Day: An exception nobody catches. #cpp #kodingkonkani #exceptions #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: AN EXCEPTION NOBODY CATCHES
-- **S5 · Pun and challenge** (37 s)
+  - Hook: Can you spot the bug in exceptions?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #exceptions #codingchallenge
-  - Hook: Why did the exception get a medal? It was thrown, and someone finally caught it.
+  - Hook: Can you catch an out of range index in exceptions?
   - On screen: PUN AND CHALLENGE
 
 ## EP 83 — File input and output
@@ -5134,18 +5134,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · File input and output in one minute** (37 s)
   - Caption: File input and output in one minute. #cpp #kodingkonkani #fileinputandoutput #coding
   - Hook: Ofstream writes to a file.
-  - On screen: FILE INPUT AND OUTPUT IN ONE MINUTE
+  - On screen: FILE INPUT AND OUTPUT
 - **S3 · Inside the second program** (41 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #fileinputandoutput #learntocode
   - Hook: We write three names with marks into a file.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: A file that did not open** (36 s)
   - Caption: Bug of the Day: A file that did not open. #cpp #kodingkonkani #fileinputandoutput #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A FILE THAT DID NOT OPEN
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in file input and output?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #fileinputandoutput #codingchallenge
-  - Hook: Why did the file feel safe? Someone always closed it properly.
+  - Hook: Can you count the lines in a file in file
   - On screen: PUN AND CHALLENGE
 
 ## EP 84 — Namespaces and organising code
@@ -5196,18 +5196,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Namespaces and organising code in one minute** (37 s)
   - Caption: Namespaces and organising code in one minute. #cpp #kodingkonkani #namespacesandorganisingcode #coding
   - Hook: A namespace is a labelled drawer for names.
-  - On screen: NAMESPACES AND ORGANISING CODE IN ONE MINUTE
+  - On screen: NAMESPACES AND ORGANISING CODE
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #namespacesandorganisingcode #learntocode
-  - Hook: Since C plus plus seventeen, you can write a nested namespace on one line.
+  - Hook: Since C plus plus seventeen
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: An ambiguous call** (37 s)
+- **S4 · Bug of the Day: An ambiguous call** (38 s)
   - Caption: Bug of the Day: An ambiguous call. #cpp #kodingkonkani #namespacesandorganisingcode #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: AN AMBIGUOUS CALL
+  - Hook: Can you spot the bug in namespaces and organising code?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #namespacesandorganisingcode #codingchallenge
-  - Hook: Why do namespaces never fight? Everyone stays in their own drawer.
+  - Hook: Can you make a math namespace in namespaces and organising code?
   - On screen: PUN AND CHALLENGE
 
 ## EP 85 — Linked list
@@ -5258,18 +5258,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Linked list in one minute** (36 s)
   - Caption: Linked list in one minute. #cpp #kodingkonkani #linkedlist #coding
   - Hook: A node holds a value and a pointer to the next node.
-  - On screen: LINKED LIST IN ONE MINUTE
+  - On screen: LINKED LIST
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #linkedlist #learntocode
-  - Hook: This function makes a new node, and its next pointer is the old head.
+  - Hook: This function makes a new node
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: The walk stops one node early** (37 s)
+- **S4 · Bug of the Day: The walk stops one node early** (36 s)
   - Caption: Bug of the Day: The walk stops one node early. #cpp #kodingkonkani #linkedlist #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: THE WALK STOPS ONE NODE EARLY
+  - Hook: Can you spot the bug in linked list?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #linkedlist #codingchallenge
-  - Hook: Why did the node feel lonely? It only ever knew the next one.
+  - Hook: Can you count the nodes in linked list?
   - On screen: PUN AND CHALLENGE
 
 ## EP 86 — Binary tree
@@ -5320,18 +5320,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Binary tree in one minute** (37 s)
   - Caption: Binary tree in one minute. #cpp #kodingkonkani #binarytree #coding
   - Hook: A binary search tree keeps its keys in order.
-  - On screen: BINARY TREE IN ONE MINUTE
+  - On screen: BINARY TREE
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #binarytree #learntocode
   - Hook: Contains follows one path only.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: Printing before the left side** (39 s)
   - Caption: Bug of the Day: Printing before the left side. #cpp #kodingkonkani #binarytree #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: PRINTING BEFORE THE LEFT SIDE
+  - Hook: Can you spot the bug in binary tree?
+  - On screen: BUG OF THE DAY
 - **S5 · Pun and challenge** (39 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #binarytree #codingchallenge
-  - Hook: Why did the tree win the race? It had strong roots, and it never lost its balance.
+  - Hook: Can you find the smallest key in binary tree?
   - On screen: PUN AND CHALLENGE
 
 ## EP 87 — Threads and mutex
@@ -5382,18 +5382,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Threads and mutex in one minute** (35 s)
   - Caption: Threads and mutex in one minute. #cpp #kodingkonkani #threadsandmutex #coding
   - Hook: A thread is a second path of execution.
-  - On screen: THREADS AND MUTEX IN ONE MINUTE
+  - On screen: THREADS AND MUTEX
 - **S3 · Inside the second program** (36 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #threadsandmutex #learntocode
   - Hook: The mutex is the key to the pantry.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: A thread that is never joined** (37 s)
   - Caption: Bug of the Day: A thread that is never joined. #cpp #kodingkonkani #threadsandmutex #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A THREAD THAT IS NEVER JOINED
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in threads and mutex?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (36 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #threadsandmutex #codingchallenge
-  - Hook: Why did two threads share one door? They took turns, because one had the key.
+  - Hook: Can you sum two halves in threads and mutex?
   - On screen: PUN AND CHALLENGE
 
 ## EP 88 — Project: student records
@@ -5444,18 +5444,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Project: student records in one minute** (37 s)
   - Caption: Project: student records in one minute. #cpp #kodingkonkani #projectstudentrecords #coding
   - Hook: A good class owns its data and hides it.
-  - On screen: PROJECT: STUDENT RECORDS IN ONE MINUTE
+  - On screen: PROJECT: STUDENT RECORDS
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #projectstudentrecords #learntocode
   - Hook: Best returns an optional, because an empty roster has no best student.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: A const object calls a non const method** (37 s)
   - Caption: Bug of the Day: A const object calls a non const method. #cpp #kodingkonkani #projectstudentrecords #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A CONST OBJECT CALLS A NON CONST METHOD
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in project, student records?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #projectstudentrecords #codingchallenge
-  - Hook: Why did the roster stay calm? Everything inside it was in order.
+  - Hook: Can you add a method to find a student in project
   - On screen: PUN AND CHALLENGE
 
 ## EP 89 — Common mistakes and exam questions
@@ -5506,18 +5506,18 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Common mistakes and exam questions in one minute** (39 s)
   - Caption: Common mistakes and exam questions in one minute. #cpp #kodingkonkani #commonmistakesandexamquestions #coding
   - Hook: Most wrong answers come from a few old traps.
-  - On screen: COMMON MISTAKES AND EXAM QUESTIONS IN ONE MINUTE
+  - On screen: COMMON MISTAKES AND EXAM QUESTIONS
 - **S3 · Inside the second program** (35 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #commonmistakesandexamquestions #learntocode
   - Hook: A double stores a close value, and not the exact value.
   - On screen: INSIDE THE SECOND PROGRAM
 - **S4 · Bug of the Day: A reference to a local variable** (37 s)
   - Caption: Bug of the Day: A reference to a local variable. #cpp #kodingkonkani #commonmistakesandexamquestions #bugfix
-  - Hook: Bug of the Day.
-  - On screen: BUG OF THE DAY: A REFERENCE TO A LOCAL VARIABLE
-- **S5 · Pun and challenge** (35 s)
+  - Hook: Can you spot the bug in common mistakes and exam questions?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (37 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #commonmistakesandexamquestions #codingchallenge
-  - Hook: Why did the exam trap fail? We saw it coming.
+  - Hook: Can you fix three traps in common mistakes and exam questions?
   - On screen: PUN AND CHALLENGE
 
 ## EP 90 — Finale: what you can build
@@ -5568,16 +5568,16 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 - **S2 · Finale: what you can build in one minute** (38 s)
   - Caption: Finale: what you can build in one minute. #cpp #kodingkonkani #finalewhatyoucanbuild #coding
   - Hook: You started with a first program.
-  - On screen: FINALE: WHAT YOU CAN BUILD IN ONE MINUTE
+  - On screen: FINALE: WHAT YOU CAN BUILD
 - **S3 · Inside the second program** (37 s)
   - Caption: Inside the second program. #cpp #kodingkonkani #finalewhatyoucanbuild #learntocode
   - Hook: A map joins names to marks.
   - On screen: INSIDE THE SECOND PROGRAM
-- **S4 · Bug of the Day: The last classic: a missing semicolon** (38 s)
+- **S4 · Bug of the Day: The last classic: a missing semicolon** (40 s)
   - Caption: Bug of the Day: The last classic: a missing semicolon. #cpp #kodingkonkani #finalewhatyoucanbuild #bugfix
-  - Hook: Bug of the Day, the last one.
-  - On screen: BUG OF THE DAY: THE LAST CLASSIC: A MISSING SEMICOLON
-- **S5 · Pun and challenge** (38 s)
+  - Hook: Can you spot the bug in finale, what you can build?
+  - On screen: BUG OF THE DAY
+- **S5 · Pun and challenge** (35 s)
   - Caption: Pun and challenge. #cpp #kodingkonkani #finalewhatyoucanbuild #codingchallenge
-  - Hook: Why did the programmer love this course? Every bug had a fix, and every fix had a pun.
+  - Hook: Can you build your own project in finale, what you can build?
   - On screen: PUN AND CHALLENGE

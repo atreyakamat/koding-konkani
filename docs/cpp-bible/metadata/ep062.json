@@ -100,7 +100,7 @@
       ],
       "hook": "When you make a derived object, the base part is built first.",
       "script": "When you make a derived object, the base part is built first. Then the derived part is built. When the object dies, the order reverses. The derived part goes first, and then the base part. To give arguments to the base constructor, call it in the initializer list. Think of building a house. The foundation comes first, and the roof comes last. Keep coding, says Xecxec!",
-      "onScreen": "CONSTRUCTOR AND DESTRUCTOR ORDER IN ONE MINUTE",
+      "onScreen": "CONSTRUCTOR AND DESTRUCTOR ORDER",
       "caption": "Constructor and destructor order in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: A base with no default constructor",
-      "lengthSec": 40,
+      "lengthSec": 37,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. Animal needs a name, but Dog does not give one. The compiler says no matching function for call to Animal. The base part is built first, so the compiler must call a base constructor. Name it in the initializer list. The base part must be built first. If the base has no default constructor, the derived constructor must say which one to call. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: A BASE WITH NO DEFAULT CONSTRUCTOR",
+      "hook": "Can you spot the bug in constructor and destructor order?",
+      "script": "Can you spot the bug in constructor and destructor order? Bug of the Day. Animal needs a name, but Dog does not give one. The compiler says no matching function for call to Animal. The base part is built first, so the compiler must call a base constructor. Name it in the initializer list. The base part must be built first. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: A base with no default constructor.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 37,
+      "lengthSec": 36,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "The base class was always first in line. It said, I was here before you were derived.",
-      "script": "The base class was always first in line. It said, I was here before you were derived. Write three classes: A, B inherits from A, and C inherits from B. Print a message in each constructor. Predict the order for a C object. Write your answer in the comments. The base part is built first. The derived part is built next. Keep coding, says Xecxec!",
+      "hook": "Can you trace the order in constructor and destructor order?",
+      "script": "Can you trace the order in constructor and destructor order? The base class was always first in line. It said, I was here before you were derived. Write three classes: A, B inherits from A, and C inherits from B. Print a message in each constructor. Predict the order for a C object. Write your answer in the comments. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

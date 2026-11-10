@@ -98,9 +98,9 @@
         2,
         3
       ],
-      "hook": "Inside a member function, the name this is a pointer to the current object.",
+      "hook": "Inside a member function",
       "script": "Inside a member function, the name this is a pointer to the current object. You rarely need to write it, but it explains how member functions work. A function that returns star this lets you chain calls. A const function promises not to change the object. Think of the word me. Every object can talk about itself. Add returns a reference to a Counter. Keep coding, says Xecxec!",
-      "onScreen": "THIS AND CONST METHODS IN ONE MINUTE",
+      "onScreen": "THIS AND CONST METHODS",
       "caption": "this and const methods in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: A non-const call on a const object",
-      "lengthSec": 35,
+      "lengthSec": 40,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. The object is const, but we call increment. The compiler says passing const Counter as this argument discards qualifiers. That sounds hard, but it means this. A const object cannot call a function that may change it. A const object may not change, so it may not call a function that can change it. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: A NON-CONST CALL ON A CONST OBJECT",
+      "hook": "Can you spot the bug in this and const methods?",
+      "script": "Can you spot the bug in this and const methods? Bug of the Day. The object is const, but we call increment. The compiler says passing const Counter as this argument discards qualifiers. That sounds hard, but it means this. A const object cannot call a function that may change it. A const object may not change, so it may not call a function that can change it. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: A non-const call on a const object.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 40,
+      "lengthSec": 37,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "The object looked in the mirror and said, I like this.",
-      "script": "The object looked in the mirror and said, I like this. Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const. Write your answer in the comments. This is a pointer to the current object. Return star this to chain calls. Const after the brackets is a promise not to change the object. Keep coding, says Xecxec!",
+      "hook": "Can you mark the right functions const in this and const methods?",
+      "script": "Can you mark the right functions const in this and const methods? The object looked in the mirror and said, I like this. Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const. Write your answer in the comments. This is a pointer to the current object. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

@@ -100,7 +100,7 @@
       ],
       "hook": "C plus plus lets a class inherit from more than one base.",
       "script": "C plus plus lets a class inherit from more than one base. List them with commas. If both bases have a member with the same name, a call is ambiguous. You must say which one you mean. The diamond problem appears when two bases share one grandparent. Then the object holds two copies of it. Virtual inheritance keeps only one. Keep coding, says Xecxec!",
-      "onScreen": "MULTIPLE INHERITANCE IN ONE MINUTE",
+      "onScreen": "MULTIPLE INHERITANCE",
       "caption": "Multiple inheritance in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: An ambiguous member",
-      "lengthSec": 36,
+      "lengthSec": 35,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. Both bases have a hello function. The call on C says hello, and the compiler says the request for hello is ambiguous. It cannot guess. Write the base name and two colons to choose. Both bases offer hello, so the compiler cannot guess. Write the name of the base and two colons to choose one. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: AN AMBIGUOUS MEMBER",
+      "hook": "Can you spot the bug in multiple inheritance and the diamond?",
+      "script": "Can you spot the bug in multiple inheritance and the diamond? Bug of the Day. Both bases have a hello function. The call on C says hello, and the compiler says the request for hello is ambiguous. It cannot guess. Write the base name and two colons to choose. Both bases offer hello, so the compiler cannot guess. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: An ambiguous member.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 36,
+      "lengthSec": 37,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "A diamond is forever. So is the ambiguity, until you add virtual.",
-      "script": "A diamond is forever. So is the ambiguity, until you add virtual. Make two base classes with the same function name. Inherit from both, and call each version. Write your answer in the comments. A class can inherit from several bases. Equal member names in two bases make a call ambiguous. The diamond gives two copies of the grandparent. Keep coding, says Xecxec!",
+      "hook": "Can you resolve an ambiguity in multiple inheritance and the diamond?",
+      "script": "Can you resolve an ambiguity in multiple inheritance and the diamond? A diamond is forever. So is the ambiguity, until you add virtual. Make two base classes with the same function name. Inherit from both, and call each version. Write your answer in the comments. A class can inherit from several bases. Equal member names in two bases make a call ambiguous. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

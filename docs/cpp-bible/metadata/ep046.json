@@ -100,7 +100,7 @@
       ],
       "hook": "Local variables live on the stack.",
       "script": "Local variables live on the stack. They appear and disappear by themselves. The heap is a big pool of memory that you manage yourself. New asks the heap for a box, and gives you its address. Delete returns the box. If you forget, the box is lost until the program ends. That is a memory leak. Think of a library book. Keep coding, says Xecxec!",
-      "onScreen": "NEW AND DELETE IN ONE MINUTE",
+      "onScreen": "NEW AND DELETE",
       "caption": "new and delete in one minute.",
       "hashtags": [
         "#cpp",
@@ -118,7 +118,7 @@
         5,
         6
       ],
-      "hook": "New with square brackets makes an array of three ints on the heap.",
+      "hook": "New with square brackets makes an array of three ints",
       "script": "New with square brackets makes an array of three ints on the heap. The loop multiplies each item by ten. The output is ten, twenty, thirty. An array made with new square brackets needs delete square brackets. A plain delete is a bug. The program prints ten, twenty and thirty. The stack holds local variables, and the heap holds boxes you manage. Keep coding, says Xecxec!",
       "onScreen": "INSIDE THE SECOND PROGRAM",
       "caption": "Inside the second program.",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: The wrong delete",
-      "lengthSec": 39,
+      "lengthSec": 36,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. We make an array with new square brackets, but we free it with plain delete. The compiler warns about a mismatched allocation function. The two forms must match. New square brackets pairs with delete square brackets. New with square brackets must pair with delete with square brackets. A plain delete frees the memory in the wrong way, and the result is undefined. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: THE WRONG DELETE",
+      "hook": "Can you spot the bug in new and delete?",
+      "script": "Can you spot the bug in new and delete? Bug of the Day. We make an array with new square brackets, but we free it with plain delete. The compiler warns about a mismatched allocation function. The two forms must match. New square brackets pairs with delete square brackets. New with square brackets must pair with delete with square brackets. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: The wrong delete.",
       "hashtags": [
         "#cpp",
@@ -157,8 +157,8 @@
         9,
         10
       ],
-      "hook": "I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget.",
-      "script": "I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget. Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it. Write your answer in the comments. The stack holds local variables, and the heap holds boxes you manage. Keep coding, says Xecxec!",
+      "hook": "Can you make and free a heap array in new and delete?",
+      "script": "Can you make and free a heap array in new and delete? I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget. Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it. Write your answer in the comments. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

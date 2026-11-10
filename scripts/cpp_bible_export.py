@@ -98,6 +98,12 @@ def parse_episode(n: int, title: str, body: str) -> tuple[dict, list[str]]:
     if [s["id"] for s in shorts] != ["S1", "S2", "S3", "S4", "S5"]:
         errs.append(f"EP {n}: found Shorts {[s['id'] for s in shorts]} (need S1 to S5)")
     for s in shorts:
+        if len(s["hook"].split()) > 12:
+            errs.append(f"EP {n} {s['id']}: hook has {len(s['hook'].split())} words (max 12)")
+        if len(s["onScreen"]) > 45:
+            errs.append(f"EP {n} {s['id']}: on-screen text is {len(s['onScreen'])} characters (max 45)")
+        if not s["script"].endswith("Keep coding, says Xecxec!"):
+            errs.append(f"EP {n} {s['id']}: script does not end with the sign-off")
         if not 35 <= s["lengthSec"] <= 45:
             errs.append(f"EP {n} {s['id']}: {s['lengthSec']} seconds (need 35 to 45)")
     ep = {"ep": n, "title": title, "module": int(head.group(1)), "moduleName": head.group(2), "lengthSec": length,
@@ -140,6 +146,9 @@ def main() -> int:
     titles = [e["youtube"]["title"] for e in eps]
     if len(set(titles)) != len(titles):
         errs.append("two episodes share one YouTube title")
+    hooks = [x["hook"] for e in eps for x in e["shorts"]]
+    for h in sorted({h for h in hooks if hooks.count(h) > 1}):
+        errs.append(f"hook used more than once: {h!r}")
     for e in eps:
         (OUT / f"ep{e['ep']:03d}.json").write_text(json.dumps(e, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     (OUT / "index.json").write_text(json.dumps(eps, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

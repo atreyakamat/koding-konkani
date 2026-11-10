@@ -100,7 +100,7 @@
       ],
       "hook": "A plain array needs a size that the compiler knows.",
       "script": "A plain array needs a size that the compiler knows. An array on the heap can use a size that you read at run time. Use new with the size in square brackets. You must free it with delete square brackets. You must also remember its size yourself. This is why most programmers prefer a vector. Think of a tailor. Keep coding, says Xecxec!",
-      "onScreen": "DYNAMIC ARRAYS IN ONE MINUTE",
+      "onScreen": "DYNAMIC ARRAYS",
       "caption": "Dynamic arrays in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: Delete on a pointer to a local",
-      "lengthSec": 39,
+      "lengthSec": 35,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. We call delete on n, which is a plain int. The compiler says the type int was given to delete, but a pointer is expected. Delete must get the pointer that new returned. Here that is a, and it needs square brackets. Delete needs a pointer. The variable n is a plain int. Free the pointer that new returned, which is a. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: DELETE ON A POINTER TO A LOCAL",
+      "hook": "Can you spot the bug in dynamic arrays?",
+      "script": "Can you spot the bug in dynamic arrays? Bug of the Day. We call delete on n, which is a plain int. The compiler says the type int was given to delete, but a pointer is expected. Delete must get the pointer that new returned. Here that is a, and it needs square brackets. Delete needs a pointer. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: Delete on a pointer to a local.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 40,
+      "lengthSec": 36,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "A tailor and a programmer have one thing in common. They both measure twice and cut once.",
-      "script": "A tailor and a programmer have one thing in common. They both measure twice and cut once. Ask for n. Make a vector of n numbers, read them, and print their average. Write your answer in the comments. New with a size makes an array of any size at run time. Free it with delete square brackets. A pointer does not know the size of the array. Keep coding, says Xecxec!",
+      "hook": "Can you average of n numbers in dynamic arrays?",
+      "script": "Can you average of n numbers in dynamic arrays? A tailor and a programmer have one thing in common. They both measure twice and cut once. Ask for n. Make a vector of n numbers, read them, and print their average. Write your answer in the comments. New with a size makes an array of any size at run time. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

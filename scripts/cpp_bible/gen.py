@@ -344,11 +344,15 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None, cxx: str) -> str:
         ("S1", f"What you will learn: {ep['title']}", [ep["hook"]] + sents(narr[1]) + sents(narr[2]) + recap_s, [1, 2]),
         ("S2", f"{ep['title']} in one minute", sents(narr[2]) + sents(narr[3]) + recap_s, [2, 3]),
         ("S3", "Inside the second program", sents(narr[5]) + sents(ep["term"]) + recap_s, [5, 6]),
-        ("S4", f"Bug of the Day: {bug['title']}", sents(narr[8]) + sents(bug["why"]) + recap_s, [8]),
-        ("S5", "Pun and challenge", [ep["pun"]] + sents(ep["challenge"]) + ["Write your answer in the comments."] + recap_s, [9, 10]),
+        ("S4", f"Bug of the Day: {bug['title']}", [f"Can you spot the bug in {ep['spoken']}?"] + sents(narr[8]) + sents(bug["why"]) + recap_s, [8]),
+        ("S5", "Pun and challenge", [f"Can you {ep['task']} in {ep['spoken']}?", ep["pun"]] + sents(ep["challenge"]) + ["Write your answer in the comments."] + recap_s, [9, 10]),
     ]
     slug = re.sub(r"[^a-z0-9]", "", ep["title"].lower())
+    used_hooks: set[str] = set()
     for sid, st, pool, frm in plan:
+        while pool[0].strip() in used_hooks and len(pool) > 1:
+            pool = pool[1:]  # never open two Shorts of one episode with the same sentence
+        used_hooks.add(pool[0].strip())
         body: list[str] = []
         w = 0
         for s in pool:
@@ -362,10 +366,12 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None, cxx: str) -> str:
         if not 35 <= length <= 45:
             PROBLEMS.append(f"EP {n} {sid}: {tw} words = {length}s; need 62-82 words")
         hook = body[0]
+        if len(hook.split()) > 12:  # the hook is the first 1.5 seconds only
+            hook = hook.split(",")[0] if len(hook.split(",")[0].split()) <= 12 else " ".join(hook.split()[:10])
         for lv, code, msg in ste_lint.lint_text(script):
             if code == "TTS-CHAR":  # sentences were linted in their scenes; the pun is exempt
                 PROBLEMS.append(f"EP {n} {sid}: {code}: {msg}")
-        on = st.upper().replace("WHAT YOU WILL LEARN: ", "")
+        on = {"S2": ep["title"], "S4": "Bug of the Day"}.get(sid, st.replace("What you will learn: ", "")).upper()
         extra = {"S1": "#beginners", "S2": "#coding", "S3": "#learntocode", "S4": "#bugfix", "S5": "#codingchallenge"}[sid]
         L.append(f"**{sid} · {st}** — {mmss(length)} · built from scene{'s' if len(frm) > 1 else ''} {', '.join(map(str, frm))}")
         L.append(f"- **Hook (first 1.5s):** \"{hook}\"")

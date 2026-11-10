@@ -98,9 +98,9 @@
         2,
         3
       ],
-      "hook": "A memory leak happens when you lose the address of a heap box before you free it.",
+      "hook": "A memory leak happens when you lose the address of",
       "script": "A memory leak happens when you lose the address of a heap box before you free it. An early return or an error can cause it. The cure is RAII. It means that a resource belongs to a variable. When the variable dies, a special function called the destructor runs, and it frees the resource. Think of a hotel room. Keep coding, says Xecxec!",
-      "onScreen": "LEAKS AND RAII IN ONE MINUTE",
+      "onScreen": "LEAKS AND RAII",
       "caption": "Leaks and RAII in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: A leak you cannot see",
-      "lengthSec": 39,
+      "lengthSec": 37,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. The program prints open, but it never prints close. The early return skips the delete, so the destructor never runs. That is a leak. Use an ordinary local variable instead. Its destructor runs on every way out. The early return skips the delete, so the destructor never runs. An ordinary local variable runs its destructor on every way out of the function. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: A LEAK YOU CANNOT SEE",
+      "hook": "Can you spot the bug in memory leaks and RAII?",
+      "script": "Can you spot the bug in memory leaks and RAII? Bug of the Day. The program prints open, but it never prints close. The early return skips the delete, so the destructor never runs. That is a leak. Use an ordinary local variable instead. Its destructor runs on every way out. The early return skips the delete, so the destructor never runs. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: A leak you cannot see.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 37,
+      "lengthSec": 38,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap.",
-      "script": "My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap. Write a function with new and two return statements. Show which return leaks. Then fix it with a local variable. Write your answer in the comments. A leak means that memory is never freed. An early return can skip a delete. Keep coding, says Xecxec!",
+      "hook": "Can you spot the leak in memory leaks and RAII?",
+      "script": "Can you spot the leak in memory leaks and RAII? My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap. Write a function with new and two return statements. Show which return leaks. Then fix it with a local variable. Write your answer in the comments. A leak means that memory is never freed. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

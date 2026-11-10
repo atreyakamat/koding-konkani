@@ -100,7 +100,7 @@
       ],
       "hook": "Use inheritance for an is-a relationship.",
       "script": "Use inheritance for an is-a relationship. A dog is an animal. Use composition for a has-a relationship. A car has an engine. Composition makes a member out of another class. Prefer composition when you are not sure. It is simpler. A second danger is slicing. Passing a derived object by value to a base parameter cuts off the derived part. Keep coding, says Xecxec!",
-      "onScreen": "COMPOSITION AND SLICING IN ONE MINUTE",
+      "onScreen": "COMPOSITION AND SLICING",
       "caption": "Composition and slicing in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: Slicing in a function call",
-      "lengthSec": 36,
+      "lengthSec": 35,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. We pass a Dog to a function that takes an Animal by value. The function prints three dots, not Woof. The Dog part was sliced off in the copy. Take a const reference instead. Passing by value copies only the Animal part of the Dog. The copy is a plain Animal, so speak prints three dots. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: SLICING IN A FUNCTION CALL",
+      "hook": "Can you spot the bug in composition and slicing?",
+      "script": "Can you spot the bug in composition and slicing? Bug of the Day. We pass a Dog to a function that takes an Animal by value. The function prints three dots, not Woof. The Dog part was sliced off in the copy. Take a const reference instead. Passing by value copies only the Animal part of the Dog. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: Slicing in a function call.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 38,
+      "lengthSec": 36,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "Object slicing is a bad deal. You asked for a whole dog, and you got half a dog.",
-      "script": "Object slicing is a bad deal. You asked for a whole dog, and you got half a dog. Write a class Computer that has a Processor and a Memory as members. Add a function that starts both. Write your answer in the comments. Use inheritance for is-a. Use composition for has-a. When in doubt, prefer composition. Pass polymorphic objects by reference, never by value. Keep coding, says Xecxec!",
+      "hook": "Can you redesign with composition in composition and slicing?",
+      "script": "Can you redesign with composition in composition and slicing? Object slicing is a bad deal. You asked for a whole dog, and you got half a dog. Write a class Computer that has a Processor and a Memory as members. Add a function that starts both. Write your answer in the comments. Use inheritance for is-a. Use composition for has-a. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

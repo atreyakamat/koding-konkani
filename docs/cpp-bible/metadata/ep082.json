@@ -101,7 +101,7 @@
       ],
       "hook": "When code cannot go on, it throws an exception.",
       "script": "When code cannot go on, it throws an exception. The program leaves the current function, and looks up the stack for a matching catch block. Think of a ball thrown up the stairs. It goes up until someone catches it. If nobody catches it, the program stops. The function checks for a bad input. Throw raises a runtime error with a message. Keep coding, says Xecxec!",
-      "onScreen": "EXCEPTIONS IN ONE MINUTE",
+      "onScreen": "EXCEPTIONS",
       "caption": "Exceptions in one minute.",
       "hashtags": [
         "#cpp",
@@ -119,7 +119,7 @@
         5,
         6
       ],
-      "hook": "Stoi cannot read a number from this text, so it throws invalid argument.",
+      "hook": "Stoi cannot read a number from this text",
       "script": "Stoi cannot read a number from this text, so it throws invalid argument. The first catch is specific, so it matches. It prints bad number. The general catch comes last. It catches every other standard error. Always put the specific catch first. The program prints bad number. Throw raises an exception. Catch handles it. The program unwinds until a catch matches. Keep coding, says Xecxec!",
       "onScreen": "INSIDE THE SECOND PROGRAM",
       "caption": "Inside the second program.",
@@ -138,9 +138,9 @@
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. We throw, and nobody catches. The program ends with terminate called after throwing. Add a try block and a catch block. An exception that nobody catches ends the program. Catch it where you can recover, or at the top of main. Throw raises an exception. Catch handles it. The program unwinds until a catch matches. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: AN EXCEPTION NOBODY CATCHES",
+      "hook": "Can you spot the bug in exceptions?",
+      "script": "Can you spot the bug in exceptions? Bug of the Day. We throw, and nobody catches. The program ends with terminate called after throwing. Add a try block and a catch block. An exception that nobody catches ends the program. Catch it where you can recover, or at the top of main. Throw raises an exception. Catch handles it. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: An exception nobody catches.",
       "hashtags": [
         "#cpp",
@@ -153,13 +153,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 37,
+      "lengthSec": 35,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "Why did the exception get a medal? It was thrown, and someone finally caught it.",
-      "script": "Why did the exception get a medal? It was thrown, and someone finally caught it. Call at with a bad index on a vector. Catch the out of range exception, and print a friendly message. Write your answer in the comments. Throw raises an exception. Catch handles it. The program unwinds until a catch matches. Put specific catch blocks before general ones. Keep coding, says Xecxec!",
+      "hook": "Can you catch an out of range index in exceptions?",
+      "script": "Can you catch an out of range index in exceptions? Why did the exception get a medal? It was thrown, and someone finally caught it. Call at with a bad index on a vector. Catch the out of range exception, and print a friendly message. Write your answer in the comments. Throw raises an exception. Catch handles it. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

@@ -100,7 +100,7 @@
       ],
       "hook": "A shared pointer lets many owners share one object.",
       "script": "A shared pointer lets many owners share one object. A counter inside tracks the owners. When the last owner dies, the object is deleted. A weak pointer looks at the object but does not own it. It does not change the counter. Think of a Wi-Fi password. Many people share it, and the router stays on until the last person leaves. Keep coding, says Xecxec!",
-      "onScreen": "SHARED_PTR AND WEAK_PTR IN ONE MINUTE",
+      "onScreen": "SHARED_PTR AND WEAK_PTR",
       "caption": "shared_ptr and weak_ptr in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: A raw pointer into a shared_ptr",
-      "lengthSec": 38,
+      "lengthSec": 40,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. We assign a raw new result to a shared pointer. The compiler says it cannot convert int star to shared pointer. Use make shared instead. It builds the object and the counter in one safe step. The shared pointer constructor from a raw pointer is explicit, so an equals sign does not work. Make shared is also faster and safer. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: A RAW POINTER INTO A SHARED_PTR",
+      "hook": "Can you spot the bug in shared pointers and weak pointers?",
+      "script": "Can you spot the bug in shared pointers and weak pointers? Bug of the Day. We assign a raw new result to a shared pointer. The compiler says it cannot convert int star to shared pointer. Use make shared instead. It builds the object and the counter in one safe step. The shared pointer constructor from a raw pointer is explicit, so an equals sign does not work. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: A raw pointer into a shared_ptr.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 37,
+      "lengthSec": 35,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "Shared pointers are polite. The last one out always turns off the light.",
-      "script": "Shared pointers are polite. The last one out always turns off the light. Make a shared pointer to an int. Copy it into a second shared pointer. Print use count. Write your answer in the comments. Many shared pointers can own one object. A counter tracks the owners, and the last owner deletes the object. A weak pointer watches without owning. Keep coding, says Xecxec!",
+      "hook": "Can you share a heap int between two owners in",
+      "script": "Can you share a heap int between two owners in shared pointers and weak pointers? Shared pointers are polite. The last one out always turns off the light. Make a shared pointer to an int. Copy it into a second shared pointer. Print use count. Write your answer in the comments. Many shared pointers can own one object. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

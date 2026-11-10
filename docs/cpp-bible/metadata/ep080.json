@@ -101,7 +101,7 @@
       ],
       "hook": "A copy makes a second set of data.",
       "script": "A copy makes a second set of data. A move hands the data to the new owner, and leaves the old owner empty. Think of handing over the keys of a house. You do not build a second house. Vector a owns three numbers on the heap. Move does not move anything by itself. It marks a as safe to steal from. Keep coding, says Xecxec!",
-      "onScreen": "MOVE SEMANTICS IN ONE MINUTE",
+      "onScreen": "MOVE SEMANTICS",
       "caption": "Move semantics in one minute.",
       "hashtags": [
         "#cpp",
@@ -134,13 +134,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: Copying a unique pointer",
-      "lengthSec": 36,
+      "lengthSec": 37,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. We copy a unique pointer. The compiler says the copy constructor is deleted. One owner only. Use move to hand over the ownership. A unique pointer has one owner only, so it cannot be copied. Move it to give the ownership to another pointer. A copy duplicates the data. A move hands over the data. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: COPYING A UNIQUE POINTER",
+      "hook": "Can you spot the bug in move semantics?",
+      "script": "Can you spot the bug in move semantics? Bug of the Day. We copy a unique pointer. The compiler says the copy constructor is deleted. One owner only. Use move to hand over the ownership. A unique pointer has one owner only, so it cannot be copied. Move it to give the ownership to another pointer. A copy duplicates the data. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: Copying a unique pointer.",
       "hashtags": [
         "#cpp",
@@ -153,13 +153,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 38,
+      "lengthSec": 36,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "Why did the string move out? It wanted its own space, with no copies.",
-      "script": "Why did the string move out? It wanted its own space, with no copies. Make a string, and push it into a vector of strings with move. Print the vector size. Write your answer in the comments. A copy duplicates the data. A move hands over the data. Move leaves the old object empty. Do not use an object after you move it. Keep coding, says Xecxec!",
+      "hook": "Can you move a string into a vector in move semantics?",
+      "script": "Can you move a string into a vector in move semantics? Why did the string move out? It wanted its own space, with no copies. Make a string, and push it into a vector of strings with move. Print the vector size. Write your answer in the comments. A copy duplicates the data. A move hands over the data. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

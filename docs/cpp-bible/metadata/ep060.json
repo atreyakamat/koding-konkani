@@ -100,7 +100,7 @@
       ],
       "hook": "A class that owns heap memory needs care.",
       "script": "A class that owns heap memory needs care. The default copy copies the pointer, not the memory. That is a shallow copy. Two objects then share one box, and both try to delete it. The rule of three says: if you write a destructor, a copy constructor or a copy assignment, write all three. The rule of zero is better. Keep coding, says Xecxec!",
-      "onScreen": "RULE OF THREE, FIVE AND ZERO IN ONE MINUTE",
+      "onScreen": "RULE OF THREE, FIVE AND ZERO",
       "caption": "Rule of three, five and zero in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: A copy that was switched off",
-      "lengthSec": 36,
+      "lengthSec": 39,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. The copy constructor is marked equals delete. The compiler says use of deleted function. That is on purpose. It switches a function off. Remove the delete line if the class should be copyable. Writing equals delete switches a function off. The compiler then refuses any code that calls it. Use it when copying makes no sense. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: A COPY THAT WAS SWITCHED OFF",
+      "hook": "Can you spot the bug in the rule of three",
+      "script": "Can you spot the bug in the rule of three, five and zero? Bug of the Day. The copy constructor is marked equals delete. The compiler says use of deleted function. That is on purpose. It switches a function off. Remove the delete line if the class should be copyable. Writing equals delete switches a function off. The compiler then refuses any code that calls it. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: A copy that was switched off.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 39,
+      "lengthSec": 36,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "The programmer said, I will copy my homework. The compiler replied, that is a shallow excuse.",
-      "script": "The programmer said, I will copy my homework. The compiler replied, that is a shallow excuse. Make a class that holds a name and a list of marks. Decide if it needs a destructor. Explain in a comment. Write your answer in the comments. A shallow copy shares memory, and a deep copy makes new memory. If you write a destructor, write the copy functions too. Keep coding, says Xecxec!",
+      "hook": "Can you decide: rule of three or zero in the",
+      "script": "Can you decide: rule of three or zero in the rule of three, five and zero? The programmer said, I will copy my homework. The compiler replied, that is a shallow excuse. Make a class that holds a name and a list of marks. Decide if it needs a destructor. Explain in a comment. Write your answer in the comments. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

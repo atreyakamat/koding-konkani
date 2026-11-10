@@ -100,7 +100,7 @@
       ],
       "hook": "A destructor has a tilde, then the class name.",
       "script": "A destructor has a tilde, then the class name. It has no parameters and no return type. It runs when the object goes out of scope. Use it to free memory, close files and release other resources. Objects die in the reverse order of their birth. Think of a hotel. The last guest to arrive is the first to leave. Keep coding, says Xecxec!",
-      "onScreen": "DESTRUCTORS IN ONE MINUTE",
+      "onScreen": "DESTRUCTORS",
       "caption": "Destructors in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: A destructor with a parameter",
-      "lengthSec": 37,
+      "lengthSec": 36,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. The destructor takes an int. The compiler says destructors may not have parameters. A destructor runs by itself, so nobody could pass an argument. Remove the parameter. Nobody can pass an argument to a destructor, because it runs by itself. A class has exactly one destructor with no parameters. A destructor has a tilde and the class name. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: A DESTRUCTOR WITH A PARAMETER",
+      "hook": "Can you spot the bug in destructors?",
+      "script": "Can you spot the bug in destructors? Bug of the Day. The destructor takes an int. The compiler says destructors may not have parameters. A destructor runs by itself, so nobody could pass an argument. Remove the parameter. Nobody can pass an argument to a destructor, because it runs by itself. A class has exactly one destructor with no parameters. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: A destructor with a parameter.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 37,
+      "lengthSec": 38,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "The destructor never gets invited to the party. It only comes at the end to clean up.",
-      "script": "The destructor never gets invited to the party. It only comes at the end to clean up. Make a class that prints in its constructor and its destructor. Make two objects in main. Predict the output before you run it. Write your answer in the comments. A destructor has a tilde and the class name. It runs when the object dies. Keep coding, says Xecxec!",
+      "hook": "Can you watch the order of destruction in destructors?",
+      "script": "Can you watch the order of destruction in destructors? The destructor never gets invited to the party. It only comes at the end to clean up. Make a class that prints in its constructor and its destructor. Make two objects in main. Predict the output before you run it. Write your answer in the comments. A destructor has a tilde and the class name. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

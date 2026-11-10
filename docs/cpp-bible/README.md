@@ -68,7 +68,7 @@ Edit the data in `scripts/cpp_bible/mNN.py`, not the Markdown. The generator com
 
 1. Run the check on the Windows PC with MSYS2 **GCC 16**. These files were checked with g++ 13. The check compares the `error:` and `warning:` message lines. If GCC 16 words a message in another way, the check shows `BUG-MESSAGE-DIFFERS`. Run `gen.py` again with GCC 16, so the Bible gets the GCC 16 text.
 2. Run `preflight_cpp.py`. It must show 0 errors. Passive-voice warnings do not stop a render.
-3. Run `cpp_bible_export.py`. It must show 0 problems.
+3. Run `cpp_bible_export.py`. It must show 0 problems. It also checks every Short: hook of 12 words or less, on-screen text of 45 characters or less, sign-off at the end, 35 to 45 seconds, and no hook used twice.
 4. Render a pilot episode first, and look at it. Then render by module.
 
 ## Notes

@@ -98,9 +98,9 @@
         2,
         3
       ],
-      "hook": "When you delete an object through a base pointer, the compiler must find the right destructor.",
+      "hook": "When you delete an object through a base pointer",
       "script": "When you delete an object through a base pointer, the compiler must find the right destructor. If the base destructor is not virtual, only the base destructor runs. The derived part is never cleaned. The rule is simple. A class with any virtual function gets a virtual destructor. Think of a cleaning crew. If the manager only knows the lobby, the back room is never cleaned. Keep coding, says Xecxec!",
-      "onScreen": "VIRTUAL DESTRUCTORS IN ONE MINUTE",
+      "onScreen": "VIRTUAL DESTRUCTORS",
       "caption": "Virtual destructors in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: A base destructor that is not virtual",
-      "lengthSec": 38,
+      "lengthSec": 39,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. The class has a virtual function, but the destructor is not virtual. The compiler warns that deleting an object of polymorphic class type might cause undefined behaviour. Only the Animal part would be destroyed. Make the destructor virtual. Delete through a base pointer only runs the base destructor, when it is not virtual. The Dog part is never destroyed. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: A BASE DESTRUCTOR THAT IS NOT VIRTUAL",
+      "hook": "Can you spot the bug in virtual destructors?",
+      "script": "Can you spot the bug in virtual destructors? Bug of the Day. The class has a virtual function, but the destructor is not virtual. The compiler warns that deleting an object of polymorphic class type might cause undefined behaviour. Only the Animal part would be destroyed. Make the destructor virtual. Delete through a base pointer only runs the base destructor, when it is not virtual. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: A base destructor that is not virtual.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 40,
+      "lengthSec": 35,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "Why was the destructor so tired? It had to clean up after the whole family.",
-      "script": "Why was the destructor so tired? It had to clean up after the whole family. Write a base class with one virtual function. Add a virtual destructor. Explain in a comment why it is needed. Write your answer in the comments. Deleting through a base pointer needs a virtual destructor. Without it, only the base destructor runs. A class with a virtual function needs a virtual destructor. Keep coding, says Xecxec!",
+      "hook": "Can you check the rule in virtual destructors?",
+      "script": "Can you check the rule in virtual destructors? Why was the destructor so tired? It had to clean up after the whole family. Write a base class with one virtual function. Add a virtual destructor. Explain in a comment why it is needed. Write your answer in the comments. Deleting through a base pointer needs a virtual destructor. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [

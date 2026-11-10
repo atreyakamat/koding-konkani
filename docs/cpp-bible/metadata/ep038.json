@@ -100,7 +100,7 @@
       ],
       "hook": "A C string is an array of chars.",
       "script": "A C string is an array of chars. The last char is a special null character. It marks the end of the text. The null character has the code zero. The cstring header has helpers. Strlen counts the letters. Strcmp compares two strings. Think of a necklace of letter beads that ends with one blank bead. The compiler counts the letters and makes room for them. Keep coding, says Xecxec!",
-      "onScreen": "C-STYLE STRINGS IN ONE MINUTE",
+      "onScreen": "C-STYLE STRINGS",
       "caption": "C-style strings in one minute.",
       "hashtags": [
         "#cpp",
@@ -133,13 +133,13 @@
     {
       "id": "S4",
       "title": "Bug of the Day: Comparing C strings with equals",
-      "lengthSec": 36,
+      "lengthSec": 35,
       "fromScenes": [
         8
       ],
-      "hook": "Bug of the Day.",
-      "script": "Bug of the Day. Both arrays hold goa, but the test is never true. Two equals signs compare addresses, not letters. The compiler warns that comparing two arrays is deprecated. Use strcmp, or better, use std string. Two equals signs compare the addresses of the two arrays, not their letters. The addresses always differ. Use strcmp, or use std string. Keep coding, says Xecxec!",
-      "onScreen": "BUG OF THE DAY: COMPARING C STRINGS WITH EQUALS",
+      "hook": "Can you spot the bug in C-style strings?",
+      "script": "Can you spot the bug in C-style strings? Bug of the Day. Both arrays hold goa, but the test is never true. Two equals signs compare addresses, not letters. The compiler warns that comparing two arrays is deprecated. Use strcmp, or better, use std string. Two equals signs compare the addresses of the two arrays, not their letters. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
       "caption": "Bug of the Day: Comparing C strings with equals.",
       "hashtags": [
         "#cpp",
@@ -152,13 +152,13 @@
     {
       "id": "S5",
       "title": "Pun and challenge",
-      "lengthSec": 36,
+      "lengthSec": 37,
       "fromScenes": [
         9,
         10
       ],
-      "hook": "Why did the C string feel empty? Its last bead was always null.",
-      "script": "Why did the C string feel empty? Its last bead was always null. Write a loop that counts the letters of a char array, without strlen. Stop at the null character. Write your answer in the comments. A C string is a char array that ends with a null character. Strlen counts the letters. Sizeof counts all the bytes. Keep coding, says Xecxec!",
+      "hook": "Can you count the letters with a loop in C-style strings?",
+      "script": "Can you count the letters with a loop in C-style strings? Why did the C string feel empty? Its last bead was always null. Write a loop that counts the letters of a char array, without strlen. Stop at the null character. Write your answer in the comments. A C string is a char array that ends with a null character. Keep coding, says Xecxec!",
       "onScreen": "PUN AND CHALLENGE",
       "caption": "Pun and challenge.",
       "hashtags": [
