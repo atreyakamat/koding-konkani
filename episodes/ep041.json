@@ -127,7 +127,49 @@
       "sfx": [
         "stamp"
       ],
-      "narration": "Here is how we write it. int marks, square bracket, five, square bracket. This asks C for five int boxes, sitting next to each other in memory. Now the important part. The first box is not number one. It is number zero. So the five boxes are marks zero, marks one, marks two, marks three, and marks four. Size five, last index four. Say it with me: the last index is always size minus one. Remember this, because almost every array bug comes from forgetting it."
+      "narration": "Here is how we write it. int marks, square bracket, five, square bracket. This asks C for five int boxes, sitting next to each other in memory. Now the important part. The first box is not number one. It is number zero. So the five boxes are marks zero, marks one, marks two, marks three, and marks four. Size five, last index four. Say it with me: the last index is always size minus one. Remember this, because almost every array bug comes from forgetting it.",
+      "memory": {
+        "frames": [
+          {
+            "badges": [
+              "size 5, last index 4"
+            ],
+            "groups": [
+              {
+                "name": "marks[5]",
+                "cells": [
+                  {
+                    "value": "78",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "92",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "65",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08"
+                  },
+                  {
+                    "value": "88",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c"
+                  },
+                  {
+                    "value": "71",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -137,7 +179,12 @@
       "onScreen": "ep41_arrays.c types itself",
       "animation": "Line highlights in butter; variable tracker shows marks[] and i",
       "sfx": [],
-      "narration": "Let's read the program. [HL 1] Line one, as always, stdio dot h for printf. [HL 4] Line four creates the array and fills it in one go. int marks five equals, curly brace, 78, 92, 65, 88, 71. [TRACK marks={78,92,65,88,71}] The values go into the boxes in order: 78 into box zero, 92 into box one, and so on. [HL 6] Line six prints marks zero, the first mark: 78. [HL 7] Line seven prints marks four, the last mark: 71. Not marks five. Marks four. [HL 9] Line nine changes a value. marks two equals 70. The 65 in box two is replaced. [TRACK marks={78,92,70,88,71}] Arrays are not frozen; each box is a normal variable. [HL 11] Now line eleven, a for loop, just like Module 4. i starts at zero, and the loop runs while i is less than five. [TRACK i=0] So i takes the values zero, one, two, three, four. [TRACK i=4] Exactly the five valid indexes. [HL 12] Inside, printf shows the index and the value at that index, marks i. The loop counter becomes the locker number. This loop pattern, i from zero while i less than size, is the one you will write a thousand times."
+      "narration": "Let's read the program. [HL 1] Line one, as always, stdio dot h for printf. [HL 4] Line four creates the array and fills it in one go. int marks five equals, curly brace, 78, 92, 65, 88, 71. [TRACK marks={78,92,65,88,71}] The values go into the boxes in order: 78 into box zero, 92 into box one, and so on. [HL 6] Line six prints marks zero, the first mark: 78. [HL 7] Line seven prints marks four, the last mark: 71. Not marks five. Marks four. [HL 9] Line nine changes a value. marks two equals 70. The 65 in box two is replaced. [TRACK marks={78,92,70,88,71}] Arrays are not frozen; each box is a normal variable. [HL 11] Now line eleven, a for loop, just like Module 4. i starts at zero, and the loop runs while i is less than five. [TRACK i=0] So i takes the values zero, one, two, three, four. [TRACK i=4] Exactly the five valid indexes. [HL 12] Inside, printf shows the index and the value at that index, marks i. The loop counter becomes the locker number. This loop pattern, i from zero while i less than size, is the one you will write a thousand times.",
+      "code": {
+        "file": "ep41_arrays.c",
+        "source": "#include <stdio.h>\n\nint main() {\n    int marks[5] = {78, 92, 65, 88, 71};\n\n    printf(\"First mark: %d\\n\", marks[0]);\n    printf(\"Last mark: %d\\n\", marks[4]);\n\n    marks[2] = 70;\n\n    for (int i = 0; i < 5; i++) {\n        printf(\"marks[%d] = %d\\n\", i, marks[i]);\n    }\n    return 0;\n}",
+        "output": "First mark: 78\nLast mark: 71\nmarks[0] = 78\nmarks[1] = 92\nmarks[2] = 70\nmarks[3] = 88\nmarks[4] = 71"
+      }
     },
     {
       "id": 6,
@@ -159,7 +206,188 @@
       "sfx": [
         "stamp"
       ],
-      "narration": "Two quick tricks. If you give fewer values than the size, like int a five equals one comma two, C fills the rest with zeros. So you get 1, 2, 0, 0, 0. And if you give all the values, you can leave the size empty. int b, empty brackets, equals 4, 5, 6. The compiler counts them and makes the size three. But be careful: an array with no starting values at all, inside main, holds random leftover numbers. Always fill it before you read it. And one rule that surprises everyone: you cannot copy a whole array with equals. Write b equals a, and GCC stops with an error: assignment to expression with array type. To copy an array, use a loop and copy it one element at a time: b i equals a i. Remember this; it comes back when we meet structures."
+      "narration": "Two quick tricks. If you give fewer values than the size, like int a five equals one comma two, C fills the rest with zeros. So you get 1, 2, 0, 0, 0. And if you give all the values, you can leave the size empty. int b, empty brackets, equals 4, 5, 6. The compiler counts them and makes the size three. But be careful: an array with no starting values at all, inside main, holds random leftover numbers. Always fill it before you read it. And one rule that surprises everyone: you cannot copy a whole array with equals. Write b equals a, and GCC stops with an error: assignment to expression with array type. To copy an array, use a loop and copy it one element at a time: b i equals a i. Remember this; it comes back when we meet structures.",
+      "memory": {
+        "frames": [
+          {
+            "label": "int a[5] = {1, 2};   int b[] = {4, 5, 6};",
+            "groups": [
+              {
+                "name": "a[5]",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "0",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "b[] (size 3)",
+                "cells": [
+                  {
+                    "value": "4",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f40"
+                  },
+                  {
+                    "value": "5",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f44"
+                  },
+                  {
+                    "value": "6",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f48"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "b = a;   error: assignment to expression with array type",
+            "groups": [
+              {
+                "name": "a[5]",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "0",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "b[] (size 3)",
+                "cells": [
+                  {
+                    "value": "4",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f40"
+                  },
+                  {
+                    "value": "5",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f44"
+                  },
+                  {
+                    "value": "6",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f48"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "copy one box at a time: b[i] = a[i]",
+            "groups": [
+              {
+                "name": "a[5]",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f04"
+                  },
+                  {
+                    "value": "0",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f08",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 3,
+                    "address": "0x7ffd1a2c3f0c",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "0",
+                    "index": 4,
+                    "address": "0x7ffd1a2c3f10",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "b[] (size 3)",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "0x7ffd1a2c3f40",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1,
+                    "address": "0x7ffd1a2c3f44",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "0",
+                    "index": 2,
+                    "address": "0x7ffd1a2c3f48",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 8,

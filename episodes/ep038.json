@@ -122,7 +122,141 @@
       "onScreen": "Two frames: main's boxes x=5, y=9; swap's boxes a, b, temp; values copied across, swapped inside, then swap's frame vanishes",
       "animation": "Copy arrows; swap's frame crumbles with a paper-tear SFX",
       "sfx": [],
-      "narration": "Here's the same thing in memory. main has two boxes, x and y, at their own addresses. When swap is called, C builds a new set of boxes for swap: a, b and temp. The values 5 and 9 are copied across. Notice the arrows go one way only: from main into swap. Inside, a and b swap. When swap ends, its boxes are thrown away. Nothing ever travelled back to x and y. To change x and y themselves, swap would need their addresses, not their values. That's exactly what pointers give us, in EP 55."
+      "narration": "Here's the same thing in memory. main has two boxes, x and y, at their own addresses. When swap is called, C builds a new set of boxes for swap: a, b and temp. The values 5 and 9 are copied across. Notice the arrows go one way only: from main into swap. Inside, a and b swap. When swap ends, its boxes are thrown away. Nothing ever travelled back to x and y. To change x and y themselves, swap would need their addresses, not their values. That's exactly what pointers give us, in EP 55.",
+      "memory": {
+        "frames": [
+          {
+            "label": "main has two boxes, x and y",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "0x7ffd1a2c3f04"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "swap is called: the values 5 and 9 are copied into a and b",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "0x7ffd1a2c3f04"
+                  }
+                ]
+              },
+              {
+                "name": "swap",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "a",
+                    "address": "0x7ffd1a2c3ec0"
+                  },
+                  {
+                    "value": "9",
+                    "name": "b",
+                    "address": "0x7ffd1a2c3ec4"
+                  },
+                  {
+                    "value": "?",
+                    "name": "temp",
+                    "address": "0x7ffd1a2c3ec8"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              },
+              {
+                "from": "0:1",
+                "to": "1:1"
+              }
+            ]
+          },
+          {
+            "label": "inside swap: temp = a; a = b; b = temp;",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "0x7ffd1a2c3f04"
+                  }
+                ]
+              },
+              {
+                "name": "swap",
+                "cells": [
+                  {
+                    "value": "9",
+                    "name": "a",
+                    "address": "0x7ffd1a2c3ec0"
+                  },
+                  {
+                    "value": "5",
+                    "name": "b",
+                    "address": "0x7ffd1a2c3ec4"
+                  },
+                  {
+                    "value": "5",
+                    "name": "temp",
+                    "address": "0x7ffd1a2c3ec8"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "swap ends: its boxes are thrown away; x and y never changed",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "0x7ffd1a2c3f00"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "0x7ffd1a2c3f04"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 6,

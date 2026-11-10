@@ -117,7 +117,57 @@
       "onScreen": "Heap block with no arrows pointing at it; label \"LEAK: nobody can free me\"",
       "animation": "Stack frame vanishes taking its pointer; heap block left floating; slow fade to grey; lonely echo",
       "sfx": [],
-      "narration": "The first ghost you already met in EP 66: the memory leak. A function mallocs a block, then returns without calling free. Its local pointer disappears with its stack frame. Look: the heap block is still there, but no arrow points at it. Nobody knows its address, so nobody can ever free it. It just floats there until the program ends. One leak is small. A leak inside a loop, or in a program that runs for days, eats all your RAM."
+      "narration": "The first ghost you already met in EP 66: the memory leak. A function mallocs a block, then returns without calling free. Its local pointer disappears with its stack frame. Look: the heap block is still there, but no arrow points at it. Nobody knows its address, so nobody can ever free it. It just floats there until the program ends. One leak is small. A leak inside a loop, or in a program that runs for days, eats all your RAM.",
+      "memory": {
+        "frames": [
+          {
+            "label": "malloc inside a function, no free",
+            "groups": [
+              {
+                "name": "leaky() frame",
+                "cells": [
+                  {
+                    "value": "0x5000",
+                    "name": "p"
+                  }
+                ]
+              },
+              {
+                "name": "heap block",
+                "cells": [
+                  {
+                    "value": "?"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          },
+          {
+            "label": "LEAK: the frame is gone, nobody can free me",
+            "badges": [
+              "leak"
+            ],
+            "groups": [
+              {
+                "name": "heap block",
+                "cells": [
+                  {
+                    "value": "?",
+                    "address": "0x5000",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -127,7 +177,74 @@
       "onScreen": "`ticket` at stack holding 0x7000; heap block 101 at 0x7000; after `free(ticket)` block is greyed but arrow remains as a dotted ghost arrow",
       "animation": "Grey wash on free; arrow turns dotted and translucent; ghost \"whoo\"; claw knocks on the grey box, gets garbage",
       "sfx": [],
-      "narration": "The second ghost is the scariest. Here's ticket, a pointer on the stack, pointing at a heap block holding 101. We call free of ticket. The block goes back to the heap. But look at ticket. It still holds the old address. free does not change your pointer. That arrow is now a ghost: it points at memory you no longer own. This is called a dangling pointer. If you read star ticket now, you are knocking on the door of a returned room. You might see 101, you might see garbage, and if the heap has given that memory to someone else, you might even change their data. This is called \"use after free\". It's one of the most common security bugs in real software."
+      "narration": "The second ghost is the scariest. Here's ticket, a pointer on the stack, pointing at a heap block holding 101. We call free of ticket. The block goes back to the heap. But look at ticket. It still holds the old address. free does not change your pointer. That arrow is now a ghost: it points at memory you no longer own. This is called a dangling pointer. If you read star ticket now, you are knocking on the door of a returned room. You might see 101, you might see garbage, and if the heap has given that memory to someone else, you might even change their data. This is called \"use after free\". It's one of the most common security bugs in real software.",
+      "memory": {
+        "frames": [
+          {
+            "label": "ticket points at a block holding 101",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x7000",
+                    "name": "ticket"
+                  }
+                ]
+              },
+              {
+                "name": "heap block",
+                "cells": [
+                  {
+                    "value": "101",
+                    "address": "0x7000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          },
+          {
+            "label": "free(ticket): ticket still holds 0x7000, a dangling pointer",
+            "badges": [
+              "use after free"
+            ],
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x7000",
+                    "name": "ticket",
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "name": "heap block (returned)",
+                "cells": [
+                  {
+                    "value": "101",
+                    "address": "0x7000",
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -137,7 +254,96 @@
       "onScreen": "Same grey block; `free(p)` called a second time; heap ledger shows the same entry twice",
       "animation": "Ledger page tears; alarm; \"double free detected\" banner in tomato",
       "sfx": [],
-      "narration": "The third ghost: double free. You call free of p, and later, by mistake, free of p again. The heap keeps a ledger of what's been returned. Now the same block is being returned twice, which corrupts that ledger. Modern C libraries often catch this and stop the program on purpose, with a message like \"double free detected\". Sometimes they don't, and things go wrong much later."
+      "narration": "The third ghost: double free. You call free of p, and later, by mistake, free of p again. The heap keeps a ledger of what's been returned. Now the same block is being returned twice, which corrupts that ledger. Modern C libraries often catch this and stop the program on purpose, with a message like \"double free detected\". Sometimes they don't, and things go wrong much later.",
+      "memory": {
+        "frames": [
+          {
+            "label": "free(p) the first time: the ledger notes 0x7000",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x7000",
+                    "name": "p"
+                  }
+                ]
+              },
+              {
+                "name": "heap block (returned)",
+                "cells": [
+                  {
+                    "value": "101",
+                    "address": "0x7000",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "ledger of returned blocks",
+                "cells": [
+                  {
+                    "value": "0x7000",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          },
+          {
+            "label": "free(p) again: the same entry twice, the ledger is corrupted",
+            "badges": [
+              "double free"
+            ],
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x7000",
+                    "name": "p"
+                  }
+                ]
+              },
+              {
+                "name": "heap block (returned)",
+                "cells": [
+                  {
+                    "value": "101",
+                    "address": "0x7000",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "ledger of returned blocks",
+                "cells": [
+                  {
+                    "value": "0x7000",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "0x7000",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 6,

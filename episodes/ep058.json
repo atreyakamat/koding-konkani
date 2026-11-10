@@ -114,7 +114,136 @@
       "onScreen": "Left: stack array `town` with 7 boxes M-a-p-u-s-a-\\0. Right: read-only area (grey, padlocked) with B-a-g-a-\\0, and a stack box `beach` (8 bytes) with an arrow to it",
       "animation": "Left letters drop into the stack boxes, copied from a faded literal; right side padlock clicks; arrow draws from `beach`",
       "sfx": [],
-      "narration": "First, remember from EP 45: a string in C is just characters in a row, ending with a special zero character, written backslash zero. Now look at two lines. Line one: char town square brackets equals \"Mapusa\". This creates an array of 7 chars on the stack, six letters plus the backslash zero, and copies the letters into it. town is your own wooden sign. You can change any letter. Line two: const char star beach equals \"Baga\". This time there is no array of our own. The text \"Baga\" is a string literal. The compiler stores it in a special read-only part of memory, shown here in grey with a padlock. beach is just a pointer, eight bytes on the stack, holding the address of the B. So beach points at the government board. You can read it, but you must not change it. The const at the front is our promise that we will not try."
+      "narration": "First, remember from EP 45: a string in C is just characters in a row, ending with a special zero character, written backslash zero. Now look at two lines. Line one: char town square brackets equals \"Mapusa\". This creates an array of 7 chars on the stack, six letters plus the backslash zero, and copies the letters into it. town is your own wooden sign. You can change any letter. Line two: const char star beach equals \"Baga\". This time there is no array of our own. The text \"Baga\" is a string literal. The compiler stores it in a special read-only part of memory, shown here in grey with a padlock. beach is just a pointer, eight bytes on the stack, holding the address of the B. So beach points at the government board. You can read it, but you must not change it. The const at the front is our promise that we will not try.",
+      "memory": {
+        "frames": [
+          {
+            "label": "char town[] = \"Mapusa\": your own wooden sign, you can change letters",
+            "badges": [
+              "7 bytes"
+            ],
+            "groups": [
+              {
+                "name": "char town[] (stack, 7 bytes)",
+                "cells": [
+                  {
+                    "value": "M",
+                    "index": 0
+                  },
+                  {
+                    "value": "a",
+                    "index": 1
+                  },
+                  {
+                    "value": "p",
+                    "index": 2
+                  },
+                  {
+                    "value": "u",
+                    "index": 3
+                  },
+                  {
+                    "value": "s",
+                    "index": 4
+                  },
+                  {
+                    "value": "a",
+                    "index": 5
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "mark": "stop"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "beach points at read-only \"Baga\": read it, never change it",
+            "badges": [
+              "const = our promise"
+            ],
+            "groups": [
+              {
+                "name": "char town[] (stack, 7 bytes)",
+                "cells": [
+                  {
+                    "value": "M",
+                    "index": 0
+                  },
+                  {
+                    "value": "a",
+                    "index": 1
+                  },
+                  {
+                    "value": "p",
+                    "index": 2
+                  },
+                  {
+                    "value": "u",
+                    "index": 3
+                  },
+                  {
+                    "value": "s",
+                    "index": 4
+                  },
+                  {
+                    "value": "a",
+                    "index": 5
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 6,
+                    "mark": "stop"
+                  }
+                ]
+              },
+              {
+                "name": "\"Baga\" (read-only, padlocked)",
+                "cells": [
+                  {
+                    "value": "B",
+                    "index": 0
+                  },
+                  {
+                    "value": "a",
+                    "index": 1
+                  },
+                  {
+                    "value": "g",
+                    "index": 2
+                  },
+                  {
+                    "value": "a",
+                    "index": 3
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 4,
+                    "mark": "stop"
+                  }
+                ]
+              },
+              {
+                "name": "const char *beach (stack, 8 bytes)",
+                "cells": [
+                  {
+                    "value": "addr of B",
+                    "name": "beach"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "2:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -124,7 +253,246 @@
       "onScreen": "Pointer `p` walking B, a, g, a, then stopping at \\0",
       "animation": "Arrow hops one box per step with a footstep; each letter prints below with a dash; red stop sign at \\0",
       "sfx": [],
-      "narration": "Since a string is chars in a row, we can walk it with a char pointer, just like EP 56. p starts at the B. Star p is B. p plus plus, star p is a. Then g. Then a. Next is backslash zero. That's our stop sign. A loop that runs while star p is not backslash zero will visit every letter and stop at the end. This is how printf, strlen and every string function in C really work."
+      "narration": "Since a string is chars in a row, we can walk it with a char pointer, just like EP 56. p starts at the B. Star p is B. p plus plus, star p is a. Then g. Then a. Next is backslash zero. That's our stop sign. A loop that runs while star p is not backslash zero will visit every letter and stop at the end. This is how printf, strlen and every string function in C really work.",
+      "memory": {
+        "frames": [
+          {
+            "label": "p at B : *p = B",
+            "groups": [
+              {
+                "name": "\"Baga\"",
+                "cells": [
+                  {
+                    "value": "B",
+                    "index": 0,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "a",
+                    "index": 1
+                  },
+                  {
+                    "value": "g",
+                    "index": 2
+                  },
+                  {
+                    "value": "a",
+                    "index": 3
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 4,
+                    "mark": "stop"
+                  }
+                ]
+              },
+              {
+                "name": "p",
+                "cells": [
+                  {
+                    "value": "B",
+                    "name": "*p"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "p++ : *p = a",
+            "groups": [
+              {
+                "name": "\"Baga\"",
+                "cells": [
+                  {
+                    "value": "B",
+                    "index": 0
+                  },
+                  {
+                    "value": "a",
+                    "index": 1,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "g",
+                    "index": 2
+                  },
+                  {
+                    "value": "a",
+                    "index": 3
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 4,
+                    "mark": "stop"
+                  }
+                ]
+              },
+              {
+                "name": "p",
+                "cells": [
+                  {
+                    "value": "a",
+                    "name": "*p"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:1"
+              }
+            ]
+          },
+          {
+            "label": "p++ : *p = g",
+            "groups": [
+              {
+                "name": "\"Baga\"",
+                "cells": [
+                  {
+                    "value": "B",
+                    "index": 0
+                  },
+                  {
+                    "value": "a",
+                    "index": 1
+                  },
+                  {
+                    "value": "g",
+                    "index": 2,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "a",
+                    "index": 3
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 4,
+                    "mark": "stop"
+                  }
+                ]
+              },
+              {
+                "name": "p",
+                "cells": [
+                  {
+                    "value": "g",
+                    "name": "*p"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:2"
+              }
+            ]
+          },
+          {
+            "label": "p++ : *p = a",
+            "groups": [
+              {
+                "name": "\"Baga\"",
+                "cells": [
+                  {
+                    "value": "B",
+                    "index": 0
+                  },
+                  {
+                    "value": "a",
+                    "index": 1
+                  },
+                  {
+                    "value": "g",
+                    "index": 2
+                  },
+                  {
+                    "value": "a",
+                    "index": 3,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 4,
+                    "mark": "stop"
+                  }
+                ]
+              },
+              {
+                "name": "p",
+                "cells": [
+                  {
+                    "value": "a",
+                    "name": "*p"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:3"
+              }
+            ]
+          },
+          {
+            "label": "*p is \\0 : the stop sign",
+            "groups": [
+              {
+                "name": "\"Baga\"",
+                "cells": [
+                  {
+                    "value": "B",
+                    "index": 0
+                  },
+                  {
+                    "value": "a",
+                    "index": 1
+                  },
+                  {
+                    "value": "g",
+                    "index": 2
+                  },
+                  {
+                    "value": "a",
+                    "index": 3
+                  },
+                  {
+                    "value": "\\0",
+                    "index": 4,
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "name": "p",
+                "cells": [
+                  {
+                    "value": "\\0",
+                    "name": "*p",
+                    "mark": "stop"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:4"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

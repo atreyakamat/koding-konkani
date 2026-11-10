@@ -1,0 +1,81 @@
+{
+ "ep": 81,
+ "scene": 4,
+ "layout": "miniRows",
+ "note": "six bar rows replay the EP74-80 traces; the counters are these measured numbers",
+ "bibleNote": "The Bible's scorecard and EP79 totals say quick sort has 3 visible swaps + 5 self-swaps; running its own Lomuto code (and counting the rows of its own EP79 table: P1.2, P1.4, P1.6, P2.2) gives 4 visible swaps + 5 self-swaps = 9 swap calls, with 9 comparisons as stated.",
+ "racers": {
+  "bubble": {
+   "comparisons": 14,
+   "moves": 8,
+   "final": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    9
+   ]
+  },
+  "selection": {
+   "comparisons": 15,
+   "moves": 2,
+   "final": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    9
+   ]
+  },
+  "insertion": {
+   "comparisons": 11,
+   "moves": 8,
+   "final": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    9
+   ]
+  },
+  "merge": {
+   "comparisons": 11,
+   "moves": 16,
+   "final": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    9
+   ]
+  },
+  "quick": {
+   "comparisons": 9,
+   "moves": 9,
+   "final": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    9
+   ]
+  },
+  "counting": {
+   "comparisons": 0,
+   "moves": 12,
+   "final": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    9
+   ]
+  }
+ }
+}

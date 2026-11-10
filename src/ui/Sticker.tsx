@@ -1,5 +1,6 @@
 import { palette, brutal } from "../theme/palette";
 import { fonts } from "../theme/fonts";
+import { readableOn } from "../theme/contrast";
 
 export type StickerProps = {
   text: string;
@@ -13,7 +14,7 @@ export type StickerProps = {
 export const Sticker: React.FC<StickerProps> = ({
   text,
   background,
-  color = palette.ink,
+  color = readableOn(background),
   rotateDeg = -6,
   fontSize = 40,
 }) => {

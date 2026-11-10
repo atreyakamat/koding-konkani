@@ -56,9 +56,14 @@ def find_gcc(explicit: str | None) -> Path:
         p = Path(d) / "gcc.exe"
         if p.exists():
             return p
+    # Not MSYS2 UCRT64/mingw64 (those dirs don't exist here): fall back to whatever
+    # `gcc` is on PATH, which covers a native Linux/macOS toolchain.
+    which_gcc = shutil.which("gcc")
+    if which_gcc:
+        return Path(which_gcc)
     sys.exit(
-        "No gcc.exe found in " + ", ".join(DEFAULT_GCC_DIRS) + ". Install MSYS2 UCRT64's "
-        "mingw-w64-ucrt-x86_64-gcc package, or pass --gcc <path to gcc.exe>."
+        "No gcc.exe found in " + ", ".join(DEFAULT_GCC_DIRS) + ", and no gcc on PATH. "
+        "Install MSYS2 UCRT64's mingw-w64-ucrt-x86_64-gcc package, or pass --gcc <path to gcc.exe>."
     )
 
 

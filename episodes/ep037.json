@@ -110,7 +110,119 @@
       "onScreen": "Three boxes: local appears and vanishes with each call; global sits above everything; static stays after the call",
       "animation": "Local box fades in/out with a puff; static box glows lilac",
       "sfx": [],
-      "narration": "A local variable is made inside a function. Its scope is only that function's curly braces. It is created when the function is called and destroyed when the function returns. Call again, and you get a brand-new one. A global variable is made outside all functions, at the top of the file. Every function can use it, and it lives for the whole program. A static local variable is made inside a function with the word static. Its scope is still only that function, but its lifetime is the whole program. It is set up once, and it keeps its value between calls."
+      "narration": "A local variable is made inside a function. Its scope is only that function's curly braces. It is created when the function is called and destroyed when the function returns. Call again, and you get a brand-new one. A global variable is made outside all functions, at the top of the file. Every function can use it, and it lives for the whole program. A static local variable is made inside a function with the word static. Its scope is still only that function, but its lifetime is the whole program. It is set up once, and it keeps its value between calls.",
+      "memory": {
+        "frames": [
+          {
+            "label": "local: made when the function is called",
+            "groups": [
+              {
+                "name": "addFish(5)",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "basket",
+                    "address": "0x7ffd1a2c3f00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "it is destroyed on return; call again and you get a brand-new basket",
+            "groups": [
+              {
+                "name": "addFish(3)",
+                "cells": [
+                  {
+                    "value": "3",
+                    "name": "basket",
+                    "address": "0x7ffd1a2c3f00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "global: made outside every function, it lives for the whole program",
+            "groups": [
+              {
+                "name": "global",
+                "cells": [
+                  {
+                    "value": "8",
+                    "name": "total",
+                    "address": "0x7ffd1a2c3f40"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "static: set up once, keeps its value between calls",
+            "groups": [
+              {
+                "name": "visit(), call 1",
+                "cells": [
+                  {
+                    "value": "1",
+                    "name": "visits",
+                    "address": "0x7ffd1a2c3f60",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "1",
+                    "name": "fresh",
+                    "address": "0x7ffd1a2c3f00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "call 2: visits remembers, fresh starts over",
+            "groups": [
+              {
+                "name": "visit(), call 2",
+                "cells": [
+                  {
+                    "value": "2",
+                    "name": "visits",
+                    "address": "0x7ffd1a2c3f60",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "1",
+                    "name": "fresh",
+                    "address": "0x7ffd1a2c3f00"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "call 3: visits = 3, fresh is a new 1 again",
+            "groups": [
+              {
+                "name": "visit(), call 3",
+                "cells": [
+                  {
+                    "value": "3",
+                    "name": "visits",
+                    "address": "0x7ffd1a2c3f60",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "1",
+                    "name": "fresh",
+                    "address": "0x7ffd1a2c3f00"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

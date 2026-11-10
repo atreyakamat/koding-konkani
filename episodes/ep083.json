@@ -137,7 +137,300 @@
         "thud",
         "whoosh"
       ],
-      "narration": "A stack of five boxes. top starts at minus 1: empty. Push 10: top becomes 0. Push 20, 30, 40, 50: top reaches 4, full. Push 60? No room. That's a stack overflow, and we must refuse it. Now pop: 50 comes out first, the last one in. Then 40, 30, 20, 10. Pop again? Empty. That's stack underflow."
+      "narration": "A stack of five boxes. top starts at minus 1: empty. Push 10: top becomes 0. Push 20, 30, 40, 50: top reaches 4, full. Push 60? No room. That's a stack overflow, and we must refuse it. Now pop: 50 comes out first, the last one in. Then 40, 30, 20, 10. Pop again? Empty. That's stack underflow.",
+      "memory": {
+        "frames": [
+          {
+            "label": "top = -1 : empty",
+            "badges": [
+              "ST1"
+            ],
+            "groups": [
+              {
+                "name": "stack[5]",
+                "cells": [
+                  {
+                    "value": "·",
+                    "index": 0,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 1,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 2,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 3,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 4,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "-1",
+                    "name": "top"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "push 10 : top = 0",
+            "badges": [
+              "ST2"
+            ],
+            "groups": [
+              {
+                "name": "stack[5]",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "index": 1,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 2,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 3,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 4,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "0",
+                    "name": "top"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "push 20, 30, 40, 50 : top = 4, full",
+            "badges": [
+              "ST3"
+            ],
+            "groups": [
+              {
+                "name": "stack[5]",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  },
+                  {
+                    "value": "40",
+                    "index": 3
+                  },
+                  {
+                    "value": "50",
+                    "index": 4,
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "4",
+                    "name": "top"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:4"
+              }
+            ]
+          },
+          {
+            "label": "push 60 ? No room: stack overflow, refuse it",
+            "badges": [
+              "overflow"
+            ],
+            "groups": [
+              {
+                "name": "stack[5]",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  },
+                  {
+                    "value": "40",
+                    "index": 3
+                  },
+                  {
+                    "value": "50",
+                    "index": 4,
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "4",
+                    "name": "top"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:4"
+              }
+            ]
+          },
+          {
+            "label": "pop : 50 comes out first (last in, first out)",
+            "badges": [
+              "ST5"
+            ],
+            "groups": [
+              {
+                "name": "stack[5]",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  },
+                  {
+                    "value": "40",
+                    "index": 3,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "·",
+                    "index": 4,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "3",
+                    "name": "top"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:3"
+              }
+            ]
+          },
+          {
+            "label": "pop 40, 30, 20, 10 ... pop again? Stack underflow",
+            "badges": [
+              "underflow"
+            ],
+            "groups": [
+              {
+                "name": "stack[5]",
+                "cells": [
+                  {
+                    "value": "·",
+                    "index": 0,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 1,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 2,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 3,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 4,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "-1",
+                    "name": "top"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -162,7 +455,303 @@
       "onScreen": "Horizontal ring of 5 boxes, front and rear arrows; steps Q1–Q5",
       "animation": "Enqueue at rear (slide in), dequeue at front (slide out); index 4 wraps to 0 with a curved arrow",
       "sfx": [],
-      "narration": "Now a queue of five boxes. Enqueue 10, 20, 30: they line up from index 0. Dequeue: 10 leaves from the front, and front moves to index 1. Enqueue 40: it goes to index 3. But what happens when we reach the end of the array while there's free space at the start? We wrap around to index 0, like seats on a Ferris wheel. This is called a circular queue."
+      "narration": "Now a queue of five boxes. Enqueue 10, 20, 30: they line up from index 0. Dequeue: 10 leaves from the front, and front moves to index 1. Enqueue 40: it goes to index 3. But what happens when we reach the end of the array while there's free space at the start? We wrap around to index 0, like seats on a Ferris wheel. This is called a circular queue.",
+      "memory": {
+        "frames": [
+          {
+            "label": "enqueue 10, 20, 30 : they line up from index 0",
+            "badges": [
+              "Q1"
+            ],
+            "groups": [
+              {
+                "name": "queue[5] (circular)",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  },
+                  {
+                    "value": "·",
+                    "index": 3,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 4,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "0",
+                    "name": "front"
+                  },
+                  {
+                    "value": "2",
+                    "name": "rear"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              },
+              {
+                "from": "1:1",
+                "to": "0:2"
+              }
+            ]
+          },
+          {
+            "label": "dequeue : 10 leaves from the front, front moves to index 1",
+            "badges": [
+              "Q2"
+            ],
+            "groups": [
+              {
+                "name": "queue[5] (circular)",
+                "cells": [
+                  {
+                    "value": "·",
+                    "index": 0,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  },
+                  {
+                    "value": "·",
+                    "index": 3,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "·",
+                    "index": 4,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1",
+                    "name": "front",
+                    "mark": "hl",
+                    "lost": "0"
+                  },
+                  {
+                    "value": "2",
+                    "name": "rear"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:1"
+              },
+              {
+                "from": "1:1",
+                "to": "0:2"
+              }
+            ]
+          },
+          {
+            "label": "enqueue 40 : it goes to index 3",
+            "badges": [
+              "Q3"
+            ],
+            "groups": [
+              {
+                "name": "queue[5] (circular)",
+                "cells": [
+                  {
+                    "value": "·",
+                    "index": 0,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  },
+                  {
+                    "value": "40",
+                    "index": 3
+                  },
+                  {
+                    "value": "·",
+                    "index": 4,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1",
+                    "name": "front"
+                  },
+                  {
+                    "value": "3",
+                    "name": "rear",
+                    "mark": "hl",
+                    "lost": "2"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:1"
+              },
+              {
+                "from": "1:1",
+                "to": "0:3"
+              }
+            ]
+          },
+          {
+            "label": "Reached the end of the array with free space at the start?",
+            "badges": [
+              "Q4"
+            ],
+            "groups": [
+              {
+                "name": "queue[5] (circular)",
+                "cells": [
+                  {
+                    "value": "·",
+                    "index": 0,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  },
+                  {
+                    "value": "40",
+                    "index": 3
+                  },
+                  {
+                    "value": "·",
+                    "index": 4,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1",
+                    "name": "front"
+                  },
+                  {
+                    "value": "4",
+                    "name": "rear"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:1"
+              },
+              {
+                "from": "1:1",
+                "to": "0:4"
+              }
+            ]
+          },
+          {
+            "label": "Wrap around to index 0, like a Ferris wheel: circular queue",
+            "badges": [
+              "Q5"
+            ],
+            "groups": [
+              {
+                "name": "queue[5] (circular)",
+                "cells": [
+                  {
+                    "value": "·",
+                    "index": 0,
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  },
+                  {
+                    "value": "40",
+                    "index": 3
+                  },
+                  {
+                    "value": "·",
+                    "index": 4,
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1",
+                    "name": "front"
+                  },
+                  {
+                    "value": "0",
+                    "name": "rear",
+                    "mark": "hl",
+                    "lost": "4"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:1"
+              },
+              {
+                "from": "1:1",
+                "to": "0:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 7,

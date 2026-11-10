@@ -47,6 +47,10 @@ export const AlgorithmBars: React.FC<AlgorithmBarsProps> = ({
 
   const comparesSoFar = trace.slice(0, stepIndex + 1).filter((s) => s.compare).length;
   const swapsSoFar = trace.slice(0, stepIndex + 1).filter((s) => s.swap).length;
+  // Step labels like "1.2" (pass.step) mean a sorting pass. A trace with neither passes nor swaps
+  // (max/min scan, linear and binary search) just counts checks, so "Pass N" and "Swaps" are hidden.
+  const hasPasses = trace.some((s) => String(s.step).includes("."));
+  const isScan = !hasPasses && !trace.some((s) => s.swap);
   const passLabel = typeof step.step === "string" ? step.step.split(".")[0] : String(step.step);
 
   return (
@@ -60,13 +64,18 @@ export const AlgorithmBars: React.FC<AlgorithmBarsProps> = ({
     >
       <AbsoluteFill style={{ padding: 96 }}>
         <div style={{ display: "flex", gap: 20, marginBottom: 32 }}>
+          {hasPasses ? (
+            <Chip
+              text={`Pass ${passLabel}`}
+              background={colours.accent}
+              color={readableOn(colours.accent)}
+            />
+          ) : null}
           <Chip
-            text={`Pass ${passLabel}`}
-            background={colours.accent}
-            color={readableOn(colours.accent)}
+            text={`${isScan ? "Checks" : "Compares"}: ${comparesSoFar}`}
+            background={palette.white}
           />
-          <Chip text={`Compares: ${comparesSoFar}`} background={palette.white} />
-          <Chip text={`Swaps: ${swapsSoFar}`} background={palette.white} />
+          {isScan ? null : <Chip text={`Swaps: ${swapsSoFar}`} background={palette.white} />}
         </div>
 
         <svg

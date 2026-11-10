@@ -118,7 +118,96 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Let's build it one box at a time. First, an int called bus, at address 1000, holding 42. Next, a pointer p, at address 2000. p holds 1000, so it points to bus. You know this from EP 53. Now remember: p is also a variable. It lives in its own box, at 2000. So we can take its address too: ampersand p is 2000. To store that, we need a pointer to a pointer to an int. We write int star star pp. Two stars. pp lives at 3000 and holds 2000. So pp points to p, and p points to bus. A chain of two arrows."
+      "narration": "Let's build it one box at a time. First, an int called bus, at address 1000, holding 42. Next, a pointer p, at address 2000. p holds 1000, so it points to bus. You know this from EP 53. Now remember: p is also a variable. It lives in its own box, at 2000. So we can take its address too: ampersand p is 2000. To store that, we need a pointer to a pointer to an int. We write int star star pp. Two stars. pp lives at 3000 and holds 2000. So pp points to p, and p points to bus. A chain of two arrows.",
+      "memory": {
+        "frames": [
+          {
+            "label": "int bus = 42 at 1000",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "42",
+                    "name": "bus",
+                    "address": "1000"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "p holds 1000: p points to bus",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "42",
+                    "name": "bus",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "int **pp holds 2000: pp points to p",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "42",
+                    "name": "bus",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "2000",
+                    "name": "pp",
+                    "address": "3000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              },
+              {
+                "from": "2:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -128,7 +217,140 @@
       "onScreen": "Same chain; labels `pp` = 2000, `*pp` = 1000, `**pp` = 42",
       "animation": "A glowing claw follows one arrow for `*pp` (one knock), then both for `**pp` (two knocks); knock SFX per hop",
       "sfx": [],
-      "narration": "Now let's read the chain slowly. pp alone is 2000, the address of p. Star pp means: follow one arrow. We knock on p's door and find 1000. So star pp is the same as p. Star star pp means: follow two arrows. First to p, then to bus. We find 42. Each star is one knock, one hop along the chain. Count the stars, count the hops."
+      "narration": "Now let's read the chain slowly. pp alone is 2000, the address of p. Star pp means: follow one arrow. We knock on p's door and find 1000. So star pp is the same as p. Star star pp means: follow two arrows. First to p, then to bus. We find 42. Each star is one knock, one hop along the chain. Count the stars, count the hops.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "42",
+                    "name": "bus",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "2000",
+                    "name": "pp",
+                    "address": "3000",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              },
+              {
+                "from": "2:0",
+                "to": "1:0"
+              }
+            ],
+            "label": "pp alone = 2000, the address of p"
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "42",
+                    "name": "bus",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000",
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "2000",
+                    "name": "pp",
+                    "address": "3000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              },
+              {
+                "from": "2:0",
+                "to": "1:0"
+              }
+            ],
+            "label": "*pp : one hop, lands on p = 1000"
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "42",
+                    "name": "bus",
+                    "address": "1000",
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "2000",
+                    "name": "pp",
+                    "address": "3000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              },
+              {
+                "from": "2:0",
+                "to": "1:0"
+              }
+            ],
+            "label": "**pp : two hops, lands on bus = 42"
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -138,7 +360,12 @@
       "onScreen": "`double.c` (21 lines); tracker: bus, p, pp, q",
       "animation": "Butter highlights; corner chain diagram updates; `q` box appears with a NULL sign",
       "sfx": [],
-      "narration": "Here is the program. [HL 4] Line 4: bus equals 42. [TRACK bus=42] [HL 5] Line 5: p points to bus. [TRACK p=&bus] [HL 6] Line 6: int star star pp equals ampersand p. pp points to p. [TRACK pp=&p] [HL 8] Line 8 prints bus: 42. [HL 9] Line 9 prints star p, one hop: 42. [HL 10] Line 10 prints star star pp, two hops: also 42. [HL 12] Line 12: star star pp equals 50. Two hops, then write. [TRACK bus=50] We changed bus through two arrows. [HL 13] Line 13 prints bus: 50. [HL 15] Now line 15, a new idea. int star q equals NULL. NULL is a special pointer value that means \"points nowhere\". It is like a pin box that says \"no location set\". [TRACK q=NULL] It is the safe opposite of the garbage pointer from EP 53. A garbage pointer points somewhere random. A NULL pointer clearly points nowhere, and we can check for it. NULL comes from stdio dot h, and from other standard headers too. [HL 16] Line 16: if q equals equals NULL. [HL 17] Line 17 prints a message, and we do not touch star q. [HL 19] Line 19 returns zero."
+      "narration": "Here is the program. [HL 4] Line 4: bus equals 42. [TRACK bus=42] [HL 5] Line 5: p points to bus. [TRACK p=&bus] [HL 6] Line 6: int star star pp equals ampersand p. pp points to p. [TRACK pp=&p] [HL 8] Line 8 prints bus: 42. [HL 9] Line 9 prints star p, one hop: 42. [HL 10] Line 10 prints star star pp, two hops: also 42. [HL 12] Line 12: star star pp equals 50. Two hops, then write. [TRACK bus=50] We changed bus through two arrows. [HL 13] Line 13 prints bus: 50. [HL 15] Now line 15, a new idea. int star q equals NULL. NULL is a special pointer value that means \"points nowhere\". It is like a pin box that says \"no location set\". [TRACK q=NULL] It is the safe opposite of the garbage pointer from EP 53. A garbage pointer points somewhere random. A NULL pointer clearly points nowhere, and we can check for it. NULL comes from stdio dot h, and from other standard headers too. [HL 16] Line 16: if q equals equals NULL. [HL 17] Line 17 prints a message, and we do not touch star q. [HL 19] Line 19 returns zero.",
+      "code": {
+        "file": "double.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int bus = 42;\n    int *p = &bus;\n    int **pp = &p;\n\n    printf(\"bus   = %d\\n\", bus);\n    printf(\"*p    = %d\\n\", *p);\n    printf(\"**pp  = %d\\n\", **pp);\n\n    **pp = 50;\n    printf(\"After **pp = 50, bus = %d\\n\", bus);\n\n    int *q = NULL;\n    if (q == NULL) {\n        printf(\"q points nowhere, so we do not touch it.\\n\");\n    }\n    return 0;\n}",
+        "output": "bus   = 42\n*p    = 42\n**pp  = 42\nAfter **pp = 50, bus = 50\nq points nowhere, so we do not touch it."
+      }
     },
     {
       "id": 6,
@@ -172,7 +399,144 @@
       "sfx": [
         "ding"
       ],
-      "narration": "Why would anyone need two stars? Here's a real reason. In EP 55, to let a function change an int, we passed a pointer to the int. Now suppose a function needs to change a pointer, to make it point somewhere new. Then we must pass a pointer to that pointer. Look at this function, point_to_bigger. main has x equals 12, y equals 30, and a pointer big, set to NULL. main calls point_to_bigger of ampersand big, ampersand x, ampersand y. Inside, slot is an int star star. It points at big, back in main's frame. a points to x, b points to y. Star a is 12, star b is 30. 30 is bigger, so the function does star slot equals b. Follow slot's arrow to big, and store b's address there. Now main's big points at y. Back in main, we check big is not NULL, and print star big: 30. Same rule as EP 55: to change something, send its address. Even if that something is a pointer."
+      "narration": "Why would anyone need two stars? Here's a real reason. In EP 55, to let a function change an int, we passed a pointer to the int. Now suppose a function needs to change a pointer, to make it point somewhere new. Then we must pass a pointer to that pointer. Look at this function, point_to_bigger. main has x equals 12, y equals 30, and a pointer big, set to NULL. main calls point_to_bigger of ampersand big, ampersand x, ampersand y. Inside, slot is an int star star. It points at big, back in main's frame. a points to x, b points to y. Star a is 12, star b is 30. 30 is bigger, so the function does star slot equals b. Follow slot's arrow to big, and store b's address there. Now main's big points at y. Back in main, we check big is not NULL, and print star big: 30. Same rule as EP 55: to change something, send its address. Even if that something is a pointer.",
+      "memory": {
+        "frames": [
+          {
+            "label": "slot points at big, a at x, b at y",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "12",
+                    "name": "x"
+                  },
+                  {
+                    "value": "30",
+                    "name": "y"
+                  },
+                  {
+                    "value": "NULL",
+                    "name": "big"
+                  }
+                ]
+              },
+              {
+                "name": "point_to_bigger",
+                "cells": [
+                  {
+                    "value": "&big",
+                    "name": "slot"
+                  },
+                  {
+                    "value": "&x",
+                    "name": "a"
+                  },
+                  {
+                    "value": "&y",
+                    "name": "b"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:2"
+              },
+              {
+                "from": "1:1",
+                "to": "0:0"
+              },
+              {
+                "from": "1:2",
+                "to": "0:1"
+              }
+            ]
+          },
+          {
+            "label": "30 is bigger: *slot = b stores &y into big",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "12",
+                    "name": "x"
+                  },
+                  {
+                    "value": "30",
+                    "name": "y"
+                  },
+                  {
+                    "value": "&y",
+                    "name": "big",
+                    "mark": "hl",
+                    "lost": "NULL"
+                  }
+                ]
+              },
+              {
+                "name": "point_to_bigger",
+                "cells": [
+                  {
+                    "value": "&big",
+                    "name": "slot"
+                  },
+                  {
+                    "value": "&x",
+                    "name": "a"
+                  },
+                  {
+                    "value": "&y",
+                    "name": "b"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:2"
+              },
+              {
+                "from": "0:2",
+                "to": "0:1"
+              }
+            ]
+          },
+          {
+            "label": "Back in main: *big = 30",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "12",
+                    "name": "x"
+                  },
+                  {
+                    "value": "30",
+                    "name": "y",
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "&y",
+                    "name": "big"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:2",
+                "to": "0:1"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 9,

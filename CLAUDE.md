@@ -68,7 +68,7 @@ Flat pastel blocks, thick black borders, hard offset shadows, chunky type. No gr
 | ink | #111111 | borders (4–5px), shadows (8px offset), text — accents only |
 | white | #FFFFFF | text on dark — accents only |
 
-Fonts (Google Fonts, load via `@remotion/google-fonts`): **Archivo Black** (titles, all caps), **Space Grotesk** 500/700 (body), **JetBrains Mono** 500/700 (code).
+Fonts: **Archivo Black** (titles, all caps), **Space Grotesk** 500/700 (body), **JetBrains Mono** 500/700 (code). They are Google Fonts but **self-hosted**: the woff2 files live in `audio/fonts/` (the Remotion public dir; licences in `audio/fonts/LICENSES.md`) and are loaded with `@remotion/fonts` `loadFont()` + `staticFile()` in `src/theme/fonts.ts`. Never load them from the network at render time — a DNS blip to fonts.gstatic.com failed a whole batch of renders on 1 Nov 2026.
 
 Module colour pairs (background + accent): M0 peach+tomato · M1 pastelBlue+tomato · M2 cream+apricot · M3 mint+darkBlue · M4 butter+darkBlue · M5 lilac+tomato · M6 peach+darkBlue · M7 pastelBlue+apricot · M8 lilac+darkBlue · M9 cream+tomato · M10 mint+tomato · M11 apricot+darkBlue · M12 darkBlue+butter (bars mint/tomato/pastelBlue) · M13 peach+lilac.
 

@@ -124,10 +124,518 @@
       "template": "algorithm-bars",
       "startSec": 65,
       "lengthSec": 30,
-      "onScreen": "Six mini bar rows sorting {5, 2, 9, 1, 6, 3} side by side, replaying EP 74–80 traces; scorecard below",
+      "onScreen": "One bar row replays bubble sort on {5, 2, 9, 1, 6, 3}; the scorecard below shows the counts for all six sorts",
       "animation": "All six animate in parallel; counters tick",
       "sfx": [],
-      "narration": "First, a warm-up on our familiar six numbers, 5, 2, 9, 1, 6, 3. Here are the exact counts from each episode. Bubble: 14 comparisons. Selection: 15. Insertion and merge: 11. Quick: 9. Counting: zero. With six items, they're all instant. The differences only show up when n gets big."
+      "narration": "First, a warm-up on our familiar six numbers, 5, 2, 9, 1, 6, 3. Here are the exact counts from each episode. Bubble: 14 comparisons. Selection: 15. Insertion and merge: 11. Quick: 9. Counting: zero. With six items, they're all instant. The differences only show up when n gets big.",
+      "trace": [
+        {
+          "step": "start",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "1.1",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            0,
+            1
+          ],
+          "swap": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "1.2",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "1.3",
+          "array": [
+            2,
+            5,
+            1,
+            9,
+            6,
+            3
+          ],
+          "compare": [
+            2,
+            3
+          ],
+          "swap": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "1.4",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            9,
+            3
+          ],
+          "compare": [
+            3,
+            4
+          ],
+          "swap": [
+            3,
+            4
+          ]
+        },
+        {
+          "step": "1.5",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            4,
+            5
+          ],
+          "swap": [
+            4,
+            5
+          ]
+        },
+        {
+          "step": "2.1",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "2.2",
+          "array": [
+            2,
+            1,
+            5,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ],
+          "swap": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "2.3",
+          "array": [
+            2,
+            1,
+            5,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "2.4",
+          "array": [
+            2,
+            1,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            3,
+            4
+          ],
+          "swap": [
+            3,
+            4
+          ]
+        },
+        {
+          "step": "3.1",
+          "array": [
+            1,
+            2,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ],
+          "swap": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "3.2",
+          "array": [
+            1,
+            2,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "3.3",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            2,
+            3
+          ],
+          "swap": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "4.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "4.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "start",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "1.1",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            0,
+            1
+          ],
+          "swap": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "1.2",
+          "array": [
+            2,
+            5,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "1.3",
+          "array": [
+            2,
+            5,
+            1,
+            9,
+            6,
+            3
+          ],
+          "compare": [
+            2,
+            3
+          ],
+          "swap": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "1.4",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            9,
+            3
+          ],
+          "compare": [
+            3,
+            4
+          ],
+          "swap": [
+            3,
+            4
+          ]
+        },
+        {
+          "step": "1.5",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            4,
+            5
+          ],
+          "swap": [
+            4,
+            5
+          ]
+        },
+        {
+          "step": "2.1",
+          "array": [
+            2,
+            5,
+            1,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "2.2",
+          "array": [
+            2,
+            1,
+            5,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ],
+          "swap": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "2.3",
+          "array": [
+            2,
+            1,
+            5,
+            6,
+            3,
+            9
+          ],
+          "compare": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "2.4",
+          "array": [
+            2,
+            1,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            3,
+            4
+          ],
+          "swap": [
+            3,
+            4
+          ]
+        },
+        {
+          "step": "3.1",
+          "array": [
+            1,
+            2,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ],
+          "swap": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "3.2",
+          "array": [
+            1,
+            2,
+            5,
+            3,
+            6,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        },
+        {
+          "step": "3.3",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            2,
+            3
+          ],
+          "swap": [
+            2,
+            3
+          ]
+        },
+        {
+          "step": "4.1",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "4.2",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "compare": [
+            1,
+            2
+          ]
+        }
+      ]
     },
     {
       "id": 5,
@@ -147,11 +655,11 @@
       "onScreen": "showdown.c (139 lines), shown in 3 zoomed chunks: the six sorts collapsed, race() lines 113–122, main lines 124–139; tracker for start, end, ms",
       "animation": "[HL]/[TRACK] cues",
       "sfx": [],
-      "narration": "The six sort functions are the ones from Episodes 74 to 80, with two changes: they all take just the array and n, and merge sort now gets its temp array from malloc, Episode 66, so it can handle ten thousand numbers. [HL 113] race takes the racer's name, a pointer to its sort function, from Episode 60, the original data, a work array, and n. [HL 115] First, memcpy copies the original numbers into work. Every racer starts from the same unsorted data. [HL 116] Start the stopwatch. [TRACK start=ticks] [HL 117] Call the sort through the function pointer. [HL 118] Stop the stopwatch. [TRACK end=ticks] [HL 119] Convert ticks to milliseconds. We write 1000.0, a double, so the division isn't integer division. [TRACK ms=[MEASURED]] [HL 120] Print the name, the time, [HL 121] and check the result really is sorted. A fast sort that gives the wrong answer doesn't win. [HL 125] In main, the arrays are static so ten thousand ints don't sit on the stack, Episode 65. [HL 127] srand of 42: a fixed seed, so every run uses the same numbers and the race is repeatable. [HL 128] Fill the array with random values from 0 to 9999. [HL 132] And run all six races.",
+      "narration": "The six sort functions are the ones from Episodes 74 to 80, with two changes: they all take just the array and n, and merge sort now gets its temp array from malloc, Episode 66, so it can handle ten thousand numbers. [HL 113] race takes the racer's name, a pointer to its sort function, from Episode 60, the original data, a work array, and n. [HL 115] First, memcpy copies the original numbers into work. Every racer starts from the same unsorted data. [HL 116] Start the stopwatch. [TRACK start=ticks] [HL 117] Call the sort through the function pointer. [HL 118] Stop the stopwatch. [TRACK end=ticks] [HL 119] Convert ticks to milliseconds. We write 1000.0, a double, so the division isn't integer division. [TRACK ms=133.66] [HL 120] Print the name, the time, [HL 121] and check the result really is sorted. A fast sort that gives the wrong answer doesn't win. [HL 125] In main, the arrays are static so ten thousand ints don't sit on the stack, Episode 65. [HL 127] srand of 42: a fixed seed, so every run uses the same numbers and the race is repeatable. [HL 128] Fill the array with random values from 0 to 9999. [HL 132] And run all six races.",
       "code": {
         "file": "file1.c",
         "source": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n\n#define N 10000\n#define MAX_VALUE 9999\n\nvoid bubble_sort(int a[], int n) {\n    for (int pass = 0; pass < n - 1; pass++) {\n        int swapped = 0;\n        for (int j = 0; j < n - 1 - pass; j++) {\n            if (a[j] > a[j + 1]) {\n                int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t;\n                swapped = 1;\n            }\n        }\n        if (!swapped)\n            break;\n    }\n}\n\nvoid selection_sort(int a[], int n) {\n    for (int i = 0; i < n - 1; i++) {\n        int min = i;\n        for (int j = i + 1; j < n; j++)\n            if (a[j] < a[min])\n                min = j;\n        int t = a[i]; a[i] = a[min]; a[min] = t;\n    }\n}\n\nvoid insertion_sort(int a[], int n) {\n    for (int i = 1; i < n; i++) {\n        int key = a[i], j = i - 1;\n        while (j >= 0 && a[j] > key) {\n            a[j + 1] = a[j];\n            j--;\n        }\n        a[j + 1] = key;\n    }\n}\n\nvoid merge(int a[], int temp[], int left, int mid, int right) {\n    int i = left, j = mid + 1, k = left;\n    while (i <= mid && j <= right)\n        temp[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];\n    while (i <= mid)   temp[k++] = a[i++];\n    while (j <= right) temp[k++] = a[j++];\n    for (int t = left; t <= right; t++)\n        a[t] = temp[t];\n}\n\nvoid merge_rec(int a[], int temp[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_rec(a, temp, left, mid);\n    merge_rec(a, temp, mid + 1, right);\n    merge(a, temp, left, mid, right);\n}\n\nvoid merge_sort(int a[], int n) {\n    int *temp = malloc(n * sizeof(int));\n    if (temp == NULL)\n        return;\n    merge_rec(a, temp, 0, n - 1);\n    free(temp);\n}\n\nint partition(int a[], int low, int high) {\n    int pivot = a[high], i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (a[j] < pivot) {\n            i++;\n            int t = a[i]; a[i] = a[j]; a[j] = t;\n        }\n    }\n    int t = a[i + 1]; a[i + 1] = a[high]; a[high] = t;\n    return i + 1;\n}\n\nvoid quick_rec(int a[], int low, int high) {\n    if (low < high) {\n        int p = partition(a, low, high);\n        quick_rec(a, low, p - 1);\n        quick_rec(a, p + 1, high);\n    }\n}\n\nvoid quick_sort(int a[], int n) {\n    quick_rec(a, 0, n - 1);\n}\n\nvoid counting_sort(int a[], int n) {\n    static int count[MAX_VALUE + 1];\n    memset(count, 0, sizeof(count));\n    for (int i = 0; i < n; i++)\n        count[a[i]]++;\n    int k = 0;\n    for (int v = 0; v <= MAX_VALUE; v++)\n        while (count[v]-- > 0)\n            a[k++] = v;\n}\n\nint is_sorted(const int a[], int n) {\n    for (int i = 1; i < n; i++)\n        if (a[i - 1] > a[i])\n            return 0;\n    return 1;\n}\n\nvoid race(const char *name, void (*sort)(int[], int),\n          const int original[], int work[], int n) {\n    memcpy(work, original, n * sizeof(int));\n    clock_t start = clock();\n    sort(work, n);\n    clock_t end = clock();\n    double ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;\n    printf(\"%-10s %9.2f ms  %s\\n\", name, ms,\n           is_sorted(work, n) ? \"sorted\" : \"NOT SORTED\");\n}\n\nint main(void) {\n    static int original[N], work[N];\n\n    srand(42);\n    for (int i = 0; i < N; i++)\n        original[i] = rand() % (MAX_VALUE + 1);\n\n    printf(\"Sorting %d random numbers\\n\", N);\n    race(\"Bubble\",    bubble_sort,    original, work, N);\n    race(\"Selection\", selection_sort, original, work, N);\n    race(\"Insertion\", insertion_sort, original, work, N);\n    race(\"Merge\",     merge_sort,     original, work, N);\n    race(\"Quick\",     quick_sort,     original, work, N);\n    race(\"Counting\",  counting_sort,  original, work, N);\n    return 0;\n}",
-        "output": "$ gcc showdown.c -o showdown\n$ ./showdown\nSorting 10000 random numbers\nBubble     [MEASURED] ms  sorted\nSelection  [MEASURED] ms  sorted\nInsertion  [MEASURED] ms  sorted\nMerge      [MEASURED] ms  sorted\nQuick      [MEASURED] ms  sorted\nCounting   [MEASURED] ms  sorted"
+        "output": "$ gcc showdown.c -o showdown\n$ ./showdown\nSorting 10000 random numbers\nBubble        133.66 ms  sorted\nSelection      41.18 ms  sorted\nInsertion      26.88 ms  sorted\nMerge           1.03 ms  sorted\nQuick           0.71 ms  sorted\nCounting        0.10 ms  sorted"
       }
     },
     {
@@ -160,11 +668,11 @@
       "startSec": 230,
       "lengthSec": 60,
       "onScreen": "Live screen recording of `gcc showdown.c -o showdown` and `./showdown` on the reference machine; results drawn as horizontal bars from the real output",
-      "animation": "Bars grow to the measured value; finish-line ding for each; numbers are [MEASURED]",
+      "animation": "Bars grow to the measured value; finish-line ding for each; numbers are the real times from the run",
       "sfx": [
         "ding"
       ],
-      "narration": "Compile and run. Bubble sort: [MEASURED] milliseconds. Selection sort: [MEASURED]. Insertion sort: [MEASURED]. Merge sort: [MEASURED]. Quick sort: [MEASURED]. Counting sort: [MEASURED]. Every result says \"sorted\". These are our laptop's numbers; yours will be different, but the order should look similar."
+      "narration": "Compile and run. Bubble sort: about 134 milliseconds. Selection sort: about 41. Insertion sort: about 27. Merge sort: about 1. Quick sort: under one millisecond. Counting sort: even faster, about a tenth of one. Every result says \"sorted\". These come from one test run on our computer; yours will be different, but the order should look similar."
     },
     {
       "id": 8,
@@ -183,7 +691,7 @@
       "template": "concept-slide",
       "startSec": 295,
       "lengthSec": 55,
-      "onScreen": "Results table with [MEASURED] values; \"10x more data\" prediction column (O(n²) × 100, O(n log n) × ~13, O(n + k) × ~10)",
+      "onScreen": "Results table with the six times (Bubble 133.66 ms down to Counting 0.10 ms); \"10x more data\" prediction column (O(n²) × 100, O(n log n) × ~13, O(n + k) × ~10)",
       "animation": "Prediction arrows animate",
       "sfx": [],
       "narration": "Look at the gap. The three O(n²) sorts are in one group, and the O(n log n) sorts are in a much faster group. Counting sort wins here because our values only go up to 9999, so k is small. Now the prediction: with 100,000 numbers, ten times more, the O(n²) sorts should take about a hundred times longer, the O(n log n) sorts about thirteen times longer, and counting sort about ten times longer. Big-O told us the shape of the race before we ran it. Try it yourself in the challenge."
@@ -223,13 +731,13 @@
   ],
   "bug": {
     "wrong": "void race(const char *name, void (*sort)(int[], int),\n          const int original[], int work[], int n) {\n    clock_t start = clock();\n    sort(work, n);\n    clock_t end = clock();\n    double ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;\n    printf(\"%-10s %9.2f ms  %s\\n\", name, ms,\n           is_sorted(work, n) ? \"sorted\" : \"NOT SORTED\");\n}\n\n/* in main, before the races: */\n    memcpy(work, original, N * sizeof(int));",
-    "error": "GCC warning with `gcc -Wall -Wextra showdown_bug.c -o showdown_bug` (line number depends on the file; none without -Wextra):\n\nshowdown_bug.c: In function 'race':\nshowdown_bug.c:114:21: warning: unused parameter 'original' [-Wunused-parameter]\n  114 |           const int original[], int work[], int n) {\n      |           ~~~~~~~~~~^~~~~~~~~~\n\nWrong behaviour (describe with [MEASURED] values from a recorded run of the buggy file): only Bubble gets random data. Insertion then sorts already-sorted data, its best case, and its time drops to almost nothing; Quick sorts already-sorted data with a last-element pivot, its worst case, and its time jumps up to bubble-sort territory. Every line still says \"sorted\", so the bug is easy to miss.",
-    "fixed": "Wrong behaviour (describe with [MEASURED] values from a recorded run of the buggy file): only Bubble gets random data. Insertion then sorts already-sorted data, its best case, and its time drops to almost nothing; Quick sorts already-sorted data with a last-element pivot, its worst case, and its time jumps up to bubble-sort territory. Every line still says \"sorted\", so the bug is easy to miss.\n\nFixed: put `memcpy(work, original, n * sizeof(int));` back as the first line of race().",
+    "error": "GCC warning with `gcc -Wall -Wextra showdown_bug.c -o showdown_bug` (line number depends on the file; none without -Wextra):\n\nshowdown_bug.c: In function 'race':\nshowdown_bug.c:114:21: warning: unused parameter 'original' [-Wunused-parameter]\n  114 |           const int original[], int work[], int n) {\n      |           ~~~~~~~~~~^~~~~~~~~~\n\nWrong behaviour, from a recorded run of the buggy file: only Bubble gets random data (116.50 ms). Insertion then sorts already-sorted data, its best case, and drops to 0.02 ms; Quick sorts already-sorted data with a last-element pivot, its worst case, and jumps to 78.45 ms, bubble-sort territory. Every line still says \"sorted\", so the bug is easy to miss.",
+    "fixed": "Wrong behaviour, from a recorded run of the buggy file: only Bubble gets random data (116.50 ms). Insertion then sorts already-sorted data, its best case, and drops to 0.02 ms; Quick sorts already-sorted data with a last-element pivot, its worst case, and jumps to 78.45 ms, bubble-sort territory. Every line still says \"sorted\", so the bug is easy to miss.\n\nFixed: put `memcpy(work, original, n * sizeof(int));` back as the first line of race().",
     "why": "each sort runs in place on work, so without a fresh copy every racer after the first is timed on sorted input, which is a different experiment."
   },
   "pun": "Why did bubble sort finish last? It kept stopping to swap stories.",
   "challenge": "Predict the winner when the input is already sorted, then test it: change the fill loop to `original[i] = i;` (and keep MAX_VALUE at least N - 1). Bonus: set N to 100000 and MAX_VALUE to 99999 and check the \"O(n²) gets about 100 times slower\" prediction.",
-  "challengeAnswer": "Predict from Big-O, then confirm with your own [MEASURED] run. On sorted input bubble sort (with its early-exit flag) and insertion sort both hit their O(n) best case, and counting sort stays O(n + k), so these three should lead; selection stays O(n²); merge stays O(n log n); quick sort with the last-element pivot hits its O(n²) worst case. (Caution for the bonus: quick sort on 100,000 sorted numbers recurses about 100,000 deep and may crash with a stack overflow on Windows, which is itself a lesson about bad pivots.)",
+  "challengeAnswer": "Predict from Big-O, then confirm with your own run. On sorted input bubble sort (with its early-exit flag) and insertion sort both hit their O(n) best case, and counting sort stays O(n + k), so these three should lead; selection stays O(n²); merge stays O(n log n); quick sort with the last-element pivot hits its O(n²) worst case. (Caution for the bonus: quick sort on 100,000 sorted numbers recurses about 100,000 deep and may crash with a stack overflow on Windows, which is itself a lesson about bad pivots.)",
   "shorts": [
     {
       "id": "S1",
@@ -332,7 +840,7 @@
     {
       "file": "file1.c",
       "source": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n\n#define N 10000\n#define MAX_VALUE 9999\n\nvoid bubble_sort(int a[], int n) {\n    for (int pass = 0; pass < n - 1; pass++) {\n        int swapped = 0;\n        for (int j = 0; j < n - 1 - pass; j++) {\n            if (a[j] > a[j + 1]) {\n                int t = a[j]; a[j] = a[j + 1]; a[j + 1] = t;\n                swapped = 1;\n            }\n        }\n        if (!swapped)\n            break;\n    }\n}\n\nvoid selection_sort(int a[], int n) {\n    for (int i = 0; i < n - 1; i++) {\n        int min = i;\n        for (int j = i + 1; j < n; j++)\n            if (a[j] < a[min])\n                min = j;\n        int t = a[i]; a[i] = a[min]; a[min] = t;\n    }\n}\n\nvoid insertion_sort(int a[], int n) {\n    for (int i = 1; i < n; i++) {\n        int key = a[i], j = i - 1;\n        while (j >= 0 && a[j] > key) {\n            a[j + 1] = a[j];\n            j--;\n        }\n        a[j + 1] = key;\n    }\n}\n\nvoid merge(int a[], int temp[], int left, int mid, int right) {\n    int i = left, j = mid + 1, k = left;\n    while (i <= mid && j <= right)\n        temp[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];\n    while (i <= mid)   temp[k++] = a[i++];\n    while (j <= right) temp[k++] = a[j++];\n    for (int t = left; t <= right; t++)\n        a[t] = temp[t];\n}\n\nvoid merge_rec(int a[], int temp[], int left, int right) {\n    if (left >= right)\n        return;\n    int mid = left + (right - left) / 2;\n    merge_rec(a, temp, left, mid);\n    merge_rec(a, temp, mid + 1, right);\n    merge(a, temp, left, mid, right);\n}\n\nvoid merge_sort(int a[], int n) {\n    int *temp = malloc(n * sizeof(int));\n    if (temp == NULL)\n        return;\n    merge_rec(a, temp, 0, n - 1);\n    free(temp);\n}\n\nint partition(int a[], int low, int high) {\n    int pivot = a[high], i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (a[j] < pivot) {\n            i++;\n            int t = a[i]; a[i] = a[j]; a[j] = t;\n        }\n    }\n    int t = a[i + 1]; a[i + 1] = a[high]; a[high] = t;\n    return i + 1;\n}\n\nvoid quick_rec(int a[], int low, int high) {\n    if (low < high) {\n        int p = partition(a, low, high);\n        quick_rec(a, low, p - 1);\n        quick_rec(a, p + 1, high);\n    }\n}\n\nvoid quick_sort(int a[], int n) {\n    quick_rec(a, 0, n - 1);\n}\n\nvoid counting_sort(int a[], int n) {\n    static int count[MAX_VALUE + 1];\n    memset(count, 0, sizeof(count));\n    for (int i = 0; i < n; i++)\n        count[a[i]]++;\n    int k = 0;\n    for (int v = 0; v <= MAX_VALUE; v++)\n        while (count[v]-- > 0)\n            a[k++] = v;\n}\n\nint is_sorted(const int a[], int n) {\n    for (int i = 1; i < n; i++)\n        if (a[i - 1] > a[i])\n            return 0;\n    return 1;\n}\n\nvoid race(const char *name, void (*sort)(int[], int),\n          const int original[], int work[], int n) {\n    memcpy(work, original, n * sizeof(int));\n    clock_t start = clock();\n    sort(work, n);\n    clock_t end = clock();\n    double ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;\n    printf(\"%-10s %9.2f ms  %s\\n\", name, ms,\n           is_sorted(work, n) ? \"sorted\" : \"NOT SORTED\");\n}\n\nint main(void) {\n    static int original[N], work[N];\n\n    srand(42);\n    for (int i = 0; i < N; i++)\n        original[i] = rand() % (MAX_VALUE + 1);\n\n    printf(\"Sorting %d random numbers\\n\", N);\n    race(\"Bubble\",    bubble_sort,    original, work, N);\n    race(\"Selection\", selection_sort, original, work, N);\n    race(\"Insertion\", insertion_sort, original, work, N);\n    race(\"Merge\",     merge_sort,     original, work, N);\n    race(\"Quick\",     quick_sort,     original, work, N);\n    race(\"Counting\",  counting_sort,  original, work, N);\n    return 0;\n}",
-      "output": "$ gcc showdown.c -o showdown\n$ ./showdown\nSorting 10000 random numbers\nBubble     [MEASURED] ms  sorted\nSelection  [MEASURED] ms  sorted\nInsertion  [MEASURED] ms  sorted\nMerge      [MEASURED] ms  sorted\nQuick      [MEASURED] ms  sorted\nCounting   [MEASURED] ms  sorted",
+      "output": "$ gcc showdown.c -o showdown\n$ ./showdown\nSorting 10000 random numbers\nBubble        133.66 ms  sorted\nSelection      41.18 ms  sorted\nInsertion      26.88 ms  sorted\nMerge           1.03 ms  sorted\nQuick           0.71 ms  sorted\nCounting        0.10 ms  sorted",
       "lang": "c"
     }
   ],

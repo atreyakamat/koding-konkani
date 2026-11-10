@@ -80,9 +80,7 @@
       "lengthSec": 15,
       "onScreen": "The number 12 dissolves into four switches 1 1 0 0",
       "animation": "Number shatters into switches with a glass-tinkle SFX; switches flick on/off with clicks; Xecxec's eyes widen, claw-click",
-      "sfx": [
-        "claw-click"
-      ],
+      "sfx": ["claw-click"],
       "narration": "You see the number 12. Your computer sees four tiny switches: on, on, off, off. Computers only see zeroes and ones. Today we learn the operators that flip those switches directly."
     },
     {
@@ -92,11 +90,7 @@
       "lengthSec": 5,
       "onScreen": "EP 18 · BITWISE OPERATORS",
       "animation": "Title stamps in on cream with whoosh + thud; apricot underline wipe",
-      "sfx": [
-        "stamp",
-        "thud",
-        "whoosh"
-      ],
+      "sfx": ["stamp", "thud", "whoosh"],
       "narration": "Bitwise operators."
     },
     {
@@ -107,7 +101,29 @@
       "onScreen": "Four boxes with place values 8 4 2 1; 12 = 1100 and 10 = 1010 built up",
       "animation": "Place-value labels drop in; bits flip to 1 with a click and add up in a running total (8, +4 = 12) with a coin-clink per step",
       "sfx": [],
-      "narration": "First, binary, in one minute. In normal numbers, each place is worth ten times the one on its right: ones, tens, hundreds. In binary, each place is worth two times the one on its right. So with four places, from right to left, they are worth 1, 2, 4 and 8. Each place holds one bit: 0 for off, 1 for on. To read a binary number, add up the places that are on. 1 1 0 0: the 8 is on, the 4 is on. 8 plus 4 is 12. 1 0 1 0: the 8 and the 2. That's 10. An int has more bits than this, usually 32, but the extra ones on the left are all zero here, so four is enough to see what's going on."
+      "narration": "First, binary, in one minute. In normal numbers, each place is worth ten times the one on its right: ones, tens, hundreds. In binary, each place is worth two times the one on its right. So with four places, from right to left, they are worth 1, 2, 4 and 8. Each place holds one bit: 0 for off, 1 for on. To read a binary number, add up the places that are on. 1 1 0 0: the 8 is on, the 4 is on. 8 plus 4 is 12. 1 0 1 0: the 8 and the 2. That's 10. An int has more bits than this, usually 32, but the extra ones on the left are all zero here, so four is enough to see what's going on.",
+      "boxes": [
+        {
+          "name": "8",
+          "value": "1",
+          "address": "0x7ffd70821500"
+        },
+        {
+          "name": "4",
+          "value": "1",
+          "address": "0x7ffd70821501"
+        },
+        {
+          "name": "2",
+          "value": "0",
+          "address": "0x7ffd70821502"
+        },
+        {
+          "name": "1",
+          "value": "0",
+          "address": "0x7ffd70821503"
+        }
+      ]
     },
     {
       "id": 4,
@@ -126,9 +142,7 @@
       "lengthSec": 75,
       "onScreen": "bit.c with tracker (a, b) and mini terminal",
       "animation": "[HL n] per line; [TRACK] a=12, b=10; each result drops into terminal with a ding and its binary form shown small beside it",
-      "sfx": [
-        "ding"
-      ],
+      "sfx": ["ding"],
       "narration": "Let's run it. [HL 4] unsigned int a equals 12, with a comment showing its bits. [TRACK a=12] We use unsigned, from EP 9, because bit tricks are simplest without negative numbers. [HL 5] unsigned int b equals 10. [TRACK b=10] [HL 7] a and b. We print it with percent u, the slot for an unsigned int. It prints 8. [HL 8] a or b: 14. [HL 9] a XOR b: 6. [HL 10] a shift-left 1: 24. We'll see why in a second. [HL 11] a shift-right 2: 3. [HL 12] And tilde a, AND 15. Tilde flips all 32 bits of a, which makes a huge number. Then AND 15, which is 1 1 1 1, keeps only the last four bits: 0 0 1 1. So it prints 3.",
       "code": {
         "file": "bit.c",
@@ -143,11 +157,35 @@
       "lengthSec": 30,
       "onScreen": "1100 slides left to 11000 (24) and right by 2 to 0011 (3)",
       "animation": "Bits slide with a whoosh; new 0 enters from the right with a pop; bits falling off the right edge drop into the sea with a splash SFX",
-      "sfx": [
-        "pop",
-        "whoosh"
-      ],
-      "narration": "Shifting slides every bit sideways. Shift-left by 1 moves all the bits one place to the left, and a new zero fills in on the right. 1 1 0 0 becomes 1 1 0 0 0, which is 24. Every shift left doubles the number. Shift-right by 2 moves the bits two places to the right; the two bits on the right edge fall off into the sea. 1 1 0 0 becomes 1 1, which is 3. Every shift right halves the number, throwing away any remainder, just like integer division in EP 15."
+      "sfx": ["pop", "whoosh"],
+      "narration": "Shifting slides every bit sideways. Shift-left by 1 moves all the bits one place to the left, and a new zero fills in on the right. 1 1 0 0 becomes 1 1 0 0 0, which is 24. Every shift left doubles the number. Shift-right by 2 moves the bits two places to the right; the two bits on the right edge fall off into the sea. 1 1 0 0 becomes 1 1, which is 3. Every shift right halves the number, throwing away any remainder, just like integer division in EP 15.",
+      "boxes": [
+        {
+          "name": "16",
+          "value": "1",
+          "address": "0x7ffd70821600"
+        },
+        {
+          "name": "8",
+          "value": "1",
+          "address": "0x7ffd70821601"
+        },
+        {
+          "name": "4",
+          "value": "0",
+          "address": "0x7ffd70821602"
+        },
+        {
+          "name": "2",
+          "value": "0",
+          "address": "0x7ffd70821603"
+        },
+        {
+          "name": "1",
+          "value": "0",
+          "address": "0x7ffd70821604"
+        }
+      ]
     },
     {
       "id": 7,
@@ -156,9 +194,7 @@
       "lengthSec": 55,
       "onScreen": "flags.c with a board of 4 beach-shack lights numbered 3 2 1 0",
       "animation": "[HL n] per line; [TRACK lights] shows decimal and binary; matching bulb lights up or goes dark with a click; mask (1u << 1) appears as a stencil sliding over the board",
-      "sfx": [
-        "ding"
-      ],
+      "sfx": ["ding"],
       "narration": "So why would anyone need this? Imagine a beach shack with four lights, numbered 3, 2, 1, 0 from left to right. One number can store all four as bits. [HL 4] lights equals 5. 5 is 0 1 0 1, so lights 0 and 2 are on. [TRACK lights=5 (0101)] [HL 6] Is light 2 on? Shift lights right by 2, so bit 2 lands at the end, then AND 1 to keep only that last bit. It prints 1. On. [HL 7] Light 1: shift by 1, AND 1. It prints 0. Off. [HL 9] Now switch light 1 on. 1u shift-left 1 makes a mask, 0 0 1 0, with only bit 1 on. The u just makes the 1 unsigned. OR with the mask turns that bit on and leaves the others alone. [TRACK lights=7 (0111)] [HL 10] It prints 7. [HL 12] Now switch light 0 off. The mask 1u shift-left 0 is 0 0 0 1. Tilde flips it so every bit is 1 except bit 0. AND with that clears bit 0 and keeps everything else. [TRACK lights=6 (0110)] [HL 13] It prints 6. Check, set, clear: that's how settings, permissions and hardware pins are stored in real programs.",
       "code": {
         "file": "flags.c",
@@ -173,9 +209,7 @@
       "lengthSec": 4,
       "onScreen": "\"There are 10 kinds of people: those who understand binary and those who don't.\"",
       "animation": "Card flips, rimshot; Xecxec counts on two claws",
-      "sfx": [
-        "rimshot"
-      ],
+      "sfx": ["rimshot"],
       "narration": "There are 10 kinds of people in the world. Those who understand binary, and those who don't."
     },
     {
@@ -185,10 +219,7 @@
       "lengthSec": 50,
       "onScreen": "board.c: `hasTicket & hasSeat` with 2 and 1 prints 0",
       "animation": "Butter banner + siren blip; 10 and 01 stack, no column matches, result 00 in tomato with a buzzer; second & slides in, result 1 in mint with a ding",
-      "sfx": [
-        "buzzer",
-        "ding"
-      ],
+      "sfx": ["buzzer", "ding"],
       "narration": "Today's bug mixes up single and double ampersand. [HL 4] hasTicket is 2, [HL 5] hasSeat is 1. In C, any non-zero number counts as true, so both are true. [HL 7] We want: can you board? But we wrote a single ampersand. It prints 0. No error, no warning. Why? Single ampersand works on bits. 2 is 1 0. 1 is 0 1. No column has a 1 in both, so the answer is 0 0: zero, false. Double ampersand is the logical AND from EP 16. It only asks: is each side non-zero? Both are, so it gives 1. For true-or-false questions, always use double ampersand. Save the single one for bits."
     },
     {
@@ -208,9 +239,7 @@
       "lengthSec": 21,
       "onScreen": "Next: EP 19 · Precedence & the ternary + subscribe",
       "animation": "Next card slides up; Xecxec waves, claw-click; sign-off types in",
-      "sfx": [
-        "claw-click"
-      ],
+      "sfx": ["claw-click"],
       "narration": "Next episode: why 2 plus 3 times 4 isn't 20, and C's only operator with three parts. Keep coding, says Xecxec!"
     }
   ],
@@ -230,19 +259,10 @@
       "hook": "\"You see 12. Your computer sees this.\"",
       "script": "You see 12. Your computer sees four switches: on, on, off, off. 1 1 0 0. Every number is just switches. And C has operators that flip them one at a time. They're called bitwise operators. Full episode on the channel.",
       "onScreen": "12 = 1100",
-      "fromScenes": [
-        1,
-        2
-      ],
+      "fromScenes": [1, 2],
       "lengthSec": 20,
       "caption": "Every number is secretly a row of switches.",
-      "hashtags": [
-        "cprogramming",
-        "binary",
-        "learntocode",
-        "kodingkonkani",
-        "computerscience"
-      ]
+      "hashtags": ["cprogramming", "binary", "learntocode", "kodingkonkani", "computerscience"]
     },
     {
       "id": "S2",
@@ -250,18 +270,10 @@
       "hook": "\"12 AND 10 is 8. Here's why.\"",
       "script": "12 AND 10 is 8. Here's why. 12 is 1 1 0 0. 10 is 1 0 1 0. Compare column by column. AND keeps a 1 only where both are 1: 1 0 0 0, which is 8. OR keeps a 1 where either is 1: 1 1 1 0, 14. XOR keeps a 1 where they differ: 0 1 1 0, 6.",
       "onScreen": "& BOTH · | EITHER · ^ DIFFERENT",
-      "fromScenes": [
-        4
-      ],
+      "fromScenes": [4],
       "lengthSec": 40,
       "caption": "Bitwise AND, OR and XOR, column by column.",
-      "hashtags": [
-        "cprogramming",
-        "binary",
-        "kodingkonkani",
-        "learntocode",
-        "codingtips"
-      ]
+      "hashtags": ["cprogramming", "binary", "kodingkonkani", "learntocode", "codingtips"]
     },
     {
       "id": "S3",
@@ -269,18 +281,10 @@
       "hook": "\"Both are true. C says false.\"",
       "script": "Both are true. C says false. hasTicket is 2 and hasSeat is 1, both non-zero, both true. But we wrote a single ampersand. That's bitwise AND: 1 0 and 0 1 share no bits, so the answer is 0. Use double ampersand for true-or-false questions.",
       "onScreen": "2 & 1 = 0 · 2 && 1 = 1",
-      "fromScenes": [
-        9
-      ],
+      "fromScenes": [9],
       "lengthSec": 25,
       "caption": "One missing & and your logic breaks.",
-      "hashtags": [
-        "cprogramming",
-        "debugging",
-        "kodingkonkani",
-        "learntocode",
-        "codingtips"
-      ]
+      "hashtags": ["cprogramming", "debugging", "kodingkonkani", "learntocode", "codingtips"]
     },
     {
       "id": "S4",
@@ -288,18 +292,10 @@
       "hook": "\"There are 10 kinds of people.\"",
       "script": "There are 10 kinds of people in the world. Those who understand binary, and those who don't.",
       "onScreen": "10 = TWO (IN BINARY)",
-      "fromScenes": [
-        8
-      ],
+      "fromScenes": [8],
       "lengthSec": 12,
       "caption": "If you laughed, you're one of the 10.",
-      "hashtags": [
-        "programmerhumor",
-        "binary",
-        "cprogramming",
-        "kodingkonkani",
-        "codingmemes"
-      ]
+      "hashtags": ["programmerhumor", "binary", "cprogramming", "kodingkonkani", "codingmemes"]
     },
     {
       "id": "S5",
@@ -307,18 +303,10 @@
       "hook": "\"12 shifted left by one. What do you get?\"",
       "script": "12 shifted left by one. What do you get? 6? 13? 24? Comment your answer. Answer: 24. 1 1 0 0 slides left to 1 1 0 0 0. Every shift left doubles the number.",
       "onScreen": "12 << 1 = ?",
-      "fromScenes": [
-        6
-      ],
+      "fromScenes": [6],
       "lengthSec": 20,
       "caption": "Halve it, double it, or add one? Comment first.",
-      "hashtags": [
-        "cprogramming",
-        "codingquiz",
-        "binary",
-        "kodingkonkani",
-        "learntocode"
-      ]
+      "hashtags": ["cprogramming", "codingquiz", "binary", "kodingkonkani", "learntocode"]
     }
   ],
   "codeFiles": [

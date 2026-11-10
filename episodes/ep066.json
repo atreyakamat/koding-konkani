@@ -113,7 +113,59 @@
       "onScreen": "Stack: `n` = 3, `marks` (pointer). Heap: a 12-byte block at 0x5000 split into three 4-byte boxes; label \"n * sizeof(int) = 3 * 4 = 12 bytes\"",
       "animation": "Formula types out; block drops into the heap; arrow draws from `marks` to the first box",
       "sfx": [],
-      "narration": "Last episode, we used malloc for one int. Today, a whole array, with a size we only learn while the program is running. Say the user types 3 students. malloc does not understand \"3 ints\". It only understands bytes. So we calculate: n times sizeof int. 3 times 4 is 12 bytes. malloc finds 12 free bytes in the heap, say at 0x5000, and returns that address. We store it in a pointer called marks. Now look closely: the heap block is three int boxes in a row, and marks points to the first one. That's exactly what an array looks like from EP 57. So we can write marks square bracket i, just like a normal array."
+      "narration": "Last episode, we used malloc for one int. Today, a whole array, with a size we only learn while the program is running. Say the user types 3 students. malloc does not understand \"3 ints\". It only understands bytes. So we calculate: n times sizeof int. 3 times 4 is 12 bytes. malloc finds 12 free bytes in the heap, say at 0x5000, and returns that address. We store it in a pointer called marks. Now look closely: the heap block is three int boxes in a row, and marks points to the first one. That's exactly what an array looks like from EP 57. So we can write marks square bracket i, just like a normal array.",
+      "memory": {
+        "frames": [
+          {
+            "label": "n * sizeof(int) = 3 * 4 = 12 bytes",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "3",
+                    "name": "n"
+                  },
+                  {
+                    "value": "0x5000",
+                    "name": "marks"
+                  }
+                ]
+              },
+              {
+                "name": "heap block",
+                "ruler": {
+                  "each": "4 bytes",
+                  "total": "12 bytes"
+                },
+                "cells": [
+                  {
+                    "value": "?",
+                    "index": 0,
+                    "address": "0x5000"
+                  },
+                  {
+                    "value": "?",
+                    "index": 1,
+                    "address": "0x5004"
+                  },
+                  {
+                    "value": "?",
+                    "index": 2,
+                    "address": "0x5008"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:1",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -125,7 +177,157 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Now we fill the boxes: 60, 70, 80. When we're done, we call free of marks. The block goes back to the heap. It's greyed out. But look at marks. It still holds 0x5000! free does not change your pointer. The arrow still points at memory you've returned. That's a trap, and we'll study it in EP 68. So after free, we set marks to NULL. Now the arrow is gone, and nobody can use it by mistake."
+      "narration": "Now we fill the boxes: 60, 70, 80. When we're done, we call free of marks. The block goes back to the heap. It's greyed out. But look at marks. It still holds 0x5000! free does not change your pointer. The arrow still points at memory you've returned. That's a trap, and we'll study it in EP 68. So after free, we set marks to NULL. Now the arrow is gone, and nobody can use it by mistake.",
+      "memory": {
+        "frames": [
+          {
+            "label": "Fill the boxes: 60, 70, 80",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "3",
+                    "name": "n"
+                  },
+                  {
+                    "value": "0x5000",
+                    "name": "marks"
+                  }
+                ]
+              },
+              {
+                "name": "heap block",
+                "ruler": {
+                  "each": "4 bytes",
+                  "total": "12 bytes"
+                },
+                "cells": [
+                  {
+                    "value": "60",
+                    "index": 0,
+                    "address": "0x5000"
+                  },
+                  {
+                    "value": "70",
+                    "index": 1,
+                    "address": "0x5004"
+                  },
+                  {
+                    "value": "80",
+                    "index": 2,
+                    "address": "0x5008"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:1",
+                "to": "1:0"
+              }
+            ]
+          },
+          {
+            "label": "free(marks): block returned, but marks still holds 0x5000",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "3",
+                    "name": "n"
+                  },
+                  {
+                    "value": "0x5000",
+                    "name": "marks"
+                  }
+                ]
+              },
+              {
+                "name": "heap block",
+                "ruler": {
+                  "each": "4 bytes",
+                  "total": "12 bytes"
+                },
+                "cells": [
+                  {
+                    "value": "60",
+                    "index": 0,
+                    "address": "0x5000",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "70",
+                    "index": 1,
+                    "address": "0x5004",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "80",
+                    "index": 2,
+                    "address": "0x5008",
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:1",
+                "to": "1:0"
+              }
+            ]
+          },
+          {
+            "label": "marks = NULL : nobody can use the old address by mistake",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "3",
+                    "name": "n"
+                  },
+                  {
+                    "value": "NULL",
+                    "name": "marks",
+                    "mark": "hl",
+                    "lost": "0x5000"
+                  }
+                ]
+              },
+              {
+                "name": "heap block",
+                "ruler": {
+                  "each": "4 bytes",
+                  "total": "12 bytes"
+                },
+                "cells": [
+                  {
+                    "value": "60",
+                    "index": 0,
+                    "address": "0x5000",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "70",
+                    "index": 1,
+                    "address": "0x5004",
+                    "mark": "zero"
+                  },
+                  {
+                    "value": "80",
+                    "index": 2,
+                    "address": "0x5008",
+                    "mark": "zero"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

@@ -83,7 +83,12 @@
       "onScreen": "`nested.c` with trackers `row`, `seat` and a counter \"prints: n/12\"",
       "animation": "Spotlight moves seat by seat; on each `\\n` the spotlight drops a row",
       "sfx": [],
-      "narration": "[HL 4] Outer loop: for row from 1 to 3. [TRACK row=1] [HL 5] Inner loop: for seat from 1 to 4. [TRACK seat=1] [HL 6] Print R, row, S, seat, and a space. So \"R1S1\". The inner loop continues: seat 2, \"R1S2\". [TRACK seat=2] Seat 3, seat 4. [TRACK seat=4] Now seat becomes 5, the inner check fails, and the inner loop is done. [HL 8] We print a newline, so the cursor goes to the next line. That ends one round of the outer loop. Now row becomes 2. [TRACK row=2] And here's the key: the inner loop starts fresh. seat is created again, starting at 1. [TRACK seat=1] So we print R2S1, R2S2, R2S3, R2S4, then a newline. Same again for row 3. When row becomes 4, the outer check fails and we're done. Twelve prints in total. Inner loop prints across. Outer loop moves down."
+      "narration": "[HL 4] Outer loop: for row from 1 to 3. [TRACK row=1] [HL 5] Inner loop: for seat from 1 to 4. [TRACK seat=1] [HL 6] Print R, row, S, seat, and a space. So \"R1S1\". The inner loop continues: seat 2, \"R1S2\". [TRACK seat=2] Seat 3, seat 4. [TRACK seat=4] Now seat becomes 5, the inner check fails, and the inner loop is done. [HL 8] We print a newline, so the cursor goes to the next line. That ends one round of the outer loop. Now row becomes 2. [TRACK row=2] And here's the key: the inner loop starts fresh. seat is created again, starting at 1. [TRACK seat=1] So we print R2S1, R2S2, R2S3, R2S4, then a newline. Same again for row 3. When row becomes 4, the outer check fails and we're done. Twelve prints in total. Inner loop prints across. Outer loop moves down.",
+      "code": {
+        "file": "nested.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    for (int row = 1; row <= 3; row++) {\n        for (int seat = 1; seat <= 4; seat++) {\n            printf(\"R%dS%d \", row, seat);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+        "output": "R1S1 R1S2 R1S3 R1S4\nR2S1 R2S2 R2S3 R2S4\nR3S1 R3S2 R3S3 R3S4"
+      }
     },
     {
       "id": 5,
@@ -105,7 +110,12 @@
       "sfx": [
         "ding"
       ],
-      "narration": "Nested loops can build tables. [HL 4] Outer loop i from 1 to 5. [HL 5] Inner loop j from 1 to 5. [HL 6] printf percent 4 d, and i times j. Percent 4 d means: print this number using at least 4 character spaces, padded on the left. So every number lines up in neat columns, whether it's 1 or 25. [TRACK i=1 j=1] Row 1: 1, 2, 3, 4, 5. [HL 8] Newline. [TRACK i=2] Row 2: 2, 4, 6, 8, 10. [TRACK i=5 j=5] And row 5 ends with 25. Twenty-five calculations from five lines of code."
+      "narration": "Nested loops can build tables. [HL 4] Outer loop i from 1 to 5. [HL 5] Inner loop j from 1 to 5. [HL 6] printf percent 4 d, and i times j. Percent 4 d means: print this number using at least 4 character spaces, padded on the left. So every number lines up in neat columns, whether it's 1 or 25. [TRACK i=1 j=1] Row 1: 1, 2, 3, 4, 5. [HL 8] Newline. [TRACK i=2] Row 2: 2, 4, 6, 8, 10. [TRACK i=5 j=5] And row 5 ends with 25. Twenty-five calculations from five lines of code.",
+      "code": {
+        "file": "times.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 5; i++) {\n        for (int j = 1; j <= 5; j++) {\n            printf(\"%4d\", i * j);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+        "output": "   1   2   3   4   5\n   2   4   6   8  10\n   3   6   9  12  15\n   4   8  12  16  20\n   5  10  15  20  25"
+      }
     },
     {
       "id": 7,

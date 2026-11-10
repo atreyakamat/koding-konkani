@@ -81,7 +81,12 @@
       "onScreen": "`pyr.c` with trackers `i`, `s`, `k`",
       "animation": "Spaces as dotted boxes, stars in Tomato, row by row; counter shows \"2*i-1 = …\"",
       "sfx": [],
-      "narration": "[HL 4] n equals 5. [HL 6] Outer loop: i from 1 to n. [TRACK i=1] [HL 7] First inner loop: s from 1 to n minus i. That's 4 on row 1. [HL 8] Each time, print one space. [HL 10] Second inner loop: k from 1 to 2 times i minus 1. On row 1 that's 1. [HL 11] Print one star. [HL 13] Then newline. Row 1: four spaces, one star. [TRACK i=2] Row 2: 3 spaces, and 2 times 2 minus 1, 3 stars. [TRACK i=3] Row 3: 2 spaces, 5 stars. [TRACK i=5] Row 5: zero spaces, the s loop doesn't run at all, then 9 stars. And we have a pyramid. Notice the stars grow by 2 each row, one on each side, while the spaces shrink by 1. That's what keeps it centred."
+      "narration": "[HL 4] n equals 5. [HL 6] Outer loop: i from 1 to n. [TRACK i=1] [HL 7] First inner loop: s from 1 to n minus i. That's 4 on row 1. [HL 8] Each time, print one space. [HL 10] Second inner loop: k from 1 to 2 times i minus 1. On row 1 that's 1. [HL 11] Print one star. [HL 13] Then newline. Row 1: four spaces, one star. [TRACK i=2] Row 2: 3 spaces, and 2 times 2 minus 1, 3 stars. [TRACK i=3] Row 3: 2 spaces, 5 stars. [TRACK i=5] Row 5: zero spaces, the s loop doesn't run at all, then 9 stars. And we have a pyramid. Notice the stars grow by 2 each row, one on each side, while the spaces shrink by 1. That's what keeps it centred.",
+      "code": {
+        "file": "pyr.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n\n    for (int i = 1; i <= n; i++) {\n        for (int s = 1; s <= n - i; s++) {\n            printf(\" \");\n        }\n        for (int k = 1; k <= 2 * i - 1; k++) {\n            printf(\"*\");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+        "output": "    *\n   ***\n  *****\n *******\n*********"
+      }
     },
     {
       "id": 5,
@@ -91,7 +96,12 @@
       "onScreen": "`diamond.c`: top half then bottom half",
       "animation": "Pyramid builds, then a mirrored half drops below; shimmer SFX",
       "sfx": [],
-      "narration": "Want a diamond? It's a pyramid with an upside-down pyramid under it. With n equals 4, the top half is our pyramid code. [HL 11] The bottom half uses the same two inner loops, but the outer loop counts down: i from n minus 1 down to 1. Why n minus 1? Because the widest row, 7 stars, is already printed by the top half. We don't want it twice. Top half: 1, 3, 5, 7 stars. Bottom half: 5, 3, 1. A diamond."
+      "narration": "Want a diamond? It's a pyramid with an upside-down pyramid under it. With n equals 4, the top half is our pyramid code. [HL 11] The bottom half uses the same two inner loops, but the outer loop counts down: i from n minus 1 down to 1. Why n minus 1? Because the widest row, 7 stars, is already printed by the top half. We don't want it twice. Top half: 1, 3, 5, 7 stars. Bottom half: 5, 3, 1. A diamond.",
+      "code": {
+        "file": "diamond.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 4;\n\n    for (int i = 1; i <= n; i++) {\n        for (int s = 1; s <= n - i; s++) printf(\" \");\n        for (int k = 1; k <= 2 * i - 1; k++) printf(\"*\");\n        printf(\"\\n\");\n    }\n    for (int i = n - 1; i >= 1; i--) {\n        for (int s = 1; s <= n - i; s++) printf(\" \");\n        for (int k = 1; k <= 2 * i - 1; k++) printf(\"*\");\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+        "output": "   *\n  ***\n *****\n*******\n *****\n  ***\n   *"
+      }
     },
     {
       "id": 6,
@@ -113,7 +123,12 @@
       "onScreen": "`floyd.c` with trackers `i`, `j`, `num`",
       "animation": "`num` tracker keeps rising across rows (never resets), numbers drop into place",
       "sfx": [],
-      "narration": "One more famous exam pattern: Floyd's triangle. [HL 5] int num equals 1, declared outside both loops. [TRACK num=1] [HL 7] Outer loop: i from 1 to n, with n equal to 4. [HL 8] Inner loop: j from 1 to i, the same as our left triangle. [HL 9] printf percent 3 d, num. The 3 makes each number take 3 spaces, so columns line up. [HL 10] num plus plus. Row 1: 1. [TRACK num=2] Row 2: 2, 3. [TRACK num=4] Row 3: 4, 5, 6. Row 4: 7, 8, 9, 10. [TRACK num=11] The key is where num lives. Because it's outside both loops, it never resets. It just keeps counting across rows. If you declared it inside the outer loop, every row would restart at 1."
+      "narration": "One more famous exam pattern: Floyd's triangle. [HL 5] int num equals 1, declared outside both loops. [TRACK num=1] [HL 7] Outer loop: i from 1 to n, with n equal to 4. [HL 8] Inner loop: j from 1 to i, the same as our left triangle. [HL 9] printf percent 3 d, num. The 3 makes each number take 3 spaces, so columns line up. [HL 10] num plus plus. Row 1: 1. [TRACK num=2] Row 2: 2, 3. [TRACK num=4] Row 3: 4, 5, 6. Row 4: 7, 8, 9, 10. [TRACK num=11] The key is where num lives. Because it's outside both loops, it never resets. It just keeps counting across rows. If you declared it inside the outer loop, every row would restart at 1.",
+      "code": {
+        "file": "floyd.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 4;\n    int num = 1;\n\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= i; j++) {\n            printf(\"%3d\", num);\n            num++;\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+        "output": "  1\n  2  3\n  4  5  6\n  7  8  9 10"
+      }
     },
     {
       "id": 8,

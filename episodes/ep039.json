@@ -147,7 +147,137 @@
       "sfx": [
         "pop"
       ],
-      "narration": "How does C keep track of all these waiting calls? With the call stack. Think of a stack of plates. factorial of 4 is called: a new frame, a plate, goes on the stack, holding its own n equals 4. It calls factorial of 3: another plate on top, with its own n equals 3. Then 2. Then 1. Remember EP 37: each call gets its own local variables, so the four n's never mix. Now factorial of 1 hits the base case and returns 1. Its plate comes off. factorial of 2 can now finish: 2 times 1 is 2. Plate off. factorial of 3: 3 times 2 is 6. Plate off. factorial of 4: 4 times 6 is 24. Last plate off, and 24 goes back to main. Going down, we pile up. Coming back, we multiply."
+      "narration": "How does C keep track of all these waiting calls? With the call stack. Think of a stack of plates. factorial of 4 is called: a new frame, a plate, goes on the stack, holding its own n equals 4. It calls factorial of 3: another plate on top, with its own n equals 3. Then 2. Then 1. Remember EP 37: each call gets its own local variables, so the four n's never mix. Now factorial of 1 hits the base case and returns 1. Its plate comes off. factorial of 2 can now finish: 2 times 1 is 2. Plate off. factorial of 3: 3 times 2 is 6. Plate off. factorial of 4: 4 times 6 is 24. Last plate off, and 24 goes back to main. Going down, we pile up. Coming back, we multiply.",
+      "memory": {
+        "frames": [
+          {
+            "label": "factorial(4) is called: a plate goes on the stack with its own n",
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "n = 4",
+                    "name": "factorial(4)",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "it calls factorial(3): another plate on top",
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "n = 4",
+                    "name": "factorial(4)"
+                  },
+                  {
+                    "value": "n = 3",
+                    "name": "factorial(3)",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "then factorial(2)",
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "n = 4",
+                    "name": "factorial(4)"
+                  },
+                  {
+                    "value": "n = 3",
+                    "name": "factorial(3)"
+                  },
+                  {
+                    "value": "n = 2",
+                    "name": "factorial(2)",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "then factorial(1): the base case",
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "n = 4",
+                    "name": "factorial(4)"
+                  },
+                  {
+                    "value": "n = 3",
+                    "name": "factorial(3)"
+                  },
+                  {
+                    "value": "n = 2",
+                    "name": "factorial(2)"
+                  },
+                  {
+                    "value": "n = 1",
+                    "name": "factorial(1)",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "factorial(1) returns 1; factorial(2) returns 2 × 1 = 2; those plates come off",
+            "badges": [
+              "return 1",
+              "return 2"
+            ],
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "n = 4",
+                    "name": "factorial(4)"
+                  },
+                  {
+                    "value": "n = 3",
+                    "name": "factorial(3)",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "3 × 2 = 6, then 4 × 6 = 24: the last plate comes off and 24 goes back to main",
+            "badges": [
+              "return 6",
+              "return 24 to main"
+            ],
+            "groups": [
+              {
+                "name": "call stack (bottom to top)",
+                "cells": [
+                  {
+                    "value": "n = 4",
+                    "name": "factorial(4)",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 7,

@@ -49,7 +49,11 @@
       "onScreen": "Messy fish-board program all jammed together; \"Written by: you, 3 weeks ago\"",
       "animation": "Record scratch; Xecxec covers his eyes",
       "sfx": [],
-      "narration": "Look at this code. Who wrote this mess? Oh. You did. Three weeks ago. Programmers have a saying: future you will hate present you. Today we make sure that doesn't happen."
+      "narration": "Look at this code. Who wrote this mess? Oh. You did. Three weeks ago. Programmers have a saying: future you will hate present you. Today we make sure that doesn't happen.",
+      "code": {
+        "file": "messy.c",
+        "source": "#include <stdio.h>\nint main(void){printf(\"Today's Fish Prices\\n\");\nprintf(\"-------------------\\n\");printf(\"Bangda   : Rs 200\\n\");\n   printf(\"Pomfret  : Rs 900\\n\");\n      printf(\"Prawns   : Rs 600\\n\");return 0;}"
+      }
     },
     {
       "id": 2,
@@ -58,9 +62,7 @@
       "lengthSec": 5,
       "onScreen": "EP 06 · COMMENTS & CLEAN CODE",
       "animation": "Title slams in, whoosh",
-      "sfx": [
-        "whoosh"
-      ],
+      "sfx": ["whoosh"],
       "narration": "Episode six. Comments and clean code."
     },
     {
@@ -70,9 +72,7 @@
       "lengthSec": 35,
       "onScreen": "Last challenge answer; messy vs clean side by side; both print the same output",
       "animation": "Split-screen wipe; two identical outputs appear with ding",
-      "sfx": [
-        "ding"
-      ],
+      "sfx": ["ding"],
       "narration": "Last time, your challenge was to break the program two ways. The missing semicolon is caught by the compiler. The misspelled print gets past the compiler with a warning, then the linker stops it with \"undefined reference\". Well done if you got both. Now, look at these two programs. Left: everything jammed together. Right: neat, spaced, with notes. Compile both. Same output, exactly. The computer does not care how your code looks. But humans do: your teacher, your teammate, and you, next month. Clean code is for people."
     },
     {
@@ -98,7 +98,11 @@
       "onScreen": "Header block comment lines 1–5",
       "animation": "Block brackets `/*` and `*/` pulse in tomato",
       "sfx": [],
-      "narration": "[HL 1] Now the top of the file. Line one: slash star. This opens a multi-line comment. Everything is ignored until star slash, [HL 5] here on line five. The stars at the start of lines two, three and four are just decoration, to make it look tidy. This is called a header comment. It says the file name, what the program does, and where it is from. Every program you write from now on should have one. It's like the name board on a shop. You know what's inside before you walk in."
+      "narration": "[HL 1] Now the top of the file. Line one: slash star. This opens a multi-line comment. Everything is ignored until star slash, [HL 5] here on line five. The stars at the start of lines two, three and four are just decoration, to make it look tidy. This is called a header comment. It says the file name, what the program does, and where it is from. Every program you write from now on should have one. It's like the name board on a shop. You know what's inside before you walk in.",
+      "code": {
+        "file": "fish_board.c",
+        "source": "/*\n * fish_board.c\n * Prints today's price board for a fish stall.\n * Koding Konkani, EP 06\n */\n#include <stdio.h>\n\nint main(void)\n{\n    // Heading for the board\n    printf(\"Today's Fish Prices\\n\");\n    printf(\"-------------------\\n\");\n\n    // One line per fish (price per kg)\n    printf(\"Bangda   : Rs 200\\n\");\n    printf(\"Pomfret  : Rs 900\\n\");\n    printf(\"Prawns   : Rs 600\\n\");\n\n    return 0;  // 0 means the program ended fine\n}"
+      }
     },
     {
       "id": 6,
@@ -117,9 +121,7 @@
       "lengthSec": 4,
       "onScreen": "Pun",
       "animation": "Drum ba-dum, claw-click",
-      "sfx": [
-        "claw-click"
-      ],
+      "sfx": ["claw-click"],
       "narration": "I wrote a joke in a comment. The compiler ignored it. Tough crowd."
     },
     {
@@ -139,10 +141,7 @@
       "lengthSec": 65,
       "onScreen": "Unclosed `/*` swallows code; real GCC errors; fix",
       "animation": "Butter stripe; buzzer; code greys out line by line as the comment \"eats\" it; success chime",
-      "sfx": [
-        "buzzer",
-        "chime"
-      ],
+      "sfx": ["buzzer", "chime"],
       "narration": "Today's bug: the comment that never ends. Here I start a comment with slash star, \"print the price of fish\". But I forgot the star slash. Watch the colours in VS Code: everything below turns comment-coloured. printf is eaten. return zero is eaten. Even the closing brace is eaten. Compile, and GCC says: error, unterminated comment. And then: expected declaration or statement at end of input, because main never got its closing brace. The fix: close it on the same line with star slash, or use slash slash for one-line notes. Rule of thumb: slash slash for short notes, slash star only for blocks."
     },
     {
@@ -162,9 +161,7 @@
       "lengthSec": 17,
       "onScreen": "Next: EP 07 · Variables; sign-off",
       "animation": "Xecxec waves; outro sting",
-      "sfx": [
-        "sting"
-      ],
+      "sfx": ["sting"],
       "narration": "Next episode: variables. We finally store things in memory, like fish in labelled baskets. Keep coding, says Xecxec!"
     }
   ],
@@ -184,19 +181,10 @@
       "hook": "\"Who wrote this mess? Oh. You did.\"",
       "script": "Who wrote this mess? Oh. You did. Three weeks ago. Here's the same program, cleaned up: a header comment, short notes, four-space indents. Same output. But one you can actually read. Clean code is for humans.",
       "onScreen": "SAME OUTPUT · ONE IS READABLE",
-      "fromScenes": [
-        1,
-        3
-      ],
+      "fromScenes": [1, 3],
       "lengthSec": 20,
       "caption": "Future you will thank you.",
-      "hashtags": [
-        "cprogramming",
-        "learntocode",
-        "kodingkonkani",
-        "cleancode",
-        "codingtips"
-      ]
+      "hashtags": ["cprogramming", "learntocode", "kodingkonkani", "cleancode", "codingtips"]
     },
     {
       "id": "S2",
@@ -204,19 +192,10 @@
       "hook": "\"Two ways to write a comment in C.\"",
       "script": "Two ways to write a comment in C. Slash slash: everything after it on that line is ignored. Great for short notes. Slash star, then star slash: everything between them is ignored, even many lines. Great for a header at the top of your file. Comments explain why, not what.",
       "onScreen": "// ONE LINE · /* MANY LINES */",
-      "fromScenes": [
-        4,
-        5
-      ],
+      "fromScenes": [4, 5],
       "lengthSec": 30,
       "caption": "Comments in C, fast.",
-      "hashtags": [
-        "cprogramming",
-        "learntocode",
-        "kodingkonkani",
-        "ctutorial",
-        "coding"
-      ]
+      "hashtags": ["cprogramming", "learntocode", "kodingkonkani", "ctutorial", "coding"]
     },
     {
       "id": "S3",
@@ -224,18 +203,10 @@
       "hook": "\"This comment just ate my whole program.\"",
       "script": "This comment just ate my whole program. I opened it with slash star and forgot star slash. So printf, return, even the closing brace became part of the comment. GCC says: unterminated comment. Fix: close it, or use slash slash for one-line notes.",
       "onScreen": "error: unterminated comment",
-      "fromScenes": [
-        9
-      ],
+      "fromScenes": [9],
       "lengthSec": 30,
       "caption": "Always close your comments.",
-      "hashtags": [
-        "cprogramming",
-        "learntocode",
-        "kodingkonkani",
-        "codingbugs",
-        "gcc"
-      ]
+      "hashtags": ["cprogramming", "learntocode", "kodingkonkani", "codingbugs", "gcc"]
     },
     {
       "id": "S4",
@@ -243,17 +214,10 @@
       "hook": "\"I told the compiler a joke.\"",
       "script": "I wrote a joke in a comment. The compiler ignored it. Tough crowd.",
       "onScreen": "// haha?",
-      "fromScenes": [
-        7
-      ],
+      "fromScenes": [7],
       "lengthSec": 10,
       "caption": "The compiler has no sense of humour.",
-      "hashtags": [
-        "programmingjokes",
-        "cprogramming",
-        "kodingkonkani",
-        "learntocode"
-      ]
+      "hashtags": ["programmingjokes", "cprogramming", "kodingkonkani", "learntocode"]
     },
     {
       "id": "S5",
@@ -261,19 +225,10 @@
       "hook": "\"Does this compile? Yes or no?\"",
       "script": "Does this compile? Slash star, print price, then printf, return zero, closing brace. No star slash anywhere. Yes or no? ... No! The comment never closes, so it swallows everything. GCC: unterminated comment.",
       "onScreen": "YES or NO?",
-      "fromScenes": [
-        8,
-        9
-      ],
+      "fromScenes": [8, 9],
       "lengthSec": 20,
       "caption": "Spot the problem.",
-      "hashtags": [
-        "cprogramming",
-        "cquiz",
-        "kodingkonkani",
-        "learntocode",
-        "gcc"
-      ]
+      "hashtags": ["cprogramming", "cquiz", "kodingkonkani", "learntocode", "gcc"]
     }
   ],
   "codeFiles": [

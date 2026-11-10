@@ -114,7 +114,69 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "You have already seen the stack, in EP 55 and EP 57. Every time a function is called, it gets a stack frame: a box for its local variables. When main starts, its frame goes on the stack, holding room. When main calls visit, visit's frame goes on top, holding local. Like plates stacked on a plate rack. When visit returns, its plate is removed, and local is gone. That's why, in EP 57, returning the address of a local array failed. The stack is very fast, and it cleans itself up. But it is small. On Windows, it's usually just 1 megabyte for the whole program. On Linux, it's usually 8."
+      "narration": "You have already seen the stack, in EP 55 and EP 57. Every time a function is called, it gets a stack frame: a box for its local variables. When main starts, its frame goes on the stack, holding room. When main calls visit, visit's frame goes on top, holding local. Like plates stacked on a plate rack. When visit returns, its plate is removed, and local is gone. That's why, in EP 57, returning the address of a local array failed. The stack is very fast, and it cleans itself up. But it is small. On Windows, it's usually just 1 megabyte for the whole program. On Linux, it's usually 8.",
+      "memory": {
+        "frames": [
+          {
+            "label": "main's frame holds room",
+            "groups": [
+              {
+                "name": "STACK: main",
+                "cells": [
+                  {
+                    "value": "1",
+                    "name": "room"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "visit's frame goes on top: local = 5",
+            "badges": [
+              "stack = fast, small"
+            ],
+            "groups": [
+              {
+                "name": "STACK: main",
+                "cells": [
+                  {
+                    "value": "1",
+                    "name": "room"
+                  }
+                ]
+              },
+              {
+                "name": "STACK: visit (on top)",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "local"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "visit returns: its plate is removed, local is gone",
+            "badges": [
+              "Windows ~1 MB",
+              "Linux ~8 MB"
+            ],
+            "groups": [
+              {
+                "name": "STACK: main",
+                "cells": [
+                  {
+                    "value": "1",
+                    "name": "room"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -126,7 +188,92 @@
       "sfx": [
         "thud"
       ],
-      "narration": "The heap is a separate, much bigger area of memory. Memory on the heap does not belong to any function. It stays until you give it back. To rent a piece, you call malloc, which means \"memory allocate\". You tell it how many bytes you want. malloc finds space in the heap and returns its address. So we store that address in a pointer: here, godown, a stack variable that points to a crate in the heap. Everything you learned in Module 8 now pays off: the heap is only reachable through pointers. When you're done, you call free with that address, and the crate goes back. There's also a third, small area for global variables, which live for the whole program, like global_count. So three places: stack for locals, heap for what you malloc, and the global area."
+      "narration": "The heap is a separate, much bigger area of memory. Memory on the heap does not belong to any function. It stays until you give it back. To rent a piece, you call malloc, which means \"memory allocate\". You tell it how many bytes you want. malloc finds space in the heap and returns its address. So we store that address in a pointer: here, godown, a stack variable that points to a crate in the heap. Everything you learned in Module 8 now pays off: the heap is only reachable through pointers. When you're done, you call free with that address, and the crate goes back. There's also a third, small area for global variables, which live for the whole program, like global_count. So three places: stack for locals, heap for what you malloc, and the global area.",
+      "memory": {
+        "frames": [
+          {
+            "label": "malloc rents a crate; godown holds its address",
+            "badges": [
+              "stack: locals",
+              "heap: malloc",
+              "global: whole run"
+            ],
+            "groups": [
+              {
+                "name": "STACK",
+                "cells": [
+                  {
+                    "value": "→ crate",
+                    "name": "godown"
+                  }
+                ]
+              },
+              {
+                "name": "HEAP",
+                "cells": [
+                  {
+                    "value": "500",
+                    "name": "crate"
+                  }
+                ]
+              },
+              {
+                "name": "GLOBAL",
+                "cells": [
+                  {
+                    "value": "0",
+                    "name": "global_count"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          },
+          {
+            "label": "free(godown) hands the crate back",
+            "badges": [
+              "stack: locals",
+              "heap: malloc",
+              "global: whole run"
+            ],
+            "groups": [
+              {
+                "name": "STACK",
+                "cells": [
+                  {
+                    "value": "→ crate",
+                    "name": "godown"
+                  }
+                ]
+              },
+              {
+                "name": "HEAP (crate returned)",
+                "cells": [
+                  {
+                    "value": "500",
+                    "name": "crate",
+                    "mark": "zero"
+                  }
+                ]
+              },
+              {
+                "name": "GLOBAL",
+                "cells": [
+                  {
+                    "value": "0",
+                    "name": "global_count"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,

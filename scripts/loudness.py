@@ -18,13 +18,13 @@ TARGET_TP = -1.0
 TARGET_LRA = 11.0
 
 
-def measure(in_path: str) -> dict:
+def measure(in_path: str, target_i: float = TARGET_I, target_tp: float = TARGET_TP, target_lra: float = TARGET_LRA) -> dict:
     cmd = [
         "ffmpeg",
         "-i",
         in_path,
         "-af",
-        f"loudnorm=I={TARGET_I}:TP={TARGET_TP}:LRA={TARGET_LRA}:print_format=json",
+        f"loudnorm=I={target_i}:TP={target_tp}:LRA={target_lra}:print_format=json",
         "-f",
         "null",
         "-",
@@ -53,8 +53,47 @@ def _sample_rate(in_path: str) -> str:
     return subprocess.run(cmd, capture_output=True, text=True, check=True).stdout.strip()
 
 
+_AAC_ENCODER: str | None = None
+
+
+def _aac_encoder() -> str:
+    """Windows's aac_mf (MediaFoundation) hits the requested -b:a exactly; the
+    native "aac" encoder caps out around ~230kbps regardless of what's asked
+    for (confirmed: 320k and 400k both land ~235k on this build, which has no
+    libfdk_aac). aac_mf only exists on Windows, so pick whichever ffmpeg here
+    actually has."""
+    global _AAC_ENCODER
+    if _AAC_ENCODER is None:
+        listed = subprocess.run(
+            ["ffmpeg", "-hide_banner", "-encoders"], capture_output=True, text=True, check=True
+        ).stdout
+        _AAC_ENCODER = "aac_mf" if "aac_mf" in listed else "aac"
+    return _AAC_ENCODER
+
+
 def normalize(in_path: str, out_path: str) -> dict:
-    measured = measure(in_path)
+    return normalize_file(in_path, out_path)
+
+
+def normalize_file(
+    in_path: str,
+    out_path: str,
+    *,
+    target_i: float = TARGET_I,
+    target_tp: float = TARGET_TP,
+    target_lra: float = TARGET_LRA,
+    copy_video: bool = False,
+    audio_bitrate: str | None = None,
+) -> dict:
+    """Two-pass loudnorm: measure, then apply a linear gain (falling back to
+    dynamic normalisation only if the measured values are too far off target).
+    `copy_video=True` keeps the video stream untouched (`-c:v copy`) for
+    mastering a rendered MP4's audio without re-encoding its picture. The
+    loudnorm filter always forces an audio *re-encode* (it can't be `-c:a copy`),
+    so without an explicit `audio_bitrate` ffmpeg falls back to its own AAC
+    default (~125kbps) regardless of what the input was encoded at — pass the
+    render's own `--audio-bitrate` value here to actually preserve it."""
+    measured = measure(in_path, target_i, target_tp, target_lra)
     # loudnorm's true-peak detection oversamples internally (to 192kHz); without
     # an explicit -ar the encoded output inherits that rate, so pin it back.
     sample_rate = _sample_rate(in_path)
@@ -65,17 +104,33 @@ def normalize(in_path: str, out_path: str) -> dict:
         in_path,
         "-af",
         (
-            f"loudnorm=I={TARGET_I}:TP={TARGET_TP}:LRA={TARGET_LRA}:"
+            f"loudnorm=I={target_i}:TP={target_tp}:LRA={target_lra}:"
             f"measured_I={measured['input_i']}:measured_TP={measured['input_tp']}:"
             f"measured_LRA={measured['input_lra']}:measured_thresh={measured['input_thresh']}:"
             f"offset={measured['target_offset']}:linear=true:print_format=json"
         ),
         "-ar",
         sample_rate,
-        out_path,
     ]
+    if copy_video:
+        cmd += ["-c:v", "copy"]
+    if audio_bitrate:
+        cmd += ["-c:a", _aac_encoder(), "-b:a", audio_bitrate]
+    cmd += [out_path]
     subprocess.run(cmd, capture_output=True, text=True, check=True)
     return measured
+
+
+def master_video(
+    in_path: str, out_path: str, target_tp: float = -1.5, audio_bitrate: str | None = None
+) -> dict:
+    """Final mastering pass for a rendered MP4: two-pass loudnorm on the mixed
+    audio (narration + music + SFX together can peak hotter than any single
+    normalised clip), -c:v copy so the picture is untouched. Returns the
+    pre-mastering measurement for the review log."""
+    return normalize_file(
+        in_path, out_path, target_tp=target_tp, copy_video=True, audio_bitrate=audio_bitrate
+    )
 
 
 def main() -> None:
