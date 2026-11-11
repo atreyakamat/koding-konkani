@@ -1,0 +1,173 @@
+{
+  "ep": 49,
+  "title": "unique_ptr",
+  "module": 5,
+  "moduleName": "Memory and pointers",
+  "lengthSec": 295,
+  "colours": "Lilac + Tomato",
+  "prerequisite": "EP 48",
+  "youtube": {
+    "title": "C++ unique_ptr: Smart Pointers, Part One | C++ Programming EP 49",
+    "description": "In this episode you will make a unique_ptr with make_unique, explain single ownership and move ownership with std::move, with Xecxec the crab.\n\n0:00 Intro\n0:15 unique_ptr\n0:52 make_unique\n1:32 One owner\n2:02 Second program\n3:02 Recap\n3:32 Bug of the Day\n4:20 Challenge\n4:40 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "unique_ptr"
+      },
+      {
+        "t": "0:52",
+        "label": "make_unique"
+      },
+      {
+        "t": "1:32",
+        "label": "One owner"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:02",
+        "label": "Recap"
+      },
+      {
+        "t": "3:32",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "unique_ptr",
+      "smart pointer",
+      "make_unique",
+      "std::move"
+    ],
+    "thumbnail": {
+      "raw": "big text \"UNIQUE_PTR\" in tomato on lilac; Xecxec next to a single key for a single locker; thin black border and drop shadow.",
+      "text": "UNIQUE_PTR",
+      "colours": "tomato on lilac",
+      "visual": "next to a single key for a single locker",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: unique_ptr",
+      "lengthSec": 36,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "A pointer that frees itself.",
+      "script": "A pointer that frees itself. Today we meet the smart pointer that you will use most. It owns a heap object, and it frees the object for you. A unique pointer owns one heap object. When the unique pointer dies, it deletes the object. You never write delete. This is RAII for heap memory. A unique pointer has one owner. Keep coding, says Xecxec!",
+      "onScreen": "UNIQUE_PTR",
+      "caption": "What you will learn: unique_ptr.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#uniqueptr",
+        "#beginners"
+      ],
+      "link": "Full video: EP 49"
+    },
+    {
+      "id": "S2",
+      "title": "unique_ptr in one minute",
+      "lengthSec": 38,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A unique pointer owns one heap object.",
+      "script": "A unique pointer owns one heap object. When the unique pointer dies, it deletes the object. You never write delete. This is RAII for heap memory. A unique pointer has one owner. You cannot copy it, but you can move it to a new owner. Think of a house key with one owner. You can hand it over, but you cannot copy it. Keep coding, says Xecxec!",
+      "onScreen": "UNIQUE_PTR",
+      "caption": "unique_ptr in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#uniqueptr",
+        "#coding"
+      ],
+      "link": "Full video: EP 49"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "A owns an int with the value five.",
+      "script": "A owns an int with the value five. Move hands the ownership to b. A is now empty. It equals nullptr, so the program prints one. B owns the int and reads five. When b dies, the int is deleted exactly once. The program prints one, and then five. A unique pointer owns one heap object. It deletes the object when it dies. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#uniqueptr",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 49"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Copying a unique_ptr",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in unique pointers?",
+      "script": "Can you spot the bug in unique pointers? Bug of the Day. We copy a unique pointer. The compiler says use of deleted function. The copy is blocked on purpose. Two owners would delete the object twice. Use move to hand over the ownership. Two unique pointers must never own the same object, or it would be deleted twice. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Copying a unique_ptr.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#uniqueptr",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 49"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you own a heap int in unique pointers?",
+      "script": "Can you own a heap int in unique pointers? A unique pointer never shares its umbrella. It is all about ownership. Make a unique pointer to an int with the value twenty. Add one through the pointer, and print the result. Write your answer in the comments. A unique pointer owns one heap object. It deletes the object when it dies. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#uniqueptr",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 49"
+    }
+  ]
+}

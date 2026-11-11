@@ -1,0 +1,174 @@
+{
+  "ep": 89,
+  "title": "Common mistakes and exam questions",
+  "module": 10,
+  "moduleName": "Data structures and projects",
+  "lengthSec": 292,
+  "colours": "Mint + Tomato",
+  "prerequisite": "EP 88",
+  "youtube": {
+    "title": "C++ Common Mistakes and Exam Questions | C++ Programming EP 89",
+    "description": "In this episode you will spot six classic traps, explain integer division and wraparound and compare floating point numbers safely, with Xecxec the crab.\n\n0:00 Intro\n0:15 Common mistakes and exam questions\n0:49 Division and wraparound\n1:29 Six classic traps\n1:59 Second program\n2:59 Recap\n3:29 Bug of the Day\n4:17 Challenge\n4:37 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Common mistakes and exam questions"
+      },
+      {
+        "t": "0:49",
+        "label": "Division and wraparound"
+      },
+      {
+        "t": "1:29",
+        "label": "Six classic traps"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:17",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:37",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ common mistakes",
+      "c++ exam questions",
+      "integer division",
+      "floating point compare",
+      "interview questions"
+    ],
+    "thumbnail": {
+      "raw": "big text \"EXAM TRAPS\" in tomato on mint; Xecxec next to a crab avoiding banana peels on an exam paper; thin black border and drop shadow.",
+      "text": "EXAM TRAPS",
+      "colours": "tomato on mint",
+      "visual": "next to a crab avoiding banana peels on an exam paper",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Common mistakes and exam questions",
+      "lengthSec": 35,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Six traps that fail exams.",
+      "script": "Six traps that fail exams. Today is a safety walk through the traps. Exams and interviews love them, and now you can avoid every one. Most wrong answers come from a few old traps. Integer division drops the decimals. A small type wraps around when it is too small. A double is not exact, so equals can fail. Keep coding, says Xecxec!",
+      "onScreen": "COMMON MISTAKES AND EXAM QUESTIONS",
+      "caption": "What you will learn: Common mistakes and exam questions.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#commonmistakesandexamquestions",
+        "#beginners"
+      ],
+      "link": "Full video: EP 89"
+    },
+    {
+      "id": "S2",
+      "title": "Common mistakes and exam questions in one minute",
+      "lengthSec": 39,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Most wrong answers come from a few old traps.",
+      "script": "Most wrong answers come from a few old traps. Integer division drops the decimals. A small type wraps around when it is too small. A double is not exact, so equals can fail. Also, never return a reference to a local variable. Never use a moved object. Never forget to free what you made with new. Both numbers are ints, so the answer is an int. Keep coding, says Xecxec!",
+      "onScreen": "COMMON MISTAKES AND EXAM QUESTIONS",
+      "caption": "Common mistakes and exam questions in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#commonmistakesandexamquestions",
+        "#coding"
+      ],
+      "link": "Full video: EP 89"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 35,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "A double stores a close value, and not the exact value.",
+      "script": "A double stores a close value, and not the exact value. So the test with equals is false. Instead, take the difference. If its size is smaller than a tiny epsilon, the numbers are equal for our purpose. This test is true. The program prints three, then four, then false, and then true. Integer division drops the decimals. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#commonmistakesandexamquestions",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 89"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A reference to a local variable",
+      "lengthSec": 37,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in common mistakes and exam questions?",
+      "script": "Can you spot the bug in common mistakes and exam questions? Bug of the Day. The function returns a reference to a local variable. The compiler warns that it returns a reference to a local variable. The variable dies at the end of the function. Return by value. The local variable dies when the function ends, so the reference points to nothing. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: A reference to a local variable.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#commonmistakesandexamquestions",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 89"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you fix three traps in common mistakes and exam questions?",
+      "script": "Can you fix three traps in common mistakes and exam questions? Why did the exam trap fail? We saw it coming. Fix this: a program prints the average of seven and two as three. Make it print three point five. Write your answer in the comments. Integer division drops the decimals. A small type wraps around. Never compare doubles with equals. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#commonmistakesandexamquestions",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 89"
+    }
+  ]
+}

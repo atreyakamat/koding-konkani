@@ -1,0 +1,174 @@
+{
+  "ep": 84,
+  "title": "Namespaces and organising code",
+  "module": 9,
+  "moduleName": "Library and modern C++",
+  "lengthSec": 290,
+  "colours": "Cream + Tomato",
+  "prerequisite": "EP 83",
+  "youtube": {
+    "title": "C++ Namespaces and Header Files Explained | C++ Programming EP 84",
+    "description": "In this episode you will write a namespace, avoid name clashes and know how headers and source files work together, with Xecxec the crab.\n\n0:00 Intro\n0:15 Namespaces and organising code\n0:45 Two namespaces\n1:25 Two drawers\n1:55 Second program\n2:57 Recap\n3:27 Bug of the Day\n4:15 Challenge\n4:35 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Namespaces and organising code"
+      },
+      {
+        "t": "0:45",
+        "label": "Two namespaces"
+      },
+      {
+        "t": "1:25",
+        "label": "Two drawers"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:57",
+        "label": "Recap"
+      },
+      {
+        "t": "3:27",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:15",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:35",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ namespace",
+      "header files",
+      "using namespace",
+      "multiple files",
+      "scope resolution"
+    ],
+    "thumbnail": {
+      "raw": "big text \"NAMESPACES\" in tomato on cream; Xecxec next to two labelled drawers that hold tools with the same name; thin black border and drop shadow.",
+      "text": "NAMESPACES",
+      "colours": "tomato on cream",
+      "visual": "next to two labelled drawers that hold tools with the same name",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Namespaces and organising code",
+      "lengthSec": 39,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Two functions with the same name. No clash.",
+      "script": "Two functions with the same name. No clash. Today we organise bigger programs. Namespaces stop name clashes, and header files split code across many files. A namespace is a labelled drawer for names. Two drawers can each hold a function called area. You open a drawer with the double colon. In a bigger program, a header file holds declarations, and a source file holds the code. Keep coding, says Xecxec!",
+      "onScreen": "NAMESPACES AND ORGANISING CODE",
+      "caption": "What you will learn: Namespaces and organising code.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#namespacesandorganisingcode",
+        "#beginners"
+      ],
+      "link": "Full video: EP 84"
+    },
+    {
+      "id": "S2",
+      "title": "Namespaces and organising code in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A namespace is a labelled drawer for names.",
+      "script": "A namespace is a labelled drawer for names. Two drawers can each hold a function called area. You open a drawer with the double colon. In a bigger program, a header file holds declarations, and a source file holds the code. You compile the source files together. This namespace is the circle drawer. It holds an area function for a radius. Keep coding, says Xecxec!",
+      "onScreen": "NAMESPACES AND ORGANISING CODE",
+      "caption": "Namespaces and organising code in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#namespacesandorganisingcode",
+        "#coding"
+      ],
+      "link": "Full video: EP 84"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Since C plus plus seventeen",
+      "script": "Since C plus plus seventeen, you can write a nested namespace on one line. An alias gives a long name a short one. We call the function through the alias. The result is six point two eight three one eight. The program prints twelve point five six six four, nine, and then six point two eight three one eight. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#namespacesandorganisingcode",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 84"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: An ambiguous call",
+      "lengthSec": 38,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in namespaces and organising code?",
+      "script": "Can you spot the bug in namespaces and organising code? Bug of the Day. We open both namespaces, and then call area. The compiler says the call is ambiguous. Write the namespace name in front of the call. Using namespace opens the drawers, and the names clash again. Write the namespace name in front of the call, and avoid using namespace in big programs. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: An ambiguous call.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#namespacesandorganisingcode",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 84"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you make a math namespace in namespaces and organising code?",
+      "script": "Can you make a math namespace in namespaces and organising code? Why do namespaces never fight? Everyone stays in their own drawer. Write a namespace called mymath with a function square. Call it from main with the double colon. Write your answer in the comments. A namespace is a labelled drawer for names. Use the double colon to open a drawer. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#namespacesandorganisingcode",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 84"
+    }
+  ]
+}

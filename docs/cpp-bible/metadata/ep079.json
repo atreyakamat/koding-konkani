@@ -1,0 +1,174 @@
+{
+  "ep": 79,
+  "title": "Ranges in C++20",
+  "module": 9,
+  "moduleName": "Library and modern C++",
+  "lengthSec": 288,
+  "colours": "Cream + Tomato",
+  "prerequisite": "EP 78",
+  "youtube": {
+    "title": "C++20 Ranges and Views: filter, transform, take | C++ Programming EP 79",
+    "description": "In this episode you will build a pipeline with the pipe symbol, filter and transform lazily and sort a whole vector with ranges sort, with Xecxec the crab.\n\n0:00 Intro\n0:15 Ranges in C++20\n0:45 Filter then transform\n1:25 The pipeline\n1:55 Second program\n2:55 Recap\n3:25 Bug of the Day\n4:13 Challenge\n4:33 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Ranges in C++20"
+      },
+      {
+        "t": "0:45",
+        "label": "Filter then transform"
+      },
+      {
+        "t": "1:25",
+        "label": "The pipeline"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++20 ranges",
+      "std::views",
+      "views::filter",
+      "views::transform",
+      "modern c++"
+    ],
+    "thumbnail": {
+      "raw": "big text \"RANGES\" in tomato on cream; Xecxec next to a conveyor belt with a filter gate and a squash press; thin black border and drop shadow.",
+      "text": "RANGES",
+      "colours": "tomato on cream",
+      "visual": "next to a conveyor belt with a filter gate and a squash press",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Ranges in C++20",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Filter and square numbers in one pipeline.",
+      "script": "Filter and square numbers in one pipeline. Today we meet ranges, new in C plus plus twenty. They let you chain steps with the pipe symbol, like a conveyor belt. A view is a lazy window on a range. It does not copy the data, and it does no work until you read it. You join views with the pipe symbol. Keep coding, says Xecxec!",
+      "onScreen": "RANGES IN C++20",
+      "caption": "What you will learn: Ranges in C++20.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#rangesinc20",
+        "#beginners"
+      ],
+      "link": "Full video: EP 79"
+    },
+    {
+      "id": "S2",
+      "title": "Ranges in C++20 in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A view is a lazy window on a range.",
+      "script": "A view is a lazy window on a range. It does not copy the data, and it does no work until you read it. You join views with the pipe symbol. Think of a conveyor belt. Each station changes the items that pass, one at a time. The pipe sends the vector into a filter station. The lambda keeps only even numbers. Keep coding, says Xecxec!",
+      "onScreen": "RANGES IN C++20",
+      "caption": "Ranges in C++20 in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#rangesinc20",
+        "#coding"
+      ],
+      "link": "Full video: EP 79"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 35,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Iota makes an endless counter that starts at one.",
+      "script": "Iota makes an endless counter that starts at one. It does not fill memory, because a view is lazy. Take cuts the counter after five items. The output is one two three four five. The program prints the squares of the even numbers, then eight, then one to five. A view is a lazy window on a range. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#rangesinc20",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 79"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A missing header",
+      "lengthSec": 38,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in ranges in C plus plus twenty?",
+      "script": "Can you spot the bug in ranges in C plus plus twenty? Bug of the Day. We use views without the ranges header. The compiler says views has not been declared. Add the include line for ranges. Views live in the ranges header. Include it. Also compile with the C plus plus twenty flag. A view is a lazy window on a range. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: A missing header.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#rangesinc20",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 79"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you keep the odd numbers in ranges in C",
+      "script": "Can you keep the odd numbers in ranges in C plus plus twenty? Why did the view stay calm? It never copied anything, so it had nothing to lose. Use a filter view to print only the odd numbers of a vector. Write your answer in the comments. A view is a lazy window on a range. The pipe symbol joins stations. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#rangesinc20",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 79"
+    }
+  ]
+}

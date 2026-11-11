@@ -1,0 +1,173 @@
+{
+  "ep": 56,
+  "title": "Encapsulation",
+  "module": 6,
+  "moduleName": "Classes and objects",
+  "lengthSec": 288,
+  "colours": "Peach + Dark blue",
+  "prerequisite": "EP 55",
+  "youtube": {
+    "title": "C++ Encapsulation: Getters, Setters and Safe Data | C++ Programming EP 56",
+    "description": "In this episode you will hide data and offer safe functions, validate input in a setter and keep a class in a valid state, with Xecxec the crab.\n\n0:00 Intro\n0:15 Encapsulation\n0:45 A safe account\n1:25 Checked access\n1:55 Second program\n2:55 Recap\n3:25 Bug of the Day\n4:13 Challenge\n4:33 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Encapsulation"
+      },
+      {
+        "t": "0:45",
+        "label": "A safe account"
+      },
+      {
+        "t": "1:25",
+        "label": "Checked access"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "encapsulation c++",
+      "getter setter",
+      "data hiding",
+      "class invariant"
+    ],
+    "thumbnail": {
+      "raw": "big text \"ENCAPSULATION\" in tomato on peach; Xecxec next to a bank vault with a small window for deposits; thin black border and drop shadow.",
+      "text": "ENCAPSULATION",
+      "colours": "tomato on peach",
+      "visual": "next to a bank vault with a small window for deposits",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Encapsulation",
+      "lengthSec": 35,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "A class can protect its own rules.",
+      "script": "A class can protect its own rules. Today we see why classes hide their data. The class checks every change, so it never ends up in a bad state. Encapsulation means hiding the data and offering checked functions. A setter can refuse a bad value. A getter lets others read the value. Then the class always stays valid. Keep coding, says Xecxec!",
+      "onScreen": "ENCAPSULATION",
+      "caption": "What you will learn: Encapsulation.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#encapsulation",
+        "#beginners"
+      ],
+      "link": "Full video: EP 56"
+    },
+    {
+      "id": "S2",
+      "title": "Encapsulation in one minute",
+      "lengthSec": 39,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Encapsulation means hiding the data and offering checked functions.",
+      "script": "Encapsulation means hiding the data and offering checked functions. A setter can refuse a bad value. A getter lets others read the value. Then the class always stays valid. Think of a bank counter. You cannot reach the vault, but the clerk checks every deposit. The balance is private. Deposit is the only way to add money. It refuses an amount of zero or less. Keep coding, says Xecxec!",
+      "onScreen": "ENCAPSULATION",
+      "caption": "Encapsulation in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#encapsulation",
+        "#coding"
+      ],
+      "link": "Full video: EP 56"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The getter reads the age.",
+      "script": "The getter reads the age. The setter checks the range. Only an age from zero to one hundred twenty is accepted. Seventeen is accepted. Five hundred is refused. The age is still seventeen. The program prints seventeen. Keep data private. Offer public functions that check the input. A setter can refuse a bad value. The class always stays in a valid state. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#encapsulation",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 56"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A setter that does not check",
+      "lengthSec": 39,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in encapsulation?",
+      "script": "Can you spot the bug in encapsulation? Bug of the Day. The setter stores any number. The program prints an age of minus five. The data is private, but the setter gives no protection. Add a check, so that the class stays valid. A setter without a check is the same as a public field. The age of minus five breaks the rules of the class. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: A setter that does not check.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#encapsulation",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 56"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 36,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you write a safe class in encapsulation?",
+      "script": "Can you write a safe class in encapsulation? The vault told the thief, you can only deposit your complaints at the window. Write a Thermostat class. The setter must accept only temperatures from ten to thirty degrees. Write your answer in the comments. Keep data private. Offer public functions that check the input. A setter can refuse a bad value. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#encapsulation",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 56"
+    }
+  ]
+}

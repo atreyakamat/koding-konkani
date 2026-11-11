@@ -1,0 +1,173 @@
+{
+  "ep": 43,
+  "title": "Pointers and arrays",
+  "module": 5,
+  "moduleName": "Memory and pointers",
+  "lengthSec": 304,
+  "colours": "Lilac + Tomato",
+  "prerequisite": "EP 42",
+  "youtube": {
+    "title": "C++ Pointers and Arrays: Array Decay | C++ Programming EP 43",
+    "description": "In this episode you will use an array name as a pointer, read items through a pointer and explain array decay, with Xecxec the crab.\n\n0:00 Intro\n0:15 Pointers and arrays\n0:55 An array and a pointer\n1:35 The pointer at the first item\n2:05 Second program\n3:05 Recap\n3:41 Bug of the Day\n4:29 Challenge\n4:49 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Pointers and arrays"
+      },
+      {
+        "t": "0:55",
+        "label": "An array and a pointer"
+      },
+      {
+        "t": "1:35",
+        "label": "The pointer at the first item"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:41",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:29",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:49",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "pointer and array",
+      "array decay",
+      "c++ pointer index",
+      "sizeof array parameter"
+    ],
+    "thumbnail": {
+      "raw": "big text \"ARRAY = POINTER?\" in tomato on lilac; Xecxec next to an array name turning into a pointer; thin black border and drop shadow.",
+      "text": "ARRAY = POINTER?",
+      "colours": "tomato on lilac",
+      "visual": "next to an array name turning into a pointer",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Pointers and arrays",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "An array name quietly turns into a pointer.",
+      "script": "An array name quietly turns into a pointer. Today we connect arrays and pointers. They look different, but they work together all the time. In most places, an array name turns into the address of its first item. We call this array decay. So you can store the array name in a pointer. Then p index i works like a index i. Keep coding, says Xecxec!",
+      "onScreen": "POINTERS AND ARRAYS",
+      "caption": "What you will learn: Pointers and arrays.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointersandarrays",
+        "#beginners"
+      ],
+      "link": "Full video: EP 43"
+    },
+    {
+      "id": "S2",
+      "title": "Pointers and arrays in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "In most places",
+      "script": "In most places, an array name turns into the address of its first item. We call this array decay. So you can store the array name in a pointer. Then p index i works like a index i. But there is a cost. A pointer does not know the size of the array. Think of the first house on a street. Keep coding, says Xecxec!",
+      "onScreen": "POINTERS AND ARRAYS",
+      "caption": "Pointers and arrays in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointersandarrays",
+        "#coding"
+      ],
+      "link": "Full video: EP 43"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Q starts at the first item.",
+      "script": "Q starts at the first item. A plus three is the address right after the last item. The loop stops when q reaches it. Q plus plus moves q to the next item. Each round prints the item that q points to. The program prints ten, twenty and thirty on one line. An array name turns into the address of its first item. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointersandarrays",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 43"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Sizeof on an array parameter",
+      "lengthSec": 38,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in pointers and arrays?",
+      "script": "Can you spot the bug in pointers and arrays? Bug of the Day. The function tries to count the items with sizeof. The compiler warns that sizeof on an array parameter returns the size of a pointer. The array decayed to a pointer, and the size was lost. Pass the size as a second parameter. An array parameter is a pointer in disguise. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Sizeof on an array parameter.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointersandarrays",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 43"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 38,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you sum an array through a pointer in pointers and arrays?",
+      "script": "Can you sum an array through a pointer in pointers and arrays? The array told the pointer, you complete me. The pointer said, I only know where you start. Write a function that takes a pointer and a size. It returns the sum of the items. Write your answer in the comments. An array name turns into the address of its first item. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#pointersandarrays",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 43"
+    }
+  ]
+}

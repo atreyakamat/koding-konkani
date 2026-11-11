@@ -1,0 +1,173 @@
+{
+  "ep": 61,
+  "title": "Inheritance",
+  "module": 7,
+  "moduleName": "Inheritance and polymorphism",
+  "lengthSec": 297,
+  "colours": "Pastel blue + Apricot",
+  "prerequisite": "EP 60",
+  "youtube": {
+    "title": "C++ Inheritance: Reuse a Class | C++ Programming EP 61",
+    "description": "In this episode you will write a derived class, reuse the members of a base class and say is-a to test a design, with Xecxec the crab.\n\n0:00 Intro\n0:15 Inheritance\n0:54 Animal and Dog\n1:34 A small family tree\n2:04 Second program\n3:04 Recap\n3:34 Bug of the Day\n4:22 Challenge\n4:42 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Inheritance"
+      },
+      {
+        "t": "0:54",
+        "label": "Animal and Dog"
+      },
+      {
+        "t": "1:34",
+        "label": "A small family tree"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:34",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:22",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:42",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ inheritance",
+      "base class derived class",
+      "is-a relationship",
+      "public inheritance"
+    ],
+    "thumbnail": {
+      "raw": "big text \"INHERITANCE\" in tomato on pastel blue; Xecxec next to a family tree of animals; thin black border and drop shadow.",
+      "text": "INHERITANCE",
+      "colours": "tomato on pastel blue",
+      "visual": "next to a family tree of animals",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Inheritance",
+      "lengthSec": 39,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Write it once in the base. Every child gets it.",
+      "script": "Write it once in the base. Every child gets it. Today we reuse a class. A derived class gets everything from a base class, and then it adds its own things. Inheritance lets a new class build on an existing class. The existing class is the base. The new class is the derived class. It gets the public members of the base, and can add more. Keep coding, says Xecxec!",
+      "onScreen": "INHERITANCE",
+      "caption": "What you will learn: Inheritance.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#inheritance",
+        "#beginners"
+      ],
+      "link": "Full video: EP 61"
+    },
+    {
+      "id": "S2",
+      "title": "Inheritance in one minute",
+      "lengthSec": 39,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Inheritance lets a new class build on an existing class.",
+      "script": "Inheritance lets a new class build on an existing class. The existing class is the base. The new class is the derived class. It gets the public members of the base, and can add more. Use it only for an is-a relationship. A dog is an animal, so it works. Think of a family. A child gets the family name, and adds its own talents. Keep coding, says Xecxec!",
+      "onScreen": "INHERITANCE",
+      "caption": "Inheritance in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#inheritance",
+        "#coding"
+      ],
+      "link": "Full video: EP 61"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The base speak prints three dots.",
+      "script": "The base speak prints three dots. Dog writes its own speak. It hides the base version. A call on a Dog finds the Dog version first. It prints Woof. We can still reach the base version with the class name and two colons. It prints three dots. The program prints Woof, and then three dots. A derived class gets the members of its base. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#inheritance",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 61"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Touching a private base member",
+      "lengthSec": 37,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in inheritance?",
+      "script": "Can you spot the bug in inheritance? Bug of the Day. Dog tries to use the private name of Animal. The compiler says the name is private within this context. Private means private, even for children. Add a public getter in Animal, and call it from Dog. Private members belong to the base class only. A derived class cannot touch them. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Touching a private base member.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#inheritance",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 61"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 35,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you build a Vehicle and a Bus in inheritance?",
+      "script": "Can you build a Vehicle and a Bus in inheritance? The base class told the derived class, you have your mother's functions. Write a class Vehicle with a function start. Write a class Bus that inherits from it and adds open doors. Write your answer in the comments. A derived class gets the members of its base. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#inheritance",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 61"
+    }
+  ]
+}

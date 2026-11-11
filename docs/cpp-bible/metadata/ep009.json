@@ -1,0 +1,173 @@
+{
+  "ep": 9,
+  "title": "Type conversion and casting",
+  "module": 1,
+  "moduleName": "Variables and types",
+  "lengthSec": 298,
+  "colours": "Pastel blue + Tomato",
+  "prerequisite": "EP 08",
+  "youtube": {
+    "title": "C++ Type Conversion and static_cast | C++ Programming EP 09",
+    "description": "In this episode you will predict what happens when types mix, convert with static_cast and avoid the integer-division trap, with Xecxec the crab.\n\n0:00 Intro\n0:15 Type conversion and casting\n0:55 Automatic conversion\n1:35 Conversion rules\n2:05 Second program\n3:05 Recap\n3:35 Bug of the Day\n4:23 Challenge\n4:43 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Type conversion and casting"
+      },
+      {
+        "t": "0:55",
+        "label": "Automatic conversion"
+      },
+      {
+        "t": "1:35",
+        "label": "Conversion rules"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:23",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:43",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ type casting",
+      "static_cast",
+      "implicit conversion",
+      "narrowing"
+    ],
+    "thumbnail": {
+      "raw": "big text \"CHANGE THE TYPE\" in tomato on pastel blue; Xecxec next to a double crossing a bridge and becoming an int; thin black border and drop shadow.",
+      "text": "CHANGE THE TYPE",
+      "colours": "tomato on pastel blue",
+      "visual": "next to a double crossing a bridge and becoming an int",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Type conversion and casting",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "A double can lose its decimals without any error.",
+      "script": "A double can lose its decimals without any error. Today we mix types. Sometimes C plus plus changes a type for you. You must know when, and what is lost. C plus plus converts types when you mix them. An int becomes a double with no loss. A double becomes an int by cutting off the decimals. It does not round. Keep coding, says Xecxec!",
+      "onScreen": "TYPE CONVERSION AND CASTING",
+      "caption": "What you will learn: Type conversion and casting.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#typeconversionandcasting",
+        "#beginners"
+      ],
+      "link": "Full video: EP 09"
+    },
+    {
+      "id": "S2",
+      "title": "Type conversion and casting in one minute",
+      "lengthSec": 40,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "C plus plus converts types when you mix them.",
+      "script": "C plus plus converts types when you mix them. An int becomes a double with no loss. A double becomes an int by cutting off the decimals. It does not round. A cast is a clear request to convert. In modern C plus plus, we write static cast. Think of a jug and a small glass. Pour the jug into the glass, and some water is lost. Keep coding, says Xecxec!",
+      "onScreen": "TYPE CONVERSION AND CASTING",
+      "caption": "Type conversion and casting in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#typeconversionandcasting",
+        "#coding"
+      ],
+      "link": "Full video: EP 09"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "We have seven passed students out of eight.",
+      "script": "We have seven passed students out of eight. We cast passed to a double first. Then the division keeps the decimals. The answer is zero point eight seven five. Here we cast the letter A to an int. It prints sixty-five. That is the code of the letter A. The program prints zero point eight seven five, and then sixty-five. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#typeconversionandcasting",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 09"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Casting too late",
+      "lengthSec": 35,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in type conversion and casting?",
+      "script": "Can you spot the bug in type conversion and casting? Bug of the Day. We cast the result of the division. The program prints zero. Why? Seven divided by eight is zero in int maths. The cast comes too late. Put the cast on one number, before the division. Then the answer is zero point eight seven five. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Casting too late.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#typeconversionandcasting",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 09"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 38,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you find the average of three marks in type",
+      "script": "Can you find the average of three marks in type conversion and casting? I tried to cast a spell on my double. It lost its decimals and its magic. Store three int marks. Print their average as a double with decimals. Write your answer in the comments. C plus plus converts types for you. A double becomes an int by cutting the decimals. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#typeconversionandcasting",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 09"
+    }
+  ]
+}

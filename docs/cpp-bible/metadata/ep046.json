@@ -1,0 +1,173 @@
+{
+  "ep": 46,
+  "title": "new and delete",
+  "module": 5,
+  "moduleName": "Memory and pointers",
+  "lengthSec": 301,
+  "colours": "Lilac + Tomato",
+  "prerequisite": "EP 45",
+  "youtube": {
+    "title": "C++ new and delete: The Heap Explained | C++ Programming EP 46",
+    "description": "In this episode you will make a variable on the heap with new, free it with delete and explain stack and heap, with Xecxec the crab.\n\n0:00 Intro\n0:15 new and delete\n0:58 One box on the heap\n1:38 Stack and heap\n2:08 Second program\n3:08 Recap\n3:38 Bug of the Day\n4:26 Challenge\n4:46 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "new and delete"
+      },
+      {
+        "t": "0:58",
+        "label": "One box on the heap"
+      },
+      {
+        "t": "1:38",
+        "label": "Stack and heap"
+      },
+      {
+        "t": "2:08",
+        "label": "Second program"
+      },
+      {
+        "t": "3:08",
+        "label": "Recap"
+      },
+      {
+        "t": "3:38",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:26",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:46",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ new delete",
+      "heap memory",
+      "dynamic memory",
+      "stack vs heap"
+    ],
+    "thumbnail": {
+      "raw": "big text \"NEW + DELETE\" in tomato on lilac; Xecxec next to a crab borrowing a box from a warehouse and returning it; thin black border and drop shadow.",
+      "text": "NEW + DELETE",
+      "colours": "tomato on lilac",
+      "visual": "next to a crab borrowing a box from a warehouse and returning it",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: new and delete",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Every new needs a delete.",
+      "script": "Every new needs a delete. Today we ask for memory ourselves. We borrow a box from the heap, and we give it back when we finish. Local variables live on the stack. They appear and disappear by themselves. The heap is a big pool of memory that you manage yourself. New asks the heap for a box, and gives you its address. Keep coding, says Xecxec!",
+      "onScreen": "NEW AND DELETE",
+      "caption": "What you will learn: new and delete.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#newanddelete",
+        "#beginners"
+      ],
+      "link": "Full video: EP 46"
+    },
+    {
+      "id": "S2",
+      "title": "new and delete in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Local variables live on the stack.",
+      "script": "Local variables live on the stack. They appear and disappear by themselves. The heap is a big pool of memory that you manage yourself. New asks the heap for a box, and gives you its address. Delete returns the box. If you forget, the box is lost until the program ends. That is a memory leak. Think of a library book. Keep coding, says Xecxec!",
+      "onScreen": "NEW AND DELETE",
+      "caption": "new and delete in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#newanddelete",
+        "#coding"
+      ],
+      "link": "Full video: EP 46"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "New with square brackets makes an array of three ints",
+      "script": "New with square brackets makes an array of three ints on the heap. The loop multiplies each item by ten. The output is ten, twenty, thirty. An array made with new square brackets needs delete square brackets. A plain delete is a bug. The program prints ten, twenty and thirty. The stack holds local variables, and the heap holds boxes you manage. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#newanddelete",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 46"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: The wrong delete",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in new and delete?",
+      "script": "Can you spot the bug in new and delete? Bug of the Day. We make an array with new square brackets, but we free it with plain delete. The compiler warns about a mismatched allocation function. The two forms must match. New square brackets pairs with delete square brackets. New with square brackets must pair with delete with square brackets. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: The wrong delete.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#newanddelete",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 46"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you make and free a heap array in new and delete?",
+      "script": "Can you make and free a heap array in new and delete? I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget. Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it. Write your answer in the comments. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#newanddelete",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 46"
+    }
+  ]
+}

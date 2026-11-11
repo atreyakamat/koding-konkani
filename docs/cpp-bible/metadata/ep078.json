@@ -1,0 +1,173 @@
+{
+  "ep": 78,
+  "title": "Lambdas with algorithms",
+  "module": 9,
+  "moduleName": "Library and modern C++",
+  "lengthSec": 288,
+  "colours": "Cream + Tomato",
+  "prerequisite": "EP 77",
+  "youtube": {
+    "title": "C++ Lambdas with STL Algorithms | C++ Programming EP 78",
+    "description": "In this episode you will write a lambda, sort with your own rule and capture a variable in a lambda, with Xecxec the crab.\n\n0:00 Intro\n0:15 Lambdas with algorithms\n0:45 Sort descending and count_if\n1:25 Anatomy of a lambda\n1:55 Second program\n2:55 Recap\n3:25 Bug of the Day\n4:13 Challenge\n4:33 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Lambdas with algorithms"
+      },
+      {
+        "t": "0:45",
+        "label": "Sort descending and count_if"
+      },
+      {
+        "t": "1:25",
+        "label": "Anatomy of a lambda"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ lambda",
+      "lambda capture",
+      "std::sort custom",
+      "count_if"
+    ],
+    "thumbnail": {
+      "raw": "big text \"LAMBDA\" in tomato on cream; Xecxec next to a tiny rule card handed to a sorting machine; thin black border and drop shadow.",
+      "text": "LAMBDA",
+      "colours": "tomato on cream",
+      "visual": "next to a tiny rule card handed to a sorting machine",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Lambdas with algorithms",
+      "lengthSec": 38,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Give any algorithm your own rule.",
+      "script": "Give any algorithm your own rule. Today we hand rules to algorithms. A lambda is a small function you write in the same place where you use it. A lambda has square brackets, a parameter list and a body. The square brackets are the capture list. They name outside variables that the lambda may read. Think of a sticky note with a small rule. Keep coding, says Xecxec!",
+      "onScreen": "LAMBDAS WITH ALGORITHMS",
+      "caption": "What you will learn: Lambdas with algorithms.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#lambdaswithalgorithms",
+        "#beginners"
+      ],
+      "link": "Full video: EP 78"
+    },
+    {
+      "id": "S2",
+      "title": "Lambdas with algorithms in one minute",
+      "lengthSec": 37,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A lambda has square brackets, a parameter list and a body.",
+      "script": "A lambda has square brackets, a parameter list and a body. The square brackets are the capture list. They name outside variables that the lambda may read. Think of a sticky note with a small rule. You hand the note to the algorithm, and it follows the rule. The empty square brackets mean the lambda captures nothing. It takes two ints. Keep coding, says Xecxec!",
+      "onScreen": "LAMBDAS WITH ALGORITHMS",
+      "caption": "Lambdas with algorithms in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#lambdaswithalgorithms",
+        "#coding"
+      ],
+      "link": "Full video: EP 78"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "A student has a name and marks.",
+      "script": "A student has a name and marks. We sort the students. The lambda compares marks, so the highest marks come first. For each calls a lambda on every item. The lambda prints Asha ninety-one, then Mia eighty-five, then Ravi seventy-eight. The program prints the three students, from the highest marks to the lowest. A lambda is a small function with no name. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#lambdaswithalgorithms",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 78"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A variable that is not captured",
+      "lengthSec": 38,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in lambdas with algorithms?",
+      "script": "Can you spot the bug in lambdas with algorithms? Bug of the Day. The lambda reads limit, but the brackets are empty. The compiler says limit is not captured. Put limit in the square brackets. A lambda cannot see local variables unless you capture them. Write the name in the square brackets. Use an ampersand in front of the name to capture by reference. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: A variable that is not captured.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#lambdaswithalgorithms",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 78"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 36,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you count the even numbers in lambdas with algorithms?",
+      "script": "Can you count the even numbers in lambdas with algorithms? Why did the lambda join the party? Nobody had to give it a name. Use count if and a lambda to count the even numbers in a vector. Write your answer in the comments. A lambda is a small function with no name. The capture list names outside variables. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#lambdaswithalgorithms",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 78"
+    }
+  ]
+}

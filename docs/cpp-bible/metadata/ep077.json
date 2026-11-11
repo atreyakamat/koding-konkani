@@ -1,0 +1,174 @@
+{
+  "ep": 77,
+  "title": "Algorithms from the library",
+  "module": 9,
+  "moduleName": "Library and modern C++",
+  "lengthSec": 288,
+  "colours": "Cream + Tomato",
+  "prerequisite": "EP 76",
+  "youtube": {
+    "title": "C++ STL Algorithms: sort, find, count, accumulate | C++ Programming EP 77",
+    "description": "In this episode you will sort a vector with one call, find and count values and add up a range with accumulate, with Xecxec the crab.\n\n0:00 Intro\n0:15 Algorithms from the library\n0:45 Sort, max and reverse\n1:25 Common algorithms\n1:55 Second program\n2:55 Recap\n3:25 Bug of the Day\n4:13 Challenge\n4:33 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Algorithms from the library"
+      },
+      {
+        "t": "0:45",
+        "label": "Sort, max and reverse"
+      },
+      {
+        "t": "1:25",
+        "label": "Common algorithms"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ stl algorithms",
+      "std::sort",
+      "std::find",
+      "accumulate",
+      "c++ for beginners"
+    ],
+    "thumbnail": {
+      "raw": "big text \"ONE LINE SORT\" in tomato on cream; Xecxec next to a magic wand sorting a messy shelf of books; thin black border and drop shadow.",
+      "text": "ONE LINE SORT",
+      "colours": "tomato on cream",
+      "visual": "next to a magic wand sorting a messy shelf of books",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Algorithms from the library",
+      "lengthSec": 40,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Sort a whole vector with one line.",
+      "script": "Sort a whole vector with one line. Today we stop writing loops by hand. The standard library already has tools for sorting, searching and counting. The algorithm header holds many ready tools. Each tool takes a range, which is a begin iterator and an end iterator. The tools are tested and fast. Think of a toolbox. You pick the tool, and you do not build it again. Keep coding, says Xecxec!",
+      "onScreen": "ALGORITHMS FROM THE LIBRARY",
+      "caption": "What you will learn: Algorithms from the library.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#algorithmsfromthelibrary",
+        "#beginners"
+      ],
+      "link": "Full video: EP 77"
+    },
+    {
+      "id": "S2",
+      "title": "Algorithms from the library in one minute",
+      "lengthSec": 35,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "The algorithm header holds many ready tools.",
+      "script": "The algorithm header holds many ready tools. Each tool takes a range, which is a begin iterator and an end iterator. The tools are tested and fast. Think of a toolbox. You pick the tool, and you do not build it again. Sort takes the begin and the end of the vector. It puts the numbers in order. Keep coding, says Xecxec!",
+      "onScreen": "ALGORITHMS FROM THE LIBRARY",
+      "caption": "Algorithms from the library in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#algorithmsfromthelibrary",
+        "#coding"
+      ],
+      "link": "Full video: EP 77"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 35,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Find returns an iterator to the first match.",
+      "script": "Find returns an iterator to the first match. If the result is not the end, the value exists. Subtracting the begin gives the index, which is one. Count returns how many fours there are, which is three. Accumulate adds all values, starting from zero. The sum is twenty-one. The program prints found at one, then three, then twenty-one. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#algorithmsfromthelibrary",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 77"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Sort with no iterators",
+      "lengthSec": 38,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in algorithms from the library?",
+      "script": "Can you spot the bug in algorithms from the library? Bug of the Day. We call sort with only the vector. The compiler says there is no matching function. Sort needs a begin and an end. Pass both iterators. The classic sort needs two iterators. Pass v dot begin and v dot end. In C plus plus twenty, ranges sort accepts the whole vector. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Sort with no iterators.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#algorithmsfromthelibrary",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 77"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you find the smallest value in algorithms from the library?",
+      "script": "Can you find the smallest value in algorithms from the library? Why did the vector go to the library? It wanted to be sorted out. Use a library algorithm to print the smallest value of a vector. Do not write a loop. Write your answer in the comments. Algorithms work on a range of iterators. Sort puts a range in order. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#algorithmsfromthelibrary",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 77"
+    }
+  ]
+}

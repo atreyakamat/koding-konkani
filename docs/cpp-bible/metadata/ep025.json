@@ -1,0 +1,173 @@
+{
+  "ep": 25,
+  "title": "const references",
+  "module": 3,
+  "moduleName": "Functions",
+  "lengthSec": 292,
+  "colours": "Mint + Dark blue",
+  "prerequisite": "EP 24",
+  "youtube": {
+    "title": "C++ const References: Fast and Safe Parameters | C++ Programming EP 25",
+    "description": "In this episode you will pass big values without copying, protect a parameter with const and know when to use const and ampersand, with Xecxec the crab.\n\n0:00 Intro\n0:15 const references\n0:49 A const reference\n1:29 Which parameter style?\n1:59 Second program\n2:59 Recap\n3:29 Bug of the Day\n4:17 Challenge\n4:37 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "const references"
+      },
+      {
+        "t": "0:49",
+        "label": "A const reference"
+      },
+      {
+        "t": "1:29",
+        "label": "Which parameter style?"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:17",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:37",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "const reference",
+      "const &",
+      "pass big objects",
+      "c++ best practice"
+    ],
+    "thumbnail": {
+      "raw": "big text \"CONST &\" in tomato on mint; Xecxec next to a glass case around a big box; thin black border and drop shadow.",
+      "text": "CONST &",
+      "colours": "tomato on mint",
+      "visual": "next to a glass case around a big box",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: const references",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Look, but do not touch. That is a const reference.",
+      "script": "Look, but do not touch. That is a const reference. Today we learn the most common parameter style in modern C plus plus. It is fast, and it is safe. Copying a big string for every call is slow. A reference avoids the copy. But a reference lets the function change the original. Add const, and the function may only read it. Keep coding, says Xecxec!",
+      "onScreen": "CONST REFERENCES",
+      "caption": "What you will learn: const references.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constreferences",
+        "#beginners"
+      ],
+      "link": "Full video: EP 25"
+    },
+    {
+      "id": "S2",
+      "title": "const references in one minute",
+      "lengthSec": 39,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Copying a big string for every call is slow.",
+      "script": "Copying a big string for every call is slow. A reference avoids the copy. But a reference lets the function change the original. Add const, and the function may only read it. So a const reference is fast and safe. Think of a museum. You may look at the painting, but you may not touch it. The parameter is a const reference to a string. Keep coding, says Xecxec!",
+      "onScreen": "CONST REFERENCES",
+      "caption": "const references in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constreferences",
+        "#coding"
+      ],
+      "link": "Full video: EP 25"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Both parameters are const references.",
+      "script": "Both parameters are const references. Both strings are only read. The function compares the sizes. Panjim and Mapusa both have six letters, so the answer is false. A const reference can also take a plain quoted text. Margao is longer than Goa, so the answer is true. The program prints false and then true. A copy of a big value is slow. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constreferences",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 25"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Changing a const reference",
+      "lengthSec": 38,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in const references?",
+      "script": "Can you spot the bug in const references? Bug of the Day. The function takes a const reference, and then tries to add one. The compiler says increment of read-only reference. Const means look, but do not touch. If the function must change the value, remove const. A const reference is read-only. If the function must change the value, use a plain reference. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Changing a const reference.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constreferences",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 25"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 38,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you choose the right parameter style in const references?",
+      "script": "Can you choose the right parameter style in const references? The museum guard loves const references. He says, look all you want, but do not touch the exhibit. Write a function that prints the size of a string. Choose the best parameter style, and explain your choice in a comment. Write your answer in the comments. A copy of a big value is slow. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#constreferences",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 25"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "ep": 39,
+  "title": "Searching",
+  "module": 4,
+  "moduleName": "Arrays, vectors and sorting",
+  "lengthSec": 295,
+  "colours": "Butter + Dark blue",
+  "prerequisite": "EP 38",
+  "youtube": {
+    "title": "C++ Searching: Linear and Binary Search | C++ Programming EP 39",
+    "description": "In this episode you will write a linear search, write a binary search on a sorted array and explain why binary search needs sorted data, with Xecxec the crab.\n\n0:00 Intro\n0:15 Searching\n0:51 Linear search\n1:31 Binary search steps\n2:02 Second program\n3:02 Recap\n3:32 Bug of the Day\n4:20 Challenge\n4:40 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Searching"
+      },
+      {
+        "t": "0:51",
+        "label": "Linear search"
+      },
+      {
+        "t": "1:31",
+        "label": "Binary search steps"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:02",
+        "label": "Recap"
+      },
+      {
+        "t": "3:32",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "linear search",
+      "binary search",
+      "c++ searching algorithms",
+      "sorted array"
+    ],
+    "thumbnail": {
+      "raw": "big text \"FIND IT FAST\" in tomato on butter; Xecxec next to a crab with a magnifying glass at a library shelf; thin black border and drop shadow.",
+      "text": "FIND IT FAST",
+      "colours": "tomato on butter",
+      "visual": "next to a crab with a magnifying glass at a library shelf",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Searching",
+      "lengthSec": 36,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Find one item among a million in about twenty steps.",
+      "script": "Find one item among a million in about twenty steps. Today we search. One method is simple. The other is clever, and it finds one item among a million in about twenty steps. Linear search checks the items one by one, from the start. It works on any data, but it can be slow. Binary search needs sorted data. Keep coding, says Xecxec!",
+      "onScreen": "SEARCHING",
+      "caption": "What you will learn: Searching.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#searching",
+        "#beginners"
+      ],
+      "link": "Full video: EP 39"
+    },
+    {
+      "id": "S2",
+      "title": "Searching in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Linear search checks the items one by one, from the start.",
+      "script": "Linear search checks the items one by one, from the start. It works on any data, but it can be slow. Binary search needs sorted data. It looks at the middle item, and then it throws away half of the range. Think of a dictionary. You open it in the middle, then you pick the left or the right half. Keep coding, says Xecxec!",
+      "onScreen": "SEARCHING",
+      "caption": "Searching in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#searching",
+        "#coding"
+      ],
+      "link": "Full video: EP 39"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "Low and high mark the part of the array that",
+      "script": "Low and high mark the part of the array that is still possible. Mid is the middle index. If the middle item is the target, we are done. If it is too small, we move low past mid. If it is too big, we move high below mid. When low passes high, the target is not there. The program prints two. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#searching",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 39"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Binary search on unsorted data",
+      "lengthSec": 35,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in searching?",
+      "script": "Can you spot the bug in searching? Bug of the Day. The array holds three, but the search says minus one. The array is not sorted. Binary search looks at nine in the middle. Nine is bigger than three, so it throws away the right half. But the three was in the right half. Sort the array first. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Binary search on unsorted data.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#searching",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 39"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 38,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you search for a name in searching?",
+      "script": "Can you search for a name in searching? I use binary search to find my socks. Half of the drawer is always wrong. Write a linear search that finds a name in an array of five strings. Print the index, or minus one. Write your answer in the comments. Linear search checks the items one by one. Binary search halves the range each time. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#searching",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 39"
+    }
+  ]
+}

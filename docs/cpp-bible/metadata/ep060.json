@@ -1,0 +1,173 @@
+{
+  "ep": 60,
+  "title": "Rule of three, five and zero",
+  "module": 6,
+  "moduleName": "Classes and objects",
+  "lengthSec": 304,
+  "colours": "Peach + Dark blue",
+  "prerequisite": "EP 59",
+  "youtube": {
+    "title": "C++ Rule of Three, Five and Zero | C++ Programming EP 60",
+    "description": "In this episode you will explain deep copy and shallow copy, write a copy constructor and prefer the rule of zero, with Xecxec the crab.\n\n0:00 Intro\n0:15 Rule of three, five and zero\n0:56 A deep copy\n1:36 Shallow and deep copy\n2:06 Second program\n3:06 Recap\n3:41 Bug of the Day\n4:29 Challenge\n4:49 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Rule of three, five and zero"
+      },
+      {
+        "t": "0:56",
+        "label": "A deep copy"
+      },
+      {
+        "t": "1:36",
+        "label": "Shallow and deep copy"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:41",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:29",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:49",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "rule of three",
+      "rule of five",
+      "copy constructor",
+      "rule of zero"
+    ],
+    "thumbnail": {
+      "raw": "big text \"RULE OF 3-5-0\" in tomato on peach; Xecxec next to three keys: copy, assign, destroy; thin black border and drop shadow.",
+      "text": "RULE OF 3-5-0",
+      "colours": "tomato on peach",
+      "visual": "next to three keys: copy, assign, destroy",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Rule of three, five and zero",
+      "lengthSec": 40,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "If you write a destructor, you must write a copy too.",
+      "script": "If you write a destructor, you must write a copy too. Today we finish the module with the most important rule. It tells you when to write copy functions, and when to write none. A class that owns heap memory needs care. The default copy copies the pointer, not the memory. That is a shallow copy. Two objects then share one box, and both try to delete it. Keep coding, says Xecxec!",
+      "onScreen": "RULE OF THREE, FIVE AND ZERO",
+      "caption": "What you will learn: Rule of three, five and zero.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#ruleofthreefiveandzero",
+        "#beginners"
+      ],
+      "link": "Full video: EP 60"
+    },
+    {
+      "id": "S2",
+      "title": "Rule of three, five and zero in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A class that owns heap memory needs care.",
+      "script": "A class that owns heap memory needs care. The default copy copies the pointer, not the memory. That is a shallow copy. Two objects then share one box, and both try to delete it. The rule of three says: if you write a destructor, a copy constructor or a copy assignment, write all three. The rule of zero is better. Keep coding, says Xecxec!",
+      "onScreen": "RULE OF THREE, FIVE AND ZERO",
+      "caption": "Rule of three, five and zero in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#ruleofthreefiveandzero",
+        "#coding"
+      ],
+      "link": "Full video: EP 60"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 40,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The vector owns the memory.",
+      "script": "The vector owns the memory. We write no destructor and no copy functions. The default copy copies the vector, and the vector copies its items. We add to b only. A has two items, and b has three. The rule of zero gives us the right result for free. The program prints two and three. A shallow copy shares memory, and a deep copy makes new memory. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#ruleofthreefiveandzero",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 60"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A copy that was switched off",
+      "lengthSec": 39,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in the rule of three",
+      "script": "Can you spot the bug in the rule of three, five and zero? Bug of the Day. The copy constructor is marked equals delete. The compiler says use of deleted function. That is on purpose. It switches a function off. Remove the delete line if the class should be copyable. Writing equals delete switches a function off. The compiler then refuses any code that calls it. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: A copy that was switched off.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#ruleofthreefiveandzero",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 60"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 36,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you decide: rule of three or zero in the",
+      "script": "Can you decide: rule of three or zero in the rule of three, five and zero? The programmer said, I will copy my homework. The compiler replied, that is a shallow excuse. Make a class that holds a name and a list of marks. Decide if it needs a destructor. Explain in a comment. Write your answer in the comments. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#ruleofthreefiveandzero",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 60"
+    }
+  ]
+}

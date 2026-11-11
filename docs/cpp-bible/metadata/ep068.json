@@ -1,0 +1,173 @@
+{
+  "ep": 68,
+  "title": "Composition and slicing",
+  "module": 7,
+  "moduleName": "Inheritance and polymorphism",
+  "lengthSec": 295,
+  "colours": "Pastel blue + Apricot",
+  "prerequisite": "EP 67",
+  "youtube": {
+    "title": "C++ Composition vs Inheritance and Object Slicing | C++ Programming EP 68",
+    "description": "In this episode you will choose between has-a and is-a, build a class from parts and avoid object slicing, with Xecxec the crab.\n\n0:00 Intro\n0:15 Composition and slicing\n0:52 A car has an engine\n1:32 Is-a or has-a?\n2:02 Second program\n3:02 Recap\n3:32 Bug of the Day\n4:20 Challenge\n4:40 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Composition and slicing"
+      },
+      {
+        "t": "0:52",
+        "label": "A car has an engine"
+      },
+      {
+        "t": "1:32",
+        "label": "Is-a or has-a?"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:02",
+        "label": "Recap"
+      },
+      {
+        "t": "3:32",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "composition vs inheritance",
+      "has-a",
+      "object slicing",
+      "c++ design"
+    ],
+    "thumbnail": {
+      "raw": "big text \"HAS-A OR IS-A\" in tomato on pastel blue; Xecxec next to a car with an engine inside it; thin black border and drop shadow.",
+      "text": "HAS-A OR IS-A",
+      "colours": "tomato on pastel blue",
+      "visual": "next to a car with an engine inside it",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Composition and slicing",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "A car is not an engine. A car has an engine.",
+      "script": "A car is not an engine. A car has an engine. Today we choose the right tool for the design. We also meet slicing, a bug that cuts your object in half. Use inheritance for an is-a relationship. A dog is an animal. Use composition for a has-a relationship. A car has an engine. Composition makes a member out of another class. Keep coding, says Xecxec!",
+      "onScreen": "COMPOSITION AND SLICING",
+      "caption": "What you will learn: Composition and slicing.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#compositionandslicing",
+        "#beginners"
+      ],
+      "link": "Full video: EP 68"
+    },
+    {
+      "id": "S2",
+      "title": "Composition and slicing in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Use inheritance for an is-a relationship.",
+      "script": "Use inheritance for an is-a relationship. A dog is an animal. Use composition for a has-a relationship. A car has an engine. Composition makes a member out of another class. Prefer composition when you are not sure. It is simpler. A second danger is slicing. Passing a derived object by value to a base parameter cuts off the derived part. Keep coding, says Xecxec!",
+      "onScreen": "COMPOSITION AND SLICING",
+      "caption": "Composition and slicing in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#compositionandslicing",
+        "#coding"
+      ],
+      "link": "Full video: EP 68"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "This function takes an Animal by value.",
+      "script": "This function takes an Animal by value. The compiler copies only the Animal part of the dog. The Dog part is sliced off. This one takes a reference. No copy is made. The first call prints three dots. The second call prints Woof. Always pass polymorphic objects by reference or by pointer. The program prints three dots, and then Woof. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#compositionandslicing",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 68"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Slicing in a function call",
+      "lengthSec": 35,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in composition and slicing?",
+      "script": "Can you spot the bug in composition and slicing? Bug of the Day. We pass a Dog to a function that takes an Animal by value. The function prints three dots, not Woof. The Dog part was sliced off in the copy. Take a const reference instead. Passing by value copies only the Animal part of the Dog. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Slicing in a function call.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#compositionandslicing",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 68"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 36,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you redesign with composition in composition and slicing?",
+      "script": "Can you redesign with composition in composition and slicing? Object slicing is a bad deal. You asked for a whole dog, and you got half a dog. Write a class Computer that has a Processor and a Memory as members. Add a function that starts both. Write your answer in the comments. Use inheritance for is-a. Use composition for has-a. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#compositionandslicing",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 68"
+    }
+  ]
+}

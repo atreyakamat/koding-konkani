@@ -1,0 +1,173 @@
+{
+  "ep": 54,
+  "title": "Member initializer lists",
+  "module": 6,
+  "moduleName": "Classes and objects",
+  "lengthSec": 296,
+  "colours": "Peach + Dark blue",
+  "prerequisite": "EP 53",
+  "youtube": {
+    "title": "C++ Member Initializer Lists | C++ Programming EP 54",
+    "description": "In this episode you will write a member initializer list, explain why const members need it and avoid the order warning, with Xecxec the crab.\n\n0:00 Intro\n0:15 Member initializer lists\n0:53 An initializer list\n1:33 Order of events\n2:03 Second program\n3:03 Recap\n3:33 Bug of the Day\n4:21 Challenge\n4:41 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Member initializer lists"
+      },
+      {
+        "t": "0:53",
+        "label": "An initializer list"
+      },
+      {
+        "t": "1:33",
+        "label": "Order of events"
+      },
+      {
+        "t": "2:03",
+        "label": "Second program"
+      },
+      {
+        "t": "3:03",
+        "label": "Recap"
+      },
+      {
+        "t": "3:33",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:21",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:41",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "member initializer list",
+      "constructor init list",
+      "const member",
+      "wreorder"
+    ],
+    "thumbnail": {
+      "raw": "big text \"INIT LISTS\" in tomato on peach; Xecxec next to a checklist stuck to a toolbox; thin black border and drop shadow.",
+      "text": "INIT LISTS",
+      "colours": "tomato on peach",
+      "visual": "next to a checklist stuck to a toolbox",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Member initializer lists",
+      "lengthSec": 35,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Initialize before the body runs.",
+      "script": "Initialize before the body runs. Today we learn the right way to set up members. The colon list runs before the body, and some members need it. A member initializer list sits after the constructor brackets. It starts with a colon. It builds each member directly, before the body runs. Const members and reference members must use it. Keep coding, says Xecxec!",
+      "onScreen": "MEMBER INITIALIZER LISTS",
+      "caption": "What you will learn: Member initializer lists.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#memberinitializerlists",
+        "#beginners"
+      ],
+      "link": "Full video: EP 54"
+    },
+    {
+      "id": "S2",
+      "title": "Member initializer lists in one minute",
+      "lengthSec": 38,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A member initializer list sits after the constructor brackets.",
+      "script": "A member initializer list sits after the constructor brackets. It starts with a colon. It builds each member directly, before the body runs. Const members and reference members must use it. Members are always built in the order of their declaration, not in the order of your list. Think of a school bag. You pack in the order of the checklist on the door. Keep coding, says Xecxec!",
+      "onScreen": "MEMBER INITIALIZER LISTS",
+      "caption": "Member initializer lists in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#memberinitializerlists",
+        "#coding"
+      ],
+      "link": "Full video: EP 54"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 38,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The id is const.",
+      "script": "The id is const. It must never change. A const member can only get its value in the list. Setting it in the body is too late. We make a ticket with id one hundred and one, and price fifty. The output shows both numbers. The program prints one hundred one, then fifty. The initializer list sits between the colon and the body. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#memberinitializerlists",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 54"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A list in the wrong order",
+      "lengthSec": 42,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in member initializer lists?",
+      "script": "Can you spot the bug in member initializer lists? Bug of the Day. The list names second before first. But members are always built in the order of the declaration. The compiler warns about the wrong order. Write the list in the same order as the members. The compiler builds members in the order of the declaration. A list in a different order is misleading, and it can cause real bugs. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: A list in the wrong order.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#memberinitializerlists",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 54"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you use an initializer list with a const in",
+      "script": "Can you use an initializer list with a const in member initializer lists? The initializer list is like a packing list. It never lets the constructor forget its socks. Write a class called Student with a const roll number and a name. Use an initializer list. Write your answer in the comments. The initializer list sits between the colon and the body. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#memberinitializerlists",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 54"
+    }
+  ]
+}

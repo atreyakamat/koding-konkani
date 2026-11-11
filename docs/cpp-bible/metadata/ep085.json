@@ -1,0 +1,173 @@
+{
+  "ep": 85,
+  "title": "Linked list",
+  "module": 10,
+  "moduleName": "Data structures and projects",
+  "lengthSec": 305,
+  "colours": "Mint + Tomato",
+  "prerequisite": "EP 84",
+  "youtube": {
+    "title": "C++ Linked List from Scratch | C++ Programming EP 85",
+    "description": "In this episode you will build a linked list with nodes, walk along a list and free every node, with Xecxec the crab.\n\n0:00 Intro\n0:15 Linked list\n0:45 Build, walk and free\n1:41 Three nodes on the heap\n2:11 Second program\n3:11 Recap\n3:42 Bug of the Day\n4:30 Challenge\n4:50 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Linked list"
+      },
+      {
+        "t": "0:45",
+        "label": "Build, walk and free"
+      },
+      {
+        "t": "1:41",
+        "label": "Three nodes on the heap"
+      },
+      {
+        "t": "2:11",
+        "label": "Second program"
+      },
+      {
+        "t": "3:11",
+        "label": "Recap"
+      },
+      {
+        "t": "3:42",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:30",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:50",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ linked list",
+      "node pointer",
+      "data structures",
+      "dynamic memory"
+    ],
+    "thumbnail": {
+      "raw": "big text \"LINKED LIST\" in tomato on mint; Xecxec next to train cars joined by arrows; thin black border and drop shadow.",
+      "text": "LINKED LIST",
+      "colours": "tomato on mint",
+      "visual": "next to train cars joined by arrows",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Linked list",
+      "lengthSec": 37,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Build a train of nodes with pointers.",
+      "script": "Build a train of nodes with pointers. Today we build our first data structure. A linked list is a chain of nodes, and each node points to the next one. A node holds a value and a pointer to the next node. The last node points to null. A pointer called head points to the first node. Think of train cars. Keep coding, says Xecxec!",
+      "onScreen": "LINKED LIST",
+      "caption": "What you will learn: Linked list.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#linkedlist",
+        "#beginners"
+      ],
+      "link": "Full video: EP 85"
+    },
+    {
+      "id": "S2",
+      "title": "Linked list in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "A node holds a value and a pointer to the next node.",
+      "script": "A node holds a value and a pointer to the next node. The last node points to null. A pointer called head points to the first node. Think of train cars. Each car knows only the next car. To reach the last car, you walk along the train. A node has a value and a pointer to the next node. Keep coding, says Xecxec!",
+      "onScreen": "LINKED LIST",
+      "caption": "Linked list in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#linkedlist",
+        "#coding"
+      ],
+      "link": "Full video: EP 85"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "This function makes a new node",
+      "script": "This function makes a new node, and its next pointer is the old head. The new node is now the first one. An empty list has a null head. Each call returns the new head, so we store it. We add one, then two, then three, each at the front. The list prints three two one. Free list deletes every node. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#linkedlist",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 85"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: The walk stops one node early",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in linked list?",
+      "script": "Can you spot the bug in linked list? Bug of the Day. The list holds one, two and three, but the output shows only one and two. The loop tests the next pointer. It stops on the last node, before it prints. Test cur itself. The test cur next not null stops at the last node, before it prints. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: The walk stops one node early.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#linkedlist",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 85"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 36,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you count the nodes in linked list?",
+      "script": "Can you count the nodes in linked list? Why did the node feel lonely? It only ever knew the next one. Write a function that counts the nodes in a linked list. An empty list has zero nodes. Write your answer in the comments. A node holds a value and a next pointer. The head points to the first node. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#linkedlist",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 85"
+    }
+  ]
+}

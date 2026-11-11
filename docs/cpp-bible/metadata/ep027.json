@@ -1,0 +1,173 @@
+{
+  "ep": 27,
+  "title": "Scope and lifetime",
+  "module": 3,
+  "moduleName": "Functions",
+  "lengthSec": 292,
+  "colours": "Mint + Dark blue",
+  "prerequisite": "EP 26",
+  "youtube": {
+    "title": "C++ Scope: Local, Global and Block Variables | C++ Programming EP 27",
+    "description": "In this episode you will tell local from global variables, know that a block has its own scope and use a static local variable, with Xecxec the crab.\n\n0:00 Intro\n0:15 Scope and lifetime\n0:48 Local and global\n1:28 Where each variable lives\n1:58 Second program\n2:59 Recap\n3:29 Bug of the Day\n4:17 Challenge\n4:37 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Scope and lifetime"
+      },
+      {
+        "t": "0:48",
+        "label": "Local and global"
+      },
+      {
+        "t": "1:28",
+        "label": "Where each variable lives"
+      },
+      {
+        "t": "1:58",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:17",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:37",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ scope",
+      "local variable",
+      "global variable",
+      "static local"
+    ],
+    "thumbnail": {
+      "raw": "big text \"WHERE LIVES X?\" in tomato on mint; Xecxec next to rooms in a house, each with its own box; thin black border and drop shadow.",
+      "text": "WHERE LIVES X?",
+      "colours": "tomato on mint",
+      "visual": "next to rooms in a house, each with its own box",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Scope and lifetime",
+      "lengthSec": 36,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "A variable only lives inside its own braces.",
+      "script": "A variable only lives inside its own braces. Today we ask where a variable lives. Scope decides where you can use a name, and for how long it exists. Scope is the part of the program where a name is visible. A variable made inside braces dies at the closing brace. A global variable lives for the whole program. Keep coding, says Xecxec!",
+      "onScreen": "SCOPE AND LIFETIME",
+      "caption": "What you will learn: Scope and lifetime.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#scopeandlifetime",
+        "#beginners"
+      ],
+      "link": "Full video: EP 27"
+    },
+    {
+      "id": "S2",
+      "title": "Scope and lifetime in one minute",
+      "lengthSec": 38,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Scope is the part of the program where a name is visible.",
+      "script": "Scope is the part of the program where a name is visible. A variable made inside braces dies at the closing brace. A global variable lives for the whole program. A static local variable stays alive between calls. Think of rooms in a house. A box in the kitchen is not visible from the bedroom. Visits lives outside every function, so it is global. Keep coding, says Xecxec!",
+      "onScreen": "SCOPE AND LIFETIME",
+      "caption": "Scope and lifetime in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#scopeandlifetime",
+        "#coding"
+      ],
+      "link": "Full video: EP 27"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The word static makes ticket live for the whole program.",
+      "script": "The word static makes ticket live for the whole program. The start value is set only once. Each call adds one. It returns the new ticket. The first call prints one hundred and one. The second prints one hundred and two, and so on. The program prints one hundred and one, one hundred and two, and one hundred and three. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#scopeandlifetime",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 27"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Using a variable outside its block",
+      "lengthSec": 41,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in scope and lifetime?",
+      "script": "Can you spot the bug in scope and lifetime? Bug of the Day. Total is made inside the loop, but we print it after the loop. The compiler says total was not declared in this scope. The variable died at the closing brace. Make it before the loop. Total dies at the closing brace of the loop. Make it before the loop, so it lives until the end of main. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Using a variable outside its block.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#scopeandlifetime",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 27"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 36,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you count function calls in scope and lifetime?",
+      "script": "Can you count function calls in scope and lifetime? Why was the local variable sad? It knew that it would be gone at the closing brace. Write a function that counts how many times it was called. Use a static local variable. Call it four times. Write your answer in the comments. A local variable lives inside its braces. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#scopeandlifetime",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 27"
+    }
+  ]
+}

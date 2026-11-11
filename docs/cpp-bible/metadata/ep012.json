@@ -1,0 +1,173 @@
+{
+  "ep": 12,
+  "title": "Formatting output",
+  "module": 1,
+  "moduleName": "Variables and types",
+  "lengthSec": 294,
+  "colours": "Pastel blue + Tomato",
+  "prerequisite": "EP 11",
+  "youtube": {
+    "title": "C++ Output Formatting: setw, setprecision and std::format | C++ Programming EP 12",
+    "description": "In this episode you will set the number of decimals, align columns with setw and build a line with std::format, with Xecxec the crab.\n\n0:00 Intro\n0:15 Formatting output\n0:51 A neat bill\n1:31 Format tools\n2:01 Second program\n3:01 Recap\n3:31 Bug of the Day\n4:19 Challenge\n4:39 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Formatting output"
+      },
+      {
+        "t": "0:51",
+        "label": "A neat bill"
+      },
+      {
+        "t": "1:31",
+        "label": "Format tools"
+      },
+      {
+        "t": "2:01",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:31",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:19",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:39",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "setprecision",
+      "setw",
+      "std::format",
+      "c++ output formatting"
+    ],
+    "thumbnail": {
+      "raw": "big text \"TIDY OUTPUT\" in tomato on pastel blue; Xecxec next to a neat price list with aligned columns; thin black border and drop shadow.",
+      "text": "TIDY OUTPUT",
+      "colours": "tomato on pastel blue",
+      "visual": "next to a neat price list with aligned columns",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Formatting output",
+      "lengthSec": 35,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "Make your output look like a real bill.",
+      "script": "Make your output look like a real bill. Today we make output tidy. Prices get two decimals, and columns line up like a real bill. Raw output can look messy. Fixed and setprecision give a set number of decimals. Setw sets the width of the next item, so columns line up. These tools live in the iomanip header. Keep coding, says Xecxec!",
+      "onScreen": "FORMATTING OUTPUT",
+      "caption": "What you will learn: Formatting output.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#formattingoutput",
+        "#beginners"
+      ],
+      "link": "Full video: EP 12"
+    },
+    {
+      "id": "S2",
+      "title": "Formatting output in one minute",
+      "lengthSec": 36,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "Raw output can look messy.",
+      "script": "Raw output can look messy. Fixed and setprecision give a set number of decimals. Setw sets the width of the next item, so columns line up. These tools live in the iomanip header. Since C plus plus twenty, std format builds a line from a pattern. Think of a restaurant bill, where all the prices line up on the right. Keep coding, says Xecxec!",
+      "onScreen": "FORMATTING OUTPUT",
+      "caption": "Formatting output in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#formattingoutput",
+        "#coding"
+      ],
+      "link": "Full video: EP 12"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 36,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "The format header gives us std format.",
+      "script": "The format header gives us std format. The pattern has two holes, written as curly braces. The first hole takes the name. The second hole takes the price. The code colon dot two f means two decimals. Cout prints the finished line. The program prints, Fish costs one hundred twenty point five zero rupees. Fixed and setprecision control the decimals. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#formattingoutput",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 12"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Precision without fixed",
+      "lengthSec": 36,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in formatting output?",
+      "script": "Can you spot the bug in formatting output? Bug of the Day. We want one hundred twenty point five zero. The program prints a strange short form, one point two e plus zero two. Without fixed, setprecision counts all the digits. Add fixed before setprecision, and you get two decimals. Without fixed, setprecision counts all digits, not only the decimals. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: Precision without fixed.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#formattingoutput",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 12"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 35,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you print a three-row bill in formatting output?",
+      "script": "Can you print a three-row bill in formatting output? My output was so untidy that even cout asked for a setw. Print a bill with three items. Use fixed, setprecision and setw so that the prices line up. Write your answer in the comments. Fixed and setprecision control the decimals. Setw sets the width of the next item. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#formattingoutput",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 12"
+    }
+  ]
+}

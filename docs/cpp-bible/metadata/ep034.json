@@ -1,0 +1,173 @@
+{
+  "ep": 34,
+  "title": "std::array",
+  "module": 4,
+  "moduleName": "Arrays, vectors and sorting",
+  "lengthSec": 300,
+  "colours": "Butter + Dark blue",
+  "prerequisite": "EP 33",
+  "youtube": {
+    "title": "C++ std::array: A Safer Array | C++ Programming EP 34",
+    "description": "In this episode you will make a std array, use size and at and read an out-of-range error, with Xecxec the crab.\n\n0:00 Intro\n0:16 std::array\n0:57 A std array\n1:37 Plain array or std::array\n2:07 Second program\n3:07 Recap\n3:37 Bug of the Day\n4:25 Challenge\n4:45 Next episode\n\nKeep coding, says Xecxec!\n\n#cpp #kodingkonkani",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:16",
+        "label": "std::array"
+      },
+      {
+        "t": "0:57",
+        "label": "A std array"
+      },
+      {
+        "t": "1:37",
+        "label": "Plain array or std::array"
+      },
+      {
+        "t": "2:07",
+        "label": "Second program"
+      },
+      {
+        "t": "3:07",
+        "label": "Recap"
+      },
+      {
+        "t": "3:37",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::array",
+      "c++ array at",
+      "out_of_range",
+      "safe array"
+    ],
+    "thumbnail": {
+      "raw": "big text \"STD::ARRAY\" in tomato on butter; Xecxec next to an array with a safety helmet; thin black border and drop shadow.",
+      "text": "STD::ARRAY",
+      "colours": "tomato on butter",
+      "visual": "next to an array with a safety helmet",
+      "style": "thin black border and drop shadow."
+    }
+  },
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: std::array",
+      "lengthSec": 39,
+      "fromScenes": [
+        1,
+        2
+      ],
+      "hook": "An array that knows its own size.",
+      "script": "An array that knows its own size. Today we meet std array. It is a normal array with a safety helmet. It knows its size, and it can check your index. The std array type wraps a plain array. It knows its own size. The size function tells you. The at function checks the index. If the index is wrong, it stops with an error. Keep coding, says Xecxec!",
+      "onScreen": "STD::ARRAY",
+      "caption": "What you will learn: std::array.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdarray",
+        "#beginners"
+      ],
+      "link": "Full video: EP 34"
+    },
+    {
+      "id": "S2",
+      "title": "std::array in one minute",
+      "lengthSec": 41,
+      "fromScenes": [
+        2,
+        3
+      ],
+      "hook": "The std array type wraps a plain array.",
+      "script": "The std array type wraps a plain array. It knows its own size. The size function tells you. The at function checks the index. If the index is wrong, it stops with an error. A plain array does not check anything, and a wrong index gives garbage. Think of a locker row with a guard. If you ask for door nine, the guard says there is no such door. Keep coding, says Xecxec!",
+      "onScreen": "STD::ARRAY",
+      "caption": "std::array in one minute.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdarray",
+        "#coding"
+      ],
+      "link": "Full video: EP 34"
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "lengthSec": 37,
+      "fromScenes": [
+        5,
+        6
+      ],
+      "hook": "This line copies the whole array.",
+      "script": "This line copies the whole array. A plain array cannot do this. We change the first item of b only. Two equals signs compare all items. The arrays differ now, so the answer is false. The original a still starts with one, and b starts with nine. The program prints false, and then one and nine. Std array wraps a plain array. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdarray",
+        "#learntocode"
+      ],
+      "link": "Full video: EP 34"
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: An index that is too big",
+      "lengthSec": 41,
+      "fromScenes": [
+        8
+      ],
+      "hook": "Can you spot the bug in std array?",
+      "script": "Can you spot the bug in std array? Bug of the Day. The array has three items, and we ask for index five. At stops the program. It says terminate called after throwing an instance of out of range. That is better than reading garbage. Check the index against the size before you use it. The array has three items, so the valid indexes are zero, one and two. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "caption": "Bug of the Day: An index that is too big.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdarray",
+        "#bugfix"
+      ],
+      "link": "Full video: EP 34"
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "lengthSec": 37,
+      "fromScenes": [
+        9,
+        10
+      ],
+      "hook": "Can you fill and print a std array in std array?",
+      "script": "Can you fill and print a std array in std array? Std array put on a helmet. Now it has a safe place to fall. Make a std array of four ints. Fill it with the number seven. Print every item with a range-based for. Write your answer in the comments. Std array wraps a plain array. It knows its own size. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "#cpp",
+        "#kodingkonkani",
+        "#stdarray",
+        "#codingchallenge"
+      ],
+      "link": "Full video: EP 34"
+    }
+  ]
+}
