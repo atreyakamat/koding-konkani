@@ -1,0 +1,349 @@
+{
+  "ep": 1,
+  "title": "Hello, Python!",
+  "module": 0,
+  "lengthSec": 308,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "write and run a first Python program",
+    "use print() to show text on the screen",
+    "know that text goes inside quotes"
+  ],
+  "youtube": {
+    "title": "Hello, Python! Your First Program | Python Programming EP 01",
+    "description": "Write and run your very first Python program with Xecxec the crab. No experience needed, just bring curiosity. 0:00 Intro · 0:20 What is Python? · 1:00 print line by line · 1:40 How Python runs your file · 2:10 Run it in your head · 2:50 Run it · 3:10 Recap · 3:45 Bug of the Day · 4:33 Challenge · 4:53 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:20",
+        "label": "What is Python?"
+      },
+      {
+        "t": "1:00",
+        "label": "print line by line"
+      },
+      {
+        "t": "1:40",
+        "label": "How Python runs your file"
+      },
+      {
+        "t": "2:10",
+        "label": "Run it in your head"
+      },
+      {
+        "t": "2:50",
+        "label": "Run it"
+      },
+      {
+        "t": "3:10",
+        "label": "Recap"
+      },
+      {
+        "t": "3:45",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:33",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:53",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "hello world python",
+      "print function",
+      "koding konkani",
+      "learn programming",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa"
+    ],
+    "thumbnail": {
+      "text": "HELLO, PYTHON!",
+      "visual": "big text \"HELLO, PYTHON!\" in tomato on peach; Xecxec waving a claw at a dark-blue terminal card showing `Hello, Goa!`; thin black border and drop shadow.",
+      "pose": "Xecxec waving a claw at a dark-blue terminal card showing `Hello, Goa!`"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 20,
+      "onScreen": "EP 01 · HELLO, PYTHON!",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Welcome to Koding Konkani! I am your narrator, and this little crab is Xecxec. In this series you learn Python from zero. Today, we write our very first program."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 20,
+      "lengthSec": 40,
+      "onScreen": "\"What is Python?\": three numbered lines and a fish-curry recipe card on the right",
+      "animation": "Lines spring in one by one with a pop; the recipe card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Python is a programming language. You write instructions in plain text, and Python reads them from top to bottom and does what they say. Think of a recipe card for fish curry. The card is your code, and Python is the cook who follows it, step by step. Python is popular because its words look almost like English, so beginners can read it from day one."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 40,
+      "onScreen": "hello.py: the 2-line first program, line 1 is the star",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] This is the whole first program. The word print is a function. It shows something on the screen. The round brackets hold what to show. The quotes mean, this is text. Hello, Goa is the text. [HL 2] A second line prints the sign-off. Python runs line one, then line two, always in order.",
+      "code": {
+        "file": "hello.py",
+        "source": "print(\"Hello, Goa!\")\nprint(\"Keep coding, says Xecxec!\")",
+        "output": "Hello, Goa!\nKeep coding, says Xecxec!"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 100,
+      "lengthSec": 30,
+      "onScreen": "Three boxes: your file, Python, the screen; arrows between them",
+      "animation": "Three boxes appear left to right; arrows draw on between them with a whoosh; the screen box lights up when text arrives",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Here is the journey. Your file goes to Python. Python reads line one, runs it, then reads line two, runs it. The text appears on the screen. There is no separate building step. Python reads and runs at the same time. That is why a mistake shows up the moment Python reaches that line."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 130,
+      "lengthSec": 40,
+      "onScreen": "hello.py again, with the output panel on the right",
+      "animation": "Same code; the output panel fills line by line with a ding per output line; no variables yet, so the tracker card stays hidden",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] When this line runs, Hello, Goa appears. [HL 2] Then the next line prints underneath. Each print starts on a fresh line on its own. Change the words inside the quotes and the output changes too. Try your own name. Before you run it, predict the output. Two lines. The second says, Keep coding, says Xecxec. Predicting before running is the habit that makes you fast.",
+      "code": {
+        "file": "hello.py",
+        "source": "print(\"Hello, Goa!\")\nprint(\"Keep coding, says Xecxec!\")",
+        "output": "Hello, Goa!\nKeep coding, says Xecxec!"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 170,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python hello.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as hello dot py. In the terminal, type python, space, hello dot py. There it is. Our first program. On some Macs and Linux machines, the command is python three."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 190,
+      "lengthSec": 35,
+      "onScreen": "Recap: four ideas on one card",
+      "animation": "Four recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Python reads your file from top to bottom. Two: print shows text on the screen, and the text goes in quotes. Three: every opening quote needs a closing quote. And remember the journey: your file goes to Python, and the answer appears on the screen. Pause the video, and say those ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 225,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a missing closing quote",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We forgot the closing quote. Python says, syntax error, unterminated string literal. It even shows an arrow under where the text starts. Add the quote, and it runs. Whenever you see unterminated, count your quotes."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 8,
+      "onScreen": "I would tell you a Python joke, but I forgot to close the quote.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I would tell you a Python joke, but I forgot to close the quote."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 273,
+      "lengthSec": 20,
+      "onScreen": "Task card: print your name, then your favourite beach",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: print your name on one line, and your favourite beach on the next. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 293,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 02 · Installing Python and running scripts",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: installing Python and running scripts properly. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "print(\"Hello, Goa!)",
+    "error": "Python output (exactly as Python prints it):\n\n  File \"hello.py\", line 1\n    print(\"Hello, Goa!)\n          ^\nSyntaxError: unterminated string literal (detected at line 1)",
+    "fixed": "print(\"Hello, Goa!\")",
+    "why": "Every opening quote needs a closing quote of the same kind, otherwise Python cannot tell where the text ends."
+  },
+  "pun": "\"I would tell you a Python joke, but I forgot to close the quote.\"",
+  "challenge": "Print your name on one line and your favourite beach on the next.",
+  "challengeAnswer": "Use two print lines, for example Atreya, then Palolem.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The smallest Python program",
+      "hook": "\"One line is a whole program.\"",
+      "script": "One line is a whole program. Print, then round brackets, then your text inside quotes. That is a complete, working Python program. When you run it, the text appears on the screen, exactly as you wrote it. There is nothing else to set up. Everything that you learn in this course builds on this one very small line of code. Keep coding, says Xecxec!",
+      "onScreen": "THE SMALLEST PYTHON PROGRAM",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Your first Python line.",
+      "hashtags": [
+        "python",
+        "learntocode",
+        "kodingkonkani",
+        "beginners",
+        "goa"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Python reads top to bottom",
+      "hook": "\"Line one, then line two.\"",
+      "script": "Line one, then line two. Python reads your file from top to bottom, and runs each line in order. There is no waiting and no separate build step. Python reads a line, runs it, then moves to the next one. That is also why a mistake shows up the moment Python reaches that line. Keep this journey in mind. Keep coding, says Xecxec!",
+      "onScreen": "PYTHON READS TOP TO BOTTOM",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "How Python runs your code.",
+      "hashtags": [
+        "python",
+        "interpreter",
+        "programming",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "What does print do?",
+      "hook": "\"A function with one job.\"",
+      "script": "A function with one job. The print function shows text on the screen. Put your words inside quotes, and they appear exactly as written. Each print starts on a fresh line, so two prints give two lines. Change the words and the output changes too. Try your own name, and predict the output before you press run. Keep coding, says Xecxec!",
+      "onScreen": "PRINT(\"TEXT\")",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "print explained slowly.",
+      "hashtags": [
+        "python",
+        "print",
+        "helloworld",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The missing quote",
+      "hook": "\"One missing character, one angry Python.\"",
+      "script": "One missing character, one angry Python. Forget the closing quote, and Python says, unterminated string literal. It even shows an arrow under the place where the text starts. Every opening quote needs a closing quote of the same kind. So whenever you see the word unterminated, stop and count your quotes. Then add the missing one, and run it again. Keep coding, says Xecxec!",
+      "onScreen": "UNTERMINATED STRING LITERAL",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Quotes come in pairs.",
+      "hashtags": [
+        "python",
+        "bugfix",
+        "syntaxerror",
+        "kodingkonkani",
+        "coding"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Python jokes need closing quotes.\"",
+      "script": "Python jokes need closing quotes. I have a joke, but I forgot to close the quote. Now your challenge. Print your name on one line. Then print your favourite beach on the next line. Use two print lines, and remember your quotes. Post your answer in the comments, and say hello to Xecxec. Keep coding, says Xecxec! Full video: EP 01.",
+      "onScreen": "PRINT YOUR NAME + YOUR BEACH",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Try the challenge.",
+      "hashtags": [
+        "python",
+        "codingchallenge",
+        "kodingkonkani",
+        "programmingjokes",
+        "goa"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "hello.py",
+      "source": "print(\"Hello, Goa!\")\nprint(\"Keep coding, says Xecxec!\")",
+      "output": "Hello, Goa!\nKeep coding, says Xecxec!",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

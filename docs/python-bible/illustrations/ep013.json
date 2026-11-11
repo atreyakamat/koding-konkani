@@ -1,0 +1,150 @@
+{
+  "ep": 13,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "q",
+      "shape": "box",
+      "text": "temperature > 30 ?",
+      "colour": "butter",
+      "col": 4,
+      "row": 0,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "yes",
+      "shape": "box",
+      "text": "Hot day, Drink water",
+      "colour": "mint",
+      "col": 1,
+      "row": 2,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "no",
+      "shape": "box",
+      "text": "Pleasant day",
+      "colour": "peach",
+      "col": 7,
+      "row": 2,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "end",
+      "shape": "box",
+      "text": "Enjoy the beach",
+      "colour": "pastelBlue",
+      "col": 4,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "True",
+      "colour": "ink",
+      "from": "q",
+      "to": "yes"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "False",
+      "colour": "ink",
+      "from": "q",
+      "to": "no"
+    },
+    {
+      "id": "a3",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "yes",
+      "to": "end"
+    },
+    {
+      "id": "a4",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "no",
+      "to": "end"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "q",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "yes"
+    },
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "no"
+    },
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "end"
+    },
+    {
+      "t": 0.25,
+      "do": "glow",
+      "target": "q",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.4,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.4,
+      "do": "draw",
+      "target": "a2"
+    },
+    {
+      "t": 0.45,
+      "do": "glow",
+      "target": "yes",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.45,
+      "do": "dim",
+      "target": "no"
+    },
+    {
+      "t": 0.7,
+      "do": "draw",
+      "target": "a3",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.7,
+      "do": "draw",
+      "target": "a4"
+    },
+    {
+      "t": 0.8,
+      "do": "glow",
+      "target": "end",
+      "sfx": "ding"
+    }
+  ]
+}

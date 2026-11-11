@@ -1,0 +1,352 @@
+{
+  "ep": 23,
+  "title": "String methods",
+  "module": 3,
+  "lengthSec": 311,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "clean and change text with string methods",
+    "split text into words and join it back",
+    "know that string methods return new strings"
+  ],
+  "youtube": {
+    "title": "Python String Methods: upper, strip, split, replace | Python Programming EP 23",
+    "description": "In this episode you will clean and change text with string methods, split text into words and join it back and know that string methods return new strings, with Xecxec the crab. 0:00 Intro · 0:15 Methods are tools on a string · 0:57 Four string methods · 1:37 Methods make new strings · 2:11 Second program · 3:11 Recap · 3:48 Bug of the Day · 4:36 Challenge · 4:56 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Methods are tools on a string"
+      },
+      {
+        "t": "0:57",
+        "label": "Four string methods"
+      },
+      {
+        "t": "1:37",
+        "label": "Methods make new strings"
+      },
+      {
+        "t": "2:11",
+        "label": "Second program"
+      },
+      {
+        "t": "3:11",
+        "label": "Recap"
+      },
+      {
+        "t": "3:48",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:36",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:56",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python string methods",
+      "python split join",
+      "python strip",
+      "strings are immutable"
+    ],
+    "thumbnail": {
+      "text": "STRING TOOLKIT",
+      "visual": "big text \"STRING TOOLKIT\" in tomato on peach; Xecxec holding a toolbox whose tools are labelled upper, strip, split and replace; thin black border and drop shadow.",
+      "pose": "Xecxec holding a toolbox whose tools are labelled upper, strip, split and replace"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 23 · STRING TOOLKIT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Strings come with a toolbox. Today we open it, and learn the tools that you use most often."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 42,
+      "onScreen": "\"Methods are tools on a string\": three numbered lines (1. Write the string, a dot, the method name, brackets; 2. upper, lower and strip clean text; 3. Methods return a new string; the old one stays) and an analogy card: a tailor shop: the tailor never changes your old shirt, they hand you a new one that fits",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A method is a tool that belongs to a value. You write the string, a dot, the method name and brackets. Upper makes capitals. Lower makes small letters. Strip removes spaces at the ends. Replace swaps one piece of text for another. Think of a tailor shop. The tailor never changes your old shirt. They hand you a new shirt that fits. Every string method returns a new string, and leaves the old one alone."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 57,
+      "lengthSec": 40,
+      "onScreen": "methods.py: strip, upper, lower and replace on one string",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A string with two spaces at each end. [HL 2] Strip removes the spaces at both ends. We get Goa Beach, with nothing around it. [HL 3] Upper makes every letter a capital. The spaces are still there. [HL 4] Lower makes every letter small. [HL 5] Replace swaps Goa for Baga. Case matters, so Goa must match exactly. [HL 6] And the length of the stripped text is nine.",
+      "code": {
+        "file": "methods.py",
+        "source": "text = \"  Goa Beach  \"\nprint(text.strip())\nprint(text.upper())\nprint(text.lower())\nprint(text.replace(\"Goa\", \"Baga\"))\nprint(len(text.strip()))",
+        "output": "Goa Beach\n  GOA BEACH  \n  goa beach  \n  Baga Beach  \n9"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 97,
+      "lengthSec": 34,
+      "onScreen": "Two tags, line and parts, tied to a string and to a list of words",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the picture after the split. The name line is still tied to the original string, fish curry rice. The name parts is tied to a new list that holds three words. Splitting did not touch the first string. It created a new object, a list, and tied parts to it. We meet lists properly in two episodes."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 131,
+      "lengthSec": 40,
+      "onScreen": "words.py: split a sentence into words, then join them with dashes",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A string with three words. [HL 2] Split cuts the string at the spaces, and gives a list of the pieces. [HL 3] The list prints inside square brackets, with each word in quotes. [HL 4] There are three words. [HL 5] Join does the reverse. It glues the pieces together, with the string before the dot placed between them. Fish dash curry dash rice.",
+      "code": {
+        "file": "words.py",
+        "source": "line = \"fish curry rice\"\nparts = line.split()\nprint(parts)\nprint(len(parts))\nprint(\"-\".join(parts))",
+        "output": "['fish', 'curry', 'rice']\n3\nfish-curry-rice"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 171,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python words.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as words dot py. In the terminal, type python, space, words dot py. The list of three words, then three, then fish dash curry dash rice."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 191,
+      "lengthSec": 37,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A method is a tool written after a dot, like text dot upper. Two: strip, upper, lower and replace clean and change text. Three: split cuts a string into a list and join glues a list into a string. Four: String methods return new strings and never change the old one. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 228,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: strings cannot be changed in place",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We try to change the first letter of the string. Python says, type error. A str object does not support item assignment. Strings are immutable. Their letters can never be changed in place. Instead, make a new string with a method like capitalize, and tie the name to it."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 268,
+      "lengthSec": 8,
+      "onScreen": "Why did the string go to the tailor? It needed a new method, not a change.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the string go to the tailor? It needed a new method, not a change."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 276,
+      "lengthSec": 20,
+      "onScreen": "Task card: clean text and make a heading",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Take the text keep coding , strip the spaces, and print it in capital letters. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 296,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 24 · Indexing and slicing",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: indexing and slicing. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "name = \"goa\"\nname[0] = \"G\"",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"methods.py\", line 2, in <module>\n    name[0] = \"G\"\n    ~~~~^^^\nTypeError: 'str' object does not support item assignment",
+    "fixed": "name = \"goa\"\nname = name.capitalize()\nprint(name)",
+    "why": "Strings are immutable, so no letter can be changed in place; build a new string and tie the name to it."
+  },
+  "pun": "\"Why did the string go to the tailor? It needed a new method, not a change.\"",
+  "challenge": "Take the text \"  keep coding  \", strip the spaces, and print it in capital letters.",
+  "challengeAnswer": "Use print(\"  keep coding  \".strip().upper()), which shows KEEP CODING.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "String methods",
+      "hook": "\"A method is a tool that belongs to a value.\"",
+      "script": "A method is a tool that belongs to a value. You write the string, a dot, the method name, and brackets. Upper makes capitals. Lower makes small letters. Strip removes spaces from the ends. Replace swaps one piece of text for another. These four tools clean almost any text. You use them in nearly every program. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "TEXT.UPPER()",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "Four tools for text.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "stringmethods",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Split and join",
+      "hook": "\"Split and join are partners.\"",
+      "script": "Split and join are partners. Split cuts a string at its spaces, and gives you a list of words. Join does the reverse. It glues a list of words into one string, with a separator you choose between them. So split a sentence, work on each word, and join it back. That small recipe powers search, counting and cleaning. Keep coding, says Xecxec!",
+      "onScreen": "SPLIT · JOIN",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Cut and glue.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "stringmethods",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "New string every time",
+      "hook": "\"Here is the key fact about string methods.\"",
+      "script": "Here is the key fact about string methods. They never change the original string. Upper does not make your old string uppercase. It returns a brand new string. The old one keeps its capitals, its spaces, everything. To keep the new version, tie it to a name. Text equals text dot strip. That is the pattern to follow. Keep coding, says Xecxec!",
+      "onScreen": "TEXT = TEXT.STRIP()",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Methods return new strings.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "stringmethods",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Item assignment error",
+      "hook": "\"A common bug.\"",
+      "script": "A common bug. You want to change one letter of a string, so you write name, bracket zero, equals G. Python says, type error, str object does not support item assignment. Strings are immutable. You can never change a letter in place. Make a new string with a method like capitalize, and tie your name to it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "TYPEERROR: ITEM ASSIGNMENT",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Strings are immutable.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "stringmethods",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the string go to the tailor?\"",
+      "script": "Why did the string go to the tailor? It needed a new method, not a change. Your challenge. Take the text keep coding, with two spaces on each side. Strip the spaces, and print it in capital letters. You can chain the two methods in one line, one after the other. Post your answer in the comments below. Keep coding, says Xecxec! Full video: EP 23.",
+      "onScreen": "STRIP, THEN UPPER",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try two methods.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "methods.py",
+      "source": "text = \"  Goa Beach  \"\nprint(text.strip())\nprint(text.upper())\nprint(text.lower())\nprint(text.replace(\"Goa\", \"Baga\"))\nprint(len(text.strip()))",
+      "output": "Goa Beach\n  GOA BEACH  \n  goa beach  \n  Baga Beach  \n9",
+      "lang": "python"
+    },
+    {
+      "file": "words.py",
+      "source": "line = \"fish curry rice\"\nparts = line.split()\nprint(parts)\nprint(len(parts))\nprint(\"-\".join(parts))",
+      "output": "['fish', 'curry', 'rice']\n3\nfish-curry-rice",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

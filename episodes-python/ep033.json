@@ -1,0 +1,352 @@
+{
+  "ep": 33,
+  "title": "Dictionaries",
+  "module": 4,
+  "lengthSec": 308,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "store labelled data in a dictionary",
+    "read, add and change values by key",
+    "handle a missing key"
+  ],
+  "youtube": {
+    "title": "Python Dictionaries: Keys and Values for Beginners | Python Programming EP 33",
+    "description": "In this episode you will store labelled data in a dictionary, read, add and change values by key and handle a missing key, with Xecxec the crab. 0:00 Intro · 0:15 Look things up by name · 0:56 Make and read a dictionary · 1:36 One dictionary object · 2:09 Second program · 3:09 Recap · 3:45 Bug of the Day · 4:33 Challenge · 4:53 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Look things up by name"
+      },
+      {
+        "t": "0:56",
+        "label": "Make and read a dictionary"
+      },
+      {
+        "t": "1:36",
+        "label": "One dictionary object"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:45",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:33",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:53",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python dictionary",
+      "python dict keys values",
+      "keyerror python",
+      "python dict basics"
+    ],
+    "thumbnail": {
+      "text": "KEYS AND VALUES",
+      "visual": "big text \"KEYS AND VALUES\" in tomato on peach; Xecxec holding a fish-market price board with names on the left and prices on the right; thin black border and drop shadow.",
+      "pose": "Xecxec holding a fish-market price board with names on the left and prices on the right"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 33 · KEYS AND VALUES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Lists find things by position. Today we find things by name, with the dictionary."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 41,
+      "onScreen": "\"Look things up by name\": three numbered lines (1. A dict holds key and value pairs; 2. You read a value with its key; 3. Keys are unique; adding an existing key replaces its value) and an analogy card: a fish-market price board: you look up the fish by name and read its price",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A dictionary stores pairs. A key, a colon, and a value. Curly brackets hold the pairs, with commas between them. Think of a fish market price board. You look up the fish by name, and read its price. You never need to know the position. Keys are unique. If you add a key that already exists, its value is replaced. Ask for a key that is not there, and Python raises a key error."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 56,
+      "lengthSec": 40,
+      "onScreen": "prices.py: three fish prices, one lookup, one new key",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A dictionary with three pairs. Each key is a fish name, and each value is a price. [HL 2] Square brackets with a key look up the value. Prawns is five hundred. [HL 3] Assign to a new key, and the pair is added. [HL 4] Print the whole dictionary. The new pair is at the end. [HL 5] Len counts the pairs. Four.",
+      "code": {
+        "file": "prices.py",
+        "source": "fish_price = {\"pomfret\": 350, \"prawns\": 500, \"mackerel\": 120}\nprint(fish_price[\"prawns\"])\nfish_price[\"tuna\"] = 400\nprint(fish_price)\nprint(len(fish_price))",
+        "output": "500\n{'pomfret': 350, 'prawns': 500, 'mackerel': 120, 'tuna': 400}\n4"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 96,
+      "lengthSec": 33,
+      "onScreen": "The name fish_price tied to one dict holding four key and value pairs",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. One name, fish price, tied to one dictionary object. Inside, each key points at a value. Pomfret points at three hundred fifty. Prawns points at five hundred. Each key has one value. Like a list, a dictionary changes in place. Adding tuna did not make a new dictionary. It grew the one we had."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "update.py: replace a price, delete a pair, test a key with in",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A smaller dictionary. [HL 2] Assign to an existing key, and its value is replaced. Pomfret now costs three hundred eighty. [HL 3] The del statement removes a pair. Prawns is gone. [HL 4] Print what is left. [HL 5] The word in checks keys. Is prawns a key? False. Use in to check before you look up.",
+      "code": {
+        "file": "update.py",
+        "source": "fish_price = {\"pomfret\": 350, \"prawns\": 500}\nfish_price[\"pomfret\"] = 380\ndel fish_price[\"prawns\"]\nprint(fish_price)\nprint(\"prawns\" in fish_price)",
+        "output": "{'pomfret': 380}\nFalse"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python update.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as update dot py. In the terminal, type python, space, update dot py. Only pomfret is left, at three hundred eighty. Then False."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 36,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A dictionary stores key and value pairs in curly brackets. Two: Read a value with dictkey. Assign to a key to add or change a pair. Three: del removes a pair and in checks for a key. Four: Keys are unique, so a repeated key replaces the old value. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 225,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a key that is not there",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We ask for the price of crab, but crab is not a key. Python says, key error, crab. The last line names the missing key. Check with the word in before you read. Then give a friendly message when the key is missing. Next episode, we meet a shorter way, called get."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 8,
+      "onScreen": "Why did the dictionary win the quiz? It knew every key to the answer.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the dictionary win the quiz? It knew every key to the answer."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 273,
+      "lengthSec": 20,
+      "onScreen": "Task card: a price board with three items",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make a dictionary of three drinks and their prices. Print the price of one, then add a fourth drink. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 293,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 34 · Dictionary methods and looping",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: dictionary methods and looping. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "fish_price = {\"pomfret\": 350, \"prawns\": 500}\nprint(fish_price[\"crab\"])",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"prices.py\", line 2, in <module>\n    print(fish_price[\"crab\"])\n          ~~~~~~~~~~^^^^^^^^\nKeyError: 'crab'",
+    "fixed": "fish_price = {\"pomfret\": 350, \"prawns\": 500}\nif \"crab\" in fish_price:\n    print(fish_price[\"crab\"])\nelse:\n    print(\"No crab today\")",
+    "why": "Looking up a key that does not exist raises a KeyError, so check with in before you read."
+  },
+  "pun": "\"Why did the dictionary win the quiz? It knew every key to the answer.\"",
+  "challenge": "Make a dictionary of three drinks and their prices. Print the price of one, then add a fourth drink.",
+  "challengeAnswer": "Use drinks = {\"tea\": 20, \"coffee\": 30, \"lime\": 25}, print(drinks[\"tea\"]), then drinks[\"juice\"] = 40.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a dictionary?",
+      "hook": "\"A dictionary stores pairs.\"",
+      "script": "A dictionary stores pairs. Each pair has a key and a value. Curly brackets, key, colon, value, with commas between the pairs. Think of a fish market price board. You look up the fish by name, and read the price. You never need to know the position. Dictionaries are how Python models labelled data, such as a student's name, age and marks. Keep coding, says Xecxec!",
+      "onScreen": "{\"KEY\": VALUE}",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Look up by name.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "dict",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Read, add, change",
+      "hook": "\"Three actions cover most dictionary work.\"",
+      "script": "Three actions cover most dictionary work. To read, write the dictionary, then the key in square brackets. To add, assign to a new key. To change, assign to an existing key, and the old value is replaced. Keys are unique, so there is only ever one pair for each key. Try all three with your own fish prices. Keep coding, says Xecxec!",
+      "onScreen": "PRICES[\"TUNA\"] = 400",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 35,
+      "caption": "Read, add, change.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "dict",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Check with in",
+      "hook": "\"The word in checks whether a key exists.\"",
+      "script": "The word in checks whether a key exists. Is prawns in the dictionary? True or False. It only looks at keys, not values. Use it before you read a key you are not sure about. It saves your program from crashing, and it lets you print a friendly message when the key is missing. Check first, then read. Keep coding, says Xecxec!",
+      "onScreen": "\"PRAWNS\" IN PRICES",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Does the key exist?",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "dict",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Key error",
+      "hook": "\"The classic dictionary bug.\"",
+      "script": "The classic dictionary bug. You ask for a key that is not there. Python says, key error, and shows the missing key on the last line. A dictionary does not guess. It does not return nothing. Check with in first. Or use the get method, which we use in the next episode. Read the missing key, and check its spelling. Keep coding, says Xecxec!",
+      "onScreen": "KEYERROR: 'CRAB'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Missing key.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "dict",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the dictionary win the quiz?\"",
+      "script": "Why did the dictionary win the quiz? It knew every key to the answer. Your challenge. Make a dictionary of three drinks and their prices. Print the price of one drink. Then add a fourth drink to the dictionary, and print the whole thing. Check that the length is four. Post your drinks menu in the comments below. Keep coding, says Xecxec! Full video: EP 33.",
+      "onScreen": "A DRINKS MENU",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try a dictionary.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "prices.py",
+      "source": "fish_price = {\"pomfret\": 350, \"prawns\": 500, \"mackerel\": 120}\nprint(fish_price[\"prawns\"])\nfish_price[\"tuna\"] = 400\nprint(fish_price)\nprint(len(fish_price))",
+      "output": "500\n{'pomfret': 350, 'prawns': 500, 'mackerel': 120, 'tuna': 400}\n4",
+      "lang": "python"
+    },
+    {
+      "file": "update.py",
+      "source": "fish_price = {\"pomfret\": 350, \"prawns\": 500}\nfish_price[\"pomfret\"] = 380\ndel fish_price[\"prawns\"]\nprint(fish_price)\nprint(\"prawns\" in fish_price)",
+      "output": "{'pomfret': 380}\nFalse",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

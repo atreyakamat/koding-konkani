@@ -1,0 +1,352 @@
+{
+  "ep": 66,
+  "title": "__str__ and __repr__",
+  "module": 7,
+  "lengthSec": 307,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "print an object in a readable way",
+    "write __str__ and __repr__",
+    "know when each one is used"
+  ],
+  "youtube": {
+    "title": "Python __str__ and __repr__ Explained | Python Programming EP 66",
+    "description": "In this episode you will print an object in a readable way, write __str__ and __repr__ and know when each one is used, with Xecxec the crab. 0:00 Intro · 0:15 Name tags for objects · 0:59 Str and repr · 1:39 One object, two descriptions · 2:09 Second program · 3:14 Recap · 3:44 Bug of the Day · 4:32 Challenge · 4:52 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Name tags for objects"
+      },
+      {
+        "t": "0:59",
+        "label": "Str and repr"
+      },
+      {
+        "t": "1:39",
+        "label": "One object, two descriptions"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:14",
+        "label": "Recap"
+      },
+      {
+        "t": "3:44",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:32",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:52",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python __str__",
+      "python __repr__",
+      "python print object",
+      "str vs repr python"
+    ],
+    "thumbnail": {
+      "text": "__STR__",
+      "visual": "big text \"__STR__\" in tomato on peach; Xecxec holding a mystery box, then a neat label reading Student Asha; thin black border and drop shadow.",
+      "pose": "Xecxec holding a mystery box, then a neat label reading Student Asha"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 66 · __STR__",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Printing an object often shows a strange line with a memory address. Today we give objects name tags."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 44,
+      "onScreen": "\"Name tags for objects\": three numbered lines (1. print(obj) uses __str__; 2. repr(obj) and the shell use __repr__; 3. Both must return a string) and an analogy card: a name tag: without it the object is a stranger, with it everyone knows who is who",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "By default, an object prints as the class name and a memory address. That is not helpful. You can fix it with two special methods. Str is for people. It is what print uses. Repr is for programmers. It should show the object clearly, ideally as code that could rebuild it. If you only write one, write repr, because str falls back to it. Think of a name tag at a party. Without it, nobody knows who you are."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 59,
+      "lengthSec": 40,
+      "onScreen": "point.py: a Point that prints nicely",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A Point class. [HL 2] Init stores x and y. [HL 6] Str is the friendly version. [HL 7] It returns the text, three comma four, in brackets. [HL 9] Repr is the exact version. [HL 10] It returns Point of three comma four, which looks like the code that built it. [HL 12] A point at three, four. [HL 13] Print uses str. [HL 14] Repr gives the exact one. [HL 15] A list shows each item with repr. [HL 16] And an f string uses str.",
+      "code": {
+        "file": "point.py",
+        "source": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __str__(self):\n        return f\"({self.x}, {self.y})\"\n\n    def __repr__(self):\n        return f\"Point({self.x}, {self.y})\"\n\np = Point(3, 4)\nprint(p)\nprint(repr(p))\nprint([p, Point(0, 0)])\nprint(f\"Corner: {p}\")",
+        "output": "(3, 4)\nPoint(3, 4)\n[Point(3, 4), Point(0, 0)]\nCorner: (3, 4)"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 99,
+      "lengthSec": 30,
+      "onScreen": "The name p tied to one Point object; str shows it for people, repr for programmers",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name p is tied to one point object. The object does not change. What changes is the description. Print asks for the friendly string, and the shell, and lists, ask for the exact one. Both come from the same object. You only choose how it introduces itself."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "onlyrepr.py: repr alone is enough; str falls back to it",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A Book class. [HL 2] Init stores the title. [HL 5] Only repr is written. [HL 6] The exclamation r asks for the repr of the title, so quotes appear. [HL 8] A book. [HL 9] Print has no str to use, so it falls back to repr. [HL 10] And str gives the same. [HL 11] A list shows the same text. One method, and every place is tidy.",
+      "code": {
+        "file": "onlyrepr.py",
+        "source": "class Book:\n    def __init__(self, title):\n        self.title = title\n\n    def __repr__(self):\n        return f\"Book({self.title!r})\"\n\nb = Book(\"Python\")\nprint(b)\nprint(str(b))\nprint([b])",
+        "output": "Book('Python')\nBook('Python')\n[Book('Python')]"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 25,
+      "onScreen": "Terminal: python onlyrepr.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as onlyrepr dot py. In the terminal, type python, space, onlyrepr dot py. Three comma four, then Point of three comma four, a list of two points, then Corner three comma four. Then the book Python three times."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 194,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: print of obj calls dunder str, for people. Two: repr of obj and lists call dunder repr, for programmers. Three: If only dunder repr exists, str falls back to it. Four: Both methods must return a string. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 224,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: printing an object shows an address",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We print a point, and get the class name with at, and a long memory address. Nothing is wrong with the object. It just has no name tag. Add a repr method that returns a readable string, and print shows Point of three comma four."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 264,
+      "lengthSec": 8,
+      "onScreen": "Why did the object need a repr? It had an identity crisis.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the object need a repr? It had an identity crisis."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 272,
+      "lengthSec": 20,
+      "onScreen": "Task card: give Student a name tag",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a Student class with a name and marks. Add dunder str so that print shows Asha: 91. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 292,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 67 · Inheritance",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: inheritance. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\np = Point(3, 4)\nprint(p)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n<__main__.Point object at 0x...>",
+    "fixed": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __repr__(self):\n        return f\"Point({self.x}, {self.y})\"\n\np = Point(3, 4)\nprint(p)",
+    "why": "Without these methods, Python falls back to the default text: the class name and a memory address. Adding repr gives a readable description."
+  },
+  "pun": "\"Why did the object need a repr? It had an identity crisis.\"",
+  "challenge": "Write a Student class with a name and marks. Add __str__ so that print shows Asha: 91.",
+  "challengeAnswer": "def __str__(self): return f\"{self.name}: {self.marks}\".",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Ugly print",
+      "hook": "\"Print an object, and you may see the class name with at, and a long memory address.\"",
+      "script": "Print an object, and you may see the class name with at, and a long memory address. That is Python's default. It is correct, but it is useless to people. We can do better with two special methods. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "<Point object at 0x...>",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "Default print is ugly.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "dunder",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "str for people",
+      "hook": "\"Write a method called dunder str.\"",
+      "script": "Write a method called dunder str. It returns a friendly string. Print and f strings use it. For a point, return three comma four. Now print p shows the nice version, with no address in sight. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "__str__ = friendly",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Str is for people.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "dunder",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "repr for programmers",
+      "hook": "\"Write dunder repr for programmers.\"",
+      "script": "Write dunder repr for programmers. It should look like the code that builds the object, such as Point of three comma four. Lists, the shell, and debugging all use repr. It is the exact version of the description. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "__repr__ = exact",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Repr is for programmers.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "dunder",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Only one",
+      "hook": "\"If you write only one, write repr.\"",
+      "script": "If you write only one, write repr. When str is missing, Python uses repr instead. So one tiny method makes print, lists and the shell all tidy. The default address text only appears when you write neither. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "repr is the fallback",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Write repr first.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "dunder",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the object need a repr?\"",
+      "script": "Why did the object need a repr? It had an identity crisis. Your challenge. Write a Student class with a name and marks. Add dunder str, so that print shows Asha, colon, ninety one. Make two students and print them both. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 66.",
+      "onScreen": "Challenge: Student __str__",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Write a __str__.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "point.py",
+      "source": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __str__(self):\n        return f\"({self.x}, {self.y})\"\n\n    def __repr__(self):\n        return f\"Point({self.x}, {self.y})\"\n\np = Point(3, 4)\nprint(p)\nprint(repr(p))\nprint([p, Point(0, 0)])\nprint(f\"Corner: {p}\")",
+      "output": "(3, 4)\nPoint(3, 4)\n[Point(3, 4), Point(0, 0)]\nCorner: (3, 4)",
+      "lang": "python"
+    },
+    {
+      "file": "onlyrepr.py",
+      "source": "class Book:\n    def __init__(self, title):\n        self.title = title\n\n    def __repr__(self):\n        return f\"Book({self.title!r})\"\n\nb = Book(\"Python\")\nprint(b)\nprint(str(b))\nprint([b])",
+      "output": "Book('Python')\nBook('Python')\n[Book('Python')]",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

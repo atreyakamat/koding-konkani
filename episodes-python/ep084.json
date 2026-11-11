@@ -1,0 +1,352 @@
+{
+  "ep": 84,
+  "title": "Fetching web data (requests, JSON from an API)",
+  "module": 9,
+  "lengthSec": 323,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "read JSON that an API returns",
+    "know what requests.get looks like",
+    "always set a timeout"
+  ],
+  "youtube": {
+    "title": "Python: Fetch Data from a Web API (requests and JSON) | Python Programming EP 84",
+    "description": "In this episode you will read JSON that an API returns, know what requests.get looks like and always set a timeout, with Xecxec the crab. 0:00 Intro · 0:15 Ask, wait, read · 1:10 Reading a recorded response · 1:55 JSON becomes a dictionary · 2:27 Second program · 3:27 Recap · 4:00 Bug of the Day · 4:48 Challenge · 5:08 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Ask, wait, read"
+      },
+      {
+        "t": "1:10",
+        "label": "Reading a recorded response"
+      },
+      {
+        "t": "1:55",
+        "label": "JSON becomes a dictionary"
+      },
+      {
+        "t": "2:27",
+        "label": "Second program"
+      },
+      {
+        "t": "3:27",
+        "label": "Recap"
+      },
+      {
+        "t": "4:00",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:48",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:08",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python requests",
+      "python json api",
+      "python requests timeout",
+      "python fetch data from api"
+    ],
+    "thumbnail": {
+      "text": "WEB API",
+      "visual": "big text \"WEB API\" in tomato on peach; Xecxec sending a paper plane to a far-away tower and waiting for the reply; thin black border and drop shadow.",
+      "pose": "Xecxec sending a paper plane to a far-away tower and waiting for the reply"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 84 · WEB API",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Weather, jokes, prices. Many websites hand out data as JSON. Today we read it, and learn why a timeout matters."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 55,
+      "onScreen": "\"Ask, wait, read\": three numbered lines (1. You send a request, and an API sends back text; 2. That text is usually JSON; json.loads turns it into a dict; 3. Always give a timeout) and an analogy card: posting a letter and waiting for the reply: if the other side never answers, you need a deadline",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "An API is a web address that returns data instead of a page. You send a request, and the answer usually comes back as JSON text. Turn it into a dictionary with json dot loads, or with the response's json method. The popular requests package does the sending. One thing matters more than any other. Always set a timeout. Without it, if the other side never answers, your program waits forever. Think of posting a letter and waiting for a reply. If nobody answers, you need a deadline. In this episode, the answers are recorded responses, so the lesson works offline."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 70,
+      "lengthSec": 45,
+      "onScreen": "api.py: turn JSON text into a dictionary",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Import json. [HL 3] A comment says this is a recorded response. The real answer arrives over the internet. Ours was saved earlier, so it works for everyone. [HL 4] The raw text is JSON. [HL 5] Json loads turns it into a dictionary. [HL 6] Read the city and the temperature. Panaji, thirty one. [HL 7] A list inside the dictionary. The first tag is humid. [HL 8] And the type is dict. With requests, the same last step is response dot json. Check the on screen code for the live version.",
+      "code": {
+        "file": "api.py",
+        "source": "import json\n\n# recorded response (saved earlier from a weather API)\nraw = '{\"city\": \"Panaji\", \"temp_c\": 31, \"tags\": [\"humid\", \"sunny\"]}'\ndata = json.loads(raw)\nprint(data[\"city\"], data[\"temp_c\"])\nprint(data[\"tags\"][0])\nprint(type(data).__name__)",
+        "output": "Panaji 31\nhumid\ndict"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 115,
+      "lengthSec": 32,
+      "onScreen": "The name data tied to a dictionary holding text, a number and a list",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name data is tied to one dictionary. Its keys are city, temp c and tags. The values are text, a number, and a list. JSON objects become dictionaries, JSON lists become lists, and JSON numbers and text become Python numbers and strings. After loading, you work with ordinary Python objects."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 147,
+      "lengthSec": 40,
+      "onScreen": "todos.py: list of JSON items, ticked or not",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Import json. [HL 3] A list of recorded responses. [HL 4] The first item. In JSON, true is lower case. [HL 5] The second item. [HL 7] Loop over them. [HL 8] Load each into a dictionary. JSON true becomes Python True. [HL 9] Pick an x, or a space. [HL 10] Print the mark and the title. One is ticked, one is not.",
+      "code": {
+        "file": "todos.py",
+        "source": "import json\n\nrecorded = [\n    '{\"id\": 1, \"title\": \"Learn Python\", \"done\": true}',\n    '{\"id\": 2, \"title\": \"Build a bot\", \"done\": false}',\n]\nfor text in recorded:\n    item = json.loads(text)\n    mark = \"x\" if item[\"done\"] else \" \"\n    print(f\"[{mark}] {item['title']}\")",
+        "output": "[x] Learn Python\n[ ] Build a bot"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 187,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python todos.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as todos dot py. In the terminal, type python, space, todos dot py. Panaji 31, humid, dict. Then the two to-do lines."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 207,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: An API returns data, usually as JSON text. Two: json dot loads turns JSON text into dicts and lists. Three: requests dot get of url, timeout equals 5 sends the request. Four: Always set a timeout, or your program may wait forever. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 240,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: no timeout, so the script hangs",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. This is a small stand in for a web server that never answers. We connect fine, and then wait for a reply. Nothing arrives, and the program hangs, with no error. In real code, requests dot get without a timeout does the same. Set a timeout, catch the timeout error, and decide what to do next."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 280,
+      "lengthSec": 8,
+      "onScreen": "Why did the request give up? It was tired of waiting for a response.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the request give up? It was tired of waiting for a response."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 288,
+      "lengthSec": 20,
+      "onScreen": "Task card: read a field",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. From the recorded JSON text '{name: Asha, scores: 90, 85}', print the name and the average score. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 308,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 85 · pathlib and os",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: pathlib and os. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "import socket\n\nserver = socket.socket()\nserver.bind((\"127.0.0.1\", 0))\nserver.listen(1)\nport = server.getsockname()[1]\n\nclient = socket.create_connection((\"127.0.0.1\", port))\nprint(\"connected, waiting for a reply\")\nprint(client.recv(10))\nprint(\"never reached\")",
+    "error": "Python output (the first lines; it never stops by itself):\n\nconnected, waiting for a reply\n(the program never finishes; press Ctrl+C to stop)",
+    "fixed": "import socket\n\nserver = socket.socket()\nserver.bind((\"127.0.0.1\", 0))\nserver.listen(1)\nport = server.getsockname()[1]\n\nclient = socket.create_connection((\"127.0.0.1\", port))\nclient.settimeout(1)\nprint(\"connected, waiting for a reply\")\ntry:\n    print(client.recv(10))\nexcept TimeoutError:\n    print(\"timed out, giving up\")",
+    "why": "Network calls without a timeout can wait forever when the other side is slow or silent. A timeout turns that into an error you can catch."
+  },
+  "pun": "\"Why did the request give up? It was tired of waiting for a response.\"",
+  "challenge": "From the recorded JSON text '{\"name\": \"Asha\", \"scores\": [90, 85]}', print the name and the average score.",
+  "challengeAnswer": "data = json.loads(text); print(data[\"name\"], sum(data[\"scores\"]) / len(data[\"scores\"])).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is an API",
+      "hook": "\"An API is a web address that returns data instead of a page.\"",
+      "script": "An API is a web address that returns data instead of a page. You send a request, and get an answer, usually as JSON text. Weather, jokes, prices, many services offer one. Your program can ask, and use the answer. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "request -> JSON answer",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "APIs give data.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "api",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "JSON to dict",
+      "hook": "\"Json dot loads turns JSON text into Python.\"",
+      "script": "Json dot loads turns JSON text into Python. A JSON object becomes a dictionary. A JSON list becomes a list. True becomes True with a capital T. After that, you use data city, like any dictionary. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "json.loads(text)",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "JSON becomes a dict.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "api",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "requests",
+      "hook": "\"The requests package sends the web request.\"",
+      "script": "The requests package sends the web request. Write requests dot get, with the address, and timeout equals five. Call raise for status to catch errors, then response dot json to get the data. It needs pip install, and the internet. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "requests.get(url, timeout=5)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "requests sends it.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "api",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The silent hang",
+      "hook": "\"Here is the bug.\"",
+      "script": "Here is the bug. You call get without a timeout, and the server never answers. Your program waits forever, with no error. Always set a timeout. Then a slow server becomes an error you can catch, and a message you can show. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "no timeout = waits forever",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Always set a timeout.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "api",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the request give up?\"",
+      "script": "Why did the request give up? It was tired of waiting for a response. Your challenge. Take this JSON text, with a name, and a list of two scores. Load it, and print the name and the average of the scores. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 84.",
+      "onScreen": "Challenge: average score",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Load and average.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "api.py",
+      "source": "import json\n\n# recorded response (saved earlier from a weather API)\nraw = '{\"city\": \"Panaji\", \"temp_c\": 31, \"tags\": [\"humid\", \"sunny\"]}'\ndata = json.loads(raw)\nprint(data[\"city\"], data[\"temp_c\"])\nprint(data[\"tags\"][0])\nprint(type(data).__name__)",
+      "output": "Panaji 31\nhumid\ndict",
+      "lang": "python"
+    },
+    {
+      "file": "todos.py",
+      "source": "import json\n\nrecorded = [\n    '{\"id\": 1, \"title\": \"Learn Python\", \"done\": true}',\n    '{\"id\": 2, \"title\": \"Build a bot\", \"done\": false}',\n]\nfor text in recorded:\n    item = json.loads(text)\n    mark = \"x\" if item[\"done\"] else \" \"\n    print(f\"[{mark}] {item['title']}\")",
+      "output": "[x] Learn Python\n[ ] Build a bot",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "ep": 37,
+  "title": "List comprehensions",
+  "module": 4,
+  "lengthSec": 302,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "build a list in one line with a comprehension",
+    "filter with if at the end",
+    "put the if/else before the for"
+  ],
+  "youtube": {
+    "title": "Python List Comprehensions: One-Line Loops | Python Programming EP 37",
+    "description": "In this episode you will build a list in one line with a comprehension, filter with if at the end and put the if/else before the for, with Xecxec the crab. 0:00 Intro · 0:15 A loop that builds a list · 0:56 Build and filter · 1:36 Comprehensions make new lists · 2:06 Second program · 3:06 Recap · 3:39 Bug of the Day · 4:27 Challenge · 4:47 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "A loop that builds a list"
+      },
+      {
+        "t": "0:56",
+        "label": "Build and filter"
+      },
+      {
+        "t": "1:36",
+        "label": "Comprehensions make new lists"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:39",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:27",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:47",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python list comprehension",
+      "python comprehension if else",
+      "python one liner",
+      "syntaxerror comprehension"
+    ],
+    "thumbnail": {
+      "text": "ONE-LINE LOOPS",
+      "visual": "big text \"ONE-LINE LOOPS\" in tomato on peach; Xecxec feeding a list into a machine that outputs a new list, labelled [n * n for n in nums]; thin black border and drop shadow.",
+      "pose": "Xecxec feeding a list into a machine that outputs a new list, labelled [n * n for n in nums]"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 37 · ONE-LINE LOOPS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Loops that build lists are so common that Python has a shortcut. Today we meet the list comprehension."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 41,
+      "onScreen": "\"A loop that builds a list\": three numbered lines (1. [expression for item in list]; 2. Add if at the end to filter; 3. Keep it short enough to read) and an analogy card: a juice stall: fruit goes in, a rule is applied, and a glass comes out for each fruit",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A list comprehension builds a list in one line. Square brackets. First, what you want for each item. Then, for, the item, in, the source list. Think of a juice stall. Fruit goes in, a rule is applied, and a glass comes out for each fruit. Add an if at the end to keep only some items. Keep comprehensions short. If a line is hard to read, write the loop out in full instead."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 56,
+      "lengthSec": 40,
+      "onScreen": "squares.py: squares of every number, and only the even ones",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A list of five numbers. [HL 2] Read it left to right. For each n in nums, make n times n. The result is a new list of squares. [HL 3] One, four, nine, sixteen, twenty five. [HL 4] Add an if at the end to filter. Keep n only when it divides by two. [HL 5] Two and four.",
+      "code": {
+        "file": "squares.py",
+        "source": "nums = [1, 2, 3, 4, 5]\nsquares = [n * n for n in nums]\nprint(squares)\nevens = [n for n in nums if n % 2 == 0]\nprint(evens)",
+        "output": "[1, 4, 9, 16, 25]\n[2, 4]"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 96,
+      "lengthSec": 30,
+      "onScreen": "nums, squares and evens each tied to their own list",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. Nums, squares and evens each point at their own list object. A comprehension never changes the source list. It builds a brand new one. Nums is exactly as it was. That is what makes comprehensions safe. You never change the list while you walk over it."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "words_comp.py: make capitals and lengths from a list of words",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A list of three words. [HL 2] For each word, call upper. We get a list of capital words. [HL 3] For each word, take its length. A list of numbers. [HL 4] Print the capital words. [HL 5] Print the lengths. Four, four, five. Any expression can go at the front, a method call, a sum, a call to len.",
+      "code": {
+        "file": "words_comp.py",
+        "source": "words = [\"fish\", \"crab\", \"prawn\"]\ncaps = [w.upper() for w in words]\nlengths = [len(w) for w in words]\nprint(caps)\nprint(lengths)",
+        "output": "['FISH', 'CRAB', 'PRAWN']\n[4, 4, 5]"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python words_comp.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as words_comp dot py. In the terminal, type python, space, words_comp dot py. Fish, crab, prawn in capitals, then four, four, five."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: expression for item in list builds a new list. Two: Add if at the end to keep only some items. Three: An if and else together go before the for. Four: If a comprehension is hard to read, use a normal loop. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 219,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: else in the wrong place",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We try to keep even numbers, and use zero for the rest. We wrote an if with no else before the for. Python says, syntax error, expected else after if expression. A choice between two values needs both if and else, before the for. A simple filter goes at the end, with no else."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 259,
+      "lengthSec": 8,
+      "onScreen": "Why did the comprehension get a short job title? It did everything in one line.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the comprehension get a short job title? It did everything in one line."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 267,
+      "lengthSec": 20,
+      "onScreen": "Task card: double every number in a list",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Use a list comprehension to double each number in 1, 2, 3, 4 and print the result. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 287,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 38 · Dict and set comprehensions",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: dictionary and set comprehensions. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "nums = [1, 2, 3, 4]\nlabels = [n if n % 2 == 0 for n in nums]",
+    "error": "Python output (exactly as Python prints it):\n\n  File \"squares.py\", line 2\n    labels = [n if n % 2 == 0 for n in nums]\n              ^^^^^^^^^^^^^^^\nSyntaxError: expected 'else' after 'if' expression",
+    "fixed": "nums = [1, 2, 3, 4]\nlabels = [n if n % 2 == 0 else 0 for n in nums]\nprint(labels)",
+    "why": "An if that picks between two values needs its else, and both sit in front of the for; a filter if without else goes at the end."
+  },
+  "pun": "\"Why did the comprehension get a short job title? It did everything in one line.\"",
+  "challenge": "Use a list comprehension to double each number in [1, 2, 3, 4] and print the result.",
+  "challengeAnswer": "Use print([n * 2 for n in [1, 2, 3, 4]]), which shows [2, 4, 6, 8].",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "One-line loops",
+      "hook": "\"A list comprehension builds a list in one line.\"",
+      "script": "A list comprehension builds a list in one line. Square brackets, then what you want for each item, then for, the item, in, the source list. Nums squared looks like n times n, for n in nums. It replaces a three line loop with a single line. Read it from left to right, like a sentence, and it makes perfect sense. Keep coding, says Xecxec!",
+      "onScreen": "[N * N FOR N IN NUMS]",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "A loop in one line.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "comprehension",
+        "lists",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Filter with if",
+      "hook": "\"Add an if at the end to keep only some items.\"",
+      "script": "Add an if at the end to keep only some items. Square brackets, n, for n in nums, if n modulo two equals zero. Only the even numbers make it into the new list. The source list is never changed. The if is a filter, and it has no else. It is a neat way to pick the items you want from a long list. Keep coding, says Xecxec!",
+      "onScreen": "[N FOR N IN NUMS IF N % 2 == 0]",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 39,
+      "caption": "Keep only what you want.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "comprehension",
+        "lists",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Keep it readable",
+      "hook": "\"Comprehensions are great, but do not overuse them.\"",
+      "script": "Comprehensions are great, but do not overuse them. If a comprehension needs two loops, three conditions, and a function call, it is too long. Write a normal loop instead. Then you can read your code later. A good rule is that you should read the line once, and understand it. Short and clear beats clever, every time. Remember that. Keep coding, says Xecxec!",
+      "onScreen": "SHORT AND CLEAR",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Do not be too clever.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "comprehension",
+        "lists",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "If and else placement",
+      "hook": "\"Here is the syntax trap.\"",
+      "script": "Here is the syntax trap. You want even numbers, and zero for the rest. You write an if, with no else, before the for. Python says, syntax error, expected else after if expression. A choice between two values needs both if and else, before the for. A plain filter if goes at the end, and has no else. Keep coding, says Xecxec!",
+      "onScreen": "SYNTAXERROR: EXPECTED ELSE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Placement matters.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "comprehension",
+        "lists",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the comprehension get a short job title?\"",
+      "script": "Why did the comprehension get a short job title? It did everything in one line. Your challenge. Use a list comprehension to double every number in the list one, two, three, four. Print the new list. You should see two, four, six, eight. Then add an if, to double only the numbers above two. Post your one-liner in the comments below. Keep coding, says Xecxec! Full video: EP 37.",
+      "onScreen": "DOUBLE THEM ALL",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Try a comprehension.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "comprehension",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "squares.py",
+      "source": "nums = [1, 2, 3, 4, 5]\nsquares = [n * n for n in nums]\nprint(squares)\nevens = [n for n in nums if n % 2 == 0]\nprint(evens)",
+      "output": "[1, 4, 9, 16, 25]\n[2, 4]",
+      "lang": "python"
+    },
+    {
+      "file": "words_comp.py",
+      "source": "words = [\"fish\", \"crab\", \"prawn\"]\ncaps = [w.upper() for w in words]\nlengths = [len(w) for w in words]\nprint(caps)\nprint(lengths)",
+      "output": "['FISH', 'CRAB', 'PRAWN']\n[4, 4, 5]",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "ep": 88,
+  "title": "Capstone 2: Expense tracker build",
+  "module": 10,
+  "lengthSec": 339,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "store money as whole cents",
+    "format cents back into text",
+    "save and load the data as JSON"
+  ],
+  "youtube": {
+    "title": "Python Capstone: Build the Expense Tracker (Money, JSON, Files) | Python Programming EP 88",
+    "description": "In this episode you will store money as whole cents, format cents back into text and save and load the data as JSON, with Xecxec the crab. 0:00 Intro · 0:15 Money in cents · 1:05 Cents and Decimal · 2:07 Coins, not weights · 2:45 Second program · 3:46 Recap · 4:16 Bug of the Day · 5:04 Challenge · 5:24 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Money in cents"
+      },
+      {
+        "t": "1:05",
+        "label": "Cents and Decimal"
+      },
+      {
+        "t": "2:07",
+        "label": "Coins, not weights"
+      },
+      {
+        "t": "2:45",
+        "label": "Second program"
+      },
+      {
+        "t": "3:46",
+        "label": "Recap"
+      },
+      {
+        "t": "4:16",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "5:04",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:24",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python capstone build",
+      "python money decimal",
+      "python save json file",
+      "python float rounding money"
+    ],
+    "thumbnail": {
+      "text": "BUILD IT",
+      "visual": "big text \"BUILD IT\" in tomato on peach; Xecxec stacking coins into neat columns beside a JSON file folder; thin black border and drop shadow.",
+      "pose": "Xecxec stacking coins into neat columns beside a JSON file folder"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 88 · BUILD IT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we build the real thing. First, the one thing computers get wrong: money."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 50,
+      "onScreen": "\"Money in cents\": three numbered lines (1. Floats cannot store most decimals exactly; 2. Keep money as whole cents; 3. Save the list as JSON, load it back at the start) and an analogy card: counting coins instead of weighing money: whole pieces never come out as 28.999",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Floats store most decimals as tiny approximations. For money, that leads to errors in the last digit. The safe way is to keep money as whole cents, in an integer. To read text such as one twenty point five zero, use the Decimal type. It is exact. Then multiply by one hundred. To show it, divide by one hundred with floor division, and the remainder with two digits. Then save the list to a JSON file, and load it when the program starts. Think of counting coins instead of weighing money."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 65,
+      "lengthSec": 62,
+      "onScreen": "money.py: convert text to cents and back; dataclass to JSON",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Dataclass and asdict. [HL 2] Json. [HL 3] Decimal, the exact number type. [HL 5] The dataclass decorator. [HL 6] The same Expense, but now with cents, a whole number. [HL 7] A day. [HL 8] A category. [HL 9] Cents, an integer. [HL 10] And the note. [HL 12] To cents turns text into whole cents. [HL 13] Decimal reads the text exactly. [HL 14] The rule from last time. Positive only. [HL 15] The error. [HL 16] Multiply by one hundred, and make it an integer. [HL 18] Money turns cents back into text. [HL 19] Whole units, a dot, and the remainder, with two digits. [HL 21] An expense of one twenty point five zero. [HL 22] It prints with cents twelve thousand fifty. [HL 23] Money shows one twenty point five zero. [HL 24] And as dict, with json dumps, turns the dataclass into JSON text, ready for a file.",
+      "code": {
+        "file": "money.py",
+        "source": "from dataclasses import dataclass, asdict\nimport json\nfrom decimal import Decimal\n\n@dataclass\nclass Expense:\n    day: str\n    category: str\n    cents: int\n    note: str = \"\"\n\ndef to_cents(text):\n    value = Decimal(text)\n    if value <= 0:\n        raise ValueError(\"amount must be positive\")\n    return int(value * 100)\n\ndef money(cents):\n    return f\"{cents // 100}.{cents % 100:02d}\"\n\ne = Expense(\"2025-03-01\", \"food\", to_cents(\"120.50\"), \"lunch\")\nprint(e)\nprint(money(e.cents))\nprint(json.dumps(asdict(e)))",
+        "output": "Expense(day='2025-03-01', category='food', cents=12050, note='lunch')\n120.50\n{\"day\": \"2025-03-01\", \"category\": \"food\", \"cents\": 12050, \"note\": \"lunch\"}"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 127,
+      "lengthSec": 38,
+      "onScreen": "A scale showing 28.999999 next to a tray of 29 whole coins",
+      "animation": "A balance showing 28.999 on one side and a tray of 29 coins on the other",
+      "sfx": [],
+      "narration": "Here is the problem. A float stores point two nine as a tiny approximation, slightly under. Multiply by one hundred, and it is twenty eight point nine nine nine. Cut off the end, and we get twenty eight, one cent lost. Decimal stores the number exactly, like counting coins. Whole cents in an integer never drift. Convert once, at the door, and every calculation after that is exact."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 165,
+      "lengthSec": 41,
+      "onScreen": "store.py: load the list from a file, add one, save it back",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Json. [HL 2] And Path. [HL 4] The file name, as a Path. [HL 6] Load. [HL 7] On the first run, the file does not exist, [HL 8] so we start with an empty list. [HL 9] Otherwise, read the text, and load the list. [HL 11] Save. [HL 12] Write the list as JSON text. [HL 14] Load at the start. [HL 15] Zero on the first run. [HL 16] Add an expense. [HL 17] Save it. [HL 18] Load again, and now there is one. On the next run of the program, the data is already there.",
+      "code": {
+        "file": "store.py",
+        "source": "import json\nfrom pathlib import Path\n\nFILE = Path(\"expenses.json\")\n\ndef load():\n    if not FILE.exists():\n        return []\n    return json.loads(FILE.read_text())\n\ndef save(items):\n    FILE.write_text(json.dumps(items))\n\nitems = load()\nprint(len(items))\nitems.append({\"category\": \"food\", \"cents\": 12050})\nsave(items)\nprint(len(load()))",
+        "output": "0\n1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 206,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python store.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as store dot py. In the terminal, type python, space, store dot py. The Expense line, 120.50, the JSON text. Then 0 and 1."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 226,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Keep money as whole cents in an integer. Two: Decimal reads text exactly. Floats do not. Three: Convert once at the door, show with money. Four: Save the list as JSON, load it at the start. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 256,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: money as a float rounds wrongly",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Point two nine times one hundred should be twenty nine. Python prints twenty eight. The float is a hair below point two nine, and int cuts off the end. A cent vanishes, and no error appears. Read money as text with Decimal instead, and the answer is exactly twenty nine."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 296,
+      "lengthSec": 8,
+      "onScreen": "Why did the programmer count in cents? Every penny counts.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the programmer count in cents? Every penny counts."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 304,
+      "lengthSec": 20,
+      "onScreen": "Task card: show a total",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a function total cents of items. It adds the cents of a list of dictionaries. Print the total with money. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 324,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 89 · Capstone 3: Tests and polish",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: capstone three, tests and polish. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "print(int(0.29 * 100))",
+    "error": "Python output (it runs, but the answer is wrong):\n\n28",
+    "fixed": "from decimal import Decimal\n\nprint(int(Decimal(\"0.29\") * 100))",
+    "why": "Floats store point two nine as an approximation just below it, so multiplying and cutting off the end loses a cent. Decimal reads the text exactly."
+  },
+  "pun": "\"Why did the programmer count in cents? Every penny counts.\"",
+  "challenge": "Write a function total_cents(items). It adds the cents of a list of dictionaries. Print the total with money().",
+  "challengeAnswer": "def total_cents(items): return sum(i[\"cents\"] for i in items). Then print(money(total_cents(items))).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Float trouble",
+      "hook": "\"Here is the money trap.\"",
+      "script": "Here is the money trap. Point two nine times one hundred is not twenty nine. Python prints twenty eight, after you cut off the end. The float is a tiny bit below point two nine. Never use floats for money. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "int(0.29 * 100) = 28",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Floats lose cents.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Whole cents",
+      "hook": "\"The safe way is to keep money as whole cents, in an integer.\"",
+      "script": "The safe way is to keep money as whole cents, in an integer. One twenty point five zero becomes twelve thousand fifty. Add, subtract and compare whole numbers, and nothing ever drifts. Convert once, when the amount comes in. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "120.50 -> 12050",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "Count in cents.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Decimal",
+      "hook": "\"To read money from text, use Decimal.\"",
+      "script": "To read money from text, use Decimal. It stores the number exactly. Decimal of the text, times one hundred, and make it an integer. Printing back is easy. Floor divide by one hundred, then the remainder with two digits. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "Decimal(\"120.50\") * 100",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 40,
+      "caption": "Decimal is exact.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Save as JSON",
+      "hook": "\"Saving is short.\"",
+      "script": "Saving is short. Write the list as JSON text with json dumps, into a file. Loading reads the text, and json loads gives the list back. On the first run, the file does not exist, so check first, and start with an empty list. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "json.dumps / json.loads",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Save and load JSON.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "project",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the programmer count in cents?\"",
+      "script": "Why did the programmer count in cents? Every penny counts. Your challenge. Write a function called total cents. It adds the cents of a list of dictionaries. Then print the total, in the money format, with a dot and two digits. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 88.",
+      "onScreen": "Challenge: total_cents()",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Total the cents.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "money.py",
+      "source": "from dataclasses import dataclass, asdict\nimport json\nfrom decimal import Decimal\n\n@dataclass\nclass Expense:\n    day: str\n    category: str\n    cents: int\n    note: str = \"\"\n\ndef to_cents(text):\n    value = Decimal(text)\n    if value <= 0:\n        raise ValueError(\"amount must be positive\")\n    return int(value * 100)\n\ndef money(cents):\n    return f\"{cents // 100}.{cents % 100:02d}\"\n\ne = Expense(\"2025-03-01\", \"food\", to_cents(\"120.50\"), \"lunch\")\nprint(e)\nprint(money(e.cents))\nprint(json.dumps(asdict(e)))",
+      "output": "Expense(day='2025-03-01', category='food', cents=12050, note='lunch')\n120.50\n{\"day\": \"2025-03-01\", \"category\": \"food\", \"cents\": 12050, \"note\": \"lunch\"}",
+      "lang": "python"
+    },
+    {
+      "file": "store.py",
+      "source": "import json\nfrom pathlib import Path\n\nFILE = Path(\"expenses.json\")\n\ndef load():\n    if not FILE.exists():\n        return []\n    return json.loads(FILE.read_text())\n\ndef save(items):\n    FILE.write_text(json.dumps(items))\n\nitems = load()\nprint(len(items))\nitems.append({\"category\": \"food\", \"cents\": 12050})\nsave(items)\nprint(len(load()))",
+      "output": "0\n1",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

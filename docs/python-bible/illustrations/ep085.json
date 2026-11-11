@@ -1,0 +1,110 @@
+{
+  "ep": 85,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "p1",
+      "shape": "token",
+      "text": "data",
+      "colour": "butter",
+      "col": 0,
+      "row": 1,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "p2",
+      "shape": "token",
+      "text": "log.txt",
+      "colour": "butter",
+      "col": 3,
+      "row": 1,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "joined",
+      "shape": "card",
+      "text": "data/log.txt",
+      "colour": "mint",
+      "col": 1,
+      "row": 3,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "win",
+      "shape": "box",
+      "text": "Windows: data\\log.txt",
+      "colour": "pastelBlue",
+      "col": 6,
+      "row": 3,
+      "w": 5,
+      "h": 1
+    },
+    {
+      "id": "lin",
+      "shape": "box",
+      "text": "Mac and Linux: data/log.txt",
+      "colour": "pastelBlue",
+      "col": 6,
+      "row": 4,
+      "w": 5,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "p1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "p2"
+    },
+    {
+      "t": 0.3,
+      "do": "move",
+      "target": "p1",
+      "sfx": "whoosh",
+      "to": [
+        1,
+        3
+      ]
+    },
+    {
+      "t": 0.3,
+      "do": "move",
+      "target": "p2",
+      "to": [
+        3,
+        3
+      ]
+    },
+    {
+      "t": 0.5,
+      "do": "show",
+      "target": "joined",
+      "sfx": "stamp"
+    },
+    {
+      "t": 0.7,
+      "do": "show",
+      "target": "win",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.85,
+      "do": "show",
+      "target": "lin",
+      "sfx": "pop"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "ep": 48,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "sig",
+      "shape": "box",
+      "text": "def area(width: float, height: float) -> float:",
+      "colour": "cream",
+      "col": 1,
+      "row": 1,
+      "w": 10,
+      "h": 1
+    },
+    {
+      "id": "doc",
+      "shape": "box",
+      "text": "\"\"\"Return the area of a rectangle.\"\"\"",
+      "colour": "cream",
+      "col": 1,
+      "row": 3,
+      "w": 10,
+      "h": 1
+    },
+    {
+      "id": "n1",
+      "shape": "label",
+      "text": "hint for a parameter",
+      "colour": "butter",
+      "col": 2,
+      "row": 0,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "n2",
+      "shape": "label",
+      "text": "hint for the result",
+      "colour": "butter",
+      "col": 8,
+      "row": 0,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "n3",
+      "shape": "label",
+      "text": "docstring",
+      "colour": "butter",
+      "col": 4,
+      "row": 5,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "n1",
+      "to": "sig"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "n2",
+      "to": "sig"
+    },
+    {
+      "id": "a3",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "n3",
+      "to": "doc"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "sig",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "doc"
+    },
+    {
+      "t": 0.2,
+      "do": "show",
+      "target": "n1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.25,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "marker-swipe"
+    },
+    {
+      "t": 0.5,
+      "do": "show",
+      "target": "n2",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.55,
+      "do": "draw",
+      "target": "a2",
+      "sfx": "marker-swipe"
+    },
+    {
+      "t": 0.75,
+      "do": "show",
+      "target": "n3",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.8,
+      "do": "draw",
+      "target": "a3",
+      "sfx": "marker-swipe"
+    }
+  ]
+}

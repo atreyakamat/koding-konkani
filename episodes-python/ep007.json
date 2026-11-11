@@ -1,0 +1,352 @@
+{
+  "ep": 7,
+  "title": "Strings",
+  "module": 1,
+  "lengthSec": 294,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "write text with single or double quotes",
+    "count characters with len",
+    "join strings with + and repeat them with *"
+  ],
+  "youtube": {
+    "title": "Python Strings: Quotes, len, + and * | Python Programming EP 07",
+    "description": "In this episode you will write text with single or double quotes, count characters with len and join strings with + and repeat them with *, with Xecxec the crab. 0:00 Intro · 0:15 Text is a string · 0:51 Join and repeat · 1:31 Strings are objects · 2:01 Second program · 3:01 Recap · 3:31 Bug of the Day · 4:19 Challenge · 4:39 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Text is a string"
+      },
+      {
+        "t": "0:51",
+        "label": "Join and repeat"
+      },
+      {
+        "t": "1:31",
+        "label": "Strings are objects"
+      },
+      {
+        "t": "2:01",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:31",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:19",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:39",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python strings",
+      "string concatenation",
+      "len function",
+      "typeerror"
+    ],
+    "thumbnail": {
+      "text": "TEXT IN QUOTES",
+      "visual": "big text \"TEXT IN QUOTES\" in tomato on peach; Xecxec holding a long ribbon of letters labelled Hello, Xecxec in quote marks; thin black border and drop shadow.",
+      "pose": "Xecxec holding a long ribbon of letters labelled Hello, Xecxec in quote marks"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 07 · TEXT IN QUOTES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Programs are full of words. Today we learn how Python keeps text, how to count it, and how to join it."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 36,
+      "onScreen": "\"Text is a string\": three numbered lines (1. Text in quotes is a string; 2. len counts the characters; 3. + joins strings and * repeats them) and an analogy card: a string of beads: each character is one bead, and len counts the beads",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Text in Python is called a string. You put it inside quotes, single or double, as long as both ends match. Think of a string of beads. Each character is one bead. The len function counts the beads. You can join two strings with a plus sign, and repeat one with a star. The plus sign joins text, and the star repeats it."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 51,
+      "lengthSec": 40,
+      "onScreen": "greet.py: a name, a greeting, len and repeat",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The name is the text Xecxec, in double quotes. [HL 2] Now we join. Hello, comma, space, plus the name, makes one longer string. Mind the space inside the quotes. [HL 3] Print it. [HL 4] The len function counts the characters in Xecxec. Six. [HL 5] And a string times three repeats it three times.",
+      "code": {
+        "file": "greet.py",
+        "source": "name = \"Xecxec\"\ngreeting = \"Hello, \" + name\nprint(greeting)\nprint(len(name))\nprint(\"ha\" * 3)",
+        "output": "Hello, Xecxec\n6\nhahaha"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 91,
+      "lengthSec": 30,
+      "onScreen": "Two tags, name and greeting, tied to two string objects",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name tag points at the string Xecxec. The greeting tag points at a new string, Hello, Xecxec. Joining did not change the old string. It made a new one. Strings never change in place. You use that fact in a few episodes."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 121,
+      "lengthSec": 40,
+      "onScreen": "quotes.py: single quotes, an apostrophe inside double quotes, and len",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Single quotes work. [HL 2] This text has an apostrophe inside it. So we wrap it in double quotes, and the apostrophe is safe. [HL 3] Goa prints. [HL 4] The text with the apostrophe prints. [HL 5] And len counts every character, spaces and the apostrophe too. That is eight. Choose the quote style that lets you type the text without a clash.",
+      "code": {
+        "file": "quotes.py",
+        "source": "a = 'Goa'\nb = \"It's Goa\"\nprint(a)\nprint(b)\nprint(len(b))",
+        "output": "Goa\nIt's Goa\n8"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 161,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python quotes.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as quotes dot py. In the terminal, type python, space, quotes dot py. Goa, then the text with the apostrophe, then eight."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 181,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Text in quotes is a string. Two: Single and double quotes both work, as long as the ends match. Three: The len function counts every character, spaces included. Four: Plus joins strings and star repeats them. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 211,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: adding a string and a number",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We try to add text and a number. Python says, type error. It can only concatenate a string, not an int, to a string. Plus joins text to text, or adds number to number. It does not guess. Give print both values with a comma instead, and Python handles the rest."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 251,
+      "lengthSec": 8,
+      "onScreen": "Why did the string go to the beach? It wanted to catch some waves in its quotes.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the string go to the beach? It wanted to catch some waves in its quotes."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 259,
+      "lengthSec": 20,
+      "onScreen": "Task card: join two strings and repeat one",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make two names, first and last. Print them joined with a space between. Then print the first name three times. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 279,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 08 · Input from the user",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: input from the user. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "beaches = 5\nprint(\"Beaches: \" + beaches)",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"greet.py\", line 2, in <module>\n    print(\"Beaches: \" + beaches)\n          ~~~~~~~~~~~~^~~~~~~~~\nTypeError: can only concatenate str (not \"int\") to str",
+    "fixed": "beaches = 5\nprint(\"Beaches:\", beaches)",
+    "why": "Plus joins two strings or adds two numbers, but it cannot mix a string and a number; pass both to print with a comma instead."
+  },
+  "pun": "\"Why did the string go to the beach? It wanted to catch some waves in its quotes.\"",
+  "challenge": "Make two names, first and last. Print them joined with a space between. Then print the first name three times.",
+  "challengeAnswer": "Use first = \"Asha\" and last = \"Naik\", then print(first + \" \" + last) and print(first * 3), which show Asha Naik and AshaAshaAsha.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a string?",
+      "hook": "\"Text in Python is called a string.\"",
+      "script": "Text in Python is called a string. You put it inside quotes, single or double, and both ends must match. Hello is a string. A name is a string. Even a number inside quotes is a string, and not a number any more. Think of a string of beads, where every character is one bead. That is why we call it a string. Keep coding, says Xecxec!",
+      "onScreen": "A STRING IS TEXT",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Strings in 40 seconds.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "text",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Count with len",
+      "hook": "\"The len function counts the characters in a string.\"",
+      "script": "The len function counts the characters in a string. Len of Xecxec is six, one for each letter. Spaces count too, and so do commas and apostrophes. So len of the text with the apostrophe is eight. Use len when you need to know how long a word is. Say the characters out loud as you count. Then you do not miscount. Keep coding, says Xecxec!",
+      "onScreen": "LEN(\"XECXEC\") = 6",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Counting characters.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "text",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Join and repeat",
+      "hook": "\"Two string tricks.\"",
+      "script": "Two string tricks. A plus sign joins two strings into one longer string, so Hello comma space plus Xecxec makes Hello, Xecxec. A star repeats a string, so ha times three makes ha ha ha with no spaces. Joining and repeating never change the old strings. They make brand new ones every single time. Try both in your own file and see. Keep coding, says Xecxec!",
+      "onScreen": "\"HA\" * 3",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Plus joins, star repeats.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "text",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "String plus number",
+      "hook": "\"Very common bug.\"",
+      "script": "Very common bug. You write text plus a number, and Python says type error. It can only concatenate a string, not an int, to a string. Plus joins text to text, or adds number to number. It does not guess. The easy fix is to give print both values with a comma. Then print does the joining for you. Keep coding, says Xecxec!",
+      "onScreen": "TYPEERROR: STR + INT",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Plus will not guess.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "text",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the string go to the beach?\"",
+      "script": "Why did the string go to the beach? It wanted to catch some waves in its quotes. Now your challenge. Make two names, first and last. Print them joined with a space between them. Then print the first name three times in a row. Use plus for the joining and star for the repeating. Share your answer in the comments. Keep coding, says Xecxec! Full video: EP 07.",
+      "onScreen": "JOIN + REPEAT",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try joining strings.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "strings",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "greet.py",
+      "source": "name = \"Xecxec\"\ngreeting = \"Hello, \" + name\nprint(greeting)\nprint(len(name))\nprint(\"ha\" * 3)",
+      "output": "Hello, Xecxec\n6\nhahaha",
+      "lang": "python"
+    },
+    {
+      "file": "quotes.py",
+      "source": "a = 'Goa'\nb = \"It's Goa\"\nprint(a)\nprint(b)\nprint(len(b))",
+      "output": "Goa\nIt's Goa\n8",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

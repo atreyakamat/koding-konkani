@@ -1,0 +1,352 @@
+{
+  "ep": 17,
+  "title": "for loops and range",
+  "module": 2,
+  "lengthSec": 307,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "repeat a fixed number of times with for",
+    "use range(stop) and range(start, stop)",
+    "remember that the stop value is not included"
+  ],
+  "youtube": {
+    "title": "Python for Loop and range() Explained | Python Programming EP 17",
+    "description": "In this episode you will repeat a fixed number of times with for, use range(stop) and range(start, stop) and remember that the stop value is not included, with Xecxec the crab. 0:00 Intro · 0:15 Looping a fixed number of times · 0:53 A simple for loop · 1:35 The loop name after the loop · 2:09 Second program · 3:09 Recap · 3:44 Bug of the Day · 4:32 Challenge · 4:52 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Looping a fixed number of times"
+      },
+      {
+        "t": "0:53",
+        "label": "A simple for loop"
+      },
+      {
+        "t": "1:35",
+        "label": "The loop name after the loop"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:44",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:32",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:52",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python for loop",
+      "python range function",
+      "range start stop",
+      "off by one error"
+    ],
+    "thumbnail": {
+      "text": "FOR + RANGE",
+      "visual": "big text \"FOR + RANGE\" in tomato on peach; Xecxec walking along stepping stones numbered 0 to 4; thin black border and drop shadow.",
+      "pose": "Xecxec walking along stepping stones numbered 0 to 4"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 17 · FOR + RANGE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "When you know how many times to repeat, there is a tidier loop. Today we meet for, and its partner range."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 38,
+      "onScreen": "\"Looping a fixed number of times\": three numbered lines (1. for walks through a series of values; 2. range(5) gives 0, 1, 2, 3, 4; 3. The stop value is never included) and an analogy card: stepping stones across a stream: range gives you the stones, and for walks over each one",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A for loop walks through a series of values, one at a time. The range function makes the series. Range of five gives zero, one, two, three, four. Five numbers, but it starts at zero, and the stop value is never included. Think of stepping stones across a stream. Range lays out the stones, and for steps on each one. Range of one, six gives one to five."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 53,
+      "lengthSec": 42,
+      "onScreen": "steps.py: range(5) and the loop variable i",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The for line has three parts. A loop name, i. The word in. And range of five. Python ties i to zero and runs the block. Then it ties i to one, then two, up to the last number. [HL 2] The block prints the step number. Notice we never wrote i equals i plus one. The for loop does that for us. [HL 3] This line is at the left edge, so it runs once, after the loop ends.",
+      "code": {
+        "file": "steps.py",
+        "source": "for i in range(5):\n    print(\"Step\", i)\nprint(\"Finished\")",
+        "output": "Step 0\nStep 1\nStep 2\nStep 3\nStep 4\nFinished"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 95,
+      "lengthSec": 34,
+      "onScreen": "The name i tied to the last value, 4, after the loop ends",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is a small surprise. After the loop ends, the name i is still there. It stays tied to the last value it received, four. The for loop made the name, and tied it to each value in turn. It does not tidy the name away when the loop finishes. That is normal Python, and it is useful to know."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "table.py: range(1, 6) with a start and a stop",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK n=1] Range with two numbers gives a start and a stop. Start at one, stop before six. So n takes the values one to five. [HL 2] Each round prints a line of the five times table. The sum inside print is worked out each time. [TRACK n=5] The last line is, five times five equals twenty five. A start and a stop is how you ask for exactly the numbers you want.",
+      "code": {
+        "file": "table.py",
+        "source": "for n in range(1, 6):\n    print(\"5 x\", n, \"=\", 5 * n)",
+        "output": "5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python table.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as table dot py. In the terminal, type python, space, table dot py. A five times table, from one up to five."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 35,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: for walks through a series of values. Two: range of 5 gives 0, 1, 2, 3, 4. Three: range of 1, 6 gives 1 to 5, because the stop is not included. Four: The for loop updates its own loop name, so you never add one yourself. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 224,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: an off-by-one range",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We want the numbers one to five. We wrote range of one, five. The output stops at four. Python does not include the stop value. Five is the stop, so it is left out. To include five, the stop must be six. This is called an off by one bug, and every programmer meets it."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 264,
+      "lengthSec": 8,
+      "onScreen": "Why did the for loop go to the stream? It loved stepping on every stone.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the for loop go to the stream? It loved stepping on every stone."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 272,
+      "lengthSec": 20,
+      "onScreen": "Task card: print the even numbers 2 to 10",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Print the numbers 1 to 10, one per line, using for and range. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 292,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 18 · break, continue and loop else",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: break, continue and loop else. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "for n in range(1, 5):\n    print(n)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n1\n2\n3\n4",
+    "fixed": "for n in range(1, 6):\n    print(n)",
+    "why": "range stops before its stop value, so to include 5 the stop must be 6."
+  },
+  "pun": "\"Why did the for loop go to the stream? It loved stepping on every stone.\"",
+  "challenge": "Print the numbers 1 to 10, one per line, using for and range.",
+  "challengeAnswer": "Use for n in range(1, 11): print(n). The stop is 11 so that 10 is included.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is range?",
+      "hook": "\"The range function makes a series of numbers.\"",
+      "script": "The range function makes a series of numbers. Range of five gives zero, one, two, three, four. Five numbers, but it starts at zero. The stop value is never included. Think of stepping stones across a stream. Range lays out the stones, and a for loop steps on each one in turn. Whenever you know how many times to repeat, for and range are your friends. Keep coding, says Xecxec!",
+      "onScreen": "RANGE(5) = 0 TO 4",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "Numbers to loop over.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "forloop",
+        "range",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Start and stop",
+      "hook": "\"Range can take a start and a stop.\"",
+      "script": "Range can take a start and a stop. Range of one, six gives one, two, three, four, five. It starts at one, and stops before six. So the last number is always one less than the stop. If you want one to ten, write range of one, eleven. Read it as, from one, up to but not including eleven. Keep coding, says Xecxec!",
+      "onScreen": "RANGE(1, 6) = 1 TO 5",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Stop is not included.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "forloop",
+        "range",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The loop name",
+      "hook": "\"In a for loop, Python makes the loop name for you.\"",
+      "script": "In a for loop, Python makes the loop name for you. For i in range of five. I is tied to zero, then one, then two, up to the last number. You never write i equals i plus one. The loop does it. After the loop ends, i is still there, tied to the last value, which is four. Handy to know when you debug. Keep coding, says Xecxec!",
+      "onScreen": "FOR I IN RANGE(5):",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Python moves i for you.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "forloop",
+        "range",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Off by one",
+      "hook": "\"Here is the most famous bug in loops.\"",
+      "script": "Here is the most famous bug in loops. You want the numbers one to five, so you write range of one, five. The output stops at four. Range does not include the stop value. To get five, the stop must be six. Programmers call this an off by one bug. Whenever a loop runs one time too few, check the stop value first. Keep coding, says Xecxec!",
+      "onScreen": "RANGE(1, 5) MISSES 5",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Check the stop value.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "forloop",
+        "range",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the for loop go to the stream?\"",
+      "script": "Why did the for loop go to the stream? It loved stepping on every stone. Your challenge. Print the numbers one to ten, one per line, using for and range. Think about which stop value you need to include ten. Then change your loop to print only the numbers one to five. Share your answer in the comments below. Keep coding, says Xecxec! Full video: EP 17.",
+      "onScreen": "PRINT 1 TO 10",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try for and range.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "forloop",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "steps.py",
+      "source": "for i in range(5):\n    print(\"Step\", i)\nprint(\"Finished\")",
+      "output": "Step 0\nStep 1\nStep 2\nStep 3\nStep 4\nFinished",
+      "lang": "python"
+    },
+    {
+      "file": "table.py",
+      "source": "for n in range(1, 6):\n    print(\"5 x\", n, \"=\", 5 * n)",
+      "output": "5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

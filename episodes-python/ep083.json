@@ -1,0 +1,352 @@
+{
+  "ep": 83,
+  "title": "collections (Counter, defaultdict, deque)",
+  "module": 9,
+  "lengthSec": 310,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "count items with Counter",
+    "group items with defaultdict",
+    "use a deque as a queue"
+  ],
+  "youtube": {
+    "title": "Python collections: Counter, defaultdict and deque | Python Programming EP 83",
+    "description": "In this episode you will count items with Counter, group items with defaultdict and use a deque as a queue, with Xecxec the crab. 0:00 Intro · 0:15 Three handy tools · 1:04 Counter and defaultdict · 1:45 A Counter is a dictionary · 2:15 Second program · 3:17 Recap · 3:47 Bug of the Day · 4:35 Challenge · 4:55 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Three handy tools"
+      },
+      {
+        "t": "1:04",
+        "label": "Counter and defaultdict"
+      },
+      {
+        "t": "1:45",
+        "label": "A Counter is a dictionary"
+      },
+      {
+        "t": "2:15",
+        "label": "Second program"
+      },
+      {
+        "t": "3:17",
+        "label": "Recap"
+      },
+      {
+        "t": "3:47",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:35",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:55",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python collections",
+      "python counter",
+      "python defaultdict",
+      "python deque"
+    ],
+    "thumbnail": {
+      "text": "COLLECTIONS",
+      "visual": "big text \"COLLECTIONS\" in tomato on peach; Xecxec sorting shells into piles, with a queue of customers behind; thin black border and drop shadow.",
+      "pose": "Xecxec sorting shells into piles, with a queue of customers behind"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 83 · COLLECTIONS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Counting words, grouping names, running a queue. The collections module has a tool for each."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 49,
+      "onScreen": "\"Three handy tools\": three numbered lines (1. Counter counts how often each item appears; 2. defaultdict makes missing keys for you; 3. deque adds and removes at both ends quickly) and an analogy card: three handy tools in a drawer: a tally counter, a sorting tray, and a ticket queue",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The collections module has smarter containers. A Counter counts how many times each item appears, and most common gives the top ones. A defaultdict is a dictionary that creates a missing key for you. The default is, for example, an empty list. So grouping needs no if statement. A deque is a double ended queue. It adds and removes at both ends quickly, which a list cannot do at the front. Think of three handy tools in a drawer. A tally counter, a sorting tray, and a ticket queue."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 64,
+      "lengthSec": 41,
+      "onScreen": "coll.py: count words, then group them by length",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Import the two tools. [HL 3] Six words. [HL 4] Counter counts each word in one step. [HL 5] Tea three times, chai twice, coffee once. [HL 6] Most common one gives the top entry. Tea, three. [HL 7] A defaultdict whose missing keys start as an empty list. [HL 8] Loop over the words. [HL 9] Group each word by its length. No if statement is needed, because a missing key is created for us. [HL 10] Three letter words, four letter words, and one six letter word.",
+      "code": {
+        "file": "coll.py",
+        "source": "from collections import Counter, defaultdict\n\nwords = \"tea chai tea coffee tea chai\".split()\ncounts = Counter(words)\nprint(counts)\nprint(counts.most_common(1))\ngroups = defaultdict(list)\nfor w in words:\n    groups[len(w)].append(w)\nprint(dict(groups))",
+        "output": "Counter({'tea': 3, 'chai': 2, 'coffee': 1})\n[('tea', 3)]\n{3: ['tea', 'tea', 'tea'], 4: ['chai', 'chai'], 6: ['coffee']}"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 105,
+      "lengthSec": 30,
+      "onScreen": "The name counts tied to one Counter object holding a number for each word",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name counts is tied to one Counter object. A Counter is a special dictionary. Each word is a key, and its value is how many times the word appeared. It has all the powers of a dictionary, plus extras such as most common."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 135,
+      "lengthSec": 40,
+      "onScreen": "queue.py: add and remove at both ends",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Import deque. [HL 3] A queue with two people. [HL 4] Append adds at the back. [HL 5] Appendleft adds at the front. Fast, unlike a list. [HL 6] The queue, front to back. VIP, Asha, Ravi, Meera. [HL 7] Popleft removes from the front. VIP goes first. [HL 8] Pop removes from the back. Meera. [HL 9] Rotate moves everyone one step to the right. [HL 10] Ravi is now first, then Asha.",
+      "code": {
+        "file": "queue.py",
+        "source": "from collections import deque\n\nqueue = deque([\"Asha\", \"Ravi\"])\nqueue.append(\"Meera\")\nqueue.appendleft(\"VIP\")\nprint(queue)\nprint(queue.popleft())\nprint(queue.pop())\nqueue.rotate(1)\nprint(list(queue))",
+        "output": "deque(['VIP', 'Asha', 'Ravi', 'Meera'])\nVIP\nMeera\n['Ravi', 'Asha']"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 175,
+      "lengthSec": 22,
+      "onScreen": "Terminal: python queue.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as queue dot py. In the terminal, type python, space, queue dot py. The counter, then tea 3, then the groups by length. Then the queue, VIP, Meera, and Ravi then Asha."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 197,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Counter counts items. Most common gives the top ones. Two: defaultdict creates missing keys with a default. Three: deque is fast at both ends. Four: A deque is not a list: no slices. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 227,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: slicing a deque like a list",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We slice a deque like a list. Type error, sequence index must be integer, not slice. A deque is built for working at the two ends. Indexing the middle is slow, and slices are not allowed. When you need them, make a list first, and slice that."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 267,
+      "lengthSec": 8,
+      "onScreen": "Why did the deque get a promotion? It was great at working both ends.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the deque get a promotion? It was great at working both ends."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 275,
+      "lengthSec": 20,
+      "onScreen": "Task card: count letters",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Use Counter on the string banana and print the two most common letters. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 295,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 84 · Fetching web data (requests, JSON from an API)",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: fetching web data, requests and JSON from an API. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "from collections import deque\n\nd = deque([10, 20, 30, 40])\nprint(d[1:3])",
+    "error": "**Trace trimmed:** last 1 lines\n\nPython output (exactly as Python prints it):\n\nTypeError: sequence index must be integer, not 'slice'",
+    "fixed": "from collections import deque\n\nd = deque([10, 20, 30, 40])\nprint(list(d)[1:3])",
+    "why": "A deque is built for the two ends. It supports index access, but not slices, and indexing in the middle is slow. Convert to a list when you need slices."
+  },
+  "pun": "\"Why did the deque get a promotion? It was great at working both ends.\"",
+  "challenge": "Use Counter on the string \"banana\" and print the two most common letters.",
+  "challengeAnswer": "Counter(\"banana\").most_common(2) gives [('a', 3), ('n', 2)].",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Counter",
+      "hook": "\"A Counter counts how many times each item appears.\"",
+      "script": "A Counter counts how many times each item appears. Give it a list of words, and it returns each word with its count. Most common of one gives the top word. Counting by hand with a dictionary takes five lines. This takes one. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "Counter(words)",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Counter counts for you.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "collections",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "defaultdict",
+      "hook": "\"A defaultdict creates missing keys for you.\"",
+      "script": "A defaultdict creates missing keys for you. Say defaultdict of list, and a missing key starts as an empty list. Grouping words by length needs no if statement. Just append, and the key appears by itself. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "defaultdict(list)",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "No more key checks.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "collections",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "deque",
+      "hook": "\"A deque is a double ended queue.\"",
+      "script": "A deque is a double ended queue. Append and pop work at the back. Appendleft and popleft work at the front, and they are fast, unlike a list. Use it for queues, such as customers waiting in a line. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "deque + popleft()",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 40,
+      "caption": "Fast at both ends.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "collections",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "No slices",
+      "hook": "\"A deque is not a list.\"",
+      "script": "A deque is not a list. Slice it, and Python says, type error, sequence index must be integer, not slice. A deque is made for the two ends, and the middle is slow. Make a list first, then slice the list. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "TypeError: not slice",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Convert to a list.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "collections",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the deque get a promotion?\"",
+      "script": "Why did the deque get a promotion? It was great at working both ends. Your challenge. Use Counter on the string banana. Print the two most common letters. Which letter wins, and how many times does it appear? Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 83.",
+      "onScreen": "Challenge: Counter on banana",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Count the letters.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "coll.py",
+      "source": "from collections import Counter, defaultdict\n\nwords = \"tea chai tea coffee tea chai\".split()\ncounts = Counter(words)\nprint(counts)\nprint(counts.most_common(1))\ngroups = defaultdict(list)\nfor w in words:\n    groups[len(w)].append(w)\nprint(dict(groups))",
+      "output": "Counter({'tea': 3, 'chai': 2, 'coffee': 1})\n[('tea', 3)]\n{3: ['tea', 'tea', 'tea'], 4: ['chai', 'chai'], 6: ['coffee']}",
+      "lang": "python"
+    },
+    {
+      "file": "queue.py",
+      "source": "from collections import deque\n\nqueue = deque([\"Asha\", \"Ravi\"])\nqueue.append(\"Meera\")\nqueue.appendleft(\"VIP\")\nprint(queue)\nprint(queue.popleft())\nprint(queue.pop())\nqueue.rotate(1)\nprint(list(queue))",
+      "output": "deque(['VIP', 'Asha', 'Ravi', 'Meera'])\nVIP\nMeera\n['Ravi', 'Asha']",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

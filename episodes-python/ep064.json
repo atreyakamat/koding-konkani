@@ -1,0 +1,352 @@
+{
+  "ep": 64,
+  "title": "Methods",
+  "module": 7,
+  "lengthSec": 301,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "write methods that change an object",
+    "return values from methods",
+    "call methods with the right brackets"
+  ],
+  "youtube": {
+    "title": "Python Methods: Give Objects Actions | Python Programming EP 64",
+    "description": "In this episode you will write methods that change an object, return values from methods and call methods with the right brackets, with Xecxec the crab. 0:00 Intro · 0:15 Objects that do things · 0:57 Deposit and withdraw · 1:37 One account object · 2:08 Second program · 3:08 Recap · 3:38 Bug of the Day · 4:26 Challenge · 4:46 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Objects that do things"
+      },
+      {
+        "t": "0:57",
+        "label": "Deposit and withdraw"
+      },
+      {
+        "t": "1:37",
+        "label": "One account object"
+      },
+      {
+        "t": "2:08",
+        "label": "Second program"
+      },
+      {
+        "t": "3:08",
+        "label": "Recap"
+      },
+      {
+        "t": "3:38",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:26",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:46",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python methods",
+      "python class methods",
+      "python self methods",
+      "python bank account class"
+    ],
+    "thumbnail": {
+      "text": "METHODS",
+      "visual": "big text \"METHODS\" in tomato on peach; Xecxec pressing buttons on a bank machine labelled deposit and withdraw; thin black border and drop shadow.",
+      "pose": "Xecxec pressing buttons on a bank machine labelled deposit and withdraw"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 64 · METHODS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "So far our objects only held data. Today they get actions, and can change themselves."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 42,
+      "onScreen": "\"Objects that do things\": three numbered lines (1. A method is a function that belongs to a class; 2. Methods change self's attributes; 3. Call with brackets: obj.method()) and an analogy card: buttons on a vending machine: pressing one makes the machine do something to its own insides",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A method is a function that lives inside a class. It can read and change the attributes of its object through self. Some methods return an answer. Others just change the object, and return nothing. A bank account is a good example. Deposit adds to the balance. Withdraw takes from it. Think of buttons on a vending machine. Each button changes the machine's own insides. To call a method, always use brackets, even with no arguments."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 57,
+      "lengthSec": 40,
+      "onScreen": "account.py: a bank account that changes its own balance",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] An Account class. [HL 2] Init stores the owner and a starting balance. [HL 6] The deposit method adds the amount to this account's balance. [HL 9] Withdraw first checks the amount. [HL 10] Too much, so return False, and change nothing. [HL 12] Otherwise subtract the amount. [HL 13] And return True. [HL 15] An account for Asha, with one hundred. [HL 16] Deposit fifty. [HL 17] The balance is one fifty. [HL 18] Withdrawing five hundred fails, False. [HL 19] Withdrawing thirty works, True. [HL 20] The balance is one twenty.",
+      "code": {
+        "file": "account.py",
+        "source": "class Account:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance = self.balance + amount\n\n    def withdraw(self, amount):\n        if amount > self.balance:\n            return False\n        self.balance = self.balance - amount\n        return True\n\nacc = Account(\"Asha\", 100)\nacc.deposit(50)\nprint(acc.balance)\nprint(acc.withdraw(500))\nprint(acc.withdraw(30))\nprint(acc.balance)",
+        "output": "150\nFalse\nTrue\n120"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 97,
+      "lengthSec": 31,
+      "onScreen": "The name acc tied to one Account object holding the owner and the balance",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name acc is tied to one account object. Inside live the owner and the balance. Each method call changes the balance inside this one object. The name stays the same, and the object quietly changes. That is the point of methods. The object looks after its own data."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 128,
+      "lengthSec": 40,
+      "onScreen": "temperature.py: a method that returns a computed value, and one that calls another method",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A Temperature class. [HL 2] Init stores the Celsius value. [HL 5] A method that converts. [HL 6] Nine fifths of the value, plus thirty two. [HL 8] A second method. [HL 9] It calls the first one through self, to reuse it. [HL 10] And builds a sentence. [HL 12] A hundred degrees. [HL 13] Two hundred twelve. [HL 14] The describe method gives the full sentence. [HL 15] And zero degrees makes thirty two.",
+      "code": {
+        "file": "temperature.py",
+        "source": "class Temperature:\n    def __init__(self, celsius):\n        self.celsius = celsius\n\n    def to_fahrenheit(self):\n        return self.celsius * 9 / 5 + 32\n\n    def describe(self):\n        f = self.to_fahrenheit()\n        return f\"{self.celsius}C is {f}F\"\n\nt = Temperature(100)\nprint(t.to_fahrenheit())\nprint(t.describe())\nprint(Temperature(0).describe())",
+        "output": "212.0\n100C is 212.0F\n0C is 32.0F"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 168,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python temperature.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as temperature dot py. In the terminal, type python, space, temperature dot py. 150, False, True, 120. Then 212.0 and the two sentences."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 188,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Methods are functions inside a class. Two: They use self to read and change the object's attributes. Three: A method can return a value, or just change the object. Four: Always call a method with brackets. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 218,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: calling a method without brackets",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We wrote acc dot show, with no brackets. Python does not run the method. It prints the method itself, a bound method, with a memory address. No error, and no answer. Add the brackets, and the method runs, and returns the balance."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 258,
+      "lengthSec": 8,
+      "onScreen": "Why did the method go to therapy? It had too many unresolved calls.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the method go to therapy? It had too many unresolved calls."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 266,
+      "lengthSec": 20,
+      "onScreen": "Task card: a safer deposit",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Change deposit so that it ignores amounts that are zero or negative, and returns False for them. Return True for a good deposit. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 286,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 65 · Class vs instance attributes",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: class versus instance attributes. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Account:\n    def __init__(self, balance):\n        self.balance = balance\n\n    def show(self):\n        return f\"Balance: {self.balance}\"\n\nacc = Account(100)\nprint(acc.show)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n<bound method Account.show of <__main__.Account object at 0x...>>",
+    "fixed": "class Account:\n    def __init__(self, balance):\n        self.balance = balance\n\n    def show(self):\n        return f\"Balance: {self.balance}\"\n\nacc = Account(100)\nprint(acc.show())",
+    "why": "Without brackets you get the method object itself, not the result of running it. Brackets are what call it."
+  },
+  "pun": "\"Why did the method go to therapy? It had too many unresolved calls.\"",
+  "challenge": "Change deposit so that it ignores amounts that are zero or negative, and returns False for them. Return True for a good deposit.",
+  "challengeAnswer": "def deposit(self, amount): if amount <= 0: return False; self.balance += amount; return True.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Methods are actions",
+      "hook": "\"A method is a function that belongs to a class.\"",
+      "script": "A method is a function that belongs to a class. It gives an object things to do. A bank account can deposit and withdraw. Think of the buttons on a vending machine. Each button changes the machine's own insides. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "method = action of an object",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "Methods are actions.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "methods",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Methods change self",
+      "hook": "\"Inside a method, self dot balance means, this account's balance.\"",
+      "script": "Inside a method, self dot balance means, this account's balance. Write self dot balance equals self dot balance plus amount, and this one account changes. Other accounts stay untouched. Each object looks after its own data. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "self.balance += amount",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Methods change the object.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "methods",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Return a value",
+      "hook": "\"Methods can return answers, just like functions.\"",
+      "script": "Methods can return answers, just like functions. A temperature object can return its value in Fahrenheit. A withdraw method can return True when it worked, and False when it failed. The caller decides what to do with the answer. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "return True / False",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 40,
+      "caption": "Methods can return values.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "methods",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "No brackets",
+      "hook": "\"A tricky one.\"",
+      "script": "A tricky one. You write acc dot show, without brackets. Python prints bound method show of account object, and an address. It did not run the method. It showed it. Add the brackets, and the method actually runs. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "acc.show vs acc.show()",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Brackets call the method.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "methods",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the method go to therapy?\"",
+      "script": "Why did the method go to therapy? It had too many unresolved calls. Your challenge. Change deposit so that it ignores zero and negative amounts. Return False for those, and True for a good deposit. Test it with a few numbers. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 64.",
+      "onScreen": "Challenge: safer deposit",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Make deposit safer.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "account.py",
+      "source": "class Account:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance = self.balance + amount\n\n    def withdraw(self, amount):\n        if amount > self.balance:\n            return False\n        self.balance = self.balance - amount\n        return True\n\nacc = Account(\"Asha\", 100)\nacc.deposit(50)\nprint(acc.balance)\nprint(acc.withdraw(500))\nprint(acc.withdraw(30))\nprint(acc.balance)",
+      "output": "150\nFalse\nTrue\n120",
+      "lang": "python"
+    },
+    {
+      "file": "temperature.py",
+      "source": "class Temperature:\n    def __init__(self, celsius):\n        self.celsius = celsius\n\n    def to_fahrenheit(self):\n        return self.celsius * 9 / 5 + 32\n\n    def describe(self):\n        f = self.to_fahrenheit()\n        return f\"{self.celsius}C is {f}F\"\n\nt = Temperature(100)\nprint(t.to_fahrenheit())\nprint(t.describe())\nprint(Temperature(0).describe())",
+      "output": "212.0\n100C is 212.0F\n0C is 32.0F",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

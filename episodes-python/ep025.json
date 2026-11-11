@@ -1,0 +1,352 @@
+{
+  "ep": 25,
+  "title": "Lists",
+  "module": 3,
+  "lengthSec": 299,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "create a list with square brackets",
+    "read and change items by index",
+    "add an item with append"
+  ],
+  "youtube": {
+    "title": "Python Lists for Beginners: Create, Index, append | Python Programming EP 25",
+    "description": "In this episode you will create a list with square brackets, read and change items by index and add an item with append, with Xecxec the crab. 0:00 Intro · 0:15 A list holds many values · 0:54 Making a list · 1:34 One name, one list object · 2:04 Second program · 3:04 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "A list holds many values"
+      },
+      {
+        "t": "0:54",
+        "label": "Making a list"
+      },
+      {
+        "t": "1:34",
+        "label": "One name, one list object"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python lists",
+      "python list append",
+      "python list index",
+      "list append returns none"
+    ],
+    "thumbnail": {
+      "text": "MEET THE LIST",
+      "visual": "big text \"MEET THE LIST\" in tomato on peach; Xecxec carrying a basket with four beach names, each on a numbered card; thin black border and drop shadow.",
+      "pose": "Xecxec carrying a basket with four beach names, each on a numbered card"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 25 · MEET THE LIST",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "So far every name held one value. Today we meet the list, a name that holds many."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 39,
+      "onScreen": "\"A list holds many values\": three numbered lines (1. Square brackets and commas make a list; 2. Items have indexes, starting at 0; 3. Lists can be changed in place) and an analogy card: a shopping basket: you can add things, look at the first item, and swap one for another",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A list holds many values in one name. Square brackets, with commas between the items. Think of a shopping basket. You can add things, look at the first one, and swap one for another. Items have indexes, starting at zero, just like the letters of a string. But there is one big difference. Unlike strings, lists can be changed in place. Append adds a new item at the end."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "beaches.py: a list of three beaches, then append a fourth",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A list of three beaches, in square brackets. [HL 2] Printing it shows the brackets and the commas. [HL 3] Index zero is the first item, Baga. [HL 4] Len counts the items. Three. [HL 5] Append adds a new item at the end. It changes the list itself. [HL 6] Print again, and the list now has four beaches.",
+      "code": {
+        "file": "beaches.py",
+        "source": "beaches = [\"Baga\", \"Colva\", \"Anjuna\"]\nprint(beaches)\nprint(beaches[0])\nprint(len(beaches))\nbeaches.append(\"Palolem\")\nprint(beaches)",
+        "output": "['Baga', 'Colva', 'Anjuna']\nBaga\n3\n['Baga', 'Colva', 'Anjuna', 'Palolem']"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 94,
+      "lengthSec": 30,
+      "onScreen": "The name beaches tied to one list holding four strings",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. One name, beaches, tied to one list object. Inside the list are four string objects. When we appended Palolem, the list object grew. The name stayed tied to the same list. This is the big difference from strings and numbers. A list can change without being replaced."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 124,
+      "lengthSec": 40,
+      "onScreen": "marks_list.py: replace one mark and find the average",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A list of three marks. [HL 2] Assign to index one, and the second item changes from eighty five to eighty eight. This works on a list, but fails on a string. [HL 3] The list prints with the new value. [HL 4] Sum adds all the items, two hundred fifty. Len gives three. Divided, and rounded to one decimal, we get eighty three point three.",
+      "code": {
+        "file": "marks_list.py",
+        "source": "marks = [72, 85, 90]\nmarks[1] = 88\nprint(marks)\nprint(round(sum(marks) / len(marks), 1))",
+        "output": "[72, 88, 90]\n83.3"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 164,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python marks_list.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as marks_list dot py. In the terminal, type python, space, marks_list dot py. The list with eighty eight in the middle, then eighty three point three."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 184,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A list holds many values in square brackets. Two: Items have indexes from zero, and negative indexes work too. Three: A list can be changed in place, by index or by append. Four: len, sum and max work on lists. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 216,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: append returns None",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We add Palolem, and print the list. It prints None. Why? Append changes the list in place, and returns nothing, which Python calls None. We tied the name to that nothing. The list is lost. Just call append on its own line, and keep the name pointing at the list."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 256,
+      "lengthSec": 8,
+      "onScreen": "Why did the list never feel lonely? It always had items to keep it company.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the list never feel lonely? It always had items to keep it company."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 264,
+      "lengthSec": 20,
+      "onScreen": "Task card: make a list of 3 foods and add one",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make a list of three foods, add a fourth with append, and print the list and its length. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 284,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 26 · List methods",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: list methods. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "beaches = [\"Baga\", \"Colva\"]\nbeaches = beaches.append(\"Palolem\")\nprint(beaches)",
+    "error": "Python output (it runs, but the answer is wrong):\n\nNone",
+    "fixed": "beaches = [\"Baga\", \"Colva\"]\nbeaches.append(\"Palolem\")\nprint(beaches)",
+    "why": "append changes the list in place and returns None, so tying the name to its result replaces the list with None."
+  },
+  "pun": "\"Why did the list never feel lonely? It always had items to keep it company.\"",
+  "challenge": "Make a list of three foods, add a fourth with append, and print the list and its length.",
+  "challengeAnswer": "Use food = [\"fish\", \"rice\", \"curry\"], food.append(\"prawns\"), then print(food) and print(len(food)). The length is 4.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a list?",
+      "hook": "\"A list holds many values in one name.\"",
+      "script": "A list holds many values in one name. You use square brackets, with commas between the items. Beaches equals bracket Baga, Colva, Anjuna, close bracket. Think of a shopping basket. You can add things, look at the first thing, and swap things. Lists are everywhere in Python, from names of students to marks on a test. Learn them well. Keep coding, says Xecxec!",
+      "onScreen": "[\"BAGA\", \"COLVA\"]",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "A basket of values.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "datastructures",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Index and length",
+      "hook": "\"Items in a list have indexes, just like the letters of a string.\"",
+      "script": "Items in a list have indexes, just like the letters of a string. The first item is index zero. Beaches, bracket zero, gives Baga. Beaches, bracket, minus one, gives the last item. And len of beaches counts the items. If you know how strings work, you already know most of lists. The rules are the same, so it is easy. Keep coding, says Xecxec!",
+      "onScreen": "BEACHES[0] · LEN(BEACHES)",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Same rules as strings.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "datastructures",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Lists can change",
+      "hook": "\"Here is the big difference from strings.\"",
+      "script": "Here is the big difference from strings. A list can be changed in place. Assign to an index, and that item is replaced. Call append, and a new item is added at the end. The name stays tied to the same list object the whole time. The list itself grows or changes. That is what we mean when we say, a list is mutable. Keep coding, says Xecxec!",
+      "onScreen": "MARKS[1] = 88",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Lists are mutable.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "datastructures",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Append returns None",
+      "hook": "\"Here is a famous trap.\"",
+      "script": "Here is a famous trap. You write beaches equals beaches dot append, Palolem. Then you print, and it says None. Append changes the list in place and returns nothing, which Python calls None. You tied the name to that nothing, and lost your list. Just call append on its own line. Do not save its result, ever. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "X = A.APPEND(1) → NONE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Do not save append.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "datastructures",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the list never feel lonely?\"",
+      "script": "Why did the list never feel lonely? It always had items to keep it company. Your challenge. Make a list of three foods you love. Add a fourth with append. Then print the list, and print its length. The length should now say four. Try printing just the last item, using a negative index. Share your list in the comments. Keep coding, says Xecxec! Full video: EP 25.",
+      "onScreen": "A LIST OF FOODS",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try a list.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "beaches.py",
+      "source": "beaches = [\"Baga\", \"Colva\", \"Anjuna\"]\nprint(beaches)\nprint(beaches[0])\nprint(len(beaches))\nbeaches.append(\"Palolem\")\nprint(beaches)",
+      "output": "['Baga', 'Colva', 'Anjuna']\nBaga\n3\n['Baga', 'Colva', 'Anjuna', 'Palolem']",
+      "lang": "python"
+    },
+    {
+      "file": "marks_list.py",
+      "source": "marks = [72, 85, 90]\nmarks[1] = 88\nprint(marks)\nprint(round(sum(marks) / len(marks), 1))",
+      "output": "[72, 88, 90]\n83.3",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

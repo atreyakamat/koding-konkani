@@ -1,0 +1,72 @@
+{
+  "ep": 75,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "shelf",
+      "shape": "box",
+      "text": "[n * n ...] five boxes ready",
+      "colour": "cream",
+      "col": 0,
+      "row": 1,
+      "w": 5,
+      "h": 2
+    },
+    {
+      "id": "belt",
+      "shape": "box",
+      "text": "(n * n ...) one box at a time",
+      "colour": "mint",
+      "col": 6,
+      "row": 1,
+      "w": 5,
+      "h": 2
+    },
+    {
+      "id": "sum",
+      "shape": "card",
+      "text": "sum meter: 55",
+      "colour": "butter",
+      "col": 6,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "shelf",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.3,
+      "do": "show",
+      "target": "belt",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.5,
+      "do": "glow",
+      "target": "belt",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.65,
+      "do": "glow",
+      "target": "belt",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.8,
+      "do": "show",
+      "target": "sum",
+      "sfx": "ding"
+    }
+  ]
+}

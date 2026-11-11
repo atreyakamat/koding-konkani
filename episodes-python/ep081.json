@@ -1,0 +1,352 @@
+{
+  "ep": 81,
+  "title": "Dates and times",
+  "module": 9,
+  "lengthSec": 317,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "create dates and datetimes",
+    "add and subtract time with timedelta",
+    "format and parse text with strftime and strptime"
+  ],
+  "youtube": {
+    "title": "Python Dates and Times: datetime, strftime, strptime | Python Programming EP 81",
+    "description": "In this episode you will create dates and datetimes, add and subtract time with timedelta and format and parse text with strftime and strptime, with Xecxec the crab. 0:00 Intro · 0:15 Calendar and clock · 1:08 Dates and timedelta · 1:48 Dates are objects · 2:18 Second program · 3:21 Recap · 3:54 Bug of the Day · 4:42 Challenge · 5:02 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Calendar and clock"
+      },
+      {
+        "t": "1:08",
+        "label": "Dates and timedelta"
+      },
+      {
+        "t": "1:48",
+        "label": "Dates are objects"
+      },
+      {
+        "t": "2:18",
+        "label": "Second program"
+      },
+      {
+        "t": "3:21",
+        "label": "Recap"
+      },
+      {
+        "t": "3:54",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:42",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:02",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python datetime",
+      "python strftime",
+      "python strptime",
+      "python timedelta"
+    ],
+    "thumbnail": {
+      "text": "DATES + TIMES",
+      "visual": "big text \"DATES + TIMES\" in tomato on peach; Xecxec reading a wall calendar and a pocket watch at the same time; thin black border and drop shadow.",
+      "pose": "Xecxec reading a wall calendar and a pocket watch at the same time"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 81 · DATES + TIMES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Birthdays, deadlines, timers. Python's datetime module handles them all, without mistakes."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 53,
+      "onScreen": "\"Calendar and clock\": three numbered lines (1. date holds a day; datetime holds a day and a time; 2. timedelta is a length of time you can add; 3. strftime writes text; strptime reads text) and an analogy card: a wall calendar and a pocket watch: one knows the day, the other knows the minute, and both can count forward",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The datetime module has three main tools. A date holds a year, a month and a day. A datetime also holds hours, minutes and seconds. A timedelta is a length of time, such as thirty days. You can add it to a date. You also get one when you subtract two dates. To turn a date into text, use strftime, with a format string such as percent d percent B. To read text into a date, use strptime, with the same type of format. Think of a wall calendar and a pocket watch, both able to count forward."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 68,
+      "lengthSec": 40,
+      "onScreen": "dates.py: create a date, format it, and add thirty days",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Import date, datetime and timedelta. [HL 3] A date. The fifteenth of January, twenty twenty five. [HL 4] Printing gives year, month, day. [HL 5] Parts are available as attributes. [HL 6] Strftime formats it. Percent d is the day, percent B the month name, percent Y the year. [HL 7] Percent A is the weekday name. Wednesday. [HL 8] Add a timedelta of thirty days. [HL 9] The fourteenth of February. [HL 10] And subtracting two dates gives a timedelta. Its days are thirty.",
+      "code": {
+        "file": "dates.py",
+        "source": "from datetime import date, datetime, timedelta\n\nd = date(2025, 1, 15)\nprint(d)\nprint(d.year, d.month, d.day)\nprint(d.strftime(\"%d %B %Y\"))\nprint(d.strftime(\"%A\"))\nlater = d + timedelta(days=30)\nprint(later)\nprint((later - d).days)",
+        "output": "2025-01-15\n2025 1 15\n15 January 2025\nWednesday\n2025-02-14\n30"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 108,
+      "lengthSec": 30,
+      "onScreen": "The names d and later tied to two separate date objects; adding a timedelta builds a new one",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name d is tied to one date object. The name later is tied to a different date object. Adding a timedelta did not change d. Dates are immutable. Every calculation builds a new date, and the old one stays exactly as it was."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 138,
+      "lengthSec": 40,
+      "onScreen": "times.py: strptime reads text into a datetime",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Import datetime. [HL 3] A date and time, written as text. [HL 4] Strptime reads the text, using a format that matches it exactly. Year, month, day, hour, minute. [HL 5] Now the parts are numbers. Eighteen thirty. [HL 6] Strftime writes it back, in twelve hour style. Six thirty PM. [HL 7] A second datetime, built from numbers. [HL 8] Subtract, and we get a timedelta. One hour, thirty minutes. [HL 9] And datetimes compare with less than. True.",
+      "code": {
+        "file": "times.py",
+        "source": "from datetime import datetime\n\ntext = \"2025-03-09 18:30\"\nt = datetime.strptime(text, \"%Y-%m-%d %H:%M\")\nprint(t.hour, t.minute)\nprint(t.strftime(\"%I:%M %p\"))\nend = datetime(2025, 3, 9, 20, 0)\nprint(end - t)\nprint(t < end)",
+        "output": "18 30\n06:30 PM\n1:30:00\nTrue"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 178,
+      "lengthSec": 23,
+      "onScreen": "Terminal: python times.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as times dot py. In the terminal, type python, space, times dot py. 2025-01-15, then 2025 1 15, 15 January 2025, Wednesday, 2025-02-14, 30. Then 18 30, 06:30 PM, 1:30:00, True."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 201,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: date holds a day. Datetime holds a day and a time. Two: timedelta is a length of time. Add it, or get it by subtracting. Three: strftime turns a date into text. Four: strptime turns text into a date. The format must match. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 234,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: the wrong format string",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The text is fifteen slash one slash twenty twenty five. The format says year dash month dash day. They do not match. Value error, time data does not match format. The format must describe the text exactly. Day slash month slash year is percent d, slash, percent m, slash, percent Y."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 274,
+      "lengthSec": 8,
+      "onScreen": "Why did the datetime break up with the string? They could never agree on a format.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the datetime break up with the string? They could never agree on a format."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 282,
+      "lengthSec": 20,
+      "onScreen": "Task card: count the days",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Print the number of days between 1 January 2025 and 31 December 2025. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 302,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 82 · random and math",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: random and math. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "from datetime import datetime\n\nd = datetime.strptime(\"15/01/2025\", \"%Y-%m-%d\")",
+    "error": "**Trace trimmed:** last 1 lines\n\nPython output (exactly as Python prints it):\n\nValueError: time data '15/01/2025' does not match format '%Y-%m-%d'",
+    "fixed": "from datetime import datetime\n\nd = datetime.strptime(\"15/01/2025\", \"%d/%m/%Y\")\nprint(d.date())",
+    "why": "strptime needs a format that matches the text exactly, character for character. A different order or different separators raise a ValueError."
+  },
+  "pun": "\"Why did the datetime break up with the string? They could never agree on a format.\"",
+  "challenge": "Print the number of days between 1 January 2025 and 31 December 2025.",
+  "challengeAnswer": "(date(2025, 12, 31) - date(2025, 1, 1)).days, which is 364.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "date and datetime",
+      "hook": "\"A date holds a year, a month and a day.\"",
+      "script": "A date holds a year, a month and a day. A datetime holds a time as well, hours, minutes and seconds. Create one with numbers, such as date, twenty twenty five, one, fifteen. Printing gives a tidy year, month, day. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "date(2025, 1, 15)",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Dates are objects.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "datetime",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "timedelta",
+      "hook": "\"A timedelta is a length of time.\"",
+      "script": "A timedelta is a length of time. Add timedelta of thirty days to a date, and you get a later date. Subtract two dates, and you get a timedelta, with a days attribute. Python handles months and leap years for you. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "d + timedelta(days=30)",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 35,
+      "caption": "Python counts days for you.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "datetime",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "strftime",
+      "hook": "\"Strftime turns a date into text.\"",
+      "script": "Strftime turns a date into text. Percent d is the day. Percent B is the month name. Percent Y is the year. Percent A is the weekday. Mix them, and you can write the date in any style you like. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "d.strftime(\"%d %B %Y\")",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "strftime writes text.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "datetime",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "strptime",
+      "hook": "\"Strptime does the opposite.\"",
+      "script": "Strptime does the opposite. It reads text into a datetime, using a format that must match exactly. Slashes in the text need slashes in the format. A mismatch raises a value error, time data does not match format. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "ValueError: does not match format",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "The format must match.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "datetime",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the datetime break up with the string?\"",
+      "script": "Why did the datetime break up with the string? They could never agree on a format. Your challenge. Print the number of days between the first of January and the thirty first of December, twenty twenty five. Use two dates. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 81.",
+      "onScreen": "Challenge: days in 2025",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Subtract two dates.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "dates.py",
+      "source": "from datetime import date, datetime, timedelta\n\nd = date(2025, 1, 15)\nprint(d)\nprint(d.year, d.month, d.day)\nprint(d.strftime(\"%d %B %Y\"))\nprint(d.strftime(\"%A\"))\nlater = d + timedelta(days=30)\nprint(later)\nprint((later - d).days)",
+      "output": "2025-01-15\n2025 1 15\n15 January 2025\nWednesday\n2025-02-14\n30",
+      "lang": "python"
+    },
+    {
+      "file": "times.py",
+      "source": "from datetime import datetime\n\ntext = \"2025-03-09 18:30\"\nt = datetime.strptime(text, \"%Y-%m-%d %H:%M\")\nprint(t.hour, t.minute)\nprint(t.strftime(\"%I:%M %p\"))\nend = datetime(2025, 3, 9, 20, 0)\nprint(end - t)\nprint(t < end)",
+      "output": "18 30\n06:30 PM\n1:30:00\nTrue",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "ep": 31,
+  "title": "2D lists",
+  "module": 3,
+  "lengthSec": 303,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "build a list of lists",
+    "read and change one cell with two indexes",
+    "loop over rows and cells"
+  ],
+  "youtube": {
+    "title": "Python 2D Lists: Lists of Lists Explained | Python Programming EP 31",
+    "description": "In this episode you will build a list of lists, read and change one cell with two indexes and loop over rows and cells, with Xecxec the crab. 0:00 Intro · 0:15 A grid of values · 0:55 Rows and cells · 1:35 Lists inside a list · 2:09 Second program · 3:09 Recap · 3:40 Bug of the Day · 4:28 Challenge · 4:48 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "A grid of values"
+      },
+      {
+        "t": "0:55",
+        "label": "Rows and cells"
+      },
+      {
+        "t": "1:35",
+        "label": "Lists inside a list"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:28",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:48",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python 2d list",
+      "python nested list",
+      "python grid",
+      "list multiplication bug"
+    ],
+    "thumbnail": {
+      "text": "LISTS OF LISTS",
+      "visual": "big text \"LISTS OF LISTS\" in tomato on peach; Xecxec standing on a chessboard-like grid of numbers; thin black border and drop shadow.",
+      "pose": "Xecxec standing on a chessboard-like grid of numbers"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 31 · LISTS OF LISTS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Tables, boards and grids are everywhere. Today we build them from lists inside lists."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"A grid of values\": three numbered lines (1. A 2D list is a list of lists; 2. board[row][col] picks one cell; 3. Loop rows with an outer loop and cells with an inner loop) and an analogy card: a cinema seating chart: a row number and a seat number find one seat",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A two dimensional list is a list whose items are lists. Each inner list is a row. Think of a cinema seating chart. A row number and a seat number find one seat. In Python, board, bracket, row, bracket, column. The first bracket picks the row. The second picks the item in that row. You loop over a grid with an outer loop for rows and an inner loop for cells."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "board.py: a 2 by 3 grid, one row, one cell, one change",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A list with two items, and each item is a list of three numbers. Two rows, three columns. [HL 2] Board bracket zero is the whole first row. [HL 3] Board bracket one, bracket two. Row one, column two. The six. [HL 4] Assign to a cell, and that one number changes. [HL 5] Print the whole board, and the nine sits at the start of row zero.",
+      "code": {
+        "file": "board.py",
+        "source": "board = [[1, 2, 3], [4, 5, 6]]\nprint(board[0])\nprint(board[1][2])\nboard[0][0] = 9\nprint(board)",
+        "output": "[1, 2, 3]\n6\n[[9, 2, 3], [4, 5, 6]]"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 95,
+      "lengthSec": 34,
+      "onScreen": "One name, board, tied to a list of two row lists",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. One name, board, tied to one outer list. The outer list holds two arrows, one for each row. Each row is its own list, with its own numbers. A grid in Python is not a flat block. It is a list that points at other lists. That fact matters for the bug of the day."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "grid_total.py: an outer loop for rows, an inner loop for cells",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] The same board. [HL 2] A running total, starting at zero. [HL 3] The outer loop walks over the rows. Each row is a list. [HL 4] The inner loop walks over the cells of that row. [HL 5] Add each cell to the total. [HL 6] After all six cells, the total is twenty one. This is the accumulator pattern, inside a nested loop.",
+      "code": {
+        "file": "grid_total.py",
+        "source": "board = [[1, 2, 3], [4, 5, 6]]\ntotal = 0\nfor row in board:\n    for cell in row:\n        total = total + cell\nprint(total)",
+        "output": "21"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python grid_total.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as grid_total dot py. In the terminal, type python, space, grid_total dot py. Twenty one."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A 2D list is a list of lists. Two: boardrowcol picks one cell, row first. Three: An outer loop walks rows and an inner loop walks cells. Four: Never build a grid by multiplying a list of lists. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: rows that share one list",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We build a three by three grid of zeros, and set the top left cell to one. But three cells changed, one in every row. Multiplying a list repeats the same inner list three times. All three rows are one list. Build each row separately in a loop, and each row gets its own list."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 8,
+      "onScreen": "Why did the 2D list never get lost? It always knew its row and column.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the 2D list never get lost? It always knew its row and column."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 268,
+      "lengthSec": 20,
+      "onScreen": "Task card: make a 3 by 3 grid and change the middle",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Build a 3 by 3 grid of zeros using a loop. Set the middle cell to 5 and print the grid. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 288,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 32 · Mini project: Marks tracker",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: the marks tracker mini project. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "grid = [[0] * 3] * 3\ngrid[0][0] = 1\nprint(grid)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n[[1, 0, 0], [1, 0, 0], [1, 0, 0]]",
+    "fixed": "grid = []\nfor row in range(3):\n    grid.append([0] * 3)\ngrid[0][0] = 1\nprint(grid)",
+    "why": "Multiplying a list of lists repeats the same inner list three times, so all rows are one object; build each row separately."
+  },
+  "pun": "\"Why did the 2D list never get lost? It always knew its row and column.\"",
+  "challenge": "Build a 3 by 3 grid of zeros using a loop. Set the middle cell to 5 and print the grid.",
+  "challengeAnswer": "Build grid with grid.append([0] * 3) three times, then grid[1][1] = 5 and print(grid), which shows [[0, 0, 0], [0, 5, 0], [0, 0, 0]].",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A list of lists",
+      "hook": "\"A two dimensional list is a list whose items are lists.\"",
+      "script": "A two dimensional list is a list whose items are lists. Each inner list is a row. Board equals bracket, bracket one, two, three, close, comma, bracket four, five, six, close, close. Two rows, three columns. Use it for tables, boards, seating charts, or anything laid out in rows and columns. Python has no special grid type, only lists inside lists. Keep coding, says Xecxec!",
+      "onScreen": "[[1, 2, 3], [4, 5, 6]]",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "A grid of values.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "2dlist",
+        "grid",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Row, then column",
+      "hook": "\"To pick one cell of a grid, use two indexes.\"",
+      "script": "To pick one cell of a grid, use two indexes. Board, bracket one, bracket two. The first bracket picks the row. The second picks the item inside that row. Row one, column two, gives six. Say row first, column second, every time, until it feels natural. You can assign to a cell too, and only that one number changes. Keep coding, says Xecxec!",
+      "onScreen": "BOARD[1][2]",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Two brackets, one cell.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "2dlist",
+        "grid",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Loop over a grid",
+      "hook": "\"To visit every cell, use two loops.\"",
+      "script": "To visit every cell, use two loops. The outer loop walks over the rows. The inner loop walks over the cells in that row. Add each cell to a total, and you get the sum of the whole grid. This is the accumulator pattern, inside a nested loop. The same shape works for printing, searching, and counting cells. Keep coding, says Xecxec!",
+      "onScreen": "FOR ROW IN BOARD:",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Rows, then cells.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "2dlist",
+        "grid",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Rows that share",
+      "hook": "\"Here is a famous trap.\"",
+      "script": "Here is a famous trap. You build a grid with bracket zero times three, close bracket, times three. You set one cell to one, and three cells change. The multiply repeated the same row three times. All the rows are one list. Build each row in a loop instead, and every row is its own separate list. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "[[0]*3]*3 SHARES ROWS",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Build rows separately.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "2dlist",
+        "grid",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the two D list never get lost?\"",
+      "script": "Why did the two D list never get lost? It always knew its row and column. Your challenge. Build a three by three grid of zeros, using a loop. Make the middle cell equal to five. Then print the whole grid. Remember the middle is row one, column one, because we count from zero. Share your grid in the comments below. Keep coding, says Xecxec! Full video: EP 31.",
+      "onScreen": "THE MIDDLE CELL",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Try a grid.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "2dlist",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "board.py",
+      "source": "board = [[1, 2, 3], [4, 5, 6]]\nprint(board[0])\nprint(board[1][2])\nboard[0][0] = 9\nprint(board)",
+      "output": "[1, 2, 3]\n6\n[[9, 2, 3], [4, 5, 6]]",
+      "lang": "python"
+    },
+    {
+      "file": "grid_total.py",
+      "source": "board = [[1, 2, 3], [4, 5, 6]]\ntotal = 0\nfor row in board:\n    for cell in row:\n        total = total + cell\nprint(total)",
+      "output": "21",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

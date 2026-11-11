@@ -1,0 +1,352 @@
+{
+  "ep": 30,
+  "title": "Sorting",
+  "module": 3,
+  "lengthSec": 298,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "sort a list in place with sort()",
+    "make a sorted copy with sorted()",
+    "sort by a rule using key="
+  ],
+  "youtube": {
+    "title": "Python Sorting: sort(), sorted() and key | Python Programming EP 30",
+    "description": "In this episode you will sort a list in place with sort(), make a sorted copy with sorted() and sort by a rule using key=, with Xecxec the crab. 0:00 Intro · 0:15 Two ways to sort · 0:53 sort and sorted · 1:33 In-place sorting · 2:05 Second program · 3:05 Recap · 3:35 Bug of the Day · 4:23 Challenge · 4:43 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Two ways to sort"
+      },
+      {
+        "t": "0:53",
+        "label": "sort and sorted"
+      },
+      {
+        "t": "1:33",
+        "label": "In-place sorting"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:23",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:43",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python sort",
+      "python sorted",
+      "python sort key",
+      "sort returns none"
+    ],
+    "thumbnail": {
+      "text": "SORT IT",
+      "visual": "big text \"SORT IT\" in tomato on peach; Xecxec lining up pebbles from smallest to biggest; thin black border and drop shadow.",
+      "pose": "Xecxec lining up pebbles from smallest to biggest"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 30 · SORT IT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Putting things in order is a job every program needs. Today we learn Python's two sorting tools."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 38,
+      "onScreen": "\"Two ways to sort\": three numbered lines (1. list.sort() reorders the list itself; 2. sorted(list) returns a new sorted list; 3. key= sorts by a rule, reverse=True flips the order) and an analogy card: lining up students by height: you can reorder the real line, or just write down a sorted copy on paper",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Python has two ways to sort. The sort method reorders the list itself, in place, and returns nothing. The sorted function leaves the original alone, and gives you a new sorted list. Think of lining up students by height. You can move the real students, or you can write a sorted copy on paper. Reverse equals True flips the order. And key lets you sort by a rule."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 53,
+      "lengthSec": 40,
+      "onScreen": "sorting.py: sort in place; sorted makes a new list",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A list of four numbers, not in order. [HL 2] Sort reorders the list itself, smallest to biggest. [HL 3] Printing it shows five, eight, twelve, thirty. [HL 4] Sorted builds a new list, from a different list, and reverse equals True makes it biggest first. [HL 5] The nums list is still in its sorted order. Sorted did not touch it.",
+      "code": {
+        "file": "sorting.py",
+        "source": "nums = [30, 5, 12, 8]\nnums.sort()\nprint(nums)\nprint(sorted([3, 1, 2], reverse=True))\nprint(nums)",
+        "output": "[5, 8, 12, 30]\n[3, 2, 1]\n[5, 8, 12, 30]"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 93,
+      "lengthSec": 32,
+      "onScreen": "The name nums tied to one list; sort reorders that same list",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. Nums is tied to one list. When we call sort, that same list is reordered, and the name stays tied to it. Nothing new is made. Sorted, on the other hand, builds a second list. In this program, we gave that new list no name, so Python forgot it after the print."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "key_demo.py: sorting words alphabetically and by length",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A list of three words. [HL 2] Sorted with no options puts words in alphabetical order. Apple, banana, fig. [HL 3] With key equals len, Python measures each word first, and sorts by that number. Fig has three letters, apple five, banana six. Notice that we wrote len with no brackets. We hand Python the tool, and Python uses it on each item.",
+      "code": {
+        "file": "key_demo.py",
+        "source": "words = [\"banana\", \"fig\", \"apple\"]\nprint(sorted(words))\nprint(sorted(words, key=len))",
+        "output": "['apple', 'banana', 'fig']\n['fig', 'apple', 'banana']"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python key_demo.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as key_demo dot py. In the terminal, type python, space, key_demo dot py. Apple, banana, fig. Then fig, apple, banana."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 185,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: list dot sort sorts in place and returns None. Two: sorted returns a new list and leaves the original alone. Three: reverse equals True gives the biggest first. Four: key equals sorts by a rule, like len. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 215,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: sort returns None",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We sort the list and save the result. We print it, and get None. Sort changes the list in place, and returns nothing, just like append. If you want a new sorted list to save, use the sorted function. Or call sort on its own line, and keep using the original list."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 255,
+      "lengthSec": 8,
+      "onScreen": "Why was the list so organised? It always knew its place in line.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why was the list so organised? It always knew its place in line."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 263,
+      "lengthSec": 20,
+      "onScreen": "Task card: sort marks high to low",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Sort the list 64, 91, 72, 88 from highest to lowest and print it. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 283,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 31 · 2D lists",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: two-dimensional lists. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "nums = [3, 1, 2]\nresult = nums.sort()\nprint(result)",
+    "error": "Python output (it runs, but the answer is wrong):\n\nNone",
+    "fixed": "nums = [3, 1, 2]\nresult = sorted(nums)\nprint(result)",
+    "why": "list.sort() sorts in place and returns None, so saving its result gives None; use sorted() when you want a new list back."
+  },
+  "pun": "\"Why was the list so organised? It always knew its place in line.\"",
+  "challenge": "Sort the list [64, 91, 72, 88] from highest to lowest and print it.",
+  "challengeAnswer": "Use print(sorted([64, 91, 72, 88], reverse=True)), which shows [91, 88, 72, 64].",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Sort in place",
+      "hook": "\"The sort method puts a list in order, right where it is.\"",
+      "script": "The sort method puts a list in order, right where it is. Nums dot sort, with brackets, and the list is reordered, smallest to biggest. The same list object changes. Sort returns nothing, so you do not save its result. Use it when you do not need the old order any more, and you want the list itself sorted. Keep coding, says Xecxec!",
+      "onScreen": "NUMS.SORT()",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Reorder the list.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "sorting",
+        "lists",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Sorted makes a copy",
+      "hook": "\"The sorted function is different.\"",
+      "script": "The sorted function is different. It takes any list, and gives you a new sorted list. The original stays in its old order. Use it when you need both the old and the new order. Also use it for a sorted view for printing. Add reverse equals True, and the biggest item comes first. Sorted never changes the original. Keep coding, says Xecxec!",
+      "onScreen": "SORTED(NUMS)",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "A new sorted list.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "sorting",
+        "lists",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Sort by a rule",
+      "hook": "\"The key option sorts by a rule.\"",
+      "script": "The key option sorts by a rule. Sorted of words, key equals len, sorts words by their length. Fig has three letters, apple five, banana six. Python measures each word with len, then sorts by those numbers. Notice there are no brackets after len. You hand Python the tool, and Python uses it on each item in turn. Keep coding, says Xecxec!",
+      "onScreen": "KEY=LEN",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Sort by length.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "sorting",
+        "lists",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Sort returns None",
+      "hook": "\"Another None bug.\"",
+      "script": "Another None bug. You write result equals nums dot sort, and print the result. It says None. Sort changes the list in place and returns nothing, just like append. If you want a new sorted list to save, use the sorted function instead. Or call sort on its own line, and keep using the same list name afterwards. Keep coding, says Xecxec!",
+      "onScreen": "X = A.SORT() → NONE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Use sorted to save.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "sorting",
+        "lists",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why was the list so organised?\"",
+      "script": "Why was the list so organised? It always knew its place in line. Your challenge. Take the list sixty four, ninety one, seventy two, eighty eight. Sort it from the highest to the lowest. Print the result. You should see ninety one first. Try it with sort, and then with sorted. Which one is easier to print? Tell us in the comments. Keep coding, says Xecxec! Full video: EP 30.",
+      "onScreen": "HIGH TO LOW",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Try sorting.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "sorting",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "sorting.py",
+      "source": "nums = [30, 5, 12, 8]\nnums.sort()\nprint(nums)\nprint(sorted([3, 1, 2], reverse=True))\nprint(nums)",
+      "output": "[5, 8, 12, 30]\n[3, 2, 1]\n[5, 8, 12, 30]",
+      "lang": "python"
+    },
+    {
+      "file": "key_demo.py",
+      "source": "words = [\"banana\", \"fig\", \"apple\"]\nprint(sorted(words))\nprint(sorted(words, key=len))",
+      "output": "['apple', 'banana', 'fig']\n['fig', 'apple', 'banana']",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

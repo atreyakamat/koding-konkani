@@ -1,0 +1,352 @@
+{
+  "ep": 36,
+  "title": "Nested data",
+  "module": 4,
+  "lengthSec": 299,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "put lists inside dictionaries and dictionaries inside lists",
+    "read deep values with chained brackets",
+    "build records as a list of dictionaries"
+  ],
+  "youtube": {
+    "title": "Python Nested Data: Dicts of Lists and Lists of Dicts | Python Programming EP 36",
+    "description": "In this episode you will put lists inside dictionaries and dictionaries inside lists, read deep values with chained brackets and build records as a list of dictionaries, with Xecxec the crab. 0:00 Intro · 0:15 Containers inside containers · 0:52 A dictionary of lists · 1:32 Objects pointing at objects · 2:04 Second program · 3:04 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Containers inside containers"
+      },
+      {
+        "t": "0:52",
+        "label": "A dictionary of lists"
+      },
+      {
+        "t": "1:32",
+        "label": "Objects pointing at objects"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python nested dictionary",
+      "list of dictionaries python",
+      "python json like data",
+      "keyerror nested"
+    ],
+    "thumbnail": {
+      "text": "DATA IN DATA",
+      "visual": "big text \"DATA IN DATA\" in tomato on peach; Xecxec opening Russian-doll style boxes, each with a list or a dictionary inside; thin black border and drop shadow.",
+      "pose": "Xecxec opening Russian-doll style boxes, each with a list or a dictionary inside"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 36 · DATA IN DATA",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Real data is rarely flat. Today we put containers inside containers, and read the data back out."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 37,
+      "onScreen": "\"Containers inside containers\": three numbered lines (1. A dict value can be a list or another dict; 2. A list item can be a dict; 3. Chain the brackets from the outside in) and an analogy card: a restaurant menu: the menu has sections, each section has dishes, and each dish has a price",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Containers can hold containers. A dictionary value can be a list, or another dictionary. A list item can be a dictionary. Think of a restaurant menu. The menu has sections. Each section has dishes. Each dish has a price. To read deep values, chain the brackets from the outside in. Menu, bracket mains, bracket one. This shape is exactly what JSON files and web data use."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 52,
+      "lengthSec": 40,
+      "onScreen": "menu.py: sections of a menu, each with a list of dishes",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A dictionary. Each key is a section, and each value is a list of dishes. [HL 2] Menu bracket mains gives the whole list. [HL 3] Add another bracket, and you pick one dish. Index one, xacuti. [HL 4] Add a new section with a list of one dish. [HL 5] The dictionary now has three sections.",
+      "code": {
+        "file": "menu.py",
+        "source": "menu = {\"starters\": [\"fish fry\", \"bhaji\"], \"mains\": [\"fish curry\", \"xacuti\"]}\nprint(menu[\"mains\"])\nprint(menu[\"mains\"][1])\nmenu[\"desserts\"] = [\"bebinca\"]\nprint(len(menu))",
+        "output": "['fish curry', 'xacuti']\nxacuti\n3"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 92,
+      "lengthSec": 32,
+      "onScreen": "The name menu tied to a dict whose values are lists",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. One name, menu, tied to one dictionary. Each value in that dictionary is an arrow to a list object. And each list holds arrows to string objects. Nested data is just arrows that point at other objects. To read a deep value, you follow the arrows, one bracket at a time."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 124,
+      "lengthSec": 40,
+      "onScreen": "students.py: each student is one record",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A list with two items, and each item is a dictionary. Each dictionary is one student record. [HL 2] Loop over the list. Each round, s is one dictionary. [HL 3] Pick its name and marks by key. Asha, eighty eight. Ravi, ninety two. [HL 4] Or reach in directly. Index one is the second student. Then the key name. Ravi.",
+      "code": {
+        "file": "students.py",
+        "source": "students = [{\"name\": \"Asha\", \"marks\": 88}, {\"name\": \"Ravi\", \"marks\": 92}]\nfor s in students:\n    print(s[\"name\"], s[\"marks\"])\nprint(students[1][\"name\"])",
+        "output": "Asha 88\nRavi 92\nRavi"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 164,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python students.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as students dot py. In the terminal, type python, space, students dot py. Asha eighty eight. Ravi ninety two. Then Ravi again."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 184,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A dictionary value can be a list or another dictionary. Two: A list item can be a dictionary, which makes a record. Three: Chain the brackets from the outside in. Four: Check that each key exists before you go deeper. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 216,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a missing key deep inside",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We reach for the first drink, but there is no drinks section. Python says, key error, drinks. The error happens at the first bracket, before the index is even tried. Read with get and a default empty list, then check the list is not empty, before you go deeper."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 256,
+      "lengthSec": 8,
+      "onScreen": "Why did the data feel so deep? It had layers upon layers.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the data feel so deep? It had layers upon layers."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 264,
+      "lengthSec": 20,
+      "onScreen": "Task card: read a score from a nested dictionary",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Given data equals {asha: {maths: 80, science: 90}}, print Asha's science mark. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 284,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 37 · List comprehensions",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: list comprehensions. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "menu = {\"starters\": [\"fish fry\"], \"mains\": [\"fish curry\"]}\nprint(menu[\"drinks\"][0])",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"menu.py\", line 2, in <module>\n    print(menu[\"drinks\"][0])\n          ~~~~^^^^^^^^^^\nKeyError: 'drinks'",
+    "fixed": "menu = {\"starters\": [\"fish fry\"], \"mains\": [\"fish curry\"]}\ndrinks = menu.get(\"drinks\", [])\nif drinks:\n    print(drinks[0])\nelse:\n    print(\"No drinks listed\")",
+    "why": "The first bracket fails with a KeyError when the key is missing, so read with get and a default before going deeper."
+  },
+  "pun": "\"Why did the data feel so deep? It had layers upon layers.\"",
+  "challenge": "Given data = {\"asha\": {\"maths\": 80, \"science\": 90}}, print Asha's science mark.",
+  "challengeAnswer": "Use print(data[\"asha\"][\"science\"]), which shows 90.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Containers in containers",
+      "hook": "\"Containers can hold other containers.\"",
+      "script": "Containers can hold other containers. A dictionary value can be a list. A list item can be a dictionary. Think of a restaurant menu. The menu has sections, each section has dishes, and each dish has a price. Real data is almost always shaped like this. Learn to read it. Then web data, files, and records look familiar. Keep coding, says Xecxec!",
+      "onScreen": "{\"MAINS\": [\"CURRY\"]}",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Data inside data.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nesteddata",
+        "dictionary",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Chain the brackets",
+      "hook": "\"To read a deep value, chain the brackets from the outside in.\"",
+      "script": "To read a deep value, chain the brackets from the outside in. Menu, bracket mains, picks the list of main dishes. Add another bracket, and you pick one dish from that list. Each bracket takes one step deeper. If you get lost, print the pieces one at a time. Every step gives you something simpler to look at. Keep coding, says Xecxec!",
+      "onScreen": "MENU[\"MAINS\"][1]",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 35,
+      "caption": "One bracket, one step.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nesteddata",
+        "dictionary",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "A list of records",
+      "hook": "\"A list of dictionaries is the most common shape for data.\"",
+      "script": "A list of dictionaries is the most common shape for data. Each dictionary is one record, like one student, with a name and marks. Loop over the list, and in each round pick the fields by key. Add a new student by appending a new dictionary. It is a tiny database, and you already know how to read it. Keep coding, says Xecxec!",
+      "onScreen": "[{\"NAME\": \"ASHA\"}, ...]",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Records in a list.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nesteddata",
+        "dictionary",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Nested key error",
+      "hook": "\"Here is the bug.\"",
+      "script": "Here is the bug. You reach into a nested dictionary, but the first key is missing. Python says, key error, drinks, before it even looks at the index. Use get with a default, like an empty list, then check that it is not empty before you go deeper. Defensive reads save you from crashes on real data. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "KEYERROR: 'DRINKS'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Guard each step.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nesteddata",
+        "dictionary",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the data feel so deep?\"",
+      "script": "Why did the data feel so deep? It had layers upon layers. Your challenge. You have a dictionary called data. Inside it is a key asha. That key holds another dictionary with maths eighty and science ninety. Print Asha's science mark. Use two sets of brackets, outside in. You should see ninety. Share your answer in the comments below. Keep coding, says Xecxec! Full video: EP 36.",
+      "onScreen": "READ A NESTED MARK",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try nested data.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "nesteddata",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "menu.py",
+      "source": "menu = {\"starters\": [\"fish fry\", \"bhaji\"], \"mains\": [\"fish curry\", \"xacuti\"]}\nprint(menu[\"mains\"])\nprint(menu[\"mains\"][1])\nmenu[\"desserts\"] = [\"bebinca\"]\nprint(len(menu))",
+      "output": "['fish curry', 'xacuti']\nxacuti\n3",
+      "lang": "python"
+    },
+    {
+      "file": "students.py",
+      "source": "students = [{\"name\": \"Asha\", \"marks\": 88}, {\"name\": \"Ravi\", \"marks\": 92}]\nfor s in students:\n    print(s[\"name\"], s[\"marks\"])\nprint(students[1][\"name\"])",
+      "output": "Asha 88\nRavi 92\nRavi",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

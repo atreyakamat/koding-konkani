@@ -1,0 +1,352 @@
+{
+  "ep": 34,
+  "title": "Dictionary methods and looping",
+  "module": 4,
+  "lengthSec": 303,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "read safely with get",
+    "loop over keys, values and items",
+    "avoid changing a dictionary while looping"
+  ],
+  "youtube": {
+    "title": "Python Dictionary Methods: get, items, keys, values | Python Programming EP 34",
+    "description": "In this episode you will read safely with get, loop over keys, values and items and avoid changing a dictionary while looping, with Xecxec the crab. 0:00 Intro · 0:15 Safe reads and loops · 0:52 get, items, keys, values · 1:32 Views, not copies · 2:05 Second program · 3:05 Recap · 3:40 Bug of the Day · 4:28 Challenge · 4:48 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Safe reads and loops"
+      },
+      {
+        "t": "0:52",
+        "label": "get, items, keys, values"
+      },
+      {
+        "t": "1:32",
+        "label": "Views, not copies"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:28",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:48",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python dict get",
+      "python dict items",
+      "loop through dictionary python",
+      "runtimeerror dictionary changed"
+    ],
+    "thumbnail": {
+      "text": "LOOP THE DICT",
+      "visual": "big text \"LOOP THE DICT\" in tomato on peach; Xecxec reading a long price board line by line with a magnifying glass; thin black border and drop shadow.",
+      "pose": "Xecxec reading a long price board line by line with a magnifying glass"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 34 · LOOP THE DICT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Dictionaries have a few methods that make life easier. Today we read safely, and walk through every pair."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 37,
+      "onScreen": "\"Safe reads and loops\": three numbered lines (1. get(key, default) never raises an error; 2. items() gives key and value together; 3. keys() and values() give one side each) and an analogy card: walking along the price board: you can read the names, the prices, or both together",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Four methods cover most dictionary work. Get reads a key, and gives a default if the key is missing, so no error. Items gives key and value pairs together. Keys gives the keys. Values gives the values. Think of walking along the price board. You can read the names, the prices, or both together. A for loop over a dictionary walks over its keys by default."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 52,
+      "lengthSec": 40,
+      "onScreen": "loopdict.py: a safe read and a walk through the pairs",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A dictionary with two fish. [HL 2] Get with a key that exists gives its value, five hundred. [HL 3] Get with a missing key gives the default we choose. Zero. No error. [HL 4] Items gives each pair. We unpack them into fish and price. [HL 5] Print each pair. [HL 6] Keys gives the keys, and list turns them into a list. [HL 7] Values does the same for the values.",
+      "code": {
+        "file": "loopdict.py",
+        "source": "prices = {\"pomfret\": 350, \"prawns\": 500}\nprint(prices.get(\"prawns\"))\nprint(prices.get(\"crab\", 0))\nfor fish, price in prices.items():\n    print(fish, price)\nprint(list(prices.keys()))\nprint(list(prices.values()))",
+        "output": "500\n0\npomfret 350\nprawns 500\n['pomfret', 'prawns']\n[350, 500]"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 92,
+      "lengthSec": 33,
+      "onScreen": "The name prices tied to a dict; keys() and values() read from it",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is a useful detail. Prices is one dictionary object. The methods keys, values and items do not copy it. They give a live view of the same dictionary. We wrapped them in list to get a plain list to print. If you change the dictionary, the view changes too. That also explains the bug of the day."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "total_price.py: add all the prices; then loop over the keys",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A dictionary with three fish. [HL 2] A running total. [HL 3] Loop over the values only. [HL 4] Add each price to the total. [HL 5] Three hundred fifty, plus five hundred, plus one hundred twenty, makes nine hundred seventy. [HL 6] A plain for loop over a dictionary gives its keys. [HL 7] So this prints each fish name.",
+      "code": {
+        "file": "total_price.py",
+        "source": "prices = {\"pomfret\": 350, \"prawns\": 500, \"mackerel\": 120}\ntotal = 0\nfor price in prices.values():\n    total = total + price\nprint(\"Total:\", total)\nfor fish in prices:\n    print(fish)",
+        "output": "Total: 970\npomfret\nprawns\nmackerel"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python total_price.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as total_price dot py. In the terminal, type python, space, total_price dot py. Total, nine hundred seventy. Then pomfret, prawns and mackerel."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 185,
+      "lengthSec": 35,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: get returns a default instead of raising a KeyError. Two: items gives key and value together, keys and values give one side. Three: A plain for loop over a dictionary walks over its keys. Four: Do not add or remove keys while looping over a dictionary. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: changing a dictionary while looping",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We add a new key while looping over the dictionary. Python says, runtime error, dictionary changed size during iteration. Python cannot walk a dictionary that keeps growing. Loop over a list of the keys instead. That list is a snapshot, so you are free to change the dictionary itself."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 8,
+      "onScreen": "Why did the dictionary love loops? It could finally read every entry.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the dictionary love loops? It could finally read every entry."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 268,
+      "lengthSec": 20,
+      "onScreen": "Task card: sum the values of a dictionary",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make marks equals {maths: 80, science: 90, english: 70} and print their total with a loop. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 288,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 35 · Sets",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: sets. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "prices = {\"pomfret\": 350, \"prawns\": 500}\nfor fish in prices:\n    prices[\"crab\"] = 450",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"loopdict.py\", line 2, in <module>\n    for fish in prices:\n                ^^^^^^\nRuntimeError: dictionary changed size during iteration",
+    "fixed": "prices = {\"pomfret\": 350, \"prawns\": 500}\nfor fish in list(prices):\n    prices[\"crab\"] = 450\nprint(prices)",
+    "why": "Adding or removing keys while looping changes the size of the dictionary being walked, so Python stops with a RuntimeError; loop over a list copy of the keys instead."
+  },
+  "pun": "\"Why did the dictionary love loops? It could finally read every entry.\"",
+  "challenge": "Make marks = {\"maths\": 80, \"science\": 90, \"english\": 70} and print their total with a loop.",
+  "challengeAnswer": "Use total = 0, then for m in marks.values(): total = total + m, then print(total). It prints 240.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Safe reads with get",
+      "hook": "\"The get method reads a key safely.\"",
+      "script": "The get method reads a key safely. Prices dot get, crab, comma, zero. If crab exists, you get its value. If not, you get the default, zero, and no error. It is shorter than checking with in, and it is easy to read. Use get whenever a missing key is a normal case, and not a mistake in your program. Keep coding, says Xecxec!",
+      "onScreen": "PRICES.GET(\"CRAB\", 0)",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "No more key errors.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "loops",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Items",
+      "hook": "\"To walk through every pair, loop over items.\"",
+      "script": "To walk through every pair, loop over items. For fish, comma, price, in prices dot items. Each round gives you a key and its value together, already unpacked into two names. Print them, add them, compare them, whatever you need. It is the standard way to loop over a dictionary, and it reads almost like English. Try it today. Keep coding, says Xecxec!",
+      "onScreen": "FOR K, V IN D.ITEMS():",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Keys and values together.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "loops",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Keys and values",
+      "hook": "\"Sometimes you only need one side.\"",
+      "script": "Sometimes you only need one side. Keys gives the names. Values gives the prices. Loop over values to add up all the prices, without caring about the fish names. A plain for loop over a dictionary gives its keys. So for fish in prices is the same as for fish in prices dot keys. Pick the shortest form that reads well. Keep coding, says Xecxec!",
+      "onScreen": "D.KEYS() · D.VALUES()",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "One side at a time.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "loops",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Changed size",
+      "hook": "\"The loop bug for dictionaries.\"",
+      "script": "The loop bug for dictionaries. You add a key while looping over the dictionary. Python says, runtime error, dictionary changed size during iteration. It cannot walk something that keeps growing. The fix is to loop over a list of the keys instead. That list is a snapshot, so you can change the real dictionary safely inside the loop. Keep coding, says Xecxec!",
+      "onScreen": "RUNTIMEERROR: CHANGED SIZE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Loop over a snapshot.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "loops",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the dictionary love loops?\"",
+      "script": "Why did the dictionary love loops? It could finally read every entry. Your challenge. Make a dictionary of marks, maths eighty, science ninety, english seventy. Print the total of the marks with a loop over the values. You should get two hundred forty. Then try printing each subject with its mark, using items. Share your code in the comments. Keep coding, says Xecxec! Full video: EP 34.",
+      "onScreen": "ADD UP THE VALUES",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try dictionary loops.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "dictionary",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "loopdict.py",
+      "source": "prices = {\"pomfret\": 350, \"prawns\": 500}\nprint(prices.get(\"prawns\"))\nprint(prices.get(\"crab\", 0))\nfor fish, price in prices.items():\n    print(fish, price)\nprint(list(prices.keys()))\nprint(list(prices.values()))",
+      "output": "500\n0\npomfret 350\nprawns 500\n['pomfret', 'prawns']\n[350, 500]",
+      "lang": "python"
+    },
+    {
+      "file": "total_price.py",
+      "source": "prices = {\"pomfret\": 350, \"prawns\": 500, \"mackerel\": 120}\ntotal = 0\nfor price in prices.values():\n    total = total + price\nprint(\"Total:\", total)\nfor fish in prices:\n    print(fish)",
+      "output": "Total: 970\npomfret\nprawns\nmackerel",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

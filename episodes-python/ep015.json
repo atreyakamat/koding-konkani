@@ -1,0 +1,352 @@
+{
+  "ep": 15,
+  "title": "and, or, not and truthiness",
+  "module": 2,
+  "lengthSec": 308,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "combine conditions with and, or and not",
+    "write each comparison in full",
+    "know which values count as False"
+  ],
+  "youtube": {
+    "title": "Python and, or, not: Combine Conditions | Python Programming EP 15",
+    "description": "In this episode you will combine conditions with and, or and not, write each comparison in full and know which values count as False, with Xecxec the crab. 0:00 Intro · 0:17 Combining conditions · 0:58 Combining two conditions · 1:38 Truth table · 2:12 Second program · 3:12 Recap · 3:45 Bug of the Day · 4:33 Challenge · 4:53 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:17",
+        "label": "Combining conditions"
+      },
+      {
+        "t": "0:58",
+        "label": "Combining two conditions"
+      },
+      {
+        "t": "1:38",
+        "label": "Truth table"
+      },
+      {
+        "t": "2:12",
+        "label": "Second program"
+      },
+      {
+        "t": "3:12",
+        "label": "Recap"
+      },
+      {
+        "t": "3:45",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:33",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:53",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python and or not",
+      "python logical operators",
+      "python truthiness",
+      "python boolean logic"
+    ],
+    "thumbnail": {
+      "text": "AND · OR · NOT",
+      "visual": "big text \"AND · OR · NOT\" in tomato on peach; Xecxec holding three switches labelled AND, OR and NOT; thin black border and drop shadow.",
+      "pose": "Xecxec holding three switches labelled AND, OR and NOT"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 17,
+      "onScreen": "EP 15 · AND · OR · NOT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "One condition is often not enough. Today we combine them, and meet the strange idea that a value can be false without being the word False."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 17,
+      "lengthSec": 41,
+      "onScreen": "\"Combining conditions\": three numbered lines (1. and needs both sides True; 2. or needs at least one side True; 3. not flips True and False) and an analogy card: a beach club entry: you need a ticket AND to be eighteen; a child OR a senior walks in free",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Three small words combine conditions. And is True only when both sides are True. Or is True when at least one side is True. Not flips the answer. Think of a beach club. To enter, you need a ticket and you need to be eighteen. A child or a senior citizen walks in free. Python also treats some values as false by themselves. Zero, an empty string, and None all count as False."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 58,
+      "lengthSec": 40,
+      "onScreen": "gate.py: and, or and not on an age and a ticket",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Age twenty. [HL 2] A ticket, which is True. [HL 3] Both sides must be True. Age is at least eighteen, and the ticket is True, so the line is True. [HL 4] Enter prints. [HL 5] Or needs only one side. Age below five? No. Age above sixty? No. Both are False, so the line is False. [HL 6] So Free is skipped. [HL 7] Not flips the ticket. True becomes False.",
+      "code": {
+        "file": "gate.py",
+        "source": "age = 20\nhas_ticket = True\nif age >= 18 and has_ticket:\n    print(\"Enter\")\nif age < 5 or age > 60:\n    print(\"Free\")\nprint(not has_ticket)",
+        "output": "Enter\nFalse"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 98,
+      "lengthSec": 34,
+      "onScreen": "A small truth table for and, or and not with rows for True and False, and a list of values that count as False: 0, empty string, None",
+      "animation": "Table rows light up one by one; the False-values list slides in with a pop and each item gets a red cross",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the truth table. And is True only in one row, when both are True. Or is False only in one row, when both are False. Not simply flips. Python also has a short list of values that count as False by themselves. Zero, an empty string, an empty list, and None. Almost everything else counts as True."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 132,
+      "lengthSec": 40,
+      "onScreen": "truthy.py: an empty name is false; bool() shows what Python thinks",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] An empty string. [HL 2] An if with no comparison, just the name. Python asks, is this value truthy? An empty string is not. [HL 3] So Hello is skipped. [HL 4] Else runs. [HL 5] Name is empty prints. [HL 6] The bool function shows what Python thinks. Zero is False. One is True. The word Goa is True. An empty string is False.",
+      "code": {
+        "file": "truthy.py",
+        "source": "name = \"\"\nif name:\n    print(\"Hello\", name)\nelse:\n    print(\"Name is empty\")\nprint(bool(0), bool(1), bool(\"Goa\"), bool(\"\"))",
+        "output": "Name is empty\nFalse True True False"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 172,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python truthy.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as truthy dot py. In the terminal, type python, space, truthy dot py. Name is empty. Then False True True False."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 192,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: and needs both sides True, or needs at least one. Two: not flips True and False. Three: Write each comparison in full on both sides of and or or. Four: Zero, an empty string, an empty list and None count as False. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 225,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: x equals one or two",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Choice is three. We want to know if it is one or two. The program says Valid. Wrong! Python reads this as, choice equals one, or two. And the plain number two is always true. So the whole condition is always true. Write the comparison in full on both sides, choice equals one, or choice equals two, and it works."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 8,
+      "onScreen": "Why was the boolean so calm? It knew when to say and, and when to say or.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why was the boolean so calm? It knew when to say and, and when to say or."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 273,
+      "lengthSec": 20,
+      "onScreen": "Task card: free entry if age under 5 or over 60",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make age equals 4. Print Free if age is below 5 or above 60, otherwise print Pay. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 293,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 16 · while loops",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: while loops. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "choice = 3\nif choice == 1 or 2:\n    print(\"Valid\")\nelse:\n    print(\"Invalid\")",
+    "error": "Python output (it runs, but the answer is wrong):\n\nValid",
+    "fixed": "choice = 3\nif choice == 1 or choice == 2:\n    print(\"Valid\")\nelse:\n    print(\"Invalid\")",
+    "why": "Python reads the wrong line as (choice == 1) or 2, and the number 2 is always truthy, so the whole condition is always True."
+  },
+  "pun": "\"Why was the boolean so calm? It knew when to say and, and when to say or.\"",
+  "challenge": "Make age = 4. Print Free if age is below 5 or above 60, otherwise print Pay.",
+  "challengeAnswer": "Use if age < 5 or age > 60: print(\"Free\") and else: print(\"Pay\"). With 4 it prints Free.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "And, or, not",
+      "hook": "\"Three small words combine conditions.\"",
+      "script": "Three small words combine conditions. And is True only when both sides are True. Or is True when at least one side is True. Not flips the answer, so True becomes False. Think of a beach club. You need a ticket and an adult age to enter. A child or a senior citizen enters free. Combine conditions, and you can describe almost any rule. Keep coding, says Xecxec!",
+      "onScreen": "AND · OR · NOT",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Combine conditions.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "logic",
+        "booleans",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Truth table",
+      "hook": "\"Here is the whole truth table in one go.\"",
+      "script": "Here is the whole truth table in one go. And is True in just one case, when both sides are True. Or is False in just one case, when both sides are False. Not flips whatever it gets. That is all there is to it. If you ever feel lost with a long condition, draw this table on paper, and test each part. Keep coding, says Xecxec!",
+      "onScreen": "AND: BOTH · OR: ONE",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "The whole table.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "logic",
+        "booleans",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Truthy and falsy",
+      "hook": "\"Some values count as False without being the word False.\"",
+      "script": "Some values count as False without being the word False. Zero is False. An empty string is False. An empty list is False. And so is None. Almost everything else counts as True. So if name, with no comparison, means, is the name not empty? It is a very short, very Pythonic way to check that something has a value. Keep coding, says Xecxec!",
+      "onScreen": "0 · \"\" · [] · NONE = FALSE",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Falsy values.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "logic",
+        "booleans",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "One or two",
+      "hook": "\"Here is a famous trap.\"",
+      "script": "Here is a famous trap. You write if choice equals one or two. Python reads that as, choice equals one, or the plain number two. And the number two is always truthy. So the condition is always True, even when choice is three. Write the comparison in full on both sides of the or, and the trap disappears. Keep coding, says Xecxec!",
+      "onScreen": "== 1 OR 2 ?!",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Write both comparisons.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "logic",
+        "booleans",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why was the boolean so calm?\"",
+      "script": "Why was the boolean so calm? It knew when to say and, and when to say or. Your challenge. Make age equal four. Print Free if age is below five, or above sixty. Otherwise print Pay. Then test the ages five, sixty, and sixty one. Do the edges give the answers you expect? Tell us in the comments. Keep coding, says Xecxec! Full video: EP 15.",
+      "onScreen": "FREE OR PAY?",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try and, or, not.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "logic",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "gate.py",
+      "source": "age = 20\nhas_ticket = True\nif age >= 18 and has_ticket:\n    print(\"Enter\")\nif age < 5 or age > 60:\n    print(\"Free\")\nprint(not has_ticket)",
+      "output": "Enter\nFalse",
+      "lang": "python"
+    },
+    {
+      "file": "truthy.py",
+      "source": "name = \"\"\nif name:\n    print(\"Hello\", name)\nelse:\n    print(\"Name is empty\")\nprint(bool(0), bool(1), bool(\"Goa\"), bool(\"\"))",
+      "output": "Name is empty\nFalse True True False",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

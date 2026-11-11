@@ -1,0 +1,98 @@
+{
+  "ep": 55,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "fn",
+      "shape": "box",
+      "text": "function set_age",
+      "colour": "cream",
+      "col": 0,
+      "row": 3,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "ex",
+      "shape": "box",
+      "text": "except ValueError",
+      "colour": "mint",
+      "col": 4,
+      "row": 0,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "pass",
+      "shape": "box",
+      "text": "no match: program stops",
+      "colour": "peach",
+      "col": 8,
+      "row": 3,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "raise ValueError",
+      "colour": "tomato",
+      "from": "fn",
+      "to": "ex"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "other error",
+      "colour": "tomato",
+      "from": "fn",
+      "to": "pass"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "fn",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "ex"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "pass"
+    },
+    {
+      "t": 0.25,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.4,
+      "do": "glow",
+      "target": "ex",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.6,
+      "do": "draw",
+      "target": "a2",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.75,
+      "do": "glow",
+      "target": "pass",
+      "sfx": "buzzer"
+    }
+  ]
+}

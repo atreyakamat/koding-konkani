@@ -1,0 +1,85 @@
+{
+  "ep": 68,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "dog",
+      "shape": "box",
+      "text": "Dog: speak()",
+      "colour": "mint",
+      "col": 1,
+      "row": 3,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "an",
+      "shape": "box",
+      "text": "Animal: speak(), eat()",
+      "colour": "butter",
+      "col": 1,
+      "row": 0,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "s",
+      "shape": "token",
+      "text": "search: eat",
+      "colour": "tomato",
+      "col": 6,
+      "row": 3,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "not here, look up",
+      "colour": "ink",
+      "from": "dog",
+      "to": "an"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "an",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "dog"
+    },
+    {
+      "t": 0.2,
+      "do": "show",
+      "target": "s",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.4,
+      "do": "shake",
+      "target": "dog",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.6,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.8,
+      "do": "glow",
+      "target": "an",
+      "sfx": "ding"
+    }
+  ]
+}

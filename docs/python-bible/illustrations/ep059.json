@@ -1,0 +1,120 @@
+{
+  "ep": 59,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "h",
+      "shape": "card",
+      "text": "name, marks",
+      "colour": "butter",
+      "col": 0,
+      "row": 0,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "r1",
+      "shape": "card",
+      "text": "Asha, 80",
+      "colour": "cream",
+      "col": 0,
+      "row": 2,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "r2",
+      "shape": "card",
+      "text": "Ravi, 92",
+      "colour": "cream",
+      "col": 0,
+      "row": 3,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "d1",
+      "shape": "card",
+      "text": "{\"name\": \"Asha\", \"marks\": \"80\"}",
+      "colour": "mint",
+      "col": 6,
+      "row": 2,
+      "w": 5,
+      "h": 1
+    },
+    {
+      "id": "d2",
+      "shape": "card",
+      "text": "{\"name\": \"Ravi\", \"marks\": \"92\"}",
+      "colour": "mint",
+      "col": 6,
+      "row": 3,
+      "w": 5,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "h",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "r1"
+    },
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "r2"
+    },
+    {
+      "t": 0.3,
+      "do": "move",
+      "target": "r1",
+      "sfx": "whoosh",
+      "to": [
+        6,
+        2
+      ]
+    },
+    {
+      "t": 0.4,
+      "do": "flip",
+      "target": "r1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.45,
+      "do": "show",
+      "target": "d1"
+    },
+    {
+      "t": 0.6,
+      "do": "move",
+      "target": "r2",
+      "sfx": "whoosh",
+      "to": [
+        6,
+        3
+      ]
+    },
+    {
+      "t": 0.7,
+      "do": "flip",
+      "target": "r2",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.75,
+      "do": "show",
+      "target": "d2"
+    }
+  ]
+}

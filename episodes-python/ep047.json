@@ -1,0 +1,352 @@
+{
+  "ep": 47,
+  "title": "Recursion",
+  "module": 5,
+  "lengthSec": 299,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "write a function that calls itself",
+    "always include a base case",
+    "read a RecursionError"
+  ],
+  "youtube": {
+    "title": "Python Recursion: Functions That Call Themselves | Python Programming EP 47",
+    "description": "In this episode you will write a function that calls itself, always include a base case and read a RecursionError, with Xecxec the crab. 0:00 Intro · 0:15 A function that calls itself · 0:54 Factorial · 1:34 The call stack · 2:06 Second program · 3:06 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "A function that calls itself"
+      },
+      {
+        "t": "0:54",
+        "label": "Factorial"
+      },
+      {
+        "t": "1:34",
+        "label": "The call stack"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python recursion",
+      "python factorial",
+      "base case recursion",
+      "recursionerror python"
+    ],
+    "thumbnail": {
+      "text": "RECURSION",
+      "visual": "big text \"RECURSION\" in tomato on peach; Xecxec looking at a mirror that shows a smaller Xecxec looking at a smaller mirror; thin black border and drop shadow.",
+      "pose": "Xecxec looking at a mirror that shows a smaller Xecxec looking at a smaller mirror"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 47 · RECURSION",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet one of the most beautiful ideas in programming, a function that calls itself."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 39,
+      "onScreen": "\"A function that calls itself\": three numbered lines (1. The function calls itself on a smaller problem; 2. The base case stops the calls; 3. Every call waits for the one it started) and an analogy card: Russian dolls: open one and you find a smaller doll, until the smallest doll that does not open",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Recursion means a function calls itself, on a smaller version of the problem. Think of Russian dolls. Open one and you find a smaller doll, until you reach the smallest, which does not open. That smallest doll is the base case. It stops the calls. Without a base case, the function calls itself forever, until Python stops it with an error. Every call waits for the smaller call it started."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "fact.py: factorial of 5 by recursion",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A function that takes n. [HL 2] The base case. If n is one, [HL 3] the answer is one, and no more calls are made. [HL 4] The recursive case. Five times factorial of four. Python must first find factorial of four. That needs factorial of three, then two, down to one. [HL 5] Call it with five. Then the answers come back up. One, two, six, twenty four, one hundred twenty. Five factorial is one hundred twenty.",
+      "code": {
+        "file": "fact.py",
+        "source": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\nprint(factorial(5))",
+        "output": "120"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 94,
+      "lengthSec": 32,
+      "onScreen": "Five boxes stacked: factorial(5) at the bottom waiting, up to factorial(1) at the top; then answers flow back down",
+      "animation": "Boxes stack up with a pop for each call; the top box returns 1 and the boxes pop off one by one, each passing a value down",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the stack. Factorial of five calls factorial of four, and waits. That calls factorial of three, and waits. Down to factorial of one, which answers at once, with one. Now the waiting calls finish, one by one, from the top down. Two, six, twenty four, one hundred twenty. Each call keeps its own n."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "countdown.py: count down, then stop at the base case",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A function that takes n. [HL 2] The base case. At zero, [HL 3] print Liftoff, [HL 4] and return. [HL 5] Otherwise, print n. [HL 6] And call countdown again with one less. Three, two, one, Liftoff. Each call makes the problem smaller, and the base case guarantees that it ends.",
+      "code": {
+        "file": "countdown.py",
+        "source": "def countdown(n):\n    if n == 0:\n        print(\"Liftoff\")\n        return\n    print(n)\n    countdown(n - 1)\ncountdown(3)",
+        "output": "3\n2\n1\nLiftoff"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python countdown.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as countdown dot py. In the terminal, type python, space, countdown dot py. Three, two, one, Liftoff."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A recursive function calls itself on a smaller problem. Two: A base case stops the recursion. Three: Each call has its own copy of the parameters. Four: Without a base case Python stops with a RecursionError. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 216,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a missing base case",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Our countdown has no base case. It prints three, two, one, zero, minus one, and keeps going. After about a thousand calls, Python stops it with a recursion error, maximum recursion depth exceeded. Python protects itself from endless calls. Add a base case that returns, and the countdown ends."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 256,
+      "lengthSec": 8,
+      "onScreen": "To understand recursion, you must first understand recursion.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "To understand recursion, you must first understand recursion."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 264,
+      "lengthSec": 20,
+      "onScreen": "Task card: a recursive sum",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a recursive function total of n that returns 1 plus 2 plus ... plus n, and print total of 4. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 284,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 48 · Docstrings and type hints",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: docstrings and type hints. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def countdown(n):\n    print(n)\n    countdown(n - 1)\ncountdown(3)",
+    "error": "**Trace trimmed:** last 1 lines\n\nPython output (exactly as Python prints it):\n\nRecursionError: maximum recursion depth exceeded",
+    "fixed": "def countdown(n):\n    if n == 0:\n        print(\"Liftoff\")\n        return\n    print(n)\n    countdown(n - 1)\ncountdown(3)",
+    "why": "Without a base case the function keeps calling itself with smaller and smaller numbers, so Python stops it when it reaches its recursion limit."
+  },
+  "pun": "\"To understand recursion, you must first understand recursion.\"",
+  "challenge": "Write a recursive function total(n) that returns 1 + 2 + ... + n, and print total(4).",
+  "challengeAnswer": "Use def total(n): if n == 1: return 1, then return n + total(n - 1). print(total(4)) shows 10.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is recursion?",
+      "hook": "\"Recursion means a function calls itself.\"",
+      "script": "Recursion means a function calls itself. Each call works on a smaller version of the problem. Think of Russian dolls. Open one, and you find a smaller doll, until you reach the smallest, which does not open. That smallest one is the base case, and it stops the whole process. Recursion is natural for problems that contain smaller copies of themselves. Keep coding, says Xecxec!",
+      "onScreen": "A FUNCTION CALLS ITSELF",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Dolls inside dolls.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "recursion",
+        "functions",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The base case",
+      "hook": "\"Every recursive function needs a base case.\"",
+      "script": "Every recursive function needs a base case. It is the simplest version of the problem, which the function answers directly, without calling itself. For factorial, factorial of one is one. Without it, the function calls itself forever. Always write the base case first, then write the call that makes the problem smaller. Check that it really gets smaller. Keep coding, says Xecxec!",
+      "onScreen": "IF N == 1: RETURN 1",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "Write it first.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "recursion",
+        "functions",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Calls wait",
+      "hook": "\"Here is how factorial of five works.\"",
+      "script": "Here is how factorial of five works. It calls factorial of four, and waits. That calls factorial of three, and waits. Down to factorial of one, which answers one. Then the waiting calls finish, one by one, multiplying on the way back. Two, six, twenty four, one hundred twenty. Each call keeps its own copy of n. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "5 × 4 × 3 × 2 × 1",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Calls wait for answers.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "recursion",
+        "functions",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Recursion error",
+      "hook": "\"What if you forget the base case?\"",
+      "script": "What if you forget the base case? The function keeps calling itself, with smaller and smaller numbers, and never stops. After about a thousand calls, Python protects itself, and raises a recursion error, maximum recursion depth exceeded. The fix is a base case that returns. Whenever you see this error, ask, what stops this function? Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "RECURSIONERROR",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Add a base case.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "recursion",
+        "functions",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"To understand recursion, you must first understand recursion.\"",
+      "script": "To understand recursion, you must first understand recursion. Your challenge. Write a recursive function called total, that adds one plus two, up to n. The base case is n equals one, which returns one. Otherwise return n plus total of n minus one. Print total of four. You should see ten. Share your function below. Keep coding, says Xecxec! Full video: EP 47.",
+      "onScreen": "RECURSIVE SUM",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Try recursion.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "recursion",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "fact.py",
+      "source": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\nprint(factorial(5))",
+      "output": "120",
+      "lang": "python"
+    },
+    {
+      "file": "countdown.py",
+      "source": "def countdown(n):\n    if n == 0:\n        print(\"Liftoff\")\n        return\n    print(n)\n    countdown(n - 1)\ncountdown(3)",
+      "output": "3\n2\n1\nLiftoff",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

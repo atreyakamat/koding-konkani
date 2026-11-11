@@ -1,0 +1,91 @@
+{
+  "ep": 57,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "left",
+      "shape": "card",
+      "text": "run directly: __name__ is __main__",
+      "colour": "mint",
+      "col": 0,
+      "row": 1,
+      "w": 5,
+      "h": 2
+    },
+    {
+      "id": "right",
+      "shape": "card",
+      "text": "imported: __name__ is shape",
+      "colour": "peach",
+      "col": 6,
+      "row": 1,
+      "w": 5,
+      "h": 2
+    },
+    {
+      "id": "g1",
+      "shape": "token",
+      "text": "guarded line runs",
+      "colour": "butter",
+      "col": 1,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "g2",
+      "shape": "token",
+      "text": "guarded line skipped",
+      "colour": "cream",
+      "col": 7,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "left",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "right"
+    },
+    {
+      "t": 0.3,
+      "do": "flip",
+      "target": "left",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.4,
+      "do": "show",
+      "target": "g1",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.6,
+      "do": "flip",
+      "target": "right",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.7,
+      "do": "show",
+      "target": "g2"
+    },
+    {
+      "t": 0.7,
+      "do": "dim",
+      "target": "g2"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "ep": 54,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "l1",
+      "shape": "box",
+      "text": "line 1: n = int(text)",
+      "colour": "cream",
+      "col": 0,
+      "row": 1,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "l2",
+      "shape": "box",
+      "text": "line 2: print(n)",
+      "colour": "cream",
+      "col": 0,
+      "row": 2,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "ex",
+      "shape": "box",
+      "text": "except ValueError",
+      "colour": "mint",
+      "col": 6,
+      "row": 2,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "next",
+      "shape": "box",
+      "text": "program continues",
+      "colour": "pastelBlue",
+      "col": 6,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "bolt",
+      "shape": "token",
+      "text": "error",
+      "colour": "tomato",
+      "col": 4,
+      "row": 1,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "bolt",
+      "to": "ex"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "ex",
+      "to": "next"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "l1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "l2"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "ex"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "next"
+    },
+    {
+      "t": 0.2,
+      "do": "show",
+      "target": "bolt",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.3,
+      "do": "shake",
+      "target": "l1"
+    },
+    {
+      "t": 0.35,
+      "do": "dim",
+      "target": "l2"
+    },
+    {
+      "t": 0.5,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.6,
+      "do": "glow",
+      "target": "ex",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.8,
+      "do": "draw",
+      "target": "a2",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.9,
+      "do": "glow",
+      "target": "next"
+    }
+  ]
+}

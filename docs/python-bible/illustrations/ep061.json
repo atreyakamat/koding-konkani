@@ -1,0 +1,123 @@
+{
+  "ep": 61,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "c1",
+      "shape": "box",
+      "text": "names: Asha, Ravi, Meera",
+      "colour": "cream",
+      "col": 0,
+      "row": 0,
+      "w": 5,
+      "h": 1
+    },
+    {
+      "id": "c2",
+      "shape": "box",
+      "text": "marks: 91, 78, 85",
+      "colour": "cream",
+      "col": 6,
+      "row": 0,
+      "w": 5,
+      "h": 1
+    },
+    {
+      "id": "pair",
+      "shape": "label",
+      "text": "match by position",
+      "colour": "butter",
+      "col": 4,
+      "row": 2,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "f1",
+      "shape": "card",
+      "text": "Student: Asha, 91",
+      "colour": "mint",
+      "col": 1,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "f2",
+      "shape": "card",
+      "text": "Student: Ravi, 78",
+      "colour": "mint",
+      "col": 4,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "f3",
+      "shape": "card",
+      "text": "Student: Meera, 85",
+      "colour": "mint",
+      "col": 7,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c2"
+    },
+    {
+      "t": 0.25,
+      "do": "show",
+      "target": "pair",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.5,
+      "do": "hide",
+      "target": "c1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.5,
+      "do": "hide",
+      "target": "c2"
+    },
+    {
+      "t": 0.5,
+      "do": "hide",
+      "target": "pair"
+    },
+    {
+      "t": 0.6,
+      "do": "show",
+      "target": "f1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.7,
+      "do": "show",
+      "target": "f2",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.8,
+      "do": "show",
+      "target": "f3",
+      "sfx": "pop"
+    }
+  ]
+}

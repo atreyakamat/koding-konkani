@@ -1,0 +1,350 @@
+{
+  "ep": 76,
+  "title": "Decorators",
+  "module": 8,
+  "lengthSec": 315,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a simple decorator",
+    "use the @ syntax",
+    "keep the function's name with functools.wraps"
+  ],
+  "youtube": {
+    "title": "Python Decorators Explained Simply | Python Programming EP 76",
+    "description": "In this episode you will write a simple decorator, use the @ syntax and keep the function's name with functools.wraps, with Xecxec the crab. 0:00 Intro · 0:15 Wrap a function · 0:59 A first decorator · 1:39 Gift wrap · 2:14 Second program · 3:19 Recap · 3:52 Bug of the Day · 4:40 Challenge · 5:00 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Wrap a function"
+      },
+      {
+        "t": "0:59",
+        "label": "A first decorator"
+      },
+      {
+        "t": "1:39",
+        "label": "Gift wrap"
+      },
+      {
+        "t": "2:14",
+        "label": "Second program"
+      },
+      {
+        "t": "3:19",
+        "label": "Recap"
+      },
+      {
+        "t": "3:52",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:40",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:00",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python decorators",
+      "python @ decorator",
+      "python functools wraps",
+      "python wrapper function"
+    ],
+    "thumbnail": {
+      "text": "@DECORATORS",
+      "visual": "big text \"@DECORATORS\" in tomato on peach; Xecxec wrapping a gift function in shiny paper; thin black border and drop shadow.",
+      "pose": "Xecxec wrapping a gift function in shiny paper"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 76 · @DECORATORS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Want to add logging to ten functions without touching their code? Wrap them."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 44,
+      "onScreen": "\"Wrap a function\": three numbered lines (1. A decorator takes a function and returns a new one; 2. @name above def applies it; 3. functools.wraps keeps the original name) and an analogy card: gift wrap: the gift is the same, but the wrapper adds something before and after",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A decorator is a function that takes a function, and returns a new function that wraps it. The wrapper can do something before, call the original, and do something after. The at sign is a shortcut. Writing at shout above a def means, after defining the function, replace it with shout of that function. Think of gift wrap. The gift is the same, but the wrapper adds something before and after. Use functools dot wraps to keep the original name."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 59,
+      "lengthSec": 40,
+      "onScreen": "shout.py: a decorator that wraps a function",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A decorator takes a function, called func. [HL 2] Inside, a new function, the wrapper. [HL 3] First it prints before. [HL 4] Then it calls the original. [HL 5] Then it prints after. [HL 6] The decorator returns the wrapper, not the result. [HL 8] The at sign applies shout to the function below. [HL 9] This is hello. [HL 10] It prints Hello. [HL 12] Calling hello now really calls the wrapper. Before, Hello, after.",
+      "code": {
+        "file": "shout.py",
+        "source": "def shout(func):\n    def wrapper():\n        print(\"before\")\n        func()\n        print(\"after\")\n    return wrapper\n\n@shout\ndef hello():\n    print(\"Hello\")\n\nhello()",
+        "output": "before\nHello\nafter"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 99,
+      "lengthSec": 35,
+      "onScreen": "The name hello tied first to the original function; after the decorator, tied to the wrapper that holds the original",
+      "animation": "A function box labelled hello is placed inside a wrapper box, and the label hello jumps to the outer box",
+      "sfx": [],
+      "narration": "Here is what the at sign does. First, Python defines hello normally. Then it calls shout with that function, and ties the name hello to whatever comes back. That is the wrapper. The original function is still alive, kept inside the wrapper, and called from there. So hello is no longer the original. It is the gift wrap, with the gift inside."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 134,
+      "lengthSec": 45,
+      "onScreen": "timer.py: a decorator that accepts any arguments and keeps the name",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] We need functools. [HL 3] A decorator named log. [HL 4] Wraps copies the original name and notes onto the wrapper. [HL 5] The wrapper accepts any arguments. [HL 6] Call the original, and keep the result. [HL 7] Print the name, the arguments, and the result. [HL 8] And return the result, so callers still get it. [HL 9] Return the wrapper. [HL 11] Apply log to add. [HL 12] A plain add function. [HL 15] Add two and three. The log prints, add, two three, arrow, five. Then print shows five. [HL 16] And the name is still add, thanks to wraps.",
+      "code": {
+        "file": "timer.py",
+        "source": "import functools\n\ndef log(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        result = func(*args, **kwargs)\n        print(func.__name__, args, \"->\", result)\n        return result\n    return wrapper\n\n@log\ndef add(a, b):\n    return a + b\n\nprint(add(2, 3))\nprint(add.__name__)",
+        "output": "add (2, 3) -> 5\n5\nadd"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 179,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python timer.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as timer dot py. In the terminal, type python, space, timer dot py. Before, Hello, after. Then the log line, 5, and add."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 199,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A decorator takes a function and returns a new one. Two: at name above def means: f equals name of f. Three: The wrapper uses star args and star star kwargs to accept anything. Four: functools dot wraps keeps the original name. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 232,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: the wrapper loses the function name",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. After decoration, the name hello points at the wrapper. So dunder name says wrapper, and the doc string is gone. Tools and error messages show the wrong name. Add functools dot wraps above the wrapper, and the original name and notes are copied across."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 272,
+      "lengthSec": 8,
+      "onScreen": "Why was the function so well dressed? It had a great decorator.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why was the function so well dressed? It had a great decorator."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 280,
+      "lengthSec": 20,
+      "onScreen": "Task card: count the calls",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a decorator count calls. It counts how many times a function is called. It stores the count in wrapper dot calls. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 300,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 77 · Decorators with arguments",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: decorators with arguments. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def shout(func):\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper\n\n@shout\ndef hello():\n    \"Say hello\"\n\nprint(hello.__name__)\nprint(hello.__doc__)",
+    "error": "Python output (it runs, but the answer is wrong):\n\nwrapper\nNone",
+    "fixed": "import functools\n\ndef shout(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper\n\n@shout\ndef hello():\n    \"Say hello\"\n\nprint(hello.__name__)\nprint(hello.__doc__)",
+    "why": "The decorated name points at the wrapper, so it reports the wrapper's name and no docstring. functools.wraps copies those details across."
+  },
+  "pun": "\"Why was the function so well dressed? It had a great decorator.\"",
+  "challenge": "Write a decorator count_calls. It counts how many times a function is called. It stores the count in wrapper.calls.",
+  "challengeAnswer": "Define wrapper(*args, **kwargs): wrapper.calls += 1; return func(*args, **kwargs). Set wrapper.calls = 0 before returning wrapper.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a decorator",
+      "hook": "\"A decorator is a function that takes a function, and returns a new one that wraps it.\"",
+      "script": "A decorator is a function that takes a function, and returns a new one that wraps it. The wrapper can act before and after the original. Think of gift wrap. The gift is the same, with something added around it. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "func in, wrapper out",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Decorators wrap functions.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "decorators",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The at sign",
+      "hook": "\"The at sign is a shortcut.\"",
+      "script": "The at sign is a shortcut. Writing at shout above def hello means, after defining hello, replace it with shout of hello. The name hello now points at the wrapper. The original is kept safe inside it. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "@shout = hello = shout(hello)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "At means wrap it.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "decorators",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Any arguments",
+      "hook": "\"A good wrapper accepts any arguments.\"",
+      "script": "A good wrapper accepts any arguments. Use star args and star star kwargs, and pass them on to the original. Return the original's result too. Now the same decorator works on functions of any shape. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "wrapper(*args, **kwargs)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Accept anything.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "decorators",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Lost name",
+      "hook": "\"A sneaky bug.\"",
+      "script": "A sneaky bug. After decoration, hello dot name says wrapper, and the doc string is gone. The name points at the wrapper. Add functools dot wraps above the wrapper, and the original name and notes are copied across. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "hello.__name__ == 'wrapper'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Use functools.wraps.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "decorators",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why was the function so well dressed?\"",
+      "script": "Why was the function so well dressed? It had a great decorator. Your challenge. Write a decorator called count calls. It counts how many times a function was called, and stores the count on the wrapper. Call the function three times. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 76.",
+      "onScreen": "Challenge: count_calls",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Count the calls.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "shout.py",
+      "source": "def shout(func):\n    def wrapper():\n        print(\"before\")\n        func()\n        print(\"after\")\n    return wrapper\n\n@shout\ndef hello():\n    print(\"Hello\")\n\nhello()",
+      "output": "before\nHello\nafter",
+      "lang": "python"
+    },
+    {
+      "file": "timer.py",
+      "source": "import functools\n\ndef log(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        result = func(*args, **kwargs)\n        print(func.__name__, args, \"->\", result)\n        return result\n    return wrapper\n\n@log\ndef add(a, b):\n    return a + b\n\nprint(add(2, 3))\nprint(add.__name__)",
+      "output": "add (2, 3) -> 5\n5\nadd",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

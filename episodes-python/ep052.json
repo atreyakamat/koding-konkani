@@ -1,0 +1,347 @@
+{
+  "ep": 52,
+  "title": "Writing files",
+  "module": 6,
+  "lengthSec": 306,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write text to a file with mode w",
+    "add to a file with mode a",
+    "avoid wiping a file by accident"
+  ],
+  "youtube": {
+    "title": "Python Writing Files: w and a Modes | Python Programming EP 52",
+    "description": "In this episode you will write text to a file with mode w, add to a file with mode a and avoid wiping a file by accident, with Xecxec the crab. 0:00 Intro · 0:15 Three modes · 0:58 Write mode · 1:38 Write versus append · 2:11 Second program · 3:11 Recap · 3:43 Bug of the Day · 4:31 Challenge · 4:51 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Three modes"
+      },
+      {
+        "t": "0:58",
+        "label": "Write mode"
+      },
+      {
+        "t": "1:38",
+        "label": "Write versus append"
+      },
+      {
+        "t": "2:11",
+        "label": "Second program"
+      },
+      {
+        "t": "3:11",
+        "label": "Recap"
+      },
+      {
+        "t": "3:43",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:31",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:51",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python write file",
+      "python append file",
+      "python file modes",
+      "w mode overwrites"
+    ],
+    "thumbnail": {
+      "text": "WRITE A FILE",
+      "visual": "big text \"WRITE A FILE\" in tomato on peach; Xecxec writing a diary entry with a feather pen; thin black border and drop shadow.",
+      "pose": "Xecxec writing a diary entry with a feather pen"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 52 · WRITE A FILE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Reading is only half the story. Today we write data to a file, and learn which mode to pick."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 43,
+      "onScreen": "\"Three modes\": three numbered lines (1. r reads (the default); 2. w writes and wipes the old content; 3. a appends to the end) and an analogy card: a diary: w means tear out all the pages and start fresh, a means add a new page at the end",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Open takes a second argument, the mode. R is read, the default. W is write. It creates the file if needed, and wipes whatever was there. A is append. It adds to the end and keeps what was there. Think of a diary. Write mode tears out all the pages and starts fresh. Append mode adds a new page at the end. Write puts text in with the write method. It does not add new lines for you."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 58,
+      "lengthSec": 40,
+      "onScreen": "write.py: write two lines, then read them back",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Open log dot txt in write mode. If the file is missing, Python creates it. [HL 2] Write a line. The slash n at the end is a new line character. Write does not add one for us. [HL 3] Another line. [HL 4] Close the file. This saves everything to disk. [HL 5] Read it back and print. Day one, Day two. The extra blank line is the final new line.",
+      "code": {
+        "file": "write.py",
+        "source": "f = open(\"log.txt\", \"w\")\nf.write(\"Day 1\\n\")\nf.write(\"Day 2\\n\")\nf.close()\nprint(open(\"log.txt\").read())",
+        "output": "Day 1\nDay 2"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 98,
+      "lengthSec": 33,
+      "onScreen": "Two diaries: with w the old pages are torn out; with a a new page is added at the end",
+      "animation": "A diary with pages; w tears all pages out in a puff, a adds one new page at the end with a pop",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the difference, in pictures. A diary with three pages. Open it in write mode, and every old page is torn out, before you write a single word. Open it in append mode, and the old pages stay, and your new text goes after them. Write is for starting over. Append is for adding. Pick carefully."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 131,
+      "lengthSec": 40,
+      "onScreen": "append.py: add a line without losing the old ones",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Open the existing log in append mode. [HL 2] Write one more line. It goes after the lines that are already there. [HL 3] Close. [HL 4] Read the file back, and count the word Day. Three. All three days are there. The earlier lines survived, because append never wipes."
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 171,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python append.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as append dot py. In the terminal, type python, space, append dot py. Three."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 191,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Mode r reads, w writes and wipes, a appends. Two: write does not add a new line for you. Three: Close the file so the data is saved. Four: Use a to add to a file and keep what is there. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 223,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: write mode wipes the old file",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The log had Day one and Day two. We open it to add Day three, but we use write mode. Only Day three is left. Write mode empties the file the moment you open it. For adding, use append mode. The old lines stay, and the new line goes at the end."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 263,
+      "lengthSec": 8,
+      "onScreen": "Why did the diary hate write mode? It always lost its past.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the diary hate write mode? It always lost its past."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 271,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a line to a file",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Append the line Day 4 to log dot txt and print the file. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 291,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 53 · The with statement",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: the with statement. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "f = open(\"log.txt\", \"w\")\nf.write(\"Day 3\\n\")\nf.close()\nprint(open(\"log.txt\").read())",
+    "error": "Day 1\nDay 2\n\nPython output (it runs, but the answer is wrong):\n\nDay 3",
+    "fixed": "f = open(\"log.txt\", \"a\")\nf.write(\"Day 3\\n\")\nf.close()\nprint(open(\"log.txt\").read())",
+    "why": "Mode w empties the file as soon as it is opened, so the old lines are lost; mode a keeps them and adds to the end."
+  },
+  "pun": "\"Why did the diary hate write mode? It always lost its past.\"",
+  "challenge": "Append the line \"Day 4\" to log.txt and print the file.",
+  "challengeAnswer": "Open log.txt with mode \"a\", write \"Day 4\\n\", close, then print(open(\"log.txt\").read()).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Write mode",
+      "hook": "\"To write a file, open it with a second argument, the mode.\"",
+      "script": "To write a file, open it with a second argument, the mode. W means write. If the file does not exist, Python creates it. If it does exist, Python wipes it clean first. Then call write with your text. Remember that write does not add a new line, so put slash n at the end of each line yourself. Keep coding, says Xecxec!",
+      "onScreen": "OPEN(\"F.TXT\", \"W\")",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Create and fill a file.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "writefile",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Append mode",
+      "hook": "\"To add to a file without losing its content, use append mode.\"",
+      "script": "To add to a file without losing its content, use append mode. Open with the letter a. Everything you write goes to the end of the file, and the old lines stay exactly as they were. Use it for logs, where you keep adding entries. It is the safe mode when you are not sure whether the file already holds something precious. Keep coding, says Xecxec!",
+      "onScreen": "OPEN(\"F.TXT\", \"A\")",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "Add, never wipe.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "writefile",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "New lines",
+      "hook": "\"Write does not add a new line.\"",
+      "script": "Write does not add a new line. If you write two strings, they join on one line. To start a new line, add the slash n character at the end of the string. Slash n is one character, the new line. Think of it as pressing the Enter key inside your text. Forget it, and your whole file becomes a single long line. Keep coding, says Xecxec!",
+      "onScreen": "F.WRITE(\"DAY 1\\N\")",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Add your own newline.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "writefile",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Write wipes the file",
+      "hook": "\"A painful bug.\"",
+      "script": "A painful bug. You want to add a line to an old log, so you open it in write mode. The moment the file opens, everything inside is wiped. Only your new line is left. There is no warning, and no undo. Use append mode to add. Use write only when you really want to start from nothing. Keep coding, says Xecxec!",
+      "onScreen": "\"W\" EMPTIES THE FILE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Pick the right mode.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "writefile",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the diary hate write mode?\"",
+      "script": "Why did the diary hate write mode? It always lost its past. Your challenge. Make a file called log dot txt with two lines in it. Then write a program that adds a line, Day four, to the end of that file, using append mode. Print the whole file afterwards, and check that all lines are there. Share your code in the comments. Keep coding, says Xecxec! Full video: EP 52.",
+      "onScreen": "ADD A LINE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 40,
+      "caption": "Try append mode.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "files",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "write.py",
+      "source": "f = open(\"log.txt\", \"w\")\nf.write(\"Day 1\\n\")\nf.write(\"Day 2\\n\")\nf.close()\nprint(open(\"log.txt\").read())",
+      "output": "Day 1\nDay 2",
+      "lang": "python"
+    },
+    {
+      "file": "file2.python",
+      "source": "f = open(\"log.txt\", \"a\")\nf.write(\"Day 3\\n\")\nf.close()\nprint(open(\"log.txt\").read().count(\"Day\"))",
+      "output": "3",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

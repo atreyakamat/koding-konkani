@@ -1,0 +1,352 @@
+{
+  "ep": 6,
+  "title": "Numbers: int and float",
+  "module": 1,
+  "lengthSec": 303,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "tell a whole number (int) from a decimal (float)",
+    "do arithmetic with both",
+    "see why decimals can print a surprising tail"
+  ],
+  "youtube": {
+    "title": "Python Numbers: int and float Explained | Python Programming EP 06",
+    "description": "In this episode you will tell a whole number (int) from a decimal (float), do arithmetic with both and see why decimals can print a surprising tail, with Xecxec the crab. 0:00 Intro · 0:15 Two kinds of numbers · 0:53 int and float in code · 1:33 Names and their number objects · 2:05 Second program · 3:06 Recap · 3:40 Bug of the Day · 4:28 Challenge · 4:48 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Two kinds of numbers"
+      },
+      {
+        "t": "0:53",
+        "label": "int and float in code"
+      },
+      {
+        "t": "1:33",
+        "label": "Names and their number objects"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:40",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:28",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:48",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python int float",
+      "python numbers",
+      "floating point python",
+      "round function"
+    ],
+    "thumbnail": {
+      "text": "INT OR FLOAT?",
+      "visual": "big text \"INT OR FLOAT?\" in tomato on peach; Xecxec balancing a whole number 3 and a decimal 120.5 on a see-saw labelled int and float; thin black border and drop shadow.",
+      "pose": "Xecxec balancing a whole number 3 and a decimal 120"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 06 · INT OR FLOAT?",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet the two kinds of numbers in Python. One counts whole things. The other measures things with decimals."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 38,
+      "onScreen": "\"Two kinds of numbers\": three numbered lines (1. int is a whole number, like 3; 2. float has a decimal point, like 120.5; 3. Maths on both just works) and an analogy card: fish at the market: you count whole fish, but you weigh the catch in kilograms with decimals",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Python has two main kinds of numbers. An int is a whole number, like three fish. A float has a decimal point, like one hundred twenty and a half rupees. Think of the fish market. You count the fish as whole numbers, but you weigh them in kilograms, with decimals. You can mix both in one sum. Python gives you a float whenever a float is involved."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 53,
+      "lengthSec": 40,
+      "onScreen": "prices.py: a whole number, a decimal and their product",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Fish is three, a whole number, so an int. [HL 2] Price is one hundred twenty and a half. The decimal point makes it a float. [HL 3] We multiply. An int times a float gives a float. [HL 4] Print the total. [HL 5] The type function tells us the type of the object that a name points at. [HL 6] And again for price. Int first, then float.",
+      "code": {
+        "file": "prices.py",
+        "source": "fish = 3\nprice = 120.5\ntotal = fish * price\nprint(total)\nprint(type(fish))\nprint(type(price))",
+        "output": "361.5\n<class 'int'>\n<class 'float'>"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 93,
+      "lengthSec": 32,
+      "onScreen": "Three tags, fish, price and total, tied to an int, a float and a float",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the picture. Fish is tied to an int, three. Price is tied to a float, one hundred twenty and a half. Total is tied to a new float, three hundred sixty one and a half. Python made that new object when it multiplied. The type is stored with the object, not with the name."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "round.py: division always gives a float; round tidies decimals",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK people=4] Four people. [HL 2] [TRACK share=250.0] A thousand divided by four. Division with a slash always gives a float, even when the answer looks whole. [HL 3] So it prints two hundred fifty point zero. [HL 4] The type is float. [HL 5] The round function cuts a number to the places you ask for. Two places cuts the number to two digits after the point. The answer is one thousand two hundred thirty four point five seven.",
+      "code": {
+        "file": "round.py",
+        "source": "people = 4\nshare = 1000 / people\nprint(share)\nprint(type(share))\nprint(round(1234.5678, 2))",
+        "output": "250.0\n<class 'float'>\n1234.57"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 21,
+      "onScreen": "Terminal: python round.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as round dot py. In the terminal, type python, space, round dot py. Two hundred fifty point zero, the word float, then one thousand two hundred thirty four point five seven."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: An int is a whole number and a float has a decimal point. Two: An int mixed with a float gives a float. Three: Division with a slash always gives a float. Four: The round function tidies a float to the places you choose. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 220,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: zero point one plus zero point two",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Zero point one plus zero point two should be zero point three. Python prints zero point three, then a long tail ending in four. This is not a Python mistake. Computers store decimals in binary, and some decimals cannot be stored exactly. So round the answer before you show it, and you get a clean zero point three."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 260,
+      "lengthSec": 8,
+      "onScreen": "Why did the float get invited to every party? It always brings the extra point.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the float get invited to every party? It always brings the extra point."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 268,
+      "lengthSec": 20,
+      "onScreen": "Task card: print a bill split with two decimals",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Split a bill of 1250 point 50 rupees among 3 friends and print each share rounded to 2 decimals. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 288,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 07 · Strings",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: strings. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "print(0.1 + 0.2)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n0.30000000000000004",
+    "fixed": "print(round(0.1 + 0.2, 2))",
+    "why": "Computers store decimals in binary, so some decimals are stored as close values, not exact ones; round before showing a result."
+  },
+  "pun": "\"Why did the float get invited to every party? It always brings the extra point.\"",
+  "challenge": "Split a bill of 1250.50 rupees among 3 friends and print each share rounded to 2 decimals.",
+  "challengeAnswer": "Write print(round(1250.50 / 3, 2)), which shows 416.83.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Two kinds of numbers",
+      "hook": "\"Python has two kinds of numbers.\"",
+      "script": "Python has two kinds of numbers. An int is a whole number, like three fish. A float has a decimal point, like one hundred twenty and a half rupees. You can mix them in one sum, and Python gives you a float whenever a float is in the sum. Whole things get ints, and measured things get floats. Simple as that. Keep coding, says Xecxec!",
+      "onScreen": "INT OR FLOAT?",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "int and float in 40 seconds.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "numbers",
+        "float",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Division is a float",
+      "hook": "\"A small surprise.\"",
+      "script": "A small surprise. Ten divided by two is five, but Python prints five point zero. Division with a single slash always gives a float, even when the answer looks whole. That is on purpose. A division can give a decimal, so Python always gives a float. Remember it when you print. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "1000 / 4 = 250.0",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Slash always gives a float.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "numbers",
+        "float",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "What is type?",
+      "hook": "\"The type function tells you the type of the object that a name points at.\"",
+      "script": "The type function tells you the type of the object that a name points at. Type of three says int. Type of one hundred twenty and a half says float. The type belongs to the value, not to the name. So the same name can point at an int now, and a float later. Use type whenever you are unsure what you are holding. Keep coding, says Xecxec!",
+      "onScreen": "TYPE(3) = INT",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Check the type.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "numbers",
+        "float",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Point one plus point two",
+      "hook": "\"Zero point one plus zero point two is not zero point three in Python.\"",
+      "script": "Zero point one plus zero point two is not zero point three in Python. It prints zero point three, then a long tail ending in four. Computers store decimals in binary, and some decimals cannot be stored exactly. It is not a bug in Python. The fix is easy. Round the answer to two places before you show it. Keep coding, says Xecxec!",
+      "onScreen": "0.1 + 0.2 = ?",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Floats are close, not exact.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "numbers",
+        "float",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the float get invited to every party?\"",
+      "script": "Why did the float get invited to every party? It always brings the extra point. Your challenge. Split a bill of twelve fifty and fifty paise among three friends. Print each share, rounded to two decimals. Use division with a slash, then the round function. Write your answer in the comments, and check it twice. Keep coding, says Xecxec! Full video: EP 06.",
+      "onScreen": "SPLIT THE BILL",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Try the bill split.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "numbers",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "prices.py",
+      "source": "fish = 3\nprice = 120.5\ntotal = fish * price\nprint(total)\nprint(type(fish))\nprint(type(price))",
+      "output": "361.5\n<class 'int'>\n<class 'float'>",
+      "lang": "python"
+    },
+    {
+      "file": "round.py",
+      "source": "people = 4\nshare = 1000 / people\nprint(share)\nprint(type(share))\nprint(round(1234.5678, 2))",
+      "output": "250.0\n<class 'float'>\n1234.57",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}
