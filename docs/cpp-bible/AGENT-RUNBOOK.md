@@ -99,6 +99,9 @@ After each module, report the summary table from the queue and `out\render-queue
 | `BLACK at 12.3s` | Black stretch in the video | Report episode and time. STOP |
 | Any `FAIL` row in the queue summary | QA failed | Report the row and the log lines. STOP |
 | `check_render_ready` problem | Episode data wrong | Report the line. STOP |
+| `open() got an unexpected keyword argument 'metadata_errors'` | faster-whisper and av version clash | `.venv\Scripts\python.exe -m pip install "av<17"` (now in requirements.txt) |
+| Smoke: `ERR_NO_BUFFER_SPACE` or socket error | Windows browser socket dropped | The smoke test retries once by itself. If it still fails, re-run only that episode |
+| Python 3.13 will not start | Broken install | Use Python 3.12 for the venv: `py -3.12 -m venv .venv` |
 | Out of memory | RAM too high | The queue lowers concurrency by itself. If it still fails, report. STOP |
 
 ## Report format
