@@ -1,6 +1,6 @@
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import type { CalculateMetadataFunction } from "remotion";
-import type { Episode } from "../lib/episode";
+import { epFolder, type Episode, type Lang } from "../lib/episode";
 import { ShortLayout } from "../scenes/ShortLayout";
 import { coloursForModule } from "../theme/modules";
 import { stripMarkdown } from "../lib/sanitize";
@@ -12,6 +12,8 @@ const FPS = 30;
 
 export type ShortProps = {
   episodeNumber: number;
+  /** Course language; omitted for the C course. Picks the narration folder (see epFolder). */
+  lang?: Lang;
   shortId: string;
   episode?: Episode;
   short?: Episode["shorts"][number];
@@ -21,7 +23,7 @@ export type ShortProps = {
 };
 
 export const calculateMetadata: CalculateMetadataFunction<ShortProps> = async ({ props }) => {
-  const epId = `ep${String(props.episodeNumber).padStart(3, "0")}`;
+  const epId = epFolder(props.lang, props.episodeNumber);
   const episode: Episode = await fetch(staticFile(`voice/${epId}/episode.json`)).then((r) =>
     r.json(),
   );
@@ -51,7 +53,7 @@ export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames, 
     return null;
   }
   const colours = coloursForModule(episode.module);
-  const epId = `ep${String(episode.ep).padStart(3, "0")}`;
+  const epId = epFolder(episode.lang, episode.ep);
   const visual = deriveShortVisuals(episode)[short.id];
 
   return (

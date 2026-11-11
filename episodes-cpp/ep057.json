@@ -1,0 +1,398 @@
+{
+  "lang": "cpp",
+  "ep": 57,
+  "title": "this and const methods",
+  "module": 6,
+  "lengthSec": 294,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain the this pointer",
+    "chain calls by returning a reference",
+    "mark read-only functions const"
+  ],
+  "youtube": {
+    "title": "C++ this Pointer and const Member Functions | C++ Programming EP 57",
+    "description": "In this episode you will explain the this pointer, chain calls by returning a reference and mark read-only functions const, with Xecxec the crab. 0:00 Intro · 0:15 this and const methods · 0:49 Chain the calls · 1:29 Where this points · 1:59 Second program · 2:59 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:39 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "this and const methods"
+      },
+      {
+        "t": "0:49",
+        "label": "Chain the calls"
+      },
+      {
+        "t": "1:29",
+        "label": "Where this points"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:30",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:18",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:39",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "this pointer",
+      "const member function",
+      "method chaining",
+      "c++ const correctness"
+    ],
+    "thumbnail": {
+      "text": "THIS + CONST",
+      "visual": "big text \"THIS + CONST\" in tomato on peach; Xecxec next to a crab pointing at itself; thin black border and drop shadow.",
+      "pose": "Xecxec next to a crab pointing at itself"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 57 · THIS + CONST",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet the hidden pointer that every member function receives. It points to the object that made the call."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 34,
+      "onScreen": "\"this and const methods\": numbered lines (1. This points to the current object; 2. Return star this to chain calls; 3. A const function promises not to change the object) and an analogy card: saying me: every object can talk about itself",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Inside a member function, the name this is a pointer to the current object. You rarely need to write it, but it explains how member functions work. A function that returns star this lets you chain calls. A const function promises not to change the object. Think of the word me. Every object can talk about itself.",
+      "points": [
+        "This points to the current object",
+        "Return star this to chain calls",
+        "A const function promises not to change the object"
+      ],
+      "analogy": {
+        "title": "this and const methods",
+        "body": "Saying me: every object can talk about itself"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 49,
+      "lengthSec": 40,
+      "onScreen": "chain.cpp: each function returns the object, so calls chain",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 8] Add returns a reference to a Counter. [HL 9] It adds n to the count. [HL 10] This is a pointer to the current object. Star this is the object itself. [HL 17] Because add returns the object, we can call add again on the result. [HL 18] Two plus three plus ten gives fifteen.",
+      "code": {
+        "file": "chain.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 0;\n\npublic:\n    Counter& add(int n) {\n        count_ += n;\n        return *this;\n    }\n    int get() const { return count_; }\n};\n\nint main() {\n    Counter c;\n    c.add(2).add(3).add(10);\n    cout << c.get() << endl;\n    return 0;\n}",
+        "output": "15"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 89,
+      "lengthSec": 30,
+      "onScreen": "the pointer this points at the object c",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Inside add, the hidden pointer this holds the address of c. That is how add knows which count to change. Each object has its own address, so each call changes the right object.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "15",
+                    "address": "0x1000",
+                    "name": "c.count_"
+                  },
+                  {
+                    "value": "0x1000",
+                    "address": "0x1008",
+                    "name": "this"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:1",
+                "to": "0:0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 119,
+      "lengthSec": 40,
+      "onScreen": "constfunc.cpp: show promises not to change the object",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 8] This function changes the object, so it is not const. [HL 9] The word const after the brackets is a promise. This function does not change the object. [HL 13] Here the object is const. [HL 14] A const object may only call const functions. Get is const, so the call is fine.",
+      "code": {
+        "file": "constfunc.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 7;\n\npublic:\n    void increment() { count_++; }\n    int get() const { return count_; }\n};\n\nint main() {\n    const Counter c;\n    cout << c.get() << endl;\n    return 0;\n}",
+        "output": "7"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 159,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 constfunc.cpp -o constfunc then ./constfunc",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as constfunc dot cpp. Compile it with g plus plus. Then run the program. The program prints seven."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 179,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. This is a pointer to the current object. Two. Return star this to chain calls. Three. Const after the brackets is a promise not to change the object. Four. A const object can only call const functions. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "This is a pointer to the current object.",
+        "Return star this to chain calls.",
+        "Const after the brackets is a promise not to change the object.",
+        "A const object can only call const functions."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 210,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A non-const call on a const object",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The object is const, but we call increment. The compiler says passing const Counter as this argument discards qualifiers. That sounds hard, but it means this. A const object cannot call a function that may change it."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 250,
+      "lengthSec": 8,
+      "onScreen": "The object looked in the mirror and said, I like this.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "The object looked in the mirror and said, I like this."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 258,
+      "lengthSec": 21,
+      "onScreen": "Task card: mark the right functions const",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 279,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 58 · Static members",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: static members. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 7;\n\npublic:\n    void increment() { count_++; }\n    int get() const { return count_; }\n};\n\nint main() {\n    const Counter c;\n    c.increment();\n    cout << c.get() << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nconstfunc.cpp: In function 'int main()':\nconstfunc.cpp:14:16: error: passing 'const Counter' as 'this' argument discards qualifiers [-fpermissive]\n   14 |     c.increment();\n      |     ~~~~~~~~~~~^~\nconstfunc.cpp:8:10: note:   in call to 'void Counter::increment()'\n    8 |     void increment() { count_++; }",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 7;\n\npublic:\n    void increment() { count_++; }\n    int get() const { return count_; }\n};\n\nint main() {\n    Counter c;\n    c.increment();\n    cout << c.get() << endl;\n    return 0;\n}",
+    "why": "A const object may not change, so it may not call a function that can change it. Remove const from the object, or do not call that function."
+  },
+  "pun": "\"The object looked in the mirror and said, I like this.\"",
+  "challenge": "Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const.",
+  "challengeAnswer": "Get and print do not change the object, so mark both const. Set changes the value, so it stays non-const.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: this and const methods",
+      "hook": "\"Every object knows its own address.\"",
+      "script": "Every object knows its own address. Today we meet the hidden pointer that every member function receives. It points to the object that made the call. Inside a member function, the name this is a pointer to the current object. You rarely need to write it, but it explains how member functions work. A function that returns star this lets you chain calls. Keep coding, says Xecxec!",
+      "onScreen": "THIS AND CONST METHODS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "What you will learn: this and const methods.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "thisandconstmethods",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "this and const methods in one minute",
+      "hook": "\"Inside a member function\"",
+      "script": "Inside a member function, the name this is a pointer to the current object. You rarely need to write it, but it explains how member functions work. A function that returns star this lets you chain calls. A const function promises not to change the object. Think of the word me. Every object can talk about itself. Add returns a reference to a Counter. Keep coding, says Xecxec!",
+      "onScreen": "THIS AND CONST METHODS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "this and const methods in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "thisandconstmethods",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"This function changes the object, so it is not const.\"",
+      "script": "This function changes the object, so it is not const. The word const after the brackets is a promise. This function does not change the object. Here the object is const. A const object may only call const functions. Get is const, so the call is fine. The program prints seven. This is a pointer to the current object. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "thisandconstmethods",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A non-const call on a const object",
+      "hook": "\"Can you spot the bug in this and const methods?\"",
+      "script": "Can you spot the bug in this and const methods? Bug of the Day. The object is const, but we call increment. The compiler says passing const Counter as this argument discards qualifiers. That sounds hard, but it means this. A const object cannot call a function that may change it. A const object may not change, so it may not call a function that can change it. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 40,
+      "caption": "Bug of the Day: A non-const call on a const object.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "thisandconstmethods",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you mark the right functions const in this and const methods?\"",
+      "script": "Can you mark the right functions const in this and const methods? The object looked in the mirror and said, I like this. Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const. Write your answer in the comments. This is a pointer to the current object. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "thisandconstmethods",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "chain.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 0;\n\npublic:\n    Counter& add(int n) {\n        count_ += n;\n        return *this;\n    }\n    int get() const { return count_; }\n};\n\nint main() {\n    Counter c;\n    c.add(2).add(3).add(10);\n    cout << c.get() << endl;\n    return 0;\n}",
+      "output": "15",
+      "lang": "cpp"
+    },
+    {
+      "file": "constfunc.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 7;\n\npublic:\n    void increment() { count_++; }\n    int get() const { return count_; }\n};\n\nint main() {\n    const Counter c;\n    cout << c.get() << endl;\n    return 0;\n}",
+      "output": "7",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "8"
+  },
+  "nextTitle": "Static members"
+}

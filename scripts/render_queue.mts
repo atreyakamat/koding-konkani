@@ -6,8 +6,9 @@
  * concurrency if system memory is tight.
  *
  * Usage: node scripts/render_queue.mts 1 2 3 4
+ *        KK_LANG=cpp node scripts/render_queue.mts 1 2 3     (C++ course: episodes-cpp/, audio/voice/cpp-epNNN/, out/cpp-epNNN/)
  */
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import {
   appendFileSync,
   copyFileSync,
@@ -19,28 +20,51 @@ import {
 } from "node:fs";
 import { join } from "node:path";
 import os from "node:os";
+import { epFolder } from "../src/lib/episode.ts";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([a-zA-Z]:)/, "$1");
 const PYTHON = join(ROOT, ".venv", "Scripts", "python.exe");
 const LOG_PATH = join(ROOT, "out", "render-queue.log");
 
-const episodeNumbers = process.argv.slice(2).map(Number);
+/** Course language: c (default), cpp or python. Picks the episode folder, the narration folder and the output folder. */
+const argv = process.argv.slice(2);
+const langFlag = argv.indexOf("--lang");
+const LANG = langFlag >= 0 ? (argv[langFlag + 1] ?? "") : (process.env.KK_LANG ?? "c");
+if (langFlag >= 0) argv.splice(langFlag, 2);
+if (!["c", "cpp", "python"].includes(LANG)) {
+  console.error(`--lang must be c, cpp or python (got ${LANG})`);
+  process.exit(1);
+}
+const EPISODES_DIRNAME = LANG === "cpp" ? "episodes-cpp" : LANG === "python" ? "episodes-python" : "episodes";
+const langProps = LANG === "c" ? {} : { lang: LANG };
+
+const episodeNumbers = argv.map(Number);
 if (episodeNumbers.length === 0 || episodeNumbers.some((n) => !Number.isInteger(n) || n < 1)) {
-  console.error("usage: node scripts/render_queue.mts <episode-number...>");
+  console.error("usage: node scripts/render_queue.mts [--lang c|cpp] <episode-number...>");
   process.exit(1);
 }
 
 // Two Shorts in one episode must never show the same visual (and none may fall back to the
 // old generic printf("Hi"); card): fail before spending render time.
-try {
-  execFileSync(
-    process.execPath,
-    ["scripts/check_short_visuals.mts", ...episodeNumbers.map(String)],
-    { cwd: ROOT, stdio: "inherit" },
-  );
-} catch {
-  console.error("check_short_visuals failed: duplicate or generic Short visuals. Not rendering.");
-  process.exit(1);
+if (LANG === "c") {
+  try {
+    execFileSync(
+      process.execPath,
+      ["scripts/check_short_visuals.mts", ...episodeNumbers.map(String)],
+      { cwd: ROOT, stdio: "inherit" },
+    );
+  } catch {
+    console.error("check_short_visuals failed: duplicate or generic Short visuals. Not rendering.");
+    process.exit(1);
+  }
+} else {
+  // Other courses: every scene must have the data it draws (no empty or black scenes). Static, takes seconds.
+  try {
+    execFileSync(process.execPath, ["scripts/check_render_ready.mts", "--lang", LANG], { cwd: ROOT, stdio: "inherit" });
+  } catch {
+    console.error("check_render_ready failed: an episode is missing data a scene needs. Not rendering.");
+    process.exit(1);
+  }
 }
 
 mkdirSync(join(ROOT, "out"), { recursive: true });
@@ -149,6 +173,24 @@ const renderJob = (
   }
 };
 
+/** Black stretches (>= 0.2 s) inside the video, ignoring the first and last 0.3 s. Uses ffmpeg blackdetect on a small copy. */
+const blackSegmentsOf = (path: string): { start: number; end: number }[] => {
+  const r = spawnSync("ffmpeg", ["-hide_banner", "-i", path, "-vf", "scale=320:-2,blackdetect=d=0.2:pix_th=0.05", "-an", "-f", "null", "-"], {
+    encoding: "utf-8",
+  });
+  const text = `${r.stderr ?? ""}`;
+  const dur = Number(text.match(/Duration: (\d+):(\d+):(\d+\.\d+)/)?.slice(1).reduce((a, v, i) => a + Number(v) * [3600, 60, 1][i], 0) ?? 0);
+  const out: { start: number; end: number }[] = [];
+  for (const m of text.matchAll(/black_start:(\d+(?:\.\d+)?) black_end:(\d+(?:\.\d+)?)/g)) {
+    const start = Number(m[1]);
+    const end = Number(m[2]);
+    if (start < 0.3 && start === 0) continue; // a fade-in from black at the very start is intended
+    if (dur > 0 && end >= dur - 0.3) continue; // and a fade-out at the very end
+    out.push({ start, end });
+  }
+  return out;
+};
+
 type QaRow = { file: string; status: JobResult; ffprobe: string; loudness: string; pass: boolean };
 
 /** ffprobe dimensions/fps/sample-rate + ebur128-style loudness measurement (reusing
@@ -203,6 +245,13 @@ const qaCheck = (
     pass = false;
   }
 
+  // A black frame anywhere inside the video (not the first/last fraction of a second) is a failed render.
+  const blackSegments = blackSegmentsOf(outPath);
+  if (blackSegments.length > 0) {
+    ffprobeLine += ` | BLACK at ${blackSegments.slice(0, 3).map((b) => `${b.start.toFixed(1)}s`).join(", ")}`;
+    pass = false;
+  }
+
   let loudnessLine = "error";
   try {
     const result = pyEval(
@@ -223,7 +272,8 @@ const qaCheck = (
 const allResults: { ep: number; rows: QaRow[] }[] = [];
 
 for (const ep of episodeNumbers) {
-  const epId = `ep${String(ep).padStart(3, "0")}`;
+  const epId = epFolder(LANG, ep);
+  const jsonName = `ep${String(ep).padStart(3, "0")}.json`;
   const outDir = join(ROOT, "out", epId);
   mkdirSync(outDir, { recursive: true });
   const rows: QaRow[] = [];
@@ -234,13 +284,21 @@ for (const ep of episodeNumbers) {
   // render — which is exactly how EP07-09 rendered empty memory-boxes scenes on 1 Nov.
   // Only the JSON is refreshed; the audio, cues and captions are untouched.
   const voiceDir = join(ROOT, "audio", "voice", epId);
+  if (existsSync(join(voiceDir, ".fake"))) {
+    console.error(`${epId}: audio is silent dry-run audio. Run: python scripts/render_episode_audio.py ${ep} --lang ${LANG}`);
+    process.exit(1);
+  }
+  if (!existsSync(join(voiceDir, "manifest.json"))) {
+    console.error(`${epId}: no narration yet. Run: python scripts/render_episode_audio.py ${ep} --lang ${LANG}`);
+    process.exit(1);
+  }
   if (existsSync(voiceDir)) {
-    copyFileSync(join(ROOT, "episodes", `${epId}.json`), join(voiceDir, "episode.json"));
+    copyFileSync(join(ROOT, EPISODES_DIRNAME, jsonName), join(voiceDir, "episode.json"));
     log(`REFRESH ${epId} episode.json -> audio/voice/${epId}/episode.json`);
   }
 
   const propsFile = join(outDir, ".props-longvideo.json");
-  writeFileSync(propsFile, JSON.stringify({ episodeNumber: ep }), "utf-8");
+  writeFileSync(propsFile, JSON.stringify({ episodeNumber: ep, ...langProps }), "utf-8");
 
   const longConcurrency = pickConcurrency(2, `${epId} long`);
   const longOut = join(outDir, `${epId}-4k.mp4`);
@@ -268,7 +326,7 @@ for (const ep of episodeNumbers) {
 
   for (const shortId of ["S1", "S2", "S3", "S4", "S5"]) {
     const shortPropsFile = join(outDir, `.props-short-${shortId}.json`);
-    writeFileSync(shortPropsFile, JSON.stringify({ episodeNumber: ep, shortId }), "utf-8");
+    writeFileSync(shortPropsFile, JSON.stringify({ episodeNumber: ep, shortId, ...langProps }), "utf-8");
     // Lowered from 4 after a live OOM kill mid-queue; 2/2 for both long and
     // Shorts per the owner's explicit instruction following that.
     const shortConcurrency = pickConcurrency(2, `${epId} ${shortId}`);
@@ -311,7 +369,7 @@ for (const ep of episodeNumbers) {
 
 console.log("\n=== Render queue summary ===");
 for (const { ep, rows } of allResults) {
-  const epId = `ep${String(ep).padStart(3, "0")}`;
+  const epId = epFolder(LANG, ep);
   for (const r of rows) {
     console.log(`${epId} ${r.file.padEnd(20)} ${r.status.padEnd(8)} ${r.pass ? "PASS" : "FAIL"}`);
   }

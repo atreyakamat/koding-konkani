@@ -1,0 +1,397 @@
+{
+  "lang": "cpp",
+  "ep": 41,
+  "title": "Memory and addresses",
+  "module": 5,
+  "lengthSec": 292,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "explain that every variable has an address",
+    "use the address-of operator",
+    "tell an address from a value"
+  ],
+  "youtube": {
+    "title": "C++ Memory and Addresses: Where Do Variables Live? | C++ Programming EP 41",
+    "description": "In this episode you will explain that every variable has an address, use the address-of operator and tell an address from a value, with Xecxec the crab. 0:00 Intro · 0:15 Memory and addresses · 0:49 The gap between boxes · 1:29 Addresses in a row · 1:59 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:37 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Memory and addresses"
+      },
+      {
+        "t": "0:49",
+        "label": "The gap between boxes"
+      },
+      {
+        "t": "1:29",
+        "label": "Addresses in a row"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:17",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:37",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ memory",
+      "address of operator",
+      "variable address",
+      "stack memory"
+    ],
+    "thumbnail": {
+      "text": "ADDRESSES",
+      "visual": "big text \"ADDRESSES\" in tomato on lilac; Xecxec next to a street of numbered houses; thin black border and drop shadow.",
+      "pose": "Xecxec next to a street of numbered houses"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 41 · ADDRESSES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we look under the hood. Every variable lives at an address in memory. Soon you will use that address."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 34,
+      "onScreen": "\"Memory and addresses\": numbered lines (1. Memory is a long row of numbered bytes; 2. Every variable lives at an address; 3. The ampersand gives the address) and an analogy card: a street of houses: each house has a number, and a family inside",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Memory is a long row of bytes. Each byte has a number, called its address. A variable lives at one address, and it fills as many bytes as its type needs. The ampersand in front of a variable gives its address. Think of a street of houses. Each house has a number, and a family lives inside.",
+      "points": [
+        "Memory is a long row of numbered bytes",
+        "Every variable lives at an address",
+        "The ampersand gives the address"
+      ],
+      "analogy": {
+        "title": "Memory and addresses",
+        "body": "A street of houses: each house has a number, and a family inside"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 49,
+      "lengthSec": 40,
+      "onScreen": "gap.cpp: the distance in bytes between two neighbouring ints",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] An array of three ints. [HL 6] The ampersand gives the address of the first item. We view it as a char address, so that we can count bytes. [HL 7] This is the address of the second item. [HL 8] The difference is four bytes. That is the size of one int. The real addresses change from run to run, but the gap is always four.",
+      "code": {
+        "file": "gap.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[3] = {10, 20, 30};\n    char* first = reinterpret_cast<char*>(&a[0]);\n    char* second = reinterpret_cast<char*>(&a[1]);\n    cout << (second - first) << endl;\n    return 0;\n}",
+        "output": "4"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 89,
+      "lengthSec": 30,
+      "onScreen": "three int boxes and their addresses, four bytes apart",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the three boxes. The first sits at address one thousand. The next sits at one thousand and four. The last at one thousand and eight. These addresses are examples. On a real computer, the numbers differ every time you run the program.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "a",
+                "cells": [
+                  {
+                    "value": "10",
+                    "address": "0x1000",
+                    "index": 0
+                  },
+                  {
+                    "value": "20",
+                    "address": "0x1004",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "address": "0x1008",
+                    "index": 2
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 119,
+      "lengthSec": 40,
+      "onScreen": "sizes.cpp: sizeof for four types",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 5] A char takes one byte. [HL 6] An int takes four. [HL 7] A double takes eight. [HL 8] An address itself takes eight bytes on a sixty-four-bit computer. Remember this. We will store addresses in variables soon.",
+      "code": {
+        "file": "sizes.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << sizeof(char) << endl;\n    cout << sizeof(int) << endl;\n    cout << sizeof(double) << endl;\n    cout << sizeof(int*) << endl;\n    return 0;\n}",
+        "output": "1\n4\n8\n8"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 159,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 sizes.cpp -o sizes then ./sizes",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as sizes dot cpp. Compile it with g plus plus. Then run the program. The program prints one, four, eight and eight on four lines."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 179,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Memory is a long row of numbered bytes. Two. Every variable lives at an address. Three. The ampersand gives the address of a variable. Four. An address is not the same as a value. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Memory is a long row of numbered bytes.",
+        "Every variable lives at an address.",
+        "The ampersand gives the address of a variable.",
+        "An address is not the same as a value."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 209,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Storing an address in an int",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We store the address of fish in a plain int. The compiler says invalid conversion from int star to int. An address has its own type. For the address of an int, that type is int star. We learn it in the next episode."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 249,
+      "lengthSec": 8,
+      "onScreen": "My variable moved house. It left a new address, but it forgot to tell its neighbours.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My variable moved house. It left a new address, but it forgot to tell its neighbours."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 257,
+      "lengthSec": 20,
+      "onScreen": "Task card: find the gap between two doubles",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Make an array of two doubles. Print the number of bytes between the two items. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 277,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 42 · Pointers",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: pointers. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int fish = 3;\n    int where = &fish;\n    cout << where << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\naddr.cpp: In function 'int main()':\naddr.cpp:6:17: error: invalid conversion from 'int*' to 'int' [-fpermissive]\n    6 |     int where = &fish;\n      |                 ^~~~~\n      |                 |\n      |                 int*",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int fish = 3;\n    int* where = &fish;\n    cout << (where != nullptr) << endl;\n    return 0;\n}",
+    "why": "An address has its own type. For an int, the type is int star. A plain int cannot hold it."
+  },
+  "pun": "\"My variable moved house. It left a new address, but it forgot to tell its neighbours.\"",
+  "challenge": "Make an array of two doubles. Print the number of bytes between the two items.",
+  "challengeAnswer": "Take the address of each item, convert both to char star, and subtract. The answer is eight.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Memory and addresses",
+      "hook": "\"Every variable has a home address.\"",
+      "script": "Every variable has a home address. Today we look under the hood. Every variable lives at an address in memory. Soon you will use that address. Memory is a long row of bytes. Each byte has a number, called its address. A variable lives at one address, and it fills as many bytes as its type needs. The ampersand in front of a variable gives its address. Keep coding, says Xecxec!",
+      "onScreen": "MEMORY AND ADDRESSES",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 40,
+      "caption": "What you will learn: Memory and addresses.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "memoryandaddresses",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Memory and addresses in one minute",
+      "hook": "\"Memory is a long row of bytes.\"",
+      "script": "Memory is a long row of bytes. Each byte has a number, called its address. A variable lives at one address, and it fills as many bytes as its type needs. The ampersand in front of a variable gives its address. Think of a street of houses. Each house has a number, and a family lives inside. An array of three ints. Keep coding, says Xecxec!",
+      "onScreen": "MEMORY AND ADDRESSES",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Memory and addresses in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "memoryandaddresses",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"A char takes one byte.\"",
+      "script": "A char takes one byte. An int takes four. A double takes eight. An address itself takes eight bytes on a sixty-four-bit computer. Remember this. We will store addresses in variables soon. The program prints one, four, eight and eight on four lines. Memory is a long row of numbered bytes. Every variable lives at an address. The ampersand gives the address of a variable. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 39,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "memoryandaddresses",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Storing an address in an int",
+      "hook": "\"Can you spot the bug in memory and addresses?\"",
+      "script": "Can you spot the bug in memory and addresses? Bug of the Day. We store the address of fish in a plain int. The compiler says invalid conversion from int star to int. An address has its own type. For the address of an int, that type is int star. We learn it in the next episode. An address has its own type. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Bug of the Day: Storing an address in an int.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "memoryandaddresses",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you find the gap between two doubles in memory and addresses?\"",
+      "script": "Can you find the gap between two doubles in memory and addresses? My variable moved house. It left a new address, but it forgot to tell its neighbours. Make an array of two doubles. Print the number of bytes between the two items. Write your answer in the comments. Memory is a long row of numbered bytes. Every variable lives at an address. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "memoryandaddresses",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "gap.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[3] = {10, 20, 30};\n    char* first = reinterpret_cast<char*>(&a[0]);\n    char* second = reinterpret_cast<char*>(&a[1]);\n    cout << (second - first) << endl;\n    return 0;\n}",
+      "output": "4",
+      "lang": "cpp"
+    },
+    {
+      "file": "sizes.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << sizeof(char) << endl;\n    cout << sizeof(int) << endl;\n    cout << sizeof(double) << endl;\n    cout << sizeof(int*) << endl;\n    return 0;\n}",
+      "output": "1\n4\n8\n8",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1"
+  },
+  "nextTitle": "Pointers"
+}

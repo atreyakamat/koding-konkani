@@ -1,0 +1,396 @@
+{
+  "lang": "cpp",
+  "ep": 75,
+  "title": "stack, queue and deque",
+  "module": 8,
+  "lengthSec": 297,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "use a stack, last in first out",
+    "use a queue, first in first out",
+    "know what a deque is"
+  ],
+  "youtube": {
+    "title": "C++ stack, queue and deque | C++ Programming EP 75",
+    "description": "In this episode you will use a stack, last in first out, use a queue, first in first out and know what a deque is, with Xecxec the crab. 0:00 Intro · 0:16 stack, queue and deque · 0:54 A stack · 1:34 Stack and queue · 2:04 Second program · 3:04 Recap · 3:34 Bug of the Day · 4:22 Challenge · 4:42 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:16",
+        "label": "stack, queue and deque"
+      },
+      {
+        "t": "0:54",
+        "label": "A stack"
+      },
+      {
+        "t": "1:34",
+        "label": "Stack and queue"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:34",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:22",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:42",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::stack",
+      "std::queue",
+      "deque",
+      "lifo fifo"
+    ],
+    "thumbnail": {
+      "text": "STACK / QUEUE",
+      "visual": "big text \"STACK / QUEUE\" in tomato on lilac; Xecxec next to a pile of plates and a line of people; thin black border and drop shadow.",
+      "pose": "Xecxec next to a pile of plates and a line of people"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 16,
+      "onScreen": "EP 75 · STACK / QUEUE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet two simple containers with strict rules. One is a pile of plates, and the other is a queue at a shop."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 16,
+      "lengthSec": 38,
+      "onScreen": "\"stack, queue and deque\": numbered lines (1. A stack is last in, first out; 2. A queue is first in, first out; 3. A deque works at both ends) and an analogy card: a pile of plates, and a line at the ration shop",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A stack is last in, first out. You push on top, and you pop from the top. A queue is first in, first out. You push at the back, and you pop from the front. A deque lets you push and pop at both ends. Think of a pile of plates for the stack, and a line at the ration shop for the queue.",
+      "points": [
+        "A stack is last in, first out",
+        "A queue is first in, first out",
+        "A deque works at both ends"
+      ],
+      "analogy": {
+        "title": "stack, queue and deque",
+        "body": "A pile of plates, and a line at the ration shop"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "stack.cpp: push three, pop three, and see the order",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 7] We push one, two and three. The last one is on top. [HL 10] Top shows three, without removing it. [HL 11] Pop removes the top item. It gives nothing back. [HL 12] Now the top is two. [HL 13] Two items remain.",
+      "code": {
+        "file": "stack.cpp",
+        "source": "#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    stack<int> s;\n    s.push(1);\n    s.push(2);\n    s.push(3);\n    cout << s.top() << endl;\n    s.pop();\n    cout << s.top() << endl;\n    cout << s.size() << endl;\n    return 0;\n}",
+        "output": "3\n2\n2"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 94,
+      "lengthSec": 30,
+      "onScreen": "a table that compares the two",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "The table compares the three. A stack adds and removes at the top. A queue adds at the back, and removes from the front. A deque can do both at either end.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table that compares the two",
+        "headers": [
+          "Container",
+          "Add at",
+          "Remove from",
+          "Order"
+        ],
+        "rows": [
+          [
+            "stack",
+            "top",
+            "top",
+            "last in, first out"
+          ],
+          [
+            "queue",
+            "back",
+            "front",
+            "first in, first out"
+          ],
+          [
+            "deque",
+            "both ends",
+            "both ends",
+            "your choice"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 124,
+      "lengthSec": 40,
+      "onScreen": "queue.cpp: first in, first out",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 8] Asha joins the queue first. [HL 10] Meera joins last. [HL 11] Front shows Asha, the first in line. [HL 12] Pop removes Asha. [HL 13] Now Ravi is at the front, and Meera is at the back.",
+      "code": {
+        "file": "queue.cpp",
+        "source": "#include <iostream>\n#include <queue>\n#include <string>\nusing namespace std;\n\nint main() {\n    queue<string> q;\n    q.push(\"Asha\");\n    q.push(\"Ravi\");\n    q.push(\"Meera\");\n    cout << q.front() << endl;\n    q.pop();\n    cout << q.front() << \" \" << q.back() << endl;\n    return 0;\n}",
+        "output": "Asha\nRavi Meera"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 164,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 queue.cpp -o queue then ./queue",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as queue dot cpp. Compile it with g plus plus. Then run the program. The program prints Asha, and then Ravi Meera."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 184,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A stack is last in, first out. Two. A queue is first in, first out. Three. Top and front only look. Pop removes. Four. A deque works at both ends. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A stack is last in, first out.",
+        "A queue is first in, first out.",
+        "Top and front only look.",
+        "A deque works at both ends."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 214,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Expecting pop to return the item",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We store the result of pop in an int. The compiler says void value not ignored as it ought to be. Pop returns nothing. First read with top, then remove with pop."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 254,
+      "lengthSec": 8,
+      "onScreen": "The stack was proud. It said, I am always on top of things.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "The stack was proud. It said, I am always on top of things."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 262,
+      "lengthSec": 20,
+      "onScreen": "Task card: reverse a word with a stack",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Use a stack of chars to reverse the word Goa. Push each letter, then pop them all. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 282,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 76 · Iterators",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: iterators. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    stack<int> s;\n    s.push(5);\n    int x = s.pop();\n    cout << x << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nstack.cpp: In function 'int main()':\nstack.cpp:8:18: error: void value not ignored as it ought to be\n    8 |     int x = s.pop();\n      |             ~~~~~^~",
+    "fixed": "#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    stack<int> s;\n    s.push(5);\n    int x = s.top();\n    s.pop();\n    cout << x << endl;\n    return 0;\n}",
+    "why": "Pop returns nothing. This design keeps the stack safe when an exception happens. Read with top first, then pop."
+  },
+  "pun": "\"The stack was proud. It said, I am always on top of things.\"",
+  "challenge": "Use a stack of chars to reverse the word Goa. Push each letter, then pop them all.",
+  "challengeAnswer": "Push G, o and a. Then pop and print until the stack is empty. The output is aoG.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: stack, queue and deque",
+      "hook": "\"Last in, first out. First in, first out.\"",
+      "script": "Last in, first out. First in, first out. Today we meet two simple containers with strict rules. One is a pile of plates, and the other is a queue at a shop. A stack is last in, first out. You push on top, and you pop from the top. A queue is first in, first out. You push at the back, and you pop from the front. Keep coding, says Xecxec!",
+      "onScreen": "STACK, QUEUE AND DEQUE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 40,
+      "caption": "What you will learn: stack, queue and deque.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stackqueueanddeque",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "stack, queue and deque in one minute",
+      "hook": "\"A stack is last in, first out.\"",
+      "script": "A stack is last in, first out. You push on top, and you pop from the top. A queue is first in, first out. You push at the back, and you pop from the front. A deque lets you push and pop at both ends. Think of a pile of plates for the stack, and a line at the ration shop for the queue. Keep coding, says Xecxec!",
+      "onScreen": "STACK, QUEUE AND DEQUE",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "stack, queue and deque in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stackqueueanddeque",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Asha joins the queue first.\"",
+      "script": "Asha joins the queue first. Meera joins last. Front shows Asha, the first in line. Pop removes Asha. Now Ravi is at the front, and Meera is at the back. The program prints Asha, and then Ravi Meera. A stack is last in, first out. A queue is first in, first out. Top and front only look. Pop removes. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stackqueueanddeque",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Expecting pop to return the item",
+      "hook": "\"Can you spot the bug in stack, queue and deque?\"",
+      "script": "Can you spot the bug in stack, queue and deque? Bug of the Day. We store the result of pop in an int. The compiler says void value not ignored as it ought to be. Pop returns nothing. First read with top, then remove with pop. Pop returns nothing. This design keeps the stack safe when an exception happens. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bug of the Day: Expecting pop to return the item.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stackqueueanddeque",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you reverse a word with a stack in stack\"",
+      "script": "Can you reverse a word with a stack in stack, queue and deque? The stack was proud. It said, I am always on top of things. Use a stack of chars to reverse the word Goa. Push each letter, then pop them all. Write your answer in the comments. A stack is last in, first out. A queue is first in, first out. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stackqueueanddeque",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "stack.cpp",
+      "source": "#include <iostream>\n#include <stack>\nusing namespace std;\n\nint main() {\n    stack<int> s;\n    s.push(1);\n    s.push(2);\n    s.push(3);\n    cout << s.top() << endl;\n    s.pop();\n    cout << s.top() << endl;\n    cout << s.size() << endl;\n    return 0;\n}",
+      "output": "3\n2\n2",
+      "lang": "cpp"
+    },
+    {
+      "file": "queue.cpp",
+      "source": "#include <iostream>\n#include <queue>\n#include <string>\nusing namespace std;\n\nint main() {\n    queue<string> q;\n    q.push(\"Asha\");\n    q.push(\"Ravi\");\n    q.push(\"Meera\");\n    cout << q.front() << endl;\n    q.pop();\n    cout << q.front() << \" \" << q.back() << endl;\n    return 0;\n}",
+      "output": "Asha\nRavi Meera",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "5"
+  },
+  "nextTitle": "Iterators"
+}

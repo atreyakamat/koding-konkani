@@ -1,0 +1,423 @@
+{
+  "lang": "cpp",
+  "ep": 55,
+  "title": "Destructors",
+  "module": 6,
+  "lengthSec": 294,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a destructor",
+    "free heap memory in a destructor",
+    "predict the order of destruction"
+  ],
+  "youtube": {
+    "title": "C++ Destructors: Clean Up After Yourself | C++ Programming EP 55",
+    "description": "In this episode you will write a destructor, free heap memory in a destructor and predict the order of destruction, with Xecxec the crab. 0:00 Intro · 0:15 Destructors · 0:51 A destructor that frees memory · 1:31 Heap memory owned by an object · 2:01 Second program · 3:01 Recap · 3:31 Bug of the Day · 4:19 Challenge · 4:39 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Destructors"
+      },
+      {
+        "t": "0:51",
+        "label": "A destructor that frees memory"
+      },
+      {
+        "t": "1:31",
+        "label": "Heap memory owned by an object"
+      },
+      {
+        "t": "2:01",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:31",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:19",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:39",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ destructor",
+      "raii class",
+      "object lifetime",
+      "cleanup"
+    ],
+    "thumbnail": {
+      "text": "DESTRUCTORS",
+      "visual": "big text \"DESTRUCTORS\" in tomato on peach; Xecxec next to a crab switching off the lights; thin black border and drop shadow.",
+      "pose": "Xecxec next to a crab switching off the lights"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 55 · DESTRUCTORS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we write the last function of an object. The destructor runs when the object dies, and it cleans up."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 36,
+      "onScreen": "\"Destructors\": numbered lines (1. A destructor has a tilde and the class name; 2. It runs when the object dies; 3. Objects die in reverse order) and an analogy card: a hotel check-out: the room is cleaned in the reverse order of the check-in",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A destructor has a tilde, then the class name. It has no parameters and no return type. It runs when the object goes out of scope. Use it to free memory, close files and release other resources. Objects die in the reverse order of their birth. Think of a hotel. The last guest to arrive is the first to leave.",
+      "points": [
+        "A destructor has a tilde and the class name",
+        "It runs when the object dies",
+        "Objects die in reverse order"
+      ],
+      "analogy": {
+        "title": "Destructors",
+        "body": "A hotel check-out: the room is cleaned in the reverse order of the check-in"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 51,
+      "lengthSec": 40,
+      "onScreen": "buffer.cpp: a class owns a heap array and frees it",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] The class owns a heap array. [HL 9] The constructor asks for the memory. [HL 12] The destructor has a tilde in front of the name. [HL 13] It gives the memory back. [HL 19] Main makes one buffer. Made four prints. [HL 20] Then using it prints. [HL 21] At the end of main, b dies, and freed prints.",
+      "code": {
+        "file": "buffer.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Buffer {\n    int* data_;\n    int size_;\n\npublic:\n    Buffer(int size) : data_(new int[size]), size_(size) {\n        cout << \"made \" << size_ << endl;\n    }\n    ~Buffer() {\n        delete[] data_;\n        cout << \"freed\" << endl;\n    }\n};\n\nint main() {\n    Buffer b(4);\n    cout << \"using it\" << endl;\n    return 0;\n}",
+        "output": "made 4\nusing it\nfreed"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 91,
+      "lengthSec": 30,
+      "onScreen": "the object on the stack owns an array on the heap",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the object b. It has a pointer and a size. The pointer owns four boxes on the heap. When b dies, the destructor frees them. The user of the class does not need to remember anything.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x5000",
+                    "address": "0x1000",
+                    "name": "b.data_"
+                  },
+                  {
+                    "value": "4",
+                    "address": "0x1008",
+                    "name": "b.size_"
+                  }
+                ]
+              },
+              {
+                "name": "items",
+                "cells": [
+                  {
+                    "value": "0",
+                    "address": "0x5000",
+                    "index": 0
+                  },
+                  {
+                    "value": "0",
+                    "address": "0x5004",
+                    "index": 1
+                  },
+                  {
+                    "value": "0",
+                    "address": "0x5008",
+                    "index": 2
+                  },
+                  {
+                    "value": "0",
+                    "address": "0x500C",
+                    "index": 3
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 121,
+      "lengthSec": 40,
+      "onScreen": "order.cpp: the last object made is the first to die",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 14] Three tags are made in the order A, B, C. Each prints hello. [HL 10] At the end of main, the destructors run. They run in the reverse order. C dies first, then B, then A. The output ends with bye C, bye B, bye A.",
+      "code": {
+        "file": "order.cpp",
+        "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Tag {\n    string name_;\n\npublic:\n    Tag(string name) : name_(name) { cout << \"hello \" << name_ << endl; }\n    ~Tag() { cout << \"bye \" << name_ << endl; }\n};\n\nint main() {\n    Tag a(\"A\");\n    Tag b(\"B\");\n    Tag c(\"C\");\n    return 0;\n}",
+        "output": "hello A\nhello B\nhello C\nbye C\nbye B\nbye A"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 161,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 order.cpp -o order then ./order",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as order dot cpp. Compile it with g plus plus. Then run the program. The program prints three hello lines, and then bye C, bye B and bye A."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 181,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A destructor has a tilde and the class name. Two. It runs when the object dies. Three. Free memory and other resources in it. Four. Objects die in the reverse order of their birth. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A destructor has a tilde and the class name.",
+        "It runs when the object dies.",
+        "Free memory and other resources in it.",
+        "Objects die in the reverse order of their birth."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 211,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A destructor with a parameter",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The destructor takes an int. The compiler says destructors may not have parameters. A destructor runs by itself, so nobody could pass an argument. Remove the parameter."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 251,
+      "lengthSec": 8,
+      "onScreen": "The destructor never gets invited to the party. It only comes at the end to clean up.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "The destructor never gets invited to the party. It only comes at the end to clean up."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 259,
+      "lengthSec": 20,
+      "onScreen": "Task card: watch the order of destruction",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Make a class that prints in its constructor and its destructor. Make two objects in main. Predict the output before you run it. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 279,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 56 · Encapsulation",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: encapsulation. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nclass Buffer {\npublic:\n    ~Buffer(int code) { cout << code << endl; }\n};\n\nint main() {\n    Buffer b;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nbuffer.cpp:6:5: error: destructors may not have parameters\n    6 |     ~Buffer(int code) { cout << code << endl; }\n      |     ^",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nclass Buffer {\npublic:\n    ~Buffer() { cout << \"freed\" << endl; }\n};\n\nint main() {\n    Buffer b;\n    return 0;\n}",
+    "why": "Nobody can pass an argument to a destructor, because it runs by itself. A class has exactly one destructor with no parameters."
+  },
+  "pun": "\"The destructor never gets invited to the party. It only comes at the end to clean up.\"",
+  "challenge": "Make a class that prints in its constructor and its destructor. Make two objects in main. Predict the output before you run it.",
+  "challengeAnswer": "Two hello lines come first. Then the destructors run in the reverse order, so the second object says bye first.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Destructors",
+      "hook": "\"Objects die in the reverse order of birth.\"",
+      "script": "Objects die in the reverse order of birth. Today we write the last function of an object. The destructor runs when the object dies, and it cleans up. A destructor has a tilde, then the class name. It has no parameters and no return type. It runs when the object goes out of scope. Use it to free memory, close files and release other resources. Keep coding, says Xecxec!",
+      "onScreen": "DESTRUCTORS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "What you will learn: Destructors.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "destructors",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Destructors in one minute",
+      "hook": "\"A destructor has a tilde, then the class name.\"",
+      "script": "A destructor has a tilde, then the class name. It has no parameters and no return type. It runs when the object goes out of scope. Use it to free memory, close files and release other resources. Objects die in the reverse order of their birth. Think of a hotel. The last guest to arrive is the first to leave. Keep coding, says Xecxec!",
+      "onScreen": "DESTRUCTORS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Destructors in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "destructors",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Three tags are made in the order A, B, C.\"",
+      "script": "Three tags are made in the order A, B, C. Each prints hello. At the end of main, the destructors run. They run in the reverse order. C dies first, then B, then A. The output ends with bye C, bye B, bye A. The program prints three hello lines, and then bye C, bye B and bye A. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "destructors",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A destructor with a parameter",
+      "hook": "\"Can you spot the bug in destructors?\"",
+      "script": "Can you spot the bug in destructors? Bug of the Day. The destructor takes an int. The compiler says destructors may not have parameters. A destructor runs by itself, so nobody could pass an argument. Remove the parameter. Nobody can pass an argument to a destructor, because it runs by itself. A class has exactly one destructor with no parameters. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bug of the Day: A destructor with a parameter.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "destructors",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you watch the order of destruction in destructors?\"",
+      "script": "Can you watch the order of destruction in destructors? The destructor never gets invited to the party. It only comes at the end to clean up. Make a class that prints in its constructor and its destructor. Make two objects in main. Predict the output before you run it. Write your answer in the comments. A destructor has a tilde and the class name. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "destructors",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "buffer.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Buffer {\n    int* data_;\n    int size_;\n\npublic:\n    Buffer(int size) : data_(new int[size]), size_(size) {\n        cout << \"made \" << size_ << endl;\n    }\n    ~Buffer() {\n        delete[] data_;\n        cout << \"freed\" << endl;\n    }\n};\n\nint main() {\n    Buffer b(4);\n    cout << \"using it\" << endl;\n    return 0;\n}",
+      "output": "made 4\nusing it\nfreed",
+      "lang": "cpp"
+    },
+    {
+      "file": "order.cpp",
+      "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Tag {\n    string name_;\n\npublic:\n    Tag(string name) : name_(name) { cout << \"hello \" << name_ << endl; }\n    ~Tag() { cout << \"bye \" << name_ << endl; }\n};\n\nint main() {\n    Tag a(\"A\");\n    Tag b(\"B\");\n    Tag c(\"C\");\n    return 0;\n}",
+      "output": "hello A\nhello B\nhello C\nbye C\nbye B\nbye A",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "freed"
+  },
+  "nextTitle": "Encapsulation"
+}

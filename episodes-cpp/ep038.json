@@ -1,0 +1,402 @@
+{
+  "lang": "cpp",
+  "ep": 38,
+  "title": "C-style strings",
+  "module": 4,
+  "lengthSec": 292,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain what a char array is",
+    "use strlen and strcmp",
+    "avoid comparing C strings with equals equals"
+  ],
+  "youtube": {
+    "title": "C++ C-Style Strings: char Arrays and strlen | C++ Programming EP 38",
+    "description": "In this episode you will explain what a char array is, use strlen and strcmp and avoid comparing C strings with equals equals, with Xecxec the crab. 0:00 Intro · 0:15 C-style strings · 0:49 A char array · 1:29 Four boxes for three letters · 1:59 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:37 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "C-style strings"
+      },
+      {
+        "t": "0:49",
+        "label": "A char array"
+      },
+      {
+        "t": "1:29",
+        "label": "Four boxes for three letters"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:17",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:37",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c style string",
+      "char array",
+      "strlen strcmp",
+      "null terminator"
+    ],
+    "thumbnail": {
+      "text": "CHAR ARRAYS",
+      "visual": "big text \"CHAR ARRAYS\" in tomato on butter; Xecxec next to a necklace of letters ending in a null bead; thin black border and drop shadow.",
+      "pose": "Xecxec next to a necklace of letters ending in a null bead"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 38 · CHAR ARRAYS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we look at the old way to store text. C strings are everywhere, so you must know how they work."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 34,
+      "onScreen": "\"C-style strings\": numbered lines (1. A C string is a char array; 2. It ends with a null character; 3. Compare C strings with strcmp) and an analogy card: a necklace of letter beads that ends in a special blank bead",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A C string is an array of chars. The last char is a special null character. It marks the end of the text. The null character has the code zero. The cstring header has helpers. Strlen counts the letters. Strcmp compares two strings. Think of a necklace of letter beads that ends with one blank bead.",
+      "points": [
+        "A C string is a char array",
+        "It ends with a null character",
+        "Compare C strings with strcmp"
+      ],
+      "analogy": {
+        "title": "C-style strings",
+        "body": "A necklace of letter beads that ends in a special blank bead"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 49,
+      "lengthSec": 40,
+      "onScreen": "cstring.cpp: a char array with strlen and sizeof",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 6] The compiler counts the letters and makes room for them. [HL 7] Strlen counts the letters before the null. It gives three. [HL 8] Sizeof counts all the bytes. It gives four, because the null character takes one byte. [HL 9] Cout prints letters until it meets the null.",
+      "code": {
+        "file": "cstring.cpp",
+        "source": "#include <cstring>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    char name[] = \"Goa\";\n    cout << strlen(name) << endl;\n    cout << sizeof(name) << endl;\n    cout << name << endl;\n    return 0;\n}",
+        "output": "3\n4\nGoa"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 89,
+      "lengthSec": 30,
+      "onScreen": "four char boxes: G, o, a and the null character",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the four boxes. The first three hold the letters. The fourth holds the null character. Cout and strlen stop when they meet it. If the null is missing, they read on into other memory.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "name",
+                "cells": [
+                  {
+                    "value": "'G'",
+                    "address": "0x1000",
+                    "index": 0
+                  },
+                  {
+                    "value": "'o'",
+                    "address": "0x1001",
+                    "index": 1
+                  },
+                  {
+                    "value": "'a'",
+                    "address": "0x1002",
+                    "index": 2
+                  },
+                  {
+                    "value": "'\\0'",
+                    "address": "0x1003",
+                    "index": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 119,
+      "lengthSec": 40,
+      "onScreen": "compare.cpp: strcmp compares the text, not the address",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 6] Two arrays hold the same text. [HL 8] Strcmp compares the letters. It returns zero when the texts are equal. [HL 8] So we test the answer against zero. The result is true, so cout prints one.",
+      "code": {
+        "file": "compare.cpp",
+        "source": "#include <cstring>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    char a[] = \"goa\";\n    char b[] = \"goa\";\n    cout << (strcmp(a, b) == 0) << endl;\n    return 0;\n}",
+        "output": "1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 159,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 compare.cpp -o compare then ./compare",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as compare dot cpp. Compile it with g plus plus. Then run the program. The program prints one."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 179,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A C string is a char array that ends with a null character. Two. Strlen counts the letters. Three. Sizeof counts all the bytes. Four. Use strcmp to compare two C strings. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A C string is a char array that ends with a null character.",
+        "Strlen counts the letters.",
+        "Sizeof counts all the bytes.",
+        "Use strcmp to compare two C strings."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 209,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Comparing C strings with equals",
+      "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Both arrays hold goa, but the test is never true. Two equals signs compare addresses, not letters. The compiler warns that comparing two arrays is deprecated. Use strcmp, or better, use std string."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 249,
+      "lengthSec": 8,
+      "onScreen": "Why did the C string feel empty? Its last bead was always null.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the C string feel empty? Its last bead was always null."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 257,
+      "lengthSec": 20,
+      "onScreen": "Task card: count the letters with a loop",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a loop that counts the letters of a char array, without strlen. Stop at the null character. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 277,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 39 · Searching",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: searching. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    char a[] = \"goa\";\n    char b[] = \"goa\";\n    if (a == b) {\n        cout << \"Same\" << endl;\n    }\n    return 0;\n}",
+    "error": "Compiler output (a warning, the program still builds):\n\ncompare.cpp: In function 'int main()':\ncompare.cpp:7:11: warning: comparison between two arrays is deprecated in C++20 [-Warray-compare]\n    7 |     if (a == b) {\n      |         ~~^~~~\ncompare.cpp:7:11: note: use unary '+' which decays operands to pointers or '&a[0] == &b[0]' to compare the addresses",
+    "fixed": "#include <cstring>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    char a[] = \"goa\";\n    char b[] = \"goa\";\n    if (strcmp(a, b) == 0) {\n        cout << \"Same\" << endl;\n    }\n    return 0;\n}",
+    "why": "Two equals signs compare the addresses of the two arrays, not their letters. The addresses always differ. Use strcmp, or use std string."
+  },
+  "pun": "\"Why did the C string feel empty? Its last bead was always null.\"",
+  "challenge": "Write a loop that counts the letters of a char array, without strlen. Stop at the null character.",
+  "challengeAnswer": "Start i at zero. While name at i is not the null character, add one to i. The final i is the length.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: C-style strings",
+      "hook": "\"Old C strings still hide in modern code.\"",
+      "script": "Old C strings still hide in modern code. Today we look at the old way to store text. C strings are everywhere, so you must know how they work. A C string is an array of chars. The last char is a special null character. It marks the end of the text. The null character has the code zero. Keep coding, says Xecxec!",
+      "onScreen": "C-STYLE STRINGS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "What you will learn: C-style strings.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cstylestrings",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "C-style strings in one minute",
+      "hook": "\"A C string is an array of chars.\"",
+      "script": "A C string is an array of chars. The last char is a special null character. It marks the end of the text. The null character has the code zero. The cstring header has helpers. Strlen counts the letters. Strcmp compares two strings. Think of a necklace of letter beads that ends with one blank bead. The compiler counts the letters and makes room for them. Keep coding, says Xecxec!",
+      "onScreen": "C-STYLE STRINGS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "C-style strings in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cstylestrings",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Two arrays hold the same text.\"",
+      "script": "Two arrays hold the same text. Strcmp compares the letters. It returns zero when the texts are equal. So we test the answer against zero. The result is true, so cout prints one. The program prints one. A C string is a char array that ends with a null character. Strlen counts the letters. Sizeof counts all the bytes. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cstylestrings",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Comparing C strings with equals",
+      "hook": "\"Can you spot the bug in C-style strings?\"",
+      "script": "Can you spot the bug in C-style strings? Bug of the Day. Both arrays hold goa, but the test is never true. Two equals signs compare addresses, not letters. The compiler warns that comparing two arrays is deprecated. Use strcmp, or better, use std string. Two equals signs compare the addresses of the two arrays, not their letters. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Bug of the Day: Comparing C strings with equals.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cstylestrings",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you count the letters with a loop in C-style strings?\"",
+      "script": "Can you count the letters with a loop in C-style strings? Why did the C string feel empty? Its last bead was always null. Write a loop that counts the letters of a char array, without strlen. Stop at the null character. Write your answer in the comments. A C string is a char array that ends with a null character. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cstylestrings",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "cstring.cpp",
+      "source": "#include <cstring>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    char name[] = \"Goa\";\n    cout << strlen(name) << endl;\n    cout << sizeof(name) << endl;\n    cout << name << endl;\n    return 0;\n}",
+      "output": "3\n4\nGoa",
+      "lang": "cpp"
+    },
+    {
+      "file": "compare.cpp",
+      "source": "#include <cstring>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    char a[] = \"goa\";\n    char b[] = \"goa\";\n    cout << (strcmp(a, b) == 0) << endl;\n    return 0;\n}",
+      "output": "1",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Same"
+  },
+  "nextTitle": "Searching"
+}

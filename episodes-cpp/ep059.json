@@ -1,0 +1,388 @@
+{
+  "lang": "cpp",
+  "ep": 59,
+  "title": "Operator overloading",
+  "module": 6,
+  "lengthSec": 291,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "overload plus for a class",
+    "overload the output operator",
+    "keep operators natural"
+  ],
+  "youtube": {
+    "title": "C++ Operator Overloading: + and << for Your Class | C++ Programming EP 59",
+    "description": "In this episode you will overload plus for a class, overload the output operator and keep operators natural, with Xecxec the crab. 0:00 Intro · 0:15 Operator overloading · 0:48 Add two points · 1:28 What the compiler calls · 1:58 Second program · 2:58 Recap · 3:28 Bug of the Day · 4:16 Challenge · 4:36 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Operator overloading"
+      },
+      {
+        "t": "0:48",
+        "label": "Add two points"
+      },
+      {
+        "t": "1:28",
+        "label": "What the compiler calls"
+      },
+      {
+        "t": "1:58",
+        "label": "Second program"
+      },
+      {
+        "t": "2:58",
+        "label": "Recap"
+      },
+      {
+        "t": "3:28",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:16",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:36",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "operator overloading",
+      "c++ operator+",
+      "overload <<",
+      "vector class"
+    ],
+    "thumbnail": {
+      "text": "OPERATORS",
+      "visual": "big text \"OPERATORS\" in tomato on peach; Xecxec next to a plus sign wearing a class badge; thin black border and drop shadow.",
+      "pose": "Xecxec next to a plus sign wearing a class badge"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 59 · OPERATORS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we teach operators new tricks. With your own plus, you can add two points as easily as two numbers."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 33,
+      "onScreen": "\"Operator overloading\": numbered lines (1. An operator is a function with a special name; 2. Plus for a class is operator plus; 3. Output uses operator with two arrows) and an analogy card: a language: the word add means something different for numbers and for fractions",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "An operator is a function with a special name. The plus operator for your class is a function called operator plus. When you write a plus b, the compiler calls it. The output operator is a free function that takes a stream and your object. Keep operators natural. Plus should add, and not delete files.",
+      "points": [
+        "An operator is a function with a special name",
+        "Plus for a class is operator plus",
+        "Output uses operator with two arrows"
+      ],
+      "analogy": {
+        "title": "Operator overloading",
+        "body": "A language: the word add means something different for numbers and for fractions"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 48,
+      "lengthSec": 40,
+      "onScreen": "vec.cpp: operator plus adds two Vec objects",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 6] The function name is operator plus. It takes another Vec by const reference. [HL 7] It returns a new Vec with the sums of the parts. [HL 12] A is one, two. [HL 13] B is ten, twenty. [HL 14] The compiler turns this into a dot operator plus of b. [HL 15] C is eleven, twenty-two.",
+      "code": {
+        "file": "vec.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nstruct Vec {\n    int x, y;\n    Vec operator+(const Vec& other) const {\n        return {x + other.x, y + other.y};\n    }\n};\n\nint main() {\n    Vec a{1, 2};\n    Vec b{10, 20};\n    Vec c = a + b;\n    cout << c.x << \" \" << c.y << endl;\n    return 0;\n}",
+        "output": "11 22"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 88,
+      "lengthSec": 30,
+      "onScreen": "a table: the expression and the call behind it",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "The table shows what happens. A plus b becomes a call to a dot operator plus, with b. Cout arrows a becomes a call to a free function called operator with two arrows. The operators are only a nicer way to write function calls.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: the expression and the call behind it",
+        "headers": [
+          "You write",
+          "The compiler calls"
+        ],
+        "rows": [
+          [
+            "a + b",
+            "a.operator+(b)"
+          ],
+          [
+            "cout << a",
+            "operator<<(cout, a)"
+          ],
+          [
+            "a == b",
+            "a.operator==(b)"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 118,
+      "lengthSec": 40,
+      "onScreen": "print.cpp: operator<< prints a Vec with cout",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 8] The first parameter is the output stream. The second is the object. [HL 9] The function prints the parts, and returns the stream. This lets us chain more arrows. [HL 14] Now cout can print a Vec as easily as a number. The output is Point, three, four, in brackets.",
+      "code": {
+        "file": "print.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nstruct Vec {\n    int x, y;\n};\n\nostream& operator<<(ostream& out, const Vec& v) {\n    return out << \"(\" << v.x << \", \" << v.y << \")\";\n}\n\nint main() {\n    Vec a{3, 4};\n    cout << \"Point \" << a << endl;\n    return 0;\n}",
+        "output": "Point (3, 4)"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 158,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 print.cpp -o print then ./print",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as print dot cpp. Compile it with g plus plus. Then run the program. The program prints Point followed by three comma four in round brackets."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 178,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. An operator is a function with a special name. Two. Operator plus lets you add objects. Three. The output operator takes a stream and an object. Four. Keep the meaning natural. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "An operator is a function with a special name.",
+        "Operator plus lets you add objects.",
+        "The output operator takes a stream and an object.",
+        "Keep the meaning natural."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 208,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: An operator that does not exist",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We add two Vec objects, but there is no operator plus. The compiler says no match for operator plus, with the operand types. It does not know how to add two points. Write operator plus in the struct."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 248,
+      "lengthSec": 8,
+      "onScreen": "I overloaded plus so that it adds fish. Now my program is full of surplus.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I overloaded plus so that it adds fish. Now my program is full of surplus."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 256,
+      "lengthSec": 20,
+      "onScreen": "Task card: overload minus",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Add operator minus to Vec. Subtract one point from another, and print the result. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 276,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 60 · Rule of three, five and zero",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: the rule of three, five and zero. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nstruct Vec {\n    int x, y;\n};\n\nint main() {\n    Vec a{1, 2};\n    Vec b{3, 4};\n    Vec c = a + b;\n    cout << c.x << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nvec.cpp: In function 'int main()':\nvec.cpp:11:15: error: no match for 'operator+' (operand types are 'Vec' and 'Vec')\n   11 |     Vec c = a + b;\n      |             ~ ^ ~\n      |             |   |\n      |             Vec Vec",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nstruct Vec {\n    int x, y;\n    Vec operator+(const Vec& other) const {\n        return {x + other.x, y + other.y};\n    }\n};\n\nint main() {\n    Vec a{1, 2};\n    Vec b{3, 4};\n    Vec c = a + b;\n    cout << c.x << endl;\n    return 0;\n}",
+    "why": "The compiler does not know how to add two Vec objects, until you write operator plus for them."
+  },
+  "pun": "\"I overloaded plus so that it adds fish. Now my program is full of surplus.\"",
+  "challenge": "Add operator minus to Vec. Subtract one point from another, and print the result.",
+  "challengeAnswer": "Write Vec operator minus with a const reference. Return x minus other x, and y minus other y.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Operator overloading",
+      "hook": "\"Teach plus to add your own objects.\"",
+      "script": "Teach plus to add your own objects. Today we teach operators new tricks. With your own plus, you can add two points as easily as two numbers. An operator is a function with a special name. The plus operator for your class is a function called operator plus. When you write a plus b, the compiler calls it. Keep coding, says Xecxec!",
+      "onScreen": "OPERATOR OVERLOADING",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "What you will learn: Operator overloading.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "operatoroverloading",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Operator overloading in one minute",
+      "hook": "\"An operator is a function with a special name.\"",
+      "script": "An operator is a function with a special name. The plus operator for your class is a function called operator plus. When you write a plus b, the compiler calls it. The output operator is a free function that takes a stream and your object. Keep operators natural. Plus should add, and not delete files. The function name is operator plus. Keep coding, says Xecxec!",
+      "onScreen": "OPERATOR OVERLOADING",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Operator overloading in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "operatoroverloading",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The first parameter is the output stream.\"",
+      "script": "The first parameter is the output stream. The second is the object. The function prints the parts, and returns the stream. This lets us chain more arrows. Now cout can print a Vec as easily as a number. The output is Point, three, four, in brackets. The program prints Point followed by three comma four in round brackets. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "operatoroverloading",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: An operator that does not exist",
+      "hook": "\"Can you spot the bug in operator overloading?\"",
+      "script": "Can you spot the bug in operator overloading? Bug of the Day. We add two Vec objects, but there is no operator plus. The compiler says no match for operator plus, with the operand types. It does not know how to add two points. Write operator plus in the struct. The compiler does not know how to add two Vec objects, until you write operator plus for them. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 40,
+      "caption": "Bug of the Day: An operator that does not exist.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "operatoroverloading",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you overload minus in operator overloading?\"",
+      "script": "Can you overload minus in operator overloading? I overloaded plus so that it adds fish. Now my program is full of surplus. Add operator minus to Vec. Subtract one point from another, and print the result. Write your answer in the comments. An operator is a function with a special name. Operator plus lets you add objects. The output operator takes a stream and an object. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "operatoroverloading",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "vec.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nstruct Vec {\n    int x, y;\n    Vec operator+(const Vec& other) const {\n        return {x + other.x, y + other.y};\n    }\n};\n\nint main() {\n    Vec a{1, 2};\n    Vec b{10, 20};\n    Vec c = a + b;\n    cout << c.x << \" \" << c.y << endl;\n    return 0;\n}",
+      "output": "11 22",
+      "lang": "cpp"
+    },
+    {
+      "file": "print.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nstruct Vec {\n    int x, y;\n};\n\nostream& operator<<(ostream& out, const Vec& v) {\n    return out << \"(\" << v.x << \", \" << v.y << \")\";\n}\n\nint main() {\n    Vec a{3, 4};\n    cout << \"Point \" << a << endl;\n    return 0;\n}",
+      "output": "Point (3, 4)",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "4"
+  },
+  "nextTitle": "Rule of three, five and zero"
+}

@@ -1,0 +1,396 @@
+{
+  "lang": "cpp",
+  "ep": 63,
+  "title": "protected and access control",
+  "module": 7,
+  "lengthSec": 293,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "use the protected label",
+    "read the access table",
+    "choose the right label"
+  ],
+  "youtube": {
+    "title": "C++ public, protected and private Explained | C++ Programming EP 63",
+    "description": "In this episode you will use the protected label, read the access table and choose the right label, with Xecxec the crab. 0:00 Intro · 0:15 protected and access control · 0:50 A protected member · 1:30 Who can reach what · 2:00 Second program · 3:00 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:38 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "protected and access control"
+      },
+      {
+        "t": "0:50",
+        "label": "A protected member"
+      },
+      {
+        "t": "1:30",
+        "label": "Who can reach what"
+      },
+      {
+        "t": "2:00",
+        "label": "Second program"
+      },
+      {
+        "t": "3:00",
+        "label": "Recap"
+      },
+      {
+        "t": "3:30",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:18",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:38",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "protected c++",
+      "access specifiers",
+      "public private protected",
+      "inheritance access"
+    ],
+    "thumbnail": {
+      "text": "PROTECTED",
+      "visual": "big text \"PROTECTED\" in tomato on pastel blue; Xecxec next to three doors labelled public, protected and private; thin black border and drop shadow.",
+      "pose": "Xecxec next to three doors labelled public, protected and private"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 63 · PROTECTED",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet the third access label. It sits between public and private, and it is made for inheritance."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 35,
+      "onScreen": "\"protected and access control\": numbered lines (1. Public is open to everyone; 2. Protected is open to the class and its children; 3. Private is open to the class only) and an analogy card: a family house: the street sees the gate, the family sees the hall, only you see your room",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Public members are open to everyone. Private members are open to the class only. Protected members are open to the class and to its derived classes, but not to the outside. Choose the strictest label that works. Think of a family house. The street sees the gate. The family sees the hall. Only you see your own room.",
+      "points": [
+        "Public is open to everyone",
+        "Protected is open to the class and its children",
+        "Private is open to the class only"
+      ],
+      "analogy": {
+        "title": "protected and access control",
+        "body": "A family house: the street sees the gate, the family sees the hall, only you see your room"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 50,
+      "lengthSec": 40,
+      "onScreen": "protect.cpp: the derived class reads a protected member",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] Everything below this label is open to derived classes. [HL 6] The balance is protected. [HL 9] Savings inherits from Account. [HL 11] Savings can change the protected balance. Interest adds ten percent. [HL 18] Main reads it through a public function. The result is one hundred ten.",
+      "code": {
+        "file": "protect.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Account {\nprotected:\n    double balance_ = 100;\n};\n\nclass Savings : public Account {\npublic:\n    void add_interest() { balance_ *= 1.1; }\n    double balance() const { return balance_; }\n};\n\nint main() {\n    Savings s;\n    s.add_interest();\n    cout << s.balance() << endl;\n    return 0;\n}",
+        "output": "110"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 90,
+      "lengthSec": 30,
+      "onScreen": "a table of the three labels and who can reach them",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Read the table row by row. Public is open to all. Protected is open to the class and its children, but closed to outside code. Private is open to the class only.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table of the three labels and who can reach them",
+        "headers": [
+          "Label",
+          "The class",
+          "A derived class",
+          "Outside code"
+        ],
+        "rows": [
+          [
+            "public",
+            "yes",
+            "yes",
+            "yes"
+          ],
+          [
+            "protected",
+            "yes",
+            "yes",
+            "no"
+          ],
+          [
+            "private",
+            "yes",
+            "no",
+            "no"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 40,
+      "onScreen": "levels.cpp: one class with public, protected and private data",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 6] Open is public. Everyone can read it. [HL 9] Family is protected. [HL 12] Secret is private. [HL 15] A public getter lets others read the secret. [HL 20] The child adds all three parts. It reads family directly, and secret through the getter. The sum is six. [HL 26] Main may read the public part.",
+      "code": {
+        "file": "levels.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Base {\npublic:\n    int open_ = 1;\n\nprotected:\n    int family_ = 2;\n\nprivate:\n    int secret_ = 3;\n\npublic:\n    int secret() const { return secret_; }\n};\n\nclass Child : public Base {\npublic:\n    int sum() const { return open_ + family_ + secret(); }\n};\n\nint main() {\n    Child c;\n    cout << c.sum() << endl;\n    cout << c.open_ << endl;\n    return 0;\n}",
+        "output": "6\n1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 160,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 levels.cpp -o levels then ./levels",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as levels dot cpp. Compile it with g plus plus. Then run the program. The program prints six, and then one."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 180,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Public is open to everyone. Two. Protected is open to the class and its children. Three. Private is open to the class only. Four. Choose the strictest label that works. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Public is open to everyone.",
+        "Protected is open to the class and its children.",
+        "Private is open to the class only.",
+        "Choose the strictest label that works."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 210,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Reaching protected data from outside",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Main reads a protected member. The compiler says the balance is protected within this context. Protected is open to children, not to outside code. Add a public getter."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 250,
+      "lengthSec": 8,
+      "onScreen": "Protected is the middle child of access labels. It always gets along with the family.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Protected is the middle child of access labels. It always gets along with the family."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 258,
+      "lengthSec": 20,
+      "onScreen": "Task card: pick the right label",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a class with a name, an id and a secret code. Decide which label each one needs, and explain in a comment. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 278,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 64 · Virtual functions",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: virtual functions. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nclass Account {\nprotected:\n    double balance_ = 100;\n};\n\nint main() {\n    Account a;\n    cout << a.balance_ << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nprotect.cpp: In function 'int main()':\nprotect.cpp:11:15: error: 'double Account::balance_' is protected within this context\n   11 |     cout << a.balance_ << endl;\n      |               ^~~~~~~~\nprotect.cpp:6:12: note: declared protected here\n    6 |     double balance_ = 100;",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nclass Account {\nprotected:\n    double balance_ = 100;\n\npublic:\n    double balance() const { return balance_; }\n};\n\nint main() {\n    Account a;\n    cout << a.balance() << endl;\n    return 0;\n}",
+    "why": "Protected members are for the class and its children. Main is outside code, so it cannot reach them."
+  },
+  "pun": "\"Protected is the middle child of access labels. It always gets along with the family.\"",
+  "challenge": "Write a class with a name, an id and a secret code. Decide which label each one needs, and explain in a comment.",
+  "challengeAnswer": "The name can be public through a getter. The id can be protected for derived classes. The secret code stays private.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: protected and access control",
+      "hook": "\"Protected is for the family only.\"",
+      "script": "Protected is for the family only. Today we meet the third access label. It sits between public and private, and it is made for inheritance. Public members are open to everyone. Private members are open to the class only. Protected members are open to the class and to its derived classes, but not to the outside. Choose the strictest label that works. Keep coding, says Xecxec!",
+      "onScreen": "PROTECTED AND ACCESS CONTROL",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: protected and access control.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "protectedandaccesscontrol",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "protected and access control in one minute",
+      "hook": "\"Public members are open to everyone.\"",
+      "script": "Public members are open to everyone. Private members are open to the class only. Protected members are open to the class and to its derived classes, but not to the outside. Choose the strictest label that works. Think of a family house. The street sees the gate. The family sees the hall. Only you see your own room. Keep coding, says Xecxec!",
+      "onScreen": "PROTECTED AND ACCESS CONTROL",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "protected and access control in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "protectedandaccesscontrol",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Open is public.\"",
+      "script": "Open is public. Everyone can read it. Family is protected. Secret is private. A public getter lets others read the secret. The child adds all three parts. It reads family directly, and secret through the getter. The sum is six. Main may read the public part. The program prints six, and then one. Public is open to everyone. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "protectedandaccesscontrol",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Reaching protected data from outside",
+      "hook": "\"Can you spot the bug in protected and access control?\"",
+      "script": "Can you spot the bug in protected and access control? Bug of the Day. Main reads a protected member. The compiler says the balance is protected within this context. Protected is open to children, not to outside code. Add a public getter. Protected members are for the class and its children. Main is outside code, so it cannot reach them. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bug of the Day: Reaching protected data from outside.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "protectedandaccesscontrol",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you pick the right label in protected and access control?\"",
+      "script": "Can you pick the right label in protected and access control? Protected is the middle child of access labels. It always gets along with the family. Write a class with a name, an id and a secret code. Decide which label each one needs, and explain in a comment. Write your answer in the comments. Public is open to everyone. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "protectedandaccesscontrol",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "protect.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Account {\nprotected:\n    double balance_ = 100;\n};\n\nclass Savings : public Account {\npublic:\n    void add_interest() { balance_ *= 1.1; }\n    double balance() const { return balance_; }\n};\n\nint main() {\n    Savings s;\n    s.add_interest();\n    cout << s.balance() << endl;\n    return 0;\n}",
+      "output": "110",
+      "lang": "cpp"
+    },
+    {
+      "file": "levels.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Base {\npublic:\n    int open_ = 1;\n\nprotected:\n    int family_ = 2;\n\nprivate:\n    int secret_ = 3;\n\npublic:\n    int secret() const { return secret_; }\n};\n\nclass Child : public Base {\npublic:\n    int sum() const { return open_ + family_ + secret(); }\n};\n\nint main() {\n    Child c;\n    cout << c.sum() << endl;\n    cout << c.open_ << endl;\n    return 0;\n}",
+      "output": "6\n1",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "100"
+  },
+  "nextTitle": "Virtual functions"
+}

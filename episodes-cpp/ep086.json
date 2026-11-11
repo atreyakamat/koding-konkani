@@ -1,0 +1,423 @@
+{
+  "lang": "cpp",
+  "ep": 86,
+  "title": "Binary tree",
+  "module": 10,
+  "lengthSec": 296,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "insert into a binary search tree",
+    "print a tree in sorted order",
+    "search a tree and find its height"
+  ],
+  "youtube": {
+    "title": "C++ Binary Search Tree: Insert, Search, Traverse | C++ Programming EP 86",
+    "description": "In this episode you will insert into a binary search tree, print a tree in sorted order and search a tree and find its height, with Xecxec the crab. 0:00 Intro · 0:15 Binary tree · 0:45 Insert and print in order · 1:32 The tree · 2:02 Second program · 3:03 Recap · 3:33 Bug of the Day · 4:21 Challenge · 4:41 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Binary tree"
+      },
+      {
+        "t": "0:45",
+        "label": "Insert and print in order"
+      },
+      {
+        "t": "1:32",
+        "label": "The tree"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:03",
+        "label": "Recap"
+      },
+      {
+        "t": "3:33",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:21",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:41",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ binary tree",
+      "binary search tree",
+      "recursion",
+      "inorder traversal",
+      "data structures"
+    ],
+    "thumbnail": {
+      "text": "BINARY TREE",
+      "visual": "big text \"BINARY TREE\" in tomato on mint; Xecxec next to an upside down tree with numbers on its branches; thin black border and drop shadow.",
+      "pose": "Xecxec next to an upside down tree with numbers on its branches"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 86 · BINARY TREE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we build a tree. Each node has two children. Small numbers go left, and big numbers go right."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"Binary tree\": numbered lines (1. Each node has a left and a right child; 2. Smaller keys go left; 3. Inorder traversal prints sorted keys) and an analogy card: a family tree where small numbers go left and big numbers go right",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A binary search tree keeps its keys in order. For each node, every key in the left side is smaller, and every key in the right side is bigger. Recursion fits trees well. To insert, compare the key, then go left or right, and repeat.",
+      "points": [
+        "Each node has a left and a right child",
+        "Smaller keys go left",
+        "Inorder traversal prints sorted keys"
+      ],
+      "analogy": {
+        "title": "Binary tree",
+        "body": "A family tree where small numbers go left and big numbers go right"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 47,
+      "onScreen": "tree.cpp: five keys are inserted and printed in sorted order",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 10] Insert returns the root of the tree after the change. [HL 11] An empty spot is the base case. We make a new node there. [HL 14] A smaller key goes into the left side. [HL 16] A bigger key goes into the right side. [HL 42] We insert five, three, eight, one and four. [HL 26] Inorder visits the left side first. [HL 27] Then it prints the node. [HL 28] Then it visits the right side. The output is one three four five eight. [HL 35] Destroy deletes the children first, and then the node.",
+      "code": {
+        "file": "tree.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nstruct Node {\n    int key;\n    Node* left;\n    Node* right;\n};\n\nNode* insert(Node* root, int key) {\n    if (root == nullptr) {\n        return new Node{key, nullptr, nullptr};\n    }\n    if (key < root->key) {\n        root->left = insert(root->left, key);\n    } else {\n        root->right = insert(root->right, key);\n    }\n    return root;\n}\n\nvoid inorder(const Node* node) {\n    if (node == nullptr) {\n        return;\n    }\n    inorder(node->left);\n    cout << node->key << \" \";\n    inorder(node->right);\n}\n\nvoid destroy(Node* node) {\n    if (node == nullptr) {\n        return;\n    }\n    destroy(node->left);\n    destroy(node->right);\n    delete node;\n}\n\nint main() {\n    Node* root = nullptr;\n    for (int k : {5, 3, 8, 1, 4}) {\n        root = insert(root, k);\n    }\n    inorder(root);\n    cout << endl;\n    destroy(root);\n    return 0;\n}",
+        "output": "1 3 4 5 8"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 92,
+      "lengthSec": 30,
+      "onScreen": "a tree with five, three, eight, one and four",
+      "animation": "Nodes pop in one by one; edges draw on as the narrator mentions them",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Five is the root. Three is smaller, so it goes left. Eight is bigger, so it goes right. One goes left of three, and four goes right of three.",
+      "diagram": {
+        "kind": "graph",
+        "layout": "tree",
+        "caption": "a tree with five, three, eight, one and four",
+        "nodes": [
+          {
+            "id": "n5",
+            "label": "5",
+            "sub": "root"
+          },
+          {
+            "id": "n3",
+            "label": "3",
+            "sub": "left of 5"
+          },
+          {
+            "id": "n8",
+            "label": "8",
+            "sub": "right of 5"
+          },
+          {
+            "id": "n1",
+            "label": "1",
+            "sub": "left of 3"
+          },
+          {
+            "id": "n4",
+            "label": "4",
+            "sub": "right of 3"
+          }
+        ],
+        "edges": [
+          {
+            "from": "n5",
+            "to": "n3",
+            "label": "left"
+          },
+          {
+            "from": "n5",
+            "to": "n8",
+            "label": "right"
+          },
+          {
+            "from": "n3",
+            "to": "n1",
+            "label": "left"
+          },
+          {
+            "from": "n3",
+            "to": "n4",
+            "label": "right"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 122,
+      "lengthSec": 41,
+      "onScreen": "search.cpp: the tree is searched, and its height is measured",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 23] Contains follows one path only. [HL 25] An empty spot means the key is not in the tree. [HL 27] A match means the key is in the tree. [HL 30] Otherwise it goes left or right, as insert did. Four is in the tree, so we get true. Seven is not, so we get false. [HL 33] Height is one plus the height of the taller child. [HL 37] Max picks the taller side. This tree has height three.",
+      "code": {
+        "file": "search.cpp",
+        "source": "#include <algorithm>\n#include <iostream>\nusing namespace std;\n\nstruct Node {\n    int key;\n    Node* left;\n    Node* right;\n};\n\nNode* insert(Node* root, int key) {\n    if (root == nullptr) {\n        return new Node{key, nullptr, nullptr};\n    }\n    if (key < root->key) {\n        root->left = insert(root->left, key);\n    } else {\n        root->right = insert(root->right, key);\n    }\n    return root;\n}\n\nbool contains(const Node* node, int key) {\n    if (node == nullptr) {\n        return false;\n    }\n    if (key == node->key) {\n        return true;\n    }\n    return key < node->key ? contains(node->left, key) : contains(node->right, key);\n}\n\nint height(const Node* node) {\n    if (node == nullptr) {\n        return 0;\n    }\n    return 1 + max(height(node->left), height(node->right));\n}\n\nvoid destroy(Node* node) {\n    if (node == nullptr) {\n        return;\n    }\n    destroy(node->left);\n    destroy(node->right);\n    delete node;\n}\n\nint main() {\n    Node* root = nullptr;\n    for (int k : {5, 3, 8, 1, 4}) {\n        root = insert(root, k);\n    }\n    cout << boolalpha << contains(root, 4) << endl;\n    cout << contains(root, 7) << endl;\n    cout << height(root) << endl;\n    destroy(root);\n    return 0;\n}",
+        "output": "true\nfalse\n3"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 163,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 search.cpp -o search then ./search",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as search dot cpp. Compile it with g plus plus. Then run the program. The program prints one three four five eight, then true, false, and three."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 183,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A binary search tree keeps keys in order. Two. Smaller keys go left, and bigger keys go right. Three. Inorder traversal prints the keys in sorted order. Four. Recursion fits trees well. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A binary search tree keeps keys in order.",
+        "Smaller keys go left, and bigger keys go right.",
+        "Inorder traversal prints the keys in sorted order.",
+        "Recursion fits trees well."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 213,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Printing before the left side",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The keys come out as five three one four, which is not sorted. The code prints the node before the left side. Visit left first, then print, then visit right."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 253,
+      "lengthSec": 8,
+      "onScreen": "Why did the tree win the race? It had strong roots, and it never lost its balance.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the tree win the race? It had strong roots, and it never lost its balance."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 261,
+      "lengthSec": 20,
+      "onScreen": "Task card: find the smallest key",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a function that returns the smallest key in a binary search tree. Hint: keep going left. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 281,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 87 · Threads and mutex",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: threads and mutex. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nstruct Node {\n    int key;\n    Node* left;\n    Node* right;\n};\n\nvoid show(const Node* node) {\n    if (node == nullptr) {\n        return;\n    }\n    cout << node->key << \" \";\n    show(node->left);\n    show(node->right);\n}\n\nint main() {\n    Node a{1, nullptr, nullptr};\n    Node c{4, nullptr, nullptr};\n    Node b{3, &a, &c};\n    Node root{5, &b, nullptr};\n    show(&root);\n    cout << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\n5 3 1 4",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nstruct Node {\n    int key;\n    Node* left;\n    Node* right;\n};\n\nvoid show(const Node* node) {\n    if (node == nullptr) {\n        return;\n    }\n    show(node->left);\n    cout << node->key << \" \";\n    show(node->right);\n}\n\nint main() {\n    Node a{1, nullptr, nullptr};\n    Node c{4, nullptr, nullptr};\n    Node b{3, &a, &c};\n    Node root{5, &b, nullptr};\n    show(&root);\n    cout << endl;\n    return 0;\n}",
+    "why": "The order of the three lines decides the traversal. Left, node, right gives sorted order. Node first gives preorder, which is not sorted."
+  },
+  "pun": "\"Why did the tree win the race? It had strong roots, and it never lost its balance.\"",
+  "challenge": "Write a function that returns the smallest key in a binary search tree. Hint: keep going left.",
+  "challengeAnswer": "Start at the root. While the left child is not null, move to the left child. Return that key.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Binary tree",
+      "hook": "\"Print numbers in sorted order with no sort call.\"",
+      "script": "Print numbers in sorted order with no sort call. Today we build a tree. Each node has two children. Small numbers go left, and big numbers go right. A binary search tree keeps its keys in order. For each node, every key in the left side is smaller, and every key in the right side is bigger. Recursion fits trees well. Keep coding, says Xecxec!",
+      "onScreen": "BINARY TREE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: Binary tree.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "binarytree",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Binary tree in one minute",
+      "hook": "\"A binary search tree keeps its keys in order.\"",
+      "script": "A binary search tree keeps its keys in order. For each node, every key in the left side is smaller, and every key in the right side is bigger. Recursion fits trees well. To insert, compare the key, then go left or right, and repeat. Insert returns the root of the tree after the change. An empty spot is the base case. Keep coding, says Xecxec!",
+      "onScreen": "BINARY TREE",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Binary tree in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "binarytree",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Contains follows one path only.\"",
+      "script": "Contains follows one path only. An empty spot means the key is not in the tree. A match means the key is in the tree. Otherwise it goes left or right, as insert did. Four is in the tree, so we get true. Seven is not, so we get false. Height is one plus the height of the taller child. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "binarytree",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Printing before the left side",
+      "hook": "\"Can you spot the bug in binary tree?\"",
+      "script": "Can you spot the bug in binary tree? Bug of the Day. The keys come out as five three one four, which is not sorted. The code prints the node before the left side. Visit left first, then print, then visit right. The order of the three lines decides the traversal. Left, node, right gives sorted order. Node first gives preorder, which is not sorted. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Bug of the Day: Printing before the left side.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "binarytree",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you find the smallest key in binary tree?\"",
+      "script": "Can you find the smallest key in binary tree? Why did the tree win the race? It had strong roots, and it never lost its balance. Write a function that returns the smallest key in a binary search tree. Hint: keep going left. Write your answer in the comments. A binary search tree keeps keys in order. Smaller keys go left, and bigger keys go right. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "binarytree",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "tree.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nstruct Node {\n    int key;\n    Node* left;\n    Node* right;\n};\n\nNode* insert(Node* root, int key) {\n    if (root == nullptr) {\n        return new Node{key, nullptr, nullptr};\n    }\n    if (key < root->key) {\n        root->left = insert(root->left, key);\n    } else {\n        root->right = insert(root->right, key);\n    }\n    return root;\n}\n\nvoid inorder(const Node* node) {\n    if (node == nullptr) {\n        return;\n    }\n    inorder(node->left);\n    cout << node->key << \" \";\n    inorder(node->right);\n}\n\nvoid destroy(Node* node) {\n    if (node == nullptr) {\n        return;\n    }\n    destroy(node->left);\n    destroy(node->right);\n    delete node;\n}\n\nint main() {\n    Node* root = nullptr;\n    for (int k : {5, 3, 8, 1, 4}) {\n        root = insert(root, k);\n    }\n    inorder(root);\n    cout << endl;\n    destroy(root);\n    return 0;\n}",
+      "output": "1 3 4 5 8",
+      "lang": "cpp"
+    },
+    {
+      "file": "search.cpp",
+      "source": "#include <algorithm>\n#include <iostream>\nusing namespace std;\n\nstruct Node {\n    int key;\n    Node* left;\n    Node* right;\n};\n\nNode* insert(Node* root, int key) {\n    if (root == nullptr) {\n        return new Node{key, nullptr, nullptr};\n    }\n    if (key < root->key) {\n        root->left = insert(root->left, key);\n    } else {\n        root->right = insert(root->right, key);\n    }\n    return root;\n}\n\nbool contains(const Node* node, int key) {\n    if (node == nullptr) {\n        return false;\n    }\n    if (key == node->key) {\n        return true;\n    }\n    return key < node->key ? contains(node->left, key) : contains(node->right, key);\n}\n\nint height(const Node* node) {\n    if (node == nullptr) {\n        return 0;\n    }\n    return 1 + max(height(node->left), height(node->right));\n}\n\nvoid destroy(Node* node) {\n    if (node == nullptr) {\n        return;\n    }\n    destroy(node->left);\n    destroy(node->right);\n    delete node;\n}\n\nint main() {\n    Node* root = nullptr;\n    for (int k : {5, 3, 8, 1, 4}) {\n        root = insert(root, k);\n    }\n    cout << boolalpha << contains(root, 4) << endl;\n    cout << contains(root, 7) << endl;\n    cout << height(root) << endl;\n    destroy(root);\n    return 0;\n}",
+      "output": "true\nfalse\n3",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1 3 4 5"
+  },
+  "nextTitle": "Threads and mutex"
+}

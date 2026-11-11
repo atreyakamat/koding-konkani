@@ -1,0 +1,384 @@
+{
+  "lang": "cpp",
+  "ep": 72,
+  "title": "std::map",
+  "module": 8,
+  "lengthSec": 294,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "store key and value pairs",
+    "read and write with square brackets",
+    "loop over a map in sorted order"
+  ],
+  "youtube": {
+    "title": "C++ std::map: Key and Value | C++ Programming EP 72",
+    "description": "In this episode you will store key and value pairs, read and write with square brackets and loop over a map in sorted order, with Xecxec the crab. 0:00 Intro · 0:15 std::map · 0:51 A phone book · 1:31 Sorted by key · 2:01 Second program · 3:01 Recap · 3:31 Bug of the Day · 4:19 Challenge · 4:39 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "std::map"
+      },
+      {
+        "t": "0:51",
+        "label": "A phone book"
+      },
+      {
+        "t": "1:31",
+        "label": "Sorted by key"
+      },
+      {
+        "t": "2:01",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:31",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:19",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:39",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::map",
+      "c++ map",
+      "key value",
+      "associative container"
+    ],
+    "thumbnail": {
+      "text": "STD::MAP",
+      "visual": "big text \"STD::MAP\" in tomato on lilac; Xecxec next to a phone book with names and numbers; thin black border and drop shadow.",
+      "pose": "Xecxec next to a phone book with names and numbers"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 72 · STD::MAP",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we look things up by name. A map stores keys and values, and keeps the keys in sorted order."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 36,
+      "onScreen": "\"std::map\": numbered lines (1. A map stores key and value pairs; 2. Keys are unique and sorted; 3. Square brackets create a missing key) and an analogy card: a phone book: look up a name, and get a number",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A map stores pairs. Each pair has a key and a value. Keys are unique, and the map keeps them sorted. You use the key to find the value. Square brackets read a value. But beware. If the key is missing, square brackets create it. Think of a phone book. You look up a name, and you get a number.",
+      "points": [
+        "A map stores key and value pairs",
+        "Keys are unique and sorted",
+        "Square brackets create a missing key"
+      ],
+      "analogy": {
+        "title": "std::map",
+        "body": "A phone book: look up a name, and get a number"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 51,
+      "lengthSec": 40,
+      "onScreen": "phone.cpp: a map from names to numbers",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 7] The map has string keys and int values. [HL 8] Square brackets with a key store a value. [HL 9] A second key is added. [HL 10] Using the same key again replaces the value. [HL 11] Asha now has ninety-five. [HL 12] The size is two, because keys are unique.",
+      "code": {
+        "file": "phone.cpp",
+        "source": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> book;\n    book[\"Asha\"] = 91;\n    book[\"Ravi\"] = 78;\n    book[\"Asha\"] = 95;\n    cout << book[\"Asha\"] << endl;\n    cout << book.size() << endl;\n    return 0;\n}",
+        "output": "95\n2"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 91,
+      "lengthSec": 30,
+      "onScreen": "a table: the map content in key order",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "The map keeps the keys in sorted order. Asha comes before Ravi. Each key appears once. The value of Asha was replaced, so the old ninety-one is gone.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: the map content in key order",
+        "headers": [
+          "Key",
+          "Value"
+        ],
+        "rows": [
+          [
+            "Asha",
+            "95"
+          ],
+          [
+            "Ravi",
+            "78"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 121,
+      "lengthSec": 40,
+      "onScreen": "walk.cpp: a range-based for gives each key and value",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 7] We start the map with a list of pairs. [HL 8] The loop unpacks each pair into a name and marks. The order is sorted by key. Asha, Meera, then Ravi. [HL 11] Find looks up a key without creating it. [HL 12] If it equals end, the key is missing. [HL 13] Otherwise, second is the value.",
+      "code": {
+        "file": "walk.cpp",
+        "source": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> book = {{\"Ravi\", 78}, {\"Asha\", 95}, {\"Meera\", 88}};\n    for (const auto& [name, marks] : book) {\n        cout << name << \" \" << marks << endl;\n    }\n    auto it = book.find(\"Meera\");\n    if (it != book.end()) {\n        cout << \"Found \" << it->second << endl;\n    }\n    return 0;\n}",
+        "output": "Asha 95\nMeera 88\nRavi 78\nFound 88"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 161,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 walk.cpp -o walk then ./walk",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as walk dot cpp. Compile it with g plus plus. Then run the program. The program prints Asha, Meera and Ravi with their marks, and then Found eighty-eight."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 181,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A map stores key and value pairs. Two. Keys are unique and sorted. Three. Square brackets read or create a key. Four. Find looks up a key without creating it. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A map stores key and value pairs.",
+        "Keys are unique and sorted.",
+        "Square brackets read or create a key.",
+        "Find looks up a key without creating it."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 211,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A lookup that creates a key",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We only wanted to check for Ravi. But the size is two, not one. Square brackets created the key Ravi, with the value zero. Use count or find to check without changing the map."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 251,
+      "lengthSec": 8,
+      "onScreen": "My map was lost. It had all the keys, but no values.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My map was lost. It had all the keys, but no values."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 259,
+      "lengthSec": 20,
+      "onScreen": "Task card: count the marks",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Make a map from names to marks. Add three students. Print the one with the highest marks. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 279,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 73 · unordered_map",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: unordered map. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> book;\n    book[\"Asha\"] = 91;\n    if (book[\"Ravi\"] == 0) {\n        cout << \"No Ravi\" << endl;\n    }\n    cout << book.size() << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\nNo Ravi\n2",
+    "fixed": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> book;\n    book[\"Asha\"] = 91;\n    if (book.count(\"Ravi\") == 0) {\n        cout << \"No Ravi\" << endl;\n    }\n    cout << book.size() << endl;\n    return 0;\n}",
+    "why": "Square brackets create a missing key with a default value. So a simple look-up grows the map. Use find or count to check."
+  },
+  "pun": "\"My map was lost. It had all the keys, but no values.\"",
+  "challenge": "Make a map from names to marks. Add three students. Print the one with the highest marks.",
+  "challengeAnswer": "Loop over the map. Keep the best name and best marks. If a student has more marks than the best, replace both.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: std::map",
+      "hook": "\"Look up a value by its name.\"",
+      "script": "Look up a value by its name. Today we look things up by name. A map stores keys and values, and keeps the keys in sorted order. A map stores pairs. Each pair has a key and a value. Keys are unique, and the map keeps them sorted. You use the key to find the value. Square brackets read a value. Keep coding, says Xecxec!",
+      "onScreen": "STD::MAP",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: std::map.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdmap",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "std::map in one minute",
+      "hook": "\"A map stores pairs.\"",
+      "script": "A map stores pairs. Each pair has a key and a value. Keys are unique, and the map keeps them sorted. You use the key to find the value. Square brackets read a value. But beware. If the key is missing, square brackets create it. Think of a phone book. You look up a name, and you get a number. Keep coding, says Xecxec!",
+      "onScreen": "STD::MAP",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "std::map in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdmap",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"We start the map with a list of pairs.\"",
+      "script": "We start the map with a list of pairs. The loop unpacks each pair into a name and marks. The order is sorted by key. Asha, Meera, then Ravi. Find looks up a key without creating it. If it equals end, the key is missing. Otherwise, second is the value. The program prints Asha, Meera and Ravi with their marks, and then Found eighty-eight. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 38,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdmap",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A lookup that creates a key",
+      "hook": "\"Can you spot the bug in std map?\"",
+      "script": "Can you spot the bug in std map? Bug of the Day. We only wanted to check for Ravi. But the size is two, not one. Square brackets created the key Ravi, with the value zero. Use count or find to check without changing the map. Square brackets create a missing key with a default value. So a simple look-up grows the map. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Bug of the Day: A lookup that creates a key.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdmap",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you count the marks in std map?\"",
+      "script": "Can you count the marks in std map? My map was lost. It had all the keys, but no values. Make a map from names to marks. Add three students. Print the one with the highest marks. Write your answer in the comments. A map stores key and value pairs. Keys are unique and sorted. Square brackets read or create a key. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdmap",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "phone.cpp",
+      "source": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> book;\n    book[\"Asha\"] = 91;\n    book[\"Ravi\"] = 78;\n    book[\"Asha\"] = 95;\n    cout << book[\"Asha\"] << endl;\n    cout << book.size() << endl;\n    return 0;\n}",
+      "output": "95\n2",
+      "lang": "cpp"
+    },
+    {
+      "file": "walk.cpp",
+      "source": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> book = {{\"Ravi\", 78}, {\"Asha\", 95}, {\"Meera\", 88}};\n    for (const auto& [name, marks] : book) {\n        cout << name << \" \" << marks << endl;\n    }\n    auto it = book.find(\"Meera\");\n    if (it != book.end()) {\n        cout << \"Found \" << it->second << endl;\n    }\n    return 0;\n}",
+      "output": "Asha 95\nMeera 88\nRavi 78\nFound 88",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "No Ravi\n1"
+  },
+  "nextTitle": "unordered_map"
+}

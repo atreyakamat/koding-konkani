@@ -1,0 +1,387 @@
+{
+  "lang": "cpp",
+  "ep": 19,
+  "title": "break and continue",
+  "module": 2,
+  "lengthSec": 290,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "leave a loop with break",
+    "skip a round with continue",
+    "tell break and continue apart"
+  ],
+  "youtube": {
+    "title": "C++ break and continue in Loops | C++ Programming EP 19",
+    "description": "In this episode you will leave a loop with break, skip a round with continue and tell break and continue apart, with Xecxec the crab. 0:00 Intro · 0:15 break and continue · 0:47 Stop at the first match · 1:27 Break and continue · 1:57 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "break and continue"
+      },
+      {
+        "t": "0:47",
+        "label": "Stop at the first match"
+      },
+      {
+        "t": "1:27",
+        "label": "Break and continue"
+      },
+      {
+        "t": "1:57",
+        "label": "Second program"
+      },
+      {
+        "t": "2:57",
+        "label": "Recap"
+      },
+      {
+        "t": "3:27",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:15",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:35",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "break continue c++",
+      "loop control",
+      "exit a loop",
+      "skip iteration"
+    ],
+    "thumbnail": {
+      "text": "BREAK / CONTINUE",
+      "visual": "big text \"BREAK / CONTINUE\" in tomato on cream; Xecxec next to a stop sign and a skip sign; thin black border and drop shadow.",
+      "pose": "Xecxec next to a stop sign and a skip sign"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 19 · BREAK / CONTINUE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we take control of loops. Break stops the loop. Continue skips one round."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 32,
+      "onScreen": "\"break and continue\": numbered lines (1. Break leaves the loop at once; 2. Continue skips to the next round; 3. Both work in while and for loops) and an analogy card: a school bus: break means the bus stops for good, continue means skip one stop",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Break leaves the loop at once. The program continues after the loop. Continue skips the rest of this round, and goes to the next round. Both keywords work in while loops and for loops. Think of a school bus. Break means the bus stops for good. Continue means the bus skips one stop.",
+      "points": [
+        "Break leaves the loop at once",
+        "Continue skips to the next round",
+        "Both work in while and for loops"
+      ],
+      "analogy": {
+        "title": "break and continue",
+        "body": "A school bus: break means the bus stops for good, continue means skip one stop"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 47,
+      "lengthSec": 40,
+      "onScreen": "stopat.cpp: break leaves the loop at the first multiple of seven",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] The loop counts from ten to thirty. [HL 6] The test checks if i divides evenly by seven. [HL 7] At fourteen, the test is true. The program prints Found fourteen. [HL 8] Break leaves the loop at once. Fifteen and the rest never run. [HL 11] The program continues after the loop and prints Done.",
+      "code": {
+        "file": "stopat.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 10; i <= 30; i++) {\n        if (i % 7 == 0) {\n            cout << \"Found \" << i << endl;\n            break;\n        }\n    }\n    cout << \"Done\" << endl;\n    return 0;\n}",
+        "output": "Found 14\nDone"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 87,
+      "lengthSec": 30,
+      "onScreen": "a table that compares break and continue",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "The table shows the difference. Break ends the loop. The next step is the code after the loop. Continue only ends the current round. The next step is the next round of the same loop.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table that compares break and continue",
+        "headers": [
+          "Keyword",
+          "What it does",
+          "Next step"
+        ],
+        "rows": [
+          [
+            "break",
+            "Leaves the loop",
+            "Code after the loop"
+          ],
+          [
+            "continue",
+            "Skips this round",
+            "Next round of the loop"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 117,
+      "lengthSec": 40,
+      "onScreen": "skip.cpp: continue skips the number three",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 5] The loop counts from one to five. [HL 6] When i is three, the test is true. [HL 7] Continue skips the rest of this round. The print does not run. [HL 9] For the other numbers, the print runs. The output is one, two, four, five.",
+      "code": {
+        "file": "skip.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 3) {\n            continue;\n        }\n        cout << i << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+        "output": "1 2 4 5"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 157,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 skip.cpp -o skip then ./skip",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as skip dot cpp. Compile it with g plus plus. Then run the program. The program prints one two four five. The number three is missing."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 177,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Break leaves the loop at once. Two. Continue skips to the next round. Three. Code after the loop still runs after a break. Four. Use them with a clear if test. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Break leaves the loop at once.",
+        "Continue skips to the next round.",
+        "Code after the loop still runs after a break.",
+        "Use them with a clear if test."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 207,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Break instead of continue",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We want to skip the number three. The program prints one and two, and then stops. We used break. Break ends the whole loop. To skip only one round, use continue."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 247,
+      "lengthSec": 8,
+      "onScreen": "Break and continue had an argument. Break left. Continue just kept going.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Break and continue had an argument. Break left. Continue just kept going."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 255,
+      "lengthSec": 20,
+      "onScreen": "Task card: skip the multiples of three",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Print the numbers from one to twenty. Skip every multiple of three. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 275,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 20 · Nested loops and patterns",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: nested loops and patterns. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 3) {\n            break;\n        }\n        cout << i << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\n1 2",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 3) {\n            continue;\n        }\n        cout << i << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+    "why": "Break ends the whole loop, so four and five never print. Continue skips only the round for three."
+  },
+  "pun": "\"Break and continue had an argument. Break left. Continue just kept going.\"",
+  "challenge": "Print the numbers from one to twenty. Skip every multiple of three.",
+  "challengeAnswer": "Use a for loop from one to twenty. If i remainder three equals zero, call continue. Otherwise print i.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: break and continue",
+      "hook": "\"Break stops a loop. Continue only skips one round.\"",
+      "script": "Break stops a loop. Continue only skips one round. Today we take control of loops. Break stops the loop. Continue skips one round. Break leaves the loop at once. The program continues after the loop. Continue skips the rest of this round, and goes to the next round. Both keywords work in while loops and for loops. Think of a school bus. Keep coding, says Xecxec!",
+      "onScreen": "BREAK AND CONTINUE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: break and continue.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "breakandcontinue",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "break and continue in one minute",
+      "hook": "\"Break leaves the loop at once.\"",
+      "script": "Break leaves the loop at once. The program continues after the loop. Continue skips the rest of this round, and goes to the next round. Both keywords work in while loops and for loops. Think of a school bus. Break means the bus stops for good. Continue means the bus skips one stop. The loop counts from ten to thirty. Keep coding, says Xecxec!",
+      "onScreen": "BREAK AND CONTINUE",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "break and continue in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "breakandcontinue",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The loop counts from one to five.\"",
+      "script": "The loop counts from one to five. When i is three, the test is true. Continue skips the rest of this round. The print does not run. For the other numbers, the print runs. The output is one, two, four, five. The program prints one two four five. The number three is missing. Break leaves the loop at once. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "breakandcontinue",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Break instead of continue",
+      "hook": "\"Can you spot the bug in break and continue?\"",
+      "script": "Can you spot the bug in break and continue? Bug of the Day. We want to skip the number three. The program prints one and two, and then stops. We used break. Break ends the whole loop. To skip only one round, use continue. Break ends the whole loop, so four and five never print. Continue skips only the round for three. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: Break instead of continue.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "breakandcontinue",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you skip the multiples of three in break and continue?\"",
+      "script": "Can you skip the multiples of three in break and continue? Break and continue had an argument. Break left. Continue just kept going. Print the numbers from one to twenty. Skip every multiple of three. Write your answer in the comments. Break leaves the loop at once. Continue skips to the next round. Code after the loop still runs after a break. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "breakandcontinue",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "stopat.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 10; i <= 30; i++) {\n        if (i % 7 == 0) {\n            cout << \"Found \" << i << endl;\n            break;\n        }\n    }\n    cout << \"Done\" << endl;\n    return 0;\n}",
+      "output": "Found 14\nDone",
+      "lang": "cpp"
+    },
+    {
+      "file": "skip.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 3) {\n            continue;\n        }\n        cout << i << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+      "output": "1 2 4 5",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1 2 4 5"
+  },
+  "nextTitle": "Nested loops and patterns"
+}

@@ -7,12 +7,16 @@ import { enterProgress } from "../lib/motion";
 import { textTransformFor } from "../lib/textCase";
 import { defaultRevealCues, revealFrame } from "../lib/cues";
 import { SceneFrame } from "./SceneFrame";
+import type { Diagram } from "../lib/episode";
+import { DiagramSlide } from "./DiagramSlide";
 import type { BaseSceneProps } from "./types";
 
 export type ConceptSlideProps = BaseSceneProps & {
   heading?: string;
   lines: string[];
   analogy?: { title: string; body: string };
+  /** A structured diagram (C++ course, scene 4). When present it is drawn instead of the numbered points. */
+  diagram?: Diagram;
 };
 
 /** Free height beside the analogy card; without a card the stack also stays above Xecxec's corner. */
@@ -38,7 +42,14 @@ const fitBodySize = (
 };
 
 /** Concept slide: 1-3 numbered lines spring in one by one; an analogy card slides in on the right. */
-export const ConceptSlide: React.FC<ConceptSlideProps> = ({
+export const ConceptSlide: React.FC<ConceptSlideProps> = (props) =>
+  props.diagram ? (
+    <DiagramSlide diagram={props.diagram} colours={props.colours} durationInFrames={props.durationInFrames} cues={props.cues} />
+  ) : (
+    <NumberedConceptSlide {...props} />
+  );
+
+const NumberedConceptSlide: React.FC<ConceptSlideProps> = ({
   heading,
   lines,
   analogy,

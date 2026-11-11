@@ -1,0 +1,402 @@
+{
+  "lang": "cpp",
+  "ep": 3,
+  "title": "C vs C++: what changed",
+  "module": 0,
+  "lengthSec": 301,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "name four differences between C and C++",
+    "print with cout instead of printf",
+    "use std:: in front of library names"
+  ],
+  "youtube": {
+    "title": "C vs C++: What Changed? | C++ Programming EP 03",
+    "description": "In this episode you will name four differences between C and C++, print with cout instead of printf and use std:: in front of library names, with Xecxec the crab. 0:00 Intro · 0:15 C vs C++: what changed · 0:50 The C way · 1:30 C and C++ side by side · 2:06 Second program · 3:06 Recap · 3:38 Bug of the Day · 4:26 Challenge · 4:46 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "C vs C++: what changed"
+      },
+      {
+        "t": "0:50",
+        "label": "The C way"
+      },
+      {
+        "t": "1:30",
+        "label": "C and C++ side by side"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:38",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:26",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:46",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c vs c++",
+      "difference between c and c++",
+      "printf vs cout",
+      "std namespace"
+    ],
+    "thumbnail": {
+      "text": "C VS C++",
+      "visual": "big text \"C VS C++\" in tomato on peach; Xecxec next to two signs: a C sign and a C++ sign; thin black border and drop shadow.",
+      "pose": "Xecxec next to two signs: a C sign and a C++ sign"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 03 · C VS C++",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we compare C and C plus plus. You will see what stayed the same, and what is new."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 35,
+      "onScreen": "\"C vs C++: what changed\": numbered lines (1. C++ grew out of C; 2. C++ adds classes and a bigger library; 3. Most C code still works in C++) and an analogy card: a bicycle and a motorbike: both carry you, but one has more features",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "C plus plus grew out of the C language. Most C code still works in C plus plus. But C plus plus adds many features. It has classes, a bigger library, and safer ways to handle memory. Think of a bicycle and a motorbike. Both carry you to school. The motorbike has more parts, so you must learn more.",
+      "points": [
+        "C++ grew out of C",
+        "C++ adds classes and a bigger library",
+        "Most C code still works in C++"
+      ],
+      "analogy": {
+        "title": "C vs C++: what changed",
+        "body": "A bicycle and a motorbike: both carry you, but one has more features"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 50,
+      "lengthSec": 40,
+      "onScreen": "cstyle.cpp: printf prints text, as in C",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The header cstdio gives us printf, the C way to print. [HL 4] Printf works in C plus plus too. The backslash n at the end starts a new line. Notice the prefix std colon colon. C plus plus keeps its library names inside the std namespace.",
+      "code": {
+        "file": "cstyle.cpp",
+        "source": "#include <cstdio>\n\nint main() {\n    std::printf(\"Hello from C style\\n\");\n    return 0;\n}",
+        "output": "Hello from C style"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 90,
+      "lengthSec": 36,
+      "onScreen": "a table: feature, C way, C++ way",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Here are five differences. For printing, C uses printf, and C plus plus uses cout. For reading, C uses scanf, and C plus plus uses cin. For text, C uses char arrays, and C plus plus has std string. For memory, C plus plus gives you smart pointers. For grouping data, C plus plus has classes. We will learn each one.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: feature, C way, C++ way",
+        "headers": [
+          "Feature",
+          "C",
+          "C++"
+        ],
+        "rows": [
+          [
+            "Print",
+            "printf",
+            "std::cout"
+          ],
+          [
+            "Read",
+            "scanf",
+            "std::cin"
+          ],
+          [
+            "Text",
+            "char array",
+            "std::string"
+          ],
+          [
+            "Memory",
+            "malloc and free",
+            "new, delete, smart pointers"
+          ],
+          [
+            "Grouping",
+            "struct",
+            "class"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "cppstyle.cpp: cout prints text, as in C++",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 4] Now the C plus plus way. The cout tool takes the text with the insertion operator, which looks like two arrows. The endl word ends the line. [HL 5] The program returns zero, as before. Both styles give the same result on the screen.",
+      "code": {
+        "file": "cppstyle.cpp",
+        "source": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello from C++ style\" << std::endl;\n    return 0;\n}",
+        "output": "Hello from C++ style"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 cppstyle.cpp -o cppstyle then ./cppstyle",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as cppstyle dot cpp. Compile it with g plus plus. Then run the program. Both programs print one hello line. C plus plus lets you choose either style."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. C plus plus grew out of C. Two. Printf is the C way, and cout is the C plus plus way. Three. Library names live in the std namespace. Four. C plus plus adds classes, strings and smart pointers. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "C plus plus grew out of C.",
+        "Printf is the C way, and cout is the C plus plus way.",
+        "Library names live in the std namespace.",
+        "C plus plus adds classes, strings and smart pointers."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 218,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Forgetting std",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Here we write cout without std in front. The compiler says cout was not declared in this scope. It also suggests std colon colon cout. Library names live in the std namespace. Add the prefix, and the error goes away."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 258,
+      "lengthSec": 8,
+      "onScreen": "Why did C plus plus not invite C to the party? C said, I will be there, but only as a subset.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did C plus plus not invite C to the party? C said, I will be there, but only as a subset."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 266,
+      "lengthSec": 20,
+      "onScreen": "Task card: print with printf and cout in one program",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write one program that prints one line with printf and one line with cout. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 286,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 04 · Anatomy of a C++ program",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: the parts of a C plus plus program. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n\nint main() {\n    cout << \"Hello from C++ style\" << std::endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\ncppstyle.cpp: In function 'int main()':\ncppstyle.cpp:4:5: error: 'cout' was not declared in this scope; did you mean 'std::cout'?\n    4 |     cout << \"Hello from C++ style\" << std::endl;\n      |     ^~~~\n      |     std::cout",
+    "fixed": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello from C++ style\" << std::endl;\n    return 0;\n}",
+    "why": "Library names such as cout live in the std namespace. Write std colon colon in front, or use a using line, which we learn soon."
+  },
+  "pun": "\"Why did C plus plus not invite C to the party? C said, I will be there, but only as a subset.\"",
+  "challenge": "Write one program that prints one line with printf and one line with cout.",
+  "challengeAnswer": "Include both cstdio and iostream. Call std printf with a backslash n, then use std cout with endl.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: C vs C++: what changed",
+      "hook": "\"C plus plus is C with superpowers.\"",
+      "script": "C plus plus is C with superpowers. Today we compare C and C plus plus. You will see what stayed the same, and what is new. C plus plus grew out of the C language. Most C code still works in C plus plus. But C plus plus adds many features. It has classes, a bigger library, and safer ways to handle memory. Keep coding, says Xecxec!",
+      "onScreen": "C VS C++: WHAT CHANGED",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "What you will learn: C vs C++: what changed.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cvscwhatchanged",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "C vs C++: what changed in one minute",
+      "hook": "\"C plus plus grew out of the C language.\"",
+      "script": "C plus plus grew out of the C language. Most C code still works in C plus plus. But C plus plus adds many features. It has classes, a bigger library, and safer ways to handle memory. Think of a bicycle and a motorbike. Both carry you to school. The motorbike has more parts, so you must learn more. Keep coding, says Xecxec!",
+      "onScreen": "C VS C++: WHAT CHANGED",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "C vs C++: what changed in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cvscwhatchanged",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Now the C plus plus way.\"",
+      "script": "Now the C plus plus way. The cout tool takes the text with the insertion operator, which looks like two arrows. The endl word ends the line. The program returns zero, as before. Both styles give the same result on the screen. Both programs print one hello line. C plus plus lets you choose either style. C plus plus grew out of C. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 38,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cvscwhatchanged",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Forgetting std",
+      "hook": "\"Can you spot the bug in what changed from C\"",
+      "script": "Can you spot the bug in what changed from C to C plus plus? Bug of the Day. Here we write cout without std in front. The compiler says cout was not declared in this scope. It also suggests std colon colon cout. Library names live in the std namespace. Add the prefix, and the error goes away. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Bug of the Day: Forgetting std.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cvscwhatchanged",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you print with printf and cout in one program\"",
+      "script": "Can you print with printf and cout in one program in what changed from C to C plus plus? Why did C plus plus not invite C to the party? C said, I will be there, but only as a subset. Write one program that prints one line with printf and one line with cout. Write your answer in the comments. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "cvscwhatchanged",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "cstyle.cpp",
+      "source": "#include <cstdio>\n\nint main() {\n    std::printf(\"Hello from C style\\n\");\n    return 0;\n}",
+      "output": "Hello from C style",
+      "lang": "cpp"
+    },
+    {
+      "file": "cppstyle.cpp",
+      "source": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello from C++ style\" << std::endl;\n    return 0;\n}",
+      "output": "Hello from C++ style",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Hello from C++ style"
+  },
+  "nextTitle": "Anatomy of a C++ program"
+}

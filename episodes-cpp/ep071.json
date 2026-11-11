@@ -1,0 +1,392 @@
+{
+  "lang": "cpp",
+  "ep": 71,
+  "title": "pair and tuple",
+  "module": 8,
+  "lengthSec": 289,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "use std pair",
+    "return two values from a function",
+    "unpack with structured bindings"
+  ],
+  "youtube": {
+    "title": "C++ std::pair and std::tuple | C++ Programming EP 71",
+    "description": "In this episode you will use std pair, return two values from a function and unpack with structured bindings, with Xecxec the crab. 0:00 Intro · 0:15 pair and tuple · 0:46 A pair · 1:26 Parts of a pair · 1:56 Second program · 2:56 Recap · 3:26 Bug of the Day · 4:14 Challenge · 4:34 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "pair and tuple"
+      },
+      {
+        "t": "0:46",
+        "label": "A pair"
+      },
+      {
+        "t": "1:26",
+        "label": "Parts of a pair"
+      },
+      {
+        "t": "1:56",
+        "label": "Second program"
+      },
+      {
+        "t": "2:56",
+        "label": "Recap"
+      },
+      {
+        "t": "3:26",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:14",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:34",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::pair",
+      "std::tuple",
+      "structured bindings",
+      "return multiple values"
+    ],
+    "thumbnail": {
+      "text": "PAIR + TUPLE",
+      "visual": "big text \"PAIR + TUPLE\" in tomato on lilac; Xecxec next to two shoes tied together, and a bundle of three; thin black border and drop shadow.",
+      "pose": "Xecxec next to two shoes tied together, and a bundle of three"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 71 · PAIR + TUPLE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet small bundles. A pair holds two values, a tuple holds more, and both are handy."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 31,
+      "onScreen": "\"pair and tuple\": numbered lines (1. A pair holds exactly two values; 2. A tuple holds any fixed number; 3. Structured bindings unpack them) and an analogy card: a pair of shoes, and a school bag with a few fixed items",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A pair holds two values, called first and second. A tuple holds any fixed number of values of any types. Both live in the standard library. Since C plus plus seventeen, you can unpack them in one line with structured bindings. Think of a pair of shoes. Two items, always together.",
+      "points": [
+        "A pair holds exactly two values",
+        "A tuple holds any fixed number",
+        "Structured bindings unpack them"
+      ],
+      "analogy": {
+        "title": "pair and tuple",
+        "body": "A pair of shoes, and a school bag with a few fixed items"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 46,
+      "lengthSec": 40,
+      "onScreen": "pair.cpp: a function returns the smallest and biggest in one pair",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] The function returns a pair of ints. [HL 6] Make pair builds a pair from two values. [HL 10] The result goes in p. [HL 11] First is four, and second is nine. [HL 12] Square brackets after auto unpack the pair into two new names. [HL 13] Lo is two, and hi is seven.",
+      "code": {
+        "file": "pair.cpp",
+        "source": "#include <iostream>\n#include <utility>\nusing namespace std;\n\npair<int, int> min_max(int a, int b) {\n    return a < b ? make_pair(a, b) : make_pair(b, a);\n}\n\nint main() {\n    auto p = min_max(9, 4);\n    cout << p.first << \" \" << p.second << endl;\n    auto [lo, hi] = min_max(2, 7);\n    cout << lo << \" \" << hi << endl;\n    return 0;\n}",
+        "output": "4 9\n2 7"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 86,
+      "lengthSec": 30,
+      "onScreen": "a table: the pair and its two members",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Here is the pair p. First is four, and second is nine. With a structured binding, you give the two parts their own names. That makes the code easier to read.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: the pair and its two members",
+        "headers": [
+          "Expression",
+          "Value"
+        ],
+        "rows": [
+          [
+            "p",
+            "pair(4, 9)"
+          ],
+          [
+            "p.first",
+            "4"
+          ],
+          [
+            "p.second",
+            "9"
+          ],
+          [
+            "auto [lo, hi] = p",
+            "lo is 4, hi is 9"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 116,
+      "lengthSec": 40,
+      "onScreen": "tuple.cpp: a tuple holds a name, a mark and a pass flag",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 7] A tuple can hold values of different types. This one holds a string, an int and a bool. [HL 8] Get with an index in angle brackets reads one part. Index zero is the name. [HL 9] A structured binding unpacks all three parts. [HL 10] The output is Asha, ninety-one, true.",
+      "code": {
+        "file": "tuple.cpp",
+        "source": "#include <iostream>\n#include <string>\n#include <tuple>\nusing namespace std;\n\nint main() {\n    tuple<string, int, bool> t = {\"Asha\", 91, true};\n    cout << get<0>(t) << endl;\n    auto [name, marks, passed] = t;\n    cout << name << \" \" << marks << \" \" << boolalpha << passed << endl;\n    return 0;\n}",
+        "output": "Asha\nAsha 91 true"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 156,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 tuple.cpp -o tuple then ./tuple",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as tuple dot cpp. Compile it with g plus plus. Then run the program. The program prints Asha, and then Asha ninety-one true."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 176,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A pair holds two values. Two. A tuple holds any fixed number of values. Three. Use first and second for a pair. Four. Structured bindings unpack a pair or a tuple. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A pair holds two values.",
+        "A tuple holds any fixed number of values.",
+        "Use first and second for a pair.",
+        "Structured bindings unpack a pair or a tuple."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 206,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A member that does not exist",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We ask a pair for its third member. The compiler says the pair has no member named third. A pair holds exactly two values. For three, use a tuple, or write a small struct."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 246,
+      "lengthSec": 8,
+      "onScreen": "Two values walked into a pair. They said, we are a perfect match, first and second.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Two values walked into a pair. They said, we are a perfect match, first and second."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 254,
+      "lengthSec": 20,
+      "onScreen": "Task card: return the quotient and the remainder",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a function that returns the quotient and the remainder of two ints as a pair. Print both. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 274,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 72 · std::map",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: std map. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <utility>\nusing namespace std;\n\nint main() {\n    pair<int, int> p = {1, 2};\n    cout << p.third << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\npair.cpp: In function 'int main()':\npair.cpp:7:15: error: 'struct std::pair<int, int>' has no member named 'third'\n    7 |     cout << p.third << endl;\n      |               ^~~~~",
+    "fixed": "#include <iostream>\n#include <tuple>\nusing namespace std;\n\nint main() {\n    tuple<int, int, int> t = {1, 2, 3};\n    cout << get<2>(t) << endl;\n    return 0;\n}",
+    "why": "A pair has only first and second. For three or more values, use a tuple, or better, write a small struct with clear names."
+  },
+  "pun": "\"Two values walked into a pair. They said, we are a perfect match, first and second.\"",
+  "challenge": "Write a function that returns the quotient and the remainder of two ints as a pair. Print both.",
+  "challengeAnswer": "Return make pair of a divided by b, and a remainder b. In main, print first and second.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: pair and tuple",
+      "hook": "\"Return two values from one function.\"",
+      "script": "Return two values from one function. Today we meet small bundles. A pair holds two values, a tuple holds more, and both are handy. A pair holds two values, called first and second. A tuple holds any fixed number of values of any types. Both live in the standard library. Since C plus plus seventeen, you can unpack them in one line with structured bindings. Keep coding, says Xecxec!",
+      "onScreen": "PAIR AND TUPLE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "What you will learn: pair and tuple.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "pairandtuple",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "pair and tuple in one minute",
+      "hook": "\"A pair holds two values, called first and second.\"",
+      "script": "A pair holds two values, called first and second. A tuple holds any fixed number of values of any types. Both live in the standard library. Since C plus plus seventeen, you can unpack them in one line with structured bindings. Think of a pair of shoes. Two items, always together. The function returns a pair of ints. Keep coding, says Xecxec!",
+      "onScreen": "PAIR AND TUPLE",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "pair and tuple in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "pairandtuple",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"A tuple can hold values of different types.\"",
+      "script": "A tuple can hold values of different types. This one holds a string, an int and a bool. Get with an index in angle brackets reads one part. Index zero is the name. A structured binding unpacks all three parts. The output is Asha, ninety-one, true. The program prints Asha, and then Asha ninety-one true. A pair holds two values. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "pairandtuple",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A member that does not exist",
+      "hook": "\"Can you spot the bug in pair and tuple?\"",
+      "script": "Can you spot the bug in pair and tuple? Bug of the Day. We ask a pair for its third member. The compiler says the pair has no member named third. A pair holds exactly two values. For three, use a tuple, or write a small struct. A pair has only first and second. For three or more values, use a tuple, or better, write a small struct with clear names. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 42,
+      "caption": "Bug of the Day: A member that does not exist.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "pairandtuple",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you return the quotient and the remainder in pair and tuple?\"",
+      "script": "Can you return the quotient and the remainder in pair and tuple? Two values walked into a pair. They said, we are a perfect match, first and second. Write a function that returns the quotient and the remainder of two ints as a pair. Print both. Write your answer in the comments. A pair holds two values. A tuple holds any fixed number of values. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "pairandtuple",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "pair.cpp",
+      "source": "#include <iostream>\n#include <utility>\nusing namespace std;\n\npair<int, int> min_max(int a, int b) {\n    return a < b ? make_pair(a, b) : make_pair(b, a);\n}\n\nint main() {\n    auto p = min_max(9, 4);\n    cout << p.first << \" \" << p.second << endl;\n    auto [lo, hi] = min_max(2, 7);\n    cout << lo << \" \" << hi << endl;\n    return 0;\n}",
+      "output": "4 9\n2 7",
+      "lang": "cpp"
+    },
+    {
+      "file": "tuple.cpp",
+      "source": "#include <iostream>\n#include <string>\n#include <tuple>\nusing namespace std;\n\nint main() {\n    tuple<string, int, bool> t = {\"Asha\", 91, true};\n    cout << get<0>(t) << endl;\n    auto [name, marks, passed] = t;\n    cout << name << \" \" << marks << \" \" << boolalpha << passed << endl;\n    return 0;\n}",
+      "output": "Asha\nAsha 91 true",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "3"
+  },
+  "nextTitle": "std::map"
+}

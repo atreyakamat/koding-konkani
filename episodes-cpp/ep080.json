@@ -1,0 +1,419 @@
+{
+  "lang": "cpp",
+  "ep": 80,
+  "title": "Move semantics",
+  "module": 9,
+  "lengthSec": 288,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "tell a copy from a move",
+    "use std move",
+    "write a move constructor"
+  ],
+  "youtube": {
+    "title": "C++ Move Semantics: std::move Explained | C++ Programming EP 80",
+    "description": "In this episode you will tell a copy from a move, use std move and write a move constructor, with Xecxec the crab. 0:00 Intro · 0:15 Move semantics · 0:45 Move a vector · 1:25 Before and after the move · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Move semantics"
+      },
+      {
+        "t": "0:45",
+        "label": "Move a vector"
+      },
+      {
+        "t": "1:25",
+        "label": "Before and after the move"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ move semantics",
+      "std::move",
+      "move constructor",
+      "rvalue reference",
+      "unique_ptr"
+    ],
+    "thumbnail": {
+      "text": "MOVE",
+      "visual": "big text \"MOVE\" in tomato on cream; Xecxec next to a crab handing over a treasure chest instead of copying it; thin black border and drop shadow.",
+      "pose": "Xecxec next to a crab handing over a treasure chest instead of copying it"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 80 · MOVE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we learn to move data. A move hands over the data instead of copying it, so big objects stay fast."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"Move semantics\": numbered lines (1. A copy duplicates the data; 2. A move steals the data; 3. Do not use an object after you move it) and an analogy card: handing over the keys instead of building a second house",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A copy makes a second set of data. A move hands the data to the new owner, and leaves the old owner empty. Think of handing over the keys of a house. You do not build a second house.",
+      "points": [
+        "A copy duplicates the data",
+        "A move steals the data",
+        "Do not use an object after you move it"
+      ],
+      "analogy": {
+        "title": "Move semantics",
+        "body": "Handing over the keys instead of building a second house"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 40,
+      "onScreen": "move.cpp: a vector is moved, and the old vector is empty",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 7] Vector a owns three numbers on the heap. [HL 8] Move does not move anything by itself. It marks a as safe to steal from. [HL 8] The vector b takes the heap block from a. No number is copied. [HL 9] Vector b has three items. [HL 10] For a vector, the standard says the old vector is empty. The output is one.",
+      "code": {
+        "file": "move.cpp",
+        "source": "#include <iostream>\n#include <utility>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> a = {1, 2, 3};\n    vector<int> b = move(a);\n    cout << b.size() << endl;\n    cout << a.empty() << endl;\n    return 0;\n}",
+        "output": "3\n1"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 85,
+      "lengthSec": 30,
+      "onScreen": "memory boxes: b now owns the block, a points to nothing",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "After the move, b owns the heap block. The pointer inside a is null. Only the pointer moved. The three numbers did not move at all.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "nullptr",
+                    "address": "0x1000",
+                    "name": "a.data_"
+                  },
+                  {
+                    "value": "0x5000",
+                    "address": "0x1008",
+                    "name": "b.data_"
+                  }
+                ]
+              },
+              {
+                "name": "block",
+                "cells": [
+                  {
+                    "value": "1",
+                    "address": "0x5000",
+                    "index": 0
+                  },
+                  {
+                    "value": "2",
+                    "address": "0x5004",
+                    "index": 1
+                  },
+                  {
+                    "value": "3",
+                    "address": "0x5008",
+                    "index": 2
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:1",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "buffer.cpp: a class with a move constructor steals the pointer",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 11] Two ampersands make an rvalue reference. This is the move constructor. [HL 11] It copies only the pointer. [HL 12] Then it sets the old pointer to null, so the old object frees nothing. [HL 16] We delete the copy constructor, because a copy would be wrong here. [HL 27] This line calls the move constructor. The output is made, moved, and then one hundred and zero.",
+      "code": {
+        "file": "buffer.cpp",
+        "source": "#include <cstddef>\n#include <iostream>\n#include <utility>\nusing namespace std;\n\nclass Buffer {\npublic:\n    explicit Buffer(size_t n) : data_(new int[n]), size_(n) {\n        cout << \"made\" << endl;\n    }\n    Buffer(Buffer&& other) noexcept : data_(other.data_), size_(other.size_) {\n        other.data_ = nullptr;\n        other.size_ = 0;\n        cout << \"moved\" << endl;\n    }\n    Buffer(const Buffer&) = delete;\n    ~Buffer() { delete[] data_; }\n    size_t size() const { return size_; }\n\nprivate:\n    int* data_;\n    size_t size_;\n};\n\nint main() {\n    Buffer a(100);\n    Buffer b = move(a);\n    cout << b.size() << \" \" << a.size() << endl;\n    return 0;\n}",
+        "output": "made\nmoved\n100 0"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 155,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 buffer.cpp -o buffer then ./buffer",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as buffer dot cpp. Compile it with g plus plus. Then run the program. The program prints made, moved, and then one hundred and zero."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 175,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A copy duplicates the data. Two. A move hands over the data. Three. Move leaves the old object empty. Four. Do not use an object after you move it. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A copy duplicates the data.",
+        "A move hands over the data.",
+        "Move leaves the old object empty.",
+        "Do not use an object after you move it."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 205,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Copying a unique pointer",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We copy a unique pointer. The compiler says the copy constructor is deleted. One owner only. Use move to hand over the ownership."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 8,
+      "onScreen": "Why did the string move out? It wanted its own space, with no copies.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the string move out? It wanted its own space, with no copies."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 253,
+      "lengthSec": 20,
+      "onScreen": "Task card: move a string into a vector",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Make a string, and push it into a vector of strings with move. Print the vector size. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 273,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 81 · optional and variant",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: optional and variant. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    unique_ptr<int> a = make_unique<int>(5);\n    unique_ptr<int> b = a;\n    cout << *b << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nunique.cpp: In function 'int main()':\nunique.cpp:7:25: error: use of deleted function 'std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = int; _Dp = std::default_delete<int>]'\n    7 |     unique_ptr<int> b = a;\n      |                         ^",
+    "fixed": "#include <iostream>\n#include <memory>\n#include <utility>\nusing namespace std;\n\nint main() {\n    unique_ptr<int> a = make_unique<int>(5);\n    unique_ptr<int> b = move(a);\n    cout << *b << endl;\n    return 0;\n}",
+    "why": "A unique pointer has one owner only, so it cannot be copied. Move it to give the ownership to another pointer."
+  },
+  "pun": "\"Why did the string move out? It wanted its own space, with no copies.\"",
+  "challenge": "Make a string, and push it into a vector of strings with move. Print the vector size.",
+  "challengeAnswer": "Call push back with move of the string. The vector size is one.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Move semantics",
+      "hook": "\"Move the data. Do not copy it.\"",
+      "script": "Move the data. Do not copy it. Today we learn to move data. A move hands over the data instead of copying it, so big objects stay fast. A copy makes a second set of data. A move hands the data to the new owner, and leaves the old owner empty. Think of handing over the keys of a house. Keep coding, says Xecxec!",
+      "onScreen": "MOVE SEMANTICS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "What you will learn: Move semantics.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "movesemantics",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Move semantics in one minute",
+      "hook": "\"A copy makes a second set of data.\"",
+      "script": "A copy makes a second set of data. A move hands the data to the new owner, and leaves the old owner empty. Think of handing over the keys of a house. You do not build a second house. Vector a owns three numbers on the heap. Move does not move anything by itself. It marks a as safe to steal from. Keep coding, says Xecxec!",
+      "onScreen": "MOVE SEMANTICS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Move semantics in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "movesemantics",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Two ampersands make an rvalue reference.\"",
+      "script": "Two ampersands make an rvalue reference. This is the move constructor. It copies only the pointer. Then it sets the old pointer to null, so the old object frees nothing. We delete the copy constructor, because a copy would be wrong here. This line calls the move constructor. The output is made, moved, and then one hundred and zero. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "movesemantics",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Copying a unique pointer",
+      "hook": "\"Can you spot the bug in move semantics?\"",
+      "script": "Can you spot the bug in move semantics? Bug of the Day. We copy a unique pointer. The compiler says the copy constructor is deleted. One owner only. Use move to hand over the ownership. A unique pointer has one owner only, so it cannot be copied. Move it to give the ownership to another pointer. A copy duplicates the data. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: Copying a unique pointer.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "movesemantics",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you move a string into a vector in move semantics?\"",
+      "script": "Can you move a string into a vector in move semantics? Why did the string move out? It wanted its own space, with no copies. Make a string, and push it into a vector of strings with move. Print the vector size. Write your answer in the comments. A copy duplicates the data. A move hands over the data. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "movesemantics",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "move.cpp",
+      "source": "#include <iostream>\n#include <utility>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> a = {1, 2, 3};\n    vector<int> b = move(a);\n    cout << b.size() << endl;\n    cout << a.empty() << endl;\n    return 0;\n}",
+      "output": "3\n1",
+      "lang": "cpp"
+    },
+    {
+      "file": "buffer.cpp",
+      "source": "#include <cstddef>\n#include <iostream>\n#include <utility>\nusing namespace std;\n\nclass Buffer {\npublic:\n    explicit Buffer(size_t n) : data_(new int[n]), size_(n) {\n        cout << \"made\" << endl;\n    }\n    Buffer(Buffer&& other) noexcept : data_(other.data_), size_(other.size_) {\n        other.data_ = nullptr;\n        other.size_ = 0;\n        cout << \"moved\" << endl;\n    }\n    Buffer(const Buffer&) = delete;\n    ~Buffer() { delete[] data_; }\n    size_t size() const { return size_; }\n\nprivate:\n    int* data_;\n    size_t size_;\n};\n\nint main() {\n    Buffer a(100);\n    Buffer b = move(a);\n    cout << b.size() << \" \" << a.size() << endl;\n    return 0;\n}",
+      "output": "made\nmoved\n100 0",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "5"
+  },
+  "nextTitle": "optional and variant"
+}

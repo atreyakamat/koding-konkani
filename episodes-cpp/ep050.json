@@ -1,0 +1,417 @@
+{
+  "lang": "cpp",
+  "ep": 50,
+  "title": "shared_ptr and weak_ptr",
+  "module": 5,
+  "lengthSec": 298,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "share ownership with shared_ptr",
+    "read use_count",
+    "use weak_ptr to look without owning"
+  ],
+  "youtube": {
+    "title": "C++ shared_ptr and weak_ptr Explained | C++ Programming EP 50",
+    "description": "In this episode you will share ownership with shared_ptr, read use_count and use weak_ptr to look without owning, with Xecxec the crab. 0:00 Intro · 0:15 shared_ptr and weak_ptr · 0:51 Count the owners · 1:31 Two owners, one object · 2:01 Second program · 3:01 Recap · 3:35 Bug of the Day · 4:23 Challenge · 4:43 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "shared_ptr and weak_ptr"
+      },
+      {
+        "t": "0:51",
+        "label": "Count the owners"
+      },
+      {
+        "t": "1:31",
+        "label": "Two owners, one object"
+      },
+      {
+        "t": "2:01",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:23",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:43",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "shared_ptr",
+      "weak_ptr",
+      "use_count",
+      "reference counting"
+    ],
+    "thumbnail": {
+      "text": "SHARED_PTR",
+      "visual": "big text \"SHARED_PTR\" in tomato on lilac; Xecxec next to three keys for one shared locker; thin black border and drop shadow.",
+      "pose": "Xecxec next to three keys for one shared locker"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 50 · SHARED_PTR",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today the ownership is shared. Many pointers own one object, and the last one to leave switches off the light."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 36,
+      "onScreen": "\"shared_ptr and weak_ptr\": numbered lines (1. Many shared_ptr can own one object; 2. A counter tracks the owners; 3. A weak_ptr looks but does not own) and an analogy card: a Wi-Fi password: many people share it, and the router stays on until the last one leaves",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A shared pointer lets many owners share one object. A counter inside tracks the owners. When the last owner dies, the object is deleted. A weak pointer looks at the object but does not own it. It does not change the counter. Think of a Wi-Fi password. Many people share it, and the router stays on until the last person leaves.",
+      "points": [
+        "Many shared_ptr can own one object",
+        "A counter tracks the owners",
+        "A weak_ptr looks but does not own"
+      ],
+      "analogy": {
+        "title": "shared_ptr and weak_ptr",
+        "body": "A Wi-Fi password: many people share it, and the router stays on until the last one leaves"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 51,
+      "lengthSec": 40,
+      "onScreen": "shared.cpp: use_count goes up and down",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 6] Make shared builds an int and one shared pointer. [HL 7] The count is one. [HL 9] B is a copy. Copying is allowed here. Both own the int. [HL 10] The count is two. [HL 11] At the closing brace, b dies. [HL 12] The count drops back to one.",
+      "code": {
+        "file": "shared.cpp",
+        "source": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    shared_ptr<int> a = make_shared<int>(5);\n    cout << a.use_count() << endl;\n    {\n        shared_ptr<int> b = a;\n        cout << a.use_count() << endl;\n    }\n    cout << a.use_count() << endl;\n    return 0;\n}",
+        "output": "1\n2\n1"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 91,
+      "lengthSec": 30,
+      "onScreen": "two shared pointers point at the same int, which keeps a counter",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here are two owners, a and b. Both point at the same int. A counter next to the int says two. When b dies, the counter becomes one. When a dies, it becomes zero, and the int is deleted.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x5000",
+                    "address": "0x1000",
+                    "name": "a"
+                  },
+                  {
+                    "value": "0x5000",
+                    "address": "0x1010",
+                    "name": "b"
+                  }
+                ]
+              },
+              {
+                "name": "heap",
+                "cells": [
+                  {
+                    "value": "5",
+                    "address": "0x5000",
+                    "name": "value"
+                  },
+                  {
+                    "value": "2",
+                    "address": "0x5004",
+                    "name": "count"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              },
+              {
+                "from": "0:1",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 121,
+      "lengthSec": 40,
+      "onScreen": "weak.cpp: weak_ptr looks without owning",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 6] W is a weak pointer. It owns nothing. [HL 8] S owns an int with the value seven. [HL 9] W now watches the same object. [HL 10] Expired asks if the object is gone. Not yet, so zero. [HL 11] Lock gives a shared pointer, if the object is alive. [HL 12] It reads seven. [HL 15] After the block, s is dead. The object is deleted, and expired is one.",
+      "code": {
+        "file": "weak.cpp",
+        "source": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    weak_ptr<int> w;\n    {\n        shared_ptr<int> s = make_shared<int>(7);\n        w = s;\n        cout << w.expired() << endl;\n        if (auto locked = w.lock()) {\n            cout << *locked << endl;\n        }\n    }\n    cout << w.expired() << endl;\n    return 0;\n}",
+        "output": "0\n7\n1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 161,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 weak.cpp -o weak then ./weak",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as weak dot cpp. Compile it with g plus plus. Then run the program. The program prints zero, seven, and then one."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 181,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Many shared pointers can own one object. Two. A counter tracks the owners, and the last owner deletes the object. Three. A weak pointer watches without owning. Four. Lock turns a weak pointer into a shared pointer, or an empty one. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Many shared pointers can own one object.",
+        "A counter tracks the owners, and the last owner deletes the object.",
+        "A weak pointer watches without owning.",
+        "Lock turns a weak pointer into a shared pointer, or an empty one."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 215,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A raw pointer into a shared_ptr",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We assign a raw new result to a shared pointer. The compiler says it cannot convert int star to shared pointer. Use make shared instead. It builds the object and the counter in one safe step."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 255,
+      "lengthSec": 8,
+      "onScreen": "Shared pointers are polite. The last one out always turns off the light.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Shared pointers are polite. The last one out always turns off the light."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 263,
+      "lengthSec": 20,
+      "onScreen": "Task card: share a heap int between two owners",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Make a shared pointer to an int. Copy it into a second shared pointer. Print use count. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 283,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 51 · Structs",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "We end module five here. Next time: structs, your own way to group data. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    shared_ptr<int> a = new int(5);\n    cout << *a << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nshared.cpp: In function 'int main()':\nshared.cpp:6:25: error: conversion from 'int*' to non-scalar type 'std::shared_ptr<int>' requested\n    6 |     shared_ptr<int> a = new int(5);\n      |                         ^~~~~~~~~~",
+    "fixed": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    shared_ptr<int> a = make_shared<int>(5);\n    cout << *a << endl;\n    return 0;\n}",
+    "why": "The shared pointer constructor from a raw pointer is explicit, so an equals sign does not work. Make shared is also faster and safer."
+  },
+  "pun": "\"Shared pointers are polite. The last one out always turns off the light.\"",
+  "challenge": "Make a shared pointer to an int. Copy it into a second shared pointer. Print use count.",
+  "challengeAnswer": "Use make shared for the first. Write the second as a copy of the first. Use count prints two.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: shared_ptr and weak_ptr",
+      "hook": "\"Many owners, one object, deleted exactly once.\"",
+      "script": "Many owners, one object, deleted exactly once. Today the ownership is shared. Many pointers own one object, and the last one to leave switches off the light. A shared pointer lets many owners share one object. A counter inside tracks the owners. When the last owner dies, the object is deleted. A weak pointer looks at the object but does not own it. Keep coding, says Xecxec!",
+      "onScreen": "SHARED_PTR AND WEAK_PTR",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "What you will learn: shared_ptr and weak_ptr.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "sharedptrandweakptr",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "shared_ptr and weak_ptr in one minute",
+      "hook": "\"A shared pointer lets many owners share one object.\"",
+      "script": "A shared pointer lets many owners share one object. A counter inside tracks the owners. When the last owner dies, the object is deleted. A weak pointer looks at the object but does not own it. It does not change the counter. Think of a Wi-Fi password. Many people share it, and the router stays on until the last person leaves. Keep coding, says Xecxec!",
+      "onScreen": "SHARED_PTR AND WEAK_PTR",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "shared_ptr and weak_ptr in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "sharedptrandweakptr",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"W is a weak pointer.\"",
+      "script": "W is a weak pointer. It owns nothing. S owns an int with the value seven. W now watches the same object. Expired asks if the object is gone. Not yet, so zero. Lock gives a shared pointer, if the object is alive. It reads seven. After the block, s is dead. The object is deleted, and expired is one. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "sharedptrandweakptr",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A raw pointer into a shared_ptr",
+      "hook": "\"Can you spot the bug in shared pointers and weak pointers?\"",
+      "script": "Can you spot the bug in shared pointers and weak pointers? Bug of the Day. We assign a raw new result to a shared pointer. The compiler says it cannot convert int star to shared pointer. Use make shared instead. It builds the object and the counter in one safe step. The shared pointer constructor from a raw pointer is explicit, so an equals sign does not work. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 40,
+      "caption": "Bug of the Day: A raw pointer into a shared_ptr.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "sharedptrandweakptr",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you share a heap int between two owners in\"",
+      "script": "Can you share a heap int between two owners in shared pointers and weak pointers? Shared pointers are polite. The last one out always turns off the light. Make a shared pointer to an int. Copy it into a second shared pointer. Print use count. Write your answer in the comments. Many shared pointers can own one object. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "sharedptrandweakptr",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "shared.cpp",
+      "source": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    shared_ptr<int> a = make_shared<int>(5);\n    cout << a.use_count() << endl;\n    {\n        shared_ptr<int> b = a;\n        cout << a.use_count() << endl;\n    }\n    cout << a.use_count() << endl;\n    return 0;\n}",
+      "output": "1\n2\n1",
+      "lang": "cpp"
+    },
+    {
+      "file": "weak.cpp",
+      "source": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    weak_ptr<int> w;\n    {\n        shared_ptr<int> s = make_shared<int>(7);\n        w = s;\n        cout << w.expired() << endl;\n        if (auto locked = w.lock()) {\n            cout << *locked << endl;\n        }\n    }\n    cout << w.expired() << endl;\n    return 0;\n}",
+      "output": "0\n7\n1",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "5"
+  },
+  "nextTitle": "Structs"
+}

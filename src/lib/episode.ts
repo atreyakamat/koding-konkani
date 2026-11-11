@@ -49,6 +49,50 @@ export const sceneTemplateFromBibleName = (name: string): SceneTemplate => {
   return mapped;
 };
 
+/** Course language. Absent means the original C course. */
+export const LANGS = ["c", "cpp", "python"] as const;
+export type Lang = (typeof LANGS)[number];
+
+/** Folder name of an episode's narration under audio/voice/. The C course keeps its plain `ep001`
+ * names; every other language gets a prefix, so two courses never share a folder. */
+export const epFolder = (lang: Lang | string | undefined, ep: number): string =>
+  `${lang && lang !== "c" ? `${lang}-` : ""}ep${String(ep).padStart(3, "0")}`;
+
+/** True for the original C course, the only one that the ep-number keyed tables (bug overrides, titles) describe. */
+export const isCCourse = (lang: Lang | string | undefined): boolean => !lang || lang === "c";
+
+/** Structured diagram for a concept slide (scene 4 of the C++ Bible): see docs/cpp-bible/ILLUSTRATIONS.md. */
+const DiagramBaseSchema = { caption: z.string().optional() };
+export const DiagramSchema = z.discriminatedUnion("kind", [
+  z.object({
+    kind: z.literal("flow"),
+    ...DiagramBaseSchema,
+    steps: z.array(z.object({ id: z.string(), label: z.string().min(1), detail: z.string() })).min(2).max(6),
+  }),
+  z.object({
+    kind: z.literal("graph"),
+    ...DiagramBaseSchema,
+    layout: z.enum(["row", "column", "tree"]),
+    nodes: z.array(z.object({ id: z.string(), label: z.string().min(1), sub: z.string() })).min(2).max(8),
+    edges: z.array(z.object({ from: z.string(), to: z.string(), label: z.string() })),
+  }),
+  z.object({
+    kind: z.literal("table"),
+    ...DiagramBaseSchema,
+    headers: z.array(z.string().min(1)).min(2).max(5),
+    rows: z.array(z.array(z.string())).min(1).max(7),
+  }),
+  z.object({
+    kind: z.literal("callstack"),
+    ...DiagramBaseSchema,
+    steps: z
+      .array(z.object({ step: z.number(), frames: z.array(z.string().min(1)).min(1).max(8), note: z.string() }))
+      .min(1)
+      .max(12),
+  }),
+]);
+export type Diagram = z.infer<typeof DiagramSchema>;
+
 const CodeSchema = z.object({
   file: z.string().min(1),
   source: z.string().min(1),
@@ -100,6 +144,12 @@ const SceneSchema = z.object({
   memory: MemoryDataSchema.optional(),
   /** Only for a bug-of-the-day scene that is not the episode's main bug. */
   bug: BugSchema.optional(),
+  /** Concept slide only: the numbered points, written out (otherwise they are cut from the narration). */
+  points: z.array(z.string().min(1)).min(1).max(4).optional(),
+  /** Concept slide only: the analogy card, written out (otherwise cut from `onScreen`). */
+  analogy: z.object({ title: z.string().min(1), body: z.string().min(1) }).optional(),
+  /** Concept slide only: a structured diagram drawn instead of the numbered points. */
+  diagram: DiagramSchema.optional(),
 });
 
 const ChapterSchema = z.object({
@@ -138,6 +188,10 @@ const ShortSchema = z.object({
 });
 
 export const EpisodeSchema = z.object({
+  /** Course language; absent = C. Decides the narration folder, the compile command and which ep-keyed tables apply. */
+  lang: z.enum(LANGS).optional(),
+  /** Title of the next episode for the outro. The C course reads it from a table; other courses carry it here. */
+  nextTitle: z.string().optional(),
   ep: z.number().int().positive(),
   title: z.string().min(1),
   module: z.number().int().min(0).max(13),

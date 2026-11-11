@@ -1,0 +1,403 @@
+{
+  "lang": "cpp",
+  "ep": 88,
+  "title": "Project: student records",
+  "module": 10,
+  "lengthSec": 297,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "design a small class",
+    "combine a vector, a lambda and algorithms",
+    "write a const correct class"
+  ],
+  "youtube": {
+    "title": "C++ Project: Student Records Program | C++ Programming EP 88",
+    "description": "In this episode you will design a small class, combine a vector, a lambda and algorithms and write a const correct class, with Xecxec the crab. 0:00 Intro · 0:16 Project: student records · 0:46 The Roster class · 1:34 Class design · 2:04 Second program · 3:04 Recap · 3:34 Bug of the Day · 4:22 Challenge · 4:42 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:16",
+        "label": "Project: student records"
+      },
+      {
+        "t": "0:46",
+        "label": "The Roster class"
+      },
+      {
+        "t": "1:34",
+        "label": "Class design"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:34",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:22",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:42",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ project",
+      "student records",
+      "class design",
+      "const correctness",
+      "beginner project"
+    ],
+    "thumbnail": {
+      "text": "PROJECT",
+      "visual": "big text \"PROJECT\" in tomato on mint; Xecxec next to a crab with a clipboard and a stack of report cards; thin black border and drop shadow.",
+      "pose": "Xecxec next to a crab with a clipboard and a stack of report cards"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 16,
+      "onScreen": "EP 88 · PROJECT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we build a small project. A roster class holds student marks. It can add a student, print a ranking, and find the best student."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 16,
+      "lengthSec": 30,
+      "onScreen": "\"Project: student records\": numbered lines (1. One class owns the data; 2. Methods that only read are const; 3. Use library algorithms inside the class) and an analogy card: a teacher with a register: add a student, ask for the average",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A good class owns its data and hides it. It offers a few clear methods. Methods that only read the data are marked const. We use a vector to store students, a lambda to sort them, and an optional for the best student.",
+      "points": [
+        "One class owns the data",
+        "Methods that only read are const",
+        "Use library algorithms inside the class"
+      ],
+      "analogy": {
+        "title": "Project: student records",
+        "body": "A teacher with a register: add a student, ask for the average"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 46,
+      "lengthSec": 48,
+      "onScreen": "roster.cpp: a roster adds students, ranks them and computes the average",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 15] Add stores one student at the back of the vector. [HL 19] Average only reads the data, so it is const. [HL 24] If the roster is empty, we return zero, and we never divide by zero. [HL 28] Print ranking works on a copy, so the original order does not change. [HL 29] The lambda puts the highest marks first. [HL 35] The vector is private. Only the class can change it. [HL 41] Main adds three students. [HL 44] The ranking is Asha ninety-one, Mia eighty-five, Ravi seventy-eight. [HL 45] The average is eighty-four point seven.",
+      "code": {
+        "file": "roster.cpp",
+        "source": "#include <algorithm>\n#include <iomanip>\n#include <iostream>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int marks;\n};\n\nclass Roster {\npublic:\n    void add(const string& name, int marks) {\n        students_.push_back({name, marks});\n    }\n\n    double average() const {\n        double total = 0;\n        for (const Student& s : students_) {\n            total += s.marks;\n        }\n        return students_.empty() ? 0 : total / students_.size();\n    }\n\n    void print_ranking() const {\n        vector<Student> copy = students_;\n        sort(copy.begin(), copy.end(), [](const Student& a, const Student& b) { return a.marks > b.marks; });\n        for (const Student& s : copy) {\n            cout << s.name << \" \" << s.marks << endl;\n        }\n    }\n\nprivate:\n    vector<Student> students_;\n};\n\nint main() {\n    Roster r;\n    r.add(\"Ravi\", 78);\n    r.add(\"Asha\", 91);\n    r.add(\"Mia\", 85);\n    r.print_ranking();\n    cout << fixed << setprecision(1) << r.average() << endl;\n    return 0;\n}",
+        "output": "Asha 91\nMia 85\nRavi 78\n84.7"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 94,
+      "lengthSec": 30,
+      "onScreen": "a table of the members of Roster",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "The data is private. The add method changes the roster, so it is not const. Average and print ranking only read the data, so both are const.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table of the members of Roster",
+        "headers": [
+          "Member",
+          "Kind",
+          "Const",
+          "Job"
+        ],
+        "rows": [
+          [
+            "students_",
+            "data, private",
+            "no",
+            "holds every Student"
+          ],
+          [
+            "add",
+            "method",
+            "no",
+            "stores one student"
+          ],
+          [
+            "average",
+            "method",
+            "yes",
+            "returns the mean mark"
+          ],
+          [
+            "print_ranking",
+            "method",
+            "yes",
+            "prints highest marks first"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 124,
+      "lengthSec": 40,
+      "onScreen": "best.cpp: best returns an optional student",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 19] Best returns an optional, because an empty roster has no best student. [HL 21] For an empty roster, it returns nullopt. [HL 23] Max element finds the student with the highest marks. [HL 24] The lambda says that a is smaller than b when a has fewer marks. [HL 34] The first call is on an empty roster, so it prints zero. [HL 38] After two adds, the optional holds a value. The output is Asha ninety-one.",
+      "code": {
+        "file": "best.cpp",
+        "source": "#include <algorithm>\n#include <iostream>\n#include <optional>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int marks;\n};\n\nclass Roster {\npublic:\n    void add(const string& name, int marks) {\n        students_.push_back({name, marks});\n    }\n\n    optional<Student> best() const {\n        if (students_.empty()) {\n            return nullopt;\n        }\n        return *max_element(students_.begin(), students_.end(),\n                            [](const Student& a, const Student& b) { return a.marks < b.marks; });\n    }\n\nprivate:\n    vector<Student> students_;\n};\n\nint main() {\n    Roster r;\n    auto none = r.best();\n    cout << none.has_value() << endl;\n    r.add(\"Ravi\", 78);\n    r.add(\"Asha\", 91);\n    auto top = r.best();\n    if (top) {\n        cout << top->name << \" \" << top->marks << endl;\n    }\n    return 0;\n}",
+        "output": "0\nAsha 91"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 164,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 best.cpp -o best then ./best",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as best dot cpp. Compile it with g plus plus. Then run the program. The program prints the ranking and the average, then zero, and then Asha ninety-one."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 184,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A class owns its data and keeps it private. Two. Mark read only methods const. Three. A lambda gives sort its rule. Four. Optional says that a result may not exist. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A class owns its data and keeps it private.",
+        "Mark read only methods const.",
+        "A lambda gives sort its rule.",
+        "Optional says that a result may not exist."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 214,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A const object calls a non const method",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The function gets a const reference, and calls average. The compiler says this discards qualifiers. Average does not change the object, so mark it const."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 254,
+      "lengthSec": 8,
+      "onScreen": "Why did the roster stay calm? Everything inside it was in order.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the roster stay calm? Everything inside it was in order."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 262,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a method to find a student",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Add a method that takes a name and returns the marks of that student as an optional. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 282,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 89 · Common mistakes and exam questions",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: common mistakes and exam questions. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nclass Roster {\npublic:\n    void add(int marks) { marks_.push_back(marks); }\n    double average() {\n        double total = 0;\n        for (int m : marks_) {\n            total += m;\n        }\n        return marks_.empty() ? 0 : total / marks_.size();\n    }\n\nprivate:\n    vector<int> marks_;\n};\n\nvoid show(const Roster& r) {\n    cout << r.average() << endl;\n}\n\nint main() {\n    Roster r;\n    r.add(80);\n    show(r);\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nconstbug.cpp: In function 'void show(const Roster&)':\nconstbug.cpp:21:22: error: passing 'const Roster' as 'this' argument discards qualifiers [-fpermissive]\n   21 |     cout << r.average() << endl;\n      |             ~~~~~~~~~^~\nconstbug.cpp:8:12: note:   in call to 'double Roster::average()'\n    8 |     double average() {",
+    "fixed": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nclass Roster {\npublic:\n    void add(int marks) { marks_.push_back(marks); }\n    double average() const {\n        double total = 0;\n        for (int m : marks_) {\n            total += m;\n        }\n        return marks_.empty() ? 0 : total / marks_.size();\n    }\n\nprivate:\n    vector<int> marks_;\n};\n\nvoid show(const Roster& r) {\n    cout << r.average() << endl;\n}\n\nint main() {\n    Roster r;\n    r.add(80);\n    show(r);\n    return 0;\n}",
+    "why": "A const reference may call only const methods. Add const after the parameter list of every method that does not change the object."
+  },
+  "pun": "\"Why did the roster stay calm? Everything inside it was in order.\"",
+  "challenge": "Add a method that takes a name and returns the marks of that student as an optional.",
+  "challengeAnswer": "Loop over the students. If the name matches, return the marks. After the loop, return nullopt.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Project: student records",
+      "hook": "\"Build a real program from the parts you know.\"",
+      "script": "Build a real program from the parts you know. Today we build a small project. A roster class holds student marks. It can add a student, print a ranking, and find the best student. A good class owns its data and hides it. It offers a few clear methods. Methods that only read the data are marked const. Keep coding, says Xecxec!",
+      "onScreen": "PROJECT: STUDENT RECORDS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "What you will learn: Project: student records.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "projectstudentrecords",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Project: student records in one minute",
+      "hook": "\"A good class owns its data and hides it.\"",
+      "script": "A good class owns its data and hides it. It offers a few clear methods. Methods that only read the data are marked const. We use a vector to store students, a lambda to sort them, and an optional for the best student. Add stores one student at the back of the vector. Average only reads the data, so it is const. Keep coding, says Xecxec!",
+      "onScreen": "PROJECT: STUDENT RECORDS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Project: student records in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "projectstudentrecords",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Best returns an optional, because an empty roster has no best student.\"",
+      "script": "Best returns an optional, because an empty roster has no best student. For an empty roster, it returns nullopt. Max element finds the student with the highest marks. The lambda says that a is smaller than b when a has fewer marks. The first call is on an empty roster, so it prints zero. After two adds, the optional holds a value. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "projectstudentrecords",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A const object calls a non const method",
+      "hook": "\"Can you spot the bug in project, student records?\"",
+      "script": "Can you spot the bug in project, student records? Bug of the Day. The function gets a const reference, and calls average. The compiler says this discards qualifiers. Average does not change the object, so mark it const. A const reference may call only const methods. Add const after the parameter list of every method that does not change the object. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: A const object calls a non const method.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "projectstudentrecords",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you add a method to find a student in project\"",
+      "script": "Can you add a method to find a student in project, student records? Why did the roster stay calm? Everything inside it was in order. Add a method that takes a name and returns the marks of that student as an optional. Write your answer in the comments. A class owns its data and keeps it private. Mark read only methods const. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "projectstudentrecords",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "roster.cpp",
+      "source": "#include <algorithm>\n#include <iomanip>\n#include <iostream>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int marks;\n};\n\nclass Roster {\npublic:\n    void add(const string& name, int marks) {\n        students_.push_back({name, marks});\n    }\n\n    double average() const {\n        double total = 0;\n        for (const Student& s : students_) {\n            total += s.marks;\n        }\n        return students_.empty() ? 0 : total / students_.size();\n    }\n\n    void print_ranking() const {\n        vector<Student> copy = students_;\n        sort(copy.begin(), copy.end(), [](const Student& a, const Student& b) { return a.marks > b.marks; });\n        for (const Student& s : copy) {\n            cout << s.name << \" \" << s.marks << endl;\n        }\n    }\n\nprivate:\n    vector<Student> students_;\n};\n\nint main() {\n    Roster r;\n    r.add(\"Ravi\", 78);\n    r.add(\"Asha\", 91);\n    r.add(\"Mia\", 85);\n    r.print_ranking();\n    cout << fixed << setprecision(1) << r.average() << endl;\n    return 0;\n}",
+      "output": "Asha 91\nMia 85\nRavi 78\n84.7",
+      "lang": "cpp"
+    },
+    {
+      "file": "best.cpp",
+      "source": "#include <algorithm>\n#include <iostream>\n#include <optional>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int marks;\n};\n\nclass Roster {\npublic:\n    void add(const string& name, int marks) {\n        students_.push_back({name, marks});\n    }\n\n    optional<Student> best() const {\n        if (students_.empty()) {\n            return nullopt;\n        }\n        return *max_element(students_.begin(), students_.end(),\n                            [](const Student& a, const Student& b) { return a.marks < b.marks; });\n    }\n\nprivate:\n    vector<Student> students_;\n};\n\nint main() {\n    Roster r;\n    auto none = r.best();\n    cout << none.has_value() << endl;\n    r.add(\"Ravi\", 78);\n    r.add(\"Asha\", 91);\n    auto top = r.best();\n    if (top) {\n        cout << top->name << \" \" << top->marks << endl;\n    }\n    return 0;\n}",
+      "output": "0\nAsha 91",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "80"
+  },
+  "nextTitle": "Common mistakes and exam questions"
+}

@@ -1,0 +1,395 @@
+{
+  "lang": "cpp",
+  "ep": 82,
+  "title": "Exceptions",
+  "module": 9,
+  "lengthSec": 289,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "throw an exception",
+    "catch it with try and catch",
+    "order catch blocks correctly"
+  ],
+  "youtube": {
+    "title": "C++ Exceptions: try, catch and throw | C++ Programming EP 82",
+    "description": "In this episode you will throw an exception, catch it with try and catch and order catch blocks correctly, with Xecxec the crab. 0:00 Intro · 0:15 Exceptions · 0:45 Throw and catch · 1:26 The path of an exception · 1:56 Second program · 2:56 Recap · 3:26 Bug of the Day · 4:14 Challenge · 4:34 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Exceptions"
+      },
+      {
+        "t": "0:45",
+        "label": "Throw and catch"
+      },
+      {
+        "t": "1:26",
+        "label": "The path of an exception"
+      },
+      {
+        "t": "1:56",
+        "label": "Second program"
+      },
+      {
+        "t": "2:56",
+        "label": "Recap"
+      },
+      {
+        "t": "3:26",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:14",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:34",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ exceptions",
+      "try catch",
+      "throw",
+      "runtime_error",
+      "error handling"
+    ],
+    "thumbnail": {
+      "text": "TRY / CATCH",
+      "visual": "big text \"TRY / CATCH\" in tomato on cream; Xecxec next to a crab catching a falling red ball with a net; thin black border and drop shadow.",
+      "pose": "Xecxec next to a crab catching a falling red ball with a net"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 82 · TRY / CATCH",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we handle errors without crashing. We throw an exception, and we catch it where we know what to do."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"Exceptions\": numbered lines (1. Throw raises an error; 2. Catch handles it; 3. Put the specific catch first) and an analogy card: a ball thrown up the stairs until someone catches it",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "When code cannot go on, it throws an exception. The program leaves the current function, and looks up the stack for a matching catch block. Think of a ball thrown up the stairs. It goes up until someone catches it. If nobody catches it, the program stops.",
+      "points": [
+        "Throw raises an error",
+        "Catch handles it",
+        "Put the specific catch first"
+      ],
+      "analogy": {
+        "title": "Exceptions",
+        "body": "A ball thrown up the stairs until someone catches it"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 41,
+      "onScreen": "throw.cpp: divide throws, and main catches",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 6] The function checks for a bad input. [HL 7] Throw raises a runtime error with a message. [HL 13] Main puts the risky calls inside a try block. [HL 14] The first call works, and prints four. [HL 15] The second call throws. The program jumps out of the try block. The line after it never runs. [HL 17] The catch block receives the exception by const reference. [HL 18] What returns the message. [HL 20] After the catch, the program goes on.",
+      "code": {
+        "file": "throw.cpp",
+        "source": "#include <iostream>\n#include <stdexcept>\nusing namespace std;\n\nint divide(int a, int b) {\n    if (b == 0) {\n        throw runtime_error(\"cannot divide by zero\");\n    }\n    return a / b;\n}\n\nint main() {\n    try {\n        cout << divide(8, 2) << endl;\n        cout << divide(8, 0) << endl;\n        cout << \"not reached\" << endl;\n    } catch (const exception& e) {\n        cout << \"error: \" << e.what() << endl;\n    }\n    cout << \"done\" << endl;\n    return 0;\n}",
+        "output": "4\nerror: cannot divide by zero\ndone"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 86,
+      "lengthSec": 30,
+      "onScreen": "a flow: throw, unwind, catch",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The exception leaves divide at once. This is called unwinding. The program looks for a matching catch in main. When it finds one, the program goes on after the catch block.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "a flow: throw, unwind, catch",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "throw",
+            "detail": "divide throws"
+          },
+          {
+            "id": "s2",
+            "label": "unwind",
+            "detail": "divide ends at once"
+          },
+          {
+            "id": "s3",
+            "label": "catch",
+            "detail": "main catches it"
+          },
+          {
+            "id": "s4",
+            "label": "continue",
+            "detail": "the program goes on"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 116,
+      "lengthSec": 40,
+      "onScreen": "catchorder.cpp: two catch blocks, the specific one first",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 8] Stoi cannot read a number from this text, so it throws invalid argument. [HL 10] The first catch is specific, so it matches. [HL 11] It prints bad number. [HL 12] The general catch comes last. It catches every other standard error. Always put the specific catch first.",
+      "code": {
+        "file": "catchorder.cpp",
+        "source": "#include <iostream>\n#include <stdexcept>\n#include <string>\nusing namespace std;\n\nint main() {\n    try {\n        int n = stoi(\"abc\");\n        cout << n << endl;\n    } catch (const invalid_argument&) {\n        cout << \"bad number\" << endl;\n    } catch (const exception&) {\n        cout << \"something else\" << endl;\n    }\n    return 0;\n}",
+        "output": "bad number"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 156,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 catchorder.cpp -o catchorder then ./catchorder",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as catchorder dot cpp. Compile it with g plus plus. Then run the program. The program prints bad number."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 176,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Throw raises an exception. Two. Catch handles it. Three. The program unwinds until a catch matches. Four. Put specific catch blocks before general ones. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Throw raises an exception.",
+        "Catch handles it.",
+        "The program unwinds until a catch matches.",
+        "Put specific catch blocks before general ones."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 206,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: An exception nobody catches",
+      "animation": "Butter banner drops in with a buzzer; the program crashes and the run-time error appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We throw, and nobody catches. The program ends with terminate called after throwing. Add a try block and a catch block."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 246,
+      "lengthSec": 8,
+      "onScreen": "Why did the exception get a medal? It was thrown, and someone finally caught it.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the exception get a medal? It was thrown, and someone finally caught it."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 254,
+      "lengthSec": 20,
+      "onScreen": "Task card: catch an out of range index",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Call at with a bad index on a vector. Catch the out of range exception, and print a friendly message. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 274,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 83 · File input and output",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: file input and output. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <stdexcept>\nusing namespace std;\n\nint main() {\n    throw runtime_error(\"boom\");\n    cout << \"never printed\" << endl;\n    return 0;\n}",
+    "error": "Program error output (exactly as the program prints it):\n\nterminate called after throwing an instance of 'std::runtime_error'\n  what():  boom",
+    "fixed": "#include <iostream>\n#include <stdexcept>\nusing namespace std;\n\nint main() {\n    try {\n        throw runtime_error(\"boom\");\n    } catch (const exception& e) {\n        cout << \"caught: \" << e.what() << endl;\n    }\n    return 0;\n}",
+    "why": "An exception that nobody catches ends the program. Catch it where you can recover, or at the top of main."
+  },
+  "pun": "\"Why did the exception get a medal? It was thrown, and someone finally caught it.\"",
+  "challenge": "Call at with a bad index on a vector. Catch the out of range exception, and print a friendly message.",
+  "challengeAnswer": "Put the at call in a try block. Catch const out of range reference, and print your own message.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Exceptions",
+      "hook": "\"Stop a crash before it happens.\"",
+      "script": "Stop a crash before it happens. Today we handle errors without crashing. We throw an exception, and we catch it where we know what to do. When code cannot go on, it throws an exception. The program leaves the current function, and looks up the stack for a matching catch block. Think of a ball thrown up the stairs. Keep coding, says Xecxec!",
+      "onScreen": "EXCEPTIONS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "What you will learn: Exceptions.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "exceptions",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Exceptions in one minute",
+      "hook": "\"When code cannot go on, it throws an exception.\"",
+      "script": "When code cannot go on, it throws an exception. The program leaves the current function, and looks up the stack for a matching catch block. Think of a ball thrown up the stairs. It goes up until someone catches it. If nobody catches it, the program stops. The function checks for a bad input. Throw raises a runtime error with a message. Keep coding, says Xecxec!",
+      "onScreen": "EXCEPTIONS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Exceptions in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "exceptions",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Stoi cannot read a number from this text\"",
+      "script": "Stoi cannot read a number from this text, so it throws invalid argument. The first catch is specific, so it matches. It prints bad number. The general catch comes last. It catches every other standard error. Always put the specific catch first. The program prints bad number. Throw raises an exception. Catch handles it. The program unwinds until a catch matches. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "exceptions",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: An exception nobody catches",
+      "hook": "\"Can you spot the bug in exceptions?\"",
+      "script": "Can you spot the bug in exceptions? Bug of the Day. We throw, and nobody catches. The program ends with terminate called after throwing. Add a try block and a catch block. An exception that nobody catches ends the program. Catch it where you can recover, or at the top of main. Throw raises an exception. Catch handles it. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bug of the Day: An exception nobody catches.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "exceptions",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you catch an out of range index in exceptions?\"",
+      "script": "Can you catch an out of range index in exceptions? Why did the exception get a medal? It was thrown, and someone finally caught it. Call at with a bad index on a vector. Catch the out of range exception, and print a friendly message. Write your answer in the comments. Throw raises an exception. Catch handles it. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "exceptions",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "throw.cpp",
+      "source": "#include <iostream>\n#include <stdexcept>\nusing namespace std;\n\nint divide(int a, int b) {\n    if (b == 0) {\n        throw runtime_error(\"cannot divide by zero\");\n    }\n    return a / b;\n}\n\nint main() {\n    try {\n        cout << divide(8, 2) << endl;\n        cout << divide(8, 0) << endl;\n        cout << \"not reached\" << endl;\n    } catch (const exception& e) {\n        cout << \"error: \" << e.what() << endl;\n    }\n    cout << \"done\" << endl;\n    return 0;\n}",
+      "output": "4\nerror: cannot divide by zero\ndone",
+      "lang": "cpp"
+    },
+    {
+      "file": "catchorder.cpp",
+      "source": "#include <iostream>\n#include <stdexcept>\n#include <string>\nusing namespace std;\n\nint main() {\n    try {\n        int n = stoi(\"abc\");\n        cout << n << endl;\n    } catch (const invalid_argument&) {\n        cout << \"bad number\" << endl;\n    } catch (const exception&) {\n        cout << \"something else\" << endl;\n    }\n    return 0;\n}",
+      "output": "bad number",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "caught: boom"
+  },
+  "nextTitle": "File input and output"
+}

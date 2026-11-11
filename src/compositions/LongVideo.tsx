@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { AbsoluteFill, Sequence, staticFile, Audio } from "remotion";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import type { CalculateMetadataFunction } from "remotion";
-import type { Episode, Scene, SceneTemplate } from "../lib/episode";
+import { epFolder, type Episode, type Lang, type Scene, type SceneTemplate } from "../lib/episode";
 import type { Cue } from "../lib/cues";
 import {
   resolveTransition,
@@ -46,6 +46,8 @@ export type SceneTiming = {
 
 export type LongVideoProps = {
   episodeNumber: number;
+  /** Course language; omitted for the C course. Picks the narration folder (see epFolder). */
+  lang?: Lang;
   episode?: Episode;
   sceneTimings?: SceneTiming[];
 };
@@ -73,7 +75,7 @@ const cueFromResolved = (r: ResolvedCue): Cue => {
 };
 
 export const calculateMetadata: CalculateMetadataFunction<LongVideoProps> = async ({ props }) => {
-  const epId = `ep${String(props.episodeNumber).padStart(3, "0")}`;
+  const epId = epFolder(props.lang, props.episodeNumber);
   const episode: Episode = await fetch(staticFile(`voice/${epId}/episode.json`)).then((r) => r.json());
   const manifest: { timings: { scene?: number; durationSec: number }[] } = await fetch(
     staticFile(`voice/${epId}/manifest.json`),
@@ -137,7 +139,7 @@ export const LongVideo: React.FC<LongVideoProps> = ({ episode, sceneTimings }) =
   if (!episode || !sceneTimings) {
     return null;
   }
-  const epId = `ep${String(episode.ep).padStart(3, "0")}`;
+  const epId = epFolder(episode.lang, episode.ep);
 
   const bugTiming = sceneTimings.find((t) => t.scene.template === "bug-of-the-day");
   const titleTiming = sceneTimings.find((t) => t.scene.template === "title-card");
