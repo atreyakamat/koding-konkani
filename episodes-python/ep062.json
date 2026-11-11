@@ -1,0 +1,352 @@
+{
+  "ep": 62,
+  "title": "Classes and objects",
+  "module": 7,
+  "lengthSec": 306,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "write a class with a method",
+    "create objects from a class",
+    "see that each object has its own data"
+  ],
+  "youtube": {
+    "title": "Python Classes and Objects Explained | Python Programming EP 62",
+    "description": "In this episode you will write a class with a method, create objects from a class and see that each object has its own data, with Xecxec the crab. 0:00 Intro · 0:15 Blueprint and things · 1:02 A class with a method · 1:43 Two names, two objects · 2:13 Second program · 3:13 Recap · 3:43 Bug of the Day · 4:31 Challenge · 4:51 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Blueprint and things"
+      },
+      {
+        "t": "1:02",
+        "label": "A class with a method"
+      },
+      {
+        "t": "1:43",
+        "label": "Two names, two objects"
+      },
+      {
+        "t": "2:13",
+        "label": "Second program"
+      },
+      {
+        "t": "3:13",
+        "label": "Recap"
+      },
+      {
+        "t": "3:43",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:31",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:51",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python class and object",
+      "python self explained",
+      "python create object",
+      "python class tutorial"
+    ],
+    "thumbnail": {
+      "text": "CLASS + OBJECT",
+      "visual": "big text \"CLASS + OBJECT\" in tomato on peach; Xecxec pressing cookies from a cutter labelled Dog; thin black border and drop shadow.",
+      "pose": "Xecxec pressing cookies from a cutter labelled Dog"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 62 · CLASS + OBJECT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Last time we bundled data in a class. Today we add actions, called methods, and meet self."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 47,
+      "onScreen": "\"Blueprint and things\": three numbered lines (1. class Name: starts the blueprint; 2. Name() creates an object; 3. def inside a class makes a method) and an analogy card: a cookie cutter and the cookies: one cutter, many cookies, each cookie its own",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A class is a blueprint, and an object is one thing built from it. Inside a class, you write functions with def. These are called methods. Every method takes a first parameter, named self. Self means, this very object. When you call dog dot bark, Python passes the dog in as self for you. So you never type self when calling, but you always type it when defining. Think of a cookie cutter and cookies. Each cookie is separate, but all come from one cutter."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 62,
+      "lengthSec": 41,
+      "onScreen": "dog.py: a Dog class and two dogs",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The blueprint is called Dog. [HL 2] A method, written with def, inside the class. It takes self, which means, this dog. [HL 3] It prints Woof. [HL 5] Dog with brackets builds one dog, tied to d1. [HL 6] And another, tied to d2. [HL 7] Call bark on the first dog. We write no argument, Python passes the dog as self. Woof. [HL 8] The second dog barks too. [HL 9] The type name is Dog. [HL 10] And d1 is d2 is False. Two separate objects.",
+      "code": {
+        "file": "dog.py",
+        "source": "class Dog:\n    def bark(self):\n        print(\"Woof!\")\n\nd1 = Dog()\nd2 = Dog()\nd1.bark()\nd2.bark()\nprint(type(d1).__name__)\nprint(d1 is d2)",
+        "output": "Woof!\nWoof!\nDog\nFalse"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 103,
+      "lengthSec": 30,
+      "onScreen": "The names d1 and d2 tied to two separate Dog objects",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name d1 is tied to one dog object. The name d2 is tied to another. They look the same, but they are two separate objects in memory. Both come from the same class, so both know how to bark. Changing one does not touch the other."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 133,
+      "lengthSec": 40,
+      "onScreen": "counter.py: a method that changes the object",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A Counter class. [HL 2] A method named hit. [HL 3] It sets the count of this object to zero. Self dot count is data stored inside the object. [HL 5] A second method. [HL 6] It adds one to this object's count. [HL 8] Build a counter, tied to c. [HL 9] Set its count to zero. [HL 10] Add one. [HL 11] And again. [HL 12] Print two. [HL 13] A second counter. [HL 14] Reset. [HL 15] Its count is zero. The first counter is unchanged.",
+      "code": {
+        "file": "counter.py",
+        "source": "class Counter:\n    def hit(self):\n        self.count = 0\n\n    def add(self):\n        self.count = self.count + 1\n\nc = Counter()\nc.hit()\nc.add()\nc.add()\nprint(c.count)\nd = Counter()\nd.hit()\nprint(d.count)",
+        "output": "2\n0"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 173,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python counter.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as counter dot py. In the terminal, type python, space, counter dot py. Woof twice, Dog, False. Then two, then zero."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 193,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A class is a blueprint. Dog builds an object. Two: Functions inside a class are called methods. Three: The first parameter of a method is self: this object. Four: Each object keeps its own data. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 223,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: missing self",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We forgot self in the definition. Calling d dot bark still passes the dog as the first argument. Python says, type error, bark takes zero positional arguments but one was given. The fix is simple. Put self as the first parameter of every method."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 263,
+      "lengthSec": 8,
+      "onScreen": "Why did the dog sit in the class? It wanted to learn some new tricks.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the dog sit in the class? It wanted to learn some new tricks."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 271,
+      "lengthSec": 20,
+      "onScreen": "Task card: make a Cat class",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a Cat class with a method meow that prints Meow. Create two cats and call meow on each. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 291,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 63 · __init__ and attributes",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: dunder init and attributes. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Dog:\n    def bark():\n        print(\"Woof!\")\n\nd = Dog()\nd.bark()",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"dog.py\", line 6, in <module>\n    d.bark()\n    ~~~~~~^^\nTypeError: Dog.bark() takes 0 positional arguments but 1 was given",
+    "fixed": "class Dog:\n    def bark(self):\n        print(\"Woof!\")\n\nd = Dog()\nd.bark()",
+    "why": "Python passes the object as the first argument when you call d.bark(), so the method must have a parameter ready to receive it."
+  },
+  "pun": "\"Why did the dog sit in the class? It wanted to learn some new tricks.\"",
+  "challenge": "Write a Cat class with a method meow that prints Meow. Create two cats and call meow on each.",
+  "challengeAnswer": "class Cat: def meow(self): print(\"Meow\"). Then c1 = Cat(), c2 = Cat(), c1.meow(), c2.meow().",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Class and object",
+      "hook": "\"A class is a blueprint, and an object is one thing built from it.\"",
+      "script": "A class is a blueprint, and an object is one thing built from it. Write class Dog, then Dog with brackets, and Python builds a dog. Build two, and you get two separate dogs. One blueprint, many objects. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "Dog() makes a dog",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "One class, many objects.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "classes",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "What is self",
+      "hook": "\"Self means, this very object.\"",
+      "script": "Self means, this very object. Every method takes self as its first parameter. When you call d dot bark, Python passes the dog d in as self, for free. You write self when defining, and never when calling. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "self = this object",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 38,
+      "caption": "Self means this object.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "classes",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Methods",
+      "hook": "\"A function inside a class is called a method.\"",
+      "script": "A function inside a class is called a method. It describes something the object can do. A dog can bark. A counter can add one. Define it with def, add self first, and call it with a dot after the object. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "def inside a class = method",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Methods are actions.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "classes",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Missing self",
+      "hook": "\"Here is a very common bug.\"",
+      "script": "Here is a very common bug. You write def bark with empty brackets. Then d dot bark says, type error, takes zero positional arguments but one was given. Python passed the dog, but nothing was waiting for it. Add self as the first parameter. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "TypeError: takes 0 positional arguments",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Always add self.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "classes",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the dog sit in the class?\"",
+      "script": "Why did the dog sit in the class? It wanted to learn some new tricks. Your challenge. Write a Cat class with a method called meow. It prints Meow. Build two cats and call meow on each. Remember self. Show me your cats. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 62.",
+      "onScreen": "Challenge: Cat class",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Write a Cat class.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "dog.py",
+      "source": "class Dog:\n    def bark(self):\n        print(\"Woof!\")\n\nd1 = Dog()\nd2 = Dog()\nd1.bark()\nd2.bark()\nprint(type(d1).__name__)\nprint(d1 is d2)",
+      "output": "Woof!\nWoof!\nDog\nFalse",
+      "lang": "python"
+    },
+    {
+      "file": "counter.py",
+      "source": "class Counter:\n    def hit(self):\n        self.count = 0\n\n    def add(self):\n        self.count = self.count + 1\n\nc = Counter()\nc.hit()\nc.add()\nc.add()\nprint(c.count)\nd = Counter()\nd.hit()\nprint(d.count)",
+      "output": "2\n0",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

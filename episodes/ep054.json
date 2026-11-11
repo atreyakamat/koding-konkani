@@ -113,7 +113,84 @@
       "onScreen": "Box `fish` at 1000 holding 10, with a door; box `p` at 2000 holding 1000, arrow to `fish`",
       "animation": "Claw follows the arrow, knocks twice on `fish`'s door; door opens to show 10; knock-knock SFX",
       "sfx": [],
-      "narration": "Here is our memory again. A box called fish, at address 1000, holding 10. A pointer called p, holding the address 1000, so we draw an arrow from p to fish. Last episode you saw that star p gives you 10. Let's slow down and see what really happens. First, the computer looks inside p and finds 1000. Second, it goes to house 1000. Third, it knocks on the door and looks inside. That is star p. Three steps: read the address, go there, use what is inside. Dereferencing is just a big word for \"knock on the door at the end of the arrow\"."
+      "narration": "Here is our memory again. A box called fish, at address 1000, holding 10. A pointer called p, holding the address 1000, so we draw an arrow from p to fish. Last episode you saw that star p gives you 10. Let's slow down and see what really happens. First, the computer looks inside p and finds 1000. Second, it goes to house 1000. Third, it knocks on the door and looks inside. That is star p. Three steps: read the address, go there, use what is inside. Dereferencing is just a big word for \"knock on the door at the end of the arrow\".",
+      "memory": {
+        "frames": [
+          {
+            "label": "fish holds 10 at address 1000",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "10",
+                    "name": "fish",
+                    "address": "1000"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "p holds 1000, so the arrow goes to fish",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "10",
+                    "name": "fish",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "*p: read the address, go there, look inside = 10",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "10",
+                    "name": "fish",
+                    "address": "1000",
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -125,7 +202,88 @@
       "sfx": [
         "pop"
       ],
-      "narration": "If we write int copy equals star p, the computer follows the arrow, sees 10, and puts a copy of 10 into a new box called copy. Notice: fish still has 10. Reading through a pointer does not change anything. It just looks."
+      "narration": "If we write int copy equals star p, the computer follows the arrow, sees 10, and puts a copy of 10 into a new box called copy. Notice: fish still has 10. Reading through a pointer does not change anything. It just looks.",
+      "memory": {
+        "frames": [
+          {
+            "label": "int copy = *p; follow the arrow",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "10",
+                    "name": "fish",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "?",
+                    "name": "copy",
+                    "address": "1004"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "copy gets 10, fish still has 10",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "10",
+                    "name": "fish",
+                    "address": "1000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "10",
+                    "name": "copy",
+                    "address": "1004",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -174,7 +332,161 @@
       "sfx": [
         "buzzer"
       ],
-      "narration": "Why did we write bracket star p bracket plus plus, and not just star p plus plus? Because in C, plus plus is applied before the star. So star p plus plus, without brackets, means: move p to the next box, and then read the old box. The arrow moves, and fish does not change at all. Look at the right panel: the arrow slides away to the neighbour. That is not what we wanted. With brackets, we say \"first follow the arrow, then add one to what is there\". So when you want to change the value, always use brackets. We'll see moving pointers on purpose in EP 56."
+      "narration": "Why did we write bracket star p bracket plus plus, and not just star p plus plus? Because in C, plus plus is applied before the star. So star p plus plus, without brackets, means: move p to the next box, and then read the old box. The arrow moves, and fish does not change at all. Look at the right panel: the arrow slides away to the neighbour. That is not what we wanted. With brackets, we say \"first follow the arrow, then add one to what is there\". So when you want to change the value, always use brackets. We'll see moving pointers on purpose in EP 56.",
+      "memory": {
+        "frames": [
+          {
+            "label": "Both panels start here: p points at fish = 30",
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "30",
+                    "name": "fish",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "?",
+                    "name": "next",
+                    "address": "1004"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "(*p)++ : follow the arrow, then add 1",
+            "badges": [
+              "(*p)++"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "31",
+                    "name": "fish",
+                    "address": "1000",
+                    "mark": "hl",
+                    "lost": "30"
+                  },
+                  {
+                    "value": "?",
+                    "name": "next",
+                    "address": "1004"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "*p++ : starts the same, p = 1000",
+            "badges": [
+              "*p++"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "30",
+                    "name": "fish",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "?",
+                    "name": "next",
+                    "address": "1004"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "p",
+                    "address": "2000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "*p++ moves p to the neighbour; fish stays 30",
+            "badges": [
+              "*p++"
+            ],
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "30",
+                    "name": "fish",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "?",
+                    "name": "next",
+                    "address": "1004",
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "1004",
+                    "name": "p",
+                    "address": "2000",
+                    "mark": "hl",
+                    "lost": "1000"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:1"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 9,

@@ -1,0 +1,350 @@
+{
+  "ep": 54,
+  "title": "try and except",
+  "module": 6,
+  "lengthSec": 299,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "catch an error with try and except",
+    "catch specific exception types",
+    "use else and finally"
+  ],
+  "youtube": {
+    "title": "Python try and except: Handle Errors | Python Programming EP 54",
+    "description": "In this episode you will catch an error with try and except, catch specific exception types and use else and finally, with Xecxec the crab. 0:00 Intro · 0:16 A safety net for errors · 0:54 Catching a ValueError · 1:34 Where Python jumps · 2:06 Second program · 3:06 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:16",
+        "label": "A safety net for errors"
+      },
+      {
+        "t": "0:54",
+        "label": "Catching a ValueError"
+      },
+      {
+        "t": "1:34",
+        "label": "Where Python jumps"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python try except",
+      "python exception handling",
+      "python finally else",
+      "bare except python"
+    ],
+    "thumbnail": {
+      "text": "CATCH THE ERROR",
+      "visual": "big text \"CATCH THE ERROR\" in tomato on peach; Xecxec holding a safety net under a falling red ERROR block; thin black border and drop shadow.",
+      "pose": "Xecxec holding a safety net under a falling red ERROR block"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 16,
+      "onScreen": "EP 54 · CATCH THE ERROR",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Errors do not always mean a bug. A user can type anything. Today we learn to catch errors, and keep the program running."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 16,
+      "lengthSec": 38,
+      "onScreen": "\"A safety net for errors\": three numbered lines (1. try runs the risky code; 2. except handles one kind of error; 3. finally always runs at the end) and an analogy card: a safety net under a trapeze: if the artist falls, the net catches them, and the show goes on",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Put the risky code in a try block. If an error happens, Python jumps to a matching except block, instead of stopping. Name the error type, such as ValueError. Think of a safety net under a trapeze. If the artist falls, the net catches them, and the show goes on. Else runs when no error happened. Finally runs always, error or not. Catch only the errors you expect."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "tryex.py: int of a bad string inside try",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The try block starts. [HL 2] This line fails, because abc is not a number. Python raises a value error, and jumps out of the try block at once. [HL 3] So this print is skipped. [HL 4] Except value error matches. [HL 5] Our message prints. [HL 6] And the program carries on. Without the net, it stops at line two.",
+      "code": {
+        "file": "tryex.py",
+        "source": "try:\n    n = int(\"abc\")\n    print(n)\nexcept ValueError:\n    print(\"Not a number\")\nprint(\"Program continues\")",
+        "output": "Not a number\nProgram continues"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 94,
+      "lengthSec": 32,
+      "onScreen": "Flow: try block with a failing line; arrow jumps to the matching except; both rejoin before the next line",
+      "animation": "A path enters a box, a lightning bolt hits one line, and the path jumps to a separate box before rejoining",
+      "sfx": [],
+      "narration": "Look at the path. Python enters the try block, and runs line by line. At the failing line, it stops, and jumps to the except that matches the error type. After the except block, both paths rejoin, and the program continues with the next line. Lines after the failing one, inside the try block, are skipped."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "finally.py: three inputs, three outcomes",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK text=5] We try three inputs. [HL 3] Ten divided by the number. [HL 4] A bad number is a value error. [HL 6] Zero is a zero division error. Two except blocks, two different messages. [HL 8] Else runs only if nothing went wrong. [HL 10] Finally runs every time. For five, we see two, ok, done five. For x, bad number, done x. For zero, zero, done zero.",
+      "code": {
+        "file": "finally.py",
+        "source": "for text in [\"5\", \"x\", \"0\"]:\n    try:\n        print(10 // int(text))\n    except ValueError:\n        print(\"bad number\")\n    except ZeroDivisionError:\n        print(\"zero!\")\n    else:\n        print(\"ok\")\n    finally:\n        print(\"done\", text)",
+        "output": "2\nok\ndone 5\nbad number\ndone x\nzero!\ndone 0"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python finally.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as finally dot py. In the terminal, type python, space, finally dot py. Two, ok, done five. Bad number, done x. Zero, done zero."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: try runs risky code and except handles an error. Two: Name the exception type you expect. Three: else runs when there was no error and finally always runs. Four: Catch specific errors, not everything. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 216,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a bare except hides the real bug",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We misspelled total. That is a name error. But the bare except catches it, and prints, please enter a number. A misleading message, and the real bug is hidden. Never use except with no type. Catch the specific error you expect, such as value error, and let other errors show themselves."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 256,
+      "lengthSec": 8,
+      "onScreen": "Why did the exception go to therapy? It could not handle it.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the exception go to therapy? It could not handle it."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 264,
+      "lengthSec": 20,
+      "onScreen": "Task card: catch a ValueError",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Ask for a number with input, convert it with int, and print Not a number if the conversion fails. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 284,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 55 · Raising and custom exceptions",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: raising and custom exceptions. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "try:\n    print(totl)\nexcept:\n    print(\"Please enter a number\")",
+    "error": "Python output (it runs, but the answer is wrong):\n\nPlease enter a number",
+    "fixed": "total = 5\ntry:\n    print(total)\nexcept ValueError:\n    print(\"Please enter a number\")",
+    "why": "A bare except catches every error, including your own typos, so it hides the real cause and shows a misleading message; catch specific types."
+  },
+  "pun": "\"Why did the exception go to therapy? It could not handle it.\"",
+  "challenge": "Ask for a number with input, convert it with int, and print Not a number if the conversion fails.",
+  "challengeAnswer": "Use try: n = int(input(\"Number? \")) except ValueError: print(\"Not a number\").",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "try and except",
+      "hook": "\"Put risky code in a try block.\"",
+      "script": "Put risky code in a try block. If an error happens, Python jumps to a matching except block instead of stopping. Try, int of abc, except value error, print not a number. Now the program survives. Think of a safety net under a trapeze. The artist might fall, but the show goes on. Use it for input, files, and anything unpredictable. Keep coding, says Xecxec!",
+      "onScreen": "TRY: ... EXCEPT:",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "A safety net.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "tryexcept",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Catch the right error",
+      "hook": "\"Name the error type in the except line.\"",
+      "script": "Name the error type in the except line. Except value error catches only value errors. Other errors still stop the program, and show their traceback, which is what you want. A traceback tells you what went wrong. Catch only the errors you expect, and know how to handle. Let the surprises show themselves, so you can fix them. Keep coding, says Xecxec!",
+      "onScreen": "EXCEPT VALUEERROR:",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "Be specific.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "tryexcept",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Else and finally",
+      "hook": "\"Two helpers complete the pattern.\"",
+      "script": "Two helpers complete the pattern. Else runs only when the try block finished without an error. Finally runs every time, error or not. Use it for cleanup, like closing a file. The order is try, except, else, finally. Together they let you describe every outcome clearly, and make sure the important cleanup is never skipped. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "TRY · EXCEPT · ELSE · FINALLY",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Four parts.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "tryexcept",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The bare except trap",
+      "hook": "\"A dangerous habit.\"",
+      "script": "A dangerous habit. You write except with no type. It catches every error, including your own typos. You misspell a name. Your program says, please enter a number. That message has nothing to do with the real problem. Always name the error type. Let the unexpected errors show themselves, so that you can find and fix the real bug. Keep coding, says Xecxec!",
+      "onScreen": "EXCEPT: HIDES BUGS",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Always name the type.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "tryexcept",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the exception go to therapy?\"",
+      "script": "Why did the exception go to therapy? It could not handle it. Your challenge. Ask the user for a number with input. Convert it with int, inside a try block. If the conversion fails, print not a number, instead of crashing. Test it with the word abc, and with the number twelve. Share your code in the comments below. Keep coding, says Xecxec! Full video: EP 54.",
+      "onScreen": "A SAFE NUMBER READER",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try try and except.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "exceptions",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "tryex.py",
+      "source": "try:\n    n = int(\"abc\")\n    print(n)\nexcept ValueError:\n    print(\"Not a number\")\nprint(\"Program continues\")",
+      "output": "Not a number\nProgram continues",
+      "lang": "python"
+    },
+    {
+      "file": "finally.py",
+      "source": "for text in [\"5\", \"x\", \"0\"]:\n    try:\n        print(10 // int(text))\n    except ValueError:\n        print(\"bad number\")\n    except ZeroDivisionError:\n        print(\"zero!\")\n    else:\n        print(\"ok\")\n    finally:\n        print(\"done\", text)",
+      "output": "2\nok\ndone 5\nbad number\ndone x\nzero!\ndone 0",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

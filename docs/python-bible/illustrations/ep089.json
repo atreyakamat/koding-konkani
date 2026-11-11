@@ -1,0 +1,81 @@
+{
+  "ep": 89,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "rope",
+      "shape": "box",
+      "text": "your code",
+      "colour": "cream",
+      "col": 1,
+      "row": 1,
+      "w": 9,
+      "h": 1
+    },
+    {
+      "id": "net",
+      "shape": "box",
+      "text": "tests (safety net)",
+      "colour": "mint",
+      "col": 1,
+      "row": 4,
+      "w": 9,
+      "h": 1
+    },
+    {
+      "id": "fall",
+      "shape": "token",
+      "text": "red cross card",
+      "colour": "tomato",
+      "col": 5,
+      "row": 0,
+      "w": 2,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "rope",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "net"
+    },
+    {
+      "t": 0.3,
+      "do": "shake",
+      "target": "rope",
+      "sfx": "buzzer"
+    },
+    {
+      "t": 0.45,
+      "do": "show",
+      "target": "fall",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.6,
+      "do": "move",
+      "target": "fall",
+      "sfx": "whoosh",
+      "to": [
+        5,
+        3
+      ]
+    },
+    {
+      "t": 0.8,
+      "do": "glow",
+      "target": "net",
+      "sfx": "ding"
+    }
+  ]
+}

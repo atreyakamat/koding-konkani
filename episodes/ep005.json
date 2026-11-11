@@ -102,7 +102,7 @@
       "code": {
         "file": "file1.c",
         "source": "#include <stdio.h>\n\n// The preprocessor deletes this comment\nint main(void)\n{\n    printf(\"Namaskar, Goa!\\n\");\n    return 0;\n}",
-        "output": "Namaskar, Goa!\n0"
+        "output": "Namaskar, Goa!"
       }
     },
     {
@@ -287,7 +287,7 @@
     {
       "file": "file1.c",
       "source": "#include <stdio.h>\n\n// The preprocessor deletes this comment\nint main(void)\n{\n    printf(\"Namaskar, Goa!\\n\");\n    return 0;\n}",
-      "output": "Namaskar, Goa!\n0",
+      "output": "Namaskar, Goa!",
       "buildStep": "gcc -E ep05.c -o ep05.i     # stop after preprocessing\ngcc -S ep05.c -o ep05.s     # stop after compiling (assembly)\ngcc -c ep05.c -o ep05.o     # stop after assembling (object file)\ngcc ep05.o -o ep05          # link into a program\n./ep05\necho $?",
       "lang": "c"
     }

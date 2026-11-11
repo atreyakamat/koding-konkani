@@ -116,7 +116,79 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "All module long, we've pointed at variables. But your functions also live in memory. When your program runs, the machine code for add and sub is stored in a part of memory called the code area. So each function has an address too, just like a variable. The addresses on screen are made-up examples. And if functions have addresses, then a pointer can hold one. Here is f, a function pointer. Right now it points at add. If we write f equals sub, the arrow swings over to sub. Same remote, new channel. When we call f, whichever function it points to is the one that runs."
+      "narration": "All module long, we've pointed at variables. But your functions also live in memory. When your program runs, the machine code for add and sub is stored in a part of memory called the code area. So each function has an address too, just like a variable. The addresses on screen are made-up examples. And if functions have addresses, then a pointer can hold one. Here is f, a function pointer. Right now it points at add. If we write f equals sub, the arrow swings over to sub. Same remote, new channel. When we call f, whichever function it points to is the one that runs.",
+      "memory": {
+        "frames": [
+          {
+            "label": "f points at add",
+            "groups": [
+              {
+                "name": "code area (made-up addresses)",
+                "cells": [
+                  {
+                    "value": "add",
+                    "address": "0x401500"
+                  },
+                  {
+                    "value": "sub",
+                    "address": "0x401520"
+                  }
+                ]
+              },
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x401500",
+                    "name": "f"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "f = sub : the arrow swings to sub",
+            "groups": [
+              {
+                "name": "code area (made-up addresses)",
+                "cells": [
+                  {
+                    "value": "add",
+                    "address": "0x401500"
+                  },
+                  {
+                    "value": "sub",
+                    "address": "0x401520"
+                  }
+                ]
+              },
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x401520",
+                    "name": "f",
+                    "mark": "hl",
+                    "lost": "0x401500"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:1"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,

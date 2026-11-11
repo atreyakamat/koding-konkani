@@ -7,7 +7,13 @@ import { BRAND } from "../brand";
 import { Backdrop, Panel, Sticker } from "../ui";
 import { Xecxec } from "../mascot/Xecxec";
 import { enterProgress } from "../lib/motion";
+import { textTransformFor } from "../lib/textCase";
+import type { XecxecPose } from "../mascot/Xecxec";
 import type { BaseSceneProps } from "./types";
+
+/** The visual slot every Short visual is laid out for (px, 1080x1920 design). Ends at y=1070,
+ * just above Xecxec, so a visual can use the whole free height. */
+export const SHORT_SLOT = { top: 470, width: 860, height: 600 } as const;
 
 export type ShortLayoutProps = PropsWithChildren<
   BaseSceneProps & {
@@ -18,6 +24,8 @@ export type ShortLayoutProps = PropsWithChildren<
     caption?: string;
     /** Frames the follow/subscribe end card is on screen (default 66 = 2.2 s at 30 fps). */
     endCardFrames?: number;
+    /** Xecxec's pose (default dancing; pun Shorts snap). */
+    mascotPose?: XecxecPose;
   }
 >;
 
@@ -43,6 +51,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
   colours,
   durationInFrames,
   endCardFrames = 66,
+  mascotPose = "dance",
   children,
 }) => {
   const frame = useCurrentFrame();
@@ -60,6 +69,10 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
   const words = (caption ?? "").split(/\s+/).filter(Boolean);
   const activeWord = Math.floor((frame - CAPTION_START) / FRAMES_PER_WORD);
   const hookInk = readableOn(colours.bg);
+
+  // Shrink long hooks so even four lines clear the visual slot.
+  const hookFontSize = hook.length > 70 ? 56 : hook.length > 45 ? 64 : 76;
+  const visualTop = SHORT_SLOT.top;
 
   return (
     <AbsoluteFill>
@@ -85,8 +98,8 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
         style={{
           position: "absolute",
           top: 120,
-          left: 60,
-          width: 860,
+          left: 100,
+          width: 820,
           scale: `${hookScale} ${hookScale}`,
           transformOrigin: "top left",
         }}
@@ -94,10 +107,10 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
         <div
           style={{
             fontFamily: fonts.title,
-            fontSize: 76,
+            fontSize: hookFontSize,
             color: hookInk,
             lineHeight: 1.12,
-            textTransform: "uppercase",
+            textTransform: textTransformFor(hook),
           }}
         >
           {hook}
@@ -108,10 +121,10 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
       <div
         style={{
           position: "absolute",
-          top: 520,
+          top: visualTop,
           left: 60,
-          width: 860,
-          height: 540,
+          width: SHORT_SLOT.width,
+          height: SHORT_SLOT.height,
           scale: `${visualProgress} ${visualProgress}`,
           opacity: showEnd ? 0 : 1,
           transformOrigin: "center top",
@@ -125,7 +138,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
                 fontSize: 56,
                 color: palette.ink,
                 textAlign: "center",
-                textTransform: "uppercase",
+                textTransform: textTransformFor(visualLabel ?? ""),
                 lineHeight: 1.2,
                 display: "flex",
                 alignItems: "center",
@@ -144,11 +157,11 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
         <div
           style={{
             position: "absolute",
-            top: 520,
+            top: visualTop,
             left: 60,
-            width: 860,
-            height: 540,
-            scale: `${endProgress} ${endProgress}`,
+            width: SHORT_SLOT.width,
+            height: SHORT_SLOT.height,
+            scale: `${0.9 + 0.1 * endProgress} ${0.9 + 0.1 * endProgress}`,
             transformOrigin: "center top",
           }}
         >
@@ -177,6 +190,7 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
             <Sticker
               text={BRAND.instagramHandle}
               background={colours.accent}
+              color={readableOn(colours.accent)}
               rotateDeg={-2}
               fontSize={64}
             />
@@ -196,7 +210,11 @@ export const ShortLayout: React.FC<ShortLayoutProps> = ({
 
       {/* mascot, always dancing, always in frame */}
       <div style={{ position: "absolute", top: 1085, left: 40 }}>
-        <Xecxec pose="dance" size={420} />
+        <Xecxec
+          pose={mascotPose}
+          size={420}
+          frame={mascotPose === "snap" ? frame % 45 : undefined}
+        />
       </div>
       <div style={{ position: "absolute", top: 1170, left: 520 }}>
         <Sticker

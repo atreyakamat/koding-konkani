@@ -1,0 +1,350 @@
+{
+  "ep": 77,
+  "title": "Decorators with arguments",
+  "module": 8,
+  "lengthSec": 319,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a decorator that takes its own arguments",
+    "understand the three levels of nesting",
+    "use functools.wraps in a decorator factory"
+  ],
+  "youtube": {
+    "title": "Python Decorators with Arguments Explained | Python Programming EP 77",
+    "description": "In this episode you will write a decorator that takes its own arguments, understand the three levels of nesting and use functools.wraps in a decorator factory, with Xecxec the crab. 0:00 Intro · 0:15 Three levels · 1:03 A decorator that takes a number · 1:47 Dial first, gift second · 2:22 Second program · 3:23 Recap · 3:56 Bug of the Day · 4:44 Challenge · 5:04 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Three levels"
+      },
+      {
+        "t": "1:03",
+        "label": "A decorator that takes a number"
+      },
+      {
+        "t": "1:47",
+        "label": "Dial first, gift second"
+      },
+      {
+        "t": "2:22",
+        "label": "Second program"
+      },
+      {
+        "t": "3:23",
+        "label": "Recap"
+      },
+      {
+        "t": "3:56",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:44",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:04",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python decorator arguments",
+      "python decorator factory",
+      "python nested functions decorator",
+      "python @repeat"
+    ],
+    "thumbnail": {
+      "text": "@REPEAT(3)",
+      "visual": "big text \"@REPEAT(3)\" in tomato on peach; Xecxec turning a dial on a gift-wrap machine: wrap three times; thin black border and drop shadow.",
+      "pose": "Xecxec turning a dial on a gift-wrap machine: wrap three times"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 77 · @REPEAT(3)",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "What if the decorator needs a setting, such as how many times to repeat? We add one more level."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 48,
+      "onScreen": "\"Three levels\": three numbered lines (1. Outer function takes the decorator's settings; 2. Middle function takes the function to wrap; 3. Inner function is the wrapper that runs) and an analogy card: a wrapping machine with a dial: first you set the dial, then it takes a gift, then it wraps",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A decorator with arguments is a function that returns a decorator. So there are three levels. The outer function takes the settings, such as times. It returns the middle function, which is the real decorator, and takes the function to wrap. That returns the inner wrapper, which runs each time. When you write at repeat of three, Python first calls repeat with three, gets the decorator, and applies it. Think of a wrapping machine with a dial. First you set the dial. Then you hand over the gift."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 63,
+      "lengthSec": 44,
+      "onScreen": "repeat.py: repeat a function a chosen number of times",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The outer function takes the setting, times. [HL 2] The middle function is the real decorator. It takes the function. [HL 3] The inner wrapper accepts any arguments. [HL 4] It loops times times. [HL 5] And calls the original each time. [HL 6] The middle function returns the wrapper. [HL 7] The outer function returns the decorator. [HL 9] At repeat of three. Python calls repeat with three first, and then applies the result to hello. [HL 10] The function. [HL 11] It prints hello and a name. [HL 13] One call, and we see Hello Asha three times.",
+      "code": {
+        "file": "repeat.py",
+        "source": "def repeat(times):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(times):\n                func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n@repeat(3)\ndef hello(name):\n    print(\"Hello\", name)\n\nhello(\"Asha\")",
+        "output": "Hello Asha\nHello Asha\nHello Asha"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 107,
+      "lengthSec": 35,
+      "onScreen": "A machine with a dial set to 3, then a gift function inserted, then the wrapped gift comes out",
+      "animation": "A machine with a dial turned to 3; a function enters on a belt, passes through, and leaves wrapped, with the label hello jumping onto it",
+      "sfx": [],
+      "narration": "Here is the order of events. First, repeat is called with three. That sets the dial, and returns the decorator. Second, that decorator is called with the function hello. That returns the wrapper. Finally, the name hello is tied to the wrapper. Three levels, three steps, always in that order. If you ever lose track, count the brackets in the at line."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 142,
+      "lengthSec": 41,
+      "onScreen": "require.py: allow only one role to call a function",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 3] The outer function takes the required role. [HL 4] The middle function takes the function. [HL 5] Wraps keeps the original name. [HL 6] The wrapper takes the user first. [HL 7] If the user is not the required role, [HL 8] return denied, and never call the function. [HL 9] Otherwise call it. [HL 10] Return the wrapper. [HL 11] And return the decorator. [HL 13] Require the admin role. [HL 14] The protected function. [HL 15] It returns deleted. [HL 17] The admin gets deleted. [HL 18] The guest gets denied. [HL 19] And the name is still delete all.",
+      "code": {
+        "file": "require.py",
+        "source": "import functools\n\ndef require(role):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(user, *args, **kwargs):\n            if user != role:\n                return \"denied\"\n            return func(user, *args, **kwargs)\n        return wrapper\n    return decorator\n\n@require(\"admin\")\ndef delete_all(user):\n    return \"deleted\"\n\nprint(delete_all(\"admin\"))\nprint(delete_all(\"guest\"))\nprint(delete_all.__name__)",
+        "output": "deleted\ndenied\ndelete_all"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 183,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python require.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as require dot py. In the terminal, type python, space, require dot py. Hello Asha three times. Then deleted, denied, delete_all."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 203,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A decorator with arguments has three levels of functions. Two: Outer takes the settings and returns the decorator. Three: The decorator takes the function and returns the wrapper. Four: at repeat of 3 first calls repeat of 3, then applies the result. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 236,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: one level of nesting is missing",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Repeat returns the wrapper directly. But at repeat of three means, call repeat, then call the result with hello. So the wrapper runs immediately, with hello as an argument, and looks for func. Name error, name func is not defined. Add the middle level, a decorator function that takes func."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 276,
+      "lengthSec": 8,
+      "onScreen": "Why did the decorator need three levels? It was a big fan of nesting.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the decorator need three levels? It was a big fan of nesting."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 284,
+      "lengthSec": 20,
+      "onScreen": "Task card: shout n times",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a decorator shout of n that prints the function's result in capital letters n times. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 304,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 78 · Context managers",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: context managers. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def repeat(times):\n    def wrapper(*args, **kwargs):\n        for _ in range(times):\n            func(*args, **kwargs)\n    return wrapper\n\n@repeat(3)\ndef hello():\n    print(\"Hello\")",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"repeat.py\", line 7, in <module>\n    @repeat(3)\n     ~~~~~~^^^\n  File \"repeat.py\", line 4, in wrapper\n    func(*args, **kwargs)\n    ^^^^\nNameError: name 'func' is not defined",
+    "fixed": "def repeat(times):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(times):\n                func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n@repeat(3)\ndef hello():\n    print(\"Hello\")\n\nhello()",
+    "why": "At repeat of three calls repeat, and then calls the result with the function. If repeat returns the wrapper directly, the wrapper runs at once, and has no func to call."
+  },
+  "pun": "\"Why did the decorator need three levels? It was a big fan of nesting.\"",
+  "challenge": "Write a decorator shout(n) that prints the function's result in capital letters n times.",
+  "challengeAnswer": "def shout(n): def decorator(func): def wrapper(*a, **k): for _ in range(n): print(func(*a, **k).upper()); return wrapper; return decorator.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Why three levels",
+      "hook": "\"A decorator with arguments has three levels.\"",
+      "script": "A decorator with arguments has three levels. The outer function takes the setting. It returns the decorator. The decorator takes the function, and returns the wrapper. Setting first, function second, wrapper last. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "outer -> decorator -> wrapper",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Three levels, in order.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "decorators",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "What the at line does",
+      "hook": "\"When you write at repeat of three, Python first calls repeat with three.\"",
+      "script": "When you write at repeat of three, Python first calls repeat with three. That returns a decorator. Then Python calls that decorator with your function. So the brackets in the at line tell you there is an extra level. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "@repeat(3) = repeat(3)(func)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "Brackets mean an extra level.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "decorators",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Keep the name",
+      "hook": "\"Do not forget functools dot wraps.\"",
+      "script": "Do not forget functools dot wraps. Put it above the inner wrapper, even in a decorator with arguments. Then the decorated function keeps its name and its doc string. Tools and error messages then show the right name. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "@functools.wraps(func)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Always use wraps.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "decorators",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Missing level",
+      "hook": "\"A bug that confuses everyone.\"",
+      "script": "A bug that confuses everyone. Repeat returns the wrapper directly. At repeat of three then calls the wrapper with hello, and Python says, name error, name func is not defined. Add the middle level that takes func. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "NameError: name 'func'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Add the middle level.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "decorators",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the decorator need three levels?\"",
+      "script": "Why did the decorator need three levels? It was a big fan of nesting. Your challenge. Write a decorator called shout that takes a number n. It prints the function's result in capital letters, n times. Try it with a greeting function. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 77.",
+      "onScreen": "Challenge: @shout(2)",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Write @shout(n).",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "repeat.py",
+      "source": "def repeat(times):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(times):\n                func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n@repeat(3)\ndef hello(name):\n    print(\"Hello\", name)\n\nhello(\"Asha\")",
+      "output": "Hello Asha\nHello Asha\nHello Asha",
+      "lang": "python"
+    },
+    {
+      "file": "require.py",
+      "source": "import functools\n\ndef require(role):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(user, *args, **kwargs):\n            if user != role:\n                return \"denied\"\n            return func(user, *args, **kwargs)\n        return wrapper\n    return decorator\n\n@require(\"admin\")\ndef delete_all(user):\n    return \"deleted\"\n\nprint(delete_all(\"admin\"))\nprint(delete_all(\"guest\"))\nprint(delete_all.__name__)",
+      "output": "deleted\ndenied\ndelete_all",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

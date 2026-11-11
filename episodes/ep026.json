@@ -94,7 +94,12 @@
       "onScreen": "`sorry.c` with variable tracker for `i`",
       "animation": "Line highlights in Butter; tracker box for `i` ticks 1→6; each iteration adds a line to a mini terminal on the right",
       "sfx": [],
-      "narration": "Here is our program. [HL 4] Line four: int i equals 1. This is our counter, and it starts at one. [TRACK i=1] [HL 6] Line six: while, i less than or equal to 5. C checks: is 1 less than or equal to 5? Yes. So we go inside. [HL 7] Line seven: printf, Sorry, percent d, and we pass i. So it prints \"Sorry 1\". [HL 8] Line eight: i plus plus. This adds one to i. [TRACK i=2] Now we hit the closing brace, and C jumps back up to line six. Is 2 less than or equal to 5? Yes. Print \"Sorry 2\", i becomes 3. [TRACK i=3] Again: \"Sorry 3\", i becomes 4. [TRACK i=4] \"Sorry 4\", i becomes 5. [TRACK i=5] Is 5 less than or equal to 5? Yes, equal counts. Print \"Sorry 5\", and i becomes 6. [TRACK i=6] Now the check: is 6 less than or equal to 5? No. The condition is false, so C jumps past the closing brace. [HL 11] Line eleven prints \"Done! i is now 6\". Notice that: after the loop, i is one more than the last value printed. Remember this, it will save you in exams. [HL 12] And return 0 ends the program. Each trip through the body is called an iteration. This loop did five iterations."
+      "narration": "Here is our program. [HL 4] Line four: int i equals 1. This is our counter, and it starts at one. [TRACK i=1] [HL 6] Line six: while, i less than or equal to 5. C checks: is 1 less than or equal to 5? Yes. So we go inside. [HL 7] Line seven: printf, Sorry, percent d, and we pass i. So it prints \"Sorry 1\". [HL 8] Line eight: i plus plus. This adds one to i. [TRACK i=2] Now we hit the closing brace, and C jumps back up to line six. Is 2 less than or equal to 5? Yes. Print \"Sorry 2\", i becomes 3. [TRACK i=3] Again: \"Sorry 3\", i becomes 4. [TRACK i=4] \"Sorry 4\", i becomes 5. [TRACK i=5] Is 5 less than or equal to 5? Yes, equal counts. Print \"Sorry 5\", and i becomes 6. [TRACK i=6] Now the check: is 6 less than or equal to 5? No. The condition is false, so C jumps past the closing brace. [HL 11] Line eleven prints \"Done! i is now 6\". Notice that: after the loop, i is one more than the last value printed. Remember this, it will save you in exams. [HL 12] And return 0 ends the program. Each trip through the body is called an iteration. This loop did five iterations.",
+      "code": {
+        "file": "sorry.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int i = 1;\n\n    while (i <= 5) {\n        printf(\"Sorry %d\\n\", i);\n        i++;\n    }\n\n    printf(\"Done! i is now %d\\n\", i);\n    return 0;\n}",
+        "output": "Sorry 1\nSorry 2\nSorry 3\nSorry 4\nSorry 5\nDone! i is now 6"
+      }
     },
     {
       "id": 6,
@@ -126,7 +131,12 @@
       "onScreen": "`double.c` with trackers for `fish` and `day`",
       "animation": "Fish icons double in a basket each iteration; tracker table fills row by row",
       "sfx": [],
-      "narration": "While loops shine when you don't know how many times you'll repeat. A fisherman at Mapusa market starts with 1 fish. Every day, his catch doubles. How many days until he has at least 100? [HL 4] fish starts at 1. [HL 5] day starts at 1. [TRACK fish=1 day=1] [HL 7] While fish is less than 100. [HL 8] fish equals fish times 2. [HL 9] day plus plus. Watch the tracker. 2 on day 2. 4 on day 3. 8, 16, 32, 64. [TRACK fish=64 day=7] 64 is still less than 100, so one more trip: 128 on day 8. [TRACK fish=128 day=8] Now 128 is not less than 100, so the loop stops. [HL 12] We print \"Day 8: 128 fish\". We never told C \"repeat seven times\". The condition decided."
+      "narration": "While loops shine when you don't know how many times you'll repeat. A fisherman at Mapusa market starts with 1 fish. Every day, his catch doubles. How many days until he has at least 100? [HL 4] fish starts at 1. [HL 5] day starts at 1. [TRACK fish=1 day=1] [HL 7] While fish is less than 100. [HL 8] fish equals fish times 2. [HL 9] day plus plus. Watch the tracker. 2 on day 2. 4 on day 3. 8, 16, 32, 64. [TRACK fish=64 day=7] 64 is still less than 100, so one more trip: 128 on day 8. [TRACK fish=128 day=8] Now 128 is not less than 100, so the loop stops. [HL 12] We print \"Day 8: 128 fish\". We never told C \"repeat seven times\". The condition decided.",
+      "code": {
+        "file": "double.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int fish = 1;\n    int day = 1;\n\n    while (fish < 100) {\n        fish = fish * 2;\n        day++;\n    }\n\n    printf(\"Day %d: %d fish\\n\", day, fish);\n    return 0;\n}",
+        "output": "Day 8: 128 fish"
+      }
     },
     {
       "id": 9,

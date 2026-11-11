@@ -1,0 +1,350 @@
+{
+  "ep": 13,
+  "title": "if and else",
+  "module": 2,
+  "lengthSec": 300,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "write a decision with if and else",
+    "use the colon and the indent correctly",
+    "run lines after the decision whatever the answer"
+  ],
+  "youtube": {
+    "title": "Python if and else: Make Your Program Decide | Python Programming EP 13",
+    "description": "In this episode you will write a decision with if and else, use the colon and the indent correctly and run lines after the decision whatever the answer, with Xecxec the crab. 0:00 Intro · 0:15 Making decisions · 0:51 A two-path decision · 1:31 The path through the decision · 2:03 Second program · 3:03 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Making decisions"
+      },
+      {
+        "t": "0:51",
+        "label": "A two-path decision"
+      },
+      {
+        "t": "1:31",
+        "label": "The path through the decision"
+      },
+      {
+        "t": "2:03",
+        "label": "Second program"
+      },
+      {
+        "t": "3:03",
+        "label": "Recap"
+      },
+      {
+        "t": "3:37",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python if else",
+      "python conditions",
+      "python decisions",
+      "syntaxerror expected colon"
+    ],
+    "thumbnail": {
+      "text": "IF OR ELSE?",
+      "visual": "big text \"IF OR ELSE?\" in tomato on peach; Xecxec standing at a fork in a beach path, one sign saying IF and the other saying ELSE; thin black border and drop shadow.",
+      "pose": "Xecxec standing at a fork in a beach path, one sign saying IF and the other saying ELSE"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 13 · IF OR ELSE?",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Programs become interesting when they can choose. Today we make our first real decisions with if and else."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 36,
+      "onScreen": "\"Making decisions\": three numbered lines (1. if checks a condition; 2. else runs when the condition is False; 3. The colon and the indent mark each block) and an analogy card: a beach lifeguard flag: red flag, you stay out; green flag, you can swim",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A decision has three parts. The word if, a condition that is True or False, and a colon. The lines indented below run only when the condition is True. Else gives the other path, for when it is False. Think of a lifeguard flag. Red flag, you stay out. Green flag, you can swim. The program checks, then walks down exactly one path."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 51,
+      "lengthSec": 40,
+      "onScreen": "weather.py: a hot-day check with a block of two lines",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The temperature is thirty four. [HL 2] The condition asks, is it greater than thirty? That is True. The colon opens the block. [HL 3] First line of the block, indented. [HL 4] Second line, same indent, so it is in the same block. [HL 5] Else covers the other path. Python skips it this time. [HL 6] This line runs if the answer is False. [HL 7] The last line is at the left edge, so it runs on both paths.",
+      "code": {
+        "file": "weather.py",
+        "source": "temperature = 34\nif temperature > 30:\n    print(\"Hot day\")\n    print(\"Drink water\")\nelse:\n    print(\"Pleasant day\")\nprint(\"Enjoy the beach\")",
+        "output": "Hot day\nDrink water\nEnjoy the beach"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 91,
+      "lengthSec": 32,
+      "onScreen": "A flowchart: condition diamond, a yes branch for the if block, a no branch for the else block, and a join before the last line",
+      "animation": "Flowchart boxes light up one at a time; the arrow follows the path Python takes, and the skipped branch stays grey",
+      "sfx": [],
+      "narration": "Here is the decision as a map. Python arrives at the diamond and asks the question. If the answer is yes, it walks the if branch. If the answer is no, it walks the else branch. Then both branches join, and the program carries on with the next line. Exactly one branch is walked every time."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 123,
+      "lengthSec": 40,
+      "onScreen": "marks.py: a marks check with else",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK marks=38] Marks are thirty eight. [HL 2] Is marks greater than or equal to forty? No, thirty eight is smaller. [HL 3] So the Pass line is skipped. [HL 4] Python jumps to else. [HL 5] Try again prints. Change marks to forty, and Pass prints instead. Test the edge value, forty, every time you write a condition like this.",
+      "code": {
+        "file": "marks.py",
+        "source": "marks = 38\nif marks >= 40:\n    print(\"Pass\")\nelse:\n    print(\"Try again\")",
+        "output": "Try again"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 163,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python marks.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as marks dot py. In the terminal, type python, space, marks dot py. Try again. Thirty eight is below the pass mark of forty."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 183,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: if runs a block only when its condition is True. Two: else runs when the condition is False. Three: The colon opens a block and the indent shows what belongs to it. Four: A line at the left edge runs whichever path was taken. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 217,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a missing colon",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We forgot the colon after the condition. Python says, syntax error, expected a colon. The arrow points to the exact spot where the colon should be. Every if line must end with a colon. It tells Python, a block starts on the next line. Add it, and the program runs."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 257,
+      "lengthSec": 8,
+      "onScreen": "Why did the program stand at the fork in the road? It had many conditions to check.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the program stand at the fork in the road? It had many conditions to check."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 265,
+      "lengthSec": 20,
+      "onScreen": "Task card: print Cheap or Expensive for a price",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make price equals 450. Print Cheap if the price is below 500, otherwise print Expensive. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 285,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 14 · elif ladders",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: elif ladders. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "marks = 38\nif marks >= 40\n    print(\"Pass\")",
+    "error": "Python output (exactly as Python prints it):\n\n  File \"marks.py\", line 2\n    if marks >= 40\n                  ^\nSyntaxError: expected ':'",
+    "fixed": "marks = 38\nif marks >= 40:\n    print(\"Pass\")",
+    "why": "The colon tells Python that a block follows; without it Python cannot tell where the condition ends."
+  },
+  "pun": "\"Why did the program stand at the fork in the road? It had many conditions to check.\"",
+  "challenge": "Make price = 450. Print Cheap if the price is below 500, otherwise print Expensive.",
+  "challengeAnswer": "Use if price < 500: print(\"Cheap\") and else: print(\"Expensive\"). With 450 it prints Cheap.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is if?",
+      "hook": "\"The if statement lets a program choose.\"",
+      "script": "The if statement lets a program choose. You write the word if, then a condition, then a colon. The lines indented below run only when the condition is True. Think of a lifeguard flag. Green flag, you swim. Red flag, you stay out. Your program checks the condition, and then walks exactly one path. That is a decision. Keep coding, says Xecxec!",
+      "onScreen": "IF + CONDITION + :",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Your first decision.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "ifelse",
+        "conditions",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Else is the other path",
+      "hook": "\"If has a partner called else.\"",
+      "script": "If has a partner called else. Else runs when the condition is False. So the program always takes exactly one of the two paths, never both, never neither. Line else up under its if, put a colon after it, and indent the lines below. After both paths, the program carries on with the next line at the left edge. That line always runs. Keep coding, says Xecxec!",
+      "onScreen": "IF... ELSE...",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "Two paths, one runs.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "ifelse",
+        "conditions",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Test the edge",
+      "hook": "\"Marks are thirty eight, and the pass mark is forty.\"",
+      "script": "Marks are thirty eight, and the pass mark is forty. Is marks greater than or equal to forty? No, so Python prints Try again. Always test the edge value. At exactly forty, the condition is True, and Pass prints. The difference between greater than and greater than or equal matters. Edges are where beginner programs most often go wrong, so check them. Keep coding, says Xecxec!",
+      "onScreen": "38 >= 40 ?",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Test the edge value.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "ifelse",
+        "conditions",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Expected a colon",
+      "hook": "\"A very common bug.\"",
+      "script": "A very common bug. You write the if line, and forget the colon at the end. Python says, syntax error, expected a colon, and the arrow points to the exact spot. The colon tells Python a block starts on the next line. Every if, else, and loop line needs one. Add the colon, and the program runs again. Keep coding, says Xecxec!",
+      "onScreen": "SYNTAXERROR: EXPECTED ':'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Never forget the colon.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "ifelse",
+        "conditions",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the program stand at the fork in the road?\"",
+      "script": "Why did the program stand at the fork in the road? It had many conditions to check. Your challenge. Make price equal four fifty. Print Cheap if the price is below five hundred. Otherwise, print Expensive. Then try five hundred, and see what happens at the edge. Share your answer in the comments below. Keep coding, says Xecxec! Full video: EP 13.",
+      "onScreen": "CHEAP OR EXPENSIVE?",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Try the decision.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "ifelse",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "weather.py",
+      "source": "temperature = 34\nif temperature > 30:\n    print(\"Hot day\")\n    print(\"Drink water\")\nelse:\n    print(\"Pleasant day\")\nprint(\"Enjoy the beach\")",
+      "output": "Hot day\nDrink water\nEnjoy the beach",
+      "lang": "python"
+    },
+    {
+      "file": "marks.py",
+      "source": "marks = 38\nif marks >= 40:\n    print(\"Pass\")\nelse:\n    print(\"Try again\")",
+      "output": "Try again",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

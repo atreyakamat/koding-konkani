@@ -71,7 +71,95 @@
       "onScreen": "Number 1000 stored as text (4 characters '1','0','0','0') vs as an int (4 raw bytes in Lilac)",
       "animation": "Characters type in; raw bytes slide in as hex boxes; \"people read\" vs \"programs read\" labels",
       "sfx": [],
-      "narration": "So far our files were text: characters people can read. If we save the number 1000 as text, we store four characters: 1, 0, 0, 0. To get the number back, the program has to read the characters and convert them. A binary file stores the bytes exactly as they sit in memory. The int 1000 is just its 4 raw bytes, usually. Open it in Notepad and you'll see junk, but your program can load it back instantly. And every record is the same size, which is the secret to jumping straight to one."
+      "narration": "So far our files were text: characters people can read. If we save the number 1000 as text, we store four characters: 1, 0, 0, 0. To get the number back, the program has to read the characters and convert them. A binary file stores the bytes exactly as they sit in memory. The int 1000 is just its 4 raw bytes, usually. Open it in Notepad and you'll see junk, but your program can load it back instantly. And every record is the same size, which is the secret to jumping straight to one.",
+      "memory": {
+        "frames": [
+          {
+            "label": "As text: four characters, converted back when read",
+            "badges": [
+              "readable"
+            ],
+            "groups": [
+              {
+                "name": "text file: '1' '0' '0' '0'",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0
+                  },
+                  {
+                    "value": "0",
+                    "index": 1
+                  },
+                  {
+                    "value": "0",
+                    "index": 2
+                  },
+                  {
+                    "value": "0",
+                    "index": 3
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "As an int: the bytes exactly as they sit in memory",
+            "badges": [
+              "junk in Notepad",
+              "loads instantly"
+            ],
+            "groups": [
+              {
+                "name": "text file: '1' '0' '0' '0'",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0
+                  },
+                  {
+                    "value": "0",
+                    "index": 1
+                  },
+                  {
+                    "value": "0",
+                    "index": 2
+                  },
+                  {
+                    "value": "0",
+                    "index": 3
+                  }
+                ]
+              },
+              {
+                "name": "binary file: int 1000, 4 raw bytes",
+                "cells": [
+                  {
+                    "value": "E8",
+                    "index": 0,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "03",
+                    "index": 1,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "00",
+                    "index": 2,
+                    "mark": "hl"
+                  },
+                  {
+                    "value": "00",
+                    "index": 3,
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -81,7 +169,12 @@
       "onScreen": "`binwrite.c` with an array of 3 struct cards",
       "animation": "Three cards fly into a file drawer in one move; size badge \"28 bytes each\" with \"your size may differ\" note",
       "sfx": [],
-      "narration": "[HL 3] Here's our record: struct Student, with roll, an int, name, 20 characters, and marks, a float. You built structs like this in Module 9. [HL 10] An array of 3 students, filled in right here. [HL 16] fopen, \"students dot dat\", \"wb\". The b means binary. [HL 17] NULL check with perror, as always. [HL 22] size_t written equals fwrite, s, sizeof struct Student, 3, fp. fwrite takes four things: where the data starts, the size of one item, how many items, and the file. So: from the array s, write 3 items, each the size of one Student. It returns how many items it actually wrote. size_t is the unsigned type C uses for sizes and counts. [HL 23] fclose. [HL 25] Print \"Wrote\", percent z u, written. Percent z u is the format for size_t. We get 3. [HL 26] And the size of one record: 28 bytes on our machine. 4 for the int, 20 for the name, 4 for the float. Your size may differ on other machines, and padding can add extra bytes, as you saw in Episode 64. One call, three whole records saved."
+      "narration": "[HL 3] Here's our record: struct Student, with roll, an int, name, 20 characters, and marks, a float. You built structs like this in Module 9. [HL 10] An array of 3 students, filled in right here. [HL 16] fopen, \"students dot dat\", \"wb\". The b means binary. [HL 17] NULL check with perror, as always. [HL 22] size_t written equals fwrite, s, sizeof struct Student, 3, fp. fwrite takes four things: where the data starts, the size of one item, how many items, and the file. So: from the array s, write 3 items, each the size of one Student. It returns how many items it actually wrote. size_t is the unsigned type C uses for sizes and counts. [HL 23] fclose. [HL 25] Print \"Wrote\", percent z u, written. Percent z u is the format for size_t. We get 3. [HL 26] And the size of one record: 28 bytes on our machine. 4 for the int, 20 for the name, 4 for the float. Your size may differ on other machines, and padding can add extra bytes, as you saw in Episode 64. One call, three whole records saved.",
+      "code": {
+        "file": "binwrite.c",
+        "source": "#include <stdio.h>\n\nstruct Student {\n    int roll;\n    char name[20];\n    float marks;\n};\n\nint main(void) {\n    struct Student s[3] = {\n        {1, \"Ravi\", 72.5f},\n        {2, \"Anjali\", 88.0f},\n        {3, \"Xecxec\", 95.5f}\n    };\n\n    FILE *fp = fopen(\"students.dat\", \"wb\");\n    if (fp == NULL) {\n        perror(\"students.dat\");\n        return 1;\n    }\n\n    size_t written = fwrite(s, sizeof(struct Student), 3, fp);\n    fclose(fp);\n\n    printf(\"Wrote %zu records\\n\", written);\n    printf(\"Each record is %zu bytes\\n\", sizeof(struct Student));\n    return 0;\n}",
+        "output": "Wrote 3 records\nEach record is 28 bytes"
+      }
     },
     {
       "id": 5,
@@ -91,7 +184,12 @@
       "onScreen": "`binread.c` lines 1–22 (fread loop)",
       "animation": "Cards pull out one at a time into the `st` box; return value badge shows 1, 1, 1, then 0",
       "sfx": [],
-      "narration": "Now let's read them back. [HL 10] fopen with \"rb\", read binary. [HL 16] struct Student st, one empty record box. [HL 18] while fread, address of st, sizeof st, 1, fp, equals 1. fread is fwrite's twin: where to put the data, the size of one item, how many, and the file. We read one record at a time. It returns how many records it read. 1 means success. At the end of the file it returns 0, and the loop stops. Same rule as last episode: loop on the read function's result. [TRACK st.roll=1] [HL 19] Print roll, name and marks. 1, Ravi, 72.5. [TRACK st.roll=2] 2, Anjali, 88.0. [TRACK st.roll=3] 3, Xecxec, 95.5. Exactly what we saved."
+      "narration": "Now let's read them back. [HL 10] fopen with \"rb\", read binary. [HL 16] struct Student st, one empty record box. [HL 18] while fread, address of st, sizeof st, 1, fp, equals 1. fread is fwrite's twin: where to put the data, the size of one item, how many, and the file. We read one record at a time. It returns how many records it read. 1 means success. At the end of the file it returns 0, and the loop stops. Same rule as last episode: loop on the read function's result. [TRACK st.roll=1] [HL 19] Print roll, name and marks. 1, Ravi, 72.5. [TRACK st.roll=2] 2, Anjali, 88.0. [TRACK st.roll=3] 3, Xecxec, 95.5. Exactly what we saved.",
+      "code": {
+        "file": "binread.c",
+        "source": "#include <stdio.h>\n\nstruct Student {\n    int roll;\n    char name[20];\n    float marks;\n};\n\nint main(void) {\n    FILE *fp = fopen(\"students.dat\", \"rb\");\n    if (fp == NULL) {\n        perror(\"students.dat\");\n        return 1;\n    }\n\n    struct Student st;\n\n    while (fread(&st, sizeof st, 1, fp) == 1) {\n        printf(\"%d  %-8s %.1f\\n\", st.roll, st.name, st.marks);\n    }\n\n    /* Jump straight to record 2 (index 1) */\n    fseek(fp, 1 * (long)sizeof st, SEEK_SET);\n    fread(&st, sizeof st, 1, fp);\n    printf(\"Record 2 is %s\\n\", st.name);\n\n    fseek(fp, 0, SEEK_END);\n    long size = ftell(fp);\n    printf(\"File size: %ld bytes, %ld records\\n\", size, size / (long)sizeof st);\n\n    fclose(fp);\n    return 0;\n}",
+        "output": "1  Ravi     72.5\n2  Anjali   88.0\n3  Xecxec   95.5\nRecord 2 is Anjali\nFile size: 84 bytes, 3 records"
+      }
     },
     {
       "id": 6,
@@ -113,7 +211,12 @@
       "onScreen": "`binread.c` lines 24–32 (fseek, ftell)",
       "animation": "File position cursor jumps from byte 0 to 28; then to the end, ruler shows 84 bytes",
       "sfx": [],
-      "narration": "Now the magic. Every record is 28 bytes. So record 1 starts at byte 0, record 2 at byte 28, record 3 at byte 56. To read record 2, we don't need to read record 1 first. [HL 25] fseek, fp, 1 times sizeof st, SEEK_SET. fseek moves the file's reading position. SEEK_SET means \"count from the start of the file\". So we jump to byte 28. We cast sizeof to long because fseek expects a long offset. [HL 26] fread one record. [HL 27] \"Record 2 is Anjali\". Straight there, no flipping pages. [HL 29] fseek, fp, 0, SEEK_END: jump to the very end. [HL 30] ftell tells us the current position in bytes. At the end, that's the file size: 84. [HL 31] 84 divided by 28 is 3 records. That's how a program can count records without reading them."
+      "narration": "Now the magic. Every record is 28 bytes. So record 1 starts at byte 0, record 2 at byte 28, record 3 at byte 56. To read record 2, we don't need to read record 1 first. [HL 25] fseek, fp, 1 times sizeof st, SEEK_SET. fseek moves the file's reading position. SEEK_SET means \"count from the start of the file\". So we jump to byte 28. We cast sizeof to long because fseek expects a long offset. [HL 26] fread one record. [HL 27] \"Record 2 is Anjali\". Straight there, no flipping pages. [HL 29] fseek, fp, 0, SEEK_END: jump to the very end. [HL 30] ftell tells us the current position in bytes. At the end, that's the file size: 84. [HL 31] 84 divided by 28 is 3 records. That's how a program can count records without reading them.",
+      "code": {
+        "file": "binread.c",
+        "source": "#include <stdio.h>\n\nstruct Student {\n    int roll;\n    char name[20];\n    float marks;\n};\n\nint main(void) {\n    FILE *fp = fopen(\"students.dat\", \"rb\");\n    if (fp == NULL) {\n        perror(\"students.dat\");\n        return 1;\n    }\n\n    struct Student st;\n\n    while (fread(&st, sizeof st, 1, fp) == 1) {\n        printf(\"%d  %-8s %.1f\\n\", st.roll, st.name, st.marks);\n    }\n\n    /* Jump straight to record 2 (index 1) */\n    fseek(fp, 1 * (long)sizeof st, SEEK_SET);\n    fread(&st, sizeof st, 1, fp);\n    printf(\"Record 2 is %s\\n\", st.name);\n\n    fseek(fp, 0, SEEK_END);\n    long size = ftell(fp);\n    printf(\"File size: %ld bytes, %ld records\\n\", size, size / (long)sizeof st);\n\n    fclose(fp);\n    return 0;\n}",
+        "output": "1  Ravi     72.5\n2  Anjali   88.0\n3  Xecxec   95.5\nRecord 2 is Anjali\nFile size: 84 bytes, 3 records"
+      }
     },
     {
       "id": 8,
@@ -123,7 +226,12 @@
       "onScreen": "`update.c`",
       "animation": "Cursor jumps to byte 56, card lifted, marks 95.5 → 99.0 in Mint, put back in the same slot",
       "sfx": [],
-      "narration": "Last trick: changing one record without rewriting the whole file. Xecxec got a re-evaluation. [HL 11] fopen with \"r plus b\": read and write, binary, and the file must exist. [HL 18] pos equals 2 times sizeof st. Record 3 starts at byte 56. [HL 20] fseek to pos. [HL 21] fread the record into st. [TRACK st.marks=95.5] [HL 22] Change marks to 99. [TRACK st.marks=99.0] [HL 24] fseek back to pos. Why again? Reading moved the position forward by 28 bytes. We must go back to overwrite the same slot. Also, C requires a fseek between reading and writing on the same file. [HL 25] fwrite the record. [HL 26] fclose. Run the reader again: Xecxec now has 99.0, and the file is still 84 bytes. One record changed, nothing else touched. That's a tiny database."
+      "narration": "Last trick: changing one record without rewriting the whole file. Xecxec got a re-evaluation. [HL 11] fopen with \"r plus b\": read and write, binary, and the file must exist. [HL 18] pos equals 2 times sizeof st. Record 3 starts at byte 56. [HL 20] fseek to pos. [HL 21] fread the record into st. [TRACK st.marks=95.5] [HL 22] Change marks to 99. [TRACK st.marks=99.0] [HL 24] fseek back to pos. Why again? Reading moved the position forward by 28 bytes. We must go back to overwrite the same slot. Also, C requires a fseek between reading and writing on the same file. [HL 25] fwrite the record. [HL 26] fclose. Run the reader again: Xecxec now has 99.0, and the file is still 84 bytes. One record changed, nothing else touched. That's a tiny database.",
+      "code": {
+        "file": "update.c",
+        "source": "#include <stdio.h>\n\nstruct Student {\n    int roll;\n    char name[20];\n    float marks;\n};\n\nint main(void) {\n    FILE *fp = fopen(\"students.dat\", \"r+b\");\n    if (fp == NULL) {\n        perror(\"students.dat\");\n        return 1;\n    }\n\n    struct Student st;\n    long pos = 2 * (long)sizeof st;\n\n    fseek(fp, pos, SEEK_SET);\n    fread(&st, sizeof st, 1, fp);\n    st.marks = 99.0f;\n\n    fseek(fp, pos, SEEK_SET);\n    fwrite(&st, sizeof st, 1, fp);\n    fclose(fp);\n\n    printf(\"Updated %s to %.1f\\n\", st.name, st.marks);\n    return 0;\n}",
+        "output": "Updated Xecxec to 99.0"
+      }
     },
     {
       "id": 9,

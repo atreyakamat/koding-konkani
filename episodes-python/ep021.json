@@ -1,0 +1,352 @@
+{
+  "ep": 21,
+  "title": "Loop patterns",
+  "module": 2,
+  "lengthSec": 305,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "build a running total with an accumulator",
+    "count matching items with a counter",
+    "remember a result with a flag"
+  ],
+  "youtube": {
+    "title": "Python Loop Patterns: Accumulator, Counter, Flag | Python Programming EP 21",
+    "description": "In this episode you will build a running total with an accumulator, count matching items with a counter and remember a result with a flag, with Xecxec the crab. 0:00 Intro · 0:15 Three loop patterns · 0:53 The accumulator · 1:33 The total grows by rebinding · 2:09 Second program · 3:09 Recap · 3:42 Bug of the Day · 4:30 Challenge · 4:50 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Three loop patterns"
+      },
+      {
+        "t": "0:53",
+        "label": "The accumulator"
+      },
+      {
+        "t": "1:33",
+        "label": "The total grows by rebinding"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:42",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:30",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:50",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python accumulator",
+      "python loop patterns",
+      "python counter flag",
+      "running total python"
+    ],
+    "thumbnail": {
+      "text": "3 LOOP PATTERNS",
+      "visual": "big text \"3 LOOP PATTERNS\" in tomato on peach; Xecxec with three jars labelled TOTAL, COUNT and FOUND; thin black border and drop shadow.",
+      "pose": "Xecxec with three jars labelled TOTAL, COUNT and FOUND"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 21 · 3 LOOP PATTERNS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Most loops do one of three jobs. Today we name them, so you can recognise them everywhere."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 38,
+      "onScreen": "\"Three loop patterns\": three numbered lines (1. Accumulator: add to a total each round; 2. Counter: add one when a test passes; 3. Flag: set True when something is found) and an analogy card: a shop till: the running total grows with every item, the counter counts items, and the flag lights up when a special item is scanned",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Three patterns appear again and again. The accumulator builds a running total, adding to it each round. The counter counts how many items pass a test. The flag starts as False, and becomes True if something special is found. Think of a shop till. The running total grows with each item. The counter counts the items. And a flag lights up if one special item is scanned."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 53,
+      "lengthSec": 40,
+      "onScreen": "total.py: a running total of 1 to 5",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Start the total at zero, before the loop. [HL 2] A loop over one to five. [HL 3] Each round adds n to the total. Total becomes total plus n. [HL 4] After the loop, print the final total. The key rule is that the starting line sits outside the loop. If it is inside the loop, the total resets every round.",
+      "code": {
+        "file": "total.py",
+        "source": "total = 0\nfor n in range(1, 6):\n    total = total + n\nprint(\"Sum:\", total)",
+        "output": "Sum: 15"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 93,
+      "lengthSec": 36,
+      "onScreen": "The name total tied to the int 15 after the loop",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the end state. Total is tied to the int fifteen. N is tied to five, the last value in the loop. During the loop, total moved from zero to one, three, six, ten, and fifteen. Each addition made a brand new int, and the tag total moved to it. The accumulator pattern is simply, make a new total from the old one."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "count_flag.py: count multiples of 3 in 1 to 20; flag if 15 is seen",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A counter, starting at zero. [HL 2] A flag, starting as False. [HL 3] A loop over one to twenty. [HL 4] If n divides by three with no remainder, [HL 5] the counter goes up by one. [HL 6] A second check. If n is fifteen, [HL 7] the flag turns to True. [TRACK found=True] Once True, it stays True. [HL 8] Six multiples of three. [HL 9] And the flag says, fifteen was seen.",
+      "code": {
+        "file": "count_flag.py",
+        "source": "count = 0\nfound = False\nfor n in range(1, 21):\n    if n % 3 == 0:\n        count = count + 1\n    if n == 15:\n        found = True\nprint(\"Multiples of 3:\", count)\nprint(\"Saw 15:\", found)",
+        "output": "Multiples of 3: 6\nSaw 15: True"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python count_flag.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as count_flag dot py. In the terminal, type python, space, count_flag dot py. Multiples of three, six. Saw fifteen, True."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: An accumulator builds a total by adding in each round. Two: A counter adds one whenever a test passes. Three: A flag starts False and is set True when something is found. Four: Start each of them before the loop, never inside it. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 222,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: resetting the total inside the loop",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We add one, two and three, and expect six. The program prints three. Why? The line total equals zero is inside the loop, so every round wipes the total clean. Only the last number is left. Move the starting line above the loop, and the total can grow. No error appears, so watch for this one."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 262,
+      "lengthSec": 8,
+      "onScreen": "Why did the accumulator get rich? It never stopped adding up.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the accumulator get rich? It never stopped adding up."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 270,
+      "lengthSec": 20,
+      "onScreen": "Task card: sum the even numbers 2 to 10",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Use a loop to add up the numbers 1 to 10 and print the total. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 290,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 22 · Mini project: Guess the number",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: the guess the number mini project. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "for n in range(1, 4):\n    total = 0\n    total = total + n\nprint(total)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n3",
+    "fixed": "total = 0\nfor n in range(1, 4):\n    total = total + n\nprint(total)",
+    "why": "Setting total to zero inside the loop wipes the running total at the start of every round, so only the last number survives."
+  },
+  "pun": "\"Why did the accumulator get rich? It never stopped adding up.\"",
+  "challenge": "Use a loop to add up the numbers 1 to 10 and print the total.",
+  "challengeAnswer": "Use total = 0, then for n in range(1, 11): total = total + n, then print(total). It prints 55.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The accumulator",
+      "hook": "\"The accumulator is the most useful loop pattern.\"",
+      "script": "The accumulator is the most useful loop pattern. You start a total at zero, before the loop. Inside the loop, you add to it every round. When the loop ends, the total holds the answer. One plus two plus three plus four plus five gives fifteen. Remember the rule, the starting line goes outside the loop, never inside. Keep coding, says Xecxec!",
+      "onScreen": "TOTAL = TOTAL + N",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Add up in a loop.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "looppatterns",
+        "accumulator",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The counter",
+      "hook": "\"A counter counts how many items pass a test.\"",
+      "script": "A counter counts how many items pass a test. Start the count at zero. Inside the loop, test each item. If it passes, add one to the count. At the end, the count tells you how many passed. For example, how many numbers up to twenty divide evenly by three? A counter says six. It is the pattern behind every, how many, question. Keep coding, says Xecxec!",
+      "onScreen": "COUNT = COUNT + 1",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 38,
+      "caption": "Count the matches.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "looppatterns",
+        "accumulator",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The flag",
+      "hook": "\"A flag is a name that starts as False.\"",
+      "script": "A flag is a name that starts as False. Inside the loop, you set it to True if you find something special. Once True, it stays True. After the loop, you check the flag, and you know whether anything was found. Think of a till light that turns on when a special item is scanned. Flags answer, was there any, questions. Keep coding, says Xecxec!",
+      "onScreen": "FOUND = FALSE → TRUE",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Remember what you saw.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "looppatterns",
+        "accumulator",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Reset trap",
+      "hook": "\"Here is the bug behind many wrong totals.\"",
+      "script": "Here is the bug behind many wrong totals. You put the line total equals zero inside the loop. Now every round wipes the total clean, and only the last number is left. Python shows no error. You just get the wrong answer. Move the starting line above the loop, and the total can grow properly. Check this first when a sum looks too small. Keep coding, says Xecxec!",
+      "onScreen": "TOTAL = 0 INSIDE THE LOOP?",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Start outside.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "looppatterns",
+        "accumulator",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the accumulator get rich?\"",
+      "script": "Why did the accumulator get rich? It never stopped adding up. Your challenge. Use a loop to add up the numbers one to ten, and print the total. Start your total before the loop. When you finish, change your code so it adds only the even numbers. Which total do you get? Share your answers in the comments. Keep coding, says Xecxec! Full video: EP 21.",
+      "onScreen": "SUM 1 TO 10",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try the accumulator.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "looppatterns",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "total.py",
+      "source": "total = 0\nfor n in range(1, 6):\n    total = total + n\nprint(\"Sum:\", total)",
+      "output": "Sum: 15",
+      "lang": "python"
+    },
+    {
+      "file": "count_flag.py",
+      "source": "count = 0\nfound = False\nfor n in range(1, 21):\n    if n % 3 == 0:\n        count = count + 1\n    if n == 15:\n        found = True\nprint(\"Multiples of 3:\", count)\nprint(\"Saw 15:\", found)",
+      "output": "Multiples of 3: 6\nSaw 15: True",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

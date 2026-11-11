@@ -1,0 +1,104 @@
+{
+  "ep": 41,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "call",
+      "shape": "box",
+      "text": "answer = double(4)",
+      "colour": "butter",
+      "col": 0,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "def",
+      "shape": "box",
+      "text": "def double(n): return n * 2",
+      "colour": "cream",
+      "col": 6,
+      "row": 1,
+      "w": 5,
+      "h": 1
+    },
+    {
+      "id": "body",
+      "shape": "box",
+      "text": "return 8",
+      "colour": "mint",
+      "col": 6,
+      "row": 3,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "call",
+      "to": "def"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "back with 8",
+      "colour": "tomato",
+      "from": "body",
+      "to": "call"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "call",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "def"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "body"
+    },
+    {
+      "t": 0.2,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.35,
+      "do": "glow",
+      "target": "def",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.5,
+      "do": "glow",
+      "target": "body",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.7,
+      "do": "draw",
+      "target": "a2",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.85,
+      "do": "glow",
+      "target": "call",
+      "sfx": "ding"
+    }
+  ]
+}

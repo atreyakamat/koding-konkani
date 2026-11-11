@@ -81,7 +81,72 @@
       "onScreen": "`FILE *fp` as a pointer box pointing to a \"file handle\" card linked to `diary.txt`",
       "animation": "Arrow draws from `fp` to the handle; link chain SFX",
       "sfx": [],
-      "narration": "To work with a file, C gives us a type called FILE, in capital letters, from stdio dot h. We never use a FILE directly. We use a pointer to one: FILE star fp. You learned pointers in Module 8. fp doesn't hold the file's text. It points to a handle that C uses to keep track of the open file: which file, and where we are in it. The function fopen opens the file and gives us that pointer."
+      "narration": "To work with a file, C gives us a type called FILE, in capital letters, from stdio dot h. We never use a FILE directly. We use a pointer to one: FILE star fp. You learned pointers in Module 8. fp doesn't hold the file's text. It points to a handle that C uses to keep track of the open file: which file, and where we are in it. The function fopen opens the file and gives us that pointer.",
+      "memory": {
+        "frames": [
+          {
+            "label": "fp is only a pointer; the handle lives inside C",
+            "groups": [
+              {
+                "name": "FILE *fp",
+                "cells": [
+                  {
+                    "value": "NULL",
+                    "name": "fp"
+                  }
+                ]
+              },
+              {
+                "name": "file handle",
+                "cells": [
+                  {
+                    "value": "diary.txt",
+                    "name": "file"
+                  },
+                  {
+                    "value": "0",
+                    "name": "position"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "fopen gives fp the handle: which file, where we are",
+            "groups": [
+              {
+                "name": "FILE *fp",
+                "cells": [
+                  {
+                    "value": "→ handle",
+                    "name": "fp",
+                    "mark": "hl"
+                  }
+                ]
+              },
+              {
+                "name": "file handle",
+                "cells": [
+                  {
+                    "value": "diary.txt",
+                    "name": "file"
+                  },
+                  {
+                    "value": "0",
+                    "name": "position"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -101,7 +166,12 @@
       "onScreen": "`write.c` with a live `diary.txt` panel",
       "animation": "Each `fprintf` line types into the file panel; `fclose` shows a lid closing",
       "sfx": [],
-      "narration": "Let's write a diary. [HL 4] FILE star fp equals fopen, \"diary dot txt\", \"w\". Open diary dot txt for writing. [HL 6] if fp equals NULL. If fopen fails, it gives back NULL instead of a real pointer. Maybe the disk is full, or the folder doesn't exist. [HL 7] [HL 8] Then we print a message and return 1, which means something went wrong. [HL 11] fprintf, fp, \"Day 1: Learned files in C\", backslash n. fprintf is printf with one extra first argument: where to print. Instead of the screen, it prints into fp. [HL 12] fprintf again with percent d and 7, so the file gets \"Fish caught: 7\". Everything you know about printf formats works here. [HL 13] fputs, \"Mood: happy\" backslash n, fp. fputs writes a plain string with no formatting. Notice the order: the string first, then the file. [HL 15] fclose fp. This closes the file. C often holds your text in a waiting area, a buffer, and fclose makes sure everything is really written to the disk. Forget fclose, and you might lose your last lines. [HL 16] Finally, we tell the user \"Saved to diary dot txt\"."
+      "narration": "Let's write a diary. [HL 4] FILE star fp equals fopen, \"diary dot txt\", \"w\". Open diary dot txt for writing. [HL 6] if fp equals NULL. If fopen fails, it gives back NULL instead of a real pointer. Maybe the disk is full, or the folder doesn't exist. [HL 7] [HL 8] Then we print a message and return 1, which means something went wrong. [HL 11] fprintf, fp, \"Day 1: Learned files in C\", backslash n. fprintf is printf with one extra first argument: where to print. Instead of the screen, it prints into fp. [HL 12] fprintf again with percent d and 7, so the file gets \"Fish caught: 7\". Everything you know about printf formats works here. [HL 13] fputs, \"Mood: happy\" backslash n, fp. fputs writes a plain string with no formatting. Notice the order: the string first, then the file. [HL 15] fclose fp. This closes the file. C often holds your text in a waiting area, a buffer, and fclose makes sure everything is really written to the disk. Forget fclose, and you might lose your last lines. [HL 16] Finally, we tell the user \"Saved to diary dot txt\".",
+      "code": {
+        "file": "write.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    FILE *fp = fopen(\"diary.txt\", \"w\");\n\n    if (fp == NULL) {\n        printf(\"Could not open diary.txt\\n\");\n        return 1;\n    }\n\n    fprintf(fp, \"Day 1: Learned files in C\\n\");\n    fprintf(fp, \"Fish caught: %d\\n\", 7);\n    fputs(\"Mood: happy\\n\", fp);\n\n    fclose(fp);\n    printf(\"Saved to diary.txt\\n\");\n    return 0;\n}",
+        "output": "Saved to diary.txt"
+      }
     },
     {
       "id": 7,
@@ -133,7 +203,12 @@
       "onScreen": "`append.c`",
       "animation": "File panel keeps the old 3 lines; new line slides in at the bottom in Mint",
       "sfx": [],
-      "narration": "To add a new day without wiping the old ones, we use \"a\". [HL 4] fopen, \"diary dot txt\", \"a\". [HL 6] Same NULL check. [HL 11] fprintf, \"Day 2: Monsoon, stayed home and coded\". [HL 13] fclose. Run it, then cat the file. The first three lines are still there, and Day 2 is added at the bottom. Run it again, and another Day 2 line is added. Use \"w\" when you want a fresh file. Use \"a\" for logs and diaries that grow."
+      "narration": "To add a new day without wiping the old ones, we use \"a\". [HL 4] fopen, \"diary dot txt\", \"a\". [HL 6] Same NULL check. [HL 11] fprintf, \"Day 2: Monsoon, stayed home and coded\". [HL 13] fclose. Run it, then cat the file. The first three lines are still there, and Day 2 is added at the bottom. Run it again, and another Day 2 line is added. Use \"w\" when you want a fresh file. Use \"a\" for logs and diaries that grow.",
+      "code": {
+        "file": "append.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    FILE *fp = fopen(\"diary.txt\", \"a\");\n\n    if (fp == NULL) {\n        printf(\"Could not open diary.txt\\n\");\n        return 1;\n    }\n\n    fprintf(fp, \"Day 2: Monsoon, stayed home and coded\\n\");\n\n    fclose(fp);\n    printf(\"Added a new line\\n\");\n    return 0;\n}",
+        "output": "Added a new line"
+      }
     },
     {
       "id": 10,

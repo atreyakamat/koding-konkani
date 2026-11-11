@@ -1,0 +1,352 @@
+{
+  "ep": 16,
+  "title": "while loops",
+  "module": 2,
+  "lengthSec": 307,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "repeat code with while",
+    "use a counter that changes inside the loop",
+    "stop a loop with a condition that becomes False"
+  ],
+  "youtube": {
+    "title": "Python while Loop: Repeat Until It Stops | Python Programming EP 16",
+    "description": "In this episode you will repeat code with while, use a counter that changes inside the loop and stop a loop with a condition that becomes False, with Xecxec the crab. 0:00 Intro · 0:15 Repeating with while · 0:56 A counting loop · 1:36 One name, rebound each round · 2:11 Second program · 3:11 Recap · 3:44 Bug of the Day · 4:32 Challenge · 4:52 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Repeating with while"
+      },
+      {
+        "t": "0:56",
+        "label": "A counting loop"
+      },
+      {
+        "t": "1:36",
+        "label": "One name, rebound each round"
+      },
+      {
+        "t": "2:11",
+        "label": "Second program"
+      },
+      {
+        "t": "3:11",
+        "label": "Recap"
+      },
+      {
+        "t": "3:44",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:32",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:52",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python while loop",
+      "python loops",
+      "infinite loop python",
+      "loop counter"
+    ],
+    "thumbnail": {
+      "text": "REPEAT, REPEAT",
+      "visual": "big text \"REPEAT, REPEAT\" in tomato on peach; Xecxec riding a merry-go-round of waves labelled while count <= 3; thin black border and drop shadow.",
+      "pose": "Xecxec riding a merry-go-round of waves labelled while count <= 3"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 16 · REPEAT, REPEAT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Computers never get bored. Today we teach a program to repeat itself, as many times as we say."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 41,
+      "onScreen": "\"Repeating with while\": three numbered lines (1. while checks a condition before every round; 2. The loop body repeats while it is True; 3. Something inside must change the condition) and an analogy card: a sea wave: it keeps coming in while the tide is up, and it stops when the tide goes out",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A while loop repeats a block while a condition is True. Python checks the condition before every round. If it is True, the body runs again. If it is False, the loop ends and the program carries on. Think of waves on a beach. They keep coming in while the tide is up. For the loop to end, something inside the body must change the condition. Usually that is a counter that goes up."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 56,
+      "lengthSec": 40,
+      "onScreen": "waves.py: a counter that goes from one to three",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A counter, starting at one. [HL 2] The loop line. While count is at most three, run the block below. [HL 3] Print the wave number. [HL 4] And now the most important line. We add one to count. Without it, the condition never changes. [HL 5] Back at the left edge, so the loop is over. Done prints once, after the loop finishes.",
+      "code": {
+        "file": "waves.py",
+        "source": "count = 1\nwhile count <= 3:\n    print(\"Wave\", count)\n    count = count + 1\nprint(\"Done\")",
+        "output": "Wave 1\nWave 2\nWave 3\nDone"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 96,
+      "lengthSec": 35,
+      "onScreen": "The name count tied to a new int every round; after the loop it points at 4",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture after the loop ends. The name count is tied to the int four. It was tied to one, then two, then three, and each time the tag moved to a new number. The condition count at most three is now False, which is why the loop stopped. The old numbers are gone, and the tag is on four."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 131,
+      "lengthSec": 40,
+      "onScreen": "saving.py: saving money week by week until it reaches 200",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK saving=100] We start with one hundred rupees. [HL 2] [TRACK weeks=0] And zero weeks gone. [HL 3] Keep going while the savings are below two hundred. [HL 4] Add thirty each round. [HL 5] And count the week. [TRACK saving=220] After four rounds, the savings are two hundred twenty. That is not below two hundred, so the loop stops. [HL 6] Four weeks. [HL 7] Two hundred twenty saved.",
+      "code": {
+        "file": "saving.py",
+        "source": "saving = 100\nweeks = 0\nwhile saving < 200:\n    saving = saving + 30\n    weeks = weeks + 1\nprint(\"Weeks:\", weeks)\nprint(\"Saved:\", saving)",
+        "output": "Weeks: 4\nSaved: 220"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 171,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python saving.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as saving dot py. In the terminal, type python, space, saving dot py. Weeks, four. Saved, two hundred twenty."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 191,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: while repeats a block as long as its condition is True. Two: Python checks the condition before every round. Three: Something inside the loop must change the condition. Four: A counter that goes up is the most common way to end a loop. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 224,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: forgetting to update the counter",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We forgot the line that adds one to count. Count stays at one forever. The condition is always True, so the loop never ends, and Wave one prints again and again. No error appears, because there is nothing wrong with the rules. Press control C to stop the program. Then add the update line, and the loop ends."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 264,
+      "lengthSec": 8,
+      "onScreen": "Why did the while loop never get any sleep? It kept going round and round.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the while loop never get any sleep? It kept going round and round."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 272,
+      "lengthSec": 20,
+      "onScreen": "Task card: count from 1 to 5 with while",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Use a while loop to print the numbers 1 to 5, one per line. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 292,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 17 · for loops and range",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: for loops and range. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "count = 1\nwhile count <= 3:\n    print(\"Wave\", count)\nprint(\"Done\")",
+    "error": "Python output (the first lines; it never stops by itself):\n\nWave 1\nWave 1\nWave 1\nWave 1\nWave 1\n(the program never finishes; press Ctrl+C to stop)",
+    "fixed": "count = 1\nwhile count <= 3:\n    print(\"Wave\", count)\n    count = count + 1\nprint(\"Done\")",
+    "why": "Nothing inside the loop changes count, so the condition stays True forever and the loop never ends."
+  },
+  "pun": "\"Why did the while loop never get any sleep? It kept going round and round.\"",
+  "challenge": "Use a while loop to print the numbers 1 to 5, one per line.",
+  "challengeAnswer": "Use n = 1, then while n <= 5: print(n) and n = n + 1. It prints 1 2 3 4 5, one per line.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a loop?",
+      "hook": "\"A loop repeats a block of code.\"",
+      "script": "A loop repeats a block of code. The while loop repeats as long as its condition is True. Python checks the condition before every round. If it is True, the body runs again. If it is False, the loop ends and the program carries on. Think of waves that keep coming while the tide is up. Loops let one short program do a very big job. Keep coding, says Xecxec!",
+      "onScreen": "WHILE CONDITION:",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "Repeat with while.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "whileloop",
+        "loops",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The counter",
+      "hook": "\"Most while loops have a counter.\"",
+      "script": "Most while loops have a counter. You start it before the loop, check it in the condition, and change it inside the body. Count equals one. While count is at most three. Print, then add one. Each round the counter moves closer to the end. When it passes three, the condition is False, and the loop stops. Three parts, one loop. Keep coding, says Xecxec!",
+      "onScreen": "START · CHECK · CHANGE",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Three parts of a loop.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "whileloop",
+        "loops",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Watch the name move",
+      "hook": "\"Watch the name count.\"",
+      "script": "Watch the name count. It starts tied to one. After round one it is tied to two. After round two, three. After round three, four. Each time, the tag moves to a brand new number. When count is four, the condition at most three is False. So the loop ends. The loop just keeps retying the same name, until it is time to stop. Keep coding, says Xecxec!",
+      "onScreen": "COUNT: 1 → 2 → 3 → 4",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Follow the counter.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "whileloop",
+        "loops",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The loop that never ends",
+      "hook": "\"Here is the classic loop bug.\"",
+      "script": "Here is the classic loop bug. You forget the line that changes the counter. Count stays one, the condition stays True, and Wave one prints forever. Python shows no error, because the rules are fine. Press control C to stop the program. Then add the missing update line. Always ask, what makes this loop stop, before you press run? Keep coding, says Xecxec!",
+      "onScreen": "FORGOT COUNT = COUNT + 1",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Control C saves you.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "whileloop",
+        "loops",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the while loop never get any sleep?\"",
+      "script": "Why did the while loop never get any sleep? It kept going round and round. Your challenge. Use a while loop to print the numbers one to five, one per line. Remember the three parts. Start the counter, check it in the condition, and change it inside the loop. Then try printing five down to one. Post your code in the comments. Keep coding, says Xecxec! Full video: EP 16.",
+      "onScreen": "COUNT 1 TO 5",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Try a while loop.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "whileloop",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "waves.py",
+      "source": "count = 1\nwhile count <= 3:\n    print(\"Wave\", count)\n    count = count + 1\nprint(\"Done\")",
+      "output": "Wave 1\nWave 2\nWave 3\nDone",
+      "lang": "python"
+    },
+    {
+      "file": "saving.py",
+      "source": "saving = 100\nweeks = 0\nwhile saving < 200:\n    saving = saving + 30\n    weeks = weeks + 1\nprint(\"Weeks:\", weeks)\nprint(\"Saved:\", saving)",
+      "output": "Weeks: 4\nSaved: 220",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

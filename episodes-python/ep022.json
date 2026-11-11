@@ -1,0 +1,345 @@
+{
+  "ep": 22,
+  "title": "Mini project: Guess the number",
+  "module": 2,
+  "lengthSec": 312,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "build a complete game with a loop and decisions",
+    "use random.randint with a seed",
+    "read a number from the user safely with int()"
+  ],
+  "youtube": {
+    "title": "Python Mini Project: Guess the Number Game | Python Programming EP 22",
+    "description": "In this episode you will build a complete game with a loop and decisions, use random.randint with a seed and read a number from the user safely with int(), with Xecxec the crab. 0:00 Intro · 0:15 Planning the game · 0:52 The full game · 1:40 The game flow · 2:15 Second program · 3:15 Recap · 3:49 Bug of the Day · 4:37 Challenge · 4:57 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Planning the game"
+      },
+      {
+        "t": "0:52",
+        "label": "The full game"
+      },
+      {
+        "t": "1:40",
+        "label": "The game flow"
+      },
+      {
+        "t": "2:15",
+        "label": "Second program"
+      },
+      {
+        "t": "3:15",
+        "label": "Recap"
+      },
+      {
+        "t": "3:49",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:37",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:57",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python guess the number",
+      "python mini project",
+      "python random randint",
+      "python beginner game"
+    ],
+    "thumbnail": {
+      "text": "GUESS THE NUMBER",
+      "visual": "big text \"GUESS THE NUMBER\" in tomato on peach; Xecxec holding a question mark card between two arrows labelled HIGH and LOW; thin black border and drop shadow.",
+      "pose": "Xecxec holding a question mark card between two arrows labelled HIGH and LOW"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 22 · GUESS THE NUMBER",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Time for our first real project. Today we combine input, decisions and loops, to build a number guessing game."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 37,
+      "onScreen": "\"Planning the game\": three numbered lines (1. The computer picks a secret number; 2. The player guesses, and gets Too low or Too high; 3. The loop ends when the guess is right) and an analogy card: a market game: the stall owner thinks of a number, and says higher or lower until you win",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the plan. The computer picks a secret number between one and ten. The player guesses. The program says Too low or Too high, until the guess is right. That uses everything from this module. A loop that repeats, decisions with if, elif and else, and a counter for the number of tries. To get the secret number, we borrow a ready-made tool called random."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 52,
+      "lengthSec": 48,
+      "onScreen": "guess.py: the complete guessing game",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Import brings in the random tool. [HL 2] The seed makes the random choice repeatable, so our video matches your screen. Without it, the number changes every run. [HL 3] A secret number from one to ten. [HL 4] The tries counter. [HL 5] While True means, loop forever, until we break. [HL 6] Ask for a guess, and convert it with int. [HL 7] Count the try. [HL 8] If the guess is too small, [HL 9] say Too low. [HL 10] If it is too big, [HL 11] say Too high. [HL 12] Otherwise it must be right, [HL 13] so print the tries, [HL 14] and break out of the loop."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 100,
+      "lengthSec": 35,
+      "onScreen": "A flowchart of the game: pick secret, ask guess, compare three ways, loop back until Correct",
+      "animation": "Flowchart boxes light up one at a time; the arrow follows the path Python takes, and the skipped branch stays grey",
+      "sfx": [],
+      "narration": "Here is the whole game as a flow. Pick a secret. Ask for a guess. Compare it three ways, too low, too high, or right. If it is not right, loop back and ask again. If it is right, print the result and break out. Draw a flow like this before you write any game, and the code almost writes itself."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 135,
+      "lengthSec": 40,
+      "onScreen": "dice.py: the same seed gives the same numbers",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Bring in the random tool. [HL 2] Set the seed to four. [HL 3] The first random number from one to ten. [HL 4] And the second. With the same seed, you get the same numbers, every single time. Remove the seed line, and the numbers change on every run, just like a real game. We use the seed here only so our checks are repeatable.",
+      "code": {
+        "file": "dice.py",
+        "source": "import random\nrandom.seed(4)\nprint(random.randint(1, 10))\nprint(random.randint(1, 10))",
+        "output": "4\n5"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 175,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python dice.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as dice dot py. In the terminal, type python, space, dice dot py. Four, then five. The same two numbers every run, because of the seed."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 195,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: random dot randint picks a whole number between two limits, including both. Two: A while True loop runs until a break. Three: if, elif and else give Too low, Too high or Correct. Four: int turns the typed text into a number before comparing. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 229,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: comparing text with a number",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We compare the guess with the secret, but the guess is still text. Python says, type error. Greater than is not supported between a string and an int. Remember, input always gives text. Wrap the answer in int, and now both sides are numbers. Then the comparison works."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 269,
+      "lengthSec": 8,
+      "onScreen": "Why did the guessing game never get lonely? It always had a number in mind.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the guessing game never get lonely? It always had a number in mind."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 277,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a Too many tries rule",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Change the game so the player loses after 5 wrong guesses, and prints the secret number. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 297,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 23 · String methods",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Module two is done! Next time: string methods, the tools that clean and change text. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "secret = 7\nguess = input(\"Guess: \")\nif guess > secret:\n    print(\"Too high\")",
+    "error": "5\n\nPython output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"guess.py\", line 3, in <module>\n    if guess > secret:\n       ^^^^^^^^^^^^^^\nTypeError: '>' not supported between instances of 'str' and 'int'",
+    "fixed": "secret = 7\nguess = int(input(\"Guess: \"))\nif guess > secret:\n    print(\"Too high\")",
+    "why": "input gives a string and a string cannot be compared with a number using greater than; convert the answer with int() first."
+  },
+  "pun": "\"Why did the guessing game never get lonely? It always had a number in mind.\"",
+  "challenge": "Change the game so the player loses after 5 wrong guesses, and prints the secret number.",
+  "challengeAnswer": "Add if tries == 5 inside the wrong-guess branches, print the secret, and break. A while tries < 5 loop with an else also works.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The game plan",
+      "hook": "\"Let us build a game.\"",
+      "script": "Let us build a game. The computer picks a secret number. The player guesses. The program says Too low or Too high, until the guess is right. You need a loop that repeats, decisions with if and else, and a counter for the tries. Everything from this module comes together. Plan the flow on paper first. Then the code is easy to write. Keep coding, says Xecxec!",
+      "onScreen": "GUESS THE NUMBER",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Our first project.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "game",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Random numbers",
+      "hook": "\"To pick a secret number, import the random tool.\"",
+      "script": "To pick a secret number, import the random tool. Then random dot randint, one comma ten, gives a whole number from one to ten, and both ends are included. Set a seed first, and the same number comes up every run, which is great for testing. Remove the seed line, and the number changes every time, just like a real game. Keep coding, says Xecxec!",
+      "onScreen": "RANDOM.RANDINT(1, 10)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "Pick a secret.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "game",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "While true",
+      "hook": "\"The game loop is while True.\"",
+      "script": "The game loop is while True. That means, loop forever, until we say stop. Inside, we ask for a guess, compare it, and print a hint. When the guess is right, we print the result and use break. Break is the only way out. This pattern, loop forever and break when done, is very common in games and menus. Keep coding, says Xecxec!",
+      "onScreen": "WHILE TRUE: ... BREAK",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Loop until you win.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "game",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Text versus number",
+      "hook": "\"Here is the bug that breaks every first guessing game.\"",
+      "script": "Here is the bug that breaks every first guessing game. You compare the guess with the secret, but the guess came from input, so it is text. Python says type error, greater than is not supported between a string and an int. Wrap the input in int, and both sides are numbers. Now the comparison works as you expect. Keep coding, says Xecxec!",
+      "onScreen": "TYPEERROR: STR > INT",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Convert with int.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "game",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the guessing game never get lonely?\"",
+      "script": "Why did the guessing game never get lonely? It always had a number in mind. Your challenge. Make the game fairer. Let the player lose after five wrong guesses. When that happens, print the secret number, and stop the loop. You can use the tries counter you already have. Share your improved game in the comments below. Keep coding, says Xecxec! Full video: EP 22.",
+      "onScreen": "FIVE GUESSES ONLY",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Improve the game.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "import random\nrandom.seed(4)\nsecret = random.randint(1, 10)\ntries = 0\nwhile True:\n    guess = int(input(\"Guess 1-10: \"))\n    tries = tries + 1\n    if guess < secret:\n        print(\"Too low\")\n    elif guess > secret:\n        print(\"Too high\")\n    else:\n        print(\"Correct in\", tries, \"tries\")\n        break",
+      "output": "Guess 1-10: Too high\nGuess 1-10: Too low\nGuess 1-10: Correct in 3 tries",
+      "lang": "python"
+    },
+    {
+      "file": "dice.py",
+      "source": "import random\nrandom.seed(4)\nprint(random.randint(1, 10))\nprint(random.randint(1, 10))",
+      "output": "4\n5",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

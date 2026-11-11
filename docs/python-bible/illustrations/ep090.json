@@ -1,0 +1,122 @@
+{
+  "ep": 90,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "web",
+      "shape": "box",
+      "text": "web: Flask",
+      "colour": "pastelBlue",
+      "col": 0,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "data",
+      "shape": "box",
+      "text": "data: pandas",
+      "colour": "mint",
+      "col": 4,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "game",
+      "shape": "box",
+      "text": "games: pygame",
+      "colour": "lilac",
+      "col": 8,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "auto",
+      "shape": "box",
+      "text": "automation: scripts",
+      "colour": "butter",
+      "col": 2,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "test",
+      "shape": "box",
+      "text": "testing: pytest",
+      "colour": "apricot",
+      "col": 7,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "web",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.1,
+      "do": "glow",
+      "target": "web",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.3,
+      "do": "show",
+      "target": "data",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.3,
+      "do": "glow",
+      "target": "data",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.5,
+      "do": "show",
+      "target": "game",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.5,
+      "do": "glow",
+      "target": "game",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.7,
+      "do": "show",
+      "target": "auto",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.7,
+      "do": "glow",
+      "target": "auto",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.9,
+      "do": "show",
+      "target": "test",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.9,
+      "do": "glow",
+      "target": "test",
+      "sfx": "key-tick"
+    }
+  ]
+}

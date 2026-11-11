@@ -93,7 +93,12 @@
       "onScreen": "`brk.c` with trackers for `i`, `num`",
       "animation": "Inputs 4, -3, 6, 0 drop in; skipped line greys out on continue; break arrow flies past the brace",
       "sfx": [],
-      "narration": "Let's use both. [HL 4] int num, to hold the user's number. [HL 6] for i from 1 to 5. Up to five numbers. [TRACK i=1] [HL 7] [HL 8] Ask for number 1, and read it. The user types 4. [TRACK num=4] [HL 10] if num equals 0. No. [HL 14] if num less than 0. No. [HL 18] Print \"Square = 16\". Next round. [TRACK i=2] The user types minus 3. [TRACK num=-3] Is it 0? No. [HL 14] Is it less than 0? Yes. [HL 15] Print \"Negative, skipped.\" [HL 16] continue. So we skip line eighteen, no square, and go straight to i plus plus. [TRACK i=3] The user types 6. [TRACK num=6] Square = 36. [TRACK i=4] Now the user types 0. [TRACK num=0] [HL 10] num equals 0, yes. [HL 11] Print \"Stopping early.\" [HL 12] break. We leave the loop right now. i was only 4. The fifth number is never asked. [HL 21] We land on \"Loop over.\""
+      "narration": "Let's use both. [HL 4] int num, to hold the user's number. [HL 6] for i from 1 to 5. Up to five numbers. [TRACK i=1] [HL 7] [HL 8] Ask for number 1, and read it. The user types 4. [TRACK num=4] [HL 10] if num equals 0. No. [HL 14] if num less than 0. No. [HL 18] Print \"Square = 16\". Next round. [TRACK i=2] The user types minus 3. [TRACK num=-3] Is it 0? No. [HL 14] Is it less than 0? Yes. [HL 15] Print \"Negative, skipped.\" [HL 16] continue. So we skip line eighteen, no square, and go straight to i plus plus. [TRACK i=3] The user types 6. [TRACK num=6] Square = 36. [TRACK i=4] Now the user types 0. [TRACK num=0] [HL 10] num equals 0, yes. [HL 11] Print \"Stopping early.\" [HL 12] break. We leave the loop right now. i was only 4. The fifth number is never asked. [HL 21] We land on \"Loop over.\"",
+      "code": {
+        "file": "brk.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int num;\n\n    for (int i = 1; i <= 5; i++) {\n        printf(\"Enter number %d (0 to stop): \", i);\n        scanf(\"%d\", &num);\n\n        if (num == 0) {\n            printf(\"Stopping early.\\n\");\n            break;\n        }\n        if (num < 0) {\n            printf(\"Negative, skipped.\\n\");\n            continue;\n        }\n        printf(\"Square = %d\\n\", num * num);\n    }\n\n    printf(\"Loop over.\\n\");\n    return 0;\n}",
+        "output": "Enter number 1 (0 to stop): 4\nSquare = 16\nEnter number 2 (0 to stop): -3\nNegative, skipped.\nEnter number 3 (0 to stop): 6\nSquare = 36\nEnter number 4 (0 to stop): 0\nStopping early.\nLoop over."
+      }
     },
     {
       "id": 6,
@@ -123,7 +128,12 @@
       "onScreen": "`skip3.c` quick example",
       "animation": "Multiples of 3 fade out from a number strip",
       "sfx": [],
-      "narration": "A quick one. For i from 1 to 20, if i mod 3 equals 0, continue. Otherwise print i. Mod 3 equals 0 means \"divisible by 3\". So 3, 6, 9 and the rest are skipped. We get 1, 2, 4, 5, 7, 8 and so on up to 20."
+      "narration": "A quick one. For i from 1 to 20, if i mod 3 equals 0, continue. Otherwise print i. Mod 3 equals 0 means \"divisible by 3\". So 3, 6, 9 and the rest are skipped. We get 1, 2, 4, 5, 7, 8 and so on up to 20.",
+      "code": {
+        "file": "skip3.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 20; i++) {\n        if (i % 3 == 0) {\n            continue;\n        }\n        printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+        "output": "1 2 4 5 7 8 10 11 13 14 16 17 19 20"
+      }
     },
     {
       "id": 9,

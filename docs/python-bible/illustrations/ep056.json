@@ -1,0 +1,119 @@
+{
+  "ep": 56,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "b1",
+      "shape": "box",
+      "text": "1. your own folder",
+      "colour": "cream",
+      "col": 1,
+      "row": 0,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "b2",
+      "shape": "box",
+      "text": "2. standard library",
+      "colour": "cream",
+      "col": 1,
+      "row": 2,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "b3",
+      "shape": "box",
+      "text": "3. installed packages",
+      "colour": "cream",
+      "col": 1,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "hit",
+      "shape": "token",
+      "text": "found",
+      "colour": "mint",
+      "col": 7,
+      "row": 2,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "b1",
+      "to": "b2"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "b2",
+      "to": "b3"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "b1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "b2"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "b3"
+    },
+    {
+      "t": 0.2,
+      "do": "glow",
+      "target": "b1",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.4,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.5,
+      "do": "glow",
+      "target": "b2",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.55,
+      "do": "draw",
+      "target": "a2",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.65,
+      "do": "show",
+      "target": "hit",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.7,
+      "do": "dim",
+      "target": "b3"
+    }
+  ]
+}

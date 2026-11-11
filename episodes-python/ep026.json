@@ -1,0 +1,352 @@
+{
+  "ep": 26,
+  "title": "List methods",
+  "module": 3,
+  "lengthSec": 300,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "add items with insert",
+    "take items out with pop and remove",
+    "check membership with in, and use count and index"
+  ],
+  "youtube": {
+    "title": "Python List Methods: insert, pop, remove | Python Programming EP 26",
+    "description": "In this episode you will add items with insert, take items out with pop and remove and check membership with in, and use count and index, with Xecxec the crab. 0:00 Intro · 0:15 Changing a list · 0:56 insert, pop and remove · 1:36 The popped value gets its own name · 2:07 Second program · 3:07 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Changing a list"
+      },
+      {
+        "t": "0:56",
+        "label": "insert, pop and remove"
+      },
+      {
+        "t": "1:36",
+        "label": "The popped value gets its own name"
+      },
+      {
+        "t": "2:07",
+        "label": "Second program"
+      },
+      {
+        "t": "3:07",
+        "label": "Recap"
+      },
+      {
+        "t": "3:37",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python list methods",
+      "python insert pop remove",
+      "python list remove error",
+      "valueerror list remove"
+    ],
+    "thumbnail": {
+      "text": "LIST METHODS",
+      "visual": "big text \"LIST METHODS\" in tomato on peach; Xecxec pulling an item out of a basket with a claw while another item drops in; thin black border and drop shadow.",
+      "pose": "Xecxec pulling an item out of a basket with a claw while another item drops in"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 26 · LIST METHODS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Lists can grow, shrink and reorder. Today we learn the methods that do it."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 41,
+      "onScreen": "\"Changing a list\": three numbered lines (1. insert(i, x) puts x at position i; 2. pop() takes the last item out and gives it back; 3. remove(x) deletes the first x) and an analogy card: a queue at a fish stall: someone can join at a place, the last person can leave, or you can ask a named person to leave",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Lists come with methods that change them. Insert puts an item at a chosen position. Pop takes the last item out, and gives it back to you. Remove deletes the first item with a given value. Think of a queue at a fish stall. Someone can join at any place. The last person can leave. Or you can ask a named person to leave. All of these change the same list in place."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 56,
+      "lengthSec": 40,
+      "onScreen": "queue.py: a food list that grows and shrinks",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A list of two foods. [HL 2] Insert curry at position one. Everything from position one moves along. [HL 3] The list is now fish, curry, rice. [HL 4] Pop takes the last item out, and returns it. We tie it to the name last. [HL 5] Rice. [HL 6] The list has lost its last item. [HL 7] Remove deletes the first item equal to fish. [HL 8] Only curry is left.",
+      "code": {
+        "file": "queue.py",
+        "source": "food = [\"fish\", \"rice\"]\nfood.insert(1, \"curry\")\nprint(food)\nlast = food.pop()\nprint(last)\nprint(food)\nfood.remove(\"fish\")\nprint(food)",
+        "output": "['fish', 'curry', 'rice']\nrice\n['fish', 'curry']\n['curry']"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 96,
+      "lengthSec": 31,
+      "onScreen": "food tied to a list of one item; last tied to the string rice",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture after the code. Food is tied to a list with one item, curry. Last is tied to the string rice, which pop handed back. The string rice was removed from the list, but it still exists, because we tied a name to it. If we do not, Python removes it."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 127,
+      "lengthSec": 40,
+      "onScreen": "check.py: questions you can ask a list",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A list with fish twice. [HL 2] Count tells us how many times fish appears. Two. [HL 3] Index tells us the position of rice. Zero, one, two, three. So three. [HL 4] And the word in asks a yes or no question. Is curry in the list? True. Use in before remove, to be safe.",
+      "code": {
+        "file": "check.py",
+        "source": "food = [\"fish\", \"curry\", \"fish\", \"rice\"]\nprint(food.count(\"fish\"))\nprint(food.index(\"rice\"))\nprint(\"curry\" in food)",
+        "output": "2\n3\nTrue"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 167,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python check.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as check dot py. In the terminal, type python, space, check dot py. Two, then three, then True."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 187,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: insert puts an item at a chosen position. Two: pop takes the last item out and returns it. Three: remove deletes the first matching item. Four: Use the word in to check before you remove. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 217,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: removing something that is not there",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We ask the list to remove prawn, but prawn is not in the list. Python says, value error, x not in list. Remove does not quietly skip a missing item. It stops the program. Use the word in to check first, and only remove if the item is there."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 257,
+      "lengthSec": 8,
+      "onScreen": "Why did the list get kicked out of the queue? It kept popping up at the end.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the list get kicked out of the queue? It kept popping up at the end."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 265,
+      "lengthSec": 20,
+      "onScreen": "Task card: insert, pop and print",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Start with a, b, c. Insert x at position 1, pop the last item, and print the list. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 285,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 27 · Looping with enumerate and zip",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: enumerate and zip. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "food = [\"fish\", \"rice\"]\nfood.remove(\"prawn\")",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"queue.py\", line 2, in <module>\n    food.remove(\"prawn\")\n    ~~~~~~~~~~~^^^^^^^^^\nValueError: list.remove(x): x not in list",
+    "fixed": "food = [\"fish\", \"rice\"]\nif \"prawn\" in food:\n    food.remove(\"prawn\")\nprint(food)",
+    "why": "remove raises a ValueError when the item is not in the list, so check with the word in first."
+  },
+  "pun": "\"Why did the list get kicked out of the queue? It kept popping up at the end.\"",
+  "challenge": "Start with [\"a\", \"b\", \"c\"]. Insert \"x\" at position 1, pop the last item, and print the list.",
+  "challengeAnswer": "Use letters.insert(1, \"x\") and letters.pop(), then print(letters), which shows ['a', 'x', 'b'].",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Insert and append",
+      "hook": "\"Append adds an item at the end of a list.\"",
+      "script": "Append adds an item at the end of a list. Insert adds an item at any position you choose. Food dot insert, one, curry puts curry at position one, and everything after it moves along by one place. Both methods change the list in place. Use append when order does not matter, and insert when it does. Print the list to see the result. Keep coding, says Xecxec!",
+      "onScreen": "FOOD.INSERT(1, \"CURRY\")",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Add at any place.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "listmethods",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Pop",
+      "hook": "\"Pop takes an item out of a list, and gives it back to you.\"",
+      "script": "Pop takes an item out of a list, and gives it back to you. With no number, it takes the last item. With a number, it takes the item at that position. So you can save the popped value in a name. That is useful for undo buttons, stacks, and queues. The list gets shorter, and you keep the item you took out. Keep coding, says Xecxec!",
+      "onScreen": "LAST = FOOD.POP()",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 38,
+      "caption": "Take one out.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "listmethods",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Remove and in",
+      "hook": "\"Remove deletes the first item that equals a value.\"",
+      "script": "Remove deletes the first item that equals a value. Food dot remove, fish, finds the first fish and deletes it. If the item is not there, Python raises an error. So check first with the word in. The question, is prawn in food, gives True or False. Use it in an if, and remove only when it is safe. Keep coding, says Xecxec!",
+      "onScreen": "\"FISH\" IN FOOD",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Check before you remove.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "listmethods",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Value error",
+      "hook": "\"Here is the bug.\"",
+      "script": "Here is the bug. You call remove on something that is not in the list. Python says, value error, x not in list. Remove does not quietly skip a missing item. It stops your program. The fix is easy. Write an if with the word in, and only remove when the item is really there. Make it a habit for every remove. Keep coding, says Xecxec!",
+      "onScreen": "VALUEERROR: X NOT IN LIST",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Guard your remove.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "listmethods",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the list get kicked out of the queue?\"",
+      "script": "Why did the list get kicked out of the queue? It kept popping up at the end. Your challenge. Start with the list a, b, c. Insert x at position one. Pop the last item. Then print the list. Can you predict the answer before you run it? Write your prediction in the comments, then run the code to check. Keep coding, says Xecxec! Full video: EP 26.",
+      "onScreen": "INSERT, POP, PRINT",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try the list methods.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lists",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "queue.py",
+      "source": "food = [\"fish\", \"rice\"]\nfood.insert(1, \"curry\")\nprint(food)\nlast = food.pop()\nprint(last)\nprint(food)\nfood.remove(\"fish\")\nprint(food)",
+      "output": "['fish', 'curry', 'rice']\nrice\n['fish', 'curry']\n['curry']",
+      "lang": "python"
+    },
+    {
+      "file": "check.py",
+      "source": "food = [\"fish\", \"curry\", \"fish\", \"rice\"]\nprint(food.count(\"fish\"))\nprint(food.index(\"rice\"))\nprint(\"curry\" in food)",
+      "output": "2\n3\nTrue",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

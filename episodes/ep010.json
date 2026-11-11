@@ -152,7 +152,13 @@
       "onScreen": "`#define BUS_FARE 15;` breaks printf; error points at the macro",
       "animation": "Semicolon highlighted in tomato; the swapped text shows `15;` inside printf",
       "sfx": [],
-      "narration": "A bonus bug, because everyone does this one. You write hash define BUS_FARE fifteen, semicolon. Habit, right? Every line ends with a semicolon. Not this one. The preprocessor copies the semicolon too. So printf with trips times BUS_FARE becomes trips times fifteen semicolon, inside printf's brackets. GCC says: error, expected closing bracket before semicolon token. And it adds a note: in expansion of macro BUS_FARE. That note is your clue. The fix: no semicolon at the end of a hash define."
+      "narration": "A bonus bug, because everyone does this one. You write hash define BUS_FARE fifteen, semicolon. Habit, right? Every line ends with a semicolon. Not this one. The preprocessor copies the semicolon too. So printf with trips times BUS_FARE becomes trips times fifteen semicolon, inside printf's brackets. GCC says: error, expected closing bracket before semicolon token. And it adds a note: in expansion of macro BUS_FARE. That note is your clue. The fix: no semicolon at the end of a hash define.",
+      "bug": {
+        "wrong": "#include <stdio.h>\n#define BUS_FARE 15;\nint main(void)\n{\n    int trips = 4;\n    printf(\"Bus cost: Rs %d\n\", trips * BUS_FARE);\n    return 0;\n}",
+        "error": "bonus10.c: In function 'main':\nbonus10.c:2:20: error: expected ')' before ';' token\n    2 | #define BUS_FARE 15;\n      |                    ^\nbonus10.c:6:41: note: in expansion of macro 'BUS_FARE'\n    6 |     printf(\"Bus cost: Rs %d\n\", trips * BUS_FARE);\n      |                                         ^~~~~~~~\nbonus10.c:6:11: note: to match this '('\n    6 |     printf(\"Bus cost: Rs %d\n\", trips * BUS_FARE);\n      |           ^",
+        "fixed": "#include <stdio.h>\n#define BUS_FARE 15\nint main(void)\n{\n    int trips = 4;\n    printf(\"Bus cost: Rs %d\n\", trips * BUS_FARE);\n    return 0;\n}",
+        "why": "Fix: `#define BUS_FARE 15` with no semicolon. The preprocessor copies everything after the name, semicolon included."
+      }
     },
     {
       "id": 10,
@@ -181,7 +187,7 @@
     "wrong": "#include <stdio.h>\n\nint main(void)\n{\n    const float PI = 3.14159f;\n    PI = 3.0f;\n    printf(\"PI: %.2f\\n\", PI);\n    return 0;\n}",
     "error": "**GCC output:**\n\nbug10.c: In function 'main':\nbug10.c:6:8: error: assignment of read-only variable 'PI'\n    6 |     PI = 3.0f;\n      |        ^",
     "fixed": "#include <stdio.h>\n\nint main(void)\n{\n    const float PI = 3.14159f;\n    printf(\"PI: %.2f\\n\", PI);\n    return 0;\n}",
-    "why": "Fix: `#define BUS_FARE 15` with no semicolon. The preprocessor copies everything after the name, semicolon included."
+    "why": "A `const` variable is read-only after it is initialised, so any later assignment is a compile error."
   },
   "pun": "\"I asked PI to change, just once. It said: sorry, I'm a constant.\"",
   "challenge": "With `const float PI`, print the area and circumference of a circle of radius 5, two decimals each.",

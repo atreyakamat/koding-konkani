@@ -1,0 +1,65 @@
+{
+  "ep": 58,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "p1",
+      "shape": "box",
+      "text": "project one: requests 2.x",
+      "colour": "mint",
+      "col": 0,
+      "row": 1,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "p2",
+      "shape": "box",
+      "text": "project two: requests 3.x",
+      "colour": "lilac",
+      "col": 5,
+      "row": 1,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "g",
+      "shape": "box",
+      "text": "global Python (unchanged)",
+      "colour": "cream",
+      "col": 2,
+      "row": 4,
+      "w": 6,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "g",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.3,
+      "do": "show",
+      "target": "p1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.6,
+      "do": "show",
+      "target": "p2",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.85,
+      "do": "glow",
+      "target": "g"
+    }
+  ]
+}

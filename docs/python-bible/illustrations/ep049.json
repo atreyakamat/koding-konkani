@@ -1,0 +1,97 @@
+{
+  "ep": 49,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "fn",
+      "shape": "card",
+      "text": "double",
+      "colour": "cream",
+      "col": 0,
+      "row": 1,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "apply",
+      "shape": "box",
+      "text": "apply(func, value)",
+      "colour": "butter",
+      "col": 5,
+      "row": 1,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "call",
+      "shape": "card",
+      "text": "double(5)",
+      "colour": "cream",
+      "col": 0,
+      "row": 4,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "num",
+      "shape": "token",
+      "text": "10",
+      "colour": "mint",
+      "col": 5,
+      "row": 4,
+      "w": 1,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "fn",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "apply"
+    },
+    {
+      "t": 0.2,
+      "do": "move",
+      "target": "fn",
+      "sfx": "whoosh",
+      "to": [
+        5,
+        2
+      ]
+    },
+    {
+      "t": 0.4,
+      "do": "glow",
+      "target": "apply",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.55,
+      "do": "show",
+      "target": "call",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.75,
+      "do": "flip",
+      "target": "call",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.85,
+      "do": "show",
+      "target": "num",
+      "sfx": "ding"
+    }
+  ]
+}

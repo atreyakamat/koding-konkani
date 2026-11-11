@@ -1,0 +1,47 @@
+--- scripts/bible_to_json.py	2026-10-31 06:43:46.525990907 +0000
++++ /tmp/claude-0/kk/build/repo_cpp/scripts/bible_to_json.py	2026-11-06 11:33:50.909800205 +0000
+@@ -437,7 +437,7 @@
+ # Bare-filename announcement, e.g. a paragraph that is just "sort.h" (EP82's format).
+ _BARE_FILENAME_RE = re.compile(r"^\s*`?([\w./]+\.\w+)`?\s*$")
+ # Last-resort: any filename-shaped token in a short free-text label (EP06's format).
+-_LOOSE_FILENAME_RE = re.compile(r"\b([A-Za-z_][\w]*\.(?:c|h|cpp|txt))\b")
++_LOOSE_FILENAME_RE = re.compile(r"\b([A-Za-z_][\w]*\.(?:c|h|cpp|py|txt))\b")
+ _INPUT_NOTE_RE = re.compile(r"(?:run with input|Input:|stdin:)\s*([^.\n)]+)", re.IGNORECASE)
+ 
+ 
+@@ -491,7 +491,7 @@
+             continue
+ 
+         lang, content = fence_content(raw)
+-        if lang in ("c", "cpp", ""):
++        if lang in ("c", "cpp", "python", ""):
+             unlabeled_index += 1
+             name = pending_name or f"file{unlabeled_index}.{lang or 'c'}"
+             current = CodeFile(file=name, source=content, stdin=pending_stdin, lang=lang or "c")
+@@ -607,7 +607,7 @@
+             continue
+ 
+         lang, content = fence_content(raw)
+-        if lang in ("c", "cpp"):
++        if lang in ("c", "cpp", "python"):
+             if wrong is None:
+                 wrong = content
+                 wrong_lang = lang
+@@ -696,7 +696,7 @@
+         for is_code, raw in chunks:
+             if is_code:
+                 lang, content = fence_content(raw)
+-                if lang in ("c", "cpp"):
++                if lang in ("c", "cpp", "python"):
+                     answer = f"(worked example)\n{content}"
+                     warnings.add(ep, "Challenge answer is a code example, not a sentence; captured verbatim")
+                     break
+@@ -1088,7 +1088,7 @@
+ 
+     report_path = Path(args.report)
+     report_path.parent.mkdir(parents=True, exist_ok=True)
+-    lines = ["# bible_to_json.py report", "", f"Episodes parsed: {len(summary_rows)} / 86", ""]
++    lines = ["# bible_to_json.py report", "", f"Episodes parsed: {len(summary_rows)} / 90", ""]
+     lines.append("| EP | Title | Scenes | Files | Shorts | Flags |")
+     lines.append("| --- | --- | --- | --- | --- | --- |")
+     for ep, title, n_scenes, n_files, n_shorts, flag in sorted(summary_rows):

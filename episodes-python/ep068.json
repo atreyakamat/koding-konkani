@@ -1,0 +1,350 @@
+{
+  "ep": 68,
+  "title": "Overriding and super()",
+  "module": 7,
+  "lengthSec": 304,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "override a parent method in a child",
+    "extend a method with super()",
+    "call the parent's method correctly"
+  ],
+  "youtube": {
+    "title": "Python Method Overriding and super() Explained | Python Programming EP 68",
+    "description": "In this episode you will override a parent method in a child, extend a method with super() and call the parent's method correctly, with Xecxec the crab. 0:00 Intro · 0:15 Change or extend · 0:59 Overriding · 1:39 Child first, then parent · 2:10 Second program · 3:10 Recap · 3:41 Bug of the Day · 4:29 Challenge · 4:49 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Change or extend"
+      },
+      {
+        "t": "0:59",
+        "label": "Overriding"
+      },
+      {
+        "t": "1:39",
+        "label": "Child first, then parent"
+      },
+      {
+        "t": "2:10",
+        "label": "Second program"
+      },
+      {
+        "t": "3:10",
+        "label": "Recap"
+      },
+      {
+        "t": "3:41",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:29",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:49",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python method overriding",
+      "python super",
+      "python override method",
+      "python oop super function"
+    ],
+    "thumbnail": {
+      "text": "OVERRIDE",
+      "visual": "big text \"OVERRIDE\" in tomato on peach; Xecxec singing the family song, but changing the last line; thin black border and drop shadow.",
+      "pose": "Xecxec singing the family song, but changing the last line"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 68 · OVERRIDE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "A child often needs to behave a little differently from its parent. Today we change methods, or extend them."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 44,
+      "onScreen": "\"Change or extend\": three numbered lines (1. Same method name in the child replaces the parent's; 2. super().method() runs the parent's version; 3. Python looks in the child first) and an analogy card: a family song: the child sings the same tune but changes a verse, or sings the old verse and adds a new one",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "If a child class defines a method with the same name as its parent, the child's version wins. This is called overriding. Python looks in the child first, then in the parent. Sometimes you want both. Call super dot method inside the child's version, to run the parent's code first, and then add more. Think of a family song. The child sings the same tune, but changes a verse, or sings the old verse and adds a new one."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 59,
+      "lengthSec": 40,
+      "onScreen": "override.py: each animal speaks in its own way",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The parent. [HL 2] Its speak method returns three dots. [HL 5] Dog inherits from Animal. [HL 6] And defines its own speak. [HL 7] It returns Woof. [HL 9] Fish inherits, but adds nothing. [HL 12] An animal says three dots. [HL 13] A dog says Woof, because the child's version wins. [HL 14] A fish has no speak of its own, so Python finds the parent's. Three dots.",
+      "code": {
+        "file": "override.py",
+        "source": "class Animal:\n    def speak(self):\n        return \"...\"\n\nclass Dog(Animal):\n    def speak(self):\n        return \"Woof\"\n\nclass Fish(Animal):\n    pass\n\nprint(Animal().speak())\nprint(Dog().speak())\nprint(Fish().speak())",
+        "output": "...\nWoof\n..."
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 99,
+      "lengthSec": 31,
+      "onScreen": "A method call that checks the child class box first, then the parent class box",
+      "animation": "A search arrow starts at the Dog box, finds no match for eat, then moves up to the Animal box and lights it",
+      "sfx": [],
+      "narration": "Here is how Python finds a method. It looks in the object's own class first. If the method is there, it runs. If not, Python walks up to the parent, and checks there. The first match wins. So the child can override the parent, and objects with no override use the parent's version."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 130,
+      "lengthSec": 40,
+      "onScreen": "extend.py: call the parent's method and then add more",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A parent that greets. [HL 2] Its greet method. [HL 3] Returns Hello. [HL 5] The child. [HL 6] Overrides greet. [HL 7] Super dot greet runs the parent's version, and keeps the result. [HL 8] Then we shout it, and add an exclamation mark. [HL 10] The parent says Hello. [HL 11] The child says HELLO with an exclamation mark. It built on the parent's answer.",
+      "code": {
+        "file": "extend.py",
+        "source": "class Greeter:\n    def greet(self):\n        return \"Hello\"\n\nclass LoudGreeter(Greeter):\n    def greet(self):\n        base = super().greet()\n        return base.upper() + \"!\"\n\nprint(Greeter().greet())\nprint(LoudGreeter().greet())",
+        "output": "Hello\nHELLO!"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 170,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python extend.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as extend dot py. In the terminal, type python, space, extend dot py. Three dots, Woof, three dots. Then Hello, then HELLO!"
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 190,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A child's method with the same name overrides the parent's. Two: Python looks in the child first, then the parent. Three: super dot method runs the parent's version. Four: Use super to extend a method, not copy it. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 221,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: calling the parent wrongly",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We call the parent's init through the class name, and pass only the name. Python needs self as the first argument, and it does not add it here. Our name is taken as self, and the real name is missing. Type error, init missing one required positional argument, name. Use super dot init instead. It passes self for you."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 261,
+      "lengthSec": 8,
+      "onScreen": "Why did the method override its parent? It needed some independence.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the method override its parent? It needed some independence."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 269,
+      "lengthSec": 20,
+      "onScreen": "Task card: shout the answer",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make a Dog subclass of Animal whose speak returns the parent's answer followed by the word Woof. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 289,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 69 · Polymorphism and duck typing",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: polymorphism and duck typing. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name):\n        Animal.__init__(name)\n\nd = Dog(\"Rex\")",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"parent.py\", line 9, in <module>\n    d = Dog(\"Rex\")\n  File \"parent.py\", line 7, in __init__\n    Animal.__init__(name)\n    ~~~~~~~~~~~~~~~^^^^^^\nTypeError: Animal.__init__() missing 1 required positional argument: 'name'",
+    "fixed": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name):\n        super().__init__(name)\n\nd = Dog(\"Rex\")\nprint(d.name)",
+    "why": "Calling a method through the class name does not pass self for you. Calling it through super() does, so super() is the safe way."
+  },
+  "pun": "\"Why did the method override its parent? It needed some independence.\"",
+  "challenge": "Make a Dog subclass of Animal whose speak returns the parent's answer followed by the word Woof.",
+  "challengeAnswer": "def speak(self): return super().speak() + \" Woof\".",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Overriding",
+      "hook": "\"Overriding means a child defines a method with the same name as the parent's.\"",
+      "script": "Overriding means a child defines a method with the same name as the parent's. The child's version wins. A dog's speak returns Woof, while a plain animal's speak returns dots. Same name, different behaviour. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "Child method beats parent",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "The child's version wins.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "super",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Python lookup",
+      "hook": "\"How does Python find a method?\"",
+      "script": "How does Python find a method? It looks in the object's own class first. If it is not there, it goes up to the parent, and keeps going up. The first match wins. A fish with no speak of its own simply uses the parent's. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "Child first, then parent",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "Python looks up the tree.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "super",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Extend with super",
+      "hook": "\"You do not have to throw away the parent's method.\"",
+      "script": "You do not have to throw away the parent's method. Call super dot speak inside the child's version, to get the parent's answer. Then add your own part. Extending beats copying, because a fix in the parent reaches every child. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "super().greet()",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Extend, do not copy.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "super",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The wrong call",
+      "hook": "\"A frequent mistake.\"",
+      "script": "A frequent mistake. You call Animal dot init with just the name. Python says, type error, init missing one required positional argument, name. Through the class name, self is not passed. Use super dot init, and Python passes self for you. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "TypeError: missing 'name'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Use super().",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "super",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the method override its parent?\"",
+      "script": "Why did the method override its parent? It needed some independence. Your challenge. Make a Dog class that inherits from Animal. Its speak method must return the parent's answer, followed by the word Woof. Use super in your answer. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 68.",
+      "onScreen": "Challenge: parent answer + Woof",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Extend with super.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "override.py",
+      "source": "class Animal:\n    def speak(self):\n        return \"...\"\n\nclass Dog(Animal):\n    def speak(self):\n        return \"Woof\"\n\nclass Fish(Animal):\n    pass\n\nprint(Animal().speak())\nprint(Dog().speak())\nprint(Fish().speak())",
+      "output": "...\nWoof\n...",
+      "lang": "python"
+    },
+    {
+      "file": "extend.py",
+      "source": "class Greeter:\n    def greet(self):\n        return \"Hello\"\n\nclass LoudGreeter(Greeter):\n    def greet(self):\n        base = super().greet()\n        return base.upper() + \"!\"\n\nprint(Greeter().greet())\nprint(LoudGreeter().greet())",
+      "output": "Hello\nHELLO!",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

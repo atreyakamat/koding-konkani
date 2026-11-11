@@ -1,0 +1,352 @@
+{
+  "ep": 5,
+  "title": "Variables and names",
+  "module": 1,
+  "lengthSec": 312,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "create names with = and read them back",
+    "follow the naming rules",
+    "reassign a name and swap two names"
+  ],
+  "youtube": {
+    "title": "Python Variables and Names for Beginners | Python Programming EP 05",
+    "description": "In this episode you will create names with = and read them back, follow the naming rules and reassign a name and swap two names, with Xecxec the crab. 0:00 Intro · 0:19 Variables and names · 0:59 Making names · 1:39 Names tied to objects · 2:14 Second program · 3:14 Recap · 3:49 Bug of the Day · 4:37 Challenge · 4:57 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:19",
+        "label": "Variables and names"
+      },
+      {
+        "t": "0:59",
+        "label": "Making names"
+      },
+      {
+        "t": "1:39",
+        "label": "Names tied to objects"
+      },
+      {
+        "t": "2:14",
+        "label": "Second program"
+      },
+      {
+        "t": "3:14",
+        "label": "Recap"
+      },
+      {
+        "t": "3:49",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:37",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:57",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python variables",
+      "variable naming rules",
+      "assignment in python",
+      "nameerror"
+    ],
+    "thumbnail": {
+      "text": "NAMES, NOT BOXES",
+      "visual": "big text \"NAMES, NOT BOXES\" in tomato on peach; Xecxec holding two name tags, one tied to a string and one to a number, on a pastelBlue card; thin black border and drop shadow.",
+      "pose": "Xecxec holding two name tags, one tied to a string and one to a number, on a pastelBlue card"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 19,
+      "onScreen": "EP 05 · NAMES, NOT BOXES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Welcome back! Last time we met names as tags. Today we learn how to make them, how to name them well, and how to change what they point at."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 19,
+      "lengthSec": 40,
+      "onScreen": "\"Variables and names\": three numbered lines (1. A name is tied to a value with =; 2. Rules: letters, digits, underscore; no spaces; 3. Capital and small letters are different) and an analogy card: a beach-shack signboard: the board is the name, the shack is the value",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A variable is a name tied to a value. You write the name, an equals sign, and the value. Think of a beach shack. The signboard is the name, and the shack is the value. The sign can be moved to a different shack later. The rules are simple. Use letters, digits and underscores. Never start with a digit, and never use spaces. Capital and small letters count as different names."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 59,
+      "lengthSec": 40,
+      "onScreen": "beach.py: two names and a changed value",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A name called beach, tied to the text Calangute. [HL 2] A name called visitors, tied to one hundred twenty. [HL 3] Now we reuse the name. Python reads visitors, adds thirty, and ties the name to the new answer, one hundred fifty. The old value is simply left behind. [HL 4] Print both names. Python shows Calangute, then one hundred fifty.",
+      "code": {
+        "file": "beach.py",
+        "source": "beach = \"Calangute\"\nvisitors = 120\nvisitors = visitors + 30\nprint(beach, visitors)",
+        "output": "Calangute 150"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 99,
+      "lengthSec": 35,
+      "onScreen": "Two name tags, beach and visitors, tied by arrows to the text and the number",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is what Python holds after the code runs. The name beach is tied to the text Calangute. The name visitors is tied to the number one hundred fifty. The old value, one hundred twenty, has no name on it any more. Python tidies it away. Remember the picture: names are tags, and the objects are the things they point at."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 134,
+      "lengthSec": 40,
+      "onScreen": "swap.py: swapping what two names point at",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK left=fish] Left points at fish. [HL 2] [TRACK right=curry] Right points at curry. [HL 3] Now the swap. Python reads both names on the right side first, then ties them back in the opposite order. [TRACK left=curry] Left now points at curry. [TRACK right=fish] Right now points at fish. [HL 4] So the print shows, curry fish. No third name was needed.",
+      "code": {
+        "file": "swap.py",
+        "source": "left = \"fish\"\nright = \"curry\"\nleft, right = right, left\nprint(left, right)",
+        "output": "curry fish"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 174,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python swap.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as swap dot py. In the terminal, type python, space, swap dot py. It prints curry fish. The two names traded places."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 194,
+      "lengthSec": 35,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A variable is a name tied to a value with the equals sign. Two: Names use letters, digits and underscores, never start with a digit, and have no spaces. Three: Reusing a name ties it to a new value. Four: Capital and small letters are different names. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 229,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: using a name before it exists",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We print total before we ever make it. Python says, name error, total is not defined. Python reads from the top, and at line one the name does not exist yet. Move the assignment above the print, and it works."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 269,
+      "lengthSec": 8,
+      "onScreen": "I named my variable after a crab. It keeps scuttling to a new value.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I named my variable after a crab. It keeps scuttling to a new value."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 277,
+      "lengthSec": 20,
+      "onScreen": "Task card: make two names, swap them, print them",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make two names, city and friend, then swap them and print both. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 297,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 06 · Numbers: int and float",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: numbers, int and float. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "print(total)\ntotal = 10",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"beach.py\", line 1, in <module>\n    print(total)\n          ^^^^^\nNameError: name 'total' is not defined",
+    "fixed": "total = 10\nprint(total)",
+    "why": "Python runs lines from top to bottom, so a name must be tied to a value before any line reads it."
+  },
+  "pun": "\"I named my variable after a crab. It keeps scuttling to a new value.\"",
+  "challenge": "Make two names, city and friend, then swap them and print both.",
+  "challengeAnswer": "Use city = \"Panjim\" and friend = \"Asha\", then city, friend = friend, city and print(city, friend), which shows Asha Panjim.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "A name is a tag",
+      "hook": "\"A name is a tag, not a box.\"",
+      "script": "A name is a tag, not a box. You write the name, an equals sign, and a value, and Python ties the two together. Beach equals Calangute makes a tag called beach on the text Calangute. Later you can move that tag to a new value. If no name points at the old value any more, Python quietly tidies it away. That is all a variable really is. Keep coding, says Xecxec!",
+      "onScreen": "NAMES ARE TAGS",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 40,
+      "caption": "A variable explained in one picture.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "variables",
+        "names",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Naming rules",
+      "hook": "\"Four rules for good names.\"",
+      "script": "Four rules for good names. Use letters, digits and underscores. Never start a name with a digit. Never use spaces, so write open underscore shacks, not open shacks. And remember that capital and small letters are different, so Beach and beach are two different names. Pick a name that says what the value is. Then you can read your code later. Keep coding, says Xecxec!",
+      "onScreen": "NAMING RULES",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Name things well.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "variables",
+        "names",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Reuse a name",
+      "hook": "\"Watch this line.\"",
+      "script": "Watch this line. Visitors equals visitors plus thirty. Python first reads the old value, one hundred twenty, and adds thirty. Only then does it tie the name to the answer, one hundred fifty. So the right side runs first, and the left side receives the result. The equals sign means tie, not equal. That one idea clears up most of the confusion for beginners. Keep coding, says Xecxec!",
+      "onScreen": "VISITORS = VISITORS + 30",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Read the right side first.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "variables",
+        "names",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Name before value",
+      "hook": "\"A very common first bug.\"",
+      "script": "A very common first bug. You print a name before you ever make it. Python reads from the top. At that line the name does not exist yet. You get a name error, name total is not defined. The fix is simple. Put the assignment above the print. Always make a name first, then use it, and this bug disappears. Keep coding, says Xecxec!",
+      "onScreen": "NAMEERROR: NAME NOT DEFINED",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Make it first, then use it.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "variables",
+        "names",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"I named my variable after a crab.\"",
+      "script": "I named my variable after a crab. It keeps scuttling to a new value. Now your challenge. Make two names, city and friend, with any values you like. Then swap them with one single line, and print both. Remember, Python can swap two names without needing a third helper name. Write your answer in the comments, and see who can do it fastest. Keep coding, says Xecxec! Full video: EP 05.",
+      "onScreen": "SWAP TWO NAMES",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 40,
+      "caption": "Try the swap.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "variables",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "beach.py",
+      "source": "beach = \"Calangute\"\nvisitors = 120\nvisitors = visitors + 30\nprint(beach, visitors)",
+      "output": "Calangute 150",
+      "lang": "python"
+    },
+    {
+      "file": "swap.py",
+      "source": "left = \"fish\"\nright = \"curry\"\nleft, right = right, left\nprint(left, right)",
+      "output": "curry fish",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

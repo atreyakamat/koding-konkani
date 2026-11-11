@@ -1,0 +1,350 @@
+{
+  "ep": 74,
+  "title": "Generators",
+  "module": 8,
+  "lengthSec": 314,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a generator function with yield",
+    "see that a generator runs lazily",
+    "know that a generator can be used only once"
+  ],
+  "youtube": {
+    "title": "Python Generators and yield Explained | Python Programming EP 74",
+    "description": "In this episode you will write a generator function with yield, see that a generator runs lazily and know that a generator can be used only once, with Xecxec the crab. 0:00 Intro · 0:15 Pause and resume · 1:01 A generator function · 1:46 Pause and resume · 2:18 Second program · 3:20 Recap · 3:51 Bug of the Day · 4:39 Challenge · 4:59 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Pause and resume"
+      },
+      {
+        "t": "1:01",
+        "label": "A generator function"
+      },
+      {
+        "t": "1:46",
+        "label": "Pause and resume"
+      },
+      {
+        "t": "2:18",
+        "label": "Second program"
+      },
+      {
+        "t": "3:20",
+        "label": "Recap"
+      },
+      {
+        "t": "3:51",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:39",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:59",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python generators",
+      "python yield",
+      "python generator function",
+      "generator vs list python"
+    ],
+    "thumbnail": {
+      "text": "YIELD",
+      "visual": "big text \"YIELD\" in tomato on peach; Xecxec handing out one cookie at a time from a never-ending conveyor belt; thin black border and drop shadow.",
+      "pose": "Xecxec handing out one cookie at a time from a never-ending conveyor belt"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 74 · YIELD",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Writing a whole iterator class is long. A generator does the same job in a few lines."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 46,
+      "onScreen": "\"Pause and resume\": three numbered lines (1. yield hands out a value and pauses; 2. The function resumes where it stopped; 3. Values are made one at a time) and an analogy card: a conveyor belt that makes the next cookie only when you reach for it",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A generator is a function that uses yield instead of return. Calling it does not run the body. It gives back a generator object. Each time you ask for the next value, the function runs to the next yield. It hands the value out, and pauses. The next request resumes right after the yield. Nothing is stored in a big list, so a generator can even be endless. Think of a conveyor belt that makes the next cookie only when you reach for it."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 61,
+      "lengthSec": 45,
+      "onScreen": "gen.py: yield pauses the function",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A function with yield. [HL 2] This print only runs when we first ask. [HL 3] Loop while n is above zero. [HL 4] Yield hands out n, and pauses here. [HL 5] When resumed, count down. [HL 6] After the loop, print done. [HL 8] Calling countdown runs nothing yet. We only get a generator object. [HL 9] Made it. Nothing has started. [HL 10] The first next runs the body. Start. Then yield three. [HL 11] The second next resumes after the yield. Two. [HL 12] A for loop takes the rest. [HL 13] One. Then done, and the loop ends.",
+      "code": {
+        "file": "gen.py",
+        "source": "def countdown(n):\n    print(\"start\")\n    while n > 0:\n        yield n\n        n -= 1\n    print(\"done\")\n\ng = countdown(3)\nprint(\"made it\")\nprint(next(g))\nprint(next(g))\nfor x in g:\n    print(x)",
+        "output": "made it\nstart\n3\n2\n1\ndone"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 106,
+      "lengthSec": 32,
+      "onScreen": "A function box with a bookmark at the yield line; each next moves the bookmark forward",
+      "animation": "A function box with a bookmark at the yield line; each next call hops the bookmark one step and ejects a value ticket",
+      "sfx": [],
+      "narration": "Here is the picture. A generator keeps a bookmark at the yield line. Each next call resumes from the bookmark. It runs to the next yield, hands out a value, and places the bookmark again. All local variables stay alive between calls. When the function ends, the bookmark is gone, and the generator raises StopIteration."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 138,
+      "lengthSec": 42,
+      "onScreen": "squares.py: a generator that never ends, and a take-three loop",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A generator that never ends. [HL 2] Start at one. [HL 3] Forever. [HL 4] Yield the number. [HL 5] Then add one. [HL 7] A second generator, built on the first. [HL 8] It pulls numbers one at a time. [HL 9] Past the limit, [HL 10] return, and the generator ends. [HL 11] Otherwise yield the square. [HL 13] The squares up to five. One, four, nine, sixteen, twenty five. [HL 14] The sum of squares up to ten. Three eighty five. The endless generator never filled memory, because values were made only when asked.",
+      "code": {
+        "file": "squares.py",
+        "source": "def naturals():\n    n = 1\n    while True:\n        yield n\n        n += 1\n\ndef squares(limit):\n    for n in naturals():\n        if n > limit:\n            return\n        yield n * n\n\nprint(list(squares(5)))\nprint(sum(squares(10)))",
+        "output": "[1, 4, 9, 16, 25]\n385"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 180,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python squares.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as squares dot py. In the terminal, type python, space, squares dot py. Made it, start, 3, 2, then 1, done. Then the five squares, then 385."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 200,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A function with yield returns a generator. Two: Each next runs the function up to the next yield. Three: Values are made one at a time, so memory stays small. Four: A generator can be used only once. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 231,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a generator is used up after one loop",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We turn the same generator into a list twice. The first list is zero, two, four. The second list is empty, with no error. The generator was used up. To loop again, call evens again, and get a fresh generator."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 271,
+      "lengthSec": 8,
+      "onScreen": "Why did the generator get tired? It kept giving without getting anything back.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the generator get tired? It kept giving without getting anything back."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 279,
+      "lengthSec": 20,
+      "onScreen": "Task card: generate evens",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a generator evens of limit. It yields the even numbers from 0 up to limit. It includes limit if limit is even. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 299,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 75 · Generator expressions",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: generator expressions. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def evens():\n    for n in range(0, 6, 2):\n        yield n\n\ng = evens()\nprint(list(g))\nprint(list(g))",
+    "error": "Python output (it runs, but the answer is wrong):\n\n[0, 2, 4]\n[]",
+    "fixed": "def evens():\n    for n in range(0, 6, 2):\n        yield n\n\nprint(list(evens()))\nprint(list(evens()))",
+    "why": "A generator runs once. When it finishes, it stays empty. Call the generator function again to get a fresh one."
+  },
+  "pun": "\"Why did the generator get tired? It kept giving without getting anything back.\"",
+  "challenge": "Write a generator evens(limit). It yields the even numbers from 0 up to limit. It includes limit if limit is even.",
+  "challengeAnswer": "def evens(limit): for n in range(0, limit + 1, 2): yield n.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is yield",
+      "hook": "\"Yield works like return, but the function pauses instead of ending.\"",
+      "script": "Yield works like return, but the function pauses instead of ending. It hands out one value, and waits. The next request resumes right after the yield. A function with yield is called a generator. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "yield = give and pause",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Yield pauses the function.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "generators",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Lazy values",
+      "hook": "\"A generator makes values only when you ask.\"",
+      "script": "A generator makes values only when you ask. A list of a million numbers fills memory. A generator of a million numbers holds just one at a time. It is a conveyor belt that makes the next cookie on demand. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "one value at a time",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "Generators are lazy.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "generators",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Endless generator",
+      "hook": "\"A generator can even be endless.\"",
+      "script": "A generator can even be endless. A while True loop with a yield gives you one, two, three, forever. It never fills memory, because nothing is stored. You just stop asking when you have enough. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "while True: yield n",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Endless, yet tiny.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "generators",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Used up",
+      "hook": "\"A classic bug.\"",
+      "script": "A classic bug. You make a list from the same generator twice. The first list is full. The second is empty, and no error appears. A generator runs once. To go again, call the generator function again. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "second list = []",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Generators run once.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "generators",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the generator get tired?\"",
+      "script": "Why did the generator get tired? It kept giving without getting anything back. Your challenge. Write a generator called evens. It takes a limit, and yields every even number from zero up to the limit. Print the list for limit ten. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 74.",
+      "onScreen": "Challenge: evens(limit)",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Write an evens generator.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "gen.py",
+      "source": "def countdown(n):\n    print(\"start\")\n    while n > 0:\n        yield n\n        n -= 1\n    print(\"done\")\n\ng = countdown(3)\nprint(\"made it\")\nprint(next(g))\nprint(next(g))\nfor x in g:\n    print(x)",
+      "output": "made it\nstart\n3\n2\n1\ndone",
+      "lang": "python"
+    },
+    {
+      "file": "squares.py",
+      "source": "def naturals():\n    n = 1\n    while True:\n        yield n\n        n += 1\n\ndef squares(limit):\n    for n in naturals():\n        if n > limit:\n            return\n        yield n * n\n\nprint(list(squares(5)))\nprint(sum(squares(10)))",
+      "output": "[1, 4, 9, 16, 25]\n385",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

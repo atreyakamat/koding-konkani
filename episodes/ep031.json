@@ -83,7 +83,12 @@
       "onScreen": "`tri.c` with trackers `i`, `j`",
       "animation": "Stars drop in one by one; inner loop limit `j <= i` glows each row",
       "sfx": [],
-      "narration": "[HL 4] int n equals 5, the height. [HL 6] Outer loop: for i from 1 to n. One round per row. [TRACK i=1] [HL 7] Inner loop: for j from 1 to i. This is the rule from our table: row i has i stars. On row 1, j goes from 1 to 1, so one star. [HL 8] printf star space. [HL 10] After the inner loop, printf newline. Row 1 done: one star. [TRACK i=2] Row 2: j goes 1 to 2, two stars, then newline. [TRACK i=3] Row 3: three stars. And so on until row 5, five stars. Compare this with last episode's grid. The only change is the inner limit: j less than or equal to i, instead of j less than or equal to cols. That one change turns a rectangle into a triangle."
+      "narration": "[HL 4] int n equals 5, the height. [HL 6] Outer loop: for i from 1 to n. One round per row. [TRACK i=1] [HL 7] Inner loop: for j from 1 to i. This is the rule from our table: row i has i stars. On row 1, j goes from 1 to 1, so one star. [HL 8] printf star space. [HL 10] After the inner loop, printf newline. Row 1 done: one star. [TRACK i=2] Row 2: j goes 1 to 2, two stars, then newline. [TRACK i=3] Row 3: three stars. And so on until row 5, five stars. Compare this with last episode's grid. The only change is the inner limit: j less than or equal to i, instead of j less than or equal to cols. That one change turns a rectangle into a triangle.",
+      "code": {
+        "file": "tri.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= i; j++) {\n            printf(\"* \");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+        "output": "*\n* *\n* * *\n* * * *\n* * * * *"
+      }
     },
     {
       "id": 5,
@@ -95,7 +100,12 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Now flip it. Row table: row 1 has 5 stars, row 2 has 4, down to 1. [HL 6] The easy way: make the outer loop count down. for i equals n, i greater than or equal to 1, i minus minus. [TRACK i=5] [HL 7] The inner loop stays the same: j from 1 to i. So the first row prints 5 stars, [TRACK i=4] then 4, then 3, then 2, [TRACK i=1] then 1. One small change, and the triangle stands on its head."
+      "narration": "Now flip it. Row table: row 1 has 5 stars, row 2 has 4, down to 1. [HL 6] The easy way: make the outer loop count down. for i equals n, i greater than or equal to 1, i minus minus. [TRACK i=5] [HL 7] The inner loop stays the same: j from 1 to i. So the first row prints 5 stars, [TRACK i=4] then 4, then 3, then 2, [TRACK i=1] then 1. One small change, and the triangle stands on its head.",
+      "code": {
+        "file": "invtri.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n\n    for (int i = n; i >= 1; i--) {\n        for (int j = 1; j <= i; j++) {\n            printf(\"* \");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+        "output": "* * * * *\n* * * *\n* * *\n* *\n*"
+      }
     },
     {
       "id": 6,
@@ -117,7 +127,12 @@
       "onScreen": "`rt4.c` right-aligned triangle; row table now has two columns: spaces and stars",
       "animation": "Spaces drawn as dotted grey boxes, stars in Tomato; each row shows \"2 spaces per missing star\"",
       "sfx": [],
-      "narration": "Now the harder one: a triangle leaning against the right wall. The stars are the same, 1, 2, 3, 4. But each row has empty space on the left. Our row table gets a second column. With n equals 4: row 1 has 3 missing stars, row 2 has 2, row 3 has 1, row 4 has none. So missing stars equals n minus i. [HL 6] Outer loop: i from 1 to n. [TRACK i=1] [HL 7] First inner loop: for s from 1 to n minus i. This one prints the blank space. [HL 8] printf, and in quotes, two spaces. Why two? Because each star we print is a star plus a space, which is two characters wide. So each missing star must be filled with two spaces. [HL 10] Second inner loop: for j from 1 to i, [HL 11] print star space. [HL 13] Then newline. Row 1: three gaps of two spaces, then one star. [TRACK i=2] Row 2: two gaps, two stars. [TRACK i=4] Row 4: no gaps, four stars. Two inner loops, one after the other, inside one outer loop. First the spaces, then the stars."
+      "narration": "Now the harder one: a triangle leaning against the right wall. The stars are the same, 1, 2, 3, 4. But each row has empty space on the left. Our row table gets a second column. With n equals 4: row 1 has 3 missing stars, row 2 has 2, row 3 has 1, row 4 has none. So missing stars equals n minus i. [HL 6] Outer loop: i from 1 to n. [TRACK i=1] [HL 7] First inner loop: for s from 1 to n minus i. This one prints the blank space. [HL 8] printf, and in quotes, two spaces. Why two? Because each star we print is a star plus a space, which is two characters wide. So each missing star must be filled with two spaces. [HL 10] Second inner loop: for j from 1 to i, [HL 11] print star space. [HL 13] Then newline. Row 1: three gaps of two spaces, then one star. [TRACK i=2] Row 2: two gaps, two stars. [TRACK i=4] Row 4: no gaps, four stars. Two inner loops, one after the other, inside one outer loop. First the spaces, then the stars.",
+      "code": {
+        "file": "rt4.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    int n = 4;\n\n    for (int i = 1; i <= n; i++) {\n        for (int s = 1; s <= n - i; s++) {\n            printf(\"  \");\n        }\n        for (int j = 1; j <= i; j++) {\n            printf(\"* \");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+        "output": "      *\n    * *\n  * * *\n* * * *"
+      }
     },
     {
       "id": 8,

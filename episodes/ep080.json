@@ -131,7 +131,99 @@
       "onScreen": "Bars [5, 2, 9, 1, 6, 3] above a count row 0–9; steps C1–C6",
       "animation": "Each bar flies into its bucket (pastel blue); bucket number ticks up in butter; plop SFX",
       "sfx": [],
-      "narration": "Our array: 5, 2, 9, 1, 6, 3. 5: bucket 5 becomes 1. 2: bucket 2 becomes 1. 9, 1, 6, 3, same thing. One pass, and our count row reads: nothing in 0, one in 1, one in 2, one in 3, nothing in 4, one each in 5, 6 and 9."
+      "narration": "Our array: 5, 2, 9, 1, 6, 3. 5: bucket 5 becomes 1. 2: bucket 2 becomes 1. 9, 1, 6, 3, same thing. One pass, and our count row reads: nothing in 0, one in 1, one in 2, one in 3, nothing in 4, one each in 5, 6 and 9.",
+      "trace": [
+        {
+          "step": "C1",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": "C2",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            1,
+            1
+          ]
+        },
+        {
+          "step": "C3",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            2,
+            2
+          ]
+        },
+        {
+          "step": "C4",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            3,
+            3
+          ]
+        },
+        {
+          "step": "C5",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            4,
+            4
+          ]
+        },
+        {
+          "step": "C6",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "compare": [
+            5,
+            5
+          ]
+        }
+      ]
     },
     {
       "id": 5,
@@ -143,7 +235,119 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Now walk the buckets in order. Bucket 0 is empty, skip. Bucket 1 has one: write 1. Bucket 2: write 2. Bucket 3: write 3. Bucket 4: empty. 5, 6, then 7 and 8 empty, then 9. The array is 1, 2, 3, 5, 6, 9. We never compared two numbers."
+      "narration": "Now walk the buckets in order. Bucket 0 is empty, skip. Bucket 1 has one: write 1. Bucket 2: write 2. Bucket 3: write 3. Bucket 4: empty. 5, 6, then 7 and 8 empty, then 9. The array is 1, 2, 3, 5, 6, 9. We never compared two numbers.",
+      "trace": [
+        {
+          "step": "start",
+          "array": [
+            5,
+            2,
+            9,
+            1,
+            6,
+            3
+          ]
+        },
+        {
+          "step": "R1",
+          "array": [
+            1,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "sorted": [
+            0
+          ]
+        },
+        {
+          "step": "R2",
+          "array": [
+            1,
+            2,
+            9,
+            1,
+            6,
+            3
+          ],
+          "sorted": [
+            0,
+            1
+          ]
+        },
+        {
+          "step": "R3",
+          "array": [
+            1,
+            2,
+            3,
+            1,
+            6,
+            3
+          ],
+          "sorted": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "step": "R4",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            3
+          ],
+          "sorted": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "step": "R5",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            3
+          ],
+          "sorted": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "step": "R6",
+          "array": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            9
+          ],
+          "sorted": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ]
     },
     {
       "id": 6,

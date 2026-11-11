@@ -1,0 +1,127 @@
+{
+  "ep": 52,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "d",
+      "shape": "box",
+      "text": "Diary",
+      "colour": "cream",
+      "col": 4,
+      "row": 0,
+      "w": 4,
+      "h": 3
+    },
+    {
+      "id": "p1",
+      "shape": "token",
+      "text": "Day 1",
+      "colour": "butter",
+      "col": 4,
+      "row": 1,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "p2",
+      "shape": "token",
+      "text": "Day 2",
+      "colour": "butter",
+      "col": 5,
+      "row": 1,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "w",
+      "shape": "label",
+      "text": "open(\"log.txt\", \"w\")",
+      "colour": "tomato",
+      "col": 0,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "a",
+      "shape": "label",
+      "text": "open(\"log.txt\", \"a\")",
+      "colour": "mint",
+      "col": 6,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "p3",
+      "shape": "token",
+      "text": "Day 3",
+      "colour": "mint",
+      "col": 6,
+      "row": 1,
+      "w": 1,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "d",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "p1"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "p2"
+    },
+    {
+      "t": 0.25,
+      "do": "show",
+      "target": "w",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.35,
+      "do": "hide",
+      "target": "p1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.35,
+      "do": "hide",
+      "target": "p2"
+    },
+    {
+      "t": 0.6,
+      "do": "show",
+      "target": "a",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.7,
+      "do": "show",
+      "target": "p1"
+    },
+    {
+      "t": 0.7,
+      "do": "show",
+      "target": "p2"
+    },
+    {
+      "t": 0.8,
+      "do": "show",
+      "target": "p3",
+      "sfx": "ding"
+    }
+  ]
+}

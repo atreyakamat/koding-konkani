@@ -1,0 +1,92 @@
+{
+  "ep": 67,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "an",
+      "shape": "box",
+      "text": "Animal: name, eat()",
+      "colour": "butter",
+      "col": 4,
+      "row": 0,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "dog",
+      "shape": "box",
+      "text": "Dog: bark()",
+      "colour": "mint",
+      "col": 1,
+      "row": 3,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "cat",
+      "shape": "box",
+      "text": "Cat: meow()",
+      "colour": "lilac",
+      "col": 8,
+      "row": 3,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "inherits",
+      "colour": "ink",
+      "from": "an",
+      "to": "dog"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "inherits",
+      "colour": "ink",
+      "from": "an",
+      "to": "cat"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "an",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.3,
+      "do": "show",
+      "target": "dog",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.3,
+      "do": "show",
+      "target": "cat"
+    },
+    {
+      "t": 0.5,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.5,
+      "do": "draw",
+      "target": "a2"
+    },
+    {
+      "t": 0.8,
+      "do": "glow",
+      "target": "dog",
+      "sfx": "ding"
+    }
+  ]
+}

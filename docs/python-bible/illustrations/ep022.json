@@ -1,0 +1,183 @@
+{
+  "ep": 22,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "ask",
+      "shape": "box",
+      "text": "Ask for a guess",
+      "colour": "butter",
+      "col": 4,
+      "row": 0,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "low",
+      "shape": "box",
+      "text": "Too low",
+      "colour": "peach",
+      "col": 0,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "high",
+      "shape": "box",
+      "text": "Too high",
+      "colour": "peach",
+      "col": 4,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "ok",
+      "shape": "box",
+      "text": "Correct, break",
+      "colour": "mint",
+      "col": 8,
+      "row": 2,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "back",
+      "shape": "box",
+      "text": "Loop again",
+      "colour": "pastelBlue",
+      "col": 4,
+      "row": 4,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "ask",
+      "to": "low"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "ask",
+      "to": "high"
+    },
+    {
+      "id": "a3",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "ask",
+      "to": "ok"
+    },
+    {
+      "id": "a4",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "low",
+      "to": "back"
+    },
+    {
+      "id": "a5",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "high",
+      "to": "back"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "ask",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "low"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "high"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "ok"
+    },
+    {
+      "t": 0.05,
+      "do": "show",
+      "target": "back"
+    },
+    {
+      "t": 0.2,
+      "do": "glow",
+      "target": "ask",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.3,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.3,
+      "do": "draw",
+      "target": "a2"
+    },
+    {
+      "t": 0.35,
+      "do": "glow",
+      "target": "low"
+    },
+    {
+      "t": 0.5,
+      "do": "draw",
+      "target": "a4",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.5,
+      "do": "draw",
+      "target": "a5"
+    },
+    {
+      "t": 0.55,
+      "do": "glow",
+      "target": "back"
+    },
+    {
+      "t": 0.7,
+      "do": "draw",
+      "target": "a3",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.75,
+      "do": "glow",
+      "target": "ok",
+      "sfx": "chime"
+    },
+    {
+      "t": 0.75,
+      "do": "dim",
+      "target": "high"
+    }
+  ]
+}

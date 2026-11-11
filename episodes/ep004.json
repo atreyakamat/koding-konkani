@@ -82,9 +82,7 @@
       "lengthSec": 15,
       "onScreen": "`./hello` runs; \"Hello, World!\" prints in mint",
       "animation": "Key clicks; output types in letter by letter; Xecxec raises both claws with a double claw-click and a small cheer SFX",
-      "sfx": [
-        "claw-click"
-      ],
+      "sfx": ["claw-click"],
       "narration": "Those two words have been printed by millions of beginners around the world. Today, you join them."
     },
     {
@@ -94,11 +92,7 @@
       "lengthSec": 5,
       "onScreen": "EP 04 · HELLO, WORLD!",
       "animation": "Title stamps in with whoosh + thud; tomato underline wipe",
-      "sfx": [
-        "stamp",
-        "thud",
-        "whoosh"
-      ],
+      "sfx": ["stamp", "thud", "whoosh"],
       "narration": "Hello, World!"
     },
     {
@@ -118,9 +112,7 @@
       "lengthSec": 40,
       "onScreen": "VS Code mock-up: new file hello.c, the 6-line program types itself",
       "animation": "Explorer panel: \"hello.c\" appears with a pop; code types at typing speed with soft key clicks; a \"TYPE IT, DON'T PASTE\" sticker slaps on in tomato",
-      "sfx": [
-        "pop"
-      ],
+      "sfx": ["pop"],
       "narration": "Open VS Code. Open a folder for your C programs, for example a folder called c-course on your Desktop. Make a new file and name it hello dot c. The dot c ending tells everyone this is C source code. Now type this program. Don't paste it. Type it, every character, including the punctuation.",
       "code": {
         "file": "hello.c",
@@ -150,10 +142,7 @@
       "lengthSec": 45,
       "onScreen": "`gcc hello.c -o hello` (no output), then `./hello` prints the line",
       "animation": "Command types; short \"gear\" whir while compiling; hello.exe icon pops into the file panel; second command prints in mint with a ding",
-      "sfx": [
-        "ding",
-        "pop"
-      ],
+      "sfx": ["ding", "pop"],
       "narration": "Now let's compile. Open the terminal in VS Code: Terminal, New Terminal. Type gcc, space, hello dot c, space, dash o, space, hello. gcc is the compiler. hello dot c is your source file. Dash o means \"name the output\", and hello is the name we choose. Press Enter. If nothing prints, that's good news. No news means no errors. A new file, hello dot exe, appears. Now run it: dot slash hello. And there it is. Hello, World!"
     },
     {
@@ -163,9 +152,7 @@
       "lengthSec": 4,
       "onScreen": "\"Without a semicolon, my code has no point. With one, it has a full stop.\"",
       "animation": "Card flips, rimshot; a giant semicolon bonks Xecxec on the head",
-      "sfx": [
-        "rimshot"
-      ],
+      "sfx": ["rimshot"],
       "narration": "Without a semicolon, my code has no point. With one, it has a full stop."
     },
     {
@@ -175,11 +162,7 @@
       "lengthSec": 50,
       "onScreen": "Semicolon deleted from line 4; the real GCC error; caret under the end of line 4",
       "animation": "Butter banner + siren blip; semicolon flies away with a whoosh; error prints in tomato with a buzzer; arrow from \"before 'return'\" up to the end of line 4; semicolon flies back, terminal turns mint with a ding",
-      "sfx": [
-        "buzzer",
-        "ding",
-        "whoosh"
-      ],
+      "sfx": ["buzzer", "ding", "whoosh"],
       "narration": "Now let's break it on purpose, like rule two from EP 01 says. Delete the semicolon after printf, save, and compile again. GCC says: hello dot c, 4 colon 30, error: expected semicolon before return. Read it carefully. 4 colon 30 means line four, column thirty: the exact spot at the end of the printf line. But the message mentions return, which is on line five. Why? The compiler only notices something is missing when it reaches the next word. It even shows a little semicolon under the caret, suggesting the fix. So when an error mentions a line, always check the end of the line above it too. Put the semicolon back, compile, run. Fixed."
     },
     {
@@ -189,10 +172,13 @@
       "lengthSec": 35,
       "onScreen": "Bonus program: three printf lines, output stacks in three lines",
       "animation": "[HL 4] [HL 5] [HL 6] highlights in turn; each output line drops into a mini terminal with a pop",
-      "sfx": [
-        "pop"
-      ],
-      "narration": "Bonus: want more than one line? [HL 4] Use one printf per line, [HL 5] each ending in backslash n, [HL 6] so each one starts on a new line. Hello. From. Goa. You could also do it with one printf and backslash n between the words. Same output."
+      "sfx": ["pop"],
+      "narration": "Bonus: want more than one line? [HL 4] Use one printf per line, [HL 5] each ending in backslash n, [HL 6] so each one starts on a new line. Hello. From. Goa. You could also do it with one printf and backslash n between the words. Same output.",
+      "code": {
+        "file": "hello.c",
+        "source": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello\\n\");\n    printf(\"From\\n\");\n    printf(\"Goa\\n\");\n    return 0;\n}",
+        "output": "Hello\nFrom\nGoa"
+      }
     },
     {
       "id": 10,
@@ -211,9 +197,7 @@
       "lengthSec": 16,
       "onScreen": "Next: EP 05 · How a C program is built + subscribe",
       "animation": "Next card slides up; Xecxec waves, claw-click; sign-off types in",
-      "sfx": [
-        "claw-click"
-      ],
+      "sfx": ["claw-click"],
       "narration": "Next episode: what actually happens between typing gcc and your program running. Keep coding, says Xecxec!"
     }
   ],
@@ -233,20 +217,10 @@
       "hook": "\"Six lines. Your first program. Let's go.\"",
       "script": "Six lines. Your first program. Let's go. Make a file called hello dot c. Type hash include stdio dot h, int main, printf Hello World with backslash n, and return zero. In the terminal: gcc hello dot c dash o hello. Then dot slash hello. Hello, World! Welcome to programming.",
       "onScreen": "YOUR FIRST C PROGRAM",
-      "fromScenes": [
-        1,
-        4,
-        6
-      ],
+      "fromScenes": [1, 4, 6],
       "lengthSec": 30,
       "caption": "Six lines to your first C program. Type it, don't paste it.",
-      "hashtags": [
-        "cprogramming",
-        "helloworld",
-        "learntocode",
-        "kodingkonkani",
-        "beginnercoding"
-      ]
+      "hashtags": ["cprogramming", "helloworld", "learntocode", "kodingkonkani", "beginnercoding"]
     },
     {
       "id": "S2",
@@ -254,18 +228,10 @@
       "hook": "\"Every line of Hello World, in 40 seconds.\"",
       "script": "Every line of Hello World, in 40 seconds. Hash include stdio dot h brings in printf. int main is where the program starts, and int means it returns a whole number. Curly braces hold main's code. printf prints the text in quotes, and backslash n moves to a new line. The semicolon ends the statement. return zero means everything went fine. Done.",
       "onScreen": "EVERY LINE, EXPLAINED",
-      "fromScenes": [
-        5
-      ],
+      "fromScenes": [5],
       "lengthSec": 45,
       "caption": "Stop typing Hello World without knowing what it means.",
-      "hashtags": [
-        "cprogramming",
-        "helloworld",
-        "learntocode",
-        "kodingkonkani",
-        "codingtips"
-      ]
+      "hashtags": ["cprogramming", "helloworld", "learntocode", "kodingkonkani", "codingtips"]
     },
     {
       "id": "S3",
@@ -273,18 +239,10 @@
       "hook": "\"The error mentions return. The bug isn't there.\"",
       "script": "The error mentions return. The bug isn't there. GCC says: expected semicolon before return. Return is on line five, but the missing semicolon is at the end of line four. The compiler only notices it when it hits the next word. So always check the line above. Even the caret points to the end of line four.",
       "onScreen": "CHECK THE LINE ABOVE",
-      "fromScenes": [
-        8
-      ],
+      "fromScenes": [8],
       "lengthSec": 25,
       "caption": "The number one beginner error in C, and how to read it.",
-      "hashtags": [
-        "cprogramming",
-        "debugging",
-        "learntocode",
-        "kodingkonkani",
-        "gcc"
-      ]
+      "hashtags": ["cprogramming", "debugging", "learntocode", "kodingkonkani", "gcc"]
     },
     {
       "id": "S4",
@@ -292,18 +250,10 @@
       "hook": "\"My code has no point.\"",
       "script": "My code has no point. Without a semicolon, it never does. With one, it has a full stop.",
       "onScreen": "; = FULL STOP",
-      "fromScenes": [
-        7
-      ],
+      "fromScenes": [7],
       "lengthSec": 10,
       "caption": "Xecxec got bonked by a semicolon.",
-      "hashtags": [
-        "programmerhumor",
-        "cprogramming",
-        "kodingkonkani",
-        "codingmemes",
-        "semicolon"
-      ]
+      "hashtags": ["programmerhumor", "cprogramming", "kodingkonkani", "codingmemes", "semicolon"]
     },
     {
       "id": "S5",
@@ -311,18 +261,10 @@
       "hook": "\"What does printf(\"A\\nB\") print?\"",
       "script": "What does this print? printf, quote, A, backslash n, B, quote. One line, or two? Comment your answer. Answer: two lines. A on the first, B on the second. Backslash n is a new line.",
       "onScreen": "printf(\"A\\nB\"); → ?",
-      "fromScenes": [
-        9
-      ],
+      "fromScenes": [9],
       "lengthSec": 15,
       "caption": "One line or two? Comment before the answer.",
-      "hashtags": [
-        "cprogramming",
-        "codingquiz",
-        "printf",
-        "kodingkonkani",
-        "learntocode"
-      ]
+      "hashtags": ["cprogramming", "codingquiz", "printf", "kodingkonkani", "learntocode"]
     }
   ],
   "codeFiles": [

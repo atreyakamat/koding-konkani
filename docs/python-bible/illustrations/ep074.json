@@ -1,0 +1,109 @@
+{
+  "ep": 74,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "fn",
+      "shape": "box",
+      "text": "def countdown(n): ... yield n ...",
+      "colour": "cream",
+      "col": 1,
+      "row": 1,
+      "w": 6,
+      "h": 2
+    },
+    {
+      "id": "bm",
+      "shape": "token",
+      "text": "bookmark",
+      "colour": "tomato",
+      "col": 7,
+      "row": 1,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "t1",
+      "shape": "token",
+      "text": "3",
+      "colour": "butter",
+      "col": 8,
+      "row": 4,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "t2",
+      "shape": "token",
+      "text": "2",
+      "colour": "butter",
+      "col": 9,
+      "row": 4,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "t3",
+      "shape": "token",
+      "text": "1",
+      "colour": "butter",
+      "col": 10,
+      "row": 4,
+      "w": 1,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "fn",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "bm"
+    },
+    {
+      "t": 0.25,
+      "do": "show",
+      "target": "t1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.3,
+      "do": "glow",
+      "target": "bm",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.5,
+      "do": "show",
+      "target": "t2",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.55,
+      "do": "glow",
+      "target": "bm",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.75,
+      "do": "show",
+      "target": "t3",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.8,
+      "do": "glow",
+      "target": "bm",
+      "sfx": "key-tick"
+    }
+  ]
+}

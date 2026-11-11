@@ -1,0 +1,350 @@
+{
+  "ep": 78,
+  "title": "Context managers",
+  "module": 8,
+  "lengthSec": 325,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain what with really does",
+    "write __enter__ and __exit__",
+    "use contextlib.contextmanager"
+  ],
+  "youtube": {
+    "title": "Python Context Managers and the with Statement | Python Programming EP 78",
+    "description": "In this episode you will explain what with really does, write __enter__ and __exit__ and use contextlib.contextmanager, with Xecxec the crab. 0:00 Intro · 0:15 Set up and tidy up · 1:06 Enter and exit · 1:47 Door in, door out · 2:22 Second program · 3:28 Recap · 4:02 Bug of the Day · 4:50 Challenge · 5:10 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Set up and tidy up"
+      },
+      {
+        "t": "1:06",
+        "label": "Enter and exit"
+      },
+      {
+        "t": "1:47",
+        "label": "Door in, door out"
+      },
+      {
+        "t": "2:22",
+        "label": "Second program"
+      },
+      {
+        "t": "3:28",
+        "label": "Recap"
+      },
+      {
+        "t": "4:02",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:50",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:10",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python context manager",
+      "python with statement",
+      "python __enter__ __exit__",
+      "python contextlib"
+    ],
+    "thumbnail": {
+      "text": "WITH + ENTER/EXIT",
+      "visual": "big text \"WITH + ENTER/EXIT\" in tomato on peach; Xecxec opening and closing a door around a tiny room, with a bell at each end; thin black border and drop shadow.",
+      "pose": "Xecxec opening and closing a door around a tiny room, with a bell at each end"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 78 · WITH + ENTER/EXIT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "You have used with for files. Today we learn what happens behind it, and build our own."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 51,
+      "onScreen": "\"Set up and tidy up\": three numbered lines (1. __enter__ runs when the with block starts; 2. __exit__ runs when the block ends, even on error; 3. @contextmanager makes one from a generator) and an analogy card: a hotel room: the key card opens the door on the way in, and the room is cleaned on the way out, whatever happened inside",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A with statement guarantees a cleanup. Behind it, Python calls two special methods. Dunder enter runs at the start, and its return value is tied to the name after as. Dunder exit runs at the end, even if an error happened inside. If exit returns True, the error is swallowed. If it returns False, the error continues. The contextlib module offers a shortcut, with a generator and one yield. Think of a hotel room. The key card opens the door on the way in, and the room is cleaned on the way out."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 66,
+      "lengthSec": 41,
+      "onScreen": "section.py: a class that prints when it starts and ends",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A Section class. [HL 2] Init stores a name. [HL 5] Dunder enter runs when the with block starts. [HL 6] It prints enter. [HL 7] And returns self, which is tied to the name after as. [HL 9] Dunder exit runs when the block ends. The three extra values describe any error. [HL 10] It prints exit. [HL 11] False means, do not hide any error. [HL 13] The with statement. Enter runs first. [HL 14] Then the block, inside A. Then exit runs. [HL 15] And the program goes on. After.",
+      "code": {
+        "file": "section.py",
+        "source": "class Section:\n    def __init__(self, name):\n        self.name = name\n\n    def __enter__(self):\n        print(\"enter\", self.name)\n        return self\n\n    def __exit__(self, exc_type, exc, tb):\n        print(\"exit\", self.name)\n        return False\n\nwith Section(\"A\") as s:\n    print(\"inside\", s.name)\nprint(\"after\")",
+        "output": "enter A\ninside A\nexit A\nafter"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 107,
+      "lengthSec": 35,
+      "onScreen": "A room with an entry door that rings a bell and an exit door that cleans the room, even when a red error arrow appears inside",
+      "animation": "A room with two doors; a bell rings at the entry door, a cleaner at the exit door; a red lightning arrow inside still ends at the exit door",
+      "sfx": [],
+      "narration": "Here is the picture. The with statement walks through the entry door, which calls enter. Your block runs inside the room. When the block ends, normal or with an error, Python always walks through the exit door, and calls exit. That is why with is trusted for files. Even if the code inside crashes, the file is closed on the way out."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 142,
+      "lengthSec": 45,
+      "onScreen": "tag.py: a generator with one yield does the same job",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Import the shortcut. [HL 3] The decorator turns a generator into a context manager. [HL 4] A function named tag. [HL 5] Everything before the yield is the enter part. [HL 6] Try. [HL 7] The yield marks the block of the with statement. [HL 8] Finally, [HL 9] runs on the way out, even after an error. [HL 11] The first with. [HL 12] The bold text, between the tags. [HL 13] Now a block that fails. [HL 14] The tags still open. [HL 15] The error is raised inside. [HL 16] The closing tag still prints, and the error continues. [HL 17] Where we catch it. Caught oops.",
+      "code": {
+        "file": "tag.py",
+        "source": "from contextlib import contextmanager\n\n@contextmanager\ndef tag(name):\n    print(\"<\" + name + \">\")\n    try:\n        yield\n    finally:\n        print(\"</\" + name + \">\")\n\nwith tag(\"b\"):\n    print(\"bold text\")\ntry:\n    with tag(\"i\"):\n        raise ValueError(\"oops\")\nexcept ValueError as e:\n    print(\"caught\", e)",
+        "output": "<b>\nbold text\n</b>\n<i>\n</i>\ncaught oops"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 187,
+      "lengthSec": 21,
+      "onScreen": "Terminal: python tag.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as tag dot py. In the terminal, type python, space, tag dot py. Enter A, inside A, exit A, after. Then the bold tags, then the italic tags, and caught oops."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 208,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: with calls dunder enter at the start and dunder exit at the end. Two: dunder exit runs even when the block raises an error. Three: Returning True from dunder exit swallows the error. Four: at contextmanager builds one from a generator with one yield. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 242,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: __exit__ swallows the error",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The block divides by zero. But our exit returns True. That tells Python, I handled it. The error vanishes, and the program prints finished. A real bug is now invisible. Return False, or nothing at all, and the error continues up to where you can catch it."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 282,
+      "lengthSec": 8,
+      "onScreen": "Why did the context manager never forget anything? It always cleaned up after itself.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the context manager never forget anything? It always cleaned up after itself."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 290,
+      "lengthSec": 20,
+      "onScreen": "Task card: time a block",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a context manager class Banner that prints a line of dashes on enter, and another on exit. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 310,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 79 · Type hints and dataclasses",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: type hints and dataclasses. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Quiet:\n    def __enter__(self):\n        return self\n\n    def __exit__(self, exc_type, exc, tb):\n        return True\n\nwith Quiet():\n    1 / 0\nprint(\"finished\")",
+    "error": "Python output (it runs, but the answer is wrong):\n\nfinished",
+    "fixed": "class Quiet:\n    def __enter__(self):\n        return self\n\n    def __exit__(self, exc_type, exc, tb):\n        return False\n\ntry:\n    with Quiet():\n        1 / 0\nexcept ZeroDivisionError:\n    print(\"error visible\")\nprint(\"finished\")",
+    "why": "If exit returns True, Python treats the error as handled and hides it. Return False, or return nothing, so errors are never swallowed by accident."
+  },
+  "pun": "\"Why did the context manager never forget anything? It always cleaned up after itself.\"",
+  "challenge": "Write a context manager class Banner that prints a line of dashes on enter, and another on exit.",
+  "challengeAnswer": "def __enter__(self): print(\"-----\"); return self. def __exit__(self, *a): print(\"-----\"); return False.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What with does",
+      "hook": "\"The with statement guarantees a cleanup.\"",
+      "script": "The with statement guarantees a cleanup. Python calls dunder enter when the block starts. It calls dunder exit when the block ends, even if an error happened inside. That is why with is the safe way to open files. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "__enter__ / __exit__",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "With always cleans up.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "with",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Write your own",
+      "hook": "\"To write your own context manager, make a class with two methods.\"",
+      "script": "To write your own context manager, make a class with two methods. Enter does the setup. It returns the value that the name after as gets. Exit does the cleanup. Now with your class gives the same safety as with open. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "class with __enter__ and __exit__",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "Make your own.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "with",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The shortcut",
+      "hook": "\"The contextlib module has a shortcut.\"",
+      "script": "The contextlib module has a shortcut. Write a generator with one yield, and add at contextmanager. Everything before the yield is the setup. Everything after it, in a finally block, is the cleanup. Short and tidy. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "@contextmanager + yield",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "A shortcut with yield.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "with",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Swallowed error",
+      "hook": "\"A dangerous bug.\"",
+      "script": "A dangerous bug. Dunder exit returns True. Python takes that to mean, I handled the error. Your divide by zero disappears, and the program says finished. Return False, or nothing, so errors are never swallowed by accident. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "return True hides errors",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Never swallow errors.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "with",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the context manager never forget anything?\"",
+      "script": "Why did the context manager never forget anything? It always cleaned up after itself. Your challenge. Write a class called Banner. On enter, it prints a line of dashes. On exit, it prints another. Use it with a with statement. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 78.",
+      "onScreen": "Challenge: Banner",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Write a Banner.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "section.py",
+      "source": "class Section:\n    def __init__(self, name):\n        self.name = name\n\n    def __enter__(self):\n        print(\"enter\", self.name)\n        return self\n\n    def __exit__(self, exc_type, exc, tb):\n        print(\"exit\", self.name)\n        return False\n\nwith Section(\"A\") as s:\n    print(\"inside\", s.name)\nprint(\"after\")",
+      "output": "enter A\ninside A\nexit A\nafter",
+      "lang": "python"
+    },
+    {
+      "file": "tag.py",
+      "source": "from contextlib import contextmanager\n\n@contextmanager\ndef tag(name):\n    print(\"<\" + name + \">\")\n    try:\n        yield\n    finally:\n        print(\"</\" + name + \">\")\n\nwith tag(\"b\"):\n    print(\"bold text\")\ntry:\n    with tag(\"i\"):\n        raise ValueError(\"oops\")\nexcept ValueError as e:\n    print(\"caught\", e)",
+      "output": "<b>\nbold text\n</b>\n<i>\n</i>\ncaught oops",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

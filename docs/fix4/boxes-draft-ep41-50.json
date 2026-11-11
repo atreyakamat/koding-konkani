@@ -1,0 +1,911 @@
+[
+ {
+  "ep": 41,
+  "scene": 4,
+  "layout": "cells",
+  "name": "marks",
+  "badge": "size 5, last index 4",
+  "highlightIndex": 0,
+  "cells": [
+   {
+    "index": 0,
+    "value": "78",
+    "address": "0x7ffd1a2c3f00"
+   },
+   {
+    "index": 1,
+    "value": "92",
+    "address": "0x7ffd1a2c3f04"
+   },
+   {
+    "index": 2,
+    "value": "65",
+    "address": "0x7ffd1a2c3f08"
+   },
+   {
+    "index": 3,
+    "value": "88",
+    "address": "0x7ffd1a2c3f0c"
+   },
+   {
+    "index": 4,
+    "value": "71",
+    "address": "0x7ffd1a2c3f10"
+   }
+  ],
+  "derivedFrom": "ep41 scene 5 code, line 4 (int marks[5] = {...})",
+  "probe": "#include <stdio.h>\nint main(void) {\n  int marks[5] = {78, 92, 65, 88, 71};\n  for (int i = 0; i < 5; i++) printf(\"%d\\n\", marks[i]);\n  printf(\"%zu %zu\\n\", sizeof(marks), sizeof(marks[0]));\n  return 0;\n}\n"
+ },
+ {
+  "ep": 41,
+  "scene": 7,
+  "layout": "cells",
+  "arrays": [
+   {
+    "name": "a",
+    "cells": [
+     {
+      "index": 0,
+      "value": "1",
+      "address": "0x7ffd1a2c3f00",
+      "filled": "given"
+     },
+     {
+      "index": 1,
+      "value": "2",
+      "address": "0x7ffd1a2c3f04",
+      "filled": "given"
+     },
+     {
+      "index": 2,
+      "value": "0",
+      "address": "0x7ffd1a2c3f08",
+      "filled": "zero"
+     },
+     {
+      "index": 3,
+      "value": "0",
+      "address": "0x7ffd1a2c3f0c",
+      "filled": "zero"
+     },
+     {
+      "index": 4,
+      "value": "0",
+      "address": "0x7ffd1a2c3f10",
+      "filled": "zero"
+     }
+    ]
+   },
+   {
+    "name": "b",
+    "cells": [
+     {
+      "index": 0,
+      "value": "4",
+      "address": "0x7ffd1a2c3f40"
+     },
+     {
+      "index": 1,
+      "value": "5",
+      "address": "0x7ffd1a2c3f44"
+     },
+     {
+      "index": 2,
+      "value": "6",
+      "address": "0x7ffd1a2c3f48"
+     }
+    ],
+    "note": "the compiler counts: size 3"
+   }
+  ],
+  "then": "b = a;  (GCC error: arrays cannot be assigned) -> copy loop, values hop box to box",
+  "derivedFrom": "scene on-screen text: {1, 2} into a[5]; b[] = {4, 5, 6}",
+  "probe": "#include <stdio.h>\nint main(void) {\n  int a[5] = {1, 2};\n  int b[] = {4, 5, 6};\n  for (int i = 0; i < 5; i++) printf(\"%d\\n\", a[i]);\n  printf(\"size %zu\\n\", sizeof(b) / sizeof(b[0]));\n  for (int i = 0; i < (int)(sizeof(b) / sizeof(b[0])); i++) printf(\"%d\\n\", b[i]);\n  return 0;\n}\n"
+ },
+ {
+  "ep": 44,
+  "scene": 4,
+  "layout": "scalars",
+  "steps": [
+   {
+    "label": "a = 10, b = 20",
+    "boxes": [
+     {
+      "name": "a",
+      "value": "10",
+      "address": "0x7ffd1a2c3f00"
+     },
+     {
+      "name": "b",
+      "value": "20",
+      "address": "0x7ffd1a2c3f04"
+     }
+    ]
+   },
+   {
+    "label": "a = b;",
+    "boxes": [
+     {
+      "name": "a",
+      "value": "20",
+      "address": "0x7ffd1a2c3f00"
+     },
+     {
+      "name": "b",
+      "value": "20",
+      "address": "0x7ffd1a2c3f04"
+     }
+    ],
+    "lost": {
+     "box": "a",
+     "value": "10"
+    }
+   },
+   {
+    "label": "b = a;",
+    "boxes": [
+     {
+      "name": "a",
+      "value": "20",
+      "address": "0x7ffd1a2c3f00"
+     },
+     {
+      "name": "b",
+      "value": "20",
+      "address": "0x7ffd1a2c3f04"
+     }
+    ]
+   }
+  ],
+  "derivedFrom": "scene narration: a equals 10 and b equals 20",
+  "probe": "#include <stdio.h>\nint main(void) {\n  int a = 10, b = 20;\n  printf(\"%d %d\\n\", a, b);\n  a = b;\n  printf(\"%d %d\\n\", a, b);\n  b = a;\n  printf(\"%d %d\\n\", a, b);\n  return 0;\n}\n"
+ },
+ {
+  "ep": 44,
+  "scene": 5,
+  "layout": "scalars",
+  "steps": [
+   {
+    "label": "start",
+    "boxes": [
+     {
+      "name": "a",
+      "value": "10",
+      "address": "0x7ffd1a2c3f00"
+     },
+     {
+      "name": "b",
+      "value": "20",
+      "address": "0x7ffd1a2c3f04"
+     },
+     {
+      "name": "temp",
+      "value": "?",
+      "address": "0x7ffd1a2c3f08"
+     }
+    ]
+   },
+   {
+    "label": "1: temp = a;",
+    "boxes": [
+     {
+      "name": "a",
+      "value": "10",
+      "address": "0x7ffd1a2c3f00"
+     },
+     {
+      "name": "b",
+      "value": "20",
+      "address": "0x7ffd1a2c3f04"
+     },
+     {
+      "name": "temp",
+      "value": "10",
+      "address": "0x7ffd1a2c3f08"
+     }
+    ]
+   },
+   {
+    "label": "2: a = b;",
+    "boxes": [
+     {
+      "name": "a",
+      "value": "20",
+      "address": "0x7ffd1a2c3f00"
+     },
+     {
+      "name": "b",
+      "value": "20",
+      "address": "0x7ffd1a2c3f04"
+     },
+     {
+      "name": "temp",
+      "value": "10",
+      "address": "0x7ffd1a2c3f08"
+     }
+    ]
+   },
+   {
+    "label": "3: b = temp;",
+    "boxes": [
+     {
+      "name": "a",
+      "value": "20",
+      "address": "0x7ffd1a2c3f00"
+     },
+     {
+      "name": "b",
+      "value": "10",
+      "address": "0x7ffd1a2c3f04"
+     },
+     {
+      "name": "temp",
+      "value": "10",
+      "address": "0x7ffd1a2c3f08"
+     }
+    ]
+   }
+  ],
+  "note": "the narration pours kokum and feni; the glasses are a, b and temp",
+  "derivedFrom": "scene 4's values (10, 20) and the three-step swap named in the narration",
+  "probe": "#include <stdio.h>\nint main(void) {\n  int a = 10, b = 20, temp;\n  printf(\"%d %d\\n\", a, b);\n  temp = a;\n  printf(\"%d %d %d\\n\", a, b, temp);\n  a = b;\n  printf(\"%d %d %d\\n\", a, b, temp);\n  b = temp;\n  printf(\"%d %d %d\\n\", a, b, temp);\n  return 0;\n}\n"
+ },
+ {
+  "ep": 45,
+  "scene": 4,
+  "layout": "grid",
+  "name": "seats",
+  "rows": 3,
+  "cols": 4,
+  "cells": [
+   {
+    "row": 0,
+    "col": 0,
+    "flatIndex": 0,
+    "value": "1",
+    "address": "0x7ffd1a2c3f00"
+   },
+   {
+    "row": 0,
+    "col": 1,
+    "flatIndex": 1,
+    "value": "0",
+    "address": "0x7ffd1a2c3f04"
+   },
+   {
+    "row": 0,
+    "col": 2,
+    "flatIndex": 2,
+    "value": "0",
+    "address": "0x7ffd1a2c3f08"
+   },
+   {
+    "row": 0,
+    "col": 3,
+    "flatIndex": 3,
+    "value": "1",
+    "address": "0x7ffd1a2c3f0c"
+   },
+   {
+    "row": 1,
+    "col": 0,
+    "flatIndex": 4,
+    "value": "1",
+    "address": "0x7ffd1a2c3f10"
+   },
+   {
+    "row": 1,
+    "col": 1,
+    "flatIndex": 5,
+    "value": "1",
+    "address": "0x7ffd1a2c3f14"
+   },
+   {
+    "row": 1,
+    "col": 2,
+    "flatIndex": 6,
+    "value": "0",
+    "address": "0x7ffd1a2c3f18"
+   },
+   {
+    "row": 1,
+    "col": 3,
+    "flatIndex": 7,
+    "value": "0",
+    "address": "0x7ffd1a2c3f1c"
+   },
+   {
+    "row": 2,
+    "col": 0,
+    "flatIndex": 8,
+    "value": "0",
+    "address": "0x7ffd1a2c3f20"
+   },
+   {
+    "row": 2,
+    "col": 1,
+    "flatIndex": 9,
+    "value": "1",
+    "address": "0x7ffd1a2c3f24"
+   },
+   {
+    "row": 2,
+    "col": 2,
+    "flatIndex": 10,
+    "value": "1",
+    "address": "0x7ffd1a2c3f28"
+   },
+   {
+    "row": 2,
+    "col": 3,
+    "flatIndex": 11,
+    "value": "1",
+    "address": "0x7ffd1a2c3f2c"
+   }
+  ],
+  "then": "unroll into one row of 12 boxes: row 0, then row 1, then row 2",
+  "derivedFrom": "ep45 scene 5 code (int seats[3][4] = {...})",
+  "probe": "#include <stdio.h>\nint main(void) {\n  int seats[3][4] = {\n        {1, 0, 0, 1},\n        {1, 1, 0, 0},\n        {0, 1, 1, 1}\n    };\n  for (int r = 0; r < 3; r++) for (int c = 0; c < 4; c++) printf(\"%d\\n\", seats[r][c]);\n  int *flat = &seats[0][0];\n  for (int k = 0; k < 12; k++) printf(\"flat %d\\n\", flat[k]);\n  printf(\"%zu\\n\", sizeof(seats));\n  return 0;\n}\n"
+ },
+ {
+  "ep": 45,
+  "scene": 7,
+  "layout": "matrices",
+  "a": [
+   [
+    1,
+    2,
+    3
+   ],
+   [
+    4,
+    5,
+    6
+   ]
+  ],
+  "b": [
+   [
+    6,
+    5,
+    4
+   ],
+   [
+    3,
+    2,
+    1
+   ]
+  ],
+  "sum": [
+   [
+    7,
+    7,
+    7
+   ],
+   [
+    7,
+    7,
+    7
+   ]
+  ],
+  "derivedFrom": "ep45 challenge text: a = {1 2 3, 4 5 6}, b = {6 5 4, 3 2 1}",
+  "probe": "#include <stdio.h>\nint main(void) {\n  int a[2][3] = {{1,2,3},{4,5,6}};\n  int b[2][3] = {{6,5,4},{3,2,1}};\n  int sum[2][3];\n  for (int r = 0; r < 2; r++) for (int c = 0; c < 3; c++) { sum[r][c] = a[r][c] + b[r][c]; printf(\"%d\\n\", sum[r][c]); }\n  return 0;\n}\n"
+ },
+ {
+  "ep": 46,
+  "scene": 4,
+  "layout": "cells",
+  "name": "marks",
+  "badges": [
+   "sizeof(marks) = 20 bytes",
+   "sizeof(marks[0]) = 4 bytes",
+   "20 / 4 = 5"
+  ],
+  "byteRuler": true,
+  "cells": [
+   {
+    "index": 0,
+    "value": "78",
+    "address": "0x7ffd1a2c3f00",
+    "bytes": [
+     0,
+     3
+    ]
+   },
+   {
+    "index": 1,
+    "value": "92",
+    "address": "0x7ffd1a2c3f04",
+    "bytes": [
+     4,
+     7
+    ]
+   },
+   {
+    "index": 2,
+    "value": "65",
+    "address": "0x7ffd1a2c3f08",
+    "bytes": [
+     8,
+     11
+    ]
+   },
+   {
+    "index": 3,
+    "value": "88",
+    "address": "0x7ffd1a2c3f0c",
+    "bytes": [
+     12,
+     15
+    ]
+   },
+   {
+    "index": 4,
+    "value": "71",
+    "address": "0x7ffd1a2c3f10",
+    "bytes": [
+     16,
+     19
+    ]
+   }
+  ],
+  "derivedFrom": "ep46 scene 5 code (int marks[] = {...}); numbers match the scene text",
+  "probe": "#include <stdio.h>\nint main(void) {\n  int marks[] = {78, 92, 65, 88, 71};\n  printf(\"%zu\\n%zu\\n%zu\\n\", sizeof(marks), sizeof(marks[0]), sizeof(marks) / sizeof(marks[0]));\n  for (int i = 0; i < (int)(sizeof(marks) / sizeof(marks[0])); i++) printf(\"%d\\n\", marks[i]);\n  return 0;\n}\n"
+ },
+ {
+  "ep": 46,
+  "scene": 7,
+  "layout": "alias",
+  "tags": [
+   "marks (in main)",
+   "arr (in the function)"
+  ],
+  "arrow": {
+   "from": "arr",
+   "to": "marks"
+  },
+  "before": [
+   {
+    "index": 0,
+    "value": "78",
+    "address": "0x7ffd1a2c3f00"
+   },
+   {
+    "index": 1,
+    "value": "92",
+    "address": "0x7ffd1a2c3f04"
+   },
+   {
+    "index": 2,
+    "value": "65",
+    "address": "0x7ffd1a2c3f08"
+   },
+   {
+    "index": 3,
+    "value": "88",
+    "address": "0x7ffd1a2c3f0c"
+   },
+   {
+    "index": 4,
+    "value": "71",
+    "address": "0x7ffd1a2c3f10"
+   }
+  ],
+  "after": [
+   {
+    "index": 0,
+    "value": "83",
+    "address": "0x7ffd1a2c3f00"
+   },
+   {
+    "index": 1,
+    "value": "97",
+    "address": "0x7ffd1a2c3f04"
+   },
+   {
+    "index": 2,
+    "value": "70",
+    "address": "0x7ffd1a2c3f08"
+   },
+   {
+    "index": 3,
+    "value": "93",
+    "address": "0x7ffd1a2c3f0c"
+   },
+   {
+    "index": 4,
+    "value": "76",
+    "address": "0x7ffd1a2c3f10"
+   }
+  ],
+  "derivedFrom": "ep46 scene 5: addBonus(marks, n, 5) run for real",
+  "probe": "#include <stdio.h>\nvoid addBonus(int arr[], int size, int bonus) {\n    for (int i = 0; i < size; i++) {\n        arr[i] += bonus;\n    }\n}\nint main(void) {\n  int marks[] = {78, 92, 65, 88, 71};\n  int n = sizeof(marks) / sizeof(marks[0]);\n  for (int i = 0; i < n; i++) printf(\"%d \", marks[i]);\n  printf(\"\\n\");\n  addBonus(marks, n, 5);\n  for (int i = 0; i < n; i++) printf(\"%d \", marks[i]);\n  printf(\"\\n\");\n  return 0;\n}\n"
+ },
+ {
+  "ep": 47,
+  "scene": 3,
+  "layout": "cells",
+  "name": "word",
+  "cells": [
+   {
+    "index": 0,
+    "value": "G",
+    "code": 71,
+    "address": "0x7ffd1a2c3f00"
+   },
+   {
+    "index": 1,
+    "value": "O",
+    "code": 79,
+    "address": "0x7ffd1a2c3f01"
+   },
+   {
+    "index": 2,
+    "value": "A",
+    "code": 65,
+    "address": "0x7ffd1a2c3f02"
+   },
+   {
+    "index": 3,
+    "value": "N",
+    "code": 78,
+    "address": "0x7ffd1a2c3f03"
+   },
+   {
+    "index": 4,
+    "value": "S",
+    "code": 83,
+    "address": "0x7ffd1a2c3f04"
+   },
+   {
+    "index": 5,
+    "value": "\\0",
+    "code": 0,
+    "address": "0x7ffd1a2c3f05"
+   }
+  ],
+  "derivedFrom": "scene text: char word[6] filled with 'G' 'O' 'A' 'N' 'S' '\\0'",
+  "probe": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n  char s[6] = {'G', 'O', 'A', 'N', 'S', '\\0'};\n  for (size_t i = 0; i < sizeof(s); i++) printf(\"%d\\n\", (int)s[i]);\n  printf(\"sizeof %zu strlen %zu\\n\", sizeof(s), strlen(s));\n  return 0;\n}\n"
+ },
+ {
+  "ep": 47,
+  "scene": 4,
+  "layout": "cells",
+  "name": "word",
+  "stopSign": 6,
+  "bus": "drives along the boxes and brakes at the \\0",
+  "cells": [
+   {
+    "index": 0,
+    "value": "P",
+    "code": 80,
+    "address": "0x7ffd1a2c3f00"
+   },
+   {
+    "index": 1,
+    "value": "a",
+    "code": 97,
+    "address": "0x7ffd1a2c3f01"
+   },
+   {
+    "index": 2,
+    "value": "n",
+    "code": 110,
+    "address": "0x7ffd1a2c3f02"
+   },
+   {
+    "index": 3,
+    "value": "j",
+    "code": 106,
+    "address": "0x7ffd1a2c3f03"
+   },
+   {
+    "index": 4,
+    "value": "i",
+    "code": 105,
+    "address": "0x7ffd1a2c3f04"
+   },
+   {
+    "index": 5,
+    "value": "m",
+    "code": 109,
+    "address": "0x7ffd1a2c3f05"
+   },
+   {
+    "index": 6,
+    "value": "\\0",
+    "code": 0,
+    "address": "0x7ffd1a2c3f06"
+   }
+  ],
+  "derivedFrom": "scene text: \"Panjim\" laid out in 7 boxes",
+  "probe": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n  char s[] = \"Panjim\";\n  for (size_t i = 0; i < sizeof(s); i++) printf(\"%d\\n\", (int)s[i]);\n  printf(\"sizeof %zu strlen %zu\\n\", sizeof(s), strlen(s));\n  return 0;\n}\n"
+ },
+ {
+  "ep": 48,
+  "scene": 3,
+  "layout": "buffer",
+  "typed": "Atreya Kamat\\n",
+  "cells": [
+   {
+    "index": 0,
+    "value": "A",
+    "code": 65,
+    "taken": true
+   },
+   {
+    "index": 1,
+    "value": "t",
+    "code": 116,
+    "taken": true
+   },
+   {
+    "index": 2,
+    "value": "r",
+    "code": 114,
+    "taken": true
+   },
+   {
+    "index": 3,
+    "value": "e",
+    "code": 101,
+    "taken": true
+   },
+   {
+    "index": 4,
+    "value": "y",
+    "code": 121,
+    "taken": true
+   },
+   {
+    "index": 5,
+    "value": "a",
+    "code": 97,
+    "taken": true
+   },
+   {
+    "index": 6,
+    "value": "␠",
+    "code": 32,
+    "taken": false
+   },
+   {
+    "index": 7,
+    "value": "K",
+    "code": 75,
+    "taken": false
+   },
+   {
+    "index": 8,
+    "value": "a",
+    "code": 97,
+    "taken": false
+   },
+   {
+    "index": 9,
+    "value": "m",
+    "code": 109,
+    "taken": false
+   },
+   {
+    "index": 10,
+    "value": "a",
+    "code": 97,
+    "taken": false
+   },
+   {
+    "index": 11,
+    "value": "t",
+    "code": 116,
+    "taken": false
+   },
+   {
+    "index": 12,
+    "value": "\\n",
+    "code": 10,
+    "taken": false
+   }
+  ],
+  "taken": "Atreya",
+  "left": " Kamat\\n",
+  "derivedFrom": "scene text: A t r e y a _ K a m a t \\n; sscanf(\"%s\") run for real",
+  "probe": "#include <stdio.h>\nint main(void) {\n  const char *typed = \"Atreya Kamat\\n\";\n  char name[30];\n  int used = 0;\n  sscanf(typed, \"%29s%n\", name, &used);\n  printf(\"%s\\n%d\\n\", name, used);\n  for (const char *p = typed; *p; p++) printf(\"%d\\n\", (int)*p);\n  return 0;\n}\n"
+ },
+ {
+  "ep": 49,
+  "scene": 4,
+  "layout": "cells",
+  "name": "second",
+  "counter": {
+   "upTo": 6,
+   "skip": "\\0"
+  },
+  "cells": [
+   {
+    "index": 0,
+    "value": "X",
+    "code": 88,
+    "address": "0x7ffd1a2c3f00",
+    "counted": true
+   },
+   {
+    "index": 1,
+    "value": "e",
+    "code": 101,
+    "address": "0x7ffd1a2c3f01",
+    "counted": true
+   },
+   {
+    "index": 2,
+    "value": "c",
+    "code": 99,
+    "address": "0x7ffd1a2c3f02",
+    "counted": true
+   },
+   {
+    "index": 3,
+    "value": "x",
+    "code": 120,
+    "address": "0x7ffd1a2c3f03",
+    "counted": true
+   },
+   {
+    "index": 4,
+    "value": "e",
+    "code": 101,
+    "address": "0x7ffd1a2c3f04",
+    "counted": true
+   },
+   {
+    "index": 5,
+    "value": "c",
+    "code": 99,
+    "address": "0x7ffd1a2c3f05",
+    "counted": true
+   },
+   {
+    "index": 6,
+    "value": "\\0",
+    "code": 0,
+    "address": "0x7ffd1a2c3f06",
+    "counted": false
+   }
+  ],
+  "derivedFrom": "scene text: \"Xecxec\" in 7 boxes; strlen run for real",
+  "probe": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n  char s[] = \"Xecxec\";\n  for (size_t i = 0; i < sizeof(s); i++) printf(\"%d\\n\", (int)s[i]);\n  printf(\"sizeof %zu strlen %zu\\n\", sizeof(s), strlen(s));\n  return 0;\n}\n"
+ },
+ {
+  "ep": 49,
+  "scene": 5,
+  "layout": "strings",
+  "capacity": {
+   "copy": 20,
+   "first": 20
+  },
+  "steps": [
+   {
+    "label": "start",
+    "copy": "",
+    "first": "Crab",
+    "second": "Xecxec"
+   },
+   {
+    "label": "strcpy(copy, second);",
+    "copy": "Xecxec",
+    "first": "Crab",
+    "nulAt": {
+     "copy": 6,
+     "first": 4
+    }
+   },
+   {
+    "label": "strcat(first, \" \");",
+    "copy": "Xecxec",
+    "first": "Crab ",
+    "nulAt": {
+     "copy": 6,
+     "first": 5
+    }
+   },
+   {
+    "label": "strcat(first, second);",
+    "copy": "Xecxec",
+    "first": "Crab Xecxec",
+    "nulAt": {
+     "copy": 6,
+     "first": 11
+    }
+   }
+  ],
+  "derivedFrom": "ep49 scene 7 code: strcpy / strcat statements executed for real",
+  "probe": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n  char first[20] = \"Crab\";\n  char second[] = \"Xecxec\";\n  char copy[20];\n  copy[0] = 0;\n  strcpy(copy, second);\n  printf(\"S0|%s|%s|%zu|%zu\\n\", copy, first, strlen(copy), strlen(first));\n  strcat(first, \" \");\n  printf(\"S1|%s|%s|%zu|%zu\\n\", copy, first, strlen(copy), strlen(first));\n  strcat(first, second);\n  printf(\"S2|%s|%s|%zu|%zu\\n\", copy, first, strlen(copy), strlen(first));\n  return 0;\n}\n"
+ },
+ {
+  "ep": 50,
+  "scene": 3,
+  "layout": "mirror",
+  "word": [
+   {
+    "index": 0,
+    "value": "f",
+    "code": 102,
+    "address": "0x7ffd1a2c3f00"
+   },
+   {
+    "index": 1,
+    "value": "e",
+    "code": 101,
+    "address": "0x7ffd1a2c3f01"
+   },
+   {
+    "index": 2,
+    "value": "n",
+    "code": 110,
+    "address": "0x7ffd1a2c3f02"
+   },
+   {
+    "index": 3,
+    "value": "i",
+    "code": 105,
+    "address": "0x7ffd1a2c3f03"
+   },
+   {
+    "index": 4,
+    "value": "\\0",
+    "code": 0,
+    "address": "0x7ffd1a2c3f04"
+   }
+  ],
+  "rev": [
+   {
+    "index": 0,
+    "value": "i",
+    "code": 105,
+    "address": "0x7ffd1a2c3f00"
+   },
+   {
+    "index": 1,
+    "value": "n",
+    "code": 110,
+    "address": "0x7ffd1a2c3f01"
+   },
+   {
+    "index": 2,
+    "value": "e",
+    "code": 101,
+    "address": "0x7ffd1a2c3f02"
+   },
+   {
+    "index": 3,
+    "value": "f",
+    "code": 102,
+    "address": "0x7ffd1a2c3f03"
+   },
+   {
+    "index": 4,
+    "value": "\\0",
+    "code": 0,
+    "address": "0x7ffd1a2c3f04"
+   }
+  ],
+  "arrows": [
+   {
+    "from": 3,
+    "to": 0
+   },
+   {
+    "from": 2,
+    "to": 1
+   },
+   {
+    "from": 1,
+    "to": 2
+   },
+   {
+    "from": 0,
+    "to": 3
+   }
+  ],
+  "derivedFrom": "scene narration: \"Take feni\"; the reverse loop run for real",
+  "probe": "#include <stdio.h>\n#include <string.h>\nint main(void) {\n  char word[] = \"feni\";\n  int len = (int)strlen(word);\n  char rev[20];\n  for (int i = 0; i < len; i++) { rev[i] = word[len - 1 - i]; printf(\"%d %d %c\\n\", i, len - 1 - i, rev[i]); }\n  rev[len] = '\\0';\n  printf(\"%s\\n\", rev);\n  return 0;\n}\n"
+ }
+]

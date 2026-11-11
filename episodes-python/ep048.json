@@ -1,0 +1,350 @@
+{
+  "ep": 48,
+  "title": "Docstrings and type hints",
+  "module": 5,
+  "lengthSec": 310,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "describe a function with a docstring",
+    "annotate parameters and results with type hints",
+    "know that hints are notes, not rules"
+  ],
+  "youtube": {
+    "title": "Python Docstrings and Type Hints | Python Programming EP 48",
+    "description": "In this episode you will describe a function with a docstring, annotate parameters and results with type hints and know that hints are notes, not rules, with Xecxec the crab. 0:00 Intro · 0:15 Notes for readers · 0:59 Hints and a docstring · 1:39 What a hint looks like · 2:12 Second program · 3:12 Recap · 3:47 Bug of the Day · 4:35 Challenge · 4:55 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Notes for readers"
+      },
+      {
+        "t": "0:59",
+        "label": "Hints and a docstring"
+      },
+      {
+        "t": "1:39",
+        "label": "What a hint looks like"
+      },
+      {
+        "t": "2:12",
+        "label": "Second program"
+      },
+      {
+        "t": "3:12",
+        "label": "Recap"
+      },
+      {
+        "t": "3:47",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:35",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:55",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python docstring",
+      "python type hints",
+      "python annotations",
+      "type hints not enforced"
+    ],
+    "thumbnail": {
+      "text": "DOCUMENT YOUR CODE",
+      "visual": "big text \"DOCUMENT YOUR CODE\" in tomato on peach; Xecxec sticking a label on a function box that says takes float, returns float; thin black border and drop shadow.",
+      "pose": "Xecxec sticking a label on a function box that says takes float, returns float"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 48 · DOCUMENT YOUR CODE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Code is read far more often than it is written. Today we learn two ways to explain a function to its readers."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 44,
+      "onScreen": "\"Notes for readers\": three numbered lines (1. A docstring is a string on the first line of the body; 2. Type hints name the expected types; 3. Python does not enforce hints) and an analogy card: a label on a spice jar: it tells you what is inside, but it does not stop you putting something else in",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A docstring is a string placed on the first line of a function body. It says what the function does. Type hints show the type of each parameter, after a colon, and the type of the result, after an arrow. Think of a label on a spice jar. It tells you what is inside. But it does not stop you pouring something else in. Python reads hints, but does not enforce them. Tools like editors use them to warn you."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 59,
+      "lengthSec": 40,
+      "onScreen": "hints.py: area with typed parameters and a docstring",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Each parameter has a colon and a type. The arrow, and float, say the result is a float. [HL 2] The docstring, in triple quotes. It must be the first thing in the body. [HL 3] The code itself. [HL 4] Two and a half times four is ten point zero. [HL 5] Every function keeps its docstring in a special attribute. Printing it shows the text. Editors show this text when you hover over the function.",
+      "code": {
+        "file": "hints.py",
+        "source": "def area(width: float, height: float) -> float:\n    \"\"\"Return the area of a rectangle.\"\"\"\n    return width * height\nprint(area(2.5, 4))\nprint(area.__doc__)",
+        "output": "10.0\nReturn the area of a rectangle."
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 99,
+      "lengthSec": 33,
+      "onScreen": "A function signature with callouts for the parameter types, the return type, and the docstring",
+      "animation": "Callout arrows point at each part of the signature and the docstring, one at a time",
+      "sfx": [],
+      "narration": "Look at the signature piece by piece. After each parameter name, a colon and its type. After the brackets, an arrow and the type of the result. Below, the docstring, a short sentence that says what the function does. Together they let a reader use the function without reading its body. That saves time, and it prevents mistakes."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 132,
+      "lengthSec": 40,
+      "onScreen": "doc.py: hints can be read back from the function",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A string parameter, and an int parameter with a default of one. The result is a string. [HL 2] A one line docstring. [HL 3] Repeat the greeting. [HL 4] Greeting Asha twice, with the spaces trimmed. [HL 5] Python stores the hints in a dictionary on the function. Tools can read it. But Python itself never checks them while the program runs.",
+      "code": {
+        "file": "doc.py",
+        "source": "def greet(name: str, times: int = 1) -> str:\n    \"\"\"Greet a person, repeated times times.\"\"\"\n    return (\"Hi \" + name + \". \") * times\nprint(greet(\"Asha\", 2).strip())\nprint(greet.__annotations__)",
+        "output": "Hi Asha. Hi Asha.\n{'name': <class 'str'>, 'times': <class 'int'>, 'return': <class 'str'>}"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 172,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python doc.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as doc dot py. In the terminal, type python, space, doc dot py. Hi Asha twice, then the dictionary of hints."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 192,
+      "lengthSec": 35,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A docstring on the first line of the body describes the function. Two: name: type marks a parameter and arrow type marks the result. Three: Hints are stored on the function, and tools can read them. Four: Python does not enforce type hints at run time. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 227,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: hints do not stop wrong types",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The hint says n is an int. We pass the string ab. Python does not complain. It repeats the string, and prints abab. Type hints are labels, not locks. If a wrong type must be rejected, check it yourself inside the function. Editors and tools also read the hints, and can warn you before you run."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 267,
+      "lengthSec": 8,
+      "onScreen": "Why did the function carry a label? It was tired of explaining itself.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the function carry a label? It was tired of explaining itself."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 275,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a docstring and hints",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write add of a: int, b: int arrow int with a docstring, and print add of 2, 3. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 295,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 49 · Higher-order functions",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: higher-order functions. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def double(n: int) -> int:\n    return n * 2\nprint(double(\"ab\"))",
+    "error": "Python output (it runs, but the answer is wrong):\n\nabab",
+    "fixed": "def double(n: int) -> int:\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an int\")\n    return n * 2\nprint(double(4))",
+    "why": "Type hints are notes for people and tools; Python still runs the code with any type, so add a check yourself if a wrong type must be rejected."
+  },
+  "pun": "\"Why did the function carry a label? It was tired of explaining itself.\"",
+  "challenge": "Write add(a: int, b: int) -> int with a docstring, and print add(2, 3).",
+  "challengeAnswer": "Use def add(a: int, b: int) -> int: with a docstring, return a + b. print(add(2, 3)) shows 5.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Docstrings",
+      "hook": "\"A docstring is a string on the first line of a function body.\"",
+      "script": "A docstring is a string on the first line of a function body. It says what the function does, in one short sentence. Use triple quotes. Python keeps the docstring on the function, and editors show it when you hover. Write one for every function that is not obvious. You and your team read it before they read the code. Keep coding, says Xecxec!",
+      "onScreen": "\"\"\"RETURN THE AREA.\"\"\"",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Explain your function.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typehints",
+        "docstring",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Type hints",
+      "hook": "\"Type hints show what a function expects.\"",
+      "script": "Type hints show what a function expects. After each parameter, a colon and a type. After the brackets, an arrow and the type of the result. Def area, width colon float, arrow float. A reader sees at once what goes in and what comes out. Editors use hints to warn you about mistakes before you even run the program. Keep coding, says Xecxec!",
+      "onScreen": "DEF F(N: INT) -> INT:",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "Say what goes in.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typehints",
+        "docstring",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Hints are notes",
+      "hook": "\"Here is the truth about type hints.\"",
+      "script": "Here is the truth about type hints. Python does not enforce them. They are notes for people and tools. You can pass a string to a parameter marked int. Python still tries to run the code. If you need a wrong type to be rejected, check it yourself. Hints help you write better code, but they are not a lock. Keep coding, says Xecxec!",
+      "onScreen": "HINTS ≠ RULES",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Notes, not locks.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typehints",
+        "docstring",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Abab",
+      "hook": "\"A surprising bug.\"",
+      "script": "A surprising bug. The hint says n is an int. You pass the string ab. Python does not complain, and prints abab, because a string times two repeats the text. Hints are labels, not locks. Use an editor that reads hints, or check types yourself when it matters. Never assume that a hint stops a wrong value from arriving. Keep coding, says Xecxec!",
+      "onScreen": "DOUBLE(\"AB\") → ABAB",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Python does not check.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typehints",
+        "docstring",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the function carry a label?\"",
+      "script": "Why did the function carry a label? It was tired of explaining itself. Your challenge. Write a function called add, with two int parameters, a and b, and an int result. Add a one line docstring. Return the sum. Print add of two, three. You should see five. Then print the docstring of your function. Share your function below. Keep coding, says Xecxec! Full video: EP 48.",
+      "onScreen": "ADD WITH HINTS",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try hints.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "typehints",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "hints.py",
+      "source": "def area(width: float, height: float) -> float:\n    \"\"\"Return the area of a rectangle.\"\"\"\n    return width * height\nprint(area(2.5, 4))\nprint(area.__doc__)",
+      "output": "10.0\nReturn the area of a rectangle.",
+      "lang": "python"
+    },
+    {
+      "file": "doc.py",
+      "source": "def greet(name: str, times: int = 1) -> str:\n    \"\"\"Greet a person, repeated times times.\"\"\"\n    return (\"Hi \" + name + \". \") * times\nprint(greet(\"Asha\", 2).strip())\nprint(greet.__annotations__)",
+      "output": "Hi Asha. Hi Asha.\n{'name': <class 'str'>, 'times': <class 'int'>, 'return': <class 'str'>}",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "ep": 65,
+  "title": "Class vs instance attributes",
+  "module": 7,
+  "lengthSec": 321,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "tell class attributes from instance attributes",
+    "see which data is shared",
+    "avoid a shared mutable list"
+  ],
+  "youtube": {
+    "title": "Python Class vs Instance Attributes | Python Programming EP 65",
+    "description": "In this episode you will tell class attributes from instance attributes, see which data is shared and avoid a shared mutable list, with Xecxec the crab. 0:00 Intro · 0:15 Shared or private? · 1:00 Class and instance attributes · 1:44 Two names, one shared list · 2:19 Second program · 3:19 Recap · 3:57 Bug of the Day · 4:45 Challenge · 5:06 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Shared or private?"
+      },
+      {
+        "t": "1:00",
+        "label": "Class and instance attributes"
+      },
+      {
+        "t": "1:44",
+        "label": "Two names, one shared list"
+      },
+      {
+        "t": "2:19",
+        "label": "Second program"
+      },
+      {
+        "t": "3:19",
+        "label": "Recap"
+      },
+      {
+        "t": "3:57",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:45",
+        "label": "Challenge"
+      },
+      {
+        "t": "5:06",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python class attribute",
+      "python instance attribute",
+      "python shared list bug",
+      "python class variable"
+    ],
+    "thumbnail": {
+      "text": "CLASS vs INSTANCE",
+      "visual": "big text \"CLASS vs INSTANCE\" in tomato on peach; Xecxec with one shared notice board and many private notebooks; thin black border and drop shadow.",
+      "pose": "Xecxec with one shared notice board and many private notebooks"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 65 · CLASS vs INSTANCE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Some data belongs to the whole class, some to each object. Mixing them up causes a famous bug."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 45,
+      "onScreen": "\"Shared or private?\": three numbered lines (1. Class attribute: written in the class body, shared by all; 2. Instance attribute: self.x, private to one object; 3. A shared list is shared by everyone) and an analogy card: a school notice board that everyone sees, versus each student's private notebook",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Data can live in two places. A class attribute is written directly in the class body. All objects share it. Think of a school notice board that everyone can see. An instance attribute is set with self dot, inside init. Each object has its own copy, like a private notebook. Numbers and strings are safe either way, because assigning replaces them. But a list stored on the class is one single list, shared by every object. That is where the trouble starts."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 60,
+      "lengthSec": 44,
+      "onScreen": "shared.py: a class attribute shared by all dogs, and a list that is shared too",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A Dog class. [HL 2] Species is a class attribute. All dogs share it. [HL 3] So is tricks, one single list. [HL 5] Init gives each dog its own name. That one is private. [HL 8] Learn appends a trick to the tricks list. [HL 11] Rex. [HL 12] Fido. [HL 13] Rex learns to sit. [HL 14] Fido learns to roll. [HL 15] Look at the list through Rex. [HL 16] And through Fido. [HL 17] Both dogs say Canis. [HL 18] The list has sit and roll, even though Rex only learned sit. [HL 19] And it is the very same list. True.",
+      "code": {
+        "file": "shared.py",
+        "source": "class Dog:\n    species = \"Canis\"\n    tricks = []\n\n    def __init__(self, name):\n        self.name = name\n\n    def learn(self, trick):\n        self.tricks.append(trick)\n\nd1 = Dog(\"Rex\")\nd2 = Dog(\"Fido\")\nd1.learn(\"sit\")\nd2.learn(\"roll\")\nt1 = d1.tricks\nt2 = d2.tricks\nprint(d1.species, d2.species)\nprint(t1)\nprint(t1 is t2)",
+        "output": "Canis Canis\n['sit', 'roll']\nTrue"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 104,
+      "lengthSec": 35,
+      "onScreen": "The names t1 and t2 tied to the very same list object",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The names t1 and t2 look like two lists, but they are two names tied to one single list object. That is why the tricks of Rex show up for Fido too. When two names are tied to one object, changing it through one name changes it for both. Remember this picture. It explains the whole bug."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 139,
+      "lengthSec": 40,
+      "onScreen": "private.py: create the list inside init",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] The same Dog class. [HL 2] Species stays a class attribute, because it really is shared. [HL 5] Init sets the name. [HL 6] And now builds a brand new list for each dog. [HL 9] Learn appends to this dog's own list. [HL 11] Rex. [HL 12] Fido. [HL 13] Rex learns sit. [HL 14] Fido learns roll. [HL 15] Rex has only sit. [HL 16] Fido has only roll. [HL 17] And the two lists are different objects. False.",
+      "code": {
+        "file": "private.py",
+        "source": "class Dog:\n    species = \"Canis\"\n\n    def __init__(self, name):\n        self.name = name\n        self.tricks = []\n\n    def learn(self, trick):\n        self.tricks.append(trick)\n\nd1 = Dog(\"Rex\")\nd2 = Dog(\"Fido\")\nd1.learn(\"sit\")\nd2.learn(\"roll\")\nprint(d1.tricks)\nprint(d2.tricks)\nprint(d1.tricks is d2.tricks)",
+        "output": "['sit']\n['roll']\nFalse"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 179,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python private.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as private dot py. In the terminal, type python, space, private dot py. Canis Canis, then sit and roll twice over, True. Then sit, roll, False."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 199,
+      "lengthSec": 38,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: A class attribute is written in the class body and shared by all objects. Two: An instance attribute is set with self dot inside init, and is private. Three: A list in the class body is one list shared by everyone. Four: Create lists inside init, so each object gets its own. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 237,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: a list shared between objects",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Ravi joined the blue team, but he shows up in the red team too. The members list is in the class body, so there is only one list, shared by every team. No error appears. The fix is to create the list inside init, so every team gets its own."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 277,
+      "lengthSec": 8,
+      "onScreen": "Why did the list refuse to be shared? It had too many members already.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the list refuse to be shared? It had too many members already."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 285,
+      "lengthSec": 21,
+      "onScreen": "Task card: spot the shared list",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a Student class where every student has a list of grades. Make sure two students do not share one list. Prove it with the is operator. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 306,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 66 · __str__ and __repr__",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: dunder str and dunder repr. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Team:\n    members = []\n\n    def __init__(self, name):\n        self.name = name\n\n    def add(self, person):\n        self.members.append(person)\n\nred = Team(\"Red\")\nblue = Team(\"Blue\")\nred.add(\"Asha\")\nblue.add(\"Ravi\")\nprint(red.members)",
+    "error": "Python output (it runs, but the answer is wrong):\n\n['Asha', 'Ravi']",
+    "fixed": "class Team:\n    def __init__(self, name):\n        self.name = name\n        self.members = []\n\n    def add(self, person):\n        self.members.append(person)\n\nred = Team(\"Red\")\nblue = Team(\"Blue\")\nred.add(\"Asha\")\nblue.add(\"Ravi\")\nprint(red.members)",
+    "why": "A list created in the class body is built once and shared by every object. A list created in init is built fresh for each object."
+  },
+  "pun": "\"Why did the list refuse to be shared? It had too many members already.\"",
+  "challenge": "Write a Student class where every student has a list of grades. Make sure two students do not share one list. Prove it with the is operator.",
+  "challengeAnswer": "Create self.grades = [] inside __init__. Then s1.grades is s2.grades prints False.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Class attribute",
+      "hook": "\"A class attribute is written in the class body.\"",
+      "script": "A class attribute is written in the class body. Every object shares it. Think of a notice board in school that everyone can read. If you change it on the class, every object sees the change. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "species = \"Canis\"",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Class attributes are shared.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "classes",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Instance attribute",
+      "hook": "\"An instance attribute is set with self dot, inside init.\"",
+      "script": "An instance attribute is set with self dot, inside init. Each object gets its own copy. Think of a private notebook. Rex's name does not change Fido's name. Put the data that differs between objects here. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "self.name = name",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Instance attributes are private.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "classes",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Shared list",
+      "hook": "\"Here is the trap.\"",
+      "script": "Here is the trap. A list written in the class body is one single list. Every object shares it. Add Asha through one object, and she appears in every object. Two names, one list. The memory picture shows it clearly. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "list in class = shared",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Watch for shared lists.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "classes",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The fix",
+      "hook": "\"To give every object its own list, create the list inside init.\"",
+      "script": "To give every object its own list, create the list inside init. Write self dot members equals empty brackets. Python runs init once for each object, so every object builds a fresh list. Now adding a member only changes one object. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "self.members = [] in __init__",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Make lists in init.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "classes",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the list refuse to be shared?\"",
+      "script": "Why did the list refuse to be shared? It had too many members already. Your challenge. Write a Student class, with a list of grades for each student. Make two students, add a grade to one, and use the is operator to prove the lists are different. Try it in your own file and watch what happens. Keep coding, says Xecxec! Full video: EP 65.",
+      "onScreen": "Challenge: separate grade lists",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Prove the lists differ.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "shared.py",
+      "source": "class Dog:\n    species = \"Canis\"\n    tricks = []\n\n    def __init__(self, name):\n        self.name = name\n\n    def learn(self, trick):\n        self.tricks.append(trick)\n\nd1 = Dog(\"Rex\")\nd2 = Dog(\"Fido\")\nd1.learn(\"sit\")\nd2.learn(\"roll\")\nt1 = d1.tricks\nt2 = d2.tricks\nprint(d1.species, d2.species)\nprint(t1)\nprint(t1 is t2)",
+      "output": "Canis Canis\n['sit', 'roll']\nTrue",
+      "lang": "python"
+    },
+    {
+      "file": "private.py",
+      "source": "class Dog:\n    species = \"Canis\"\n\n    def __init__(self, name):\n        self.name = name\n        self.tricks = []\n\n    def learn(self, trick):\n        self.tricks.append(trick)\n\nd1 = Dog(\"Rex\")\nd2 = Dog(\"Fido\")\nd1.learn(\"sit\")\nd2.learn(\"roll\")\nprint(d1.tricks)\nprint(d2.tricks)\nprint(d1.tricks is d2.tricks)",
+      "output": "['sit']\n['roll']\nFalse",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

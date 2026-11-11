@@ -1,0 +1,345 @@
+{
+  "ep": 59,
+  "title": "CSV and JSON basics",
+  "module": 6,
+  "lengthSec": 306,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "read a CSV file by column names",
+    "turn data into JSON text and back",
+    "know that JSON keys become strings"
+  ],
+  "youtube": {
+    "title": "Python CSV and JSON for Beginners | Python Programming EP 59",
+    "description": "In this episode you will read a CSV file by column names, turn data into JSON text and back and know that JSON keys become strings, with Xecxec the crab. 0:00 Intro · 0:15 Two common formats · 0:55 Reading a CSV file · 1:35 Row to dictionary · 2:10 Second program · 3:12 Recap · 3:43 Bug of the Day · 4:31 Challenge · 4:51 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Two common formats"
+      },
+      {
+        "t": "0:55",
+        "label": "Reading a CSV file"
+      },
+      {
+        "t": "1:35",
+        "label": "Row to dictionary"
+      },
+      {
+        "t": "2:10",
+        "label": "Second program"
+      },
+      {
+        "t": "3:12",
+        "label": "Recap"
+      },
+      {
+        "t": "3:43",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:31",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:51",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python csv",
+      "python json",
+      "json dumps loads",
+      "csv dictreader"
+    ],
+    "thumbnail": {
+      "text": "CSV + JSON",
+      "visual": "big text \"CSV + JSON\" in tomato on peach; Xecxec holding a spreadsheet in one claw and a curly-bracket scroll in the other; thin black border and drop shadow.",
+      "pose": "Xecxec holding a spreadsheet in one claw and a curly-bracket scroll in the other"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 59 · CSV + JSON",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Real data lives in files like spreadsheets and web responses. Today we read two common formats."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"Two common formats\": three numbered lines (1. CSV is rows of values separated by commas; 2. csv.DictReader reads each row as a dictionary; 3. json.dumps makes text and json.loads reads it back) and an analogy card: a spreadsheet and a packing list: CSV is rows and columns, JSON is labelled boxes inside boxes",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "CSV means comma separated values. Each line is a row, and the first line names the columns. The csv module reads each row as a dictionary. JSON is the format of the web. It looks like Python dictionaries and lists. Json dumps turns Python data into JSON text. Json loads turns JSON text back into Python data. One catch. JSON keys are always strings, so a number key comes back as text."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "readcsv.py: DictReader gives one dictionary per row",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Import the csv module. [HL 2] Open the file with with. [HL 3] DictReader reads the first line as column names, and gives one dictionary for each following row. [HL 4] Pick the fields by column name. Asha, eighty eight. Ravi, ninety two. Notice that every value is a string. Convert with int if you need numbers."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 35,
+      "onScreen": "A CSV table with a header row; each data row becomes a dictionary with the header names as keys",
+      "animation": "Table rows slide out one by one and turn into dictionaries with keys from the header",
+      "sfx": [],
+      "narration": "Look at how DictReader works. The first line is the header, name and marks. For each later line, it builds a dictionary. The header names become the keys, and the cells become the values. So a row becomes a dictionary with name and marks. Every value is a string, because a file has no way to know what is a number."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 130,
+      "lengthSec": 42,
+      "onScreen": "jsondemo.py: dumps, loads, and what changes on the way",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Import the json module. [HL 2] A dictionary with a string, a list, and a boolean. [HL 3] Dumps turns it into JSON text. [HL 4] The text uses double quotes, and a lowercase true. [HL 5] Loads turns the text back into Python data. [HL 6] The second mark is ninety two. [HL 7] And now the catch. A dictionary with the number one as a key, after a round trip, is not equal to the original. False. The key came back as the text one.",
+      "code": {
+        "file": "jsondemo.py",
+        "source": "import json\ndata = {\"name\": \"Asha\", \"marks\": [88, 92], \"pass\": True}\ntext = json.dumps(data)\nprint(text)\nback = json.loads(text)\nprint(back[\"marks\"][1])\nprint({1: \"a\"} == json.loads(json.dumps({1: \"a\"})))",
+        "output": "{\"name\": \"Asha\", \"marks\": [88, 92], \"pass\": true}\n92\nFalse"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 172,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python jsondemo.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as jsondemo dot py. In the terminal, type python, space, jsondemo dot py. The JSON text, then ninety two, then False."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 192,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: CSV rows can be read as dictionaries with csv dot DictReader. Two: All CSV values come in as strings. Three: json dot dumps makes JSON text and json dot loads reads it. Four: JSON keys are always strings. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 223,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: JSON keys become strings",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We save a dictionary with the number one as a key, and load it back. The key is now the text one, in quotes. JSON only allows string keys. A lookup with the number one now fails. After loading, convert the keys back with int, in a dictionary comprehension."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 263,
+      "lengthSec": 8,
+      "onScreen": "Why did JSON go to school? It wanted to learn the keys, but only as strings.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did JSON go to school? It wanted to learn the keys, but only as strings."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 271,
+      "lengthSec": 20,
+      "onScreen": "Task card: read a column from a CSV",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Read marks dot csv and print the total of the marks. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 291,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 60 · Mini project: Contact book",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: the contact book mini project. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "import json\ndata = {1: \"one\"}\nprint(json.loads(json.dumps(data)))",
+    "error": "Python output (it runs, but the answer is wrong):\n\n{'1': 'one'}",
+    "fixed": "import json\ndata = {1: \"one\"}\nback = json.loads(json.dumps(data))\nprint({int(k): v for k, v in back.items()})",
+    "why": "JSON only allows string keys, so a number key is written as text; convert the keys back yourself after loading."
+  },
+  "pun": "\"Why did JSON go to school? It wanted to learn the keys, but only as strings.\"",
+  "challenge": "Read marks.csv and print the total of the marks.",
+  "challengeAnswer": "Use total = 0, loop over csv.DictReader(f), add int(row[\"marks\"]). It prints 180.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "CSV files",
+      "hook": "\"A CSV file stores a table as plain text.\"",
+      "script": "A CSV file stores a table as plain text. Each line is a row, and the cells are separated by commas. The first line names the columns. The csv module can read each row as a dictionary, keyed by those names. Use DictReader, and pick fields like row, bracket, name. Every value arrives as a string, so convert numbers with int. Keep coding, says Xecxec!",
+      "onScreen": "NAME,MARKS",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Spreadsheets as text.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "csv",
+        "json",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "DictReader",
+      "hook": "\"Csv dot DictReader reads a file, and gives you one dictionary for each data row.\"",
+      "script": "Csv dot DictReader reads a file, and gives you one dictionary for each data row. The first line becomes the keys. So you write row name, and row marks, and the code reads like the table. It is far safer than splitting lines by commas yourself, because it handles quotes, and commas inside cells. Open the file with with, and loop. Keep coding, says Xecxec!",
+      "onScreen": "CSV.DICTREADER(F)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "A dictionary per row.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "csv",
+        "json",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "JSON text",
+      "hook": "\"JSON is the format of the web.\"",
+      "script": "JSON is the format of the web. It looks like Python dictionaries and lists. Json dumps turns Python data into JSON text, ready to save or send. Json loads turns JSON text back into Python data. Together they let your program talk to files, and to other programs, in a format that almost every language understands. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "DUMPS · LOADS",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Python data to text and back.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "csv",
+        "json",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Keys become strings",
+      "hook": "\"A small JSON surprise.\"",
+      "script": "A small JSON surprise. You save a dictionary with the number one as a key. You load it back, and the key is now the text one. JSON only allows string keys. A lookup with the number one fails. After loading, convert the keys back with int, in a dictionary comprehension, and your data is whole again. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "1 → \"1\"",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "JSON keys are text.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "csv",
+        "json",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did JSON go to school?\"",
+      "script": "Why did JSON go to school? It wanted to learn the keys, but only as strings. Your challenge. Make a CSV file with names and marks, two columns, three rows. Read it with csv dot DictReader. Add up all the marks, converting each with int, and print the total. Check it with a calculator. Share your code in the comments below. Keep coding, says Xecxec! Full video: EP 59.",
+      "onScreen": "TOTAL FROM A CSV",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Try CSV.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "csv",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "import csv\nwith open(\"marks.csv\") as f:\n    for row in csv.DictReader(f):\n        print(row[\"name\"], row[\"marks\"])",
+      "output": "Asha 88\nRavi 92",
+      "lang": "python"
+    },
+    {
+      "file": "jsondemo.py",
+      "source": "import json\ndata = {\"name\": \"Asha\", \"marks\": [88, 92], \"pass\": True}\ntext = json.dumps(data)\nprint(text)\nback = json.loads(text)\nprint(back[\"marks\"][1])\nprint({1: \"a\"} == json.loads(json.dumps({1: \"a\"})))",
+      "output": "{\"name\": \"Asha\", \"marks\": [88, 92], \"pass\": true}\n92\nFalse",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

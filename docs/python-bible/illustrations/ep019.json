@@ -1,0 +1,139 @@
+{
+  "ep": 19,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "c00",
+      "shape": "box",
+      "text": "row 1, col 1",
+      "colour": "cream",
+      "col": 3,
+      "row": 1,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "c01",
+      "shape": "box",
+      "text": "row 1, col 2",
+      "colour": "cream",
+      "col": 5,
+      "row": 1,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "c02",
+      "shape": "box",
+      "text": "row 1, col 3",
+      "colour": "cream",
+      "col": 7,
+      "row": 1,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "c10",
+      "shape": "box",
+      "text": "row 2, col 1",
+      "colour": "cream",
+      "col": 3,
+      "row": 3,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "c11",
+      "shape": "box",
+      "text": "row 2, col 2",
+      "colour": "cream",
+      "col": 5,
+      "row": 3,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "c12",
+      "shape": "box",
+      "text": "row 2, col 3",
+      "colour": "cream",
+      "col": 7,
+      "row": 3,
+      "w": 2,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c00",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c01"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c02"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c10"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c11"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c12"
+    },
+    {
+      "t": 0.15,
+      "do": "glow",
+      "target": "c00",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.27,
+      "do": "glow",
+      "target": "c01",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.39,
+      "do": "glow",
+      "target": "c02",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.51,
+      "do": "glow",
+      "target": "c10",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.63,
+      "do": "glow",
+      "target": "c11",
+      "sfx": "key-tick"
+    },
+    {
+      "t": 0.75,
+      "do": "glow",
+      "target": "c12",
+      "sfx": "key-tick"
+    }
+  ]
+}

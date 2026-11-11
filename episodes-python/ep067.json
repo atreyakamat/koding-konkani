@@ -1,0 +1,350 @@
+{
+  "ep": 67,
+  "title": "Inheritance",
+  "module": 7,
+  "lengthSec": 308,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "write a child class from a parent class",
+    "reuse parent attributes and methods",
+    "call super().__init__"
+  ],
+  "youtube": {
+    "title": "Python Inheritance Explained Simply | Python Programming EP 67",
+    "description": "In this episode you will write a child class from a parent class, reuse parent attributes and methods and call super().__init__, with Xecxec the crab. 0:00 Intro · 0:15 Parent and child · 0:58 A child class · 1:40 The family tree · 2:13 Second program · 3:13 Recap · 3:45 Bug of the Day · 4:33 Challenge · 4:53 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Parent and child"
+      },
+      {
+        "t": "0:58",
+        "label": "A child class"
+      },
+      {
+        "t": "1:40",
+        "label": "The family tree"
+      },
+      {
+        "t": "2:13",
+        "label": "Second program"
+      },
+      {
+        "t": "3:13",
+        "label": "Recap"
+      },
+      {
+        "t": "3:45",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:33",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:53",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python inheritance",
+      "python super init",
+      "python parent child class",
+      "python oop inheritance"
+    ],
+    "thumbnail": {
+      "text": "INHERITANCE",
+      "visual": "big text \"INHERITANCE\" in tomato on peach; Xecxec handing a family recipe book from parent crab to child crab; thin black border and drop shadow.",
+      "pose": "Xecxec handing a family recipe book from parent crab to child crab"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 67 · INHERITANCE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Dogs, cats and birds are all animals. Today we write the shared part once, and reuse it."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 43,
+      "onScreen": "\"Parent and child\": three numbered lines (1. class Child(Parent): inherits everything; 2. The child can add new methods; 3. super().__init__() runs the parent's setup) and an analogy card: a family recipe book: children get all the recipes, and can add their own",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Inheritance lets one class build on another. The parent class holds what is common. The child class gets all of it for free, and can add more. Write the parent's name in brackets after the child's name. If the child has its own init, it must call super dot init, to run the parent's setup too. Otherwise the parent's attributes are never created. Think of a family recipe book. The child gets every recipe, and adds new ones."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 58,
+      "lengthSec": 42,
+      "onScreen": "animals.py: Dog inherits from Animal",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The parent class, Animal. [HL 2] Its init stores a name. [HL 5] And a method named eat. [HL 8] Dog, with Animal in brackets. Dog inherits from Animal. [HL 9] Dog has its own init, with a breed too. [HL 10] Super dot init runs the parent's init, so the name is stored. [HL 11] Then the breed is stored. [HL 13] A method only dogs have. [HL 16] Build a dog. [HL 17] Eat comes from the parent. Rex is eating. [HL 18] Bark comes from the child. [HL 19] And the breed is Labrador.",
+      "code": {
+        "file": "animals.py",
+        "source": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def eat(self):\n        print(self.name, \"is eating\")\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)\n        self.breed = breed\n\n    def bark(self):\n        print(self.name, \"says Woof\")\n\nd = Dog(\"Rex\", \"Labrador\")\nd.eat()\nd.bark()\nprint(d.breed)",
+        "output": "Rex is eating\nRex says Woof\nLabrador"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 100,
+      "lengthSec": 33,
+      "onScreen": "Animal at the top with Dog and Cat below it; methods flow down the arrows",
+      "animation": "A tree with Animal on top, Dog and Cat below, and glowing arrows carrying the eat method downward",
+      "sfx": [],
+      "narration": "Here is the family tree. Animal sits at the top, and holds the shared parts, name and eat. Dog and Cat hang below it. Everything flows down the arrows. A dog can eat, because Animal can eat. A dog can also bark, which Animal cannot. A child gets everything from its parent, and adds more of its own."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 133,
+      "lengthSec": 40,
+      "onScreen": "checks.py: isinstance and issubclass",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] An empty Animal class. [HL 4] Dog inherits from Animal. [HL 7] And so does Cat. [HL 10] One dog. [HL 11] Is it a Dog? True. [HL 12] Is it an Animal? Also True. A dog is a type of animal. [HL 13] Is it a Cat? False. [HL 14] Is Cat a subclass of Animal? True. [HL 15] And the parent of Dog is named Animal.",
+      "code": {
+        "file": "checks.py",
+        "source": "class Animal:\n    pass\n\nclass Dog(Animal):\n    pass\n\nclass Cat(Animal):\n    pass\n\nd = Dog()\nprint(isinstance(d, Dog))\nprint(isinstance(d, Animal))\nprint(isinstance(d, Cat))\nprint(issubclass(Cat, Animal))\nprint(Dog.__bases__[0].__name__)",
+        "output": "True\nTrue\nFalse\nTrue\nAnimal"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 173,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python checks.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as checks dot py. In the terminal, type python, space, checks dot py. Rex is eating, Rex says Woof, Labrador. Then True, True, False, True, Animal."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 193,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: class Child of Parent: inherits all of the parent's methods. Two: The child can add its own attributes and methods. Three: super dot dunder init runs the parent's setup. Four: isinstance of obj, Parent is True for child objects too. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 225,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: forgot super().__init__()",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Dog has its own init, which replaces the parent's init. So the name is never stored. Printing d dot name raises an attribute error, Dog object has no attribute name. The fix is one line. Call super dot init, with the name, at the start of the child's init."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 8,
+      "onScreen": "Why did the child class get all the money? It inherited everything.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the child class get all the money? It inherited everything."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 273,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a Cat",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Add a Cat class that inherits from Animal, and has a method meow. Make a cat, and call eat and meow on it. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 293,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 68 · Overriding and super()",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: overriding and super. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        self.breed = breed\n\nd = Dog(\"Rex\", \"Labrador\")\nprint(d.name)",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"animals.py\", line 10, in <module>\n    print(d.name)\n          ^^^^^^\nAttributeError: 'Dog' object has no attribute 'name'",
+    "fixed": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)\n        self.breed = breed\n\nd = Dog(\"Rex\", \"Labrador\")\nprint(d.name)",
+    "why": "When a child defines its own init, it replaces the parent's. The parent's setup only runs if the child calls super().__init__()."
+  },
+  "pun": "\"Why did the child class get all the money? It inherited everything.\"",
+  "challenge": "Add a Cat class that inherits from Animal, and has a method meow. Make a cat, and call eat and meow on it.",
+  "challengeAnswer": "class Cat(Animal): def meow(self): print(self.name, \"says Meow\"). Then c = Cat(\"Tom\"), c.eat(), c.meow().",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is inheritance",
+      "hook": "\"Inheritance means a class builds on another class.\"",
+      "script": "Inheritance means a class builds on another class. The parent holds what is common. The child gets all of it for free. Think of a family recipe book. Children get every recipe, and then add their own. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "class Dog(Animal)",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Children inherit from parents.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "inheritance",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Write a child class",
+      "hook": "\"To make a child class, write the parent's name in brackets after the child's name.\"",
+      "script": "To make a child class, write the parent's name in brackets after the child's name. Class Dog, brackets, Animal. Now every dog can use every method of Animal, without a single copied line. Write shared code once, in the parent. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "class Dog(Animal):",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "Write shared code once.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "inheritance",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "super init",
+      "hook": "\"If the child has its own init, call super dot init, with the arguments the parent needs.\"",
+      "script": "If the child has its own init, call super dot init, with the arguments the parent needs. That runs the parent's setup first. Then the child adds its own attributes. Super means, my parent. It saves you repeating the parent's code. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "super().__init__(name)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Super means my parent.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "inheritance",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The missing super",
+      "hook": "\"A classic bug.\"",
+      "script": "A classic bug. The child writes its own init, and forgets super dot init. The parent's setup never runs. Later, d dot name raises, attribute error, no attribute name. A child's init replaces the parent's. Call super, and the name appears. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "AttributeError: no attribute 'name'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Do not forget super.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "inheritance",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the child class get all the money?\"",
+      "script": "Why did the child class get all the money? It inherited everything. Your challenge. Add a Cat class that inherits from Animal. Give it a method called meow. Make a cat, and call both eat and meow on it. Which one comes from the parent? Try it in your own file and watch what happens. Keep coding, says Xecxec! Full video: EP 67.",
+      "onScreen": "Challenge: add a Cat",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Add a Cat class.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "animals.py",
+      "source": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def eat(self):\n        print(self.name, \"is eating\")\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)\n        self.breed = breed\n\n    def bark(self):\n        print(self.name, \"says Woof\")\n\nd = Dog(\"Rex\", \"Labrador\")\nd.eat()\nd.bark()\nprint(d.breed)",
+      "output": "Rex is eating\nRex says Woof\nLabrador",
+      "lang": "python"
+    },
+    {
+      "file": "checks.py",
+      "source": "class Animal:\n    pass\n\nclass Dog(Animal):\n    pass\n\nclass Cat(Animal):\n    pass\n\nd = Dog()\nprint(isinstance(d, Dog))\nprint(isinstance(d, Animal))\nprint(isinstance(d, Cat))\nprint(issubclass(Cat, Animal))\nprint(Dog.__bases__[0].__name__)",
+      "output": "True\nTrue\nFalse\nTrue\nAnimal",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

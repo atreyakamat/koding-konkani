@@ -1,0 +1,350 @@
+{
+  "ep": 46,
+  "title": "lambda, map and filter",
+  "module": 5,
+  "lengthSec": 302,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "write a one-line function with lambda",
+    "transform items with map and keep some with filter",
+    "use lambda as a sort key"
+  ],
+  "youtube": {
+    "title": "Python lambda, map and filter | Python Programming EP 46",
+    "description": "In this episode you will write a one-line function with lambda, transform items with map and keep some with filter and use lambda as a sort key, with Xecxec the crab. 0:00 Intro · 0:15 Tiny functions · 0:57 lambda, map, filter · 1:37 Map and filter pipelines · 2:07 Second program · 3:07 Recap · 3:39 Bug of the Day · 4:27 Challenge · 4:47 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Tiny functions"
+      },
+      {
+        "t": "0:57",
+        "label": "lambda, map, filter"
+      },
+      {
+        "t": "1:37",
+        "label": "Map and filter pipelines"
+      },
+      {
+        "t": "2:07",
+        "label": "Second program"
+      },
+      {
+        "t": "3:07",
+        "label": "Recap"
+      },
+      {
+        "t": "3:39",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:27",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:47",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python lambda",
+      "python map filter",
+      "anonymous function python",
+      "map object python"
+    ],
+    "thumbnail": {
+      "text": "LAMBDA",
+      "visual": "big text \"LAMBDA\" in tomato on peach; Xecxec holding a tiny one-line function card labelled lambda n: n * 2; thin black border and drop shadow.",
+      "pose": "Xecxec holding a tiny one-line function card labelled lambda n: n * 2"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 46 · LAMBDA",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Sometimes a function is so small, a whole def feels like too much. Today we meet the lambda."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 42,
+      "onScreen": "\"Tiny functions\": three numbered lines (1. lambda args: expression makes a nameless function; 2. map applies a function to every item; 3. filter keeps the items where the function is True) and an analogy card: a sticky-note instruction: too small to deserve a name, but handy for one quick job",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A lambda is a tiny function without a name. The word lambda, the parameters, a colon, and one expression. The value of that expression is returned automatically. Think of a sticky note instruction. Too small to deserve a name, but handy for one quick job. Map applies a function to every item. Filter keeps only the items for which the function says True. Both give back a lazy object, which you wrap in list to see."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 57,
+      "lengthSec": 40,
+      "onScreen": "lam.py: a doubling lambda, then map and filter on a list",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A lambda tied to the name double. Parameter n, expression n times two. No return word is needed. [HL 2] Call it like any function. Ten. [HL 3] A list of four numbers. [HL 4] Map applies the lambda to every item. List turns the result into a list we can print. Two, four, six, eight. [HL 5] Filter keeps items where the lambda gives True. Only the even numbers survive.",
+      "code": {
+        "file": "lam.py",
+        "source": "double = lambda n: n * 2\nprint(double(5))\nnums = [1, 2, 3, 4]\nprint(list(map(lambda n: n * 2, nums)))\nprint(list(filter(lambda n: n % 2 == 0, nums)))",
+        "output": "10\n[2, 4, 6, 8]\n[2, 4]"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 97,
+      "lengthSec": 30,
+      "onScreen": "Items flow through a map machine that doubles them, and through a filter gate that lets only even numbers pass",
+      "animation": "Number tokens move along a belt through a transform box, then through a gate that drops the odd ones",
+      "sfx": [],
+      "narration": "Picture two machines. The map machine takes every item, changes it, and sends it on. The count of items stays the same. The filter gate checks each item and lets only some through. The count can shrink. Both are lazy. Nothing happens until you ask for the results, for example with list."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 127,
+      "lengthSec": 40,
+      "onScreen": "sortkey.py: sort words by their last letter",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Three words. [HL 2] Sorted, with a key that is a lambda. For each word, the key is its last letter. Banana ends in a, apple ends in e, and fig ends in g. So the order is banana, apple, fig. A lambda is perfect here, because the rule is used once, in one place.",
+      "code": {
+        "file": "sortkey.py",
+        "source": "words = [\"banana\", \"fig\", \"apple\"]\nprint(sorted(words, key=lambda w: w[-1]))",
+        "output": "['banana', 'apple', 'fig']"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 167,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python sortkey.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as sortkey dot py. In the terminal, type python, space, sortkey dot py. Banana, apple, fig."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 187,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: lambda args: expression is a one-line function with no name. Two: map applies a function to every item. Three: filter keeps the items for which the function is True. Four: Wrap map and filter in list to see the results. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 219,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: map is not a list",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We print the result of map, and get a strange line, map object at a long address. Map does not make a list. It gives a lazy object that makes values only when asked. Wrap the map in list, and you see the real values. Filter works the same way."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 259,
+      "lengthSec": 8,
+      "onScreen": "Why did the lambda go unnamed? It preferred a life without labels.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the lambda go unnamed? It preferred a life without labels."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 267,
+      "lengthSec": 20,
+      "onScreen": "Task card: square every number with map",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Use map and a lambda to square the numbers in 1, 2, 3, 4, and print the list. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 287,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 47 · Recursion",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: recursion. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "nums = [1, 2, 3]\nprint(map(lambda n: n * 2, nums))",
+    "error": "Python output (it runs, but the answer is wrong):\n\n<map object at 0x...>",
+    "fixed": "nums = [1, 2, 3]\nprint(list(map(lambda n: n * 2, nums)))",
+    "why": "map returns a lazy iterator, not a list, so printing it shows the object; wrap it in list() to get the values."
+  },
+  "pun": "\"Why did the lambda go unnamed? It preferred a life without labels.\"",
+  "challenge": "Use map and a lambda to square the numbers in [1, 2, 3, 4], and print the list.",
+  "challengeAnswer": "Use print(list(map(lambda n: n * n, [1, 2, 3, 4]))), which shows [1, 4, 9, 16].",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a lambda?",
+      "hook": "\"A lambda is a tiny function without a name.\"",
+      "script": "A lambda is a tiny function without a name. The word lambda, the parameters, a colon, and one expression. The value of the expression is returned automatically. Lambda n colon n times two doubles a number. It is perfect when a function is so small that a whole def feels like too much. Think of a sticky note instruction, quick and disposable. Keep coding, says Xecxec!",
+      "onScreen": "LAMBDA N: N * 2",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "A nameless function.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lambda",
+        "map",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Map",
+      "hook": "\"Map applies a function to every item in a list.\"",
+      "script": "Map applies a function to every item in a list. Map, a lambda that doubles, and the list. Each item goes through the lambda, and the doubled value comes out. The count stays the same. Wrap the result in list to see it. Map is the functional way to write a loop that transforms every item. It is neat for one-liners. Keep coding, says Xecxec!",
+      "onScreen": "MAP(F, ITEMS)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "Change every item.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lambda",
+        "map",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Filter",
+      "hook": "\"Filter keeps only some items.\"",
+      "script": "Filter keeps only some items. It takes a function that says True or False, and a list. Every item for which the function says True is kept, and the rest are dropped. A lambda that checks for even numbers keeps only the evens. Like map, filter is lazy, so wrap it in list. Think of a gate that only lets some items through. Keep coding, says Xecxec!",
+      "onScreen": "FILTER(F, ITEMS)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 38,
+      "caption": "Keep only some.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lambda",
+        "map",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Map object",
+      "hook": "\"A bug that surprises everyone.\"",
+      "script": "A bug that surprises everyone. You print the result of map, and Python shows, map object at, and a long address. Map does not build a list. It builds a lazy object that makes values only when asked. Wrap it in list, and you see the real values. The same goes for filter. Always wrap them to print. Keep coding, says Xecxec!",
+      "onScreen": "<MAP OBJECT AT 0x...>",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Wrap it in list.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lambda",
+        "map",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the lambda go unnamed?\"",
+      "script": "Why did the lambda go unnamed? It preferred a life without labels. Your challenge. Use map and a lambda to square every number in the list one, two, three, four. Print the result as a list. You should see one, four, nine, sixteen. Then use filter to keep only the squares above five. Share both lines in the comments. Keep coding, says Xecxec! Full video: EP 46.",
+      "onScreen": "SQUARES WITH MAP",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try map.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "lambda",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "lam.py",
+      "source": "double = lambda n: n * 2\nprint(double(5))\nnums = [1, 2, 3, 4]\nprint(list(map(lambda n: n * 2, nums)))\nprint(list(filter(lambda n: n % 2 == 0, nums)))",
+      "output": "10\n[2, 4, 6, 8]\n[2, 4]",
+      "lang": "python"
+    },
+    {
+      "file": "sortkey.py",
+      "source": "words = [\"banana\", \"fig\", \"apple\"]\nprint(sorted(words, key=lambda w: w[-1]))",
+      "output": "['banana', 'apple', 'fig']",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

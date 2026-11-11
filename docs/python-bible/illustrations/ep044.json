@@ -1,0 +1,156 @@
+{
+  "ep": 44,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "v1",
+      "shape": "token",
+      "text": "1",
+      "colour": "butter",
+      "col": 0,
+      "row": 1,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "v2",
+      "shape": "token",
+      "text": "2",
+      "colour": "butter",
+      "col": 1,
+      "row": 2,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "v3",
+      "shape": "token",
+      "text": "3",
+      "colour": "butter",
+      "col": 2,
+      "row": 1,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "net",
+      "shape": "box",
+      "text": "numbers = (1, 2, 3)",
+      "colour": "mint",
+      "col": 4,
+      "row": 1,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "lst",
+      "shape": "card",
+      "text": "[10, 20]",
+      "colour": "cream",
+      "col": 0,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "p1",
+      "shape": "box",
+      "text": "a = 10",
+      "colour": "peach",
+      "col": 6,
+      "row": 3,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "p2",
+      "shape": "box",
+      "text": "b = 20",
+      "colour": "peach",
+      "col": 6,
+      "row": 4,
+      "w": 2,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "v1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "v2"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "v3"
+    },
+    {
+      "t": 0.15,
+      "do": "move",
+      "target": "v1",
+      "sfx": "whoosh",
+      "to": [
+        4,
+        1
+      ]
+    },
+    {
+      "t": 0.15,
+      "do": "move",
+      "target": "v2",
+      "to": [
+        5,
+        1
+      ]
+    },
+    {
+      "t": 0.15,
+      "do": "move",
+      "target": "v3",
+      "to": [
+        6,
+        1
+      ]
+    },
+    {
+      "t": 0.3,
+      "do": "show",
+      "target": "net",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.5,
+      "do": "show",
+      "target": "lst",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.65,
+      "do": "flip",
+      "target": "lst",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.75,
+      "do": "show",
+      "target": "p1",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.85,
+      "do": "show",
+      "target": "p2",
+      "sfx": "ding"
+    }
+  ]
+}

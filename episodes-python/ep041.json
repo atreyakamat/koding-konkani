@@ -1,0 +1,350 @@
+{
+  "ep": 41,
+  "title": "Defining functions",
+  "module": 5,
+  "lengthSec": 302,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "define a function with def",
+    "call a function by its name and brackets",
+    "call one function from inside another"
+  ],
+  "youtube": {
+    "title": "Python Functions: def and Calling | Python Programming EP 41",
+    "description": "In this episode you will define a function with def, call a function by its name and brackets and call one function from inside another, with Xecxec the crab. 0:00 Intro · 0:15 Your own tools · 0:56 Define and call · 1:36 What a call does · 2:08 Second program · 3:08 Recap · 3:39 Bug of the Day · 4:27 Challenge · 4:47 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Your own tools"
+      },
+      {
+        "t": "0:56",
+        "label": "Define and call"
+      },
+      {
+        "t": "1:36",
+        "label": "What a call does"
+      },
+      {
+        "t": "2:08",
+        "label": "Second program"
+      },
+      {
+        "t": "3:08",
+        "label": "Recap"
+      },
+      {
+        "t": "3:39",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:27",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:47",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python functions",
+      "python def",
+      "call a function python",
+      "python beginner functions"
+    ],
+    "thumbnail": {
+      "text": "MAKE YOUR OWN TOOL",
+      "visual": "big text \"MAKE YOUR OWN TOOL\" in tomato on peach; Xecxec at a workbench building a tool labelled def greet(); thin black border and drop shadow.",
+      "pose": "Xecxec at a workbench building a tool labelled def greet()"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 41 · MAKE YOUR OWN TOOL",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Until now every program was one long script. Today we learn to name a block of code, and reuse it."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 41,
+      "onScreen": "\"Your own tools\": three numbered lines (1. def names a block of code; 2. The body is indented under the def line; 3. A call runs the body, as often as you like) and an analogy card: a recipe card: you write the steps once, then cook the dish whenever you like by naming the card",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A function is a named block of code. You write it once with def, a name, brackets and a colon. The body is indented below. Nothing runs until you call it, by writing its name with brackets. Think of a recipe card. You write the steps once, then cook the dish whenever you like by naming the card. Functions stop you repeating yourself, and they give your code names that explain what it does."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 56,
+      "lengthSec": 40,
+      "onScreen": "greet.py: one function, called twice",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The word def, a name, empty brackets, and a colon. This line only makes the function. It does not run it. [HL 2] The body is indented. This is what runs on every call. [HL 3] A call. The name, with brackets. Python jumps up to the body, runs it, and comes back. [HL 4] A second call. The same body runs again. Write once, use many times.",
+      "code": {
+        "file": "greet.py",
+        "source": "def greet():\n    print(\"Hello from a function\")\ngreet()\ngreet()",
+        "output": "Hello from a function\nHello from a function"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 96,
+      "lengthSec": 32,
+      "onScreen": "Call flow: the call line, the def, the body, and the return to the next line",
+      "animation": "A call arrow jumps from the call line up to the def, the body lines light up one by one, then the arrow returns to the line after the call",
+      "sfx": [],
+      "narration": "Here is the journey of a call. Python reaches the call line. It jumps up to the def, and runs the body, line by line. When the body ends, Python returns to the line just after the call, and carries on. Defining a function does nothing by itself. Only a call sends Python on this trip."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 128,
+      "lengthSec": 40,
+      "onScreen": "banner.py: a banner built from two small functions",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A small function that prints ten dashes. [HL 2] Its body. [HL 3] A second function, called title. [HL 4] Inside it, we call line. [HL 5] Print the word. [HL 6] And call line again. [HL 7] One call to title runs the whole banner. Small functions that do one job, combined, make big programs easy to read.",
+      "code": {
+        "file": "banner.py",
+        "source": "def line():\n    print(\"-\" * 10)\ndef title():\n    line()\n    print(\"KONKANI\")\n    line()\ntitle()",
+        "output": "----------\nKONKANI\n----------"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 168,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python banner.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as banner dot py. In the terminal, type python, space, banner dot py. A line of dashes, the word KONKANI, and another line of dashes."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 188,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: def makes a function, and the body is indented below it. Two: Nothing runs until the function is called with brackets. Three: A function can call other functions. Four: Write it once, call it as often as you like. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 219,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: defined but never called",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We define the function hello, and run the program. Nothing happens. No error, and no output. A def only makes the function. It does not run it. Add a call, the name with brackets, and Hi appears. If a function seems to do nothing, check that you actually call it."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 259,
+      "lengthSec": 8,
+      "onScreen": "Why did the function never get tired? It was always called back.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the function never get tired? It was always called back."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 267,
+      "lengthSec": 20,
+      "onScreen": "Task card: write a function that prints a welcome",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a function called welcome that prints two lines, then call it three times. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 287,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 42 · Parameters and return values",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: parameters and return values. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def hello():\n    print(\"Hi\")",
+    "error": "Python output (it runs, but the answer is wrong):",
+    "fixed": "def hello():\n    print(\"Hi\")\nhello()",
+    "why": "A def only creates the function; the body runs only when you call it with brackets."
+  },
+  "pun": "\"Why did the function never get tired? It was always called back.\"",
+  "challenge": "Write a function called welcome that prints two lines, then call it three times.",
+  "challengeAnswer": "Define def welcome(): with two print lines inside, then call welcome() three times.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is a function?",
+      "hook": "\"A function is a named block of code.\"",
+      "script": "A function is a named block of code. You write it once with def, a name, brackets, and a colon. The body is indented below. Then you can use it as many times as you like by calling its name. Think of a recipe card. Write the steps once, and cook the dish whenever you want. Functions stop you repeating yourself. Keep coding, says Xecxec!",
+      "onScreen": "DEF GREET():",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Write once, use often.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "def",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Define versus call",
+      "hook": "\"Here is the most important idea about functions.\"",
+      "script": "Here is the most important idea about functions. Defining and calling are two different things. The def line only makes the function. Nothing runs. A call, the name with brackets, runs the body. When Python reaches a call, it jumps up to the body, runs it, and comes back to the next line. Two steps, always. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "DEF = MAKE · CALL = RUN",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "Two separate steps.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "def",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Functions calling functions",
+      "hook": "\"A function can call another function.\"",
+      "script": "A function can call another function. A title function can call a line function, print a word, and call the line function again. One call to title runs all of it. Small functions that do one job each are easy to read, easy to test, and easy to reuse. Build big things from small, named pieces. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "TITLE() → LINE()",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Small pieces, big programs.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "def",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The function that did nothing",
+      "hook": "\"A quiet bug.\"",
+      "script": "A quiet bug. You write a function, run the program, and nothing happens. No error, no output. You only defined the function, and never called it. A def makes the function, it does not run it. Add the call, the name with brackets, and your function finally does its job. Check for the call first. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "NO CALL, NO OUTPUT",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Did you call it?",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "def",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the function never get tired?\"",
+      "script": "Why did the function never get tired? It was always called back. Your challenge. Write a function called welcome. Inside, print two lines of greeting. Then call the function three times, one after another. You should see six lines on the screen. Try changing the text inside the function, and see all three calls change together. Share it below. Keep coding, says Xecxec! Full video: EP 41.",
+      "onScreen": "WRITE A WELCOME()",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try your first function.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "functions",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "greet.py",
+      "source": "def greet():\n    print(\"Hello from a function\")\ngreet()\ngreet()",
+      "output": "Hello from a function\nHello from a function",
+      "lang": "python"
+    },
+    {
+      "file": "banner.py",
+      "source": "def line():\n    print(\"-\" * 10)\ndef title():\n    line()\n    print(\"KONKANI\")\n    line()\ntitle()",
+      "output": "----------\nKONKANI\n----------",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

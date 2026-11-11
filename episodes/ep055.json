@@ -122,7 +122,141 @@
       "sfx": [
         "ding"
       ],
-      "narration": "Let's draw what happened, very slowly. When main runs, it gets its own area of memory, called a stack frame. Inside it are x at address 1000, holding 5, and y at address 1004, holding 9. Now main calls swap of x comma y. C creates a new stack frame for swap, on top. Inside it are a, b and temp, at their own addresses: 3000, 3004 and 3008. And here is the key moment. C does not send x and y. It sends photocopies. 5 is copied into a, and 9 is copied into b. This is call by value. Now swap does its job perfectly. a becomes 9, b becomes 5. But look: these are the copies. x and y, down in main, never moved. Then swap ends, and its whole frame disappears. Gone. x is still 5. y is still 9. The swap happened, but on the photocopies."
+      "narration": "Let's draw what happened, very slowly. When main runs, it gets its own area of memory, called a stack frame. Inside it are x at address 1000, holding 5, and y at address 1004, holding 9. Now main calls swap of x comma y. C creates a new stack frame for swap, on top. Inside it are a, b and temp, at their own addresses: 3000, 3004 and 3008. And here is the key moment. C does not send x and y. It sends photocopies. 5 is copied into a, and 9 is copied into b. This is call by value. Now swap does its job perfectly. a becomes 9, b becomes 5. But look: these are the copies. x and y, down in main, never moved. Then swap ends, and its whole frame disappears. Gone. x is still 5. y is still 9. The swap happened, but on the photocopies.",
+      "memory": {
+        "frames": [
+          {
+            "label": "main gets a stack frame: x = 5, y = 9",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "1004"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "swap(x, y) copies 5 and 9 into a and b",
+            "badges": [
+              "call by value"
+            ],
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "1004"
+                  }
+                ]
+              },
+              {
+                "name": "swap",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "a",
+                    "address": "3000"
+                  },
+                  {
+                    "value": "9",
+                    "name": "b",
+                    "address": "3004"
+                  },
+                  {
+                    "value": "?",
+                    "name": "temp",
+                    "address": "3008"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "swap swaps the copies",
+            "badges": [
+              "call by value"
+            ],
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "1004"
+                  }
+                ]
+              },
+              {
+                "name": "swap",
+                "cells": [
+                  {
+                    "value": "9",
+                    "name": "a",
+                    "address": "3000",
+                    "mark": "hl",
+                    "lost": "5"
+                  },
+                  {
+                    "value": "5",
+                    "name": "b",
+                    "address": "3004",
+                    "mark": "hl",
+                    "lost": "9"
+                  },
+                  {
+                    "value": "5",
+                    "name": "temp",
+                    "address": "3008"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "swap ends, frame gone: x is still 5, y is still 9",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "1004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 4,
@@ -134,7 +268,64 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "So how do we let swap reach x and y? We give it their addresses. Instead of sending the values 5 and 9, main sends ampersand x and ampersand y, which are 1000 and 1004. Now swap's parameters must be pointers: int star a and int star b. Look at the frame. a holds 1000, so it points to x. b holds 1004, so it points to y. The arrows cross from the swap frame down into main's frame. We are still copying something, but this time we copy the addresses. And with an address, you can knock on the real door. This is called call by reference, or more exactly in C, passing a pointer."
+      "narration": "So how do we let swap reach x and y? We give it their addresses. Instead of sending the values 5 and 9, main sends ampersand x and ampersand y, which are 1000 and 1004. Now swap's parameters must be pointers: int star a and int star b. Look at the frame. a holds 1000, so it points to x. b holds 1004, so it points to y. The arrows cross from the swap frame down into main's frame. We are still copying something, but this time we copy the addresses. And with an address, you can knock on the real door. This is called call by reference, or more exactly in C, passing a pointer.",
+      "memory": {
+        "frames": [
+          {
+            "label": "main sends &x = 1000 and &y = 1004; a and b point back",
+            "badges": [
+              "call by reference"
+            ],
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "1004"
+                  }
+                ]
+              },
+              {
+                "name": "swap",
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "a",
+                    "address": "3000"
+                  },
+                  {
+                    "value": "1004",
+                    "name": "b",
+                    "address": "3004"
+                  },
+                  {
+                    "value": "?",
+                    "name": "temp",
+                    "address": "3008"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              },
+              {
+                "from": "1:1",
+                "to": "0:1"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -144,7 +335,187 @@
       "onScreen": "Step counter 1/3, 2/3, 3/3; temp box; x and y changing through the arrows",
       "animation": "Step 1: 5 travels from x along arrow into temp. Step 2: 9 travels from y to x. Step 3: 5 travels from temp to y. Each step a tick; final frame dissolves, x=9 and y=5 stay and flash mint; cheer",
       "sfx": [],
-      "narration": "Three steps. Step one: int temp equals star a. Follow a's arrow to x, find 5, and put it in temp. Step two: star a equals star b. Follow b's arrow to y, find 9, then follow a's arrow and write 9 into x. Now x is 9. Step three: star b equals temp. Take the 5 from temp, follow b's arrow, and write it into y. Now y is 5. swap ends, its frame disappears, including a, b and temp. But this time x and y keep their new values, because we changed the real boxes. x is 9. y is 5. Finally!"
+      "narration": "Three steps. Step one: int temp equals star a. Follow a's arrow to x, find 5, and put it in temp. Step two: star a equals star b. Follow b's arrow to y, find 9, then follow a's arrow and write 9 into x. Now x is 9. Step three: star b equals temp. Take the 5 from temp, follow b's arrow, and write it into y. Now y is 5. swap ends, its frame disappears, including a, b and temp. But this time x and y keep their new values, because we changed the real boxes. x is 9. y is 5. Finally!",
+      "memory": {
+        "frames": [
+          {
+            "label": "1/3  temp = *a  (temp gets 5)",
+            "badges": [
+              "1/3"
+            ],
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "5",
+                    "name": "x",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "1004"
+                  }
+                ]
+              },
+              {
+                "name": "swap",
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "a",
+                    "address": "3000"
+                  },
+                  {
+                    "value": "1004",
+                    "name": "b",
+                    "address": "3004"
+                  },
+                  {
+                    "value": "5",
+                    "name": "temp",
+                    "address": "3008",
+                    "mark": "hl"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "2/3  *a = *b  (x becomes 9)",
+            "badges": [
+              "2/3"
+            ],
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "9",
+                    "name": "x",
+                    "address": "1000",
+                    "mark": "hl",
+                    "lost": "5"
+                  },
+                  {
+                    "value": "9",
+                    "name": "y",
+                    "address": "1004"
+                  }
+                ]
+              },
+              {
+                "name": "swap",
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "a",
+                    "address": "3000"
+                  },
+                  {
+                    "value": "1004",
+                    "name": "b",
+                    "address": "3004"
+                  },
+                  {
+                    "value": "5",
+                    "name": "temp",
+                    "address": "3008"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:1",
+                "to": "0:1"
+              },
+              {
+                "from": "1:0",
+                "to": "0:0"
+              }
+            ]
+          },
+          {
+            "label": "3/3  *b = temp  (y becomes 5)",
+            "badges": [
+              "3/3"
+            ],
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "9",
+                    "name": "x",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "5",
+                    "name": "y",
+                    "address": "1004",
+                    "mark": "hl",
+                    "lost": "9"
+                  }
+                ]
+              },
+              {
+                "name": "swap",
+                "cells": [
+                  {
+                    "value": "1000",
+                    "name": "a",
+                    "address": "3000"
+                  },
+                  {
+                    "value": "1004",
+                    "name": "b",
+                    "address": "3004"
+                  },
+                  {
+                    "value": "5",
+                    "name": "temp",
+                    "address": "3008"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "1:1",
+                "to": "0:1"
+              }
+            ]
+          },
+          {
+            "label": "swap ends: x = 9, y = 5. The real boxes changed!",
+            "groups": [
+              {
+                "name": "main",
+                "cells": [
+                  {
+                    "value": "9",
+                    "name": "x",
+                    "address": "1000"
+                  },
+                  {
+                    "value": "5",
+                    "name": "y",
+                    "address": "1004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 6,

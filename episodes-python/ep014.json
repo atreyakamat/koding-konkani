@@ -1,0 +1,352 @@
+{
+  "ep": 14,
+  "title": "elif ladders",
+  "module": 2,
+  "lengthSec": 299,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "chain several conditions with elif",
+    "know that Python stops at the first True condition",
+    "put conditions in the right order"
+  ],
+  "youtube": {
+    "title": "Python elif: Choose Between Many Options | Python Programming EP 14",
+    "description": "In this episode you will chain several conditions with elif, know that Python stops at the first True condition and put conditions in the right order, with Xecxec the crab. 0:00 Intro · 0:15 More than two paths · 0:54 A grade ladder · 1:34 Names and the chosen price · 2:06 Second program · 3:06 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "More than two paths"
+      },
+      {
+        "t": "0:54",
+        "label": "A grade ladder"
+      },
+      {
+        "t": "1:34",
+        "label": "Names and the chosen price"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python elif",
+      "python if elif else",
+      "grade calculator python",
+      "condition order"
+    ],
+    "thumbnail": {
+      "text": "THE ELIF LADDER",
+      "visual": "big text \"THE ELIF LADDER\" in tomato on peach; Xecxec climbing a ladder whose rungs are labelled A, B, C and D; thin black border and drop shadow.",
+      "pose": "Xecxec climbing a ladder whose rungs are labelled A, B, C and D"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 14 · THE ELIF LADDER",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Two paths are not always enough. Today we build a ladder of conditions, and learn why the order matters."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 39,
+      "onScreen": "\"More than two paths\": three numbered lines (1. elif adds more conditions; 2. Python checks from the top; 3. The first True condition wins and the rest are skipped) and an analogy card: a ladder: you start at the top rung and step down until one rung holds your weight",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Sometimes there are many paths. Grade A, B, C and D. Python handles them with elif, short for else if. It checks the conditions from the top. The first one that is True wins, and Python skips the rest. Think of a ladder. You start at the top rung and step down until one rung holds. Because the first True wins, the order of the rungs matters a lot."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "grade.py: marks turned into a grade with elif",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Marks are seventy two. [HL 2] First rung. Is it ninety or more? No. [HL 3] So Grade A is skipped. [HL 4] Second rung. Seventy five or more? No, seventy two is smaller. [HL 5] Skipped. [HL 6] Third rung. Sixty or more? Yes. [HL 7] So Grade C prints. [HL 8] Python never looks at else. [HL 9] That last line is a safety net for everything below sixty.",
+      "code": {
+        "file": "grade.py",
+        "source": "marks = 72\nif marks >= 90:\n    print(\"Grade A\")\nelif marks >= 75:\n    print(\"Grade B\")\nelif marks >= 60:\n    print(\"Grade C\")\nelse:\n    print(\"Grade D\")",
+        "output": "Grade C"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 94,
+      "lengthSec": 32,
+      "onScreen": "Two tags, age and price, tied to an int each",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the end state. Age is tied to the int sixty five. Price is tied to the int seventy. Only one of the four branches ran, and only that branch tied the name price to a value. If no branch runs, the name price does not exist. That is why we added a final else."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "ticket.py: a ticket price chosen by age",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK age=65] Age is sixty five. [HL 2] Under five? No. [HL 4] Under eighteen? No. [HL 6] Under sixty? No. [HL 8] Everything else lands in else, so the price is seventy, a senior discount. [HL 10] Print the chosen price. Notice that every branch ties the same name, price. That way the last line always has a price to print.",
+      "code": {
+        "file": "ticket.py",
+        "source": "age = 65\nif age < 5:\n    price = 0\nelif age < 18:\n    price = 50\nelif age < 60:\n    price = 100\nelse:\n    price = 70\nprint(\"Ticket price:\", price)",
+        "output": "Ticket price: 70"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python ticket.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as ticket dot py. In the terminal, type python, space, ticket dot py. Ticket price, seventy."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: elif adds more conditions after if. Two: Python checks from the top and runs only the first True branch. Three: Order matters: put the strictest condition first. Four: A final else catches everything that is left. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 216,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: conditions in the wrong order",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Marks are ninety five, a perfect grade A. But the program prints Grade C. Why? The first rung is, sixty or more. Ninety five passes it, and Python stops right there. The ninety test is never reached. Put the strictest condition first, and work down to the loosest."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 256,
+      "lengthSec": 8,
+      "onScreen": "Why did the elif ladder get a promotion? It was always one step ahead.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the elif ladder get a promotion? It was always one step ahead."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 264,
+      "lengthSec": 20,
+      "onScreen": "Task card: turn a temperature into Cold, Warm or Hot",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make temp equals 24. Print Cold if below 15, Warm if below 30, and Hot otherwise. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 284,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 15 · and, or, not and truthiness",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: and, or and not. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "marks = 95\nif marks >= 60:\n    print(\"Grade C\")\nelif marks >= 90:\n    print(\"Grade A\")",
+    "error": "Python output (it runs, but the answer is wrong):\n\nGrade C",
+    "fixed": "marks = 95\nif marks >= 90:\n    print(\"Grade A\")\nelif marks >= 60:\n    print(\"Grade C\")",
+    "why": "Python stops at the first True condition, so a loose test placed first hides every stricter test below it."
+  },
+  "pun": "\"Why did the elif ladder get a promotion? It was always one step ahead.\"",
+  "challenge": "Make temp = 24. Print Cold if below 15, Warm if below 30, and Hot otherwise.",
+  "challengeAnswer": "Use if temp < 15: Cold, elif temp < 30: Warm, else: Hot. With 24 it prints Warm.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is elif?",
+      "hook": "\"Elif is short for else if.\"",
+      "script": "Elif is short for else if. It lets you add more conditions after the first if. Python checks them from the top, and runs the first branch whose condition is True. Then it skips everything else in the ladder. So exactly one branch runs. Think of climbing down a ladder until a rung holds your weight. Use elif whenever you have three or more choices. Keep coding, says Xecxec!",
+      "onScreen": "IF · ELIF · ELSE",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "A ladder of conditions.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "elif",
+        "conditions",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "First True wins",
+      "hook": "\"Here is the golden rule of the elif ladder.\"",
+      "script": "Here is the golden rule of the elif ladder. Python stops at the first True condition. Marks are seventy two. Is it ninety or more? No. Seventy five or more? No. Sixty or more? Yes, so Grade C prints, and Python never looks at the rest. Only one branch runs, no matter how many conditions could be true. Remember this rule. Keep coding, says Xecxec!",
+      "onScreen": "FIRST TRUE WINS",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 37,
+      "caption": "Only one branch runs.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "elif",
+        "conditions",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "The last else",
+      "hook": "\"End your ladder with an else.\"",
+      "script": "End your ladder with an else. It catches everything that no condition matched. Without it, a value that fails every test runs nothing. Later lines can then use a name that does not exist. A final else is your safety net. Even a simple message like, invalid input, is better than silence. Add one every time. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "ELSE = SAFETY NET",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Catch everything left.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "elif",
+        "conditions",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Wrong order, wrong grade",
+      "hook": "\"Here is a sneaky bug.\"",
+      "script": "Here is a sneaky bug. Marks are ninety five, but the program prints Grade C. The first rung says, sixty or more. Ninety five passes that, so Python stops, and never reaches the ninety test. There is no error, only a wrong answer. Put the strictest condition first, and then work down to the loosest one. Test with a perfect score. Keep coding, says Xecxec!",
+      "onScreen": "95 → GRADE C ?!",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Order the rungs.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "elif",
+        "conditions",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the elif ladder get a promotion?\"",
+      "script": "Why did the elif ladder get a promotion? It was always one step ahead. Your challenge. Make temp equal twenty four. Print Cold if it is below fifteen. Print Warm if it is below thirty. Otherwise print Hot. Remember to put the strictest condition first. Then test fourteen, thirty, and forty. Post your code in the comments. Keep coding, says Xecxec! Full video: EP 14.",
+      "onScreen": "COLD, WARM OR HOT?",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try an elif ladder.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "elif",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "grade.py",
+      "source": "marks = 72\nif marks >= 90:\n    print(\"Grade A\")\nelif marks >= 75:\n    print(\"Grade B\")\nelif marks >= 60:\n    print(\"Grade C\")\nelse:\n    print(\"Grade D\")",
+      "output": "Grade C",
+      "lang": "python"
+    },
+    {
+      "file": "ticket.py",
+      "source": "age = 65\nif age < 5:\n    price = 0\nelif age < 18:\n    price = 50\nelif age < 60:\n    price = 100\nelse:\n    price = 70\nprint(\"Ticket price:\", price)",
+      "output": "Ticket price: 70",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

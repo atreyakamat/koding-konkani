@@ -4,13 +4,19 @@ import { fonts } from "../theme/fonts";
 import { readableOn } from "../theme/contrast";
 import { Panel, Chip } from "../ui";
 import { typewriterChars, enterProgress } from "../lib/motion";
+import { textTransformFor } from "../lib/textCase";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
 export type OutroProps = BaseSceneProps & {
   nextEp: number;
-  nextTitle: string;
+  /** Missing after the last episode: the card then says thank you instead. */
+  nextTitle?: string;
 };
+
+const FINALE_LINE = "86 episodes. You did it.";
+/** Long headlines drop a size so they stay within three lines of the card. */
+const headlineSize = (text: string): number => (text.length > 26 ? 64 : 76);
 
 const SIGN_OFF = "Keep coding, says Xecxec!";
 
@@ -23,6 +29,10 @@ export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durati
   const cardProgress = enterProgress(frame, 0, 12);
   const signOffStart = Math.round(durationInFrames * 0.35);
   const visibleChars = typewriterChars(SIGN_OFF, frame, signOffStart, 1);
+  const isFinale = nextTitle === undefined;
+  const headline = isFinale
+    ? FINALE_LINE
+    : `EP ${String(nextEp).padStart(2, "0")} · ${nextTitle}`;
 
   return (
     <SceneFrame colours={colours} mascot={{ pose: "dance", side: "left", size: 380, bottom: 60 }}>
@@ -42,23 +52,24 @@ export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durati
               translate: `0px ${(1 - cardProgress) * 40}px`,
             }}
           >
-            <Panel background={palette.cream}>
+            <Panel background={palette.cream} padding={44}>
               <Chip
-                text="Next episode"
+                text={isFinale ? "Thank you" : "Next episode"}
+                fontSize={44}
                 background={colours.accent}
                 color={readableOn(colours.accent)}
               />
               <div
                 style={{
                   fontFamily: fonts.title,
-                  fontSize: 52,
+                  fontSize: headlineSize(headline),
                   color: palette.ink,
                   marginTop: 20,
-                  textTransform: "uppercase",
+                  textTransform: textTransformFor(headline),
                   lineHeight: 1.2,
                 }}
               >
-                EP {String(nextEp).padStart(2, "0")} · {nextTitle}
+                {headline}
               </div>
             </Panel>
           </div>
@@ -68,7 +79,7 @@ export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durati
               style={{
                 fontFamily: fonts.body,
                 fontWeight: 700,
-                fontSize: 38,
+                fontSize: 60,
                 color: readableOn(colours.bg),
               }}
             >

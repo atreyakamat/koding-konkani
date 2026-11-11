@@ -1,0 +1,352 @@
+{
+  "ep": 63,
+  "title": "__init__ and attributes",
+  "module": 7,
+  "lengthSec": 304,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "write an __init__ method",
+    "store data in self attributes",
+    "pass arguments when creating an object"
+  ],
+  "youtube": {
+    "title": "Python __init__ and Attributes Explained | Python Programming EP 63",
+    "description": "In this episode you will write an __init__ method, store data in self attributes and pass arguments when creating an object, with Xecxec the crab. 0:00 Intro · 0:15 The setup method · 0:59 Setting up with __init__ · 1:39 Attributes live inside each object · 2:09 Second program · 3:09 Recap · 3:41 Bug of the Day · 4:29 Challenge · 4:49 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "The setup method"
+      },
+      {
+        "t": "0:59",
+        "label": "Setting up with __init__"
+      },
+      {
+        "t": "1:39",
+        "label": "Attributes live inside each object"
+      },
+      {
+        "t": "2:09",
+        "label": "Second program"
+      },
+      {
+        "t": "3:09",
+        "label": "Recap"
+      },
+      {
+        "t": "3:41",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:29",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:49",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python __init__",
+      "python constructor",
+      "python self attributes",
+      "python class init"
+    ],
+    "thumbnail": {
+      "text": "__INIT__",
+      "visual": "big text \"__INIT__\" in tomato on peach; Xecxec stamping name and marks onto a new student card; thin black border and drop shadow.",
+      "pose": "Xecxec stamping name and marks onto a new student card"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 63 · __INIT__",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Setting attributes one by one is slow and error-prone. Today a special method sets them up for us."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 44,
+      "onScreen": "\"The setup method\": three numbered lines (1. __init__ runs when the object is created; 2. self.name = name stores data on the object; 3. Arguments go in the brackets of the class name) and an analogy card: a form that every new student fills in at the door, before they enter the class",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Python has a special method named init, with two underscores on each side. It runs automatically, the moment an object is created. Inside it, you store data on the object with self dot name equals name. The words after self are the arguments you pass when you build the object. Think of a form every new student fills in at the door. Nobody enters the class without name and marks. The values stored on the object are called attributes."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 59,
+      "lengthSec": 40,
+      "onScreen": "student.py: a Student built with a name and marks",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The Student blueprint. [HL 2] The special method init. Self first, then the values we want. [HL 3] Store the name on this object. [HL 4] Store the marks on this object. [HL 6] Build a student with a name and marks. Python calls init for us, and passes the arguments after self. [HL 7] A second student. [HL 8] Asha ninety one. [HL 9] Ravi seventy eight. [HL 10] We can change an attribute later. [HL 11] Asha is now ninety five, and Ravi is still seventy eight.",
+      "code": {
+        "file": "student.py",
+        "source": "class Student:\n    def __init__(self, name, marks):\n        self.name = name\n        self.marks = marks\n\na = Student(\"Asha\", 91)\nb = Student(\"Ravi\", 78)\nprint(a.name, a.marks)\nprint(b.name, b.marks)\na.marks = 95\nprint(a.marks, b.marks)",
+        "output": "Asha 91\nRavi 78\n95 78"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 99,
+      "lengthSec": 30,
+      "onScreen": "The names a and b tied to two Student objects, each holding its own name and marks",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name a is tied to one student object. Inside it live two attributes, name and marks. The name b is tied to another student, with its own attributes. Same blueprint, different data. Init filled both objects in, at the moment they were born."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 129,
+      "lengthSec": 40,
+      "onScreen": "rectangle.py: init with a default value, and a method that uses the attributes",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A Rectangle class. [HL 2] Init takes a width, and a height that defaults to one. [HL 3] Store the width. [HL 4] Store the height. [HL 6] A method named area. [HL 7] It multiplies the two attributes of this object, and returns the answer. [HL 9] Four by three. [HL 10] Five, with the default height of one. [HL 11] Twelve. [HL 12] Five. [HL 13] And the default height is one.",
+      "code": {
+        "file": "rectangle.py",
+        "source": "class Rectangle:\n    def __init__(self, width, height=1):\n        self.width = width\n        self.height = height\n\n    def area(self):\n        return self.width * self.height\n\nr1 = Rectangle(4, 3)\nr2 = Rectangle(5)\nprint(r1.area())\nprint(r2.area())\nprint(r2.height)",
+        "output": "12\n5\n1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 169,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python rectangle.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as rectangle dot py. In the terminal, type python, space, rectangle dot py. Asha 91, Ravi 78, then 95 78. Then 12, 5 and 1."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 189,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: dunder init runs automatically when an object is created. Two: self dot name equals name stores data on the object. Three: Arguments in Student of ... go to dunder init after self. Four: Default values work just like in functions. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 221,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: forgot self. on the attribute",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We wrote name equals name, without self dot. That creates a plain local variable, which vanishes when init ends. The object has no name at all. So s dot name raises an attribute error, Student object has no attribute name. Always write self dot, to store data on the object."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 261,
+      "lengthSec": 8,
+      "onScreen": "Why was the object so well prepared? It always had a good init.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why was the object so well prepared? It always had a good init."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 269,
+      "lengthSec": 20,
+      "onScreen": "Task card: build a Book class",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write a Book class whose init takes a title and a price. Add a method discount of percent that returns the reduced price. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 289,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 64 · Methods",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: methods. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "class Student:\n    def __init__(self, name):\n        name = name\n\ns = Student(\"Asha\")\nprint(s.name)",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"student.py\", line 6, in <module>\n    print(s.name)\n          ^^^^^^\nAttributeError: 'Student' object has no attribute 'name'",
+    "fixed": "class Student:\n    def __init__(self, name):\n        self.name = name\n\ns = Student(\"Asha\")\nprint(s.name)",
+    "why": "Without self. the value is stored in a local variable that disappears when init ends. Only self.name = ... puts data on the object."
+  },
+  "pun": "\"Why was the object so well prepared? It always had a good init.\"",
+  "challenge": "Write a Book class whose init takes a title and a price. Add a method discount(percent) that returns the reduced price.",
+  "challengeAnswer": "class Book: def __init__(self, title, price): self.title = title; self.price = price. def discount(self, percent): return self.price * (100 - percent) / 100.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is init",
+      "hook": "\"Init is a special method with two underscores on each side.\"",
+      "script": "Init is a special method with two underscores on each side. Python runs it automatically, right when an object is created. Use it to set up the object's data. Think of a form every new student fills in at the door. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "__init__ runs on creation",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Init sets up the object.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "init",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "self dot name",
+      "hook": "\"Inside init, write self dot name equals name.\"",
+      "script": "Inside init, write self dot name equals name. That stores the value on the object, as an attribute. Without the self dot, the value is only a local variable, and it vanishes. Self dot is what makes data stick to the object. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "self.name = name",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Self dot makes data stick.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "init",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Passing arguments",
+      "hook": "\"When you write Student with Asha and ninety one in brackets, Python builds the object and calls init.\"",
+      "script": "When you write Student with Asha and ninety one in brackets, Python builds the object and calls init. The two values go into init after self. Each object you build gets its own name and marks, stored in its own attributes. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "Student(\"Asha\", 91)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Arguments go to init.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "init",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The missing self",
+      "hook": "\"A silent beginner bug.\"",
+      "script": "A silent beginner bug. In init you write name equals name, with no self dot. No error yet. Later you print s dot name, and Python says, attribute error, Student object has no attribute name. The value was never stored on the object. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "AttributeError: no attribute 'name'",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Always write self dot.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "init",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why was the object so well prepared?\"",
+      "script": "Why was the object so well prepared? It always had a good init. Your challenge. Write a Book class. Init takes a title and a price. Add a method called discount that takes a percent and returns the lower price. Test it on one book. Try it in your own file and watch what happens. Keep coding, says Xecxec! Full video: EP 63.",
+      "onScreen": "Challenge: Book with discount",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Write a Book class.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "student.py",
+      "source": "class Student:\n    def __init__(self, name, marks):\n        self.name = name\n        self.marks = marks\n\na = Student(\"Asha\", 91)\nb = Student(\"Ravi\", 78)\nprint(a.name, a.marks)\nprint(b.name, b.marks)\na.marks = 95\nprint(a.marks, b.marks)",
+      "output": "Asha 91\nRavi 78\n95 78",
+      "lang": "python"
+    },
+    {
+      "file": "rectangle.py",
+      "source": "class Rectangle:\n    def __init__(self, width, height=1):\n        self.width = width\n        self.height = height\n\n    def area(self):\n        return self.width * self.height\n\nr1 = Rectangle(4, 3)\nr2 = Rectangle(5)\nprint(r1.area())\nprint(r2.area())\nprint(r2.height)",
+      "output": "12\n5\n1",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

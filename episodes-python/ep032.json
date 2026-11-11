@@ -1,0 +1,347 @@
+{
+  "ep": 32,
+  "title": "Mini project: Marks tracker",
+  "module": 3,
+  "lengthSec": 301,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "collect marks from the user into a list",
+    "find the highest mark and the average",
+    "guard against dividing by zero"
+  ],
+  "youtube": {
+    "title": "Python Mini Project: Marks Tracker With Lists | Python Programming EP 32",
+    "description": "In this episode you will collect marks from the user into a list, find the highest mark and the average and guard against dividing by zero, with Xecxec the crab. 0:00 Intro · 0:15 Planning the tracker · 0:54 The tracker · 1:34 A list that grew · 2:04 Second program · 3:04 Recap · 3:38 Bug of the Day · 4:26 Challenge · 4:46 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Planning the tracker"
+      },
+      {
+        "t": "0:54",
+        "label": "The tracker"
+      },
+      {
+        "t": "1:34",
+        "label": "A list that grew"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:38",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:26",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:46",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python mini project",
+      "python marks tracker",
+      "python average list",
+      "zerodivisionerror"
+    ],
+    "thumbnail": {
+      "text": "MARKS TRACKER",
+      "visual": "big text \"MARKS TRACKER\" in tomato on peach; Xecxec holding a report card with a pencil and a list of marks; thin black border and drop shadow.",
+      "pose": "Xecxec holding a report card with a pencil and a list of marks"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 32 · MARKS TRACKER",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Time for a second project. Today we build a marks tracker with a list."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 39,
+      "onScreen": "\"Planning the tracker\": three numbered lines (1. Ask for each mark and append it to a list; 2. Use max, sum and len for the results; 3. Guard the average against an empty list) and an analogy card: a teacher's register: collect the marks, find the topper, then work out the class average",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the plan. Ask the user for three marks, and append each one to a list. Then report the marks, the highest one, and the average. We use the tools from this module. A loop, a list, append, and the built in functions max, sum and len. And one important guard. An average of an empty list divides by zero. We see that in the bug of the day."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "tracker.py: collect three marks, then report",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] An empty list to collect the marks. [HL 2] A loop that runs three times. [HL 3] Ask for a mark, convert it with int, and append it to the list. [HL 4] Print the whole list. [HL 5] Max finds the highest mark. [HL 6] Sum divided by len is the average. Round makes it neat, to one decimal."
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 94,
+      "lengthSec": 30,
+      "onScreen": "The name marks tied to a list of three ints",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the end state. The name marks is tied to one list, holding the three ints that the user typed. We started with an empty list, and appended once in each round. The list grew each time, but the name never moved. Max, sum and len all read this same list."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 124,
+      "lengthSec": 40,
+      "onScreen": "pass_count.py: count how many marks are 40 or above",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Five marks. [HL 2] A counter, starting at zero. [HL 3] Loop over the marks. [HL 4] If a mark is forty or more, [HL 5] count one more pass. [TRACK passed=3] Three marks passed. [HL 6] Print the passes out of the total. [HL 7] And the top and lowest marks, with max and min.",
+      "code": {
+        "file": "pass_count.py",
+        "source": "marks = [72, 35, 90, 28, 64]\npassed = 0\nfor m in marks:\n    if m >= 40:\n        passed = passed + 1\nprint(\"Passed:\", passed, \"of\", len(marks))\nprint(\"Top:\", max(marks), \"Lowest:\", min(marks))",
+        "output": "Passed: 3 of 5\nTop: 90 Lowest: 28"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 164,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python pass_count.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as pass_count dot py. In the terminal, type python, space, pass_count dot py. Passed three of five. Top ninety, lowest twenty eight."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 184,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Start with an empty list and append in a loop. Two: max, min, sum and len work on lists of numbers. Three: A counter with an if counts how many pass a test. Four: Check for an empty list before you divide by its length. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 218,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: average of an empty list",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The list is empty, so len is zero. The sum is zero, and dividing by zero is a zero division error. Python says, division by zero. Check the list first. An empty list counts as False, so a plain if marks does the job. Then print a friendly message instead of crashing."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 258,
+      "lengthSec": 8,
+      "onScreen": "Why did the marks tracker get top marks? It always added up.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the marks tracker get top marks? It always added up."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 266,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a Failed count to the tracker",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Extend the pass counter: also print how many marks are below 40. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 286,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 33 · Dictionaries",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Module three is done! Next time: dictionaries, where every value has its own label. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "marks = []\nprint(sum(marks) / len(marks))",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"tracker.py\", line 2, in <module>\n    print(sum(marks) / len(marks))\n          ~~~~~~~~~~~^~~~~~~~~~~~\nZeroDivisionError: division by zero",
+    "fixed": "marks = []\nif marks:\n    print(sum(marks) / len(marks))\nelse:\n    print(\"No marks yet\")",
+    "why": "An empty list has length zero, and dividing by zero raises an error; test the list before you divide."
+  },
+  "pun": "\"Why did the marks tracker get top marks? It always added up.\"",
+  "challenge": "Extend the pass counter: also print how many marks are below 40.",
+  "challengeAnswer": "Add failed = len(marks) - passed and print(\"Failed:\", failed). With the sample marks it prints Failed: 2.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The tracker plan",
+      "hook": "\"Let us build a marks tracker.\"",
+      "script": "Let us build a marks tracker. Start with an empty list. A loop asks for three marks, and appends each one. Then we print the whole list, the highest mark with max, and the average with sum divided by len. It uses the loop, the list, and the built in functions you already know. Plan on paper first, then type it. Keep coding, says Xecxec!",
+      "onScreen": "A MARKS TRACKER",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Our second project.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "lists",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Max, min, sum, len",
+      "hook": "\"Four built in functions do the heavy work on a list of numbers.\"",
+      "script": "Four built in functions do the heavy work on a list of numbers. Max gives the biggest. Min gives the smallest. Sum adds everything. Len counts the items. Sum divided by len is the average. You do not need a loop for any of them. Learn these four, and a list of marks becomes a mini report in four lines. Keep coding, says Xecxec!",
+      "onScreen": "MAX · MIN · SUM · LEN",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 36,
+      "caption": "Four helpers.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "lists",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Count the passes",
+      "hook": "\"To count passes, use a counter.\"",
+      "script": "To count passes, use a counter. Start at zero. Loop over the marks. If a mark is forty or more, add one. After the loop, the counter says how many passed. Pair it with len, and you can print, passed three of five. This is the same counter pattern from the loop patterns episode, now on a list. Keep coding, says Xecxec!",
+      "onScreen": "PASSED = PASSED + 1",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "A counter on a list.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "lists",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Divide by zero",
+      "hook": "\"Here is the bug that crashes trackers.\"",
+      "script": "Here is the bug that crashes trackers. The list is empty, so len is zero. Sum divided by len is a division by zero, and Python raises a zero division error. Check the list first. An empty list counts as False, so a simple if marks is enough. Then print a friendly message, and the program survives. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "ZERODIVISIONERROR",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Guard the average.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "lists",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the marks tracker get top marks?\"",
+      "script": "Why did the marks tracker get top marks? It always added up. Your challenge. Take the pass counter program, and extend it. Also print how many marks are below forty. You can count them with a second counter, or subtract the passes from the length. Which way is shorter? Post your improved version in the comments below, and show your output. Keep coding, says Xecxec! Full video: EP 32.",
+      "onScreen": "COUNT THE FAILS",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Extend the tracker.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "marks = []\nfor n in range(3):\n    marks.append(int(input(\"Mark: \")))\nprint(\"Marks:\", marks)\nprint(\"Highest:\", max(marks))\nprint(\"Average:\", round(sum(marks) / len(marks), 1))",
+      "output": "Mark: Mark: Mark: Marks: [72, 85, 90]\nHighest: 90\nAverage: 82.3",
+      "lang": "python"
+    },
+    {
+      "file": "pass_count.py",
+      "source": "marks = [72, 35, 90, 28, 64]\npassed = 0\nfor m in marks:\n    if m >= 40:\n        passed = passed + 1\nprint(\"Passed:\", passed, \"of\", len(marks))\nprint(\"Top:\", max(marks), \"Lowest:\", min(marks))",
+      "output": "Passed: 3 of 5\nTop: 90 Lowest: 28",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

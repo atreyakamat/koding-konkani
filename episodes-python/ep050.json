@@ -1,0 +1,345 @@
+{
+  "ep": 50,
+  "title": "Mini project: Calculator",
+  "module": 5,
+  "lengthSec": 300,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "structure a program with a function and a loop",
+    "dispatch operations with if/elif or a dictionary",
+    "handle division by zero"
+  ],
+  "youtube": {
+    "title": "Python Mini Project: Build a Calculator | Python Programming EP 50",
+    "description": "In this episode you will structure a program with a function and a loop, dispatch operations with if/elif or a dictionary and handle division by zero, with Xecxec the crab. 0:00 Intro · 0:15 Planning the calculator · 0:52 The calculator · 1:32 Program structure · 2:06 Second program · 3:06 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Planning the calculator"
+      },
+      {
+        "t": "0:52",
+        "label": "The calculator"
+      },
+      {
+        "t": "1:32",
+        "label": "Program structure"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:37",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python calculator",
+      "python mini project",
+      "python functions project",
+      "zerodivisionerror"
+    ],
+    "thumbnail": {
+      "text": "BUILD A CALCULATOR",
+      "visual": "big text \"BUILD A CALCULATOR\" in tomato on peach; Xecxec pressing buttons on a big calculator with claws; thin black border and drop shadow.",
+      "pose": "Xecxec pressing buttons on a big calculator with claws"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 50 · BUILD A CALCULATOR",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Time for the project that closes the functions module. Today we build a calculator."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 37,
+      "onScreen": "\"Planning the calculator\": three numbered lines (1. A calculate function does one job: a op b; 2. A loop asks for a calculation until q; 3. Division by zero is checked, not allowed to crash) and an analogy card: a shop counter: the customer says what they want, and the shopkeeper picks the right action",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the plan. One function, calculate, takes two numbers and an operator, and returns the answer. A loop asks the user for a calculation, until they type q. The input is a single line like six star seven, which we split into three parts. We convert the numbers to floats. And we guard against dividing by zero. Small functions, a loop, and decisions, working together."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 52,
+      "lengthSec": 40,
+      "onScreen": "calc.py: calculate() plus a loop that reads lines like 6 * 7",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The function takes two numbers and an operator. [HL 2] If the operator is plus, [HL 3] return the sum. [HL 4] Else if minus, [HL 5] the difference. [HL 6] Star, [HL 7] the product. [HL 8] Slash, [HL 9] the quotient. [HL 10] Anything else, [HL 11] returns None. [HL 13] A loop that runs until we break. [HL 14] Ask for a line. [HL 15] If it is q, [HL 16] leave the loop. [HL 17] Split the line into three parts and unpack them. [HL 18] Convert the numbers to floats, call calculate, and print the answer."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 92,
+      "lengthSec": 34,
+      "onScreen": "Boxes: input line, split, calculate(a, op, b), print; an arrow loops back until q",
+      "animation": "A call arrow jumps from the call line up to the def, the body lines light up one by one, then the arrow returns to the line after the call",
+      "sfx": [],
+      "narration": "Here is the structure. The loop asks for a line. Split cuts it into three parts. Calculate does the real work. Print shows the answer. Then back to the top, until the user types q. Notice how the pieces are separate. The function knows nothing about input and output. That makes it easy to test, and easy to reuse."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "dispatch.py: operators mapped to lambdas",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] A dictionary. Each key is an operator, and each value is a lambda that does the job. This replaces the if and elif ladder. [HL 2] Look up the plus key, and call the lambda that comes back, with two and three. Five. [HL 3] The star key, with four and five. Twenty. Adding a new operator now means adding one line to the dictionary.",
+      "code": {
+        "file": "dispatch.py",
+        "source": "ops = {\"+\": lambda a, b: a + b, \"*\": lambda a, b: a * b}\nprint(ops[\"+\"](2, 3))\nprint(ops[\"*\"](4, 5))",
+        "output": "5\n20"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python dispatch.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as dispatch dot py. In the terminal, type python, space, dispatch dot py. Forty two point zero, then three point zero."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: Put the real work in a small function. Two: A loop with break handles repeated input. Three: A dictionary of functions can replace a long if and elif ladder. Four: Check for a zero divisor before you divide. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 217,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: dividing by zero",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We divide ten by zero. Python says, zero division error, division by zero. Maths has no answer, so Python stops. In the calculator, a user can type any numbers, so we must guard. Check that the divisor is not zero, and print a friendly message otherwise."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 257,
+      "lengthSec": 8,
+      "onScreen": "Why did the calculator go to the beach? It wanted to add some sun.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the calculator go to the beach? It wanted to add some sun."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 265,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a power operator",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Add an operator ** to the calculator that returns a ** b, and test it with 2 ** 8. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 285,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 51 · Reading files",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Module five is done! Next time: reading files from your computer. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "print(10 / 0)",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"calc.py\", line 1, in <module>\n    print(10 / 0)\n          ~~~^~~\nZeroDivisionError: division by zero",
+    "fixed": "b = 0\nif b != 0:\n    print(10 / b)\nelse:\n    print(\"Cannot divide by zero\")",
+    "why": "Division by zero is undefined, so Python raises a ZeroDivisionError; test the divisor before you divide."
+  },
+  "pun": "\"Why did the calculator go to the beach? It wanted to add some sun.\"",
+  "challenge": "Add an operator ** to the calculator that returns a ** b, and test it with 2 ** 8.",
+  "challengeAnswer": "Add elif op == \"**\": return a ** b. Typing 2 ** 8 prints 256.0.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Calculator plan",
+      "hook": "\"Let us build a calculator.\"",
+      "script": "Let us build a calculator. One function, calculate, takes two numbers and an operator, and returns the answer. A loop asks the user for a line like six star seven, until they type q. We split the line, convert the numbers, call the function, and print the result. Small pieces that each do one job, working together. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "BUILD A CALCULATOR",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 40,
+      "caption": "Our functions project.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "calculator",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "One job per function",
+      "hook": "\"Keep the calculate function pure.\"",
+      "script": "Keep the calculate function pure. It takes values in, and returns a value out. It does not ask for input, and it does not print. That makes it easy to test, and easy to reuse. The loop handles the talking to the user. Calculate only does maths. Separate the jobs, and your programs stay clear as they grow. Keep coding, says Xecxec!",
+      "onScreen": "CALCULATE(A, OP, B)",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "Keep functions focused.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "calculator",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "A dictionary of functions",
+      "hook": "\"A long if and elif ladder can become a dictionary.\"",
+      "script": "A long if and elif ladder can become a dictionary. Each key is an operator, and each value is a lambda that does the job. Ops, bracket plus, close bracket, open bracket, two, three, close bracket, gives five. Adding a new operator means adding one line. Functions are values, so a dictionary can hold them, like anything else. Keep coding, says Xecxec!",
+      "onScreen": "OPS[\"+\"](2, 3)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 35,
+      "caption": "Functions in a dictionary.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "calculator",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Zero division",
+      "hook": "\"Every calculator needs this guard.\"",
+      "script": "Every calculator needs this guard. Ten divided by zero has no answer. Python raises a zero division error, division by zero, and your program stops. The user typed the numbers, so you must expect zero. Check that the divisor is not zero, before you divide. Print a friendly message instead. Defensive code keeps programs running. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "ZERODIVISIONERROR",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Guard the divisor.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "calculator",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the calculator go to the beach?\"",
+      "script": "Why did the calculator go to the beach? It wanted to add some sun. Your challenge. Add a new operator to the calculator, double star, which raises the first number to the power of the second. Test it with two double star eight. You should see two fifty six point zero. Remember to add a new branch to the ladder. Share your code below. Keep coding, says Xecxec! Full video: EP 50.",
+      "onScreen": "ADD A POWER OPERATOR",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 40,
+      "caption": "Extend the calculator.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "project",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "def calculate(a, op, b):\n    if op == \"+\":\n        return a + b\n    elif op == \"-\":\n        return a - b\n    elif op == \"*\":\n        return a * b\n    elif op == \"/\":\n        return a / b\n    else:\n        return None\n\nwhile True:\n    choice = input(\"a op b (or q): \")\n    if choice == \"q\":\n        break\n    a, op, b = choice.split()\n    print(calculate(float(a), op, float(b)))",
+      "output": "a op b (or q): 42.0\na op b (or q): 3.0\na op b (or q): ",
+      "lang": "python"
+    },
+    {
+      "file": "dispatch.py",
+      "source": "ops = {\"+\": lambda a, b: a + b, \"*\": lambda a, b: a * b}\nprint(ops[\"+\"](2, 3))\nprint(ops[\"*\"](4, 5))",
+      "output": "5\n20",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "ep": 44,
+  "title": "*args and **kwargs",
+  "module": 5,
+  "lengthSec": 304,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "accept any number of values with *args",
+    "accept named extras with **kwargs",
+    "unpack a list into a call with *"
+  ],
+  "youtube": {
+    "title": "Python *args and **kwargs Explained | Python Programming EP 44",
+    "description": "In this episode you will accept any number of values with *args, accept named extras with **kwargs and unpack a list into a call with *, with Xecxec the crab. 0:00 Intro · 0:15 Any number of arguments · 0:56 Collect with a star · 1:36 Collect and spread · 2:07 Second program · 3:07 Recap · 3:41 Bug of the Day · 4:29 Challenge · 4:49 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Any number of arguments"
+      },
+      {
+        "t": "0:56",
+        "label": "Collect with a star"
+      },
+      {
+        "t": "1:36",
+        "label": "Collect and spread"
+      },
+      {
+        "t": "2:07",
+        "label": "Second program"
+      },
+      {
+        "t": "3:07",
+        "label": "Recap"
+      },
+      {
+        "t": "3:41",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:29",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:49",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python args kwargs",
+      "python variable arguments",
+      "python unpacking arguments",
+      "typeerror missing arguments"
+    ],
+    "thumbnail": {
+      "text": "ANY NUMBER OF ARGS",
+      "visual": "big text \"ANY NUMBER OF ARGS\" in tomato on peach; Xecxec catching a stream of fish into a net labelled *args; thin black border and drop shadow.",
+      "pose": "Xecxec catching a stream of fish into a net labelled *args"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 44 · ANY NUMBER OF ARGS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Sometimes you do not know how many values a function gets. Today we make functions that take any number."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 41,
+      "onScreen": "\"Any number of arguments\": three numbered lines (1. *numbers collects extra values into a tuple; 2. **info collects named extras into a dictionary; 3. * in a call spreads a list into separate values) and an analogy card: a net on a fishing boat: it takes however many fish come, big haul or small",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A star in front of a parameter collects all the extra values into a tuple. A double star collects named extras into a dictionary. Think of a net on a fishing boat. It takes however many fish come. The names args and kwargs are only a habit, the stars do the work. And in a call, a star spreads a list out into separate values. Remember that star pair, one collects, the other spreads."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 56,
+      "lengthSec": 40,
+      "onScreen": "varargs.py: a total of any number of values",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] A star before the parameter. Whatever values arrive, Python collects them into a tuple called numbers. [HL 2] Sum adds up the tuple. [HL 3] Three values, total six. [HL 4] Two values, thirty. [HL 5] No values at all. The tuple is empty, and the sum is zero. One function, any number of calls.",
+      "code": {
+        "file": "varargs.py",
+        "source": "def total(*numbers):\n    return sum(numbers)\nprint(total(1, 2, 3))\nprint(total(10, 20))\nprint(total())",
+        "output": "6\n30\n0"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 96,
+      "lengthSec": 31,
+      "onScreen": "Left: values dropping into a net labelled *args. Right: a list being spread into separate boxes by a star in the call",
+      "animation": "Values fall into a net and become one box; a list opens and its items fly into separate parameter slots",
+      "sfx": [],
+      "narration": "Here is the pair. In a def line, the star collects. Separate values flow in, and one tuple comes out. In a call, the star spreads. One list goes in, and separate values flow out into the parameters. Collect on the way in, spread on the way out. Two directions of the same star."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 127,
+      "lengthSec": 40,
+      "onScreen": "kw.py: a function that takes any keyword arguments",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Two stars. Every named extra is collected into a dictionary called info. [HL 2] We loop over the pairs. [HL 3] Print each key and value. [HL 4] Two named values, name and city. Python builds the dictionary for us. Name equals Asha. City equals Panjim. This is how many library functions accept flexible options.",
+      "code": {
+        "file": "kw.py",
+        "source": "def describe(**info):\n    for key, value in info.items():\n        print(key, \"=\", value)\ndescribe(name=\"Asha\", city=\"Panjim\")",
+        "output": "name = Asha\ncity = Panjim"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 167,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python kw.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as kw dot py. In the terminal, type python, space, kw dot py. Name equals Asha. City equals Panjim."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 187,
+      "lengthSec": 34,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: star args collects extra positional values into a tuple. Two: star star kwargs collects extra named values into a dictionary. Three: A star in a call spreads a list into separate values. Four: args and kwargs are habit names. The stars are what matter. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 221,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: passing a list instead of spreading it",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We have a list of three numbers, and a function with three parameters. We pass the list as it is. Python says, type error, add is missing two required positional arguments. The whole list went into the first parameter. Put a star in front of the list in the call, and the items spread out."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 261,
+      "lengthSec": 8,
+      "onScreen": "Why did the function love stars? It could take everything the sky sent.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the function love stars? It could take everything the sky sent."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 269,
+      "lengthSec": 20,
+      "onScreen": "Task card: average of any number of marks",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Write average of star marks that returns the sum divided by the count, and print average of 70, 80, 90. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 289,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 45 · Scope: local vs global",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: scope, local and global. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "def add(a, b, c):\n    return a + b + c\nnums = [1, 2, 3]\nprint(add(nums))",
+    "error": "Python output (exactly as Python prints it):\n\nTraceback (most recent call last):\n  File \"varargs.py\", line 4, in <module>\n    print(add(nums))\n          ~~~^^^^^^\nTypeError: add() missing 2 required positional arguments: 'b' and 'c'",
+    "fixed": "def add(a, b, c):\n    return a + b + c\nnums = [1, 2, 3]\nprint(add(*nums))",
+    "why": "Without the star, the list is passed as one value for a, leaving b and c missing; the star spreads its items into separate arguments."
+  },
+  "pun": "\"Why did the function love stars? It could take everything the sky sent.\"",
+  "challenge": "Write average(*marks) that returns the sum divided by the count, and print average(70, 80, 90).",
+  "challengeAnswer": "Use def average(*marks): return sum(marks) / len(marks), then print(average(70, 80, 90)), which shows 80.0.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "Star args",
+      "hook": "\"A star in front of a parameter collects all extra values into a tuple.\"",
+      "script": "A star in front of a parameter collects all extra values into a tuple. Def total, star numbers. Call it with one value, or ten, or none. Python gathers them all into the tuple. Then you can loop over it, or sum it. It is how print itself accepts any number of things. Think of a fishing net that takes whatever fish come. Keep coding, says Xecxec!",
+      "onScreen": "DEF TOTAL(*NUMBERS):",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Take any number.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "args",
+        "kwargs",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Double star kwargs",
+      "hook": "\"A double star collects named extras into a dictionary.\"",
+      "script": "A double star collects named extras into a dictionary. Def describe, double star info. Call it with name equals Asha, city equals Panjim. Python builds a dictionary with those pairs. Then you can loop over it with items. This is how many library functions take flexible options, without needing a parameter for every possible setting. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "DEF F(**INFO):",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "Collect named extras.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "args",
+        "kwargs",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Spread with a star",
+      "hook": "\"A star also works in a call.\"",
+      "script": "A star also works in a call. If you have a list, and the function wants separate values, put a star in front of the list. Add, star nums. Python spreads the items into the parameters, one by one. In the def line, the star collects. In the call, the star spreads. Same symbol, opposite directions. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "ADD(*NUMS)",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "Spread a list.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "args",
+        "kwargs",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Missing arguments",
+      "hook": "\"Here is the bug.\"",
+      "script": "Here is the bug. You pass a whole list to a function that wants three values. Python says, type error, add is missing two required positional arguments. The entire list went into the first parameter. The fix is one character. A star before the list in the call, and the three items spread into the three parameters. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "TYPEERROR: MISSING 2 ARGUMENTS",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Add the star.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "args",
+        "kwargs",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the function love stars?\"",
+      "script": "Why did the function love stars? It could take everything the sky sent. Your challenge. Write a function called average, with a star marks parameter. It should return the sum of the marks divided by how many there are. Print average of seventy, eighty, ninety. You should see eighty point zero. Share your code in the comments below. Keep coding, says Xecxec! Full video: EP 44.",
+      "onScreen": "WRITE AVERAGE(*MARKS)",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Try star args.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "args",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "varargs.py",
+      "source": "def total(*numbers):\n    return sum(numbers)\nprint(total(1, 2, 3))\nprint(total(10, 20))\nprint(total())",
+      "output": "6\n30\n0",
+      "lang": "python"
+    },
+    {
+      "file": "kw.py",
+      "source": "def describe(**info):\n    for key, value in info.items():\n        print(key, \"=\", value)\ndescribe(name=\"Asha\", city=\"Panjim\")",
+      "output": "name = Asha\ncity = Panjim",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

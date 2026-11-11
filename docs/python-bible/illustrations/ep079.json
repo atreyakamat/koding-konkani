@@ -1,0 +1,106 @@
+{
+  "ep": 79,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "j1",
+      "shape": "box",
+      "text": "int",
+      "colour": "peach",
+      "col": 0,
+      "row": 2,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "j2",
+      "shape": "box",
+      "text": "str",
+      "colour": "peach",
+      "col": 3,
+      "row": 2,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "j3",
+      "shape": "box",
+      "text": "float",
+      "colour": "peach",
+      "col": 6,
+      "row": 2,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "s",
+      "shape": "token",
+      "text": "\"a\"",
+      "colour": "butter",
+      "col": 6,
+      "row": 0,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "mypy",
+      "shape": "box",
+      "text": "mypy checker",
+      "colour": "lilac",
+      "col": 9,
+      "row": 2,
+      "w": 2,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "j1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "j2"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "j3"
+    },
+    {
+      "t": 0.25,
+      "do": "show",
+      "target": "s",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.4,
+      "do": "move",
+      "target": "s",
+      "sfx": "whoosh",
+      "to": [
+        6,
+        2
+      ]
+    },
+    {
+      "t": 0.6,
+      "do": "show",
+      "target": "mypy",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.75,
+      "do": "cross",
+      "target": "s",
+      "sfx": "buzzer"
+    }
+  ]
+}

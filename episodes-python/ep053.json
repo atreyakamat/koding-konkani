@@ -1,0 +1,345 @@
+{
+  "ep": 53,
+  "title": "The with statement",
+  "module": 6,
+  "lengthSec": 309,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "use with to close files automatically",
+    "read and write inside a with block",
+    "see why forgetting close can lose data"
+  ],
+  "youtube": {
+    "title": "Python with open(): The Safe Way to Use Files | Python Programming EP 53",
+    "description": "In this episode you will use with to close files automatically, read and write inside a with block and see why forgetting close can lose data, with Xecxec the crab. 0:00 Intro · 0:15 Files that close themselves · 0:58 with and read · 1:38 Open, use, auto-close · 2:13 Second program · 3:13 Recap · 3:46 Bug of the Day · 4:34 Challenge · 4:54 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Files that close themselves"
+      },
+      {
+        "t": "0:58",
+        "label": "with and read"
+      },
+      {
+        "t": "1:38",
+        "label": "Open, use, auto-close"
+      },
+      {
+        "t": "2:13",
+        "label": "Second program"
+      },
+      {
+        "t": "3:13",
+        "label": "Recap"
+      },
+      {
+        "t": "3:46",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:34",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:54",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python with statement",
+      "python with open",
+      "python context manager basics",
+      "close file python"
+    ],
+    "thumbnail": {
+      "text": "WITH OPEN",
+      "visual": "big text \"WITH OPEN\" in tomato on peach; Xecxec holding a door that closes by itself after he walks through; thin black border and drop shadow.",
+      "pose": "Xecxec holding a door that closes by itself after he walks through"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 53 · WITH OPEN",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Forgetting to close a file is a classic mistake. Today we learn a form that cannot forget."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 43,
+      "onScreen": "\"Files that close themselves\": three numbered lines (1. with open(...) as f: opens the file for the block; 2. The file closes when the block ends; 3. It closes even if an error happens inside) and an analogy card: an automatic door: it closes behind you, even if you forget",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The with statement opens a file, and closes it for you when the block ends. Think of an automatic door. It closes behind you, even if you forget. Write with open, the name, as f, and a colon. The indented block can use f. When the block ends, even through an error, Python closes the file. Closing matters. Text that you write can stay in a buffer. It reaches the disk only when the file is closed."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 58,
+      "lengthSec": 40,
+      "onScreen": "withread.py: read inside a with block, then check closed",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The with line. Open the file, and tie it to f, for the block. [HL 2] Inside the block, read the text. [HL 3] The block has ended, so Python has already closed the file. We use the text we saved. Capital letters. [HL 4] The closed attribute confirms it. True. We never wrote close ourselves."
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 98,
+      "lengthSec": 35,
+      "onScreen": "A timeline: with opens the file, the block runs, the file closes, even if an error arrow appears in the middle",
+      "animation": "Arrows run from the program box to a file box and back; a lock icon appears while the file is open and clears when it is closed",
+      "sfx": [],
+      "narration": "Here is the timeline. The with line opens the file. The block runs. When the block ends, the file is closed. Now imagine an error in the middle of the block. Without with, the close line does not run. With with, Python still closes the file on the way out. That is why with is the standard way to work with files."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 133,
+      "lengthSec": 40,
+      "onScreen": "withwrite.py: write, then read back, both in with blocks",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Open for writing, inside with. [HL 2] Write one line. When this block ends, the file is closed and saved. [HL 3] Open the same file for reading, in a new with. [HL 4] Read it, strip the new line, and print. Hello. Two with blocks, and no close in sight.",
+      "code": {
+        "file": "withwrite.py",
+        "source": "with open(\"out.txt\", \"w\") as f:\n    f.write(\"Hello\\n\")\nwith open(\"out.txt\") as f:\n    print(f.read().strip())",
+        "output": "Hello"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 173,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python withwrite.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as withwrite dot py. In the terminal, type python, space, withwrite dot py. Hello."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 193,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: with open of ... as f: closes the file when the block ends. Two: It closes even when an error happens inside. Three: Write inside the block, and the data is saved when it ends. Four: Prefer with over open and close. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 226,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: forgetting to close",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We write Hello, and read the file straight back. It shows empty quotes. The text was still waiting in a buffer, because we never closed the file. Use with, and the file is closed when the block ends, so the text reaches the disk. Then reading it back works."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 266,
+      "lengthSec": 8,
+      "onScreen": "Why did the file love with? It never had to say goodbye.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the file love with? It never had to say goodbye."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 274,
+      "lengthSec": 20,
+      "onScreen": "Task card: read a file safely",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Use with to read notes dot txt and print its first line. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 294,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 54 · try and except",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: try and except. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "f = open(\"out.txt\", \"w\")\nf.write(\"Hello\")\nprint(repr(open(\"out.txt\").read()))",
+    "error": "Python output (it runs, but the answer is wrong):\n\n''",
+    "fixed": "with open(\"out.txt\", \"w\") as f:\n    f.write(\"Hello\")\nprint(repr(open(\"out.txt\").read()))",
+    "why": "Written text waits in a buffer until the file is closed or flushed, so reading before closing can show an empty file."
+  },
+  "pun": "\"Why did the file love with? It never had to say goodbye.\"",
+  "challenge": "Use with to read notes.txt and print its first line.",
+  "challengeAnswer": "Use with open(\"notes.txt\") as f: and print(f.readline().strip()). It prints Baga.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "The with statement",
+      "hook": "\"The with statement opens a file, and closes it for you.\"",
+      "script": "The with statement opens a file, and closes it for you. With open, the name, as f, and a colon. Everything indented below can use f. When the block ends, Python closes the file automatically. It is like an automatic door, that closes behind you. You never have to remember to call close yourself. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "WITH OPEN(...) AS F:",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Files that close themselves.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "with",
+        "files",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Even when errors happen",
+      "hook": "\"Here is the hidden power of with.\"",
+      "script": "Here is the hidden power of with. If an error happens inside the block, Python still closes the file on the way out. Without with, an error in the middle can skip your close line, and leave the file open. With with, the cleanup always happens. That makes your programs safer, and the code shorter at the same time. Keep coding, says Xecxec!",
+      "onScreen": "ALWAYS CLOSES",
+      "fromScenes": [
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "Safe cleanup.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "with",
+        "files",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Why closing matters",
+      "hook": "\"When you write to a file, the text may wait in a buffer in memory.\"",
+      "script": "When you write to a file, the text may wait in a buffer in memory. It reaches the disk when the file is closed. If you forget, another program, or even your own next line, may see an empty file. Closing is not just tidiness. It is how your data is really saved. With does it for you every time. Keep coding, says Xecxec!",
+      "onScreen": "CLOSE = SAVE",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 36,
+      "caption": "Buffers explained.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "with",
+        "files",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The empty read",
+      "hook": "\"A strange bug.\"",
+      "script": "A strange bug. You write Hello to a file, then read it straight back, and see empty quotes. The text was still waiting in the buffer, because you never closed the file. Use a with block for the writing. When the block ends, the file is closed, the data is saved, and the read finds your text. Then run it, and compare with what you predicted. Keep coding, says Xecxec!",
+      "onScreen": "REPR(...) → ''",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Close before reading.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "with",
+        "files",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the file love with?\"",
+      "script": "Why did the file love with? It never had to say goodbye. Your challenge. Use a with block to open notes dot txt, and read its first line. Print that line without the extra new line. You should see Baga. Then try printing every line in capital letters, with a loop, still inside the with block. Share your code below. Keep coding, says Xecxec! Full video: EP 53.",
+      "onScreen": "FIRST LINE WITH WITH",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Try with open.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "with",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "file1.python",
+      "source": "with open(\"notes.txt\") as f:\n    text = f.read()\nprint(text.upper())\nprint(f.closed)",
+      "output": "BAGA\nCOLVA\nANJUNA\n\nTrue",
+      "lang": "python"
+    },
+    {
+      "file": "withwrite.py",
+      "source": "with open(\"out.txt\", \"w\") as f:\n    f.write(\"Hello\\n\")\nwith open(\"out.txt\") as f:\n    print(f.read().strip())",
+      "output": "Hello",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

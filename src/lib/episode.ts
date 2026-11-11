@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { MemoryDataSchema } from "./memory.ts";
 
 /**
  * The 10 scene templates from CLAUDE.md, as the schema's canonical slugs.
@@ -63,6 +64,25 @@ const TraceStepSchema = z.object({
   sorted: z.array(z.number()).optional(),
 });
 
+/** One MemoryBoxes box: a variable's name, current value, and an illustrative
+ * (not real, not run-to-run stable) stack address. `pointsTo` names another
+ * box in the same scene for a pointer arrow. */
+const MemoryBoxSchema = z.object({
+  name: z.string().min(1),
+  value: z.string().min(1),
+  address: z.string().min(1),
+  isPointer: z.boolean().optional(),
+  pointsTo: z.string().optional(),
+});
+
+/** One Bug of the Day: the episode has one record; a second bug scene (EP10's bonus bug) carries its own on the scene. */
+const BugSchema = z.object({
+  wrong: z.string().min(1),
+  error: z.string().min(1),
+  fixed: z.string().min(1),
+  why: z.string().min(1),
+});
+
 const SceneSchema = z.object({
   id: z.number().int().positive(),
   template: SceneTemplateSchema,
@@ -75,6 +95,11 @@ const SceneSchema = z.object({
   narration: z.string(),
   code: CodeSchema.optional(),
   trace: z.array(TraceStepSchema).optional(),
+  boxes: z.array(MemoryBoxSchema).optional(),
+  /** Arrays, strings, grids and steps for a memory-boxes scene (see lib/memory.ts); instead of `boxes`. */
+  memory: MemoryDataSchema.optional(),
+  /** Only for a bug-of-the-day scene that is not the episode's main bug. */
+  bug: BugSchema.optional(),
 });
 
 const ChapterSchema = z.object({
@@ -98,13 +123,6 @@ const YouTubeSchema = z.object({
   chapters: z.array(ChapterSchema),
   tags: z.array(z.string()),
   thumbnail: ThumbnailSchema,
-});
-
-const BugSchema = z.object({
-  wrong: z.string().min(1),
-  error: z.string().min(1),
-  fixed: z.string().min(1),
-  why: z.string().min(1),
 });
 
 const ShortSchema = z.object({

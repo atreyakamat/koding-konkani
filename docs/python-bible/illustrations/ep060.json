@@ -1,0 +1,121 @@
+{
+  "ep": 60,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "load",
+      "shape": "box",
+      "text": "load",
+      "colour": "pastelBlue",
+      "col": 0,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "change",
+      "shape": "box",
+      "text": "change",
+      "colour": "butter",
+      "col": 4,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "save",
+      "shape": "box",
+      "text": "save",
+      "colour": "mint",
+      "col": 8,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "file",
+      "shape": "card",
+      "text": "contacts.json",
+      "colour": "cream",
+      "col": 4,
+      "row": 4,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "a1",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "load",
+      "to": "change"
+    },
+    {
+      "id": "a2",
+      "shape": "arrow",
+      "text": "",
+      "colour": "ink",
+      "from": "change",
+      "to": "save"
+    },
+    {
+      "id": "a3",
+      "shape": "arrow",
+      "text": "next run",
+      "colour": "ink",
+      "from": "save",
+      "to": "load"
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "file",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "load"
+    },
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "change"
+    },
+    {
+      "t": 0.1,
+      "do": "show",
+      "target": "save"
+    },
+    {
+      "t": 0.3,
+      "do": "draw",
+      "target": "a1",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.5,
+      "do": "draw",
+      "target": "a2",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.7,
+      "do": "draw",
+      "target": "a3",
+      "sfx": "whoosh"
+    },
+    {
+      "t": 0.85,
+      "do": "glow",
+      "target": "file",
+      "sfx": "ding"
+    }
+  ]
+}

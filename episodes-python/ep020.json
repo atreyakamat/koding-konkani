@@ -1,0 +1,352 @@
+{
+  "ep": 20,
+  "title": "The match statement",
+  "module": 2,
+  "lengthSec": 300,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "choose between exact values with match and case",
+    "combine values with the | symbol",
+    "add case _ as the catch-all"
+  ],
+  "youtube": {
+    "title": "Python match and case Explained | Python Programming EP 20",
+    "description": "In this episode you will choose between exact values with match and case, combine values with the | symbol and add case _ as the catch-all, with Xecxec the crab. 0:00 Intro · 0:15 Match and case · 0:54 A menu with match · 1:34 The value being matched · 2:06 Second program · 3:06 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Match and case"
+      },
+      {
+        "t": "0:54",
+        "label": "A menu with match"
+      },
+      {
+        "t": "1:34",
+        "label": "The value being matched"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:06",
+        "label": "Recap"
+      },
+      {
+        "t": "3:37",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python match case",
+      "python 3.10 match",
+      "switch statement python",
+      "case underscore"
+    ],
+    "thumbnail": {
+      "text": "MATCH AND CASE",
+      "visual": "big text \"MATCH AND CASE\" in tomato on peach; Xecxec at a restaurant counter holding a menu with numbered dishes; thin black border and drop shadow.",
+      "pose": "Xecxec at a restaurant counter holding a menu with numbered dishes"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 20 · MATCH AND CASE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "When one value can be one of many exact options, an elif ladder gets long. Today we meet a tidier tool, match."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 39,
+      "onScreen": "\"Match and case\": three numbered lines (1. match looks at one value; 2. Each case is a pattern to compare with; 3. case _ catches everything else) and an analogy card: a restaurant menu: you say the dish number, and the kitchen picks the matching dish",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The match statement looks at one value, and compares it with a list of cases. The first case that fits runs. Think of a restaurant menu. You say the dish number, and the kitchen picks the matching dish. You can join several values with a vertical bar, meaning, or. And case underscore is the catch-all. It matches anything that nothing else matched. It needs Python three ten or newer."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "menu.py: a dish number matched to a dish",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Choice is two. [HL 2] Match looks at the value of choice. [HL 3] Case one compares. Not a match. [HL 4] Skipped. [HL 5] Case two matches. [HL 6] So Prawn rice prints. [HL 7] Case underscore is the catch-all. It matches any other number. [HL 8] Not on the menu prints for it. Match stops at the first case that fits.",
+      "code": {
+        "file": "menu.py",
+        "source": "choice = 2\nmatch choice:\n    case 1:\n        print(\"Fish curry\")\n    case 2:\n        print(\"Prawn rice\")\n    case _:\n        print(\"Not on the menu\")",
+        "output": "Prawn rice"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 94,
+      "lengthSec": 32,
+      "onScreen": "The name choice tied to the int 2",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Match does not change anything in memory. The name choice stays tied to the int two. Match only looks at the object, and compares it with each pattern in order. Nothing is created and nothing is tied by the cases here. It works just like an elif ladder with double equals, but it reads better."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "day.py: Sat or Sun is Weekend",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] [TRACK day=Sat] The day is the text Sat. [HL 2] Match the day. [HL 3] One case can hold several patterns joined with a vertical bar. Read it as, Sat or Sun. [HL 4] Weekend prints. [HL 5] The catch-all for every other day. [HL 6] Weekday. With one case instead of two, the program is shorter and clearer.",
+      "code": {
+        "file": "day.py",
+        "source": "day = \"Sat\"\nmatch day:\n    case \"Sat\" | \"Sun\":\n        print(\"Weekend\")\n    case _:\n        print(\"Weekday\")",
+        "output": "Weekend"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 20,
+      "onScreen": "Terminal: python day.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as day dot py. In the terminal, type python, space, day dot py. Weekend."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 186,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: match compares one value with a list of cases. Two: The first matching case runs and the rest are skipped. Three: A vertical bar joins several patterns in one case. Four: case _ catches everything that nothing else matched. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 217,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: no case underscore",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The command is jump. No case matches it. And there is no catch-all. So match does nothing at all. No error, no message, just silence. Silent failures are the hardest to find. Add case underscore at the end, with a friendly message, and unknown commands are handled."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 257,
+      "lengthSec": 8,
+      "onScreen": "Why did the match statement win every game? It always found its pair.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the match statement win every game? It always found its pair."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 265,
+      "lengthSec": 20,
+      "onScreen": "Task card: print a day name for a number",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Make day equals 3. Use match to print Monday for 1, Tuesday for 2, Wednesday for 3, and Unknown for anything else. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 285,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 21 · Loop patterns",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: loop patterns. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "command = \"jump\"\nmatch command:\n    case \"start\":\n        print(\"Starting\")\n    case \"stop\":\n        print(\"Stopping\")",
+    "error": "Python output (it runs, but the answer is wrong):",
+    "fixed": "command = \"jump\"\nmatch command:\n    case \"start\":\n        print(\"Starting\")\n    case \"stop\":\n        print(\"Stopping\")\n    case _:\n        print(\"Unknown command\")",
+    "why": "If no case fits and there is no case _, match does nothing and gives no error, so a wrong input fails silently."
+  },
+  "pun": "\"Why did the match statement win every game? It always found its pair.\"",
+  "challenge": "Make day = 3. Use match to print Monday for 1, Tuesday for 2, Wednesday for 3, and Unknown for anything else.",
+  "challengeAnswer": "Use match day with case 1, case 2, case 3, and case _. With 3 it prints Wednesday.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What is match?",
+      "hook": "\"Match is a tidy way to choose between exact values.\"",
+      "script": "Match is a tidy way to choose between exact values. You write match, then a value. Below it, each case shows a pattern to compare with. The first case that fits runs, and the others are skipped. Think of a restaurant menu. You say the dish number, and the kitchen picks the dish. It needs Python three ten or newer, and it reads like a menu. Keep coding, says Xecxec!",
+      "onScreen": "MATCH · CASE",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "A menu for your code.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "match",
+        "python313",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "The catch-all",
+      "hook": "\"Case underscore is the catch-all.\"",
+      "script": "Case underscore is the catch-all. It matches any value that no earlier case matched. Put it last. Without it, a value that fits no case does nothing, and shows no error. With it, you can print a friendly message, such as, not on the menu. Every match statement should end with a catch-all, just as every elif ladder should end with an else. Keep coding, says Xecxec!",
+      "onScreen": "CASE _ = ANYTHING ELSE",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 38,
+      "caption": "End with case underscore.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "match",
+        "python313",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Or inside a case",
+      "hook": "\"A case can match several values at once.\"",
+      "script": "A case can match several values at once. Join them with a vertical bar, which reads as or. Case Sat bar Sun matches both weekend days. So one case does the work of two. Your program gets shorter and easier to read. Use the bar whenever several values should give the same result, and avoid repeating yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "CASE \"SAT\" | \"SUN\"",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 39,
+      "caption": "One case, many values.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "match",
+        "python313",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Silent failure",
+      "hook": "\"A tricky bug.\"",
+      "script": "A tricky bug. You match a command, but the command is not in your list, and you forgot the catch-all. Python does nothing. No error, no message, just silence. Silent failures are the hardest bugs to find. The fix is easy. Add case underscore at the end, with a friendly message. Always plan for unexpected input, from real users. Keep coding, says Xecxec!",
+      "onScreen": "NO CASE _, NO MESSAGE",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Plan for the unexpected.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "match",
+        "python313",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the match statement win every game?\"",
+      "script": "Why did the match statement win every game? It always found its pair. Your challenge. Make day equal three. Use match to print Monday for one, Tuesday for two, and Wednesday for three. Anything else should print Unknown. Then change day to nine, and check that the catch-all works. Post your code in the comments, please. Keep coding, says Xecxec! Full video: EP 20.",
+      "onScreen": "NUMBER TO DAY NAME",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Try match and case.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "match",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "menu.py",
+      "source": "choice = 2\nmatch choice:\n    case 1:\n        print(\"Fish curry\")\n    case 2:\n        print(\"Prawn rice\")\n    case _:\n        print(\"Not on the menu\")",
+      "output": "Prawn rice",
+      "lang": "python"
+    },
+    {
+      "file": "day.py",
+      "source": "day = \"Sat\"\nmatch day:\n    case \"Sat\" | \"Sun\":\n        print(\"Weekend\")\n    case _:\n        print(\"Weekday\")",
+      "output": "Weekend",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}

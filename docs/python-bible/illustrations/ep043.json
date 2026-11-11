@@ -1,0 +1,101 @@
+{
+  "ep": 43,
+  "scene": 4,
+  "grid": {
+    "cols": 12,
+    "rows": 6
+  },
+  "objects": [
+    {
+      "id": "c1",
+      "shape": "card",
+      "text": "greet(\"Asha\")",
+      "colour": "cream",
+      "col": 0,
+      "row": 1,
+      "w": 3,
+      "h": 1
+    },
+    {
+      "id": "c2",
+      "shape": "card",
+      "text": "greet(\"Ravi\", \"Namaste\")",
+      "colour": "cream",
+      "col": 4,
+      "row": 1,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "c3",
+      "shape": "card",
+      "text": "greet(greeting=\"Hi\", name=\"Meera\")",
+      "colour": "cream",
+      "col": 4,
+      "row": 3,
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "d",
+      "shape": "token",
+      "text": "default: Hello",
+      "colour": "butter",
+      "col": 0,
+      "row": 3,
+      "w": 3,
+      "h": 1
+    }
+  ],
+  "steps": [
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c1",
+      "sfx": "pop"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c2"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "c3"
+    },
+    {
+      "t": 0.0,
+      "do": "show",
+      "target": "d"
+    },
+    {
+      "t": 0.2,
+      "do": "glow",
+      "target": "d",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.3,
+      "do": "glow",
+      "target": "c1"
+    },
+    {
+      "t": 0.5,
+      "do": "dim",
+      "target": "d"
+    },
+    {
+      "t": 0.55,
+      "do": "glow",
+      "target": "c2",
+      "sfx": "ding"
+    },
+    {
+      "t": 0.75,
+      "do": "glow",
+      "target": "c3",
+      "sfx": "ding"
+    }
+  ]
+}

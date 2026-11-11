@@ -1,0 +1,352 @@
+{
+  "ep": 82,
+  "title": "random and math",
+  "module": 9,
+  "lengthSec": 308,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "pick random numbers and items",
+    "make random results repeatable with a seed",
+    "use math functions such as sqrt, ceil and gcd"
+  ],
+  "youtube": {
+    "title": "Python random and math Modules Explained | Python Programming EP 82",
+    "description": "In this episode you will pick random numbers and items, make random results repeatable with a seed and use math functions such as sqrt, ceil and gcd, with Xecxec the crab. 0:00 Intro · 0:15 Surprise and certainty · 0:59 Seeded randomness · 1:39 Shuffle changes the same list · 2:10 Second program · 3:14 Recap · 3:45 Bug of the Day · 4:33 Challenge · 4:53 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Surprise and certainty"
+      },
+      {
+        "t": "0:59",
+        "label": "Seeded randomness"
+      },
+      {
+        "t": "1:39",
+        "label": "Shuffle changes the same list"
+      },
+      {
+        "t": "2:10",
+        "label": "Second program"
+      },
+      {
+        "t": "3:14",
+        "label": "Recap"
+      },
+      {
+        "t": "3:45",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:33",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:53",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "python",
+      "python for beginners",
+      "python tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "coding in goa",
+      "learn python",
+      "python random",
+      "python math module",
+      "python random seed",
+      "python randint randrange"
+    ],
+    "thumbnail": {
+      "text": "RANDOM + MATH",
+      "visual": "big text \"RANDOM + MATH\" in tomato on peach; Xecxec rolling a die while a calculator hums nearby; thin black border and drop shadow.",
+      "pose": "Xecxec rolling a die while a calculator hums nearby"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 82 · RANDOM + MATH",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Games need surprises, and science needs exact answers. Two modules, one for each."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 44,
+      "onScreen": "\"Surprise and certainty\": three numbered lines (1. random.randint(a, b) includes both a and b; 2. random.seed(n) makes the sequence repeat; 3. math has sqrt, ceil, floor, pi and more) and an analogy card: a dice and a calculator: one gives surprises, the other gives certainty",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The random module gives surprises. Randint takes two numbers and includes both ends. Choice picks one item from a list. Shuffle mixes a list in place. Sample picks several different items. The numbers are only pseudo random, which means they follow a recipe. Seed the recipe with a number, and you get the same sequence every time. That is how we keep our examples repeatable. The math module gives certainty, with functions such as square root, ceiling, floor and gcd."
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 59,
+      "lengthSec": 40,
+      "onScreen": "rand.py: dice, choice, shuffle and sample, repeatable with a seed",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right; faint indent guide lines",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] Import random. [HL 3] The seed. With the same seed, the same numbers appear on every run. [HL 4] A die roll, one to six. Both ends are possible. [HL 5] Another roll. [HL 6] Choice picks one item from the list. [HL 7] A list of five numbers. [HL 8] Shuffle mixes it in place. [HL 9] The shuffled list. [HL 10] Sample picks three different numbers from one to forty nine. Remove the seed line, and every run gives different answers.",
+      "code": {
+        "file": "rand.py",
+        "source": "import random\n\nrandom.seed(7)\nprint(random.randint(1, 6))\nprint(random.randint(1, 6))\nprint(random.choice([\"tea\", \"chai\", \"coffee\"]))\nitems = [1, 2, 3, 4, 5]\nrandom.shuffle(items)\nprint(items)\nprint(random.sample(range(1, 50), 3))",
+        "output": "3\n2\nchai\n[2, 4, 3, 5, 1]\n[24, 38, 4]"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 99,
+      "lengthSec": 31,
+      "onScreen": "The name items tied to one list; shuffle reorders that very list instead of making a new one",
+      "animation": "Name tags pop in with their arrows to the objects (value and type shown, no addresses); when Python reads a name the arrow glows and the object lights up",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the picture. The name items is tied to one list. Shuffle does not build a new list. It mixes the very same list in place. So the name items, tied to that list, now sees the new order. That is why shuffle returns nothing. It changes the list that you already hold."
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 130,
+      "lengthSec": 40,
+      "onScreen": "maths.py: exact functions and constants",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] Import math. [HL 3] Square root. Twelve point zero. [HL 4] Ceil rounds up, floor rounds down. Five and four. [HL 5] Pi, rounded to four places. Three point one four one six. [HL 6] The greatest common divisor of twelve and eighteen. Six. [HL 7] Is close compares floats safely. True. [HL 8] And factorial of five is one hundred twenty.",
+      "code": {
+        "file": "maths.py",
+        "source": "import math\n\nprint(math.sqrt(144))\nprint(math.ceil(4.2), math.floor(4.8))\nprint(round(math.pi, 4))\nprint(math.gcd(12, 18))\nprint(math.isclose(0.1 + 0.2, 0.3))\nprint(math.factorial(5))",
+        "output": "12.0\n5 4\n3.1416\n6\nTrue\n120"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 170,
+      "lengthSec": 24,
+      "onScreen": "Terminal: python maths.py",
+      "animation": "Dark-blue terminal: the command types with key-tick, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as maths dot py. In the terminal, type python, space, maths dot py. Two dice and a drink, a shuffled list and three numbers. The same every run. Then 12.0, 5 4, 3.1416, 6, True, 120."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 194,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One: random dot randint of a, b includes both a and b. Two: random dot seed of n makes the sequence repeat. Three: choice, shuffle and sample work on lists. Four: math gives sqrt, ceil, floor, gcd, pi and isclose. Pause the video, and say these ideas out loud, once, slowly."
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 225,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: randint includes both ends",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the Python error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We wanted rolls of one or two. We wrote randint of one comma three, and three shows up as well. No error. Randint includes both ends. Range does not, and neither does randrange. Use randrange of one comma three, and the three disappears."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 265,
+      "lengthSec": 8,
+      "onScreen": "Why did the random number refuse to join the team? It could not commit.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the random number refuse to join the team? It could not commit."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 273,
+      "lengthSec": 20,
+      "onScreen": "Task card: a random password",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge. Use random dot choice to build a four letter password from the letters abcdef. Seed the generator so the answer repeats. Comment your answer below."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 293,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 83 · collections (Counter, defaultdict, deque)",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: collections, counter, default dict and deque. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "import random\n\nrandom.seed(5)\nrolls = {random.randint(1, 3) for _ in range(30)}\nprint(sorted(rolls))",
+    "error": "Python output (it runs, but the answer is wrong):\n\n[1, 2, 3]",
+    "fixed": "import random\n\nrandom.seed(5)\nrolls = {random.randrange(1, 3) for _ in range(30)}\nprint(sorted(rolls))",
+    "why": "randint includes both ends, but range, and randrange, stop before the end. Pick the one that matches the numbers you want."
+  },
+  "pun": "\"Why did the random number refuse to join the team? It could not commit.\"",
+  "challenge": "Use random.choice to build a four letter password from the letters abcdef. Seed the generator so the answer repeats.",
+  "challengeAnswer": "random.seed(1); \"\".join(random.choice(\"abcdef\") for _ in range(4)).",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "randint",
+      "hook": "\"Randint of one comma six rolls a die.\"",
+      "script": "Randint of one comma six rolls a die. Remember, it includes both ends, so a six is possible. Choice picks one item from a list. Shuffle mixes a list in place, and sample picks several different items. Try it in your own file and watch what happens. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "random.randint(1, 6)",
+      "fromScenes": [
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Both ends are included.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "random",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Seed",
+      "hook": "\"Random numbers follow a recipe.\"",
+      "script": "Random numbers follow a recipe. Seed the recipe with random dot seed, and a number, and you get the same sequence on every run. Perfect for tests, and for videos like this one. Remove the seed, and every run is different. Pause the video and type it out yourself. Say it out loud once. Then you remember it. Keep coding, says Xecxec!",
+      "onScreen": "random.seed(7)",
+      "fromScenes": [
+        4
+      ],
+      "lengthSec": 35,
+      "caption": "Seeds make it repeatable.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "random",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "math module",
+      "hook": "\"The math module gives exact answers.\"",
+      "script": "The math module gives exact answers. Square root, ceil to round up, floor to round down, gcd for the greatest common divisor, and pi. Import math once, and write math dot, and the name. Say it out loud once. Then you remember it. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Keep coding, says Xecxec!",
+      "onScreen": "math.sqrt, math.ceil, math.pi",
+      "fromScenes": [
+        3,
+        5
+      ],
+      "lengthSec": 37,
+      "caption": "Import math.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "random",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "The off by one",
+      "hook": "\"A sneaky one.\"",
+      "script": "A sneaky one. You want rolls of one or two, and write randint one comma three. Three still appears, because randint includes both ends. Randrange stops before the end, like range. Choose the right one. Then run it, and compare with what you predicted. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec!",
+      "onScreen": "randint(1,3) can return 3",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Check your ends.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "random",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Why did the random number refuse to join the team?\"",
+      "script": "Why did the random number refuse to join the team? It could not commit. Your challenge. Use random dot choice to build a four letter password from the letters a to f. Seed the generator first, so your answer repeats. Try it in your own file and watch what happens. Pause the video and type it out yourself. Keep coding, says Xecxec! Full video: EP 82.",
+      "onScreen": "Challenge: random password",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Build a password.",
+      "hashtags": [
+        "python",
+        "kodingkonkani",
+        "python",
+        "codingchallenge",
+        "programmingjokes"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "rand.py",
+      "source": "import random\n\nrandom.seed(7)\nprint(random.randint(1, 6))\nprint(random.randint(1, 6))\nprint(random.choice([\"tea\", \"chai\", \"coffee\"]))\nitems = [1, 2, 3, 4, 5]\nrandom.shuffle(items)\nprint(items)\nprint(random.sample(range(1, 50), 3))",
+      "output": "3\n2\nchai\n[2, 4, 3, 5, 1]\n[24, 38, 4]",
+      "lang": "python"
+    },
+    {
+      "file": "maths.py",
+      "source": "import math\n\nprint(math.sqrt(144))\nprint(math.ceil(4.2), math.floor(4.8))\nprint(round(math.pi, 4))\nprint(math.gcd(12, 18))\nprint(math.isclose(0.1 + 0.2, 0.3))\nprint(math.factorial(5))",
+      "output": "12.0\n5 4\n3.1416\n6\nTrue\n120",
+      "lang": "python"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "python",
+    "fixedHasFullProgram": false
+  }
+}
