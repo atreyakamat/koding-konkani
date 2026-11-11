@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "An f-string is a string with the letter f in front. Inside it, curly brackets hold names or sums. Python fills them in. Think of a printed bill with blank spaces. The f tells Python to fill the blanks with real values. After a colon inside the brackets, you can add a format. A colon, dot, two, f means, show two decimal places. Neat bills, no extra effort."
+      "narration": "An f-string is a string with the letter f in front. Inside it, curly brackets hold names or sums. Python fills them in. Think of a printed bill with blank spaces. The f tells Python to fill the blanks with real values. After a colon inside the brackets, you can add a format. A colon, dot, two, f means, show two decimal places. Neat bills, no extra effort.",
+      "props": {
+        "lines": [
+          "Put f before the opening quote",
+          "Write values inside curly brackets",
+          "Add a format after a colon, like :.2f"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a printed bill with blank spaces: the f tells Python to fill the spaces with real values"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "fstr.py",
         "source": "fish = 3\nprice = 120.5\nprint(f\"Fish: {fish}\")\nprint(f\"Total: {fish * price}\")\nprint(f\"Total: {fish * price:.2f}\")",
         "output": "Fish: 3\nTotal: 361.5\nTotal: 361.50"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python fstr.py",
+        "output": "Fish: 3\nTotal: 361.5\nTotal: 361.50"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Nothing changes in memory when we print. Fish stays tied to the int three. Price stays tied to the float one hundred twenty and a half. The f-string builds a brand new string for each print line, and then that string is gone. The names and values you made are untouched."
+      "narration": "Nothing changes in memory when we print. Fish stays tied to the int three. Price stays tied to the float one hundred twenty and a half. The f-string builds a brand new string for each print line, and then that string is gone. The names and values you made are untouched.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "3",
+                    "address": "int",
+                    "name": "fish"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "3",
+                    "address": "int",
+                    "name": "fish"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "120.5",
+                    "address": "float",
+                    "name": "price"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +201,11 @@
         "file": "receipt.py",
         "source": "item = \"Fish thali\"\ncost = 249.5\nqty = 2\nprint(f\"{item:<12}|{cost:>8.2f}|\")\nprint(f\"{'Total':<12}|{cost * qty:>8.2f}|\")",
         "output": "Fish thali  |  249.50|\nTotal       |  499.00|"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python receipt.py",
+        "output": "Fish thali  |  249.50|\nTotal       |  499.00|"
       }
     },
     {
@@ -159,7 +219,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as receipt dot py. In the terminal, type python, space, receipt dot py. Two neat lines, with the bars lined up under each other."
+      "narration": "Save the file as receipt dot py. In the terminal, type python, space, receipt dot py. Two neat lines, with the bars lined up under each other.",
+      "props": {
+        "lines": [
+          {
+            "text": "python receipt.py",
+            "kind": "input"
+          },
+          {
+            "text": "Fish thali  |  249.50|",
+            "kind": "output"
+          },
+          {
+            "text": "Total       |  499.00|",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +247,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Put f before the opening quote to make an f-string. Two: Curly brackets hold names or small sums. Three: Colon, dot, two, f shows two decimals. Four: Less than and greater than set the alignment. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Put f before the opening quote to make an f-string. Two: Curly brackets hold names or small sums. Three: Colon, dot, two, f shows two decimals. Four: Less than and greater than set the alignment. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Put f before the opening quote to make an f-string.",
+          "Curly brackets hold names or small sums.",
+          "Colon, dot, two, f shows two decimals.",
+          "Less than and greater than set the alignment."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +269,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We forgot the f. Python does not complain. It prints Hello, curly bracket name curly bracket, exactly as typed, because without the f the brackets are just characters. Add the f in front of the opening quote, and Python fills in the name. When you see curly brackets in your output, check for the f."
+      "narration": "Bug of the Day. We forgot the f. Python does not complain. It prints Hello, curly bracket name curly bracket, exactly as typed, because without the f the brackets are just characters. Add the f in front of the opening quote, and Python fills in the name. When you see curly brackets in your output, check for the f.",
+      "props": {
+        "wrongCode": "name = \"Asha\"\nprint(\"Hello, {name}\")",
+        "fixedCode": "name = \"Asha\"\nprint(f\"Hello, {name}\")",
+        "error": "Hello, {name}",
+        "errorOverride": {
+          "lines": [
+            "Hello, {name}"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Without the f prefix the curly brackets are plain characters, so Python prints them exactly as typed.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python fstr.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +325,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: booleans and comparisons. Keep coding, says Xecxec!"
+      "narration": "Next time: booleans and comparisons. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 11,
+        "nextTitle": "Booleans and comparisons"
+      }
     }
   ],
   "bug": {
@@ -348,5 +457,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

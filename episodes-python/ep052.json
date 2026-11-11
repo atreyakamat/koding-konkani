@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Open takes a second argument, the mode. R is read, the default. W is write. It creates the file if needed, and wipes whatever was there. A is append. It adds to the end and keeps what was there. Think of a diary. Write mode tears out all the pages and starts fresh. Append mode adds a new page at the end. Write puts text in with the write method. It does not add new lines for you."
+      "narration": "Open takes a second argument, the mode. R is read, the default. W is write. It creates the file if needed, and wipes whatever was there. A is append. It adds to the end and keeps what was there. Think of a diary. Write mode tears out all the pages and starts fresh. Append mode adds a new page at the end. Write puts text in with the write method. It does not add new lines for you.",
+      "props": {
+        "lines": [
+          "r reads (the default)",
+          "w writes and wipes the old content",
+          "a appends to the end"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a diary: w means tear out all the pages and start fresh, a means add a new page at the end"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "write.py",
         "source": "f = open(\"log.txt\", \"w\")\nf.write(\"Day 1\\n\")\nf.write(\"Day 2\\n\")\nf.close()\nprint(open(\"log.txt\").read())",
         "output": "Day 1\nDay 2"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python write.py",
+        "output": "Day 1\nDay 2"
       }
     },
     {
@@ -129,7 +145,142 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the difference, in pictures. A diary with three pages. Open it in write mode, and every old page is torn out, before you write a single word. Open it in append mode, and the old pages stay, and your new text goes after them. Write is for starting over. Append is for adding. Pick carefully."
+      "narration": "Here is the difference, in pictures. A diary with three pages. Open it in write mode, and every old page is torn out, before you write a single word. Open it in append mode, and the old pages stay, and your new text goes after them. Write is for starting over. Append is for adding. Pick carefully.",
+      "props": {
+        "lines": [
+          "Here is the difference, in pictures.",
+          "A diary with three pages.",
+          "Write is for starting over."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 52,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "d",
+              "shape": "box",
+              "text": "Diary",
+              "colour": "cream",
+              "col": 4,
+              "row": 0,
+              "w": 4,
+              "h": 3
+            },
+            {
+              "id": "p1",
+              "shape": "token",
+              "text": "Day 1",
+              "colour": "butter",
+              "col": 4,
+              "row": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "p2",
+              "shape": "token",
+              "text": "Day 2",
+              "colour": "butter",
+              "col": 5,
+              "row": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "w",
+              "shape": "label",
+              "text": "open(\"log.txt\", \"w\")",
+              "colour": "tomato",
+              "col": 0,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "a",
+              "shape": "label",
+              "text": "open(\"log.txt\", \"a\")",
+              "colour": "mint",
+              "col": 6,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "p3",
+              "shape": "token",
+              "text": "Day 3",
+              "colour": "mint",
+              "col": 6,
+              "row": 1,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "d",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "p1"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "p2"
+            },
+            {
+              "t": 0.25,
+              "do": "show",
+              "target": "w",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.35,
+              "do": "hide",
+              "target": "p1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.35,
+              "do": "hide",
+              "target": "p2"
+            },
+            {
+              "t": 0.6,
+              "do": "show",
+              "target": "a",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.7,
+              "do": "show",
+              "target": "p1"
+            },
+            {
+              "t": 0.7,
+              "do": "show",
+              "target": "p2"
+            },
+            {
+              "t": 0.8,
+              "do": "show",
+              "target": "p3",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -141,7 +292,17 @@
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 1] Open the existing log in append mode. [HL 2] Write one more line. It goes after the lines that are already there. [HL 3] Close. [HL 4] Read the file back, and count the word Day. Three. All three days are there. The earlier lines survived, because append never wipes."
+      "narration": "[HL 1] Open the existing log in append mode. [HL 2] Write one more line. It goes after the lines that are already there. [HL 3] Close. [HL 4] Read the file back, and count the word Day. Three. All three days are there. The earlier lines survived, because append never wipes.",
+      "code": {
+        "file": "append.py",
+        "source": "f = open(\"log.txt\", \"a\")\nf.write(\"Day 3\\n\")\nf.close()\nprint(open(\"log.txt\").read().count(\"Day\"))",
+        "output": "3"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python append.py",
+        "output": "3"
+      }
     },
     {
       "id": 6,
@@ -154,7 +315,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as append dot py. In the terminal, type python, space, append dot py. Three."
+      "narration": "Save the file as append dot py. In the terminal, type python, space, append dot py. Three.",
+      "props": {
+        "lines": [
+          {
+            "text": "python append.py",
+            "kind": "input"
+          },
+          {
+            "text": "3",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -166,7 +339,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Mode r reads, w writes and wipes, a appends. Two: write does not add a new line for you. Three: Close the file so the data is saved. Four: Use a to add to a file and keep what is there. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Mode r reads, w writes and wipes, a appends. Two: write does not add a new line for you. Three: Close the file so the data is saved. Four: Use a to add to a file and keep what is there. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Mode r reads, w writes and wipes, a appends.",
+          "Write() does not add a new line for you.",
+          "Close the file so the data is saved.",
+          "Use a to add to a file and keep what is there."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -179,7 +361,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The log had Day one and Day two. We open it to add Day three, but we use write mode. Only Day three is left. Write mode empties the file the moment you open it. For adding, use append mode. The old lines stay, and the new line goes at the end."
+      "narration": "Bug of the Day. The log had Day one and Day two. We open it to add Day three, but we use write mode. Only Day three is left. Write mode empties the file the moment you open it. For adding, use append mode. The old lines stay, and the new line goes at the end.",
+      "props": {
+        "wrongCode": "f = open(\"log.txt\", \"w\")\nf.write(\"Day 3\\n\")\nf.close()\nprint(open(\"log.txt\").read())",
+        "fixedCode": "f = open(\"log.txt\", \"a\")\nf.write(\"Day 3\\n\")\nf.close()\nprint(open(\"log.txt\").read())",
+        "error": "Day 3",
+        "errorOverride": {
+          "lines": [
+            "Day 3"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Mode w empties the file as soon as it is opened, so the old lines are lost; mode a keeps them and adds to the end.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python write.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -215,7 +417,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: the with statement. Keep coding, says Xecxec!"
+      "narration": "Next time: the with statement. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 53,
+        "nextTitle": "The with statement"
+      }
     }
   ],
   "bug": {
@@ -334,14 +540,18 @@
       "lang": "python"
     },
     {
-      "file": "file2.python",
+      "file": "append.py",
       "source": "f = open(\"log.txt\", \"a\")\nf.write(\"Day 3\\n\")\nf.close()\nprint(open(\"log.txt\").read().count(\"Day\"))",
       "output": "3",
+      "inputFiles": {
+        "log.txt": "Day 1\nDay 2"
+      },
       "lang": "python"
     }
   ],
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

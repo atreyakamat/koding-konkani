@@ -79,7 +79,7 @@ export const LongVideoCaptions: React.FC<{ epId: string; sceneTimings: SceneTimi
       const perScene = await Promise.all(
         sceneTimings.map(async (timing) => {
           const raw: { text: string; startMs: number; endMs: number }[] = await fetch(
-            staticFile(`voice/${epId}/scene${timing.scene.id}.captions.json`),
+            staticFile(`${epId}/scene${timing.scene.id}.captions.json`),
           )
             .then((r) => r.json())
             .catch(() => []);

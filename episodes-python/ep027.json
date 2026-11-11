@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "You can loop over a list directly. For item in the list. No index needed. When you also want the position, use enumerate. It gives you a counter and the item together. When you have two lists that go together, use zip. It pairs them up, one from each. Think of a class register. Each student has a roll number, and each roll number has a mark beside it."
+      "narration": "You can loop over a list directly. For item in the list. No index needed. When you also want the position, use enumerate. It gives you a counter and the item together. When you have two lists that go together, use zip. It pairs them up, one from each. Think of a class register. Each student has a roll number, and each roll number has a mark beside it.",
+      "props": {
+        "lines": [
+          "for item in list visits every item",
+          "enumerate adds a counter",
+          "zip pairs up two lists"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a class register: each student has a roll number, and each roll number has a mark beside it"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "enum.py",
         "source": "beaches = [\"Baga\", \"Colva\", \"Anjuna\"]\nfor i, beach in enumerate(beaches, start=1):\n    print(i, beach)",
         "output": "1 Baga\n2 Colva\n3 Anjuna"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python enum.py",
+        "output": "1 Baga\n2 Colva\n3 Anjuna"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the end state. After the loop, i is tied to the int three, and beach is tied to the string Anjuna. Both names were retied each round. The list itself was never touched. The beach name points to the same string that sits at the end of the list. No copy was made."
+      "narration": "Look at the end state. After the loop, i is tied to the int three, and beach is tied to the string Anjuna. Both names were retied each round. The list itself was never touched. The beach name points to the same string that sits at the end of the list. No copy was made.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "3",
+                    "address": "int",
+                    "name": "i"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "3",
+                    "address": "int",
+                    "name": "i"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "'Anjuna'",
+                    "address": "str",
+                    "name": "beach"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +201,11 @@
         "file": "zip_demo.py",
         "source": "names = [\"Asha\", \"Ravi\"]\nmarks = [88, 92]\nfor name, mark in zip(names, marks):\n    print(name, \"scored\", mark)",
         "output": "Asha scored 88\nRavi scored 92"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python zip_demo.py",
+        "output": "Asha scored 88\nRavi scored 92"
       }
     },
     {
@@ -159,7 +219,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as zip_demo dot py. In the terminal, type python, space, zip_demo dot py. Asha scored eighty eight. Ravi scored ninety two."
+      "narration": "Save the file as zip_demo dot py. In the terminal, type python, space, zip_demo dot py. Asha scored eighty eight. Ravi scored ninety two.",
+      "props": {
+        "lines": [
+          {
+            "text": "python zip_demo.py",
+            "kind": "input"
+          },
+          {
+            "text": "Asha scored 88",
+            "kind": "output"
+          },
+          {
+            "text": "Ravi scored 92",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +247,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: for item in list visits each item without an index. Two: enumerate gives a counter and the item together. Three: zip walks two lists in step. Four: Do not change a list while you loop over it. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: for item in list visits each item without an index. Two: enumerate gives a counter and the item together. Three: zip walks two lists in step. Four: Do not change a list while you loop over it. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "For item in list visits each item without an index.",
+          "Enumerate gives a counter and the item together.",
+          "Zip walks two lists in step.",
+          "Do not change a list while you loop over it."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +269,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We want to remove every even number. All four are even, so the list should be empty. But it prints four and eight. Why? When we remove an item, the rest shift left. The loop moves on and skips the next one. Never change a list while looping over it. Loop over a copy instead, and change the original."
+      "narration": "Bug of the Day. We want to remove every even number. All four are even, so the list should be empty. But it prints four and eight. Why? When we remove an item, the rest shift left. The loop moves on and skips the next one. Never change a list while looping over it. Loop over a copy instead, and change the original.",
+      "props": {
+        "wrongCode": "nums = [2, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        nums.remove(n)\nprint(nums)",
+        "fixedCode": "nums = [2, 4, 6, 8]\nfor n in nums.copy():\n    if n % 2 == 0:\n        nums.remove(n)\nprint(nums)",
+        "error": "[4, 8]",
+        "errorOverride": {
+          "lines": [
+            "[4, 8]"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Removing items shifts the later items left, so the loop skips some; looping over a copy lets the original change safely.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python enum.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +325,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: copying lists. Keep coding, says Xecxec!"
+      "narration": "Next time: copying lists. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 28,
+        "nextTitle": "Copying lists"
+      }
     }
   ],
   "bug": {
@@ -348,5 +457,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

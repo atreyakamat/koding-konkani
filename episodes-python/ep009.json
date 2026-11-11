@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "An operator is a symbol that does a job. Plus, minus, star and slash you know. Two more are useful. Double slash divides and drops the decimal part. Percent gives the remainder. And double star raises to a power. Think of a school bus with ten seats. Floor division counts the full buses. The remainder counts the students left standing. Seven symbols, and you are ready."
+      "narration": "An operator is a symbol that does a job. Plus, minus, star and slash you know. Two more are useful. Double slash divides and drops the decimal part. Percent gives the remainder. And double star raises to a power. Think of a school bus with ten seats. Floor division counts the full buses. The remainder counts the students left standing. Seven symbols, and you are ready.",
+      "props": {
+        "lines": [
+          "+ - * / are the maths you know",
+          "// gives whole-number division, % gives the remainder",
+          "** is power; ^ is something else"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a school bus: floor division counts the full buses, and the remainder counts the students left standing"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "ops.py",
         "source": "total = 17\nprint(total + 3)\nprint(total - 3)\nprint(total * 3)\nprint(total / 3)\nprint(total // 3)\nprint(total % 3)\nprint(2 ** 5)",
         "output": "20\n14\n51\n5.666666666666667\n5\n2\n32"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python ops.py",
+        "output": "20\n14\n51\n5.666666666666667\n5\n2\n32"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Look at what Python holds after the run. Only one name, total, tied to seventeen. All the other results were printed and forgotten, because we never gave them a name. If you want to keep a result, tie it to a name. We do that in the next program."
+      "narration": "Look at what Python holds after the run. Only one name, total, tied to seventeen. All the other results were printed and forgotten, because we never gave them a name. If you want to keep a result, tie it to a name. We do that in the next program.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "17",
+                    "address": "int",
+                    "name": "total"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "bus.py",
         "source": "students = 47\nseats = 10\nbuses = students // seats\nleft = students % seats\nprint(\"Full buses:\", buses)\nprint(\"Standing:\", left)",
         "output": "Full buses: 4\nStanding: 7"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python bus.py",
+        "output": "Full buses: 4\nStanding: 7"
       }
     },
     {
@@ -159,7 +197,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as bus dot py. In the terminal, type python, space, bus dot py. Full buses, four. Standing, seven."
+      "narration": "Save the file as bus dot py. In the terminal, type python, space, bus dot py. Full buses, four. Standing, seven.",
+      "props": {
+        "lines": [
+          {
+            "text": "python bus.py",
+            "kind": "input"
+          },
+          {
+            "text": "Full buses: 4",
+            "kind": "output"
+          },
+          {
+            "text": "Standing: 7",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +225,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Plus, minus, star and slash are the usual arithmetic. Two: Double slash gives the whole part and percent gives the remainder. Three: Double star raises a number to a power. Four: The caret symbol is not power in Python. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Plus, minus, star and slash are the usual arithmetic. Two: Double slash gives the whole part and percent gives the remainder. Three: Double star raises a number to a power. Four: The caret symbol is not power in Python. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Plus, minus, star and slash are the usual arithmetic.",
+          "Double slash gives the whole part and percent gives the remainder.",
+          "Double star raises a number to a power.",
+          "The caret symbol is not power in Python."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +247,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We want two to the power three, which is eight. In maths class, the caret means power. In Python, it does something else. It works on binary digits. We get one, with no error at all. Use double star for powers, and you get eight. Watch for bugs that run quietly."
+      "narration": "Bug of the Day. We want two to the power three, which is eight. In maths class, the caret means power. In Python, it does something else. It works on binary digits. We get one, with no error at all. Use double star for powers, and you get eight. Watch for bugs that run quietly.",
+      "props": {
+        "wrongCode": "print(2 ^ 3)",
+        "fixedCode": "print(2 ** 3)",
+        "error": "1",
+        "errorOverride": {
+          "lines": [
+            "1"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "In Python the caret is a bit operator called XOR, not a power; use ** for powers.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python ops.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +303,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: f-strings and formatting. Keep coding, says Xecxec!"
+      "narration": "Next time: f-strings and formatting. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 10,
+        "nextTitle": "f-strings and formatting"
+      }
     }
   ],
   "bug": {
@@ -348,5 +435,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

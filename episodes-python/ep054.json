@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Put the risky code in a try block. If an error happens, Python jumps to a matching except block, instead of stopping. Name the error type, such as ValueError. Think of a safety net under a trapeze. If the artist falls, the net catches them, and the show goes on. Else runs when no error happened. Finally runs always, error or not. Catch only the errors you expect."
+      "narration": "Put the risky code in a try block. If an error happens, Python jumps to a matching except block, instead of stopping. Name the error type, such as ValueError. Think of a safety net under a trapeze. If the artist falls, the net catches them, and the show goes on. Else runs when no error happened. Finally runs always, error or not. Catch only the errors you expect.",
+      "props": {
+        "lines": [
+          "try runs the risky code",
+          "except handles one kind of error",
+          "finally always runs at the end"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a safety net under a trapeze: if the artist falls, the net catches them, and the show goes on"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "tryex.py",
         "source": "try:\n    n = int(\"abc\")\n    print(n)\nexcept ValueError:\n    print(\"Not a number\")\nprint(\"Program continues\")",
         "output": "Not a number\nProgram continues"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python tryex.py",
+        "output": "Not a number\nProgram continues"
       }
     },
     {
@@ -127,7 +143,152 @@
       "onScreen": "Flow: try block with a failing line; arrow jumps to the matching except; both rejoin before the next line",
       "animation": "A path enters a box, a lightning bolt hits one line, and the path jumps to a separate box before rejoining",
       "sfx": [],
-      "narration": "Look at the path. Python enters the try block, and runs line by line. At the failing line, it stops, and jumps to the except that matches the error type. After the except block, both paths rejoin, and the program continues with the next line. Lines after the failing one, inside the try block, are skipped."
+      "narration": "Look at the path. Python enters the try block, and runs line by line. At the failing line, it stops, and jumps to the except that matches the error type. After the except block, both paths rejoin, and the program continues with the next line. Lines after the failing one, inside the try block, are skipped.",
+      "props": {
+        "lines": [
+          "Look at the path.",
+          "Python enters the try block, and runs line by line."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 54,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "l1",
+              "shape": "box",
+              "text": "line 1: n = int(text)",
+              "colour": "cream",
+              "col": 0,
+              "row": 1,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "l2",
+              "shape": "box",
+              "text": "line 2: print(n)",
+              "colour": "cream",
+              "col": 0,
+              "row": 2,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "ex",
+              "shape": "box",
+              "text": "except ValueError",
+              "colour": "mint",
+              "col": 6,
+              "row": 2,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "next",
+              "shape": "box",
+              "text": "program continues",
+              "colour": "pastelBlue",
+              "col": 6,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "bolt",
+              "shape": "token",
+              "text": "error",
+              "colour": "tomato",
+              "col": 4,
+              "row": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "bolt",
+              "to": "ex"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "ex",
+              "to": "next"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "l1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "l2"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "ex"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "next"
+            },
+            {
+              "t": 0.2,
+              "do": "show",
+              "target": "bolt",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.3,
+              "do": "shake",
+              "target": "l1"
+            },
+            {
+              "t": 0.35,
+              "do": "dim",
+              "target": "l2"
+            },
+            {
+              "t": 0.5,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.6,
+              "do": "glow",
+              "target": "ex",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.8,
+              "do": "draw",
+              "target": "a2",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.9,
+              "do": "glow",
+              "target": "next"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +305,11 @@
         "file": "finally.py",
         "source": "for text in [\"5\", \"x\", \"0\"]:\n    try:\n        print(10 // int(text))\n    except ValueError:\n        print(\"bad number\")\n    except ZeroDivisionError:\n        print(\"zero!\")\n    else:\n        print(\"ok\")\n    finally:\n        print(\"done\", text)",
         "output": "2\nok\ndone 5\nbad number\ndone x\nzero!\ndone 0"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python finally.py",
+        "output": "2\nok\ndone 5\nbad number\ndone x\nzero!\ndone 0"
       }
     },
     {
@@ -157,7 +323,39 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as finally dot py. In the terminal, type python, space, finally dot py. Two, ok, done five. Bad number, done x. Zero, done zero."
+      "narration": "Save the file as finally dot py. In the terminal, type python, space, finally dot py. Two, ok, done five. Bad number, done x. Zero, done zero.",
+      "props": {
+        "lines": [
+          {
+            "text": "python finally.py",
+            "kind": "input"
+          },
+          {
+            "text": "2",
+            "kind": "output"
+          },
+          {
+            "text": "ok",
+            "kind": "output"
+          },
+          {
+            "text": "done 5",
+            "kind": "output"
+          },
+          {
+            "text": "bad number",
+            "kind": "output"
+          },
+          {
+            "text": "done x",
+            "kind": "output"
+          },
+          {
+            "text": "…",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +367,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: try runs risky code and except handles an error. Two: Name the exception type you expect. Three: else runs when there was no error and finally always runs. Four: Catch specific errors, not everything. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: try runs risky code and except handles an error. Two: Name the exception type you expect. Three: else runs when there was no error and finally always runs. Four: Catch specific errors, not everything. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Try runs risky code and except handles an error.",
+          "Name the exception type you expect.",
+          "Else runs when there was no error and finally always runs.",
+          "Catch specific errors, not everything."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +389,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We misspelled total. That is a name error. But the bare except catches it, and prints, please enter a number. A misleading message, and the real bug is hidden. Never use except with no type. Catch the specific error you expect, such as value error, and let other errors show themselves."
+      "narration": "Bug of the Day. We misspelled total. That is a name error. But the bare except catches it, and prints, please enter a number. A misleading message, and the real bug is hidden. Never use except with no type. Catch the specific error you expect, such as value error, and let other errors show themselves.",
+      "props": {
+        "wrongCode": "try:\n    print(totl)\nexcept:\n    print(\"Please enter a number\")",
+        "fixedCode": "total = 5\ntry:\n    print(total)\nexcept ValueError:\n    print(\"Please enter a number\")",
+        "error": "Please enter a number",
+        "errorOverride": {
+          "lines": [
+            "Please enter a number"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "A bare except catches every error, including your own typos, so it hides the real cause and shows a misleading message; catch specific types.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python tryex.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +445,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: raising and custom exceptions. Keep coding, says Xecxec!"
+      "narration": "Next time: raising and custom exceptions. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 55,
+        "nextTitle": "Raising and custom exceptions"
+      }
     }
   ],
   "bug": {
@@ -346,5 +577,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

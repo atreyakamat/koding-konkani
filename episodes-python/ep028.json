@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "When you write b equals a, Python does not copy the list. It ties a second name to the same list. Think of one house with two name boards. A visitor who repaints the house changes it for both names. To make a real copy, call the copy method, or take a slice of everything. The is operator asks, are these two names tied to the very same object?"
+      "narration": "When you write b equals a, Python does not copy the list. It ties a second name to the same list. Think of one house with two name boards. A visitor who repaints the house changes it for both names. To make a real copy, call the copy method, or take a slice of everything. The is operator asks, are these two names tied to the very same object?",
+      "props": {
+        "lines": [
+          "b = a gives a second name to the same list",
+          "copy() or a[:] makes a new list",
+          "is checks if two names point to the same object"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "one house with two name boards: a visitor who repaints the house changes it for both names"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "alias.py",
         "source": "a = [1, 2, 3]\nb = a\nb.append(4)\nprint(a)\nprint(a is b)",
         "output": "[1, 2, 3, 4]\nTrue"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python alias.py",
+        "output": "[1, 2, 3, 4]\nTrue"
       }
     },
     {
@@ -129,7 +145,40 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture, and it is the most important one in this module. Two name tags, a and b, and two arrows that point at one list object. There is one list, holding one, two, three, four. Both names lead to it. That is why a change through b shows up in a. Remember this picture whenever lists behave oddly."
+      "narration": "Here is the picture, and it is the most important one in this module. Two name tags, a and b, and two arrows that point at one list object. There is one list, holding one, two, three, four. Both names lead to it. That is why a change through b shows up in a. Remember this picture whenever lists behave oddly.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "a",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1
+                  },
+                  {
+                    "value": "3",
+                    "index": 2
+                  },
+                  {
+                    "value": "4",
+                    "index": 3
+                  }
+                ],
+                "tags": [
+                  "b"
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +195,11 @@
         "file": "copy_demo.py",
         "source": "a = [1, 2, 3]\nb = a.copy()\nc = a[:]\nb.append(4)\nprint(a, b, c)\nprint(a is b)",
         "output": "[1, 2, 3] [1, 2, 3, 4] [1, 2, 3]\nFalse"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python copy_demo.py",
+        "output": "[1, 2, 3] [1, 2, 3, 4] [1, 2, 3]\nFalse"
       }
     },
     {
@@ -159,7 +213,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as copy_demo dot py. In the terminal, type python, space, copy_demo dot py. A is one, two, three. B has the four. C is one, two, three. Then False."
+      "narration": "Save the file as copy_demo dot py. In the terminal, type python, space, copy_demo dot py. A is one, two, three. B has the four. C is one, two, three. Then False.",
+      "props": {
+        "lines": [
+          {
+            "text": "python copy_demo.py",
+            "kind": "input"
+          },
+          {
+            "text": "[1, 2, 3] [1, 2, 3, 4] [1, 2, 3]",
+            "kind": "output"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +241,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: b equals a ties a second name to the same list. Two: Changing the list through one name shows through the other. Three: copy and a: make a real, separate list. Four: is tells you whether two names share one object. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: b equals a ties a second name to the same list. Two: Changing the list through one name shows through the other. Three: copy and a: make a real, separate list. Four: is tells you whether two names share one object. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "B = a ties a second name to the same list.",
+          "Changing the list through one name shows through the other.",
+          "Copy() and a[:] make a real, separate list.",
+          "Is tells you whether two names share one object."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +263,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We wanted a copy, so we could change b and keep a safe. But a changed too. Because b equals a is not a copy. It is a second name for the same list. Call the copy method instead, and b becomes its own list. Now a stays exactly as it was."
+      "narration": "Bug of the Day. We wanted a copy, so we could change b and keep a safe. But a changed too. Because b equals a is not a copy. It is a second name for the same list. Call the copy method instead, and b becomes its own list. Now a stays exactly as it was.",
+      "props": {
+        "wrongCode": "a = [1, 2, 3]\nb = a\nb.append(4)\nprint(a)",
+        "fixedCode": "a = [1, 2, 3]\nb = a.copy()\nb.append(4)\nprint(a)",
+        "error": "[1, 2, 3, 4]",
+        "errorOverride": {
+          "lines": [
+            "[1, 2, 3, 4]"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "b = a only gives the same list a second name, so changing b changes a; use a.copy() to get an independent list.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python alias.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +319,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: tuples and unpacking. Keep coding, says Xecxec!"
+      "narration": "Next time: tuples and unpacking. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 29,
+        "nextTitle": "Tuples and unpacking"
+      }
     }
   ],
   "bug": {
@@ -348,5 +451,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

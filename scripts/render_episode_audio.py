@@ -11,6 +11,7 @@ Usage: python scripts/render_episode_audio.py <episode-number>
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 import time
@@ -19,8 +20,10 @@ from pathlib import Path
 from narration import load_voice_config, render_scene_audio
 
 ROOT = Path(__file__).resolve().parent.parent
-EPISODES_DIR = ROOT / "episodes"
-VOICE_DIR = ROOT / "audio" / "voice"
+# KK_COURSE=python switches to the Python course: episodes-python/ and audio/voice-py/ (the C course keeps episodes/ and audio/voice/).
+PYTHON_COURSE = os.environ.get("KK_COURSE") == "python"
+EPISODES_DIR = ROOT / ("episodes-python" if PYTHON_COURSE else "episodes")
+VOICE_DIR = ROOT / "audio" / ("voice-py" if PYTHON_COURSE else "voice")
 
 SCENE_PAUSE_SEC = 0.7
 BUG_REVEAL_PAUSE_SEC = 1.0

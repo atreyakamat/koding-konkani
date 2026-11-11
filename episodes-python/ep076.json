@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A decorator is a function that takes a function, and returns a new function that wraps it. The wrapper can do something before, call the original, and do something after. The at sign is a shortcut. Writing at shout above a def means, after defining the function, replace it with shout of that function. Think of gift wrap. The gift is the same, but the wrapper adds something before and after. Use functools dot wraps to keep the original name."
+      "narration": "A decorator is a function that takes a function, and returns a new function that wraps it. The wrapper can do something before, call the original, and do something after. The at sign is a shortcut. Writing at shout above a def means, after defining the function, replace it with shout of that function. Think of gift wrap. The gift is the same, but the wrapper adds something before and after. Use functools dot wraps to keep the original name.",
+      "props": {
+        "lines": [
+          "A decorator takes a function and returns a new one",
+          "@name above def applies it",
+          "functools.wraps keeps the original name"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "gift wrap: the gift is the same, but the wrapper adds something before and after"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "shout.py",
         "source": "def shout(func):\n    def wrapper():\n        print(\"before\")\n        func()\n        print(\"after\")\n    return wrapper\n\n@shout\ndef hello():\n    print(\"Hello\")\n\nhello()",
         "output": "before\nHello\nafter"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python shout.py",
+        "output": "before\nHello\nafter"
       }
     },
     {
@@ -127,7 +143,90 @@
       "onScreen": "The name hello tied first to the original function; after the decorator, tied to the wrapper that holds the original",
       "animation": "A function box labelled hello is placed inside a wrapper box, and the label hello jumps to the outer box",
       "sfx": [],
-      "narration": "Here is what the at sign does. First, Python defines hello normally. Then it calls shout with that function, and ties the name hello to whatever comes back. That is the wrapper. The original function is still alive, kept inside the wrapper, and called from there. So hello is no longer the original. It is the gift wrap, with the gift inside."
+      "narration": "Here is what the at sign does. First, Python defines hello normally. Then it calls shout with that function, and ties the name hello to whatever comes back. That is the wrapper. The original function is still alive, kept inside the wrapper, and called from there. So hello is no longer the original. It is the gift wrap, with the gift inside.",
+      "props": {
+        "lines": [
+          "Here is what the at sign does.",
+          "First, Python defines hello normally.",
+          "That is the wrapper."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 76,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "wrap",
+              "shape": "box",
+              "text": "wrapper",
+              "colour": "butter",
+              "col": 3,
+              "row": 1,
+              "w": 5,
+              "h": 3
+            },
+            {
+              "id": "orig",
+              "shape": "box",
+              "text": "hello (original)",
+              "colour": "cream",
+              "col": 4,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "name",
+              "shape": "label",
+              "text": "name: hello",
+              "colour": "tomato",
+              "col": 0,
+              "row": 0,
+              "w": 3,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "orig",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "name"
+            },
+            {
+              "t": 0.3,
+              "do": "show",
+              "target": "wrap",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.5,
+              "do": "move",
+              "target": "name",
+              "sfx": "whoosh",
+              "to": [
+                3,
+                0
+              ]
+            },
+            {
+              "t": 0.7,
+              "do": "glow",
+              "target": "wrap",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +243,11 @@
         "file": "timer.py",
         "source": "import functools\n\ndef log(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        result = func(*args, **kwargs)\n        print(func.__name__, args, \"->\", result)\n        return result\n    return wrapper\n\n@log\ndef add(a, b):\n    return a + b\n\nprint(add(2, 3))\nprint(add.__name__)",
         "output": "add (2, 3) -> 5\n5\nadd"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python timer.py",
+        "output": "add (2, 3) -> 5\n5\nadd"
       }
     },
     {
@@ -157,7 +261,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as timer dot py. In the terminal, type python, space, timer dot py. Before, Hello, after. Then the log line, 5, and add."
+      "narration": "Save the file as timer dot py. In the terminal, type python, space, timer dot py. Before, Hello, after. Then the log line, 5, and add.",
+      "props": {
+        "lines": [
+          {
+            "text": "python timer.py",
+            "kind": "input"
+          },
+          {
+            "text": "add (2, 3) -> 5",
+            "kind": "output"
+          },
+          {
+            "text": "5",
+            "kind": "output"
+          },
+          {
+            "text": "add",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +293,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A decorator takes a function and returns a new one. Two: at name above def means: f equals name of f. Three: The wrapper uses star args and star star kwargs to accept anything. Four: functools dot wraps keeps the original name. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A decorator takes a function and returns a new one. Two: at name above def means: f equals name of f. Three: The wrapper uses star args and star star kwargs to accept anything. Four: functools dot wraps keeps the original name. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A decorator takes a function and returns a new one.",
+          "@name above def means: f = name(f).",
+          "The wrapper uses *args and **kwargs to accept anything.",
+          "Functools.wraps keeps the original name."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +315,28 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. After decoration, the name hello points at the wrapper. So dunder name says wrapper, and the doc string is gone. Tools and error messages show the wrong name. Add functools dot wraps above the wrapper, and the original name and notes are copied across."
+      "narration": "Bug of the Day. After decoration, the name hello points at the wrapper. So dunder name says wrapper, and the doc string is gone. Tools and error messages show the wrong name. Add functools dot wraps above the wrapper, and the original name and notes are copied across.",
+      "props": {
+        "wrongCode": "def shout(func):\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper\n\n@shout\ndef hello():\n    \"Say hello\"\n\nprint(hello.__name__)\nprint(hello.__doc__)",
+        "fixedCode": "import functools\n\ndef shout(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper\n\n@shout\ndef hello():\n    \"Say hello\"\n\nprint(hello.__name__)\nprint(hello.__doc__)",
+        "error": "wrapper\nNone",
+        "errorOverride": {
+          "lines": [
+            "wrapper",
+            "None"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "The decorated name points at the wrapper, so it reports the wrapper's name and no docstring. functools.wraps copies those details across.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python shout.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +372,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: decorators with arguments. Keep coding, says Xecxec!"
+      "narration": "Next time: decorators with arguments. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 77,
+        "nextTitle": "Decorators with arguments"
+      }
     }
   ],
   "bug": {
@@ -346,5 +504,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

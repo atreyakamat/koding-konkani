@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Python has two ways to sort. The sort method reorders the list itself, in place, and returns nothing. The sorted function leaves the original alone, and gives you a new sorted list. Think of lining up students by height. You can move the real students, or you can write a sorted copy on paper. Reverse equals True flips the order. And key lets you sort by a rule."
+      "narration": "Python has two ways to sort. The sort method reorders the list itself, in place, and returns nothing. The sorted function leaves the original alone, and gives you a new sorted list. Think of lining up students by height. You can move the real students, or you can write a sorted copy on paper. Reverse equals True flips the order. And key lets you sort by a rule.",
+      "props": {
+        "lines": [
+          "list.sort() reorders the list itself",
+          "sorted(list) returns a new sorted list",
+          "key= sorts by a rule, reverse=True flips the order"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "lining up students by height: you can reorder the real line, or just write down a sorted copy on paper"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "sorting.py",
         "source": "nums = [30, 5, 12, 8]\nnums.sort()\nprint(nums)\nprint(sorted([3, 1, 2], reverse=True))\nprint(nums)",
         "output": "[5, 8, 12, 30]\n[3, 2, 1]\n[5, 8, 12, 30]"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python sorting.py",
+        "output": "[5, 8, 12, 30]\n[3, 2, 1]\n[5, 8, 12, 30]"
       }
     },
     {
@@ -129,7 +145,37 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. Nums is tied to one list. When we call sort, that same list is reordered, and the name stays tied to it. Nothing new is made. Sorted, on the other hand, builds a second list. In this program, we gave that new list no name, so Python forgot it after the print."
+      "narration": "Here is the picture. Nums is tied to one list. When we call sort, that same list is reordered, and the name stays tied to it. Nothing new is made. Sorted, on the other hand, builds a second list. In this program, we gave that new list no name, so Python forgot it after the print.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "nums",
+                "cells": [
+                  {
+                    "value": "5",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "8",
+                    "index": 1
+                  },
+                  {
+                    "value": "12",
+                    "index": 2
+                  },
+                  {
+                    "value": "30",
+                    "index": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +192,11 @@
         "file": "key_demo.py",
         "source": "words = [\"banana\", \"fig\", \"apple\"]\nprint(sorted(words))\nprint(sorted(words, key=len))",
         "output": "['apple', 'banana', 'fig']\n['fig', 'apple', 'banana']"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python key_demo.py",
+        "output": "['apple', 'banana', 'fig']\n['fig', 'apple', 'banana']"
       }
     },
     {
@@ -159,7 +210,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as key_demo dot py. In the terminal, type python, space, key_demo dot py. Apple, banana, fig. Then fig, apple, banana."
+      "narration": "Save the file as key_demo dot py. In the terminal, type python, space, key_demo dot py. Apple, banana, fig. Then fig, apple, banana.",
+      "props": {
+        "lines": [
+          {
+            "text": "python key_demo.py",
+            "kind": "input"
+          },
+          {
+            "text": "['apple', 'banana', 'fig']",
+            "kind": "output"
+          },
+          {
+            "text": "['fig', 'apple', 'banana']",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +238,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: list dot sort sorts in place and returns None. Two: sorted returns a new list and leaves the original alone. Three: reverse equals True gives the biggest first. Four: key equals sorts by a rule, like len. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: list dot sort sorts in place and returns None. Two: sorted returns a new list and leaves the original alone. Three: reverse equals True gives the biggest first. Four: key equals sorts by a rule, like len. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "List.sort() sorts in place and returns None.",
+          "Sorted() returns a new list and leaves the original alone.",
+          "Reverse=True gives the biggest first.",
+          "Key= sorts by a rule, like len."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +260,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We sort the list and save the result. We print it, and get None. Sort changes the list in place, and returns nothing, just like append. If you want a new sorted list to save, use the sorted function. Or call sort on its own line, and keep using the original list."
+      "narration": "Bug of the Day. We sort the list and save the result. We print it, and get None. Sort changes the list in place, and returns nothing, just like append. If you want a new sorted list to save, use the sorted function. Or call sort on its own line, and keep using the original list.",
+      "props": {
+        "wrongCode": "nums = [3, 1, 2]\nresult = nums.sort()\nprint(result)",
+        "fixedCode": "nums = [3, 1, 2]\nresult = sorted(nums)\nprint(result)",
+        "error": "None",
+        "errorOverride": {
+          "lines": [
+            "None"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "list.sort() sorts in place and returns None, so saving its result gives None; use sorted() when you want a new list back.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python sorting.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +316,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: two-dimensional lists. Keep coding, says Xecxec!"
+      "narration": "Next time: two-dimensional lists. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 31,
+        "nextTitle": "2D lists"
+      }
     }
   ],
   "bug": {
@@ -348,5 +448,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

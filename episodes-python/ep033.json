@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A dictionary stores pairs. A key, a colon, and a value. Curly brackets hold the pairs, with commas between them. Think of a fish market price board. You look up the fish by name, and read its price. You never need to know the position. Keys are unique. If you add a key that already exists, its value is replaced. Ask for a key that is not there, and Python raises a key error."
+      "narration": "A dictionary stores pairs. A key, a colon, and a value. Curly brackets hold the pairs, with commas between them. Think of a fish market price board. You look up the fish by name, and read its price. You never need to know the position. Keys are unique. If you add a key that already exists, its value is replaced. Ask for a key that is not there, and Python raises a key error.",
+      "props": {
+        "lines": [
+          "A dict holds key and value pairs",
+          "You read a value with its key",
+          "Keys are unique; adding an existing key replaces its value"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a fish-market price board: you look up the fish by name and read its price"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "prices.py",
         "source": "fish_price = {\"pomfret\": 350, \"prawns\": 500, \"mackerel\": 120}\nprint(fish_price[\"prawns\"])\nfish_price[\"tuna\"] = 400\nprint(fish_price)\nprint(len(fish_price))",
         "output": "500\n{'pomfret': 350, 'prawns': 500, 'mackerel': 120, 'tuna': 400}\n4"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python prices.py",
+        "output": "500\n{'pomfret': 350, 'prawns': 500, 'mackerel': 120, 'tuna': 400}\n4"
       }
     },
     {
@@ -129,7 +145,37 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. One name, fish price, tied to one dictionary object. Inside, each key points at a value. Pomfret points at three hundred fifty. Prawns points at five hundred. Each key has one value. Like a list, a dictionary changes in place. Adding tuna did not make a new dictionary. It grew the one we had."
+      "narration": "Here is the picture. One name, fish price, tied to one dictionary object. Inside, each key points at a value. Pomfret points at three hundred fifty. Prawns points at five hundred. Each key has one value. Like a list, a dictionary changes in place. Adding tuna did not make a new dictionary. It grew the one we had.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "fish_price",
+                "cells": [
+                  {
+                    "value": "350",
+                    "index": "pomfret",
+                    "address": "dict"
+                  },
+                  {
+                    "value": "500",
+                    "index": "prawns"
+                  },
+                  {
+                    "value": "120",
+                    "index": "mackerel"
+                  },
+                  {
+                    "value": "400",
+                    "index": "tuna"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +192,11 @@
         "file": "update.py",
         "source": "fish_price = {\"pomfret\": 350, \"prawns\": 500}\nfish_price[\"pomfret\"] = 380\ndel fish_price[\"prawns\"]\nprint(fish_price)\nprint(\"prawns\" in fish_price)",
         "output": "{'pomfret': 380}\nFalse"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python update.py",
+        "output": "{'pomfret': 380}\nFalse"
       }
     },
     {
@@ -159,7 +210,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as update dot py. In the terminal, type python, space, update dot py. Only pomfret is left, at three hundred eighty. Then False."
+      "narration": "Save the file as update dot py. In the terminal, type python, space, update dot py. Only pomfret is left, at three hundred eighty. Then False.",
+      "props": {
+        "lines": [
+          {
+            "text": "python update.py",
+            "kind": "input"
+          },
+          {
+            "text": "{'pomfret': 380}",
+            "kind": "output"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +238,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A dictionary stores key and value pairs in curly brackets. Two: Read a value with dictkey. Assign to a key to add or change a pair. Three: del removes a pair and in checks for a key. Four: Keys are unique, so a repeated key replaces the old value. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A dictionary stores key and value pairs in curly brackets. Two: Read a value with dictkey. Assign to a key to add or change a pair. Three: del removes a pair and in checks for a key. Four: Keys are unique, so a repeated key replaces the old value. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A dictionary stores key and value pairs in curly brackets.",
+          "Read a value with dict[key]; assign to a key to add or change a pair.",
+          "Del removes a pair and in checks for a key.",
+          "Keys are unique, so a repeated key replaces the old value."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +260,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We ask for the price of crab, but crab is not a key. Python says, key error, crab. The last line names the missing key. Check with the word in before you read. Then give a friendly message when the key is missing. Next episode, we meet a shorter way, called get."
+      "narration": "Bug of the Day. We ask for the price of crab, but crab is not a key. Python says, key error, crab. The last line names the missing key. Check with the word in before you read. Then give a friendly message when the key is missing. Next episode, we meet a shorter way, called get.",
+      "props": {
+        "wrongCode": "fish_price = {\"pomfret\": 350, \"prawns\": 500}\nprint(fish_price[\"crab\"])",
+        "fixedCode": "fish_price = {\"pomfret\": 350, \"prawns\": 500}\nif \"crab\" in fish_price:\n    print(fish_price[\"crab\"])\nelse:\n    print(\"No crab today\")",
+        "error": "  File \"prices.py\", line 2, in <module>\n    print(fish_price[\"crab\"])\n          ~~~~~~~~~~^^^^^^^^\nKeyError: 'crab'",
+        "errorOverride": {
+          "lines": [
+            "  File \"prices.py\", line 2, in <module>",
+            "    print(fish_price[\"crab\"])",
+            "          ~~~~~~~~~~^^^^^^^^",
+            "KeyError: 'crab'"
+          ]
+        },
+        "why": "Looking up a key that does not exist raises a KeyError, so check with in before you read.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python prices.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +318,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: dictionary methods and looping. Keep coding, says Xecxec!"
+      "narration": "Next time: dictionary methods and looping. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 34,
+        "nextTitle": "Dictionary methods and looping"
+      }
     }
   ],
   "bug": {
@@ -348,5 +450,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

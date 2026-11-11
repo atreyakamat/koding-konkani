@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "An API is a web address that returns data instead of a page. You send a request, and the answer usually comes back as JSON text. Turn it into a dictionary with json dot loads, or with the response's json method. The popular requests package does the sending. One thing matters more than any other. Always set a timeout. Without it, if the other side never answers, your program waits forever. Think of posting a letter and waiting for a reply. If nobody answers, you need a deadline. In this episode, the answers are recorded responses, so the lesson works offline."
+      "narration": "An API is a web address that returns data instead of a page. You send a request, and the answer usually comes back as JSON text. Turn it into a dictionary with json dot loads, or with the response's json method. The popular requests package does the sending. One thing matters more than any other. Always set a timeout. Without it, if the other side never answers, your program waits forever. Think of posting a letter and waiting for a reply. If nobody answers, you need a deadline. In this episode, the answers are recorded responses, so the lesson works offline.",
+      "props": {
+        "lines": [
+          "You send a request, and an API sends back text",
+          "That text is usually JSON; json.loads turns it into a dict",
+          "Always give a timeout"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "posting a letter and waiting for the reply: if the other side never answers, you need a deadline"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "api.py",
         "source": "import json\n\n# recorded response (saved earlier from a weather API)\nraw = '{\"city\": \"Panaji\", \"temp_c\": 31, \"tags\": [\"humid\", \"sunny\"]}'\ndata = json.loads(raw)\nprint(data[\"city\"], data[\"temp_c\"])\nprint(data[\"tags\"][0])\nprint(type(data).__name__)",
         "output": "Panaji 31\nhumid\ndict"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python api.py",
+        "output": "Panaji 31\nhumid\ndict"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name data is tied to one dictionary. Its keys are city, temp c and tags. The values are text, a number, and a list. JSON objects become dictionaries, JSON lists become lists, and JSON numbers and text become Python numbers and strings. After loading, you work with ordinary Python objects."
+      "narration": "Here is the picture. The name data is tied to one dictionary. Its keys are city, temp c and tags. The values are text, a number, and a list. JSON objects become dictionaries, JSON lists become lists, and JSON numbers and text become Python numbers and strings. After loading, you work with ordinary Python objects.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "{'city': 'Panaji', 'temp_c': …",
+                    "address": "dict",
+                    "name": "data"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "todos.py",
         "source": "import json\n\nrecorded = [\n    '{\"id\": 1, \"title\": \"Learn Python\", \"done\": true}',\n    '{\"id\": 2, \"title\": \"Build a bot\", \"done\": false}',\n]\nfor text in recorded:\n    item = json.loads(text)\n    mark = \"x\" if item[\"done\"] else \" \"\n    print(f\"[{mark}] {item['title']}\")",
         "output": "[x] Learn Python\n[ ] Build a bot"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python todos.py",
+        "output": "[x] Learn Python\n[ ] Build a bot"
       }
     },
     {
@@ -159,7 +197,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as todos dot py. In the terminal, type python, space, todos dot py. Panaji 31, humid, dict. Then the two to-do lines."
+      "narration": "Save the file as todos dot py. In the terminal, type python, space, todos dot py. Panaji 31, humid, dict. Then the two to-do lines.",
+      "props": {
+        "lines": [
+          {
+            "text": "python todos.py",
+            "kind": "input"
+          },
+          {
+            "text": "[x] Learn Python",
+            "kind": "output"
+          },
+          {
+            "text": "[ ] Build a bot",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +225,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: An API returns data, usually as JSON text. Two: json dot loads turns JSON text into dicts and lists. Three: requests dot get of url, timeout equals 5 sends the request. Four: Always set a timeout, or your program may wait forever. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: An API returns data, usually as JSON text. Two: json dot loads turns JSON text into dicts and lists. Three: requests dot get of url, timeout equals 5 sends the request. Four: Always set a timeout, or your program may wait forever. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "An API returns data, usually as JSON text.",
+          "Json.loads turns JSON text into dicts and lists.",
+          "Requests.get(url, timeout=5) sends the request.",
+          "Always set a timeout, or your program may wait forever."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +247,26 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. This is a small stand in for a web server that never answers. We connect fine, and then wait for a reply. Nothing arrives, and the program hangs, with no error. In real code, requests dot get without a timeout does the same. Set a timeout, catch the timeout error, and decide what to do next."
+      "narration": "Bug of the Day. This is a small stand in for a web server that never answers. We connect fine, and then wait for a reply. Nothing arrives, and the program hangs, with no error. In real code, requests dot get without a timeout does the same. Set a timeout, catch the timeout error, and decide what to do next.",
+      "props": {
+        "wrongCode": "import socket\n\nserver = socket.socket()\nserver.bind((\"127.0.0.1\", 0))\nserver.listen(1)\nport = server.getsockname()[1]\n\nclient = socket.create_connection((\"127.0.0.1\", port))\nprint(\"connected, waiting for a reply\")\nprint(client.recv(10))\nprint(\"never reached\")",
+        "fixedCode": "import socket\n\nserver = socket.socket()\nserver.bind((\"127.0.0.1\", 0))\nserver.listen(1)\nport = server.getsockname()[1]\n\nclient = socket.create_connection((\"127.0.0.1\", port))\nclient.settimeout(1)\nprint(\"connected, waiting for a reply\")\ntry:\n    print(client.recv(10))\nexcept TimeoutError:\n    print(\"timed out, giving up\")",
+        "error": "",
+        "errorOverride": {
+          "lines": [],
+          "hang": true,
+          "caption": "no output: the program waits for ever"
+        },
+        "why": "Network calls without a timeout can wait forever when the other side is slow or silent. A timeout turns that into an error you can catch.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python api.py",
+        "culprit": {
+          "wrong": 9,
+          "fixed": 9
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +302,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: pathlib and os. Keep coding, says Xecxec!"
+      "narration": "Next time: pathlib and os. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 85,
+        "nextTitle": "pathlib and os"
+      }
     }
   ],
   "bug": {
@@ -348,5 +434,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

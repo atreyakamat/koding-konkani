@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Python has a special method named init, with two underscores on each side. It runs automatically, the moment an object is created. Inside it, you store data on the object with self dot name equals name. The words after self are the arguments you pass when you build the object. Think of a form every new student fills in at the door. Nobody enters the class without name and marks. The values stored on the object are called attributes."
+      "narration": "Python has a special method named init, with two underscores on each side. It runs automatically, the moment an object is created. Inside it, you store data on the object with self dot name equals name. The words after self are the arguments you pass when you build the object. Think of a form every new student fills in at the door. Nobody enters the class without name and marks. The values stored on the object are called attributes.",
+      "props": {
+        "lines": [
+          "__init__ runs when the object is created",
+          "self.name = name stores data on the object",
+          "Arguments go in the brackets of the class name"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a form that every new student fills in at the door, before they enter the class"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "student.py",
         "source": "class Student:\n    def __init__(self, name, marks):\n        self.name = name\n        self.marks = marks\n\na = Student(\"Asha\", 91)\nb = Student(\"Ravi\", 78)\nprint(a.name, a.marks)\nprint(b.name, b.marks)\na.marks = 95\nprint(a.marks, b.marks)",
         "output": "Asha 91\nRavi 78\n95 78"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python student.py",
+        "output": "Asha 91\nRavi 78\n95 78"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name a is tied to one student object. Inside it live two attributes, name and marks. The name b is tied to another student, with its own attributes. Same blueprint, different data. Init filled both objects in, at the moment they were born."
+      "narration": "Here is the picture. The name a is tied to one student object. Inside it live two attributes, name and marks. The name b is tied to another student, with its own attributes. Same blueprint, different data. Init filled both objects in, at the moment they were born.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "<Student object>",
+                    "address": "Student",
+                    "name": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "<Student object>",
+                    "address": "Student",
+                    "name": "a"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "<Student object>",
+                    "address": "Student",
+                    "name": "b"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +201,11 @@
         "file": "rectangle.py",
         "source": "class Rectangle:\n    def __init__(self, width, height=1):\n        self.width = width\n        self.height = height\n\n    def area(self):\n        return self.width * self.height\n\nr1 = Rectangle(4, 3)\nr2 = Rectangle(5)\nprint(r1.area())\nprint(r2.area())\nprint(r2.height)",
         "output": "12\n5\n1"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python rectangle.py",
+        "output": "12\n5\n1"
       }
     },
     {
@@ -159,7 +219,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as rectangle dot py. In the terminal, type python, space, rectangle dot py. Asha 91, Ravi 78, then 95 78. Then 12, 5 and 1."
+      "narration": "Save the file as rectangle dot py. In the terminal, type python, space, rectangle dot py. Asha 91, Ravi 78, then 95 78. Then 12, 5 and 1.",
+      "props": {
+        "lines": [
+          {
+            "text": "python rectangle.py",
+            "kind": "input"
+          },
+          {
+            "text": "12",
+            "kind": "output"
+          },
+          {
+            "text": "5",
+            "kind": "output"
+          },
+          {
+            "text": "1",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +251,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: dunder init runs automatically when an object is created. Two: self dot name equals name stores data on the object. Three: Arguments in Student of ... go to dunder init after self. Four: Default values work just like in functions. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: dunder init runs automatically when an object is created. Two: self dot name equals name stores data on the object. Three: Arguments in Student of ... go to dunder init after self. Four: Default values work just like in functions. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "__init__ runs automatically when an object is created.",
+          "Self.name = name stores data on the object.",
+          "Arguments in Student(...) go to __init__ after self.",
+          "Default values work just like in functions."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +273,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We wrote name equals name, without self dot. That creates a plain local variable, which vanishes when init ends. The object has no name at all. So s dot name raises an attribute error, Student object has no attribute name. Always write self dot, to store data on the object."
+      "narration": "Bug of the Day. We wrote name equals name, without self dot. That creates a plain local variable, which vanishes when init ends. The object has no name at all. So s dot name raises an attribute error, Student object has no attribute name. Always write self dot, to store data on the object.",
+      "props": {
+        "wrongCode": "class Student:\n    def __init__(self, name):\n        name = name\n\ns = Student(\"Asha\")\nprint(s.name)",
+        "fixedCode": "class Student:\n    def __init__(self, name):\n        self.name = name\n\ns = Student(\"Asha\")\nprint(s.name)",
+        "error": "  File \"student.py\", line 6, in <module>\n    print(s.name)\n          ^^^^^^\nAttributeError: 'Student' object has no attribute 'name'",
+        "errorOverride": {
+          "lines": [
+            "  File \"student.py\", line 6, in <module>",
+            "    print(s.name)",
+            "          ^^^^^^",
+            "AttributeError: 'Student' object has no attribute 'name'"
+          ]
+        },
+        "why": "Without self. the value is stored in a local variable that disappears when init ends. Only self.name = ... puts data on the object.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python student.py",
+        "culprit": {
+          "wrong": 6,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +331,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: methods. Keep coding, says Xecxec!"
+      "narration": "Next time: methods. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 64,
+        "nextTitle": "Methods"
+      }
     }
   ],
   "bug": {
@@ -348,5 +463,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

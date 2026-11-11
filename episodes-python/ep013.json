@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A decision has three parts. The word if, a condition that is True or False, and a colon. The lines indented below run only when the condition is True. Else gives the other path, for when it is False. Think of a lifeguard flag. Red flag, you stay out. Green flag, you can swim. The program checks, then walks down exactly one path."
+      "narration": "A decision has three parts. The word if, a condition that is True or False, and a colon. The lines indented below run only when the condition is True. Else gives the other path, for when it is False. Think of a lifeguard flag. Red flag, you stay out. Green flag, you can swim. The program checks, then walks down exactly one path.",
+      "props": {
+        "lines": [
+          "if checks a condition",
+          "else runs when the condition is False",
+          "The colon and the indent mark each block"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a beach lifeguard flag: red flag, you stay out; green flag, you can swim"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "weather.py",
         "source": "temperature = 34\nif temperature > 30:\n    print(\"Hot day\")\n    print(\"Drink water\")\nelse:\n    print(\"Pleasant day\")\nprint(\"Enjoy the beach\")",
         "output": "Hot day\nDrink water\nEnjoy the beach"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python weather.py",
+        "output": "Hot day\nDrink water\nEnjoy the beach"
       }
     },
     {
@@ -127,7 +143,165 @@
       "onScreen": "A flowchart: condition diamond, a yes branch for the if block, a no branch for the else block, and a join before the last line",
       "animation": "Flowchart boxes light up one at a time; the arrow follows the path Python takes, and the skipped branch stays grey",
       "sfx": [],
-      "narration": "Here is the decision as a map. Python arrives at the diamond and asks the question. If the answer is yes, it walks the if branch. If the answer is no, it walks the else branch. Then both branches join, and the program carries on with the next line. Exactly one branch is walked every time."
+      "narration": "Here is the decision as a map. Python arrives at the diamond and asks the question. If the answer is yes, it walks the if branch. If the answer is no, it walks the else branch. Then both branches join, and the program carries on with the next line. Exactly one branch is walked every time.",
+      "props": {
+        "lines": [
+          "Here is the decision as a map.",
+          "Python arrives at the diamond and asks the question.",
+          "If the answer is yes, it walks the if branch."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 13,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "q",
+              "shape": "box",
+              "text": "temperature > 30 ?",
+              "colour": "butter",
+              "col": 4,
+              "row": 0,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "yes",
+              "shape": "box",
+              "text": "Hot day, Drink water",
+              "colour": "mint",
+              "col": 1,
+              "row": 2,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "no",
+              "shape": "box",
+              "text": "Pleasant day",
+              "colour": "peach",
+              "col": 7,
+              "row": 2,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "end",
+              "shape": "box",
+              "text": "Enjoy the beach",
+              "colour": "pastelBlue",
+              "col": 4,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "True",
+              "colour": "ink",
+              "from": "q",
+              "to": "yes"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "False",
+              "colour": "ink",
+              "from": "q",
+              "to": "no"
+            },
+            {
+              "id": "a3",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "yes",
+              "to": "end"
+            },
+            {
+              "id": "a4",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "no",
+              "to": "end"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "q",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "yes"
+            },
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "no"
+            },
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "end"
+            },
+            {
+              "t": 0.25,
+              "do": "glow",
+              "target": "q",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.4,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.4,
+              "do": "draw",
+              "target": "a2"
+            },
+            {
+              "t": 0.45,
+              "do": "glow",
+              "target": "yes",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.45,
+              "do": "dim",
+              "target": "no"
+            },
+            {
+              "t": 0.7,
+              "do": "draw",
+              "target": "a3",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.7,
+              "do": "draw",
+              "target": "a4"
+            },
+            {
+              "t": 0.8,
+              "do": "glow",
+              "target": "end",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +318,11 @@
         "file": "marks.py",
         "source": "marks = 38\nif marks >= 40:\n    print(\"Pass\")\nelse:\n    print(\"Try again\")",
         "output": "Try again"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python marks.py",
+        "output": "Try again"
       }
     },
     {
@@ -157,7 +336,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as marks dot py. In the terminal, type python, space, marks dot py. Try again. Thirty eight is below the pass mark of forty."
+      "narration": "Save the file as marks dot py. In the terminal, type python, space, marks dot py. Try again. Thirty eight is below the pass mark of forty.",
+      "props": {
+        "lines": [
+          {
+            "text": "python marks.py",
+            "kind": "input"
+          },
+          {
+            "text": "Try again",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +360,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: if runs a block only when its condition is True. Two: else runs when the condition is False. Three: The colon opens a block and the indent shows what belongs to it. Four: A line at the left edge runs whichever path was taken. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: if runs a block only when its condition is True. Two: else runs when the condition is False. Three: The colon opens a block and the indent shows what belongs to it. Four: A line at the left edge runs whichever path was taken. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "If runs a block only when its condition is True.",
+          "Else runs when the condition is False.",
+          "The colon opens a block and the indent shows what belongs to it.",
+          "A line at the left edge runs whichever path was taken."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +382,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We forgot the colon after the condition. Python says, syntax error, expected a colon. The arrow points to the exact spot where the colon should be. Every if line must end with a colon. It tells Python, a block starts on the next line. Add it, and the program runs."
+      "narration": "Bug of the Day. We forgot the colon after the condition. Python says, syntax error, expected a colon. The arrow points to the exact spot where the colon should be. Every if line must end with a colon. It tells Python, a block starts on the next line. Add it, and the program runs.",
+      "props": {
+        "wrongCode": "marks = 38\nif marks >= 40\n    print(\"Pass\")",
+        "fixedCode": "marks = 38\nif marks >= 40:\n    print(\"Pass\")",
+        "error": "File \"marks.py\", line 2\n    if marks >= 40\n                  ^\nSyntaxError: expected ':'",
+        "errorOverride": {
+          "lines": [
+            "File \"marks.py\", line 2",
+            "    if marks >= 40",
+            "                  ^",
+            "SyntaxError: expected ':'"
+          ]
+        },
+        "why": "The colon tells Python that a block follows; without it Python cannot tell where the condition ends.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python weather.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +440,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: elif ladders. Keep coding, says Xecxec!"
+      "narration": "Next time: elif ladders. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 14,
+        "nextTitle": "elif ladders"
+      }
     }
   ],
   "bug": {
@@ -346,5 +572,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Inside a loop, three tools give you more control. Break leaves the loop at once. Continue skips the rest of this round, and goes to the next. And else, after the loop, runs only when the loop finished without a break. Think of a bus journey. Break means get off the bus right now. Continue means skip this stop. Else means you reached the last stop."
+      "narration": "Inside a loop, three tools give you more control. Break leaves the loop at once. Continue skips the rest of this round, and goes to the next. And else, after the loop, runs only when the loop finished without a break. Think of a bus journey. Break means get off the bus right now. Continue means skip this stop. Else means you reached the last stop.",
+      "props": {
+        "lines": [
+          "break leaves the loop now",
+          "continue skips to the next round",
+          "else runs only if the loop was never broken"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a bus journey: break gets off the bus now, continue skips this stop, and else means you reached the end"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "stop_at.py",
         "source": "for n in range(1, 10):\n    if n == 4:\n        print(\"Stop at 4\")\n        break\n    print(\"n is\", n)",
         "output": "n is 1\nn is 2\nn is 3\nStop at 4"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python stop_at.py",
+        "output": "n is 1\nn is 2\nn is 3\nStop at 4"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is what is left after the break. The name n is tied to the int four, the value it had when the loop was left. The loop never reached five. Compare that with a loop that finishes normally, where the name ends on the last value in the series. This is a handy way to see where a loop stopped."
+      "narration": "Here is what is left after the break. The name n is tied to the int four, the value it had when the loop was left. The loop never reached five. Compare that with a loop that finishes normally, where the name ends on the last value in the series. This is a handy way to see where a loop stopped.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "4",
+                    "address": "int",
+                    "name": "n"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "odds.py",
         "source": "for n in range(1, 6):\n    if n % 2 == 0:\n        continue\n    print(\"Odd:\", n)\nelse:\n    print(\"Loop finished without break\")",
         "output": "Odd: 1\nOdd: 3\nOdd: 5\nLoop finished without break"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python odds.py",
+        "output": "Odd: 1\nOdd: 3\nOdd: 5\nLoop finished without break"
       }
     },
     {
@@ -159,7 +197,31 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as odds dot py. In the terminal, type python, space, odds dot py. Odd, one. Odd, three. Odd, five. Then, Loop finished without break."
+      "narration": "Save the file as odds dot py. In the terminal, type python, space, odds dot py. Odd, one. Odd, three. Odd, five. Then, Loop finished without break.",
+      "props": {
+        "lines": [
+          {
+            "text": "python odds.py",
+            "kind": "input"
+          },
+          {
+            "text": "Odd: 1",
+            "kind": "output"
+          },
+          {
+            "text": "Odd: 3",
+            "kind": "output"
+          },
+          {
+            "text": "Odd: 5",
+            "kind": "output"
+          },
+          {
+            "text": "Loop finished without break",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +233,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: break leaves the loop immediately. Two: continue skips the rest of the current round. Three: A loop else runs only when the loop ended without a break. Four: In a while loop, update the counter before you continue. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: break leaves the loop immediately. Two: continue skips the rest of the current round. Three: A loop else runs only when the loop ended without a break. Four: In a while loop, update the counter before you continue. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Break leaves the loop immediately.",
+          "Continue skips the rest of the current round.",
+          "A loop else runs only when the loop ended without a break.",
+          "In a while loop, update the counter before you continue."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +255,26 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We want to skip the number two. But when n is two, continue jumps back to the top, and skips the line that adds one. So n stays two forever, and the program hangs after printing zero and one. With a while loop, add one before you continue. Then the loop moves on."
+      "narration": "Bug of the Day. We want to skip the number two. But when n is two, continue jumps back to the top, and skips the line that adds one. So n stays two forever, and the program hangs after printing zero and one. With a while loop, add one before you continue. Then the loop moves on.",
+      "props": {
+        "wrongCode": "n = 0\nwhile n < 5:\n    if n == 2:\n        continue\n    print(n)\n    n = n + 1",
+        "fixedCode": "n = 0\nwhile n < 5:\n    if n == 2:\n        n = n + 1\n        continue\n    print(n)\n    n = n + 1",
+        "error": "",
+        "errorOverride": {
+          "lines": [],
+          "hang": true,
+          "caption": "no output: the program waits for ever"
+        },
+        "why": "continue jumps straight back to the condition, so a counter update placed after it is skipped and the loop never ends.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python stop_at.py",
+        "culprit": {
+          "wrong": 4,
+          "fixed": 4
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +310,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: nested loops and patterns. Keep coding, says Xecxec!"
+      "narration": "Next time: nested loops and patterns. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 19,
+        "nextTitle": "Nested loops and patterns"
+      }
     }
   ],
   "bug": {
@@ -348,5 +442,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

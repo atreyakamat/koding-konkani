@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A generator is a function that uses yield instead of return. Calling it does not run the body. It gives back a generator object. Each time you ask for the next value, the function runs to the next yield. It hands the value out, and pauses. The next request resumes right after the yield. Nothing is stored in a big list, so a generator can even be endless. Think of a conveyor belt that makes the next cookie only when you reach for it."
+      "narration": "A generator is a function that uses yield instead of return. Calling it does not run the body. It gives back a generator object. Each time you ask for the next value, the function runs to the next yield. It hands the value out, and pauses. The next request resumes right after the yield. Nothing is stored in a big list, so a generator can even be endless. Think of a conveyor belt that makes the next cookie only when you reach for it.",
+      "props": {
+        "lines": [
+          "yield hands out a value and pauses",
+          "The function resumes where it stopped",
+          "Values are made one at a time"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a conveyor belt that makes the next cookie only when you reach for it"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "gen.py",
         "source": "def countdown(n):\n    print(\"start\")\n    while n > 0:\n        yield n\n        n -= 1\n    print(\"done\")\n\ng = countdown(3)\nprint(\"made it\")\nprint(next(g))\nprint(next(g))\nfor x in g:\n    print(x)",
         "output": "made it\nstart\n3\n2\n1\ndone"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python gen.py",
+        "output": "made it\nstart\n3\n2\n1\ndone"
       }
     },
     {
@@ -127,7 +143,124 @@
       "onScreen": "A function box with a bookmark at the yield line; each next moves the bookmark forward",
       "animation": "A function box with a bookmark at the yield line; each next call hops the bookmark one step and ejects a value ticket",
       "sfx": [],
-      "narration": "Here is the picture. A generator keeps a bookmark at the yield line. Each next call resumes from the bookmark. It runs to the next yield, hands out a value, and places the bookmark again. All local variables stay alive between calls. When the function ends, the bookmark is gone, and the generator raises StopIteration."
+      "narration": "Here is the picture. A generator keeps a bookmark at the yield line. Each next call resumes from the bookmark. It runs to the next yield, hands out a value, and places the bookmark again. All local variables stay alive between calls. When the function ends, the bookmark is gone, and the generator raises StopIteration.",
+      "props": {
+        "lines": [
+          "Here is the picture.",
+          "A generator keeps a bookmark at the yield line.",
+          "Each next call resumes from the bookmark."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 74,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "fn",
+              "shape": "box",
+              "text": "def countdown(n): ... yield n ...",
+              "colour": "cream",
+              "col": 1,
+              "row": 1,
+              "w": 6,
+              "h": 2
+            },
+            {
+              "id": "bm",
+              "shape": "token",
+              "text": "bookmark",
+              "colour": "tomato",
+              "col": 7,
+              "row": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "t1",
+              "shape": "token",
+              "text": "3",
+              "colour": "butter",
+              "col": 8,
+              "row": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "t2",
+              "shape": "token",
+              "text": "2",
+              "colour": "butter",
+              "col": 9,
+              "row": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "t3",
+              "shape": "token",
+              "text": "1",
+              "colour": "butter",
+              "col": 10,
+              "row": 4,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "fn",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "bm"
+            },
+            {
+              "t": 0.25,
+              "do": "show",
+              "target": "t1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.3,
+              "do": "glow",
+              "target": "bm",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.5,
+              "do": "show",
+              "target": "t2",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.55,
+              "do": "glow",
+              "target": "bm",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.75,
+              "do": "show",
+              "target": "t3",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.8,
+              "do": "glow",
+              "target": "bm",
+              "sfx": "key-tick"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +277,11 @@
         "file": "squares.py",
         "source": "def naturals():\n    n = 1\n    while True:\n        yield n\n        n += 1\n\ndef squares(limit):\n    for n in naturals():\n        if n > limit:\n            return\n        yield n * n\n\nprint(list(squares(5)))\nprint(sum(squares(10)))",
         "output": "[1, 4, 9, 16, 25]\n385"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python squares.py",
+        "output": "[1, 4, 9, 16, 25]\n385"
       }
     },
     {
@@ -157,7 +295,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as squares dot py. In the terminal, type python, space, squares dot py. Made it, start, 3, 2, then 1, done. Then the five squares, then 385."
+      "narration": "Save the file as squares dot py. In the terminal, type python, space, squares dot py. Made it, start, 3, 2, then 1, done. Then the five squares, then 385.",
+      "props": {
+        "lines": [
+          {
+            "text": "python squares.py",
+            "kind": "input"
+          },
+          {
+            "text": "[1, 4, 9, 16, 25]",
+            "kind": "output"
+          },
+          {
+            "text": "385",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +323,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A function with yield returns a generator. Two: Each next runs the function up to the next yield. Three: Values are made one at a time, so memory stays small. Four: A generator can be used only once. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A function with yield returns a generator. Two: Each next runs the function up to the next yield. Three: Values are made one at a time, so memory stays small. Four: A generator can be used only once. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A function with yield returns a generator.",
+          "Each next runs the function up to the next yield.",
+          "Values are made one at a time, so memory stays small.",
+          "A generator can be used only once."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +345,28 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We turn the same generator into a list twice. The first list is zero, two, four. The second list is empty, with no error. The generator was used up. To loop again, call evens again, and get a fresh generator."
+      "narration": "Bug of the Day. We turn the same generator into a list twice. The first list is zero, two, four. The second list is empty, with no error. The generator was used up. To loop again, call evens again, and get a fresh generator.",
+      "props": {
+        "wrongCode": "def evens():\n    for n in range(0, 6, 2):\n        yield n\n\ng = evens()\nprint(list(g))\nprint(list(g))",
+        "fixedCode": "def evens():\n    for n in range(0, 6, 2):\n        yield n\n\nprint(list(evens()))\nprint(list(evens()))",
+        "error": "[0, 2, 4]\n[]",
+        "errorOverride": {
+          "lines": [
+            "[0, 2, 4]",
+            "[]"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "A generator runs once. When it finishes, it stays empty. Call the generator function again to get a fresh one.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python gen.py",
+        "culprit": {
+          "wrong": 5,
+          "fixed": 5
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +402,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: generator expressions. Keep coding, says Xecxec!"
+      "narration": "Next time: generator expressions. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 75,
+        "nextTitle": "Generator expressions"
+      }
     }
   ],
   "bug": {
@@ -346,5 +534,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

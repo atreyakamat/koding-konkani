@@ -102,7 +102,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Python reads from top to bottom. When a line ends with a colon, the lines below it, moved four spaces to the right, belong to it. Like a family tree: the children are drawn indented under their parent. Four spaces is the standard. Your editor adds them when you press the tab key."
+      "narration": "Python reads from top to bottom. When a line ends with a colon, the lines below it, moved four spaces to the right, belong to it. Like a family tree: the children are drawn indented under their parent. Four spaces is the standard. Your editor adds them when you press the tab key.",
+      "props": {
+        "lines": [
+          "Python reads from top to bottom.",
+          "Four spaces is the standard.",
+          "Your editor adds them when you press the tab key."
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "Family-tree analogy card"
+        }
+      }
     },
     {
       "id": 3,
@@ -120,6 +131,11 @@
         "file": "age.py",
         "source": "age = 17\nif age >= 18:\n    print(\"You can vote.\")\nelse:\n    print(\"Not yet.\")\nprint(\"Done.\")",
         "output": "Not yet.\nDone."
+      },
+      "props": {
+        "lang": "python",
+        "command": "python age.py",
+        "output": "Not yet.\nDone."
       }
     },
     {
@@ -132,7 +148,15 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Think of two rooms. The if room runs when the answer is yes. The else room runs when it is no. Only one room is entered. After that, we step back out to the left, and the program carries on. Just remember: the colon opens a room, and the indent shows who lives inside."
+      "narration": "Think of two rooms. The if room runs when the answer is yes. The else room runs when it is no. Only one room is entered. After that, we step back out to the left, and the program carries on. Just remember: the colon opens a room, and the indent shows who lives inside.",
+      "props": {
+        "lines": [
+          "Think of two rooms.",
+          "The if room runs when the answer is yes.",
+          "The else room runs when it is no."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 5,
@@ -149,6 +173,11 @@
         "file": "age.py",
         "source": "age = 17\nif age >= 18:\n    print(\"You can vote.\")\nelse:\n    print(\"Not yet.\")\nprint(\"Done.\")",
         "output": "Not yet.\nDone."
+      },
+      "props": {
+        "lang": "python",
+        "command": "python age.py",
+        "output": "Not yet.\nDone."
       }
     },
     {
@@ -162,7 +191,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Run it. Not yet. Done. Change age to twenty and run again. Now you see, you can vote, and then, done."
+      "narration": "Run it. Not yet. Done. Change age to twenty and run again. Now you see, you can vote, and then, done.",
+      "props": {
+        "lines": [
+          {
+            "text": "python age.py",
+            "kind": "input"
+          },
+          {
+            "text": "Not yet.",
+            "kind": "output"
+          },
+          {
+            "text": "Done.",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -174,7 +219,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Recap. One: Python reads top to bottom. Two: a colon opens a room, and the lines moved four spaces to the right live inside it. Three: only one of if and else runs, and then Python steps back out. Four: if the indent is wrong, you get an indentation error. Say these four ideas out loud. That is a lot already. Well done."
+      "narration": "Recap. One: Python reads top to bottom. Two: a colon opens a room, and the lines moved four spaces to the right live inside it. Three: only one of if and else runs, and then Python steps back out. Four: if the indent is wrong, you get an indentation error. Say these four ideas out loud. That is a lot already. Well done.",
+      "props": {
+        "lines": [
+          "Python reads top to bottom.",
+          "A colon opens a room, and the lines moved four spaces to the right live inside it.",
+          "Only one of if and else runs, and then Python steps back out.",
+          "If the indent is wrong, you get an indentation error."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -187,7 +241,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We put else two spaces in, instead of lining it up with if. Python says, indentation error, unindent does not match any outer indentation level. The fix: line else up exactly under if."
+      "narration": "Bug of the Day. We put else two spaces in, instead of lining it up with if. Python says, indentation error, unindent does not match any outer indentation level. The fix: line else up exactly under if.",
+      "props": {
+        "wrongCode": "age = 17\nif age >= 18:\n    print(\"You can vote.\")\n  else:\n    print(\"Not yet.\")",
+        "fixedCode": "age = 17\nif age >= 18:\n    print(\"You can vote.\")\nelse:\n    print(\"Not yet.\")",
+        "error": "File \"age.py\", line 4\n    else:\n         ^\nIndentationError: unindent does not match any outer indentation level",
+        "errorOverride": {
+          "lines": [
+            "File \"age.py\", line 4",
+            "    else:",
+            "         ^",
+            "IndentationError: unindent does not match any outer indentation level"
+          ]
+        },
+        "why": "Python uses indentation to decide which lines belong together, so else must line up exactly under its if.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python age.py",
+        "culprit": {
+          "wrong": 4,
+          "fixed": 4
+        }
+      }
     },
     {
       "id": 9,
@@ -223,7 +299,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next: comments, and how to read an error message. Keep coding, says Xecxec!"
+      "narration": "Next: comments, and how to read an error message. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 4,
+        "nextTitle": "Comments and reading a traceback"
+      }
     }
   ],
   "bug": {
@@ -344,5 +424,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

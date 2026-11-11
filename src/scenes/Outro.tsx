@@ -12,6 +12,8 @@ export type OutroProps = BaseSceneProps & {
   nextEp: number;
   /** Missing after the last episode: the card then says thank you instead. */
   nextTitle?: string;
+  /** Headline of the last episode (default is the C course's "86 episodes. You did it."). */
+  finaleLine?: string;
 };
 
 const FINALE_LINE = "86 episodes. You did it.";
@@ -24,14 +26,14 @@ const SIGN_OFF = "Keep coding, says Xecxec!";
  * Next-episode teaser and sign-off. The right 40% stays empty for YouTube's
  * end-screen elements (next video + subscribe) over the last 20s.
  */
-export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, colours, durationInFrames }) => {
+export const Outro: React.FC<OutroProps> = ({ nextEp, nextTitle, finaleLine, colours, durationInFrames }) => {
   const frame = useCurrentFrame();
   const cardProgress = enterProgress(frame, 0, 12);
   const signOffStart = Math.round(durationInFrames * 0.35);
   const visibleChars = typewriterChars(SIGN_OFF, frame, signOffStart, 1);
   const isFinale = nextTitle === undefined;
   const headline = isFinale
-    ? FINALE_LINE
+    ? (finaleLine ?? FINALE_LINE)
     : `EP ${String(nextEp).padStart(2, "0")} · ${nextTitle}`;
 
   return (

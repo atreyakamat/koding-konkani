@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "The datetime module has three main tools. A date holds a year, a month and a day. A datetime also holds hours, minutes and seconds. A timedelta is a length of time, such as thirty days. You can add it to a date. You also get one when you subtract two dates. To turn a date into text, use strftime, with a format string such as percent d percent B. To read text into a date, use strptime, with the same type of format. Think of a wall calendar and a pocket watch, both able to count forward."
+      "narration": "The datetime module has three main tools. A date holds a year, a month and a day. A datetime also holds hours, minutes and seconds. A timedelta is a length of time, such as thirty days. You can add it to a date. You also get one when you subtract two dates. To turn a date into text, use strftime, with a format string such as percent d percent B. To read text into a date, use strptime, with the same type of format. Think of a wall calendar and a pocket watch, both able to count forward.",
+      "props": {
+        "lines": [
+          "date holds a day; datetime holds a day and a time",
+          "timedelta is a length of time you can add",
+          "strftime writes text; strptime reads text"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a wall calendar and a pocket watch: one knows the day, the other knows the minute, and both can count forward"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "dates.py",
         "source": "from datetime import date, datetime, timedelta\n\nd = date(2025, 1, 15)\nprint(d)\nprint(d.year, d.month, d.day)\nprint(d.strftime(\"%d %B %Y\"))\nprint(d.strftime(\"%A\"))\nlater = d + timedelta(days=30)\nprint(later)\nprint((later - d).days)",
         "output": "2025-01-15\n2025 1 15\n15 January 2025\nWednesday\n2025-02-14\n30"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python dates.py",
+        "output": "2025-01-15\n2025 1 15\n15 January 2025\nWednesday\n2025-02-14\n30"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name d is tied to one date object. The name later is tied to a different date object. Adding a timedelta did not change d. Dates are immutable. Every calculation builds a new date, and the old one stays exactly as it was."
+      "narration": "Here is the picture. The name d is tied to one date object. The name later is tied to a different date object. Adding a timedelta did not change d. Dates are immutable. Every calculation builds a new date, and the old one stays exactly as it was.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "datetime.date(2025, 1, 15)",
+                    "address": "date",
+                    "name": "d"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "datetime.date(2025, 1, 15)",
+                    "address": "date",
+                    "name": "d"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "datetime.date(2025, 2, 14)",
+                    "address": "date",
+                    "name": "later"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +201,11 @@
         "file": "times.py",
         "source": "from datetime import datetime\n\ntext = \"2025-03-09 18:30\"\nt = datetime.strptime(text, \"%Y-%m-%d %H:%M\")\nprint(t.hour, t.minute)\nprint(t.strftime(\"%I:%M %p\"))\nend = datetime(2025, 3, 9, 20, 0)\nprint(end - t)\nprint(t < end)",
         "output": "18 30\n06:30 PM\n1:30:00\nTrue"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python times.py",
+        "output": "18 30\n06:30 PM\n1:30:00\nTrue"
       }
     },
     {
@@ -159,7 +219,31 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as times dot py. In the terminal, type python, space, times dot py. 2025-01-15, then 2025 1 15, 15 January 2025, Wednesday, 2025-02-14, 30. Then 18 30, 06:30 PM, 1:30:00, True."
+      "narration": "Save the file as times dot py. In the terminal, type python, space, times dot py. 2025-01-15, then 2025 1 15, 15 January 2025, Wednesday, 2025-02-14, 30. Then 18 30, 06:30 PM, 1:30:00, True.",
+      "props": {
+        "lines": [
+          {
+            "text": "python times.py",
+            "kind": "input"
+          },
+          {
+            "text": "18 30",
+            "kind": "output"
+          },
+          {
+            "text": "06:30 PM",
+            "kind": "output"
+          },
+          {
+            "text": "1:30:00",
+            "kind": "output"
+          },
+          {
+            "text": "True",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +255,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: date holds a day. Datetime holds a day and a time. Two: timedelta is a length of time. Add it, or get it by subtracting. Three: strftime turns a date into text. Four: strptime turns text into a date. The format must match. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: date holds a day. Datetime holds a day and a time. Two: timedelta is a length of time. Add it, or get it by subtracting. Three: strftime turns a date into text. Four: strptime turns text into a date. The format must match. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Date holds a day; datetime holds a day and a time.",
+          "Timedelta is a length of time; add it, or get it by subtracting.",
+          "Strftime turns a date into text.",
+          "Strptime turns text into a date; the format must match."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +277,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The text is fifteen slash one slash twenty twenty five. The format says year dash month dash day. They do not match. Value error, time data does not match format. The format must describe the text exactly. Day slash month slash year is percent d, slash, percent m, slash, percent Y."
+      "narration": "Bug of the Day. The text is fifteen slash one slash twenty twenty five. The format says year dash month dash day. They do not match. Value error, time data does not match format. The format must describe the text exactly. Day slash month slash year is percent d, slash, percent m, slash, percent Y.",
+      "props": {
+        "wrongCode": "from datetime import datetime\n\nd = datetime.strptime(\"15/01/2025\", \"%Y-%m-%d\")",
+        "fixedCode": "from datetime import datetime\n\nd = datetime.strptime(\"15/01/2025\", \"%d/%m/%Y\")\nprint(d.date())",
+        "error": "ValueError: time data '15/01/2025' does not match format '%Y-%m-%d'",
+        "errorOverride": {
+          "lines": [
+            "ValueError: time data '15/01/2025' does not match format '%Y-%m-%d'"
+          ],
+          "caption": ""
+        },
+        "why": "strptime needs a format that matches the text exactly, character for character. A different order or different separators raise a ValueError.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python dates.py",
+        "culprit": {
+          "wrong": 3,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +333,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: random and math. Keep coding, says Xecxec!"
+      "narration": "Next time: random and math. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 82,
+        "nextTitle": "random and math"
+      }
     }
   ],
   "bug": {
@@ -348,5 +465,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

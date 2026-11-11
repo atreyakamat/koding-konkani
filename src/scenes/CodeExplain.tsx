@@ -10,6 +10,7 @@ import { chooseFontSize } from "../lib/codeLayout";
 import { defaultHlCues, hlLineAt, trackValuesAt } from "../lib/cues";
 import { layoutOutput, outputPanelHeight, TAKEOVER_PANEL_WIDTH } from "../lib/outputFit";
 import { CARD_MIN_HEIGHT, COLUMN_GAP, cardHeight, fitLabels, trackerHeight } from "../lib/cardFit";
+import type { CodeLang } from "../lib/highlight";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -23,6 +24,10 @@ export type CodeExplainProps = BaseSceneProps & {
   labels?: Record<number, string>;
   /** Program output. Prints in a terminal under the code near the end of the scene. */
   output?: string;
+  /** Source language for the colours (default C). */
+  lang?: CodeLang;
+  /** The command shown above the output (default "./program", the C course; Python: "python file.py"). */
+  command?: string;
 };
 
 /** 58% of the 1728px content width: the code panel never grows past this, so the
@@ -49,6 +54,8 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
   onScreen,
   labels,
   output,
+  lang,
+  command,
   colours,
   durationInFrames,
   cues,
@@ -148,6 +155,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
               fillHeight={freeHeight}
               highlightLine={highlightLine}
               visibleChars={visibleChars}
+              lang={lang}
             />
           ) : (
             <Panel background={palette.cream}>
@@ -233,7 +241,7 @@ export const CodeExplain: React.FC<CodeExplainProps> = ({
                 whiteSpace: "pre-wrap",
               }}
             >
-              <span style={{ color: palette.white }}>{"$ ./program"}</span>
+              <span style={{ color: palette.white }}>{`$ ${command ?? "./program"}`}</span>
               {"\n"}
               {outputLayout.text.slice(0, outputChars)}
             </div>

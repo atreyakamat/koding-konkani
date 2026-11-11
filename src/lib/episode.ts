@@ -100,6 +100,8 @@ const SceneSchema = z.object({
   memory: MemoryDataSchema.optional(),
   /** Only for a bug-of-the-day scene that is not the episode's main bug. */
   bug: BugSchema.optional(),
+  /** Explicit scene-component props. They win over everything scenePropsFor derives (the Python course uses this). */
+  props: z.record(z.string(), z.unknown()).optional(),
 });
 
 const ChapterSchema = z.object({
@@ -137,7 +139,12 @@ const ShortSchema = z.object({
   hashtags: z.array(z.string()),
 });
 
+export const COURSES = ["c", "python"] as const;
+export type CourseName = (typeof COURSES)[number];
+
 export const EpisodeSchema = z.object({
+  /** Which course the episode belongs to. Missing means the C course. */
+  course: z.enum(COURSES).optional(),
   ep: z.number().int().positive(),
   title: z.string().min(1),
   module: z.number().int().min(0).max(13),

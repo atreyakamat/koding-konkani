@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A method is a function that lives inside a class. It can read and change the attributes of its object through self. Some methods return an answer. Others just change the object, and return nothing. A bank account is a good example. Deposit adds to the balance. Withdraw takes from it. Think of buttons on a vending machine. Each button changes the machine's own insides. To call a method, always use brackets, even with no arguments."
+      "narration": "A method is a function that lives inside a class. It can read and change the attributes of its object through self. Some methods return an answer. Others just change the object, and return nothing. A bank account is a good example. Deposit adds to the balance. Withdraw takes from it. Think of buttons on a vending machine. Each button changes the machine's own insides. To call a method, always use brackets, even with no arguments.",
+      "props": {
+        "lines": [
+          "A method is a function that belongs to a class",
+          "Methods change self's attributes",
+          "Call with brackets: obj.method()"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "buttons on a vending machine: pressing one makes the machine do something to its own insides"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "account.py",
         "source": "class Account:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance = self.balance + amount\n\n    def withdraw(self, amount):\n        if amount > self.balance:\n            return False\n        self.balance = self.balance - amount\n        return True\n\nacc = Account(\"Asha\", 100)\nacc.deposit(50)\nprint(acc.balance)\nprint(acc.withdraw(500))\nprint(acc.withdraw(30))\nprint(acc.balance)",
         "output": "150\nFalse\nTrue\n120"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python account.py",
+        "output": "150\nFalse\nTrue\n120"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name acc is tied to one account object. Inside live the owner and the balance. Each method call changes the balance inside this one object. The name stays the same, and the object quietly changes. That is the point of methods. The object looks after its own data."
+      "narration": "Here is the picture. The name acc is tied to one account object. Inside live the owner and the balance. Each method call changes the balance inside this one object. The name stays the same, and the object quietly changes. That is the point of methods. The object looks after its own data.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "<Account object>",
+                    "address": "Account",
+                    "name": "acc"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "temperature.py",
         "source": "class Temperature:\n    def __init__(self, celsius):\n        self.celsius = celsius\n\n    def to_fahrenheit(self):\n        return self.celsius * 9 / 5 + 32\n\n    def describe(self):\n        f = self.to_fahrenheit()\n        return f\"{self.celsius}C is {f}F\"\n\nt = Temperature(100)\nprint(t.to_fahrenheit())\nprint(t.describe())\nprint(Temperature(0).describe())",
         "output": "212.0\n100C is 212.0F\n0C is 32.0F"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python temperature.py",
+        "output": "212.0\n100C is 212.0F\n0C is 32.0F"
       }
     },
     {
@@ -159,7 +197,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as temperature dot py. In the terminal, type python, space, temperature dot py. 150, False, True, 120. Then 212.0 and the two sentences."
+      "narration": "Save the file as temperature dot py. In the terminal, type python, space, temperature dot py. 150, False, True, 120. Then 212.0 and the two sentences.",
+      "props": {
+        "lines": [
+          {
+            "text": "python temperature.py",
+            "kind": "input"
+          },
+          {
+            "text": "212.0",
+            "kind": "output"
+          },
+          {
+            "text": "100C is 212.0F",
+            "kind": "output"
+          },
+          {
+            "text": "0C is 32.0F",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +229,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Methods are functions inside a class. Two: They use self to read and change the object's attributes. Three: A method can return a value, or just change the object. Four: Always call a method with brackets. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Methods are functions inside a class. Two: They use self to read and change the object's attributes. Three: A method can return a value, or just change the object. Four: Always call a method with brackets. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Methods are functions inside a class.",
+          "They use self to read and change the object's attributes.",
+          "A method can return a value, or just change the object.",
+          "Always call a method with brackets."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +251,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We wrote acc dot show, with no brackets. Python does not run the method. It prints the method itself, a bound method, with a memory address. No error, and no answer. Add the brackets, and the method runs, and returns the balance."
+      "narration": "Bug of the Day. We wrote acc dot show, with no brackets. Python does not run the method. It prints the method itself, a bound method, with a memory address. No error, and no answer. Add the brackets, and the method runs, and returns the balance.",
+      "props": {
+        "wrongCode": "class Account:\n    def __init__(self, balance):\n        self.balance = balance\n\n    def show(self):\n        return f\"Balance: {self.balance}\"\n\nacc = Account(100)\nprint(acc.show)",
+        "fixedCode": "class Account:\n    def __init__(self, balance):\n        self.balance = balance\n\n    def show(self):\n        return f\"Balance: {self.balance}\"\n\nacc = Account(100)\nprint(acc.show())",
+        "error": "<bound method Account.show of <__main__.Account object at 0x...>>",
+        "errorOverride": {
+          "lines": [
+            "<bound method Account.show of <__main__.Account object at 0x...>>"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Without brackets you get the method object itself, not the result of running it. Brackets are what call it.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python account.py",
+        "culprit": {
+          "wrong": 9,
+          "fixed": 9
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +307,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: class versus instance attributes. Keep coding, says Xecxec!"
+      "narration": "Next time: class versus instance attributes. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 65,
+        "nextTitle": "Class vs instance attributes"
+      }
     }
   ],
   "bug": {
@@ -348,5 +439,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

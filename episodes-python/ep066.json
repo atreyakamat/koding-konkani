@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "By default, an object prints as the class name and a memory address. That is not helpful. You can fix it with two special methods. Str is for people. It is what print uses. Repr is for programmers. It should show the object clearly, ideally as code that could rebuild it. If you only write one, write repr, because str falls back to it. Think of a name tag at a party. Without it, nobody knows who you are."
+      "narration": "By default, an object prints as the class name and a memory address. That is not helpful. You can fix it with two special methods. Str is for people. It is what print uses. Repr is for programmers. It should show the object clearly, ideally as code that could rebuild it. If you only write one, write repr, because str falls back to it. Think of a name tag at a party. Without it, nobody knows who you are.",
+      "props": {
+        "lines": [
+          "print(obj) uses __str__",
+          "repr(obj) and the shell use __repr__",
+          "Both must return a string"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a name tag: without it the object is a stranger, with it everyone knows who is who"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "point.py",
         "source": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __str__(self):\n        return f\"({self.x}, {self.y})\"\n\n    def __repr__(self):\n        return f\"Point({self.x}, {self.y})\"\n\np = Point(3, 4)\nprint(p)\nprint(repr(p))\nprint([p, Point(0, 0)])\nprint(f\"Corner: {p}\")",
         "output": "(3, 4)\nPoint(3, 4)\n[Point(3, 4), Point(0, 0)]\nCorner: (3, 4)"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python point.py",
+        "output": "(3, 4)\nPoint(3, 4)\n[Point(3, 4), Point(0, 0)]\nCorner: (3, 4)"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name p is tied to one point object. The object does not change. What changes is the description. Print asks for the friendly string, and the shell, and lists, ask for the exact one. Both come from the same object. You only choose how it introduces itself."
+      "narration": "Here is the picture. The name p is tied to one point object. The object does not change. What changes is the description. Print asks for the friendly string, and the shell, and lists, ask for the exact one. Both come from the same object. You only choose how it introduces itself.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "Point(3, 4)",
+                    "address": "Point",
+                    "name": "p"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "onlyrepr.py",
         "source": "class Book:\n    def __init__(self, title):\n        self.title = title\n\n    def __repr__(self):\n        return f\"Book({self.title!r})\"\n\nb = Book(\"Python\")\nprint(b)\nprint(str(b))\nprint([b])",
         "output": "Book('Python')\nBook('Python')\n[Book('Python')]"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python onlyrepr.py",
+        "output": "Book('Python')\nBook('Python')\n[Book('Python')]"
       }
     },
     {
@@ -159,7 +197,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as onlyrepr dot py. In the terminal, type python, space, onlyrepr dot py. Three comma four, then Point of three comma four, a list of two points, then Corner three comma four. Then the book Python three times."
+      "narration": "Save the file as onlyrepr dot py. In the terminal, type python, space, onlyrepr dot py. Three comma four, then Point of three comma four, a list of two points, then Corner three comma four. Then the book Python three times.",
+      "props": {
+        "lines": [
+          {
+            "text": "python onlyrepr.py",
+            "kind": "input"
+          },
+          {
+            "text": "Book('Python')",
+            "kind": "output"
+          },
+          {
+            "text": "Book('Python')",
+            "kind": "output"
+          },
+          {
+            "text": "[Book('Python')]",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +229,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: print of obj calls dunder str, for people. Two: repr of obj and lists call dunder repr, for programmers. Three: If only dunder repr exists, str falls back to it. Four: Both methods must return a string. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: print of obj calls dunder str, for people. Two: repr of obj and lists call dunder repr, for programmers. Three: If only dunder repr exists, str falls back to it. Four: Both methods must return a string. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Print(obj) calls __str__, for people.",
+          "Repr(obj) and lists call __repr__, for programmers.",
+          "If only __repr__ exists, str falls back to it.",
+          "Both methods must return a string."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +251,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We print a point, and get the class name with at, and a long memory address. Nothing is wrong with the object. It just has no name tag. Add a repr method that returns a readable string, and print shows Point of three comma four."
+      "narration": "Bug of the Day. We print a point, and get the class name with at, and a long memory address. Nothing is wrong with the object. It just has no name tag. Add a repr method that returns a readable string, and print shows Point of three comma four.",
+      "props": {
+        "wrongCode": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\np = Point(3, 4)\nprint(p)",
+        "fixedCode": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __repr__(self):\n        return f\"Point({self.x}, {self.y})\"\n\np = Point(3, 4)\nprint(p)",
+        "error": "<__main__.Point object at 0x...>",
+        "errorOverride": {
+          "lines": [
+            "<__main__.Point object at 0x...>"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Without these methods, Python falls back to the default text: the class name and a memory address. Adding repr gives a readable description.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python point.py",
+        "culprit": {
+          "wrong": 6,
+          "fixed": 6
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +307,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: inheritance. Keep coding, says Xecxec!"
+      "narration": "Next time: inheritance. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 67,
+        "nextTitle": "Inheritance"
+      }
     }
   ],
   "bug": {
@@ -348,5 +439,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

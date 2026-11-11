@@ -6,17 +6,21 @@ import { Panel } from "../ui";
 import { enterProgress } from "../lib/motion";
 import { textTransformFor } from "../lib/textCase";
 import { defaultRevealCues, revealFrame } from "../lib/cues";
+import type { IllustrationSpec } from "../lib/illustration";
+import { Illustration } from "./Illustration";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
 export type ConceptSlideProps = BaseSceneProps & {
+  /** A drawn explanation (see Illustration). When present it replaces the numbered lines. */
+  illustration?: IllustrationSpec;
   heading?: string;
   lines: string[];
   analogy?: { title: string; body: string };
 };
 
 /** Free height beside the analogy card; without a card the stack also stays above Xecxec's corner. */
-const FREE_HEIGHT_WITH_ANALOGY = 1080 - 96 - 140;
+const FREE_HEIGHT_WITH_ANALOGY = 1080 - 96 - 200;
 const FREE_HEIGHT_NO_ANALOGY = 1080 - 96 - 340;
 const LINE_GAP = 44;
 
@@ -33,12 +37,16 @@ const fitBodySize = (
     const rows = lines.reduce((n, l) => n + Math.max(1, Math.ceil(l.length / perRow)), 0);
     return rows * size * 1.25 + Math.max(0, lines.length - 1) * LINE_GAP <= freeHeight;
   };
-  for (let size = maxSize; size > 64; size -= 4) if (fits(size)) return size;
-  return 64;
+  for (let size = maxSize; size > 48; size -= 4) if (fits(size)) return size;
+  return 48;
 };
 
-/** Concept slide: 1-3 numbered lines spring in one by one; an analogy card slides in on the right. */
-export const ConceptSlide: React.FC<ConceptSlideProps> = ({
+/** Concept slide: a drawn illustration when the scene has one, else the numbered lines. */
+export const ConceptSlide: React.FC<ConceptSlideProps> = ({ illustration, ...rest }) =>
+  illustration ? <Illustration {...rest} spec={illustration} /> : <ConceptLines {...rest} />;
+
+/** 1-3 numbered lines spring in one by one; an analogy card slides in on the right. */
+const ConceptLines: React.FC<Omit<ConceptSlideProps, "illustration">> = ({
   heading,
   lines,
   analogy,
@@ -66,7 +74,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
     lines,
     columnWidth,
     analogy ? 80 : 140,
-    analogy ? FREE_HEIGHT_WITH_ANALOGY : FREE_HEIGHT_NO_ANALOGY,
+    (analogy ? FREE_HEIGHT_WITH_ANALOGY : FREE_HEIGHT_NO_ANALOGY) - (heading ? 110 : 0),
   );
   const badge = analogy ? 56 : Math.round(bodySize * 0.9);
 
@@ -85,7 +93,7 @@ export const ConceptSlide: React.FC<ConceptSlideProps> = ({
           instead of leaving the lower third of the frame empty. */}
       <AbsoluteFill
         style={{
-          padding: analogy ? "96px 96px 140px" : "96px 96px 340px",
+          padding: analogy ? "96px 96px 200px" : "96px 96px 340px",
           display: "flex",
           flexDirection: "row",
           gap: 56,

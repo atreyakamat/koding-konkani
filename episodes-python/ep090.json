@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Look at how far you have come. You can store data in variables, lists, dictionaries and sets. You can make decisions and repeat work with loops. You can write functions, classes, and generators. You can read and write files, handle errors, and test your code. You can use the standard library. Most of all, you can read an error message, and fix the problem. That is the real skill. The best next step is a project of your own. Pick something small that you use yourself. Think of a map with several roads. You have learned to drive. Now choose where to go."
+      "narration": "Look at how far you have come. You can store data in variables, lists, dictionaries and sets. You can make decisions and repeat work with loops. You can write functions, classes, and generators. You can read and write files, handle errors, and test your code. You can use the standard library. Most of all, you can read an error message, and fix the problem. That is the real skill. The best next step is a project of your own. Pick something small that you use yourself. Think of a map with several roads. You have learned to drive. Now choose where to go.",
+      "props": {
+        "lines": [
+          "You know variables, loops, functions, classes and files",
+          "You can read errors and fix them",
+          "The best next step is a project of your own"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a map with several roads: you have learned to drive, now choose where to go"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "review.py",
         "source": "from collections import Counter\n\ndef top(words, n=1):\n    return Counter(words).most_common(n)\n\nmenu = {\"tea\": 10, \"chai\": 15, \"coffee\": 25}\norders = [\"tea\", \"chai\", \"tea\", \"coffee\", \"tea\"]\nbill = sum(menu[o] for o in orders)\nprint(top(orders))\nprint(f\"Bill: {bill}\")\nprint(sorted(o for o in set(orders) if menu[o] > 12))",
         "output": "[('tea', 3)]\nBill: 70\n['chai', 'coffee']"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python review.py",
+        "output": "[('tea', 3)]\nBill: 70\n['chai', 'coffee']"
       }
     },
     {
@@ -127,7 +143,137 @@
       "onScreen": "A crossroads with signs: web with Flask, data with pandas, games with pygame, automation, and testing with pytest",
       "animation": "A crossroads with five signposts, each lighting up in turn with a small icon",
       "sfx": [],
-      "narration": "Here are the roads. For websites, look at Flask or Django. For data and charts, try pandas and matplotlib. For games, there is pygame. For automation, write scripts that rename files, send reports or tidy your folders. For testing, learn pytest. You do not have to choose forever. Pick one road, build a small project, and see if you enjoy it. If not, try another."
+      "narration": "Here are the roads. For websites, look at Flask or Django. For data and charts, try pandas and matplotlib. For games, there is pygame. For automation, write scripts that rename files, send reports or tidy your folders. For testing, learn pytest. You do not have to choose forever. Pick one road, build a small project, and see if you enjoy it. If not, try another.",
+      "props": {
+        "lines": [
+          "Here are the roads.",
+          "For websites, look at Flask or Django.",
+          "For data and charts, try pandas and matplotlib."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 90,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "web",
+              "shape": "box",
+              "text": "web: Flask",
+              "colour": "pastelBlue",
+              "col": 0,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "data",
+              "shape": "box",
+              "text": "data: pandas",
+              "colour": "mint",
+              "col": 4,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "game",
+              "shape": "box",
+              "text": "games: pygame",
+              "colour": "lilac",
+              "col": 8,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "auto",
+              "shape": "box",
+              "text": "automation: scripts",
+              "colour": "butter",
+              "col": 2,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "test",
+              "shape": "box",
+              "text": "testing: pytest",
+              "colour": "apricot",
+              "col": 7,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "web",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.1,
+              "do": "glow",
+              "target": "web",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.3,
+              "do": "show",
+              "target": "data",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.3,
+              "do": "glow",
+              "target": "data",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.5,
+              "do": "show",
+              "target": "game",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.5,
+              "do": "glow",
+              "target": "game",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.7,
+              "do": "show",
+              "target": "auto",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.7,
+              "do": "glow",
+              "target": "auto",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.9,
+              "do": "show",
+              "target": "test",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.9,
+              "do": "glow",
+              "target": "test",
+              "sfx": "key-tick"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +290,11 @@
         "file": "roadmap.py",
         "source": "topics = [\n    \"web: Flask\",\n    \"data: pandas\",\n    \"games: pygame\",\n    \"automation: your own scripts\",\n    \"testing: pytest\",\n]\nfor i, topic in enumerate(topics, start=1):\n    print(i, topic)\nprint(\"Pick one, and build something small this week.\")",
         "output": "1 web: Flask\n2 data: pandas\n3 games: pygame\n4 automation: your own scripts\n5 testing: pytest\nPick one, and build something small this week."
+      },
+      "props": {
+        "lang": "python",
+        "command": "python roadmap.py",
+        "output": "1 web: Flask\n2 data: pandas\n3 games: pygame\n4 automation: your own scripts\n5 testing: pytest\nPick one, and build something small this week."
       }
     },
     {
@@ -157,7 +308,39 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as roadmap dot py. In the terminal, type python, space, roadmap dot py. Tea three times, then Bill 70, then chai and coffee. Then the five numbered topics and the final line."
+      "narration": "Save the file as roadmap dot py. In the terminal, type python, space, roadmap dot py. Tea three times, then Bill 70, then chai and coffee. Then the five numbered topics and the final line.",
+      "props": {
+        "lines": [
+          {
+            "text": "python roadmap.py",
+            "kind": "input"
+          },
+          {
+            "text": "1 web: Flask",
+            "kind": "output"
+          },
+          {
+            "text": "2 data: pandas",
+            "kind": "output"
+          },
+          {
+            "text": "3 games: pygame",
+            "kind": "output"
+          },
+          {
+            "text": "4 automation: your own scripts",
+            "kind": "output"
+          },
+          {
+            "text": "5 testing: pytest",
+            "kind": "output"
+          },
+          {
+            "text": "…",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +352,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: You can write and read Python programs. Two: You can use lists, dictionaries, functions, classes and files. Three: You can read errors, test your code, and fix bugs. Four: Next: build one small project of your own. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: You can write and read Python programs. Two: You can use lists, dictionaries, functions, classes and files. Three: You can read errors, test your code, and fix bugs. Four: Next: build one small project of your own. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "You can write and read Python programs.",
+          "You can use lists, dictionaries, functions, classes and files.",
+          "You can read errors, test your code, and fix bugs.",
+          "Next: build one small project of your own."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +374,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Final quiz. Spot the bug. We remove every even number from the list, and print. We expect an empty list. We get four and eight. The loop walks the list by position. When we remove an item, the next one slides into its place, and the loop jumps over it. Never change a list while looping over it. Build a new list with a comprehension instead."
+      "narration": "Final quiz. Spot the bug. We remove every even number from the list, and print. We expect an empty list. We get four and eight. The loop walks the list by position. When we remove an item, the next one slides into its place, and the loop jumps over it. Never change a list while looping over it. Build a new list with a comprehension instead.",
+      "props": {
+        "wrongCode": "nums = [2, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        nums.remove(n)\nprint(nums)",
+        "fixedCode": "nums = [2, 4, 6, 8]\nnums = [n for n in nums if n % 2 != 0]\nprint(nums)",
+        "error": "[4, 8]",
+        "errorOverride": {
+          "lines": [
+            "[4, 8]"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Removing items from a list while looping over it shifts the remaining items, so the loop skips some. Build a new list with a comprehension instead.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python review.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +430,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "That is the whole Python course. Pick a small project of your own, and start building today. See you in the next course. Keep coding, says Xecxec!"
+      "narration": "That is the whole Python course. Pick a small project of your own, and start building today. See you in the next course. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 91,
+        "finaleLine": "90 episodes. You did it."
+      }
     }
   ],
   "bug": {
@@ -346,5 +562,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

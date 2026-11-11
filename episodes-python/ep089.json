@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Money code deserves tests. We write a test case with a few checks. Assert equal for exact answers. Assert raises, as a context manager, to check that bad input raises the right error. Run the tests after every change. Then polish the report. Inside an f string, a colon, a less than sign and a number left aligns text in a column. A greater than sign right aligns, and dot two f shows two decimals. Think of a final inspection before the shop opens. Everything is checked, then polished."
+      "narration": "Money code deserves tests. We write a test case with a few checks. Assert equal for exact answers. Assert raises, as a context manager, to check that bad input raises the right error. Run the tests after every change. Then polish the report. Inside an f string, a colon, a less than sign and a number left aligns text in a column. A greater than sign right aligns, and dot two f shows two decimals. Think of a final inspection before the shop opens. Everything is checked, then polished.",
+      "props": {
+        "lines": [
+          "Tests keep money code honest",
+          "assertRaises checks that bad input is rejected",
+          "f-string alignment makes a neat report"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a final inspection before the shop opens: everything checked, then polished"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "test_money.py",
         "source": "import io\nimport unittest\nfrom decimal import Decimal\n\ndef to_cents(text):\n    value = Decimal(text)\n    if value <= 0:\n        raise ValueError(\"amount must be positive\")\n    return int(value * 100)\n\ndef money(cents):\n    return f\"{cents // 100}.{cents % 100:02d}\"\n\nclass TestMoney(unittest.TestCase):\n    def test_exact(self):\n        self.assertEqual(to_cents(\"0.29\"), 29)\n\n    def test_format(self):\n        self.assertEqual(money(12050), \"120.50\")\n\n    def test_rejects_negative(self):\n        with self.assertRaises(ValueError):\n            to_cents(\"-5\")\n\nsuite = unittest.defaultTestLoader.loadTestsFromTestCase(TestMoney)\nresult = unittest.TextTestRunner(stream=io.StringIO()).run(suite)\nprint(result.testsRun, result.wasSuccessful())",
         "output": "3 True"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python test_money.py",
+        "output": "3 True"
       }
     },
     {
@@ -127,7 +143,96 @@
       "onScreen": "A tightrope walker with a net labelled tests; a change causes a red cross and the net catches it",
       "animation": "A walker on a rope steps, wobbles, and a net labelled tests catches a falling red cross card",
       "sfx": [],
-      "narration": "Here is why we test. Imagine you change the money function next month. Without tests, you hope nothing broke. With tests, you run them. In a second you see a green tick, or a red cross with the name of the failed test. The net catches the fall before your users see it. Good tests are small, fast, and each checks one thing, with a name that says what."
+      "narration": "Here is why we test. Imagine you change the money function next month. Without tests, you hope nothing broke. With tests, you run them. In a second you see a green tick, or a red cross with the name of the failed test. The net catches the fall before your users see it. Good tests are small, fast, and each checks one thing, with a name that says what.",
+      "props": {
+        "lines": [
+          "Here is why we test.",
+          "Imagine you change the money function next month.",
+          "Without tests, you hope nothing broke."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 89,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "rope",
+              "shape": "box",
+              "text": "your code",
+              "colour": "cream",
+              "col": 1,
+              "row": 1,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "id": "net",
+              "shape": "box",
+              "text": "tests (safety net)",
+              "colour": "mint",
+              "col": 1,
+              "row": 4,
+              "w": 9,
+              "h": 1
+            },
+            {
+              "id": "fall",
+              "shape": "token",
+              "text": "red cross card",
+              "colour": "tomato",
+              "col": 5,
+              "row": 0,
+              "w": 2,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "rope",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "net"
+            },
+            {
+              "t": 0.3,
+              "do": "shake",
+              "target": "rope",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.45,
+              "do": "show",
+              "target": "fall",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.6,
+              "do": "move",
+              "target": "fall",
+              "sfx": "whoosh",
+              "to": [
+                5,
+                3
+              ]
+            },
+            {
+              "t": 0.8,
+              "do": "glow",
+              "target": "net",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +249,11 @@
         "file": "report.py",
         "source": "expenses = [(\"food\", 12050), (\"travel\", 6000), (\"food\", 8000)]\ntotals = {}\nfor category, cents in expenses:\n    totals[category] = totals.get(category, 0) + cents\nprint(f\"{'Category':<10}{'Total':>10}\")\nfor category in sorted(totals):\n    print(f\"{category:<10}{totals[category] / 100:>10.2f}\")\nprint(\"-\" * 20)\nprint(f\"{'All':<10}{sum(totals.values()) / 100:>10.2f}\")",
         "output": "Category       Total\nfood          200.50\ntravel         60.00\n--------------------\nAll           260.50"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python report.py",
+        "output": "Category       Total\nfood          200.50\ntravel         60.00\n--------------------\nAll           260.50"
       }
     },
     {
@@ -157,7 +267,35 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as report dot py. In the terminal, type python, space, report dot py. 3 True. Then the aligned table, food 200.50, travel 60.00, and All 260.50."
+      "narration": "Save the file as report dot py. In the terminal, type python, space, report dot py. 3 True. Then the aligned table, food 200.50, travel 60.00, and All 260.50.",
+      "props": {
+        "lines": [
+          {
+            "text": "python report.py",
+            "kind": "input"
+          },
+          {
+            "text": "Category       Total",
+            "kind": "output"
+          },
+          {
+            "text": "food          200.50",
+            "kind": "output"
+          },
+          {
+            "text": "travel         60.00",
+            "kind": "output"
+          },
+          {
+            "text": "--------------------",
+            "kind": "output"
+          },
+          {
+            "text": "All           260.50",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +307,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Test the money code with unittest. Two: assertRaises checks that bad input is rejected. Three: f-string formats such as <10 and >10 point 2f align columns. Four: Run the tests after every change. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Test the money code with unittest. Two: assertRaises checks that bad input is rejected. Three: f-string formats such as <10 and >10 point 2f align columns. Four: Run the tests after every change. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Test the money code with unittest.",
+          "AssertRaises checks that bad input is rejected.",
+          "F-string formats such as <10 and >10.2f align columns.",
+          "Run the tests after every change."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +329,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The test passes, and the function is wrong. It turns point two nine into twenty eight. The test compares the result with the same function called again, so it can never fail. A test needs a known answer, written by you. Compare with twenty nine, and the bug is caught at once."
+      "narration": "Bug of the Day. The test passes, and the function is wrong. It turns point two nine into twenty eight. The test compares the result with the same function called again, so it can never fail. A test needs a known answer, written by you. Compare with twenty nine, and the bug is caught at once.",
+      "props": {
+        "wrongCode": "def to_cents(text):\n    return int(float(text) * 100)\n\ndef test_cents():\n    result = to_cents(\"0.29\")\n    assert result == to_cents(\"0.29\")\n\ntest_cents()\nprint(\"test passed\")",
+        "fixedCode": "def to_cents(text):\n    return int(float(text) * 100)\n\ndef test_cents():\n    result = to_cents(\"0.29\")\n    assert result == 29\n\ntry:\n    test_cents()\n    print(\"test passed\")\nexcept AssertionError:\n    print(\"test failed: caught the bug\")",
+        "error": "test passed",
+        "errorOverride": {
+          "lines": [
+            "test passed"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "A test must compare against an independent, known answer. Comparing a result with the same function's result can never fail, so it proves nothing.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python test_money.py",
+        "culprit": {
+          "wrong": 6,
+          "fixed": 6
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +385,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: what comes next. Keep coding, says Xecxec!"
+      "narration": "Next time: what comes next. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 90,
+        "nextTitle": "What's next"
+      }
     }
   ],
   "bug": {
@@ -346,5 +517,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

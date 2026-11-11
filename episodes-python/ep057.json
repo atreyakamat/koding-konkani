@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "When Python runs a file, it sets a special name called dunder name. If you run the file directly, dunder name is the text, dunder main. If another file imports it, dunder name is the module's own name. So you can put an if at the bottom, if dunder name equals dunder main. Code under that if runs only when the file is run directly, not when it is imported."
+      "narration": "When Python runs a file, it sets a special name called dunder name. If you run the file directly, dunder name is the text, dunder main. If another file imports it, dunder name is the module's own name. So you can put an if at the bottom, if dunder name equals dunder main. Code under that if runs only when the file is run directly, not when it is imported.",
+      "props": {
+        "lines": [
+          "Python sets __name__ for every file",
+          "A file run directly has __name__ equal to \"__main__\"",
+          "An imported file has its own file name instead"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a shop with a front counter and a storeroom: the demo runs only when the shop is opened directly, not when someone borrows a tool"
+        }
+      }
     },
     {
       "id": 3,
@@ -112,7 +123,17 @@
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] Import our module. Python runs shape dot py from top to bottom. It defines area, and then reaches the guard. Dunder name is shape here, not main, so the test line is skipped. [HL 2] Use the module's function. Twenty. [HL 3] The module's name is simply shape. If you run shape dot py directly, you see its test print instead."
+      "narration": "[HL 1] Import our module. Python runs shape dot py from top to bottom. It defines area, and then reaches the guard. Dunder name is shape here, not main, so the test line is skipped. [HL 2] Use the module's function. Twenty. [HL 3] The module's name is simply shape. If you run shape dot py directly, you see its test print instead.",
+      "code": {
+        "file": "usearea.py",
+        "source": "import shape\nprint(shape.area(4, 5))\nprint(shape.__name__)",
+        "output": "20\nshape"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python usearea.py",
+        "output": "20\nshape"
+      }
     },
     {
       "id": 4,
@@ -122,7 +143,106 @@
       "onScreen": "Two panels: running shape.py directly gives __name__ = '__main__' and the demo runs; importing it gives __name__ = 'shape' and the demo is skipped",
       "animation": "Two panels with the value of __name__ flipping; the guarded line lights up on the left and stays grey on the right",
       "sfx": [],
-      "narration": "Here are the two cases side by side. On the left, you run the file directly. The name is main, the guard is True, and the test code runs. On the right, another file imports it. The name is the module's own name, the guard is False, and the test is skipped. One file, two behaviours, chosen by one if."
+      "narration": "Here are the two cases side by side. On the left, you run the file directly. The name is main, the guard is True, and the test code runs. On the right, another file imports it. The name is the module's own name, the guard is False, and the test is skipped. One file, two behaviours, chosen by one if.",
+      "props": {
+        "lines": [
+          "Here are the two cases side by side.",
+          "On the left, you run the file directly.",
+          "On the right, another file imports it."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 57,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "left",
+              "shape": "card",
+              "text": "run directly: __name__ is __main__",
+              "colour": "mint",
+              "col": 0,
+              "row": 1,
+              "w": 5,
+              "h": 2
+            },
+            {
+              "id": "right",
+              "shape": "card",
+              "text": "imported: __name__ is shape",
+              "colour": "peach",
+              "col": 6,
+              "row": 1,
+              "w": 5,
+              "h": 2
+            },
+            {
+              "id": "g1",
+              "shape": "token",
+              "text": "guarded line runs",
+              "colour": "butter",
+              "col": 1,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "g2",
+              "shape": "token",
+              "text": "guarded line skipped",
+              "colour": "cream",
+              "col": 7,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "left",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "right"
+            },
+            {
+              "t": 0.3,
+              "do": "flip",
+              "target": "left",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.4,
+              "do": "show",
+              "target": "g1",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.6,
+              "do": "flip",
+              "target": "right",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.7,
+              "do": "show",
+              "target": "g2"
+            },
+            {
+              "t": 0.7,
+              "do": "dim",
+              "target": "g2"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -139,6 +259,11 @@
         "file": "shape_run.py",
         "source": "def area(w, h):\n    return w * h\nprint(__name__)\nif __name__ == \"__main__\":\n    print(area(2, 3))",
         "output": "__main__\n6"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python shape_run.py",
+        "output": "__main__\n6"
       }
     },
     {
@@ -152,7 +277,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as shape_run dot py. In the terminal, type python, space, shape_run dot py. Dunder main, then six."
+      "narration": "Save the file as shape_run dot py. In the terminal, type python, space, shape_run dot py. Dunder main, then six.",
+      "props": {
+        "lines": [
+          {
+            "text": "python shape_run.py",
+            "kind": "input"
+          },
+          {
+            "text": "__main__",
+            "kind": "output"
+          },
+          {
+            "text": "6",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -164,7 +305,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Python sets dunder name for every file. Two: A file run directly has dunder name equal to dunder main. Three: An imported file has its own name instead. Four: Put test or demo code under the main guard. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Python sets dunder name for every file. Two: A file run directly has dunder name equal to dunder main. Three: An imported file has its own name instead. Four: Put test or demo code under the main guard. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Python sets __name__ for every file.",
+          "A file run directly has __name__ equal to \"__main__\".",
+          "An imported file has its own name instead.",
+          "Put test or demo code under the main guard."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -177,7 +327,25 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Our module prints a test line at the top level. We import it, and the test line appears in our own program's output. Every top level line of a module runs when it is imported. Wrap the test in the main guard, and now it runs only when you run the module directly."
+      "narration": "Bug of the Day. Our module prints a test line at the top level. We import it, and the test line appears in our own program's output. Every top level line of a module runs when it is imported. Wrap the test in the main guard, and now it runs only when you run the module directly.",
+      "props": {
+        "wrongCode": "import shape\nprint(shape.area(4, 5))",
+        "fixedCode": "import shape\nprint(shape.area(4, 5))",
+        "error": "Testing: 6\n20\n",
+        "errorOverride": {
+          "lines": [
+            "Testing: 6",
+            "20",
+            ""
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Every line at the top level of a module runs when it is imported, so a stray print appears in every program that imports it; guard it with if __name__ == \"__main__\".",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python usearea.py"
+      }
     },
     {
       "id": 9,
@@ -213,7 +381,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: pip and virtual environments. Keep coding, says Xecxec!"
+      "narration": "Next time: pip and virtual environments. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 58,
+        "nextTitle": "pip and virtual environments"
+      }
     }
   ],
   "bug": {
@@ -326,9 +498,12 @@
   ],
   "codeFiles": [
     {
-      "file": "file1.python",
+      "file": "usearea.py",
       "source": "import shape\nprint(shape.area(4, 5))\nprint(shape.__name__)",
       "output": "20\nshape",
+      "inputFiles": {
+        "shape.py": "def area(w, h):\n    return w * h\n\nif __name__ == \"__main__\":\n    print(\"Testing:\", area(2, 3))"
+      },
       "lang": "python"
     },
     {
@@ -341,5 +516,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Parameters are names in the brackets of the def line. They receive the values you pass when you call. Return sends a value back to the caller, so you can save it or use it. Think of a fish weighing machine. You put the fish in, and a number comes out that you can write down. Print only shows a value on the screen. Return hands the value over to your program."
+      "narration": "Parameters are names in the brackets of the def line. They receive the values you pass when you call. Return sends a value back to the caller, so you can save it or use it. Think of a fish weighing machine. You put the fish in, and a number comes out that you can write down. Print only shows a value on the screen. Return hands the value over to your program.",
+      "props": {
+        "lines": [
+          "Parameters are names for the values you pass in",
+          "return sends a value back to the caller",
+          "print only shows a value; it does not give it back"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a fish-weighing machine: you put the fish in, and a number comes out that you can write down"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "double.py",
         "source": "def double(n):\n    return n * 2\nanswer = double(4)\nprint(answer)\nprint(double(10))",
         "output": "8\n20"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python double.py",
+        "output": "8\n20"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name answer is tied to the int eight. That int was made inside the function, and returned. The parameter n is gone now, because it only lived while the function ran. Only the returned value survived, and only because we tied a name to it."
+      "narration": "Here is the picture. The name answer is tied to the int eight. That int was made inside the function, and returned. The parameter n is gone now, because it only lived while the function ran. Only the returned value survived, and only because we tied a name to it.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "8",
+                    "address": "int",
+                    "name": "answer"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "area.py",
         "source": "def area(width, height):\n    return width * height\nprint(area(3, 4))\ntotal = area(2, 5) + area(1, 1)\nprint(total)",
         "output": "12\n11"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python area.py",
+        "output": "12\n11"
       }
     },
     {
@@ -159,7 +197,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as area dot py. In the terminal, type python, space, area dot py. Twelve, then eleven."
+      "narration": "Save the file as area dot py. In the terminal, type python, space, area dot py. Twelve, then eleven.",
+      "props": {
+        "lines": [
+          {
+            "text": "python area.py",
+            "kind": "input"
+          },
+          {
+            "text": "12",
+            "kind": "output"
+          },
+          {
+            "text": "11",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +225,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Parameters are names in the def line that receive the passed values. Two: Arguments are matched to parameters by position. Three: return sends a value back to the caller. Four: print shows a value but does not give it back. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Parameters are names in the def line that receive the passed values. Two: Arguments are matched to parameters by position. Three: return sends a value back to the caller. Four: print shows a value but does not give it back. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Parameters are names in the def line that receive the passed values.",
+          "Arguments are matched to parameters by position.",
+          "Return sends a value back to the caller.",
+          "Print shows a value but does not give it back."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +247,28 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Our function prints eight, which looks right. But the result we saved prints None. The function used print, not return. Print shows the value on the screen, and the function hands back nothing, which Python calls None. Use return, and the value travels back to the caller."
+      "narration": "Bug of the Day. Our function prints eight, which looks right. But the result we saved prints None. The function used print, not return. Print shows the value on the screen, and the function hands back nothing, which Python calls None. Use return, and the value travels back to the caller.",
+      "props": {
+        "wrongCode": "def double(n):\n    print(n * 2)\nresult = double(4)\nprint(result)",
+        "fixedCode": "def double(n):\n    return n * 2\nresult = double(4)\nprint(result)",
+        "error": "8\nNone",
+        "errorOverride": {
+          "lines": [
+            "8",
+            "None"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "print only shows the value; a function with no return gives back None, so the name result holds None.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python double.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +304,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: default and keyword arguments. Keep coding, says Xecxec!"
+      "narration": "Next time: default and keyword arguments. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 43,
+        "nextTitle": "Default and keyword arguments"
+      }
     }
   ],
   "bug": {
@@ -348,5 +436,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

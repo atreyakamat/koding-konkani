@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A star in front of a parameter collects all the extra values into a tuple. A double star collects named extras into a dictionary. Think of a net on a fishing boat. It takes however many fish come. The names args and kwargs are only a habit, the stars do the work. And in a call, a star spreads a list out into separate values. Remember that star pair, one collects, the other spreads."
+      "narration": "A star in front of a parameter collects all the extra values into a tuple. A double star collects named extras into a dictionary. Think of a net on a fishing boat. It takes however many fish come. The names args and kwargs are only a habit, the stars do the work. And in a call, a star spreads a list out into separate values. Remember that star pair, one collects, the other spreads.",
+      "props": {
+        "lines": [
+          "*numbers collects extra values into a tuple",
+          "**info collects named extras into a dictionary",
+          "* in a call spreads a list into separate values"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a net on a fishing boat: it takes however many fish come, big haul or small"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "varargs.py",
         "source": "def total(*numbers):\n    return sum(numbers)\nprint(total(1, 2, 3))\nprint(total(10, 20))\nprint(total())",
         "output": "6\n30\n0"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python varargs.py",
+        "output": "6\n30\n0"
       }
     },
     {
@@ -127,7 +143,171 @@
       "onScreen": "Left: values dropping into a net labelled *args. Right: a list being spread into separate boxes by a star in the call",
       "animation": "Values fall into a net and become one box; a list opens and its items fly into separate parameter slots",
       "sfx": [],
-      "narration": "Here is the pair. In a def line, the star collects. Separate values flow in, and one tuple comes out. In a call, the star spreads. One list goes in, and separate values flow out into the parameters. Collect on the way in, spread on the way out. Two directions of the same star."
+      "narration": "Here is the pair. In a def line, the star collects. Separate values flow in, and one tuple comes out. In a call, the star spreads. One list goes in, and separate values flow out into the parameters. Collect on the way in, spread on the way out. Two directions of the same star.",
+      "props": {
+        "lines": [
+          "Here is the pair.",
+          "In a def line, the star collects.",
+          "Separate values flow in, and one tuple comes out."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 44,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "v1",
+              "shape": "token",
+              "text": "1",
+              "colour": "butter",
+              "col": 0,
+              "row": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "v2",
+              "shape": "token",
+              "text": "2",
+              "colour": "butter",
+              "col": 1,
+              "row": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "v3",
+              "shape": "token",
+              "text": "3",
+              "colour": "butter",
+              "col": 2,
+              "row": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "net",
+              "shape": "box",
+              "text": "numbers = (1, 2, 3)",
+              "colour": "mint",
+              "col": 4,
+              "row": 1,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "lst",
+              "shape": "card",
+              "text": "[10, 20]",
+              "colour": "cream",
+              "col": 0,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "p1",
+              "shape": "box",
+              "text": "a = 10",
+              "colour": "peach",
+              "col": 6,
+              "row": 3,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "p2",
+              "shape": "box",
+              "text": "b = 20",
+              "colour": "peach",
+              "col": 6,
+              "row": 4,
+              "w": 2,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "v1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "v2"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "v3"
+            },
+            {
+              "t": 0.15,
+              "do": "move",
+              "target": "v1",
+              "sfx": "whoosh",
+              "to": [
+                4,
+                1
+              ]
+            },
+            {
+              "t": 0.15,
+              "do": "move",
+              "target": "v2",
+              "to": [
+                5,
+                1
+              ]
+            },
+            {
+              "t": 0.15,
+              "do": "move",
+              "target": "v3",
+              "to": [
+                6,
+                1
+              ]
+            },
+            {
+              "t": 0.3,
+              "do": "show",
+              "target": "net",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.5,
+              "do": "show",
+              "target": "lst",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.65,
+              "do": "flip",
+              "target": "lst",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.75,
+              "do": "show",
+              "target": "p1",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.85,
+              "do": "show",
+              "target": "p2",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +324,11 @@
         "file": "kw.py",
         "source": "def describe(**info):\n    for key, value in info.items():\n        print(key, \"=\", value)\ndescribe(name=\"Asha\", city=\"Panjim\")",
         "output": "name = Asha\ncity = Panjim"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python kw.py",
+        "output": "name = Asha\ncity = Panjim"
       }
     },
     {
@@ -157,7 +342,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as kw dot py. In the terminal, type python, space, kw dot py. Name equals Asha. City equals Panjim."
+      "narration": "Save the file as kw dot py. In the terminal, type python, space, kw dot py. Name equals Asha. City equals Panjim.",
+      "props": {
+        "lines": [
+          {
+            "text": "python kw.py",
+            "kind": "input"
+          },
+          {
+            "text": "name = Asha",
+            "kind": "output"
+          },
+          {
+            "text": "city = Panjim",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +370,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: star args collects extra positional values into a tuple. Two: star star kwargs collects extra named values into a dictionary. Three: A star in a call spreads a list into separate values. Four: args and kwargs are habit names. The stars are what matter. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: star args collects extra positional values into a tuple. Two: star star kwargs collects extra named values into a dictionary. Three: A star in a call spreads a list into separate values. Four: args and kwargs are habit names. The stars are what matter. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "*args collects extra positional values into a tuple.",
+          "**kwargs collects extra named values into a dictionary.",
+          "A star in a call spreads a list into separate values.",
+          "Args and kwargs are habit names; the stars are what matter."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +392,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We have a list of three numbers, and a function with three parameters. We pass the list as it is. Python says, type error, add is missing two required positional arguments. The whole list went into the first parameter. Put a star in front of the list in the call, and the items spread out."
+      "narration": "Bug of the Day. We have a list of three numbers, and a function with three parameters. We pass the list as it is. Python says, type error, add is missing two required positional arguments. The whole list went into the first parameter. Put a star in front of the list in the call, and the items spread out.",
+      "props": {
+        "wrongCode": "def add(a, b, c):\n    return a + b + c\nnums = [1, 2, 3]\nprint(add(nums))",
+        "fixedCode": "def add(a, b, c):\n    return a + b + c\nnums = [1, 2, 3]\nprint(add(*nums))",
+        "error": "  File \"varargs.py\", line 4, in <module>\n    print(add(nums))\n          ~~~^^^^^^\nTypeError: add() missing 2 required positional arguments: 'b' and 'c'",
+        "errorOverride": {
+          "lines": [
+            "  File \"varargs.py\", line 4, in <module>",
+            "    print(add(nums))",
+            "          ~~~^^^^^^",
+            "TypeError: add() missing 2 required positional arguments: 'b' and 'c'"
+          ]
+        },
+        "why": "Without the star, the list is passed as one value for a, leaving b and c missing; the star spreads its items into separate arguments.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python varargs.py",
+        "culprit": {
+          "wrong": 4,
+          "fixed": 4
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +450,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: scope, local and global. Keep coding, says Xecxec!"
+      "narration": "Next time: scope, local and global. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 45,
+        "nextTitle": "Scope: local vs global"
+      }
     }
   ],
   "bug": {
@@ -346,5 +582,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

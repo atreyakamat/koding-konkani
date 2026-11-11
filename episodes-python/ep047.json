@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Recursion means a function calls itself, on a smaller version of the problem. Think of Russian dolls. Open one and you find a smaller doll, until you reach the smallest, which does not open. That smallest doll is the base case. It stops the calls. Without a base case, the function calls itself forever, until Python stops it with an error. Every call waits for the smaller call it started."
+      "narration": "Recursion means a function calls itself, on a smaller version of the problem. Think of Russian dolls. Open one and you find a smaller doll, until you reach the smallest, which does not open. That smallest doll is the base case. It stops the calls. Without a base case, the function calls itself forever, until Python stops it with an error. Every call waits for the smaller call it started.",
+      "props": {
+        "lines": [
+          "The function calls itself on a smaller problem",
+          "The base case stops the calls",
+          "Every call waits for the one it started"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "Russian dolls: open one and you find a smaller doll, until the smallest doll that does not open"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "fact.py",
         "source": "def factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\nprint(factorial(5))",
         "output": "120"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python fact.py",
+        "output": "120"
       }
     },
     {
@@ -129,7 +145,143 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the stack. Factorial of five calls factorial of four, and waits. That calls factorial of three, and waits. Down to factorial of one, which answers at once, with one. Now the waiting calls finish, one by one, from the top down. Two, six, twenty four, one hundred twenty. Each call keeps its own n."
+      "narration": "Here is the stack. Factorial of five calls factorial of four, and waits. That calls factorial of three, and waits. Down to factorial of one, which answers at once, with one. Now the waiting calls finish, one by one, from the top down. Two, six, twenty four, one hundred twenty. Each call keeps its own n.",
+      "props": {
+        "lines": [
+          "Here is the stack.",
+          "That calls factorial of three, and waits.",
+          "Two, six, twenty four, one hundred twenty."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 47,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "f1",
+              "shape": "box",
+              "text": "factorial(1) = 1",
+              "colour": "mint",
+              "col": 4,
+              "row": 0,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "f2",
+              "shape": "box",
+              "text": "factorial(2) = 2 * factorial(1)",
+              "colour": "butter",
+              "col": 4,
+              "row": 1,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "f3",
+              "shape": "box",
+              "text": "factorial(3) = 3 * factorial(2)",
+              "colour": "butter",
+              "col": 4,
+              "row": 2,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "f4",
+              "shape": "box",
+              "text": "factorial(4) = 4 * factorial(3)",
+              "colour": "butter",
+              "col": 4,
+              "row": 3,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "f5",
+              "shape": "box",
+              "text": "factorial(5) = 5 * factorial(4)",
+              "colour": "butter",
+              "col": 4,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "f5",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.12,
+              "do": "show",
+              "target": "f4",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.24,
+              "do": "show",
+              "target": "f3",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.36,
+              "do": "show",
+              "target": "f2",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.48,
+              "do": "show",
+              "target": "f1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.55,
+              "do": "glow",
+              "target": "f1",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.62,
+              "do": "hide",
+              "target": "f1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.7,
+              "do": "hide",
+              "target": "f2",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.78,
+              "do": "hide",
+              "target": "f3",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.86,
+              "do": "hide",
+              "target": "f4",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.94,
+              "do": "glow",
+              "target": "f5",
+              "sfx": "chime"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -146,6 +298,11 @@
         "file": "countdown.py",
         "source": "def countdown(n):\n    if n == 0:\n        print(\"Liftoff\")\n        return\n    print(n)\n    countdown(n - 1)\ncountdown(3)",
         "output": "3\n2\n1\nLiftoff"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python countdown.py",
+        "output": "3\n2\n1\nLiftoff"
       }
     },
     {
@@ -159,7 +316,31 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as countdown dot py. In the terminal, type python, space, countdown dot py. Three, two, one, Liftoff."
+      "narration": "Save the file as countdown dot py. In the terminal, type python, space, countdown dot py. Three, two, one, Liftoff.",
+      "props": {
+        "lines": [
+          {
+            "text": "python countdown.py",
+            "kind": "input"
+          },
+          {
+            "text": "3",
+            "kind": "output"
+          },
+          {
+            "text": "2",
+            "kind": "output"
+          },
+          {
+            "text": "1",
+            "kind": "output"
+          },
+          {
+            "text": "Liftoff",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +352,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A recursive function calls itself on a smaller problem. Two: A base case stops the recursion. Three: Each call has its own copy of the parameters. Four: Without a base case Python stops with a RecursionError. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A recursive function calls itself on a smaller problem. Two: A base case stops the recursion. Three: Each call has its own copy of the parameters. Four: Without a base case Python stops with a RecursionError. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A recursive function calls itself on a smaller problem.",
+          "A base case stops the recursion.",
+          "Each call has its own copy of the parameters.",
+          "Without a base case Python stops with a RecursionError."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +374,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Our countdown has no base case. It prints three, two, one, zero, minus one, and keeps going. After about a thousand calls, Python stops it with a recursion error, maximum recursion depth exceeded. Python protects itself from endless calls. Add a base case that returns, and the countdown ends."
+      "narration": "Bug of the Day. Our countdown has no base case. It prints three, two, one, zero, minus one, and keeps going. After about a thousand calls, Python stops it with a recursion error, maximum recursion depth exceeded. Python protects itself from endless calls. Add a base case that returns, and the countdown ends.",
+      "props": {
+        "wrongCode": "def countdown(n):\n    print(n)\n    countdown(n - 1)\ncountdown(3)",
+        "fixedCode": "def countdown(n):\n    if n == 0:\n        print(\"Liftoff\")\n        return\n    print(n)\n    countdown(n - 1)\ncountdown(3)",
+        "error": "RecursionError: maximum recursion depth exceeded",
+        "errorOverride": {
+          "lines": [
+            "RecursionError: maximum recursion depth exceeded"
+          ],
+          "caption": ""
+        },
+        "why": "Without a base case the function keeps calling itself with smaller and smaller numbers, so Python stops it when it reaches its recursion limit.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python fact.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +430,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: docstrings and type hints. Keep coding, says Xecxec!"
+      "narration": "Next time: docstrings and type hints. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 48,
+        "nextTitle": "Docstrings and type hints"
+      }
     }
   ],
   "bug": {
@@ -348,5 +562,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

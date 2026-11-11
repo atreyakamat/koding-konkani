@@ -6,11 +6,12 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { join } from "node:path";
+import { episodeJsonPath } from "./lib/course.mts";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([a-zA-Z]:)/, "$1");
 const [epArg, ...specs] = process.argv.slice(2);
 const epId = `ep${String(Number(epArg)).padStart(3, "0")}`;
-const episode = JSON.parse(readFileSync(join(ROOT, "episodes", `${epId}.json`), "utf-8"));
+const episode = JSON.parse(readFileSync(episodeJsonPath(ROOT, epId), "utf-8"));
 const outDir = join(ROOT, process.env.STILL_OUT ?? "out/stills-preview");
 const scale = process.env.STILL_SCALE ?? "0.5";
 mkdirSync(outDir, { recursive: true });
@@ -26,7 +27,10 @@ for (const spec of specs) {
   for (const frac of fracs.split(",")) {
     const at = Math.min(length - 1, Math.round(length * Number(frac)));
     const png = join(outDir, `${epId}-scene${id}-${scene.template}-${frac}.png`);
-    execSync(`npx remotion still src/index.ts ScenePreview "${png}" --frame=${at} --props="${propsFile}" --scale=${scale} --timeout=120000`, { cwd: ROOT, stdio: "inherit" });
+    execSync(
+      `npx remotion still src/index.ts ScenePreview "${png}" --frame=${at} --props="${propsFile}" --scale=${scale} --timeout=120000${process.env.KK_BROWSER ? ` --browser-executable="${process.env.KK_BROWSER}"` : ""}`,
+      { cwd: ROOT, stdio: "inherit" },
+    );
     console.log(png);
   }
 }

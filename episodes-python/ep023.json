@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A method is a tool that belongs to a value. You write the string, a dot, the method name and brackets. Upper makes capitals. Lower makes small letters. Strip removes spaces at the ends. Replace swaps one piece of text for another. Think of a tailor shop. The tailor never changes your old shirt. They hand you a new shirt that fits. Every string method returns a new string, and leaves the old one alone."
+      "narration": "A method is a tool that belongs to a value. You write the string, a dot, the method name and brackets. Upper makes capitals. Lower makes small letters. Strip removes spaces at the ends. Replace swaps one piece of text for another. Think of a tailor shop. The tailor never changes your old shirt. They hand you a new shirt that fits. Every string method returns a new string, and leaves the old one alone.",
+      "props": {
+        "lines": [
+          "Write the string, a dot, the method name, brackets",
+          "upper, lower and strip clean text",
+          "Methods return a new string; the old one stays"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a tailor shop: the tailor never changes your old shirt, they hand you a new one that fits"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "methods.py",
         "source": "text = \"  Goa Beach  \"\nprint(text.strip())\nprint(text.upper())\nprint(text.lower())\nprint(text.replace(\"Goa\", \"Baga\"))\nprint(len(text.strip()))",
         "output": "Goa Beach\n  GOA BEACH  \n  goa beach  \n  Baga Beach  \n9"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python methods.py",
+        "output": "Goa Beach\n  GOA BEACH  \n  goa beach  \n  Baga Beach  \n9"
       }
     },
     {
@@ -129,7 +145,55 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the picture after the split. The name line is still tied to the original string, fish curry rice. The name parts is tied to a new list that holds three words. Splitting did not touch the first string. It created a new object, a list, and tied parts to it. We meet lists properly in two episodes."
+      "narration": "Look at the picture after the split. The name line is still tied to the original string, fish curry rice. The name parts is tied to a new list that holds three words. Splitting did not touch the first string. It created a new object, a list, and tied parts to it. We meet lists properly in two episodes.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'fish curry rice'",
+                    "address": "str",
+                    "name": "line"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'fish curry rice'",
+                    "address": "str",
+                    "name": "line"
+                  }
+                ]
+              },
+              {
+                "name": "parts",
+                "cells": [
+                  {
+                    "value": "'fish'",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "'curry'",
+                    "index": 1
+                  },
+                  {
+                    "value": "'rice'",
+                    "index": 2
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +210,11 @@
         "file": "words.py",
         "source": "line = \"fish curry rice\"\nparts = line.split()\nprint(parts)\nprint(len(parts))\nprint(\"-\".join(parts))",
         "output": "['fish', 'curry', 'rice']\n3\nfish-curry-rice"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python words.py",
+        "output": "['fish', 'curry', 'rice']\n3\nfish-curry-rice"
       }
     },
     {
@@ -159,7 +228,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as words dot py. In the terminal, type python, space, words dot py. The list of three words, then three, then fish dash curry dash rice."
+      "narration": "Save the file as words dot py. In the terminal, type python, space, words dot py. The list of three words, then three, then fish dash curry dash rice.",
+      "props": {
+        "lines": [
+          {
+            "text": "python words.py",
+            "kind": "input"
+          },
+          {
+            "text": "['fish', 'curry', 'rice']",
+            "kind": "output"
+          },
+          {
+            "text": "3",
+            "kind": "output"
+          },
+          {
+            "text": "fish-curry-rice",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +260,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A method is a tool written after a dot, like text dot upper. Two: strip, upper, lower and replace clean and change text. Three: split cuts a string into a list and join glues a list into a string. Four: String methods return new strings and never change the old one. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A method is a tool written after a dot, like text dot upper. Two: strip, upper, lower and replace clean and change text. Three: split cuts a string into a list and join glues a list into a string. Four: String methods return new strings and never change the old one. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A method is a tool written after a dot, like text.upper().",
+          "Strip, upper, lower and replace clean and change text.",
+          "Split cuts a string into a list and join glues a list into a string.",
+          "String methods return new strings and never change the old one."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +282,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We try to change the first letter of the string. Python says, type error. A str object does not support item assignment. Strings are immutable. Their letters can never be changed in place. Instead, make a new string with a method like capitalize, and tie the name to it."
+      "narration": "Bug of the Day. We try to change the first letter of the string. Python says, type error. A str object does not support item assignment. Strings are immutable. Their letters can never be changed in place. Instead, make a new string with a method like capitalize, and tie the name to it.",
+      "props": {
+        "wrongCode": "name = \"goa\"\nname[0] = \"G\"",
+        "fixedCode": "name = \"goa\"\nname = name.capitalize()\nprint(name)",
+        "error": "  File \"methods.py\", line 2, in <module>\n    name[0] = \"G\"\n    ~~~~^^^\nTypeError: 'str' object does not support item assignment",
+        "errorOverride": {
+          "lines": [
+            "  File \"methods.py\", line 2, in <module>",
+            "    name[0] = \"G\"",
+            "    ~~~~^^^",
+            "TypeError: 'str' object does not support item assignment"
+          ]
+        },
+        "why": "Strings are immutable, so no letter can be changed in place; build a new string and tie the name to it.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python methods.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +340,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: indexing and slicing. Keep coding, says Xecxec!"
+      "narration": "Next time: indexing and slicing. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 24,
+        "nextTitle": "Indexing and slicing"
+      }
     }
   ],
   "bug": {
@@ -348,5 +472,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

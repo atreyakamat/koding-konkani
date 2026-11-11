@@ -461,6 +461,7 @@ class CodeFile:
     stdin: str | None = None
     build_step: str | None = None
     lang: str = "c"
+    input_files: dict[str, str] = field(default_factory=dict)
 
 
 def parse_code_shown(section_text: str, ep: str, warnings: Warnings) -> list[CodeFile]:
@@ -469,6 +470,9 @@ def parse_code_shown(section_text: str, ep: str, warnings: Warnings) -> list[Cod
     pending_name: str | None = None
     pending_stdin: str | None = None
     pending_is_expected_output = False
+    # Python Bible: a text block after "Typed input:" is stdin; after "Input file NAME:" it is that file's content.
+    pending_text_role: tuple[str, str] | None = None
+    pending_input_files: dict[str, str] = {}
     current: CodeFile | None = None
     unlabeled_index = 0
 
@@ -476,6 +480,9 @@ def parse_code_shown(section_text: str, ep: str, warnings: Warnings) -> list[Cod
         if not is_code:
             prose = unescape_outside_code(raw)
             announce = _FILE_ANNOUNCE_RE.search(prose)
+            role_prose = prose
+            # "**Input file data/b.txt:**" labels a text block; it must not be mistaken for the program's name.
+            prose = re.sub(r"\*\*Input file[^*]*\*\*", "", prose)
             if announce:
                 pending_name = announce.group(2)
             else:
@@ -493,17 +500,32 @@ def parse_code_shown(section_text: str, ep: str, warnings: Warnings) -> list[Cod
                 pending_stdin = input_m.group(1).strip().rstrip(",;")
             if re.search(r"expected output", prose, re.IGNORECASE):
                 pending_is_expected_output = True
+            pending_text_role = None
+            if re.search(r"\*\*Typed input:\*\*", role_prose):
+                pending_text_role = ("stdin", "")
+            infile = re.search(r"\*\*Input file\s+([\w./-]+):\*\*", role_prose)
+            if infile:
+                pending_text_role = ("infile", infile.group(1))
             continue
 
         lang, content = fence_content(raw)
         if lang in CODE_LANGS:
             unlabeled_index += 1
             name = pending_name or f"file{unlabeled_index}.{lang or DEFAULT_LANG}"
-            current = CodeFile(file=name, source=content, stdin=pending_stdin, lang=lang or DEFAULT_LANG)
+            current = CodeFile(file=name, source=content, stdin=pending_stdin, lang=lang or DEFAULT_LANG,
+                               input_files=pending_input_files)
             files.append(current)
             pending_name = None
             pending_stdin = None
+            pending_input_files = {}
             pending_is_expected_output = False
+        elif lang in ("text", "console", "output") and pending_text_role is not None:
+            role, role_name = pending_text_role
+            pending_text_role = None
+            if role == "stdin":
+                pending_stdin = content.rstrip("\n")
+            else:
+                pending_input_files[role_name] = content
         elif lang in ("text", "console", "output"):
             # A filename announcement right before a text block (e.g.
             # "Contents of `diary.txt`:") describes that text block, not
@@ -1036,6 +1058,7 @@ def assemble_episode(raw: RawEpisode, warnings: Warnings) -> dict | None:
                 "source": c.source,
                 **({"output": c.output} if c.output else {}),
                 **({"stdin": c.stdin} if c.stdin else {}),
+                **({"inputFiles": c.input_files} if c.input_files else {}),
                 **({"buildStep": c.build_step} if c.build_step else {}),
                 "lang": c.lang,
             }

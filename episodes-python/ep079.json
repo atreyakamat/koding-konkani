@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A type hint is a label. Write a colon and a type after a parameter, and an arrow and a type for the return value. Hints help readers and editors, but Python does not enforce them when the program runs. Think of labels on jars. They tell everyone what belongs inside, but do not stop you putting something else in. A dataclass uses the same labels to write init, repr and eq for you. For a list field, you must use field with default factory, so every object gets its own list."
+      "narration": "A type hint is a label. Write a colon and a type after a parameter, and an arrow and a type for the return value. Hints help readers and editors, but Python does not enforce them when the program runs. Think of labels on jars. They tell everyone what belongs inside, but do not stop you putting something else in. A dataclass uses the same labels to write init, repr and eq for you. For a list field, you must use field with default factory, so every object gets its own list.",
+      "props": {
+        "lines": [
+          "name: type is a hint, not a rule",
+          "@dataclass writes init, repr and eq for you",
+          "Use field(default_factory=list) for lists"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "labels on jars: they tell everyone what belongs inside, but they do not stop you from putting something else in"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "hints.py",
         "source": "def area(width: float, height: float) -> float:\n    return width * height\n\ndef greet(name: str, times: int = 1) -> str:\n    return \"-\".join([\"Hello \" + name] * times)\n\nprint(area(3, 4.5))\nprint(greet(\"Asha\", 2))\nprint(area(\"a\", 3))",
         "output": "13.5\nHello Asha-Hello Asha\naaa"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python hints.py",
+        "output": "13.5\nHello Asha-Hello Asha\naaa"
       }
     },
     {
@@ -127,7 +143,121 @@
       "onScreen": "Jars with labels: a jar labelled int still accepts a string without complaint, but a checker tool flags it",
       "animation": "Three jars labelled int, str, float; a string drops into the float jar without a sound; a magnifier tool marked mypy flags it in red",
       "sfx": [],
-      "narration": "Here is the picture. Each parameter is a jar with a label. The label says what is supposed to go inside. At run time, Python does not read the labels. A string can go into a jar marked float, and the program carries on. Separate tools, such as mypy, and your editor, read the labels before the program runs, and warn you. That is the value of hints."
+      "narration": "Here is the picture. Each parameter is a jar with a label. The label says what is supposed to go inside. At run time, Python does not read the labels. A string can go into a jar marked float, and the program carries on. Separate tools, such as mypy, and your editor, read the labels before the program runs, and warn you. That is the value of hints.",
+      "props": {
+        "lines": [
+          "Here is the picture.",
+          "Each parameter is a jar with a label.",
+          "The label says what is supposed to go inside."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 79,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "j1",
+              "shape": "box",
+              "text": "int",
+              "colour": "peach",
+              "col": 0,
+              "row": 2,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "j2",
+              "shape": "box",
+              "text": "str",
+              "colour": "peach",
+              "col": 3,
+              "row": 2,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "j3",
+              "shape": "box",
+              "text": "float",
+              "colour": "peach",
+              "col": 6,
+              "row": 2,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "s",
+              "shape": "token",
+              "text": "\"a\"",
+              "colour": "butter",
+              "col": 6,
+              "row": 0,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "mypy",
+              "shape": "box",
+              "text": "mypy checker",
+              "colour": "lilac",
+              "col": 9,
+              "row": 2,
+              "w": 2,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "j1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "j2"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "j3"
+            },
+            {
+              "t": 0.25,
+              "do": "show",
+              "target": "s",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.4,
+              "do": "move",
+              "target": "s",
+              "sfx": "whoosh",
+              "to": [
+                6,
+                2
+              ]
+            },
+            {
+              "t": 0.6,
+              "do": "show",
+              "target": "mypy",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.75,
+              "do": "cross",
+              "target": "s",
+              "sfx": "buzzer"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +274,11 @@
         "file": "dc.py",
         "source": "from dataclasses import dataclass, field\n\n@dataclass\nclass Student:\n    name: str\n    marks: int = 0\n    tags: list = field(default_factory=list)\n\na = Student(\"Asha\", 91)\nb = Student(\"Ravi\")\na.tags.append(\"top\")\nprint(a)\nprint(b)\nprint(a == Student(\"Asha\", 91, [\"top\"]))",
         "output": "Student(name='Asha', marks=91, tags=['top'])\nStudent(name='Ravi', marks=0, tags=[])\nTrue"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python dc.py",
+        "output": "Student(name='Asha', marks=91, tags=['top'])\nStudent(name='Ravi', marks=0, tags=[])\nTrue"
       }
     },
     {
@@ -157,7 +292,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as dc dot py. In the terminal, type python, space, dc dot py. 13.5, Hello Asha-Hello Asha, aaa. Then the two Student lines, and True."
+      "narration": "Save the file as dc dot py. In the terminal, type python, space, dc dot py. 13.5, Hello Asha-Hello Asha, aaa. Then the two Student lines, and True.",
+      "props": {
+        "lines": [
+          {
+            "text": "python dc.py",
+            "kind": "input"
+          },
+          {
+            "text": "Student(name='Asha', marks=91, tags=['top'])",
+            "kind": "output"
+          },
+          {
+            "text": "Student(name='Ravi', marks=0, tags=[])",
+            "kind": "output"
+          },
+          {
+            "text": "True",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +324,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Type hints are labels: name: str, and arrow int. Two: Python does not enforce hints. Tools like mypy do. Three: at dataclass writes init, repr and eq from the fields. Four: Use field of default factory equals list for a list field. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Type hints are labels: name: str, and arrow int. Two: Python does not enforce hints. Tools like mypy do. Three: at dataclass writes init, repr and eq from the fields. Four: Use field of default factory equals list for a list field. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Type hints are labels: name: str, and -> int.",
+          "Python does not enforce hints; tools like mypy do.",
+          "@dataclass writes init, repr and eq from the fields.",
+          "Use field(default_factory=list) for a list field."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +346,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We give the members field a list as its default. A dataclass stops us at once. Value error, mutable default list for field members is not allowed, use default factory. A shared list is the bug from episode sixty five. Use field with default factory equals list, and every team gets its own list."
+      "narration": "Bug of the Day. We give the members field a list as its default. A dataclass stops us at once. Value error, mutable default list for field members is not allowed, use default factory. A shared list is the bug from episode sixty five. Use field with default factory equals list, and every team gets its own list.",
+      "props": {
+        "wrongCode": "from dataclasses import dataclass\n\n@dataclass\nclass Team:\n    members: list = []",
+        "fixedCode": "from dataclasses import dataclass, field\n\n@dataclass\nclass Team:\n    members: list = field(default_factory=list)\n\nprint(Team())",
+        "error": "ValueError: mutable default <class 'list'> for field members is not allowed: use default_factory",
+        "errorOverride": {
+          "lines": [
+            "ValueError: mutable default <class 'list'> for field members is not allowed: use default_factory"
+          ],
+          "caption": ""
+        },
+        "why": "A default list would be shared by every object, so a dataclass refuses it. default_factory calls list for each new object.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python hints.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +402,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: testing your code, assert, unittest and pytest. Keep coding, says Xecxec!"
+      "narration": "Next time: testing your code, assert, unittest and pytest. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 80,
+        "nextTitle": "Testing your code (assert, unittest, pytest)"
+      }
     }
   ],
   "bug": {
@@ -346,5 +534,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

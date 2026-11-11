@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A with statement guarantees a cleanup. Behind it, Python calls two special methods. Dunder enter runs at the start, and its return value is tied to the name after as. Dunder exit runs at the end, even if an error happened inside. If exit returns True, the error is swallowed. If it returns False, the error continues. The contextlib module offers a shortcut, with a generator and one yield. Think of a hotel room. The key card opens the door on the way in, and the room is cleaned on the way out."
+      "narration": "A with statement guarantees a cleanup. Behind it, Python calls two special methods. Dunder enter runs at the start, and its return value is tied to the name after as. Dunder exit runs at the end, even if an error happened inside. If exit returns True, the error is swallowed. If it returns False, the error continues. The contextlib module offers a shortcut, with a generator and one yield. Think of a hotel room. The key card opens the door on the way in, and the room is cleaned on the way out.",
+      "props": {
+        "lines": [
+          "__enter__ runs when the with block starts",
+          "__exit__ runs when the block ends, even on error",
+          "@contextmanager makes one from a generator"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a hotel room: the key card opens the door on the way in, and the room is cleaned on the way out, whatever happened inside"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "section.py",
         "source": "class Section:\n    def __init__(self, name):\n        self.name = name\n\n    def __enter__(self):\n        print(\"enter\", self.name)\n        return self\n\n    def __exit__(self, exc_type, exc, tb):\n        print(\"exit\", self.name)\n        return False\n\nwith Section(\"A\") as s:\n    print(\"inside\", s.name)\nprint(\"after\")",
         "output": "enter A\ninside A\nexit A\nafter"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python section.py",
+        "output": "enter A\ninside A\nexit A\nafter"
       }
     },
     {
@@ -127,7 +143,142 @@
       "onScreen": "A room with an entry door that rings a bell and an exit door that cleans the room, even when a red error arrow appears inside",
       "animation": "A room with two doors; a bell rings at the entry door, a cleaner at the exit door; a red lightning arrow inside still ends at the exit door",
       "sfx": [],
-      "narration": "Here is the picture. The with statement walks through the entry door, which calls enter. Your block runs inside the room. When the block ends, normal or with an error, Python always walks through the exit door, and calls exit. That is why with is trusted for files. Even if the code inside crashes, the file is closed on the way out."
+      "narration": "Here is the picture. The with statement walks through the entry door, which calls enter. Your block runs inside the room. When the block ends, normal or with an error, Python always walks through the exit door, and calls exit. That is why with is trusted for files. Even if the code inside crashes, the file is closed on the way out.",
+      "props": {
+        "lines": [
+          "Here is the picture.",
+          "Your block runs inside the room.",
+          "That is why with is trusted for files."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 78,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "in",
+              "shape": "box",
+              "text": "door in: __enter__",
+              "colour": "mint",
+              "col": 0,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "room",
+              "shape": "box",
+              "text": "with block",
+              "colour": "cream",
+              "col": 4,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "out",
+              "shape": "box",
+              "text": "door out: __exit__",
+              "colour": "mint",
+              "col": 8,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "err",
+              "shape": "token",
+              "text": "error",
+              "colour": "tomato",
+              "col": 5,
+              "row": 0,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "in",
+              "to": "room"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "room",
+              "to": "out"
+            },
+            {
+              "id": "a3",
+              "shape": "arrow",
+              "text": "",
+              "colour": "tomato",
+              "from": "err",
+              "to": "out"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "in",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "room"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "out"
+            },
+            {
+              "t": 0.2,
+              "do": "glow",
+              "target": "in",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.3,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.5,
+              "do": "show",
+              "target": "err",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.6,
+              "do": "draw",
+              "target": "a3",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.75,
+              "do": "draw",
+              "target": "a2"
+            },
+            {
+              "t": 0.85,
+              "do": "glow",
+              "target": "out",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +295,11 @@
         "file": "tag.py",
         "source": "from contextlib import contextmanager\n\n@contextmanager\ndef tag(name):\n    print(\"<\" + name + \">\")\n    try:\n        yield\n    finally:\n        print(\"</\" + name + \">\")\n\nwith tag(\"b\"):\n    print(\"bold text\")\ntry:\n    with tag(\"i\"):\n        raise ValueError(\"oops\")\nexcept ValueError as e:\n    print(\"caught\", e)",
         "output": "<b>\nbold text\n</b>\n<i>\n</i>\ncaught oops"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python tag.py",
+        "output": "<b>\nbold text\n</b>\n<i>\n</i>\ncaught oops"
       }
     },
     {
@@ -157,7 +313,39 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as tag dot py. In the terminal, type python, space, tag dot py. Enter A, inside A, exit A, after. Then the bold tags, then the italic tags, and caught oops."
+      "narration": "Save the file as tag dot py. In the terminal, type python, space, tag dot py. Enter A, inside A, exit A, after. Then the bold tags, then the italic tags, and caught oops.",
+      "props": {
+        "lines": [
+          {
+            "text": "python tag.py",
+            "kind": "input"
+          },
+          {
+            "text": "<b>",
+            "kind": "output"
+          },
+          {
+            "text": "bold text",
+            "kind": "output"
+          },
+          {
+            "text": "</b>",
+            "kind": "output"
+          },
+          {
+            "text": "<i>",
+            "kind": "output"
+          },
+          {
+            "text": "</i>",
+            "kind": "output"
+          },
+          {
+            "text": "…",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +357,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: with calls dunder enter at the start and dunder exit at the end. Two: dunder exit runs even when the block raises an error. Three: Returning True from dunder exit swallows the error. Four: at contextmanager builds one from a generator with one yield. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: with calls dunder enter at the start and dunder exit at the end. Two: dunder exit runs even when the block raises an error. Three: Returning True from dunder exit swallows the error. Four: at contextmanager builds one from a generator with one yield. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "With calls __enter__ at the start and __exit__ at the end.",
+          "__exit__ runs even when the block raises an error.",
+          "Returning True from __exit__ swallows the error.",
+          "@contextmanager builds one from a generator with one yield."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +379,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The block divides by zero. But our exit returns True. That tells Python, I handled it. The error vanishes, and the program prints finished. A real bug is now invisible. Return False, or nothing at all, and the error continues up to where you can catch it."
+      "narration": "Bug of the Day. The block divides by zero. But our exit returns True. That tells Python, I handled it. The error vanishes, and the program prints finished. A real bug is now invisible. Return False, or nothing at all, and the error continues up to where you can catch it.",
+      "props": {
+        "wrongCode": "class Quiet:\n    def __enter__(self):\n        return self\n\n    def __exit__(self, exc_type, exc, tb):\n        return True\n\nwith Quiet():\n    1 / 0\nprint(\"finished\")",
+        "fixedCode": "class Quiet:\n    def __enter__(self):\n        return self\n\n    def __exit__(self, exc_type, exc, tb):\n        return False\n\ntry:\n    with Quiet():\n        1 / 0\nexcept ZeroDivisionError:\n    print(\"error visible\")\nprint(\"finished\")",
+        "error": "finished",
+        "errorOverride": {
+          "lines": [
+            "finished"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "If exit returns True, Python treats the error as handled and hides it. Return False, or return nothing, so errors are never swallowed by accident.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python section.py",
+        "culprit": {
+          "wrong": 6,
+          "fixed": 6
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +435,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: type hints and dataclasses. Keep coding, says Xecxec!"
+      "narration": "Next time: type hints and dataclasses. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 79,
+        "nextTitle": "Type hints and dataclasses"
+      }
     }
   ],
   "bug": {
@@ -346,5 +567,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

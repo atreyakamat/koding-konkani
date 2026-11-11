@@ -85,7 +85,12 @@ const labelsFromNarration = (narration: string): Record<number, string> => {
  * present and a single onScreen line otherwise — flagged in review.md as
  * needing real refinement once Module 6+ episodes are rendered.
  */
-export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, unknown> => {
+export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, unknown> => ({
+  ...derivedPropsFor(episode, scene),
+  ...(scene.props ?? {}),
+});
+
+const derivedPropsFor = (episode: Episode, scene: Scene): Record<string, unknown> => {
   switch (scene.template) {
     case "title-card":
       return {

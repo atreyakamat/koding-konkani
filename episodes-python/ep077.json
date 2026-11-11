@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A decorator with arguments is a function that returns a decorator. So there are three levels. The outer function takes the settings, such as times. It returns the middle function, which is the real decorator, and takes the function to wrap. That returns the inner wrapper, which runs each time. When you write at repeat of three, Python first calls repeat with three, gets the decorator, and applies it. Think of a wrapping machine with a dial. First you set the dial. Then you hand over the gift."
+      "narration": "A decorator with arguments is a function that returns a decorator. So there are three levels. The outer function takes the settings, such as times. It returns the middle function, which is the real decorator, and takes the function to wrap. That returns the inner wrapper, which runs each time. When you write at repeat of three, Python first calls repeat with three, gets the decorator, and applies it. Think of a wrapping machine with a dial. First you set the dial. Then you hand over the gift.",
+      "props": {
+        "lines": [
+          "Outer function takes the decorator's settings",
+          "Middle function takes the function to wrap",
+          "Inner function is the wrapper that runs"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a wrapping machine with a dial: first you set the dial, then it takes a gift, then it wraps"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "repeat.py",
         "source": "def repeat(times):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(times):\n                func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n@repeat(3)\ndef hello(name):\n    print(\"Hello\", name)\n\nhello(\"Asha\")",
         "output": "Hello Asha\nHello Asha\nHello Asha"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python repeat.py",
+        "output": "Hello Asha\nHello Asha\nHello Asha"
       }
     },
     {
@@ -127,7 +143,116 @@
       "onScreen": "A machine with a dial set to 3, then a gift function inserted, then the wrapped gift comes out",
       "animation": "A machine with a dial turned to 3; a function enters on a belt, passes through, and leaves wrapped, with the label hello jumping onto it",
       "sfx": [],
-      "narration": "Here is the order of events. First, repeat is called with three. That sets the dial, and returns the decorator. Second, that decorator is called with the function hello. That returns the wrapper. Finally, the name hello is tied to the wrapper. Three levels, three steps, always in that order. If you ever lose track, count the brackets in the at line."
+      "narration": "Here is the order of events. First, repeat is called with three. That sets the dial, and returns the decorator. Second, that decorator is called with the function hello. That returns the wrapper. Finally, the name hello is tied to the wrapper. Three levels, three steps, always in that order. If you ever lose track, count the brackets in the at line.",
+      "props": {
+        "lines": [
+          "Here is the order of events.",
+          "First, repeat is called with three.",
+          "That sets the dial, and returns the decorator."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 77,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "dial",
+              "shape": "box",
+              "text": "repeat(3): dial = 3",
+              "colour": "butter",
+              "col": 0,
+              "row": 0,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "gift",
+              "shape": "card",
+              "text": "hello",
+              "colour": "cream",
+              "col": 0,
+              "row": 3,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "mach",
+              "shape": "box",
+              "text": "decorator",
+              "colour": "lilac",
+              "col": 5,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "wrapped",
+              "shape": "card",
+              "text": "hello (wrapped)",
+              "colour": "mint",
+              "col": 9,
+              "row": 3,
+              "w": 2,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "dial",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.15,
+              "do": "glow",
+              "target": "dial",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.25,
+              "do": "show",
+              "target": "mach",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.35,
+              "do": "show",
+              "target": "gift",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.5,
+              "do": "move",
+              "target": "gift",
+              "sfx": "whoosh",
+              "to": [
+                5,
+                3
+              ]
+            },
+            {
+              "t": 0.7,
+              "do": "move",
+              "target": "gift",
+              "to": [
+                9,
+                3
+              ]
+            },
+            {
+              "t": 0.8,
+              "do": "show",
+              "target": "wrapped",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +269,11 @@
         "file": "require.py",
         "source": "import functools\n\ndef require(role):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(user, *args, **kwargs):\n            if user != role:\n                return \"denied\"\n            return func(user, *args, **kwargs)\n        return wrapper\n    return decorator\n\n@require(\"admin\")\ndef delete_all(user):\n    return \"deleted\"\n\nprint(delete_all(\"admin\"))\nprint(delete_all(\"guest\"))\nprint(delete_all.__name__)",
         "output": "deleted\ndenied\ndelete_all"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python require.py",
+        "output": "deleted\ndenied\ndelete_all"
       }
     },
     {
@@ -157,7 +287,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as require dot py. In the terminal, type python, space, require dot py. Hello Asha three times. Then deleted, denied, delete_all."
+      "narration": "Save the file as require dot py. In the terminal, type python, space, require dot py. Hello Asha three times. Then deleted, denied, delete_all.",
+      "props": {
+        "lines": [
+          {
+            "text": "python require.py",
+            "kind": "input"
+          },
+          {
+            "text": "deleted",
+            "kind": "output"
+          },
+          {
+            "text": "denied",
+            "kind": "output"
+          },
+          {
+            "text": "delete_all",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +319,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A decorator with arguments has three levels of functions. Two: Outer takes the settings and returns the decorator. Three: The decorator takes the function and returns the wrapper. Four: at repeat of 3 first calls repeat of 3, then applies the result. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A decorator with arguments has three levels of functions. Two: Outer takes the settings and returns the decorator. Three: The decorator takes the function and returns the wrapper. Four: at repeat of 3 first calls repeat of 3, then applies the result. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A decorator with arguments has three levels of functions.",
+          "Outer takes the settings and returns the decorator.",
+          "The decorator takes the function and returns the wrapper.",
+          "@repeat(3) first calls repeat(3), then applies the result."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +341,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Repeat returns the wrapper directly. But at repeat of three means, call repeat, then call the result with hello. So the wrapper runs immediately, with hello as an argument, and looks for func. Name error, name func is not defined. Add the middle level, a decorator function that takes func."
+      "narration": "Bug of the Day. Repeat returns the wrapper directly. But at repeat of three means, call repeat, then call the result with hello. So the wrapper runs immediately, with hello as an argument, and looks for func. Name error, name func is not defined. Add the middle level, a decorator function that takes func.",
+      "props": {
+        "wrongCode": "def repeat(times):\n    def wrapper(*args, **kwargs):\n        for _ in range(times):\n            func(*args, **kwargs)\n    return wrapper\n\n@repeat(3)\ndef hello():\n    print(\"Hello\")",
+        "fixedCode": "def repeat(times):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(times):\n                func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n@repeat(3)\ndef hello():\n    print(\"Hello\")\n\nhello()",
+        "error": "  File \"repeat.py\", line 4, in wrapper\n    func(*args, **kwargs)\n    ^^^^\nNameError: name 'func' is not defined",
+        "errorOverride": {
+          "lines": [
+            "  File \"repeat.py\", line 4, in wrapper",
+            "    func(*args, **kwargs)",
+            "    ^^^^",
+            "NameError: name 'func' is not defined"
+          ]
+        },
+        "why": "At repeat of three calls repeat, and then calls the result with the function. If repeat returns the wrapper directly, the wrapper runs at once, and has no func to call.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python repeat.py",
+        "culprit": {
+          "wrong": 7,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +399,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: context managers. Keep coding, says Xecxec!"
+      "narration": "Next time: context managers. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 78,
+        "nextTitle": "Context managers"
+      }
     }
   ],
   "bug": {
@@ -346,5 +531,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

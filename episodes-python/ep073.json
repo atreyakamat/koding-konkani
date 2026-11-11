@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "An iterable is anything you can loop over, such as a list or a string. The iter function turns it into an iterator, which hands out items one at a time. Each call to next gives the next item. When there are no more, Python raises a StopIteration, and the for loop quietly stops. Think of a ticket machine. Each press gives you the next ticket, until the roll is empty. And once the roll is empty, it stays empty."
+      "narration": "An iterable is anything you can loop over, such as a list or a string. The iter function turns it into an iterator, which hands out items one at a time. Each call to next gives the next item. When there are no more, Python raises a StopIteration, and the for loop quietly stops. Think of a ticket machine. Each press gives you the next ticket, until the roll is empty. And once the roll is empty, it stays empty.",
+      "props": {
+        "lines": [
+          "iter(x) gives an iterator",
+          "next(it) gives the next item",
+          "StopIteration means: no more"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a ticket machine: each press gives you the next ticket, until the roll is empty"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "manual.py",
         "source": "nums = [10, 20, 30]\nit = iter(nums)\nprint(next(it))\nprint(next(it))\nprint(next(it))\ntry:\n    print(next(it))\nexcept StopIteration:\n    print(\"no more\")",
         "output": "10\n20\n30\nno more"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python manual.py",
+        "output": "10\n20\n30\nno more"
       }
     },
     {
@@ -129,7 +145,64 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name nums is tied to the list. The name it is tied to a different object, a list iterator. The iterator does not copy the list. It points at it, and remembers how far it has walked. The list stays the same. Only the iterator moves forward."
+      "narration": "Here is the picture. The name nums is tied to the list. The name it is tied to a different object, a list iterator. The iterator does not copy the list. It points at it, and remembers how far it has walked. The list stays the same. Only the iterator moves forward.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "nums",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "name": "nums",
+                "cells": [
+                  {
+                    "value": "10",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "20",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "index": 2
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "<list_iterator object>",
+                    "address": "list_iterator",
+                    "name": "it"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +219,11 @@
         "file": "countdown.py",
         "source": "class Countdown:\n    def __init__(self, start):\n        self.n = start\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.n <= 0:\n            raise StopIteration\n        value = self.n\n        self.n -= 1\n        return value\n\nfor i in Countdown(3):\n    print(i)\nprint(list(Countdown(5)))",
         "output": "3\n2\n1\n[5, 4, 3, 2, 1]"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python countdown.py",
+        "output": "3\n2\n1\n[5, 4, 3, 2, 1]"
       }
     },
     {
@@ -159,7 +237,31 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as countdown dot py. In the terminal, type python, space, countdown dot py. 10, 20, 30, no more. Then 3, 2, 1, and the list 5 to 1."
+      "narration": "Save the file as countdown dot py. In the terminal, type python, space, countdown dot py. 10, 20, 30, no more. Then 3, 2, 1, and the list 5 to 1.",
+      "props": {
+        "lines": [
+          {
+            "text": "python countdown.py",
+            "kind": "input"
+          },
+          {
+            "text": "3",
+            "kind": "output"
+          },
+          {
+            "text": "2",
+            "kind": "output"
+          },
+          {
+            "text": "1",
+            "kind": "output"
+          },
+          {
+            "text": "[5, 4, 3, 2, 1]",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +273,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: iter of x gives an iterator. Next of it gives the next item. Two: StopIteration means there is nothing left. Three: A for loop calls iter once, then next again and again. Four: Your own class needs dunder iter and dunder next. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: iter of x gives an iterator. Next of it gives the next item. Two: StopIteration means there is nothing left. Three: A for loop calls iter once, then next again and again. Four: Your own class needs dunder iter and dunder next. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Iter(x) gives an iterator; next(it) gives the next item.",
+          "StopIteration means there is nothing left.",
+          "A for loop calls iter once, then next again and again.",
+          "Your own class needs __iter__ and __next__."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +295,28 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We sum the iterator twice. The first sum gives six. The second gives zero, with no error. The iterator was used up by the first sum. It never rewinds. Keep the data in a list, and every loop gets a fresh iterator. Or call iter again."
+      "narration": "Bug of the Day. We sum the iterator twice. The first sum gives six. The second gives zero, with no error. The iterator was used up by the first sum. It never rewinds. Keep the data in a list, and every loop gets a fresh iterator. Or call iter again.",
+      "props": {
+        "wrongCode": "it = iter([1, 2, 3])\nprint(sum(it))\nprint(sum(it))",
+        "fixedCode": "nums = [1, 2, 3]\nprint(sum(nums))\nprint(sum(nums))",
+        "error": "6\n0",
+        "errorOverride": {
+          "lines": [
+            "6",
+            "0"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "An iterator walks forward once and never rewinds. After the first loop it is empty. A list creates a fresh iterator every time you loop over it.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python manual.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +352,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: generators. Keep coding, says Xecxec!"
+      "narration": "Next time: generators. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 74,
+        "nextTitle": "Generators"
+      }
     }
   ],
   "bug": {
@@ -348,5 +484,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Data can live in two places. A class attribute is written directly in the class body. All objects share it. Think of a school notice board that everyone can see. An instance attribute is set with self dot, inside init. Each object has its own copy, like a private notebook. Numbers and strings are safe either way, because assigning replaces them. But a list stored on the class is one single list, shared by every object. That is where the trouble starts."
+      "narration": "Data can live in two places. A class attribute is written directly in the class body. All objects share it. Think of a school notice board that everyone can see. An instance attribute is set with self dot, inside init. Each object has its own copy, like a private notebook. Numbers and strings are safe either way, because assigning replaces them. But a list stored on the class is one single list, shared by every object. That is where the trouble starts.",
+      "props": {
+        "lines": [
+          "Class attribute: written in the class body, shared by all",
+          "Instance attribute: self.x, private to one object",
+          "A shared list is shared by everyone"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a school notice board that everyone sees, versus each student's private notebook"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "shared.py",
         "source": "class Dog:\n    species = \"Canis\"\n    tricks = []\n\n    def __init__(self, name):\n        self.name = name\n\n    def learn(self, trick):\n        self.tricks.append(trick)\n\nd1 = Dog(\"Rex\")\nd2 = Dog(\"Fido\")\nd1.learn(\"sit\")\nd2.learn(\"roll\")\nt1 = d1.tricks\nt2 = d2.tricks\nprint(d1.species, d2.species)\nprint(t1)\nprint(t1 is t2)",
         "output": "Canis Canis\n['sit', 'roll']\nTrue"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python shared.py",
+        "output": "Canis Canis\n['sit', 'roll']\nTrue"
       }
     },
     {
@@ -129,7 +145,32 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The names t1 and t2 look like two lists, but they are two names tied to one single list object. That is why the tricks of Rex show up for Fido too. When two names are tied to one object, changing it through one name changes it for both. Remember this picture. It explains the whole bug."
+      "narration": "Here is the picture. The names t1 and t2 look like two lists, but they are two names tied to one single list object. That is why the tricks of Rex show up for Fido too. When two names are tied to one object, changing it through one name changes it for both. Remember this picture. It explains the whole bug.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "t1",
+                "cells": [
+                  {
+                    "value": "'sit'",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "'roll'",
+                    "index": 1
+                  }
+                ],
+                "tags": [
+                  "t2"
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +187,11 @@
         "file": "private.py",
         "source": "class Dog:\n    species = \"Canis\"\n\n    def __init__(self, name):\n        self.name = name\n        self.tricks = []\n\n    def learn(self, trick):\n        self.tricks.append(trick)\n\nd1 = Dog(\"Rex\")\nd2 = Dog(\"Fido\")\nd1.learn(\"sit\")\nd2.learn(\"roll\")\nprint(d1.tricks)\nprint(d2.tricks)\nprint(d1.tricks is d2.tricks)",
         "output": "['sit']\n['roll']\nFalse"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python private.py",
+        "output": "['sit']\n['roll']\nFalse"
       }
     },
     {
@@ -159,7 +205,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as private dot py. In the terminal, type python, space, private dot py. Canis Canis, then sit and roll twice over, True. Then sit, roll, False."
+      "narration": "Save the file as private dot py. In the terminal, type python, space, private dot py. Canis Canis, then sit and roll twice over, True. Then sit, roll, False.",
+      "props": {
+        "lines": [
+          {
+            "text": "python private.py",
+            "kind": "input"
+          },
+          {
+            "text": "['sit']",
+            "kind": "output"
+          },
+          {
+            "text": "['roll']",
+            "kind": "output"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +237,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A class attribute is written in the class body and shared by all objects. Two: An instance attribute is set with self dot inside init, and is private. Three: A list in the class body is one list shared by everyone. Four: Create lists inside init, so each object gets its own. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A class attribute is written in the class body and shared by all objects. Two: An instance attribute is set with self dot inside init, and is private. Three: A list in the class body is one list shared by everyone. Four: Create lists inside init, so each object gets its own. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A class attribute is written in the class body and shared by all objects.",
+          "An instance attribute is set with self dot inside init, and is private.",
+          "A list in the class body is one list shared by everyone.",
+          "Create lists inside init, so each object gets its own."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +259,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Ravi joined the blue team, but he shows up in the red team too. The members list is in the class body, so there is only one list, shared by every team. No error appears. The fix is to create the list inside init, so every team gets its own."
+      "narration": "Bug of the Day. Ravi joined the blue team, but he shows up in the red team too. The members list is in the class body, so there is only one list, shared by every team. No error appears. The fix is to create the list inside init, so every team gets its own.",
+      "props": {
+        "wrongCode": "class Team:\n    members = []\n\n    def __init__(self, name):\n        self.name = name\n\n    def add(self, person):\n        self.members.append(person)\n\nred = Team(\"Red\")\nblue = Team(\"Blue\")\nred.add(\"Asha\")\nblue.add(\"Ravi\")\nprint(red.members)",
+        "fixedCode": "class Team:\n    def __init__(self, name):\n        self.name = name\n        self.members = []\n\n    def add(self, person):\n        self.members.append(person)\n\nred = Team(\"Red\")\nblue = Team(\"Blue\")\nred.add(\"Asha\")\nblue.add(\"Ravi\")\nprint(red.members)",
+        "error": "['Asha', 'Ravi']",
+        "errorOverride": {
+          "lines": [
+            "['Asha', 'Ravi']"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "A list created in the class body is built once and shared by every object. A list created in init is built fresh for each object.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python shared.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +315,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: dunder str and dunder repr. Keep coding, says Xecxec!"
+      "narration": "Next time: dunder str and dunder repr. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 66,
+        "nextTitle": "__str__ and __repr__"
+      }
     }
   ],
   "bug": {
@@ -348,5 +447,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

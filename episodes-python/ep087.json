@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Before writing code, write the plan. Our expense tracker must add an expense, list the expenses, show totals by category, and save everything in a file. First decide what one expense looks like. It has a day, a category, an amount and an optional note. A dataclass is perfect for that. Then decide the actions, each as a small function. Finally, decide the rules. For example, an amount must be positive. Think of a blueprint before building a house. Walls, doors and wiring are decided on paper first."
+      "narration": "Before writing code, write the plan. Our expense tracker must add an expense, list the expenses, show totals by category, and save everything in a file. First decide what one expense looks like. It has a day, a category, an amount and an optional note. A dataclass is perfect for that. Then decide the actions, each as a small function. Finally, decide the rules. For example, an amount must be positive. Think of a blueprint before building a house. Walls, doors and wiring are decided on paper first.",
+      "props": {
+        "lines": [
+          "List what the program must do",
+          "Decide what one expense looks like",
+          "Reject bad input at the door"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a blueprint before building a house: walls, doors and wiring decided on paper first"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "design.py",
         "source": "from dataclasses import dataclass\n\n@dataclass\nclass Expense:\n    day: str\n    category: str\n    amount: float\n    note: str = \"\"\n\nexpenses = []\n\ndef add_expense(day, category, amount, note=\"\"):\n    expenses.append(Expense(day, category, amount, note))\n\nadd_expense(\"2025-03-01\", \"food\", 120.5, \"lunch\")\nadd_expense(\"2025-03-02\", \"travel\", 60, \"bus pass\")\nadd_expense(\"2025-03-03\", \"food\", 80)\nprint(len(expenses))\nprint(expenses[0])",
         "output": "3\nExpense(day='2025-03-01', category='food', amount=120.5, note='lunch')"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python design.py",
+        "output": "3\nExpense(day='2025-03-01', category='food', amount=120.5, note='lunch')"
       }
     },
     {
@@ -127,7 +143,159 @@
       "onScreen": "Four boxes in a row: add, list, summary, save, each pointing to one shared list of Expense cards",
       "animation": "A central list of expense cards with four arrows labelled add, list, summary and save, each pointing to a function box",
       "sfx": [],
-      "narration": "Here is the plan on one page. In the middle sits one list of Expense cards. Around it, four actions. Add puts a new card in the list. List shows the cards. Summary adds the amounts by category. Save writes the cards to a file, and loads them back at the start. Each action is a small function. If every function does one job, the project stays easy to change."
+      "narration": "Here is the plan on one page. In the middle sits one list of Expense cards. Around it, four actions. Add puts a new card in the list. List shows the cards. Summary adds the amounts by category. Save writes the cards to a file, and loads them back at the start. Each action is a small function. If every function does one job, the project stays easy to change.",
+      "props": {
+        "lines": [
+          "Here is the plan on one page.",
+          "In the middle sits one list of Expense cards.",
+          "Around it, four actions."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 87,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "list",
+              "shape": "card",
+              "text": "list of Expense cards",
+              "colour": "butter",
+              "col": 4,
+              "row": 2,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "add",
+              "shape": "box",
+              "text": "add",
+              "colour": "mint",
+              "col": 0,
+              "row": 0,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "show",
+              "shape": "box",
+              "text": "list",
+              "colour": "mint",
+              "col": 8,
+              "row": 0,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "sum",
+              "shape": "box",
+              "text": "summary",
+              "colour": "mint",
+              "col": 0,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "save",
+              "shape": "box",
+              "text": "save",
+              "colour": "mint",
+              "col": 8,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "add",
+              "to": "list"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "list",
+              "to": "show"
+            },
+            {
+              "id": "a3",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "list",
+              "to": "sum"
+            },
+            {
+              "id": "a4",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "list",
+              "to": "save"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "list",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.2,
+              "do": "show",
+              "target": "add"
+            },
+            {
+              "t": 0.3,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.4,
+              "do": "show",
+              "target": "show"
+            },
+            {
+              "t": 0.5,
+              "do": "draw",
+              "target": "a2",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.6,
+              "do": "show",
+              "target": "sum"
+            },
+            {
+              "t": 0.7,
+              "do": "draw",
+              "target": "a3",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.8,
+              "do": "show",
+              "target": "save"
+            },
+            {
+              "t": 0.9,
+              "do": "draw",
+              "target": "a4",
+              "sfx": "whoosh"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +312,11 @@
         "file": "totals.py",
         "source": "expenses = [\n    (\"food\", 120.5),\n    (\"travel\", 60.0),\n    (\"food\", 80.0),\n]\ntotals = {}\nfor category, amount in expenses:\n    totals[category] = totals.get(category, 0) + amount\nfor category in sorted(totals):\n    print(category, totals[category])\nprint(sum(totals.values()))",
         "output": "food 200.5\ntravel 60.0\n260.5"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python totals.py",
+        "output": "food 200.5\ntravel 60.0\n260.5"
       }
     },
     {
@@ -157,7 +330,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as totals dot py. In the terminal, type python, space, totals dot py. 3 and the first Expense line. Then food 200.5, travel 60.0, 260.5."
+      "narration": "Save the file as totals dot py. In the terminal, type python, space, totals dot py. 3 and the first Expense line. Then food 200.5, travel 60.0, 260.5.",
+      "props": {
+        "lines": [
+          {
+            "text": "python totals.py",
+            "kind": "input"
+          },
+          {
+            "text": "food 200.5",
+            "kind": "output"
+          },
+          {
+            "text": "travel 60.0",
+            "kind": "output"
+          },
+          {
+            "text": "260.5",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +362,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Plan first: what the program must do. Two: Model one thing with a dataclass. Three: Each action is one small function. Four: Check the rules before data enters the list. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Plan first: what the program must do. Two: Model one thing with a dataclass. Three: Each action is one small function. Four: Check the rules before data enters the list. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Plan first: what the program must do.",
+          "Model one thing with a dataclass.",
+          "Each action is one small function.",
+          "Check the rules before data enters the list."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +384,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We add a travel expense of minus five hundred. Nothing stops it, and the total becomes minus four hundred. No error, just a wrong answer. Validate at the door. If the amount is zero or less, raise a value error, and let the caller decide what to do."
+      "narration": "Bug of the Day. We add a travel expense of minus five hundred. Nothing stops it, and the total becomes minus four hundred. No error, just a wrong answer. Validate at the door. If the amount is zero or less, raise a value error, and let the caller decide what to do.",
+      "props": {
+        "wrongCode": "expenses = []\n\ndef add_expense(category, amount):\n    expenses.append((category, amount))\n\nadd_expense(\"food\", 100)\nadd_expense(\"travel\", -500)\nprint(sum(a for _, a in expenses))",
+        "fixedCode": "expenses = []\n\ndef add_expense(category, amount):\n    if amount <= 0:\n        raise ValueError(\"amount must be positive\")\n    expenses.append((category, amount))\n\nadd_expense(\"food\", 100)\ntry:\n    add_expense(\"travel\", -500)\nexcept ValueError as e:\n    print(\"rejected:\", e)\nprint(sum(a for _, a in expenses))",
+        "error": "-400",
+        "errorOverride": {
+          "lines": [
+            "-400"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Nothing stopped a negative amount, so the total silently became wrong. Validate input in one place, before it enters your data.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python design.py",
+        "culprit": {
+          "wrong": 4,
+          "fixed": 4
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +440,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: capstone two, expense tracker build. Keep coding, says Xecxec!"
+      "narration": "Next time: capstone two, expense tracker build. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 88,
+        "nextTitle": "Capstone 2: Expense tracker build"
+      }
     }
   ],
   "bug": {
@@ -346,5 +572,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

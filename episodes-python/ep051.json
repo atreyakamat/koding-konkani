@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A file is a named piece of data on your disk. Open takes the file name, and gives you a file object. Read gives you all the text as one string. Think of a library book. You open it, read it, and return it when you are done. Calling close tells the system you have finished. You can also loop over a file, line by line. The file must be in the folder where the program runs, or you must give its path."
+      "narration": "A file is a named piece of data on your disk. Open takes the file name, and gives you a file object. Read gives you all the text as one string. Think of a library book. You open it, read it, and return it when you are done. Calling close tells the system you have finished. You can also loop over a file, line by line. The file must be in the folder where the program runs, or you must give its path.",
+      "props": {
+        "lines": [
+          "open(name) opens a file for reading",
+          "read() gives all the text as one string",
+          "close() returns the file to the system"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a library book: you open it, read it, and return it to the shelf when you are done"
+        }
+      }
     },
     {
       "id": 3,
@@ -112,7 +123,17 @@
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] Open the file by name. We get a file object, tied to f. [HL 2] Read gives all the text as one string. Three lines, with new line characters between them. [HL 3] Close the file. We have our text now. [HL 4] Print it. Baga, Colva, Anjuna. An extra blank line follows, because the last line ends with a new line, and print adds another. [HL 5] Eighteen characters in all, new lines included."
+      "narration": "[HL 1] Open the file by name. We get a file object, tied to f. [HL 2] Read gives all the text as one string. Three lines, with new line characters between them. [HL 3] Close the file. We have our text now. [HL 4] Print it. Baga, Colva, Anjuna. An extra blank line follows, because the last line ends with a new line, and print adds another. [HL 5] Eighteen characters in all, new lines included.",
+      "code": {
+        "file": "readfile.py",
+        "source": "f = open(\"notes.txt\")\ntext = f.read()\nf.close()\nprint(text)\nprint(len(text))",
+        "output": "Baga\nColva\nAnjuna\n\n18"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python readfile.py",
+        "output": "Baga\nColva\nAnjuna\n\n18"
+      }
     },
     {
       "id": 4,
@@ -124,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. Once the file is closed, only the string remains. The name text is tied to one string, holding all three lines and their new line characters. The file object f is finished. It was only a doorway to the disk. After read, all the data lives in the string, and we can use it like any other text."
+      "narration": "Here is the picture. Once the file is closed, only the string remains. The name text is tied to one string, holding all three lines and their new line characters. The file object f is finished. It was only a doorway to the disk. After read, all the data lives in the string, and we can use it like any other text.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'Baga\\nColva\\nAnjuna\\n'",
+                    "address": "str",
+                    "name": "text"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -136,7 +174,17 @@
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 1] Open the file. [HL 2] A for loop over a file gives one line at a time. [HL 3] Each line still ends with a new line. Strip removes it, so the print is tidy. [HL 4] Close. [HL 5] Readlines gives a list with one string per line. [HL 6] Three lines. [HL 7] The first line, stripped. Baga."
+      "narration": "[HL 1] Open the file. [HL 2] A for loop over a file gives one line at a time. [HL 3] Each line still ends with a new line. Strip removes it, so the print is tidy. [HL 4] Close. [HL 5] Readlines gives a list with one string per line. [HL 6] Three lines. [HL 7] The first line, stripped. Baga.",
+      "code": {
+        "file": "lines.py",
+        "source": "f = open(\"notes.txt\")\nfor line in f:\n    print(line.strip())\nf.close()\nlines = open(\"notes.txt\").readlines()\nprint(len(lines))\nprint(lines[0].strip())",
+        "output": "Baga\nColva\nAnjuna\n3\nBaga"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python lines.py",
+        "output": "Baga\nColva\nAnjuna\n3\nBaga"
+      }
     },
     {
       "id": 6,
@@ -149,7 +197,35 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as lines dot py. In the terminal, type python, space, lines dot py. Baga, Colva, Anjuna. Then three. Then Baga again."
+      "narration": "Save the file as lines dot py. In the terminal, type python, space, lines dot py. Baga, Colva, Anjuna. Then three. Then Baga again.",
+      "props": {
+        "lines": [
+          {
+            "text": "python lines.py",
+            "kind": "input"
+          },
+          {
+            "text": "Baga",
+            "kind": "output"
+          },
+          {
+            "text": "Colva",
+            "kind": "output"
+          },
+          {
+            "text": "Anjuna",
+            "kind": "output"
+          },
+          {
+            "text": "3",
+            "kind": "output"
+          },
+          {
+            "text": "Baga",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -161,7 +237,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: open of name gives a file object, and read gives its text. Two: A for loop over a file gives one line at a time. Three: Lines end with a new line character, so use strip. Four: Close the file when you are finished. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: open of name gives a file object, and read gives its text. Two: A for loop over a file gives one line at a time. Three: Lines end with a new line character, so use strip. Four: Close the file when you are finished. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Open(name) gives a file object, and read() gives its text.",
+          "A for loop over a file gives one line at a time.",
+          "Lines end with a new line character, so use strip().",
+          "Close the file when you are finished."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -174,7 +259,28 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We open note dot txt, but the file is called notes dot txt. Python says, file not found error, the system cannot find the file specified, and shows the exact name it tried. Check the spelling, and check that you are running the program from the folder that holds the file."
+      "narration": "Bug of the Day. We open note dot txt, but the file is called notes dot txt. Python says, file not found error, the system cannot find the file specified, and shows the exact name it tried. Check the spelling, and check that you are running the program from the folder that holds the file.",
+      "props": {
+        "wrongCode": "f = open(\"note.txt\")\nprint(f.read())",
+        "fixedCode": "f = open(\"notes.txt\")\nprint(f.read())\nf.close()",
+        "error": "  File \"readfile.py\", line 1, in <module>\n    f = open(\"note.txt\")\nFileNotFoundError: [WinError 2] The system cannot find the file specified: 'note.txt'",
+        "errorOverride": {
+          "lines": [
+            "  File \"readfile.py\", line 1, in <module>",
+            "    f = open(\"note.txt\")",
+            "FileNotFoundError: [WinError 2] The system cannot find the file specified: 'note.txt'"
+          ]
+        },
+        "why": "Python can only open a file that exists in the folder it is running from, so a wrong name or a wrong folder gives a FileNotFoundError.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python readfile.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -210,7 +316,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: writing files. Keep coding, says Xecxec!"
+      "narration": "Next time: writing files. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 52,
+        "nextTitle": "Writing files"
+      }
     }
   ],
   "bug": {
@@ -323,20 +433,27 @@
   ],
   "codeFiles": [
     {
-      "file": "file1.python",
+      "file": "readfile.py",
       "source": "f = open(\"notes.txt\")\ntext = f.read()\nf.close()\nprint(text)\nprint(len(text))",
       "output": "Baga\nColva\nAnjuna\n\n18",
+      "inputFiles": {
+        "notes.txt": "Baga\nColva\nAnjuna"
+      },
       "lang": "python"
     },
     {
-      "file": "file2.python",
+      "file": "lines.py",
       "source": "f = open(\"notes.txt\")\nfor line in f:\n    print(line.strip())\nf.close()\nlines = open(\"notes.txt\").readlines()\nprint(len(lines))\nprint(lines[0].strip())",
       "output": "Baga\nColva\nAnjuna\n3\nBaga",
+      "inputFiles": {
+        "notes.txt": "Baga\nColva\nAnjuna"
+      },
       "lang": "python"
     }
   ],
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

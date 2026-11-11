@@ -102,7 +102,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "You need three things. Python itself. An editor, where you type, like VS Code. And a terminal, where you give commands. Think of a kitchen. Python is the stove, the editor is the chopping board, and the terminal is you, giving the orders. Do not worry if the names sound strange. By the end of today, you have typed every one of these commands yourself."
+      "narration": "You need three things. Python itself. An editor, where you type, like VS Code. And a terminal, where you give commands. Think of a kitchen. Python is the stove, the editor is the chopping board, and the terminal is you, giving the orders. Do not worry if the names sound strange. By the end of today, you have typed every one of these commands yourself.",
+      "props": {
+        "lines": [
+          "You need three things.",
+          "An editor, where you type, like VS Code.",
+          "And a terminal, where you give commands."
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "Kitchen analogy card"
+        }
+      }
     },
     {
       "id": 3,
@@ -114,7 +125,15 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Go to python dot org, open Downloads, and install the latest version. On Windows, tick the box that says, add Python to PATH. On a Mac, run the installer. On Linux, Python is usually already there. Then open a terminal and type python, space, dash dash version. If a number appears, you are ready. On some Macs and Linux machines, the command is python three."
+      "narration": "Go to python dot org, open Downloads, and install the latest version. On Windows, tick the box that says, add Python to PATH. On a Mac, run the installer. On Linux, Python is usually already there. Then open a terminal and type python, space, dash dash version. If a number appears, you are ready. On some Macs and Linux machines, the command is python three.",
+      "props": {
+        "lines": [
+          "On a Mac, run the installer.",
+          "On Linux, Python is usually already there.",
+          "If a number appears, you are ready."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 4,
@@ -126,7 +145,15 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Python has two ways to run code. In the REPL, you type one line and get the answer at once. It is great for tiny tests. In a script, you save many lines in a file that ends in dot py, and run the whole file. We mostly use scripts. You can keep them, fix them, and run them again."
+      "narration": "Python has two ways to run code. In the REPL, you type one line and get the answer at once. It is great for tiny tests. In a script, you save many lines in a file that ends in dot py, and run the whole file. We mostly use scripts. You can keep them, fix them, and run them again.",
+      "props": {
+        "lines": [
+          "Python has two ways to run code.",
+          "It is great for tiny tests.",
+          "We mostly use scripts."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 5,
@@ -143,6 +170,11 @@
         "file": "fish.py",
         "source": "fish = 3\nprice = 120\nprint(\"Fish:\", fish)\nprint(\"Total:\", fish * price)",
         "output": "Fish: 3\nTotal: 360"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python fish.py",
+        "output": "Fish: 3\nTotal: 360"
       }
     },
     {
@@ -156,7 +188,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as fish dot py. In the terminal, type python, space, fish dot py. Fish, three. Total, three hundred sixty. Always check that you are in the same folder as the file."
+      "narration": "Save the file as fish dot py. In the terminal, type python, space, fish dot py. Fish, three. Total, three hundred sixty. Always check that you are in the same folder as the file.",
+      "props": {
+        "lines": [
+          {
+            "text": "python fish.py",
+            "kind": "input"
+          },
+          {
+            "text": "Fish: 3",
+            "kind": "output"
+          },
+          {
+            "text": "Total: 360",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -168,7 +216,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Recap time. One: you need Python, an editor and a terminal. Two: check Python with python, dash dash version. Three: save your code in a file that ends in dot py. Four: run it with python, a space, and the file name. If any step fails, do not panic. Read the message, check the spelling, and try again. Every programmer does this, every single day."
+      "narration": "Recap time. One: you need Python, an editor and a terminal. Two: check Python with python, dash dash version. Three: save your code in a file that ends in dot py. Four: run it with python, a space, and the file name. If any step fails, do not panic. Read the message, check the spelling, and try again. Every programmer does this, every single day.",
+      "props": {
+        "lines": [
+          "You need Python, an editor and a terminal.",
+          "Check Python with python, dash dash version.",
+          "Save your code in a file that ends in dot py.",
+          "Run it with python, a space, and the file name."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -181,7 +238,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We wrote print with a capital P. Python says, name error, Print is not defined. And it even asks, did you mean print, with a small p? Python is case sensitive. Capital P and small p are different names. Fix the letter, and it works."
+      "narration": "Bug of the Day. We wrote print with a capital P. Python says, name error, Print is not defined. And it even asks, did you mean print, with a small p? Python is case sensitive. Capital P and small p are different names. Fix the letter, and it works.",
+      "props": {
+        "wrongCode": "fish = 3\nPrint(\"Fish:\", fish)",
+        "fixedCode": "fish = 3\nprint(\"Fish:\", fish)",
+        "error": "  File \"fish.py\", line 2, in <module>\n    Print(\"Fish:\", fish)\n    ^^^^^\nNameError: name 'Print' is not defined. Did you mean: 'print'?",
+        "errorOverride": {
+          "lines": [
+            "  File \"fish.py\", line 2, in <module>",
+            "    Print(\"Fish:\", fish)",
+            "    ^^^^^",
+            "NameError: name 'Print' is not defined. Did you mean: 'print'?"
+          ]
+        },
+        "why": "Python treats upper and lower case as different letters, so Print and print are two different names.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python fish.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -217,7 +296,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next: how Python reads your code. Keep coding, says Xecxec!"
+      "narration": "Next: how Python reads your code. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 3,
+        "nextTitle": "How Python reads your code"
+      }
     }
   ],
   "bug": {
@@ -338,5 +421,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

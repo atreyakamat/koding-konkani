@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "CSV means comma separated values. Each line is a row, and the first line names the columns. The csv module reads each row as a dictionary. JSON is the format of the web. It looks like Python dictionaries and lists. Json dumps turns Python data into JSON text. Json loads turns JSON text back into Python data. One catch. JSON keys are always strings, so a number key comes back as text."
+      "narration": "CSV means comma separated values. Each line is a row, and the first line names the columns. The csv module reads each row as a dictionary. JSON is the format of the web. It looks like Python dictionaries and lists. Json dumps turns Python data into JSON text. Json loads turns JSON text back into Python data. One catch. JSON keys are always strings, so a number key comes back as text.",
+      "props": {
+        "lines": [
+          "CSV is rows of values separated by commas",
+          "csv.DictReader reads each row as a dictionary",
+          "json.dumps makes text and json.loads reads it back"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a spreadsheet and a packing list: CSV is rows and columns, JSON is labelled boxes inside boxes"
+        }
+      }
     },
     {
       "id": 3,
@@ -112,7 +123,17 @@
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] Import the csv module. [HL 2] Open the file with with. [HL 3] DictReader reads the first line as column names, and gives one dictionary for each following row. [HL 4] Pick the fields by column name. Asha, eighty eight. Ravi, ninety two. Notice that every value is a string. Convert with int if you need numbers."
+      "narration": "[HL 1] Import the csv module. [HL 2] Open the file with with. [HL 3] DictReader reads the first line as column names, and gives one dictionary for each following row. [HL 4] Pick the fields by column name. Asha, eighty eight. Ravi, ninety two. Notice that every value is a string. Convert with int if you need numbers.",
+      "code": {
+        "file": "readcsv.py",
+        "source": "import csv\nwith open(\"marks.csv\") as f:\n    for row in csv.DictReader(f):\n        print(row[\"name\"], row[\"marks\"])",
+        "output": "Asha 88\nRavi 92"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python readcsv.py",
+        "output": "Asha 88\nRavi 92"
+      }
     },
     {
       "id": 4,
@@ -122,7 +143,135 @@
       "onScreen": "A CSV table with a header row; each data row becomes a dictionary with the header names as keys",
       "animation": "Table rows slide out one by one and turn into dictionaries with keys from the header",
       "sfx": [],
-      "narration": "Look at how DictReader works. The first line is the header, name and marks. For each later line, it builds a dictionary. The header names become the keys, and the cells become the values. So a row becomes a dictionary with name and marks. Every value is a string, because a file has no way to know what is a number."
+      "narration": "Look at how DictReader works. The first line is the header, name and marks. For each later line, it builds a dictionary. The header names become the keys, and the cells become the values. So a row becomes a dictionary with name and marks. Every value is a string, because a file has no way to know what is a number.",
+      "props": {
+        "lines": [
+          "Look at how DictReader works.",
+          "The first line is the header, name and marks.",
+          "For each later line, it builds a dictionary."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 59,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "h",
+              "shape": "card",
+              "text": "name, marks",
+              "colour": "butter",
+              "col": 0,
+              "row": 0,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "r1",
+              "shape": "card",
+              "text": "Asha, 80",
+              "colour": "cream",
+              "col": 0,
+              "row": 2,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "r2",
+              "shape": "card",
+              "text": "Ravi, 92",
+              "colour": "cream",
+              "col": 0,
+              "row": 3,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "d1",
+              "shape": "card",
+              "text": "{\"name\": \"Asha\", \"marks\": \"80\"}",
+              "colour": "mint",
+              "col": 6,
+              "row": 2,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "id": "d2",
+              "shape": "card",
+              "text": "{\"name\": \"Ravi\", \"marks\": \"92\"}",
+              "colour": "mint",
+              "col": 6,
+              "row": 3,
+              "w": 5,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "h",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "r1"
+            },
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "r2"
+            },
+            {
+              "t": 0.3,
+              "do": "move",
+              "target": "r1",
+              "sfx": "whoosh",
+              "to": [
+                6,
+                2
+              ]
+            },
+            {
+              "t": 0.4,
+              "do": "flip",
+              "target": "r1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.45,
+              "do": "show",
+              "target": "d1"
+            },
+            {
+              "t": 0.6,
+              "do": "move",
+              "target": "r2",
+              "sfx": "whoosh",
+              "to": [
+                6,
+                3
+              ]
+            },
+            {
+              "t": 0.7,
+              "do": "flip",
+              "target": "r2",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.75,
+              "do": "show",
+              "target": "d2"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -139,6 +288,11 @@
         "file": "jsondemo.py",
         "source": "import json\ndata = {\"name\": \"Asha\", \"marks\": [88, 92], \"pass\": True}\ntext = json.dumps(data)\nprint(text)\nback = json.loads(text)\nprint(back[\"marks\"][1])\nprint({1: \"a\"} == json.loads(json.dumps({1: \"a\"})))",
         "output": "{\"name\": \"Asha\", \"marks\": [88, 92], \"pass\": true}\n92\nFalse"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python jsondemo.py",
+        "output": "{\"name\": \"Asha\", \"marks\": [88, 92], \"pass\": true}\n92\nFalse"
       }
     },
     {
@@ -152,7 +306,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as jsondemo dot py. In the terminal, type python, space, jsondemo dot py. The JSON text, then ninety two, then False."
+      "narration": "Save the file as jsondemo dot py. In the terminal, type python, space, jsondemo dot py. The JSON text, then ninety two, then False.",
+      "props": {
+        "lines": [
+          {
+            "text": "python jsondemo.py",
+            "kind": "input"
+          },
+          {
+            "text": "{\"name\": \"Asha\", \"marks\": [88, 92], \"pass\": true}",
+            "kind": "output"
+          },
+          {
+            "text": "92",
+            "kind": "output"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -164,7 +338,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: CSV rows can be read as dictionaries with csv dot DictReader. Two: All CSV values come in as strings. Three: json dot dumps makes JSON text and json dot loads reads it. Four: JSON keys are always strings. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: CSV rows can be read as dictionaries with csv dot DictReader. Two: All CSV values come in as strings. Three: json dot dumps makes JSON text and json dot loads reads it. Four: JSON keys are always strings. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "CSV rows can be read as dictionaries with csv.DictReader.",
+          "All CSV values come in as strings.",
+          "Json.dumps makes JSON text and json.loads reads it.",
+          "JSON keys are always strings."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -177,7 +360,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We save a dictionary with the number one as a key, and load it back. The key is now the text one, in quotes. JSON only allows string keys. A lookup with the number one now fails. After loading, convert the keys back with int, in a dictionary comprehension."
+      "narration": "Bug of the Day. We save a dictionary with the number one as a key, and load it back. The key is now the text one, in quotes. JSON only allows string keys. A lookup with the number one now fails. After loading, convert the keys back with int, in a dictionary comprehension.",
+      "props": {
+        "wrongCode": "import json\ndata = {1: \"one\"}\nprint(json.loads(json.dumps(data)))",
+        "fixedCode": "import json\ndata = {1: \"one\"}\nback = json.loads(json.dumps(data))\nprint({int(k): v for k, v in back.items()})",
+        "error": "{'1': 'one'}",
+        "errorOverride": {
+          "lines": [
+            "{'1': 'one'}"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "JSON only allows string keys, so a number key is written as text; convert the keys back yourself after loading.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python readcsv.py",
+        "culprit": {
+          "wrong": 3,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -213,7 +416,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: the contact book mini project. Keep coding, says Xecxec!"
+      "narration": "Next time: the contact book mini project. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 60,
+        "nextTitle": "Mini project: Contact book"
+      }
     }
   ],
   "bug": {
@@ -326,9 +533,12 @@
   ],
   "codeFiles": [
     {
-      "file": "file1.python",
+      "file": "readcsv.py",
       "source": "import csv\nwith open(\"marks.csv\") as f:\n    for row in csv.DictReader(f):\n        print(row[\"name\"], row[\"marks\"])",
       "output": "Asha 88\nRavi 92",
+      "inputFiles": {
+        "marks.csv": "name,marks\nAsha,88\nRavi,92"
+      },
       "lang": "python"
     },
     {
@@ -341,5 +551,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

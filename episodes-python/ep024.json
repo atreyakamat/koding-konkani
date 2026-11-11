@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Every character in a string has a position, called an index. It starts at zero. Think of a row of beach huts, each with a number on the door. The first hut is zero. You pick one with square brackets. Negative numbers count from the end, so minus one is the last character. A slice cuts a piece. Start, colon, stop. It includes the start, and stops before the stop, just like range."
+      "narration": "Every character in a string has a position, called an index. It starts at zero. Think of a row of beach huts, each with a number on the door. The first hut is zero. You pick one with square brackets. Negative numbers count from the end, so minus one is the last character. A slice cuts a piece. Start, colon, stop. It includes the start, and stops before the stop, just like range.",
+      "props": {
+        "lines": [
+          "Every character has a position, starting at 0",
+          "Negative positions count from the end",
+          "word[start:stop] cuts a slice and stops before stop"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a row of beach huts, each with a number painted on the door, starting from zero"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "slice.py",
         "source": "word = \"Palolem\"\nprint(word[0])\nprint(word[-1])\nprint(word[1:4])\nprint(word[:3])\nprint(word[3:])",
         "output": "P\nm\nalo\nPal\nolem"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python slice.py",
+        "output": "P\nm\nalo\nPal\nolem"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the one name we have. Word is tied to the string Palolem. Indexing and slicing do not change that string. Every slice makes a new string, and prints it, and forgets it, unless we tie a name to it. The original string is untouched. That fits with what we learned in the last episode."
+      "narration": "Here is the one name we have. Word is tied to the string Palolem. Indexing and slicing do not change that string. Every slice makes a new string, and prints it, and forgets it, unless we tie a name to it. The original string is untouched. That fits with what we learned in the last episode.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'Palolem'",
+                    "address": "str",
+                    "name": "word"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "reverse.py",
         "source": "word = \"Palolem\"\nprint(word[::-1])\nprint(word[::2])\nprint(len(word))",
         "output": "melolaP\nPllm\n7"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python reverse.py",
+        "output": "melolaP\nPllm\n7"
       }
     },
     {
@@ -159,7 +197,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as reverse dot py. In the terminal, type python, space, reverse dot py. Melolap, reversed, then P l l m, then seven."
+      "narration": "Save the file as reverse dot py. In the terminal, type python, space, reverse dot py. Melolap, reversed, then P l l m, then seven.",
+      "props": {
+        "lines": [
+          {
+            "text": "python reverse.py",
+            "kind": "input"
+          },
+          {
+            "text": "melolaP",
+            "kind": "output"
+          },
+          {
+            "text": "Pllm",
+            "kind": "output"
+          },
+          {
+            "text": "7",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +229,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Indexes start at zero. Two: Negative indexes count from the end, with minus one as the last. Three: A slice wordstart:stop stops before the stop. Four: The last valid index is the length minus one. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Indexes start at zero. Two: Negative indexes count from the end, with minus one as the last. Three: A slice wordstart:stop stops before the stop. Four: The last valid index is the length minus one. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Indexes start at zero.",
+          "Negative indexes count from the end, with minus one as the last.",
+          "A slice word[start:stop] stops before the stop.",
+          "The last valid index is the length minus one."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +251,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Palolem has seven letters, but the last index is six, because we start at zero. We ask for index seven. Python says, index error, string index out of range. The fix is to count from zero. Or use minus one, to always get the last letter, whatever the length."
+      "narration": "Bug of the Day. Palolem has seven letters, but the last index is six, because we start at zero. We ask for index seven. Python says, index error, string index out of range. The fix is to count from zero. Or use minus one, to always get the last letter, whatever the length.",
+      "props": {
+        "wrongCode": "word = \"Palolem\"\nprint(word[7])",
+        "fixedCode": "word = \"Palolem\"\nprint(word[6])",
+        "error": "  File \"slice.py\", line 2, in <module>\n    print(word[7])\n          ~~~~^^^\nIndexError: string index out of range",
+        "errorOverride": {
+          "lines": [
+            "  File \"slice.py\", line 2, in <module>",
+            "    print(word[7])",
+            "          ~~~~^^^",
+            "IndexError: string index out of range"
+          ]
+        },
+        "why": "A string of length 7 has indexes 0 to 6, so index 7 does not exist; the last valid index is always the length minus one.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python slice.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +309,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: lists. Keep coding, says Xecxec!"
+      "narration": "Next time: lists. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 25,
+        "nextTitle": "Lists"
+      }
     }
   ],
   "bug": {
@@ -348,5 +441,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

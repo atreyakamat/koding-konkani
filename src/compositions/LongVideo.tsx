@@ -2,7 +2,8 @@ import { Fragment } from "react";
 import { AbsoluteFill, Sequence, staticFile, Audio } from "remotion";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import type { CalculateMetadataFunction } from "remotion";
-import type { Episode, Scene, SceneTemplate } from "../lib/episode";
+import type { CourseName, Episode, Scene, SceneTemplate } from "../lib/episode";
+import { voiceFolder } from "../lib/voiceFolder";
 import type { Cue } from "../lib/cues";
 import {
   resolveTransition,
@@ -46,6 +47,8 @@ export type SceneTiming = {
 
 export type LongVideoProps = {
   episodeNumber: number;
+  /** Which course: picks the narration folder (default C). */
+  course?: CourseName;
   episode?: Episode;
   sceneTimings?: SceneTiming[];
 };
@@ -73,10 +76,10 @@ const cueFromResolved = (r: ResolvedCue): Cue => {
 };
 
 export const calculateMetadata: CalculateMetadataFunction<LongVideoProps> = async ({ props }) => {
-  const epId = `ep${String(props.episodeNumber).padStart(3, "0")}`;
-  const episode: Episode = await fetch(staticFile(`voice/${epId}/episode.json`)).then((r) => r.json());
+  const epId = voiceFolder(props.course, props.episodeNumber);
+  const episode: Episode = await fetch(staticFile(`${epId}/episode.json`)).then((r) => r.json());
   const manifest: { timings: { scene?: number; durationSec: number }[] } = await fetch(
-    staticFile(`voice/${epId}/manifest.json`),
+    staticFile(`${epId}/manifest.json`),
   ).then((r) => r.json());
 
   let frame = 0;
@@ -103,7 +106,7 @@ export const calculateMetadata: CalculateMetadataFunction<LongVideoProps> = asyn
       frame -= TRANSITION_FRAMES; // TransitionSeries overlaps consecutive sequences by this much.
     }
 
-    const resolvedCues: ResolvedCue[] = await fetch(staticFile(`voice/${epId}/scene${scene.id}.cues.json`))
+    const resolvedCues: ResolvedCue[] = await fetch(staticFile(`${epId}/scene${scene.id}.cues.json`))
       .then((r) => r.json())
       .catch(() => []);
 
@@ -113,7 +116,7 @@ export const calculateMetadata: CalculateMetadataFunction<LongVideoProps> = asyn
       durationInFrames,
       transitionIn,
       cues: resolvedCues.map(cueFromResolved),
-      wavPath: `voice/${epId}/scene${scene.id}.wav`,
+      wavPath: `${epId}/scene${scene.id}.wav`,
     });
 
     frame += durationInFrames;
@@ -137,7 +140,7 @@ export const LongVideo: React.FC<LongVideoProps> = ({ episode, sceneTimings }) =
   if (!episode || !sceneTimings) {
     return null;
   }
-  const epId = `ep${String(episode.ep).padStart(3, "0")}`;
+  const epId = voiceFolder(episode.course, episode.ep);
 
   const bugTiming = sceneTimings.find((t) => t.scene.template === "bug-of-the-day");
   const titleTiming = sceneTimings.find((t) => t.scene.template === "title-card");

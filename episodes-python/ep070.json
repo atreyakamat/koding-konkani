@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Encapsulation means keeping data safe inside the object, and letting outsiders in only through checks. In Python, a name with one leading underscore means, please do not touch directly. A property is the polite doorway. The at property decorator lets you read the value like a plain attribute, while a function runs behind the scenes. A setter, written with at name dot setter, can reject bad values. Think of a bank counter. You cannot reach into the vault. You ask the clerk, who checks first."
+      "narration": "Encapsulation means keeping data safe inside the object, and letting outsiders in only through checks. In Python, a name with one leading underscore means, please do not touch directly. A property is the polite doorway. The at property decorator lets you read the value like a plain attribute, while a function runs behind the scenes. A setter, written with at name dot setter, can reject bad values. Think of a bank counter. You cannot reach into the vault. You ask the clerk, who checks first.",
+      "props": {
+        "lines": [
+          "A leading underscore means: please do not touch",
+          "@property reads like an attribute but runs code",
+          "A setter can reject bad values"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a bank counter: you cannot reach into the vault, you ask the clerk, who checks your request"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "marks.py",
         "source": "class Student:\n    def __init__(self, name, marks):\n        self.name = name\n        self._marks = marks\n\n    @property\n    def marks(self):\n        return self._marks\n\n    @property\n    def grade(self):\n        return \"Pass\" if self._marks >= 40 else \"Fail\"\n\ns = Student(\"Asha\", 91)\nprint(s.marks)\nprint(s.grade)",
         "output": "91\nPass"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python marks.py",
+        "output": "91\nPass"
       }
     },
     {
@@ -129,7 +145,122 @@
       "sfx": [
         "stamp"
       ],
-      "narration": "Here is the picture. The vault holds the real data. Outsiders cannot reach it directly. They talk to the clerk, which is the property. The clerk reads the value for you, or checks your new value before storing it. If your request is bad, the clerk refuses. That is encapsulation. The rules live in one place, next to the data."
+      "narration": "Here is the picture. The vault holds the real data. Outsiders cannot reach it directly. They talk to the clerk, which is the property. The clerk reads the value for you, or checks your new value before storing it. If your request is bad, the clerk refuses. That is encapsulation. The rules live in one place, next to the data.",
+      "props": {
+        "lines": [
+          "Here is the picture.",
+          "The vault holds the real data.",
+          "Outsiders cannot reach it directly."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 70,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "vault",
+              "shape": "box",
+              "text": "_marks = 91 (private)",
+              "colour": "darkBlue",
+              "col": 8,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "clerk",
+              "shape": "box",
+              "text": "property: check first",
+              "colour": "butter",
+              "col": 4,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "ok",
+              "shape": "card",
+              "text": "set marks = 95",
+              "colour": "mint",
+              "col": 0,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "bad",
+              "shape": "card",
+              "text": "set marks = -5",
+              "colour": "peach",
+              "col": 0,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "vault",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "clerk"
+            },
+            {
+              "t": 0.25,
+              "do": "show",
+              "target": "ok",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.35,
+              "do": "move",
+              "target": "ok",
+              "sfx": "whoosh",
+              "to": [
+                4,
+                1
+              ]
+            },
+            {
+              "t": 0.45,
+              "do": "stamp",
+              "target": "ok",
+              "sfx": "stamp"
+            },
+            {
+              "t": 0.55,
+              "do": "show",
+              "target": "bad",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.65,
+              "do": "move",
+              "target": "bad",
+              "sfx": "whoosh",
+              "to": [
+                4,
+                3
+              ]
+            },
+            {
+              "t": 0.75,
+              "do": "cross",
+              "target": "bad",
+              "sfx": "buzzer"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -146,6 +277,11 @@
         "file": "setter.py",
         "source": "class Student:\n    def __init__(self, marks):\n        self.marks = marks\n\n    @property\n    def marks(self):\n        return self._marks\n\n    @marks.setter\n    def marks(self, value):\n        if not 0 <= value <= 100:\n            raise ValueError(\"marks must be 0 to 100\")\n        self._marks = value\n\ns = Student(80)\ns.marks = 95\nprint(s.marks)\ntry:\n    s.marks = -5\nexcept ValueError as e:\n    print(e)\nprint(s.marks)",
         "output": "95\nmarks must be 0 to 100\n95"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python setter.py",
+        "output": "95\nmarks must be 0 to 100\n95"
       }
     },
     {
@@ -159,7 +295,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as setter dot py. In the terminal, type python, space, setter dot py. 91, Pass. Then 95, the message, and 95 again."
+      "narration": "Save the file as setter dot py. In the terminal, type python, space, setter dot py. 91, Pass. Then 95, the message, and 95 again.",
+      "props": {
+        "lines": [
+          {
+            "text": "python setter.py",
+            "kind": "input"
+          },
+          {
+            "text": "95",
+            "kind": "output"
+          },
+          {
+            "text": "marks must be 0 to 100",
+            "kind": "output"
+          },
+          {
+            "text": "95",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +327,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A leading underscore means: do not touch directly. Two: at property lets a method be read like an attribute. Three: A setter checks a value before storing it. Four: Computed values can be properties too. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A leading underscore means: do not touch directly. Two: at property lets a method be read like an attribute. Three: A setter checks a value before storing it. Four: Computed values can be properties too. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A leading underscore means: do not touch directly.",
+          "@property lets a method be read like an attribute.",
+          "A setter checks a value before storing it.",
+          "Computed values can be properties too."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +349,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Price is a read-only property, because it has no setter. Assigning item dot price equals sixty fails. Attribute error, property price of Item object has no setter. Add a setter with the same name, and assignment works. Or leave it out on purpose, to make the value read-only."
+      "narration": "Bug of the Day. Price is a read-only property, because it has no setter. Assigning item dot price equals sixty fails. Attribute error, property price of Item object has no setter. Add a setter with the same name, and assignment works. Or leave it out on purpose, to make the value read-only.",
+      "props": {
+        "wrongCode": "class Item:\n    def __init__(self, price):\n        self._price = price\n\n    @property\n    def price(self):\n        return self._price\n\nitem = Item(50)\nitem.price = 60",
+        "fixedCode": "class Item:\n    def __init__(self, price):\n        self._price = price\n\n    @property\n    def price(self):\n        return self._price\n\n    @price.setter\n    def price(self, value):\n        self._price = value\n\nitem = Item(50)\nitem.price = 60\nprint(item.price)",
+        "error": "  File \"item.py\", line 10, in <module>\n    item.price = 60\n    ^^^^^^^^^^\nAttributeError: property 'price' of 'Item' object has no setter",
+        "errorOverride": {
+          "lines": [
+            "  File \"item.py\", line 10, in <module>",
+            "    item.price = 60",
+            "    ^^^^^^^^^^",
+            "AttributeError: property 'price' of 'Item' object has no setter"
+          ]
+        },
+        "why": "A property with only a getter is read-only. To allow assignment, add a setter with the same name.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python marks.py",
+        "culprit": {
+          "wrong": 10,
+          "fixed": 9
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +407,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: dunder methods. Keep coding, says Xecxec!"
+      "narration": "Next time: dunder methods. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 71,
+        "nextTitle": "Dunder methods"
+      }
     }
   ],
   "bug": {
@@ -348,5 +539,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

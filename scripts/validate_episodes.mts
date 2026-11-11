@@ -2,14 +2,17 @@
  * Validates every episodes/epNNN.json against the zod Episode schema
  * (src/lib/episode.ts). Run after scripts/bible_to_json.py.
  *
- * Usage: node scripts/validate_episodes.ts
+ * Usage: node scripts/validate_episodes.ts   (KK_COURSE=python for the Python course)
  */
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { EpisodeSchema, sceneTemplateFromBibleName } from "../src/lib/episode.ts";
+import { COURSE, episodesDir } from "./lib/course.mts";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([a-zA-Z]:)/, "$1");
-const EPISODES_DIR = join(ROOT, "episodes");
+const EPISODES_DIR = episodesDir(ROOT);
+/** The C course has 86 episodes, the Python course 90. */
+const EPISODE_COUNT = COURSE === "python" ? 90 : 86;
 
 // Sanity-check the Bible-name -> slug mapping fails loudly on garbage input,
 // since bible_to_json.py relies on duplicating this same mapping in Python.
@@ -64,7 +67,7 @@ for (const file of files) {
 }
 
 const missing: number[] = [];
-for (let i = 1; i <= 86; i++) {
+for (let i = 1; i <= EPISODE_COUNT; i++) {
   if (!seenEp.has(i)) missing.push(i);
 }
 if (missing.length > 0) {

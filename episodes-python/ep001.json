@@ -102,7 +102,17 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Python is a programming language. You write instructions in plain text, and Python reads them from top to bottom and does what they say. Think of a recipe card for fish curry. The card is your code, and Python is the cook who follows it, step by step. Python is popular because its words look almost like English, so beginners can read it from day one."
+      "narration": "Python is a programming language. You write instructions in plain text, and Python reads them from top to bottom and does what they say. Think of a recipe card for fish curry. The card is your code, and Python is the cook who follows it, step by step. Python is popular because its words look almost like English, so beginners can read it from day one.",
+      "props": {
+        "lines": [
+          "Python is a programming language.",
+          "Think of a recipe card for fish curry."
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "Fish-curry recipe card"
+        }
+      }
     },
     {
       "id": 3,
@@ -120,6 +130,11 @@
         "file": "hello.py",
         "source": "print(\"Hello, Goa!\")\nprint(\"Keep coding, says Xecxec!\")",
         "output": "Hello, Goa!\nKeep coding, says Xecxec!"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python hello.py",
+        "output": "Hello, Goa!\nKeep coding, says Xecxec!"
       }
     },
     {
@@ -132,7 +147,15 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Here is the journey. Your file goes to Python. Python reads line one, runs it, then reads line two, runs it. The text appears on the screen. There is no separate building step. Python reads and runs at the same time. That is why a mistake shows up the moment Python reaches that line."
+      "narration": "Here is the journey. Your file goes to Python. Python reads line one, runs it, then reads line two, runs it. The text appears on the screen. There is no separate building step. Python reads and runs at the same time. That is why a mistake shows up the moment Python reaches that line.",
+      "props": {
+        "lines": [
+          "Here is the journey.",
+          "Your file goes to Python.",
+          "The text appears on the screen."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 5,
@@ -149,6 +172,11 @@
         "file": "hello.py",
         "source": "print(\"Hello, Goa!\")\nprint(\"Keep coding, says Xecxec!\")",
         "output": "Hello, Goa!\nKeep coding, says Xecxec!"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python hello.py",
+        "output": "Hello, Goa!\nKeep coding, says Xecxec!"
       }
     },
     {
@@ -162,7 +190,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as hello dot py. In the terminal, type python, space, hello dot py. There it is. Our first program. On some Macs and Linux machines, the command is python three."
+      "narration": "Save the file as hello dot py. In the terminal, type python, space, hello dot py. There it is. Our first program. On some Macs and Linux machines, the command is python three.",
+      "props": {
+        "lines": [
+          {
+            "text": "python hello.py",
+            "kind": "input"
+          },
+          {
+            "text": "Hello, Goa!",
+            "kind": "output"
+          },
+          {
+            "text": "Keep coding, says Xecxec!",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -174,7 +218,15 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Python reads your file from top to bottom. Two: print shows text on the screen, and the text goes in quotes. Three: every opening quote needs a closing quote. And remember the journey: your file goes to Python, and the answer appears on the screen. Pause the video, and say those ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Python reads your file from top to bottom. Two: print shows text on the screen, and the text goes in quotes. Three: every opening quote needs a closing quote. And remember the journey: your file goes to Python, and the answer appears on the screen. Pause the video, and say those ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Python reads your file from top to bottom.",
+          "Print shows text on the screen, and the text goes in quotes.",
+          "Every opening quote needs a closing quote."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -187,7 +239,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We forgot the closing quote. Python says, syntax error, unterminated string literal. It even shows an arrow under where the text starts. Add the quote, and it runs. Whenever you see unterminated, count your quotes."
+      "narration": "Bug of the Day. We forgot the closing quote. Python says, syntax error, unterminated string literal. It even shows an arrow under where the text starts. Add the quote, and it runs. Whenever you see unterminated, count your quotes.",
+      "props": {
+        "wrongCode": "print(\"Hello, Goa!)",
+        "fixedCode": "print(\"Hello, Goa!\")",
+        "error": "File \"hello.py\", line 1\n    print(\"Hello, Goa!)\n          ^\nSyntaxError: unterminated string literal (detected at line 1)",
+        "errorOverride": {
+          "lines": [
+            "File \"hello.py\", line 1",
+            "    print(\"Hello, Goa!)",
+            "          ^",
+            "SyntaxError: unterminated string literal (detected at line 1)"
+          ]
+        },
+        "why": "Every opening quote needs a closing quote of the same kind, otherwise Python cannot tell where the text ends.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python hello.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -223,7 +297,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: installing Python and running scripts properly. Keep coding, says Xecxec!"
+      "narration": "Next time: installing Python and running scripts properly. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 2,
+        "nextTitle": "Installing Python and running scripts"
+      }
     }
   ],
   "bug": {
@@ -345,5 +423,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

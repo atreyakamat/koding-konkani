@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A docstring is a string placed on the first line of a function body. It says what the function does. Type hints show the type of each parameter, after a colon, and the type of the result, after an arrow. Think of a label on a spice jar. It tells you what is inside. But it does not stop you pouring something else in. Python reads hints, but does not enforce them. Tools like editors use them to warn you."
+      "narration": "A docstring is a string placed on the first line of a function body. It says what the function does. Type hints show the type of each parameter, after a colon, and the type of the result, after an arrow. Think of a label on a spice jar. It tells you what is inside. But it does not stop you pouring something else in. Python reads hints, but does not enforce them. Tools like editors use them to warn you.",
+      "props": {
+        "lines": [
+          "A docstring is a string on the first line of the body",
+          "Type hints name the expected types",
+          "Python does not enforce hints"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a label on a spice jar: it tells you what is inside, but it does not stop you putting something else in"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "hints.py",
         "source": "def area(width: float, height: float) -> float:\n    \"\"\"Return the area of a rectangle.\"\"\"\n    return width * height\nprint(area(2.5, 4))\nprint(area.__doc__)",
         "output": "10.0\nReturn the area of a rectangle."
+      },
+      "props": {
+        "lang": "python",
+        "command": "python hints.py",
+        "output": "10.0\nReturn the area of a rectangle."
       }
     },
     {
@@ -127,7 +143,148 @@
       "onScreen": "A function signature with callouts for the parameter types, the return type, and the docstring",
       "animation": "Callout arrows point at each part of the signature and the docstring, one at a time",
       "sfx": [],
-      "narration": "Look at the signature piece by piece. After each parameter name, a colon and its type. After the brackets, an arrow and the type of the result. Below, the docstring, a short sentence that says what the function does. Together they let a reader use the function without reading its body. That saves time, and it prevents mistakes."
+      "narration": "Look at the signature piece by piece. After each parameter name, a colon and its type. After the brackets, an arrow and the type of the result. Below, the docstring, a short sentence that says what the function does. Together they let a reader use the function without reading its body. That saves time, and it prevents mistakes.",
+      "props": {
+        "lines": [
+          "Look at the signature piece by piece.",
+          "After each parameter name, a colon and its type.",
+          "That saves time, and it prevents mistakes."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 48,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "sig",
+              "shape": "box",
+              "text": "def area(width: float, height: float) -> float:",
+              "colour": "cream",
+              "col": 1,
+              "row": 1,
+              "w": 10,
+              "h": 1
+            },
+            {
+              "id": "doc",
+              "shape": "box",
+              "text": "\"\"\"Return the area of a rectangle.\"\"\"",
+              "colour": "cream",
+              "col": 1,
+              "row": 3,
+              "w": 10,
+              "h": 1
+            },
+            {
+              "id": "n1",
+              "shape": "label",
+              "text": "hint for a parameter",
+              "colour": "butter",
+              "col": 2,
+              "row": 0,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "n2",
+              "shape": "label",
+              "text": "hint for the result",
+              "colour": "butter",
+              "col": 8,
+              "row": 0,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "n3",
+              "shape": "label",
+              "text": "docstring",
+              "colour": "butter",
+              "col": 4,
+              "row": 5,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "n1",
+              "to": "sig"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "n2",
+              "to": "sig"
+            },
+            {
+              "id": "a3",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "n3",
+              "to": "doc"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "sig",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "doc"
+            },
+            {
+              "t": 0.2,
+              "do": "show",
+              "target": "n1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.25,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "marker-swipe"
+            },
+            {
+              "t": 0.5,
+              "do": "show",
+              "target": "n2",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.55,
+              "do": "draw",
+              "target": "a2",
+              "sfx": "marker-swipe"
+            },
+            {
+              "t": 0.75,
+              "do": "show",
+              "target": "n3",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.8,
+              "do": "draw",
+              "target": "a3",
+              "sfx": "marker-swipe"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +301,11 @@
         "file": "doc.py",
         "source": "def greet(name: str, times: int = 1) -> str:\n    \"\"\"Greet a person, repeated times times.\"\"\"\n    return (\"Hi \" + name + \". \") * times\nprint(greet(\"Asha\", 2).strip())\nprint(greet.__annotations__)",
         "output": "Hi Asha. Hi Asha.\n{'name': <class 'str'>, 'times': <class 'int'>, 'return': <class 'str'>}"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python doc.py",
+        "output": "Hi Asha. Hi Asha.\n{'name': <class 'str'>, 'times': <class 'int'>, 'return': <class 'str'>}"
       }
     },
     {
@@ -157,7 +319,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as doc dot py. In the terminal, type python, space, doc dot py. Hi Asha twice, then the dictionary of hints."
+      "narration": "Save the file as doc dot py. In the terminal, type python, space, doc dot py. Hi Asha twice, then the dictionary of hints.",
+      "props": {
+        "lines": [
+          {
+            "text": "python doc.py",
+            "kind": "input"
+          },
+          {
+            "text": "Hi Asha. Hi Asha.",
+            "kind": "output"
+          },
+          {
+            "text": "{'name': <class 'str'>, 'times': <class 'int'>, 'return': <class 'str'>}",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +347,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A docstring on the first line of the body describes the function. Two: name: type marks a parameter and arrow type marks the result. Three: Hints are stored on the function, and tools can read them. Four: Python does not enforce type hints at run time. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A docstring on the first line of the body describes the function. Two: name: type marks a parameter and arrow type marks the result. Three: Hints are stored on the function, and tools can read them. Four: Python does not enforce type hints at run time. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A docstring on the first line of the body describes the function.",
+          "Name: type marks a parameter and -> type marks the result.",
+          "Hints are stored on the function, and tools can read them.",
+          "Python does not enforce type hints at run time."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +369,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The hint says n is an int. We pass the string ab. Python does not complain. It repeats the string, and prints abab. Type hints are labels, not locks. If a wrong type must be rejected, check it yourself inside the function. Editors and tools also read the hints, and can warn you before you run."
+      "narration": "Bug of the Day. The hint says n is an int. We pass the string ab. Python does not complain. It repeats the string, and prints abab. Type hints are labels, not locks. If a wrong type must be rejected, check it yourself inside the function. Editors and tools also read the hints, and can warn you before you run.",
+      "props": {
+        "wrongCode": "def double(n: int) -> int:\n    return n * 2\nprint(double(\"ab\"))",
+        "fixedCode": "def double(n: int) -> int:\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an int\")\n    return n * 2\nprint(double(4))",
+        "error": "abab",
+        "errorOverride": {
+          "lines": [
+            "abab"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Type hints are notes for people and tools; Python still runs the code with any type, so add a check yourself if a wrong type must be rejected.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python hints.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +425,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: higher-order functions. Keep coding, says Xecxec!"
+      "narration": "Next time: higher-order functions. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 49,
+        "nextTitle": "Higher-order functions"
+      }
     }
   ],
   "bug": {
@@ -346,5 +557,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }

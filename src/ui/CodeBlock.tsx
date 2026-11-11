@@ -1,6 +1,6 @@
 import { palette, brutal } from "../theme/palette";
 import { fonts } from "../theme/fonts";
-import { tokenizeLine } from "../lib/highlight";
+import { tokenizeLine, type CodeLang } from "../lib/highlight";
 import {
   BORDER,
   BOTTOM_EXTRA,
@@ -31,6 +31,8 @@ export type CodeBlockProps = {
   fillHeight?: number;
   /** Show the line-number gutter (default). A one-line snippet has nothing to number. */
   lineNumbers?: boolean;
+  /** Source language for the colours (default C). */
+  lang?: CodeLang;
 };
 
 /** Code panel: cream background, JetBrains Mono, line numbers, token colours, butter line highlight.
@@ -45,6 +47,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   maxHeight,
   fillHeight,
   lineNumbers = true,
+  lang = "c",
 }) => {
   const rows = layoutRows(source, width, fontSize, lineNumbers);
   const rowH = rowHeightPx(fontSize);
@@ -152,7 +155,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                   </span>
                 ) : null}
                 <span style={{ whiteSpace: "pre" }}>
-                  {tokenizeLine(shown).map((token, tokenIndex) => (
+                  {tokenizeLine(shown, lang).map((token, tokenIndex) => (
                     <span
                       key={tokenIndex}
                       style={{ color: token.color, fontWeight: token.bold ? 700 : 500 }}

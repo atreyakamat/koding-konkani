@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Sometimes there are many paths. Grade A, B, C and D. Python handles them with elif, short for else if. It checks the conditions from the top. The first one that is True wins, and Python skips the rest. Think of a ladder. You start at the top rung and step down until one rung holds. Because the first True wins, the order of the rungs matters a lot."
+      "narration": "Sometimes there are many paths. Grade A, B, C and D. Python handles them with elif, short for else if. It checks the conditions from the top. The first one that is True wins, and Python skips the rest. Think of a ladder. You start at the top rung and step down until one rung holds. Because the first True wins, the order of the rungs matters a lot.",
+      "props": {
+        "lines": [
+          "elif adds more conditions",
+          "Python checks from the top",
+          "The first True condition wins and the rest are skipped"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a ladder: you start at the top rung and step down until one rung holds your weight"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "grade.py",
         "source": "marks = 72\nif marks >= 90:\n    print(\"Grade A\")\nelif marks >= 75:\n    print(\"Grade B\")\nelif marks >= 60:\n    print(\"Grade C\")\nelse:\n    print(\"Grade D\")",
         "output": "Grade C"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python grade.py",
+        "output": "Grade C"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the end state. Age is tied to the int sixty five. Price is tied to the int seventy. Only one of the four branches ran, and only that branch tied the name price to a value. If no branch runs, the name price does not exist. That is why we added a final else."
+      "narration": "Look at the end state. Age is tied to the int sixty five. Price is tied to the int seventy. Only one of the four branches ran, and only that branch tied the name price to a value. If no branch runs, the name price does not exist. That is why we added a final else.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "65",
+                    "address": "int",
+                    "name": "age"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "65",
+                    "address": "int",
+                    "name": "age"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "70",
+                    "address": "int",
+                    "name": "price"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +201,11 @@
         "file": "ticket.py",
         "source": "age = 65\nif age < 5:\n    price = 0\nelif age < 18:\n    price = 50\nelif age < 60:\n    price = 100\nelse:\n    price = 70\nprint(\"Ticket price:\", price)",
         "output": "Ticket price: 70"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python ticket.py",
+        "output": "Ticket price: 70"
       }
     },
     {
@@ -159,7 +219,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as ticket dot py. In the terminal, type python, space, ticket dot py. Ticket price, seventy."
+      "narration": "Save the file as ticket dot py. In the terminal, type python, space, ticket dot py. Ticket price, seventy.",
+      "props": {
+        "lines": [
+          {
+            "text": "python ticket.py",
+            "kind": "input"
+          },
+          {
+            "text": "Ticket price: 70",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +243,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: elif adds more conditions after if. Two: Python checks from the top and runs only the first True branch. Three: Order matters: put the strictest condition first. Four: A final else catches everything that is left. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: elif adds more conditions after if. Two: Python checks from the top and runs only the first True branch. Three: Order matters: put the strictest condition first. Four: A final else catches everything that is left. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Elif adds more conditions after if.",
+          "Python checks from the top and runs only the first True branch.",
+          "Order matters: put the strictest condition first.",
+          "A final else catches everything that is left."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +265,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Marks are ninety five, a perfect grade A. But the program prints Grade C. Why? The first rung is, sixty or more. Ninety five passes it, and Python stops right there. The ninety test is never reached. Put the strictest condition first, and work down to the loosest."
+      "narration": "Bug of the Day. Marks are ninety five, a perfect grade A. But the program prints Grade C. Why? The first rung is, sixty or more. Ninety five passes it, and Python stops right there. The ninety test is never reached. Put the strictest condition first, and work down to the loosest.",
+      "props": {
+        "wrongCode": "marks = 95\nif marks >= 60:\n    print(\"Grade C\")\nelif marks >= 90:\n    print(\"Grade A\")",
+        "fixedCode": "marks = 95\nif marks >= 90:\n    print(\"Grade A\")\nelif marks >= 60:\n    print(\"Grade C\")",
+        "error": "Grade C",
+        "errorOverride": {
+          "lines": [
+            "Grade C"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Python stops at the first True condition, so a loose test placed first hides every stricter test below it.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python grade.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +321,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: and, or and not. Keep coding, says Xecxec!"
+      "narration": "Next time: and, or and not. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 15,
+        "nextTitle": "and, or, not and truthiness"
+      }
     }
   ],
   "bug": {
@@ -348,5 +453,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "course": "python"
 }
