@@ -1,0 +1,393 @@
+{
+  "lang": "cpp",
+  "ep": 83,
+  "title": "File input and output",
+  "module": 9,
+  "lengthSec": 288,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "write text to a file",
+    "read lines from a file",
+    "check that a file opened"
+  ],
+  "youtube": {
+    "title": "C++ File I/O: ifstream and ofstream | C++ Programming EP 83",
+    "description": "In this episode you will write text to a file, read lines from a file and check that a file opened, with Xecxec the crab. 0:00 Intro · 0:15 File input and output · 0:45 Write then read lines · 1:25 Stream directions · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "File input and output"
+      },
+      {
+        "t": "0:45",
+        "label": "Write then read lines"
+      },
+      {
+        "t": "1:25",
+        "label": "Stream directions"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ file io",
+      "ofstream",
+      "ifstream",
+      "getline",
+      "read file"
+    ],
+    "thumbnail": {
+      "text": "FILES",
+      "visual": "big text \"FILES\" in tomato on cream; Xecxec next to a notebook being written, closed and read back; thin black border and drop shadow.",
+      "pose": "Xecxec next to a notebook being written, closed and read back"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 83 · FILES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we save data in files. A file keeps its data after the program ends, so you can read it again later."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"File input and output\": numbered lines (1. Ofstream writes to a file; 2. Ifstream reads from a file; 3. Always check that the file opened) and an analogy card: a notebook you write in, close, and open again later",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Ofstream writes to a file. Ifstream reads from a file. You use them like cout and cin. Think of a notebook. You write in it, close it, and open it again later.",
+      "points": [
+        "Ofstream writes to a file",
+        "Ifstream reads from a file",
+        "Always check that the file opened"
+      ],
+      "analogy": {
+        "title": "File input and output",
+        "body": "A notebook you write in, close, and open again later"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 40,
+      "onScreen": "files.cpp: two lines are written to a file, then read back",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 8] Ofstream opens the file for writing. It makes the file if it does not exist. [HL 9] We write to it with the insert operator, like cout. [HL 11] Close saves the data. [HL 13] Ifstream opens the same file for reading. [HL 15] Getline reads one line at a time. The loop stops at the end of the file. [HL 16] We print Asha ninety-one, and Ravi seventy-eight. [HL 19] Remove deletes the file, to keep the folder clean.",
+      "code": {
+        "file": "files.cpp",
+        "source": "#include <cstdio>\n#include <fstream>\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ofstream out(\"notes.txt\");\n    out << \"Asha 91\\n\";\n    out << \"Ravi 78\\n\";\n    out.close();\n\n    ifstream in(\"notes.txt\");\n    string line;\n    while (getline(in, line)) {\n        cout << line << endl;\n    }\n    in.close();\n    remove(\"notes.txt\");\n    return 0;\n}",
+        "output": "Asha 91\nRavi 78"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 85,
+      "lengthSec": 30,
+      "onScreen": "a table of the two stream types",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Ofstream sends data from the program to a file, like cout. Ifstream brings data from a file into the program, like cin. Fstream can do both.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table of the two stream types",
+        "headers": [
+          "Stream",
+          "Direction",
+          "Like"
+        ],
+        "rows": [
+          [
+            "ofstream",
+            "program to file",
+            "cout"
+          ],
+          [
+            "ifstream",
+            "file to program",
+            "cin"
+          ],
+          [
+            "fstream",
+            "both directions",
+            "cin and cout"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "marks.cpp: a file of names and marks is added up",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 8] We write three names with marks into a file. [HL 16] The extraction operator reads one word and then one number. It works like cin. The loop ends when a read fails, at the end of the file. [HL 17] Each mark goes into the total. [HL 19] The total is ninety-one plus seventy-eight plus eighty-five, which is two hundred and fifty-four.",
+      "code": {
+        "file": "marks.cpp",
+        "source": "#include <cstdio>\n#include <fstream>\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ofstream out(\"marks.txt\");\n    out << \"Asha 91 Ravi 78 Mia 85\";\n    out.close();\n\n    ifstream in(\"marks.txt\");\n    string name;\n    int mark = 0;\n    int total = 0;\n    while (in >> name >> mark) {\n        total += mark;\n    }\n    cout << total << endl;\n    in.close();\n    remove(\"marks.txt\");\n    return 0;\n}",
+        "output": "254"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 155,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 marks.cpp -o marks then ./marks",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as marks dot cpp. Compile it with g plus plus. Then run the program. The program prints Asha ninety-one, Ravi seventy-eight, and then two hundred and fifty-four."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 175,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Ofstream writes to a file. Two. Ifstream reads from a file. Three. Getline reads a whole line. Four. Check that the file opened. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Ofstream writes to a file.",
+        "Ifstream reads from a file.",
+        "Getline reads a whole line.",
+        "Check that the file opened."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 205,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A file that did not open",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The file does not exist, but the program prints First line and nothing else. No error shows up. Always check that the file opened."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 8,
+      "onScreen": "Why did the file feel safe? Someone always closed it properly.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the file feel safe? Someone always closed it properly."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 253,
+      "lengthSec": 20,
+      "onScreen": "Task card: count the lines in a file",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a program that saves three lines to a file. Then read them back, and print how many lines you found. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 273,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 84 · Namespaces and organising code",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: namespaces and organising code. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <fstream>\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ifstream in(\"missing_file.txt\");\n    string line;\n    getline(in, line);\n    cout << \"First line: \" << line << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\nFirst line:",
+    "fixed": "#include <fstream>\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ifstream in(\"missing_file.txt\");\n    if (!in.is_open()) {\n        cout << \"Cannot open missing_file.txt\" << endl;\n        return 0;\n    }\n    string line;\n    getline(in, line);\n    cout << \"First line: \" << line << endl;\n    return 0;\n}",
+    "why": "A stream that fails to open gives no error. It reads nothing. Check is open, or the stream itself, before you read."
+  },
+  "pun": "\"Why did the file feel safe? Someone always closed it properly.\"",
+  "challenge": "Write a program that saves three lines to a file. Then read them back, and print how many lines you found.",
+  "challengeAnswer": "Write the lines with ofstream. Read with getline in a loop. Add one to a counter on each pass.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: File input and output",
+      "hook": "\"Save data so it survives after the program ends.\"",
+      "script": "Save data so it survives after the program ends. Today we save data in files. A file keeps its data after the program ends, so you can read it again later. Ofstream writes to a file. Ifstream reads from a file. You use them like cout and cin. Think of a notebook. You write in it, close it, and open it again later. Keep coding, says Xecxec!",
+      "onScreen": "FILE INPUT AND OUTPUT",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "What you will learn: File input and output.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "fileinputandoutput",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "File input and output in one minute",
+      "hook": "\"Ofstream writes to a file.\"",
+      "script": "Ofstream writes to a file. Ifstream reads from a file. You use them like cout and cin. Think of a notebook. You write in it, close it, and open it again later. Ofstream opens the file for writing. It makes the file if it does not exist. We write to it with the insert operator, like cout. Close saves the data. Keep coding, says Xecxec!",
+      "onScreen": "FILE INPUT AND OUTPUT",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "File input and output in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "fileinputandoutput",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"We write three names with marks into a file.\"",
+      "script": "We write three names with marks into a file. The extraction operator reads one word and then one number. It works like cin. The loop ends when a read fails, at the end of the file. Each mark goes into the total. The total is ninety-one plus seventy-eight plus eighty-five, which is two hundred and fifty-four. The program prints Asha ninety-one, Ravi seventy-eight, and then two hundred and fifty-four. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 41,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "fileinputandoutput",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A file that did not open",
+      "hook": "\"Can you spot the bug in file input and output?\"",
+      "script": "Can you spot the bug in file input and output? Bug of the Day. The file does not exist, but the program prints First line and nothing else. No error shows up. Always check that the file opened. A stream that fails to open gives no error. It reads nothing. Check is open, or the stream itself, before you read. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bug of the Day: A file that did not open.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "fileinputandoutput",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you count the lines in a file in file\"",
+      "script": "Can you count the lines in a file in file input and output? Why did the file feel safe? Someone always closed it properly. Write a program that saves three lines to a file. Then read them back, and print how many lines you found. Write your answer in the comments. Ofstream writes to a file. Ifstream reads from a file. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "fileinputandoutput",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "files.cpp",
+      "source": "#include <cstdio>\n#include <fstream>\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ofstream out(\"notes.txt\");\n    out << \"Asha 91\\n\";\n    out << \"Ravi 78\\n\";\n    out.close();\n\n    ifstream in(\"notes.txt\");\n    string line;\n    while (getline(in, line)) {\n        cout << line << endl;\n    }\n    in.close();\n    remove(\"notes.txt\");\n    return 0;\n}",
+      "output": "Asha 91\nRavi 78",
+      "lang": "cpp"
+    },
+    {
+      "file": "marks.cpp",
+      "source": "#include <cstdio>\n#include <fstream>\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    ofstream out(\"marks.txt\");\n    out << \"Asha 91 Ravi 78 Mia 85\";\n    out.close();\n\n    ifstream in(\"marks.txt\");\n    string name;\n    int mark = 0;\n    int total = 0;\n    while (in >> name >> mark) {\n        total += mark;\n    }\n    cout << total << endl;\n    in.close();\n    remove(\"marks.txt\");\n    return 0;\n}",
+      "output": "254",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Cannot open missing_file.txt"
+  },
+  "nextTitle": "Namespaces and organising code"
+}

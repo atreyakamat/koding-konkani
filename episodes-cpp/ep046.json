@@ -1,0 +1,403 @@
+{
+  "lang": "cpp",
+  "ep": 46,
+  "title": "new and delete",
+  "module": 5,
+  "lengthSec": 301,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "make a variable on the heap with new",
+    "free it with delete",
+    "explain stack and heap"
+  ],
+  "youtube": {
+    "title": "C++ new and delete: The Heap Explained | C++ Programming EP 46",
+    "description": "In this episode you will make a variable on the heap with new, free it with delete and explain stack and heap, with Xecxec the crab. 0:00 Intro · 0:15 new and delete · 0:58 One box on the heap · 1:38 Stack and heap · 2:08 Second program · 3:08 Recap · 3:38 Bug of the Day · 4:26 Challenge · 4:46 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "new and delete"
+      },
+      {
+        "t": "0:58",
+        "label": "One box on the heap"
+      },
+      {
+        "t": "1:38",
+        "label": "Stack and heap"
+      },
+      {
+        "t": "2:08",
+        "label": "Second program"
+      },
+      {
+        "t": "3:08",
+        "label": "Recap"
+      },
+      {
+        "t": "3:38",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:26",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:46",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ new delete",
+      "heap memory",
+      "dynamic memory",
+      "stack vs heap"
+    ],
+    "thumbnail": {
+      "text": "NEW + DELETE",
+      "visual": "big text \"NEW + DELETE\" in tomato on lilac; Xecxec next to a crab borrowing a box from a warehouse and returning it; thin black border and drop shadow.",
+      "pose": "Xecxec next to a crab borrowing a box from a warehouse and returning it"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 46 · NEW + DELETE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we ask for memory ourselves. We borrow a box from the heap, and we give it back when we finish."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 43,
+      "onScreen": "\"new and delete\": numbered lines (1. New asks the heap for a box; 2. Delete gives the box back; 3. Every new needs one delete) and an analogy card: a library book: you borrow it with new, and you must return it with delete",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Local variables live on the stack. They appear and disappear by themselves. The heap is a big pool of memory that you manage yourself. New asks the heap for a box, and gives you its address. Delete returns the box. If you forget, the box is lost until the program ends. That is a memory leak. Think of a library book. You borrow it with new, and you must return it with delete.",
+      "points": [
+        "New asks the heap for a box",
+        "Delete gives the box back",
+        "Every new needs one delete"
+      ],
+      "analogy": {
+        "title": "new and delete",
+        "body": "A library book: you borrow it with new, and you must return it with delete"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 58,
+      "lengthSec": 40,
+      "onScreen": "heap.cpp: new makes an int on the heap, delete frees it",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] New makes an int on the heap and sets it to five. It returns the address, and p stores it. [HL 6] Star p reads five. [HL 7] We change the value to six. [HL 9] Delete gives the box back to the heap. After delete, p still holds the old address, so do not use p again.",
+      "code": {
+        "file": "heap.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int* p = new int(5);\n    cout << *p << endl;\n    *p = *p + 1;\n    cout << *p << endl;\n    delete p;\n    return 0;\n}",
+        "output": "5\n6"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 98,
+      "lengthSec": 30,
+      "onScreen": "p lives on the stack, and the int lives on the heap",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the two regions. P is a normal local variable on the stack. It dies at the end of the function. The int lives on the heap. It stays until you delete it. If you lose p before you delete, nobody can ever free that box.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x5000",
+                    "address": "0x1000",
+                    "name": "p"
+                  }
+                ]
+              },
+              {
+                "name": "heap",
+                "cells": [
+                  {
+                    "value": "6",
+                    "address": "0x5000",
+                    "name": "value"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 128,
+      "lengthSec": 40,
+      "onScreen": "heaparray.cpp: new with square brackets makes an array",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 5] New with square brackets makes an array of three ints on the heap. [HL 6] The loop multiplies each item by ten. [HL 9] The output is ten, twenty, thirty. [HL 10] An array made with new square brackets needs delete square brackets. A plain delete is a bug.",
+      "code": {
+        "file": "heaparray.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int* a = new int[3]{1, 2, 3};\n    for (int i = 0; i < 3; i++) {\n        a[i] = a[i] * 10;\n    }\n    cout << a[0] << \" \" << a[1] << \" \" << a[2] << endl;\n    delete[] a;\n    return 0;\n}",
+        "output": "10 20 30"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 168,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 heaparray.cpp -o heaparray then ./heaparray",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as heaparray dot cpp. Compile it with g plus plus. Then run the program. The program prints ten, twenty and thirty."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 188,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. The stack holds local variables, and the heap holds boxes you manage. Two. New asks the heap for a box. Three. Delete gives the box back. Four. Use delete with square brackets for an array. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "The stack holds local variables, and the heap holds boxes you manage.",
+        "New asks the heap for a box.",
+        "Delete gives the box back.",
+        "Use delete with square brackets for an array."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 218,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: The wrong delete",
+      "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We make an array with new square brackets, but we free it with plain delete. The compiler warns about a mismatched allocation function. The two forms must match. New square brackets pairs with delete square brackets."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 258,
+      "lengthSec": 8,
+      "onScreen": "I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 266,
+      "lengthSec": 20,
+      "onScreen": "Task card: make and free a heap array",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 286,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 47 · Dynamic arrays",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: dynamic arrays. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int* a = new int[3]{1, 2, 3};\n    cout << a[0] << endl;\n    delete a;\n    return 0;\n}",
+    "error": "Compiler output (a warning, the program still builds):\n\nheaparray.cpp: In function 'int main()':\nheaparray.cpp:7:12: warning: 'void operator delete(void*, std::size_t)' called on pointer returned from a mismatched allocation function [-Wmismatched-new-delete]\n    7 |     delete a;\n      |            ^\nheaparray.cpp:5:32: note: returned from 'void* operator new [](std::size_t)'\n    5 |     int* a = new int[3]{1, 2, 3};",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int* a = new int[3]{1, 2, 3};\n    cout << a[0] << endl;\n    delete[] a;\n    return 0;\n}",
+    "why": "New with square brackets must pair with delete with square brackets. A plain delete frees the memory in the wrong way, and the result is undefined."
+  },
+  "pun": "\"I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget.\"",
+  "challenge": "Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it.",
+  "challengeAnswer": "Use new int with four in square brackets. Fill with i plus one squared. Print the items, then call delete with square brackets.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: new and delete",
+      "hook": "\"Every new needs a delete.\"",
+      "script": "Every new needs a delete. Today we ask for memory ourselves. We borrow a box from the heap, and we give it back when we finish. Local variables live on the stack. They appear and disappear by themselves. The heap is a big pool of memory that you manage yourself. New asks the heap for a box, and gives you its address. Keep coding, says Xecxec!",
+      "onScreen": "NEW AND DELETE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: new and delete.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "newanddelete",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "new and delete in one minute",
+      "hook": "\"Local variables live on the stack.\"",
+      "script": "Local variables live on the stack. They appear and disappear by themselves. The heap is a big pool of memory that you manage yourself. New asks the heap for a box, and gives you its address. Delete returns the box. If you forget, the box is lost until the program ends. That is a memory leak. Think of a library book. Keep coding, says Xecxec!",
+      "onScreen": "NEW AND DELETE",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "new and delete in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "newanddelete",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"New with square brackets makes an array of three ints\"",
+      "script": "New with square brackets makes an array of three ints on the heap. The loop multiplies each item by ten. The output is ten, twenty, thirty. An array made with new square brackets needs delete square brackets. A plain delete is a bug. The program prints ten, twenty and thirty. The stack holds local variables, and the heap holds boxes you manage. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "newanddelete",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: The wrong delete",
+      "hook": "\"Can you spot the bug in new and delete?\"",
+      "script": "Can you spot the bug in new and delete? Bug of the Day. We make an array with new square brackets, but we free it with plain delete. The compiler warns about a mismatched allocation function. The two forms must match. New square brackets pairs with delete square brackets. New with square brackets must pair with delete with square brackets. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bug of the Day: The wrong delete.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "newanddelete",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you make and free a heap array in new and delete?\"",
+      "script": "Can you make and free a heap array in new and delete? I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget. Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it. Write your answer in the comments. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "newanddelete",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "heap.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int* p = new int(5);\n    cout << *p << endl;\n    *p = *p + 1;\n    cout << *p << endl;\n    delete p;\n    return 0;\n}",
+      "output": "5\n6",
+      "lang": "cpp"
+    },
+    {
+      "file": "heaparray.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int* a = new int[3]{1, 2, 3};\n    for (int i = 0; i < 3; i++) {\n        a[i] = a[i] * 10;\n    }\n    cout << a[0] << \" \" << a[1] << \" \" << a[2] << endl;\n    delete[] a;\n    return 0;\n}",
+      "output": "10 20 30",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1"
+  },
+  "nextTitle": "Dynamic arrays"
+}

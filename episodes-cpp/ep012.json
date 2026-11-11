@@ -1,0 +1,397 @@
+{
+  "lang": "cpp",
+  "ep": 12,
+  "title": "Formatting output",
+  "module": 1,
+  "lengthSec": 294,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "set the number of decimals",
+    "align columns with setw",
+    "build a line with std::format"
+  ],
+  "youtube": {
+    "title": "C++ Output Formatting: setw, setprecision and std::format | C++ Programming EP 12",
+    "description": "In this episode you will set the number of decimals, align columns with setw and build a line with std::format, with Xecxec the crab. 0:00 Intro · 0:15 Formatting output · 0:51 A neat bill · 1:31 Format tools · 2:01 Second program · 3:01 Recap · 3:31 Bug of the Day · 4:19 Challenge · 4:39 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Formatting output"
+      },
+      {
+        "t": "0:51",
+        "label": "A neat bill"
+      },
+      {
+        "t": "1:31",
+        "label": "Format tools"
+      },
+      {
+        "t": "2:01",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:31",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:19",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:39",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "setprecision",
+      "setw",
+      "std::format",
+      "c++ output formatting"
+    ],
+    "thumbnail": {
+      "text": "TIDY OUTPUT",
+      "visual": "big text \"TIDY OUTPUT\" in tomato on pastel blue; Xecxec next to a neat price list with aligned columns; thin black border and drop shadow.",
+      "pose": "Xecxec next to a neat price list with aligned columns"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 12 · TIDY OUTPUT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we make output tidy. Prices get two decimals, and columns line up like a real bill."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 36,
+      "onScreen": "\"Formatting output\": numbered lines (1. fixed and setprecision set the decimals; 2. setw sets the width of a column; 3. std::format builds a text from a pattern) and an analogy card: a bill at a restaurant: every price lines up on the right",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Raw output can look messy. Fixed and setprecision give a set number of decimals. Setw sets the width of the next item, so columns line up. These tools live in the iomanip header. Since C plus plus twenty, std format builds a line from a pattern. Think of a restaurant bill, where all the prices line up on the right.",
+      "points": [
+        "fixed and setprecision set the decimals",
+        "setw sets the width of a column",
+        "std::format builds a text from a pattern"
+      ],
+      "analogy": {
+        "title": "Formatting output",
+        "body": "A bill at a restaurant: every price lines up on the right"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 51,
+      "lengthSec": 40,
+      "onScreen": "bill.cpp: fixed, setprecision and setw make a bill",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] The iomanip header gives us the format tools. [HL 6] Fixed means always show decimals. Setprecision two means exactly two decimals. [HL 7] Setw eight gives the next item a column eight characters wide. The text is pushed to the right. [HL 8] The next row lines up under the first row. [HL 9] The total row lines up as well.",
+      "code": {
+        "file": "bill.cpp",
+        "source": "#include <iomanip>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << fixed << setprecision(2);\n    cout << setw(8) << \"Fish\" << setw(8) << 120.5 << endl;\n    cout << setw(8) << \"Rice\" << setw(8) << 45.0 << endl;\n    cout << setw(8) << \"Total\" << setw(8) << 165.5 << endl;\n    return 0;\n}",
+        "output": "    Fish  120.50\n    Rice   45.00\n   Total  165.50"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 91,
+      "lengthSec": 30,
+      "onScreen": "a table of the tools and what they do",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Four tools, one table. Fixed and setprecision control decimals. Setw controls the width of one item. The std format function is new in C plus plus twenty. It builds text from a pattern with curly braces.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table of the tools and what they do",
+        "headers": [
+          "Tool",
+          "Header",
+          "Effect"
+        ],
+        "rows": [
+          [
+            "fixed",
+            "iostream",
+            "Always show decimals"
+          ],
+          [
+            "setprecision(n)",
+            "iomanip",
+            "Sets the decimals"
+          ],
+          [
+            "setw(n)",
+            "iomanip",
+            "Width of the next item"
+          ],
+          [
+            "std::format",
+            "format",
+            "Builds text from a pattern"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 121,
+      "lengthSec": 40,
+      "onScreen": "pattern.cpp: a pattern with two holes fills a line",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 1] The format header gives us std format. [HL 7] The pattern has two holes, written as curly braces. The first hole takes the name. The second hole takes the price. The code colon dot two f means two decimals. [HL 8] Cout prints the finished line.",
+      "code": {
+        "file": "pattern.cpp",
+        "source": "#include <format>\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string line = format(\"{} costs {:.2f} rupees\", \"Fish\", 120.5);\n    cout << line << endl;\n    return 0;\n}",
+        "output": "Fish costs 120.50 rupees"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 161,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 pattern.cpp -o pattern then ./pattern",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as pattern dot cpp. Compile it with g plus plus. Then run the program. The program prints, Fish costs one hundred twenty point five zero rupees."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 181,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Fixed and setprecision control the decimals. Two. Setw sets the width of the next item. Three. Both live in the iomanip header. Four. Std format builds a line from a pattern. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Fixed and setprecision control the decimals.",
+        "Setw sets the width of the next item.",
+        "Both live in the iomanip header.",
+        "Std format builds a line from a pattern."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 211,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Precision without fixed",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We want one hundred twenty point five zero. The program prints a strange short form, one point two e plus zero two. Without fixed, setprecision counts all the digits. Add fixed before setprecision, and you get two decimals."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 251,
+      "lengthSec": 8,
+      "onScreen": "My output was so untidy that even cout asked for a setw.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My output was so untidy that even cout asked for a setw."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 259,
+      "lengthSec": 20,
+      "onScreen": "Task card: print a three-row bill",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Print a bill with three items. Use fixed, setprecision and setw so that the prices line up. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 279,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 13 · if and else",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "We end module one here. Next time: making decisions with if and else. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iomanip>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << setprecision(2) << 120.5 << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\n1.2e+02",
+    "fixed": "#include <iomanip>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << fixed << setprecision(2) << 120.5 << endl;\n    return 0;\n}",
+    "why": "Without fixed, setprecision counts all digits, not only the decimals. Two digits is not enough for one hundred twenty, so cout uses a short scientific form."
+  },
+  "pun": "\"My output was so untidy that even cout asked for a setw.\"",
+  "challenge": "Print a bill with three items. Use fixed, setprecision and setw so that the prices line up.",
+  "challengeAnswer": "Use cout with fixed and setprecision two once, then setw eight before each name and each price.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Formatting output",
+      "hook": "\"Make your output look like a real bill.\"",
+      "script": "Make your output look like a real bill. Today we make output tidy. Prices get two decimals, and columns line up like a real bill. Raw output can look messy. Fixed and setprecision give a set number of decimals. Setw sets the width of the next item, so columns line up. These tools live in the iomanip header. Keep coding, says Xecxec!",
+      "onScreen": "FORMATTING OUTPUT",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "What you will learn: Formatting output.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "formattingoutput",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Formatting output in one minute",
+      "hook": "\"Raw output can look messy.\"",
+      "script": "Raw output can look messy. Fixed and setprecision give a set number of decimals. Setw sets the width of the next item, so columns line up. These tools live in the iomanip header. Since C plus plus twenty, std format builds a line from a pattern. Think of a restaurant bill, where all the prices line up on the right. Keep coding, says Xecxec!",
+      "onScreen": "FORMATTING OUTPUT",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Formatting output in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "formattingoutput",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The format header gives us std format.\"",
+      "script": "The format header gives us std format. The pattern has two holes, written as curly braces. The first hole takes the name. The second hole takes the price. The code colon dot two f means two decimals. Cout prints the finished line. The program prints, Fish costs one hundred twenty point five zero rupees. Fixed and setprecision control the decimals. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "formattingoutput",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Precision without fixed",
+      "hook": "\"Can you spot the bug in formatting output?\"",
+      "script": "Can you spot the bug in formatting output? Bug of the Day. We want one hundred twenty point five zero. The program prints a strange short form, one point two e plus zero two. Without fixed, setprecision counts all the digits. Add fixed before setprecision, and you get two decimals. Without fixed, setprecision counts all digits, not only the decimals. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bug of the Day: Precision without fixed.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "formattingoutput",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you print a three-row bill in formatting output?\"",
+      "script": "Can you print a three-row bill in formatting output? My output was so untidy that even cout asked for a setw. Print a bill with three items. Use fixed, setprecision and setw so that the prices line up. Write your answer in the comments. Fixed and setprecision control the decimals. Setw sets the width of the next item. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "formattingoutput",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "bill.cpp",
+      "source": "#include <iomanip>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << fixed << setprecision(2);\n    cout << setw(8) << \"Fish\" << setw(8) << 120.5 << endl;\n    cout << setw(8) << \"Rice\" << setw(8) << 45.0 << endl;\n    cout << setw(8) << \"Total\" << setw(8) << 165.5 << endl;\n    return 0;\n}",
+      "output": "    Fish  120.50\n    Rice   45.00\n   Total  165.50",
+      "lang": "cpp"
+    },
+    {
+      "file": "pattern.cpp",
+      "source": "#include <format>\n#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string line = format(\"{} costs {:.2f} rupees\", \"Fish\", 120.5);\n    cout << line << endl;\n    return 0;\n}",
+      "output": "Fish costs 120.50 rupees",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "120.50"
+  },
+  "nextTitle": "if and else"
+}

@@ -1,0 +1,392 @@
+{
+  "lang": "cpp",
+  "ep": 23,
+  "title": "Pass by value",
+  "module": 3,
+  "lengthSec": 290,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "explain that arguments are copied",
+    "show that the original does not change",
+    "return a result instead"
+  ],
+  "youtube": {
+    "title": "C++ Pass by Value: Why Your Change Disappears | C++ Programming EP 23",
+    "description": "In this episode you will explain that arguments are copied, show that the original does not change and return a result instead, with Xecxec the crab. 0:00 Intro · 0:15 Pass by value · 0:47 A copy is changed · 1:27 Two separate boxes · 1:57 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Pass by value"
+      },
+      {
+        "t": "0:47",
+        "label": "A copy is changed"
+      },
+      {
+        "t": "1:27",
+        "label": "Two separate boxes"
+      },
+      {
+        "t": "1:57",
+        "label": "Second program"
+      },
+      {
+        "t": "2:57",
+        "label": "Recap"
+      },
+      {
+        "t": "3:27",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:15",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:35",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "pass by value",
+      "function copy",
+      "c++ parameters",
+      "swap function"
+    ],
+    "thumbnail": {
+      "text": "A COPY!",
+      "visual": "big text \"A COPY!\" in tomato on mint; Xecxec next to a photocopier making a copy of a box; thin black border and drop shadow.",
+      "pose": "Xecxec next to a photocopier making a copy of a box"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 23 · A COPY!",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet a surprise. A function can change its input, and your variable still stays the same."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 32,
+      "onScreen": "\"Pass by value\": numbered lines (1. The function gets a copy of the argument; 2. Changes to the copy stay inside; 3. Return the result to send it out) and an analogy card: a photocopy: you scribble on the copy, and the original stays clean",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "When you pass a value to a function, C plus plus makes a copy. The function works on the copy. The original variable never changes. This is called pass by value. To send a result out, use return. Think of a photocopy. You can scribble on the copy, and the original stays clean.",
+      "points": [
+        "The function gets a copy of the argument",
+        "Changes to the copy stay inside",
+        "Return the result to send it out"
+      ],
+      "analogy": {
+        "title": "Pass by value",
+        "body": "A photocopy: you scribble on the copy, and the original stays clean"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 47,
+      "lengthSec": 40,
+      "onScreen": "copy.cpp: double_it changes its own copy",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 10] Number is ten. [HL 11] We call double it with number. C plus plus copies ten into the parameter n. [HL 5] The function doubles its copy. [HL 6] Inside the function, n is twenty. [HL 12] Back in main, number is still ten. The copy was changed, not the original.",
+      "code": {
+        "file": "copy.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nvoid double_it(int n) {\n    n = n * 2;\n    cout << \"Inside: \" << n << endl;\n}\n\nint main() {\n    int number = 10;\n    double_it(number);\n    cout << \"Outside: \" << number << endl;\n    return 0;\n}",
+        "output": "Inside: 20\nOutside: 10"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 87,
+      "lengthSec": 30,
+      "onScreen": "memory boxes: number in main and n in double_it have different addresses",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the two boxes. Number lives in main. N lives in the function. They have different addresses. The function doubled n to twenty. The box named number still holds ten.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "10",
+                    "address": "0x1000",
+                    "name": "number"
+                  },
+                  {
+                    "value": "20",
+                    "address": "0x1004",
+                    "name": "n"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 117,
+      "lengthSec": 40,
+      "onScreen": "noswap.cpp: swap_values swaps copies, not the originals",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 4] The function swaps a and b. [HL 5] It uses a helper box t. [HL 12] Main calls it with x and y. The function swaps only its copies. [HL 13] So x is still one, and y is still two. We need another way to change the originals. That is the next episode.",
+      "code": {
+        "file": "noswap.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nvoid swap_values(int a, int b) {\n    int t = a;\n    a = b;\n    b = t;\n}\n\nint main() {\n    int x = 1, y = 2;\n    swap_values(x, y);\n    cout << x << \" \" << y << endl;\n    return 0;\n}",
+        "output": "1 2"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 157,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 noswap.cpp -o noswap then ./noswap",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as noswap dot cpp. Compile it with g plus plus. Then run the program. The program prints one and two. Nothing was swapped."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 177,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Arguments are copied into the parameters. Two. A change to the copy does not reach the original. Three. Use return to send a result out. Four. Next episode: references change the original. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Arguments are copied into the parameters.",
+        "A change to the copy does not reach the original.",
+        "Use return to send a result out.",
+        "Next episode: references change the original."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 207,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Expecting the original to change",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Add tax should raise the price to one hundred and five. But the program prints one hundred. The function changed only a copy. Return the new price, and store it in the variable. Now the answer is right."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 247,
+      "lengthSec": 8,
+      "onScreen": "I gave my function a copy of my homework. It said, nice try, I will only change the copy.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I gave my function a copy of my homework. It said, nice try, I will only change the copy."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 255,
+      "lengthSec": 20,
+      "onScreen": "Task card: predict the output before you run",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a function that adds one to its int parameter. Call it from main. Print the variable before and after. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 275,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 24 · Pass by reference",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: pass by reference. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nvoid add_tax(double price) {\n    price = price * 1.05;\n}\n\nint main() {\n    double price = 100.0;\n    add_tax(price);\n    cout << \"Price: \" << price << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\nPrice: 100",
+    "fixed": "#include <iostream>\nusing namespace std;\n\ndouble add_tax(double price) {\n    return price * 1.05;\n}\n\nint main() {\n    double price = 100.0;\n    price = add_tax(price);\n    cout << \"Price: \" << price << endl;\n    return 0;\n}",
+    "why": "The function changes its own copy of price, and then the copy disappears. Return the new value and store it in the variable."
+  },
+  "pun": "\"I gave my function a copy of my homework. It said, nice try, I will only change the copy.\"",
+  "challenge": "Write a function that adds one to its int parameter. Call it from main. Print the variable before and after.",
+  "challengeAnswer": "The variable does not change, because the function adds one to a copy. To change it, return the new value and store it.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Pass by value",
+      "hook": "\"A function changes a copy, not your variable.\"",
+      "script": "A function changes a copy, not your variable. Today we meet a surprise. A function can change its input, and your variable still stays the same. When you pass a value to a function, C plus plus makes a copy. The function works on the copy. The original variable never changes. This is called pass by value. To send a result out, use return. Keep coding, says Xecxec!",
+      "onScreen": "PASS BY VALUE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "What you will learn: Pass by value.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyvalue",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Pass by value in one minute",
+      "hook": "\"When you pass a value to a function\"",
+      "script": "When you pass a value to a function, C plus plus makes a copy. The function works on the copy. The original variable never changes. This is called pass by value. To send a result out, use return. Think of a photocopy. You can scribble on the copy, and the original stays clean. Number is ten. We call double it with number. Keep coding, says Xecxec!",
+      "onScreen": "PASS BY VALUE",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Pass by value in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyvalue",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The function swaps a and b.\"",
+      "script": "The function swaps a and b. It uses a helper box t. Main calls it with x and y. The function swaps only its copies. So x is still one, and y is still two. We need another way to change the originals. That is the next episode. The program prints one and two. Nothing was swapped. Arguments are copied into the parameters. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 38,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyvalue",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Expecting the original to change",
+      "hook": "\"Can you spot the bug in pass by value?\"",
+      "script": "Can you spot the bug in pass by value? Bug of the Day. Add tax should raise the price to one hundred and five. But the program prints one hundred. The function changed only a copy. Return the new price, and store it in the variable. Now the answer is right. The function changes its own copy of price, and then the copy disappears. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Bug of the Day: Expecting the original to change.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyvalue",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you predict the output before you run in pass by value?\"",
+      "script": "Can you predict the output before you run in pass by value? I gave my function a copy of my homework. It said, nice try, I will only change the copy. Write a function that adds one to its int parameter. Call it from main. Print the variable before and after. Write your answer in the comments. Arguments are copied into the parameters. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyvalue",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "copy.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nvoid double_it(int n) {\n    n = n * 2;\n    cout << \"Inside: \" << n << endl;\n}\n\nint main() {\n    int number = 10;\n    double_it(number);\n    cout << \"Outside: \" << number << endl;\n    return 0;\n}",
+      "output": "Inside: 20\nOutside: 10",
+      "lang": "cpp"
+    },
+    {
+      "file": "noswap.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nvoid swap_values(int a, int b) {\n    int t = a;\n    a = b;\n    b = t;\n}\n\nint main() {\n    int x = 1, y = 2;\n    swap_values(x, y);\n    cout << x << \" \" << y << endl;\n    return 0;\n}",
+      "output": "1 2",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Price: 105"
+  },
+  "nextTitle": "Pass by reference"
+}

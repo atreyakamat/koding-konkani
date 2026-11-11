@@ -1,0 +1,395 @@
+{
+  "lang": "cpp",
+  "ep": 87,
+  "title": "Threads and mutex",
+  "module": 10,
+  "lengthSec": 296,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "start a thread and join it",
+    "share data between threads",
+    "protect shared data with a mutex"
+  ],
+  "youtube": {
+    "title": "C++ Threads and Mutex: Concurrency Basics | C++ Programming EP 87",
+    "description": "In this episode you will start a thread and join it, share data between threads and protect shared data with a mutex, with Xecxec the crab. 0:00 Intro · 0:15 Threads and mutex · 0:50 Start and join a thread · 1:30 Start, work, join · 2:00 Second program · 3:01 Recap · 3:33 Bug of the Day · 4:21 Challenge · 4:41 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Threads and mutex"
+      },
+      {
+        "t": "0:50",
+        "label": "Start and join a thread"
+      },
+      {
+        "t": "1:30",
+        "label": "Start, work, join"
+      },
+      {
+        "t": "2:00",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:33",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:21",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:41",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ thread",
+      "std::mutex",
+      "lock_guard",
+      "concurrency",
+      "join"
+    ],
+    "thumbnail": {
+      "text": "THREADS",
+      "visual": "big text \"THREADS\" in tomato on mint; Xecxec next to two crabs working on one pile, with a lock on the door; thin black border and drop shadow.",
+      "pose": "Xecxec next to two crabs working on one pile, with a lock on the door"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 87 · THREADS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we run code on two threads at once. We also learn the lock that keeps shared data safe."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 35,
+      "onScreen": "\"Threads and mutex\": numbered lines (1. A thread runs code at the same time; 2. Join waits for a thread to finish; 3. A mutex lets one thread in at a time) and an analogy card: two cooks in one kitchen, and a key to the pantry",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A thread is a second path of execution. Two threads can run at the same time. You must join each thread before it goes out of scope. When two threads change the same data, they can clash. A mutex is a key. Only the thread that holds the key may enter. Think of two cooks and one pantry.",
+      "points": [
+        "A thread runs code at the same time",
+        "Join waits for a thread to finish",
+        "A mutex lets one thread in at a time"
+      ],
+      "analogy": {
+        "title": "Threads and mutex",
+        "body": "Two cooks in one kitchen, and a key to the pantry"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 50,
+      "lengthSec": 40,
+      "onScreen": "thread.cpp: a thread adds numbers, and main joins it",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 7] This line starts a new thread. The thread runs the lambda at once. [HL 7] The lambda captures result by reference, so it can change the variable of main. [HL 9] It adds the numbers from one to one hundred. [HL 12] Join makes main wait until the thread is done. [HL 13] Now it is safe to read result. The sum is five thousand and fifty.",
+      "code": {
+        "file": "thread.cpp",
+        "source": "#include <iostream>\n#include <thread>\nusing namespace std;\n\nint main() {\n    int result = 0;\n    thread t([&result]() {\n        for (int i = 1; i <= 100; ++i) {\n            result += i;\n        }\n    });\n    t.join();\n    cout << result << endl;\n    return 0;\n}",
+        "output": "5050"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 90,
+      "lengthSec": 30,
+      "onScreen": "a flow: main starts a thread, both run, main joins",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Main starts the thread. The thread does the work. Main waits at join. Only after the join does main read the result.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "a flow: main starts a thread, both run, main joins",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "start",
+            "detail": "main makes thread t"
+          },
+          {
+            "id": "s2",
+            "label": "work",
+            "detail": "t adds the numbers"
+          },
+          {
+            "id": "s3",
+            "label": "join",
+            "detail": "main waits at join"
+          },
+          {
+            "id": "s4",
+            "label": "read",
+            "detail": "main prints the result"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 41,
+      "onScreen": "mutex.cpp: two threads add to one counter, guarded by a mutex",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 8] The mutex is the key to the pantry. [HL 9] Both threads run this same lambda. Each one adds one to the counter, one thousand times. [HL 11] Lock guard takes the key. It gives the key back at the end of each pass. While one thread holds the key, the other thread waits. [HL 12] So the two threads never change the counter together. [HL 17] Main joins both threads. The counter is two thousand every time.",
+      "code": {
+        "file": "mutex.cpp",
+        "source": "#include <iostream>\n#include <mutex>\n#include <thread>\nusing namespace std;\n\nint main() {\n    int counter = 0;\n    mutex m;\n    auto work = [&]() {\n        for (int i = 0; i < 1000; ++i) {\n            lock_guard<mutex> lock(m);\n            ++counter;\n        }\n    };\n    thread a(work);\n    thread b(work);\n    a.join();\n    b.join();\n    cout << counter << endl;\n    return 0;\n}",
+        "output": "2000"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 161,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 mutex.cpp -o mutex then ./mutex",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as mutex dot cpp. Compile it with g plus plus. Then run the program. The program prints five thousand and fifty, and then two thousand."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 181,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A thread runs code at the same time as main. Two. Join waits for a thread to finish. Three. Two threads that change the same data need a mutex. Four. Lock guard gives the key back for you. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A thread runs code at the same time as main.",
+        "Join waits for a thread to finish.",
+        "Two threads that change the same data need a mutex.",
+        "Lock guard gives the key back for you."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 213,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A thread that is never joined",
+      "animation": "Butter banner drops in with a buzzer; the program crashes and the run-time error appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We start a thread and never join it. The program stops with terminate called without an active exception. Join every thread before main ends."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 253,
+      "lengthSec": 8,
+      "onScreen": "Why did two threads share one door? They took turns, because one had the key.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did two threads share one door? They took turns, because one had the key."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 261,
+      "lengthSec": 20,
+      "onScreen": "Task card: sum two halves",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Start two threads. Each thread adds half of a vector into its own variable. Join both, and print the total. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 281,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 88 · Project: student records",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: project, student records. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <thread>\nusing namespace std;\n\nint main() {\n    thread t([]() { cout << \"hello\" << endl; });\n    return 0;\n}",
+    "error": "Program error output (exactly as the program prints it):\n\nterminate called without an active exception",
+    "fixed": "#include <iostream>\n#include <thread>\nusing namespace std;\n\nint main() {\n    thread t([]() { cout << \"hello\" << endl; });\n    t.join();\n    return 0;\n}",
+    "why": "A thread that goes out of scope while it is still joinable ends the program. Always join the thread, or detach it on purpose."
+  },
+  "pun": "\"Why did two threads share one door? They took turns, because one had the key.\"",
+  "challenge": "Start two threads. Each thread adds half of a vector into its own variable. Join both, and print the total.",
+  "challengeAnswer": "Make two result variables. Each thread adds its own half into its own variable. After both joins, add the two results.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Threads and mutex",
+      "hook": "\"Run two jobs at the same time.\"",
+      "script": "Run two jobs at the same time. Today we run code on two threads at once. We also learn the lock that keeps shared data safe. A thread is a second path of execution. Two threads can run at the same time. You must join each thread before it goes out of scope. When two threads change the same data, they can clash. Keep coding, says Xecxec!",
+      "onScreen": "THREADS AND MUTEX",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "What you will learn: Threads and mutex.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "threadsandmutex",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Threads and mutex in one minute",
+      "hook": "\"A thread is a second path of execution.\"",
+      "script": "A thread is a second path of execution. Two threads can run at the same time. You must join each thread before it goes out of scope. When two threads change the same data, they can clash. A mutex is a key. Only the thread that holds the key may enter. Think of two cooks and one pantry. Keep coding, says Xecxec!",
+      "onScreen": "THREADS AND MUTEX",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Threads and mutex in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "threadsandmutex",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The mutex is the key to the pantry.\"",
+      "script": "The mutex is the key to the pantry. Both threads run this same lambda. Each one adds one to the counter, one thousand times. Lock guard takes the key. It gives the key back at the end of each pass. While one thread holds the key, the other thread waits. So the two threads never change the counter together. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "threadsandmutex",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A thread that is never joined",
+      "hook": "\"Can you spot the bug in threads and mutex?\"",
+      "script": "Can you spot the bug in threads and mutex? Bug of the Day. We start a thread and never join it. The program stops with terminate called without an active exception. Join every thread before main ends. A thread that goes out of scope while it is still joinable ends the program. Always join the thread, or detach it on purpose. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: A thread that is never joined.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "threadsandmutex",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you sum two halves in threads and mutex?\"",
+      "script": "Can you sum two halves in threads and mutex? Why did two threads share one door? They took turns, because one had the key. Start two threads. Each thread adds half of a vector into its own variable. Join both, and print the total. Write your answer in the comments. A thread runs code at the same time as main. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "threadsandmutex",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "thread.cpp",
+      "source": "#include <iostream>\n#include <thread>\nusing namespace std;\n\nint main() {\n    int result = 0;\n    thread t([&result]() {\n        for (int i = 1; i <= 100; ++i) {\n            result += i;\n        }\n    });\n    t.join();\n    cout << result << endl;\n    return 0;\n}",
+      "output": "5050",
+      "lang": "cpp"
+    },
+    {
+      "file": "mutex.cpp",
+      "source": "#include <iostream>\n#include <mutex>\n#include <thread>\nusing namespace std;\n\nint main() {\n    int counter = 0;\n    mutex m;\n    auto work = [&]() {\n        for (int i = 0; i < 1000; ++i) {\n            lock_guard<mutex> lock(m);\n            ++counter;\n        }\n    };\n    thread a(work);\n    thread b(work);\n    a.join();\n    b.join();\n    cout << counter << endl;\n    return 0;\n}",
+      "output": "2000",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "hello"
+  },
+  "nextTitle": "Project: student records"
+}

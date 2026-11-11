@@ -1,0 +1,392 @@
+{
+  "lang": "cpp",
+  "ep": 70,
+  "title": "Class templates",
+  "module": 8,
+  "lengthSec": 295,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a class template",
+    "make objects with a type in angle brackets",
+    "build a small stack"
+  ],
+  "youtube": {
+    "title": "C++ Class Templates: Build Your Own Container | C++ Programming EP 70",
+    "description": "In this episode you will write a class template, make objects with a type in angle brackets and build a small stack, with Xecxec the crab. 0:00 Intro · 0:15 Class templates · 0:52 A Box template · 1:32 One template, two classes · 2:02 Second program · 3:02 Recap · 3:32 Bug of the Day · 4:20 Challenge · 4:40 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Class templates"
+      },
+      {
+        "t": "0:52",
+        "label": "A Box template"
+      },
+      {
+        "t": "1:32",
+        "label": "One template, two classes"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:02",
+        "label": "Recap"
+      },
+      {
+        "t": "3:32",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "class template",
+      "c++ template class",
+      "generic container",
+      "stack class"
+    ],
+    "thumbnail": {
+      "text": "BOX<T>",
+      "visual": "big text \"BOX<T>\" in tomato on lilac; Xecxec next to a labelled box that can hold anything; thin black border and drop shadow.",
+      "pose": "Xecxec next to a labelled box that can hold anything"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 70 · BOX<T>",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we build a container. With a class template, the same class can hold ints, doubles or strings."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 37,
+      "onScreen": "\"Class templates\": numbered lines (1. A class template has a type placeholder; 2. You name the type when you make an object; 3. Each type gets its own class) and an analogy card: a storage box with a blank label: write int, double or string on it",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A class template puts a type placeholder on the whole class. When you make an object, you name the type in angle brackets. The compiler then builds a class for that type. The standard library containers, such as vector, are class templates. Think of a storage box with a blank label. You write int, double or string on it when you use it.",
+      "points": [
+        "A class template has a type placeholder",
+        "You name the type when you make an object",
+        "Each type gets its own class"
+      ],
+      "analogy": {
+        "title": "Class templates",
+        "body": "A storage box with a blank label: write int, double or string on it"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 52,
+      "lengthSec": 40,
+      "onScreen": "box.cpp: a Box holds one value of any type",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] T is the placeholder. [HL 7] The member has type T. [HL 10] The constructor takes a T. [HL 11] The getter returns a T. [HL 15] Here T is int. [HL 16] Here T is string. They are two different classes. The output is seven, and Goa.",
+      "code": {
+        "file": "box.cpp",
+        "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\ntemplate <typename T>\nclass Box {\n    T value_;\n\npublic:\n    Box(T value) : value_(value) {}\n    T get() const { return value_; }\n};\n\nint main() {\n    Box<int> a(7);\n    Box<string> b(\"Goa\");\n    cout << a.get() << \" \" << b.get() << endl;\n    return 0;\n}",
+        "output": "7 Goa"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 92,
+      "lengthSec": 30,
+      "onScreen": "a table of the classes that the compiler builds",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Each use of the template with a new type makes a new class. Box of int holds an int. Box of string holds a string. They do not share anything, except the recipe.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table of the classes that the compiler builds",
+        "headers": [
+          "You write",
+          "T is",
+          "The class holds"
+        ],
+        "rows": [
+          [
+            "Box<int>",
+            "int",
+            "one int"
+          ],
+          [
+            "Box<string>",
+            "std::string",
+            "one string"
+          ],
+          [
+            "Box<double>",
+            "double",
+            "one double"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 122,
+      "lengthSec": 40,
+      "onScreen": "stack.cpp: a Stack template built on a vector",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 7] Inside, a vector of T holds the items. [HL 10] Push adds an item at the end. [HL 11] Pop removes the last item, and returns it. [HL 20] Here we make a stack of ints. [HL 21] We push one, two and three. [HL 25] Pop gives the last item first. The output is three, two, one.",
+      "code": {
+        "file": "stack.cpp",
+        "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\ntemplate <typename T>\nclass Stack {\n    vector<T> items_;\n\npublic:\n    void push(const T& x) { items_.push_back(x); }\n    T pop() {\n        T x = items_.back();\n        items_.pop_back();\n        return x;\n    }\n    bool empty() const { return items_.empty(); }\n};\n\nint main() {\n    Stack<int> s;\n    s.push(1);\n    s.push(2);\n    s.push(3);\n    while (!s.empty()) {\n        cout << s.pop() << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+        "output": "3 2 1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 162,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 stack.cpp -o stack then ./stack",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as stack dot cpp. Compile it with g plus plus. Then run the program. The program prints three, two and one."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 182,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A class template has a type placeholder. Two. Name the type in angle brackets when you make an object. Three. Each type gets its own class. Four. Library containers are class templates. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A class template has a type placeholder.",
+        "Name the type in angle brackets when you make an object.",
+        "Each type gets its own class.",
+        "Library containers are class templates."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 212,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A missing template argument",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We make a Box with no type. The compiler says class template argument deduction failed. It has nothing to learn T from. Write the type in angle brackets, as in Box of int."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 252,
+      "lengthSec": 8,
+      "onScreen": "My template is an open-minded class. It accepts any type, but it still wants a label.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My template is an open-minded class. It accepts any type, but it still wants a label."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 260,
+      "lengthSec": 20,
+      "onScreen": "Task card: make a Pair template",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a class template Pair with two members of the same type T. Add a function that returns the bigger one. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 280,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 71 · pair and tuple",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: pair and tuple. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\ntemplate <typename T>\nclass Box {\npublic:\n    T value;\n};\n\nint main() {\n    Box b;\n    cout << \"made\" << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nbox.cpp: In function 'int main()':\nbox.cpp:11:9: error: class template argument deduction failed:\n   11 |     Box b;\n      |         ^",
+    "fixed": "#include <iostream>\nusing namespace std;\n\ntemplate <typename T>\nclass Box {\npublic:\n    T value;\n};\n\nint main() {\n    Box<int> b{};\n    cout << b.value << endl;\n    return 0;\n}",
+    "why": "The compiler cannot guess T when there is no constructor argument to learn it from. Write the type in angle brackets."
+  },
+  "pun": "\"My template is an open-minded class. It accepts any type, but it still wants a label.\"",
+  "challenge": "Write a class template Pair with two members of the same type T. Add a function that returns the bigger one.",
+  "challengeAnswer": "Store two T members. In the function, return the first if it is bigger than the second, otherwise the second.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Class templates",
+      "hook": "\"Build your own container for any type.\"",
+      "script": "Build your own container for any type. Today we build a container. With a class template, the same class can hold ints, doubles or strings. A class template puts a type placeholder on the whole class. When you make an object, you name the type in angle brackets. The compiler then builds a class for that type. The standard library containers, such as vector, are class templates. Keep coding, says Xecxec!",
+      "onScreen": "CLASS TEMPLATES",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 40,
+      "caption": "What you will learn: Class templates.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classtemplates",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Class templates in one minute",
+      "hook": "\"A class template puts a type placeholder on the whole class.\"",
+      "script": "A class template puts a type placeholder on the whole class. When you make an object, you name the type in angle brackets. The compiler then builds a class for that type. The standard library containers, such as vector, are class templates. Think of a storage box with a blank label. You write int, double or string on it when you use it. Keep coding, says Xecxec!",
+      "onScreen": "CLASS TEMPLATES",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Class templates in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classtemplates",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Inside, a vector of T holds the items.\"",
+      "script": "Inside, a vector of T holds the items. Push adds an item at the end. Pop removes the last item, and returns it. Here we make a stack of ints. We push one, two and three. Pop gives the last item first. The output is three, two, one. The program prints three, two and one. A class template has a type placeholder. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classtemplates",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A missing template argument",
+      "hook": "\"Can you spot the bug in class templates?\"",
+      "script": "Can you spot the bug in class templates? Bug of the Day. We make a Box with no type. The compiler says class template argument deduction failed. It has nothing to learn T from. Write the type in angle brackets, as in Box of int. The compiler cannot guess T when there is no constructor argument to learn it from. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bug of the Day: A missing template argument.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classtemplates",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you make a Pair template in class templates?\"",
+      "script": "Can you make a Pair template in class templates? My template is an open-minded class. It accepts any type, but it still wants a label. Write a class template Pair with two members of the same type T. Add a function that returns the bigger one. Write your answer in the comments. A class template has a type placeholder. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classtemplates",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "box.cpp",
+      "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\ntemplate <typename T>\nclass Box {\n    T value_;\n\npublic:\n    Box(T value) : value_(value) {}\n    T get() const { return value_; }\n};\n\nint main() {\n    Box<int> a(7);\n    Box<string> b(\"Goa\");\n    cout << a.get() << \" \" << b.get() << endl;\n    return 0;\n}",
+      "output": "7 Goa",
+      "lang": "cpp"
+    },
+    {
+      "file": "stack.cpp",
+      "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\ntemplate <typename T>\nclass Stack {\n    vector<T> items_;\n\npublic:\n    void push(const T& x) { items_.push_back(x); }\n    T pop() {\n        T x = items_.back();\n        items_.pop_back();\n        return x;\n    }\n    bool empty() const { return items_.empty(); }\n};\n\nint main() {\n    Stack<int> s;\n    s.push(1);\n    s.push(2);\n    s.push(3);\n    while (!s.empty()) {\n        cout << s.pop() << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+      "output": "3 2 1",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "0"
+  },
+  "nextTitle": "pair and tuple"
+}

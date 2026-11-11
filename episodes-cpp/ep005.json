@@ -1,0 +1,402 @@
+{
+  "lang": "cpp",
+  "ep": 5,
+  "title": "Variables and types",
+  "module": 1,
+  "lengthSec": 302,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "create variables of type int, double, char and bool",
+    "pick the right type for a value",
+    "give every variable a starting value"
+  ],
+  "youtube": {
+    "title": "Variables and Types in C++: int, double, char, bool | C++ Programming EP 05",
+    "description": "In this episode you will create variables of type int, double, char and bool, pick the right type for a value and give every variable a starting value, with Xecxec the crab. 0:00 Intro · 0:16 Variables and types · 0:56 Four variables · 1:36 Variables in memory · 2:06 Second program · 3:07 Recap · 3:39 Bug of the Day · 4:27 Challenge · 4:47 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:16",
+        "label": "Variables and types"
+      },
+      {
+        "t": "0:56",
+        "label": "Four variables"
+      },
+      {
+        "t": "1:36",
+        "label": "Variables in memory"
+      },
+      {
+        "t": "2:06",
+        "label": "Second program"
+      },
+      {
+        "t": "3:07",
+        "label": "Recap"
+      },
+      {
+        "t": "3:39",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:27",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:47",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ variables",
+      "c++ data types",
+      "int double char bool",
+      "uninitialized variable"
+    ],
+    "thumbnail": {
+      "text": "VARIABLES + TYPES",
+      "visual": "big text \"VARIABLES + TYPES\" in tomato on pastel blue; Xecxec next to four labelled boxes marked int, double, char and bool; thin black border and drop shadow.",
+      "pose": "Xecxec next to four labelled boxes marked int, double, char and bool"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 16,
+      "onScreen": "EP 05 · VARIABLES + TYPES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Until now, our programs only printed words. Today they learn to remember things. You will make boxes for numbers, letters and yes or no answers."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 16,
+      "lengthSec": 40,
+      "onScreen": "\"Variables and types\": numbered lines (1. A variable is a named box in memory; 2. Every box has a type; 3. The type says what can go inside) and an analogy card: a beach shack fridge: one shelf for bottles, one tray for ice",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A variable is a named box in memory. Every box has a type, and the type says what can go inside. Int holds whole numbers, like three fish. Double holds numbers with a decimal point. Char holds one single character. Bool holds only true or false. Think of a beach shack fridge. One shelf is for bottles, and one tray is for ice. Each place fits one job.",
+      "points": [
+        "A variable is a named box in memory",
+        "Every box has a type",
+        "The type says what can go inside"
+      ],
+      "analogy": {
+        "title": "Variables and types",
+        "body": "A beach shack fridge: one shelf for bottles, one tray for ice"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 56,
+      "lengthSec": 40,
+      "onScreen": "vars.cpp: four variables, each line shows type, name and value",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] Int fish equals three. First comes the type, then the name, then the value. [HL 6] Double price equals one hundred twenty point five. [HL 7] Char grade equals A. Notice the single quotes around the letter. [HL 8] Bool open now equals true. [HL 9] Now we print each one. The names have no quotes, so cout prints the value inside the box, not the name.",
+      "code": {
+        "file": "vars.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int fish = 3;\n    double price = 120.5;\n    char grade = 'A';\n    bool open_now = true;\n    cout << \"Fish: \" << fish << endl;\n    cout << \"Price: \" << price << endl;\n    cout << \"Grade: \" << grade << endl;\n    cout << \"Open: \" << open_now << endl;\n    return 0;\n}",
+        "output": "Fish: 3\nPrice: 120.5\nGrade: A\nOpen: 1"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 96,
+      "lengthSec": 30,
+      "onScreen": "four memory boxes with value, size in bytes and address",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is what memory looks like. Each variable is a box with a name, a value and an address. An int takes four bytes on most computers. A double is bigger. It takes eight bytes. A char takes one byte, and so does a bool. Different types have different sizes.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "3",
+                    "address": "0x1000",
+                    "name": "fish"
+                  },
+                  {
+                    "value": "120.5",
+                    "address": "0x1008",
+                    "name": "price"
+                  },
+                  {
+                    "value": "'A'",
+                    "address": "0x1010",
+                    "name": "grade"
+                  },
+                  {
+                    "value": "true",
+                    "address": "0x1011",
+                    "name": "open_now"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 126,
+      "lengthSec": 40,
+      "onScreen": "sizes.cpp: sizeof shows how many bytes each type uses",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 5] The sizeof operator tells us how many bytes a type needs. [HL 5] For int, it prints four. [HL 6] A double needs eight bytes. [HL 7] A char needs one byte. [HL 8] A bool needs one byte as well. These numbers match the boxes we saw before.",
+      "code": {
+        "file": "sizes.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"int: \" << sizeof(int) << endl;\n    cout << \"double: \" << sizeof(double) << endl;\n    cout << \"char: \" << sizeof(char) << endl;\n    cout << \"bool: \" << sizeof(bool) << endl;\n    return 0;\n}",
+        "output": "int: 4\ndouble: 8\nchar: 1\nbool: 1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 166,
+      "lengthSec": 21,
+      "onScreen": "Terminal: g++ -std=c++20 sizes.cpp -o sizes then ./sizes",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as sizes dot cpp. Compile it with g plus plus. Then run the program. Each line shows the size of one type. The numbers are four, eight, one and one."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 187,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A variable is a named box with a type. Two. Use int for whole numbers and double for decimals. Three. Use char for one letter and bool for true or false. Four. Always give a variable a starting value. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A variable is a named box with a type.",
+        "Use int for whole numbers and double for decimals.",
+        "Use char for one letter and bool for true or false.",
+        "Always give a variable a starting value."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 219,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A variable with no starting value",
+      "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Here we make an int called packets, but we never give it a value. The compiler warns us that packets is used uninitialized. The program still builds, but it prints a strange number. That number is garbage left in memory. Give every variable a value when you make it."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 259,
+      "lengthSec": 8,
+      "onScreen": "An uninitialised variable walks into a bar. The bartender asks, what will you have? It says, whatever was there before.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "An uninitialised variable walks into a bar. The bartender asks, what will you have? It says, whatever was there before."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 267,
+      "lengthSec": 20,
+      "onScreen": "Task card: make four variables and print them",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Make four variables: your age, your height in metres, your first initial and whether you like fish. Print all four. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 287,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 06 · Reading input with cin",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: reading input with cin. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int packets;\n    cout << \"Packets: \" << packets << endl;\n    return 0;\n}",
+    "error": "Compiler output (a warning, the program still builds):\n\npackets.cpp: In function 'int main()':\npackets.cpp:6:28: warning: 'packets' is used uninitialized [-Wuninitialized]\n    6 |     cout << \"Packets: \" << packets << endl;\n      |                            ^~~~~~~\npackets.cpp:5:9: note: 'packets' was declared here\n    5 |     int packets;",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int packets = 0;\n    cout << \"Packets: \" << packets << endl;\n    return 0;\n}",
+    "why": "A variable that you do not set holds whatever was in that memory before. Always write a starting value, such as zero."
+  },
+  "pun": "\"An uninitialised variable walks into a bar. The bartender asks, what will you have? It says, whatever was there before.\"",
+  "challenge": "Make four variables: your age, your height in metres, your first initial and whether you like fish. Print all four.",
+  "challengeAnswer": "Use int, double, char and bool. For example, use seventeen, one point six five, the letter A and true. The bool prints as one.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Variables and types",
+      "hook": "\"Every value in your program lives in a box with a type.\"",
+      "script": "Every value in your program lives in a box with a type. Until now, our programs only printed words. Today they learn to remember things. You will make boxes for numbers, letters and yes or no answers. A variable is a named box in memory. Every box has a type, and the type says what can go inside. Keep coding, says Xecxec!",
+      "onScreen": "VARIABLES AND TYPES",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "What you will learn: Variables and types.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "variablesandtypes",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Variables and types in one minute",
+      "hook": "\"A variable is a named box in memory.\"",
+      "script": "A variable is a named box in memory. Every box has a type, and the type says what can go inside. Int holds whole numbers, like three fish. Double holds numbers with a decimal point. Char holds one single character. Bool holds only true or false. Think of a beach shack fridge. One shelf is for bottles, and one tray is for ice. Keep coding, says Xecxec!",
+      "onScreen": "VARIABLES AND TYPES",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Variables and types in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "variablesandtypes",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The sizeof operator tells us how many bytes a type needs.\"",
+      "script": "The sizeof operator tells us how many bytes a type needs. For int, it prints four. A double needs eight bytes. A char needs one byte. A bool needs one byte as well. These numbers match the boxes we saw before. Each line shows the size of one type. The numbers are four, eight, one and one. A variable is a named box with a type. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 39,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "variablesandtypes",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A variable with no starting value",
+      "hook": "\"Can you spot the bug in variables and types?\"",
+      "script": "Can you spot the bug in variables and types? Bug of the Day. Here we make an int called packets, but we never give it a value. The compiler warns us that packets is used uninitialized. The program still builds, but it prints a strange number. That number is garbage left in memory. Give every variable a value when you make it. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: A variable with no starting value.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "variablesandtypes",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you make four variables and print them in variables and types?\"",
+      "script": "Can you make four variables and print them in variables and types? An uninitialised variable walks into a bar. The bartender asks, what will you have? It says, whatever was there before. Make four variables: your age, your height in metres, your first initial and whether you like fish. Print all four. Write your answer in the comments. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "variablesandtypes",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "vars.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int fish = 3;\n    double price = 120.5;\n    char grade = 'A';\n    bool open_now = true;\n    cout << \"Fish: \" << fish << endl;\n    cout << \"Price: \" << price << endl;\n    cout << \"Grade: \" << grade << endl;\n    cout << \"Open: \" << open_now << endl;\n    return 0;\n}",
+      "output": "Fish: 3\nPrice: 120.5\nGrade: A\nOpen: 1",
+      "lang": "cpp"
+    },
+    {
+      "file": "sizes.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"int: \" << sizeof(int) << endl;\n    cout << \"double: \" << sizeof(double) << endl;\n    cout << \"char: \" << sizeof(char) << endl;\n    cout << \"bool: \" << sizeof(bool) << endl;\n    return 0;\n}",
+      "output": "int: 4\ndouble: 8\nchar: 1\nbool: 1",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Packets: 0"
+  },
+  "nextTitle": "Reading input with cin"
+}

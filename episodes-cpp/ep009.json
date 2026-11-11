@@ -1,0 +1,397 @@
+{
+  "lang": "cpp",
+  "ep": 9,
+  "title": "Type conversion and casting",
+  "module": 1,
+  "lengthSec": 298,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "predict what happens when types mix",
+    "convert with static_cast",
+    "avoid the integer-division trap"
+  ],
+  "youtube": {
+    "title": "C++ Type Conversion and static_cast | C++ Programming EP 09",
+    "description": "In this episode you will predict what happens when types mix, convert with static_cast and avoid the integer-division trap, with Xecxec the crab. 0:00 Intro · 0:15 Type conversion and casting · 0:55 Automatic conversion · 1:35 Conversion rules · 2:05 Second program · 3:05 Recap · 3:35 Bug of the Day · 4:23 Challenge · 4:43 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Type conversion and casting"
+      },
+      {
+        "t": "0:55",
+        "label": "Automatic conversion"
+      },
+      {
+        "t": "1:35",
+        "label": "Conversion rules"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:23",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:43",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ type casting",
+      "static_cast",
+      "implicit conversion",
+      "narrowing"
+    ],
+    "thumbnail": {
+      "text": "CHANGE THE TYPE",
+      "visual": "big text \"CHANGE THE TYPE\" in tomato on pastel blue; Xecxec next to a double crossing a bridge and becoming an int; thin black border and drop shadow.",
+      "pose": "Xecxec next to a double crossing a bridge and becoming an int"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 09 · CHANGE THE TYPE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we mix types. Sometimes C plus plus changes a type for you. You must know when, and what is lost."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"Type conversion and casting\": numbered lines (1. C++ converts types for you; 2. A double becomes an int by cutting the decimals; 3. static_cast makes your choice clear) and an analogy card: pouring water from a jug into a small glass: some may be lost",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "C plus plus converts types when you mix them. An int becomes a double with no loss. A double becomes an int by cutting off the decimals. It does not round. A cast is a clear request to convert. In modern C plus plus, we write static cast. Think of a jug and a small glass. Pour the jug into the glass, and some water is lost.",
+      "points": [
+        "C++ converts types for you",
+        "A double becomes an int by cutting the decimals",
+        "static_cast makes your choice clear"
+      ],
+      "analogy": {
+        "title": "Type conversion and casting",
+        "body": "Pouring water from a jug into a small glass: some may be lost"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "convert.cpp: an int becomes a double, and a double becomes an int",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] Fish is an int with the value seven. [HL 6] We store it in a double. No loss happens. The weight is seven. [HL 7] Price is nine point nine nine. [HL 8] We store it in an int. The compiler cuts the decimals. [TRACK whole=9] Whole is nine, not ten. [HL 9] The first print shows seven. [HL 10] The second print shows nine.",
+      "code": {
+        "file": "convert.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int fish = 7;\n    double weight = fish;\n    double price = 9.99;\n    int whole = price;\n    cout << weight << endl;\n    cout << whole << endl;\n    return 0;\n}",
+        "output": "7\n9"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 30,
+      "onScreen": "a table: from type, to type and what happens",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Look at the rules. Int to double is safe. Double to int cuts the decimals, so you lose data. Char to int gives the code of the letter. Bool to int gives one for true and zero for false.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: from type, to type and what happens",
+        "headers": [
+          "From",
+          "To",
+          "What happens"
+        ],
+        "rows": [
+          [
+            "int",
+            "double",
+            "Exact value, no loss"
+          ],
+          [
+            "double",
+            "int",
+            "Decimals are cut off"
+          ],
+          [
+            "char",
+            "int",
+            "You get the letter code"
+          ],
+          [
+            "bool",
+            "int",
+            "True is one, false is zero"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "cast.cpp: static_cast converts a value on purpose",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 5] We have seven passed students out of eight. [HL 6] We cast passed to a double first. Then the division keeps the decimals. The answer is zero point eight seven five. [HL 8] Here we cast the letter A to an int. [HL 9] It prints sixty-five. That is the code of the letter A.",
+      "code": {
+        "file": "cast.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int passed = 7, total = 8;\n    double ratio = static_cast<double>(passed) / total;\n    cout << ratio << endl;\n    char letter = 'A';\n    cout << static_cast<int>(letter) << endl;\n    return 0;\n}",
+        "output": "0.875\n65"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 cast.cpp -o cast then ./cast",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as cast dot cpp. Compile it with g plus plus. Then run the program. The program prints zero point eight seven five, and then sixty-five."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 185,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. C plus plus converts types for you. Two. A double becomes an int by cutting the decimals. Three. Use static cast to convert on purpose. Four. Cast one number before you divide. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "C plus plus converts types for you.",
+        "A double becomes an int by cutting the decimals.",
+        "Use static cast to convert on purpose.",
+        "Cast one number before you divide."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 215,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Casting too late",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We cast the result of the division. The program prints zero. Why? Seven divided by eight is zero in int maths. The cast comes too late. Put the cast on one number, before the division. Then the answer is zero point eight seven five."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 255,
+      "lengthSec": 8,
+      "onScreen": "I tried to cast a spell on my double. It lost its decimals and its magic.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I tried to cast a spell on my double. It lost its decimals and its magic."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 263,
+      "lengthSec": 20,
+      "onScreen": "Task card: find the average of three marks",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Store three int marks. Print their average as a double with decimals. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 283,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 10 · auto, const and constexpr",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: auto, const and constexpr. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int passed = 7, total = 8;\n    double ratio = static_cast<double>(passed / total);\n    cout << ratio << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\n0",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int passed = 7, total = 8;\n    double ratio = static_cast<double>(passed) / total;\n    cout << ratio << endl;\n    return 0;\n}",
+    "why": "Seven divided by eight is already zero when both are ints. The cast then turns the zero into a double, which is too late."
+  },
+  "pun": "\"I tried to cast a spell on my double. It lost its decimals and its magic.\"",
+  "challenge": "Store three int marks. Print their average as a double with decimals.",
+  "challengeAnswer": "Add the three marks, cast the sum to a double, and divide by three. Use static cast before the division.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Type conversion and casting",
+      "hook": "\"A double can lose its decimals without any error.\"",
+      "script": "A double can lose its decimals without any error. Today we mix types. Sometimes C plus plus changes a type for you. You must know when, and what is lost. C plus plus converts types when you mix them. An int becomes a double with no loss. A double becomes an int by cutting off the decimals. It does not round. Keep coding, says Xecxec!",
+      "onScreen": "TYPE CONVERSION AND CASTING",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: Type conversion and casting.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "typeconversionandcasting",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Type conversion and casting in one minute",
+      "hook": "\"C plus plus converts types when you mix them.\"",
+      "script": "C plus plus converts types when you mix them. An int becomes a double with no loss. A double becomes an int by cutting off the decimals. It does not round. A cast is a clear request to convert. In modern C plus plus, we write static cast. Think of a jug and a small glass. Pour the jug into the glass, and some water is lost. Keep coding, says Xecxec!",
+      "onScreen": "TYPE CONVERSION AND CASTING",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 40,
+      "caption": "Type conversion and casting in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "typeconversionandcasting",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"We have seven passed students out of eight.\"",
+      "script": "We have seven passed students out of eight. We cast passed to a double first. Then the division keeps the decimals. The answer is zero point eight seven five. Here we cast the letter A to an int. It prints sixty-five. That is the code of the letter A. The program prints zero point eight seven five, and then sixty-five. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "typeconversionandcasting",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Casting too late",
+      "hook": "\"Can you spot the bug in type conversion and casting?\"",
+      "script": "Can you spot the bug in type conversion and casting? Bug of the Day. We cast the result of the division. The program prints zero. Why? Seven divided by eight is zero in int maths. The cast comes too late. Put the cast on one number, before the division. Then the answer is zero point eight seven five. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Bug of the Day: Casting too late.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "typeconversionandcasting",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you find the average of three marks in type\"",
+      "script": "Can you find the average of three marks in type conversion and casting? I tried to cast a spell on my double. It lost its decimals and its magic. Store three int marks. Print their average as a double with decimals. Write your answer in the comments. C plus plus converts types for you. A double becomes an int by cutting the decimals. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "typeconversionandcasting",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "convert.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int fish = 7;\n    double weight = fish;\n    double price = 9.99;\n    int whole = price;\n    cout << weight << endl;\n    cout << whole << endl;\n    return 0;\n}",
+      "output": "7\n9",
+      "lang": "cpp"
+    },
+    {
+      "file": "cast.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int passed = 7, total = 8;\n    double ratio = static_cast<double>(passed) / total;\n    cout << ratio << endl;\n    char letter = 'A';\n    cout << static_cast<int>(letter) << endl;\n    return 0;\n}",
+      "output": "0.875\n65",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "0.875"
+  },
+  "nextTitle": "auto, const and constexpr"
+}

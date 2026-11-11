@@ -1,0 +1,397 @@
+{
+  "lang": "cpp",
+  "ep": 15,
+  "title": "switch and case",
+  "module": 2,
+  "lengthSec": 290,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "write a switch with case labels",
+    "use break to end each case",
+    "add a default case"
+  ],
+  "youtube": {
+    "title": "C++ switch Statement: Menus Made Easy | C++ Programming EP 15",
+    "description": "In this episode you will write a switch with case labels, use break to end each case and add a default case, with Xecxec the crab. 0:00 Intro · 0:15 switch and case · 0:47 Name the day · 1:27 Jump to the case · 1:57 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "switch and case"
+      },
+      {
+        "t": "0:47",
+        "label": "Name the day"
+      },
+      {
+        "t": "1:27",
+        "label": "Jump to the case"
+      },
+      {
+        "t": "1:57",
+        "label": "Second program"
+      },
+      {
+        "t": "2:57",
+        "label": "Recap"
+      },
+      {
+        "t": "3:27",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:15",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:35",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ switch case",
+      "switch statement",
+      "break in switch",
+      "fall through"
+    ],
+    "thumbnail": {
+      "text": "SWITCH IT",
+      "visual": "big text \"SWITCH IT\" in tomato on cream; Xecxec next to a menu board with numbered dishes; thin black border and drop shadow.",
+      "pose": "Xecxec next to a menu board with numbered dishes"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 15 · SWITCH IT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we build a menu with switch. It is a neat way to pick one action from many."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 32,
+      "onScreen": "\"switch and case\": numbered lines (1. Switch jumps to the matching case; 2. Break ends the case; 3. Default handles all other values) and an analogy card: a restaurant menu: you say a number and the kitchen makes that dish",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A switch statement compares one value with many case labels. It jumps to the matching case. The break keyword ends that case. The default case handles all other values. Without break, the program falls through into the next case. Think of a menu board. You say a number, and the kitchen makes that dish.",
+      "points": [
+        "Switch jumps to the matching case",
+        "Break ends the case",
+        "Default handles all other values"
+      ],
+      "analogy": {
+        "title": "switch and case",
+        "body": "A restaurant menu: you say a number and the kitchen makes that dish"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 47,
+      "lengthSec": 40,
+      "onScreen": "day.cpp: a switch turns a number into a day name",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] Day is three. [HL 6] The switch looks at the value of day. [HL 7] Case one does not match. [HL 8] Case two does not match. [HL 9] Case three matches, so the program prints Wednesday. Then break leaves the switch. [HL 10] The default case runs when no case matches.",
+      "code": {
+        "file": "day.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int day = 3;\n    switch (day) {\n        case 1: cout << \"Monday\" << endl; break;\n        case 2: cout << \"Tuesday\" << endl; break;\n        case 3: cout << \"Wednesday\" << endl; break;\n        default: cout << \"Another day\" << endl;\n    }\n    return 0;\n}",
+        "output": "Wednesday"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 87,
+      "lengthSec": 30,
+      "onScreen": "a table: value, case and output",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "The table shows how the switch picks a case. The value of day finds the matching row. If no row matches, the default row runs. Case labels must be whole numbers or characters, not text.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: value, case and output",
+        "headers": [
+          "day",
+          "Matching case",
+          "Output"
+        ],
+        "rows": [
+          [
+            "1",
+            "case 1",
+            "Monday"
+          ],
+          [
+            "2",
+            "case 2",
+            "Tuesday"
+          ],
+          [
+            "3",
+            "case 3",
+            "Wednesday"
+          ],
+          [
+            "Any other",
+            "default",
+            "Another day"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 117,
+      "lengthSec": 40,
+      "onScreen": "menu.cpp: a switch on a character with a shared case",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 5] The choice is the letter b. [HL 7] Two case labels can share one action. Here the letters a and A both add. [HL 11] Our letter b matches this case. [HL 13] It prints Buy. [HL 14] Break then ends the switch. [HL 15] Default would handle any other letter.",
+      "code": {
+        "file": "menu.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    char choice = 'b';\n    switch (choice) {\n        case 'a':\n        case 'A':\n            cout << \"Add\" << endl;\n            break;\n        case 'b':\n        case 'B':\n            cout << \"Buy\" << endl;\n            break;\n        default:\n            cout << \"Unknown\" << endl;\n    }\n    return 0;\n}",
+        "output": "Buy"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 157,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 menu.cpp -o menu then ./menu",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as menu dot cpp. Compile it with g plus plus. Then run the program. The program prints Buy."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 177,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Switch compares one value with many cases. Two. Break ends a case. Three. Default handles all other values. Four. Two cases can share one action. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Switch compares one value with many cases.",
+        "Break ends a case.",
+        "Default handles all other values.",
+        "Two cases can share one action."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 207,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A missing break",
+      "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Case three has no break. The program prints Wednesday, and then Thursday too. It falls through into the next case, and the compiler warns about it. Without a break, the switch does not stop. Add break at the end of each case."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 247,
+      "lengthSec": 8,
+      "onScreen": "I asked the switch for a table at the restaurant. It gave me two, because I forgot the break.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I asked the switch for a table at the restaurant. It gave me two, because I forgot the break."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 255,
+      "lengthSec": 20,
+      "onScreen": "Task card: make a calculator menu",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Use a switch on a character. For plus, minus and times, print the result of seven and three. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 275,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 16 · while loops",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: while loops. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int day = 3;\n    switch (day) {\n        case 3: cout << \"Wednesday\" << endl;\n        case 4: cout << \"Thursday\" << endl; break;\n        default: cout << \"Another day\" << endl;\n    }\n    return 0;\n}",
+    "error": "Compiler output (a warning, the program still builds):\n\nday.cpp: In function 'int main()':\nday.cpp:7:40: warning: this statement may fall through [-Wimplicit-fallthrough=]\n    7 |         case 3: cout << \"Wednesday\" << endl;\n      |                                        ^~~~\nday.cpp:8:9: note: here\n    8 |         case 4: cout << \"Thursday\" << endl; break;",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int day = 3;\n    switch (day) {\n        case 3: cout << \"Wednesday\" << endl; break;\n        case 4: cout << \"Thursday\" << endl; break;\n        default: cout << \"Another day\" << endl;\n    }\n    return 0;\n}",
+    "why": "Without break, the program keeps running into the next case. This is called fall-through."
+  },
+  "pun": "\"I asked the switch for a table at the restaurant. It gave me two, because I forgot the break.\"",
+  "challenge": "Use a switch on a character. For plus, minus and times, print the result of seven and three.",
+  "challengeAnswer": "Use case with single quotes for each sign. Print seven plus three, seven minus three and seven times three, and add break after each.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: switch and case",
+      "hook": "\"One missing word makes a switch run two cases.\"",
+      "script": "One missing word makes a switch run two cases. Today we build a menu with switch. It is a neat way to pick one action from many. A switch statement compares one value with many case labels. It jumps to the matching case. The break keyword ends that case. The default case handles all other values. Without break, the program falls through into the next case. Keep coding, says Xecxec!",
+      "onScreen": "SWITCH AND CASE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "What you will learn: switch and case.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "switchandcase",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "switch and case in one minute",
+      "hook": "\"A switch statement compares one value with many case labels.\"",
+      "script": "A switch statement compares one value with many case labels. It jumps to the matching case. The break keyword ends that case. The default case handles all other values. Without break, the program falls through into the next case. Think of a menu board. You say a number, and the kitchen makes that dish. Day is three. The switch looks at the value of day. Keep coding, says Xecxec!",
+      "onScreen": "SWITCH AND CASE",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "switch and case in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "switchandcase",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The choice is the letter b.\"",
+      "script": "The choice is the letter b. Two case labels can share one action. Here the letters a and A both add. Our letter b matches this case. It prints Buy. Break then ends the switch. Default would handle any other letter. The program prints Buy. Switch compares one value with many cases. Break ends a case. Default handles all other values. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "switchandcase",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A missing break",
+      "hook": "\"Can you spot the bug in switch and case?\"",
+      "script": "Can you spot the bug in switch and case? Bug of the Day. Case three has no break. The program prints Wednesday, and then Thursday too. It falls through into the next case, and the compiler warns about it. Without a break, the switch does not stop. Add break at the end of each case. Without break, the program keeps running into the next case. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Bug of the Day: A missing break.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "switchandcase",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you make a calculator menu in switch and case?\"",
+      "script": "Can you make a calculator menu in switch and case? I asked the switch for a table at the restaurant. It gave me two, because I forgot the break. Use a switch on a character. For plus, minus and times, print the result of seven and three. Write your answer in the comments. Switch compares one value with many cases. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "switchandcase",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "day.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int day = 3;\n    switch (day) {\n        case 1: cout << \"Monday\" << endl; break;\n        case 2: cout << \"Tuesday\" << endl; break;\n        case 3: cout << \"Wednesday\" << endl; break;\n        default: cout << \"Another day\" << endl;\n    }\n    return 0;\n}",
+      "output": "Wednesday",
+      "lang": "cpp"
+    },
+    {
+      "file": "menu.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    char choice = 'b';\n    switch (choice) {\n        case 'a':\n        case 'A':\n            cout << \"Add\" << endl;\n            break;\n        case 'b':\n        case 'B':\n            cout << \"Buy\" << endl;\n            break;\n        default:\n            cout << \"Unknown\" << endl;\n    }\n    return 0;\n}",
+      "output": "Buy",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Wednesday"
+  },
+  "nextTitle": "while loops"
+}

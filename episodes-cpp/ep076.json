@@ -1,0 +1,392 @@
+{
+  "lang": "cpp",
+  "ep": 76,
+  "title": "Iterators",
+  "module": 8,
+  "lengthSec": 298,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "walk a container with begin and end",
+    "use reverse iterators",
+    "avoid skipping items when you erase"
+  ],
+  "youtube": {
+    "title": "C++ Iterators: begin, end and More | C++ Programming EP 76",
+    "description": "In this episode you will walk a container with begin and end, use reverse iterators and avoid skipping items when you erase, with Xecxec the crab. 0:00 Intro · 0:15 Iterators · 0:55 Walk with an iterator · 1:35 Begin and end · 2:05 Second program · 3:05 Recap · 3:35 Bug of the Day · 4:23 Challenge · 4:43 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Iterators"
+      },
+      {
+        "t": "0:55",
+        "label": "Walk with an iterator"
+      },
+      {
+        "t": "1:35",
+        "label": "Begin and end"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:23",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:43",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ iterators",
+      "begin end",
+      "reverse iterator",
+      "erase in loop"
+    ],
+    "thumbnail": {
+      "text": "ITERATORS",
+      "visual": "big text \"ITERATORS\" in tomato on lilac; Xecxec next to a crab walking along any container; thin black border and drop shadow.",
+      "pose": "Xecxec next to a crab walking along any container"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 76 · ITERATORS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we learn the idea behind every loop in the library. An iterator is like a pointer for a container."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"Iterators\": numbered lines (1. An iterator points at one item; 2. Star reads the item, plus plus moves on; 3. End is one past the last item) and an analogy card: a finger on a train timetable: it points to one line, and moves to the next",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "An iterator points at one item in a container. Star reads the item. Plus plus moves to the next one. Begin points at the first item. End points one past the last item. You stop when you reach end. The same code works for vector, list, set and map. Think of a finger on a train timetable. It points at one line, and moves to the next.",
+      "points": [
+        "An iterator points at one item",
+        "Star reads the item, plus plus moves on",
+        "End is one past the last item"
+      ],
+      "analogy": {
+        "title": "Iterators",
+        "body": "A finger on a train timetable: it points to one line, and moves to the next"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "iter.cpp: a for loop with begin and end",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 7] The iterator starts at the first item. [HL 7] The loop stops when it reaches end. [HL 7] Plus plus moves to the next item. [HL 8] Star reads the item. [HL 11] Rbegin starts at the last item. [HL 11] Rend marks the position before the first. Plus plus moves backwards. The output is thirty, twenty, ten.",
+      "code": {
+        "file": "iter.cpp",
+        "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {10, 20, 30};\n    for (auto it = v.begin(); it != v.end(); ++it) {\n        cout << *it << \" \";\n    }\n    cout << endl;\n    for (auto it = v.rbegin(); it != v.rend(); ++it) {\n        cout << *it << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+        "output": "10 20 30\n30 20 10"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 30,
+      "onScreen": "a table: positions of begin and end",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Begin points at ten. Begin plus one points at twenty. Begin plus two points at thirty. End points one past the last item. You never read from end. You only compare against it.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: positions of begin and end",
+        "headers": [
+          "Position",
+          "Points at"
+        ],
+        "rows": [
+          [
+            "v.begin()",
+            "10"
+          ],
+          [
+            "v.begin() + 1",
+            "20"
+          ],
+          [
+            "v.begin() + 2",
+            "30"
+          ],
+          [
+            "v.end()",
+            "one past the last item"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "advance.cpp: next and distance help with iterators",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 7] A list is not an array. You cannot write begin plus two. [HL 8] Next moves an iterator forward by a number of steps. It works for every container. [HL 9] The item is fifteen. [HL 10] Distance counts the steps between two iterators. The answer is two.",
+      "code": {
+        "file": "advance.cpp",
+        "source": "#include <iostream>\n#include <iterator>\n#include <list>\nusing namespace std;\n\nint main() {\n    list<int> items = {4, 8, 15, 16};\n    auto it = next(items.begin(), 2);\n    cout << *it << endl;\n    cout << distance(items.begin(), it) << endl;\n    return 0;\n}",
+        "output": "15\n2"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 advance.cpp -o advance then ./advance",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as advance dot cpp. Compile it with g plus plus. Then run the program. The program prints fifteen, and then two."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 185,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. An iterator points at one item. Two. Star reads, and plus plus moves on. Three. End is one past the last item. Four. The same loop works for every container. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "An iterator points at one item.",
+        "Star reads, and plus plus moves on.",
+        "End is one past the last item.",
+        "The same loop works for every container."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 215,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Erasing and skipping",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We erase all even numbers, but four stays in the vector. Erase already returns the next item. Then the loop moves on again, and skips it. Move the iterator only when you did not erase."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 255,
+      "lengthSec": 8,
+      "onScreen": "Why did the iterator never get lost? It always knew where end was.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the iterator never get lost? It always knew where end was."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 263,
+      "lengthSec": 20,
+      "onScreen": "Task card: remove all negative numbers",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a loop with iterators that removes all negative numbers from a vector. Do not skip any item. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 283,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 77 · Algorithms from the library",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "We end module eight here. Next time: the algorithm library, and sorting with one line. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {2, 4, 6, 7};\n    for (auto it = v.begin(); it != v.end(); ++it) {\n        if (*it % 2 == 0) {\n            it = v.erase(it);\n        }\n    }\n    for (int x : v) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\n4 7",
+    "fixed": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {2, 4, 6, 7};\n    for (auto it = v.begin(); it != v.end();) {\n        if (*it % 2 == 0) {\n            it = v.erase(it);\n        } else {\n            ++it;\n        }\n    }\n    for (int x : v) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+    "why": "Erase returns the iterator of the next item. The loop then moves on again, and skips that item. Move on only in the else branch."
+  },
+  "pun": "\"Why did the iterator never get lost? It always knew where end was.\"",
+  "challenge": "Write a loop with iterators that removes all negative numbers from a vector. Do not skip any item.",
+  "challengeAnswer": "Use a for loop with no step. If the item is negative, set it to the result of erase. Otherwise, move it on.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Iterators",
+      "hook": "\"One way to walk any container.\"",
+      "script": "One way to walk any container. Today we learn the idea behind every loop in the library. An iterator is like a pointer for a container. An iterator points at one item in a container. Star reads the item. Plus plus moves to the next one. Begin points at the first item. End points one past the last item. Keep coding, says Xecxec!",
+      "onScreen": "ITERATORS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "What you will learn: Iterators.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "iterators",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Iterators in one minute",
+      "hook": "\"An iterator points at one item in a container.\"",
+      "script": "An iterator points at one item in a container. Star reads the item. Plus plus moves to the next one. Begin points at the first item. End points one past the last item. You stop when you reach end. The same code works for vector, list, set and map. Think of a finger on a train timetable. It points at one line, and moves to the next. Keep coding, says Xecxec!",
+      "onScreen": "ITERATORS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 40,
+      "caption": "Iterators in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "iterators",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"A list is not an array.\"",
+      "script": "A list is not an array. You cannot write begin plus two. Next moves an iterator forward by a number of steps. It works for every container. The item is fifteen. Distance counts the steps between two iterators. The answer is two. The program prints fifteen, and then two. An iterator points at one item. Star reads, and plus plus moves on. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "iterators",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Erasing and skipping",
+      "hook": "\"Can you spot the bug in iterators?\"",
+      "script": "Can you spot the bug in iterators? Bug of the Day. We erase all even numbers, but four stays in the vector. Erase already returns the next item. Then the loop moves on again, and skips it. Move the iterator only when you did not erase. Erase returns the iterator of the next item. The loop then moves on again, and skips that item. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Bug of the Day: Erasing and skipping.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "iterators",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you remove all negative numbers in iterators?\"",
+      "script": "Can you remove all negative numbers in iterators? Why did the iterator never get lost? It always knew where end was. Write a loop with iterators that removes all negative numbers from a vector. Do not skip any item. Write your answer in the comments. An iterator points at one item. Star reads, and plus plus moves on. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "iterators",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "iter.cpp",
+      "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {10, 20, 30};\n    for (auto it = v.begin(); it != v.end(); ++it) {\n        cout << *it << \" \";\n    }\n    cout << endl;\n    for (auto it = v.rbegin(); it != v.rend(); ++it) {\n        cout << *it << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+      "output": "10 20 30\n30 20 10",
+      "lang": "cpp"
+    },
+    {
+      "file": "advance.cpp",
+      "source": "#include <iostream>\n#include <iterator>\n#include <list>\nusing namespace std;\n\nint main() {\n    list<int> items = {4, 8, 15, 16};\n    auto it = next(items.begin(), 2);\n    cout << *it << endl;\n    cout << distance(items.begin(), it) << endl;\n    return 0;\n}",
+      "output": "15\n2",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "7"
+  },
+  "nextTitle": "Algorithms from the library"
+}

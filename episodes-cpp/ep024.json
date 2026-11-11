@@ -1,0 +1,398 @@
+{
+  "lang": "cpp",
+  "ep": 24,
+  "title": "Pass by reference",
+  "module": 3,
+  "lengthSec": 289,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a reference parameter",
+    "change the original variable",
+    "write a working swap function"
+  ],
+  "youtube": {
+    "title": "C++ References: Pass by Reference and swap | C++ Programming EP 24",
+    "description": "In this episode you will write a reference parameter, change the original variable and write a working swap function, with Xecxec the crab. 0:00 Intro · 0:15 Pass by reference · 0:45 A reference parameter · 1:25 One box, two names · 1:55 Second program · 2:55 Recap · 3:26 Bug of the Day · 4:14 Challenge · 4:34 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Pass by reference"
+      },
+      {
+        "t": "0:45",
+        "label": "A reference parameter"
+      },
+      {
+        "t": "1:25",
+        "label": "One box, two names"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:26",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:14",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:34",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "pass by reference",
+      "c++ reference",
+      "swap function c++",
+      "ampersand"
+    ],
+    "thumbnail": {
+      "text": "PASS BY &",
+      "visual": "big text \"PASS BY &\" in tomato on mint; Xecxec next to two name tags tied to the same box; thin black border and drop shadow.",
+      "pose": "Xecxec next to two name tags tied to the same box"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 24 · PASS BY &",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we fix the broken swap. One small symbol, the ampersand, lets a function change the original."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"Pass by reference\": numbered lines (1. An ampersand makes a reference; 2. A reference is another name for the same box; 3. Changes reach the original) and an analogy card: a nickname: two names for the same person",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A reference is another name for an existing variable. You write an ampersand after the type. No copy is made. When a function takes a reference, it works on the original variable. Think of a nickname. Two names point to the same person.",
+      "points": [
+        "An ampersand makes a reference",
+        "A reference is another name for the same box",
+        "Changes reach the original"
+      ],
+      "analogy": {
+        "title": "Pass by reference",
+        "body": "A nickname: two names for the same person"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 40,
+      "onScreen": "byref.cpp: double_it changes the original with a reference",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 4] The ampersand after int makes n a reference. N is another name for the caller variable. [HL 5] The function doubles n. [HL 10] Main passes number. No copy is made. [HL 11] Number is now twenty. The original changed.",
+      "code": {
+        "file": "byref.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nvoid double_it(int& n) {\n    n = n * 2;\n}\n\nint main() {\n    int number = 10;\n    double_it(number);\n    cout << \"Number: \" << number << endl;\n    return 0;\n}",
+        "output": "Number: 20"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 85,
+      "lengthSec": 30,
+      "onScreen": "memory boxes: n is a reference to number",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Look at the picture. There is one box that holds the value. Number is its name in main. N is its second name in the function. A change through n changes the same box.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "20",
+                    "address": "0x1000",
+                    "name": "number"
+                  },
+                  {
+                    "value": "0x1000",
+                    "address": "0x1008",
+                    "name": "n"
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:1",
+                "to": "0:0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "swapref.cpp: swap_values with references swaps the originals",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 4] Both parameters are references. [HL 5] The helper box t keeps the old value of a. [HL 6] A takes the value of b. [HL 7] B takes the old value from t. [HL 13] Now main prints two and one. The swap worked. The C plus plus library also has a function called swap.",
+      "code": {
+        "file": "swapref.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nvoid swap_values(int& a, int& b) {\n    int t = a;\n    a = b;\n    b = t;\n}\n\nint main() {\n    int x = 1, y = 2;\n    swap_values(x, y);\n    cout << x << \" \" << y << endl;\n    return 0;\n}",
+        "output": "2 1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 155,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 swapref.cpp -o swapref then ./swapref",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as swapref dot cpp. Compile it with g plus plus. Then run the program. The program prints two and one."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 175,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. An ampersand after the type makes a reference. Two. A reference is another name for the same variable. Three. A reference parameter changes the original. Four. Use it for swap and for functions that change their input. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "An ampersand after the type makes a reference.",
+        "A reference is another name for the same variable.",
+        "A reference parameter changes the original.",
+        "Use it for swap and for functions that change their input."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 206,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A number cannot be a reference",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We call inc with the plain number five. The compiler says it cannot bind a non-const lvalue reference to an rvalue. In simple words, five has no box to change. Pass a variable instead."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 246,
+      "lengthSec": 8,
+      "onScreen": "A reference told a variable, I will always have your back. The variable said, I know, you are my alias.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "A reference told a variable, I will always have your back. The variable said, I know, you are my alias."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 254,
+      "lengthSec": 20,
+      "onScreen": "Task card: write a function that doubles two numbers",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a function that takes two int references and doubles both. Test it in main. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 274,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 25 · const references",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: const references. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nvoid inc(int& n) {\n    n++;\n}\n\nint main() {\n    inc(5);\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\ninc.cpp: In function 'int main()':\ninc.cpp:9:9: error: cannot bind non-const lvalue reference of type 'int&' to an rvalue of type 'int'\n    9 |     inc(5);\n      |         ^\ninc.cpp:4:15: note:   initializing argument 1 of 'void inc(int&)'\n    4 | void inc(int& n) {",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nvoid inc(int& n) {\n    n++;\n}\n\nint main() {\n    int count = 5;\n    inc(count);\n    cout << count << endl;\n    return 0;\n}",
+    "why": "A reference must refer to a real variable. The plain number five has no box that the function could change."
+  },
+  "pun": "\"A reference told a variable, I will always have your back. The variable said, I know, you are my alias.\"",
+  "challenge": "Write a function that takes two int references and doubles both. Test it in main.",
+  "challengeAnswer": "Write a void function called double both with two int ampersand parameters. Inside, multiply each by two. Print both variables in main.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Pass by reference",
+      "hook": "\"One ampersand turns a copy into the real thing.\"",
+      "script": "One ampersand turns a copy into the real thing. Today we fix the broken swap. One small symbol, the ampersand, lets a function change the original. A reference is another name for an existing variable. You write an ampersand after the type. No copy is made. When a function takes a reference, it works on the original variable. Keep coding, says Xecxec!",
+      "onScreen": "PASS BY REFERENCE",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "What you will learn: Pass by reference.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyreference",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Pass by reference in one minute",
+      "hook": "\"A reference is another name for an existing variable.\"",
+      "script": "A reference is another name for an existing variable. You write an ampersand after the type. No copy is made. When a function takes a reference, it works on the original variable. Think of a nickname. Two names point to the same person. The ampersand after int makes n a reference. N is another name for the caller variable. Keep coding, says Xecxec!",
+      "onScreen": "PASS BY REFERENCE",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Pass by reference in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyreference",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Both parameters are references.\"",
+      "script": "Both parameters are references. The helper box t keeps the old value of a. A takes the value of b. B takes the old value from t. Now main prints two and one. The swap worked. The C plus plus library also has a function called swap. The program prints two and one. An ampersand after the type makes a reference. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyreference",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A number cannot be a reference",
+      "hook": "\"Can you spot the bug in pass by reference?\"",
+      "script": "Can you spot the bug in pass by reference? Bug of the Day. We call inc with the plain number five. The compiler says it cannot bind a non-const lvalue reference to an rvalue. In simple words, five has no box to change. Pass a variable instead. A reference must refer to a real variable. The plain number five has no box that the function could change. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 40,
+      "caption": "Bug of the Day: A number cannot be a reference.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyreference",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you write a function that doubles two numbers in\"",
+      "script": "Can you write a function that doubles two numbers in pass by reference? A reference told a variable, I will always have your back. The variable said, I know, you are my alias. Write a function that takes two int references and doubles both. Test it in main. Write your answer in the comments. An ampersand after the type makes a reference. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "passbyreference",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "byref.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nvoid double_it(int& n) {\n    n = n * 2;\n}\n\nint main() {\n    int number = 10;\n    double_it(number);\n    cout << \"Number: \" << number << endl;\n    return 0;\n}",
+      "output": "Number: 20",
+      "lang": "cpp"
+    },
+    {
+      "file": "swapref.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nvoid swap_values(int& a, int& b) {\n    int t = a;\n    a = b;\n    b = t;\n}\n\nint main() {\n    int x = 1, y = 2;\n    swap_values(x, y);\n    cout << x << \" \" << y << endl;\n    return 0;\n}",
+      "output": "2 1",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "6"
+  },
+  "nextTitle": "const references"
+}

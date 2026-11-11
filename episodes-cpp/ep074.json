@@ -1,0 +1,394 @@
+{
+  "lang": "cpp",
+  "ep": 74,
+  "title": "set and unordered_set",
+  "module": 8,
+  "lengthSec": 295,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "store unique values",
+    "see that a set sorts its items",
+    "check if an insert worked"
+  ],
+  "youtube": {
+    "title": "C++ std::set: Unique and Sorted | C++ Programming EP 74",
+    "description": "In this episode you will store unique values, see that a set sorts its items and check if an insert worked, with Xecxec the crab. 0:00 Intro · 0:15 set and unordered_set · 0:52 A set of numbers · 1:32 From a vector to a set · 2:02 Second program · 3:02 Recap · 3:32 Bug of the Day · 4:20 Challenge · 4:40 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "set and unordered_set"
+      },
+      {
+        "t": "0:52",
+        "label": "A set of numbers"
+      },
+      {
+        "t": "1:32",
+        "label": "From a vector to a set"
+      },
+      {
+        "t": "2:02",
+        "label": "Second program"
+      },
+      {
+        "t": "3:02",
+        "label": "Recap"
+      },
+      {
+        "t": "3:32",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::set",
+      "unordered_set",
+      "unique values",
+      "remove duplicates"
+    ],
+    "thumbnail": {
+      "text": "SETS",
+      "visual": "big text \"SETS\" in tomato on lilac; Xecxec next to a bag where every item is different; thin black border and drop shadow.",
+      "pose": "Xecxec next to a bag where every item is different"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 74 · SETS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet the set. It stores each value once. It is the quickest way to remove duplicates."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 37,
+      "onScreen": "\"set and unordered_set\": numbered lines (1. A set stores each value once; 2. A set keeps its values sorted; 3. Insert tells you if it added a new value) and an analogy card: a guest list: every name appears once, and the clerk keeps it in order",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A set stores unique values. If you insert a value twice, the second insert does nothing. A set keeps its values sorted. An unordered set is faster, but it has no order. Insert returns a pair. The second part tells you if the value was new. Think of a guest list. Every name appears once, and the clerk keeps it in order.",
+      "points": [
+        "A set stores each value once",
+        "A set keeps its values sorted",
+        "Insert tells you if it added a new value"
+      ],
+      "analogy": {
+        "title": "set and unordered_set",
+        "body": "A guest list: every name appears once, and the clerk keeps it in order"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 52,
+      "lengthSec": 40,
+      "onScreen": "unique.cpp: a set removes duplicates and sorts",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 7] The vector has six numbers, with duplicates. [HL 8] We build a set from the whole vector. Duplicates disappear. [HL 9] The loop prints the values in sorted order. [HL 13] The output is one, three, five, nine, and the size is four.",
+      "code": {
+        "file": "unique.cpp",
+        "source": "#include <iostream>\n#include <set>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {5, 3, 5, 1, 3, 9};\n    set<int> s(v.begin(), v.end());\n    for (int x : s) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    cout << s.size() << endl;\n    return 0;\n}",
+        "output": "1 3 5 9\n4"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 92,
+      "lengthSec": 30,
+      "onScreen": "a flow: vector with duplicates, set builds, sorted unique values",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The vector has six items. The set keeps each value once, and in order. That leaves four items. This is the shortest way to remove duplicates.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "a flow: vector with duplicates, set builds, sorted unique values",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "Vector",
+            "detail": "5 3 5 1 3 9"
+          },
+          {
+            "id": "s2",
+            "label": "Build a set",
+            "detail": "Each value once"
+          },
+          {
+            "id": "s3",
+            "label": "Sorted",
+            "detail": "1 3 5 9"
+          },
+          {
+            "id": "s4",
+            "label": "Size",
+            "detail": "4"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 122,
+      "lengthSec": 40,
+      "onScreen": "insert.cpp: insert returns a pair with a flag",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 7] The first insert adds four. [HL 8] The second insert finds four already there. [HL 9] The second part of the result is a flag. The first flag is true, and the second is false. [HL 10] Count tells us if a value is in the set. Four is there, so one. [HL 10] Seven is not, so zero.",
+      "code": {
+        "file": "insert.cpp",
+        "source": "#include <iostream>\n#include <set>\nusing namespace std;\n\nint main() {\n    set<int> s;\n    auto first = s.insert(4);\n    auto second = s.insert(4);\n    cout << boolalpha << first.second << \" \" << second.second << endl;\n    cout << s.count(4) << \" \" << s.count(7) << endl;\n    return 0;\n}",
+        "output": "true false\n1 0"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 162,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 insert.cpp -o insert then ./insert",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as insert dot cpp. Compile it with g plus plus. Then run the program. The program prints true false, and then one zero."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 182,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A set stores each value once. Two. A set keeps its values sorted. Three. Insert tells you if the value was new. Four. Count checks if a value is in the set. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A set stores each value once.",
+        "A set keeps its values sorted.",
+        "Insert tells you if the value was new.",
+        "Count checks if a value is in the set."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 212,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Expecting duplicates",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We count six ballots, but the program says three. A set keeps each value once. It counts the different candidates, not the votes. Use a vector, or a map of counts, when duplicates matter."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 252,
+      "lengthSec": 8,
+      "onScreen": "A set told a joke twice. Nobody heard it the second time.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "A set told a joke twice. Nobody heard it the second time."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 260,
+      "lengthSec": 20,
+      "onScreen": "Task card: remove the duplicates from a vector",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Read five numbers into a vector. Print them without duplicates, in sorted order. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 280,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 75 · stack, queue and deque",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: stack, queue and deque. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <set>\nusing namespace std;\n\nint main() {\n    set<int> votes;\n    int ballots[6] = {2, 1, 2, 2, 1, 3};\n    for (int b : ballots) {\n        votes.insert(b);\n    }\n    cout << \"Total votes: \" << votes.size() << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\nTotal votes: 3",
+    "fixed": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> votes;\n    int ballots[6] = {2, 1, 2, 2, 1, 3};\n    for (int b : ballots) {\n        votes.push_back(b);\n    }\n    cout << \"Total votes: \" << votes.size() << endl;\n    return 0;\n}",
+    "why": "A set keeps each value once, so it counts the different values, not the total. To count every item, use a vector."
+  },
+  "pun": "\"A set told a joke twice. Nobody heard it the second time.\"",
+  "challenge": "Read five numbers into a vector. Print them without duplicates, in sorted order.",
+  "challengeAnswer": "Build a set from the vector. Print every item of the set with a range-based for.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: set and unordered_set",
+      "hook": "\"Remove every duplicate in one line.\"",
+      "script": "Remove every duplicate in one line. Today we meet the set. It stores each value once. It is the quickest way to remove duplicates. A set stores unique values. If you insert a value twice, the second insert does nothing. A set keeps its values sorted. An unordered set is faster, but it has no order. Insert returns a pair. Keep coding, says Xecxec!",
+      "onScreen": "SET AND UNORDERED_SET",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "What you will learn: set and unordered_set.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "setandunorderedset",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "set and unordered_set in one minute",
+      "hook": "\"A set stores unique values.\"",
+      "script": "A set stores unique values. If you insert a value twice, the second insert does nothing. A set keeps its values sorted. An unordered set is faster, but it has no order. Insert returns a pair. The second part tells you if the value was new. Think of a guest list. Every name appears once, and the clerk keeps it in order. Keep coding, says Xecxec!",
+      "onScreen": "SET AND UNORDERED_SET",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "set and unordered_set in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "setandunorderedset",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The first insert adds four.\"",
+      "script": "The first insert adds four. The second insert finds four already there. The second part of the result is a flag. The first flag is true, and the second is false. Count tells us if a value is in the set. Four is there, so one. Seven is not, so zero. The program prints true false, and then one zero. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "setandunorderedset",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Expecting duplicates",
+      "hook": "\"Can you spot the bug in set and unordered set?\"",
+      "script": "Can you spot the bug in set and unordered set? Bug of the Day. We count six ballots, but the program says three. A set keeps each value once. It counts the different candidates, not the votes. Use a vector, or a map of counts, when duplicates matter. A set keeps each value once, so it counts the different values, not the total. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Bug of the Day: Expecting duplicates.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "setandunorderedset",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you remove the duplicates from a vector in set\"",
+      "script": "Can you remove the duplicates from a vector in set and unordered set? A set told a joke twice. Nobody heard it the second time. Read five numbers into a vector. Print them without duplicates, in sorted order. Write your answer in the comments. A set stores each value once. A set keeps its values sorted. Insert tells you if the value was new. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "setandunorderedset",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "unique.cpp",
+      "source": "#include <iostream>\n#include <set>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {5, 3, 5, 1, 3, 9};\n    set<int> s(v.begin(), v.end());\n    for (int x : s) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    cout << s.size() << endl;\n    return 0;\n}",
+      "output": "1 3 5 9\n4",
+      "lang": "cpp"
+    },
+    {
+      "file": "insert.cpp",
+      "source": "#include <iostream>\n#include <set>\nusing namespace std;\n\nint main() {\n    set<int> s;\n    auto first = s.insert(4);\n    auto second = s.insert(4);\n    cout << boolalpha << first.second << \" \" << second.second << endl;\n    cout << s.count(4) << \" \" << s.count(7) << endl;\n    return 0;\n}",
+      "output": "true false\n1 0",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Total votes: 6"
+  },
+  "nextTitle": "stack, queue and deque"
+}

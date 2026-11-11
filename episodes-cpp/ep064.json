@@ -1,0 +1,402 @@
+{
+  "lang": "cpp",
+  "ep": 64,
+  "title": "Virtual functions",
+  "module": 7,
+  "lengthSec": 300,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "write a virtual function",
+    "call it through a base pointer",
+    "use override"
+  ],
+  "youtube": {
+    "title": "C++ Virtual Functions and Polymorphism | C++ Programming EP 64",
+    "description": "In this episode you will write a virtual function, call it through a base pointer and use override, with Xecxec the crab. 0:00 Intro · 0:15 Virtual functions · 0:54 A virtual speak · 1:34 How the call finds Dog · 2:04 Second program · 3:04 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Virtual functions"
+      },
+      {
+        "t": "0:54",
+        "label": "A virtual speak"
+      },
+      {
+        "t": "1:34",
+        "label": "How the call finds Dog"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:37",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:25",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:45",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "virtual function",
+      "polymorphism c++",
+      "override keyword",
+      "base pointer"
+    ],
+    "thumbnail": {
+      "text": "VIRTUAL!",
+      "visual": "big text \"VIRTUAL!\" in tomato on pastel blue; Xecxec next to one remote control that works with many TVs; thin black border and drop shadow.",
+      "pose": "Xecxec next to one remote control that works with many TVs"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 64 · VIRTUAL!",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet polymorphism. One call can do many different things, depending on the real object."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 39,
+      "onScreen": "\"Virtual functions\": numbered lines (1. A virtual function is chosen at run time; 2. A base pointer can hold a derived object; 3. Use override to catch mistakes) and an analogy card: a remote control: one button, and each TV does its own thing",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A virtual function is chosen at run time, by the real type of the object. You can hold a Dog in an Animal pointer, and a call to speak still runs the Dog version. Write virtual in the base. Write override in the derived class, so that the compiler checks your spelling. Think of a remote control. One button, and each TV does its own thing.",
+      "points": [
+        "A virtual function is chosen at run time",
+        "A base pointer can hold a derived object",
+        "Use override to catch mistakes"
+      ],
+      "analogy": {
+        "title": "Virtual functions",
+        "body": "A remote control: one button, and each TV does its own thing"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "virtual.cpp: a base pointer calls the derived version",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 7] The word virtual says that the real object decides. [HL 8] A base class with virtual functions also needs a virtual destructor. We study it soon. [HL 13] Dog overrides speak. The word override makes the compiler check that a base function exists. [HL 17] The pointer type is Animal. [HL 17] But the object is a Dog. [HL 18] The call finds the Dog version at run time. It prints Woof.",
+      "code": {
+        "file": "virtual.cpp",
+        "source": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nclass Animal {\npublic:\n    virtual void speak() const { cout << \"...\" << endl; }\n    virtual ~Animal() = default;\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() const override { cout << \"Woof\" << endl; }\n};\n\nint main() {\n    unique_ptr<Animal> a = make_unique<Dog>();\n    a->speak();\n    return 0;\n}",
+        "output": "Woof"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 94,
+      "lengthSec": 30,
+      "onScreen": "the object has a hidden pointer to a table of functions",
+      "animation": "Nodes pop in one by one; edges draw on as the narrator mentions them",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is how it works. An object with virtual functions has a hidden pointer. It points to a table of functions for its real type. A call to speak looks in that table. For a Dog, the table holds the Dog version.",
+      "diagram": {
+        "kind": "graph",
+        "layout": "row",
+        "caption": "the object has a hidden pointer to a table of functions",
+        "nodes": [
+          {
+            "id": "obj",
+            "label": "Dog object",
+            "sub": "hidden vptr"
+          },
+          {
+            "id": "vt",
+            "label": "Dog table",
+            "sub": "speak, destructor"
+          },
+          {
+            "id": "fn",
+            "label": "Dog::speak",
+            "sub": "prints Woof"
+          }
+        ],
+        "edges": [
+          {
+            "from": "obj",
+            "to": "vt",
+            "label": "vptr"
+          },
+          {
+            "from": "vt",
+            "to": "fn",
+            "label": "speak"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 124,
+      "lengthSec": 40,
+      "onScreen": "zoo.cpp: a vector of animal pointers, one loop",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 23] The vector holds pointers to Animal. [HL 24] One is a Dog. [HL 25] One is a Cat. [HL 26] The loop does not care which is which. [HL 27] It makes one call, and each animal does its own thing. The output is Woof, and then Meow.",
+      "code": {
+        "file": "zoo.cpp",
+        "source": "#include <iostream>\n#include <memory>\n#include <vector>\nusing namespace std;\n\nclass Animal {\npublic:\n    virtual void speak() const = 0;\n    virtual ~Animal() = default;\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() const override { cout << \"Woof\" << endl; }\n};\n\nclass Cat : public Animal {\npublic:\n    void speak() const override { cout << \"Meow\" << endl; }\n};\n\nint main() {\n    vector<unique_ptr<Animal>> zoo;\n    zoo.push_back(make_unique<Dog>());\n    zoo.push_back(make_unique<Cat>());\n    for (const auto& a : zoo) {\n        a->speak();\n    }\n    return 0;\n}",
+        "output": "Woof\nMeow"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 164,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 zoo.cpp -o zoo then ./zoo",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as zoo dot cpp. Compile it with g plus plus. Then run the program. The program prints Woof, and then Meow."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 184,
+      "lengthSec": 33,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A virtual function is chosen by the real type, at run time. Two. A base pointer can hold a derived object. Three. Write virtual in the base and override in the derived class. Four. One loop can serve many types. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A virtual function is chosen by the real type, at run time.",
+        "A base pointer can hold a derived object.",
+        "Write virtual in the base and override in the derived class.",
+        "One loop can serve many types."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 217,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A function that is not virtual",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We call speak through an Animal pointer to a Dog. The program prints three dots, not Woof. Speak is not virtual, so the pointer type decides. Add virtual in the base, and override in Dog."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 257,
+      "lengthSec": 8,
+      "onScreen": "Why did the virtual function get a promotion? It always knew who it really was.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the virtual function get a promotion? It always knew who it really was."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 265,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a Cow to the zoo",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Add a class Cow to the zoo program. Its speak prints Moo. Add one cow to the vector. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 285,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 65 · Abstract classes",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: abstract classes and interfaces. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nclass Animal {\npublic:\n    void speak() const { cout << \"...\" << endl; }\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() const { cout << \"Woof\" << endl; }\n};\n\nint main() {\n    Dog d;\n    Animal* a = &d;\n    a->speak();\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\n...",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nclass Animal {\npublic:\n    virtual void speak() const { cout << \"...\" << endl; }\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() const override { cout << \"Woof\" << endl; }\n};\n\nint main() {\n    Dog d;\n    Animal* a = &d;\n    a->speak();\n    return 0;\n}",
+    "why": "Without virtual, the compiler picks the function by the pointer type, which is Animal. With virtual, it picks by the real object."
+  },
+  "pun": "\"Why did the virtual function get a promotion? It always knew who it really was.\"",
+  "challenge": "Add a class Cow to the zoo program. Its speak prints Moo. Add one cow to the vector.",
+  "challengeAnswer": "Write class Cow colon public Animal, with a speak that prints Moo and the word override. Push back a make unique of Cow.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Virtual functions",
+      "hook": "\"One call, many behaviours.\"",
+      "script": "One call, many behaviours. Today we meet polymorphism. One call can do many different things, depending on the real object. A virtual function is chosen at run time, by the real type of the object. You can hold a Dog in an Animal pointer, and a call to speak still runs the Dog version. Write virtual in the base. Keep coding, says Xecxec!",
+      "onScreen": "VIRTUAL FUNCTIONS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "What you will learn: Virtual functions.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "virtualfunctions",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Virtual functions in one minute",
+      "hook": "\"A virtual function is chosen at run time\"",
+      "script": "A virtual function is chosen at run time, by the real type of the object. You can hold a Dog in an Animal pointer, and a call to speak still runs the Dog version. Write virtual in the base. Write override in the derived class, so that the compiler checks your spelling. Think of a remote control. One button, and each TV does its own thing. Keep coding, says Xecxec!",
+      "onScreen": "VIRTUAL FUNCTIONS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "Virtual functions in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "virtualfunctions",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The vector holds pointers to Animal.\"",
+      "script": "The vector holds pointers to Animal. One is a Dog. One is a Cat. The loop does not care which is which. It makes one call, and each animal does its own thing. The output is Woof, and then Meow. The program prints Woof, and then Meow. A virtual function is chosen by the real type, at run time. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "virtualfunctions",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A function that is not virtual",
+      "hook": "\"Can you spot the bug in virtual functions?\"",
+      "script": "Can you spot the bug in virtual functions? Bug of the Day. We call speak through an Animal pointer to a Dog. The program prints three dots, not Woof. Speak is not virtual, so the pointer type decides. Add virtual in the base, and override in Dog. Without virtual, the compiler picks the function by the pointer type, which is Animal. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: A function that is not virtual.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "virtualfunctions",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you add a Cow to the zoo in virtual functions?\"",
+      "script": "Can you add a Cow to the zoo in virtual functions? Why did the virtual function get a promotion? It always knew who it really was. Add a class Cow to the zoo program. Its speak prints Moo. Add one cow to the vector. Write your answer in the comments. A virtual function is chosen by the real type, at run time. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "virtualfunctions",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "virtual.cpp",
+      "source": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nclass Animal {\npublic:\n    virtual void speak() const { cout << \"...\" << endl; }\n    virtual ~Animal() = default;\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() const override { cout << \"Woof\" << endl; }\n};\n\nint main() {\n    unique_ptr<Animal> a = make_unique<Dog>();\n    a->speak();\n    return 0;\n}",
+      "output": "Woof",
+      "lang": "cpp"
+    },
+    {
+      "file": "zoo.cpp",
+      "source": "#include <iostream>\n#include <memory>\n#include <vector>\nusing namespace std;\n\nclass Animal {\npublic:\n    virtual void speak() const = 0;\n    virtual ~Animal() = default;\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() const override { cout << \"Woof\" << endl; }\n};\n\nclass Cat : public Animal {\npublic:\n    void speak() const override { cout << \"Meow\" << endl; }\n};\n\nint main() {\n    vector<unique_ptr<Animal>> zoo;\n    zoo.push_back(make_unique<Dog>());\n    zoo.push_back(make_unique<Cat>());\n    for (const auto& a : zoo) {\n        a->speak();\n    }\n    return 0;\n}",
+      "output": "Woof\nMeow",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Woof"
+  },
+  "nextTitle": "Abstract classes"
+}

@@ -1,0 +1,392 @@
+{
+  "lang": "cpp",
+  "ep": 53,
+  "title": "Constructors",
+  "module": 6,
+  "lengthSec": 298,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "write a constructor",
+    "write several constructors",
+    "explain the default constructor"
+  ],
+  "youtube": {
+    "title": "C++ Constructors: Start Every Object Right | C++ Programming EP 53",
+    "description": "In this episode you will write a constructor, write several constructors and explain the default constructor, with Xecxec the crab. 0:00 Intro · 0:15 Constructors · 0:55 Constructors · 1:35 Which constructor runs? · 2:05 Second program · 3:05 Recap · 3:35 Bug of the Day · 4:23 Challenge · 4:43 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Constructors"
+      },
+      {
+        "t": "0:55",
+        "label": "Constructors"
+      },
+      {
+        "t": "1:35",
+        "label": "Which constructor runs?"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:35",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:23",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:43",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ constructor",
+      "default constructor",
+      "constructor overloading",
+      "object initialization"
+    ],
+    "thumbnail": {
+      "text": "CONSTRUCTORS",
+      "visual": "big text \"CONSTRUCTORS\" in tomato on peach; Xecxec next to a factory that builds a ready toy; thin black border and drop shadow.",
+      "pose": "Xecxec next to a factory that builds a ready toy"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 53 · CONSTRUCTORS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we make objects that start in a good state. A constructor runs the moment an object is born."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"Constructors\": numbered lines (1. A constructor runs when an object is made; 2. It has the class name and no return type; 3. A class can have several constructors) and an analogy card: a new phone: it comes ready, with the setup already done",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A constructor is a special function. It has the same name as the class, and it has no return type. It runs when an object is made. A class can have several constructors with different parameters. If you write none, the compiler gives you an empty default one. If you write any, it does not. Think of a new phone that comes with the setup already done.",
+      "points": [
+        "A constructor runs when an object is made",
+        "It has the class name and no return type",
+        "A class can have several constructors"
+      ],
+      "analogy": {
+        "title": "Constructors",
+        "body": "A new phone: it comes ready, with the setup already done"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "point.cpp: a Point class with two constructors",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 8] This is the default constructor. It sets both numbers to zero. [HL 9] This constructor takes two values. [HL 10] The show function prints the point. [HL 14] This object uses the default constructor. [HL 15] This object uses the second one. [HL 16] The first prints zero, zero. [HL 17] The second prints three, four.",
+      "code": {
+        "file": "point.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Point {\n    int x_, y_;\n\npublic:\n    Point() : x_(0), y_(0) {}\n    Point(int x, int y) : x_(x), y_(y) {}\n    void show() const { cout << x_ << \",\" << y_ << endl; }\n};\n\nint main() {\n    Point origin;\n    Point p(3, 4);\n    origin.show();\n    p.show();\n    return 0;\n}",
+        "output": "0,0\n3,4"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 30,
+      "onScreen": "a table of declarations and the constructor that runs",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "The compiler chooses a constructor by the arguments. No arguments means the default one. Two ints mean the second one. Round brackets and curly braces both work.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table of declarations and the constructor that runs",
+        "headers": [
+          "Code",
+          "Constructor",
+          "x_ and y_"
+        ],
+        "rows": [
+          [
+            "Point a;",
+            "Point()",
+            "0, 0"
+          ],
+          [
+            "Point b(3, 4);",
+            "Point(int, int)",
+            "3, 4"
+          ],
+          [
+            "Point c{5, 6};",
+            "Point(int, int)",
+            "5, 6"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "defaults.cpp: one constructor with default values replaces two",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 10] One constructor has two default values. [HL 15] No arguments: the name is Unknown and the age is one. [HL 16] One argument: the age is still one. [HL 17] Two arguments: both defaults are replaced. The output has three lines.",
+      "code": {
+        "file": "defaults.cpp",
+        "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Pet {\n    string name_;\n    int age_;\n\npublic:\n    Pet(string name = \"Unknown\", int age = 1) : name_(name), age_(age) {}\n    void show() const { cout << name_ << \" \" << age_ << endl; }\n};\n\nint main() {\n    Pet a;\n    Pet b(\"Moti\");\n    Pet c(\"Kali\", 4);\n    a.show();\n    b.show();\n    c.show();\n    return 0;\n}",
+        "output": "Unknown 1\nMoti 1\nKali 4"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 defaults.cpp -o defaults then ./defaults",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as defaults dot cpp. Compile it with g plus plus. Then run the program. The program prints Unknown one, Moti one, and Kali four."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 185,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A constructor runs when an object is made. Two. It has the class name and no return type. Three. A class can have several constructors. Four. Default arguments can replace several constructors. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A constructor runs when an object is made.",
+        "It has the class name and no return type.",
+        "A class can have several constructors.",
+        "Default arguments can replace several constructors."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 215,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: No default constructor",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The class has only a two-value constructor. Main makes a point with no values. The compiler says no matching function for call to Point. When you write any constructor, the free default one disappears. Add your own."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 255,
+      "lengthSec": 8,
+      "onScreen": "The constructor told the object, do not worry. I will get you started.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "The constructor told the object, do not worry. I will get you started."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 263,
+      "lengthSec": 20,
+      "onScreen": "Task card: write a Rectangle constructor",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a class called Rectangle with width and height. Add a constructor with two values and a function that returns the area. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 283,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 54 · Member initializer lists",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: member initializer lists. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nclass Point {\n    int x_, y_;\n\npublic:\n    Point(int x, int y) : x_(x), y_(y) {}\n    int sum() const { return x_ + y_; }\n};\n\nint main() {\n    Point p;\n    cout << p.sum() << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\npoint.cpp: In function 'int main()':\npoint.cpp:13:11: error: no matching function for call to 'Point::Point()'\n   13 |     Point p;\n      |           ^\npoint.cpp:8:5: note: candidate: 'Point::Point(int, int)'\n    8 |     Point(int x, int y) : x_(x), y_(y) {}",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nclass Point {\n    int x_, y_;\n\npublic:\n    Point() : x_(0), y_(0) {}\n    Point(int x, int y) : x_(x), y_(y) {}\n    int sum() const { return x_ + y_; }\n};\n\nint main() {\n    Point p;\n    cout << p.sum() << endl;\n    return 0;\n}",
+    "why": "When you write any constructor, the compiler stops making the empty default one. Write your own if you need it."
+  },
+  "pun": "\"The constructor told the object, do not worry. I will get you started.\"",
+  "challenge": "Write a class called Rectangle with width and height. Add a constructor with two values and a function that returns the area.",
+  "challengeAnswer": "Keep the two numbers private. The constructor stores them. The area function returns width times height.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Constructors",
+      "hook": "\"Make every object ready from the first moment.\"",
+      "script": "Make every object ready from the first moment. Today we make objects that start in a good state. A constructor runs the moment an object is born. A constructor is a special function. It has the same name as the class, and it has no return type. It runs when an object is made. A class can have several constructors with different parameters. Keep coding, says Xecxec!",
+      "onScreen": "CONSTRUCTORS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "What you will learn: Constructors.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constructors",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Constructors in one minute",
+      "hook": "\"A constructor is a special function.\"",
+      "script": "A constructor is a special function. It has the same name as the class, and it has no return type. It runs when an object is made. A class can have several constructors with different parameters. If you write none, the compiler gives you an empty default one. If you write any, it does not. Think of a new phone that comes with the setup already done. Keep coding, says Xecxec!",
+      "onScreen": "CONSTRUCTORS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 40,
+      "caption": "Constructors in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constructors",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"One constructor has two default values.\"",
+      "script": "One constructor has two default values. No arguments: the name is Unknown and the age is one. One argument: the age is still one. Two arguments: both defaults are replaced. The output has three lines. The program prints Unknown one, Moti one, and Kali four. A constructor runs when an object is made. It has the class name and no return type. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constructors",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: No default constructor",
+      "hook": "\"Can you spot the bug in constructors?\"",
+      "script": "Can you spot the bug in constructors? Bug of the Day. The class has only a two-value constructor. Main makes a point with no values. The compiler says no matching function for call to Point. When you write any constructor, the free default one disappears. Add your own. When you write any constructor, the compiler stops making the empty default one. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: No default constructor.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constructors",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you write a Rectangle constructor in constructors?\"",
+      "script": "Can you write a Rectangle constructor in constructors? The constructor told the object, do not worry. I will get you started. Write a class called Rectangle with width and height. Add a constructor with two values and a function that returns the area. Write your answer in the comments. A constructor runs when an object is made. It has the class name and no return type. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 39,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constructors",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "point.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Point {\n    int x_, y_;\n\npublic:\n    Point() : x_(0), y_(0) {}\n    Point(int x, int y) : x_(x), y_(y) {}\n    void show() const { cout << x_ << \",\" << y_ << endl; }\n};\n\nint main() {\n    Point origin;\n    Point p(3, 4);\n    origin.show();\n    p.show();\n    return 0;\n}",
+      "output": "0,0\n3,4",
+      "lang": "cpp"
+    },
+    {
+      "file": "defaults.cpp",
+      "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Pet {\n    string name_;\n    int age_;\n\npublic:\n    Pet(string name = \"Unknown\", int age = 1) : name_(name), age_(age) {}\n    void show() const { cout << name_ << \" \" << age_ << endl; }\n};\n\nint main() {\n    Pet a;\n    Pet b(\"Moti\");\n    Pet c(\"Kali\", 4);\n    a.show();\n    b.show();\n    c.show();\n    return 0;\n}",
+      "output": "Unknown 1\nMoti 1\nKali 4",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "0"
+  },
+  "nextTitle": "Member initializer lists"
+}

@@ -1,0 +1,388 @@
+{
+  "lang": "cpp",
+  "ep": 81,
+  "title": "optional and variant",
+  "module": 9,
+  "lengthSec": 288,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "return a value that may be missing",
+    "use value_or",
+    "store one of several types in a variant"
+  ],
+  "youtube": {
+    "title": "C++ std::optional and std::variant | C++ Programming EP 81",
+    "description": "In this episode you will return a value that may be missing, use value_or and store one of several types in a variant, with Xecxec the crab. 0:00 Intro · 0:15 optional and variant · 0:45 A search that may fail · 1:25 Two optionals · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "optional and variant"
+      },
+      {
+        "t": "0:45",
+        "label": "A search that may fail"
+      },
+      {
+        "t": "1:25",
+        "label": "Two optionals"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::optional",
+      "std::variant",
+      "std::visit",
+      "modern c++",
+      "nullopt"
+    ],
+    "thumbnail": {
+      "text": "MAYBE",
+      "visual": "big text \"MAYBE\" in tomato on cream; Xecxec next to a gift box that may be empty, and a box with two shapes; thin black border and drop shadow.",
+      "pose": "Xecxec next to a gift box that may be empty, and a box with two shapes"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 81 · MAYBE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we handle missing values the safe way. Optional holds a value or nothing. Variant holds one of several types."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"optional and variant\": numbered lines (1. Optional holds a value or nothing; 2. Variant holds one of several types; 3. Check before you read) and an analogy card: a gift box that may be empty, and a lunch box that holds one of two meals",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Some functions may have no answer. Old code returned minus one, or a null pointer. That is easy to misuse. Optional says it in the type. It holds a value, or it holds nothing. Variant holds exactly one value from a list of types.",
+      "points": [
+        "Optional holds a value or nothing",
+        "Variant holds one of several types",
+        "Check before you read"
+      ],
+      "analogy": {
+        "title": "optional and variant",
+        "body": "A gift box that may be empty, and a lunch box that holds one of two meals"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 40,
+      "onScreen": "optional.cpp: find index returns an optional",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 6] The function returns an optional int. [HL 9] When it finds the value, it returns the index. [HL 12] Otherwise it returns nullopt, which means no value. [HL 18] An optional is true when it holds a value. [HL 19] The star reads the value, which is one. [HL 22] Value or gives a default when the optional is empty. That prints minus one.",
+      "code": {
+        "file": "optional.cpp",
+        "source": "#include <iostream>\n#include <optional>\n#include <vector>\nusing namespace std;\n\noptional<int> find_index(const vector<int>& v, int x) {\n    for (size_t i = 0; i < v.size(); ++i) {\n        if (v[i] == x) {\n            return static_cast<int>(i);\n        }\n    }\n    return nullopt;\n}\n\nint main() {\n    vector<int> v = {4, 8, 15};\n    auto r = find_index(v, 8);\n    if (r) {\n        cout << \"at \" << *r << endl;\n    }\n    auto m = find_index(v, 99);\n    cout << m.value_or(-1) << endl;\n    return 0;\n}",
+        "output": "at 1\n-1"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 85,
+      "lengthSec": 30,
+      "onScreen": "a table: one optional holds a value, one is empty",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "The optional r holds one, so value or gives one. The optional m is empty, so value or gives the default. The default is minus one.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: one optional holds a value, one is empty",
+        "headers": [
+          "Optional",
+          "Has value",
+          "value_or(-1)"
+        ],
+        "rows": [
+          [
+            "r",
+            "yes, it holds 1",
+            "1"
+          ],
+          [
+            "m",
+            "no, it is empty",
+            "-1"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "variant.cpp: a variant holds an int, then a string",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 7] The variant holds an int or a string. Right now it holds an int. [HL 8] Get with a type reads that type. The output is forty-two. [HL 9] Now the variant holds a string. [HL 10] Holds alternative checks the current type. It prints one for true. [HL 11] Visit calls the lambda with whatever type is inside. It prints hello.",
+      "code": {
+        "file": "variant.cpp",
+        "source": "#include <iostream>\n#include <string>\n#include <variant>\nusing namespace std;\n\nint main() {\n    variant<int, string> v = 42;\n    cout << get<int>(v) << endl;\n    v = \"hello\";\n    cout << holds_alternative<string>(v) << endl;\n    visit([](const auto& x) { cout << x << endl; }, v);\n    return 0;\n}",
+        "output": "42\n1\nhello"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 155,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 variant.cpp -o variant then ./variant",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as variant dot cpp. Compile it with g plus plus. Then run the program. The program prints forty-two, then one, then hello."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 175,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Optional holds a value or nothing. Two. Value or gives a default. Three. Variant holds one value from a list of types. Four. Check the type before you read a variant. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Optional holds a value or nothing.",
+        "Value or gives a default.",
+        "Variant holds one value from a list of types.",
+        "Check the type before you read a variant."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 205,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Reading the wrong type",
+      "animation": "Butter banner drops in with a buzzer; the program crashes and the run-time error appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The variant holds an int, but we read a string. The program stops with a bad variant access error. Check the type first with holds alternative."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 8,
+      "onScreen": "Why did the optional feel calm? It never promised to hold anything.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the optional feel calm? It never promised to hold anything."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 253,
+      "lengthSec": 20,
+      "onScreen": "Task card: return a safe square root",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a function that returns an optional double. It returns nothing for a negative input. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 273,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 82 · Exceptions",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: exceptions. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <string>\n#include <variant>\nusing namespace std;\n\nint main() {\n    variant<int, string> v = 42;\n    cout << get<string>(v) << endl;\n    return 0;\n}",
+    "error": "Program error output (exactly as the program prints it):\n\nterminate called after throwing an instance of 'std::bad_variant_access'\n  what():  std::get: wrong index for variant",
+    "fixed": "#include <iostream>\n#include <string>\n#include <variant>\nusing namespace std;\n\nint main() {\n    variant<int, string> v = 42;\n    if (holds_alternative<string>(v)) {\n        cout << get<string>(v) << endl;\n    } else {\n        cout << \"not a string\" << endl;\n    }\n    return 0;\n}",
+    "why": "Get throws an exception when the variant holds another type. Check with holds alternative first, or use visit."
+  },
+  "pun": "\"Why did the optional feel calm? It never promised to hold anything.\"",
+  "challenge": "Write a function that returns an optional double. It returns nothing for a negative input.",
+  "challengeAnswer": "If the input is below zero, return nullopt. Otherwise return the square root.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: optional and variant",
+      "hook": "\"Return a value that may not exist.\"",
+      "script": "Return a value that may not exist. Today we handle missing values the safe way. Optional holds a value or nothing. Variant holds one of several types. Some functions may have no answer. Old code returned minus one, or a null pointer. That is easy to misuse. Optional says it in the type. It holds a value, or it holds nothing. Keep coding, says Xecxec!",
+      "onScreen": "OPTIONAL AND VARIANT",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: optional and variant.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "optionalandvariant",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "optional and variant in one minute",
+      "hook": "\"Some functions may have no answer.\"",
+      "script": "Some functions may have no answer. Old code returned minus one, or a null pointer. That is easy to misuse. Optional says it in the type. It holds a value, or it holds nothing. Variant holds exactly one value from a list of types. The function returns an optional int. When it finds the value, it returns the index. Keep coding, says Xecxec!",
+      "onScreen": "OPTIONAL AND VARIANT",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "optional and variant in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "optionalandvariant",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The variant holds an int or a string.\"",
+      "script": "The variant holds an int or a string. Right now it holds an int. Get with a type reads that type. The output is forty-two. Now the variant holds a string. Holds alternative checks the current type. It prints one for true. Visit calls the lambda with whatever type is inside. It prints hello. The program prints forty-two, then one, then hello. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "optionalandvariant",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Reading the wrong type",
+      "hook": "\"Can you spot the bug in optional and variant?\"",
+      "script": "Can you spot the bug in optional and variant? Bug of the Day. The variant holds an int, but we read a string. The program stops with a bad variant access error. Check the type first with holds alternative. Get throws an exception when the variant holds another type. Check with holds alternative first, or use visit. Optional holds a value or nothing. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Bug of the Day: Reading the wrong type.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "optionalandvariant",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you return a safe square root in optional and variant?\"",
+      "script": "Can you return a safe square root in optional and variant? Why did the optional feel calm? It never promised to hold anything. Write a function that returns an optional double. It returns nothing for a negative input. Write your answer in the comments. Optional holds a value or nothing. Value or gives a default. Variant holds one value from a list of types. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "optionalandvariant",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "optional.cpp",
+      "source": "#include <iostream>\n#include <optional>\n#include <vector>\nusing namespace std;\n\noptional<int> find_index(const vector<int>& v, int x) {\n    for (size_t i = 0; i < v.size(); ++i) {\n        if (v[i] == x) {\n            return static_cast<int>(i);\n        }\n    }\n    return nullopt;\n}\n\nint main() {\n    vector<int> v = {4, 8, 15};\n    auto r = find_index(v, 8);\n    if (r) {\n        cout << \"at \" << *r << endl;\n    }\n    auto m = find_index(v, 99);\n    cout << m.value_or(-1) << endl;\n    return 0;\n}",
+      "output": "at 1\n-1",
+      "lang": "cpp"
+    },
+    {
+      "file": "variant.cpp",
+      "source": "#include <iostream>\n#include <string>\n#include <variant>\nusing namespace std;\n\nint main() {\n    variant<int, string> v = 42;\n    cout << get<int>(v) << endl;\n    v = \"hello\";\n    cout << holds_alternative<string>(v) << endl;\n    visit([](const auto& x) { cout << x << endl; }, v);\n    return 0;\n}",
+      "output": "42\n1\nhello",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "not a string"
+  },
+  "nextTitle": "Exceptions"
+}

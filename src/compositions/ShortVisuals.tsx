@@ -1,5 +1,5 @@
 import { useCurrentFrame } from "remotion";
-import type { Episode } from "../lib/episode";
+import { isCCourse, type Episode } from "../lib/episode";
 import type { ShortBox, ShortVisual } from "../lib/shortVisual";
 import { frameAt, frameStarts, type WordTime } from "../lib/shortFrames";
 import { bugCulprit } from "../lib/bugCulprit";
@@ -648,7 +648,7 @@ const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
     briefErrorLines(stripMarkdown(episode.bug.error), episode.bug.wrong, isCode),
   );
   // The code window centres on the culprit line, like the long video's Bug of the Day.
-  const culprit = isCode ? bugCulprit(episode.ep, episode.bug.wrong, episode.bug.fixed, episode.bug.error).wrong : undefined;
+  const culprit = isCode ? bugCulprit(isCCourse(episode.lang) ? episode.ep : 0, episode.bug.wrong, episode.bug.fixed, episode.bug.error).wrong : undefined;
   const fitted = fitError(errorText, isCode);
   const errorChars = typewriterChars(fitted.text, frame, 24, 1.1);
   const errorH = fitted.height;

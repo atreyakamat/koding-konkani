@@ -1,0 +1,392 @@
+{
+  "lang": "cpp",
+  "ep": 73,
+  "title": "unordered_map",
+  "module": 8,
+  "lengthSec": 297,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "use unordered_map for fast look-up",
+    "count words",
+    "know when at throws"
+  ],
+  "youtube": {
+    "title": "C++ unordered_map: Fast Look-Up | C++ Programming EP 73",
+    "description": "In this episode you will use unordered_map for fast look-up, count words and know when at throws, with Xecxec the crab. 0:00 Intro · 0:15 unordered_map · 0:54 Count the words · 1:34 Counts after the loop · 2:04 Second program · 3:04 Recap · 3:34 Bug of the Day · 4:22 Challenge · 4:42 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "unordered_map"
+      },
+      {
+        "t": "0:54",
+        "label": "Count the words"
+      },
+      {
+        "t": "1:34",
+        "label": "Counts after the loop"
+      },
+      {
+        "t": "2:04",
+        "label": "Second program"
+      },
+      {
+        "t": "3:04",
+        "label": "Recap"
+      },
+      {
+        "t": "3:34",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:22",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:42",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "unordered_map",
+      "hash map c++",
+      "word count",
+      "map vs unordered_map"
+    ],
+    "thumbnail": {
+      "text": "UNORDERED",
+      "visual": "big text \"UNORDERED\" in tomato on lilac; Xecxec next to a pile of keys on a table; thin black border and drop shadow.",
+      "pose": "Xecxec next to a pile of keys on a table"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 73 · UNORDERED",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet the map that trades order for speed. It is the right tool for counting and for fast look-up."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 39,
+      "onScreen": "\"unordered_map\": numbered lines (1. It finds a key fast; 2. The order of the keys is not defined; 3. At throws an exception for a missing key) and an analogy card: a locker room: the key number takes you straight to the locker, but the lockers are not in order",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "An unordered map uses a hash table. It finds a key in about one step, even when the map is big. The price is that the keys have no order. It has the same functions as map. Use map when you need sorted keys. Use unordered map when you need speed. Think of a locker room. The key number takes you straight to the locker.",
+      "points": [
+        "It finds a key fast",
+        "The order of the keys is not defined",
+        "At throws an exception for a missing key"
+      ],
+      "analogy": {
+        "title": "unordered_map",
+        "body": "A locker room: the key number takes you straight to the locker, but the lockers are not in order"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 54,
+      "lengthSec": 40,
+      "onScreen": "count.cpp: an unordered_map counts how many times each word appears",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 8] The keys are words, and the values are counts. [HL 9] This stream lets us read the words of a text, one by one. [HL 11] The loop reads each word. [HL 12] The first time, square brackets create the key with zero, and then plus plus makes it one. Later it counts up. [HL 14] Sun appears three times, sea once, and there are four different words.",
+      "code": {
+        "file": "count.cpp",
+        "source": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    unordered_map<string, int> counts;\n    istringstream text(\"goa sun sea sun sand sun\");\n    string word;\n    while (text >> word) {\n        counts[word]++;\n    }\n    cout << counts[\"sun\"] << \" \" << counts[\"sea\"] << \" \" << counts.size() << endl;\n    return 0;\n}",
+        "output": "3 1 4"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 94,
+      "lengthSec": 30,
+      "onScreen": "a table: each word and its count",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "After the loop, each word has a count. Sun has three. The others have one. The table shows an example order. A real unordered map may list them in any order, so never rely on it.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: each word and its count",
+        "headers": [
+          "Word",
+          "Count"
+        ],
+        "rows": [
+          [
+            "goa",
+            "1"
+          ],
+          [
+            "sun",
+            "3"
+          ],
+          [
+            "sea",
+            "1"
+          ],
+          [
+            "sand",
+            "1"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 124,
+      "lengthSec": 40,
+      "onScreen": "lookup.cpp: count and find check a key without creating it",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 7] The map holds two prices. [HL 8] Count returns one if the key exists. [HL 9] It returns zero if it does not. [HL 10] Find gives an iterator to the pair. [HL 11] The value is forty-five. Neither call changes the map.",
+      "code": {
+        "file": "lookup.cpp",
+        "source": "#include <iostream>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    unordered_map<string, int> price = {{\"fish\", 120}, {\"rice\", 45}};\n    cout << price.count(\"fish\") << endl;\n    cout << price.count(\"tea\") << endl;\n    auto it = price.find(\"rice\");\n    cout << it->second << endl;\n    return 0;\n}",
+        "output": "1\n0\n45"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 164,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 lookup.cpp -o lookup then ./lookup",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as lookup dot cpp. Compile it with g plus plus. Then run the program. The program prints one, zero, and forty-five."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 184,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. An unordered map finds a key fast. Two. The order of its keys is not defined. Three. Use map when you need sorted keys. Four. At throws an exception for a missing key. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "An unordered map finds a key fast.",
+        "The order of its keys is not defined.",
+        "Use map when you need sorted keys.",
+        "At throws an exception for a missing key."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 214,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: At with a missing key",
+      "animation": "Butter banner drops in with a buzzer; the program crashes and the run-time error appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We call at with a key that is not in the map. The program stops. It says terminate called after throwing an instance of out of range. At is the safe way, because it tells you about the problem. Check with count first."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 254,
+      "lengthSec": 8,
+      "onScreen": "The hash map said, I do not care about order. I only care that you find me fast.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "The hash map said, I do not care about order. I only care that you find me fast."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 262,
+      "lengthSec": 20,
+      "onScreen": "Task card: count letters",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Count how often each letter appears in the word Konkani. Print the count of the letter n. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 282,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 74 · set and unordered_set",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: set and unordered set. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    unordered_map<string, int> price = {{\"fish\", 120}};\n    cout << price.at(\"tea\") << endl;\n    return 0;\n}",
+    "error": "Program error output (exactly as the program prints it):\n\nterminate called after throwing an instance of 'std::out_of_range'\n  what():  unordered_map::at",
+    "fixed": "#include <iostream>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    unordered_map<string, int> price = {{\"fish\", 120}};\n    if (price.count(\"tea\") > 0) {\n        cout << price.at(\"tea\") << endl;\n    } else {\n        cout << \"No tea\" << endl;\n    }\n    return 0;\n}",
+    "why": "At checks the key, and it throws an exception when the key is missing. Check with count first, or catch the exception."
+  },
+  "pun": "\"The hash map said, I do not care about order. I only care that you find me fast.\"",
+  "challenge": "Count how often each letter appears in the word Konkani. Print the count of the letter n.",
+  "challengeAnswer": "Loop over the letters. Add one to counts at the letter. Print counts of the letter n, which is two.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: unordered_map",
+      "hook": "\"The fastest way to look up a key.\"",
+      "script": "The fastest way to look up a key. Today we meet the map that trades order for speed. It is the right tool for counting and for fast look-up. An unordered map uses a hash table. It finds a key in about one step, even when the map is big. The price is that the keys have no order. Keep coding, says Xecxec!",
+      "onScreen": "UNORDERED_MAP",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "What you will learn: unordered_map.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "unorderedmap",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "unordered_map in one minute",
+      "hook": "\"An unordered map uses a hash table.\"",
+      "script": "An unordered map uses a hash table. It finds a key in about one step, even when the map is big. The price is that the keys have no order. It has the same functions as map. Use map when you need sorted keys. Use unordered map when you need speed. Think of a locker room. The key number takes you straight to the locker. Keep coding, says Xecxec!",
+      "onScreen": "UNORDERED_MAP",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "unordered_map in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "unorderedmap",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The map holds two prices.\"",
+      "script": "The map holds two prices. Count returns one if the key exists. It returns zero if it does not. Find gives an iterator to the pair. The value is forty-five. Neither call changes the map. The program prints one, zero, and forty-five. An unordered map finds a key fast. The order of its keys is not defined. Use map when you need sorted keys. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 38,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "unorderedmap",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: At with a missing key",
+      "hook": "\"Can you spot the bug in unordered map?\"",
+      "script": "Can you spot the bug in unordered map? Bug of the Day. We call at with a key that is not in the map. The program stops. It says terminate called after throwing an instance of out of range. At is the safe way, because it tells you about the problem. Check with count first. At checks the key, and it throws an exception when the key is missing. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 41,
+      "caption": "Bug of the Day: At with a missing key.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "unorderedmap",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you count letters in unordered map?\"",
+      "script": "Can you count letters in unordered map? The hash map said, I do not care about order. I only care that you find me fast. Count how often each letter appears in the word Konkani. Print the count of the letter n. Write your answer in the comments. An unordered map finds a key fast. The order of its keys is not defined. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "unorderedmap",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "count.cpp",
+      "source": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    unordered_map<string, int> counts;\n    istringstream text(\"goa sun sea sun sand sun\");\n    string word;\n    while (text >> word) {\n        counts[word]++;\n    }\n    cout << counts[\"sun\"] << \" \" << counts[\"sea\"] << \" \" << counts.size() << endl;\n    return 0;\n}",
+      "output": "3 1 4",
+      "lang": "cpp"
+    },
+    {
+      "file": "lookup.cpp",
+      "source": "#include <iostream>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    unordered_map<string, int> price = {{\"fish\", 120}, {\"rice\", 45}};\n    cout << price.count(\"fish\") << endl;\n    cout << price.count(\"tea\") << endl;\n    auto it = price.find(\"rice\");\n    cout << it->second << endl;\n    return 0;\n}",
+      "output": "1\n0\n45",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "No tea"
+  },
+  "nextTitle": "set and unordered_set"
+}

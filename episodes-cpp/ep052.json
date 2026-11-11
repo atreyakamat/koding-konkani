@@ -1,0 +1,392 @@
+{
+  "lang": "cpp",
+  "ep": 52,
+  "title": "Classes and objects",
+  "module": 6,
+  "lengthSec": 292,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "define a class with private data and public functions",
+    "make objects from a class",
+    "explain public and private"
+  ],
+  "youtube": {
+    "title": "C++ Classes and Objects for Beginners | C++ Programming EP 52",
+    "description": "In this episode you will define a class with private data and public functions, make objects from a class and explain public and private, with Xecxec the crab. 0:00 Intro · 0:15 Classes and objects · 0:49 A Counter class · 1:29 Public and private · 1:59 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:37 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Classes and objects"
+      },
+      {
+        "t": "0:49",
+        "label": "A Counter class"
+      },
+      {
+        "t": "1:29",
+        "label": "Public and private"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:17",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:37",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ class",
+      "object oriented programming",
+      "public private",
+      "member function"
+    ],
+    "thumbnail": {
+      "text": "CLASSES",
+      "visual": "big text \"CLASSES\" in tomato on peach; Xecxec next to a blueprint and a house built from it; thin black border and drop shadow.",
+      "pose": "Xecxec next to a blueprint and a house built from it"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 52 · CLASSES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet classes. A class bundles data and the functions that work on it, and it hides the data from the outside."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 34,
+      "onScreen": "\"Classes and objects\": numbered lines (1. A class is a blueprint; 2. An object is one thing built from it; 3. Private data is hidden, public functions are open) and an analogy card: a blueprint and the houses built from it",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A class is a blueprint. An object is one thing built from the blueprint. A class has data and member functions. Data is private by default. Only the class itself can touch it. The public functions are the buttons that everyone may press. Think of a lift. You press a button, but you never touch the motor.",
+      "points": [
+        "A class is a blueprint",
+        "An object is one thing built from it",
+        "Private data is hidden, public functions are open"
+      ],
+      "analogy": {
+        "title": "Classes and objects",
+        "body": "A blueprint and the houses built from it"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 49,
+      "lengthSec": 40,
+      "onScreen": "counter.cpp: a class with private data and public functions",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 4] This is the class. [HL 5] The data is private by default. The trailing underscore is a habit that marks member data. [HL 7] Everything below this label is open to all. [HL 8] This function adds one. [HL 9] This function reads the value. [HL 13] Here we make one object. [HL 14] We press the button twice. [HL 16] The count is two.",
+      "code": {
+        "file": "counter.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 0;\n\npublic:\n    void increment() { count_++; }\n    int get() const { return count_; }\n};\n\nint main() {\n    Counter c;\n    c.increment();\n    c.increment();\n    cout << c.get() << endl;\n    return 0;\n}",
+        "output": "2"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 89,
+      "lengthSec": 30,
+      "onScreen": "a table of what code outside the class may do",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "The table shows the rule. Count is private, so outside code cannot touch it. Increment and get are public, so anyone may call them. This protects the data. Only the class decides how it changes.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table of what code outside the class may do",
+        "headers": [
+          "Member",
+          "Access",
+          "Outside code may"
+        ],
+        "rows": [
+          [
+            "count_",
+            "private",
+            "not touch it"
+          ],
+          [
+            "increment()",
+            "public",
+            "call it"
+          ],
+          [
+            "get()",
+            "public",
+            "call it"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 119,
+      "lengthSec": 40,
+      "onScreen": "twocounters.cpp: each object has its own data",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 13] We make two objects from one class. [HL 14] Each object has its own count. We add one twice to a. [HL 16] We add one to b once. [HL 17] A has two, and b has one. The objects do not affect each other.",
+      "code": {
+        "file": "twocounters.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 0;\n\npublic:\n    void increment() { count_++; }\n    int get() const { return count_; }\n};\n\nint main() {\n    Counter a, b;\n    a.increment();\n    a.increment();\n    b.increment();\n    cout << a.get() << \" \" << b.get() << endl;\n    return 0;\n}",
+        "output": "2 1"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 159,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 twocounters.cpp -o twocounters then ./twocounters",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as twocounters dot cpp. Compile it with g plus plus. Then run the program. The program prints two and one."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 179,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A class is a blueprint, and an object is one thing built from it. Two. Data is private by default. Three. Public member functions are the buttons. Four. Each object has its own data. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A class is a blueprint, and an object is one thing built from it.",
+        "Data is private by default.",
+        "Public member functions are the buttons.",
+        "Each object has its own data."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 209,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Touching private data",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Main tries to set the private count. The compiler says count is private within this context. That is the whole point of private. Use a public function, such as increment, instead."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 249,
+      "lengthSec": 8,
+      "onScreen": "I tried to read my class private data. It said, mind your own members.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I tried to read my class private data. It said, mind your own members."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 257,
+      "lengthSec": 20,
+      "onScreen": "Task card: build a Light class",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a class called Light with a private bool on. Add public functions turn on, turn off, and is on. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 277,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 53 · Constructors",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: constructors. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 0;\n\npublic:\n    void increment() { count_++; }\n};\n\nint main() {\n    Counter c;\n    c.count_ = 5;\n    cout << \"done\" << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\ncounter.cpp: In function 'int main()':\ncounter.cpp:13:7: error: 'int Counter::count_' is private within this context\n   13 |     c.count_ = 5;\n      |       ^~~~~~\ncounter.cpp:5:9: note: declared private here\n    5 |     int count_ = 0;",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 0;\n\npublic:\n    void increment() { count_++; }\n};\n\nint main() {\n    Counter c;\n    c.increment();\n    cout << \"done\" << endl;\n    return 0;\n}",
+    "why": "Private data is only for the class. Outside code must use the public functions."
+  },
+  "pun": "\"I tried to read my class private data. It said, mind your own members.\"",
+  "challenge": "Write a class called Light with a private bool on. Add public functions turn on, turn off, and is on.",
+  "challengeAnswer": "Keep the bool private. The functions set it to true or false, and is on returns it. Mark is on as const.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Classes and objects",
+      "hook": "\"Hide the data. Show only the buttons.\"",
+      "script": "Hide the data. Show only the buttons. Today we meet classes. A class bundles data and the functions that work on it, and it hides the data from the outside. A class is a blueprint. An object is one thing built from the blueprint. A class has data and member functions. Data is private by default. Only the class itself can touch it. Keep coding, says Xecxec!",
+      "onScreen": "CLASSES AND OBJECTS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "What you will learn: Classes and objects.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classesandobjects",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Classes and objects in one minute",
+      "hook": "\"A class is a blueprint.\"",
+      "script": "A class is a blueprint. An object is one thing built from the blueprint. A class has data and member functions. Data is private by default. Only the class itself can touch it. The public functions are the buttons that everyone may press. Think of a lift. You press a button, but you never touch the motor. This is the class. Keep coding, says Xecxec!",
+      "onScreen": "CLASSES AND OBJECTS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Classes and objects in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classesandobjects",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"We make two objects from one class.\"",
+      "script": "We make two objects from one class. Each object has its own count. We add one twice to a. We add one to b once. A has two, and b has one. The objects do not affect each other. The program prints two and one. A class is a blueprint, and an object is one thing built from it. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 36,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classesandobjects",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Touching private data",
+      "hook": "\"Can you spot the bug in classes and objects?\"",
+      "script": "Can you spot the bug in classes and objects? Bug of the Day. Main tries to set the private count. The compiler says count is private within this context. That is the whole point of private. Use a public function, such as increment, instead. Private data is only for the class. Outside code must use the public functions. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Bug of the Day: Touching private data.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classesandobjects",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you build a Light class in classes and objects?\"",
+      "script": "Can you build a Light class in classes and objects? I tried to read my class private data. It said, mind your own members. Write a class called Light with a private bool on. Add public functions turn on, turn off, and is on. Write your answer in the comments. A class is a blueprint, and an object is one thing built from it. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "classesandobjects",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "counter.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 0;\n\npublic:\n    void increment() { count_++; }\n    int get() const { return count_; }\n};\n\nint main() {\n    Counter c;\n    c.increment();\n    c.increment();\n    cout << c.get() << endl;\n    return 0;\n}",
+      "output": "2",
+      "lang": "cpp"
+    },
+    {
+      "file": "twocounters.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 0;\n\npublic:\n    void increment() { count_++; }\n    int get() const { return count_; }\n};\n\nint main() {\n    Counter a, b;\n    a.increment();\n    a.increment();\n    b.increment();\n    cout << a.get() << \" \" << b.get() << endl;\n    return 0;\n}",
+      "output": "2 1",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "done"
+  },
+  "nextTitle": "Constructors"
+}
