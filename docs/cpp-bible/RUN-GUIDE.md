@@ -84,6 +84,6 @@ One module for each night. If RAM goes above 13 GB, the queue lowers the concurr
 
 - The real Piper narration for C++ words (step 3 is your listening check).
 - GCC 16 on your PC (step 1).
-- A full 4K render of one episode on your PC (step 4). I tested stills of every scene and Short, not a whole mp4.
+- A full 4K render on your PC (step 4). I rendered EP1 end to end here at low resolution with silent audio: 204 s, no black or frozen frames. Stills of 9 episodes, all scene types, also passed.
 
 Upload data (titles, descriptions, tags, thumbnails, Shorts captions) is in `docs/cpp-bible/metadata/`. You upload the videos yourself.
