@@ -124,7 +124,7 @@ case "$cmd" in
     [ -z "$run_id" ] && run_id="$(date +%Y%m%d-%H%M)" && echo "$run_id" > "$STATE"
     archive_range "$run_id"
     inhibit=""; command -v systemd-inhibit >/dev/null && inhibit="systemd-inhibit --what=sleep:idle:handle-lid-switch --who=koding-konkani --why=rendering"
-    tmux new-session -d -s "$SESSION" "cd '$ROOT' && $inhibit bash scripts/render_all.sh _run $A $B 2>&1 | tee -a $LOG; echo finished; sleep 86400"
+    tmux new-session -d -s "$SESSION" "cd '$ROOT' && $inhibit bash scripts/render_all.sh _run $A $B 2>&1 | tee -a $LOG; echo finished"
     echo "Started in tmux '$SESSION' (run $run_id). Watch: bash scripts/render_all.sh attach   Status: bash scripts/render_all.sh status"
     echo "If it ever dies (tmux crash, reboot): run the same start command again. It resumes." ;;
   _run) run_loop ;;

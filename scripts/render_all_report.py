@@ -11,7 +11,11 @@ status_only = "--status" in sys.argv
 
 
 def load(ep: int):
-    p = ROOT / "out" / f"ep{ep:03d}" / "qa.json"
+    # Only count episodes this tool has claimed (marker written by render_all.sh); older qa.json files are stale.
+    d = ROOT / "out" / f"ep{ep:03d}"
+    if not list(d.glob(".render-all-*")):
+        return None
+    p = d / "qa.json"
     if not p.exists():
         return None
     try:
