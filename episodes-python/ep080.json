@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A test is code that checks your code. The simplest tool is assert. Write assert, then a claim. If the claim is False, Python raises an AssertionError. The unittest module in the standard library groups checks into a class, with methods whose names start with test. Another tool, pytest, needs only plain functions and assert, and is very popular. Think of a quality stamp on every function. Tick if it behaves, cross if it does not."
+      "narration": "A test is code that checks your code. The simplest tool is assert. Write assert, then a claim. If the claim is False, Python raises an AssertionError. The unittest module in the standard library groups checks into a class, with methods whose names start with test. Another tool, pytest, needs only plain functions and assert, and is very popular. Think of a quality stamp on every function. Tick if it behaves, cross if it does not.",
+      "props": {
+        "lines": [
+          "assert stops the program if a claim is false",
+          "unittest groups checks into test methods",
+          "pytest needs only plain functions and assert"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a quality stamp on every function: tick if it behaves, cross if it does not, before it reaches the customer"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "asserts.py",
         "source": "def is_even(n):\n    return n % 2 == 0\n\nassert is_even(4)\nassert not is_even(7)\nprint(\"all good\")\ntry:\n    assert is_even(3), \"3 should be even?\"\nexcept AssertionError as e:\n    print(\"failed:\", e)",
         "output": "all good\nfailed: 3 should be even?"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python asserts.py",
+        "output": "all good\nfailed: 3 should be even?"
       }
     },
     {
@@ -129,7 +145,128 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the idea of a test run. Each test is a small card with a claim. The runner flips every card. If the claim is true, it gets a green tick. If not, a red cross, and the message. After every change to your code, you run all the cards again, in a second. If something that worked yesterday breaks today, you see a red cross at once, before your users do."
+      "narration": "Here is the idea of a test run. Each test is a small card with a claim. The runner flips every card. If the claim is true, it gets a green tick. If not, a red cross, and the message. After every change to your code, you run all the cards again, in a second. If something that worked yesterday breaks today, you see a red cross at once, before your users do.",
+      "props": {
+        "lines": [
+          "Here is the idea of a test run.",
+          "Each test is a small card with a claim.",
+          "The runner flips every card."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 80,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "t1",
+              "shape": "card",
+              "text": "test_small",
+              "colour": "cream",
+              "col": 0,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "t2",
+              "shape": "card",
+              "text": "test_negative",
+              "colour": "cream",
+              "col": 4,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "t3",
+              "shape": "card",
+              "text": "test_text",
+              "colour": "cream",
+              "col": 8,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "t4",
+              "shape": "card",
+              "text": "test_bug",
+              "colour": "cream",
+              "col": 4,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "msg",
+              "shape": "label",
+              "text": "3 != 5",
+              "colour": "peach",
+              "col": 8,
+              "row": 4,
+              "w": 2,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "t1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "t2"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "t3"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "t4"
+            },
+            {
+              "t": 0.2,
+              "do": "tick",
+              "target": "t1",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.35,
+              "do": "tick",
+              "target": "t2",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.5,
+              "do": "tick",
+              "target": "t3",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.7,
+              "do": "cross",
+              "target": "t4",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.8,
+              "do": "show",
+              "target": "msg",
+              "sfx": "pop"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -146,6 +283,11 @@
         "file": "test_add.py",
         "source": "import io\nimport unittest\n\ndef add(a, b):\n    return a + b\n\nclass TestAdd(unittest.TestCase):\n    def test_small(self):\n        self.assertEqual(add(2, 3), 5)\n\n    def test_negative(self):\n        self.assertEqual(add(-1, 1), 0)\n\n    def test_text(self):\n        self.assertEqual(add(\"a\", \"b\"), \"ab\")\n\nsuite = unittest.defaultTestLoader.loadTestsFromTestCase(TestAdd)\nresult = unittest.TextTestRunner(stream=io.StringIO()).run(suite)\nprint(result.testsRun, result.wasSuccessful())",
         "output": "3 True"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python test_add.py",
+        "output": "3 True"
       }
     },
     {
@@ -159,7 +301,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as test_add dot py. In the terminal, type python, space, test_add dot py. all good, failed: 3 should be even?. Then 3 True."
+      "narration": "Save the file as test_add dot py. In the terminal, type python, space, test_add dot py. all good, failed: 3 should be even?. Then 3 True.",
+      "props": {
+        "lines": [
+          {
+            "text": "python test_add.py",
+            "kind": "input"
+          },
+          {
+            "text": "3 True",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +325,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: assert claim raises AssertionError if the claim is False. Two: unittest groups tests in a TestCase class. Names start with test. Three: pytest uses plain functions and assert. Four: Run tests after every change. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: assert claim raises AssertionError if the claim is False. Two: unittest groups tests in a TestCase class. Names start with test. Three: pytest uses plain functions and assert. Four: Run tests after every change. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Assert claim raises AssertionError if the claim is False.",
+          "Unittest groups tests in a TestCase class; names start with test.",
+          "Pytest uses plain functions and assert.",
+          "Run tests after every change."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +347,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We assert that point one plus point two equals point three. It fails. Assertion error, with no message. Computers store decimals as tiny approximations, and the sum is point three, followed by a long tail ending in four. Compare floats with math dot is close instead. It allows a tiny difference."
+      "narration": "Bug of the Day. We assert that point one plus point two equals point three. It fails. Assertion error, with no message. Computers store decimals as tiny approximations, and the sum is point three, followed by a long tail ending in four. Compare floats with math dot is close instead. It allows a tiny difference.",
+      "props": {
+        "wrongCode": "assert 0.1 + 0.2 == 0.3",
+        "fixedCode": "import math\n\nassert math.isclose(0.1 + 0.2, 0.3)\nprint(\"ok\")",
+        "error": "  File \"floats.py\", line 1, in <module>\n    assert 0.1 + 0.2 == 0.3\n           ^^^^^^^^^^^^^^^^\nAssertionError",
+        "errorOverride": {
+          "lines": [
+            "  File \"floats.py\", line 1, in <module>",
+            "    assert 0.1 + 0.2 == 0.3",
+            "           ^^^^^^^^^^^^^^^^",
+            "AssertionError"
+          ]
+        },
+        "why": "Computers store most decimals as tiny approximations, so equal-looking numbers may differ in the last digits. Compare floats with math.isclose, not with equals.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python asserts.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +405,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Module eight is done! Next time: dates and times, and the standard library. Keep coding, says Xecxec!"
+      "narration": "Module eight is done! Next time: dates and times, and the standard library. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 81,
+        "nextTitle": "Dates and times"
+      }
     }
   ],
   "bug": {
@@ -348,5 +537,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

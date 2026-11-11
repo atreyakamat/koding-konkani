@@ -1,0 +1,425 @@
+{
+  "lang": "cpp",
+  "ep": 47,
+  "title": "Dynamic arrays",
+  "module": 5,
+  "lengthSec": 302,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "make an array with a size known only at run time",
+    "free it correctly",
+    "explain why vector is safer"
+  ],
+  "youtube": {
+    "title": "C++ Dynamic Arrays: Size Chosen at Run Time | C++ Programming EP 47",
+    "description": "In this episode you will make an array with a size known only at run time, free it correctly and explain why vector is safer, with Xecxec the crab. 0:00 Intro · 0:15 Dynamic arrays · 0:57 Size from the user · 1:37 A pointer to n boxes · 2:07 Second program · 3:07 Recap · 3:39 Bug of the Day · 4:27 Challenge · 4:47 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Dynamic arrays"
+      },
+      {
+        "t": "0:57",
+        "label": "Size from the user"
+      },
+      {
+        "t": "1:37",
+        "label": "A pointer to n boxes"
+      },
+      {
+        "t": "2:07",
+        "label": "Second program"
+      },
+      {
+        "t": "3:07",
+        "label": "Recap"
+      },
+      {
+        "t": "3:39",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:27",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:47",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "dynamic array c++",
+      "new int[n]",
+      "run time size",
+      "vector vs array"
+    ],
+    "thumbnail": {
+      "text": "ANY SIZE",
+      "visual": "big text \"ANY SIZE\" in tomato on lilac; Xecxec next to a box that grows to fit the order; thin black border and drop shadow.",
+      "pose": "Xecxec next to a box that grows to fit the order"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 47 · ANY SIZE",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today the user chooses the size. A plain array cannot do this, but an array on the heap can."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 42,
+      "onScreen": "\"Dynamic arrays\": numbered lines (1. The size can come from the user; 2. You must free the array yourself; 3. A vector does the same job safely) and an analogy card: a tailor: he cuts the cloth only after you tell him your size",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A plain array needs a size that the compiler knows. An array on the heap can use a size that you read at run time. Use new with the size in square brackets. You must free it with delete square brackets. You must also remember its size yourself. This is why most programmers prefer a vector. Think of a tailor. He cuts the cloth only after you tell him your size.",
+      "points": [
+        "The size can come from the user",
+        "You must free the array yourself",
+        "A vector does the same job safely"
+      ],
+      "analogy": {
+        "title": "Dynamic arrays",
+        "body": "A tailor: he cuts the cloth only after you tell him your size"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 57,
+      "lengthSec": 40,
+      "onScreen": "dyn.cpp: the user types the size, and the array fits",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 6] The user types the size. We use four. [HL 7] New makes an array with n items. The compiler did not need to know n. [HL 9] Each item gets the square of its position plus one. [HL 12] The output is one, four, nine, sixteen. [HL 15] We free the array at the end.",
+      "code": {
+        "file": "dyn.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int* a = new int[n];\n    for (int i = 0; i < n; i++) {\n        a[i] = (i + 1) * (i + 1);\n    }\n    for (int i = 0; i < n; i++) {\n        cout << a[i] << \" \";\n    }\n    cout << endl;\n    delete[] a;\n    return 0;\n}",
+        "output": "1 4 9 16"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 97,
+      "lengthSec": 30,
+      "onScreen": "a points to four boxes on the heap",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "N holds the size, four. A is a pointer on the stack. It points to the first of four boxes on the heap. Note that the pointer does not know the size. You must keep n yourself.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "4",
+                    "address": "0x1000",
+                    "name": "n"
+                  },
+                  {
+                    "value": "0x5000",
+                    "address": "0x1008",
+                    "name": "a"
+                  }
+                ]
+              },
+              {
+                "name": "items",
+                "cells": [
+                  {
+                    "value": "1",
+                    "address": "0x5000",
+                    "index": 0
+                  },
+                  {
+                    "value": "4",
+                    "address": "0x5004",
+                    "index": 1
+                  },
+                  {
+                    "value": "9",
+                    "address": "0x5008",
+                    "index": 2
+                  },
+                  {
+                    "value": "16",
+                    "address": "0x500C",
+                    "index": 3
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:1",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 127,
+      "lengthSec": 40,
+      "onScreen": "safer.cpp: a vector does the same job in fewer lines",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 8] A vector with n items does the same job. [HL 10] We fill it in the same way. [HL 12] A range-based for works too. There is no new and no delete. The vector frees its own memory. It also knows its size.",
+      "code": {
+        "file": "safer.cpp",
+        "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> a(n);\n    for (int i = 0; i < n; i++) {\n        a[i] = (i + 1) * (i + 1);\n    }\n    for (int x : a) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+        "output": "1 4 9 16"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 167,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 safer.cpp -o safer then ./safer",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as safer dot cpp. Compile it with g plus plus. Then run the program. Type four and press Enter. The program prints one, four, nine and sixteen."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 187,
+      "lengthSec": 32,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. New with a size makes an array of any size at run time. Two. Free it with delete square brackets. Three. A pointer does not know the size of the array. Four. A vector is safer and shorter. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "New with a size makes an array of any size at run time.",
+        "Free it with delete square brackets.",
+        "A pointer does not know the size of the array.",
+        "A vector is safer and shorter."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 219,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Delete on a pointer to a local",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We call delete on n, which is a plain int. The compiler says the type int was given to delete, but a pointer is expected. Delete must get the pointer that new returned. Here that is a, and it needs square brackets."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 259,
+      "lengthSec": 8,
+      "onScreen": "A tailor and a programmer have one thing in common. They both measure twice and cut once.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "A tailor and a programmer have one thing in common. They both measure twice and cut once."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 267,
+      "lengthSec": 20,
+      "onScreen": "Task card: average of n numbers",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Ask for n. Make a vector of n numbers, read them, and print their average. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 287,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 48 · Leaks and RAII",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: memory leaks and RAII. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n = 4;\n    int* a = new int[n];\n    a[0] = 1;\n    cout << a[0] << endl;\n    delete n;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\ndyn.cpp: In function 'int main()':\ndyn.cpp:9:12: error: type 'int' argument given to 'delete', expected pointer\n    9 |     delete n;\n      |            ^",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n = 4;\n    int* a = new int[n];\n    a[0] = 1;\n    cout << a[0] << endl;\n    delete[] a;\n    return 0;\n}",
+    "why": "Delete needs a pointer. The variable n is a plain int. Free the pointer that new returned, which is a."
+  },
+  "pun": "\"A tailor and a programmer have one thing in common. They both measure twice and cut once.\"",
+  "challenge": "Ask for n. Make a vector of n numbers, read them, and print their average.",
+  "challengeAnswer": "Read n. Make vector of double with n items. Read each item with cin. Add them up, and divide by n.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Dynamic arrays",
+      "hook": "\"The user decides the size, and the array fits.\"",
+      "script": "The user decides the size, and the array fits. Today the user chooses the size. A plain array cannot do this, but an array on the heap can. A plain array needs a size that the compiler knows. An array on the heap can use a size that you read at run time. Use new with the size in square brackets. Keep coding, says Xecxec!",
+      "onScreen": "DYNAMIC ARRAYS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: Dynamic arrays.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "dynamicarrays",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Dynamic arrays in one minute",
+      "hook": "\"A plain array needs a size that the compiler knows.\"",
+      "script": "A plain array needs a size that the compiler knows. An array on the heap can use a size that you read at run time. Use new with the size in square brackets. You must free it with delete square brackets. You must also remember its size yourself. This is why most programmers prefer a vector. Think of a tailor. Keep coding, says Xecxec!",
+      "onScreen": "DYNAMIC ARRAYS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Dynamic arrays in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "dynamicarrays",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"A vector with n items does the same job.\"",
+      "script": "A vector with n items does the same job. We fill it in the same way. A range-based for works too. There is no new and no delete. The vector frees its own memory. It also knows its size. Type four and press Enter. The program prints one, four, nine and sixteen. New with a size makes an array of any size at run time. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 39,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "dynamicarrays",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Delete on a pointer to a local",
+      "hook": "\"Can you spot the bug in dynamic arrays?\"",
+      "script": "Can you spot the bug in dynamic arrays? Bug of the Day. We call delete on n, which is a plain int. The compiler says the type int was given to delete, but a pointer is expected. Delete must get the pointer that new returned. Here that is a, and it needs square brackets. Delete needs a pointer. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Bug of the Day: Delete on a pointer to a local.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "dynamicarrays",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you average of n numbers in dynamic arrays?\"",
+      "script": "Can you average of n numbers in dynamic arrays? A tailor and a programmer have one thing in common. They both measure twice and cut once. Ask for n. Make a vector of n numbers, read them, and print their average. Write your answer in the comments. New with a size makes an array of any size at run time. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "dynamicarrays",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "dyn.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    int* a = new int[n];\n    for (int i = 0; i < n; i++) {\n        a[i] = (i + 1) * (i + 1);\n    }\n    for (int i = 0; i < n; i++) {\n        cout << a[i] << \" \";\n    }\n    cout << endl;\n    delete[] a;\n    return 0;\n}",
+      "output": "1 4 9 16",
+      "stdin": "4",
+      "lang": "cpp"
+    },
+    {
+      "file": "safer.cpp",
+      "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<int> a(n);\n    for (int i = 0; i < n; i++) {\n        a[i] = (i + 1) * (i + 1);\n    }\n    for (int x : a) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+      "output": "1 4 9 16",
+      "stdin": "4",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1"
+  },
+  "nextTitle": "Leaks and RAII"
+}

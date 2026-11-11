@@ -1,0 +1,389 @@
+{
+  "lang": "cpp",
+  "ep": 1,
+  "title": "Hello, C++!",
+  "module": 0,
+  "lengthSec": 295,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "say what C++ is",
+    "write a five-line program",
+    "print text with cout"
+  ],
+  "youtube": {
+    "title": "Your First C++ Program: Hello, World | C++ Programming EP 01",
+    "description": "In this episode you will say what C++ is, write a five-line program and print text with cout, with Xecxec the crab. 0:00 Intro · 0:15 Hello, C++! · 0:51 Your first program · 1:31 Write, compile, run · 2:01 Second program · 3:01 Recap · 3:32 Bug of the Day · 4:20 Challenge · 4:40 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Hello, C++!"
+      },
+      {
+        "t": "0:51",
+        "label": "Your first program"
+      },
+      {
+        "t": "1:31",
+        "label": "Write, compile, run"
+      },
+      {
+        "t": "2:01",
+        "label": "Second program"
+      },
+      {
+        "t": "3:01",
+        "label": "Recap"
+      },
+      {
+        "t": "3:32",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:20",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:40",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "hello world c++",
+      "first c++ program",
+      "what is c++",
+      "cout"
+    ],
+    "thumbnail": {
+      "text": "HELLO, C++!",
+      "visual": "big text \"HELLO, C++!\" in tomato on peach; Xecxec next to a glowing screen that says Namaskar, Goa!; thin black border and drop shadow.",
+      "pose": "Xecxec next to a glowing screen that says Namaskar, Goa!"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 01 · HELLO, C++!",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today you write your first C plus plus program. It has only five lines. At the end, your computer says hello to Goa."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 36,
+      "onScreen": "\"Hello, C++!\": numbered lines (1. C++ is a programming language; 2. A compiler turns your text into a program; 3. Games, browsers and apps use C++) and an analogy card: a recipe: you write the steps, the cook follows them",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "C plus plus is a programming language. You write instructions in a text file. The computer cannot read that file directly. A tool called a compiler changes your text into a program. Then the computer can run it. Games, web browsers and phone apps use C plus plus. Think of a recipe. You write the steps, and the cook follows them.",
+      "points": [
+        "C++ is a programming language",
+        "A compiler turns your text into a program",
+        "Games, browsers and apps use C++"
+      ],
+      "analogy": {
+        "title": "Hello, C++!",
+        "body": "A recipe: you write the steps, the cook follows them"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 51,
+      "lengthSec": 40,
+      "onScreen": "hello.cpp: a five-line program that prints Namaskar, Goa!",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 1] This line adds the iostream header. It gives us cout, the tool that prints text. [HL 3] Every program has a function called main. The computer starts here. [HL 4] This line prints the words Namaskar, Goa. Text goes inside double quotes. The word endl ends the line. [HL 5] Return zero tells the computer that all is well. [HL 6] The closing brace ends main.",
+      "code": {
+        "file": "hello.cpp",
+        "source": "#include <iostream>\n\nint main() {\n    std::cout << \"Namaskar, Goa!\" << std::endl;\n    return 0;\n}",
+        "output": "Namaskar, Goa!"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 91,
+      "lengthSec": 30,
+      "onScreen": "three steps: write the code, compile it, run the program",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the full journey. First, you write the code in a text file. Second, the compiler turns the text into a program. Third, you run the program, and the words appear on the screen. You repeat these three steps in every episode.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "three steps: write the code, compile it, run the program",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "Write",
+            "detail": "Type the code in hello.cpp"
+          },
+          {
+            "id": "s2",
+            "label": "Compile",
+            "detail": "g++ builds a program"
+          },
+          {
+            "id": "s3",
+            "label": "Run",
+            "detail": "The screen shows Namaskar, Goa!"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 121,
+      "lengthSec": 40,
+      "onScreen": "twolines.cpp: two cout lines run from top to bottom",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 4] The first cout prints a line about you. [HL 5] The second cout prints our sign-off. The computer runs the lines in order, from top to bottom. [HL 6] Then main returns zero and the program ends.",
+      "code": {
+        "file": "twolines.cpp",
+        "source": "#include <iostream>\n\nint main() {\n    std::cout << \"I am learning C++.\" << std::endl;\n    std::cout << \"Keep coding, says Xecxec!\" << std::endl;\n    return 0;\n}",
+        "output": "I am learning C++.\nKeep coding, says Xecxec!"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 161,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 twolines.cpp -o twolines then ./twolines",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as twolines dot cpp. Compile it with g plus plus. Then run the program. The two lines appear, one under the other."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 181,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. C plus plus is a language that you compile. Two. Every program starts in a function called main. Three. The tool cout prints text to the screen. Four. You write, compile and run, in that order. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "C plus plus is a language that you compile.",
+        "Every program starts in a function called main.",
+        "The tool cout prints text to the screen.",
+        "You write, compile and run, in that order."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 212,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A missing semicolon",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. Here the cout line has no semicolon at the end. The compiler stops and shows an error. It says expected semicolon before return. Every statement in C plus plus must end with a semicolon. Add it, and the program builds."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 252,
+      "lengthSec": 8,
+      "onScreen": "I told my compiler a joke. It said, I do not get it. Expected semicolon.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I told my compiler a joke. It said, I do not get it. Expected semicolon."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 260,
+      "lengthSec": 20,
+      "onScreen": "Task card: print your name and your village",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a program that prints your name on one line and your village on the next line. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 280,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 02 · Setting up and compiling",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: setting up and compiling. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n\nint main() {\n    std::cout << \"Namaskar, Goa!\" << std::endl\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nhello.cpp: In function 'int main()':\nhello.cpp:4:47: error: expected ';' before 'return'\n    4 |     std::cout << \"Namaskar, Goa!\" << std::endl\n      |                                               ^\n      |                                               ;\n    5 |     return 0;",
+    "fixed": "#include <iostream>\n\nint main() {\n    std::cout << \"Namaskar, Goa!\" << std::endl;\n    return 0;\n}",
+    "why": "A semicolon ends a statement. Without it, the compiler cannot see where one instruction stops."
+  },
+  "pun": "\"I told my compiler a joke. It said, I do not get it. Expected semicolon.\"",
+  "challenge": "Write a program that prints your name on one line and your village on the next line.",
+  "challengeAnswer": "Use two cout lines, each with endl at the end. For example, print Asha on the first line and Mapusa on the second.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Hello, C++!",
+      "hook": "\"Five lines of code can say hello to Goa.\"",
+      "script": "Five lines of code can say hello to Goa. Today you write your first C plus plus program. It has only five lines. At the end, your computer says hello to Goa. C plus plus is a programming language. You write instructions in a text file. The computer cannot read that file directly. A tool called a compiler changes your text into a program. Keep coding, says Xecxec!",
+      "onScreen": "HELLO, C++!",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 38,
+      "caption": "What you will learn: Hello, C++!.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "helloc",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Hello, C++! in one minute",
+      "hook": "\"C plus plus is a programming language.\"",
+      "script": "C plus plus is a programming language. You write instructions in a text file. The computer cannot read that file directly. A tool called a compiler changes your text into a program. Then the computer can run it. Games, web browsers and phone apps use C plus plus. Think of a recipe. You write the steps, and the cook follows them. Keep coding, says Xecxec!",
+      "onScreen": "HELLO, C++!",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Hello, C++! in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "helloc",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The first cout prints a line about you.\"",
+      "script": "The first cout prints a line about you. The second cout prints our sign-off. The computer runs the lines in order, from top to bottom. Then main returns zero and the program ends. The two lines appear, one under the other. C plus plus is a language that you compile. Every program starts in a function called main. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "helloc",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A missing semicolon",
+      "hook": "\"Can you spot the bug in your first program\"",
+      "script": "Can you spot the bug in your first program, hello C plus plus? Bug of the Day. Here the cout line has no semicolon at the end. The compiler stops and shows an error. It says expected semicolon before return. Every statement in C plus plus must end with a semicolon. Add it, and the program builds. A semicolon ends a statement. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: A missing semicolon.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "helloc",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you print your name and your village in your first program\"",
+      "script": "Can you print your name and your village in your first program, hello C plus plus? I told my compiler a joke. It said, I do not get it. Expected semicolon. Write a program that prints your name on one line and your village on the next line. Write your answer in the comments. C plus plus is a language that you compile. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "helloc",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "hello.cpp",
+      "source": "#include <iostream>\n\nint main() {\n    std::cout << \"Namaskar, Goa!\" << std::endl;\n    return 0;\n}",
+      "output": "Namaskar, Goa!",
+      "lang": "cpp"
+    },
+    {
+      "file": "twolines.cpp",
+      "source": "#include <iostream>\n\nint main() {\n    std::cout << \"I am learning C++.\" << std::endl;\n    std::cout << \"Keep coding, says Xecxec!\" << std::endl;\n    return 0;\n}",
+      "output": "I am learning C++.\nKeep coding, says Xecxec!",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Namaskar, Goa!"
+  },
+  "nextTitle": "Setting up and compiling"
+}

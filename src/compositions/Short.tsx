@@ -1,6 +1,7 @@
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import type { CalculateMetadataFunction } from "remotion";
-import type { Episode } from "../lib/episode";
+import { type Episode, type Lang } from "../lib/episode";
+import { voiceFolder } from "../lib/voiceFolder";
 import { ShortLayout } from "../scenes/ShortLayout";
 import { coloursForModule } from "../theme/modules";
 import { stripMarkdown } from "../lib/sanitize";
@@ -12,6 +13,8 @@ const FPS = 30;
 
 export type ShortProps = {
   episodeNumber: number;
+  /** Course language; omitted for the C course. Picks the narration folder (see epFolder). */
+  lang?: Lang;
   shortId: string;
   episode?: Episode;
   short?: Episode["shorts"][number];
@@ -21,12 +24,12 @@ export type ShortProps = {
 };
 
 export const calculateMetadata: CalculateMetadataFunction<ShortProps> = async ({ props }) => {
-  const epId = `ep${String(props.episodeNumber).padStart(3, "0")}`;
-  const episode: Episode = await fetch(staticFile(`voice/${epId}/episode.json`)).then((r) =>
+  const epId = voiceFolder(props.lang, props.episodeNumber);
+  const episode: Episode = await fetch(staticFile(`${epId}/episode.json`)).then((r) =>
     r.json(),
   );
   const manifest: { timings: { short?: string; durationSec: number }[] } = await fetch(
-    staticFile(`voice/${epId}/manifest.json`),
+    staticFile(`${epId}/manifest.json`),
   ).then((r) => r.json());
 
   const short = episode.shorts.find((s) => s.id === props.shortId);
@@ -34,7 +37,7 @@ export const calculateMetadata: CalculateMetadataFunction<ShortProps> = async ({
   const durationInFrames = Math.round((timing?.durationSec ?? short?.lengthSec ?? 15) * FPS);
 
   const captions: { text: string; startMs: number }[] = await fetch(
-    staticFile(`voice/${epId}/${props.shortId}.captions.json`),
+    staticFile(`${epId}/${props.shortId}.captions.json`),
   )
     .then((r) => r.json())
     .catch(() => []);
@@ -51,12 +54,12 @@ export const Short: React.FC<ShortProps> = ({ episode, short, durationInFrames, 
     return null;
   }
   const colours = coloursForModule(episode.module);
-  const epId = `ep${String(episode.ep).padStart(3, "0")}`;
+  const epId = voiceFolder(episode.lang, episode.ep);
   const visual = deriveShortVisuals(episode)[short.id];
 
   return (
     <AbsoluteFill style={{ background: colours.bg }}>
-      <Audio src={staticFile(`voice/${epId}/${short.id}.wav`)} />
+      <Audio src={staticFile(`${epId}/${short.id}.wav`)} />
       <ShortLayout
         ep={episode.ep}
         hook={stripMarkdown(short.hook)}

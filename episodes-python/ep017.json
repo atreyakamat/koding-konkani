@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A for loop walks through a series of values, one at a time. The range function makes the series. Range of five gives zero, one, two, three, four. Five numbers, but it starts at zero, and the stop value is never included. Think of stepping stones across a stream. Range lays out the stones, and for steps on each one. Range of one, six gives one to five."
+      "narration": "A for loop walks through a series of values, one at a time. The range function makes the series. Range of five gives zero, one, two, three, four. Five numbers, but it starts at zero, and the stop value is never included. Think of stepping stones across a stream. Range lays out the stones, and for steps on each one. Range of one, six gives one to five.",
+      "props": {
+        "lines": [
+          "for walks through a series of values",
+          "range(5) gives 0, 1, 2, 3, 4",
+          "The stop value is never included"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "stepping stones across a stream: range gives you the stones, and for walks over each one"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "steps.py",
         "source": "for i in range(5):\n    print(\"Step\", i)\nprint(\"Finished\")",
         "output": "Step 0\nStep 1\nStep 2\nStep 3\nStep 4\nFinished"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python steps.py",
+        "output": "Step 0\nStep 1\nStep 2\nStep 3\nStep 4\nFinished"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is a small surprise. After the loop ends, the name i is still there. It stays tied to the last value it received, four. The for loop made the name, and tied it to each value in turn. It does not tidy the name away when the loop finishes. That is normal Python, and it is useful to know."
+      "narration": "Here is a small surprise. After the loop ends, the name i is still there. It stays tied to the last value it received, four. The for loop made the name, and tied it to each value in turn. It does not tidy the name away when the loop finishes. That is normal Python, and it is useful to know.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "4",
+                    "address": "int",
+                    "name": "i"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "table.py",
         "source": "for n in range(1, 6):\n    print(\"5 x\", n, \"=\", 5 * n)",
         "output": "5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python table.py",
+        "output": "5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25"
       }
     },
     {
@@ -159,7 +197,35 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as table dot py. In the terminal, type python, space, table dot py. A five times table, from one up to five."
+      "narration": "Save the file as table dot py. In the terminal, type python, space, table dot py. A five times table, from one up to five.",
+      "props": {
+        "lines": [
+          {
+            "text": "python table.py",
+            "kind": "input"
+          },
+          {
+            "text": "5 x 1 = 5",
+            "kind": "output"
+          },
+          {
+            "text": "5 x 2 = 10",
+            "kind": "output"
+          },
+          {
+            "text": "5 x 3 = 15",
+            "kind": "output"
+          },
+          {
+            "text": "5 x 4 = 20",
+            "kind": "output"
+          },
+          {
+            "text": "5 x 5 = 25",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +237,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: for walks through a series of values. Two: range of 5 gives 0, 1, 2, 3, 4. Three: range of 1, 6 gives 1 to 5, because the stop is not included. Four: The for loop updates its own loop name, so you never add one yourself. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: for walks through a series of values. Two: range of 5 gives 0, 1, 2, 3, 4. Three: range of 1, 6 gives 1 to 5, because the stop is not included. Four: The for loop updates its own loop name, so you never add one yourself. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "For walks through a series of values.",
+          "Range(5) gives 0, 1, 2, 3, 4.",
+          "Range(1, 6) gives 1 to 5, because the stop is not included.",
+          "The for loop updates its own loop name, so you never add one yourself."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +259,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We want the numbers one to five. We wrote range of one, five. The output stops at four. Python does not include the stop value. Five is the stop, so it is left out. To include five, the stop must be six. This is called an off by one bug, and every programmer meets it."
+      "narration": "Bug of the Day. We want the numbers one to five. We wrote range of one, five. The output stops at four. Python does not include the stop value. Five is the stop, so it is left out. To include five, the stop must be six. This is called an off by one bug, and every programmer meets it.",
+      "props": {
+        "wrongCode": "for n in range(1, 5):\n    print(n)",
+        "fixedCode": "for n in range(1, 6):\n    print(n)",
+        "error": "1\n2\n3",
+        "errorOverride": {
+          "lines": [
+            "1",
+            "2",
+            "3"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "range stops before its stop value, so to include 5 the stop must be 6.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python steps.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +317,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: break, continue and loop else. Keep coding, says Xecxec!"
+      "narration": "Next time: break, continue and loop else. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 18,
+        "nextTitle": "break, continue and loop else"
+      }
     }
   ],
   "bug": {
@@ -348,5 +449,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

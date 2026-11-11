@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A function name, without brackets, is a value. You can tie it to another name, put it in a list, or pass it to another function. Brackets mean, call it now. No brackets means, here is the function itself. Think of a chef handing a recipe card to an assistant. The card is passed around, and the cooking happens only when someone follows it. A function that takes or returns functions is called higher order."
+      "narration": "A function name, without brackets, is a value. You can tie it to another name, put it in a list, or pass it to another function. Brackets mean, call it now. No brackets means, here is the function itself. Think of a chef handing a recipe card to an assistant. The card is passed around, and the cooking happens only when someone follows it. A function that takes or returns functions is called higher order.",
+      "props": {
+        "lines": [
+          "A function name is a value you can pass around",
+          "Brackets mean call it now",
+          "A function can return another function"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a chef handing a recipe card to an assistant: the card is passed around, and the cooking happens only when someone follows it"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "hof.py",
         "source": "def apply(func, value):\n    return func(value)\ndef double(n):\n    return n * 2\ndef square(n):\n    return n * n\nprint(apply(double, 5))\nprint(apply(square, 5))",
         "output": "10\n25"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python hof.py",
+        "output": "10\n25"
       }
     },
     {
@@ -127,7 +143,112 @@
       "onScreen": "Two cards: double (the function itself, handed over) and double(5) (the answer 10)",
       "animation": "A function card slides to another box; a second card with brackets turns into a number",
       "sfx": [],
-      "narration": "Here is the distinction. Double, with no brackets, is the function itself, a card you can hand to someone. Double of five, with brackets, is the result of running it, the number ten. Passing and calling are different things. When a function wants a function, hand over the card. Do not run it first."
+      "narration": "Here is the distinction. Double, with no brackets, is the function itself, a card you can hand to someone. Double of five, with brackets, is the result of running it, the number ten. Passing and calling are different things. When a function wants a function, hand over the card. Do not run it first.",
+      "props": {
+        "lines": [
+          "Here is the distinction.",
+          "Passing and calling are different things.",
+          "Do not run it first."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 49,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "fn",
+              "shape": "card",
+              "text": "double",
+              "colour": "cream",
+              "col": 0,
+              "row": 1,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "apply",
+              "shape": "box",
+              "text": "apply(func, value)",
+              "colour": "butter",
+              "col": 5,
+              "row": 1,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "call",
+              "shape": "card",
+              "text": "double(5)",
+              "colour": "cream",
+              "col": 0,
+              "row": 4,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "num",
+              "shape": "token",
+              "text": "10",
+              "colour": "mint",
+              "col": 5,
+              "row": 4,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "fn",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "apply"
+            },
+            {
+              "t": 0.2,
+              "do": "move",
+              "target": "fn",
+              "sfx": "whoosh",
+              "to": [
+                5,
+                2
+              ]
+            },
+            {
+              "t": 0.4,
+              "do": "glow",
+              "target": "apply",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.55,
+              "do": "show",
+              "target": "call",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.75,
+              "do": "flip",
+              "target": "call",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.85,
+              "do": "show",
+              "target": "num",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +265,11 @@
         "file": "compose.py",
         "source": "def make_adder(k):\n    def add(x):\n        return x + k\n    return add\nadd5 = make_adder(5)\nprint(add5(10))\nprint(make_adder(1)(1))",
         "output": "15\n2"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python compose.py",
+        "output": "15\n2"
       }
     },
     {
@@ -157,7 +283,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as compose dot py. In the terminal, type python, space, compose dot py. Fifteen, then two."
+      "narration": "Save the file as compose dot py. In the terminal, type python, space, compose dot py. Fifteen, then two.",
+      "props": {
+        "lines": [
+          {
+            "text": "python compose.py",
+            "kind": "input"
+          },
+          {
+            "text": "15",
+            "kind": "output"
+          },
+          {
+            "text": "2",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +311,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A function name without brackets is a value. Two: Brackets call the function. Three: A function can take another function as an argument. Four: A function can return a new function that remembers its values. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A function name without brackets is a value. Two: Brackets call the function. Three: A function can take another function as an argument. Four: A function can return a new function that remembers its values. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A function name without brackets is a value.",
+          "Brackets call the function.",
+          "A function can take another function as an argument.",
+          "A function can return a new function that remembers its values."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +333,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We wrote double with brackets. That calls double right now, with no number. Python says, type error, double is missing one required positional argument, n. We wanted to hand over the function, not run it. Remove the brackets, and apply receives the function itself."
+      "narration": "Bug of the Day. We wrote double with brackets. That calls double right now, with no number. Python says, type error, double is missing one required positional argument, n. We wanted to hand over the function, not run it. Remove the brackets, and apply receives the function itself.",
+      "props": {
+        "wrongCode": "def apply(func, value):\n    return func(value)\ndef double(n):\n    return n * 2\nprint(apply(double(), 5))",
+        "fixedCode": "def apply(func, value):\n    return func(value)\ndef double(n):\n    return n * 2\nprint(apply(double, 5))",
+        "error": "  File \"hof.py\", line 5, in <module>\n    print(apply(double(), 5))\n                ~~~~~~^^\nTypeError: double() missing 1 required positional argument: 'n'",
+        "errorOverride": {
+          "lines": [
+            "  File \"hof.py\", line 5, in <module>",
+            "    print(apply(double(), 5))",
+            "                ~~~~~~^^",
+            "TypeError: double() missing 1 required positional argument: 'n'"
+          ]
+        },
+        "why": "double() calls the function immediately, with no argument, instead of handing the function itself to apply.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python hof.py",
+        "culprit": {
+          "wrong": 5,
+          "fixed": 5
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +391,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: the calculator mini project. Keep coding, says Xecxec!"
+      "narration": "Next time: the calculator mini project. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 50,
+        "nextTitle": "Mini project: Calculator"
+      }
     }
   ],
   "bug": {
@@ -346,5 +523,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

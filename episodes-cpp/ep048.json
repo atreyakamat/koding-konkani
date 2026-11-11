@@ -1,0 +1,394 @@
+{
+  "lang": "cpp",
+  "ep": 48,
+  "title": "Leaks and RAII",
+  "module": 5,
+  "lengthSec": 299,
+  "colours": {
+    "bg": "#D9C9FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "explain what a memory leak is",
+    "explain RAII",
+    "see how a destructor cleans up"
+  ],
+  "youtube": {
+    "title": "C++ Memory Leaks and RAII Explained | C++ Programming EP 48",
+    "description": "In this episode you will explain what a memory leak is, explain RAII and see how a destructor cleans up, with Xecxec the crab. 0:00 Intro · 0:15 Leaks and RAII · 0:55 A destructor runs · 1:35 The life of a variable · 2:05 Second program · 3:05 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Leaks and RAII"
+      },
+      {
+        "t": "0:55",
+        "label": "A destructor runs"
+      },
+      {
+        "t": "1:35",
+        "label": "The life of a variable"
+      },
+      {
+        "t": "2:05",
+        "label": "Second program"
+      },
+      {
+        "t": "3:05",
+        "label": "Recap"
+      },
+      {
+        "t": "3:36",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:24",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:44",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "memory leak c++",
+      "raii",
+      "destructor",
+      "resource management"
+    ],
+    "thumbnail": {
+      "text": "NO LEAKS",
+      "visual": "big text \"NO LEAKS\" in tomato on lilac; Xecxec next to a leaking tap and a locked cupboard; thin black border and drop shadow.",
+      "pose": "Xecxec next to a leaking tap and a locked cupboard"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 48 · NO LEAKS",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we stop leaks for good. The trick is simple. Let a variable do the cleaning when it dies."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 40,
+      "onScreen": "\"Leaks and RAII\": numbered lines (1. A leak happens when memory is never freed; 2. RAII ties cleanup to a variable's life; 3. A destructor runs when the variable ends) and an analogy card: a hotel room that locks and cleans itself when you check out",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A memory leak happens when you lose the address of a heap box before you free it. An early return or an error can cause it. The cure is RAII. It means that a resource belongs to a variable. When the variable dies, a special function called the destructor runs, and it frees the resource. Think of a hotel room. It cleans itself when you check out.",
+      "points": [
+        "A leak happens when memory is never freed",
+        "RAII ties cleanup to a variable's life",
+        "A destructor runs when the variable ends"
+      ],
+      "analogy": {
+        "title": "Leaks and RAII",
+        "body": "A hotel room that locks and cleans itself when you check out"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 55,
+      "lengthSec": 40,
+      "onScreen": "raii.cpp: a struct prints a message when it is made and when it dies",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 4] This struct has two special functions. We study them in module six. [HL 5] The first runs when a Noisy is made. [HL 6] The second, with a tilde, runs when it dies. [HL 11] Here a Noisy is made, and open prints. [HL 12] Then working prints. [HL 14] The block ends, so n dies and close prints before the next line.",
+      "code": {
+        "file": "raii.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nstruct Noisy {\n    Noisy() { cout << \"open\" << endl; }\n    ~Noisy() { cout << \"close\" << endl; }\n};\n\nint main() {\n    {\n        Noisy n;\n        cout << \"working\" << endl;\n    }\n    cout << \"after the block\" << endl;\n    return 0;\n}",
+        "output": "open\nworking\nclose\nafter the block"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 95,
+      "lengthSec": 30,
+      "onScreen": "a flow: made, used, closing brace, destructor runs",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Follow the life of n. It is made, and open prints. The block uses it. At the closing brace, n goes out of scope. The destructor runs at once, and close prints. You did not write any cleanup call.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "a flow: made, used, closing brace, destructor runs",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "Made",
+            "detail": "Constructor prints open"
+          },
+          {
+            "id": "s2",
+            "label": "Used",
+            "detail": "The block prints working"
+          },
+          {
+            "id": "s3",
+            "label": "End of block",
+            "detail": "n goes out of scope"
+          },
+          {
+            "id": "s4",
+            "label": "Cleanup",
+            "detail": "Destructor prints close"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 125,
+      "lengthSec": 40,
+      "onScreen": "leak.cpp: an early return skips the delete",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 10] This function makes a Noisy on the heap with new. [HL 11] If fail is true, the function returns early. [HL 14] The delete is skipped. [HL 18] The first call prints open and close. [HL 19] The second call prints open only. The close is missing. That box is leaked.",
+      "code": {
+        "file": "leak.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nstruct Noisy {\n    Noisy() { cout << \"open\" << endl; }\n    ~Noisy() { cout << \"close\" << endl; }\n};\n\nvoid work(bool fail) {\n    Noisy* n = new Noisy;\n    if (fail) {\n        return;\n    }\n    delete n;\n}\n\nint main() {\n    work(false);\n    work(true);\n    return 0;\n}",
+        "output": "open\nclose\nopen"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 165,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 leak.cpp -o leak then ./leak",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as leak dot cpp. Compile it with g plus plus. Then run the program. The program prints open, close, and then open. The last close is missing."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 185,
+      "lengthSec": 31,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A leak means that memory is never freed. Two. An early return can skip a delete. Three. RAII ties cleanup to the life of a variable. Four. The destructor runs when the variable goes out of scope. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A leak means that memory is never freed.",
+        "An early return can skip a delete.",
+        "RAII ties cleanup to the life of a variable.",
+        "The destructor runs when the variable goes out of scope."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 216,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A leak you cannot see",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The program prints open, but it never prints close. The early return skips the delete, so the destructor never runs. That is a leak. Use an ordinary local variable instead. Its destructor runs on every way out."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 256,
+      "lengthSec": 8,
+      "onScreen": "My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 264,
+      "lengthSec": 20,
+      "onScreen": "Task card: spot the leak",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a function with new and two return statements. Show which return leaks. Then fix it with a local variable. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 284,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 49 · unique_ptr",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: unique pointers. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nstruct Noisy {\n    Noisy() { cout << \"open\" << endl; }\n    ~Noisy() { cout << \"close\" << endl; }\n};\n\nvoid work(bool fail) {\n    Noisy* n = new Noisy;\n    if (fail) {\n        return;\n    }\n    delete n;\n}\n\nint main() {\n    work(true);\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\nopen",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nstruct Noisy {\n    Noisy() { cout << \"open\" << endl; }\n    ~Noisy() { cout << \"close\" << endl; }\n};\n\nvoid work(bool fail) {\n    Noisy n;\n    if (fail) {\n        return;\n    }\n}\n\nint main() {\n    work(true);\n    return 0;\n}",
+    "why": "The early return skips the delete, so the destructor never runs. An ordinary local variable runs its destructor on every way out of the function."
+  },
+  "pun": "\"My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap.\"",
+  "challenge": "Write a function with new and two return statements. Show which return leaks. Then fix it with a local variable.",
+  "challengeAnswer": "The return before the delete leaks. Replace the pointer with a local variable, and the destructor runs on both returns.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Leaks and RAII",
+      "hook": "\"Let the variable clean up for you.\"",
+      "script": "Let the variable clean up for you. Today we stop leaks for good. The trick is simple. Let a variable do the cleaning when it dies. A memory leak happens when you lose the address of a heap box before you free it. An early return or an error can cause it. The cure is RAII. It means that a resource belongs to a variable. Keep coding, says Xecxec!",
+      "onScreen": "LEAKS AND RAII",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 39,
+      "caption": "What you will learn: Leaks and RAII.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "leaksandraii",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Leaks and RAII in one minute",
+      "hook": "\"A memory leak happens when you lose the address of\"",
+      "script": "A memory leak happens when you lose the address of a heap box before you free it. An early return or an error can cause it. The cure is RAII. It means that a resource belongs to a variable. When the variable dies, a special function called the destructor runs, and it frees the resource. Think of a hotel room. Keep coding, says Xecxec!",
+      "onScreen": "LEAKS AND RAII",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "Leaks and RAII in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "leaksandraii",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"This function makes a Noisy on the heap with new.\"",
+      "script": "This function makes a Noisy on the heap with new. If fail is true, the function returns early. The delete is skipped. The first call prints open and close. The second call prints open only. The close is missing. That box is leaked. The program prints open, close, and then open. The last close is missing. A leak means that memory is never freed. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 38,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "leaksandraii",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A leak you cannot see",
+      "hook": "\"Can you spot the bug in memory leaks and RAII?\"",
+      "script": "Can you spot the bug in memory leaks and RAII? Bug of the Day. The program prints open, but it never prints close. The early return skips the delete, so the destructor never runs. That is a leak. Use an ordinary local variable instead. Its destructor runs on every way out. The early return skips the delete, so the destructor never runs. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: A leak you cannot see.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "leaksandraii",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you spot the leak in memory leaks and RAII?\"",
+      "script": "Can you spot the leak in memory leaks and RAII? My program had a leak. I tried to fix it with a bucket, but the bucket was on the heap. Write a function with new and two return statements. Show which return leaks. Then fix it with a local variable. Write your answer in the comments. A leak means that memory is never freed. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "leaksandraii",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "raii.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nstruct Noisy {\n    Noisy() { cout << \"open\" << endl; }\n    ~Noisy() { cout << \"close\" << endl; }\n};\n\nint main() {\n    {\n        Noisy n;\n        cout << \"working\" << endl;\n    }\n    cout << \"after the block\" << endl;\n    return 0;\n}",
+      "output": "open\nworking\nclose\nafter the block",
+      "lang": "cpp"
+    },
+    {
+      "file": "leak.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nstruct Noisy {\n    Noisy() { cout << \"open\" << endl; }\n    ~Noisy() { cout << \"close\" << endl; }\n};\n\nvoid work(bool fail) {\n    Noisy* n = new Noisy;\n    if (fail) {\n        return;\n    }\n    delete n;\n}\n\nint main() {\n    work(false);\n    work(true);\n    return 0;\n}",
+      "output": "open\nclose\nopen",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "open\nclose"
+  },
+  "nextTitle": "unique_ptr"
+}

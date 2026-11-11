@@ -1,8 +1,9 @@
 import { useCurrentFrame } from "remotion";
-import type { Episode } from "../lib/episode";
+import { isCCourse, type Episode } from "../lib/episode";
 import type { ShortBox, ShortVisual } from "../lib/shortVisual";
 import { frameAt, frameStarts, type WordTime } from "../lib/shortFrames";
 import { bugCulprit } from "../lib/bugCulprit";
+import type { CodeLang } from "../lib/highlight";
 import { chooseFontSize } from "../lib/codeLayout";
 import { defaultHlCues, hlLineAt } from "../lib/cues";
 import { typewriterChars } from "../lib/motion";
@@ -400,7 +401,12 @@ const STEP_LABEL_FONT = 44;
 
 /** Boxes of a memory scene. With several frames it steps through them in sync with the narration (frameStarts);
  * only the boxes whose value changed pop again. */
-const BoxesVisual: React.FC<BoxesVisualProps> = ({ boxes: first, frames, words, durationInFrames }) => {
+const BoxesVisual: React.FC<BoxesVisualProps> = ({
+  boxes: first,
+  frames,
+  words,
+  durationInFrames,
+}) => {
   const frame = useCurrentFrame();
   const steps = frames ?? [{ boxes: first }];
   const starts = frameStarts(
@@ -417,12 +423,22 @@ const BoxesVisual: React.FC<BoxesVisualProps> = ({ boxes: first, frames, words, 
   const boxW = Math.floor((W - gap * (n - 1)) / n);
   const boxH = Math.min(340, Math.round(boxW * 1.25));
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 36, height: "100%", alignItems: "center", justifyContent: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 36,
+        height: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <div style={{ display: "flex", gap }}>
         {boxes.map((box, i) => {
           // The frame in which this box last changed its value decides when it pops.
           let born = 0;
-          for (let j = 1; j <= k; j++) if (steps[j].boxes[i]?.value !== steps[j - 1].boxes[i]?.value) born = j;
+          for (let j = 1; j <= k; j++)
+            if (steps[j].boxes[i]?.value !== steps[j - 1].boxes[i]?.value) born = j;
           const p = reveal(frame, born === 0 ? 6 + i * 5 : starts[born], 8);
           const valueFont = Math.max(
             28,
@@ -450,8 +466,19 @@ const BoxesVisual: React.FC<BoxesVisualProps> = ({ boxes: first, frames, words, 
                 scale: `${0.85 + 0.15 * p}`,
               }}
             >
-              <div style={{ fontFamily: fonts.title, fontSize: nameFont, color: palette.ink }}>{box.name}</div>
-              <div style={{ fontFamily: fonts.code, fontWeight: 700, fontSize: valueFont, color: palette.ink }}>{box.value}</div>
+              <div style={{ fontFamily: fonts.title, fontSize: nameFont, color: palette.ink }}>
+                {box.name}
+              </div>
+              <div
+                style={{
+                  fontFamily: fonts.code,
+                  fontWeight: 700,
+                  fontSize: valueFont,
+                  color: palette.ink,
+                }}
+              >
+                {box.value}
+              </div>
             </div>
           );
         })}
@@ -624,15 +651,33 @@ const ERROR_PAD = 74;
 
 /** The error text for the Bug Short's card: the largest size (30px at the least, so it reads on a phone) at which
  * every error line fits ERROR_MAX_HEIGHT; when even 30px is too much, only the first error line is kept. */
-export const fitError = (text: string, mono: boolean): { text: string; size: number; height: number } => {
+export const fitError = (
+  text: string,
+  mono: boolean,
+): { text: string; size: number; height: number } => {
   const width = W - ERROR_PAD;
   const rowsAt = (t: string, size: number): number =>
-    t.split("\n").reduce((n, l) => n + Math.max(1, Math.ceil(l.length / Math.max(1, Math.floor(width / (size * (mono ? 0.6 : 0.55)))))), 0);
+    t
+      .split("\n")
+      .reduce(
+        (n, l) =>
+          n +
+          Math.max(
+            1,
+            Math.ceil(l.length / Math.max(1, Math.floor(width / (size * (mono ? 0.6 : 0.55))))),
+          ),
+        0,
+      );
   const heightOf = (t: string, size: number): number => rowsAt(t, size) * size * 1.3 + ERROR_PAD;
   const lines = text.split("\n").filter((l) => l.trim() !== "");
   for (const candidate of [lines.join("\n"), lines[0] ?? ""]) {
     const size = ERROR_SIZES.find((sz) => heightOf(candidate, sz) <= ERROR_MAX_HEIGHT);
-    if (size) return { text: candidate, size, height: Math.max(200, Math.round(heightOf(candidate, size))) };
+    if (size)
+      return {
+        text: candidate,
+        size,
+        height: Math.max(200, Math.round(heightOf(candidate, size))),
+      };
   }
   const first = lines[0] ?? "";
   const size = ERROR_SIZES[ERROR_SIZES.length - 1];
@@ -642,13 +687,35 @@ export const fitError = (text: string, mono: boolean): { text: string; size: num
 /** The bug reveal: the wrong code/claim/value, then the key error line underneath. */
 const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
   const frame = useCurrentFrame();
-  const isCode = /[;{]|#include/.test(episode.bug.wrong);
+  // A course whose bug scene carries its own props (Python) has already classified the sides and cleaned the
+  // error into display lines; the C heuristics below only run for the C course.
+  const py = episode.scenes.find((sc) => sc.template === "bug-of-the-day")?.props as
+    | {
+        lang?: CodeLang;
+        wrongIsCode?: boolean;
+        errorOverride?: { lines: string[]; hang?: boolean };
+        culprit?: { wrong?: number };
+      }
+    | undefined;
+  const lang = py?.lang;
+  const isCode = py ? (py.wrongIsCode ?? true) : /[;{]|#include/.test(episode.bug.wrong);
   const wrongText = isCode ? episode.bug.wrong : stripMarkdown(episode.bug.wrong);
-  const errorText = stripMarkdown(
-    briefErrorLines(stripMarkdown(episode.bug.error), episode.bug.wrong, isCode),
-  );
+  // Python tracebacks: keep the message lines (not indented, not "File ..."), the last one always.
+  const keyLines = (lines: string[]): string[] => {
+    const key = lines.filter((l) => l.trim() && !/^\s/.test(l) && !/^Traceback/.test(l));
+    return key.length ? key : lines.slice(-1);
+  };
+  const errorText = py?.errorOverride
+    ? py.errorOverride.hang
+      ? "No output. The program is stuck."
+      : keyLines(py.errorOverride.lines).join("\n")
+    : stripMarkdown(briefErrorLines(stripMarkdown(episode.bug.error), episode.bug.wrong, isCode));
   // The code window centres on the culprit line, like the long video's Bug of the Day.
-  const culprit = isCode ? bugCulprit(episode.ep, episode.bug.wrong, episode.bug.fixed, episode.bug.error).wrong : undefined;
+  const culprit = py
+    ? py.culprit?.wrong
+    : isCode
+      ? bugCulprit(isCCourse(episode.lang) ? episode.ep : 0, episode.bug.wrong, episode.bug.fixed, episode.bug.error).wrong
+      : undefined;
   const fitted = fitError(errorText, isCode);
   const errorChars = typewriterChars(fitted.text, frame, 24, 1.1);
   const errorH = fitted.height;
@@ -662,6 +729,7 @@ const BugVisual: React.FC<{ episode: Episode }> = ({ episode }) => {
           maxHeight={H - errorH - 16}
           fillHeight={H - errorH - 16}
           highlightLine={culprit}
+          lang={lang}
         />
       ) : (
         <Panel background={palette.cream} style={{ flex: 1 }}>
@@ -715,7 +783,14 @@ export const ShortVisualView: React.FC<{
         <PronunciationVisual written={visual.written} spoken={visual.spoken} accent={accent} />
       );
     case "boxes":
-      return <BoxesVisual boxes={visual.boxes} frames={visual.frames} words={words ?? []} durationInFrames={durationInFrames} />;
+      return (
+        <BoxesVisual
+          boxes={visual.boxes}
+          frames={visual.frames}
+          words={words ?? []}
+          durationInFrames={durationInFrames}
+        />
+      );
     case "bits":
       return <BitsVisual visual={visual} accent={accent} />;
     case "code":

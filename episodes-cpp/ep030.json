@@ -1,0 +1,395 @@
+{
+  "lang": "cpp",
+  "ep": 30,
+  "title": "Mini project: calculator",
+  "module": 3,
+  "lengthSec": 288,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "split a program into functions",
+    "read an expression with cin",
+    "choose an operation with switch"
+  ],
+  "youtube": {
+    "title": "C++ Mini Project: Build a Calculator | C++ Programming EP 30",
+    "description": "In this episode you will split a program into functions, read an expression with cin and choose an operation with switch, with Xecxec the crab. 0:00 Intro · 0:15 Mini project: calculator · 0:45 The calculator · 1:25 The plan · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Mini project: calculator"
+      },
+      {
+        "t": "0:45",
+        "label": "The calculator"
+      },
+      {
+        "t": "1:25",
+        "label": "The plan"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ calculator",
+      "c++ mini project",
+      "functions project",
+      "switch calculator"
+    ],
+    "thumbnail": {
+      "text": "BUILD A CALC",
+      "visual": "big text \"BUILD A CALC\" in tomato on mint; Xecxec next to a calculator made from code blocks; thin black border and drop shadow.",
+      "pose": "Xecxec next to a calculator made from code blocks"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 30 · BUILD A CALC",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we build a mini project. You will join functions, input and switch into a working calculator."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"Mini project: calculator\": numbered lines (1. Plan the functions first; 2. One function does one job; 3. main only joins the pieces) and an analogy card: a kitchen with stations: each cook does one job",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Good programs are made of small functions. Each function does one job. Main only joins them together. Our calculator has three jobs. First, read the numbers and the sign. Second, calculate. Third, print the answer. Think of a kitchen with stations. Each cook does one job.",
+      "points": [
+        "Plan the functions first",
+        "One function does one job",
+        "main only joins the pieces"
+      ],
+      "analogy": {
+        "title": "Mini project: calculator",
+        "body": "A kitchen with stations: each cook does one job"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 40,
+      "onScreen": "calc.cpp: calc takes two numbers and a sign",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 4] Calc takes two numbers and a sign. [HL 5] A switch picks the operation. [HL 6] Plus adds. [HL 8] Times multiplies. [HL 9] For divide, we first check that b is not zero. [HL 17] Main reads three values with one cin line. [HL 18] It prints the whole sum, and the answer. Twelve times three is thirty-six.",
+      "code": {
+        "file": "calc.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\ndouble calc(double a, char op, double b) {\n    switch (op) {\n        case '+': return a + b;\n        case '-': return a - b;\n        case '*': return a * b;\n        case '/': return b != 0 ? a / b : 0;\n        default: return 0;\n    }\n}\n\nint main() {\n    double a, b;\n    char op;\n    cin >> a >> op >> b;\n    cout << a << \" \" << op << \" \" << b << \" = \" << calc(a, op, b) << endl;\n    return 0;\n}",
+        "output": "12 * 3 = 36"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 85,
+      "lengthSec": 30,
+      "onScreen": "a flow: read, choose, calculate, print",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is the plan. First, cin reads the numbers and the sign. Next, the switch in calc picks the operation. Then calc returns the answer. Last, cout prints the full line.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "a flow: read, choose, calculate, print",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "Read",
+            "detail": "cin reads a, op and b"
+          },
+          {
+            "id": "s2",
+            "label": "Choose",
+            "detail": "switch picks the sign"
+          },
+          {
+            "id": "s3",
+            "label": "Calculate",
+            "detail": "calc returns the answer"
+          },
+          {
+            "id": "s4",
+            "label": "Print",
+            "detail": "cout shows the sum"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "convert.cpp: two small functions convert units",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 4] This function turns kilometres into miles. [HL 5] This one turns Celsius into Fahrenheit. [HL 8] Ten kilometres is about six point two one miles. [HL 9] Thirty degrees Celsius is eighty-six degrees Fahrenheit. Each function has one small job, so they are easy to test.",
+      "code": {
+        "file": "convert.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\ndouble km_to_miles(double km) { return km * 0.621371; }\ndouble c_to_f(double c) { return c * 9 / 5 + 32; }\n\nint main() {\n    cout << km_to_miles(10) << endl;\n    cout << c_to_f(30) << endl;\n    return 0;\n}",
+        "output": "6.21371\n86"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 155,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 convert.cpp -o convert then ./convert",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as convert dot cpp. Compile it with g plus plus. Then run the program. The program prints six point two one three seven one, and then eighty-six."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 175,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Plan the functions before you write the code. Two. Each function does one job. Three. Main joins the pieces together. Four. Small functions are easy to test. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Plan the functions before you write the code.",
+        "Each function does one job.",
+        "Main joins the pieces together.",
+        "Small functions are easy to test."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 205,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A function that forgets to return",
+      "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The calc function handles only plus and minus. For any other sign, it reaches the end with no return. The compiler warns about control reaching the end of a non-void function. Add a final return for every other path."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 8,
+      "onScreen": "My calculator and I have a great relationship. We always add up.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My calculator and I have a great relationship. We always add up."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 253,
+      "lengthSec": 20,
+      "onScreen": "Task card: add a power option to the calculator",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Add a case for the sign caret in calc. It should return a raised to the power b. Use the pow function. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 273,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 31 · Arrays",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "We end module three here. Next time: arrays, a row of boxes in memory. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\ndouble calc(double a, char op, double b) {\n    switch (op) {\n        case '+': return a + b;\n        case '-': return a - b;\n    }\n}\n\nint main() {\n    cout << calc(2, '+', 3) << endl;\n    return 0;\n}",
+    "error": "Compiler output (a warning, the program still builds):\n\ncalc.cpp: In function 'double calc(double, char, double)':\ncalc.cpp:9:1: warning: control reaches end of non-void function [-Wreturn-type]\n    9 | }\n      | ^",
+    "fixed": "#include <iostream>\nusing namespace std;\n\ndouble calc(double a, char op, double b) {\n    switch (op) {\n        case '+': return a + b;\n        case '-': return a - b;\n    }\n    return 0;\n}\n\nint main() {\n    cout << calc(2, '+', 3) << endl;\n    return 0;\n}",
+    "why": "If op is neither plus nor minus, the function reaches the end without a return. Every path must return a value."
+  },
+  "pun": "\"My calculator and I have a great relationship. We always add up.\"",
+  "challenge": "Add a case for the sign caret in calc. It should return a raised to the power b. Use the pow function.",
+  "challengeAnswer": "Include cmath. Add case with the caret in single quotes. Return pow of a and b.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Mini project: calculator",
+      "hook": "\"Build a real calculator from small functions.\"",
+      "script": "Build a real calculator from small functions. Today we build a mini project. You will join functions, input and switch into a working calculator. Good programs are made of small functions. Each function does one job. Main only joins them together. Our calculator has three jobs. First, read the numbers and the sign. Second, calculate. Third, print the answer. Keep coding, says Xecxec!",
+      "onScreen": "MINI PROJECT: CALCULATOR",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "What you will learn: Mini project: calculator.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "miniprojectcalculator",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Mini project: calculator in one minute",
+      "hook": "\"Good programs are made of small functions.\"",
+      "script": "Good programs are made of small functions. Each function does one job. Main only joins them together. Our calculator has three jobs. First, read the numbers and the sign. Second, calculate. Third, print the answer. Think of a kitchen with stations. Each cook does one job. Calc takes two numbers and a sign. A switch picks the operation. Keep coding, says Xecxec!",
+      "onScreen": "MINI PROJECT: CALCULATOR",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Mini project: calculator in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "miniprojectcalculator",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"This function turns kilometres into miles.\"",
+      "script": "This function turns kilometres into miles. This one turns Celsius into Fahrenheit. Ten kilometres is about six point two one miles. Thirty degrees Celsius is eighty-six degrees Fahrenheit. Each function has one small job, so they are easy to test. The program prints six point two one three seven one, and then eighty-six. Plan the functions before you write the code. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "miniprojectcalculator",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A function that forgets to return",
+      "hook": "\"Can you spot the bug in a mini project, a calculator?\"",
+      "script": "Can you spot the bug in a mini project, a calculator? Bug of the Day. The calc function handles only plus and minus. For any other sign, it reaches the end with no return. The compiler warns about control reaching the end of a non-void function. Add a final return for every other path. If op is neither plus nor minus, the function reaches the end without a return. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 41,
+      "caption": "Bug of the Day: A function that forgets to return.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "miniprojectcalculator",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you add a power option to the calculator in\"",
+      "script": "Can you add a power option to the calculator in a mini project, a calculator? My calculator and I have a great relationship. We always add up. Add a case for the sign caret in calc. It should return a raised to the power b. Use the pow function. Write your answer in the comments. Plan the functions before you write the code. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "miniprojectcalculator",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "calc.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\ndouble calc(double a, char op, double b) {\n    switch (op) {\n        case '+': return a + b;\n        case '-': return a - b;\n        case '*': return a * b;\n        case '/': return b != 0 ? a / b : 0;\n        default: return 0;\n    }\n}\n\nint main() {\n    double a, b;\n    char op;\n    cin >> a >> op >> b;\n    cout << a << \" \" << op << \" \" << b << \" = \" << calc(a, op, b) << endl;\n    return 0;\n}",
+      "output": "12 * 3 = 36",
+      "stdin": "12 * 3",
+      "lang": "cpp"
+    },
+    {
+      "file": "convert.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\ndouble km_to_miles(double km) { return km * 0.621371; }\ndouble c_to_f(double c) { return c * 9 / 5 + 32; }\n\nint main() {\n    cout << km_to_miles(10) << endl;\n    cout << c_to_f(30) << endl;\n    return 0;\n}",
+      "output": "6.21371\n86",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "5"
+  },
+  "nextTitle": "Arrays"
+}

@@ -1,0 +1,392 @@
+{
+  "lang": "cpp",
+  "ep": 25,
+  "title": "const references",
+  "module": 3,
+  "lengthSec": 292,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "pass big values without copying",
+    "protect a parameter with const",
+    "know when to use const and ampersand"
+  ],
+  "youtube": {
+    "title": "C++ const References: Fast and Safe Parameters | C++ Programming EP 25",
+    "description": "In this episode you will pass big values without copying, protect a parameter with const and know when to use const and ampersand, with Xecxec the crab. 0:00 Intro · 0:15 const references · 0:49 A const reference · 1:29 Which parameter style? · 1:59 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:37 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "const references"
+      },
+      {
+        "t": "0:49",
+        "label": "A const reference"
+      },
+      {
+        "t": "1:29",
+        "label": "Which parameter style?"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:17",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:37",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "const reference",
+      "const &",
+      "pass big objects",
+      "c++ best practice"
+    ],
+    "thumbnail": {
+      "text": "CONST &",
+      "visual": "big text \"CONST &\" in tomato on mint; Xecxec next to a glass case around a big box; thin black border and drop shadow.",
+      "pose": "Xecxec next to a glass case around a big box"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 25 · CONST &",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we learn the most common parameter style in modern C plus plus. It is fast, and it is safe."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 34,
+      "onScreen": "\"const references\": numbered lines (1. A copy of a big value is slow; 2. A reference avoids the copy; 3. Const stops the function from changing it) and an analogy card: a museum: you may look at the painting, but you may not touch it",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Copying a big string for every call is slow. A reference avoids the copy. But a reference lets the function change the original. Add const, and the function may only read it. So a const reference is fast and safe. Think of a museum. You may look at the painting, but you may not touch it.",
+      "points": [
+        "A copy of a big value is slow",
+        "A reference avoids the copy",
+        "Const stops the function from changing it"
+      ],
+      "analogy": {
+        "title": "const references",
+        "body": "A museum: you may look at the painting, but you may not touch it"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 49,
+      "lengthSec": 40,
+      "onScreen": "show.cpp: show reads a string without copying it",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] The parameter is a const reference to a string. No copy is made. [HL 6] The function may read text, but it may not change it. [HL 11] Main passes the string. [HL 6] The function prints it. Use this style for strings and other big values.",
+      "code": {
+        "file": "show.cpp",
+        "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nvoid show(const string& text) {\n    cout << \"Text: \" << text << endl;\n}\n\nint main() {\n    string line = \"Goa has many beaches\";\n    show(line);\n    return 0;\n}",
+        "output": "Text: Goa has many beaches"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 89,
+      "lengthSec": 30,
+      "onScreen": "a table of three parameter styles",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Here are three styles. A plain parameter makes a copy and cannot change the original. A reference makes no copy and can change the original. A const reference makes no copy and cannot change the original. For big values that you only read, choose the last style.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table of three parameter styles",
+        "headers": [
+          "Style",
+          "Copy made?",
+          "Can change the original?"
+        ],
+        "rows": [
+          [
+            "int n",
+            "yes",
+            "no"
+          ],
+          [
+            "int& n",
+            "no",
+            "yes"
+          ],
+          [
+            "const int& n",
+            "no",
+            "no"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 119,
+      "lengthSec": 40,
+      "onScreen": "longer.cpp: longer takes two const references",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 5] Both parameters are const references. Both strings are only read. [HL 6] The function compares the sizes. [HL 12] Panjim and Mapusa both have six letters, so the answer is false. [HL 13] A const reference can also take a plain quoted text. Margao is longer than Goa, so the answer is true.",
+      "code": {
+        "file": "longer.cpp",
+        "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nbool longer(const string& a, const string& b) {\n    return a.size() > b.size();\n}\n\nint main() {\n    string x = \"Panjim\";\n    string y = \"Mapusa\";\n    cout << boolalpha << longer(x, y) << endl;\n    cout << longer(\"Margao\", \"Goa\") << endl;\n    return 0;\n}",
+        "output": "false\ntrue"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 159,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 longer.cpp -o longer then ./longer",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as longer dot cpp. Compile it with g plus plus. Then run the program. The program prints false and then true."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 179,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A copy of a big value is slow. Two. A const reference makes no copy. Three. The function may read the value but not change it. Four. A const reference can take a temporary value. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A copy of a big value is slow.",
+        "A const reference makes no copy.",
+        "The function may read the value but not change it.",
+        "A const reference can take a temporary value."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 209,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Changing a const reference",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The function takes a const reference, and then tries to add one. The compiler says increment of read-only reference. Const means look, but do not touch. If the function must change the value, remove const."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 249,
+      "lengthSec": 8,
+      "onScreen": "The museum guard loves const references. He says, look all you want, but do not touch the exhibit.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "The museum guard loves const references. He says, look all you want, but do not touch the exhibit."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 257,
+      "lengthSec": 20,
+      "onScreen": "Task card: choose the right parameter style",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a function that prints the size of a string. Choose the best parameter style, and explain your choice in a comment. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 277,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 26 · Default arguments and overloading",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: default arguments and overloading. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nvoid bump(const int& n) {\n    n++;\n}\n\nint main() {\n    int count = 1;\n    bump(count);\n    cout << count << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nbump.cpp: In function 'void bump(const int&)':\nbump.cpp:5:5: error: increment of read-only reference 'n'\n    5 |     n++;\n      |     ^",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nvoid bump(int& n) {\n    n++;\n}\n\nint main() {\n    int count = 1;\n    bump(count);\n    cout << count << endl;\n    return 0;\n}",
+    "why": "A const reference is read-only. If the function must change the value, use a plain reference. If it must not, remove the change."
+  },
+  "pun": "\"The museum guard loves const references. He says, look all you want, but do not touch the exhibit.\"",
+  "challenge": "Write a function that prints the size of a string. Choose the best parameter style, and explain your choice in a comment.",
+  "challengeAnswer": "Use const string ampersand. The function only reads the string, and a reference avoids a slow copy.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: const references",
+      "hook": "\"Look, but do not touch. That is a const reference.\"",
+      "script": "Look, but do not touch. That is a const reference. Today we learn the most common parameter style in modern C plus plus. It is fast, and it is safe. Copying a big string for every call is slow. A reference avoids the copy. But a reference lets the function change the original. Add const, and the function may only read it. Keep coding, says Xecxec!",
+      "onScreen": "CONST REFERENCES",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: const references.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constreferences",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "const references in one minute",
+      "hook": "\"Copying a big string for every call is slow.\"",
+      "script": "Copying a big string for every call is slow. A reference avoids the copy. But a reference lets the function change the original. Add const, and the function may only read it. So a const reference is fast and safe. Think of a museum. You may look at the painting, but you may not touch it. The parameter is a const reference to a string. Keep coding, says Xecxec!",
+      "onScreen": "CONST REFERENCES",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "const references in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constreferences",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Both parameters are const references.\"",
+      "script": "Both parameters are const references. Both strings are only read. The function compares the sizes. Panjim and Mapusa both have six letters, so the answer is false. A const reference can also take a plain quoted text. Margao is longer than Goa, so the answer is true. The program prints false and then true. A copy of a big value is slow. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constreferences",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Changing a const reference",
+      "hook": "\"Can you spot the bug in const references?\"",
+      "script": "Can you spot the bug in const references? Bug of the Day. The function takes a const reference, and then tries to add one. The compiler says increment of read-only reference. Const means look, but do not touch. If the function must change the value, remove const. A const reference is read-only. If the function must change the value, use a plain reference. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Bug of the Day: Changing a const reference.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constreferences",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you choose the right parameter style in const references?\"",
+      "script": "Can you choose the right parameter style in const references? The museum guard loves const references. He says, look all you want, but do not touch the exhibit. Write a function that prints the size of a string. Choose the best parameter style, and explain your choice in a comment. Write your answer in the comments. A copy of a big value is slow. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "constreferences",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "show.cpp",
+      "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nvoid show(const string& text) {\n    cout << \"Text: \" << text << endl;\n}\n\nint main() {\n    string line = \"Goa has many beaches\";\n    show(line);\n    return 0;\n}",
+      "output": "Text: Goa has many beaches",
+      "lang": "cpp"
+    },
+    {
+      "file": "longer.cpp",
+      "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nbool longer(const string& a, const string& b) {\n    return a.size() > b.size();\n}\n\nint main() {\n    string x = \"Panjim\";\n    string y = \"Mapusa\";\n    cout << boolalpha << longer(x, y) << endl;\n    cout << longer(\"Margao\", \"Goa\") << endl;\n    return 0;\n}",
+      "output": "false\ntrue",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "2"
+  },
+  "nextTitle": "Default arguments and overloading"
+}

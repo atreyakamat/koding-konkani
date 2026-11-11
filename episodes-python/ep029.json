@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A tuple is like a list that cannot change. It uses round brackets. You can read items by index, count them with len, and loop over them. But you cannot assign to an item, append, or remove. Think of a sealed envelope. You can read the papers, but you cannot swap one. Unpacking is a neat trick. Write several names on the left, and Python ties one item to each name."
+      "narration": "A tuple is like a list that cannot change. It uses round brackets. You can read items by index, count them with len, and loop over them. But you cannot assign to an item, append, or remove. Think of a sealed envelope. You can read the papers, but you cannot swap one. Unpacking is a neat trick. Write several names on the left, and Python ties one item to each name.",
+      "props": {
+        "lines": [
+          "A tuple uses round brackets",
+          "It can be read like a list but never changed",
+          "Unpacking ties each item to its own name"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a sealed envelope with a fixed set of papers inside: you can read them, but you cannot swap one"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "point.py",
         "source": "spot = (15, 73)\nprint(spot)\nprint(spot[0])\nlat, lon = spot\nprint(lat, lon)",
         "output": "(15, 73)\n15\n15 73"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python point.py",
+        "output": "(15, 73)\n15\n15 73"
       }
     },
     {
@@ -129,7 +145,92 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. Spot is tied to a tuple object holding fifteen and seventy three. Lat and lon are tied to the same two int objects that sit inside the tuple. Unpacking did not copy the numbers. It just tied a new name to each one. The tuple itself can never change."
+      "narration": "Here is the picture. Spot is tied to a tuple object holding fifteen and seventy three. Lat and lon are tied to the same two int objects that sit inside the tuple. Unpacking did not copy the numbers. It just tied a new name to each one. The tuple itself can never change.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "spot",
+                "cells": [
+                  {
+                    "value": "15",
+                    "index": 0,
+                    "address": "tuple"
+                  },
+                  {
+                    "value": "73",
+                    "index": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "name": "spot",
+                "cells": [
+                  {
+                    "value": "15",
+                    "index": 0,
+                    "address": "tuple"
+                  },
+                  {
+                    "value": "73",
+                    "index": 1
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "15",
+                    "address": "int",
+                    "name": "lat"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "name": "spot",
+                "cells": [
+                  {
+                    "value": "15",
+                    "index": 0,
+                    "address": "tuple"
+                  },
+                  {
+                    "value": "73",
+                    "index": 1
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "15",
+                    "address": "int",
+                    "name": "lat"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "73",
+                    "address": "int",
+                    "name": "lon"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +247,11 @@
         "file": "rest.py",
         "source": "marks = (72, 85, 90)\nlow, mid, high = marks\nprint(low, high)\nfirst, *rest = marks\nprint(first, rest)",
         "output": "72 90\n72 [85, 90]"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python rest.py",
+        "output": "72 90\n72 [85, 90]"
       }
     },
     {
@@ -159,7 +265,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as rest dot py. In the terminal, type python, space, rest dot py. Seventy two, ninety, then seventy two and a list with eighty five and ninety."
+      "narration": "Save the file as rest dot py. In the terminal, type python, space, rest dot py. Seventy two, ninety, then seventy two and a list with eighty five and ninety.",
+      "props": {
+        "lines": [
+          {
+            "text": "python rest.py",
+            "kind": "input"
+          },
+          {
+            "text": "72 90",
+            "kind": "output"
+          },
+          {
+            "text": "72 [85, 90]",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +293,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A tuple uses round brackets and cannot be changed. Two: Index, len and loops work on tuples. Three: Unpacking ties each item to its own name. Four: A star name collects the leftover items into a list. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A tuple uses round brackets and cannot be changed. Two: Index, len and loops work on tuples. Three: Unpacking ties each item to its own name. Four: A star name collects the leftover items into a list. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A tuple uses round brackets and cannot be changed.",
+          "Index, len and loops work on tuples.",
+          "Unpacking ties each item to its own name.",
+          "A star name collects the leftover items into a list."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +315,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We try to change the first number of the tuple. Python says, type error. A tuple object does not support item assignment. Tuples are sealed. If you need a different tuple, build a new one, and tie the name to it. If you need to change items often, use a list instead."
+      "narration": "Bug of the Day. We try to change the first number of the tuple. Python says, type error. A tuple object does not support item assignment. Tuples are sealed. If you need a different tuple, build a new one, and tie the name to it. If you need to change items often, use a list instead.",
+      "props": {
+        "wrongCode": "spot = (15, 73)\nspot[0] = 20",
+        "fixedCode": "spot = (15, 73)\nspot = (20, spot[1])\nprint(spot)",
+        "error": "  File \"point.py\", line 2, in <module>\n    spot[0] = 20\n    ~~~~^^^\nTypeError: 'tuple' object does not support item assignment",
+        "errorOverride": {
+          "lines": [
+            "  File \"point.py\", line 2, in <module>",
+            "    spot[0] = 20",
+            "    ~~~~^^^",
+            "TypeError: 'tuple' object does not support item assignment"
+          ]
+        },
+        "why": "Tuples are immutable, so an item cannot be assigned; build a new tuple and tie the name to it.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python point.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +373,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: sorting. Keep coding, says Xecxec!"
+      "narration": "Next time: sorting. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 30,
+        "nextTitle": "Sorting"
+      }
     }
   ],
   "bug": {
@@ -348,5 +505,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

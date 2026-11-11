@@ -1,4 +1,4 @@
-import type { Episode, Scene } from "../lib/episode";
+import { isCCourse, type Episode, type Scene } from "../lib/episode";
 import { stripMarkdown } from "../lib/sanitize.ts";
 import { terminalLinesFor } from "../lib/terminalLines.ts";
 import { EPISODE_TITLES } from "../lib/episodeTitles.ts";
@@ -85,7 +85,12 @@ const labelsFromNarration = (narration: string): Record<number, string> => {
  * present and a single onScreen line otherwise — flagged in review.md as
  * needing real refinement once Module 6+ episodes are rendered.
  */
-export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, unknown> => {
+export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, unknown> => ({
+  ...derivedPropsFor(episode, scene),
+  ...(scene.props ?? {}),
+});
+
+const derivedPropsFor = (episode: Episode, scene: Scene): Record<string, unknown> => {
   switch (scene.template) {
     case "title-card":
       return {
@@ -95,12 +100,14 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
       };
     case "concept-slide":
       return {
-        lines: linesFromNarration(scene.narration),
-        analogy: analogyFromOnScreen(scene.onScreen),
+        lines: scene.points?.map(stripMarkdown) ?? linesFromNarration(scene.narration),
+        // Written-out points mean the scene is authored (a recap card): no analogy is guessed from its stage direction.
+        analogy: scene.analogy ?? (scene.points ? undefined : analogyFromOnScreen(scene.onScreen)),
+        diagram: scene.diagram,
       };
     case "code-explain":
       return {
-        file: scene.code?.file ?? "code.c",
+        file: scene.code?.file ?? (isCCourse(episode.lang) ? "code.c" : `code.${episode.lang === "python" ? "py" : "cpp"}`),
         source: scene.code?.source,
         onScreen: stripMarkdown(scene.onScreen),
         labels: labelsFromNarration(scene.narration),
@@ -121,9 +128,10 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
       return {
         wrongCode,
         error,
-        errorOverride: BUG_OVERRIDES[episode.ep],
+        // The override and culprit tables are keyed by C episode number; other courses must not hit them.
+        errorOverride: isCCourse(episode.lang) ? BUG_OVERRIDES[episode.ep] : undefined,
         // Lines the code windows centre on (and highlight); only code has lines to point at.
-        culprit: looksLikeCode(wrongCode) ? bugCulprit(episode.ep, wrongCode, looksLikeCode(fixedCode) ? fixedCode : "", error) : undefined,
+        culprit: looksLikeCode(wrongCode) ? bugCulprit(isCCourse(episode.lang) ? episode.ep : 0, wrongCode, looksLikeCode(fixedCode) ? fixedCode : "", error) : undefined,
         fixedCode,
         why: stripMarkdown(bug.why),
       };
@@ -137,7 +145,7 @@ export const scenePropsFor = (episode: Episode, scene: Scene): Record<string, un
       // line). Its title comes from the generated table, not from the free-text onScreen line,
       // which has many shapes ("Next: EP 43 Searching", "Next: EP 27, the for loop", ...).
       const nextEp = episode.ep + 1;
-      return { nextEp, nextTitle: EPISODE_TITLES[nextEp] };
+      return { nextEp, nextTitle: isCCourse(episode.lang) ? EPISODE_TITLES[nextEp] : episode.nextTitle };
     }
     default:
       return {};

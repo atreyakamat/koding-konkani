@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A lambda is a tiny function without a name. The word lambda, the parameters, a colon, and one expression. The value of that expression is returned automatically. Think of a sticky note instruction. Too small to deserve a name, but handy for one quick job. Map applies a function to every item. Filter keeps only the items for which the function says True. Both give back a lazy object, which you wrap in list to see."
+      "narration": "A lambda is a tiny function without a name. The word lambda, the parameters, a colon, and one expression. The value of that expression is returned automatically. Think of a sticky note instruction. Too small to deserve a name, but handy for one quick job. Map applies a function to every item. Filter keeps only the items for which the function says True. Both give back a lazy object, which you wrap in list to see.",
+      "props": {
+        "lines": [
+          "lambda args: expression makes a nameless function",
+          "map applies a function to every item",
+          "filter keeps the items where the function is True"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a sticky-note instruction: too small to deserve a name, but handy for one quick job"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "lam.py",
         "source": "double = lambda n: n * 2\nprint(double(5))\nnums = [1, 2, 3, 4]\nprint(list(map(lambda n: n * 2, nums)))\nprint(list(filter(lambda n: n % 2 == 0, nums)))",
         "output": "10\n[2, 4, 6, 8]\n[2, 4]"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python lam.py",
+        "output": "10\n[2, 4, 6, 8]\n[2, 4]"
       }
     },
     {
@@ -127,7 +143,168 @@
       "onScreen": "Items flow through a map machine that doubles them, and through a filter gate that lets only even numbers pass",
       "animation": "Number tokens move along a belt through a transform box, then through a gate that drops the odd ones",
       "sfx": [],
-      "narration": "Picture two machines. The map machine takes every item, changes it, and sends it on. The count of items stays the same. The filter gate checks each item and lets only some through. The count can shrink. Both are lazy. Nothing happens until you ask for the results, for example with list."
+      "narration": "Picture two machines. The map machine takes every item, changes it, and sends it on. The count of items stays the same. The filter gate checks each item and lets only some through. The count can shrink. Both are lazy. Nothing happens until you ask for the results, for example with list.",
+      "props": {
+        "lines": [
+          "Picture two machines.",
+          "The count of items stays the same.",
+          "The count can shrink."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 46,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "t1",
+              "shape": "token",
+              "text": "1",
+              "colour": "butter",
+              "col": 0,
+              "row": 2,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "t2",
+              "shape": "token",
+              "text": "2",
+              "colour": "butter",
+              "col": 0,
+              "row": 3,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "t3",
+              "shape": "token",
+              "text": "3",
+              "colour": "butter",
+              "col": 0,
+              "row": 4,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "t4",
+              "shape": "token",
+              "text": "4",
+              "colour": "butter",
+              "col": 0,
+              "row": 5,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "tr",
+              "shape": "box",
+              "text": "n * 2",
+              "colour": "lilac",
+              "col": 3,
+              "row": 3,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "gate",
+              "shape": "box",
+              "text": "keep if even",
+              "colour": "mint",
+              "col": 7,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "out",
+              "shape": "card",
+              "text": "[2, 4]",
+              "colour": "cream",
+              "col": 9,
+              "row": 5,
+              "w": 2,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "tr",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "gate"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "t1"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "t2"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "t3"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "t4"
+            },
+            {
+              "t": 0.25,
+              "do": "move",
+              "target": "t1",
+              "sfx": "whoosh",
+              "to": [
+                3,
+                2
+              ]
+            },
+            {
+              "t": 0.4,
+              "do": "move",
+              "target": "t1",
+              "to": [
+                7,
+                2
+              ]
+            },
+            {
+              "t": 0.5,
+              "do": "move",
+              "target": "t2",
+              "to": [
+                7,
+                3
+              ]
+            },
+            {
+              "t": 0.6,
+              "do": "cross",
+              "target": "t3",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.7,
+              "do": "show",
+              "target": "out",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +321,11 @@
         "file": "sortkey.py",
         "source": "words = [\"banana\", \"fig\", \"apple\"]\nprint(sorted(words, key=lambda w: w[-1]))",
         "output": "['banana', 'apple', 'fig']"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python sortkey.py",
+        "output": "['banana', 'apple', 'fig']"
       }
     },
     {
@@ -157,7 +339,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as sortkey dot py. In the terminal, type python, space, sortkey dot py. Banana, apple, fig."
+      "narration": "Save the file as sortkey dot py. In the terminal, type python, space, sortkey dot py. Banana, apple, fig.",
+      "props": {
+        "lines": [
+          {
+            "text": "python sortkey.py",
+            "kind": "input"
+          },
+          {
+            "text": "['banana', 'apple', 'fig']",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +363,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: lambda args: expression is a one-line function with no name. Two: map applies a function to every item. Three: filter keeps the items for which the function is True. Four: Wrap map and filter in list to see the results. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: lambda args: expression is a one-line function with no name. Two: map applies a function to every item. Three: filter keeps the items for which the function is True. Four: Wrap map and filter in list to see the results. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Lambda args: expression is a one-line function with no name.",
+          "Map applies a function to every item.",
+          "Filter keeps the items for which the function is True.",
+          "Wrap map and filter in list() to see the results."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +385,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We print the result of map, and get a strange line, map object at a long address. Map does not make a list. It gives a lazy object that makes values only when asked. Wrap the map in list, and you see the real values. Filter works the same way."
+      "narration": "Bug of the Day. We print the result of map, and get a strange line, map object at a long address. Map does not make a list. It gives a lazy object that makes values only when asked. Wrap the map in list, and you see the real values. Filter works the same way.",
+      "props": {
+        "wrongCode": "nums = [1, 2, 3]\nprint(map(lambda n: n * 2, nums))",
+        "fixedCode": "nums = [1, 2, 3]\nprint(list(map(lambda n: n * 2, nums)))",
+        "error": "<map object at 0x...>",
+        "errorOverride": {
+          "lines": [
+            "<map object at 0x...>"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "map returns a lazy iterator, not a list, so printing it shows the object; wrap it in list() to get the values.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python lam.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +441,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: recursion. Keep coding, says Xecxec!"
+      "narration": "Next time: recursion. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 47,
+        "nextTitle": "Recursion"
+      }
     }
   ],
   "bug": {
@@ -346,5 +573,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

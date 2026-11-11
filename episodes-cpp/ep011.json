@@ -1,0 +1,396 @@
+{
+  "lang": "cpp",
+  "ep": 11,
+  "title": "Strings with std::string",
+  "module": 1,
+  "lengthSec": 293,
+  "colours": {
+    "bg": "#BFD7FF",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "create and join strings",
+    "read the size and one letter of a string",
+    "use substr and find"
+  ],
+  "youtube": {
+    "title": "C++ Strings: std::string for Beginners | C++ Programming EP 11",
+    "description": "In this episode you will create and join strings, read the size and one letter of a string and use substr and find, with Xecxec the crab. 0:00 Intro · 0:15 Strings with std::string · 0:50 Join and measure · 1:30 Counting letters · 2:00 Second program · 3:00 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:38 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Strings with std::string"
+      },
+      {
+        "t": "0:50",
+        "label": "Join and measure"
+      },
+      {
+        "t": "1:30",
+        "label": "Counting letters"
+      },
+      {
+        "t": "2:00",
+        "label": "Second program"
+      },
+      {
+        "t": "3:00",
+        "label": "Recap"
+      },
+      {
+        "t": "3:30",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:18",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:38",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::string",
+      "c++ strings",
+      "string functions",
+      "substr find"
+    ],
+    "thumbnail": {
+      "text": "TEXT IN C++",
+      "visual": "big text \"TEXT IN C++\" in tomato on pastel blue; Xecxec next to a string of beads, each bead a letter; thin black border and drop shadow.",
+      "pose": "Xecxec next to a string of beads, each bead a letter"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 11 · TEXT IN C++",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we work with text. The std string type can hold a word, a sentence or a whole page."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 35,
+      "onScreen": "\"Strings with std::string\": numbered lines (1. std::string holds text of any length; 2. Plus joins two strings; 3. Letters are counted from zero) and an analogy card: a string of beads: each bead is one letter, counted from zero",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The std string type holds text of any length. Plus joins two strings. The size function tells you how many letters it holds. Each letter has a position, called an index. The first index is zero, not one. Think of a string of beads. Each bead is one letter, and you count from the first bead as zero.",
+      "points": [
+        "std::string holds text of any length",
+        "Plus joins two strings",
+        "Letters are counted from zero"
+      ],
+      "analogy": {
+        "title": "Strings with std::string",
+        "body": "A string of beads: each bead is one letter, counted from zero"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 50,
+      "lengthSec": 40,
+      "onScreen": "text.cpp: join two strings and read the size and the first letter",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 2] The string header gives us the string type. [HL 6] First holds Goa. [HL 7] Second holds a space and then beach. [HL 8] Plus joins them into full. [HL 9] The print shows Goa beach. [HL 10] The size is nine letters, and the space counts. [HL 11] Index zero is the first letter, which is G.",
+      "code": {
+        "file": "text.cpp",
+        "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string first = \"Goa\";\n    string second = \" beach\";\n    string full = first + second;\n    cout << full << endl;\n    cout << full.size() << endl;\n    cout << full[0] << endl;\n    return 0;\n}",
+        "output": "Goa beach\n9\nG"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 90,
+      "lengthSec": 30,
+      "onScreen": "a table of string calls and their results for the text Goa beach",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "Here is the text Goa beach with its calls. The size is nine. Index zero is G. Index four is the letter b, after the space. Substr cuts three letters from index zero, and gives Goa. Find gives the index where beach starts. That index is four.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table of string calls and their results for the text Goa beach",
+        "headers": [
+          "Call",
+          "Result"
+        ],
+        "rows": [
+          [
+            "full.size()",
+            "9"
+          ],
+          [
+            "full[0]",
+            "G"
+          ],
+          [
+            "full[4]",
+            "b"
+          ],
+          [
+            "full.substr(0, 3)",
+            "Goa"
+          ],
+          [
+            "full.find(\"beach\")",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 120,
+      "lengthSec": 40,
+      "onScreen": "cut.cpp: find a word and cut it out",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 6] The string holds a short sentence. [HL 7] The find function looks for the word sunny. It returns the index where the word starts. [TRACK pos=7] Here that index is seven. [HL 9] The substr function cuts five letters from that index. It prints sunny. [HL 10] The append function adds an exclamation mark at the end. [HL 11] The full line prints.",
+      "code": {
+        "file": "cut.cpp",
+        "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string line = \"Goa is sunny today\";\n    size_t pos = line.find(\"sunny\");\n    cout << pos << endl;\n    cout << line.substr(pos, 5) << endl;\n    line.append(\"!\");\n    cout << line << endl;\n    return 0;\n}",
+        "output": "7\nsunny\nGoa is sunny today!"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 160,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 cut.cpp -o cut then ./cut",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as cut dot cpp. Compile it with g plus plus. Then run the program. The program prints seven, then sunny, then the whole line with the exclamation mark."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 180,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. The std string type holds text of any length. Two. Plus joins two strings. Three. The first index is zero. Four. The functions size, find, substr and append do the common jobs. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "The std string type holds text of any length.",
+        "Plus joins two strings.",
+        "The first index is zero.",
+        "The functions size, find, substr and append do the common jobs."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 210,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Adding two quoted texts",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We try to add two quoted texts. The compiler says invalid operands to binary plus. A quoted text is a plain character array, not a std string. Plus needs at least one real std string. Wrap the first text in string, and it works."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 250,
+      "lengthSec": 8,
+      "onScreen": "Why did the string go to therapy? It could not stop feeling cut off.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the string go to therapy? It could not stop feeling cut off."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 258,
+      "lengthSec": 20,
+      "onScreen": "Task card: build a greeting from two strings",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Store a first name and a village in two strings. Print the sentence, Asha lives in Mapusa, with your own words. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 278,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 12 · Formatting output",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: formatting output. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"Hi\" + \" there\";\n    cout << s << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\njoin.cpp: In function 'int main()':\njoin.cpp:6:21: error: invalid operands of types 'const char [3]' and 'const char [7]' to binary 'operator+'\n    6 |     string s = \"Hi\" + \" there\";\n      |                ~~~~ ^ ~~~~~~~~\n      |                |      |\n      |                |      const char [7]",
+    "fixed": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = string(\"Hi\") + \" there\";\n    cout << s << endl;\n    return 0;\n}",
+    "why": "A text in quotes is a plain character array, not a std string. Plus works when at least one side is a std string."
+  },
+  "pun": "\"Why did the string go to therapy? It could not stop feeling cut off.\"",
+  "challenge": "Store a first name and a village in two strings. Print the sentence, Asha lives in Mapusa, with your own words.",
+  "challengeAnswer": "Join the strings with plus, and put the spaces and the words lives in between, inside quotes. At least one side must be a string.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Strings with std::string",
+      "hook": "\"Strings in C plus plus grow and shrink as you need.\"",
+      "script": "Strings in C plus plus grow and shrink as you need. Today we work with text. The std string type can hold a word, a sentence or a whole page. The std string type holds text of any length. Plus joins two strings. The size function tells you how many letters it holds. Each letter has a position, called an index. Keep coding, says Xecxec!",
+      "onScreen": "STRINGS WITH STD::STRING",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: Strings with std::string.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stringswithstdstring",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Strings with std::string in one minute",
+      "hook": "\"The std string type holds text of any length.\"",
+      "script": "The std string type holds text of any length. Plus joins two strings. The size function tells you how many letters it holds. Each letter has a position, called an index. The first index is zero, not one. Think of a string of beads. Each bead is one letter, and you count from the first bead as zero. Keep coding, says Xecxec!",
+      "onScreen": "STRINGS WITH STD::STRING",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 35,
+      "caption": "Strings with std::string in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stringswithstdstring",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The string holds a short sentence.\"",
+      "script": "The string holds a short sentence. The find function looks for the word sunny. It returns the index where the word starts. Here that index is seven. The substr function cuts five letters from that index. It prints sunny. The append function adds an exclamation mark at the end. The full line prints. The program prints seven, then sunny, then the whole line with the exclamation mark. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 40,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stringswithstdstring",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Adding two quoted texts",
+      "hook": "\"Can you spot the bug in strings with std string?\"",
+      "script": "Can you spot the bug in strings with std string? Bug of the Day. We try to add two quoted texts. The compiler says invalid operands to binary plus. A quoted text is a plain character array, not a std string. Plus needs at least one real std string. Wrap the first text in string, and it works. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Bug of the Day: Adding two quoted texts.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stringswithstdstring",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you build a greeting from two strings in strings\"",
+      "script": "Can you build a greeting from two strings in strings with std string? Why did the string go to therapy? It could not stop feeling cut off. Store a first name and a village in two strings. Print the sentence, Asha lives in Mapusa, with your own words. Write your answer in the comments. The std string type holds text of any length. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stringswithstdstring",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "text.cpp",
+      "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string first = \"Goa\";\n    string second = \" beach\";\n    string full = first + second;\n    cout << full << endl;\n    cout << full.size() << endl;\n    cout << full[0] << endl;\n    return 0;\n}",
+      "output": "Goa beach\n9\nG",
+      "lang": "cpp"
+    },
+    {
+      "file": "cut.cpp",
+      "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string line = \"Goa is sunny today\";\n    size_t pos = line.find(\"sunny\");\n    cout << pos << endl;\n    cout << line.substr(pos, 5) << endl;\n    line.append(\"!\");\n    cout << line << endl;\n    return 0;\n}",
+      "output": "7\nsunny\nGoa is sunny today!",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Hi there"
+  },
+  "nextTitle": "Formatting output"
+}

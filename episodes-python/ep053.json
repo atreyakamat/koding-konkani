@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "The with statement opens a file, and closes it for you when the block ends. Think of an automatic door. It closes behind you, even if you forget. Write with open, the name, as f, and a colon. The indented block can use f. When the block ends, even through an error, Python closes the file. Closing matters. Text that you write can stay in a buffer. It reaches the disk only when the file is closed."
+      "narration": "The with statement opens a file, and closes it for you when the block ends. Think of an automatic door. It closes behind you, even if you forget. Write with open, the name, as f, and a colon. The indented block can use f. When the block ends, even through an error, Python closes the file. Closing matters. Text that you write can stay in a buffer. It reaches the disk only when the file is closed.",
+      "props": {
+        "lines": [
+          "with open(...) as f: opens the file for the block",
+          "The file closes when the block ends",
+          "It closes even if an error happens inside"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "an automatic door: it closes behind you, even if you forget"
+        }
+      }
     },
     {
       "id": 3,
@@ -112,7 +123,17 @@
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] The with line. Open the file, and tie it to f, for the block. [HL 2] Inside the block, read the text. [HL 3] The block has ended, so Python has already closed the file. We use the text we saved. Capital letters. [HL 4] The closed attribute confirms it. True. We never wrote close ourselves."
+      "narration": "[HL 1] The with line. Open the file, and tie it to f, for the block. [HL 2] Inside the block, read the text. [HL 3] The block has ended, so Python has already closed the file. We use the text we saved. Capital letters. [HL 4] The closed attribute confirms it. True. We never wrote close ourselves.",
+      "code": {
+        "file": "withread.py",
+        "source": "with open(\"notes.txt\") as f:\n    text = f.read()\nprint(text.upper())\nprint(f.closed)",
+        "output": "BAGA\nCOLVA\nANJUNA\n\nTrue"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python withread.py",
+        "output": "BAGA\nCOLVA\nANJUNA\n\nTrue"
+      }
     },
     {
       "id": 4,
@@ -122,7 +143,108 @@
       "onScreen": "A timeline: with opens the file, the block runs, the file closes, even if an error arrow appears in the middle",
       "animation": "Arrows run from the program box to a file box and back; a lock icon appears while the file is open and clears when it is closed",
       "sfx": [],
-      "narration": "Here is the timeline. The with line opens the file. The block runs. When the block ends, the file is closed. Now imagine an error in the middle of the block. Without with, the close line does not run. With with, Python still closes the file on the way out. That is why with is the standard way to work with files."
+      "narration": "Here is the timeline. The with line opens the file. The block runs. When the block ends, the file is closed. Now imagine an error in the middle of the block. Without with, the close line does not run. With with, Python still closes the file on the way out. That is why with is the standard way to work with files.",
+      "props": {
+        "lines": [
+          "Here is the timeline.",
+          "The with line opens the file.",
+          "The block runs."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 53,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "prog",
+              "shape": "box",
+              "text": "Program",
+              "colour": "cream",
+              "col": 0,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "file",
+              "shape": "box",
+              "text": "notes.txt",
+              "colour": "butter",
+              "col": 8,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "lock",
+              "shape": "token",
+              "text": "open",
+              "colour": "tomato",
+              "col": 6,
+              "row": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "with open",
+              "colour": "ink",
+              "from": "prog",
+              "to": "file"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "text",
+              "colour": "ink",
+              "from": "file",
+              "to": "prog"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "prog",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "file"
+            },
+            {
+              "t": 0.2,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.3,
+              "do": "show",
+              "target": "lock",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.5,
+              "do": "draw",
+              "target": "a2",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.75,
+              "do": "hide",
+              "target": "lock",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -139,6 +261,11 @@
         "file": "withwrite.py",
         "source": "with open(\"out.txt\", \"w\") as f:\n    f.write(\"Hello\\n\")\nwith open(\"out.txt\") as f:\n    print(f.read().strip())",
         "output": "Hello"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python withwrite.py",
+        "output": "Hello"
       }
     },
     {
@@ -152,7 +279,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as withwrite dot py. In the terminal, type python, space, withwrite dot py. Hello."
+      "narration": "Save the file as withwrite dot py. In the terminal, type python, space, withwrite dot py. Hello.",
+      "props": {
+        "lines": [
+          {
+            "text": "python withwrite.py",
+            "kind": "input"
+          },
+          {
+            "text": "Hello",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -164,7 +303,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: with open of ... as f: closes the file when the block ends. Two: It closes even when an error happens inside. Three: Write inside the block, and the data is saved when it ends. Four: Prefer with over open and close. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: with open of ... as f: closes the file when the block ends. Two: It closes even when an error happens inside. Three: Write inside the block, and the data is saved when it ends. Four: Prefer with over open and close. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "With open(...) as f: closes the file when the block ends.",
+          "It closes even when an error happens inside.",
+          "Write inside the block, and the data is saved when it ends.",
+          "Prefer with over open and close."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -177,7 +325,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We write Hello, and read the file straight back. It shows empty quotes. The text was still waiting in a buffer, because we never closed the file. Use with, and the file is closed when the block ends, so the text reaches the disk. Then reading it back works."
+      "narration": "Bug of the Day. We write Hello, and read the file straight back. It shows empty quotes. The text was still waiting in a buffer, because we never closed the file. Use with, and the file is closed when the block ends, so the text reaches the disk. Then reading it back works.",
+      "props": {
+        "wrongCode": "f = open(\"out.txt\", \"w\")\nf.write(\"Hello\")\nprint(repr(open(\"out.txt\").read()))",
+        "fixedCode": "with open(\"out.txt\", \"w\") as f:\n    f.write(\"Hello\")\nprint(repr(open(\"out.txt\").read()))",
+        "error": "''",
+        "errorOverride": {
+          "lines": [
+            "''"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Written text waits in a buffer until the file is closed or flushed, so reading before closing can show an empty file.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python withread.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -213,7 +381,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: try and except. Keep coding, says Xecxec!"
+      "narration": "Next time: try and except. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 54,
+        "nextTitle": "try and except"
+      }
     }
   ],
   "bug": {
@@ -326,9 +498,12 @@
   ],
   "codeFiles": [
     {
-      "file": "file1.python",
+      "file": "withread.py",
       "source": "with open(\"notes.txt\") as f:\n    text = f.read()\nprint(text.upper())\nprint(f.closed)",
       "output": "BAGA\nCOLVA\nANJUNA\n\nTrue",
+      "inputFiles": {
+        "notes.txt": "Baga\nColva\nAnjuna"
+      },
       "lang": "python"
     },
     {
@@ -341,5 +516,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

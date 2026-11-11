@@ -2,7 +2,7 @@
 
 Every narration, on-screen text and challenge in the Python Bible follows these rules. Claude Code must follow them when it edits an episode.
 
-**Honest limit:** the official ASD-STE100 specification and dictionary are not in this repository. `scripts/ste_lint.py` checks a practical subset. It does not prove full ASD-STE100 compliance. If the owner has the official dictionary, give it to the linter as an extra word list.
+**Honest limit:** the official ASD-STE100 specification and dictionary are not in this repository. `scripts/ste_lint_py.py` checks a practical subset. It does not prove full ASD-STE100 compliance. If the owner has the official dictionary, give it to the linter as an extra word list.
 
 ## Rules
 
@@ -23,8 +23,8 @@ Also: one word, one meaning. Use the same name for the same thing in every episo
 ## Commands
 
 ```
-python3 scripts/ste_lint.py docs/python-bible/m*.md          # errors only
-python3 scripts/ste_lint.py docs/python-bible/m*.md --warn   # errors and warnings
+python3 scripts/ste_lint_py.py docs/python-bible/m*.md          # errors only
+python3 scripts/ste_lint_py.py docs/python-bible/m*.md --warn   # errors and warnings
 python3 scripts/check_py.py docs/python-bible/m*.md                               # code, output, timing, Shorts length
 python3 scripts/check_illustrations.py --write               # illustration specs
 ```

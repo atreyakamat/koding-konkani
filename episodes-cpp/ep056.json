@@ -1,0 +1,394 @@
+{
+  "lang": "cpp",
+  "ep": 56,
+  "title": "Encapsulation",
+  "module": 6,
+  "lengthSec": 288,
+  "colours": {
+    "bg": "#FFD8BE",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "hide data and offer safe functions",
+    "validate input in a setter",
+    "keep a class in a valid state"
+  ],
+  "youtube": {
+    "title": "C++ Encapsulation: Getters, Setters and Safe Data | C++ Programming EP 56",
+    "description": "In this episode you will hide data and offer safe functions, validate input in a setter and keep a class in a valid state, with Xecxec the crab. 0:00 Intro · 0:15 Encapsulation · 0:45 A safe account · 1:25 Checked access · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Encapsulation"
+      },
+      {
+        "t": "0:45",
+        "label": "A safe account"
+      },
+      {
+        "t": "1:25",
+        "label": "Checked access"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "encapsulation c++",
+      "getter setter",
+      "data hiding",
+      "class invariant"
+    ],
+    "thumbnail": {
+      "text": "ENCAPSULATION",
+      "visual": "big text \"ENCAPSULATION\" in tomato on peach; Xecxec next to a bank vault with a small window for deposits; thin black border and drop shadow.",
+      "pose": "Xecxec next to a bank vault with a small window for deposits"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 56 · ENCAPSULATION",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we see why classes hide their data. The class checks every change, so it never ends up in a bad state."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"Encapsulation\": numbered lines (1. Keep data private; 2. Offer public functions that check the input; 3. The class keeps itself valid) and an analogy card: a bank counter: you cannot reach the vault, but the clerk checks every deposit",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Encapsulation means hiding the data and offering checked functions. A setter can refuse a bad value. A getter lets others read the value. Then the class always stays valid. Think of a bank counter. You cannot reach the vault, but the clerk checks every deposit.",
+      "points": [
+        "Keep data private",
+        "Offer public functions that check the input",
+        "The class keeps itself valid"
+      ],
+      "analogy": {
+        "title": "Encapsulation",
+        "body": "A bank counter: you cannot reach the vault, but the clerk checks every deposit"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 40,
+      "onScreen": "account.cpp: deposit refuses a negative amount",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] The balance is private. [HL 8] Deposit is the only way to add money. [HL 9] It refuses an amount of zero or less. [HL 12] A good amount is added. [HL 20] Main deposits five hundred. [HL 21] Then it tries to deposit minus twenty. The answer is false. [HL 22] The balance is still five hundred.",
+      "code": {
+        "file": "account.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Account {\n    double balance_ = 0;\n\npublic:\n    bool deposit(double amount) {\n        if (amount <= 0) {\n            return false;\n        }\n        balance_ += amount;\n        return true;\n    }\n    double balance() const { return balance_; }\n};\n\nint main() {\n    Account acc;\n    acc.deposit(500);\n    cout << boolalpha << acc.deposit(-20) << endl;\n    cout << acc.balance() << endl;\n    return 0;\n}",
+        "output": "false\n500"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 85,
+      "lengthSec": 30,
+      "onScreen": "a flow: call, check, change or refuse",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Follow the call. Deposit receives minus twenty. The check finds a bad amount. The function refuses, and returns false. The balance never changes. The outside code cannot break the rule.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "a flow: call, check, change or refuse",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "Call",
+            "detail": "acc.deposit(-20)"
+          },
+          {
+            "id": "s2",
+            "label": "Check",
+            "detail": "amount <= 0 ?"
+          },
+          {
+            "id": "s3",
+            "label": "Refuse",
+            "detail": "Return false, no change"
+          },
+          {
+            "id": "s4",
+            "label": "Balance",
+            "detail": "Stays 500"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "getset.cpp: a setter that keeps age in range",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 8] The getter reads the age. [HL 9] The setter checks the range. [HL 10] Only an age from zero to one hundred twenty is accepted. [HL 18] Seventeen is accepted. [HL 19] Five hundred is refused. [HL 20] The age is still seventeen.",
+      "code": {
+        "file": "getset.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nclass Person {\n    int age_ = 0;\n\npublic:\n    int age() const { return age_; }\n    void set_age(int age) {\n        if (age >= 0 && age <= 120) {\n            age_ = age;\n        }\n    }\n};\n\nint main() {\n    Person p;\n    p.set_age(17);\n    p.set_age(500);\n    cout << p.age() << endl;\n    return 0;\n}",
+        "output": "17"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 155,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 getset.cpp -o getset then ./getset",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as getset dot cpp. Compile it with g plus plus. Then run the program. The program prints seventeen."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 175,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Keep data private. Two. Offer public functions that check the input. Three. A setter can refuse a bad value. Four. The class always stays in a valid state. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Keep data private.",
+        "Offer public functions that check the input.",
+        "A setter can refuse a bad value.",
+        "The class always stays in a valid state."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 205,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A setter that does not check",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The setter stores any number. The program prints an age of minus five. The data is private, but the setter gives no protection. Add a check, so that the class stays valid."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 8,
+      "onScreen": "The vault told the thief, you can only deposit your complaints at the window.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "The vault told the thief, you can only deposit your complaints at the window."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 253,
+      "lengthSec": 20,
+      "onScreen": "Task card: write a safe class",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a Thermostat class. The setter must accept only temperatures from ten to thirty degrees. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 273,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 57 · this and const methods",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: this and const methods. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nclass Person {\n    int age_ = 0;\n\npublic:\n    int age() const { return age_; }\n    void set_age(int age) { age_ = age; }\n};\n\nint main() {\n    Person p;\n    p.set_age(-5);\n    cout << p.age() << endl;\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\n-5",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nclass Person {\n    int age_ = 0;\n\npublic:\n    int age() const { return age_; }\n    void set_age(int age) {\n        if (age >= 0 && age <= 120) {\n            age_ = age;\n        }\n    }\n};\n\nint main() {\n    Person p;\n    p.set_age(-5);\n    cout << p.age() << endl;\n    return 0;\n}",
+    "why": "A setter without a check is the same as a public field. The age of minus five breaks the rules of the class."
+  },
+  "pun": "\"The vault told the thief, you can only deposit your complaints at the window.\"",
+  "challenge": "Write a Thermostat class. The setter must accept only temperatures from ten to thirty degrees.",
+  "challengeAnswer": "Keep the temperature private. In the setter, test that the value is at least ten and at most thirty. Store it only then.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Encapsulation",
+      "hook": "\"A class can protect its own rules.\"",
+      "script": "A class can protect its own rules. Today we see why classes hide their data. The class checks every change, so it never ends up in a bad state. Encapsulation means hiding the data and offering checked functions. A setter can refuse a bad value. A getter lets others read the value. Then the class always stays valid. Keep coding, says Xecxec!",
+      "onScreen": "ENCAPSULATION",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 35,
+      "caption": "What you will learn: Encapsulation.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "encapsulation",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Encapsulation in one minute",
+      "hook": "\"Encapsulation means hiding the data and offering checked functions.\"",
+      "script": "Encapsulation means hiding the data and offering checked functions. A setter can refuse a bad value. A getter lets others read the value. Then the class always stays valid. Think of a bank counter. You cannot reach the vault, but the clerk checks every deposit. The balance is private. Deposit is the only way to add money. It refuses an amount of zero or less. Keep coding, says Xecxec!",
+      "onScreen": "ENCAPSULATION",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 39,
+      "caption": "Encapsulation in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "encapsulation",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The getter reads the age.\"",
+      "script": "The getter reads the age. The setter checks the range. Only an age from zero to one hundred twenty is accepted. Seventeen is accepted. Five hundred is refused. The age is still seventeen. The program prints seventeen. Keep data private. Offer public functions that check the input. A setter can refuse a bad value. The class always stays in a valid state. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "encapsulation",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A setter that does not check",
+      "hook": "\"Can you spot the bug in encapsulation?\"",
+      "script": "Can you spot the bug in encapsulation? Bug of the Day. The setter stores any number. The program prints an age of minus five. The data is private, but the setter gives no protection. Add a check, so that the class stays valid. A setter without a check is the same as a public field. The age of minus five breaks the rules of the class. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 39,
+      "caption": "Bug of the Day: A setter that does not check.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "encapsulation",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you write a safe class in encapsulation?\"",
+      "script": "Can you write a safe class in encapsulation? The vault told the thief, you can only deposit your complaints at the window. Write a Thermostat class. The setter must accept only temperatures from ten to thirty degrees. Write your answer in the comments. Keep data private. Offer public functions that check the input. A setter can refuse a bad value. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "encapsulation",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "account.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Account {\n    double balance_ = 0;\n\npublic:\n    bool deposit(double amount) {\n        if (amount <= 0) {\n            return false;\n        }\n        balance_ += amount;\n        return true;\n    }\n    double balance() const { return balance_; }\n};\n\nint main() {\n    Account acc;\n    acc.deposit(500);\n    cout << boolalpha << acc.deposit(-20) << endl;\n    cout << acc.balance() << endl;\n    return 0;\n}",
+      "output": "false\n500",
+      "lang": "cpp"
+    },
+    {
+      "file": "getset.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nclass Person {\n    int age_ = 0;\n\npublic:\n    int age() const { return age_; }\n    void set_age(int age) {\n        if (age >= 0 && age <= 120) {\n            age_ = age;\n        }\n    }\n};\n\nint main() {\n    Person p;\n    p.set_age(17);\n    p.set_age(500);\n    cout << p.age() << endl;\n    return 0;\n}",
+      "output": "17",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "0"
+  },
+  "nextTitle": "this and const methods"
+}

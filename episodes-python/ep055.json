@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "You can raise an error yourself. Raise, an exception type, and a message. It stops the function, and travels to the nearest matching except. Think of a referee. When a rule is broken, the referee blows the whistle and stops the play. Except as e gives you the error object, so you can print its message. For your own error type, make a class that extends Exception. It needs only one line."
+      "narration": "You can raise an error yourself. Raise, an exception type, and a message. It stops the function, and travels to the nearest matching except. Think of a referee. When a rule is broken, the referee blows the whistle and stops the play. Except as e gives you the error object, so you can print its message. For your own error type, make a class that extends Exception. It needs only one line.",
+      "props": {
+        "lines": [
+          "raise stops the function with an error",
+          "except ... as e gives you the error object",
+          "A custom exception is a class that extends Exception"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a referee: when a rule is broken, the referee blows the whistle and stops the play"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "raiseit.py",
         "source": "def set_age(age):\n    if age < 0:\n        raise ValueError(\"age cannot be negative\")\n    return age\ntry:\n    set_age(-5)\nexcept ValueError as e:\n    print(\"Error:\", e)\nprint(set_age(20))",
         "output": "Error: age cannot be negative\n20"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python raiseit.py",
+        "output": "Error: age cannot be negative\n20"
       }
     },
     {
@@ -127,7 +143,113 @@
       "onScreen": "A raise inside a function; the arrow leaves the function and lands in the except block of the caller",
       "animation": "A red arrow leaves a function box upward and lands in an except box; a second arrow shows the error passing through if no match",
       "sfx": [],
-      "narration": "Here is what raise does. The error starts inside the function, at the line that raised it. The function stops there. The error travels up to the caller, and looks for a matching except. If it finds one, that block runs. If not, it keeps travelling, and finally stops the program with a traceback. You decide who handles the error."
+      "narration": "Here is what raise does. The error starts inside the function, at the line that raised it. The function stops there. The error travels up to the caller, and looks for a matching except. If it finds one, that block runs. If not, it keeps travelling, and finally stops the program with a traceback. You decide who handles the error.",
+      "props": {
+        "lines": [
+          "Here is what raise does.",
+          "The function stops there.",
+          "If it finds one, that block runs."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 55,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "fn",
+              "shape": "box",
+              "text": "function set_age",
+              "colour": "cream",
+              "col": 0,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "ex",
+              "shape": "box",
+              "text": "except ValueError",
+              "colour": "mint",
+              "col": 4,
+              "row": 0,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "pass",
+              "shape": "box",
+              "text": "no match: program stops",
+              "colour": "peach",
+              "col": 8,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "raise ValueError",
+              "colour": "tomato",
+              "from": "fn",
+              "to": "ex"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "other error",
+              "colour": "tomato",
+              "from": "fn",
+              "to": "pass"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "fn",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "ex"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "pass"
+            },
+            {
+              "t": 0.25,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.4,
+              "do": "glow",
+              "target": "ex",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.6,
+              "do": "draw",
+              "target": "a2",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.75,
+              "do": "glow",
+              "target": "pass",
+              "sfx": "buzzer"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +266,11 @@
         "file": "custom.py",
         "source": "class BillError(Exception):\n    pass\ndef pay(amount):\n    if amount <= 0:\n        raise BillError(\"amount must be positive\")\n    return amount\ntry:\n    pay(0)\nexcept BillError as e:\n    print(\"Bill problem:\", e)",
         "output": "Bill problem: amount must be positive"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python custom.py",
+        "output": "Bill problem: amount must be positive"
       }
     },
     {
@@ -157,7 +284,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as custom dot py. In the terminal, type python, space, custom dot py. Bill problem, amount must be positive."
+      "narration": "Save the file as custom dot py. In the terminal, type python, space, custom dot py. Bill problem, amount must be positive.",
+      "props": {
+        "lines": [
+          {
+            "text": "python custom.py",
+            "kind": "input"
+          },
+          {
+            "text": "Bill problem: amount must be positive",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +308,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: raise Type of message stops the code with an error. Two: except Type as e gives you the error to print. Three: A custom exception is a class that extends Exception. Four: Put the most specific except first. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: raise Type of message stops the code with an error. Two: except Type as e gives you the error to print. Three: A custom exception is a class that extends Exception. Four: Put the most specific except first. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Raise Type(message) stops the code with an error.",
+          "Except Type as e gives you the error to print.",
+          "A custom exception is a class that extends Exception.",
+          "Put the most specific except first."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +330,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We have a value error block, but the output says general. Python tries the except blocks in order, and uses the first match. Exception matches every error, so it wins, and the value error block never runs. Put the most specific block first, and the general one last."
+      "narration": "Bug of the Day. We have a value error block, but the output says general. Python tries the except blocks in order, and uses the first match. Exception matches every error, so it wins, and the value error block never runs. Put the most specific block first, and the general one last.",
+      "props": {
+        "wrongCode": "try:\n    int(\"x\")\nexcept Exception:\n    print(\"general\")\nexcept ValueError:\n    print(\"value\")",
+        "fixedCode": "try:\n    int(\"x\")\nexcept ValueError:\n    print(\"value\")\nexcept Exception:\n    print(\"general\")",
+        "error": "general",
+        "errorOverride": {
+          "lines": [
+            "general"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Python uses the first except that matches, and Exception matches everything, so a later more specific block never runs.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python raiseit.py",
+        "culprit": {
+          "wrong": 3,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +386,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: modules and import. Keep coding, says Xecxec!"
+      "narration": "Next time: modules and import. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 56,
+        "nextTitle": "Modules and import"
+      }
     }
   ],
   "bug": {
@@ -346,5 +518,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

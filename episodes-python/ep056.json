@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A module is a file of ready-made code. Import brings it in. After import math, you write math, a dot, and the name you want. From math import floor brings floor in directly, with no prefix. Python ships with hundreds of modules, called the standard library. Think of a toolbox in a garage. You fetch the box you need, and use the tools inside. Any dot py file you write is also a module, if it sits in the same folder."
+      "narration": "A module is a file of ready-made code. Import brings it in. After import math, you write math, a dot, and the name you want. From math import floor brings floor in directly, with no prefix. Python ships with hundreds of modules, called the standard library. Think of a toolbox in a garage. You fetch the box you need, and use the tools inside. Any dot py file you write is also a module, if it sits in the same folder.",
+      "props": {
+        "lines": [
+          "import module makes its names available as module.name",
+          "from module import name brings one name in directly",
+          "Every .py file is a module"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a toolbox in a garage: you fetch the box you need, and use the tools inside"
+        }
+      }
     },
     {
       "id": 3,
@@ -112,7 +123,17 @@
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] Import our own file, shacktools dot py, from the same folder. [HL 2] Use its function with the module name and a dot. [HL 3] Import the math module from the standard library. [HL 4] Square root of sixteen is four point zero. [HL 5] From, the module, import, a name. Now label works without the prefix. [HL 6] Colva in brackets. [HL 7] And pi, with every digit a float can hold."
+      "narration": "[HL 1] Import our own file, shacktools dot py, from the same folder. [HL 2] Use its function with the module name and a dot. [HL 3] Import the math module from the standard library. [HL 4] Square root of sixteen is four point zero. [HL 5] From, the module, import, a name. Now label works without the prefix. [HL 6] Colva in brackets. [HL 7] And pi, with every digit a float can hold.",
+      "code": {
+        "file": "usemod.py",
+        "source": "import shacktools\nprint(shacktools.label(\"Baga\"))\nimport math\nprint(math.sqrt(16))\nfrom shacktools import label\nprint(label(\"Colva\"))\nprint(math.pi)",
+        "output": "[Baga]\n4.0\n[Colva]\n3.141592653589793"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python usemod.py",
+        "output": "[Baga]\n4.0\n[Colva]\n3.141592653589793"
+      }
     },
     {
       "id": 4,
@@ -122,7 +143,134 @@
       "onScreen": "A search path: the current folder first, then the standard library, then installed packages",
       "animation": "A path of three boxes lights up in order; a matching box stops the search",
       "sfx": [],
-      "narration": "Here is where Python looks. First, the folder of your script. Then the standard library. Then the packages you installed. The first match wins. So never name your own file the same as a standard module, like random or math. Your file hides the real one. Then strange errors follow."
+      "narration": "Here is where Python looks. First, the folder of your script. Then the standard library. Then the packages you installed. The first match wins. So never name your own file the same as a standard module, like random or math. Your file hides the real one. Then strange errors follow.",
+      "props": {
+        "lines": [
+          "Here is where Python looks.",
+          "First, the folder of your script.",
+          "Then the standard library."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 56,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "b1",
+              "shape": "box",
+              "text": "1. your own folder",
+              "colour": "cream",
+              "col": 1,
+              "row": 0,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "b2",
+              "shape": "box",
+              "text": "2. standard library",
+              "colour": "cream",
+              "col": 1,
+              "row": 2,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "b3",
+              "shape": "box",
+              "text": "3. installed packages",
+              "colour": "cream",
+              "col": 1,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "hit",
+              "shape": "token",
+              "text": "found",
+              "colour": "mint",
+              "col": 7,
+              "row": 2,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "b1",
+              "to": "b2"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "b2",
+              "to": "b3"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "b1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "b2"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "b3"
+            },
+            {
+              "t": 0.2,
+              "do": "glow",
+              "target": "b1",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.4,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.5,
+              "do": "glow",
+              "target": "b2",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.55,
+              "do": "draw",
+              "target": "a2",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.65,
+              "do": "show",
+              "target": "hit",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.7,
+              "do": "dim",
+              "target": "b3"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -139,6 +287,11 @@
         "file": "alias.py",
         "source": "import math as m\nfrom math import floor, ceil\nprint(m.floor(2.7))\nprint(floor(2.7), ceil(2.1))",
         "output": "2\n2 3"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python alias.py",
+        "output": "2\n2 3"
       }
     },
     {
@@ -152,7 +305,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as alias dot py. In the terminal, type python, space, alias dot py. Two, then two three."
+      "narration": "Save the file as alias dot py. In the terminal, type python, space, alias dot py. Two, then two three.",
+      "props": {
+        "lines": [
+          {
+            "text": "python alias.py",
+            "kind": "input"
+          },
+          {
+            "text": "2",
+            "kind": "output"
+          },
+          {
+            "text": "2 3",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -164,7 +333,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: import module gives you module dot name. Two: from module import name gives you name directly. Three: as gives a module a shorter name. Four: Your own dot py file is a module too. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: import module gives you module dot name. Two: from module import name gives you name directly. Three: as gives a module a shorter name. Four: Your own dot py file is a module too. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Import module gives you module.name.",
+          "From module import name gives you name directly.",
+          "As gives a module a shorter name.",
+          "Your own dot py file is a module too."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -177,7 +355,28 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We import maths, with an s. There is no such module. Python says, module not found error, no module named maths. Check the spelling of the module name. The error shows exactly what it looked for. Fix the name, and the import works."
+      "narration": "Bug of the Day. We import maths, with an s. There is no such module. Python says, module not found error, no module named maths. Check the spelling of the module name. The error shows exactly what it looked for. Fix the name, and the import works.",
+      "props": {
+        "wrongCode": "import maths\nprint(maths.sqrt(16))",
+        "fixedCode": "import math\nprint(math.sqrt(16))",
+        "error": "  File \"usemod.py\", line 1, in <module>\n    import maths\nModuleNotFoundError: No module named 'maths'",
+        "errorOverride": {
+          "lines": [
+            "  File \"usemod.py\", line 1, in <module>",
+            "    import maths",
+            "ModuleNotFoundError: No module named 'maths'"
+          ]
+        },
+        "why": "Python can only import a module it can find; a misspelled name is not found, so Python raises ModuleNotFoundError.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python usemod.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -213,7 +412,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: writing your own module. Keep coding, says Xecxec!"
+      "narration": "Next time: writing your own module. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 57,
+        "nextTitle": "Writing your own module"
+      }
     }
   ],
   "bug": {
@@ -326,9 +529,12 @@
   ],
   "codeFiles": [
     {
-      "file": "file1.python",
+      "file": "usemod.py",
       "source": "import shacktools\nprint(shacktools.label(\"Baga\"))\nimport math\nprint(math.sqrt(16))\nfrom shacktools import label\nprint(label(\"Colva\"))\nprint(math.pi)",
       "output": "[Baga]\n4.0\n[Colva]\n3.141592653589793",
+      "inputFiles": {
+        "shacktools.py": "def label(name):\n    return \"[\" + name + \"]\""
+      },
       "lang": "python"
     },
     {
@@ -341,5 +547,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

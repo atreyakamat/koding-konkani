@@ -9,7 +9,7 @@ export type TerminalLine = { text: string; kind?: TerminalLineKind };
 /** Most program-output rows a terminal window shows (it must clear Xecxec's zone). */
 const MAX_OUTPUT_ROWS = 6;
 
-const COMMAND = /^(gcc|clang|cc|make|cd|ls|dir|echo|type|pacman|code|notepad|\.\/|\.\\)/;
+const COMMAND = /^(gcc|g\+\+|clang|cc|make|cd|ls|dir|echo|type|pacman|code|notepad|\.\/|\.\\)/;
 const RUN = /^(\.\/|\.\\)/;
 
 /** Terminal onScreen text is a shot description, never a transcript. This builds what the
@@ -44,7 +44,9 @@ export const terminalLinesFor = (episode: Episode, scene: Scene): TerminalLine[]
   }
   // Commands written without backticks ("gcc ep41_arrays.c -o ep41 then ./ep41").
   if (!found.some((l) => l.kind === "input")) {
-    const plain = [...text.matchAll(/\bgcc\s+[\w.-]+(?:\s+-o\s+[\w.-]+)?|\.\/[\w.-]+/g)];
+    const plain = [
+      ...text.matchAll(/\b(?:gcc|g\+\+)\s+(?:-std=[\w+]+\s+)?[\w.-]+(?:\s+-o\s+[\w.-]+)?|\.\/[\w.-]+/g),
+    ];
     for (const p of plain.reverse()) found.unshift({ text: p[0], kind: "input" });
   }
 
@@ -53,9 +55,9 @@ export const terminalLinesFor = (episode: Episode, scene: Scene): TerminalLine[]
   const runs = inputs.filter((l) => RUN.test(l.text));
 
   const programs = episode.scenes.filter((s) => s.template === "code-explain" && s.code?.output);
-  const wanted = inputs.map((l) => l.text.match(/([\w-]+)(?:\.c)?\s*$/)?.[1] ?? "").filter(Boolean);
+  const wanted = inputs.map((l) => l.text.match(/([\w-]+)(?:\.cpp|\.c)?\s*$/)?.[1] ?? "").filter(Boolean);
   const program =
-    programs.find((s) => wanted.some((w) => s.code?.file.replace(/\.c$/, "") === w)) ?? programs[0];
+    programs.find((s) => wanted.some((w) => s.code?.file.replace(/\.(cpp|c)$/, "") === w)) ?? programs[0];
   const realOutput: TerminalLine[] = (program?.code?.output ?? "")
     .split("\n")
     .map((t) => t.replace(/\s+$/, ""))
@@ -67,9 +69,10 @@ export const terminalLinesFor = (episode: Episode, scene: Scene): TerminalLine[]
   if (inputs.length === 0) {
     // "Program prints ..." with no command: compile + run the episode's own program.
     if (program?.code) {
-      const name = program.code.file.replace(/\.c$/, "");
+      const name = program.code.file.replace(/\.(cpp|c)$/, "");
+      const compile = program.code.file.endsWith(".cpp") ? "g++ -std=c++20" : "gcc";
       lines = [
-        { text: `gcc ${program.code.file} -o ${name}`, kind: "input" },
+        { text: `${compile} ${program.code.file} -o ${name}`, kind: "input" },
         { text: `./${name}`, kind: "input" },
         ...realOutput,
       ];

@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Dunder methods, short for double underscore, are special names Python looks for. When you write a plus b, Python calls a dot add of b. When you write a equals equals b, it calls eq. And len of a calls len. Define them in your class, and your objects work with operators, just like numbers. Think of secret handshakes. When Python sees a plus, it knocks on your object, and asks for the add handshake."
+      "narration": "Dunder methods, short for double underscore, are special names Python looks for. When you write a plus b, Python calls a dot add of b. When you write a equals equals b, it calls eq. And len of a calls len. Define them in your class, and your objects work with operators, just like numbers. Think of secret handshakes. When Python sees a plus, it knocks on your object, and asks for the add handshake.",
+      "props": {
+        "lines": [
+          "__add__ makes + work",
+          "__eq__ makes == work",
+          "__len__ makes len() work"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "secret handshakes: when Python sees a plus sign, it knocks on your object and asks for the add handshake"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "vector.py",
         "source": "class Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\n    def __repr__(self):\n        return f\"Vector({self.x}, {self.y})\"\n\na = Vector(1, 2)\nb = Vector(3, 4)\nc = a + b\nprint(c)\nprint(c == Vector(4, 6))\nprint(a == b)",
         "output": "Vector(4, 6)\nTrue\nFalse"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python vector.py",
+        "output": "Vector(4, 6)\nTrue\nFalse"
       }
     },
     {
@@ -129,7 +145,77 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The names a and b are tied to two vectors. Plus does not change either of them. It builds a third vector, a brand new object, and the name c is tied to it. Three names, three objects. Dunder add only decides how the new object is built."
+      "narration": "Here is the picture. The names a and b are tied to two vectors. Plus does not change either of them. It builds a third vector, a brand new object, and the name c is tied to it. Three names, three objects. Dunder add only decides how the new object is built.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "Vector(1, 2)",
+                    "address": "Vector",
+                    "name": "a"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "Vector(1, 2)",
+                    "address": "Vector",
+                    "name": "a"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "Vector(3, 4)",
+                    "address": "Vector",
+                    "name": "b"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "Vector(1, 2)",
+                    "address": "Vector",
+                    "name": "a"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "Vector(3, 4)",
+                    "address": "Vector",
+                    "name": "b"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "Vector(4, 6)",
+                    "address": "Vector",
+                    "name": "c"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +232,11 @@
         "file": "deck.py",
         "source": "class Deck:\n    def __init__(self, cards):\n        self.cards = cards\n\n    def __len__(self):\n        return len(self.cards)\n\nclass Box:\n    def __init__(self, size):\n        self.size = size\n\n    def __lt__(self, other):\n        return self.size < other.size\n\n    def __repr__(self):\n        return f\"Box({self.size})\"\n\nd = Deck([\"A\", \"K\", \"Q\"])\nprint(len(d))\nboxes = [Box(5), Box(2), Box(9)]\nprint(sorted(boxes))\nprint(max(boxes))",
         "output": "3\n[Box(2), Box(5), Box(9)]\nBox(9)"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python deck.py",
+        "output": "3\n[Box(2), Box(5), Box(9)]\nBox(9)"
       }
     },
     {
@@ -159,7 +250,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as deck dot py. In the terminal, type python, space, deck dot py. Vector of four comma six, True, False. Then 3, the sorted boxes, and Box of nine."
+      "narration": "Save the file as deck dot py. In the terminal, type python, space, deck dot py. Vector of four comma six, True, False. Then 3, the sorted boxes, and Box of nine.",
+      "props": {
+        "lines": [
+          {
+            "text": "python deck.py",
+            "kind": "input"
+          },
+          {
+            "text": "3",
+            "kind": "output"
+          },
+          {
+            "text": "[Box(2), Box(5), Box(9)]",
+            "kind": "output"
+          },
+          {
+            "text": "Box(9)",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +282,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Dunder methods are special names Python looks for. Two: dunder add, dunder eq and dunder lt teach operators to our objects. Three: dunder len makes len work. Four: Operators build new objects. They do not change the old ones. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Dunder methods are special names Python looks for. Two: dunder add, dunder eq and dunder lt teach operators to our objects. Three: dunder len makes len work. Four: Operators build new objects. They do not change the old ones. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Dunder methods are special names Python looks for.",
+          "__add__, __eq__ and __lt__ teach operators to our objects.",
+          "__len__ makes len() work.",
+          "Operators build new objects; they do not change the old ones."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +304,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We defined eq, and then tried to put a Point in a set. Type error, unhashable type, Point. When you define eq, Python removes the default hash, so equal objects cannot be placed in the wrong bucket. Add a hash method that uses the same values as eq, and sets work again."
+      "narration": "Bug of the Day. We defined eq, and then tried to put a Point in a set. Type error, unhashable type, Point. When you define eq, Python removes the default hash, so equal objects cannot be placed in the wrong bucket. Add a hash method that uses the same values as eq, and sets work again.",
+      "props": {
+        "wrongCode": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\nseen = {Point(1, 2)}",
+        "fixedCode": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\n    def __hash__(self):\n        return hash((self.x, self.y))\n\nseen = {Point(1, 2)}\nprint(Point(1, 2) in seen)",
+        "error": "  File \"points.py\", line 9, in <module>\n    seen = {Point(1, 2)}\n           ^^^^^^^^^^^^^\nTypeError: unhashable type: 'Point'",
+        "errorOverride": {
+          "lines": [
+            "  File \"points.py\", line 9, in <module>",
+            "    seen = {Point(1, 2)}",
+            "           ^^^^^^^^^^^^^",
+            "TypeError: unhashable type: 'Point'"
+          ]
+        },
+        "why": "When you define eq, Python removes the default hash, because equal objects must have equal hashes. Define hash too, from the same values, to use the object in sets and as dictionary keys.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python vector.py",
+        "culprit": {
+          "wrong": 9,
+          "fixed": 9
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +362,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: mini project, library system. Keep coding, says Xecxec!"
+      "narration": "Next time: mini project, library system. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 72,
+        "nextTitle": "Mini project: Library system"
+      }
     }
   ],
   "bug": {
@@ -348,5 +494,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

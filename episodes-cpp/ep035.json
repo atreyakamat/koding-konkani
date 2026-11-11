@@ -1,0 +1,413 @@
+{
+  "lang": "cpp",
+  "ep": 35,
+  "title": "std::vector",
+  "module": 4,
+  "lengthSec": 290,
+  "colours": {
+    "bg": "#FFE58A",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "make a vector and add items with push_back",
+    "read the size and the items",
+    "loop over a vector"
+  ],
+  "youtube": {
+    "title": "C++ std::vector: The Array That Grows | C++ Programming EP 35",
+    "description": "In this episode you will make a vector and add items with push_back, read the size and the items and loop over a vector, with Xecxec the crab. 0:00 Intro · 0:15 std::vector · 0:47 Grow a vector · 1:27 A vector in memory · 1:57 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "std::vector"
+      },
+      {
+        "t": "0:47",
+        "label": "Grow a vector"
+      },
+      {
+        "t": "1:27",
+        "label": "A vector in memory"
+      },
+      {
+        "t": "1:57",
+        "label": "Second program"
+      },
+      {
+        "t": "2:57",
+        "label": "Recap"
+      },
+      {
+        "t": "3:27",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:15",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:35",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "std::vector",
+      "c++ vector",
+      "push_back",
+      "dynamic array"
+    ],
+    "thumbnail": {
+      "text": "VECTOR!",
+      "visual": "big text \"VECTOR!\" in tomato on butter; Xecxec next to a stretchy shelf that grows with every box; thin black border and drop shadow.",
+      "pose": "Xecxec next to a stretchy shelf that grows with every box"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 35 · VECTOR!",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet the most useful container in C plus plus. A vector grows when you add items."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 32,
+      "onScreen": "\"std::vector\": numbered lines (1. A vector grows and shrinks; 2. push_back adds an item at the end; 3. It manages its own memory) and an analogy card: a stretchy bag: it grows when you add more shopping",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A vector is an array that can grow and shrink. Push back adds an item at the end. The size function tells you how many items it holds. A vector looks after its own memory. You never write new or delete. Think of a stretchy shopping bag. It grows when you add more shopping.",
+      "points": [
+        "A vector grows and shrinks",
+        "push_back adds an item at the end",
+        "It manages its own memory"
+      ],
+      "analogy": {
+        "title": "std::vector",
+        "body": "A stretchy bag: it grows when you add more shopping"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 47,
+      "lengthSec": 40,
+      "onScreen": "vec.cpp: push_back adds items one by one",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 2] The vector header gives us the vector type. [HL 6] The type goes in angle brackets. This vector is empty. [HL 7] Push back adds ten at the end. [HL 9] Two more pushes add twenty and thirty. [HL 10] The size is three. [HL 11] Index one is twenty.",
+      "code": {
+        "file": "vec.cpp",
+        "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    v.push_back(10);\n    v.push_back(20);\n    v.push_back(30);\n    cout << v.size() << endl;\n    cout << v[1] << endl;\n    return 0;\n}",
+        "output": "3\n20"
+      }
+    },
+    {
+      "id": 4,
+      "template": "memory-boxes",
+      "startSec": 87,
+      "lengthSec": 30,
+      "onScreen": "the vector object on the stack points to its items on the heap",
+      "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The vector has two parts. The small vector object lives on the stack. The items live on the heap. The object points to the first item. When you push back more items, the vector asks for a bigger block and moves the items.",
+      "memory": {
+        "frames": [
+          {
+            "arrange": "stack",
+            "groups": [
+              {
+                "name": "stack",
+                "cells": [
+                  {
+                    "value": "0x5000",
+                    "address": "0x1000",
+                    "name": "v"
+                  }
+                ]
+              },
+              {
+                "name": "items",
+                "cells": [
+                  {
+                    "value": "10",
+                    "address": "0x5000",
+                    "index": 0
+                  },
+                  {
+                    "value": "20",
+                    "address": "0x5004",
+                    "index": 1
+                  },
+                  {
+                    "value": "30",
+                    "address": "0x5008",
+                    "index": 2
+                  }
+                ]
+              }
+            ],
+            "arrows": [
+              {
+                "from": "0:0",
+                "to": "1:0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 117,
+      "lengthSec": 40,
+      "onScreen": "veclist.cpp: a vector made from a list, then a loop",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 6] A vector can start with a list of values. [HL 7] Push back adds sixteen at the end. [HL 8] A range-based for visits every item. [HL 12] Back gives the last item, which is sixteen. [HL 13] Pop back removes the last item. [HL 14] Now the size is three.",
+      "code": {
+        "file": "veclist.cpp",
+        "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {4, 8, 15};\n    v.push_back(16);\n    for (int x : v) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    cout << v.back() << endl;\n    v.pop_back();\n    cout << v.size() << endl;\n    return 0;\n}",
+        "output": "4 8 15 16\n16\n3"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 157,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 veclist.cpp -o veclist then ./veclist",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as veclist dot cpp. Compile it with g plus plus. Then run the program. The program prints the four numbers, then sixteen, then three."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 177,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A vector grows and shrinks. Two. Push back adds an item at the end. Three. Size tells you how many items it holds. Four. A vector looks after its own memory. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A vector grows and shrinks.",
+        "Push back adds an item at the end.",
+        "Size tells you how many items it holds.",
+        "A vector looks after its own memory."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 207,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A missing vector header",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The program uses vector, but there is no include line for it. The compiler says vector was not declared in this scope. It suggests the header in a note. Add the include line for vector at the top."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 247,
+      "lengthSec": 8,
+      "onScreen": "My vector told me it needs space. I said, you can grow, I believe in you.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My vector told me it needs space. I said, you can grow, I believe in you."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 255,
+      "lengthSec": 20,
+      "onScreen": "Task card: collect numbers in a vector",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Use a vector. Push back the numbers from one to five, then print their sum. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 275,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 36 · Vector operations",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: vector operations. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    v.push_back(10);\n    cout << v.size() << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nvec.cpp: In function 'int main()':\nvec.cpp:5:5: error: 'vector' was not declared in this scope\n    5 |     vector<int> v;\n      |     ^~~~~~\nvec.cpp:2:1: note: 'std::vector' is defined in header '<vector>'; did you forget to '#include <vector>'?\n    1 | #include <iostream>",
+    "fixed": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    v.push_back(10);\n    cout << v.size() << endl;\n    return 0;\n}",
+    "why": "The vector type lives in its own header. Without the include line, the compiler has never heard of vector."
+  },
+  "pun": "\"My vector told me it needs space. I said, you can grow, I believe in you.\"",
+  "challenge": "Use a vector. Push back the numbers from one to five, then print their sum.",
+  "challengeAnswer": "Use a for loop with push back for each number. Then use a range-based for to add them. The sum is fifteen.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: std::vector",
+      "hook": "\"The array that grows when you need it.\"",
+      "script": "The array that grows when you need it. Today we meet the most useful container in C plus plus. A vector grows when you add items. A vector is an array that can grow and shrink. Push back adds an item at the end. The size function tells you how many items it holds. A vector looks after its own memory. Keep coding, says Xecxec!",
+      "onScreen": "STD::VECTOR",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: std::vector.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdvector",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "std::vector in one minute",
+      "hook": "\"A vector is an array that can grow and shrink.\"",
+      "script": "A vector is an array that can grow and shrink. Push back adds an item at the end. The size function tells you how many items it holds. A vector looks after its own memory. You never write new or delete. Think of a stretchy shopping bag. It grows when you add more shopping. The vector header gives us the vector type. Keep coding, says Xecxec!",
+      "onScreen": "STD::VECTOR",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "std::vector in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdvector",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"A vector can start with a list of values.\"",
+      "script": "A vector can start with a list of values. Push back adds sixteen at the end. A range-based for visits every item. Back gives the last item, which is sixteen. Pop back removes the last item. Now the size is three. The program prints the four numbers, then sixteen, then three. A vector grows and shrinks. Push back adds an item at the end. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 38,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdvector",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A missing vector header",
+      "hook": "\"Can you spot the bug in std vector?\"",
+      "script": "Can you spot the bug in std vector? Bug of the Day. The program uses vector, but there is no include line for it. The compiler says vector was not declared in this scope. It suggests the header in a note. Add the include line for vector at the top. The vector type lives in its own header. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 35,
+      "caption": "Bug of the Day: A missing vector header.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdvector",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you collect numbers in a vector in std vector?\"",
+      "script": "Can you collect numbers in a vector in std vector? My vector told me it needs space. I said, you can grow, I believe in you. Use a vector. Push back the numbers from one to five, then print their sum. Write your answer in the comments. A vector grows and shrinks. Push back adds an item at the end. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 36,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "stdvector",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "vec.cpp",
+      "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v;\n    v.push_back(10);\n    v.push_back(20);\n    v.push_back(30);\n    cout << v.size() << endl;\n    cout << v[1] << endl;\n    return 0;\n}",
+      "output": "3\n20",
+      "lang": "cpp"
+    },
+    {
+      "file": "veclist.cpp",
+      "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {4, 8, 15};\n    v.push_back(16);\n    for (int x : v) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    cout << v.back() << endl;\n    v.pop_back();\n    cout << v.size() << endl;\n    return 0;\n}",
+      "output": "4 8 15 16\n16\n3",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1"
+  },
+  "nextTitle": "Vector operations"
+}

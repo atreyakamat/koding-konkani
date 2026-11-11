@@ -1,0 +1,404 @@
+{
+  "lang": "cpp",
+  "ep": 90,
+  "title": "Finale: what you can build",
+  "module": 10,
+  "lengthSec": 290,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "read a modern C++ program",
+    "see the whole course map",
+    "choose a project to build next"
+  ],
+  "youtube": {
+    "title": "C++ Course Finale: What You Can Build Now | C++ Programming EP 90",
+    "description": "In this episode you will read a modern C++ program, see the whole course map and choose a project to build next, with Xecxec the crab. 0:00 Intro · 0:15 Finale: what you can build · 0:45 A small modern program · 1:26 Your road · 1:56 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Finale: what you can build"
+      },
+      {
+        "t": "0:45",
+        "label": "A small modern program"
+      },
+      {
+        "t": "1:26",
+        "label": "Your road"
+      },
+      {
+        "t": "1:56",
+        "label": "Second program"
+      },
+      {
+        "t": "2:57",
+        "label": "Recap"
+      },
+      {
+        "t": "3:27",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:15",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:35",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++ course finale",
+      "c++ roadmap",
+      "learn c++",
+      "what to build",
+      "c++ projects"
+    ],
+    "thumbnail": {
+      "text": "YOU DID IT",
+      "visual": "big text \"YOU DID IT\" in tomato on mint; Xecxec next to a crab on a podium holding a trophy of code; thin black border and drop shadow.",
+      "pose": "Xecxec next to a crab on a podium holding a trophy of code"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 90 · YOU DID IT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "This is the last episode. We read one modern program together, look at the road you walked, and pick what to build next."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"Finale: what you can build\": numbered lines (1. You can read modern C plus plus; 2. You know the whole core language; 3. The next step is to build something) and an analogy card: a map of everything you have climbed",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "You started with a first program. Now you know types, control flow, functions, memory, classes, inheritance, templates, the library, and threads. Reading is the first skill. Let us read a small modern program, line by line, and see how much you already know.",
+      "points": [
+        "You can read modern C plus plus",
+        "You know the whole core language",
+        "The next step is to build something"
+      ],
+      "analogy": {
+        "title": "Finale: what you can build",
+        "body": "A map of everything you have climbed"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 41,
+      "onScreen": "library.cpp: books are searched, sorted and printed",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 8] A struct groups a title and a page count. [HL 13] The function may have no answer, so it returns an optional. [HL 17] It uses a library algorithm with a lambda. [HL 23] The if statement makes the optional and tests it in one step. [HL 24] The longest book is Pointers, with two hundred pages. [HL 26] Then we sort by title. [HL 27] A range for loop prints the titles in order. You learned every part of this program.",
+      "code": {
+        "file": "library.cpp",
+        "source": "#include <algorithm>\n#include <iostream>\n#include <optional>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Book {\n    string title;\n    int pages;\n};\n\noptional<Book> longest(const vector<Book>& books) {\n    if (books.empty()) {\n        return nullopt;\n    }\n    return *max_element(books.begin(), books.end(),\n                        [](const Book& a, const Book& b) { return a.pages < b.pages; });\n}\n\nint main() {\n    vector<Book> books = {{\"Basics\", 120}, {\"Pointers\", 200}, {\"Templates\", 150}};\n    if (auto top = longest(books)) {\n        cout << top->title << \" \" << top->pages << endl;\n    }\n    sort(books.begin(), books.end(), [](const Book& a, const Book& b) { return a.title < b.title; });\n    for (const Book& b : books) {\n        cout << b.title << endl;\n    }\n    return 0;\n}",
+        "output": "Pointers 200\nBasics\nPointers\nTemplates"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 86,
+      "lengthSec": 30,
+      "onScreen": "a flow of the six stages of the course",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Here is your road. You began with a first program. Then came the core language, and then memory. After that came objects, templates and the library. The next stage is yours.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "a flow of the six stages of the course",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "Start",
+            "detail": "first program and basics"
+          },
+          {
+            "id": "s2",
+            "label": "Core",
+            "detail": "types, decisions, loops, functions"
+          },
+          {
+            "id": "s3",
+            "label": "Memory",
+            "detail": "pointers, arrays, strings"
+          },
+          {
+            "id": "s4",
+            "label": "Objects",
+            "detail": "classes, inheritance, polymorphism"
+          },
+          {
+            "id": "s5",
+            "label": "Library",
+            "detail": "templates, containers, algorithms"
+          },
+          {
+            "id": "s6",
+            "label": "Next",
+            "detail": "your own projects"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 116,
+      "lengthSec": 40,
+      "onScreen": "grades.cpp: a map is printed with structured bindings",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 7] A map joins names to marks. [HL 8] A structured binding names the key and the value. [HL 9] The loop prints Asha ninety-one, and then Mia eighty-five. This is modern C plus plus. It is short, and you can read it.",
+      "code": {
+        "file": "grades.cpp",
+        "source": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> marks = {{\"Asha\", 91}, {\"Mia\", 85}};\n    for (const auto& [name, mark] : marks) {\n        cout << name << \" \" << mark << endl;\n    }\n    return 0;\n}",
+        "output": "Asha 91\nMia 85"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 156,
+      "lengthSec": 21,
+      "onScreen": "Terminal: g++ -std=c++20 grades.cpp -o grades then ./grades",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as grades dot cpp. Compile it with g plus plus. Then run the program. The program prints Pointers two hundred, then the sorted titles, then the two students from the map."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 177,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. You can read modern C plus plus. Two. You know the core language, memory, objects and the library. Three. The next step is to build a project. Four. Pick one idea, and build it small. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "You can read modern C plus plus.",
+        "You know the core language, memory, objects and the library.",
+        "The next step is to build a project.",
+        "Pick one idea, and build it small."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 207,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: The last classic: a missing semicolon",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day, the last one. The struct has no semicolon after the closing brace. The compiler says expected semicolon after struct definition. Read the error, and look one line up."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 247,
+      "lengthSec": 8,
+      "onScreen": "Why did the programmer love this course? Every bug had a fix, and every fix had a pun.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the programmer love this course? Every bug had a fix, and every fix had a pun."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 255,
+      "lengthSec": 20,
+      "onScreen": "Task card: build your own project",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Pick one small idea. A quiz, a contact book, or a to do list. Build it, and share it in the comments. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 275,
+      "lengthSec": 15,
+      "onScreen": "The end of the course",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "That is the end of the course. Thank you for coding with us. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nstruct Point {\n    int x;\n    int y;\n}\n\nint main() {\n    Point p{1, 2};\n    cout << p.x << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nsemicolon.cpp:7:2: error: expected ';' after struct definition\n    7 | }\n      |  ^\n      |  ;",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nstruct Point {\n    int x;\n    int y;\n};\n\nint main() {\n    Point p{1, 2};\n    cout << p.x << endl;\n    return 0;\n}",
+    "why": "A struct or a class definition ends with a semicolon. The compiler often reports the error on the next line, so read one line up."
+  },
+  "pun": "\"Why did the programmer love this course? Every bug had a fix, and every fix had a pun.\"",
+  "challenge": "Pick one small idea. A quiz, a contact book, or a to do list. Build it, and share it in the comments.",
+  "challengeAnswer": "Start with one struct and one vector. Add one feature at a time, and compile after each step.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Finale: what you can build",
+      "hook": "\"You can now read modern C plus plus.\"",
+      "script": "You can now read modern C plus plus. This is the last episode. We read one modern program together, look at the road you walked, and pick what to build next. You started with a first program. Now you know types, control flow, functions, memory, classes, inheritance, templates, the library, and threads. Reading is the first skill. Let us read a small modern program, line by line, and see how much you already know. Keep coding, says Xecxec!",
+      "onScreen": "FINALE: WHAT YOU CAN BUILD",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 43,
+      "caption": "What you will learn: Finale: what you can build.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "finalewhatyoucanbuild",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Finale: what you can build in one minute",
+      "hook": "\"You started with a first program.\"",
+      "script": "You started with a first program. Now you know types, control flow, functions, memory, classes, inheritance, templates, the library, and threads. Reading is the first skill. Let us read a small modern program, line by line, and see how much you already know. A struct groups a title and a page count. The function may have no answer, so it returns an optional. Keep coding, says Xecxec!",
+      "onScreen": "FINALE: WHAT YOU CAN BUILD",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 38,
+      "caption": "Finale: what you can build in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "finalewhatyoucanbuild",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"A map joins names to marks.\"",
+      "script": "A map joins names to marks. A structured binding names the key and the value. The loop prints Asha ninety-one, and then Mia eighty-five. This is modern C plus plus. It is short, and you can read it. The program prints Pointers two hundred, then the sorted titles, then the two students from the map. You can read modern C plus plus. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "finalewhatyoucanbuild",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: The last classic: a missing semicolon",
+      "hook": "\"Can you spot the bug in finale, what you can build?\"",
+      "script": "Can you spot the bug in finale, what you can build? Bug of the Day, the last one. The struct has no semicolon after the closing brace. The compiler says expected semicolon after struct definition. Read the error, and look one line up. A struct or a class definition ends with a semicolon. The compiler often reports the error on the next line, so read one line up. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 40,
+      "caption": "Bug of the Day: The last classic: a missing semicolon.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "finalewhatyoucanbuild",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you build your own project in finale, what you can build?\"",
+      "script": "Can you build your own project in finale, what you can build? Why did the programmer love this course? Every bug had a fix, and every fix had a pun. Pick one small idea. A quiz, a contact book, or a to do list. Build it, and share it in the comments. Write your answer in the comments. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "finalewhatyoucanbuild",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "library.cpp",
+      "source": "#include <algorithm>\n#include <iostream>\n#include <optional>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Book {\n    string title;\n    int pages;\n};\n\noptional<Book> longest(const vector<Book>& books) {\n    if (books.empty()) {\n        return nullopt;\n    }\n    return *max_element(books.begin(), books.end(),\n                        [](const Book& a, const Book& b) { return a.pages < b.pages; });\n}\n\nint main() {\n    vector<Book> books = {{\"Basics\", 120}, {\"Pointers\", 200}, {\"Templates\", 150}};\n    if (auto top = longest(books)) {\n        cout << top->title << \" \" << top->pages << endl;\n    }\n    sort(books.begin(), books.end(), [](const Book& a, const Book& b) { return a.title < b.title; });\n    for (const Book& b : books) {\n        cout << b.title << endl;\n    }\n    return 0;\n}",
+      "output": "Pointers 200\nBasics\nPointers\nTemplates",
+      "lang": "cpp"
+    },
+    {
+      "file": "grades.cpp",
+      "source": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> marks = {{\"Asha\", 91}, {\"Mia\", 85}};\n    for (const auto& [name, mark] : marks) {\n        cout << name << \" \" << mark << endl;\n    }\n    return 0;\n}",
+      "output": "Asha 91\nMia 85",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1"
+  }
+}

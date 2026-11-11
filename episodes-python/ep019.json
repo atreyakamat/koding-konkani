@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A nested loop is a loop inside a loop. The outer loop takes one step. Then the inner loop runs all the way through. Then the outer loop takes its next step, and the inner loop starts again from the beginning. Think of a clock. The minute hand does a full circle for each step of the hour hand. Nested loops are how programs draw grids and patterns."
+      "narration": "A nested loop is a loop inside a loop. The outer loop takes one step. Then the inner loop runs all the way through. Then the outer loop takes its next step, and the inner loop starts again from the beginning. Think of a clock. The minute hand does a full circle for each step of the hour hand. Nested loops are how programs draw grids and patterns.",
+      "props": {
+        "lines": [
+          "The outer loop runs once per round",
+          "The inner loop runs fully each round",
+          "print adds a newline unless you set end"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a clock: the minute hand does a full circle for every single step of the hour hand"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "grid.py",
         "source": "for row in range(1, 3):\n    for col in range(1, 4):\n        print(\"row\", row, \"col\", col)",
         "output": "row 1 col 1\nrow 1 col 2\nrow 1 col 3\nrow 2 col 1\nrow 2 col 2\nrow 2 col 3"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python grid.py",
+        "output": "row 1 col 1\nrow 1 col 2\nrow 1 col 3\nrow 2 col 1\nrow 2 col 2\nrow 2 col 3"
       }
     },
     {
@@ -127,7 +143,153 @@
       "onScreen": "A 2 by 3 grid; a highlight sweeps column one to three along row one, then restarts along row two",
       "animation": "A grid of cells; a butter highlight sweeps each row left to right with a tick per cell, then drops to the next row",
       "sfx": [],
-      "narration": "Picture a grid with two rows and three columns. The highlight walks across row one, one column at a time. When the row is finished, it jumps to row two, and walks the columns again, starting at column one. That restart is the key idea. The inner loop begins fresh every time the outer loop takes a step."
+      "narration": "Picture a grid with two rows and three columns. The highlight walks across row one, one column at a time. When the row is finished, it jumps to row two, and walks the columns again, starting at column one. That restart is the key idea. The inner loop begins fresh every time the outer loop takes a step.",
+      "props": {
+        "lines": [
+          "Picture a grid with two rows and three columns.",
+          "That restart is the key idea."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 19,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "c00",
+              "shape": "box",
+              "text": "row 1, col 1",
+              "colour": "cream",
+              "col": 3,
+              "row": 1,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "c01",
+              "shape": "box",
+              "text": "row 1, col 2",
+              "colour": "cream",
+              "col": 5,
+              "row": 1,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "c02",
+              "shape": "box",
+              "text": "row 1, col 3",
+              "colour": "cream",
+              "col": 7,
+              "row": 1,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "c10",
+              "shape": "box",
+              "text": "row 2, col 1",
+              "colour": "cream",
+              "col": 3,
+              "row": 3,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "c11",
+              "shape": "box",
+              "text": "row 2, col 2",
+              "colour": "cream",
+              "col": 5,
+              "row": 3,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "c12",
+              "shape": "box",
+              "text": "row 2, col 3",
+              "colour": "cream",
+              "col": 7,
+              "row": 3,
+              "w": 2,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c00",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c01"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c02"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c10"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c11"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c12"
+            },
+            {
+              "t": 0.15,
+              "do": "glow",
+              "target": "c00",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.27,
+              "do": "glow",
+              "target": "c01",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.39,
+              "do": "glow",
+              "target": "c02",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.51,
+              "do": "glow",
+              "target": "c10",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.63,
+              "do": "glow",
+              "target": "c11",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.75,
+              "do": "glow",
+              "target": "c12",
+              "sfx": "key-tick"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +306,11 @@
         "file": "triangle.py",
         "source": "for row in range(1, 5):\n    for col in range(row):\n        print(\"*\", end=\"\")\n    print()",
         "output": "*\n**\n***\n****"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python triangle.py",
+        "output": "*\n**\n***\n****"
       }
     },
     {
@@ -157,7 +324,31 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as triangle dot py. In the terminal, type python, space, triangle dot py. A triangle of stars: one, two, three, four stars in each row."
+      "narration": "Save the file as triangle dot py. In the terminal, type python, space, triangle dot py. A triangle of stars: one, two, three, four stars in each row.",
+      "props": {
+        "lines": [
+          {
+            "text": "python triangle.py",
+            "kind": "input"
+          },
+          {
+            "text": "*",
+            "kind": "output"
+          },
+          {
+            "text": "**",
+            "kind": "output"
+          },
+          {
+            "text": "***",
+            "kind": "output"
+          },
+          {
+            "text": "****",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +360,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: The inner loop runs fully for every step of the outer loop. Two: Indent the inner loop inside the outer loop. Three: print ends with a new line unless you set end. Four: An empty print starts the next line. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: The inner loop runs fully for every step of the outer loop. Two: Indent the inner loop inside the outer loop. Three: print ends with a new line unless you set end. Four: An empty print starts the next line. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "The inner loop runs fully for every step of the outer loop.",
+          "Indent the inner loop inside the outer loop.",
+          "Print ends with a new line unless you set end.",
+          "An empty print() starts the next line."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +382,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We wanted a triangle. We got a long column of stars, with blank lines in between. Print adds a new line after every call, even inside the inner loop. Tell print to add nothing, with end equal to empty quotes. Then the stars of a row stay together, and the empty print starts the next row."
+      "narration": "Bug of the Day. We wanted a triangle. We got a long column of stars, with blank lines in between. Print adds a new line after every call, even inside the inner loop. Tell print to add nothing, with end equal to empty quotes. Then the stars of a row stay together, and the empty print starts the next row.",
+      "props": {
+        "wrongCode": "for row in range(1, 4):\n    for col in range(row):\n        print(\"*\")\n    print()",
+        "fixedCode": "for row in range(1, 4):\n    for col in range(row):\n        print(\"*\", end=\"\")\n    print()",
+        "error": "*\n\n*",
+        "errorOverride": {
+          "lines": [
+            "*",
+            "",
+            "*"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "print ends every call with a new line by default, so stars printed one per call land on separate lines unless end is set to an empty string.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python grid.py",
+        "culprit": {
+          "wrong": 3,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +440,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: the match statement. Keep coding, says Xecxec!"
+      "narration": "Next time: the match statement. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 20,
+        "nextTitle": "The match statement"
+      }
     }
   ],
   "bug": {
@@ -346,5 +572,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

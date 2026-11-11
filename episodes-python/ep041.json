@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A function is a named block of code. You write it once with def, a name, brackets and a colon. The body is indented below. Nothing runs until you call it, by writing its name with brackets. Think of a recipe card. You write the steps once, then cook the dish whenever you like by naming the card. Functions stop you repeating yourself, and they give your code names that explain what it does."
+      "narration": "A function is a named block of code. You write it once with def, a name, brackets and a colon. The body is indented below. Nothing runs until you call it, by writing its name with brackets. Think of a recipe card. You write the steps once, then cook the dish whenever you like by naming the card. Functions stop you repeating yourself, and they give your code names that explain what it does.",
+      "props": {
+        "lines": [
+          "def names a block of code",
+          "The body is indented under the def line",
+          "A call runs the body, as often as you like"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a recipe card: you write the steps once, then cook the dish whenever you like by naming the card"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "greet.py",
         "source": "def greet():\n    print(\"Hello from a function\")\ngreet()\ngreet()",
         "output": "Hello from a function\nHello from a function"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python greet.py",
+        "output": "Hello from a function\nHello from a function"
       }
     },
     {
@@ -127,7 +143,119 @@
       "onScreen": "Call flow: the call line, the def, the body, and the return to the next line",
       "animation": "A call arrow jumps from the call line up to the def, the body lines light up one by one, then the arrow returns to the line after the call",
       "sfx": [],
-      "narration": "Here is the journey of a call. Python reaches the call line. It jumps up to the def, and runs the body, line by line. When the body ends, Python returns to the line just after the call, and carries on. Defining a function does nothing by itself. Only a call sends Python on this trip."
+      "narration": "Here is the journey of a call. Python reaches the call line. It jumps up to the def, and runs the body, line by line. When the body ends, Python returns to the line just after the call, and carries on. Defining a function does nothing by itself. Only a call sends Python on this trip.",
+      "props": {
+        "lines": [
+          "Here is the journey of a call.",
+          "Python reaches the call line.",
+          "Defining a function does nothing by itself."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 41,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "call",
+              "shape": "box",
+              "text": "answer = double(4)",
+              "colour": "butter",
+              "col": 0,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "def",
+              "shape": "box",
+              "text": "def double(n): return n * 2",
+              "colour": "cream",
+              "col": 6,
+              "row": 1,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "id": "body",
+              "shape": "box",
+              "text": "return 8",
+              "colour": "mint",
+              "col": 6,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "call",
+              "to": "def"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "back with 8",
+              "colour": "tomato",
+              "from": "body",
+              "to": "call"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "call",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "def"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "body"
+            },
+            {
+              "t": 0.2,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.35,
+              "do": "glow",
+              "target": "def",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.5,
+              "do": "glow",
+              "target": "body",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.7,
+              "do": "draw",
+              "target": "a2",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.85,
+              "do": "glow",
+              "target": "call",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +272,11 @@
         "file": "banner.py",
         "source": "def line():\n    print(\"-\" * 10)\ndef title():\n    line()\n    print(\"KONKANI\")\n    line()\ntitle()",
         "output": "----------\nKONKANI\n----------"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python banner.py",
+        "output": "----------\nKONKANI\n----------"
       }
     },
     {
@@ -157,7 +290,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as banner dot py. In the terminal, type python, space, banner dot py. A line of dashes, the word KONKANI, and another line of dashes."
+      "narration": "Save the file as banner dot py. In the terminal, type python, space, banner dot py. A line of dashes, the word KONKANI, and another line of dashes.",
+      "props": {
+        "lines": [
+          {
+            "text": "python banner.py",
+            "kind": "input"
+          },
+          {
+            "text": "----------",
+            "kind": "output"
+          },
+          {
+            "text": "KONKANI",
+            "kind": "output"
+          },
+          {
+            "text": "----------",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +322,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: def makes a function, and the body is indented below it. Two: Nothing runs until the function is called with brackets. Three: A function can call other functions. Four: Write it once, call it as often as you like. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: def makes a function, and the body is indented below it. Two: Nothing runs until the function is called with brackets. Three: A function can call other functions. Four: Write it once, call it as often as you like. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Def makes a function, and the body is indented below it.",
+          "Nothing runs until the function is called with brackets.",
+          "A function can call other functions.",
+          "Write it once, call it as often as you like."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +344,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We define the function hello, and run the program. Nothing happens. No error, and no output. A def only makes the function. It does not run it. Add a call, the name with brackets, and Hi appears. If a function seems to do nothing, check that you actually call it."
+      "narration": "Bug of the Day. We define the function hello, and run the program. Nothing happens. No error, and no output. A def only makes the function. It does not run it. Add a call, the name with brackets, and Hi appears. If a function seems to do nothing, check that you actually call it.",
+      "props": {
+        "wrongCode": "def hello():\n    print(\"Hi\")",
+        "fixedCode": "def hello():\n    print(\"Hi\")\nhello()",
+        "error": "",
+        "errorOverride": {
+          "lines": [
+            ""
+          ],
+          "caption": "wrong output"
+        },
+        "why": "A def only creates the function; the body runs only when you call it with brackets.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python greet.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +400,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: parameters and return values. Keep coding, says Xecxec!"
+      "narration": "Next time: parameters and return values. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 42,
+        "nextTitle": "Parameters and return values"
+      }
     }
   ],
   "bug": {
@@ -346,5 +532,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

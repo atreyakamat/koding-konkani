@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Inheritance lets one class build on another. The parent class holds what is common. The child class gets all of it for free, and can add more. Write the parent's name in brackets after the child's name. If the child has its own init, it must call super dot init, to run the parent's setup too. Otherwise the parent's attributes are never created. Think of a family recipe book. The child gets every recipe, and adds new ones."
+      "narration": "Inheritance lets one class build on another. The parent class holds what is common. The child class gets all of it for free, and can add more. Write the parent's name in brackets after the child's name. If the child has its own init, it must call super dot init, to run the parent's setup too. Otherwise the parent's attributes are never created. Think of a family recipe book. The child gets every recipe, and adds new ones.",
+      "props": {
+        "lines": [
+          "class Child(Parent): inherits everything",
+          "The child can add new methods",
+          "super().__init__() runs the parent's setup"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a family recipe book: children get all the recipes, and can add their own"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "animals.py",
         "source": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def eat(self):\n        print(self.name, \"is eating\")\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)\n        self.breed = breed\n\n    def bark(self):\n        print(self.name, \"says Woof\")\n\nd = Dog(\"Rex\", \"Labrador\")\nd.eat()\nd.bark()\nprint(d.breed)",
         "output": "Rex is eating\nRex says Woof\nLabrador"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python animals.py",
+        "output": "Rex is eating\nRex says Woof\nLabrador"
       }
     },
     {
@@ -127,7 +143,107 @@
       "onScreen": "Animal at the top with Dog and Cat below it; methods flow down the arrows",
       "animation": "A tree with Animal on top, Dog and Cat below, and glowing arrows carrying the eat method downward",
       "sfx": [],
-      "narration": "Here is the family tree. Animal sits at the top, and holds the shared parts, name and eat. Dog and Cat hang below it. Everything flows down the arrows. A dog can eat, because Animal can eat. A dog can also bark, which Animal cannot. A child gets everything from its parent, and adds more of its own."
+      "narration": "Here is the family tree. Animal sits at the top, and holds the shared parts, name and eat. Dog and Cat hang below it. Everything flows down the arrows. A dog can eat, because Animal can eat. A dog can also bark, which Animal cannot. A child gets everything from its parent, and adds more of its own.",
+      "props": {
+        "lines": [
+          "Here is the family tree.",
+          "Dog and Cat hang below it.",
+          "Everything flows down the arrows."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 67,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "an",
+              "shape": "box",
+              "text": "Animal: name, eat()",
+              "colour": "butter",
+              "col": 4,
+              "row": 0,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "dog",
+              "shape": "box",
+              "text": "Dog: bark()",
+              "colour": "mint",
+              "col": 1,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "cat",
+              "shape": "box",
+              "text": "Cat: meow()",
+              "colour": "lilac",
+              "col": 8,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "inherits",
+              "colour": "ink",
+              "from": "an",
+              "to": "dog"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "inherits",
+              "colour": "ink",
+              "from": "an",
+              "to": "cat"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "an",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.3,
+              "do": "show",
+              "target": "dog",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.3,
+              "do": "show",
+              "target": "cat"
+            },
+            {
+              "t": 0.5,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.5,
+              "do": "draw",
+              "target": "a2"
+            },
+            {
+              "t": 0.8,
+              "do": "glow",
+              "target": "dog",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +260,11 @@
         "file": "checks.py",
         "source": "class Animal:\n    pass\n\nclass Dog(Animal):\n    pass\n\nclass Cat(Animal):\n    pass\n\nd = Dog()\nprint(isinstance(d, Dog))\nprint(isinstance(d, Animal))\nprint(isinstance(d, Cat))\nprint(issubclass(Cat, Animal))\nprint(Dog.__bases__[0].__name__)",
         "output": "True\nTrue\nFalse\nTrue\nAnimal"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python checks.py",
+        "output": "True\nTrue\nFalse\nTrue\nAnimal"
       }
     },
     {
@@ -157,7 +278,35 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as checks dot py. In the terminal, type python, space, checks dot py. Rex is eating, Rex says Woof, Labrador. Then True, True, False, True, Animal."
+      "narration": "Save the file as checks dot py. In the terminal, type python, space, checks dot py. Rex is eating, Rex says Woof, Labrador. Then True, True, False, True, Animal.",
+      "props": {
+        "lines": [
+          {
+            "text": "python checks.py",
+            "kind": "input"
+          },
+          {
+            "text": "True",
+            "kind": "output"
+          },
+          {
+            "text": "True",
+            "kind": "output"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          },
+          {
+            "text": "True",
+            "kind": "output"
+          },
+          {
+            "text": "Animal",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +318,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: class Child of Parent: inherits all of the parent's methods. Two: The child can add its own attributes and methods. Three: super dot dunder init runs the parent's setup. Four: isinstance of obj, Parent is True for child objects too. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: class Child of Parent: inherits all of the parent's methods. Two: The child can add its own attributes and methods. Three: super dot dunder init runs the parent's setup. Four: isinstance of obj, Parent is True for child objects too. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Class Child(Parent): inherits all of the parent's methods.",
+          "The child can add its own attributes and methods.",
+          "Super().__init__() runs the parent's setup.",
+          "Isinstance(obj, Parent) is True for child objects too."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +340,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Dog has its own init, which replaces the parent's init. So the name is never stored. Printing d dot name raises an attribute error, Dog object has no attribute name. The fix is one line. Call super dot init, with the name, at the start of the child's init."
+      "narration": "Bug of the Day. Dog has its own init, which replaces the parent's init. So the name is never stored. Printing d dot name raises an attribute error, Dog object has no attribute name. The fix is one line. Call super dot init, with the name, at the start of the child's init.",
+      "props": {
+        "wrongCode": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        self.breed = breed\n\nd = Dog(\"Rex\", \"Labrador\")\nprint(d.name)",
+        "fixedCode": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)\n        self.breed = breed\n\nd = Dog(\"Rex\", \"Labrador\")\nprint(d.name)",
+        "error": "  File \"animals.py\", line 10, in <module>\n    print(d.name)\n          ^^^^^^\nAttributeError: 'Dog' object has no attribute 'name'",
+        "errorOverride": {
+          "lines": [
+            "  File \"animals.py\", line 10, in <module>",
+            "    print(d.name)",
+            "          ^^^^^^",
+            "AttributeError: 'Dog' object has no attribute 'name'"
+          ]
+        },
+        "why": "When a child defines its own init, it replaces the parent's. The parent's setup only runs if the child calls super().__init__().",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python animals.py",
+        "culprit": {
+          "wrong": 10,
+          "fixed": 7
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +398,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: overriding and super. Keep coding, says Xecxec!"
+      "narration": "Next time: overriding and super. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 68,
+        "nextTitle": "Overriding and super()"
+      }
     }
   ],
   "bug": {
@@ -346,5 +530,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

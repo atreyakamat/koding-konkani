@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Three patterns appear again and again. The accumulator builds a running total, adding to it each round. The counter counts how many items pass a test. The flag starts as False, and becomes True if something special is found. Think of a shop till. The running total grows with each item. The counter counts the items. And a flag lights up if one special item is scanned."
+      "narration": "Three patterns appear again and again. The accumulator builds a running total, adding to it each round. The counter counts how many items pass a test. The flag starts as False, and becomes True if something special is found. Think of a shop till. The running total grows with each item. The counter counts the items. And a flag lights up if one special item is scanned.",
+      "props": {
+        "lines": [
+          "Accumulator: add to a total each round",
+          "Counter: add one when a test passes",
+          "Flag: set True when something is found"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a shop till: the running total grows with every item, the counter counts items, and the flag lights up when a special item is scanned"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "total.py",
         "source": "total = 0\nfor n in range(1, 6):\n    total = total + n\nprint(\"Sum:\", total)",
         "output": "Sum: 15"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python total.py",
+        "output": "Sum: 15"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the end state. Total is tied to the int fifteen. N is tied to five, the last value in the loop. During the loop, total moved from zero to one, three, six, ten, and fifteen. Each addition made a brand new int, and the tag total moved to it. The accumulator pattern is simply, make a new total from the old one."
+      "narration": "Here is the end state. Total is tied to the int fifteen. N is tied to five, the last value in the loop. During the loop, total moved from zero to one, three, six, ten, and fifteen. Each addition made a brand new int, and the tag total moved to it. The accumulator pattern is simply, make a new total from the old one.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "15",
+                    "address": "int",
+                    "name": "total"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "15",
+                    "address": "int",
+                    "name": "total"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "5",
+                    "address": "int",
+                    "name": "n"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +201,11 @@
         "file": "count_flag.py",
         "source": "count = 0\nfound = False\nfor n in range(1, 21):\n    if n % 3 == 0:\n        count = count + 1\n    if n == 15:\n        found = True\nprint(\"Multiples of 3:\", count)\nprint(\"Saw 15:\", found)",
         "output": "Multiples of 3: 6\nSaw 15: True"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python count_flag.py",
+        "output": "Multiples of 3: 6\nSaw 15: True"
       }
     },
     {
@@ -159,7 +219,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as count_flag dot py. In the terminal, type python, space, count_flag dot py. Multiples of three, six. Saw fifteen, True."
+      "narration": "Save the file as count_flag dot py. In the terminal, type python, space, count_flag dot py. Multiples of three, six. Saw fifteen, True.",
+      "props": {
+        "lines": [
+          {
+            "text": "python count_flag.py",
+            "kind": "input"
+          },
+          {
+            "text": "Multiples of 3: 6",
+            "kind": "output"
+          },
+          {
+            "text": "Saw 15: True",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +247,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: An accumulator builds a total by adding in each round. Two: A counter adds one whenever a test passes. Three: A flag starts False and is set True when something is found. Four: Start each of them before the loop, never inside it. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: An accumulator builds a total by adding in each round. Two: A counter adds one whenever a test passes. Three: A flag starts False and is set True when something is found. Four: Start each of them before the loop, never inside it. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "An accumulator builds a total by adding in each round.",
+          "A counter adds one whenever a test passes.",
+          "A flag starts False and is set True when something is found.",
+          "Start each of them before the loop, never inside it."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +269,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We add one, two and three, and expect six. The program prints three. Why? The line total equals zero is inside the loop, so every round wipes the total clean. Only the last number is left. Move the starting line above the loop, and the total can grow. No error appears, so watch for this one."
+      "narration": "Bug of the Day. We add one, two and three, and expect six. The program prints three. Why? The line total equals zero is inside the loop, so every round wipes the total clean. Only the last number is left. Move the starting line above the loop, and the total can grow. No error appears, so watch for this one.",
+      "props": {
+        "wrongCode": "for n in range(1, 4):\n    total = 0\n    total = total + n\nprint(total)",
+        "fixedCode": "total = 0\nfor n in range(1, 4):\n    total = total + n\nprint(total)",
+        "error": "3",
+        "errorOverride": {
+          "lines": [
+            "3"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Setting total to zero inside the loop wipes the running total at the start of every round, so only the last number survives.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python total.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +325,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: the guess the number mini project. Keep coding, says Xecxec!"
+      "narration": "Next time: the guess the number mini project. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 22,
+        "nextTitle": "Mini project: Guess the number"
+      }
     }
   ],
   "bug": {
@@ -348,5 +457,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

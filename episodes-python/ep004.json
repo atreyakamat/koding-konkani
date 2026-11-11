@@ -102,7 +102,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A comment is a sticky note in your code. It starts with a hash sign. Python ignores it completely, but the next human reads it, and that human might be you, next month. Good comments say why you did something. The code already shows what it does."
+      "narration": "A comment is a sticky note in your code. It starts with a hash sign. Python ignores it completely, but the next human reads it, and that human might be you, next month. Good comments say why you did something. The code already shows what it does.",
+      "props": {
+        "lines": [
+          "A comment is a sticky note in your code.",
+          "It starts with a hash sign.",
+          "Good comments say why you did something."
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "Sticky-notes analogy card"
+        }
+      }
     },
     {
       "id": 3,
@@ -120,6 +131,11 @@
         "file": "shacks.py",
         "source": "# Xecxec counts the beach shacks\nshacks = 12\nopen_shacks = 9\nprint(\"Shacks:\", shacks)\nprint(\"Open:\", open_shacks)\nprint(\"Closed:\", shacks - open_shacks)",
         "output": "Shacks: 12\nOpen: 9\nClosed: 3"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python shacks.py",
+        "output": "Shacks: 12\nOpen: 9\nClosed: 3"
       }
     },
     {
@@ -132,7 +148,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "In Python, a name is like a tag tied to a value. Shacks is a tag on twelve. Open underscore shacks is a tag on nine. When you write shacks, Python follows the tag to find the value. Remember this picture. It explains many puzzles later."
+      "narration": "In Python, a name is like a tag tied to a value. Shacks is a tag on twelve. Open underscore shacks is a tag on nine. When you write shacks, Python follows the tag to find the value. Remember this picture. It explains many puzzles later.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "12",
+                    "address": "int",
+                    "name": "shacks"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "12",
+                    "address": "int",
+                    "name": "shacks"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "9",
+                    "address": "int",
+                    "name": "open_shacks"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -149,6 +204,11 @@
         "file": "shacks.py",
         "source": "# Xecxec counts the beach shacks\nshacks = 12\nopen_shacks = 9\nprint(\"Shacks:\", shacks)\nprint(\"Open:\", open_shacks)\nprint(\"Closed:\", shacks - open_shacks)",
         "output": "Shacks: 12\nOpen: 9\nClosed: 3"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python shacks.py",
+        "output": "Shacks: 12\nOpen: 9\nClosed: 3"
       }
     },
     {
@@ -162,7 +222,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Run it. Shacks, twelve. Open, nine. Closed, three. The comment never shows up in the output, because Python skipped it."
+      "narration": "Run it. Shacks, twelve. Open, nine. Closed, three. The comment never shows up in the output, because Python skipped it.",
+      "props": {
+        "lines": [
+          {
+            "text": "python shacks.py",
+            "kind": "input"
+          },
+          {
+            "text": "Shacks: 12",
+            "kind": "output"
+          },
+          {
+            "text": "Open: 9",
+            "kind": "output"
+          },
+          {
+            "text": "Closed: 3",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -174,7 +254,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Recap. One: a comment starts with a hash, and Python ignores it. Two: a name is a tag tied to a value. Three: read a traceback from the bottom. Four: the last line names the error, and often suggests the fix. Say these four rules out loud, and you can handle most beginner errors. Try it on the shacks program, line by line."
+      "narration": "Recap. One: a comment starts with a hash, and Python ignores it. Two: a name is a tag tied to a value. Three: read a traceback from the bottom. Four: the last line names the error, and often suggests the fix. Say these four rules out loud, and you can handle most beginner errors. Try it on the shacks program, line by line.",
+      "props": {
+        "lines": [
+          "A comment starts with a hash, and Python ignores it.",
+          "A name is a tag tied to a value.",
+          "Read a traceback from the bottom.",
+          "The last line names the error, and often suggests the fix."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -187,7 +276,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Read a traceback from the bottom. The last line says it all: name error, shack is not defined. Did you mean shacks? The line above shows where it happened: line two. We typed shack, but our tag is called shacks. Fix the spelling, and it works."
+      "narration": "Bug of the Day. Read a traceback from the bottom. The last line says it all: name error, shack is not defined. Did you mean shacks? The line above shows where it happened: line two. We typed shack, but our tag is called shacks. Fix the spelling, and it works.",
+      "props": {
+        "wrongCode": "shacks = 12\nprint(\"Shacks:\", shack)",
+        "fixedCode": "shacks = 12\nprint(\"Shacks:\", shacks)",
+        "error": "  File \"shacks.py\", line 2, in <module>\n    print(\"Shacks:\", shack)\n                     ^^^^^\nNameError: name 'shack' is not defined. Did you mean: 'shacks'?",
+        "errorOverride": {
+          "lines": [
+            "  File \"shacks.py\", line 2, in <module>",
+            "    print(\"Shacks:\", shack)",
+            "                     ^^^^^",
+            "NameError: name 'shack' is not defined. Did you mean: 'shacks'?"
+          ]
+        },
+        "why": "Read a traceback from the bottom: the last line names the error and often suggests the fix, and the line above it shows where it happened.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python shacks.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -223,7 +334,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Module zero is done! Next: variables and names in depth. Keep coding, says Xecxec!"
+      "narration": "Module zero is done! Next: variables and names in depth. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 5,
+        "nextTitle": "Variables and names"
+      }
     }
   ],
   "bug": {
@@ -344,5 +459,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

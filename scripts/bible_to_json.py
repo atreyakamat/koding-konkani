@@ -34,7 +34,7 @@ EPISODES_DIR = ROOT / "episodes"
 SFX_DIR = ROOT / "audio" / "sfx"
 
 # Course language. "c" is the default; `--lang python` switches the parser to the Python Bible
-# (docs/python-bible -> episodes-python). Code fences in these languages count as program code.
+# (docs/python-bible -> episodes-python); `--lang cpp` does the same for docs/cpp-bible -> episodes-cpp. Code fences in these languages count as program code.
 DEFAULT_LANG = "c"
 CODE_LANGS: tuple[str, ...] = ("c", "cpp", "")
 
@@ -461,6 +461,7 @@ class CodeFile:
     stdin: str | None = None
     build_step: str | None = None
     lang: str = "c"
+    input_files: dict[str, str] = field(default_factory=dict)
 
 
 def parse_code_shown(section_text: str, ep: str, warnings: Warnings) -> list[CodeFile]:
@@ -469,13 +470,22 @@ def parse_code_shown(section_text: str, ep: str, warnings: Warnings) -> list[Cod
     pending_name: str | None = None
     pending_stdin: str | None = None
     pending_is_expected_output = False
+    # Python Bible: a text block after "Typed input:" is stdin; after "Input file NAME:" it is that file's content.
+    pending_text_role: tuple[str, str] | None = None
+    pending_input_files: dict[str, str] = {}
     current: CodeFile | None = None
     unlabeled_index = 0
+    expect_typed_input = False
 
     for is_code, raw in chunks:
         if not is_code:
             prose = unescape_outside_code(raw)
+            if DEFAULT_LANG == "cpp" and re.search(r"Typed input", prose):
+                expect_typed_input = True  # the text block that follows is what the user types (C++ Bible)
             announce = _FILE_ANNOUNCE_RE.search(prose)
+            role_prose = prose
+            # "**Input file data/b.txt:**" labels a text block; it must not be mistaken for the program's name.
+            prose = re.sub(r"\*\*Input file[^*]*\*\*", "", prose)
             if announce:
                 pending_name = announce.group(2)
             else:
@@ -493,17 +503,32 @@ def parse_code_shown(section_text: str, ep: str, warnings: Warnings) -> list[Cod
                 pending_stdin = input_m.group(1).strip().rstrip(",;")
             if re.search(r"expected output", prose, re.IGNORECASE):
                 pending_is_expected_output = True
+            pending_text_role = None
+            if re.search(r"\*\*Typed input:\*\*", role_prose):
+                pending_text_role = ("stdin", "")
+            infile = re.search(r"\*\*Input file\s+([\w./-]+):\*\*", role_prose)
+            if infile:
+                pending_text_role = ("infile", infile.group(1))
             continue
 
         lang, content = fence_content(raw)
         if lang in CODE_LANGS:
             unlabeled_index += 1
             name = pending_name or f"file{unlabeled_index}.{lang or DEFAULT_LANG}"
-            current = CodeFile(file=name, source=content, stdin=pending_stdin, lang=lang or DEFAULT_LANG)
+            current = CodeFile(file=name, source=content, stdin=pending_stdin, lang=lang or DEFAULT_LANG,
+                               input_files=pending_input_files)
             files.append(current)
             pending_name = None
             pending_stdin = None
+            pending_input_files = {}
             pending_is_expected_output = False
+        elif lang in ("text", "console", "output") and pending_text_role is not None:
+            role, role_name = pending_text_role
+            pending_text_role = None
+            if role == "stdin":
+                pending_stdin = content.rstrip("\n")
+            else:
+                pending_input_files[role_name] = content
         elif lang in ("text", "console", "output"):
             # A filename announcement right before a text block (e.g.
             # "Contents of `diary.txt`:") describes that text block, not
@@ -589,10 +614,13 @@ def parse_bug(section_text: str, ep: str, warnings: Warnings) -> Bug | None:
     seen_wrong_code = False
     last_prose = ""
     first_text_block: str | None = None
+    expect_typed_input = False
 
     for is_code, raw in chunks:
         if not is_code:
             prose = unescape_outside_code(raw)
+            if DEFAULT_LANG == "cpp" and "Typed input" in prose:
+                expect_typed_input = True  # C++ Bible: the next text block is what the user types, not an error
             # Strip the Why sentence out of whatever prose chunk it's in, so
             # it doesn't also get folded into `error`.
             prose_sans_why = _WHY_RE.sub("", prose).strip()
@@ -621,6 +649,8 @@ def parse_bug(section_text: str, ep: str, warnings: Warnings) -> Bug | None:
                 fixed = content
             else:
                 warnings.add(ep, "Bug of the Day: more than 2 code blocks found; extra ones ignored")
+        elif lang == "text" and expect_typed_input and wrong is None:
+            expect_typed_input = False
         elif lang in ("text", "console", "bash"):
             if first_text_block is None:
                 first_text_block = content
@@ -936,6 +966,101 @@ def colours_text_to_names(colours_text: str) -> tuple[str, str] | None:
 # ---------------------------------------------------------------------------
 
 
+# ---------------------------------------------------------------------------
+# C++ course extras (--lang cpp): scene 4 illustration data, written-out concept points, analogy card.
+# These come from the structured blocks of docs/cpp-bible (see docs/cpp-bible/ILLUSTRATIONS.md).
+# ---------------------------------------------------------------------------
+
+_ILL_JSON_RE = re.compile(r"```json\n(.*?)\n```", re.DOTALL)
+_ORDINALS = ("One", "Two", "Three", "Four", "Five")
+_MAX_CELLS = 13
+_MAX_GROUPS = 3
+_MAX_FRAMES = 6
+
+
+def memory_to_frames(d: dict, ep_label: str, warnings: Warnings) -> dict:
+    """Memory illustration (boxes + arrows) -> the `memory` scene field (frames of groups of cells)."""
+    groups: list[dict] = []  # {"key", "name", "cells": [...], "ids": [...]}
+    for region in ("stack", "heap", "static"):
+        boxes = [b for b in d["boxes"] if b["region"] == region]
+        scalar: dict | None = None
+        current_array: dict | None = None
+        for b in boxes:
+            m = re.fullmatch(r"(.+)\[(\d+)\]", b["id"])
+            cell = {"value": str(b["value"]), "address": b["addr"]}
+            if m:
+                base, idx = m.group(1), int(m.group(2))
+                if current_array is None or current_array["name"] != base or len(current_array["cells"]) >= _MAX_CELLS:
+                    current_array = {"name": base, "cells": [], "ids": []}
+                    groups.append(current_array)
+                cell["index"] = idx
+                current_array["cells"].append(cell)
+                current_array["ids"].append(b["id"])
+                scalar = None if scalar is not None and len(scalar["cells"]) >= _MAX_CELLS else scalar
+            else:
+                current_array = None
+                if scalar is None or len(scalar["cells"]) >= _MAX_CELLS:
+                    scalar = {"name": region, "cells": [], "ids": []}
+                    groups.append(scalar)
+                cell["name"] = b["name"]
+                scalar["cells"].append(cell)
+                scalar["ids"].append(b["id"])
+    where = {}
+    for gi, g in enumerate(groups):
+        for ci, bid in enumerate(g["ids"]):
+            where[bid] = (gi, ci)
+    frames = []
+    for start in range(0, len(groups), _MAX_GROUPS):
+        chunk = groups[start:start + _MAX_GROUPS]
+        arrows = []
+        for a in d.get("arrows", []):
+            f, t = where.get(a["from"]), where.get(a["to"])
+            if f and t and start <= f[0] < start + len(chunk) and start <= t[0] < start + len(chunk):
+                arrows.append({"from": f"{f[0] - start}:{f[1]}", "to": f"{t[0] - start}:{t[1]}"})
+        frame = {
+            "arrange": "stack",
+            "groups": [{"name": g["name"], "cells": g["cells"]} for g in chunk],
+        }
+        if arrows:
+            frame["arrows"] = arrows
+        frames.append(frame)
+    if len(frames) > _MAX_FRAMES:
+        warnings.add(ep_label, f"memory illustration needs {len(frames)} frames (max {_MAX_FRAMES})")
+        frames = frames[:_MAX_FRAMES]
+    return {"frames": frames}
+
+
+def parse_illustration(section: str, ep_label: str, warnings: Warnings) -> dict | None:
+    m = _ILL_JSON_RE.search(section or "")
+    if not m:
+        warnings.add(ep_label, "no illustration JSON block found")
+        return None
+    try:
+        d = json.loads(m.group(1))
+    except json.JSONDecodeError as exc:
+        warnings.add(ep_label, f"illustration JSON does not parse: {exc}")
+        return None
+    return d
+
+
+def cpp_concept_points(on_screen: str) -> tuple[list[str] | None, dict | None]:
+    """Scene 2 onScreen: '"Topic": numbered lines (1. a; 2. b; 3. c) and an analogy card: text'."""
+    m = re.search(r"numbered lines \((.*?)\) and an analogy card: (.+)$", on_screen)
+    if not m:
+        return None, None
+    points = [re.sub(r"^\d+\.\s*", "", p.strip()) for p in m.group(1).split(";")]
+    topic = re.match(r'^"([^"]+)"', on_screen)
+    body = m.group(2).strip()
+    analogy = {"title": topic.group(1) if topic else "Think of it like this", "body": body[:1].upper() + body[1:]}
+    return [p for p in points if p], analogy
+
+
+def cpp_recap_points(narration: str) -> list[str]:
+    """Recap narration: 'One. First idea. Two. Second idea.' -> the ideas."""
+    pieces = re.split(r"\b(?:One|Two|Three|Four|Five)\. ", narration)[1:]
+    return [p.split(". ")[0].strip().rstrip(".") + "." for p in pieces if p.strip()]
+
+
 def assemble_episode(raw: RawEpisode, warnings: Warnings) -> dict | None:
     ep_label = f"{raw.ep:02d}"
     preamble = parse_preamble(raw.preamble, ep_label, warnings)
@@ -1010,9 +1135,34 @@ def assemble_episode(raw: RawEpisode, warnings: Warnings) -> dict | None:
         elif template == "algorithm-bars" and step_trace:
             scene["trace"] = step_trace
 
+        if DEFAULT_LANG == "cpp":
+            if s["id"] == 2:
+                points, analogy = cpp_concept_points(s["onScreen"])
+                if points:
+                    scene["points"] = points
+                if analogy:
+                    scene["analogy"] = analogy
+            elif s["id"] == 7 and template == "concept-slide":
+                points = cpp_recap_points(scene["narration"])
+                if points:
+                    scene["points"] = points[:4]
+            elif s["id"] == 4:
+                ill = parse_illustration(raw.sections.get("Illustrations", ""), ep_label, warnings)
+                if ill:
+                    kind = ill.get("kind")
+                    if kind == "memory":
+                        scene["memory"] = memory_to_frames(ill, ep_label, warnings)
+                    elif kind == "trace":
+                        scene["trace"] = ill["steps"]
+                    elif kind in ("flow", "graph", "table", "callstack"):
+                        scene["diagram"] = {k: v for k, v in ill.items() if k != "scene"}
+                    else:
+                        warnings.add(ep_label, f"scene 4: unknown illustration kind {kind!r}")
+
         scenes.append(scene)
 
     episode = {
+        **({"lang": "cpp"} if DEFAULT_LANG == "cpp" else {}),
         "ep": raw.ep,
         "title": raw.title,
         "module": preamble.module,
@@ -1036,6 +1186,7 @@ def assemble_episode(raw: RawEpisode, warnings: Warnings) -> dict | None:
                 "source": c.source,
                 **({"output": c.output} if c.output else {}),
                 **({"stdin": c.stdin} if c.stdin else {}),
+                **({"inputFiles": c.input_files} if c.input_files else {}),
                 **({"buildStep": c.build_step} if c.build_step else {}),
                 "lang": c.lang,
             }
@@ -1053,7 +1204,7 @@ def assemble_episode(raw: RawEpisode, warnings: Warnings) -> dict | None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--report", default=str(ROOT / "out" / "bible-to-json-report.md"))
-    parser.add_argument("--lang", choices=["c", "python"], default="c")
+    parser.add_argument("--lang", choices=["c", "python", "cpp"], default="c")
     parser.add_argument("--bible-dir", default=None, help="default docs/bible (docs/python-bible for --lang python)")
     parser.add_argument("--out-dir", default=None, help="default episodes (episodes-python for --lang python)")
     args = parser.parse_args()
@@ -1063,6 +1214,10 @@ def main() -> None:
         DEFAULT_LANG, CODE_LANGS = "python", ("python", "py", "")
         BIBLE_DIR = ROOT / "docs" / "python-bible"
         EPISODES_DIR = ROOT / "episodes-python"
+    if args.lang == "cpp":
+        DEFAULT_LANG, CODE_LANGS = "cpp", ("cpp", "")
+        BIBLE_DIR = ROOT / "docs" / "cpp-bible"
+        EPISODES_DIR = ROOT / "episodes-cpp"
     if args.bible_dir:
         BIBLE_DIR = Path(args.bible_dir)
     if args.out_dir:
@@ -1074,6 +1229,7 @@ def main() -> None:
     module_files = sorted(BIBLE_DIR.glob("m*.md"))
     summary_rows = []
     all_episode_nums = set()
+    cpp_episodes: dict[int, dict] = {}
 
     for module_file in module_files:
         text = module_file.read_text(encoding="utf-8")
@@ -1090,7 +1246,10 @@ def main() -> None:
                 continue
 
             out_path = EPISODES_DIR / f"ep{raw.ep:03d}.json"
-            out_path.write_text(json.dumps(episode, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            if DEFAULT_LANG == "cpp":
+                cpp_episodes[raw.ep] = episode  # written below, once every title is known (outro needs the next one)
+            else:
+                out_path.write_text(json.dumps(episode, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
             n_scenes = len(episode["scenes"])
             n_files = len(episode["codeFiles"])
@@ -1104,7 +1263,13 @@ def main() -> None:
 
             summary_rows.append((raw.ep, raw.title, n_scenes, n_files, n_shorts, flag))
 
-    missing = sorted(set(range(1, 87)) - all_episode_nums)
+    for num, episode in cpp_episodes.items():
+        nxt = cpp_episodes.get(num + 1)
+        if nxt:
+            episode["nextTitle"] = nxt["title"]
+        (EPISODES_DIR / f"ep{num:03d}.json").write_text(json.dumps(episode, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    missing = sorted(set(range(1, 91 if DEFAULT_LANG == "cpp" else 87)) - all_episode_nums)
     if missing:
         warnings.add("--", f"missing episode numbers: {missing}")
 

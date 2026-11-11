@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A dictionary comprehension uses curly brackets and a colon. Key, colon, value, for, the item, in, the source. A set comprehension uses curly brackets without a colon. Think of a name badge printer. Each name goes in, and a badge with the name and its length comes out. Keys must be unique, so if two items make the same key, the later one overwrites the earlier one."
+      "narration": "A dictionary comprehension uses curly brackets and a colon. Key, colon, value, for, the item, in, the source. A set comprehension uses curly brackets without a colon. Think of a name badge printer. Each name goes in, and a badge with the name and its length comes out. Keys must be unique, so if two items make the same key, the later one overwrites the earlier one.",
+      "props": {
+        "lines": [
+          "{key: value for ...} builds a dict",
+          "{item for ...} builds a set",
+          "A repeated key keeps only the last value"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a name-badge printer: each name goes in, and a badge with the name and its length comes out"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "dictcomp.py",
         "source": "names = [\"Asha\", \"Ravi\", \"Maya\"]\nlengths = {n: len(n) for n in names}\nprint(lengths)\nsquares = {n: n * n for n in range(1, 4)}\nprint(squares)",
         "output": "{'Asha': 4, 'Ravi': 4, 'Maya': 4}\n{1: 1, 2: 4, 3: 9}"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python dictcomp.py",
+        "output": "{'Asha': 4, 'Ravi': 4, 'Maya': 4}\n{1: 1, 2: 4, 3: 9}"
       }
     },
     {
@@ -129,7 +145,73 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. Lengths is tied to one dictionary, with names as keys. Squares is tied to another, with numbers as keys. The list of names is untouched. Each comprehension created a brand new dictionary. Dictionary keys must be unique. If two items give the same key, the later pair replaces the earlier one."
+      "narration": "Here is the picture. Lengths is tied to one dictionary, with names as keys. Squares is tied to another, with numbers as keys. The list of names is untouched. Each comprehension created a brand new dictionary. Dictionary keys must be unique. If two items give the same key, the later pair replaces the earlier one.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "lengths",
+                "cells": [
+                  {
+                    "value": "4",
+                    "index": "Asha",
+                    "address": "dict"
+                  },
+                  {
+                    "value": "4",
+                    "index": "Ravi"
+                  },
+                  {
+                    "value": "4",
+                    "index": "Maya"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "name": "lengths",
+                "cells": [
+                  {
+                    "value": "4",
+                    "index": "Asha",
+                    "address": "dict"
+                  },
+                  {
+                    "value": "4",
+                    "index": "Ravi"
+                  },
+                  {
+                    "value": "4",
+                    "index": "Maya"
+                  }
+                ]
+              },
+              {
+                "name": "squares",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": "1",
+                    "address": "dict"
+                  },
+                  {
+                    "value": "4",
+                    "index": "2"
+                  },
+                  {
+                    "value": "9",
+                    "index": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +228,11 @@
         "file": "setcomp.py",
         "source": "words = [\"fish\", \"crab\", \"fig\", \"fish\"]\nletters = {w[0] for w in words}\nprint(sorted(letters))\nprint(len(letters))",
         "output": "['c', 'f']\n2"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python setcomp.py",
+        "output": "['c', 'f']\n2"
       }
     },
     {
@@ -159,7 +246,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as setcomp dot py. In the terminal, type python, space, setcomp dot py. C and f, then two."
+      "narration": "Save the file as setcomp dot py. In the terminal, type python, space, setcomp dot py. C and f, then two.",
+      "props": {
+        "lines": [
+          {
+            "text": "python setcomp.py",
+            "kind": "input"
+          },
+          {
+            "text": "['c', 'f']",
+            "kind": "output"
+          },
+          {
+            "text": "2",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +274,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: {key: value for ...} builds a dictionary. Two: {item for ...} builds a set. Three: Keys are unique, so a repeated key overwrites the earlier pair. Four: Comprehensions never change the source list. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: {key: value for ...} builds a dictionary. Two: {item for ...} builds a set. Three: Keys are unique, so a repeated key overwrites the earlier pair. Four: Comprehensions never change the source list. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "{key: value for ...} builds a dictionary.",
+          "{item for ...} builds a set.",
+          "Keys are unique, so a repeated key overwrites the earlier pair.",
+          "Comprehensions never change the source list."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +296,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We use the first letter as the key. Fish and fig both start with f. The second one overwrites the first. Our dictionary has only two pairs, and fish is lost. No error, only missing data. Pick a key that is unique, like the whole word, and nothing is lost."
+      "narration": "Bug of the Day. We use the first letter as the key. Fish and fig both start with f. The second one overwrites the first. Our dictionary has only two pairs, and fish is lost. No error, only missing data. Pick a key that is unique, like the whole word, and nothing is lost.",
+      "props": {
+        "wrongCode": "words = [\"fish\", \"crab\", \"fig\"]\nfirst = {w[0]: w for w in words}\nprint(first)",
+        "fixedCode": "words = [\"fish\", \"crab\", \"fig\"]\nfirst = {w: w[0] for w in words}\nprint(first)",
+        "error": "{'f': 'fig', 'c': 'crab'}",
+        "errorOverride": {
+          "lines": [
+            "{'f': 'fig', 'c': 'crab'}"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Two words with the same first letter make the same key, and the later pair replaces the earlier one, so one word is lost.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python dictcomp.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +352,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: counting with dictionaries. Keep coding, says Xecxec!"
+      "narration": "Next time: counting with dictionaries. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 39,
+        "nextTitle": "Counting with dicts"
+      }
     }
   ],
   "bug": {
@@ -348,5 +484,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

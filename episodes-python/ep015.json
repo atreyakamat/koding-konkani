@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Three small words combine conditions. And is True only when both sides are True. Or is True when at least one side is True. Not flips the answer. Think of a beach club. To enter, you need a ticket and you need to be eighteen. A child or a senior citizen walks in free. Python also treats some values as false by themselves. Zero, an empty string, and None all count as False."
+      "narration": "Three small words combine conditions. And is True only when both sides are True. Or is True when at least one side is True. Not flips the answer. Think of a beach club. To enter, you need a ticket and you need to be eighteen. A child or a senior citizen walks in free. Python also treats some values as false by themselves. Zero, an empty string, and None all count as False.",
+      "props": {
+        "lines": [
+          "and needs both sides True",
+          "or needs at least one side True",
+          "not flips True and False"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a beach club entry: you need a ticket AND to be eighteen; a child OR a senior walks in free"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "gate.py",
         "source": "age = 20\nhas_ticket = True\nif age >= 18 and has_ticket:\n    print(\"Enter\")\nif age < 5 or age > 60:\n    print(\"Free\")\nprint(not has_ticket)",
         "output": "Enter\nFalse"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python gate.py",
+        "output": "Enter\nFalse"
       }
     },
     {
@@ -129,7 +145,212 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the truth table. And is True only in one row, when both are True. Or is False only in one row, when both are False. Not simply flips. Python also has a short list of values that count as False by themselves. Zero, an empty string, an empty list, and None. Almost everything else counts as True."
+      "narration": "Here is the truth table. And is True only in one row, when both are True. Or is False only in one row, when both are False. Not simply flips. Python also has a short list of values that count as False by themselves. Zero, an empty string, an empty list, and None. Almost everything else counts as True.",
+      "props": {
+        "lines": [
+          "Here is the truth table.",
+          "And is True only in one row, when both are True.",
+          "Or is False only in one row, when both are False."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 15,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "r1",
+              "shape": "card",
+              "text": "True and True gives True",
+              "colour": "mint",
+              "col": 1,
+              "row": 0,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "id": "r2",
+              "shape": "card",
+              "text": "True and False gives False",
+              "colour": "peach",
+              "col": 1,
+              "row": 1,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "id": "r3",
+              "shape": "card",
+              "text": "False and True gives False",
+              "colour": "peach",
+              "col": 1,
+              "row": 2,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "id": "r4",
+              "shape": "card",
+              "text": "False and False gives False",
+              "colour": "peach",
+              "col": 1,
+              "row": 3,
+              "w": 6,
+              "h": 1
+            },
+            {
+              "id": "f",
+              "shape": "card",
+              "text": "Falsy values",
+              "colour": "butter",
+              "col": 8,
+              "row": 0,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "z1",
+              "shape": "token",
+              "text": "0",
+              "colour": "cream",
+              "col": 8,
+              "row": 1,
+              "w": 1,
+              "h": 1
+            },
+            {
+              "id": "z2",
+              "shape": "token",
+              "text": "empty text",
+              "colour": "cream",
+              "col": 9,
+              "row": 1,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "z3",
+              "shape": "token",
+              "text": "empty list",
+              "colour": "cream",
+              "col": 8,
+              "row": 2,
+              "w": 2,
+              "h": 1
+            },
+            {
+              "id": "z4",
+              "shape": "token",
+              "text": "None",
+              "colour": "cream",
+              "col": 10,
+              "row": 2,
+              "w": 1,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "r1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.08,
+              "do": "show",
+              "target": "r2",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.16,
+              "do": "show",
+              "target": "r3",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.24,
+              "do": "show",
+              "target": "r4",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.3,
+              "do": "glow",
+              "target": "r1",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.4,
+              "do": "glow",
+              "target": "r2"
+            },
+            {
+              "t": 0.5,
+              "do": "glow",
+              "target": "r3"
+            },
+            {
+              "t": 0.6,
+              "do": "glow",
+              "target": "r4"
+            },
+            {
+              "t": 0.7,
+              "do": "show",
+              "target": "f",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.72,
+              "do": "show",
+              "target": "z1"
+            },
+            {
+              "t": 0.74,
+              "do": "show",
+              "target": "z2"
+            },
+            {
+              "t": 0.76,
+              "do": "show",
+              "target": "z3"
+            },
+            {
+              "t": 0.78,
+              "do": "show",
+              "target": "z4"
+            },
+            {
+              "t": 0.82,
+              "do": "cross",
+              "target": "z1",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.86,
+              "do": "cross",
+              "target": "z2",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.9,
+              "do": "cross",
+              "target": "z3",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.94,
+              "do": "cross",
+              "target": "z4",
+              "sfx": "buzzer"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -146,6 +367,11 @@
         "file": "truthy.py",
         "source": "name = \"\"\nif name:\n    print(\"Hello\", name)\nelse:\n    print(\"Name is empty\")\nprint(bool(0), bool(1), bool(\"Goa\"), bool(\"\"))",
         "output": "Name is empty\nFalse True True False"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python truthy.py",
+        "output": "Name is empty\nFalse True True False"
       }
     },
     {
@@ -159,7 +385,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as truthy dot py. In the terminal, type python, space, truthy dot py. Name is empty. Then False True True False."
+      "narration": "Save the file as truthy dot py. In the terminal, type python, space, truthy dot py. Name is empty. Then False True True False.",
+      "props": {
+        "lines": [
+          {
+            "text": "python truthy.py",
+            "kind": "input"
+          },
+          {
+            "text": "Name is empty",
+            "kind": "output"
+          },
+          {
+            "text": "False True True False",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +413,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: and needs both sides True, or needs at least one. Two: not flips True and False. Three: Write each comparison in full on both sides of and or or. Four: Zero, an empty string, an empty list and None count as False. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: and needs both sides True, or needs at least one. Two: not flips True and False. Three: Write each comparison in full on both sides of and or or. Four: Zero, an empty string, an empty list and None count as False. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "And needs both sides True, or needs at least one.",
+          "Not flips True and False.",
+          "Write each comparison in full on both sides of and or or.",
+          "Zero, an empty string, an empty list and None count as False."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +435,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Choice is three. We want to know if it is one or two. The program says Valid. Wrong! Python reads this as, choice equals one, or two. And the plain number two is always true. So the whole condition is always true. Write the comparison in full on both sides, choice equals one, or choice equals two, and it works."
+      "narration": "Bug of the Day. Choice is three. We want to know if it is one or two. The program says Valid. Wrong! Python reads this as, choice equals one, or two. And the plain number two is always true. So the whole condition is always true. Write the comparison in full on both sides, choice equals one, or choice equals two, and it works.",
+      "props": {
+        "wrongCode": "choice = 3\nif choice == 1 or 2:\n    print(\"Valid\")\nelse:\n    print(\"Invalid\")",
+        "fixedCode": "choice = 3\nif choice == 1 or choice == 2:\n    print(\"Valid\")\nelse:\n    print(\"Invalid\")",
+        "error": "Valid",
+        "errorOverride": {
+          "lines": [
+            "Valid"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Python reads the wrong line as (choice == 1) or 2, and the number 2 is always truthy, so the whole condition is always True.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python gate.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +491,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: while loops. Keep coding, says Xecxec!"
+      "narration": "Next time: while loops. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 16,
+        "nextTitle": "while loops"
+      }
     }
   ],
   "bug": {
@@ -348,5 +623,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

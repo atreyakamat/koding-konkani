@@ -1,0 +1,397 @@
+{
+  "lang": "cpp",
+  "ep": 14,
+  "title": "else if ladders",
+  "module": 2,
+  "lengthSec": 289,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FFB88A"
+  },
+  "learningGoals": [
+    "chain several tests with else if",
+    "order the tests from strict to loose",
+    "use a final else for all other cases"
+  ],
+  "youtube": {
+    "title": "C++ else if Ladder: Grades and Choices | C++ Programming EP 14",
+    "description": "In this episode you will chain several tests with else if, order the tests from strict to loose and use a final else for all other cases, with Xecxec the crab. 0:00 Intro · 0:15 else if ladders · 0:46 A grade ladder · 1:26 Grade bands · 1:56 Second program · 2:56 Recap · 3:26 Bug of the Day · 4:14 Challenge · 4:34 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "else if ladders"
+      },
+      {
+        "t": "0:46",
+        "label": "A grade ladder"
+      },
+      {
+        "t": "1:26",
+        "label": "Grade bands"
+      },
+      {
+        "t": "1:56",
+        "label": "Second program"
+      },
+      {
+        "t": "2:56",
+        "label": "Recap"
+      },
+      {
+        "t": "3:26",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:14",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:34",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "else if c++",
+      "if else ladder",
+      "grade calculator",
+      "c++ conditions"
+    ],
+    "thumbnail": {
+      "text": "THE LADDER",
+      "visual": "big text \"THE LADDER\" in tomato on cream; Xecxec next to a ladder with a grade letter on each rung; thin black border and drop shadow.",
+      "pose": "Xecxec next to a ladder with a grade letter on each rung"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 14 · THE LADDER",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we handle more than two cases. We build a grade calculator with an else if ladder."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 31,
+      "onScreen": "\"else if ladders\": numbered lines (1. Tests run from the top down; 2. The first true test wins; 3. The last else catches everything else) and an analogy card: a ladder: you climb down until a rung fits",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "An else if ladder checks tests from the top down. The first true test runs, and the rest are skipped. A final else catches all other cases. The order matters. Put the strictest test first. Think of a ladder. You climb down from the top until you find a rung that fits.",
+      "points": [
+        "Tests run from the top down",
+        "The first true test wins",
+        "The last else catches everything else"
+      ],
+      "analogy": {
+        "title": "else if ladders",
+        "body": "A ladder: you climb down until a rung fits"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 46,
+      "lengthSec": 40,
+      "onScreen": "grade.cpp: an else if ladder turns marks into a grade",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 5] Marks is eighty-two. [HL 6] Is it at least ninety? No, so we move down. [HL 8] Is it at least seventy-five? Yes. [HL 9] This branch prints Grade B. The ladder stops here. [HL 10] The tests below never run. [HL 12] The last else would catch every mark below fifty.",
+      "code": {
+        "file": "grade.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int marks = 82;\n    if (marks >= 90) {\n        cout << \"Grade A\" << endl;\n    } else if (marks >= 75) {\n        cout << \"Grade B\" << endl;\n    } else if (marks >= 50) {\n        cout << \"Grade C\" << endl;\n    } else {\n        cout << \"Grade D\" << endl;\n    }\n    return 0;\n}",
+        "output": "Grade B"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 86,
+      "lengthSec": 30,
+      "onScreen": "a table: marks and grade",
+      "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
+      "sfx": [],
+      "narration": "This table shows the bands. Each test only needs the lower limit. The tests above it have already removed the higher marks. That is why order is so important.",
+      "diagram": {
+        "kind": "table",
+        "caption": "a table: marks and grade",
+        "headers": [
+          "Marks",
+          "Test",
+          "Grade"
+        ],
+        "rows": [
+          [
+            "90 and up",
+            "marks >= 90",
+            "A"
+          ],
+          [
+            "75 to 89",
+            "marks >= 75",
+            "B"
+          ],
+          [
+            "50 to 74",
+            "marks >= 50",
+            "C"
+          ],
+          [
+            "Below 50",
+            "else",
+            "D"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 116,
+      "lengthSec": 40,
+      "onScreen": "ticket.cpp: the age picks the ticket price",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 5] The age is sixty-five. [HL 7] Under five is free. [HL 9] Under eighteen pays fifty. [HL 11] Under sixty pays one hundred. [HL 13] Everyone else gets the senior price of sixty. [TRACK price=60] Sixty-five matches the else branch. [HL 16] The program prints the price.",
+      "code": {
+        "file": "ticket.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int age = 65;\n    int price;\n    if (age < 5) {\n        price = 0;\n    } else if (age < 18) {\n        price = 50;\n    } else if (age < 60) {\n        price = 100;\n    } else {\n        price = 60;\n    }\n    cout << \"Price: \" << price << endl;\n    return 0;\n}",
+        "output": "Price: 60"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 156,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 ticket.cpp -o ticket then ./ticket",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as ticket dot cpp. Compile it with g plus plus. Then run the program. The program prints Price colon sixty."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 176,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. An else if ladder checks tests from the top down. Two. The first true test runs, and the rest are skipped. Three. Put the strictest test first. Four. A final else catches every other case. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "An else if ladder checks tests from the top down.",
+        "The first true test runs, and the rest are skipped.",
+        "Put the strictest test first.",
+        "A final else catches every other case."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 206,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: Tests in the wrong order",
+      "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. A student has eighty-two marks. The program prints Pass, not Distinction. The loose test is first, and eighty-two passes it. The ladder stops there. Always put the strictest test first. Then the ladder works from the top down."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 246,
+      "lengthSec": 8,
+      "onScreen": "I built a ladder of else ifs. Now I cannot find the right rung to get down.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "I built a ladder of else ifs. Now I cannot find the right rung to get down."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 254,
+      "lengthSec": 20,
+      "onScreen": "Task card: write a ladder for temperature",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write an else if ladder for a temperature. Print hot above thirty-five, warm above twenty-five, and cool for the rest. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 274,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 15 · switch and case",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: switch and case. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int marks = 82;\n    if (marks >= 35) {\n        cout << \"Pass\" << endl;\n    } else if (marks >= 75) {\n        cout << \"Distinction\" << endl;\n    }\n    return 0;\n}",
+    "error": "Program output (it runs, but the answer is wrong):\n\nPass",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int marks = 82;\n    if (marks >= 75) {\n        cout << \"Distinction\" << endl;\n    } else if (marks >= 35) {\n        cout << \"Pass\" << endl;\n    }\n    return 0;\n}",
+    "why": "Eighty-two passes the first test, so the ladder stops. The strict test below never gets a turn."
+  },
+  "pun": "\"I built a ladder of else ifs. Now I cannot find the right rung to get down.\"",
+  "challenge": "Write an else if ladder for a temperature. Print hot above thirty-five, warm above twenty-five, and cool for the rest.",
+  "challengeAnswer": "Test temperature greater than thirty-five first. Then test greater than twenty-five. End with an else that prints cool.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: else if ladders",
+      "hook": "\"The order of your tests changes the answer.\"",
+      "script": "The order of your tests changes the answer. Today we handle more than two cases. We build a grade calculator with an else if ladder. An else if ladder checks tests from the top down. The first true test runs, and the rest are skipped. A final else catches all other cases. The order matters. Put the strictest test first. Keep coding, says Xecxec!",
+      "onScreen": "ELSE IF LADDERS",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 36,
+      "caption": "What you will learn: else if ladders.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "elseifladders",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "else if ladders in one minute",
+      "hook": "\"An else if ladder checks tests from the top down.\"",
+      "script": "An else if ladder checks tests from the top down. The first true test runs, and the rest are skipped. A final else catches all other cases. The order matters. Put the strictest test first. Think of a ladder. You climb down from the top until you find a rung that fits. Marks is eighty-two. Is it at least ninety? Keep coding, says Xecxec!",
+      "onScreen": "ELSE IF LADDERS",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 36,
+      "caption": "else if ladders in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "elseifladders",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"The age is sixty-five.\"",
+      "script": "The age is sixty-five. Under five is free. Under eighteen pays fifty. Under sixty pays one hundred. Everyone else gets the senior price of sixty. Sixty-five matches the else branch. The program prints the price. The program prints Price colon sixty. An else if ladder checks tests from the top down. The first true test runs, and the rest are skipped. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 37,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "elseifladders",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: Tests in the wrong order",
+      "hook": "\"Can you spot the bug in else if ladders?\"",
+      "script": "Can you spot the bug in else if ladders? Bug of the Day. A student has eighty-two marks. The program prints Pass, not Distinction. The loose test is first, and eighty-two passes it. The ladder stops there. Always put the strictest test first. Then the ladder works from the top down. Eighty-two passes the first test, so the ladder stops. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 36,
+      "caption": "Bug of the Day: Tests in the wrong order.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "elseifladders",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you write a ladder for temperature in else if ladders?\"",
+      "script": "Can you write a ladder for temperature in else if ladders? I built a ladder of else ifs. Now I cannot find the right rung to get down. Write an else if ladder for a temperature. Print hot above thirty-five, warm above twenty-five, and cool for the rest. Write your answer in the comments. An else if ladder checks tests from the top down. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 38,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "elseifladders",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "grade.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int marks = 82;\n    if (marks >= 90) {\n        cout << \"Grade A\" << endl;\n    } else if (marks >= 75) {\n        cout << \"Grade B\" << endl;\n    } else if (marks >= 50) {\n        cout << \"Grade C\" << endl;\n    } else {\n        cout << \"Grade D\" << endl;\n    }\n    return 0;\n}",
+      "output": "Grade B",
+      "lang": "cpp"
+    },
+    {
+      "file": "ticket.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int age = 65;\n    int price;\n    if (age < 5) {\n        price = 0;\n    } else if (age < 18) {\n        price = 50;\n    } else if (age < 60) {\n        price = 100;\n    } else {\n        price = 60;\n    }\n    cout << \"Price: \" << price << endl;\n    return 0;\n}",
+      "output": "Price: 60",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "Distinction"
+  },
+  "nextTitle": "switch and case"
+}

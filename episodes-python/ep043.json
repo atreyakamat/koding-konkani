@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A default value goes in the def line. Greeting equals Hello. If the caller leaves that argument out, the default is used. Think of a tea stall. Tea comes with sugar by default, unless you say, no sugar. You can also pass arguments by name. Greeting equals Hi. Then the order does not matter, and the call explains itself. Be careful with one thing. Never use a list as a default."
+      "narration": "A default value goes in the def line. Greeting equals Hello. If the caller leaves that argument out, the default is used. Think of a tea stall. Tea comes with sugar by default, unless you say, no sugar. You can also pass arguments by name. Greeting equals Hi. Then the order does not matter, and the call explains itself. Be careful with one thing. Never use a list as a default.",
+      "props": {
+        "lines": [
+          "name=value in the def gives a default",
+          "Callers can leave the argument out",
+          "Keyword arguments name the parameter in the call"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a tea stall order: tea comes with sugar by default, unless you say 'no sugar'"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "defaults.py",
         "source": "def greet(name, greeting=\"Hello\"):\n    return greeting + \", \" + name\nprint(greet(\"Asha\"))\nprint(greet(\"Ravi\", \"Namaste\"))\nprint(greet(greeting=\"Hi\", name=\"Maya\"))",
         "output": "Hello, Asha\nNamaste, Ravi\nHi, Maya"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python defaults.py",
+        "output": "Hello, Asha\nNamaste, Ravi\nHi, Maya"
       }
     },
     {
@@ -127,7 +143,116 @@
       "onScreen": "Three calls side by side; the default is crossed out when a value is passed",
       "animation": "Three call cards; the default value glows when used and fades when replaced",
       "sfx": [],
-      "narration": "Here is the rule. If the caller gives a value, that value wins. If not, the default is used. Parameters with defaults must come after the ones without. In the call, positional arguments come first, then keyword ones. Keyword arguments make long calls much easier to read, because every value carries its own label."
+      "narration": "Here is the rule. If the caller gives a value, that value wins. If not, the default is used. Parameters with defaults must come after the ones without. In the call, positional arguments come first, then keyword ones. Keyword arguments make long calls much easier to read, because every value carries its own label.",
+      "props": {
+        "lines": [
+          "Here is the rule.",
+          "If the caller gives a value, that value wins.",
+          "If not, the default is used."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 43,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "c1",
+              "shape": "card",
+              "text": "greet(\"Asha\")",
+              "colour": "cream",
+              "col": 0,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "c2",
+              "shape": "card",
+              "text": "greet(\"Ravi\", \"Namaste\")",
+              "colour": "cream",
+              "col": 4,
+              "row": 1,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "c3",
+              "shape": "card",
+              "text": "greet(greeting=\"Hi\", name=\"Meera\")",
+              "colour": "cream",
+              "col": 4,
+              "row": 3,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "d",
+              "shape": "token",
+              "text": "default: Hello",
+              "colour": "butter",
+              "col": 0,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c2"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c3"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "d"
+            },
+            {
+              "t": 0.2,
+              "do": "glow",
+              "target": "d",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.3,
+              "do": "glow",
+              "target": "c1"
+            },
+            {
+              "t": 0.5,
+              "do": "dim",
+              "target": "d"
+            },
+            {
+              "t": 0.55,
+              "do": "glow",
+              "target": "c2",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.75,
+              "do": "glow",
+              "target": "c3",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +269,11 @@
         "file": "power.py",
         "source": "def power(base, exp=2):\n    return base ** exp\nprint(power(5))\nprint(power(2, 10))\nprint(power(exp=3, base=2))",
         "output": "25\n1024\n8"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python power.py",
+        "output": "25\n1024\n8"
       }
     },
     {
@@ -157,7 +287,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as power dot py. In the terminal, type python, space, power dot py. Twenty five, then one thousand twenty four, then eight."
+      "narration": "Save the file as power dot py. In the terminal, type python, space, power dot py. Twenty five, then one thousand twenty four, then eight.",
+      "props": {
+        "lines": [
+          {
+            "text": "python power.py",
+            "kind": "input"
+          },
+          {
+            "text": "25",
+            "kind": "output"
+          },
+          {
+            "text": "1024",
+            "kind": "output"
+          },
+          {
+            "text": "8",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +319,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: name equals value in the def line sets a default. Two: Callers can omit an argument that has a default. Three: Keyword arguments carry their own labels. Four: Never use a list or dictionary as a default value. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: name equals value in the def line sets a default. Two: Callers can omit an argument that has a default. Three: Keyword arguments carry their own labels. Four: Never use a list or dictionary as a default value. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Name=value in the def line sets a default.",
+          "Callers can omit an argument that has a default.",
+          "Keyword arguments carry their own labels.",
+          "Never use a list or dictionary as a default value."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +341,28 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We add fish, then rice, to two separate baskets. But the second basket also holds fish. The default list was made only once, when the def ran. Every call shares it. Use None as the default instead. Inside, if basket is None, make a brand new list, and each call gets its own."
+      "narration": "Bug of the Day. We add fish, then rice, to two separate baskets. But the second basket also holds fish. The default list was made only once, when the def ran. Every call shares it. Use None as the default instead. Inside, if basket is None, make a brand new list, and each call gets its own.",
+      "props": {
+        "wrongCode": "def add_item(item, basket=[]):\n    basket.append(item)\n    return basket\nprint(add_item(\"fish\"))\nprint(add_item(\"rice\"))",
+        "fixedCode": "def add_item(item, basket=None):\n    if basket is None:\n        basket = []\n    basket.append(item)\n    return basket\nprint(add_item(\"fish\"))\nprint(add_item(\"rice\"))",
+        "error": "['fish']\n['fish', 'rice']",
+        "errorOverride": {
+          "lines": [
+            "['fish']",
+            "['fish', 'rice']"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "A default value is created once, when the def runs, so every call shares the same list; use None and make a fresh list inside.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python defaults.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +398,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: args and kwargs. Keep coding, says Xecxec!"
+      "narration": "Next time: args and kwargs. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 44,
+        "nextTitle": "*args and **kwargs"
+      }
     }
   ],
   "bug": {
@@ -346,5 +530,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

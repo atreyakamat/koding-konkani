@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the plan. Read a line of text. Make it lowercase, so The and the count as one word. Split it into words. Count each word in a dictionary. Then print the counts in alphabetical order, and name the most common word. It uses strings, lists, dictionaries and loops. And one new trick, max with a key, to find the biggest count."
+      "narration": "Here is the plan. Read a line of text. Make it lowercase, so The and the count as one word. Split it into words. Count each word in a dictionary. Then print the counts in alphabetical order, and name the most common word. It uses strings, lists, dictionaries and loops. And one new trick, max with a key, to find the biggest count.",
+      "props": {
+        "lines": [
+          "Read a line of text and make it lowercase",
+          "Split it into words and count each",
+          "Print the counts in order and the most common word"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a library assistant: read a page, tally every word, and report the favourite"
+        }
+      }
     },
     {
       "id": 3,
@@ -112,7 +123,17 @@
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] Ask for a line of text. [HL 2] Make it lowercase, then split it into words. Chaining methods like this is common. [HL 3] An empty dictionary for the counts. [HL 4] Loop over the words. [HL 5] The counting pattern, with get. [HL 6] Loop over the sorted keys, so the output is alphabetical. [HL 7] Print each word and its count. [HL 8] Max over the dictionary finds the key with the biggest count. Key equals counts dot get, says, compare by the count."
+      "narration": "[HL 1] Ask for a line of text. [HL 2] Make it lowercase, then split it into words. Chaining methods like this is common. [HL 3] An empty dictionary for the counts. [HL 4] Loop over the words. [HL 5] The counting pattern, with get. [HL 6] Loop over the sorted keys, so the output is alphabetical. [HL 7] Print each word and its count. [HL 8] Max over the dictionary finds the key with the biggest count. Key equals counts dot get, says, compare by the count.",
+      "code": {
+        "file": "wordcount.py",
+        "source": "text = input(\"Text: \")\nwords = text.lower().split()\ncounts = {}\nfor word in words:\n    counts[word] = counts.get(word, 0) + 1\nfor word in sorted(counts):\n    print(word, counts[word])\nprint(\"Most common:\", max(counts, key=counts.get))",
+        "output": "Text: sand 1\nsea 1\nsun 1\nthe 3\nMost common: the"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python wordcount.py",
+        "output": "Text: The sea the sand The sun\nsand 1\nsea 1\nsun 1\nthe 3\nMost common: the"
+      }
     },
     {
       "id": 4,
@@ -124,7 +145,101 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the end state. Words is tied to a list of six lowercase words. Counts is tied to a dictionary with four keys, because the repeated words were merged. The word the has the count three. The list kept every word, and the dictionary kept the tallies. Two different shapes for two different questions."
+      "narration": "Here is the end state. Words is tied to a list of six lowercase words. Counts is tied to a dictionary with four keys, because the repeated words were merged. The word the has the count three. The list kept every word, and the dictionary kept the tallies. Two different shapes for two different questions.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "words",
+                "cells": [
+                  {
+                    "value": "'the'",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "'sea'",
+                    "index": 1
+                  },
+                  {
+                    "value": "'the'",
+                    "index": 2
+                  },
+                  {
+                    "value": "'sand'",
+                    "index": 3
+                  },
+                  {
+                    "value": "'the'",
+                    "index": 4
+                  },
+                  {
+                    "value": "'sun'",
+                    "index": 5
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "name": "words",
+                "cells": [
+                  {
+                    "value": "'the'",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "'sea'",
+                    "index": 1
+                  },
+                  {
+                    "value": "'the'",
+                    "index": 2
+                  },
+                  {
+                    "value": "'sand'",
+                    "index": 3
+                  },
+                  {
+                    "value": "'the'",
+                    "index": 4
+                  },
+                  {
+                    "value": "'sun'",
+                    "index": 5
+                  }
+                ]
+              },
+              {
+                "name": "counts",
+                "cells": [
+                  {
+                    "value": "3",
+                    "index": "the",
+                    "address": "dict"
+                  },
+                  {
+                    "value": "1",
+                    "index": "sea"
+                  },
+                  {
+                    "value": "1",
+                    "index": "sand"
+                  },
+                  {
+                    "value": "1",
+                    "index": "sun"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -141,6 +256,11 @@
         "file": "unique.py",
         "source": "text = \"the sea the sand the sun\"\nwords = text.split()\nprint(len(words), \"words\")\nprint(len(set(words)), \"unique\")",
         "output": "6 words\n4 unique"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python unique.py",
+        "output": "6 words\n4 unique"
       }
     },
     {
@@ -154,7 +274,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as unique dot py. In the terminal, type python, space, unique dot py. Six words, then four unique."
+      "narration": "Save the file as unique dot py. In the terminal, type python, space, unique dot py. Six words, then four unique.",
+      "props": {
+        "lines": [
+          {
+            "text": "python unique.py",
+            "kind": "input"
+          },
+          {
+            "text": "6 words",
+            "kind": "output"
+          },
+          {
+            "text": "4 unique",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -166,7 +302,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Make the text lowercase before you split it. Two: split turns a sentence into a list of words. Three: counts dot get of word, 0 plus 1 tallies each word. Four: max of counts, key equals counts dot get finds the most common word. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Make the text lowercase before you split it. Two: split turns a sentence into a list of words. Three: counts dot get of word, 0 plus 1 tallies each word. Four: max of counts, key equals counts dot get finds the most common word. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Make the text lowercase before you split it.",
+          "Split() turns a sentence into a list of words.",
+          "Counts.get(word, 0) + 1 tallies each word.",
+          "Max(counts, key=counts.get) finds the most common word."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -179,7 +324,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The word the appears twice, once with a capital T. Our dictionary treats them as two different words, each with a count of one. Strings are case sensitive. Call lower before split, and the two become one word, with a count of two."
+      "narration": "Bug of the Day. The word the appears twice, once with a capital T. Our dictionary treats them as two different words, each with a count of one. Strings are case sensitive. Call lower before split, and the two become one word, with a count of two.",
+      "props": {
+        "wrongCode": "text = \"The sea the sand\"\ncounts = {}\nfor word in text.split():\n    counts[word] = counts.get(word, 0) + 1\nprint(counts)",
+        "fixedCode": "text = \"The sea the sand\"\ncounts = {}\nfor word in text.lower().split():\n    counts[word] = counts.get(word, 0) + 1\nprint(counts)",
+        "error": "{'The': 1, 'sea': 1, 'the': 1, 'sand': 1}",
+        "errorOverride": {
+          "lines": [
+            "{'The': 1, 'sea': 1, 'the': 1, 'sand': 1}"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Strings are case sensitive, so The and the are two different keys; make the text lowercase before you count.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python wordcount.py",
+        "culprit": {
+          "wrong": 3,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -215,7 +380,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Module four is done! Next time: functions, your own reusable tools. Keep coding, says Xecxec!"
+      "narration": "Module four is done! Next time: functions, your own reusable tools. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 41,
+        "nextTitle": "Defining functions"
+      }
     }
   ],
   "bug": {
@@ -328,9 +497,10 @@
   ],
   "codeFiles": [
     {
-      "file": "file1.python",
+      "file": "wordcount.py",
       "source": "text = input(\"Text: \")\nwords = text.lower().split()\ncounts = {}\nfor word in words:\n    counts[word] = counts.get(word, 0) + 1\nfor word in sorted(counts):\n    print(word, counts[word])\nprint(\"Most common:\", max(counts, key=counts.get))",
       "output": "Text: sand 1\nsea 1\nsun 1\nthe 3\nMost common: the",
+      "stdin": "The sea the sand The sun",
       "lang": "python"
     },
     {
@@ -343,5 +513,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

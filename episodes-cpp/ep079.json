@@ -1,0 +1,395 @@
+{
+  "lang": "cpp",
+  "ep": 79,
+  "title": "Ranges in C++20",
+  "module": 9,
+  "lengthSec": 288,
+  "colours": {
+    "bg": "#FFF4EC",
+    "accent": "#FF6F59"
+  },
+  "learningGoals": [
+    "build a pipeline with the pipe symbol",
+    "filter and transform lazily",
+    "sort a whole vector with ranges sort"
+  ],
+  "youtube": {
+    "title": "C++20 Ranges and Views: filter, transform, take | C++ Programming EP 79",
+    "description": "In this episode you will build a pipeline with the pipe symbol, filter and transform lazily and sort a whole vector with ranges sort, with Xecxec the crab. 0:00 Intro · 0:15 Ranges in C++20 · 0:45 Filter then transform · 1:25 The pipeline · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Ranges in C++20"
+      },
+      {
+        "t": "0:45",
+        "label": "Filter then transform"
+      },
+      {
+        "t": "1:25",
+        "label": "The pipeline"
+      },
+      {
+        "t": "1:55",
+        "label": "Second program"
+      },
+      {
+        "t": "2:55",
+        "label": "Recap"
+      },
+      {
+        "t": "3:25",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:13",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:33",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "c++20 ranges",
+      "std::views",
+      "views::filter",
+      "views::transform",
+      "modern c++"
+    ],
+    "thumbnail": {
+      "text": "RANGES",
+      "visual": "big text \"RANGES\" in tomato on cream; Xecxec next to a conveyor belt with a filter gate and a squash press; thin black border and drop shadow.",
+      "pose": "Xecxec next to a conveyor belt with a filter gate and a squash press"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 79 · RANGES",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today we meet ranges, new in C plus plus twenty. They let you chain steps with the pipe symbol, like a conveyor belt."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 30,
+      "onScreen": "\"Ranges in C++20\": numbered lines (1. A view does not copy the data; 2. The pipe symbol joins stations; 3. Views work only when you read them) and an analogy card: a conveyor belt: each station changes the items that pass",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "A view is a lazy window on a range. It does not copy the data, and it does no work until you read it. You join views with the pipe symbol. Think of a conveyor belt. Each station changes the items that pass, one at a time.",
+      "points": [
+        "A view does not copy the data",
+        "The pipe symbol joins stations",
+        "Views work only when you read them"
+      ],
+      "analogy": {
+        "title": "Ranges in C++20",
+        "body": "A conveyor belt: each station changes the items that pass"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 45,
+      "lengthSec": 40,
+      "onScreen": "ranges.cpp: even numbers are kept, then squared, then printed",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 10] The pipe sends the vector into a filter station. The lambda keeps only even numbers. [HL 11] The next station squares each number that passes. [HL 12] Nothing runs until this loop reads the view. The output is four sixteen thirty-six sixty-four. [HL 16] Ranges sort takes the whole vector, and no iterators. Greater sorts from big to small. [HL 17] The first value is eight.",
+      "code": {
+        "file": "ranges.cpp",
+        "source": "#include <algorithm>\n#include <functional>\n#include <iostream>\n#include <ranges>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8};\n    auto result = v | views::filter([](int x) { return x % 2 == 0; })\n                    | views::transform([](int x) { return x * x; });\n    for (int x : result) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    ranges::sort(v, greater<>());\n    cout << v[0] << endl;\n    return 0;\n}",
+        "output": "4 16 36 64\n8"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 85,
+      "lengthSec": 30,
+      "onScreen": "a flow from the vector, through the filter, to the transform",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The data flows left to right. The vector goes into the filter. The filter keeps the even numbers. The transform squares them. The loop pulls the values out one by one.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "a flow from the vector, through the filter, to the transform",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "vector",
+            "detail": "1 2 3 4 5 6 7 8"
+          },
+          {
+            "id": "s2",
+            "label": "filter",
+            "detail": "keeps 2 4 6 8"
+          },
+          {
+            "id": "s3",
+            "label": "transform",
+            "detail": "squares them: 4 16 36 64"
+          },
+          {
+            "id": "s4",
+            "label": "loop",
+            "detail": "reads and prints the values"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 115,
+      "lengthSec": 40,
+      "onScreen": "iota.cpp: an endless counter is cut to the first five numbers",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 6] Iota makes an endless counter that starts at one. It does not fill memory, because a view is lazy. [HL 6] Take cuts the counter after five items. The output is one two three four five.",
+      "code": {
+        "file": "iota.cpp",
+        "source": "#include <iostream>\n#include <ranges>\nusing namespace std;\n\nint main() {\n    for (int x : views::iota(1) | views::take(5)) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+        "output": "1 2 3 4 5"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 155,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 iota.cpp -o iota then ./iota",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as iota dot cpp. Compile it with g plus plus. Then run the program. The program prints the squares of the even numbers, then eight, then one to five."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 175,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. A view is a lazy window on a range. Two. The pipe symbol joins stations. Three. Views copy no data. Four. Ranges sort takes the whole container. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "A view is a lazy window on a range.",
+        "The pipe symbol joins stations.",
+        "Views copy no data.",
+        "Ranges sort takes the whole container."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 205,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: A missing header",
+      "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. We use views without the ranges header. The compiler says views has not been declared. Add the include line for ranges."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 245,
+      "lengthSec": 8,
+      "onScreen": "Why did the view stay calm? It never copied anything, so it had nothing to lose.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "Why did the view stay calm? It never copied anything, so it had nothing to lose."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 253,
+      "lengthSec": 20,
+      "onScreen": "Task card: keep the odd numbers",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Use a filter view to print only the odd numbers of a vector. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 273,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 80 · Move semantics",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: move semantics. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 2, 3, 4};\n    for (int x : v | views::take(2)) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+    "error": "Compiler output (exactly as g++ prints it):\n\nrangebug.cpp: In function 'int main()':\nrangebug.cpp:7:22: error: 'views' has not been declared\n    7 |     for (int x : v | views::take(2)) {\n      |                      ^~~~~",
+    "fixed": "#include <iostream>\n#include <ranges>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 2, 3, 4};\n    for (int x : v | views::take(2)) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+    "why": "Views live in the ranges header. Include it. Also compile with the C plus plus twenty flag."
+  },
+  "pun": "\"Why did the view stay calm? It never copied anything, so it had nothing to lose.\"",
+  "challenge": "Use a filter view to print only the odd numbers of a vector.",
+  "challengeAnswer": "Pipe the vector into views filter. The lambda returns x modulo two not equal to zero. Print the view with a loop.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Ranges in C++20",
+      "hook": "\"Filter and square numbers in one pipeline.\"",
+      "script": "Filter and square numbers in one pipeline. Today we meet ranges, new in C plus plus twenty. They let you chain steps with the pipe symbol, like a conveyor belt. A view is a lazy window on a range. It does not copy the data, and it does no work until you read it. You join views with the pipe symbol. Keep coding, says Xecxec!",
+      "onScreen": "RANGES IN C++20",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 37,
+      "caption": "What you will learn: Ranges in C++20.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "rangesinc20",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Ranges in C++20 in one minute",
+      "hook": "\"A view is a lazy window on a range.\"",
+      "script": "A view is a lazy window on a range. It does not copy the data, and it does no work until you read it. You join views with the pipe symbol. Think of a conveyor belt. Each station changes the items that pass, one at a time. The pipe sends the vector into a filter station. The lambda keeps only even numbers. Keep coding, says Xecxec!",
+      "onScreen": "RANGES IN C++20",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 37,
+      "caption": "Ranges in C++20 in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "rangesinc20",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"Iota makes an endless counter that starts at one.\"",
+      "script": "Iota makes an endless counter that starts at one. It does not fill memory, because a view is lazy. Take cuts the counter after five items. The output is one two three four five. The program prints the squares of the even numbers, then eight, then one to five. A view is a lazy window on a range. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "rangesinc20",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: A missing header",
+      "hook": "\"Can you spot the bug in ranges in C plus plus twenty?\"",
+      "script": "Can you spot the bug in ranges in C plus plus twenty? Bug of the Day. We use views without the ranges header. The compiler says views has not been declared. Add the include line for ranges. Views live in the ranges header. Include it. Also compile with the C plus plus twenty flag. A view is a lazy window on a range. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 38,
+      "caption": "Bug of the Day: A missing header.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "rangesinc20",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you keep the odd numbers in ranges in C\"",
+      "script": "Can you keep the odd numbers in ranges in C plus plus twenty? Why did the view stay calm? It never copied anything, so it had nothing to lose. Use a filter view to print only the odd numbers of a vector. Write your answer in the comments. A view is a lazy window on a range. The pipe symbol joins stations. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 37,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "rangesinc20",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "ranges.cpp",
+      "source": "#include <algorithm>\n#include <functional>\n#include <iostream>\n#include <ranges>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8};\n    auto result = v | views::filter([](int x) { return x % 2 == 0; })\n                    | views::transform([](int x) { return x * x; });\n    for (int x : result) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    ranges::sort(v, greater<>());\n    cout << v[0] << endl;\n    return 0;\n}",
+      "output": "4 16 36 64\n8",
+      "lang": "cpp"
+    },
+    {
+      "file": "iota.cpp",
+      "source": "#include <iostream>\n#include <ranges>\nusing namespace std;\n\nint main() {\n    for (int x : views::iota(1) | views::take(5)) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+      "output": "1 2 3 4 5",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "1 2"
+  },
+  "nextTitle": "Move semantics"
+}

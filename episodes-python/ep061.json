@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Imagine you track students. One list holds the names. Another list holds the marks. They line up only by position. Move one item, and everything goes wrong. A class fixes this. It is a blueprint for one type of thing. It says what data each thing carries, and what it can do. An object is one real thing built from the blueprint. Think of a student file. Name, marks and class live in one folder, so they can never get separated."
+      "narration": "Imagine you track students. One list holds the names. Another list holds the marks. They line up only by position. Move one item, and everything goes wrong. A class fixes this. It is a blueprint for one type of thing. It says what data each thing carries, and what it can do. An object is one real thing built from the blueprint. Think of a student file. Name, marks and class live in one folder, so they can never get separated.",
+      "props": {
+        "lines": [
+          "Data about one thing belongs together",
+          "A class is a blueprint for such a bundle",
+          "An object is one real bundle made from it"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a student file: the name, the marks and the class all live in one folder, not in three different cupboards"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "parallel.py",
         "source": "names = [\"Asha\", \"Ravi\", \"Meera\"]\nmarks = [91, 78, 85]\nfor i in range(len(names)):\n    print(names[i], marks[i])\nbest = marks.index(max(marks))\nprint(\"Top:\", names[best])",
         "output": "Asha 91\nRavi 78\nMeera 85\nTop: Asha"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python parallel.py",
+        "output": "Asha 91\nRavi 78\nMeera 85\nTop: Asha"
       }
     },
     {
@@ -127,7 +143,138 @@
       "onScreen": "A student whose name is in cupboard one and marks in cupboard two, then a single folder holding both",
       "animation": "Two cupboards with labelled drawers, an arrow pairs them by position, then both drawers merge into one folder",
       "sfx": [],
-      "narration": "Here is the problem. The name of Asha sits in one cupboard. Her marks sit in another. If you sort one cupboard, or delete from one, the match breaks, and Asha gets Ravi's marks. A class puts both into one folder. When you move the folder, everything inside moves together. That is the whole idea of bundling."
+      "narration": "Here is the problem. The name of Asha sits in one cupboard. Her marks sit in another. If you sort one cupboard, or delete from one, the match breaks, and Asha gets Ravi's marks. A class puts both into one folder. When you move the folder, everything inside moves together. That is the whole idea of bundling.",
+      "props": {
+        "lines": [
+          "Here is the problem.",
+          "The name of Asha sits in one cupboard.",
+          "Her marks sit in another."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 61,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "c1",
+              "shape": "box",
+              "text": "names: Asha, Ravi, Meera",
+              "colour": "cream",
+              "col": 0,
+              "row": 0,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "id": "c2",
+              "shape": "box",
+              "text": "marks: 91, 78, 85",
+              "colour": "cream",
+              "col": 6,
+              "row": 0,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "id": "pair",
+              "shape": "label",
+              "text": "match by position",
+              "colour": "butter",
+              "col": 4,
+              "row": 2,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "f1",
+              "shape": "card",
+              "text": "Student: Asha, 91",
+              "colour": "mint",
+              "col": 1,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "f2",
+              "shape": "card",
+              "text": "Student: Ravi, 78",
+              "colour": "mint",
+              "col": 4,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "f3",
+              "shape": "card",
+              "text": "Student: Meera, 85",
+              "colour": "mint",
+              "col": 7,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "c2"
+            },
+            {
+              "t": 0.25,
+              "do": "show",
+              "target": "pair",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.5,
+              "do": "hide",
+              "target": "c1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.5,
+              "do": "hide",
+              "target": "c2"
+            },
+            {
+              "t": 0.5,
+              "do": "hide",
+              "target": "pair"
+            },
+            {
+              "t": 0.6,
+              "do": "show",
+              "target": "f1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.7,
+              "do": "show",
+              "target": "f2",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.8,
+              "do": "show",
+              "target": "f3",
+              "sfx": "pop"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +291,11 @@
         "file": "firstclass.py",
         "source": "class Student:\n    pass\n\na = Student()\na.name = \"Asha\"\na.marks = 91\nb = Student()\nb.name = \"Ravi\"\nb.marks = 78\nprint(a.name, a.marks)\nprint(b.name, b.marks)",
         "output": "Asha 91\nRavi 78"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python firstclass.py",
+        "output": "Asha 91\nRavi 78"
       }
     },
     {
@@ -157,7 +309,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as firstclass dot py. In the terminal, type python, space, firstclass dot py. Asha 91, then Ravi 78."
+      "narration": "Save the file as firstclass dot py. In the terminal, type python, space, firstclass dot py. Asha 91, then Ravi 78.",
+      "props": {
+        "lines": [
+          {
+            "text": "python firstclass.py",
+            "kind": "input"
+          },
+          {
+            "text": "Asha 91",
+            "kind": "output"
+          },
+          {
+            "text": "Ravi 78",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +337,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Parallel lists only match by position, so they break easily. Two: A class is a blueprint for one type of thing. Three: An object is one real thing built from the class. Four: Each object keeps its own data. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Parallel lists only match by position, so they break easily. Two: A class is a blueprint for one type of thing. Three: An object is one real thing built from the class. Four: Each object keeps its own data. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Parallel lists only match by position, so they break easily.",
+          "A class is a blueprint for one type of thing.",
+          "An object is one real thing built from the class.",
+          "Each object keeps its own data."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +359,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We sort only the names. The marks stay where they were. Now Ravi is shown with ninety one, which belongs to Asha. No error appears. You get only wrong answers. That is the worst type of bug. Keep each name and its marks together in one bundle, and they can never drift apart."
+      "narration": "Bug of the Day. We sort only the names. The marks stay where they were. Now Ravi is shown with ninety one, which belongs to Asha. No error appears. You get only wrong answers. That is the worst type of bug. Keep each name and its marks together in one bundle, and they can never drift apart.",
+      "props": {
+        "wrongCode": "names = [\"Asha\", \"Ravi\", \"Meera\"]\nmarks = [91, 78, 85]\nnames.sort(reverse=True)\nfor i in range(len(names)):\n    print(names[i], marks[i])",
+        "fixedCode": "students = [(\"Asha\", 91), (\"Ravi\", 78), (\"Meera\", 85)]\nstudents.sort(reverse=True)\nfor name, mark in students:\n    print(name, mark)",
+        "error": "Ravi 91\nMeera 78\nAsha 85",
+        "errorOverride": {
+          "lines": [
+            "Ravi 91",
+            "Meera 78",
+            "Asha 85"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Sorting one list moved the names but not the marks, so the pairs broke. Keeping each name and mark together in one bundle makes that impossible.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python parallel.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +417,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: classes and objects. Keep coding, says Xecxec!"
+      "narration": "Next time: classes and objects. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 62,
+        "nextTitle": "Classes and objects"
+      }
     }
   ],
   "bug": {
@@ -346,5 +549,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

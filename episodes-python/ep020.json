@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "The match statement looks at one value, and compares it with a list of cases. The first case that fits runs. Think of a restaurant menu. You say the dish number, and the kitchen picks the matching dish. You can join several values with a vertical bar, meaning, or. And case underscore is the catch-all. It matches anything that nothing else matched. It needs Python three ten or newer."
+      "narration": "The match statement looks at one value, and compares it with a list of cases. The first case that fits runs. Think of a restaurant menu. You say the dish number, and the kitchen picks the matching dish. You can join several values with a vertical bar, meaning, or. And case underscore is the catch-all. It matches anything that nothing else matched. It needs Python three ten or newer.",
+      "props": {
+        "lines": [
+          "match looks at one value",
+          "Each case is a pattern to compare with",
+          "case _ catches everything else"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a restaurant menu: you say the dish number, and the kitchen picks the matching dish"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "menu.py",
         "source": "choice = 2\nmatch choice:\n    case 1:\n        print(\"Fish curry\")\n    case 2:\n        print(\"Prawn rice\")\n    case _:\n        print(\"Not on the menu\")",
         "output": "Prawn rice"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python menu.py",
+        "output": "Prawn rice"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Match does not change anything in memory. The name choice stays tied to the int two. Match only looks at the object, and compares it with each pattern in order. Nothing is created and nothing is tied by the cases here. It works just like an elif ladder with double equals, but it reads better."
+      "narration": "Match does not change anything in memory. The name choice stays tied to the int two. Match only looks at the object, and compares it with each pattern in order. Nothing is created and nothing is tied by the cases here. It works just like an elif ladder with double equals, but it reads better.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "2",
+                    "address": "int",
+                    "name": "choice"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "day.py",
         "source": "day = \"Sat\"\nmatch day:\n    case \"Sat\" | \"Sun\":\n        print(\"Weekend\")\n    case _:\n        print(\"Weekday\")",
         "output": "Weekend"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python day.py",
+        "output": "Weekend"
       }
     },
     {
@@ -159,7 +197,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as day dot py. In the terminal, type python, space, day dot py. Weekend."
+      "narration": "Save the file as day dot py. In the terminal, type python, space, day dot py. Weekend.",
+      "props": {
+        "lines": [
+          {
+            "text": "python day.py",
+            "kind": "input"
+          },
+          {
+            "text": "Weekend",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +221,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: match compares one value with a list of cases. Two: The first matching case runs and the rest are skipped. Three: A vertical bar joins several patterns in one case. Four: case _ catches everything that nothing else matched. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: match compares one value with a list of cases. Two: The first matching case runs and the rest are skipped. Three: A vertical bar joins several patterns in one case. Four: case _ catches everything that nothing else matched. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Match compares one value with a list of cases.",
+          "The first matching case runs and the rest are skipped.",
+          "A vertical bar joins several patterns in one case.",
+          "Case _ catches everything that nothing else matched."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +243,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The command is jump. No case matches it. And there is no catch-all. So match does nothing at all. No error, no message, just silence. Silent failures are the hardest to find. Add case underscore at the end, with a friendly message, and unknown commands are handled."
+      "narration": "Bug of the Day. The command is jump. No case matches it. And there is no catch-all. So match does nothing at all. No error, no message, just silence. Silent failures are the hardest to find. Add case underscore at the end, with a friendly message, and unknown commands are handled.",
+      "props": {
+        "wrongCode": "command = \"jump\"\nmatch command:\n    case \"start\":\n        print(\"Starting\")\n    case \"stop\":\n        print(\"Stopping\")",
+        "fixedCode": "command = \"jump\"\nmatch command:\n    case \"start\":\n        print(\"Starting\")\n    case \"stop\":\n        print(\"Stopping\")\n    case _:\n        print(\"Unknown command\")",
+        "error": "",
+        "errorOverride": {
+          "lines": [
+            ""
+          ],
+          "caption": "wrong output"
+        },
+        "why": "If no case fits and there is no case _, match does nothing and gives no error, so a wrong input fails silently.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python menu.py",
+        "culprit": {
+          "wrong": 6,
+          "fixed": 7
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +299,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: loop patterns. Keep coding, says Xecxec!"
+      "narration": "Next time: loop patterns. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 21,
+        "nextTitle": "Loop patterns"
+      }
     }
   ],
   "bug": {
@@ -348,5 +431,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

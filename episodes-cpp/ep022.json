@@ -1,0 +1,394 @@
+{
+  "lang": "cpp",
+  "ep": 22,
+  "title": "Parameters and return values",
+  "module": 3,
+  "lengthSec": 292,
+  "colours": {
+    "bg": "#B8F2D0",
+    "accent": "#1E2A4A"
+  },
+  "learningGoals": [
+    "pass values into a function",
+    "return a value from a function",
+    "use the returned value"
+  ],
+  "youtube": {
+    "title": "C++ Function Parameters and Return Values | C++ Programming EP 22",
+    "description": "In this episode you will pass values into a function, return a value from a function and use the returned value, with Xecxec the crab. 0:00 Intro · 0:15 Parameters and return values · 0:49 An add function · 1:29 Values in, value out · 1:59 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:37 Next episode",
+    "chapters": [
+      {
+        "t": "0:00",
+        "label": "Intro"
+      },
+      {
+        "t": "0:15",
+        "label": "Parameters and return values"
+      },
+      {
+        "t": "0:49",
+        "label": "An add function"
+      },
+      {
+        "t": "1:29",
+        "label": "Values in, value out"
+      },
+      {
+        "t": "1:59",
+        "label": "Second program"
+      },
+      {
+        "t": "2:59",
+        "label": "Recap"
+      },
+      {
+        "t": "3:29",
+        "label": "Bug of the Day"
+      },
+      {
+        "t": "4:17",
+        "label": "Challenge"
+      },
+      {
+        "t": "4:37",
+        "label": "Next episode"
+      }
+    ],
+    "tags": [
+      "c++",
+      "c++ for beginners",
+      "c++ tutorial",
+      "koding konkani",
+      "class 11 computer science",
+      "first year engineering",
+      "coding in goa",
+      "learn c++",
+      "function parameters",
+      "return value",
+      "c++ return",
+      "function arguments"
+    ],
+    "thumbnail": {
+      "text": "IN AND OUT",
+      "visual": "big text \"IN AND OUT\" in tomato on mint; Xecxec next to a machine with an input slot and an output tray; thin black border and drop shadow.",
+      "pose": "Xecxec next to a machine with an input slot and an output tray"
+    }
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "template": "title-card",
+      "startSec": 0,
+      "lengthSec": 15,
+      "onScreen": "EP 22 · IN AND OUT",
+      "animation": "Tomato title card: EP sticker thuds in, title stamps with a whoosh, Xecxec scuttles in and waves; thud, whoosh, claw-click, sting",
+      "sfx": [
+        "claw-click",
+        "stamp",
+        "sting",
+        "thud",
+        "whoosh"
+      ],
+      "narration": "Today our functions take values in and send a value back. Now they can do real work."
+    },
+    {
+      "id": 2,
+      "template": "concept-slide",
+      "startSec": 15,
+      "lengthSec": 34,
+      "onScreen": "\"Parameters and return values\": numbered lines (1. Parameters are inputs; 2. Return sends one value back; 3. The caller can store the result) and an analogy card: a juice machine: you put in fruit and you get juice out",
+      "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Parameters are the inputs of a function. They sit inside the brackets, each with a type and a name. The return statement sends one value back to the caller. The type before the function name says what kind of value comes back. Think of a juice machine. You put in fruit, and you get juice out.",
+      "points": [
+        "Parameters are inputs",
+        "Return sends one value back",
+        "The caller can store the result"
+      ],
+      "analogy": {
+        "title": "Parameters and return values",
+        "body": "A juice machine: you put in fruit and you get juice out"
+      }
+    },
+    {
+      "id": 3,
+      "template": "code-explain",
+      "startSec": 49,
+      "lengthSec": 40,
+      "onScreen": "add.cpp: add takes two ints and returns their sum",
+      "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
+      "sfx": [
+        "key-tick",
+        "marker-swipe"
+      ],
+      "narration": "[HL 4] The type int before the name means the function returns an int. A and b are the parameters. Each has its own type. [HL 5] Return sends the sum back to the caller. [HL 9] The call passes four and nine. Those values are called arguments. [TRACK total=13] The returned thirteen goes into total. [HL 10] Then we print it.",
+      "code": {
+        "file": "add.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int total = add(4, 9);\n    cout << \"Total: \" << total << endl;\n    return 0;\n}",
+        "output": "Total: 13"
+      }
+    },
+    {
+      "id": 4,
+      "template": "concept-slide",
+      "startSec": 89,
+      "lengthSec": 30,
+      "onScreen": "a flow: arguments go in, the result comes out",
+      "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "The call passes four and nine. The function gets them as a and b. It adds them. Then return sends thirteen back, and total stores it.",
+      "diagram": {
+        "kind": "flow",
+        "caption": "a flow: arguments go in, the result comes out",
+        "steps": [
+          {
+            "id": "s1",
+            "label": "Call",
+            "detail": "add(4, 9)"
+          },
+          {
+            "id": "s2",
+            "label": "Copy",
+            "detail": "a = 4 and b = 9"
+          },
+          {
+            "id": "s3",
+            "label": "Compute",
+            "detail": "a + b"
+          },
+          {
+            "id": "s4",
+            "label": "Return",
+            "detail": "13 goes to total"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "template": "code-explain",
+      "startSec": 119,
+      "lengthSec": 40,
+      "onScreen": "bigger.cpp: a function returns the bigger of two numbers",
+      "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
+      "sfx": [
+        "ding"
+      ],
+      "narration": "[HL 5] If a is bigger, the function returns a and ends at once. [HL 8] Otherwise it returns b. [HL 12] The first call gives twelve. [HL 13] The second call gives thirty. A function can use the same code for any two numbers.",
+      "code": {
+        "file": "bigger.cpp",
+        "source": "#include <iostream>\nusing namespace std;\n\nint bigger(int a, int b) {\n    if (a > b) {\n        return a;\n    }\n    return b;\n}\n\nint main() {\n    cout << bigger(7, 12) << endl;\n    cout << bigger(30, 5) << endl;\n    return 0;\n}",
+        "output": "12\n30"
+      }
+    },
+    {
+      "id": 6,
+      "template": "terminal",
+      "startSec": 159,
+      "lengthSec": 20,
+      "onScreen": "Terminal: g++ -std=c++20 bigger.cpp -o bigger then ./bigger",
+      "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
+      "sfx": [
+        "ding",
+        "key-tick"
+      ],
+      "narration": "Save the file as bigger dot cpp. Compile it with g plus plus. Then run the program. The program prints twelve and thirty on two lines."
+    },
+    {
+      "id": 7,
+      "template": "concept-slide",
+      "startSec": 179,
+      "lengthSec": 30,
+      "onScreen": "Recap: 4 ideas on one card",
+      "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Let us recap. One. Parameters are the inputs of a function. Two. Return sends one value back. Three. The type before the name is the return type. Four. A return statement ends the function at once. Pause the video. Say these ideas out loud, one time, slowly.",
+      "points": [
+        "Parameters are the inputs of a function.",
+        "Return sends one value back.",
+        "The type before the name is the return type.",
+        "A return statement ends the function at once."
+      ]
+    },
+    {
+      "id": 8,
+      "template": "bug-of-the-day",
+      "startSec": 209,
+      "lengthSec": 40,
+      "onScreen": "BUG OF THE DAY: No return in a function",
+      "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
+      "sfx": [
+        "buzzer",
+        "ding"
+      ],
+      "narration": "Bug of the Day. The function makes a sum, but it never returns it. The compiler warns that there is no return statement in a function returning non-void. The caller gets garbage. Add return sum at the end."
+    },
+    {
+      "id": 9,
+      "template": "pun-card",
+      "startSec": 249,
+      "lengthSec": 8,
+      "onScreen": "My function took two numbers and gave me back a headache.",
+      "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
+      "sfx": [
+        "rimshot"
+      ],
+      "narration": "My function took two numbers and gave me back a headache."
+    },
+    {
+      "id": 10,
+      "template": "challenge",
+      "startSec": 257,
+      "lengthSec": 20,
+      "onScreen": "Task card: write a function that finds the smaller number",
+      "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
+      "sfx": [
+        "pop"
+      ],
+      "narration": "Your challenge: Write a function called smaller. It takes two ints and returns the smaller one. Write your answer in the comments."
+    },
+    {
+      "id": 11,
+      "template": "outro",
+      "startSec": 277,
+      "lengthSec": 15,
+      "onScreen": "Next: EP 23 · Pass by value",
+      "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
+      "sfx": [
+        "whoosh"
+      ],
+      "narration": "Next time: pass by value. Keep coding, says Xecxec!"
+    }
+  ],
+  "bug": {
+    "wrong": "#include <iostream>\nusing namespace std;\n\nint add(int a, int b) {\n    int sum = a + b;\n}\n\nint main() {\n    cout << add(4, 9) << endl;\n    return 0;\n}",
+    "error": "Compiler output (a warning, the program still builds):\n\nadd.cpp: In function 'int add(int, int)':\nadd.cpp:5:9: warning: unused variable 'sum' [-Wunused-variable]\n    5 |     int sum = a + b;\n      |         ^~~",
+    "fixed": "#include <iostream>\nusing namespace std;\n\nint add(int a, int b) {\n    int sum = a + b;\n    return sum;\n}\n\nint main() {\n    cout << add(4, 9) << endl;\n    return 0;\n}",
+    "why": "A function with a return type must return a value on every path. Without a return, the result is undefined."
+  },
+  "pun": "\"My function took two numbers and gave me back a headache.\"",
+  "challenge": "Write a function called smaller. It takes two ints and returns the smaller one.",
+  "challengeAnswer": "Use an if. If a is less than b, return a. Otherwise return b. Call smaller from main and print the result.",
+  "shorts": [
+    {
+      "id": "S1",
+      "title": "What you will learn: Parameters and return values",
+      "hook": "\"Functions can take values in and give a value back.\"",
+      "script": "Functions can take values in and give a value back. Today our functions take values in and send a value back. Now they can do real work. Parameters are the inputs of a function. They sit inside the brackets, each with a type and a name. The return statement sends one value back to the caller. The type before the function name says what kind of value comes back. Keep coding, says Xecxec!",
+      "onScreen": "PARAMETERS AND RETURN VALUES",
+      "fromScenes": [
+        1,
+        2
+      ],
+      "lengthSec": 41,
+      "caption": "What you will learn: Parameters and return values.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "parametersandreturnvalues",
+        "beginners"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Parameters and return values in one minute",
+      "hook": "\"Parameters are the inputs of a function.\"",
+      "script": "Parameters are the inputs of a function. They sit inside the brackets, each with a type and a name. The return statement sends one value back to the caller. The type before the function name says what kind of value comes back. Think of a juice machine. You put in fruit, and you get juice out. The type int before the name means the function returns an int. Keep coding, says Xecxec!",
+      "onScreen": "PARAMETERS AND RETURN VALUES",
+      "fromScenes": [
+        2,
+        3
+      ],
+      "lengthSec": 40,
+      "caption": "Parameters and return values in one minute.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "parametersandreturnvalues",
+        "coding"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Inside the second program",
+      "hook": "\"If a is bigger, the function returns a and ends at once.\"",
+      "script": "If a is bigger, the function returns a and ends at once. Otherwise it returns b. The first call gives twelve. The second call gives thirty. A function can use the same code for any two numbers. The program prints twelve and thirty on two lines. Parameters are the inputs of a function. Return sends one value back. Keep coding, says Xecxec!",
+      "onScreen": "INSIDE THE SECOND PROGRAM",
+      "fromScenes": [
+        5,
+        6
+      ],
+      "lengthSec": 35,
+      "caption": "Inside the second program.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "parametersandreturnvalues",
+        "learntocode"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Bug of the Day: No return in a function",
+      "hook": "\"Can you spot the bug in parameters and return values?\"",
+      "script": "Can you spot the bug in parameters and return values? Bug of the Day. The function makes a sum, but it never returns it. The compiler warns that there is no return statement in a function returning non-void. The caller gets garbage. Add return sum at the end. A function with a return type must return a value on every path. Keep coding, says Xecxec!",
+      "onScreen": "BUG OF THE DAY",
+      "fromScenes": [
+        8
+      ],
+      "lengthSec": 37,
+      "caption": "Bug of the Day: No return in a function.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "parametersandreturnvalues",
+        "bugfix"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Pun and challenge",
+      "hook": "\"Can you write a function that finds the smaller number\"",
+      "script": "Can you write a function that finds the smaller number in parameters and return values? My function took two numbers and gave me back a headache. Write a function called smaller. It takes two ints and returns the smaller one. Write your answer in the comments. Parameters are the inputs of a function. Return sends one value back. Keep coding, says Xecxec!",
+      "onScreen": "PUN AND CHALLENGE",
+      "fromScenes": [
+        9,
+        10
+      ],
+      "lengthSec": 35,
+      "caption": "Pun and challenge.",
+      "hashtags": [
+        "cpp",
+        "kodingkonkani",
+        "parametersandreturnvalues",
+        "codingchallenge"
+      ]
+    }
+  ],
+  "codeFiles": [
+    {
+      "file": "add.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int total = add(4, 9);\n    cout << \"Total: \" << total << endl;\n    return 0;\n}",
+      "output": "Total: 13",
+      "lang": "cpp"
+    },
+    {
+      "file": "bigger.cpp",
+      "source": "#include <iostream>\nusing namespace std;\n\nint bigger(int a, int b) {\n    if (a > b) {\n        return a;\n    }\n    return b;\n}\n\nint main() {\n    cout << bigger(7, 12) << endl;\n    cout << bigger(30, 5) << endl;\n    return 0;\n}",
+      "output": "12\n30",
+      "lang": "cpp"
+    }
+  ],
+  "bugExtra": {
+    "wrongLang": "cpp",
+    "fixedHasFullProgram": true,
+    "fixedOutput": "13"
+  },
+  "nextTitle": "Pass by value"
+}
