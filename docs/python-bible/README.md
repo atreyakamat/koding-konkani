@@ -21,9 +21,9 @@ Source of truth: this repo (`docs/python-bible/mNN.md`, generated from `scripts/
 
 ## Writing rules and illustrations
 
-- Writing style: Simplified Technical English subset. Rules and commands: [STE.md](STE.md). Linter: `scripts/ste_lint.py`.
+- Writing style: Simplified Technical English subset. Rules and commands: [STE.md](STE.md). Linter: `scripts/ste_lint_py.py`.
 - Drawn explanations are structured data: [ILLUSTRATIONS.md](ILLUSTRATIONS.md). Files: `illustrations/epNNN.json`. Validator: `scripts/check_illustrations.py`.
-- Run all three checks before every render: `check_py.py docs/python-bible/m*.md`, `ste_lint.py docs/python-bible/m*.md`, `check_illustrations.py`.
+- Run all three checks before every render: `check_py.py docs/python-bible/m*.md`, `ste_lint_py.py docs/python-bible/m*.md`, `check_illustrations.py`.
 
 ## Build chain for the Remotion run
 
