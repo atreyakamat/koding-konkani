@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Containers can hold containers. A dictionary value can be a list, or another dictionary. A list item can be a dictionary. Think of a restaurant menu. The menu has sections. Each section has dishes. Each dish has a price. To read deep values, chain the brackets from the outside in. Menu, bracket mains, bracket one. This shape is exactly what JSON files and web data use."
+      "narration": "Containers can hold containers. A dictionary value can be a list, or another dictionary. A list item can be a dictionary. Think of a restaurant menu. The menu has sections. Each section has dishes. Each dish has a price. To read deep values, chain the brackets from the outside in. Menu, bracket mains, bracket one. This shape is exactly what JSON files and web data use.",
+      "props": {
+        "lines": [
+          "A dict value can be a list or another dict",
+          "A list item can be a dict",
+          "Chain the brackets from the outside in"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a restaurant menu: the menu has sections, each section has dishes, and each dish has a price"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "menu.py",
         "source": "menu = {\"starters\": [\"fish fry\", \"bhaji\"], \"mains\": [\"fish curry\", \"xacuti\"]}\nprint(menu[\"mains\"])\nprint(menu[\"mains\"][1])\nmenu[\"desserts\"] = [\"bebinca\"]\nprint(len(menu))",
         "output": "['fish curry', 'xacuti']\nxacuti\n3"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python menu.py",
+        "output": "['fish curry', 'xacuti']\nxacuti\n3"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. One name, menu, tied to one dictionary. Each value in that dictionary is an arrow to a list object. And each list holds arrows to string objects. Nested data is just arrows that point at other objects. To read a deep value, you follow the arrows, one bracket at a time."
+      "narration": "Here is the picture. One name, menu, tied to one dictionary. Each value in that dictionary is an arrow to a list object. And each list holds arrows to string objects. Nested data is just arrows that point at other objects. To read a deep value, you follow the arrows, one bracket at a time.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "{'starters': ['fish fry', 'bh…",
+                    "address": "dict",
+                    "name": "menu"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "students.py",
         "source": "students = [{\"name\": \"Asha\", \"marks\": 88}, {\"name\": \"Ravi\", \"marks\": 92}]\nfor s in students:\n    print(s[\"name\"], s[\"marks\"])\nprint(students[1][\"name\"])",
         "output": "Asha 88\nRavi 92\nRavi"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python students.py",
+        "output": "Asha 88\nRavi 92\nRavi"
       }
     },
     {
@@ -159,7 +197,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as students dot py. In the terminal, type python, space, students dot py. Asha eighty eight. Ravi ninety two. Then Ravi again."
+      "narration": "Save the file as students dot py. In the terminal, type python, space, students dot py. Asha eighty eight. Ravi ninety two. Then Ravi again.",
+      "props": {
+        "lines": [
+          {
+            "text": "python students.py",
+            "kind": "input"
+          },
+          {
+            "text": "Asha 88",
+            "kind": "output"
+          },
+          {
+            "text": "Ravi 92",
+            "kind": "output"
+          },
+          {
+            "text": "Ravi",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +229,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A dictionary value can be a list or another dictionary. Two: A list item can be a dictionary, which makes a record. Three: Chain the brackets from the outside in. Four: Check that each key exists before you go deeper. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A dictionary value can be a list or another dictionary. Two: A list item can be a dictionary, which makes a record. Three: Chain the brackets from the outside in. Four: Check that each key exists before you go deeper. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A dictionary value can be a list or another dictionary.",
+          "A list item can be a dictionary, which makes a record.",
+          "Chain the brackets from the outside in.",
+          "Check that each key exists before you go deeper."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +251,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We reach for the first drink, but there is no drinks section. Python says, key error, drinks. The error happens at the first bracket, before the index is even tried. Read with get and a default empty list, then check the list is not empty, before you go deeper."
+      "narration": "Bug of the Day. We reach for the first drink, but there is no drinks section. Python says, key error, drinks. The error happens at the first bracket, before the index is even tried. Read with get and a default empty list, then check the list is not empty, before you go deeper.",
+      "props": {
+        "wrongCode": "menu = {\"starters\": [\"fish fry\"], \"mains\": [\"fish curry\"]}\nprint(menu[\"drinks\"][0])",
+        "fixedCode": "menu = {\"starters\": [\"fish fry\"], \"mains\": [\"fish curry\"]}\ndrinks = menu.get(\"drinks\", [])\nif drinks:\n    print(drinks[0])\nelse:\n    print(\"No drinks listed\")",
+        "error": "  File \"menu.py\", line 2, in <module>\n    print(menu[\"drinks\"][0])\n          ~~~~^^^^^^^^^^\nKeyError: 'drinks'",
+        "errorOverride": {
+          "lines": [
+            "  File \"menu.py\", line 2, in <module>",
+            "    print(menu[\"drinks\"][0])",
+            "          ~~~~^^^^^^^^^^",
+            "KeyError: 'drinks'"
+          ]
+        },
+        "why": "The first bracket fails with a KeyError when the key is missing, so read with get and a default before going deeper.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python menu.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +309,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: list comprehensions. Keep coding, says Xecxec!"
+      "narration": "Next time: list comprehensions. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 37,
+        "nextTitle": "List comprehensions"
+      }
     }
   ],
   "bug": {
@@ -348,5 +441,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

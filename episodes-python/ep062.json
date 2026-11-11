@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A class is a blueprint, and an object is one thing built from it. Inside a class, you write functions with def. These are called methods. Every method takes a first parameter, named self. Self means, this very object. When you call dog dot bark, Python passes the dog in as self for you. So you never type self when calling, but you always type it when defining. Think of a cookie cutter and cookies. Each cookie is separate, but all come from one cutter."
+      "narration": "A class is a blueprint, and an object is one thing built from it. Inside a class, you write functions with def. These are called methods. Every method takes a first parameter, named self. Self means, this very object. When you call dog dot bark, Python passes the dog in as self for you. So you never type self when calling, but you always type it when defining. Think of a cookie cutter and cookies. Each cookie is separate, but all come from one cutter.",
+      "props": {
+        "lines": [
+          "class Name: starts the blueprint",
+          "Name() creates an object",
+          "def inside a class makes a method"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a cookie cutter and the cookies: one cutter, many cookies, each cookie its own"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "dog.py",
         "source": "class Dog:\n    def bark(self):\n        print(\"Woof!\")\n\nd1 = Dog()\nd2 = Dog()\nd1.bark()\nd2.bark()\nprint(type(d1).__name__)\nprint(d1 is d2)",
         "output": "Woof!\nWoof!\nDog\nFalse"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python dog.py",
+        "output": "Woof!\nWoof!\nDog\nFalse"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name d1 is tied to one dog object. The name d2 is tied to another. They look the same, but they are two separate objects in memory. Both come from the same class, so both know how to bark. Changing one does not touch the other."
+      "narration": "Here is the picture. The name d1 is tied to one dog object. The name d2 is tied to another. They look the same, but they are two separate objects in memory. Both come from the same class, so both know how to bark. Changing one does not touch the other.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "<Dog object>",
+                    "address": "Dog",
+                    "name": "d1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "<Dog object>",
+                    "address": "Dog",
+                    "name": "d1"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "<Dog object>",
+                    "address": "Dog",
+                    "name": "d2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +201,11 @@
         "file": "counter.py",
         "source": "class Counter:\n    def hit(self):\n        self.count = 0\n\n    def add(self):\n        self.count = self.count + 1\n\nc = Counter()\nc.hit()\nc.add()\nc.add()\nprint(c.count)\nd = Counter()\nd.hit()\nprint(d.count)",
         "output": "2\n0"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python counter.py",
+        "output": "2\n0"
       }
     },
     {
@@ -159,7 +219,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as counter dot py. In the terminal, type python, space, counter dot py. Woof twice, Dog, False. Then two, then zero."
+      "narration": "Save the file as counter dot py. In the terminal, type python, space, counter dot py. Woof twice, Dog, False. Then two, then zero.",
+      "props": {
+        "lines": [
+          {
+            "text": "python counter.py",
+            "kind": "input"
+          },
+          {
+            "text": "2",
+            "kind": "output"
+          },
+          {
+            "text": "0",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +247,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A class is a blueprint. Dog builds an object. Two: Functions inside a class are called methods. Three: The first parameter of a method is self: this object. Four: Each object keeps its own data. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A class is a blueprint. Dog builds an object. Two: Functions inside a class are called methods. Three: The first parameter of a method is self: this object. Four: Each object keeps its own data. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A class is a blueprint; Dog() builds an object.",
+          "Functions inside a class are called methods.",
+          "The first parameter of a method is self: this object.",
+          "Each object keeps its own data."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +269,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We forgot self in the definition. Calling d dot bark still passes the dog as the first argument. Python says, type error, bark takes zero positional arguments but one was given. The fix is simple. Put self as the first parameter of every method."
+      "narration": "Bug of the Day. We forgot self in the definition. Calling d dot bark still passes the dog as the first argument. Python says, type error, bark takes zero positional arguments but one was given. The fix is simple. Put self as the first parameter of every method.",
+      "props": {
+        "wrongCode": "class Dog:\n    def bark():\n        print(\"Woof!\")\n\nd = Dog()\nd.bark()",
+        "fixedCode": "class Dog:\n    def bark(self):\n        print(\"Woof!\")\n\nd = Dog()\nd.bark()",
+        "error": "  File \"dog.py\", line 6, in <module>\n    d.bark()\n    ~~~~~~^^\nTypeError: Dog.bark() takes 0 positional arguments but 1 was given",
+        "errorOverride": {
+          "lines": [
+            "  File \"dog.py\", line 6, in <module>",
+            "    d.bark()",
+            "    ~~~~~~^^",
+            "TypeError: Dog.bark() takes 0 positional arguments but 1 was given"
+          ]
+        },
+        "why": "Python passes the object as the first argument when you call d.bark(), so the method must have a parameter ready to receive it.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python dog.py",
+        "culprit": {
+          "wrong": 6,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +327,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: dunder init and attributes. Keep coding, says Xecxec!"
+      "narration": "Next time: dunder init and attributes. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 63,
+        "nextTitle": "__init__ and attributes"
+      }
     }
   ],
   "bug": {
@@ -348,5 +459,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

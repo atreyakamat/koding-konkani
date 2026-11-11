@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A list holds many values in one name. Square brackets, with commas between the items. Think of a shopping basket. You can add things, look at the first one, and swap one for another. Items have indexes, starting at zero, just like the letters of a string. But there is one big difference. Unlike strings, lists can be changed in place. Append adds a new item at the end."
+      "narration": "A list holds many values in one name. Square brackets, with commas between the items. Think of a shopping basket. You can add things, look at the first one, and swap one for another. Items have indexes, starting at zero, just like the letters of a string. But there is one big difference. Unlike strings, lists can be changed in place. Append adds a new item at the end.",
+      "props": {
+        "lines": [
+          "Square brackets and commas make a list",
+          "Items have indexes, starting at 0",
+          "Lists can be changed in place"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a shopping basket: you can add things, look at the first item, and swap one for another"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "beaches.py",
         "source": "beaches = [\"Baga\", \"Colva\", \"Anjuna\"]\nprint(beaches)\nprint(beaches[0])\nprint(len(beaches))\nbeaches.append(\"Palolem\")\nprint(beaches)",
         "output": "['Baga', 'Colva', 'Anjuna']\nBaga\n3\n['Baga', 'Colva', 'Anjuna', 'Palolem']"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python beaches.py",
+        "output": "['Baga', 'Colva', 'Anjuna']\nBaga\n3\n['Baga', 'Colva', 'Anjuna', 'Palolem']"
       }
     },
     {
@@ -129,7 +145,37 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. One name, beaches, tied to one list object. Inside the list are four string objects. When we appended Palolem, the list object grew. The name stayed tied to the same list. This is the big difference from strings and numbers. A list can change without being replaced."
+      "narration": "Here is the picture. One name, beaches, tied to one list object. Inside the list are four string objects. When we appended Palolem, the list object grew. The name stayed tied to the same list. This is the big difference from strings and numbers. A list can change without being replaced.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "beaches",
+                "cells": [
+                  {
+                    "value": "'Baga'",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "'Colva'",
+                    "index": 1
+                  },
+                  {
+                    "value": "'Anjuna'",
+                    "index": 2
+                  },
+                  {
+                    "value": "'Palolem'",
+                    "index": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +192,11 @@
         "file": "marks_list.py",
         "source": "marks = [72, 85, 90]\nmarks[1] = 88\nprint(marks)\nprint(round(sum(marks) / len(marks), 1))",
         "output": "[72, 88, 90]\n83.3"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python marks_list.py",
+        "output": "[72, 88, 90]\n83.3"
       }
     },
     {
@@ -159,7 +210,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as marks_list dot py. In the terminal, type python, space, marks_list dot py. The list with eighty eight in the middle, then eighty three point three."
+      "narration": "Save the file as marks_list dot py. In the terminal, type python, space, marks_list dot py. The list with eighty eight in the middle, then eighty three point three.",
+      "props": {
+        "lines": [
+          {
+            "text": "python marks_list.py",
+            "kind": "input"
+          },
+          {
+            "text": "[72, 88, 90]",
+            "kind": "output"
+          },
+          {
+            "text": "83.3",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +238,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A list holds many values in square brackets. Two: Items have indexes from zero, and negative indexes work too. Three: A list can be changed in place, by index or by append. Four: len, sum and max work on lists. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A list holds many values in square brackets. Two: Items have indexes from zero, and negative indexes work too. Three: A list can be changed in place, by index or by append. Four: len, sum and max work on lists. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A list holds many values in square brackets.",
+          "Items have indexes from zero, and negative indexes work too.",
+          "A list can be changed in place, by index or by append.",
+          "Len, sum and max work on lists."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +260,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We add Palolem, and print the list. It prints None. Why? Append changes the list in place, and returns nothing, which Python calls None. We tied the name to that nothing. The list is lost. Just call append on its own line, and keep the name pointing at the list."
+      "narration": "Bug of the Day. We add Palolem, and print the list. It prints None. Why? Append changes the list in place, and returns nothing, which Python calls None. We tied the name to that nothing. The list is lost. Just call append on its own line, and keep the name pointing at the list.",
+      "props": {
+        "wrongCode": "beaches = [\"Baga\", \"Colva\"]\nbeaches = beaches.append(\"Palolem\")\nprint(beaches)",
+        "fixedCode": "beaches = [\"Baga\", \"Colva\"]\nbeaches.append(\"Palolem\")\nprint(beaches)",
+        "error": "None",
+        "errorOverride": {
+          "lines": [
+            "None"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "append changes the list in place and returns None, so tying the name to its result replaces the list with None.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python beaches.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +316,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: list methods. Keep coding, says Xecxec!"
+      "narration": "Next time: list methods. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 26,
+        "nextTitle": "List methods"
+      }
     }
   ],
   "bug": {
@@ -348,5 +448,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

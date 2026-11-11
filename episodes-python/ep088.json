@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Floats store most decimals as tiny approximations. For money, that leads to errors in the last digit. The safe way is to keep money as whole cents, in an integer. To read text such as one twenty point five zero, use the Decimal type. It is exact. Then multiply by one hundred. To show it, divide by one hundred with floor division, and the remainder with two digits. Then save the list to a JSON file, and load it when the program starts. Think of counting coins instead of weighing money."
+      "narration": "Floats store most decimals as tiny approximations. For money, that leads to errors in the last digit. The safe way is to keep money as whole cents, in an integer. To read text such as one twenty point five zero, use the Decimal type. It is exact. Then multiply by one hundred. To show it, divide by one hundred with floor division, and the remainder with two digits. Then save the list to a JSON file, and load it when the program starts. Think of counting coins instead of weighing money.",
+      "props": {
+        "lines": [
+          "Floats cannot store most decimals exactly",
+          "Keep money as whole cents",
+          "Save the list as JSON, load it back at the start"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "counting coins instead of weighing money: whole pieces never come out as 28.999"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "money.py",
         "source": "from dataclasses import dataclass, asdict\nimport json\nfrom decimal import Decimal\n\n@dataclass\nclass Expense:\n    day: str\n    category: str\n    cents: int\n    note: str = \"\"\n\ndef to_cents(text):\n    value = Decimal(text)\n    if value <= 0:\n        raise ValueError(\"amount must be positive\")\n    return int(value * 100)\n\ndef money(cents):\n    return f\"{cents // 100}.{cents % 100:02d}\"\n\ne = Expense(\"2025-03-01\", \"food\", to_cents(\"120.50\"), \"lunch\")\nprint(e)\nprint(money(e.cents))\nprint(json.dumps(asdict(e)))",
         "output": "Expense(day='2025-03-01', category='food', cents=12050, note='lunch')\n120.50\n{\"day\": \"2025-03-01\", \"category\": \"food\", \"cents\": 12050, \"note\": \"lunch\"}"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python money.py",
+        "output": "Expense(day='2025-03-01', category='food', cents=12050, note='lunch')\n120.50\n{\"day\": \"2025-03-01\", \"category\": \"food\", \"cents\": 12050, \"note\": \"lunch\"}"
       }
     },
     {
@@ -127,7 +143,85 @@
       "onScreen": "A scale showing 28.999999 next to a tray of 29 whole coins",
       "animation": "A balance showing 28.999 on one side and a tray of 29 coins on the other",
       "sfx": [],
-      "narration": "Here is the problem. A float stores point two nine as a tiny approximation, slightly under. Multiply by one hundred, and it is twenty eight point nine nine nine. Cut off the end, and we get twenty eight, one cent lost. Decimal stores the number exactly, like counting coins. Whole cents in an integer never drift. Convert once, at the door, and every calculation after that is exact."
+      "narration": "Here is the problem. A float stores point two nine as a tiny approximation, slightly under. Multiply by one hundred, and it is twenty eight point nine nine nine. Cut off the end, and we get twenty eight, one cent lost. Decimal stores the number exactly, like counting coins. Whole cents in an integer never drift. Convert once, at the door, and every calculation after that is exact.",
+      "props": {
+        "lines": [
+          "Here is the problem.",
+          "Whole cents in an integer never drift."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 88,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "scale",
+              "shape": "box",
+              "text": "float: 0.29 * 100 = 28.999999",
+              "colour": "peach",
+              "col": 0,
+              "row": 1,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "id": "coins",
+              "shape": "box",
+              "text": "cents: 29 whole coins",
+              "colour": "mint",
+              "col": 6,
+              "row": 1,
+              "w": 5,
+              "h": 1
+            },
+            {
+              "id": "x",
+              "shape": "token",
+              "text": "lost 1 cent",
+              "colour": "tomato",
+              "col": 1,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "scale",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.3,
+              "do": "show",
+              "target": "x",
+              "sfx": "buzzer"
+            },
+            {
+              "t": 0.5,
+              "do": "show",
+              "target": "coins",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.7,
+              "do": "hide",
+              "target": "x"
+            },
+            {
+              "t": 0.85,
+              "do": "glow",
+              "target": "coins",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +238,11 @@
         "file": "store.py",
         "source": "import json\nfrom pathlib import Path\n\nFILE = Path(\"expenses.json\")\n\ndef load():\n    if not FILE.exists():\n        return []\n    return json.loads(FILE.read_text())\n\ndef save(items):\n    FILE.write_text(json.dumps(items))\n\nitems = load()\nprint(len(items))\nitems.append({\"category\": \"food\", \"cents\": 12050})\nsave(items)\nprint(len(load()))",
         "output": "0\n1"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python store.py",
+        "output": "0\n1"
       }
     },
     {
@@ -157,7 +256,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as store dot py. In the terminal, type python, space, store dot py. The Expense line, 120.50, the JSON text. Then 0 and 1."
+      "narration": "Save the file as store dot py. In the terminal, type python, space, store dot py. The Expense line, 120.50, the JSON text. Then 0 and 1.",
+      "props": {
+        "lines": [
+          {
+            "text": "python store.py",
+            "kind": "input"
+          },
+          {
+            "text": "0",
+            "kind": "output"
+          },
+          {
+            "text": "1",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +284,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Keep money as whole cents in an integer. Two: Decimal reads text exactly. Floats do not. Three: Convert once at the door, show with money. Four: Save the list as JSON, load it at the start. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Keep money as whole cents in an integer. Two: Decimal reads text exactly. Floats do not. Three: Convert once at the door, show with money. Four: Save the list as JSON, load it at the start. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Keep money as whole cents in an integer.",
+          "Decimal reads text exactly; floats do not.",
+          "Convert once at the door, show with money().",
+          "Save the list as JSON, load it at the start."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +306,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Point two nine times one hundred should be twenty nine. Python prints twenty eight. The float is a hair below point two nine, and int cuts off the end. A cent vanishes, and no error appears. Read money as text with Decimal instead, and the answer is exactly twenty nine."
+      "narration": "Bug of the Day. Point two nine times one hundred should be twenty nine. Python prints twenty eight. The float is a hair below point two nine, and int cuts off the end. A cent vanishes, and no error appears. Read money as text with Decimal instead, and the answer is exactly twenty nine.",
+      "props": {
+        "wrongCode": "print(int(0.29 * 100))",
+        "fixedCode": "from decimal import Decimal\n\nprint(int(Decimal(\"0.29\") * 100))",
+        "error": "28",
+        "errorOverride": {
+          "lines": [
+            "28"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Floats store point two nine as an approximation just below it, so multiplying and cutting off the end loses a cent. Decimal reads the text exactly.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python money.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +362,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: capstone three, tests and polish. Keep coding, says Xecxec!"
+      "narration": "Next time: capstone three, tests and polish. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 89,
+        "nextTitle": "Capstone 3: Tests and polish"
+      }
     }
   ],
   "bug": {
@@ -346,5 +494,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

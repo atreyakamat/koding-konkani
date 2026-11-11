@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A name made inside a function is local. It exists only while the function runs. A name made outside is global. Python looks for a name locally first, then globally. Think of a hotel. Names inside a room are private. Names in the lobby are shared. A function can read a global name. But if it assigns to that name, Python makes a new local one, unless you say global."
+      "narration": "A name made inside a function is local. It exists only while the function runs. A name made outside is global. Python looks for a name locally first, then globally. Think of a hotel. Names inside a room are private. Names in the lobby are shared. A function can read a global name. But if it assigns to that name, Python makes a new local one, unless you say global.",
+      "props": {
+        "lines": [
+          "A name made inside a function is local to it",
+          "Python looks local first, then global",
+          "global lets a function rebind a global name"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a hotel: names inside a room are private, names in the lobby are shared by everyone"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "scope.py",
         "source": "level = \"outer\"\ndef show():\n    level = \"inner\"\n    print(level)\nshow()\nprint(level)",
         "output": "inner\nouter"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python scope.py",
+        "output": "inner\nouter"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is what is left after the run. Only one name exists now, the global level, tied to the string outer. The local level lived inside the function, tied to inner. When the function finished, that local name disappeared. Nothing the function did to its own level changed the global one."
+      "narration": "Here is what is left after the run. Only one name exists now, the global level, tied to the string outer. The local level lived inside the function, tied to inner. When the function finished, that local name disappeared. Nothing the function did to its own level changed the global one.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'outer'",
+                    "address": "str",
+                    "name": "level"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "global_demo.py",
         "source": "count = 0\ndef add_one():\n    global count\n    count = count + 1\nadd_one()\nadd_one()\nprint(count)",
         "output": "2"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python global_demo.py",
+        "output": "2"
       }
     },
     {
@@ -159,7 +197,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as global_demo dot py. In the terminal, type python, space, global_demo dot py. Two."
+      "narration": "Save the file as global_demo dot py. In the terminal, type python, space, global_demo dot py. Two.",
+      "props": {
+        "lines": [
+          {
+            "text": "python global_demo.py",
+            "kind": "input"
+          },
+          {
+            "text": "2",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +221,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A name made inside a function is local. Two: Python looks local first, then global. Three: A function can read a global but must declare global to rebind it. Four: Prefer parameters and return over global. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A name made inside a function is local. Two: Python looks local first, then global. Three: A function can read a global but must declare global to rebind it. Four: Prefer parameters and return over global. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A name made inside a function is local.",
+          "Python looks local first, then global.",
+          "A function can read a global but must declare global to rebind it.",
+          "Prefer parameters and return over global."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +243,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We try to add one to the global count. Python says, unbound local error. Cannot access local variable count where it is not associated with a value. Because we assign count in the function, Python treats count as local everywhere in it. The local has no value yet. Declare global count first, and the line works."
+      "narration": "Bug of the Day. We try to add one to the global count. Python says, unbound local error. Cannot access local variable count where it is not associated with a value. Because we assign count in the function, Python treats count as local everywhere in it. The local has no value yet. Declare global count first, and the line works.",
+      "props": {
+        "wrongCode": "count = 0\ndef add_one():\n    count = count + 1\nadd_one()",
+        "fixedCode": "count = 0\ndef add_one():\n    global count\n    count = count + 1\nadd_one()\nprint(count)",
+        "error": "  File \"scope.py\", line 3, in add_one\n    count = count + 1\n            ^^^^^\nUnboundLocalError: cannot access local variable 'count' where it is not associated with a value",
+        "errorOverride": {
+          "lines": [
+            "  File \"scope.py\", line 3, in add_one",
+            "    count = count + 1",
+            "            ^^^^^",
+            "UnboundLocalError: cannot access local variable 'count' where it is not associated with a value"
+          ]
+        },
+        "why": "Assigning to count anywhere in the function makes it local for the whole function, so reading it before the assignment fails.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python scope.py",
+        "culprit": {
+          "wrong": 4,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +301,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: lambda, map and filter. Keep coding, says Xecxec!"
+      "narration": "Next time: lambda, map and filter. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 46,
+        "nextTitle": "lambda, map and filter"
+      }
     }
   ],
   "bug": {
@@ -348,5 +433,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

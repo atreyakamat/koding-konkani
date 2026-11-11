@@ -150,6 +150,8 @@ const SceneSchema = z.object({
   analogy: z.object({ title: z.string().min(1), body: z.string().min(1) }).optional(),
   /** Concept slide only: a structured diagram drawn instead of the numbered points. */
   diagram: DiagramSchema.optional(),
+  /** Explicit scene-component props. They win over everything scenePropsFor derives (the Python course uses this). */
+  props: z.record(z.string(), z.unknown()).optional(),
 });
 
 const ChapterSchema = z.object({

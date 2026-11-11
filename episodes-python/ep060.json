@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the plan. Contacts live in a dictionary, name to phone number. At the start, we load the dictionary from a JSON file. If the file does not exist yet, we start with an empty dictionary. After every change, we save the dictionary back, with json dump. Now the contacts survive after the program ends. It uses files, JSON, exceptions, and dictionaries, everything from this module."
+      "narration": "Here is the plan. Contacts live in a dictionary, name to phone number. At the start, we load the dictionary from a JSON file. If the file does not exist yet, we start with an empty dictionary. After every change, we save the dictionary back, with json dump. Now the contacts survive after the program ends. It uses files, JSON, exceptions, and dictionaries, everything from this module.",
+      "props": {
+        "lines": [
+          "Keep contacts in a dictionary of name to phone",
+          "Load it from contacts.json at the start",
+          "Save it back after every change"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a paper address book: you open it, add an entry, and put it back on the shelf"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "contacts.py",
         "source": "import json\ntry:\n    with open(\"contacts.json\") as f:\n        contacts = json.load(f)\nexcept FileNotFoundError:\n    contacts = {}\ncontacts[\"Asha\"] = \"98220 11111\"\nwith open(\"contacts.json\", \"w\") as f:\n    json.dump(contacts, f)\nprint(contacts)\nprint(len(contacts))",
         "output": "{'Asha': '98220 11111'}\n1"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python contacts.py",
+        "output": "{'Asha': '98220 11111'}\n1"
       }
     },
     {
@@ -127,7 +143,136 @@
       "onScreen": "A cycle: load from file, change the dictionary, save to file, repeat on the next run",
       "animation": "Three boxes in a loop with an arrow; a file icon sits in the middle",
       "sfx": [],
-      "narration": "Here is the cycle. Load the data from the file. Change it in memory. Save it back to the file. The next time the program runs, it loads what was saved. That is how every simple app remembers things. If the file is missing on the first run, start with an empty dictionary, and the cycle still works."
+      "narration": "Here is the cycle. Load the data from the file. Change it in memory. Save it back to the file. The next time the program runs, it loads what was saved. That is how every simple app remembers things. If the file is missing on the first run, start with an empty dictionary, and the cycle still works.",
+      "props": {
+        "lines": [
+          "Here is the cycle.",
+          "Load the data from the file.",
+          "Change it in memory."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 60,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "load",
+              "shape": "box",
+              "text": "load",
+              "colour": "pastelBlue",
+              "col": 0,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "change",
+              "shape": "box",
+              "text": "change",
+              "colour": "butter",
+              "col": 4,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "save",
+              "shape": "box",
+              "text": "save",
+              "colour": "mint",
+              "col": 8,
+              "row": 1,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "file",
+              "shape": "card",
+              "text": "contacts.json",
+              "colour": "cream",
+              "col": 4,
+              "row": 4,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "load",
+              "to": "change"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "change",
+              "to": "save"
+            },
+            {
+              "id": "a3",
+              "shape": "arrow",
+              "text": "next run",
+              "colour": "ink",
+              "from": "save",
+              "to": "load"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "file",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "load"
+            },
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "change"
+            },
+            {
+              "t": 0.1,
+              "do": "show",
+              "target": "save"
+            },
+            {
+              "t": 0.3,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.5,
+              "do": "draw",
+              "target": "a2",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.7,
+              "do": "draw",
+              "target": "a3",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.85,
+              "do": "glow",
+              "target": "file",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +289,11 @@
         "file": "contacts.py",
         "source": "import json\ntry:\n    with open(\"contacts.json\") as f:\n        contacts = json.load(f)\nexcept FileNotFoundError:\n    contacts = {}\ncontacts[\"Asha\"] = \"98220 11111\"\nwith open(\"contacts.json\", \"w\") as f:\n    json.dump(contacts, f)\nprint(contacts)\nprint(len(contacts))",
         "output": "{'Asha': '98220 11111'}\n1"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python contacts.py",
+        "output": "{'Asha': '98220 11111'}\n1"
       }
     },
     {
@@ -157,7 +307,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as showcontacts dot py. In the terminal, type python, space, showcontacts dot py. Ravi and his number, then False."
+      "narration": "Save the file as showcontacts dot py. In the terminal, type python, space, showcontacts dot py. Ravi and his number, then False.",
+      "props": {
+        "lines": [
+          {
+            "text": "python showcontacts.py",
+            "kind": "input"
+          },
+          {
+            "text": "Ravi 98220 22222",
+            "kind": "output"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +335,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Keep the data in a dictionary and save it with json dot dump. Two: Load it at the start with json dot load. Three: Handle a missing file with except FileNotFoundError. Four: An empty or damaged file raises a JSONDecodeError. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Keep the data in a dictionary and save it with json dot dump. Two: Load it at the start with json dot load. Three: Handle a missing file with except FileNotFoundError. Four: An empty or damaged file raises a JSONDecodeError. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Keep the data in a dictionary and save it with json.dump.",
+          "Load it at the start with json.load.",
+          "Handle a missing file with except FileNotFoundError.",
+          "An empty or damaged file raises a JSONDecodeError."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +357,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The file exists, but it is empty. Json load says, JSON decode error, expecting value, line two column one. An empty file is not valid JSON. Catch the error, along with file not found, and start with an empty dictionary. Your program now survives a missing file, and an empty one."
+      "narration": "Bug of the Day. The file exists, but it is empty. Json load says, JSON decode error, expecting value, line two column one. An empty file is not valid JSON. Catch the error, along with file not found, and start with an empty dictionary. Your program now survives a missing file, and an empty one.",
+      "props": {
+        "wrongCode": "import json\nwith open(\"contacts.json\") as f:\n    contacts = json.load(f)",
+        "fixedCode": "import json\ntry:\n    with open(\"contacts.json\") as f:\n        contacts = json.load(f)\nexcept (FileNotFoundError, json.JSONDecodeError):\n    contacts = {}\nprint(contacts)",
+        "error": "json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)",
+        "errorOverride": {
+          "lines": [
+            "json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)"
+          ],
+          "caption": ""
+        },
+        "why": "An empty file is not valid JSON, so json.load raises a JSONDecodeError; catch it and start with an empty dictionary.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python contacts.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +413,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Module six is done! Next time: why we need classes, and how they keep our data tidy. Keep coding, says Xecxec!"
+      "narration": "Module six is done! Next time: why we need classes, and how they keep our data tidy. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 61,
+        "nextTitle": "Why classes?"
+      }
     }
   ],
   "bug": {
@@ -337,14 +536,18 @@
       "lang": "python"
     },
     {
-      "file": "file2.python",
+      "file": "showcontacts.py",
       "source": "import json\nwith open(\"contacts.json\") as f:\n    contacts = json.load(f)\nfor name, phone in sorted(contacts.items()):\n    print(name, phone)\nprint(\"Asha\" in contacts)",
       "output": "Ravi 98220 22222\nFalse",
+      "inputFiles": {
+        "contacts.json": "{\"Ravi\": \"98220 22222\"}"
+      },
       "lang": "python"
     }
   ],
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

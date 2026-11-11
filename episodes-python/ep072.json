@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A good design starts by listing the things. Here we have books, and a library. A Book knows its title, its author, and whether it is out. A Library holds a list of books. It has actions, such as add a book, borrow, and list what is available. The library does not need to know how a book tracks borrowing. It just asks the book. Think of a real library. The books are things. The library looks after them."
+      "narration": "A good design starts by listing the things. Here we have books, and a library. A Book knows its title, its author, and whether it is out. A Library holds a list of books. It has actions, such as add a book, borrow, and list what is available. The library does not need to know how a book tracks borrowing. It just asks the book. Think of a real library. The books are things. The library looks after them.",
+      "props": {
+        "lines": [
+          "Book: title, author, whether it is borrowed",
+          "Library: a list of books and the actions on them",
+          "Library methods use Book methods"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a real library: books are things, and the library is the thing that looks after them"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "library.py",
         "source": "class Book:\n    def __init__(self, title, author):\n        self.title = title\n        self.author = author\n        self.borrowed = False\n\n    def __repr__(self):\n        return f\"{self.title} by {self.author}\"\n\nclass Library:\n    def __init__(self):\n        self.books = []\n\n    def add(self, book):\n        self.books.append(book)\n\n    def borrow(self, title):\n        for book in self.books:\n            if book.title == title and not book.borrowed:\n                book.borrowed = True\n                return book\n        return None\n\n    def available(self):\n        return [b for b in self.books if not b.borrowed]\n\nlib = Library()\nlib.add(Book(\"Python 101\", \"Rao\"))\nlib.add(Book(\"Crab Tales\", \"Xecxec\"))\nprint(lib.borrow(\"Python 101\"))\nprint(lib.borrow(\"Python 101\"))\nprint(lib.available())",
         "output": "Python 101 by Rao\nNone\n[Crab Tales by Xecxec]"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python library.py",
+        "output": "Python 101 by Rao\nNone\n[Crab Tales by Xecxec]"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name lib is tied to a library object. Inside it sits a list of books. Each book is its own object, with a title, an author, and a borrowed flag. Objects can hold other objects. That is how bigger programs are built, from small objects that each do one job."
+      "narration": "Here is the picture. The name lib is tied to a library object. Inside it sits a list of books. Each book is its own object, with a title, an author, and a borrowed flag. Objects can hold other objects. That is how bigger programs are built, from small objects that each do one job.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "<Library object>",
+                    "address": "Library",
+                    "name": "lib"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "members.py",
         "source": "class Book:\n    def __init__(self, title):\n        self.title = title\n        self.borrowed = False\n\nclass Member:\n    def __init__(self, name):\n        self.name = name\n        self.loans = []\n\n    def borrow(self, book):\n        if book.borrowed:\n            return False\n        book.borrowed = True\n        self.loans.append(book.title)\n        return True\n\nb = Book(\"Python 101\")\nm1 = Member(\"Asha\")\nm2 = Member(\"Ravi\")\nprint(m1.borrow(b))\nprint(m2.borrow(b))\nprint(m1.loans, m2.loans)",
         "output": "True\nFalse\n['Python 101'] []"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python members.py",
+        "output": "True\nFalse\n['Python 101'] []"
       }
     },
     {
@@ -159,7 +197,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as members dot py. In the terminal, type python, space, members dot py. Python 101 by Rao, then None, then a list with Crab Tales by Xecxec. Then True, False, and the two loan lists."
+      "narration": "Save the file as members dot py. In the terminal, type python, space, members dot py. Python 101 by Rao, then None, then a list with Crab Tales by Xecxec. Then True, False, and the two loan lists.",
+      "props": {
+        "lines": [
+          {
+            "text": "python members.py",
+            "kind": "input"
+          },
+          {
+            "text": "True",
+            "kind": "output"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          },
+          {
+            "text": "['Python 101'] []",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +229,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Design by listing the things: Book and Library. Two: A Library object holds a list of Book objects. Three: Each class does one job. Four: Create lists inside init, not in a default argument. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Design by listing the things: Book and Library. Two: A Library object holds a list of Book objects. Three: Each class does one job. Four: Create lists inside init, not in a default argument. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Design by listing the things: Book and Library.",
+          "A Library object holds a list of Book objects.",
+          "Each class does one job.",
+          "Create lists inside init, not in a default argument."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +251,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We add a book to the north library, and it appears in the south library too. The default list in the init brackets is built only once, and every library without its own list shares it. No error appears. Use None as the default, and create a fresh list inside init."
+      "narration": "Bug of the Day. We add a book to the north library, and it appears in the south library too. The default list in the init brackets is built only once, and every library without its own list shares it. No error appears. Use None as the default, and create a fresh list inside init.",
+      "props": {
+        "wrongCode": "class Library:\n    def __init__(self, books=[]):\n        self.books = books\n\n    def add(self, title):\n        self.books.append(title)\n\nnorth = Library()\nsouth = Library()\nnorth.add(\"Python 101\")\nprint(south.books)",
+        "fixedCode": "class Library:\n    def __init__(self, books=None):\n        self.books = [] if books is None else books\n\n    def add(self, title):\n        self.books.append(title)\n\nnorth = Library()\nsouth = Library()\nnorth.add(\"Python 101\")\nprint(south.books)",
+        "error": "['Python 101']",
+        "errorOverride": {
+          "lines": [
+            "['Python 101']"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "A default value is built once, when the function is defined. A list as a default is therefore shared by every call. Use None, and build a fresh list inside.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python library.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +307,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Module seven is done! Next time: iterators, and how a for loop really works. Keep coding, says Xecxec!"
+      "narration": "Module seven is done! Next time: iterators, and how a for loop really works. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 73,
+        "nextTitle": "Iterators"
+      }
     }
   ],
   "bug": {
@@ -348,5 +439,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

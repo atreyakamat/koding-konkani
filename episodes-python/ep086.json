@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "When you type python greet dot py Asha three, Python stores the words in sys dot argv. It is a list. The first item is the script name, and the rest are your arguments, always as text. For small scripts, that is enough. For bigger ones, the argparse module handles names, types, defaults, and a free help message. Think of a restaurant order. The dish and the extras are given when you order, not after you sit down. In this episode we simulate the command inside the script, so it runs on any computer."
+      "narration": "When you type python greet dot py Asha three, Python stores the words in sys dot argv. It is a list. The first item is the script name, and the rest are your arguments, always as text. For small scripts, that is enough. For bigger ones, the argparse module handles names, types, defaults, and a free help message. Think of a restaurant order. The dish and the extras are given when you order, not after you sit down. In this episode we simulate the command inside the script, so it runs on any computer.",
+      "props": {
+        "lines": [
+          "sys.argv is a list: script name first, then arguments",
+          "Every argument arrives as text",
+          "argparse adds help, defaults and types"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a restaurant order: the dish and the extras are given when you order, not after you sit down"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "greet.py",
         "source": "import sys\n\nprint(sys.argv)\nsys.argv = [\"greet.py\", \"Asha\", \"3\"]\nname = sys.argv[1]\ntimes = int(sys.argv[2])\nfor _ in range(times):\n    print(\"Hello\", name)",
         "output": "['greet.py']\nHello Asha\nHello Asha\nHello Asha"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python greet.py",
+        "output": "['greet.py']\nHello Asha\nHello Asha\nHello Asha"
       }
     },
     {
@@ -127,7 +143,97 @@
       "onScreen": "A typed command splits into words that fill the argv list, with the script name at index zero",
       "animation": "A typed command splits into word blocks that drop into list slots labelled 0, 1 and 2",
       "sfx": [],
-      "narration": "Here is what happens. You type a command. The terminal splits it at the spaces into words. Python stores the words in the list sys dot argv. Index zero is the script name. Index one is the first argument. Index two is the second. All of them are text, even if they look like numbers. So convert with int or float when you need a number."
+      "narration": "Here is what happens. You type a command. The terminal splits it at the spaces into words. Python stores the words in the list sys dot argv. Index zero is the script name. Index one is the first argument. Index two is the second. All of them are text, even if they look like numbers. So convert with int or float when you need a number.",
+      "props": {
+        "lines": [
+          "Here is what happens.",
+          "You type a command.",
+          "The terminal splits it at the spaces into words."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 86,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "cmd",
+              "shape": "card",
+              "text": "python greet.py Asha 3",
+              "colour": "darkBlue",
+              "col": 1,
+              "row": 0,
+              "w": 8,
+              "h": 1
+            },
+            {
+              "id": "s0",
+              "shape": "box",
+              "text": "0: greet.py",
+              "colour": "cream",
+              "col": 1,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "s1",
+              "shape": "box",
+              "text": "1: Asha",
+              "colour": "cream",
+              "col": 4,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "s2",
+              "shape": "box",
+              "text": "2: 3",
+              "colour": "cream",
+              "col": 7,
+              "row": 3,
+              "w": 3,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "cmd",
+              "sfx": "key-tick"
+            },
+            {
+              "t": 0.4,
+              "do": "show",
+              "target": "s0",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.55,
+              "do": "show",
+              "target": "s1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.7,
+              "do": "show",
+              "target": "s2",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.85,
+              "do": "glow",
+              "target": "s2",
+              "sfx": "ding"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +250,11 @@
         "file": "cli.py",
         "source": "import argparse\n\nparser = argparse.ArgumentParser(description=\"Greet someone\")\nparser.add_argument(\"name\")\nparser.add_argument(\"--times\", type=int, default=1)\nargs = parser.parse_args([\"Asha\", \"--times\", \"2\"])\nfor _ in range(args.times):\n    print(\"Hello\", args.name)\nprint(parser.parse_args([\"Ravi\"]).times)",
         "output": "Hello Asha\nHello Asha\n1"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python cli.py",
+        "output": "Hello Asha\nHello Asha\n1"
       }
     },
     {
@@ -157,7 +268,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as cli dot py. In the terminal, type python, space, cli dot py. The script name list, then Hello Asha three times. Then Hello Asha twice, then 1."
+      "narration": "Save the file as cli dot py. In the terminal, type python, space, cli dot py. The script name list, then Hello Asha three times. Then Hello Asha twice, then 1.",
+      "props": {
+        "lines": [
+          {
+            "text": "python cli.py",
+            "kind": "input"
+          },
+          {
+            "text": "Hello Asha",
+            "kind": "output"
+          },
+          {
+            "text": "Hello Asha",
+            "kind": "output"
+          },
+          {
+            "text": "1",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +300,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: sys dot argv is a list: script name first, then the arguments. Two: Arguments are always text. Convert with int or float. Three: argparse gives names, types, defaults and --help. Four: Check the length before reading an argument. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: sys dot argv is a list: script name first, then the arguments. Two: Arguments are always text. Convert with int or float. Three: argparse gives names, types, defaults and --help. Four: Check the length before reading an argument. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Sys.argv is a list: script name first, then the arguments.",
+          "Arguments are always text; convert with int or float.",
+          "Argparse gives names, types, defaults and --help.",
+          "Check the length before reading an argument."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +322,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We run the script with no name. The list holds only the script name, so index one does not exist. Index error, list index out of range. Check the length of sys dot argv first, and print a usage line. Better still, use argparse, which checks for you."
+      "narration": "Bug of the Day. We run the script with no name. The list holds only the script name, so index one does not exist. Index error, list index out of range. Check the length of sys dot argv first, and print a usage line. Better still, use argparse, which checks for you.",
+      "props": {
+        "wrongCode": "import sys\n\nname = sys.argv[1]\nprint(\"Hello\", name)",
+        "fixedCode": "import sys\n\nif len(sys.argv) < 2:\n    print(\"Usage: python greet.py NAME\")\nelse:\n    print(\"Hello\", sys.argv[1])",
+        "error": "  File \"greet.py\", line 3, in <module>\n    name = sys.argv[1]\n           ~~~~~~~~^^^\nIndexError: list index out of range",
+        "errorOverride": {
+          "lines": [
+            "  File \"greet.py\", line 3, in <module>",
+            "    name = sys.argv[1]",
+            "           ~~~~~~~~^^^",
+            "IndexError: list index out of range"
+          ]
+        },
+        "why": "sys.argv holds only the script name when you give no arguments, so index one does not exist. Check the length first, and show a friendly usage line.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python greet.py",
+        "culprit": {
+          "wrong": 3,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +380,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Module nine is done! Next time: we start our capstone project, an expense tracker. Keep coding, says Xecxec!"
+      "narration": "Module nine is done! Next time: we start our capstone project, an expense tracker. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 87,
+        "nextTitle": "Capstone 1: Expense tracker design"
+      }
     }
   ],
   "bug": {
@@ -346,5 +512,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

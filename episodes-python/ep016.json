@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A while loop repeats a block while a condition is True. Python checks the condition before every round. If it is True, the body runs again. If it is False, the loop ends and the program carries on. Think of waves on a beach. They keep coming in while the tide is up. For the loop to end, something inside the body must change the condition. Usually that is a counter that goes up."
+      "narration": "A while loop repeats a block while a condition is True. Python checks the condition before every round. If it is True, the body runs again. If it is False, the loop ends and the program carries on. Think of waves on a beach. They keep coming in while the tide is up. For the loop to end, something inside the body must change the condition. Usually that is a counter that goes up.",
+      "props": {
+        "lines": [
+          "while checks a condition before every round",
+          "The loop body repeats while it is True",
+          "Something inside must change the condition"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a sea wave: it keeps coming in while the tide is up, and it stops when the tide goes out"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "waves.py",
         "source": "count = 1\nwhile count <= 3:\n    print(\"Wave\", count)\n    count = count + 1\nprint(\"Done\")",
         "output": "Wave 1\nWave 2\nWave 3\nDone"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python waves.py",
+        "output": "Wave 1\nWave 2\nWave 3\nDone"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture after the loop ends. The name count is tied to the int four. It was tied to one, then two, then three, and each time the tag moved to a new number. The condition count at most three is now False, which is why the loop stopped. The old numbers are gone, and the tag is on four."
+      "narration": "Here is the picture after the loop ends. The name count is tied to the int four. It was tied to one, then two, then three, and each time the tag moved to a new number. The condition count at most three is now False, which is why the loop stopped. The old numbers are gone, and the tag is on four.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "4",
+                    "address": "int",
+                    "name": "count"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "saving.py",
         "source": "saving = 100\nweeks = 0\nwhile saving < 200:\n    saving = saving + 30\n    weeks = weeks + 1\nprint(\"Weeks:\", weeks)\nprint(\"Saved:\", saving)",
         "output": "Weeks: 4\nSaved: 220"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python saving.py",
+        "output": "Weeks: 4\nSaved: 220"
       }
     },
     {
@@ -159,7 +197,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as saving dot py. In the terminal, type python, space, saving dot py. Weeks, four. Saved, two hundred twenty."
+      "narration": "Save the file as saving dot py. In the terminal, type python, space, saving dot py. Weeks, four. Saved, two hundred twenty.",
+      "props": {
+        "lines": [
+          {
+            "text": "python saving.py",
+            "kind": "input"
+          },
+          {
+            "text": "Weeks: 4",
+            "kind": "output"
+          },
+          {
+            "text": "Saved: 220",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +225,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: while repeats a block as long as its condition is True. Two: Python checks the condition before every round. Three: Something inside the loop must change the condition. Four: A counter that goes up is the most common way to end a loop. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: while repeats a block as long as its condition is True. Two: Python checks the condition before every round. Three: Something inside the loop must change the condition. Four: A counter that goes up is the most common way to end a loop. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "While repeats a block as long as its condition is True.",
+          "Python checks the condition before every round.",
+          "Something inside the loop must change the condition.",
+          "A counter that goes up is the most common way to end a loop."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +247,26 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We forgot the line that adds one to count. Count stays at one forever. The condition is always True, so the loop never ends, and Wave one prints again and again. No error appears, because there is nothing wrong with the rules. Press control C to stop the program. Then add the update line, and the loop ends."
+      "narration": "Bug of the Day. We forgot the line that adds one to count. Count stays at one forever. The condition is always True, so the loop never ends, and Wave one prints again and again. No error appears, because there is nothing wrong with the rules. Press control C to stop the program. Then add the update line, and the loop ends.",
+      "props": {
+        "wrongCode": "count = 1\nwhile count <= 3:\n    print(\"Wave\", count)\nprint(\"Done\")",
+        "fixedCode": "count = 1\nwhile count <= 3:\n    print(\"Wave\", count)\n    count = count + 1\nprint(\"Done\")",
+        "error": "",
+        "errorOverride": {
+          "lines": [],
+          "hang": true,
+          "caption": "no output: the program waits for ever"
+        },
+        "why": "Nothing inside the loop changes count, so the condition stays True forever and the loop never ends.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python waves.py",
+        "culprit": {
+          "wrong": 4,
+          "fixed": 4
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +302,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: for loops and range. Keep coding, says Xecxec!"
+      "narration": "Next time: for loops and range. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 17,
+        "nextTitle": "for loops and range"
+      }
     }
   ],
   "bug": {
@@ -348,5 +434,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

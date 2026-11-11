@@ -7,6 +7,7 @@ import { impactShakeX, springs } from "../lib/motion";
 import { errorExcerpt } from "../lib/errorExcerpt";
 import type { BugOverride } from "../lib/bugOverrides";
 import type { BugCulprit } from "../lib/bugCulprit";
+import type { CodeLang } from "../lib/highlight";
 import { SceneFrame } from "./SceneFrame";
 import type { BaseSceneProps } from "./types";
 
@@ -19,6 +20,13 @@ export type BugOfTheDayProps = BaseSceneProps & {
   culprit?: BugCulprit;
   fixedCode: string;
   why?: string;
+  /** Source language (default C). For Python the wrong and fixed sides are code unless the props say otherwise. */
+  lang?: CodeLang;
+  /** Judge each side as code explicitly; without it a C-looking heuristic decides (C course). */
+  wrongIsCode?: boolean;
+  fixedIsCode?: boolean;
+  /** Command shown on a hang panel (default "./program"). */
+  command?: string;
 };
 
 /** Real C reliably has `;`, `{` or `#include`; prose and paths do not. */
@@ -64,6 +72,10 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   culprit,
   fixedCode,
   why,
+  lang,
+  wrongIsCode: wrongIsCodeProp,
+  fixedIsCode: fixedIsCodeProp,
+  command,
   colours,
   durationInFrames,
 }) => {
@@ -72,8 +84,8 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
   // Not every bug slot holds C: EP02's "wrong" is a quoted claim, EP03's a path, and EP05's
   // "fixed" is a sentence. Each side is judged on its own, so prose becomes a text card and
   // only real code goes through CodeBlock's C highlighting.
-  const wrongIsCode = looksLikeCode(wrongCode);
-  const fixedIsCode = looksLikeCode(fixedCode);
+  const wrongIsCode = wrongIsCodeProp ?? looksLikeCode(wrongCode);
+  const fixedIsCode = fixedIsCodeProp ?? looksLikeCode(fixedCode);
   const shownIsCode = isFixed ? fixedIsCode : wrongIsCode;
   const lineCount = (text: string, isCode: boolean): number =>
     isCode ? text.split("\n").length : 3;
@@ -157,6 +169,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
                 fontSize={40}
                 maxHeight={410}
                 highlightLine={isFixed ? culprit?.fixed : culprit?.wrong}
+                lang={lang}
               />
             ) : (
               <Panel background={isFixed ? palette.mint : palette.cream} borderColor={palette.ink}>
@@ -192,7 +205,7 @@ export const BugOfTheDay: React.FC<BugOfTheDayProps> = ({
               >
                 {errorOverride?.hang ? (
                   <>
-                    <span style={{ color: palette.white }}>{"$ ./program"}</span>
+                    <span style={{ color: palette.white }}>{`$ ${command ?? "./program"}`}</span>
                     {"\n"}
                     {frame >= ctrlCFrame ? "^C" : ""}
                     {Math.floor((frame - phase2) / 15) % 2 === 0 ? "█" : " "}

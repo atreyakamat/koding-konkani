@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Python has three conversion tools. The int function makes a whole number. The float function makes a decimal. The str function makes text. Think of a currency counter. The value is the same, but it is written on a different note. The conversion makes a new object. The old one is left as it was. If the text cannot be a number, Python raises an error."
+      "narration": "Python has three conversion tools. The int function makes a whole number. The float function makes a decimal. The str function makes text. Think of a currency counter. The value is the same, but it is written on a different note. The conversion makes a new object. The old one is left as it was. If the text cannot be a number, Python raises an error.",
+      "props": {
+        "lines": [
+          "int() makes a whole number",
+          "float() makes a decimal",
+          "str() makes text"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a currency counter: the same value, written in a different note"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "convert.py",
         "source": "text = \"42\"\nnumber = int(text)\nprint(number + 8)\nprint(float(\"3.5\") * 2)\nprint(str(7) + \" beaches\")",
         "output": "50\n7.0\n7 beaches"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python convert.py",
+        "output": "50\n7.0\n7 beaches"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name text is still tied to the string forty two. The name number is tied to a brand new int, forty two. They look alike when printed, but they are different objects of different types. A string can join, and an int can add. Conversion is how you move between the two."
+      "narration": "Here is the picture. The name text is still tied to the string forty two. The name number is tied to a brand new int, forty two. They look alike when printed, but they are different objects of different types. A string can join, and an int can add. Conversion is how you move between the two.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'42'",
+                    "address": "str",
+                    "name": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'42'",
+                    "address": "str",
+                    "name": "text"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "42",
+                    "address": "int",
+                    "name": "number"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -141,7 +196,17 @@
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 1] [TRACK age=17] Read this from the inside out. First input asks the question. The answer arrives as the string seventeen. Then int turns that string into the number seventeen. [HL 2] Now plus one works, and Next year, eighteen prints. This pattern, int wrapped around input, is how every program reads a number."
+      "narration": "[HL 1] [TRACK age=17] Read this from the inside out. First input asks the question. The answer arrives as the string seventeen. Then int turns that string into the number seventeen. [HL 2] Now plus one works, and Next year, eighteen prints. This pattern, int wrapped around input, is how every program reads a number.",
+      "code": {
+        "file": "age_next.py",
+        "source": "age = int(input(\"Age? \"))\nprint(\"Next year:\", age + 1)",
+        "output": "Age? Next year: 18"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python age_next.py",
+        "output": "Age? 17\nNext year: 18"
+      }
     },
     {
       "id": 6,
@@ -154,7 +219,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as age_next dot py. In the terminal, type python, space, age_next dot py. You type seventeen. It prints, Next year, eighteen."
+      "narration": "Save the file as age_next dot py. In the terminal, type python, space, age_next dot py. You type seventeen. It prints, Next year, eighteen.",
+      "props": {
+        "lines": [
+          {
+            "text": "python age_next.py",
+            "kind": "input"
+          },
+          {
+            "text": "Age? 17",
+            "kind": "output"
+          },
+          {
+            "text": "Next year: 18",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -166,7 +247,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: int, float and str convert between types. Two: Conversion makes a new object and leaves the old one alone. Three: Wrap int around input to read a number. Four: Text that is not a number raises a ValueError. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: int, float and str convert between types. Two: Conversion makes a new object and leaves the old one alone. Three: Wrap int around input to read a number. Four: Text that is not a number raises a ValueError. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Int(), float() and str() convert between types.",
+          "Conversion makes a new object and leaves the old one alone.",
+          "Wrap int around input() to read a number.",
+          "Text that is not a number raises a ValueError."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -179,7 +269,28 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We ask int to turn the word abc into a number. Python says, value error, invalid literal for int. The text must look like a whole number. Digits are fine. Letters are not. The last line tells you the exact text that failed, which makes the bug easy to find. Fix the text, and it works."
+      "narration": "Bug of the Day. We ask int to turn the word abc into a number. Python says, value error, invalid literal for int. The text must look like a whole number. Digits are fine. Letters are not. The last line tells you the exact text that failed, which makes the bug easy to find. Fix the text, and it works.",
+      "props": {
+        "wrongCode": "count = int(\"abc\")",
+        "fixedCode": "count = int(\"42\")",
+        "error": "  File \"convert.py\", line 1, in <module>\n    count = int(\"abc\")\nValueError: invalid literal for int() with base 10: 'abc'",
+        "errorOverride": {
+          "lines": [
+            "  File \"convert.py\", line 1, in <module>",
+            "    count = int(\"abc\")",
+            "ValueError: invalid literal for int() with base 10: 'abc'"
+          ]
+        },
+        "why": "int() can only convert text that looks like a whole number, so a word raises a ValueError.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python convert.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -215,7 +326,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Module one is done! Next time: making decisions with if and else. Keep coding, says Xecxec!"
+      "narration": "Module one is done! Next time: making decisions with if and else. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 13,
+        "nextTitle": "if and else"
+      }
     }
   ],
   "bug": {
@@ -334,14 +449,16 @@
       "lang": "python"
     },
     {
-      "file": "file2.python",
+      "file": "age_next.py",
       "source": "age = int(input(\"Age? \"))\nprint(\"Next year:\", age + 1)",
       "output": "Age? Next year: 18",
+      "stdin": "17",
       "lang": "python"
     }
   ],
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

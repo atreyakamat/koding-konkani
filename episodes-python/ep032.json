@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the plan. Ask the user for three marks, and append each one to a list. Then report the marks, the highest one, and the average. We use the tools from this module. A loop, a list, append, and the built in functions max, sum and len. And one important guard. An average of an empty list divides by zero. We see that in the bug of the day."
+      "narration": "Here is the plan. Ask the user for three marks, and append each one to a list. Then report the marks, the highest one, and the average. We use the tools from this module. A loop, a list, append, and the built in functions max, sum and len. And one important guard. An average of an empty list divides by zero. We see that in the bug of the day.",
+      "props": {
+        "lines": [
+          "Ask for each mark and append it to a list",
+          "Use max, sum and len for the results",
+          "Guard the average against an empty list"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a teacher's register: collect the marks, find the topper, then work out the class average"
+        }
+      }
     },
     {
       "id": 3,
@@ -112,7 +123,17 @@
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] An empty list to collect the marks. [HL 2] A loop that runs three times. [HL 3] Ask for a mark, convert it with int, and append it to the list. [HL 4] Print the whole list. [HL 5] Max finds the highest mark. [HL 6] Sum divided by len is the average. Round makes it neat, to one decimal."
+      "narration": "[HL 1] An empty list to collect the marks. [HL 2] A loop that runs three times. [HL 3] Ask for a mark, convert it with int, and append it to the list. [HL 4] Print the whole list. [HL 5] Max finds the highest mark. [HL 6] Sum divided by len is the average. Round makes it neat, to one decimal.",
+      "code": {
+        "file": "tracker.py",
+        "source": "marks = []\nfor n in range(3):\n    marks.append(int(input(\"Mark: \")))\nprint(\"Marks:\", marks)\nprint(\"Highest:\", max(marks))\nprint(\"Average:\", round(sum(marks) / len(marks), 1))",
+        "output": "Mark: Mark: Mark: Marks: [72, 85, 90]\nHighest: 90\nAverage: 82.3"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python tracker.py",
+        "output": "Mark: 72\nMark: Mark: Marks: [72, 85, 90]\nHighest: 90\nAverage: 82.3"
+      }
     },
     {
       "id": 4,
@@ -124,7 +145,33 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the end state. The name marks is tied to one list, holding the three ints that the user typed. We started with an empty list, and appended once in each round. The list grew each time, but the name never moved. Max, sum and len all read this same list."
+      "narration": "Here is the end state. The name marks is tied to one list, holding the three ints that the user typed. We started with an empty list, and appended once in each round. The list grew each time, but the name never moved. Max, sum and len all read this same list.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "marks",
+                "cells": [
+                  {
+                    "value": "72",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "85",
+                    "index": 1
+                  },
+                  {
+                    "value": "90",
+                    "index": 2
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -141,6 +188,11 @@
         "file": "pass_count.py",
         "source": "marks = [72, 35, 90, 28, 64]\npassed = 0\nfor m in marks:\n    if m >= 40:\n        passed = passed + 1\nprint(\"Passed:\", passed, \"of\", len(marks))\nprint(\"Top:\", max(marks), \"Lowest:\", min(marks))",
         "output": "Passed: 3 of 5\nTop: 90 Lowest: 28"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python pass_count.py",
+        "output": "Passed: 3 of 5\nTop: 90 Lowest: 28"
       }
     },
     {
@@ -154,7 +206,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as pass_count dot py. In the terminal, type python, space, pass_count dot py. Passed three of five. Top ninety, lowest twenty eight."
+      "narration": "Save the file as pass_count dot py. In the terminal, type python, space, pass_count dot py. Passed three of five. Top ninety, lowest twenty eight.",
+      "props": {
+        "lines": [
+          {
+            "text": "python pass_count.py",
+            "kind": "input"
+          },
+          {
+            "text": "Passed: 3 of 5",
+            "kind": "output"
+          },
+          {
+            "text": "Top: 90 Lowest: 28",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -166,7 +234,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Start with an empty list and append in a loop. Two: max, min, sum and len work on lists of numbers. Three: A counter with an if counts how many pass a test. Four: Check for an empty list before you divide by its length. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Start with an empty list and append in a loop. Two: max, min, sum and len work on lists of numbers. Three: A counter with an if counts how many pass a test. Four: Check for an empty list before you divide by its length. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Start with an empty list and append in a loop.",
+          "Max, min, sum and len work on lists of numbers.",
+          "A counter with an if counts how many pass a test.",
+          "Check for an empty list before you divide by its length."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -179,7 +256,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The list is empty, so len is zero. The sum is zero, and dividing by zero is a zero division error. Python says, division by zero. Check the list first. An empty list counts as False, so a plain if marks does the job. Then print a friendly message instead of crashing."
+      "narration": "Bug of the Day. The list is empty, so len is zero. The sum is zero, and dividing by zero is a zero division error. Python says, division by zero. Check the list first. An empty list counts as False, so a plain if marks does the job. Then print a friendly message instead of crashing.",
+      "props": {
+        "wrongCode": "marks = []\nprint(sum(marks) / len(marks))",
+        "fixedCode": "marks = []\nif marks:\n    print(sum(marks) / len(marks))\nelse:\n    print(\"No marks yet\")",
+        "error": "  File \"tracker.py\", line 2, in <module>\n    print(sum(marks) / len(marks))\n          ~~~~~~~~~~~^~~~~~~~~~~~\nZeroDivisionError: division by zero",
+        "errorOverride": {
+          "lines": [
+            "  File \"tracker.py\", line 2, in <module>",
+            "    print(sum(marks) / len(marks))",
+            "          ~~~~~~~~~~~^~~~~~~~~~~~",
+            "ZeroDivisionError: division by zero"
+          ]
+        },
+        "why": "An empty list has length zero, and dividing by zero raises an error; test the list before you divide.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python tracker.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -215,7 +314,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Module three is done! Next time: dictionaries, where every value has its own label. Keep coding, says Xecxec!"
+      "narration": "Module three is done! Next time: dictionaries, where every value has its own label. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 33,
+        "nextTitle": "Dictionaries"
+      }
     }
   ],
   "bug": {
@@ -328,9 +431,10 @@
   ],
   "codeFiles": [
     {
-      "file": "file1.python",
+      "file": "tracker.py",
       "source": "marks = []\nfor n in range(3):\n    marks.append(int(input(\"Mark: \")))\nprint(\"Marks:\", marks)\nprint(\"Highest:\", max(marks))\nprint(\"Average:\", round(sum(marks) / len(marks), 1))",
       "output": "Mark: Mark: Mark: Marks: [72, 85, 90]\nHighest: 90\nAverage: 82.3",
+      "stdin": "72\n85\n90",
       "lang": "python"
     },
     {
@@ -343,5 +447,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

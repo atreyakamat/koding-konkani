@@ -39,7 +39,9 @@ export const MemoryCellView: React.FC<MemoryCellViewProps> = ({ cell, x, y, widt
   const faded = cell.mark === "zero";
   const hasName = !!cell.name;
   const showAddress = !!cell.address && width >= 120;
-  const valueSize = Math.round(width * 0.34 * valueScale(cell.value));
+  // Never wider than the box: the scale steps alone let an 11-character value (a quoted Python string) run over the border.
+  const fitSize = Math.floor((width - 2 * brutal.borderThick - 16) / (Math.max(1, cell.value.length) * 0.62));
+  const valueSize = Math.min(Math.round(width * 0.34 * valueScale(cell.value)), fitSize);
   const index = cell.index === undefined ? undefined : typeof cell.index === "number" ? `[${cell.index}]` : cell.index;
   return (
     <g

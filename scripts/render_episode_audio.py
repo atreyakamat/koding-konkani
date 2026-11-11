@@ -15,6 +15,7 @@ Remotion render can be tried before any real narration is generated. Never use i
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 import time
@@ -24,7 +25,7 @@ import argparse
 
 ROOT = Path(__file__).resolve().parent.parent
 VOICE_DIR = ROOT / "audio" / "voice"
-EPISODE_DIRS = {"c": ROOT / "episodes", "cpp": ROOT / "episodes-cpp"}
+EPISODE_DIRS = {"c": ROOT / "episodes", "cpp": ROOT / "episodes-cpp", "python": ROOT / "episodes-python"}
 
 SCENE_PAUSE_SEC = 0.7
 BUG_REVEAL_PAUSE_SEC = 1.0

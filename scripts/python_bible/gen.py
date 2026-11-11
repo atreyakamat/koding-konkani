@@ -175,11 +175,16 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None) -> str:
     L.append("| # | Start | Length | Template | On screen | Animation & SFX |")
     L.append("| --- | --- | --- | --- | --- | --- |")
     for i, s in enumerate(sc, 1):
-        L.append(f"| {i} | {mmss(s['start'])} | {mmss(s['len'])} | {s['t']} | {esc(s['on'])} | {s['anim']} |")
+        L.append(f"| {i} | {mmss(s['start'])} | {mmss(s['len'])} | {s['t']} | {esc(s['on']).replace('|', chr(92) + '|')} | {s['anim'].replace('|', chr(92) + '|')} |")
     L.append("\n### Narration script\n")
     for i, s in enumerate(sc, 1):
         L.append(f"**\\[{i} · {s['label']}\\]** {esc(s['narr'])}\n")
 
+    L.append("### On-screen recap\n")
+    L.append("Text on the recap card (scene 7), exactly as shown. The spoken version is in the narration.\n")
+    for i, r in enumerate(rec, 1):
+        L.append(f"{i}. {r}")
+    L.append("")
     L.append("### Code shown\n")
     for k, p in enumerate(progs, 1):
         scenes = "scene 3" if k == 1 else "scene 5"

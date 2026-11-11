@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Counting is a classic dictionary job. The keys are the things you count. The values are the counts. Think of a tally sheet. Each time you see a letter, you add one mark next to it. But a new letter has no mark yet. You must start it at zero, or one. The get method with a default zero does this in one line. And Python has a ready made helper called Counter."
+      "narration": "Counting is a classic dictionary job. The keys are the things you count. The values are the counts. Think of a tally sheet. Each time you see a letter, you add one mark next to it. But a new letter has no mark yet. You must start it at zero, or one. The get method with a default zero does this in one line. And Python has a ready made helper called Counter.",
+      "props": {
+        "lines": [
+          "Keys are the things, values are the counts",
+          "A new key must start at 0",
+          "get(key, 0) + 1 does it in one line"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a tally sheet: each time you see a letter, you add one mark next to it"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "count.py",
         "source": "text = \"banana\"\ncounts = {}\nfor ch in text:\n    if ch in counts:\n        counts[ch] = counts[ch] + 1\n    else:\n        counts[ch] = 1\nprint(counts)",
         "output": "{'b': 1, 'a': 3, 'n': 2}"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python count.py",
+        "output": "{'b': 1, 'a': 3, 'n': 2}"
       }
     },
     {
@@ -129,7 +145,33 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. Counts is tied to one dictionary. Each key is a letter, and each value is an int tally. When we added one, the tag inside the dictionary moved to a new int. The dictionary kept its shape, and only the numbers changed. This is how most word counts and letter counts are built."
+      "narration": "Here is the picture. Counts is tied to one dictionary. Each key is a letter, and each value is an int tally. When we added one, the tag inside the dictionary moved to a new int. The dictionary kept its shape, and only the numbers changed. This is how most word counts and letter counts are built.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "counts",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": "b",
+                    "address": "dict"
+                  },
+                  {
+                    "value": "3",
+                    "index": "a"
+                  },
+                  {
+                    "value": "2",
+                    "index": "n"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +188,11 @@
         "file": "count.py",
         "source": "text = \"banana\"\ncounts = {}\nfor ch in text:\n    if ch in counts:\n        counts[ch] = counts[ch] + 1\n    else:\n        counts[ch] = 1\nprint(counts)",
         "output": "{'b': 1, 'a': 3, 'n': 2}"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python count.py",
+        "output": "{'b': 1, 'a': 3, 'n': 2}"
       }
     },
     {
@@ -159,7 +206,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as getcount dot py. In the terminal, type python, space, getcount dot py. The same tallies, then a, three."
+      "narration": "Save the file as getcount dot py. In the terminal, type python, space, getcount dot py. The same tallies, then a, three.",
+      "props": {
+        "lines": [
+          {
+            "text": "python getcount.py",
+            "kind": "input"
+          },
+          {
+            "text": "{'b': 1, 'a': 3, 'n': 2}",
+            "kind": "output"
+          },
+          {
+            "text": "[('a', 3)]",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +234,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Keys are the things being counted and values are the counts. Two: A new key must have a starting value before you add to it. Three: counts dot get of key, 0 plus 1 is the one-line pattern. Four: Counter from collections counts for you. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Keys are the things being counted and values are the counts. Two: A new key must have a starting value before you add to it. Three: counts dot get of key, 0 plus 1 is the one-line pattern. Four: Counter from collections counts for you. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Keys are the things being counted and values are the counts.",
+          "A new key must have a starting value before you add to it.",
+          "Counts.get(key, 0) + 1 is the one-line pattern.",
+          "Counter from collections counts for you."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +256,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We try to add one to a count that does not exist yet. Python says, key error, g. The plus equals line reads the old count first, and a brand new letter has none. Use get with a default of zero, and the first time gives zero plus one. Then every later time just adds one more."
+      "narration": "Bug of the Day. We try to add one to a count that does not exist yet. Python says, key error, g. The plus equals line reads the old count first, and a brand new letter has none. Use get with a default of zero, and the first time gives zero plus one. Then every later time just adds one more.",
+      "props": {
+        "wrongCode": "counts = {}\nfor ch in \"goa\":\n    counts[ch] += 1",
+        "fixedCode": "counts = {}\nfor ch in \"goa\":\n    counts[ch] = counts.get(ch, 0) + 1\nprint(counts)",
+        "error": "  File \"count.py\", line 3, in <module>\n    counts[ch] += 1\n    ~~~~~~^^^^\nKeyError: 'g'",
+        "errorOverride": {
+          "lines": [
+            "  File \"count.py\", line 3, in <module>",
+            "    counts[ch] += 1",
+            "    ~~~~~~^^^^",
+            "KeyError: 'g'"
+          ]
+        },
+        "why": "counts[ch] += 1 reads the key before it exists, which raises a KeyError; get with a default gives a starting value.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python count.py",
+        "culprit": {
+          "wrong": 3,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +314,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: the word counter mini project. Keep coding, says Xecxec!"
+      "narration": "Next time: the word counter mini project. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 40,
+        "nextTitle": "Mini project: Word counter"
+      }
     }
   ],
   "bug": {
@@ -348,5 +446,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A list comprehension builds a list in one line. Square brackets. First, what you want for each item. Then, for, the item, in, the source list. Think of a juice stall. Fruit goes in, a rule is applied, and a glass comes out for each fruit. Add an if at the end to keep only some items. Keep comprehensions short. If a line is hard to read, write the loop out in full instead."
+      "narration": "A list comprehension builds a list in one line. Square brackets. First, what you want for each item. Then, for, the item, in, the source list. Think of a juice stall. Fruit goes in, a rule is applied, and a glass comes out for each fruit. Add an if at the end to keep only some items. Keep comprehensions short. If a line is hard to read, write the loop out in full instead.",
+      "props": {
+        "lines": [
+          "[expression for item in list]",
+          "Add if at the end to filter",
+          "Keep it short enough to read"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a juice stall: fruit goes in, a rule is applied, and a glass comes out for each fruit"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "squares.py",
         "source": "nums = [1, 2, 3, 4, 5]\nsquares = [n * n for n in nums]\nprint(squares)\nevens = [n for n in nums if n % 2 == 0]\nprint(evens)",
         "output": "[1, 4, 9, 16, 25]\n[2, 4]"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python squares.py",
+        "output": "[1, 4, 9, 16, 25]\n[2, 4]"
       }
     },
     {
@@ -129,7 +145,167 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. Nums, squares and evens each point at their own list object. A comprehension never changes the source list. It builds a brand new one. Nums is exactly as it was. That is what makes comprehensions safe. You never change the list while you walk over it."
+      "narration": "Here is the picture. Nums, squares and evens each point at their own list object. A comprehension never changes the source list. It builds a brand new one. Nums is exactly as it was. That is what makes comprehensions safe. You never change the list while you walk over it.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "nums",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1
+                  },
+                  {
+                    "value": "3",
+                    "index": 2
+                  },
+                  {
+                    "value": "4",
+                    "index": 3
+                  },
+                  {
+                    "value": "5",
+                    "index": 4
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "name": "nums",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1
+                  },
+                  {
+                    "value": "3",
+                    "index": 2
+                  },
+                  {
+                    "value": "4",
+                    "index": 3
+                  },
+                  {
+                    "value": "5",
+                    "index": 4
+                  }
+                ]
+              },
+              {
+                "name": "squares",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "4",
+                    "index": 1
+                  },
+                  {
+                    "value": "9",
+                    "index": 2
+                  },
+                  {
+                    "value": "16",
+                    "index": 3
+                  },
+                  {
+                    "value": "25",
+                    "index": 4
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "name": "nums",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "2",
+                    "index": 1
+                  },
+                  {
+                    "value": "3",
+                    "index": 2
+                  },
+                  {
+                    "value": "4",
+                    "index": 3
+                  },
+                  {
+                    "value": "5",
+                    "index": 4
+                  }
+                ]
+              },
+              {
+                "name": "squares",
+                "cells": [
+                  {
+                    "value": "1",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "4",
+                    "index": 1
+                  },
+                  {
+                    "value": "9",
+                    "index": 2
+                  },
+                  {
+                    "value": "16",
+                    "index": 3
+                  },
+                  {
+                    "value": "25",
+                    "index": 4
+                  }
+                ]
+              },
+              {
+                "name": "evens",
+                "cells": [
+                  {
+                    "value": "2",
+                    "index": 0,
+                    "address": "list"
+                  },
+                  {
+                    "value": "4",
+                    "index": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +322,11 @@
         "file": "words_comp.py",
         "source": "words = [\"fish\", \"crab\", \"prawn\"]\ncaps = [w.upper() for w in words]\nlengths = [len(w) for w in words]\nprint(caps)\nprint(lengths)",
         "output": "['FISH', 'CRAB', 'PRAWN']\n[4, 4, 5]"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python words_comp.py",
+        "output": "['FISH', 'CRAB', 'PRAWN']\n[4, 4, 5]"
       }
     },
     {
@@ -159,7 +340,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as words_comp dot py. In the terminal, type python, space, words_comp dot py. Fish, crab, prawn in capitals, then four, four, five."
+      "narration": "Save the file as words_comp dot py. In the terminal, type python, space, words_comp dot py. Fish, crab, prawn in capitals, then four, four, five.",
+      "props": {
+        "lines": [
+          {
+            "text": "python words_comp.py",
+            "kind": "input"
+          },
+          {
+            "text": "['FISH', 'CRAB', 'PRAWN']",
+            "kind": "output"
+          },
+          {
+            "text": "[4, 4, 5]",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +368,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: expression for item in list builds a new list. Two: Add if at the end to keep only some items. Three: An if and else together go before the for. Four: If a comprehension is hard to read, use a normal loop. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: expression for item in list builds a new list. Two: Add if at the end to keep only some items. Three: An if and else together go before the for. Four: If a comprehension is hard to read, use a normal loop. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "[expression for item in list] builds a new list.",
+          "Add if at the end to keep only some items.",
+          "An if and else together go before the for.",
+          "If a comprehension is hard to read, use a normal loop."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +390,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We try to keep even numbers, and use zero for the rest. We wrote an if with no else before the for. Python says, syntax error, expected else after if expression. A choice between two values needs both if and else, before the for. A simple filter goes at the end, with no else."
+      "narration": "Bug of the Day. We try to keep even numbers, and use zero for the rest. We wrote an if with no else before the for. Python says, syntax error, expected else after if expression. A choice between two values needs both if and else, before the for. A simple filter goes at the end, with no else.",
+      "props": {
+        "wrongCode": "nums = [1, 2, 3, 4]\nlabels = [n if n % 2 == 0 for n in nums]",
+        "fixedCode": "nums = [1, 2, 3, 4]\nlabels = [n if n % 2 == 0 else 0 for n in nums]\nprint(labels)",
+        "error": "File \"squares.py\", line 2\n    labels = [n if n % 2 == 0 for n in nums]\n              ^^^^^^^^^^^^^^^\nSyntaxError: expected 'else' after 'if' expression",
+        "errorOverride": {
+          "lines": [
+            "File \"squares.py\", line 2",
+            "    labels = [n if n % 2 == 0 for n in nums]",
+            "              ^^^^^^^^^^^^^^^",
+            "SyntaxError: expected 'else' after 'if' expression"
+          ]
+        },
+        "why": "An if that picks between two values needs its else, and both sit in front of the for; a filter if without else goes at the end.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python squares.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +448,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: dictionary and set comprehensions. Keep coding, says Xecxec!"
+      "narration": "Next time: dictionary and set comprehensions. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 38,
+        "nextTitle": "Dict and set comprehensions"
+      }
     }
   ],
   "bug": {
@@ -348,5 +580,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

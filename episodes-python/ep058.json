@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Pip is the tool that installs packages. Pip install, and the package name. But if you install everything into one place, projects start to clash. A virtual environment is a private folder of packages, one per project. Think of a separate kitchen for each recipe. One recipe cannot spoil another. You make one with python dash m venv. You activate it, and then pip installs into it."
+      "narration": "Pip is the tool that installs packages. Pip install, and the package name. But if you install everything into one place, projects start to clash. A virtual environment is a private folder of packages, one per project. Think of a separate kitchen for each recipe. One recipe cannot spoil another. You make one with python dash m venv. You activate it, and then pip installs into it.",
+      "props": {
+        "lines": [
+          "pip installs packages from the Python Package Index",
+          "A virtual environment is a private folder of packages",
+          "Activate the environment before you install"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a kitchen per recipe: each dish gets its own set of ingredients, so one recipe cannot spoil another"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "pipcheck.py",
         "source": "try:\n    import pyfiglet\n    print(\"pyfiglet is installed\")\nexcept ModuleNotFoundError:\n    print(\"pyfiglet is missing\")",
         "output": "pyfiglet is missing"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python pipcheck.py",
+        "output": "pyfiglet is missing"
       }
     },
     {
@@ -127,7 +143,80 @@
       "onScreen": "Two project boxes, each with its own packages folder; a global Python sits outside both",
       "animation": "Two project boxes with separate package shelves; a global Python box stays unchanged",
       "sfx": [],
-      "narration": "Here is the picture. Python sits in the middle. Project one has its own private folder of packages. Project two has another. They can even use different versions of the same package, without clashing. A virtual environment is just that private folder, plus a small script that points Python at it. Activate it, and every pip install goes inside."
+      "narration": "Here is the picture. Python sits in the middle. Project one has its own private folder of packages. Project two has another. They can even use different versions of the same package, without clashing. A virtual environment is just that private folder, plus a small script that points Python at it. Activate it, and every pip install goes inside.",
+      "props": {
+        "lines": [
+          "Here is the picture.",
+          "Python sits in the middle.",
+          "Project one has its own private folder of packages."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 58,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "p1",
+              "shape": "box",
+              "text": "project one: requests 2.x",
+              "colour": "mint",
+              "col": 0,
+              "row": 1,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "p2",
+              "shape": "box",
+              "text": "project two: requests 3.x",
+              "colour": "lilac",
+              "col": 5,
+              "row": 1,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "g",
+              "shape": "box",
+              "text": "global Python (unchanged)",
+              "colour": "cream",
+              "col": 2,
+              "row": 4,
+              "w": 6,
+              "h": 1
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "g",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.3,
+              "do": "show",
+              "target": "p1",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.6,
+              "do": "show",
+              "target": "p2",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.85,
+              "do": "glow",
+              "target": "g"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -144,6 +233,11 @@
         "file": "inenv.py",
         "source": "import sys\nprint(sys.prefix != sys.base_prefix)",
         "output": "False"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python inenv.py",
+        "output": "False"
       }
     },
     {
@@ -157,7 +251,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as inenv dot py. In the terminal, type python, space, inenv dot py. False, outside a virtual environment. After you activate one, it prints True."
+      "narration": "Save the file as inenv dot py. In the terminal, type python, space, inenv dot py. False, outside a virtual environment. After you activate one, it prints True.",
+      "props": {
+        "lines": [
+          {
+            "text": "python inenv.py",
+            "kind": "input"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -169,7 +275,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: pip installs packages into the Python that runs it. Two: A virtual environment is a private set of packages for one project. Three: Activate the environment before you run pip install. Four: Use python -m pip, so pip matches your python. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: pip installs packages into the Python that runs it. Two: A virtual environment is a private set of packages for one project. Three: Activate the environment before you run pip install. Four: Use python -m pip, so pip matches your python. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Pip installs packages into the Python that runs it.",
+          "A virtual environment is a private set of packages for one project.",
+          "Activate the environment before you run pip install.",
+          "Use python -m pip, so pip matches your python."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -182,7 +297,28 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We installed the package, but our script says, module not found error, no module named pyfiglet. The package went to a different Python, or a different environment, than the one running our script. Activate your virtual environment, and install with python dash m pip, so pip belongs to the same Python."
+      "narration": "Bug of the Day. We installed the package, but our script says, module not found error, no module named pyfiglet. The package went to a different Python, or a different environment, than the one running our script. Activate your virtual environment, and install with python dash m pip, so pip belongs to the same Python.",
+      "props": {
+        "wrongCode": "import pyfiglet\nprint(pyfiglet.figlet_format(\"Hi\"))",
+        "fixedCode": "try:\n    import pyfiglet\nexcept ModuleNotFoundError:\n    print(\"Install it with: python -m pip install pyfiglet\")",
+        "error": "  File \"pipcheck.py\", line 1, in <module>\n    import pyfiglet\nModuleNotFoundError: No module named 'pyfiglet'",
+        "errorOverride": {
+          "lines": [
+            "  File \"pipcheck.py\", line 1, in <module>",
+            "    import pyfiglet",
+            "ModuleNotFoundError: No module named 'pyfiglet'"
+          ]
+        },
+        "why": "pip may have installed the package into a different Python, or a different environment, than the one running your script; python -m pip installs into the Python you run.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python pipcheck.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -218,7 +354,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: CSV and JSON basics. Keep coding, says Xecxec!"
+      "narration": "Next time: CSV and JSON basics. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 59,
+        "nextTitle": "CSV and JSON basics"
+      }
     }
   ],
   "bug": {
@@ -346,5 +486,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

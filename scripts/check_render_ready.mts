@@ -7,7 +7,7 @@
  * lines; text fits its card (the limits below were set from rendered stills); the outro names the
  * next episode (except the finale); 5 Shorts of 35-45 s that reference real scenes.
  *
- * Usage: node scripts/check_render_ready.mts [--lang cpp]       (default: cpp; c and python use their own folders)
+ * Usage: node scripts/check_render_ready.mts [--lang cpp]       (C++ only; other courses use validate_episodes.mts and stills_all.mts)
  * Exit 1 on any problem.
  */
 import { readdirSync, readFileSync } from "node:fs";
@@ -18,6 +18,15 @@ import { terminalLinesFor } from "../src/lib/terminalLines.ts";
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([a-zA-Z]:)/, "$1");
 const langIdx = process.argv.indexOf("--lang");
 const lang = langIdx >= 0 ? process.argv[langIdx + 1] : "cpp";
+if (lang !== "cpp") {
+  // The rules below describe the C++ episode shape (points, analogy and diagram fields on the scene). The Python course
+  // keeps that data in scene.props and scene.memory, and the C course in its own tables, so these rules would
+  // report false problems for them. Use the course's own checks instead.
+  console.error(
+    `check_render_ready.mts only checks the C++ course (--lang cpp). For "${lang}" run: KK_LANG=${lang} node scripts/validate_episodes.mts, then KK_LANG=${lang} node scripts/stills_all.mts <from> <to>`,
+  );
+  process.exit(2);
+}
 const dirName =
   lang === "cpp" ? "episodes-cpp" : lang === "python" ? "episodes-python" : "episodes";
 const total = lang === "c" ? 86 : 90;

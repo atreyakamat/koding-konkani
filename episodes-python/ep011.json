@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A boolean is a value that is either True or False. Python makes one whenever you compare two things. Double equals asks, are these the same? Not equals, less than, greater than, and their or equal versions ask other questions. Think of a bouncer at a beach club. The bouncer only says yes or no. One equals sign ties a name to a value. Two equals signs ask a question."
+      "narration": "A boolean is a value that is either True or False. Python makes one whenever you compare two things. Double equals asks, are these the same? Not equals, less than, greater than, and their or equal versions ask other questions. Think of a bouncer at a beach club. The bouncer only says yes or no. One equals sign ties a name to a value. Two equals signs ask a question.",
+      "props": {
+        "lines": [
+          "A boolean is True or False",
+          "Compare with == != < > <= >=",
+          "One equals sign ties a name; two compare"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a bouncer at a beach club who only answers yes or no: are you eighteen or older?"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "compare.py",
         "source": "age = 17\nadult = age >= 18\nprint(adult)\nprint(age == 17)\nprint(age != 17)",
         "output": "False\nTrue\nFalse"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python compare.py",
+        "output": "False\nTrue\nFalse"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. Age is tied to the int seventeen. Adult is tied to a bool, False. A boolean is an object like any number or string. Its type is bool, and it has only two possible values, True and False. Write them with a capital first letter."
+      "narration": "Here is the picture. Age is tied to the int seventeen. Adult is tied to a bool, False. A boolean is an object like any number or string. Its type is bool, and it has only two possible values, True and False. Write them with a capital first letter.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "17",
+                    "address": "int",
+                    "name": "age"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "17",
+                    "address": "int",
+                    "name": "age"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "False",
+                    "address": "bool",
+                    "name": "adult"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +201,11 @@
         "file": "beaches.py",
         "source": "beach = \"Palolem\"\nprint(beach == \"Palolem\")\nprint(beach == \"palolem\")\nprint(5 < 10 < 20)",
         "output": "True\nFalse\nTrue"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python beaches.py",
+        "output": "True\nFalse\nTrue"
       }
     },
     {
@@ -159,7 +219,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as beaches dot py. In the terminal, type python, space, beaches dot py. True, then False, then True."
+      "narration": "Save the file as beaches dot py. In the terminal, type python, space, beaches dot py. True, then False, then True.",
+      "props": {
+        "lines": [
+          {
+            "text": "python beaches.py",
+            "kind": "input"
+          },
+          {
+            "text": "True",
+            "kind": "output"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          },
+          {
+            "text": "True",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +251,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A boolean is True or False, with a capital first letter. Two: Comparison operators give back booleans. Three: One equals sign ties a name. Two equals signs compare. Four: Text comparisons are case sensitive. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A boolean is True or False, with a capital first letter. Two: Comparison operators give back booleans. Three: One equals sign ties a name. Two equals signs compare. Four: Text comparisons are case sensitive. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A boolean is True or False, with a capital first letter.",
+          "Comparison operators give back booleans.",
+          "One equals sign ties a name; two equals signs compare.",
+          "Text comparisons are case sensitive."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +273,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Inside the if we wrote one equals sign. Python says, syntax error, invalid syntax. It even guesses what you meant, maybe you meant double equals. One equals sign is an instruction, tie this name to that value. A question needs two. Fix it, and the program runs."
+      "narration": "Bug of the Day. Inside the if we wrote one equals sign. Python says, syntax error, invalid syntax. It even guesses what you meant, maybe you meant double equals. One equals sign is an instruction, tie this name to that value. A question needs two. Fix it, and the program runs.",
+      "props": {
+        "wrongCode": "age = 17\nif age = 18:\n    print(\"Adult\")",
+        "fixedCode": "age = 17\nif age == 18:\n    print(\"Adult\")",
+        "error": "File \"compare.py\", line 2\n    if age = 18:\n       ^^^^^^^^\nSyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?",
+        "errorOverride": {
+          "lines": [
+            "File \"compare.py\", line 2",
+            "    if age = 18:",
+            "       ^^^^^^^^",
+            "SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?"
+          ]
+        },
+        "why": "A single equals ties a name to a value, so it cannot be used as a question; double equals compares two values.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python compare.py",
+        "culprit": {
+          "wrong": 2,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +331,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: type conversion. Keep coding, says Xecxec!"
+      "narration": "Next time: type conversion. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 12,
+        "nextTitle": "Type conversion"
+      }
     }
   ],
   "bug": {
@@ -348,5 +463,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

@@ -97,7 +97,14 @@
       "onScreen": "\"A bag of unique values\": three numbered lines (1. A set keeps each value once; 2. Sets have no order and no index; 3.",
       "animation": "& - combine sets like Venn diagrams) and an analogy card: a guest list: each name appears once, and you can quickly ask, is this person on the list?",
       "sfx": [],
-      "narration": "A set holds unique values. Duplicates disappear. It has no order, so no index either. Think of a guest list. Each name appears once, and you can quickly ask, is this person on the list? Sets also do maths, like Venn diagrams. A bar gives everything in either set. An ampersand gives what is in both. A minus gives what is in the first but not the second."
+      "narration": "A set holds unique values. Duplicates disappear. It has no order, so no index either. Think of a guest list. Each name appears once, and you can quickly ask, is this person on the list? Sets also do maths, like Venn diagrams. A bar gives everything in either set. An ampersand gives what is in both. A minus gives what is in the first but not the second.",
+      "props": {
+        "lines": [
+          "A set holds unique values.",
+          "It has no order, so no index either.",
+          "Think of a guest list."
+        ]
+      }
     },
     {
       "id": 3,
@@ -115,6 +122,11 @@
         "file": "sets.py",
         "source": "fish = {\"pomfret\", \"prawns\", \"pomfret\"}\nprint(len(fish))\nfish.add(\"crab\")\nprint(sorted(fish))\nprint(\"prawns\" in fish)",
         "output": "2\n['crab', 'pomfret', 'prawns']\nTrue"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python sets.py",
+        "output": "2\n['crab', 'pomfret', 'prawns']\nTrue"
       }
     },
     {
@@ -127,7 +139,33 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. One name, fish, tied to one set object. Inside are three strings, each one once. The duplicate pomfret never made it in. A set is like a dictionary with only keys, and no values. That is why membership tests are fast, and why the items have no index."
+      "narration": "Here is the picture. One name, fish, tied to one set object. Inside are three strings, each one once. The duplicate pomfret never made it in. A set is like a dictionary with only keys, and no values. That is why membership tests are fast, and why the items have no index.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "name": "fish",
+                "cells": [
+                  {
+                    "value": "'pomfret'",
+                    "index": 0,
+                    "address": "set"
+                  },
+                  {
+                    "value": "'prawns'",
+                    "index": 1
+                  },
+                  {
+                    "value": "'crab'",
+                    "index": 2
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -142,6 +180,11 @@
         "file": "setops.py",
         "source": "a = {1, 2, 3}\nb = {3, 4}\nprint(a | b)\nprint(a & b)\nprint(a - b)",
         "output": "{1, 2, 3, 4}\n{3}\n{1, 2}"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python setops.py",
+        "output": "{1, 2, 3, 4}\n{3}\n{1, 2}"
       }
     },
     {
@@ -155,7 +198,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as setops dot py. In the terminal, type python, space, setops dot py. One, two, three, four. Then three. Then one, two."
+      "narration": "Save the file as setops dot py. In the terminal, type python, space, setops dot py. One, two, three, four. Then three. Then one, two.",
+      "props": {
+        "lines": [
+          {
+            "text": "python setops.py",
+            "kind": "input"
+          },
+          {
+            "text": "{1, 2, 3, 4}",
+            "kind": "output"
+          },
+          {
+            "text": "{3}",
+            "kind": "output"
+          },
+          {
+            "text": "{1, 2}",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -167,7 +230,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A set keeps each value once and has no order. Two: add puts an item in and in tests membership quickly. Three: | gives everything, & gives what is shared, - gives what is left. Four: Use set for an empty set, because {} is an empty dictionary. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A set keeps each value once and has no order. Two: add puts an item in and in tests membership quickly. Three: | gives everything, & gives what is shared, - gives what is left. Four: Use set for an empty set, because {} is an empty dictionary. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A set keeps each value once and has no order.",
+          "Add puts an item in and in tests membership quickly.",
+          "| gives everything, & gives what is shared, - gives what is left.",
+          "Use set() for an empty set, because {} is an empty dictionary."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -180,7 +252,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We want an empty set, so we write empty curly brackets. We print the type, and it says dict. Empty curly brackets make an empty dictionary. For an empty set, call the set function with nothing inside. Then the type says set. Only sets with items can use curly brackets."
+      "narration": "Bug of the Day. We want an empty set, so we write empty curly brackets. We print the type, and it says dict. Empty curly brackets make an empty dictionary. For an empty set, call the set function with nothing inside. Then the type says set. Only sets with items can use curly brackets.",
+      "props": {
+        "wrongCode": "empty = {}\nprint(type(empty))",
+        "fixedCode": "empty = set()\nprint(type(empty))",
+        "error": "<class 'dict'>",
+        "errorOverride": {
+          "lines": [
+            "<class 'dict'>"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Empty curly brackets create an empty dictionary, not an empty set; call set() to make an empty set.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python sets.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -216,7 +308,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: nested data. Keep coding, says Xecxec!"
+      "narration": "Next time: nested data. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 36,
+        "nextTitle": "Nested data"
+      }
     }
   ],
   "bug": {
@@ -344,5 +440,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

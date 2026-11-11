@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "The input function shows a question on the screen, then waits. You type an answer and press Enter. Python hands the answer back. Think of a waiter at a beach shack. The waiter asks a question and writes your answer on a pad. Your answer comes back as text, always. Even if you type a number, it arrives as a string. Save it in a name, and it is yours to use."
+      "narration": "The input function shows a question on the screen, then waits. You type an answer and press Enter. Python hands the answer back. Think of a waiter at a beach shack. The waiter asks a question and writes your answer on a pad. Your answer comes back as text, always. Even if you type a number, it arrives as a string. Save it in a name, and it is yours to use.",
+      "props": {
+        "lines": [
+          "input() shows a question and waits",
+          "The answer comes back as a string",
+          "Save the answer in a name"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a beach-shack order pad: the waiter asks, you answer, and the answer is written down as text"
+        }
+      }
     },
     {
       "id": 3,
@@ -112,7 +123,17 @@
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] The input function shows the question in brackets, and waits. Whatever you type is tied to the name called name. [HL 2] A second question, and a second name. [HL 3] We greet the person by name. [HL 4] And print both answers in one line. The program now feels like a conversation."
+      "narration": "[HL 1] The input function shows the question in brackets, and waits. Whatever you type is tied to the name called name. [HL 2] A second question, and a second name. [HL 3] We greet the person by name. [HL 4] And print both answers in one line. The program now feels like a conversation.",
+      "code": {
+        "file": "ask.py",
+        "source": "name = input(\"Your name? \")\nbeach = input(\"Favourite beach? \")\nprint(\"Hello,\", name)\nprint(name, \"loves\", beach)",
+        "output": "Your name? Favourite beach? Hello, Asha\nAsha loves Palolem"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python ask.py",
+        "output": "Your name? Asha\nFavourite beach? Palolem\nHello, Asha\nAsha loves Palolem"
+      }
     },
     {
       "id": 4,
@@ -124,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is what input gives back. Whatever the user types, the answer is a string object. The name word is tied to the string crab. If the user types a number, it is still a string of digits. Remember this. It causes the bug of the day."
+      "narration": "Here is what input gives back. Whatever the user types, the answer is a string object. The name word is tied to the string crab. If the user types a number, it is still a string of digits. Remember this. It causes the bug of the day.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'crab'",
+                    "address": "str",
+                    "name": "word"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -136,7 +174,17 @@
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 1] [TRACK word=crab] We ask for a word. The user types crab. [HL 2] A string times two repeats the text. So we get crabcrab. [HL 3] The len function counts the characters, four. Here is the key point. Anything you type with input is text. Even when you type a number."
+      "narration": "[HL 1] [TRACK word=crab] We ask for a word. The user types crab. [HL 2] A string times two repeats the text. So we get crabcrab. [HL 3] The len function counts the characters, four. Here is the key point. Anything you type with input is text. Even when you type a number.",
+      "code": {
+        "file": "double.py",
+        "source": "word = input(\"Word? \")\nprint(word * 2)\nprint(len(word))",
+        "output": "Word? crabcrab\n4"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python double.py",
+        "output": "Word? crab\ncrabcrab\n4"
+      }
     },
     {
       "id": 6,
@@ -149,7 +197,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as double dot py. In the terminal, type python, space, double dot py. You type crab and press Enter. It prints crabcrab, then four."
+      "narration": "Save the file as double dot py. In the terminal, type python, space, double dot py. You type crab and press Enter. It prints crabcrab, then four.",
+      "props": {
+        "lines": [
+          {
+            "text": "python double.py",
+            "kind": "input"
+          },
+          {
+            "text": "Word? crab",
+            "kind": "output"
+          },
+          {
+            "text": "crabcrab",
+            "kind": "output"
+          },
+          {
+            "text": "4",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -161,7 +229,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: input shows a question and waits for the user. Two: The answer comes back as a string, always. Three: Save the answer in a name so you can use it later. Four: A number typed by the user is still text until you convert it. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: input shows a question and waits for the user. Two: The answer comes back as a string, always. Three: Save the answer in a name so you can use it later. Four: A number typed by the user is still text until you convert it. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Input shows a question and waits for the user.",
+          "The answer comes back as a string, always.",
+          "Save the answer in a name so you can use it later.",
+          "A number typed by the user is still text until you convert it."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -174,7 +251,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The user types five, then three. Our program prints fifty three, not eight. Why? Input gives strings. Plus joins strings. So the text five and the text three are joined. Wrap each answer in int, and Python adds the numbers. We look at int in four episodes."
+      "narration": "Bug of the Day. The user types five, then three. Our program prints fifty three, not eight. Why? Input gives strings. Plus joins strings. So the text five and the text three are joined. Wrap each answer in int, and Python adds the numbers. We look at int in four episodes.",
+      "props": {
+        "wrongCode": "a = input(\"First: \")\nb = input(\"Second: \")\nprint(a + b)",
+        "fixedCode": "a = input(\"First: \")\nb = input(\"Second: \")\nprint(int(a) + int(b))",
+        "error": "First: Second: 53",
+        "errorOverride": {
+          "lines": [
+            "First: Second: 53"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "input always returns a string, and plus joins strings, so the digits are joined instead of added; int() turns them into numbers first.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python ask.py",
+        "culprit": {
+          "wrong": 3,
+          "fixed": 3
+        }
+      }
     },
     {
       "id": 9,
@@ -210,7 +307,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: operators. Keep coding, says Xecxec!"
+      "narration": "Next time: operators. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 9,
+        "nextTitle": "Operators"
+      }
     }
   ],
   "bug": {
@@ -323,20 +424,23 @@
   ],
   "codeFiles": [
     {
-      "file": "file1.python",
+      "file": "ask.py",
       "source": "name = input(\"Your name? \")\nbeach = input(\"Favourite beach? \")\nprint(\"Hello,\", name)\nprint(name, \"loves\", beach)",
       "output": "Your name? Favourite beach? Hello, Asha\nAsha loves Palolem",
+      "stdin": "Asha\nPalolem",
       "lang": "python"
     },
     {
-      "file": "file2.python",
+      "file": "double.py",
       "source": "word = input(\"Word? \")\nprint(word * 2)\nprint(len(word))",
       "output": "Word? crabcrab\n4",
+      "stdin": "crab",
       "lang": "python"
     }
   ],
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

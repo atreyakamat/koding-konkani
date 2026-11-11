@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the plan. The computer picks a secret number between one and ten. The player guesses. The program says Too low or Too high, until the guess is right. That uses everything from this module. A loop that repeats, decisions with if, elif and else, and a counter for the number of tries. To get the secret number, we borrow a ready-made tool called random."
+      "narration": "Here is the plan. The computer picks a secret number between one and ten. The player guesses. The program says Too low or Too high, until the guess is right. That uses everything from this module. A loop that repeats, decisions with if, elif and else, and a counter for the number of tries. To get the secret number, we borrow a ready-made tool called random.",
+      "props": {
+        "lines": [
+          "The computer picks a secret number",
+          "The player guesses, and gets Too low or Too high",
+          "The loop ends when the guess is right"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a market game: the stall owner thinks of a number, and says higher or lower until you win"
+        }
+      }
     },
     {
       "id": 3,
@@ -112,7 +123,17 @@
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] Import brings in the random tool. [HL 2] The seed makes the random choice repeatable, so our video matches your screen. Without it, the number changes every run. [HL 3] A secret number from one to ten. [HL 4] The tries counter. [HL 5] While True means, loop forever, until we break. [HL 6] Ask for a guess, and convert it with int. [HL 7] Count the try. [HL 8] If the guess is too small, [HL 9] say Too low. [HL 10] If it is too big, [HL 11] say Too high. [HL 12] Otherwise it must be right, [HL 13] so print the tries, [HL 14] and break out of the loop."
+      "narration": "[HL 1] Import brings in the random tool. [HL 2] The seed makes the random choice repeatable, so our video matches your screen. Without it, the number changes every run. [HL 3] A secret number from one to ten. [HL 4] The tries counter. [HL 5] While True means, loop forever, until we break. [HL 6] Ask for a guess, and convert it with int. [HL 7] Count the try. [HL 8] If the guess is too small, [HL 9] say Too low. [HL 10] If it is too big, [HL 11] say Too high. [HL 12] Otherwise it must be right, [HL 13] so print the tries, [HL 14] and break out of the loop.",
+      "code": {
+        "file": "guess.py",
+        "source": "import random\nrandom.seed(4)\nsecret = random.randint(1, 10)\ntries = 0\nwhile True:\n    guess = int(input(\"Guess 1-10: \"))\n    tries = tries + 1\n    if guess < secret:\n        print(\"Too low\")\n    elif guess > secret:\n        print(\"Too high\")\n    else:\n        print(\"Correct in\", tries, \"tries\")\n        break",
+        "output": "Guess 1-10: Too high\nGuess 1-10: Too low\nGuess 1-10: Correct in 3 tries"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python guess.py",
+        "output": "Guess 1-10: 7\nToo high\nGuess 1-10: Too low\nGuess 1-10: Correct in 3 tries"
+      }
     },
     {
       "id": 4,
@@ -122,7 +143,198 @@
       "onScreen": "A flowchart of the game: pick secret, ask guess, compare three ways, loop back until Correct",
       "animation": "Flowchart boxes light up one at a time; the arrow follows the path Python takes, and the skipped branch stays grey",
       "sfx": [],
-      "narration": "Here is the whole game as a flow. Pick a secret. Ask for a guess. Compare it three ways, too low, too high, or right. If it is not right, loop back and ask again. If it is right, print the result and break out. Draw a flow like this before you write any game, and the code almost writes itself."
+      "narration": "Here is the whole game as a flow. Pick a secret. Ask for a guess. Compare it three ways, too low, too high, or right. If it is not right, loop back and ask again. If it is right, print the result and break out. Draw a flow like this before you write any game, and the code almost writes itself.",
+      "props": {
+        "lines": [
+          "Here is the whole game as a flow.",
+          "Pick a secret.",
+          "Ask for a guess."
+        ],
+        "analogy": null,
+        "illustration": {
+          "ep": 22,
+          "scene": 4,
+          "grid": {
+            "cols": 12,
+            "rows": 6
+          },
+          "objects": [
+            {
+              "id": "ask",
+              "shape": "box",
+              "text": "Ask for a guess",
+              "colour": "butter",
+              "col": 4,
+              "row": 0,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "low",
+              "shape": "box",
+              "text": "Too low",
+              "colour": "peach",
+              "col": 0,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "high",
+              "shape": "box",
+              "text": "Too high",
+              "colour": "peach",
+              "col": 4,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "ok",
+              "shape": "box",
+              "text": "Correct, break",
+              "colour": "mint",
+              "col": 8,
+              "row": 2,
+              "w": 3,
+              "h": 1
+            },
+            {
+              "id": "back",
+              "shape": "box",
+              "text": "Loop again",
+              "colour": "pastelBlue",
+              "col": 4,
+              "row": 4,
+              "w": 4,
+              "h": 1
+            },
+            {
+              "id": "a1",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "ask",
+              "to": "low"
+            },
+            {
+              "id": "a2",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "ask",
+              "to": "high"
+            },
+            {
+              "id": "a3",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "ask",
+              "to": "ok"
+            },
+            {
+              "id": "a4",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "low",
+              "to": "back"
+            },
+            {
+              "id": "a5",
+              "shape": "arrow",
+              "text": "",
+              "colour": "ink",
+              "from": "high",
+              "to": "back"
+            }
+          ],
+          "steps": [
+            {
+              "t": 0.0,
+              "do": "show",
+              "target": "ask",
+              "sfx": "pop"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "low"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "high"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "ok"
+            },
+            {
+              "t": 0.05,
+              "do": "show",
+              "target": "back"
+            },
+            {
+              "t": 0.2,
+              "do": "glow",
+              "target": "ask",
+              "sfx": "ding"
+            },
+            {
+              "t": 0.3,
+              "do": "draw",
+              "target": "a1",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.3,
+              "do": "draw",
+              "target": "a2"
+            },
+            {
+              "t": 0.35,
+              "do": "glow",
+              "target": "low"
+            },
+            {
+              "t": 0.5,
+              "do": "draw",
+              "target": "a4",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.5,
+              "do": "draw",
+              "target": "a5"
+            },
+            {
+              "t": 0.55,
+              "do": "glow",
+              "target": "back"
+            },
+            {
+              "t": 0.7,
+              "do": "draw",
+              "target": "a3",
+              "sfx": "whoosh"
+            },
+            {
+              "t": 0.75,
+              "do": "glow",
+              "target": "ok",
+              "sfx": "chime"
+            },
+            {
+              "t": 0.75,
+              "do": "dim",
+              "target": "high"
+            }
+          ]
+        }
+      }
     },
     {
       "id": 5,
@@ -139,6 +351,11 @@
         "file": "dice.py",
         "source": "import random\nrandom.seed(4)\nprint(random.randint(1, 10))\nprint(random.randint(1, 10))",
         "output": "4\n5"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python dice.py",
+        "output": "4\n5"
       }
     },
     {
@@ -152,7 +369,23 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as dice dot py. In the terminal, type python, space, dice dot py. Four, then five. The same two numbers every run, because of the seed."
+      "narration": "Save the file as dice dot py. In the terminal, type python, space, dice dot py. Four, then five. The same two numbers every run, because of the seed.",
+      "props": {
+        "lines": [
+          {
+            "text": "python dice.py",
+            "kind": "input"
+          },
+          {
+            "text": "4",
+            "kind": "output"
+          },
+          {
+            "text": "5",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -164,7 +397,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: random dot randint picks a whole number between two limits, including both. Two: A while True loop runs until a break. Three: if, elif and else give Too low, Too high or Correct. Four: int turns the typed text into a number before comparing. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: random dot randint picks a whole number between two limits, including both. Two: A while True loop runs until a break. Three: if, elif and else give Too low, Too high or Correct. Four: int turns the typed text into a number before comparing. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Random.randint picks a whole number between two limits, including both.",
+          "A while True loop runs until a break.",
+          "If, elif and else give Too low, Too high or Correct.",
+          "Int() turns the typed text into a number before comparing."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -177,7 +419,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We compare the guess with the secret, but the guess is still text. Python says, type error. Greater than is not supported between a string and an int. Remember, input always gives text. Wrap the answer in int, and now both sides are numbers. Then the comparison works."
+      "narration": "Bug of the Day. We compare the guess with the secret, but the guess is still text. Python says, type error. Greater than is not supported between a string and an int. Remember, input always gives text. Wrap the answer in int, and now both sides are numbers. Then the comparison works.",
+      "props": {
+        "wrongCode": "secret = 7\nguess = input(\"Guess: \")\nif guess > secret:\n    print(\"Too high\")",
+        "fixedCode": "secret = 7\nguess = int(input(\"Guess: \"))\nif guess > secret:\n    print(\"Too high\")",
+        "error": "  File \"guess.py\", line 3, in <module>\n    if guess > secret:\n       ^^^^^^^^^^^^^^\nTypeError: '>' not supported between instances of 'str' and 'int'",
+        "errorOverride": {
+          "lines": [
+            "  File \"guess.py\", line 3, in <module>",
+            "    if guess > secret:",
+            "       ^^^^^^^^^^^^^^",
+            "TypeError: '>' not supported between instances of 'str' and 'int'"
+          ]
+        },
+        "why": "input gives a string and a string cannot be compared with a number using greater than; convert the answer with int() first.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python guess.py",
+        "culprit": {
+          "wrong": 3,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -213,7 +477,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Module two is done! Next time: string methods, the tools that clean and change text. Keep coding, says Xecxec!"
+      "narration": "Module two is done! Next time: string methods, the tools that clean and change text. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 23,
+        "nextTitle": "String methods"
+      }
     }
   ],
   "bug": {
@@ -326,9 +594,10 @@
   ],
   "codeFiles": [
     {
-      "file": "file1.python",
+      "file": "guess.py",
       "source": "import random\nrandom.seed(4)\nsecret = random.randint(1, 10)\ntries = 0\nwhile True:\n    guess = int(input(\"Guess 1-10: \"))\n    tries = tries + 1\n    if guess < secret:\n        print(\"Too low\")\n    elif guess > secret:\n        print(\"Too high\")\n    else:\n        print(\"Correct in\", tries, \"tries\")\n        break",
       "output": "Guess 1-10: Too high\nGuess 1-10: Too low\nGuess 1-10: Correct in 3 tries",
+      "stdin": "7\n2\n4",
       "lang": "python"
     },
     {
@@ -341,5 +610,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

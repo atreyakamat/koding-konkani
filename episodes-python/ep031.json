@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A two dimensional list is a list whose items are lists. Each inner list is a row. Think of a cinema seating chart. A row number and a seat number find one seat. In Python, board, bracket, row, bracket, column. The first bracket picks the row. The second picks the item in that row. You loop over a grid with an outer loop for rows and an inner loop for cells."
+      "narration": "A two dimensional list is a list whose items are lists. Each inner list is a row. Think of a cinema seating chart. A row number and a seat number find one seat. In Python, board, bracket, row, bracket, column. The first bracket picks the row. The second picks the item in that row. You loop over a grid with an outer loop for rows and an inner loop for cells.",
+      "props": {
+        "lines": [
+          "A 2D list is a list of lists",
+          "board[row][col] picks one cell",
+          "Loop rows with an outer loop and cells with an inner loop"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a cinema seating chart: a row number and a seat number find one seat"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "board.py",
         "source": "board = [[1, 2, 3], [4, 5, 6]]\nprint(board[0])\nprint(board[1][2])\nboard[0][0] = 9\nprint(board)",
         "output": "[1, 2, 3]\n6\n[[9, 2, 3], [4, 5, 6]]"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python board.py",
+        "output": "[1, 2, 3]\n6\n[[9, 2, 3], [4, 5, 6]]"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. One name, board, tied to one outer list. The outer list holds two arrows, one for each row. Each row is its own list, with its own numbers. A grid in Python is not a flat block. It is a list that points at other lists. That fact matters for the bug of the day."
+      "narration": "Here is the picture. One name, board, tied to one outer list. The outer list holds two arrows, one for each row. Each row is its own list, with its own numbers. A grid in Python is not a flat block. It is a list that points at other lists. That fact matters for the bug of the day.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "[[9, 2, 3], [4, 5, 6]]",
+                    "address": "list",
+                    "name": "board"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "grid_total.py",
         "source": "board = [[1, 2, 3], [4, 5, 6]]\ntotal = 0\nfor row in board:\n    for cell in row:\n        total = total + cell\nprint(total)",
         "output": "21"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python grid_total.py",
+        "output": "21"
       }
     },
     {
@@ -159,7 +197,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as grid_total dot py. In the terminal, type python, space, grid_total dot py. Twenty one."
+      "narration": "Save the file as grid_total dot py. In the terminal, type python, space, grid_total dot py. Twenty one.",
+      "props": {
+        "lines": [
+          {
+            "text": "python grid_total.py",
+            "kind": "input"
+          },
+          {
+            "text": "21",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +221,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A 2D list is a list of lists. Two: boardrowcol picks one cell, row first. Three: An outer loop walks rows and an inner loop walks cells. Four: Never build a grid by multiplying a list of lists. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A 2D list is a list of lists. Two: boardrowcol picks one cell, row first. Three: An outer loop walks rows and an inner loop walks cells. Four: Never build a grid by multiplying a list of lists. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A 2D list is a list of lists.",
+          "Board[row][col] picks one cell, row first.",
+          "An outer loop walks rows and an inner loop walks cells.",
+          "Never build a grid by multiplying a list of lists."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +243,27 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We build a three by three grid of zeros, and set the top left cell to one. But three cells changed, one in every row. Multiplying a list repeats the same inner list three times. All three rows are one list. Build each row separately in a loop, and each row gets its own list."
+      "narration": "Bug of the Day. We build a three by three grid of zeros, and set the top left cell to one. But three cells changed, one in every row. Multiplying a list repeats the same inner list three times. All three rows are one list. Build each row separately in a loop, and each row gets its own list.",
+      "props": {
+        "wrongCode": "grid = [[0] * 3] * 3\ngrid[0][0] = 1\nprint(grid)",
+        "fixedCode": "grid = []\nfor row in range(3):\n    grid.append([0] * 3)\ngrid[0][0] = 1\nprint(grid)",
+        "error": "[[1, 0, 0], [1, 0, 0], [1, 0, 0]]",
+        "errorOverride": {
+          "lines": [
+            "[[1, 0, 0], [1, 0, 0], [1, 0, 0]]"
+          ],
+          "caption": "wrong output"
+        },
+        "why": "Multiplying a list of lists repeats the same inner list three times, so all rows are one object; build each row separately.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python board.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +299,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: the marks tracker mini project. Keep coding, says Xecxec!"
+      "narration": "Next time: the marks tracker mini project. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 32,
+        "nextTitle": "Mini project: Marks tracker"
+      }
     }
   ],
   "bug": {
@@ -348,5 +431,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

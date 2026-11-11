@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Polymorphism means many shapes. You call the same method on different objects, and each one responds in its own way. Python goes further. It does not check the class at all. It only asks, does this object have the method I am calling? This is called duck typing. If it walks like a duck, and quacks like a duck, treat it as a duck. Think of a remote with a play button. It works on any device that knows how to play."
+      "narration": "Polymorphism means many shapes. You call the same method on different objects, and each one responds in its own way. Python goes further. It does not check the class at all. It only asks, does this object have the method I am calling? This is called duck typing. If it walks like a duck, and quacks like a duck, treat it as a duck. Think of a remote with a play button. It works on any device that knows how to play.",
+      "props": {
+        "lines": [
+          "Polymorphism: one call, many behaviours",
+          "Python does not check the class, only the method",
+          "If it quacks like a duck, treat it as a duck"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a remote with a play button: it works on any device that knows how to play, whatever the brand"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "shapes.py",
         "source": "class Square:\n    def __init__(self, side):\n        self.side = side\n\n    def area(self):\n        return self.side * self.side\n\nclass Circle:\n    def __init__(self, radius):\n        self.radius = radius\n\n    def area(self):\n        return round(3.14159 * self.radius ** 2, 2)\n\nshapes = [Square(3), Circle(2), Square(4)]\nfor shape in shapes:\n    print(type(shape).__name__, shape.area())",
         "output": "Square 9\nCircle 12.57\nSquare 16"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python shapes.py",
+        "output": "Square 9\nCircle 12.57\nSquare 16"
       }
     },
     {
@@ -129,7 +145,24 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The name shapes is tied to one list. Inside the list sit three objects, two squares and a circle. The classes are unrelated, there is no parent class at all. But all three know area, so the loop works. Python cares only about what an object can do, not what it is called."
+      "narration": "Here is the picture. The name shapes is tied to one list. Inside the list sit three objects, two squares and a circle. The classes are unrelated, there is no parent class at all. But all three know area, so the loop works. Python cares only about what an object can do, not what it is called.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "[<Square object>, <Circle obj…",
+                    "address": "list",
+                    "name": "shapes"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +179,11 @@
         "file": "ducks.py",
         "source": "class Duck:\n    def speak(self):\n        return \"Quack\"\n\nclass Robot:\n    def speak(self):\n        return \"Beep\"\n\nclass Rock:\n    pass\n\ndef talk(thing):\n    return thing.speak()\n\nprint(talk(Duck()))\nprint(talk(Robot()))\nprint(hasattr(Rock(), \"speak\"))",
         "output": "Quack\nBeep\nFalse"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python ducks.py",
+        "output": "Quack\nBeep\nFalse"
       }
     },
     {
@@ -159,7 +197,27 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as ducks dot py. In the terminal, type python, space, ducks dot py. Square 9, Circle 12.57, Square 16. Then Quack, Beep, False."
+      "narration": "Save the file as ducks dot py. In the terminal, type python, space, ducks dot py. Square 9, Circle 12.57, Square 16. Then Quack, Beep, False.",
+      "props": {
+        "lines": [
+          {
+            "text": "python ducks.py",
+            "kind": "input"
+          },
+          {
+            "text": "Quack",
+            "kind": "output"
+          },
+          {
+            "text": "Beep",
+            "kind": "output"
+          },
+          {
+            "text": "False",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +229,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: Polymorphism: the same call behaves differently on different objects. Two: Python checks only that the method exists. Three: That is duck typing: if it quacks, treat it as a duck. Four: Use hasattr to test for a method. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: Polymorphism: the same call behaves differently on different objects. Two: Python checks only that the method exists. Three: That is duck typing: if it quacks, treat it as a duck. Four: Use hasattr to test for a method. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "Polymorphism: the same call behaves differently on different objects.",
+          "Python checks only that the method exists.",
+          "That is duck typing: if it quacks, treat it as a duck.",
+          "Use hasattr to test for a method."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +251,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The talk function calls speak, but our Robot only has a method named beep. Python finds out at the moment of the call. Attribute error, Robot object has no attribute speak. Duck typing needs every object to offer the method that the function calls."
+      "narration": "Bug of the Day. The talk function calls speak, but our Robot only has a method named beep. Python finds out at the moment of the call. Attribute error, Robot object has no attribute speak. Duck typing needs every object to offer the method that the function calls.",
+      "props": {
+        "wrongCode": "class Robot:\n    def beep(self):\n        return \"Beep\"\n\ndef talk(thing):\n    return thing.speak()\n\nprint(talk(Robot()))",
+        "fixedCode": "class Robot:\n    def speak(self):\n        return \"Beep\"\n\ndef talk(thing):\n    return thing.speak()\n\nprint(talk(Robot()))",
+        "error": "  File \"talk.py\", line 6, in talk\n    return thing.speak()\n           ^^^^^^^^^^^\nAttributeError: 'Robot' object has no attribute 'speak'",
+        "errorOverride": {
+          "lines": [
+            "  File \"talk.py\", line 6, in talk",
+            "    return thing.speak()",
+            "           ^^^^^^^^^^^",
+            "AttributeError: 'Robot' object has no attribute 'speak'"
+          ]
+        },
+        "why": "Duck typing only works if the object really has the method you call. Python finds out when the call happens, and raises an AttributeError.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python shapes.py",
+        "culprit": {
+          "wrong": 8,
+          "fixed": 2
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +309,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: encapsulation and properties. Keep coding, says Xecxec!"
+      "narration": "Next time: encapsulation and properties. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 70,
+        "nextTitle": "Encapsulation and properties"
+      }
     }
   ],
   "bug": {
@@ -348,5 +441,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }

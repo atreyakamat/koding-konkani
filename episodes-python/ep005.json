@@ -99,7 +99,18 @@
       "sfx": [
         "pop"
       ],
-      "narration": "A variable is a name tied to a value. You write the name, an equals sign, and the value. Think of a beach shack. The signboard is the name, and the shack is the value. The sign can be moved to a different shack later. The rules are simple. Use letters, digits and underscores. Never start with a digit, and never use spaces. Capital and small letters count as different names."
+      "narration": "A variable is a name tied to a value. You write the name, an equals sign, and the value. Think of a beach shack. The signboard is the name, and the shack is the value. The sign can be moved to a different shack later. The rules are simple. Use letters, digits and underscores. Never start with a digit, and never use spaces. Capital and small letters count as different names.",
+      "props": {
+        "lines": [
+          "A name is tied to a value with =",
+          "Rules: letters, digits, underscore; no spaces",
+          "Capital and small letters are different"
+        ],
+        "analogy": {
+          "title": "Think of it like this",
+          "body": "a beach-shack signboard: the board is the name, the shack is the value"
+        }
+      }
     },
     {
       "id": 3,
@@ -117,6 +128,11 @@
         "file": "beach.py",
         "source": "beach = \"Calangute\"\nvisitors = 120\nvisitors = visitors + 30\nprint(beach, visitors)",
         "output": "Calangute 150"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python beach.py",
+        "output": "Calangute 150"
       }
     },
     {
@@ -129,7 +145,46 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Here is what Python holds after the code runs. The name beach is tied to the text Calangute. The name visitors is tied to the number one hundred fifty. The old value, one hundred twenty, has no name on it any more. Python tidies it away. Remember the picture: names are tags, and the objects are the things they point at."
+      "narration": "Here is what Python holds after the code runs. The name beach is tied to the text Calangute. The name visitors is tied to the number one hundred fifty. The old value, one hundred twenty, has no name on it any more. Python tidies it away. Remember the picture: names are tags, and the objects are the things they point at.",
+      "memory": {
+        "frames": [
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'Calangute'",
+                    "address": "str",
+                    "name": "beach"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "groups": [
+              {
+                "cells": [
+                  {
+                    "value": "'Calangute'",
+                    "address": "str",
+                    "name": "beach"
+                  }
+                ]
+              },
+              {
+                "cells": [
+                  {
+                    "value": "150",
+                    "address": "int",
+                    "name": "visitors"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": 5,
@@ -146,6 +201,11 @@
         "file": "swap.py",
         "source": "left = \"fish\"\nright = \"curry\"\nleft, right = right, left\nprint(left, right)",
         "output": "curry fish"
+      },
+      "props": {
+        "lang": "python",
+        "command": "python swap.py",
+        "output": "curry fish"
       }
     },
     {
@@ -159,7 +219,19 @@
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as swap dot py. In the terminal, type python, space, swap dot py. It prints curry fish. The two names traded places."
+      "narration": "Save the file as swap dot py. In the terminal, type python, space, swap dot py. It prints curry fish. The two names traded places.",
+      "props": {
+        "lines": [
+          {
+            "text": "python swap.py",
+            "kind": "input"
+          },
+          {
+            "text": "curry fish",
+            "kind": "output"
+          }
+        ]
+      }
     },
     {
       "id": 7,
@@ -171,7 +243,16 @@
       "sfx": [
         "pop"
       ],
-      "narration": "Let us recap. One: A variable is a name tied to a value with the equals sign. Two: Names use letters, digits and underscores, never start with a digit, and have no spaces. Three: Reusing a name ties it to a new value. Four: Capital and small letters are different names. Pause the video, and say these ideas out loud, once, slowly."
+      "narration": "Let us recap. One: A variable is a name tied to a value with the equals sign. Two: Names use letters, digits and underscores, never start with a digit, and have no spaces. Three: Reusing a name ties it to a new value. Four: Capital and small letters are different names. Pause the video, and say these ideas out loud, once, slowly.",
+      "props": {
+        "lines": [
+          "A variable is a name tied to a value with the equals sign.",
+          "Names use letters, digits and underscores, never start with a digit, and have no spaces.",
+          "Reusing a name ties it to a new value.",
+          "Capital and small letters are different names."
+        ],
+        "analogy": null
+      }
     },
     {
       "id": 8,
@@ -184,7 +265,29 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We print total before we ever make it. Python says, name error, total is not defined. Python reads from the top, and at line one the name does not exist yet. Move the assignment above the print, and it works."
+      "narration": "Bug of the Day. We print total before we ever make it. Python says, name error, total is not defined. Python reads from the top, and at line one the name does not exist yet. Move the assignment above the print, and it works.",
+      "props": {
+        "wrongCode": "print(total)\ntotal = 10",
+        "fixedCode": "total = 10\nprint(total)",
+        "error": "  File \"beach.py\", line 1, in <module>\n    print(total)\n          ^^^^^\nNameError: name 'total' is not defined",
+        "errorOverride": {
+          "lines": [
+            "  File \"beach.py\", line 1, in <module>",
+            "    print(total)",
+            "          ^^^^^",
+            "NameError: name 'total' is not defined"
+          ]
+        },
+        "why": "Python runs lines from top to bottom, so a name must be tied to a value before any line reads it.",
+        "wrongIsCode": true,
+        "fixedIsCode": true,
+        "lang": "python",
+        "command": "python beach.py",
+        "culprit": {
+          "wrong": 1,
+          "fixed": 1
+        }
+      }
     },
     {
       "id": 9,
@@ -220,7 +323,11 @@
       "sfx": [
         "whoosh"
       ],
-      "narration": "Next time: numbers, int and float. Keep coding, says Xecxec!"
+      "narration": "Next time: numbers, int and float. Keep coding, says Xecxec!",
+      "props": {
+        "nextEp": 6,
+        "nextTitle": "Numbers: int and float"
+      }
     }
   ],
   "bug": {
@@ -348,5 +455,6 @@
   "bugExtra": {
     "wrongLang": "python",
     "fixedHasFullProgram": false
-  }
+  },
+  "lang": "python"
 }
