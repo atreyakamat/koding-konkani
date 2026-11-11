@@ -18,6 +18,7 @@
     "episodes:build": ".venv\\Scripts\\python.exe scripts/bible_to_json.py && node scripts/validate_episodes.mts",
     "episodes:check": ".venv\\Scripts\\python.exe scripts/check_c.py",
     "episode": "node scripts/episode.mts",
+    "system:check": "node scripts/check_system.mts",
     "cpp:build": ".venv\\Scripts\\python.exe scripts/bible_to_json.py --lang cpp && node scripts/check_render_ready.mts --lang cpp",
     "cpp:ready": "node scripts/check_render_ready.mts --lang cpp",
     "cpp:smoke": "node scripts/smoke_render.mts --lang cpp",

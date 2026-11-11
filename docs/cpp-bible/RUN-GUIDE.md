@@ -1,5 +1,7 @@
 # C++ course: run guide (Windows 11, PowerShell)
 
+For an agent-run version, see `AGENT-RUNBOOK.md`. Run `npm run system:check` first.
+
 Follow the steps in order. Each step says what you should see. If a check fails, the video does not start rendering. Nothing renders into the repo: all output goes to `out/`.
 
 Run every command in the repo folder: `cd C:\path\to\koding-konkani`.
