@@ -3,6 +3,8 @@ soundfile>=0.12
 piper-tts>=1.2
 numpy>=1.26
 faster-whisper>=1.2
+# faster-whisper 1.2.x breaks with av 17 and newer (TypeError: open() got an unexpected keyword argument 'metadata_errors').
+av<17
 # Piper's own phoneme-alignment output isn't available for en_US-ryan-high.onnx
 # (phoneme_alignments comes back None), so faster-whisper is the real word-timestamp
 # source per CLAUDE.md's "Piper phoneme timing if available, otherwise faster-whisper".

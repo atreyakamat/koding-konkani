@@ -75,43 +75,49 @@ const still = async (
   name: string,
 ): Promise<void> => {
   const what = `${name}`;
-  try {
-    const composition = await selectComposition({
-      serveUrl: bundleUrl,
-      id,
-      inputProps: props,
-      puppeteerInstance: browser,
-      timeoutInMilliseconds: 120000,
-    });
-    const at = Math.min(Math.max(0, frame), composition.durationInFrames - 1);
-    const output = join(outDir, `${name}.jpg`);
-    await renderStill({
-      composition,
-      serveUrl: bundleUrl,
-      output,
-      frame: at,
-      inputProps: props,
-      imageFormat: "jpeg",
-      jpegQuality: 75,
-      scale,
-      puppeteerInstance: browser,
-      timeoutInMilliseconds: 120000,
-    });
-    const { min, max } = lumaRange(output);
-    const flat = !(max - min >= 40);
-    rows.push({
-      what,
-      ok: !flat,
-      note: flat ? `BLANK frame (luma ${min}-${max})` : `luma ${min}-${max}`,
-    });
-  } catch (error) {
-    rows.push({
-      what,
-      ok: false,
-      note: `RENDER ERROR: ${String((error as Error).message)
-        .split("\n")[0]
-        .slice(0, 200)}`,
-    });
+  // One retry for render errors only: on Windows the browser sometimes drops a socket
+  // (ERR_NO_BUFFER_SPACE). A blank frame is never retried.
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const composition = await selectComposition({
+        serveUrl: bundleUrl,
+        id,
+        inputProps: props,
+        puppeteerInstance: browser,
+        timeoutInMilliseconds: 120000,
+      });
+      const at = Math.min(Math.max(0, frame), composition.durationInFrames - 1);
+      const output = join(outDir, `${name}.jpg`);
+      await renderStill({
+        composition,
+        serveUrl: bundleUrl,
+        output,
+        frame: at,
+        inputProps: props,
+        imageFormat: "jpeg",
+        jpegQuality: 75,
+        scale,
+        puppeteerInstance: browser,
+        timeoutInMilliseconds: 120000,
+      });
+      const { min, max } = lumaRange(output);
+      const flat = !(max - min >= 40);
+      rows.push({
+        what,
+        ok: !flat,
+        note: flat ? `BLANK frame (luma ${min}-${max})` : `luma ${min}-${max}`,
+      });
+      return;
+    } catch (error) {
+      if (attempt === 1) continue;
+      rows.push({
+        what,
+        ok: false,
+        note: `RENDER ERROR: ${String((error as Error).message)
+          .split("\n")[0]
+          .slice(0, 200)}`,
+      });
+    }
   }
 };
 
