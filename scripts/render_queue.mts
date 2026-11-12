@@ -31,16 +31,24 @@ const argv = process.argv.slice(2);
 const langFlag = argv.indexOf("--lang");
 const LANG = langFlag >= 0 ? (argv[langFlag + 1] ?? "") : (process.env.KK_LANG ?? "c");
 if (langFlag >= 0) argv.splice(langFlag, 2);
+// --1080: render the long video at 1920x1080 instead of 4K (about a quarter of the memory).
+const hd = argv.includes("--1080");
+if (hd) argv.splice(argv.indexOf("--1080"), 1);
+const LONG_SCALE = hd ? 1 : 2;
+const LONG_W = 1920 * LONG_SCALE;
+const LONG_H = 1080 * LONG_SCALE;
+const LONG_TAG = hd ? "1080" : "4k";
 if (!["c", "cpp", "python"].includes(LANG)) {
   console.error(`--lang must be c, cpp or python (got ${LANG})`);
   process.exit(1);
 }
-const EPISODES_DIRNAME = LANG === "cpp" ? "episodes-cpp" : LANG === "python" ? "episodes-python" : "episodes";
+const EPISODES_DIRNAME =
+  LANG === "cpp" ? "episodes-cpp" : LANG === "python" ? "episodes-python" : "episodes";
 const langProps = LANG === "c" ? {} : { lang: LANG };
 
 const episodeNumbers = argv.map(Number);
 if (episodeNumbers.length === 0 || episodeNumbers.some((n) => !Number.isInteger(n) || n < 1)) {
-  console.error("usage: node scripts/render_queue.mts [--lang c|cpp] <episode-number...>");
+  console.error("usage: node scripts/render_queue.mts [--lang c|cpp] [--1080] <episode-number...>");
   process.exit(1);
 }
 
@@ -60,9 +68,14 @@ if (LANG === "c") {
 } else {
   // Other courses: every scene must have the data it draws (no empty or black scenes). Static, takes seconds.
   try {
-    execFileSync(process.execPath, ["scripts/check_render_ready.mts", "--lang", LANG], { cwd: ROOT, stdio: "inherit" });
+    execFileSync(process.execPath, ["scripts/check_render_ready.mts", "--lang", LANG], {
+      cwd: ROOT,
+      stdio: "inherit",
+    });
   } catch {
-    console.error("check_render_ready failed: an episode is missing data a scene needs. Not rendering.");
+    console.error(
+      "check_render_ready failed: an episode is missing data a scene needs. Not rendering.",
+    );
     process.exit(1);
   }
 }
@@ -175,11 +188,30 @@ const renderJob = (
 
 /** Black stretches (>= 0.2 s) inside the video, ignoring the first and last 0.3 s. Uses ffmpeg blackdetect on a small copy. */
 const blackSegmentsOf = (path: string): { start: number; end: number }[] => {
-  const r = spawnSync("ffmpeg", ["-hide_banner", "-i", path, "-vf", "scale=320:-2,blackdetect=d=0.2:pix_th=0.05", "-an", "-f", "null", "-"], {
-    encoding: "utf-8",
-  });
+  const r = spawnSync(
+    "ffmpeg",
+    [
+      "-hide_banner",
+      "-i",
+      path,
+      "-vf",
+      "scale=320:-2,blackdetect=d=0.2:pix_th=0.05",
+      "-an",
+      "-f",
+      "null",
+      "-",
+    ],
+    {
+      encoding: "utf-8",
+    },
+  );
   const text = `${r.stderr ?? ""}`;
-  const dur = Number(text.match(/Duration: (\d+):(\d+):(\d+\.\d+)/)?.slice(1).reduce((a, v, i) => a + Number(v) * [3600, 60, 1][i], 0) ?? 0);
+  const dur = Number(
+    text
+      .match(/Duration: (\d+):(\d+):(\d+\.\d+)/)
+      ?.slice(1)
+      .reduce((a, v, i) => a + Number(v) * [3600, 60, 1][i], 0) ?? 0,
+  );
   const out: { start: number; end: number }[] = [];
   for (const m of text.matchAll(/black_start:(\d+(?:\.\d+)?) black_end:(\d+(?:\.\d+)?)/g)) {
     const start = Number(m[1]);
@@ -248,7 +280,10 @@ const qaCheck = (
   // A black frame anywhere inside the video (not the first/last fraction of a second) is a failed render.
   const blackSegments = blackSegmentsOf(outPath);
   if (blackSegments.length > 0) {
-    ffprobeLine += ` | BLACK at ${blackSegments.slice(0, 3).map((b) => `${b.start.toFixed(1)}s`).join(", ")}`;
+    ffprobeLine += ` | BLACK at ${blackSegments
+      .slice(0, 3)
+      .map((b) => `${b.start.toFixed(1)}s`)
+      .join(", ")}`;
     pass = false;
   }
 
@@ -285,11 +320,15 @@ for (const ep of episodeNumbers) {
   // Only the JSON is refreshed; the audio, cues and captions are untouched.
   const voiceDir = join(ROOT, "audio", "voice", epId);
   if (existsSync(join(voiceDir, ".fake"))) {
-    console.error(`${epId}: audio is silent dry-run audio. Run: python scripts/render_episode_audio.py ${ep} --lang ${LANG}`);
+    console.error(
+      `${epId}: audio is silent dry-run audio. Run: python scripts/render_episode_audio.py ${ep} --lang ${LANG}`,
+    );
     process.exit(1);
   }
   if (!existsSync(join(voiceDir, "manifest.json"))) {
-    console.error(`${epId}: no narration yet. Run: python scripts/render_episode_audio.py ${ep} --lang ${LANG}`);
+    console.error(
+      `${epId}: no narration yet. Run: python scripts/render_episode_audio.py ${ep} --lang ${LANG}`,
+    );
     process.exit(1);
   }
   if (existsSync(voiceDir)) {
@@ -301,16 +340,16 @@ for (const ep of episodeNumbers) {
   writeFileSync(propsFile, JSON.stringify({ episodeNumber: ep, ...langProps }), "utf-8");
 
   const longConcurrency = pickConcurrency(2, `${epId} long`);
-  const longOut = join(outDir, `${epId}-4k.mp4`);
+  const longOut = join(outDir, `${epId}-${LONG_TAG}.mp4`);
   const longStatus = renderJob(
-    `${epId} long 4K`,
+    `${epId} long ${LONG_TAG}`,
     "LongVideo",
     longOut,
     [
       `--props=${propsFile}`,
       "--codec=h264",
       "--crf=18",
-      "--scale=2",
+      `--scale=${LONG_SCALE}`,
       "--x264-preset=medium",
       "--audio-bitrate=320k",
       // Fonts are fetched from Google at render start; a DNS blip inside the default
@@ -318,15 +357,19 @@ for (const ep of episodeNumbers) {
       "--timeout=120000",
       `--concurrency=${longConcurrency}`,
     ],
-    3840,
-    2160,
+    LONG_W,
+    LONG_H,
   );
-  const longQa = qaCheck(longOut, 3840, 2160);
-  rows.push({ file: `${epId}-4k.mp4`, status: longStatus, ...longQa });
+  const longQa = qaCheck(longOut, LONG_W, LONG_H);
+  rows.push({ file: `${epId}-${LONG_TAG}.mp4`, status: longStatus, ...longQa });
 
   for (const shortId of ["S1", "S2", "S3", "S4", "S5"]) {
     const shortPropsFile = join(outDir, `.props-short-${shortId}.json`);
-    writeFileSync(shortPropsFile, JSON.stringify({ episodeNumber: ep, shortId, ...langProps }), "utf-8");
+    writeFileSync(
+      shortPropsFile,
+      JSON.stringify({ episodeNumber: ep, shortId, ...langProps }),
+      "utf-8",
+    );
     // Lowered from 4 after a live OOM kill mid-queue; 2/2 for both long and
     // Shorts per the owner's explicit instruction following that.
     const shortConcurrency = pickConcurrency(2, `${epId} ${shortId}`);

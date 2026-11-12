@@ -102,6 +102,7 @@ After each module, report the summary table from the queue and `out\render-queue
 | `open() got an unexpected keyword argument 'metadata_errors'` | faster-whisper and av version clash | `.venv\Scripts\python.exe -m pip install "av<17"` (now in requirements.txt) |
 | Smoke: `ERR_NO_BUFFER_SPACE` or socket error | Windows browser socket dropped | The smoke test retries once by itself. If it still fails, re-run only that episode |
 | Python 3.13 will not start | Broken install | Use Python 3.12 for the venv: `py -3.12 -m venv .venv` |
+| Long video fails with out of memory (4K needs about 13 GB RAM) | PC has 16 GB or less | Close other apps, or use 1080p: `npm run cpp:render -- --1080 1` |
 | Out of memory | RAM too high | The queue lowers concurrency by itself. If it still fails, report. STOP |
 
 ## Report format
