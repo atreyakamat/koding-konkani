@@ -3,7 +3,7 @@
   "ep": 6,
   "title": "Reading input with cin",
   "module": 1,
-  "lengthSec": 289,
+  "lengthSec": 408,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Input with cin: Ask the User a Question | C++ Programming EP 06",
-    "description": "In this episode you will read a number with cin, read two values in one line and use the right arrows for input and output, with Xecxec the crab. 0:00 Intro · 0:15 Reading input with cin · 0:45 Ask for an age · 1:25 Data flows through arrows · 1:55 Second program · 2:55 Recap · 3:26 Bug of the Day · 4:14 Challenge · 4:34 Next episode",
+    "description": "In this episode you will read a number with cin, read two values in one line and use the right arrows for input and output, with Xecxec the crab. 0:00 Intro · 0:15 Reading input with cin · 1:21 Ask for an age · 2:37 Data flows through arrows · 3:20 Second program · 4:38 Recap · 5:09 Bug of the Day · 6:10 Challenge · 6:33 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Reading input with cin"
       },
       {
-        "t": "0:45",
+        "t": "1:21",
         "label": "Ask for an age"
       },
       {
-        "t": "1:25",
+        "t": "2:37",
         "label": "Data flows through arrows"
       },
       {
-        "t": "1:55",
+        "t": "3:20",
         "label": "Second program"
       },
       {
-        "t": "2:55",
+        "t": "4:38",
         "label": "Recap"
       },
       {
-        "t": "3:26",
+        "t": "5:09",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:14",
+        "t": "6:10",
         "label": "Challenge"
       },
       {
-        "t": "4:34",
+        "t": "6:33",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 66,
       "onScreen": "\"Reading input with cin\": numbered lines (1. cout sends data out; 2. cin brings data in; 3. The arrows show the direction) and an analogy card: a ticket counter: the program asks, and you answer through the window",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Cout sends data out to the screen. Cin brings data in from the keyboard. The arrows show the direction of the data. For cout, the arrows point toward cout. For cin, they point toward the variable. Think of a ticket counter. The clerk asks where you go, and you answer.",
+      "narration": "Cout sends data out to the screen. Cin brings data in from the keyboard. The arrows show the direction of the data. For cout, the arrows point toward cout. For cin, they point toward the variable. Think of a ticket counter. The clerk asks where you go, and you answer. Think about what the program does while it waits. It stops at the cin line and does nothing else. The keyboard fills a small buffer, and cin reads from that buffer when you press Enter. Cin skips spaces and new lines before a number. That is why you can type the numbers on one line or on two lines. Both ways work the same.",
       "points": [
         "cout sends data out",
         "cin brings data in",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 40,
+      "startSec": 81,
+      "lengthSec": 76,
       "onScreen": "age.cpp: the program asks for an age and adds one",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] First we make an int called age. [HL 6] Then we print a question. There is no endl, so the cursor stays on the same line. [HL 7] Now cin reads a number from the keyboard and stores it in age. The arrows point at the variable. [HL 8] Last, we print age plus one. The program waits at line seven until you press Enter.",
+      "narration": "[HL 5] First we make an int called age. [HL 6] Then we print a question. There is no endl, so the cursor stays on the same line. [HL 7] Now cin reads a number from the keyboard and stores it in age. The arrows point at the variable. [HL 8] Last, we print age plus one. The program waits at line seven until you press Enter. [HL 5] The variable age has no value yet, but cin gives it one on line seven, so this is safe. [HL 6] A good program always tells the user what to type. Without the question, the user only sees a blinking cursor. [HL 7] If you type a word instead of a number, cin fails, and age gets no good value. We handle that later in the course. [HL 8] The plus one happens first, and then cout prints the result.",
       "code": {
         "file": "age.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int age;\n    cout << \"Enter your age: \";\n    cin >> age;\n    cout << \"Next year you will be \" << age + 1 << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 85,
-      "lengthSec": 30,
+      "startSec": 157,
+      "lengthSec": 43,
       "onScreen": "a flow of data from the keyboard into the variable",
       "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
       "sfx": [
         "pop"
       ],
-      "narration": "Follow the data. You type a number on the keyboard. The cin tool reads it. The variable age stores it. Then cout prints a new number built from age.",
+      "narration": "Follow the data. You type a number on the keyboard. The cin tool reads it. The variable age stores it. Then cout prints a new number built from age. Notice that the flow goes in one direction only. The keyboard sends characters, and cin turns them into a number. The number lands in the variable. After that, the variable is an ordinary box, and you can use it as often as you like.",
       "diagram": {
         "kind": "flow",
         "caption": "a flow of data from the keyboard into the variable",
@@ -171,14 +171,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 115,
-      "lengthSec": 40,
+      "startSec": 200,
+      "lengthSec": 49,
       "onScreen": "sum.cpp: one cin line reads two numbers",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 5] We make two ints in one line. [HL 7] One cin line reads both numbers. Type them with a space between. [TRACK a=4] The first number goes into a. [TRACK b=9] The second number goes into b. [HL 8] Then we print the sum, which is thirteen.",
+      "narration": "[HL 5] We make two ints in one line. [HL 7] One cin line reads both numbers. Type them with a space between. [TRACK a=4] The first number goes into a. [TRACK b=9] The second number goes into b. [HL 8] Then we print the sum, which is thirteen. [HL 6] The prompt says two numbers, so the user knows what to do. [HL 7] The arrows can chain. Each pair of arrows reads one value, from left to right. Cin splits the input at the spaces, so one space, a tab or a new line all work.",
       "code": {
         "file": "sum.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cout << \"Enter two numbers: \";\n    cin >> a >> b;\n    cout << \"Sum: \" << a + b << endl;\n    return 0;\n}",
@@ -188,20 +188,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 155,
-      "lengthSec": 20,
+      "startSec": 249,
+      "lengthSec": 29,
       "onScreen": "Terminal: g++ -std=c++20 sum.cpp -o sum then ./sum",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as sum dot cpp. Compile it with g plus plus. Then run the program. Type four, a space, and nine. Then press Enter. The program prints the sum."
+      "narration": "Save the file as sum dot cpp. Compile it with g plus plus. Then run the program. Type four, a space, and nine. Then press Enter. The program prints the sum. Try a few more pairs yourself. Type two large numbers, and check the sum with a calculator."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 175,
+      "startSec": 278,
       "lengthSec": 31,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -219,20 +219,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 206,
-      "lengthSec": 40,
+      "startSec": 309,
+      "lengthSec": 53,
       "onScreen": "BUG OF THE DAY: The arrows point the wrong way",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Here cin has arrows that point at cin. The compiler says no match for operator, with a long list. Do not panic. The first line is the clue. Cin needs arrows that point at the variable. Change them, and the program builds."
+      "narration": "Bug of the Day. Here cin has arrows that point at cin. The compiler says no match for operator, with a long list. Do not panic. The first line is the clue. Cin needs arrows that point at the variable. Change them, and the program builds. This error message is long, but the cause is short. The compiler tries every version of the arrows it knows, and none fits. So it lists them all. Skip the list. Read only the first line, and look at the arrows in your own code."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 246,
+      "startSec": 362,
       "lengthSec": 8,
       "onScreen": "Why did the program wait for the user? It had a lot of input about commitment.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -244,19 +244,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 254,
-      "lengthSec": 20,
+      "startSec": 370,
+      "lengthSec": 23,
       "onScreen": "Task card: ask for two numbers and print their product",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Ask the user for the length and width of a room. Print the area. Write your answer in the comments."
+      "narration": "Your challenge: Ask the user for the length and width of a room. Print the area. Hint: read the length and the width first, then multiply them in the cout line. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 274,
+      "startSec": 393,
       "lengthSec": 15,
       "onScreen": "Next: EP 07 · Operators and expressions",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -273,7 +273,7 @@
     "why": "The arrows for cin point right, toward the variable. The arrows for cout point left, toward the stream."
   },
   "pun": "\"Why did the program wait for the user? It had a lot of input about commitment.\"",
-  "challenge": "Ask the user for the length and width of a room. Print the area.",
+  "challenge": "Ask the user for the length and width of a room. Print the area. Hint: read the length and the width first, then multiply them in the cout line.",
   "challengeAnswer": "Read two ints with one cin line. Print length times width, for example four times nine gives thirty-six.",
   "shorts": [
     {

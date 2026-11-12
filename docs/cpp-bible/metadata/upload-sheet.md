@@ -252,7 +252,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 05 — Variables and types
 
-Module 1 · Variables and types · 5:02
+Module 1 · Variables and types · 7:29
 
 **YouTube title**
 
@@ -265,13 +265,13 @@ In this episode you will create variables of type int, double, char and bool, pi
 
 0:00 Intro
 0:16 Variables and types
-0:56 Four variables
-1:36 Variables in memory
-2:06 Second program
-3:07 Recap
-3:39 Bug of the Day
-4:27 Challenge
-4:47 Next episode
+1:37 Four variables
+2:56 Variables in memory
+3:47 Second program
+5:10 Recap
+5:42 Bug of the Day
+6:47 Challenge
+7:14 Next episode
 
 Keep coding, says Xecxec!
 
@@ -314,7 +314,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 06 — Reading input with cin
 
-Module 1 · Variables and types · 4:49
+Module 1 · Variables and types · 6:48
 
 **YouTube title**
 
@@ -327,13 +327,13 @@ In this episode you will read a number with cin, read two values in one line and
 
 0:00 Intro
 0:15 Reading input with cin
-0:45 Ask for an age
-1:25 Data flows through arrows
-1:55 Second program
-2:55 Recap
-3:26 Bug of the Day
-4:14 Challenge
-4:34 Next episode
+1:21 Ask for an age
+2:37 Data flows through arrows
+3:20 Second program
+4:38 Recap
+5:09 Bug of the Day
+6:10 Challenge
+6:33 Next episode
 
 Keep coding, says Xecxec!
 
@@ -376,7 +376,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 07 — Operators and expressions
 
-Module 1 · Variables and types · 4:54
+Module 1 · Variables and types · 6:49
 
 **YouTube title**
 
@@ -389,13 +389,13 @@ In this episode you will use the five arithmetic operators, explain integer divi
 
 0:00 Intro
 0:15 Operators and expressions
-0:50 Five operators
-1:30 The operator table
-2:00 Second program
-3:00 Recap
-3:31 Bug of the Day
-4:19 Challenge
-4:39 Next episode
+1:19 Five operators
+2:21 The operator table
+3:13 Second program
+4:36 Recap
+5:07 Bug of the Day
+6:09 Challenge
+6:34 Next episode
 
 Keep coding, says Xecxec!
 
@@ -438,7 +438,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 08 — Comparison and logical operators
 
-Module 1 · Variables and types · 4:58
+Module 1 · Variables and types · 6:46
 
 **YouTube title**
 
@@ -451,13 +451,13 @@ In this episode you will compare two values, combine tests with and, or and not 
 
 0:00 Intro
 0:15 Comparison and logical operators
-0:54 Four questions
-1:34 Truth table
-2:04 Second program
-3:04 Recap
-3:35 Bug of the Day
-4:23 Challenge
-4:43 Next episode
+1:25 Four questions
+2:34 Truth table
+3:19 Second program
+4:35 Recap
+5:06 Bug of the Day
+6:06 Challenge
+6:31 Next episode
 
 Keep coding, says Xecxec!
 
@@ -500,7 +500,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 09 — Type conversion and casting
 
-Module 1 · Variables and types · 4:58
+Module 1 · Variables and types · 6:47
 
 **YouTube title**
 
@@ -513,13 +513,13 @@ In this episode you will predict what happens when types mix, convert with stati
 
 0:00 Intro
 0:15 Type conversion and casting
-0:55 Automatic conversion
-1:35 Conversion rules
-2:05 Second program
-3:05 Recap
-3:35 Bug of the Day
-4:23 Challenge
-4:43 Next episode
+1:24 Automatic conversion
+2:26 Conversion rules
+3:15 Second program
+4:39 Recap
+5:09 Bug of the Day
+6:09 Challenge
+6:32 Next episode
 
 Keep coding, says Xecxec!
 
@@ -562,7 +562,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 10 — auto, const and constexpr
 
-Module 1 · Variables and types · 4:55
+Module 1 · Variables and types · 6:50
 
 **YouTube title**
 
@@ -575,13 +575,13 @@ In this episode you will let the compiler pick a type with auto, protect a value
 
 0:00 Intro
 0:15 auto, const and constexpr
-0:52 Three keywords
-1:32 Types and locks
-2:02 Second program
-3:02 Recap
-3:32 Bug of the Day
-4:20 Challenge
-4:40 Next episode
+1:21 Three keywords
+2:37 Types and locks
+3:28 Second program
+4:41 Recap
+5:11 Bug of the Day
+6:13 Challenge
+6:35 Next episode
 
 Keep coding, says Xecxec!
 
@@ -624,7 +624,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 11 — Strings with std::string
 
-Module 1 · Variables and types · 4:53
+Module 1 · Variables and types · 6:51
 
 **YouTube title**
 
@@ -637,13 +637,13 @@ In this episode you will create and join strings, read the size and one letter o
 
 0:00 Intro
 0:15 Strings with std::string
-0:50 Join and measure
-1:30 Counting letters
-2:00 Second program
-3:00 Recap
-3:30 Bug of the Day
-4:18 Challenge
-4:38 Next episode
+1:22 Join and measure
+2:25 Counting letters
+3:15 Second program
+4:42 Recap
+5:12 Bug of the Day
+6:11 Challenge
+6:36 Next episode
 
 Keep coding, says Xecxec!
 
@@ -686,7 +686,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 12 — Formatting output
 
-Module 1 · Variables and types · 4:54
+Module 1 · Variables and types · 6:21
 
 **YouTube title**
 
@@ -699,13 +699,13 @@ In this episode you will set the number of decimals, align columns with setw and
 
 0:00 Intro
 0:15 Formatting output
-0:51 A neat bill
-1:31 Format tools
-2:01 Second program
-3:01 Recap
-3:31 Bug of the Day
-4:19 Challenge
-4:39 Next episode
+1:14 A neat bill
+2:20 Format tools
+3:02 Second program
+4:16 Recap
+4:46 Bug of the Day
+5:41 Challenge
+6:06 Next episode
 
 Keep coding, says Xecxec!
 
@@ -748,7 +748,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 13 — if and else
 
-Module 2 · Decisions and loops · 4:50
+Module 2 · Decisions and loops · 6:37
 
 **YouTube title**
 
@@ -761,13 +761,13 @@ In this episode you will write an if statement, add an else branch and use brace
 
 0:00 Intro
 0:15 if and else
-0:47 Pass or fail
-1:27 Two paths
-1:57 Second program
-2:57 Recap
-3:27 Bug of the Day
-4:15 Challenge
-4:35 Next episode
+1:20 Pass or fail
+2:22 Two paths
+3:11 Second program
+4:24 Recap
+4:54 Bug of the Day
+5:55 Challenge
+6:22 Next episode
 
 Keep coding, says Xecxec!
 
@@ -810,7 +810,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 14 — else if ladders
 
-Module 2 · Decisions and loops · 4:49
+Module 2 · Decisions and loops · 6:16
 
 **YouTube title**
 
@@ -823,13 +823,13 @@ In this episode you will chain several tests with else if, order the tests from 
 
 0:00 Intro
 0:15 else if ladders
-0:46 A grade ladder
-1:26 Grade bands
-1:56 Second program
-2:56 Recap
-3:26 Bug of the Day
-4:14 Challenge
-4:34 Next episode
+1:16 A grade ladder
+2:15 Grade bands
+2:55 Second program
+4:09 Recap
+4:39 Bug of the Day
+5:36 Challenge
+6:01 Next episode
 
 Keep coding, says Xecxec!
 
@@ -872,7 +872,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 15 — switch and case
 
-Module 2 · Decisions and loops · 4:50
+Module 2 · Decisions and loops · 6:23
 
 **YouTube title**
 
@@ -885,13 +885,13 @@ In this episode you will write a switch with case labels, use break to end each 
 
 0:00 Intro
 0:15 switch and case
-0:47 Name the day
-1:27 Jump to the case
-1:57 Second program
-2:57 Recap
-3:27 Bug of the Day
-4:15 Challenge
-4:35 Next episode
+1:21 Name the day
+2:20 Jump to the case
+3:05 Second program
+4:15 Recap
+4:45 Bug of the Day
+5:43 Challenge
+6:08 Next episode
 
 Keep coding, says Xecxec!
 
@@ -934,7 +934,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 16 — while loops
 
-Module 2 · Decisions and loops · 4:56
+Module 2 · Decisions and loops · 6:44
 
 **YouTube title**
 
@@ -947,13 +947,13 @@ In this episode you will write a while loop, update the loop variable and predic
 
 0:00 Intro
 0:15 while loops
-0:52 A countdown
-1:32 Round by round
-2:02 Second program
-3:02 Recap
-3:33 Bug of the Day
-4:21 Challenge
-4:41 Next episode
+1:22 A countdown
+2:23 Round by round
+3:05 Second program
+4:29 Recap
+5:00 Bug of the Day
+6:05 Challenge
+6:29 Next episode
 
 Keep coding, says Xecxec!
 
@@ -996,7 +996,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 17 — for loops
 
-Module 2 · Decisions and loops · 5:00
+Module 2 · Decisions and loops · 6:35
 
 **YouTube title**
 
@@ -1009,13 +1009,13 @@ In this episode you will write the three parts of a for loop, count up and down 
 
 0:00 Intro
 0:15 for loops
-0:53 Count the rounds
-1:33 Three parts, one loop
-2:03 Second program
-3:03 Recap
-3:37 Bug of the Day
-4:25 Challenge
-4:45 Next episode
+1:25 Count the rounds
+2:30 Three parts, one loop
+3:11 Second program
+4:29 Recap
+5:03 Bug of the Day
+5:59 Challenge
+6:20 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1058,7 +1058,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 18 — Range-based for
 
-Module 2 · Decisions and loops · 4:55
+Module 2 · Decisions and loops · 6:21
 
 **YouTube title**
 
@@ -1071,13 +1071,13 @@ In this episode you will loop over every item with a range-based for, loop over 
 
 0:00 Intro
 0:15 Range-based for
-0:52 Visit every item
-1:32 Round by round
-2:02 Second program
-3:02 Recap
-3:32 Bug of the Day
-4:20 Challenge
-4:40 Next episode
+1:17 Visit every item
+2:09 Round by round
+2:51 Second program
+4:09 Recap
+4:39 Bug of the Day
+5:41 Challenge
+6:06 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1120,7 +1120,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 19 — break and continue
 
-Module 2 · Decisions and loops · 4:50
+Module 2 · Decisions and loops · 6:07
 
 **YouTube title**
 
@@ -1133,13 +1133,13 @@ In this episode you will leave a loop with break, skip a round with continue and
 
 0:00 Intro
 0:15 break and continue
-0:47 Stop at the first match
-1:27 Break and continue
-1:57 Second program
-2:57 Recap
-3:27 Bug of the Day
-4:15 Challenge
-4:35 Next episode
+1:15 Stop at the first match
+2:14 Break and continue
+2:58 Second program
+4:10 Recap
+4:40 Bug of the Day
+5:31 Challenge
+5:52 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1182,7 +1182,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 20 — Nested loops and patterns
 
-Module 2 · Decisions and loops · 4:58
+Module 2 · Decisions and loops · 6:42
 
 **YouTube title**
 
@@ -1195,13 +1195,13 @@ In this episode you will put one loop inside another, print a star triangle and 
 
 0:00 Intro
 0:15 Nested loops and patterns
-0:49 A star triangle
-1:29 Rows and stars
-1:59 Second program
-3:00 Recap
-3:35 Bug of the Day
-4:23 Challenge
-4:43 Next episode
+1:21 A star triangle
+2:27 Rows and stars
+3:10 Second program
+4:21 Recap
+4:56 Bug of the Day
+5:58 Challenge
+6:27 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1244,7 +1244,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 21 — Functions
 
-Module 3 · Functions · 4:54
+Module 3 · Functions · 6:39
 
 **YouTube title**
 
@@ -1257,13 +1257,13 @@ In this episode you will write a function, call a function many times and declar
 
 0:00 Intro
 0:15 Functions
-0:51 Your first function
-1:31 The call and the return
-2:01 Second program
-3:01 Recap
-3:31 Bug of the Day
-4:19 Challenge
-4:39 Next episode
+1:25 Your first function
+2:37 The call and the return
+3:15 Second program
+4:34 Recap
+5:04 Bug of the Day
+6:01 Challenge
+6:24 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1306,7 +1306,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 22 — Parameters and return values
 
-Module 3 · Functions · 4:52
+Module 3 · Functions · 6:21
 
 **YouTube title**
 
@@ -1319,13 +1319,13 @@ In this episode you will pass values into a function, return a value from a func
 
 0:00 Intro
 0:15 Parameters and return values
-0:49 An add function
-1:29 Values in, value out
-1:59 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:37 Next episode
+1:19 An add function
+2:23 Values in, value out
+3:02 Second program
+4:20 Recap
+4:50 Bug of the Day
+5:44 Challenge
+6:06 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1368,7 +1368,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 23 — Pass by value
 
-Module 3 · Functions · 4:50
+Module 3 · Functions · 6:09
 
 **YouTube title**
 
@@ -1381,13 +1381,13 @@ In this episode you will explain that arguments are copied, show that the origin
 
 0:00 Intro
 0:15 Pass by value
-0:47 A copy is changed
-1:27 Two separate boxes
-1:57 Second program
-2:57 Recap
-3:27 Bug of the Day
-4:15 Challenge
-4:35 Next episode
+1:15 A copy is changed
+2:10 Two separate boxes
+2:47 Second program
+4:00 Recap
+4:30 Bug of the Day
+5:27 Challenge
+5:54 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1430,7 +1430,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 24 — Pass by reference
 
-Module 3 · Functions · 4:49
+Module 3 · Functions · 5:58
 
 **YouTube title**
 
@@ -1443,13 +1443,13 @@ In this episode you will write a reference parameter, change the original variab
 
 0:00 Intro
 0:15 Pass by reference
-0:45 A reference parameter
-1:25 One box, two names
-1:55 Second program
-2:55 Recap
-3:26 Bug of the Day
-4:14 Challenge
-4:34 Next episode
+1:14 A reference parameter
+2:07 One box, two names
+2:46 Second program
+4:01 Recap
+4:32 Bug of the Day
+5:23 Challenge
+5:43 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1492,7 +1492,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 25 — const references
 
-Module 3 · Functions · 4:52
+Module 3 · Functions · 6:33
 
 **YouTube title**
 
@@ -1505,13 +1505,13 @@ In this episode you will pass big values without copying, protect a parameter wi
 
 0:00 Intro
 0:15 const references
-0:49 A const reference
-1:29 Which parameter style?
-1:59 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:37 Next episode
+1:17 A const reference
+2:12 Which parameter style?
+3:03 Second program
+4:25 Recap
+4:55 Bug of the Day
+5:52 Challenge
+6:18 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1554,7 +1554,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 26 — Default arguments and overloading
 
-Module 3 · Functions · 4:50
+Module 3 · Functions · 6:11
 
 **YouTube title**
 
@@ -1567,13 +1567,13 @@ In this episode you will give a parameter a default value, write overloaded func
 
 0:00 Intro
 0:15 Default arguments and overloading
-0:47 A default value
-1:27 Which call matches?
-1:57 Second program
-2:57 Recap
-3:27 Bug of the Day
-4:15 Challenge
-4:35 Next episode
+1:15 A default value
+2:10 Which call matches?
+2:48 Second program
+4:00 Recap
+4:30 Bug of the Day
+5:30 Challenge
+5:56 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1616,7 +1616,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 27 — Scope and lifetime
 
-Module 3 · Functions · 4:52
+Module 3 · Functions · 6:19
 
 **YouTube title**
 
@@ -1629,13 +1629,13 @@ In this episode you will tell local from global variables, know that a block has
 
 0:00 Intro
 0:15 Scope and lifetime
-0:48 Local and global
-1:28 Where each variable lives
-1:58 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:37 Next episode
+1:17 Local and global
+2:19 Where each variable lives
+2:59 Second program
+4:15 Recap
+4:45 Bug of the Day
+5:38 Challenge
+6:04 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1678,7 +1678,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 28 — Recursion
 
-Module 3 · Functions · 4:53
+Module 3 · Functions · 6:28
 
 **YouTube title**
 
@@ -1691,13 +1691,13 @@ In this episode you will explain base case and recursive case, trace a recursive
 
 0:00 Intro
 0:15 Recursion
-0:50 Factorial
-1:30 The call stack
-2:00 Second program
-3:00 Recap
-3:30 Bug of the Day
-4:18 Challenge
-4:38 Next episode
+1:19 Factorial
+2:26 The call stack
+3:10 Second program
+4:25 Recap
+4:55 Bug of the Day
+5:47 Challenge
+6:13 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1740,7 +1740,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 29 — Lambda functions
 
-Module 3 · Functions · 4:53
+Module 3 · Functions · 6:01
 
 **YouTube title**
 
@@ -1753,13 +1753,13 @@ In this episode you will write a lambda, capture a variable and store a lambda w
 
 0:00 Intro
 0:15 Lambda functions
-0:50 A first lambda
-1:30 Parts of a lambda
-2:00 Second program
-3:00 Recap
-3:30 Bug of the Day
-4:18 Challenge
-4:38 Next episode
+1:20 A first lambda
+2:17 Parts of a lambda
+2:50 Second program
+3:55 Recap
+4:25 Bug of the Day
+5:20 Challenge
+5:46 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1802,7 +1802,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 30 — Mini project: calculator
 
-Module 3 · Functions · 4:48
+Module 3 · Functions · 6:17
 
 **YouTube title**
 
@@ -1815,13 +1815,13 @@ In this episode you will split a program into functions, read an expression with
 
 0:00 Intro
 0:15 Mini project: calculator
-0:45 The calculator
-1:25 The plan
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:10 The calculator
+2:13 The plan
+2:52 Second program
+4:07 Recap
+4:37 Bug of the Day
+5:35 Challenge
+6:02 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1864,7 +1864,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 31 — Arrays
 
-Module 4 · Arrays, vectors and sorting · 4:56
+Module 4 · Arrays, vectors and sorting · 6:59
 
 **YouTube title**
 
@@ -1877,13 +1877,13 @@ In this episode you will make an array with a starting list, read and change ite
 
 0:00 Intro
 0:15 Arrays
-0:50 Five marks
-1:30 Boxes side by side
-2:00 Second program
-3:00 Recap
-3:33 Bug of the Day
-4:21 Challenge
-4:41 Next episode
+1:23 Five marks
+2:33 Boxes side by side
+3:24 Second program
+4:50 Recap
+5:23 Bug of the Day
+6:20 Challenge
+6:44 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1926,7 +1926,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 32 — Looping over arrays
 
-Module 4 · Arrays, vectors and sorting · 4:51
+Module 4 · Arrays, vectors and sorting · 6:14
 
 **YouTube title**
 
@@ -1939,13 +1939,13 @@ In this episode you will visit every item with a loop, find the biggest item and
 
 0:00 Intro
 0:15 Looping over arrays
-0:47 Find the biggest
-1:27 Best so far
-1:57 Second program
-2:57 Recap
-3:28 Bug of the Day
-4:16 Challenge
-4:36 Next episode
+1:21 Find the biggest
+2:18 Best so far
+2:57 Second program
+4:08 Recap
+4:39 Bug of the Day
+5:36 Challenge
+5:59 Next episode
 
 Keep coding, says Xecxec!
 
@@ -1988,7 +1988,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 33 — Two-dimensional arrays
 
-Module 4 · Arrays, vectors and sorting · 4:53
+Module 4 · Arrays, vectors and sorting · 6:19
 
 **YouTube title**
 
@@ -2001,13 +2001,13 @@ In this episode you will make a table with rows and columns, read an item with t
 
 0:00 Intro
 0:15 Two-dimensional arrays
-0:49 A small grid
-1:29 Rows in memory
-1:59 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:38 Next episode
+1:19 A small grid
+2:10 Rows in memory
+2:51 Second program
+4:07 Recap
+4:37 Bug of the Day
+5:35 Challenge
+6:04 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2050,7 +2050,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 34 — std::array
 
-Module 4 · Arrays, vectors and sorting · 5:00
+Module 4 · Arrays, vectors and sorting · 6:41
 
 **YouTube title**
 
@@ -2063,13 +2063,13 @@ In this episode you will make a std array, use size and at and read an out-of-ra
 
 0:00 Intro
 0:16 std::array
-0:57 A std array
-1:37 Plain array or std::array
-2:07 Second program
-3:07 Recap
-3:37 Bug of the Day
-4:25 Challenge
-4:45 Next episode
+1:26 A std array
+2:25 Plain array or std::array
+3:10 Second program
+4:30 Recap
+5:00 Bug of the Day
+6:00 Challenge
+6:26 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2112,7 +2112,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 35 — std::vector
 
-Module 4 · Arrays, vectors and sorting · 4:50
+Module 4 · Arrays, vectors and sorting · 6:23
 
 **YouTube title**
 
@@ -2125,13 +2125,13 @@ In this episode you will make a vector and add items with push_back, read the si
 
 0:00 Intro
 0:15 std::vector
-0:47 Grow a vector
-1:27 A vector in memory
-1:57 Second program
-2:57 Recap
-3:27 Bug of the Day
-4:15 Challenge
-4:35 Next episode
+1:22 Grow a vector
+2:16 A vector in memory
+3:03 Second program
+4:18 Recap
+4:48 Bug of the Day
+5:44 Challenge
+6:08 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2174,7 +2174,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 36 — Vector operations
 
-Module 4 · Arrays, vectors and sorting · 4:54
+Module 4 · Arrays, vectors and sorting · 6:05
 
 **YouTube title**
 
@@ -2187,13 +2187,13 @@ In this episode you will insert and erase items, sort a vector and find a value 
 
 0:00 Intro
 0:15 Vector operations
-0:51 Insert and erase
-1:31 The vector after each call
-2:01 Second program
-3:01 Recap
-3:31 Bug of the Day
-4:19 Challenge
-4:39 Next episode
+1:24 Insert and erase
+2:11 The vector after each call
+2:50 Second program
+4:07 Recap
+4:37 Bug of the Day
+5:28 Challenge
+5:50 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2236,7 +2236,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 37 — More string tools
 
-Module 4 · Arrays, vectors and sorting · 4:48
+Module 4 · Arrays, vectors and sorting · 6:05
 
 **YouTube title**
 
@@ -2249,13 +2249,13 @@ In this episode you will change a string with replace and erase, turn text into 
 
 0:00 Intro
 0:15 More string tools
-0:45 Edit a string
-1:25 Edit tools
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:07 Edit a string
+2:08 Edit tools
+2:46 Second program
+3:57 Recap
+4:27 Bug of the Day
+5:24 Challenge
+5:50 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2298,7 +2298,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 38 — C-style strings
 
-Module 4 · Arrays, vectors and sorting · 4:52
+Module 4 · Arrays, vectors and sorting · 6:01
 
 **YouTube title**
 
@@ -2311,13 +2311,13 @@ In this episode you will explain what a char array is, use strlen and strcmp and
 
 0:00 Intro
 0:15 C-style strings
-0:49 A char array
-1:29 Four boxes for three letters
-1:59 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:37 Next episode
+1:17 A char array
+2:11 Four boxes for three letters
+2:53 Second program
+3:55 Recap
+4:25 Bug of the Day
+5:20 Challenge
+5:46 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2360,7 +2360,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 39 — Searching
 
-Module 4 · Arrays, vectors and sorting · 4:55
+Module 4 · Arrays, vectors and sorting · 7:02
 
 **YouTube title**
 
@@ -2373,13 +2373,13 @@ In this episode you will write a linear search, write a binary search on a sorte
 
 0:00 Intro
 0:15 Searching
-0:51 Linear search
-1:31 Binary search steps
-2:02 Second program
-3:02 Recap
-3:32 Bug of the Day
-4:20 Challenge
-4:40 Next episode
+1:21 Linear search
+2:23 Binary search steps
+3:13 Second program
+4:50 Recap
+5:20 Bug of the Day
+6:20 Challenge
+6:47 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2422,7 +2422,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 40 — Sorting: bubble and selection
 
-Module 4 · Arrays, vectors and sorting · 4:52
+Module 4 · Arrays, vectors and sorting · 6:47
 
 **YouTube title**
 
@@ -2435,13 +2435,13 @@ In this episode you will trace a bubble sort, write a selection sort and count t
 
 0:00 Intro
 0:15 Sorting: bubble and selection
-0:49 Bubble sort
-1:29 Bubble sort on five bars
-1:59 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:37 Next episode
+1:16 Bubble sort
+2:19 Bubble sort on five bars
+3:05 Second program
+4:33 Recap
+5:03 Bug of the Day
+6:06 Challenge
+6:32 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2484,7 +2484,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 41 — Memory and addresses
 
-Module 5 · Memory and pointers · 4:52
+Module 5 · Memory and pointers · 6:50
 
 **YouTube title**
 
@@ -2497,13 +2497,13 @@ In this episode you will explain that every variable has an address, use the add
 
 0:00 Intro
 0:15 Memory and addresses
-0:49 The gap between boxes
-1:29 Addresses in a row
-1:59 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:37 Next episode
+1:29 The gap between boxes
+2:38 Addresses in a row
+3:24 Second program
+4:43 Recap
+5:13 Bug of the Day
+6:13 Challenge
+6:35 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2546,7 +2546,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 42 — Pointers
 
-Module 5 · Memory and pointers · 5:00
+Module 5 · Memory and pointers · 6:54
 
 **YouTube title**
 
@@ -2559,13 +2559,13 @@ In this episode you will declare a pointer, read and write through a pointer and
 
 0:00 Intro
 0:15 Pointers
-0:57 Follow the pointer
-1:37 A pointer and its target
-2:07 Second program
-3:07 Recap
-3:37 Bug of the Day
-4:25 Challenge
-4:45 Next episode
+1:31 Follow the pointer
+2:36 A pointer and its target
+3:16 Second program
+4:50 Recap
+5:20 Bug of the Day
+6:15 Challenge
+6:39 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2608,7 +2608,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 43 — Pointers and arrays
 
-Module 5 · Memory and pointers · 5:04
+Module 5 · Memory and pointers · 6:48
 
 **YouTube title**
 
@@ -2621,13 +2621,13 @@ In this episode you will use an array name as a pointer, read items through a po
 
 0:00 Intro
 0:15 Pointers and arrays
-0:55 An array and a pointer
-1:35 The pointer at the first item
-2:05 Second program
-3:05 Recap
-3:41 Bug of the Day
-4:29 Challenge
-4:49 Next episode
+1:30 An array and a pointer
+2:32 The pointer at the first item
+3:14 Second program
+4:32 Recap
+5:08 Bug of the Day
+6:06 Challenge
+6:33 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2670,7 +2670,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 44 — Pointer arithmetic
 
-Module 5 · Memory and pointers · 4:59
+Module 5 · Memory and pointers · 6:22
 
 **YouTube title**
 
@@ -2683,13 +2683,13 @@ In this episode you will explain what p plus one means, subtract two pointers an
 
 0:00 Intro
 0:15 Pointer arithmetic
-0:56 Hop by one item
-1:36 One step is one item
-2:06 Second program
-3:06 Recap
-3:36 Bug of the Day
-4:24 Challenge
-4:44 Next episode
+1:29 Hop by one item
+2:18 One step is one item
+3:02 Second program
+4:16 Recap
+4:46 Bug of the Day
+5:41 Challenge
+6:07 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2732,7 +2732,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 45 — nullptr and dangling pointers
 
-Module 5 · Memory and pointers · 4:53
+Module 5 · Memory and pointers · 6:41
 
 **YouTube title**
 
@@ -2745,13 +2745,13 @@ In this episode you will use nullptr for a pointer that points nowhere, check a 
 
 0:00 Intro
 0:15 nullptr and dangling pointers
-0:50 Check before you follow
-1:30 Null and dangling
-2:00 Second program
-3:00 Recap
-3:30 Bug of the Day
-4:18 Challenge
-4:38 Next episode
+1:17 Check before you follow
+2:18 Null and dangling
+3:07 Second program
+4:32 Recap
+5:02 Bug of the Day
+5:59 Challenge
+6:26 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2794,7 +2794,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 46 — new and delete
 
-Module 5 · Memory and pointers · 5:01
+Module 5 · Memory and pointers · 6:47
 
 **YouTube title**
 
@@ -2807,13 +2807,13 @@ In this episode you will make a variable on the heap with new, free it with dele
 
 0:00 Intro
 0:15 new and delete
-0:58 One box on the heap
-1:38 Stack and heap
-2:08 Second program
-3:08 Recap
-3:38 Bug of the Day
-4:26 Challenge
-4:46 Next episode
+1:29 One box on the heap
+2:30 Stack and heap
+3:21 Second program
+4:38 Recap
+5:08 Bug of the Day
+6:03 Challenge
+6:32 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2856,7 +2856,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 47 — Dynamic arrays
 
-Module 5 · Memory and pointers · 5:02
+Module 5 · Memory and pointers · 6:15
 
 **YouTube title**
 
@@ -2869,13 +2869,13 @@ In this episode you will make an array with a size known only at run time, free 
 
 0:00 Intro
 0:15 Dynamic arrays
-0:57 Size from the user
-1:37 A pointer to n boxes
-2:07 Second program
-3:07 Recap
-3:39 Bug of the Day
-4:27 Challenge
-4:47 Next episode
+1:26 Size from the user
+2:22 A pointer to n boxes
+3:02 Second program
+4:11 Recap
+4:43 Bug of the Day
+5:36 Challenge
+6:00 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2918,7 +2918,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 48 — Leaks and RAII
 
-Module 5 · Memory and pointers · 4:59
+Module 5 · Memory and pointers · 6:33
 
 **YouTube title**
 
@@ -2931,13 +2931,13 @@ In this episode you will explain what a memory leak is, explain RAII and see how
 
 0:00 Intro
 0:15 Leaks and RAII
-0:55 A destructor runs
-1:35 The life of a variable
-2:05 Second program
-3:05 Recap
-3:36 Bug of the Day
-4:24 Challenge
-4:44 Next episode
+1:22 A destructor runs
+2:25 The life of a variable
+3:06 Second program
+4:22 Recap
+4:53 Bug of the Day
+5:51 Challenge
+6:18 Next episode
 
 Keep coding, says Xecxec!
 
@@ -2980,7 +2980,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 49 — unique_ptr
 
-Module 5 · Memory and pointers · 4:55
+Module 5 · Memory and pointers · 6:07
 
 **YouTube title**
 
@@ -2993,13 +2993,13 @@ In this episode you will make a unique_ptr with make_unique, explain single owne
 
 0:00 Intro
 0:15 unique_ptr
-0:52 make_unique
-1:32 One owner
-2:02 Second program
-3:02 Recap
-3:32 Bug of the Day
-4:20 Challenge
-4:40 Next episode
+1:17 make_unique
+2:17 One owner
+2:55 Second program
+4:05 Recap
+4:35 Bug of the Day
+5:27 Challenge
+5:52 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3042,7 +3042,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 50 — shared_ptr and weak_ptr
 
-Module 5 · Memory and pointers · 4:58
+Module 5 · Memory and pointers · 6:24
 
 **YouTube title**
 
@@ -3055,13 +3055,13 @@ In this episode you will share ownership with shared_ptr, read use_count and use
 
 0:00 Intro
 0:15 shared_ptr and weak_ptr
-0:51 Count the owners
-1:31 Two owners, one object
-2:01 Second program
-3:01 Recap
-3:35 Bug of the Day
-4:23 Challenge
-4:43 Next episode
+1:20 Count the owners
+2:10 Two owners, one object
+2:50 Second program
+4:16 Recap
+4:50 Bug of the Day
+5:45 Challenge
+6:09 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3104,7 +3104,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 51 — Structs
 
-Module 6 · Classes and objects · 4:52
+Module 6 · Classes and objects · 6:41
 
 **YouTube title**
 
@@ -3117,13 +3117,13 @@ In this episode you will define a struct with several fields, make and fill a st
 
 0:00 Intro
 0:15 Structs
-0:49 A student struct
-1:29 Fields in memory
-1:59 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:37 Next episode
+1:26 A student struct
+2:33 Fields in memory
+3:12 Second program
+4:28 Recap
+4:58 Bug of the Day
+6:00 Challenge
+6:26 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3166,7 +3166,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 52 — Classes and objects
 
-Module 6 · Classes and objects · 4:52
+Module 6 · Classes and objects · 6:10
 
 **YouTube title**
 
@@ -3179,13 +3179,13 @@ In this episode you will define a class with private data and public functions, 
 
 0:00 Intro
 0:15 Classes and objects
-0:49 A Counter class
-1:29 Public and private
-1:59 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:37 Next episode
+1:24 A Counter class
+2:20 Public and private
+2:59 Second program
+4:06 Recap
+4:36 Bug of the Day
+5:29 Challenge
+5:55 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3228,7 +3228,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 53 — Constructors
 
-Module 6 · Classes and objects · 4:58
+Module 6 · Classes and objects · 6:15
 
 **YouTube title**
 
@@ -3241,13 +3241,13 @@ In this episode you will write a constructor, write several constructors and exp
 
 0:00 Intro
 0:15 Constructors
-0:55 Constructors
-1:35 Which constructor runs?
-2:05 Second program
-3:05 Recap
-3:35 Bug of the Day
-4:23 Challenge
-4:43 Next episode
+1:24 Constructors
+2:21 Which constructor runs?
+2:57 Second program
+4:05 Recap
+4:35 Bug of the Day
+5:34 Challenge
+6:00 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3290,7 +3290,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 54 — Member initializer lists
 
-Module 6 · Classes and objects · 4:56
+Module 6 · Classes and objects · 6:12
 
 **YouTube title**
 
@@ -3303,13 +3303,13 @@ In this episode you will write a member initializer list, explain why const memb
 
 0:00 Intro
 0:15 Member initializer lists
-0:53 An initializer list
-1:33 Order of events
-2:03 Second program
-3:03 Recap
-3:33 Bug of the Day
-4:21 Challenge
-4:41 Next episode
+1:25 An initializer list
+2:19 Order of events
+2:55 Second program
+4:06 Recap
+4:36 Bug of the Day
+5:31 Challenge
+5:57 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3352,7 +3352,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 55 — Destructors
 
-Module 6 · Classes and objects · 4:54
+Module 6 · Classes and objects · 6:16
 
 **YouTube title**
 
@@ -3365,13 +3365,13 @@ In this episode you will write a destructor, free heap memory in a destructor an
 
 0:00 Intro
 0:15 Destructors
-0:51 A destructor that frees memory
-1:31 Heap memory owned by an object
-2:01 Second program
-3:01 Recap
-3:31 Bug of the Day
-4:19 Challenge
-4:39 Next episode
+1:15 A destructor that frees memory
+2:14 Heap memory owned by an object
+2:58 Second program
+4:13 Recap
+4:43 Bug of the Day
+5:32 Challenge
+6:01 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3414,7 +3414,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 56 — Encapsulation
 
-Module 6 · Classes and objects · 4:48
+Module 6 · Classes and objects · 5:47
 
 **YouTube title**
 
@@ -3427,13 +3427,13 @@ In this episode you will hide data and offer safe functions, validate input in a
 
 0:00 Intro
 0:15 Encapsulation
-0:45 A safe account
-1:25 Checked access
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:13 A safe account
+2:07 Checked access
+2:43 Second program
+3:45 Recap
+4:15 Bug of the Day
+5:06 Challenge
+5:32 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3476,7 +3476,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 57 — this and const methods
 
-Module 6 · Classes and objects · 4:54
+Module 6 · Classes and objects · 6:22
 
 **YouTube title**
 
@@ -3489,13 +3489,13 @@ In this episode you will explain the this pointer, chain calls by returning a re
 
 0:00 Intro
 0:15 this and const methods
-0:49 Chain the calls
-1:29 Where this points
-1:59 Second program
-2:59 Recap
-3:30 Bug of the Day
-4:18 Challenge
-4:39 Next episode
+1:22 Chain the calls
+2:19 Where this points
+2:59 Second program
+4:11 Recap
+4:42 Bug of the Day
+5:37 Challenge
+6:07 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3538,7 +3538,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 58 — Static members
 
-Module 6 · Classes and objects · 4:59
+Module 6 · Classes and objects · 6:05
 
 **YouTube title**
 
@@ -3551,13 +3551,13 @@ In this episode you will share one value among all objects, write a static membe
 
 0:00 Intro
 0:15 Static members
-0:56 Count the objects
-1:36 One shared copy
-2:06 Second program
-3:06 Recap
-3:36 Bug of the Day
-4:24 Challenge
-4:44 Next episode
+1:21 Count the objects
+2:18 One shared copy
+2:51 Second program
+3:55 Recap
+4:25 Bug of the Day
+5:24 Challenge
+5:50 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3600,7 +3600,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 59 — Operator overloading
 
-Module 6 · Classes and objects · 4:51
+Module 6 · Classes and objects · 6:21
 
 **YouTube title**
 
@@ -3613,13 +3613,13 @@ In this episode you will overload plus for a class, overload the output operator
 
 0:00 Intro
 0:15 Operator overloading
-0:48 Add two points
-1:28 What the compiler calls
-1:58 Second program
-2:58 Recap
-3:28 Bug of the Day
-4:16 Challenge
-4:36 Next episode
+1:14 Add two points
+2:09 What the compiler calls
+2:57 Second program
+4:20 Recap
+4:50 Bug of the Day
+5:42 Challenge
+6:06 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3662,7 +3662,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 60 — Rule of three, five and zero
 
-Module 6 · Classes and objects · 5:04
+Module 6 · Classes and objects · 6:47
 
 **YouTube title**
 
@@ -3675,13 +3675,13 @@ In this episode you will explain deep copy and shallow copy, write a copy constr
 
 0:00 Intro
 0:15 Rule of three, five and zero
-0:56 A deep copy
-1:36 Shallow and deep copy
-2:06 Second program
-3:06 Recap
-3:41 Bug of the Day
-4:29 Challenge
-4:49 Next episode
+1:31 A deep copy
+2:35 Shallow and deep copy
+3:21 Second program
+4:36 Recap
+5:11 Bug of the Day
+6:03 Challenge
+6:32 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3724,7 +3724,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 61 — Inheritance
 
-Module 7 · Inheritance and polymorphism · 4:57
+Module 7 · Inheritance and polymorphism · 6:27
 
 **YouTube title**
 
@@ -3737,13 +3737,13 @@ In this episode you will write a derived class, reuse the members of a base clas
 
 0:00 Intro
 0:15 Inheritance
-0:54 Animal and Dog
-1:34 A small family tree
-2:04 Second program
-3:04 Recap
-3:34 Bug of the Day
-4:22 Challenge
-4:42 Next episode
+1:23 Animal and Dog
+2:25 A small family tree
+3:05 Second program
+4:21 Recap
+4:51 Bug of the Day
+5:46 Challenge
+6:12 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3786,7 +3786,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 62 — Constructor and destructor order
 
-Module 7 · Inheritance and polymorphism · 4:59
+Module 7 · Inheritance and polymorphism · 6:16
 
 **YouTube title**
 
@@ -3799,13 +3799,13 @@ In this episode you will predict the order of constructors, pass arguments to th
 
 0:00 Intro
 0:15 Constructor and destructor order
-0:55 Build and destroy
-1:35 Life of a Derived object
-2:05 Second program
-3:05 Recap
-3:35 Bug of the Day
-4:23 Challenge
-4:44 Next episode
+1:18 Build and destroy
+2:07 Life of a Derived object
+2:52 Second program
+4:05 Recap
+4:35 Bug of the Day
+5:31 Challenge
+6:01 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3848,7 +3848,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 63 — protected and access control
 
-Module 7 · Inheritance and polymorphism · 4:53
+Module 7 · Inheritance and polymorphism · 6:15
 
 **YouTube title**
 
@@ -3861,13 +3861,13 @@ In this episode you will use the protected label, read the access table and choo
 
 0:00 Intro
 0:15 protected and access control
-0:50 A protected member
-1:30 Who can reach what
-2:00 Second program
-3:00 Recap
-3:30 Bug of the Day
-4:18 Challenge
-4:38 Next episode
+1:15 A protected member
+2:08 Who can reach what
+2:49 Second program
+4:06 Recap
+4:36 Bug of the Day
+5:30 Challenge
+6:00 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3910,7 +3910,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 64 — Virtual functions
 
-Module 7 · Inheritance and polymorphism · 5:00
+Module 7 · Inheritance and polymorphism · 6:37
 
 **YouTube title**
 
@@ -3923,13 +3923,13 @@ In this episode you will write a virtual function, call it through a base pointe
 
 0:00 Intro
 0:15 Virtual functions
-0:54 A virtual speak
-1:34 How the call finds Dog
-2:04 Second program
-3:04 Recap
-3:37 Bug of the Day
-4:25 Challenge
-4:45 Next episode
+1:17 A virtual speak
+2:26 How the call finds Dog
+3:10 Second program
+4:29 Recap
+5:02 Bug of the Day
+5:57 Challenge
+6:22 Next episode
 
 Keep coding, says Xecxec!
 
@@ -3972,7 +3972,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 65 — Abstract classes
 
-Module 7 · Inheritance and polymorphism · 4:53
+Module 7 · Inheritance and polymorphism · 6:10
 
 **YouTube title**
 
@@ -3985,13 +3985,13 @@ In this episode you will write a pure virtual function, explain that an abstract
 
 0:00 Intro
 0:15 Abstract classes
-0:50 A Shape interface
-1:30 Shape and its children
-2:00 Second program
-3:00 Recap
-3:30 Bug of the Day
-4:18 Challenge
-4:38 Next episode
+1:16 A Shape interface
+2:12 Shape and its children
+2:53 Second program
+4:03 Recap
+4:33 Bug of the Day
+5:29 Challenge
+5:55 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4034,7 +4034,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 66 — Virtual destructors
 
-Module 7 · Inheritance and polymorphism · 4:58
+Module 7 · Inheritance and polymorphism · 6:01
 
 **YouTube title**
 
@@ -4047,13 +4047,13 @@ In this episode you will explain why a base destructor must be virtual, predict 
 
 0:00 Intro
 0:15 Virtual destructors
-0:54 A virtual destructor
-1:34 What delete runs
-2:04 Second program
-3:04 Recap
-3:35 Bug of the Day
-4:23 Challenge
-4:43 Next episode
+1:20 A virtual destructor
+2:07 What delete runs
+2:42 Second program
+3:51 Recap
+4:22 Bug of the Day
+5:19 Challenge
+5:46 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4096,7 +4096,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 67 — Multiple inheritance
 
-Module 7 · Inheritance and polymorphism · 4:54
+Module 7 · Inheritance and polymorphism · 5:45
 
 **YouTube title**
 
@@ -4109,13 +4109,13 @@ In this episode you will inherit from two bases, explain the diamond problem and
 
 0:00 Intro
 0:15 Multiple inheritance
-0:51 Two bases
-1:31 The diamond
-2:01 Second program
-3:01 Recap
-3:31 Bug of the Day
-4:19 Challenge
-4:39 Next episode
+1:15 Two bases
+1:56 The diamond
+2:32 Second program
+3:43 Recap
+4:13 Bug of the Day
+5:05 Challenge
+5:30 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4158,7 +4158,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 68 — Composition and slicing
 
-Module 7 · Inheritance and polymorphism · 4:55
+Module 7 · Inheritance and polymorphism · 6:16
 
 **YouTube title**
 
@@ -4171,13 +4171,13 @@ In this episode you will choose between has-a and is-a, build a class from parts
 
 0:00 Intro
 0:15 Composition and slicing
-0:52 A car has an engine
-1:32 Is-a or has-a?
-2:02 Second program
-3:02 Recap
-3:32 Bug of the Day
-4:20 Challenge
-4:40 Next episode
+1:20 A car has an engine
+2:12 Is-a or has-a?
+2:51 Second program
+4:14 Recap
+4:44 Bug of the Day
+5:35 Challenge
+6:01 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4220,7 +4220,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 69 — Function templates
 
-Module 8 · Templates and containers · 4:48
+Module 8 · Templates and containers · 6:16
 
 **YouTube title**
 
@@ -4233,13 +4233,13 @@ In this episode you will write a function template, let the compiler pick the ty
 
 0:00 Intro
 0:15 Function templates
-0:45 One function, many types
-1:25 From template to real functions
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:14 One function, many types
+2:20 From template to real functions
+2:59 Second program
+4:12 Recap
+4:42 Bug of the Day
+5:40 Challenge
+6:01 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4282,7 +4282,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 70 — Class templates
 
-Module 8 · Templates and containers · 4:55
+Module 8 · Templates and containers · 6:05
 
 **YouTube title**
 
@@ -4295,13 +4295,13 @@ In this episode you will write a class template, make objects with a type in ang
 
 0:00 Intro
 0:15 Class templates
-0:52 A Box template
-1:32 One template, two classes
-2:02 Second program
-3:02 Recap
-3:32 Bug of the Day
-4:20 Challenge
-4:40 Next episode
+1:16 A Box template
+2:03 One template, two classes
+2:41 Second program
+3:56 Recap
+4:26 Bug of the Day
+5:23 Challenge
+5:50 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4344,7 +4344,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 71 — pair and tuple
 
-Module 8 · Templates and containers · 4:49
+Module 8 · Templates and containers · 6:00
 
 **YouTube title**
 
@@ -4357,13 +4357,13 @@ In this episode you will use std pair, return two values from a function and unp
 
 0:00 Intro
 0:15 pair and tuple
-0:46 A pair
-1:26 Parts of a pair
-1:56 Second program
-2:56 Recap
-3:26 Bug of the Day
-4:14 Challenge
-4:34 Next episode
+1:12 A pair
+2:06 Parts of a pair
+2:43 Second program
+3:57 Recap
+4:27 Bug of the Day
+5:20 Challenge
+5:45 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4406,7 +4406,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 72 — std::map
 
-Module 8 · Templates and containers · 4:54
+Module 8 · Templates and containers · 6:14
 
 **YouTube title**
 
@@ -4419,13 +4419,13 @@ In this episode you will store key and value pairs, read and write with square b
 
 0:00 Intro
 0:15 std::map
-0:51 A phone book
-1:31 Sorted by key
-2:01 Second program
-3:01 Recap
-3:31 Bug of the Day
-4:19 Challenge
-4:39 Next episode
+1:19 A phone book
+2:10 Sorted by key
+2:44 Second program
+4:12 Recap
+4:42 Bug of the Day
+5:35 Challenge
+5:59 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4468,7 +4468,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 73 — unordered_map
 
-Module 8 · Templates and containers · 4:57
+Module 8 · Templates and containers · 6:32
 
 **YouTube title**
 
@@ -4481,13 +4481,13 @@ In this episode you will use unordered_map for fast look-up, count words and kno
 
 0:00 Intro
 0:15 unordered_map
-0:54 Count the words
-1:34 Counts after the loop
-2:04 Second program
-3:04 Recap
-3:34 Bug of the Day
-4:22 Challenge
-4:42 Next episode
+1:26 Count the words
+2:35 Counts after the loop
+3:15 Second program
+4:24 Recap
+4:54 Bug of the Day
+5:51 Challenge
+6:17 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4530,7 +4530,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 74 — set and unordered_set
 
-Module 8 · Templates and containers · 4:55
+Module 8 · Templates and containers · 5:56
 
 **YouTube title**
 
@@ -4543,13 +4543,13 @@ In this episode you will store unique values, see that a set sorts its items and
 
 0:00 Intro
 0:15 set and unordered_set
-0:52 A set of numbers
-1:32 From a vector to a set
-2:02 Second program
-3:02 Recap
-3:32 Bug of the Day
-4:20 Challenge
-4:40 Next episode
+1:11 A set of numbers
+1:58 From a vector to a set
+2:32 Second program
+3:53 Recap
+4:23 Bug of the Day
+5:19 Challenge
+5:41 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4592,7 +4592,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 75 — stack, queue and deque
 
-Module 8 · Templates and containers · 4:57
+Module 8 · Templates and containers · 5:46
 
 **YouTube title**
 
@@ -4605,13 +4605,13 @@ In this episode you will use a stack, last in first out, use a queue, first in f
 
 0:00 Intro
 0:16 stack, queue and deque
-0:54 A stack
-1:34 Stack and queue
-2:04 Second program
-3:04 Recap
-3:34 Bug of the Day
-4:22 Challenge
-4:42 Next episode
+1:20 A stack
+2:00 Stack and queue
+2:38 Second program
+3:44 Recap
+4:14 Bug of the Day
+5:06 Challenge
+5:31 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4654,7 +4654,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 76 — Iterators
 
-Module 8 · Templates and containers · 4:58
+Module 8 · Templates and containers · 6:05
 
 **YouTube title**
 
@@ -4667,13 +4667,13 @@ In this episode you will walk a container with begin and end, use reverse iterat
 
 0:00 Intro
 0:15 Iterators
-0:55 Walk with an iterator
-1:35 Begin and end
-2:05 Second program
-3:05 Recap
-3:35 Bug of the Day
-4:23 Challenge
-4:43 Next episode
+1:16 Walk with an iterator
+2:05 Begin and end
+2:45 Second program
+4:00 Recap
+4:30 Bug of the Day
+5:25 Challenge
+5:50 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4716,7 +4716,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 77 — Algorithms from the library
 
-Module 9 · Library and modern C++ · 4:48
+Module 9 · Library and modern C++ · 5:58
 
 **YouTube title**
 
@@ -4729,13 +4729,13 @@ In this episode you will sort a vector with one call, find and count values and 
 
 0:00 Intro
 0:15 Algorithms from the library
-0:45 Sort, max and reverse
-1:25 Common algorithms
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:10 Sort, max and reverse
+2:07 Common algorithms
+2:41 Second program
+3:59 Recap
+4:29 Bug of the Day
+5:18 Challenge
+5:43 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4778,7 +4778,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 78 — Lambdas with algorithms
 
-Module 9 · Library and modern C++ · 4:48
+Module 9 · Library and modern C++ · 6:06
 
 **YouTube title**
 
@@ -4791,13 +4791,13 @@ In this episode you will write a lambda, sort with your own rule and capture a v
 
 0:00 Intro
 0:15 Lambdas with algorithms
-0:45 Sort descending and count_if
-1:25 Anatomy of a lambda
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:15 Sort descending and count_if
+2:25 Anatomy of a lambda
+3:01 Second program
+4:13 Recap
+4:43 Bug of the Day
+5:31 Challenge
+5:51 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4840,7 +4840,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 79 — Ranges in C++20
 
-Module 9 · Library and modern C++ · 4:48
+Module 9 · Library and modern C++ · 5:57
 
 **YouTube title**
 
@@ -4853,13 +4853,13 @@ In this episode you will build a pipeline with the pipe symbol, filter and trans
 
 0:00 Intro
 0:15 Ranges in C++20
-0:45 Filter then transform
-1:25 The pipeline
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:09 Filter then transform
+2:18 The pipeline
+2:53 Second program
+4:02 Recap
+4:32 Bug of the Day
+5:20 Challenge
+5:42 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4902,7 +4902,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 80 — Move semantics
 
-Module 9 · Library and modern C++ · 4:48
+Module 9 · Library and modern C++ · 6:13
 
 **YouTube title**
 
@@ -4915,13 +4915,13 @@ In this episode you will tell a copy from a move, use std move and write a move 
 
 0:00 Intro
 0:15 Move semantics
-0:45 Move a vector
-1:25 Before and after the move
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:10 Move a vector
+2:10 Before and after the move
+2:46 Second program
+4:15 Recap
+4:45 Bug of the Day
+5:33 Challenge
+5:58 Next episode
 
 Keep coding, says Xecxec!
 
@@ -4964,7 +4964,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 81 — optional and variant
 
-Module 9 · Library and modern C++ · 4:48
+Module 9 · Library and modern C++ · 6:05
 
 **YouTube title**
 
@@ -4977,13 +4977,13 @@ In this episode you will return a value that may be missing, use value_or and st
 
 0:00 Intro
 0:15 optional and variant
-0:45 A search that may fail
-1:25 Two optionals
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:06 A search that may fail
+2:10 Two optionals
+2:45 Second program
+4:08 Recap
+4:38 Bug of the Day
+5:26 Challenge
+5:50 Next episode
 
 Keep coding, says Xecxec!
 
@@ -5026,7 +5026,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 82 — Exceptions
 
-Module 9 · Library and modern C++ · 4:49
+Module 9 · Library and modern C++ · 6:17
 
 **YouTube title**
 
@@ -5039,13 +5039,13 @@ In this episode you will throw an exception, catch it with try and catch and ord
 
 0:00 Intro
 0:15 Exceptions
-0:45 Throw and catch
-1:26 The path of an exception
-1:56 Second program
-2:56 Recap
-3:26 Bug of the Day
-4:14 Challenge
-4:34 Next episode
+1:11 Throw and catch
+2:28 The path of an exception
+3:07 Second program
+4:18 Recap
+4:48 Bug of the Day
+5:36 Challenge
+6:02 Next episode
 
 Keep coding, says Xecxec!
 
@@ -5088,7 +5088,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 83 — File input and output
 
-Module 9 · Library and modern C++ · 4:48
+Module 9 · Library and modern C++ · 6:17
 
 **YouTube title**
 
@@ -5101,13 +5101,13 @@ In this episode you will write text to a file, read lines from a file and check 
 
 0:00 Intro
 0:15 File input and output
-0:45 Write then read lines
-1:25 Stream directions
-1:55 Second program
-2:55 Recap
-3:25 Bug of the Day
-4:13 Challenge
-4:33 Next episode
+1:00 Write then read lines
+2:15 Stream directions
+2:47 Second program
+4:16 Recap
+4:46 Bug of the Day
+5:35 Challenge
+6:02 Next episode
 
 Keep coding, says Xecxec!
 
@@ -5150,7 +5150,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 84 — Namespaces and organising code
 
-Module 9 · Library and modern C++ · 4:50
+Module 9 · Library and modern C++ · 5:57
 
 **YouTube title**
 
@@ -5163,13 +5163,13 @@ In this episode you will write a namespace, avoid name clashes and know how head
 
 0:00 Intro
 0:15 Namespaces and organising code
-0:45 Two namespaces
-1:25 Two drawers
-1:55 Second program
-2:57 Recap
-3:27 Bug of the Day
-4:15 Challenge
-4:35 Next episode
+1:09 Two namespaces
+2:15 Two drawers
+2:45 Second program
+3:58 Recap
+4:28 Bug of the Day
+5:16 Challenge
+5:42 Next episode
 
 Keep coding, says Xecxec!
 
@@ -5212,7 +5212,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 85 — Linked list
 
-Module 10 · Data structures and projects · 5:05
+Module 10 · Data structures and projects · 7:05
 
 **YouTube title**
 
@@ -5225,13 +5225,13 @@ In this episode you will build a linked list with nodes, walk along a list and f
 
 0:00 Intro
 0:15 Linked list
-0:45 Build, walk and free
-1:41 Three nodes on the heap
-2:11 Second program
-3:11 Recap
-3:42 Bug of the Day
-4:30 Challenge
-4:50 Next episode
+1:19 Build, walk and free
+2:55 Three nodes on the heap
+3:35 Second program
+5:01 Recap
+5:32 Bug of the Day
+6:25 Challenge
+6:50 Next episode
 
 Keep coding, says Xecxec!
 
@@ -5274,7 +5274,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 86 — Binary tree
 
-Module 10 · Data structures and projects · 4:56
+Module 10 · Data structures and projects · 6:56
 
 **YouTube title**
 
@@ -5287,13 +5287,13 @@ In this episode you will insert into a binary search tree, print a tree in sorte
 
 0:00 Intro
 0:15 Binary tree
-0:45 Insert and print in order
-1:32 The tree
-2:02 Second program
-3:03 Recap
-3:33 Bug of the Day
-4:21 Challenge
-4:41 Next episode
+1:17 Insert and print in order
+2:35 The tree
+3:16 Second program
+4:53 Recap
+5:23 Bug of the Day
+6:15 Challenge
+6:41 Next episode
 
 Keep coding, says Xecxec!
 
@@ -5336,7 +5336,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 87 — Threads and mutex
 
-Module 10 · Data structures and projects · 4:56
+Module 10 · Data structures and projects · 6:31
 
 **YouTube title**
 
@@ -5349,13 +5349,13 @@ In this episode you will start a thread and join it, share data between threads 
 
 0:00 Intro
 0:15 Threads and mutex
-0:50 Start and join a thread
-1:30 Start, work, join
-2:00 Second program
-3:01 Recap
-3:33 Bug of the Day
-4:21 Challenge
-4:41 Next episode
+1:19 Start and join a thread
+2:23 Start, work, join
+2:53 Second program
+4:29 Recap
+5:01 Bug of the Day
+5:49 Challenge
+6:16 Next episode
 
 Keep coding, says Xecxec!
 
@@ -5398,7 +5398,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 88 — Project: student records
 
-Module 10 · Data structures and projects · 4:57
+Module 10 · Data structures and projects · 6:39
 
 **YouTube title**
 
@@ -5411,13 +5411,13 @@ In this episode you will design a small class, combine a vector, a lambda and al
 
 0:00 Intro
 0:16 Project: student records
-0:46 The Roster class
-1:34 Class design
-2:04 Second program
-3:04 Recap
-3:34 Bug of the Day
-4:22 Challenge
-4:42 Next episode
+1:11 The Roster class
+2:28 Class design
+3:05 Second program
+4:42 Recap
+5:12 Bug of the Day
+6:00 Challenge
+6:24 Next episode
 
 Keep coding, says Xecxec!
 
@@ -5460,7 +5460,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 89 — Common mistakes and exam questions
 
-Module 10 · Data structures and projects · 4:52
+Module 10 · Data structures and projects · 6:23
 
 **YouTube title**
 
@@ -5473,13 +5473,13 @@ In this episode you will spot six classic traps, explain integer division and wr
 
 0:00 Intro
 0:15 Common mistakes and exam questions
-0:49 Division and wraparound
-1:29 Six classic traps
-1:59 Second program
-2:59 Recap
-3:29 Bug of the Day
-4:17 Challenge
-4:37 Next episode
+1:13 Division and wraparound
+2:25 Six classic traps
+2:55 Second program
+4:15 Recap
+4:45 Bug of the Day
+5:41 Challenge
+6:08 Next episode
 
 Keep coding, says Xecxec!
 
@@ -5522,7 +5522,7 @@ c++, c++ for beginners, c++ tutorial, koding konkani, class 11 computer science,
 
 ## EP 90 — Finale: what you can build
 
-Module 10 · Data structures and projects · 4:50
+Module 10 · Data structures and projects · 6:25
 
 **YouTube title**
 
@@ -5535,13 +5535,13 @@ In this episode you will read a modern C++ program, see the whole course map and
 
 0:00 Intro
 0:15 Finale: what you can build
-0:45 A small modern program
-1:26 Your road
-1:56 Second program
-2:57 Recap
-3:27 Bug of the Day
-4:15 Challenge
-4:35 Next episode
+1:11 A small modern program
+2:28 Your road
+3:05 Second program
+4:18 Recap
+4:48 Bug of the Day
+5:40 Challenge
+6:10 Next episode
 
 Keep coding, says Xecxec!
 

@@ -3,7 +3,7 @@
   "ep": 68,
   "title": "Composition and slicing",
   "module": 7,
-  "lengthSec": 295,
+  "lengthSec": 376,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FFB88A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Composition vs Inheritance and Object Slicing | C++ Programming EP 68",
-    "description": "In this episode you will choose between has-a and is-a, build a class from parts and avoid object slicing, with Xecxec the crab. 0:00 Intro · 0:15 Composition and slicing · 0:52 A car has an engine · 1:32 Is-a or has-a? · 2:02 Second program · 3:02 Recap · 3:32 Bug of the Day · 4:20 Challenge · 4:40 Next episode",
+    "description": "In this episode you will choose between has-a and is-a, build a class from parts and avoid object slicing, with Xecxec the crab. 0:00 Intro · 0:15 Composition and slicing · 1:20 A car has an engine · 2:12 Is-a or has-a? · 2:51 Second program · 4:14 Recap · 4:44 Bug of the Day · 5:35 Challenge · 6:01 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Composition and slicing"
       },
       {
-        "t": "0:52",
+        "t": "1:20",
         "label": "A car has an engine"
       },
       {
-        "t": "1:32",
+        "t": "2:12",
         "label": "Is-a or has-a?"
       },
       {
-        "t": "2:02",
+        "t": "2:51",
         "label": "Second program"
       },
       {
-        "t": "3:02",
+        "t": "4:14",
         "label": "Recap"
       },
       {
-        "t": "3:32",
+        "t": "4:44",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:20",
+        "t": "5:35",
         "label": "Challenge"
       },
       {
-        "t": "4:40",
+        "t": "6:01",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 37,
+      "lengthSec": 65,
       "onScreen": "\"Composition and slicing\": numbered lines (1. Is-a means inheritance; 2. Has-a means composition; 3. Pass polymorphic objects by reference, never by value) and an analogy card: a car and its engine: a car has an engine, it is not an engine",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Use inheritance for an is-a relationship. A dog is an animal. Use composition for a has-a relationship. A car has an engine. Composition makes a member out of another class. Prefer composition when you are not sure. It is simpler. A second danger is slicing. Passing a derived object by value to a base parameter cuts off the derived part. Pass by reference.",
+      "narration": "Use inheritance for an is-a relationship. A dog is an animal. Use composition for a has-a relationship. A car has an engine. Composition makes a member out of another class. Prefer composition when you are not sure. It is simpler. A second danger is slicing. Passing a derived object by value to a base parameter cuts off the derived part. Pass by reference. Choosing between inheritance and composition is a design skill. Ask a question. Is it an X, or does it have an X? A car is not an engine, so a car has an engine. Composition is often more flexible, because you can change the part without changing the class.",
       "points": [
         "Is-a means inheritance",
         "Has-a means composition",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 52,
-      "lengthSec": 40,
+      "startSec": 80,
+      "lengthSec": 52,
       "onScreen": "car.cpp: Car contains an Engine as a member",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 4] Engine is a small class with one job. [HL 10] Car has an engine as a member. This is composition. [HL 13] Drive uses the engine. [HL 14] It calls start on the member. [HL 20] Main makes a car. [HL 21] The output shows the engine start, and then the car moves.",
+      "narration": "[HL 4] Engine is a small class with one job. [HL 10] Car has an engine as a member. This is composition. [HL 13] Drive uses the engine. [HL 14] It calls start on the member. [HL 20] Main makes a car. [HL 21] The output shows the engine start, and then the car moves. [HL 4] Engine is a small class with a start function. [HL 10] Car holds an Engine as a private member. We say that Car has an Engine. [HL 14] The drive function calls start on the engine, and then it moves. [HL 21] Main only knows about Car. The engine is a hidden detail.",
       "code": {
         "file": "car.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Engine {\npublic:\n    void start() const { cout << \"Engine starts\" << endl; }\n};\n\nclass Car {\n    Engine engine_;\n\npublic:\n    void drive() const {\n        engine_.start();\n        cout << \"Car moves\" << endl;\n    }\n};\n\nint main() {\n    Car c;\n    c.drive();\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 92,
-      "lengthSec": 30,
+      "startSec": 132,
+      "lengthSec": 39,
       "onScreen": "a table of examples and the right tool",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Use the sentence test. If the sentence says is a, use inheritance. If it says has a, use composition. A dog is an animal. A car has an engine. When in doubt, choose composition.",
+      "narration": "Use the sentence test. If the sentence says is a, use inheritance. If it says has a, use composition. A dog is an animal. A car has an engine. When in doubt, choose composition. Notice the difference in the two pictures. Inheritance draws an arrow up to the parent. Composition draws a box inside a box. A car holds its engine, as a wallet holds money.",
       "diagram": {
         "kind": "table",
         "caption": "a table of examples and the right tool",
@@ -174,14 +174,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 122,
-      "lengthSec": 40,
+      "startSec": 171,
+      "lengthSec": 57,
       "onScreen": "slice.cpp: a derived object is passed by value and loses its derived part",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 14] This function takes an Animal by value. The compiler copies only the Animal part of the dog. The Dog part is sliced off. [HL 15] This one takes a reference. No copy is made. [HL 19] The first call prints three dots. [HL 20] The second call prints Woof. Always pass polymorphic objects by reference or by pointer.",
+      "narration": "[HL 14] This function takes an Animal by value. The compiler copies only the Animal part of the dog. The Dog part is sliced off. [HL 15] This one takes a reference. No copy is made. [HL 19] The first call prints three dots. [HL 20] The second call prints Woof. Always pass polymorphic objects by reference or by pointer. [HL 14] The first function takes the Animal by value. The compiler copies only the Animal part. The copy is a plain Animal, so the speak call prints three dots. [HL 15] The second function takes a reference. No copy is made, so the virtual call finds the Dog version.",
       "code": {
         "file": "slice.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Animal {\npublic:\n    virtual void speak() const { cout << \"...\" << endl; }\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() const override { cout << \"Woof\" << endl; }\n};\n\nvoid by_value(Animal a) { a.speak(); }\nvoid by_ref(const Animal& a) { a.speak(); }\n\nint main() {\n    Dog d;\n    by_value(d);\n    by_ref(d);\n    return 0;\n}",
@@ -191,20 +191,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 162,
-      "lengthSec": 20,
+      "startSec": 228,
+      "lengthSec": 26,
       "onScreen": "Terminal: g++ -std=c++20 slice.cpp -o slice then ./slice",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as slice dot cpp. Compile it with g plus plus. Then run the program. The program prints three dots, and then Woof."
+      "narration": "Save the file as slice dot cpp. Compile it with g plus plus. Then run the program. The program prints three dots, and then Woof. Notice the difference between the two lines. The first prints three dots, and the second prints Woof."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 182,
+      "startSec": 254,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -222,20 +222,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 212,
-      "lengthSec": 40,
+      "startSec": 284,
+      "lengthSec": 43,
       "onScreen": "BUG OF THE DAY: Slicing in a function call",
       "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We pass a Dog to a function that takes an Animal by value. The function prints three dots, not Woof. The Dog part was sliced off in the copy. Take a const reference instead."
+      "narration": "Bug of the Day. We pass a Dog to a function that takes an Animal by value. The function prints three dots, not Woof. The Dog part was sliced off in the copy. Take a const reference instead. Slicing is silent. The compiler lets you copy a Dog into an Animal, and it cuts away the Dog part. So pass objects of a class family by reference or by pointer, never by value."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 252,
+      "startSec": 327,
       "lengthSec": 8,
       "onScreen": "Object slicing is a bad deal. You asked for a whole dog, and you got half a dog.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -247,19 +247,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 260,
-      "lengthSec": 20,
+      "startSec": 335,
+      "lengthSec": 26,
       "onScreen": "Task card: redesign with composition",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a class Computer that has a Processor and a Memory as members. Add a function that starts both. Write your answer in the comments."
+      "narration": "Your challenge: Write a class Computer that has a Processor and a Memory as members. Add a function that starts both. Hint: make the Processor and the Memory members of Computer, and call start on both. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 280,
+      "startSec": 361,
       "lengthSec": 15,
       "onScreen": "Next: EP 69 · Function templates",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -276,7 +276,7 @@
     "why": "Passing by value copies only the Animal part of the Dog. The copy is a plain Animal, so speak prints three dots."
   },
   "pun": "\"Object slicing is a bad deal. You asked for a whole dog, and you got half a dog.\"",
-  "challenge": "Write a class Computer that has a Processor and a Memory as members. Add a function that starts both.",
+  "challenge": "Write a class Computer that has a Processor and a Memory as members. Add a function that starts both. Hint: make the Processor and the Memory members of Computer, and call start on both.",
   "challengeAnswer": "Make Processor and Memory small classes with a start function. In Computer, keep one of each as a member. The start function calls both.",
   "shorts": [
     {

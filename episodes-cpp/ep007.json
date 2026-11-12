@@ -3,7 +3,7 @@
   "ep": 7,
   "title": "Operators and expressions",
   "module": 1,
-  "lengthSec": 294,
+  "lengthSec": 409,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Operators: + - * / % Explained | C++ Programming EP 07",
-    "description": "In this episode you will use the five arithmetic operators, explain integer division and remainder and use += and ++ to change a variable, with Xecxec the crab. 0:00 Intro · 0:15 Operators and expressions · 0:50 Five operators · 1:30 The operator table · 2:00 Second program · 3:00 Recap · 3:31 Bug of the Day · 4:19 Challenge · 4:39 Next episode",
+    "description": "In this episode you will use the five arithmetic operators, explain integer division and remainder and use += and ++ to change a variable, with Xecxec the crab. 0:00 Intro · 0:15 Operators and expressions · 1:19 Five operators · 2:21 The operator table · 3:13 Second program · 4:36 Recap · 5:07 Bug of the Day · 6:09 Challenge · 6:34 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Operators and expressions"
       },
       {
-        "t": "0:50",
+        "t": "1:19",
         "label": "Five operators"
       },
       {
-        "t": "1:30",
+        "t": "2:21",
         "label": "The operator table"
       },
       {
-        "t": "2:00",
+        "t": "3:13",
         "label": "Second program"
       },
       {
-        "t": "3:00",
+        "t": "4:36",
         "label": "Recap"
       },
       {
-        "t": "3:31",
+        "t": "5:07",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:19",
+        "t": "6:09",
         "label": "Challenge"
       },
       {
-        "t": "4:39",
+        "t": "6:34",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 35,
+      "lengthSec": 64,
       "onScreen": "\"Operators and expressions\": numbered lines (1. Plus, minus, times, divide and remainder; 2. Two ints divide to give an int; 3. Short forms: += and ++) and an analogy card: sharing laddoos: the division gives each friend a share, the remainder is what is left",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "C plus plus has five arithmetic operators. They are plus, minus, times, divide and remainder. The remainder operator is the percent sign. When both numbers are ints, the answer is also an int. The decimal part is cut off. Think of sharing laddoos. Seventeen laddoos for five friends gives each friend three. Two laddoos stay in the box.",
+      "narration": "C plus plus has five arithmetic operators. They are plus, minus, times, divide and remainder. The remainder operator is the percent sign. When both numbers are ints, the answer is also an int. The decimal part is cut off. Think of sharing laddoos. Seventeen laddoos for five friends gives each friend three. Two laddoos stay in the box. The order of the operators matters. Times, divide and remainder go first. Plus and minus come after. So two plus three times four gives fourteen, not twenty. Use brackets when you want to be clear. Brackets always go first. A short, clear line is better than a clever line that nobody can read.",
       "points": [
         "Plus, minus, times, divide and remainder",
         "Two ints divide to give an int",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 50,
-      "lengthSec": 40,
+      "startSec": 79,
+      "lengthSec": 62,
       "onScreen": "ops.cpp: seventeen and five with all five operators",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] We store seventeen in a and five in b. [HL 6] Plus gives twenty-two. [HL 7] Minus gives twelve. [HL 8] Times gives eighty-five. [HL 9] Divide gives three. Both are ints, so the decimal part is gone. [HL 10] Remainder gives two. That is what is left after sharing.",
+      "narration": "[HL 5] We store seventeen in a and five in b. [HL 6] Plus gives twenty-two. [HL 7] Minus gives twelve. [HL 8] Times gives eighty-five. [HL 9] Divide gives three. Both are ints, so the decimal part is gone. [HL 10] Remainder gives two. That is what is left after sharing. [HL 5] We can make two variables in one line, if they have the same type. [HL 9] Integer divide gives only the whole part. Seventeen divided by five is three point four, and the point four is cut. [HL 10] The remainder operator works only with ints. Programmers use it to test for even numbers and to wrap around a clock. Remember this pair. Divide gives the groups, and remainder gives the leftovers.",
       "code": {
         "file": "ops.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 17, b = 5;\n    cout << a + b << endl;\n    cout << a - b << endl;\n    cout << a * b << endl;\n    cout << a / b << endl;\n    cout << a % b << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 90,
-      "lengthSec": 30,
+      "startSec": 141,
+      "lengthSec": 52,
       "onScreen": "a table: operator, meaning, example and result",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Look at the table. Each row shows one operator, what it does, an example and the result. Pay attention to the last two rows. Divide gives three, and remainder gives two. Together they say that five goes into seventeen three times, with two left.",
+      "narration": "Look at the table. Each row shows one operator, what it does, an example and the result. Pay attention to the last two rows. Divide gives three, and remainder gives two. Together they say that five goes into seventeen three times, with two left. Notice how divide and remainder work as a team. Three groups of five make fifteen, and two more make seventeen. If you ever doubt the answer, multiply the divide result by the second number, and add the remainder. You must get the first number back.",
       "diagram": {
         "kind": "table",
         "caption": "a table: operator, meaning, example and result",
@@ -185,14 +185,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 120,
-      "lengthSec": 40,
+      "startSec": 193,
+      "lengthSec": 55,
       "onScreen": "shorts.cpp: plus-equals, plus-plus and a double division",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 5] Visitors starts at ten. [HL 6] The plus-equals operator adds five. [TRACK visitors=15] Now visitors is fifteen. [HL 7] The plus-plus operator adds one. [TRACK visitors=16] Now it is sixteen. [HL 9] Here one number is a double, so the division keeps the decimal part. Seven divided by two point zero gives three point five.",
+      "narration": "[HL 5] Visitors starts at ten. [HL 6] The plus-equals operator adds five. [TRACK visitors=15] Now visitors is fifteen. [HL 7] The plus-plus operator adds one. [TRACK visitors=16] Now it is sixteen. [HL 9] Here one number is a double, so the division keeps the decimal part. Seven divided by two point zero gives three point five. [HL 6] The plus-equals operator is a short way to write visitors equals visitors plus five. [HL 7] The plus-plus operator is the short way to add one. You will see it in every loop later. [HL 9] Compare this line with the bug in the next scene. One decimal point changes the whole answer.",
       "code": {
         "file": "shorts.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int visitors = 10;\n    visitors += 5;\n    visitors++;\n    cout << \"Visitors: \" << visitors << endl;\n    double half = 7 / 2.0;\n    cout << \"Half: \" << half << endl;\n    return 0;\n}",
@@ -202,20 +202,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 160,
-      "lengthSec": 20,
+      "startSec": 248,
+      "lengthSec": 28,
       "onScreen": "Terminal: g++ -std=c++20 shorts.cpp -o shorts then ./shorts",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as shorts dot cpp. Compile it with g plus plus. Then run the program. The program prints sixteen visitors, and then three point five."
+      "narration": "Save the file as shorts dot cpp. Compile it with g plus plus. Then run the program. The program prints sixteen visitors, and then three point five. Check the first number. Ten plus five plus one is sixteen. Then half of seven is three point five."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 180,
+      "startSec": 276,
       "lengthSec": 31,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -233,20 +233,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 211,
-      "lengthSec": 40,
+      "startSec": 307,
+      "lengthSec": 54,
       "onScreen": "BUG OF THE DAY: Integer division cuts the decimals",
       "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We want the average of seven and eight. The answer should be seven point five. But the program prints seven. Both numbers in the division are ints, so C plus plus cuts the decimals before it stores the result. Write two point zero, and the answer is right."
+      "narration": "Bug of the Day. We want the average of seven and eight. The answer should be seven point five. But the program prints seven. Both numbers in the division are ints, so C plus plus cuts the decimals before it stores the result. Write two point zero, and the answer is right. Many beginners think the compiler is wrong here. It is not. The rule is simple. If both sides of a divide are ints, the answer is an int. Make at least one side a double, and the answer keeps its decimals."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 251,
+      "startSec": 361,
       "lengthSec": 8,
       "onScreen": "Why was the number seven so calm? It had no remainder.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -258,19 +258,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 259,
-      "lengthSec": 20,
+      "startSec": 369,
+      "lengthSec": 25,
       "onScreen": "Task card: split a bill between friends",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: A bill is two hundred and fifty rupees for four friends. Print the share and the remainder. Write your answer in the comments."
+      "narration": "Your challenge: A bill is two hundred and fifty rupees for four friends. Print the share and the remainder. Hint: use the divide operator for the share and the remainder operator for what is left. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 279,
+      "startSec": 394,
       "lengthSec": 15,
       "onScreen": "Next: EP 08 · Comparison and logical operators",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -287,7 +287,7 @@
     "why": "The division happens before the result goes into the double. Two ints give an int, so the decimal part is already gone."
   },
   "pun": "\"Why was the number seven so calm? It had no remainder.\"",
-  "challenge": "A bill is two hundred and fifty rupees for four friends. Print the share and the remainder.",
+  "challenge": "A bill is two hundred and fifty rupees for four friends. Print the share and the remainder. Hint: use the divide operator for the share and the remainder operator for what is left.",
   "challengeAnswer": "Use int total equals two hundred fifty. Print total divided by four, which is sixty-two, and total remainder four, which is two.",
   "shorts": [
     {

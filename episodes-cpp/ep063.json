@@ -3,7 +3,7 @@
   "ep": 63,
   "title": "protected and access control",
   "module": 7,
-  "lengthSec": 293,
+  "lengthSec": 375,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FFB88A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ public, protected and private Explained | C++ Programming EP 63",
-    "description": "In this episode you will use the protected label, read the access table and choose the right label, with Xecxec the crab. 0:00 Intro · 0:15 protected and access control · 0:50 A protected member · 1:30 Who can reach what · 2:00 Second program · 3:00 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:38 Next episode",
+    "description": "In this episode you will use the protected label, read the access table and choose the right label, with Xecxec the crab. 0:00 Intro · 0:15 protected and access control · 1:15 A protected member · 2:08 Who can reach what · 2:49 Second program · 4:06 Recap · 4:36 Bug of the Day · 5:30 Challenge · 6:00 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "protected and access control"
       },
       {
-        "t": "0:50",
+        "t": "1:15",
         "label": "A protected member"
       },
       {
-        "t": "1:30",
+        "t": "2:08",
         "label": "Who can reach what"
       },
       {
-        "t": "2:00",
+        "t": "2:49",
         "label": "Second program"
       },
       {
-        "t": "3:00",
+        "t": "4:06",
         "label": "Recap"
       },
       {
-        "t": "3:30",
+        "t": "4:36",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:18",
+        "t": "5:30",
         "label": "Challenge"
       },
       {
-        "t": "4:38",
+        "t": "6:00",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 35,
+      "lengthSec": 60,
       "onScreen": "\"protected and access control\": numbered lines (1. Public is open to everyone; 2. Protected is open to the class and its children; 3. Private is open to the class only) and an analogy card: a family house: the street sees the gate, the family sees the hall, only you see your room",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Public members are open to everyone. Private members are open to the class only. Protected members are open to the class and to its derived classes, but not to the outside. Choose the strictest label that works. Think of a family house. The street sees the gate. The family sees the hall. Only you see your own room.",
+      "narration": "Public members are open to everyone. Private members are open to the class only. Protected members are open to the class and to its derived classes, but not to the outside. Choose the strictest label that works. Think of a family house. The street sees the gate. The family sees the hall. Only you see your own room. Access levels are a design tool. Each level says who may depend on a member. Fewer dependents mean easier changes later. Start with private. If a child class needs the member, change it to protected. Make a member public only if the outside world needs it.",
       "points": [
         "Public is open to everyone",
         "Protected is open to the class and its children",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 50,
-      "lengthSec": 40,
+      "startSec": 75,
+      "lengthSec": 53,
       "onScreen": "protect.cpp: the derived class reads a protected member",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] Everything below this label is open to derived classes. [HL 6] The balance is protected. [HL 9] Savings inherits from Account. [HL 11] Savings can change the protected balance. Interest adds ten percent. [HL 18] Main reads it through a public function. The result is one hundred ten.",
+      "narration": "[HL 5] Everything below this label is open to derived classes. [HL 6] The balance is protected. [HL 9] Savings inherits from Account. [HL 11] Savings can change the protected balance. Interest adds ten percent. [HL 18] Main reads it through a public function. The result is one hundred ten. [HL 5] The label protected opens the members below to the class and its children. [HL 6] The balance starts at one hundred. [HL 11] Savings is a child, so it can change balance. The interest raises it by ten percent. [HL 12] A public getter lets the outside read the value. The answer is one hundred and ten.",
       "code": {
         "file": "protect.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Account {\nprotected:\n    double balance_ = 100;\n};\n\nclass Savings : public Account {\npublic:\n    void add_interest() { balance_ *= 1.1; }\n    double balance() const { return balance_; }\n};\n\nint main() {\n    Savings s;\n    s.add_interest();\n    cout << s.balance() << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 90,
-      "lengthSec": 30,
+      "startSec": 128,
+      "lengthSec": 41,
       "onScreen": "a table of the three labels and who can reach them",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Read the table row by row. Public is open to all. Protected is open to the class and its children, but closed to outside code. Private is open to the class only.",
+      "narration": "Read the table row by row. Public is open to all. Protected is open to the class and its children, but closed to outside code. Private is open to the class only. Notice the three rings in the picture. The outer ring is public, the middle ring is protected, and the inner ring is private. The nearer the ring is to the centre, the fewer people can look in.",
       "diagram": {
         "kind": "table",
         "caption": "a table of the three labels and who can reach them",
@@ -173,14 +173,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 120,
-      "lengthSec": 40,
+      "startSec": 169,
+      "lengthSec": 52,
       "onScreen": "levels.cpp: one class with public, protected and private data",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] Open is public. Everyone can read it. [HL 9] Family is protected. [HL 12] Secret is private. [HL 15] A public getter lets others read the secret. [HL 20] The child adds all three parts. It reads family directly, and secret through the getter. The sum is six. [HL 26] Main may read the public part.",
+      "narration": "[HL 6] Open is public. Everyone can read it. [HL 9] Family is protected. [HL 12] Secret is private. [HL 15] A public getter lets others read the secret. [HL 20] The child adds all three parts. It reads family directly, and secret through the getter. The sum is six. [HL 26] Main may read the public part. [HL 6] The public member is open to everyone. [HL 9] The protected member is open to Child, but not to main. [HL 12] The private member is open only to Base. Child reaches it through the public getter. [HL 20] Sum is one plus two plus three, which gives six.",
       "code": {
         "file": "levels.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Base {\npublic:\n    int open_ = 1;\n\nprotected:\n    int family_ = 2;\n\nprivate:\n    int secret_ = 3;\n\npublic:\n    int secret() const { return secret_; }\n};\n\nclass Child : public Base {\npublic:\n    int sum() const { return open_ + family_ + secret(); }\n};\n\nint main() {\n    Child c;\n    cout << c.sum() << endl;\n    cout << c.open_ << endl;\n    return 0;\n}",
@@ -190,20 +190,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 160,
-      "lengthSec": 20,
+      "startSec": 221,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 levels.cpp -o levels then ./levels",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as levels dot cpp. Compile it with g plus plus. Then run the program. The program prints six, and then one."
+      "narration": "Save the file as levels dot cpp. Compile it with g plus plus. Then run the program. The program prints six, and then one. Notice that main prints the open member, which is one. It cannot touch the other two."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 180,
+      "startSec": 246,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -221,20 +221,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 210,
-      "lengthSec": 40,
+      "startSec": 276,
+      "lengthSec": 46,
       "onScreen": "BUG OF THE DAY: Reaching protected data from outside",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Main reads a protected member. The compiler says the balance is protected within this context. Protected is open to children, not to outside code. Add a public getter."
+      "narration": "Bug of the Day. Main reads a protected member. The compiler says the balance is protected within this context. Protected is open to children, not to outside code. Add a public getter. Main is not part of the class family, so protected is closed to it. The compiler says that the member is protected within this context. If main needs the value, add a public function. If main does not need it, leave the member as it is."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 250,
+      "startSec": 322,
       "lengthSec": 8,
       "onScreen": "Protected is the middle child of access labels. It always gets along with the family.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -246,19 +246,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 258,
-      "lengthSec": 20,
+      "startSec": 330,
+      "lengthSec": 30,
       "onScreen": "Task card: pick the right label",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a class with a name, an id and a secret code. Decide which label each one needs, and explain in a comment. Write your answer in the comments."
+      "narration": "Your challenge: Write a class with a name, an id and a secret code. Decide which label each one needs, and explain in a comment. Hint: the id may be public, the name may be protected, and the secret code should be private. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 278,
+      "startSec": 360,
       "lengthSec": 15,
       "onScreen": "Next: EP 64 · Virtual functions",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -275,7 +275,7 @@
     "why": "Protected members are for the class and its children. Main is outside code, so it cannot reach them."
   },
   "pun": "\"Protected is the middle child of access labels. It always gets along with the family.\"",
-  "challenge": "Write a class with a name, an id and a secret code. Decide which label each one needs, and explain in a comment.",
+  "challenge": "Write a class with a name, an id and a secret code. Decide which label each one needs, and explain in a comment. Hint: the id may be public, the name may be protected, and the secret code should be private.",
   "challengeAnswer": "The name can be public through a getter. The id can be protected for derived classes. The secret code stays private.",
   "shorts": [
     {

@@ -3,7 +3,7 @@
   "ep": 31,
   "title": "Arrays",
   "module": 4,
-  "lengthSec": 296,
+  "lengthSec": 419,
   "colours": {
     "bg": "#FFE58A",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Arrays: Store Many Values in One Variable | C++ Programming EP 31",
-    "description": "In this episode you will make an array with a starting list, read and change items by index and stay inside the array size, with Xecxec the crab. 0:00 Intro · 0:15 Arrays · 0:50 Five marks · 1:30 Boxes side by side · 2:00 Second program · 3:00 Recap · 3:33 Bug of the Day · 4:21 Challenge · 4:41 Next episode",
+    "description": "In this episode you will make an array with a starting list, read and change items by index and stay inside the array size, with Xecxec the crab. 0:00 Intro · 0:15 Arrays · 1:23 Five marks · 2:33 Boxes side by side · 3:24 Second program · 4:50 Recap · 5:23 Bug of the Day · 6:20 Challenge · 6:44 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Arrays"
       },
       {
-        "t": "0:50",
+        "t": "1:23",
         "label": "Five marks"
       },
       {
-        "t": "1:30",
+        "t": "2:33",
         "label": "Boxes side by side"
       },
       {
-        "t": "2:00",
+        "t": "3:24",
         "label": "Second program"
       },
       {
-        "t": "3:00",
+        "t": "4:50",
         "label": "Recap"
       },
       {
-        "t": "3:33",
+        "t": "5:23",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:21",
+        "t": "6:20",
         "label": "Challenge"
       },
       {
-        "t": "4:41",
+        "t": "6:44",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 35,
+      "lengthSec": 68,
       "onScreen": "\"Arrays\": numbered lines (1. An array holds many values of one type; 2. The size is fixed; 3. Indexes start at zero) and an analogy card: a row of lockers: one name on the row, one number on each door",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "An array holds many values of the same type. You choose the size when you make it, and the size never changes. Each item has an index. The first index is zero. The items sit side by side in memory. Think of a row of lockers. The row has one name, and each door has its own number.",
+      "narration": "An array holds many values of the same type. You choose the size when you make it, and the size never changes. Each item has an index. The first index is zero. The items sit side by side in memory. Think of a row of lockers. The row has one name, and each door has its own number. Why use an array? Imagine five marks in five separate variables. You would write five names, and a loop could not reach them. With an array, one name holds all five, and a loop can visit each one. Arrays are everywhere. A list of prices, the pixels of a photo and the scores of a game all live in arrays.",
       "points": [
         "An array holds many values of one type",
         "The size is fixed",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 50,
-      "lengthSec": 40,
+      "startSec": 83,
+      "lengthSec": 70,
       "onScreen": "marks.cpp: an array of five marks, read by index",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] The number in square brackets is the size. The list in braces gives the starting values. [HL 6] Index zero is the first item. It prints seventy-two. [HL 7] Index four is the last item. It prints fifty-eight. There is no index five. [HL 8] We can change one item by its index. [HL 9] Now the third item prints seventy.",
+      "narration": "[HL 5] The number in square brackets is the size. The list in braces gives the starting values. [HL 6] Index zero is the first item. It prints seventy-two. [HL 7] Index four is the last item. It prints fifty-eight. There is no index five. [HL 8] We can change one item by its index. [HL 9] Now the third item prints seventy. [HL 5] Read the line in parts. The type is int, and the name is marks. The number five in square brackets is the size. The curly braces hold the starting values, in order. [HL 6] The first item has index zero, so marks of zero is seventy-two. [HL 7] The last item has index four, one less than the size. [HL 8] You can change an item with an equals sign, like a plain variable.",
       "code": {
         "file": "marks.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int marks[5] = {72, 85, 64, 90, 58};\n    cout << marks[0] << endl;\n    cout << marks[4] << endl;\n    marks[2] = 70;\n    cout << marks[2] << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 90,
-      "lengthSec": 30,
+      "startSec": 153,
+      "lengthSec": 51,
       "onScreen": "five int boxes in a row, each with an address four bytes after the last",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the memory. Each box holds one mark. Each box is four bytes wide. So the addresses grow by four each time. The computer finds any item by a simple sum. It takes the start address and adds the index times four.",
+      "narration": "Look at the memory. Each box holds one mark. Each box is four bytes wide. So the addresses grow by four each time. The computer finds any item by a simple sum. It takes the start address and adds the index times four. Notice that the items sit side by side. Each int takes four bytes, so each address is four more than the one before. That is why the computer finds any item at once. It starts at the first address and adds the index times four.",
       "memory": {
         "frames": [
           {
@@ -184,14 +184,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 120,
-      "lengthSec": 40,
+      "startSec": 204,
+      "lengthSec": 57,
       "onScreen": "sumall.cpp: a loop adds all five marks",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] The sum starts at zero. [HL 7] The loop runs with i from zero up to four. The test says less than five, so five is never used. [HL 8] Each round adds one item to the sum. [TRACK sum=72] After round one the sum is seventy-two. [HL 10] At the end, the sum is three hundred and sixty-nine.",
+      "narration": "[HL 6] The sum starts at zero. [HL 7] The loop runs with i from zero up to four. The test says less than five, so five is never used. [HL 8] Each round adds one item to the sum. [TRACK sum=72] After round one the sum is seventy-two. [HL 10] At the end, the sum is three hundred and sixty-nine. [HL 6] The sum starts at zero before the loop. [HL 7] The loop counts from zero up to four. The test says less than five, so the index five is never used. [HL 8] Each round adds one mark to the sum. This is the standard way to walk through an array.",
       "code": {
         "file": "sumall.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int marks[5] = {72, 85, 64, 90, 58};\n    int sum = 0;\n    for (int i = 0; i < 5; i++) {\n        sum += marks[i];\n    }\n    cout << \"Sum: \" << sum << endl;\n    return 0;\n}",
@@ -201,20 +201,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 160,
-      "lengthSec": 20,
+      "startSec": 261,
+      "lengthSec": 29,
       "onScreen": "Terminal: g++ -std=c++20 sumall.cpp -o sumall then ./sumall",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as sumall dot cpp. Compile it with g plus plus. Then run the program. The program prints Sum colon three hundred sixty-nine."
+      "narration": "Save the file as sumall dot cpp. Compile it with g plus plus. Then run the program. The program prints Sum colon three hundred sixty-nine. Check the sum by hand. Seventy-two plus eighty-five is one hundred fifty-seven. Add sixty-four, ninety and fifty-eight to reach three hundred sixty-nine."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 180,
+      "startSec": 290,
       "lengthSec": 33,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -232,20 +232,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 213,
-      "lengthSec": 40,
+      "startSec": 323,
+      "lengthSec": 49,
       "onScreen": "BUG OF THE DAY: Too many starting values",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The array has three boxes, but the list has four values. The compiler says too many initializers. The fourth value has no box to go in. Make the size four, or remove one value."
+      "narration": "Bug of the Day. The array has three boxes, but the list has four values. The compiler says too many initializers. The fourth value has no box to go in. Make the size four, or remove one value. The size of an array is fixed, and the compiler counts your starting values. If you give more values than boxes, the compiler stops. If you give fewer, the rest become zero. You can also leave out the size, and the compiler counts for you."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 253,
+      "startSec": 372,
       "lengthSec": 8,
       "onScreen": "I asked my array how it feels. It said, I am fine, but I count from zero.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -257,19 +257,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 261,
-      "lengthSec": 20,
+      "startSec": 380,
+      "lengthSec": 24,
       "onScreen": "Task card: store and print five numbers",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make an array of five temperatures. Print the first one and the last one. Write your answer in the comments."
+      "narration": "Your challenge: Make an array of five temperatures. Print the first one and the last one. Hint: the last index is the size minus one, so use index four for five items. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 281,
+      "startSec": 404,
       "lengthSec": 15,
       "onScreen": "Next: EP 32 · Looping over arrays",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -286,7 +286,7 @@
     "why": "The size says three boxes, but the list has four values. The compiler stops, because the fourth value has no box."
   },
   "pun": "\"I asked my array how it feels. It said, I am fine, but I count from zero.\"",
-  "challenge": "Make an array of five temperatures. Print the first one and the last one.",
+  "challenge": "Make an array of five temperatures. Print the first one and the last one. Hint: the last index is the size minus one, so use index four for five items.",
   "challengeAnswer": "Write int temps with five values in braces. Print temps at index zero and temps at index four.",
   "shorts": [
     {

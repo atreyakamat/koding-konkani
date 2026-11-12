@@ -3,7 +3,7 @@
   "ep": 61,
   "title": "Inheritance",
   "module": 7,
-  "lengthSec": 297,
+  "lengthSec": 387,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FFB88A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Inheritance: Reuse a Class | C++ Programming EP 61",
-    "description": "In this episode you will write a derived class, reuse the members of a base class and say is-a to test a design, with Xecxec the crab. 0:00 Intro · 0:15 Inheritance · 0:54 Animal and Dog · 1:34 A small family tree · 2:04 Second program · 3:04 Recap · 3:34 Bug of the Day · 4:22 Challenge · 4:42 Next episode",
+    "description": "In this episode you will write a derived class, reuse the members of a base class and say is-a to test a design, with Xecxec the crab. 0:00 Intro · 0:15 Inheritance · 1:23 Animal and Dog · 2:25 A small family tree · 3:05 Second program · 4:21 Recap · 4:51 Bug of the Day · 5:46 Challenge · 6:12 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Inheritance"
       },
       {
-        "t": "0:54",
+        "t": "1:23",
         "label": "Animal and Dog"
       },
       {
-        "t": "1:34",
+        "t": "2:25",
         "label": "A small family tree"
       },
       {
-        "t": "2:04",
+        "t": "3:05",
         "label": "Second program"
       },
       {
-        "t": "3:04",
+        "t": "4:21",
         "label": "Recap"
       },
       {
-        "t": "3:34",
+        "t": "4:51",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:22",
+        "t": "5:46",
         "label": "Challenge"
       },
       {
-        "t": "4:42",
+        "t": "6:12",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 39,
+      "lengthSec": 68,
       "onScreen": "\"Inheritance\": numbered lines (1. A derived class gets the members of its base; 2. It can add new members; 3. Use inheritance only for an is-a relationship) and an analogy card: a family: a child gets the family name, and adds its own talents",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Inheritance lets a new class build on an existing class. The existing class is the base. The new class is the derived class. It gets the public members of the base, and can add more. Use it only for an is-a relationship. A dog is an animal, so it works. Think of a family. A child gets the family name, and adds its own talents.",
+      "narration": "Inheritance lets a new class build on an existing class. The existing class is the base. The new class is the derived class. It gets the public members of the base, and can add more. Use it only for an is-a relationship. A dog is an animal, so it works. Think of a family. A child gets the family name, and adds its own talents. Why use inheritance? You avoid copying code. If many classes share the same members, you write them once in the base. A derived class is a specialised version of the base. A Dog does everything an Animal does, and it also does tricks. Anywhere you need an Animal, you can use a Dog.",
       "points": [
         "A derived class gets the members of its base",
         "It can add new members",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 54,
-      "lengthSec": 40,
+      "startSec": 83,
+      "lengthSec": 62,
       "onScreen": "animals.cpp: Dog inherits from Animal and adds a new function",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] The base class has a name and an eat function. [HL 11] The colon and public Animal say that Dog inherits from Animal. [HL 13] Dog adds a new function. [HL 17] Here we make a dog. [HL 18] Eat comes from Animal. [HL 19] Fetch comes from Dog. One object has both.",
+      "narration": "[HL 5] The base class has a name and an eat function. [HL 11] The colon and public Animal say that Dog inherits from Animal. [HL 13] Dog adds a new function. [HL 17] Here we make a dog. [HL 18] Eat comes from Animal. [HL 19] Fetch comes from Dog. One object has both. [HL 5] Animal is the base class. It holds a name and a function that prints. [HL 11] The colon and the word public say that Dog is built on Animal. The word public keeps the public members of the base public. [HL 13] Dog can use name, because it inherited it. [HL 18] The Dog object calls eat, which lives in the base. [HL 19] It also calls fetch, which belongs to Dog.",
       "code": {
         "file": "animals.cpp",
         "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Animal {\npublic:\n    string name = \"Moti\";\n    void eat() const { cout << name << \" eats\" << endl; }\n};\n\nclass Dog : public Animal {\npublic:\n    void fetch() const { cout << name << \" fetches\" << endl; }\n};\n\nint main() {\n    Dog d;\n    d.eat();\n    d.fetch();\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 94,
-      "lengthSec": 30,
+      "startSec": 145,
+      "lengthSec": 40,
       "onScreen": "Animal at the top, with Dog and Cat below",
       "animation": "Nodes pop in one by one; edges draw on as the narrator mentions them",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the tree. Animal sits at the top. It holds what all animals share. Dog and Cat sit below. Each adds its own functions. The arrows read as is-a. A dog is an animal.",
+      "narration": "Look at the tree. Animal sits at the top. It holds what all animals share. Dog and Cat sit below. Each adds its own functions. The arrows read as is-a. A dog is an animal. Notice the arrow in the picture. It points from the child to the parent. A Dog object holds an Animal part and a Dog part. Both parts live in one object in memory.",
       "diagram": {
         "kind": "graph",
         "layout": "tree",
@@ -179,14 +179,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 124,
-      "lengthSec": 40,
+      "startSec": 185,
+      "lengthSec": 51,
       "onScreen": "hide.cpp: Dog writes its own speak",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] The base speak prints three dots. [HL 11] Dog writes its own speak. It hides the base version. [HL 16] A call on a Dog finds the Dog version first. It prints Woof. [HL 17] We can still reach the base version with the class name and two colons. It prints three dots.",
+      "narration": "[HL 6] The base speak prints three dots. [HL 11] Dog writes its own speak. It hides the base version. [HL 16] A call on a Dog finds the Dog version first. It prints Woof. [HL 17] We can still reach the base version with the class name and two colons. It prints three dots. [HL 6] The base has a speak function. [HL 11] Dog defines a function with the same name. The new one hides the old one. [HL 16] A call on a Dog uses the Dog version. [HL 17] The class name and two colons reach the hidden base version.",
       "code": {
         "file": "hide.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Animal {\npublic:\n    void speak() const { cout << \"...\" << endl; }\n};\n\nclass Dog : public Animal {\npublic:\n    void speak() const { cout << \"Woof\" << endl; }\n};\n\nint main() {\n    Dog d;\n    d.speak();\n    d.Animal::speak();\n    return 0;\n}",
@@ -196,20 +196,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 164,
-      "lengthSec": 20,
+      "startSec": 236,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 hide.cpp -o hide then ./hide",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as hide dot cpp. Compile it with g plus plus. Then run the program. The program prints Woof, and then three dots."
+      "narration": "Save the file as hide dot cpp. Compile it with g plus plus. Then run the program. The program prints Woof, and then three dots. Notice the two lines. The Dog version prints Woof, and the base version prints three dots."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 184,
+      "startSec": 261,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -227,20 +227,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 214,
-      "lengthSec": 40,
+      "startSec": 291,
+      "lengthSec": 47,
       "onScreen": "BUG OF THE DAY: Touching a private base member",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Dog tries to use the private name of Animal. The compiler says the name is private within this context. Private means private, even for children. Add a public getter in Animal, and call it from Dog."
+      "narration": "Bug of the Day. Dog tries to use the private name of Animal. The compiler says the name is private within this context. Private means private, even for children. Add a public getter in Animal, and call it from Dog. Private is stronger than you may think. Even a child class cannot touch the private members of its parent. If a child needs access, the base can offer a protected member, or a public function. Choose the lowest level that works."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 254,
+      "startSec": 338,
       "lengthSec": 8,
       "onScreen": "The base class told the derived class, you have your mother's functions.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -252,19 +252,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 262,
-      "lengthSec": 20,
+      "startSec": 346,
+      "lengthSec": 26,
       "onScreen": "Task card: build a Vehicle and a Bus",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a class Vehicle with a function start. Write a class Bus that inherits from it and adds open doors. Write your answer in the comments."
+      "narration": "Your challenge: Write a class Vehicle with a function start. Write a class Bus that inherits from it and adds open doors. Hint: write public before the base name, so the start function stays public in Bus. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 282,
+      "startSec": 372,
       "lengthSec": 15,
       "onScreen": "Next: EP 62 · Constructor and destructor order",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -281,7 +281,7 @@
     "why": "Private members belong to the base class only. A derived class cannot touch them. It must use a public or protected function."
   },
   "pun": "\"The base class told the derived class, you have your mother's functions.\"",
-  "challenge": "Write a class Vehicle with a function start. Write a class Bus that inherits from it and adds open doors.",
+  "challenge": "Write a class Vehicle with a function start. Write a class Bus that inherits from it and adds open doors. Hint: write public before the base name, so the start function stays public in Bus.",
   "challengeAnswer": "Write class Bus colon public Vehicle. Add an open doors function. A Bus object can call both start and open doors.",
   "shorts": [
     {

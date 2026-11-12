@@ -3,7 +3,7 @@
   "ep": 69,
   "title": "Function templates",
   "module": 8,
-  "lengthSec": 288,
+  "lengthSec": 376,
   "colours": {
     "bg": "#D9C9FF",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Function Templates: One Function, Any Type | C++ Programming EP 69",
-    "description": "In this episode you will write a function template, let the compiler pick the type and read a deduction error, with Xecxec the crab. 0:00 Intro · 0:15 Function templates · 0:45 One function, many types · 1:25 From template to real functions · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "description": "In this episode you will write a function template, let the compiler pick the type and read a deduction error, with Xecxec the crab. 0:00 Intro · 0:15 Function templates · 1:14 One function, many types · 2:20 From template to real functions · 2:59 Second program · 4:12 Recap · 4:42 Bug of the Day · 5:40 Challenge · 6:01 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Function templates"
       },
       {
-        "t": "0:45",
+        "t": "1:14",
         "label": "One function, many types"
       },
       {
-        "t": "1:25",
+        "t": "2:20",
         "label": "From template to real functions"
       },
       {
-        "t": "1:55",
+        "t": "2:59",
         "label": "Second program"
       },
       {
-        "t": "2:55",
+        "t": "4:12",
         "label": "Recap"
       },
       {
-        "t": "3:25",
+        "t": "4:42",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:13",
+        "t": "5:40",
         "label": "Challenge"
       },
       {
-        "t": "4:33",
+        "t": "6:01",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 59,
       "onScreen": "\"Function templates\": numbered lines (1. A template is a recipe for functions; 2. T stands for any type; 3. The compiler writes the real function for you) and an analogy card: a cookie cutter: one shape, any dough",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A function template is a recipe. You write it once with a placeholder type, usually called T. When you call it, the compiler writes a real function for the type you used. This is called instantiation. Think of a cookie cutter. One shape works with any dough.",
+      "narration": "A function template is a recipe. You write it once with a placeholder type, usually called T. When you call it, the compiler writes a real function for the type you used. This is called instantiation. Think of a cookie cutter. One shape works with any dough. Imagine that you need a biggest function for ints, for doubles and for strings. Without templates, you copy the code three times. With a template, you write it once. The template itself makes no code. Only when you call it, the compiler writes a real function. If you never call it, no code appears.",
       "points": [
         "A template is a recipe for functions",
         "T stands for any type",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 40,
+      "startSec": 74,
+      "lengthSec": 66,
       "onScreen": "biggest.cpp: biggest works for int and for double",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 4] This line says that T is a placeholder for a type. [HL 5] The function takes two values of type T, and returns a T. [HL 6] It returns the bigger one. [HL 10] The compiler sees two ints. It makes a version with T equal to int. [HL 11] Then it sees two doubles, and makes a second version. The output is eight, and two point five.",
+      "narration": "[HL 4] This line says that T is a placeholder for a type. [HL 5] The function takes two values of type T, and returns a T. [HL 6] It returns the bigger one. [HL 10] The compiler sees two ints. It makes a version with T equal to int. [HL 11] Then it sees two doubles, and makes a second version. The output is eight, and two point five. [HL 4] The word template and the angle brackets start the recipe. T is a placeholder for a type. [HL 5] T appears as the return type and as both parameter types. [HL 6] The question mark line picks the bigger of the two. [HL 10] With ints, the compiler makes a version where T is int. [HL 11] With doubles, it makes another version.",
       "code": {
         "file": "biggest.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\ntemplate <typename T>\nT biggest(T a, T b) {\n    return a > b ? a : b;\n}\n\nint main() {\n    cout << biggest(3, 8) << endl;\n    cout << biggest(2.5, 1.5) << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 85,
-      "lengthSec": 30,
+      "startSec": 140,
+      "lengthSec": 39,
       "onScreen": "a flow: template, call, deduced type, generated function",
       "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
       "sfx": [
         "pop"
       ],
-      "narration": "Follow the steps. The template is the recipe. A call gives the types of the arguments. The compiler deduces T. Then it writes a real function, made for that type.",
+      "narration": "Follow the steps. The template is the recipe. A call gives the types of the arguments. The compiler deduces T. Then it writes a real function, made for that type. Notice that two real functions exist after the build. One works with ints, and one works with doubles. The compiler wrote both from the same recipe. You write less, and the result is as fast.",
       "diagram": {
         "kind": "flow",
         "caption": "a flow: template, call, deduced type, generated function",
@@ -171,14 +171,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 115,
-      "lengthSec": 40,
+      "startSec": 179,
+      "lengthSec": 48,
       "onScreen": "explicit.cpp: explicit template arguments in angle brackets",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 10] We can name the type in angle brackets. Here T is double, so the three is converted to a double. The answer is four point five. [HL 11] Here T is string. Strings compare in alphabetical order. Pear comes after apple, so pear is bigger.",
+      "narration": "[HL 10] We can name the type in angle brackets. Here T is double, so the three is converted to a double. The answer is four point five. [HL 11] Here T is string. Strings compare in alphabetical order. Pear comes after apple, so pear is bigger. [HL 10] The angle brackets after the name tell the compiler what T is. The int three is then converted to a double. [HL 11] With strings, the greater one is the one that comes later in the alphabet. Pear comes after apple.",
       "code": {
         "file": "explicit.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\ntemplate <typename T>\nT biggest(T a, T b) {\n    return a > b ? a : b;\n}\n\nint main() {\n    cout << biggest<double>(3, 4.5) << endl;\n    cout << biggest<string>(\"pear\", \"apple\") << endl;\n    return 0;\n}",
@@ -188,20 +188,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 155,
-      "lengthSec": 20,
+      "startSec": 227,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 explicit.cpp -o explicit then ./explicit",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as explicit dot cpp. Compile it with g plus plus. Then run the program. The program prints four point five, and then pear."
+      "narration": "Save the file as explicit dot cpp. Compile it with g plus plus. Then run the program. The program prints four point five, and then pear. Notice that the first answer is four point five, and the second is pear."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 175,
+      "startSec": 252,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -219,20 +219,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 205,
-      "lengthSec": 40,
+      "startSec": 282,
+      "lengthSec": 50,
       "onScreen": "BUG OF THE DAY: Two different types",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We call biggest with an int and a double. The compiler says no matching function for call to biggest with int and double. It must find one T for both. Name the type yourself, in angle brackets."
+      "narration": "Bug of the Day. We call biggest with an int and a double. The compiler says no matching function for call to biggest with int and double. It must find one T for both. Name the type yourself, in angle brackets. The compiler needs one clear answer for T. When one argument is an int and the other is a double, it has two answers, and it gives up. You have two fixes. Write the type in angle brackets, or make both arguments the same type."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 245,
+      "startSec": 332,
       "lengthSec": 8,
       "onScreen": "I wrote a template for jokes. It works with any type of audience, but not always with the right one.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -244,19 +244,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 253,
-      "lengthSec": 20,
+      "startSec": 340,
+      "lengthSec": 21,
       "onScreen": "Task card: write a template for a smaller value",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a function template called smallest. Test it with ints and with doubles. Write your answer in the comments."
+      "narration": "Your challenge: Write a function template called smallest. Test it with ints and with doubles. Hint: copy the biggest template, and change the comparison sign to less than. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 273,
+      "startSec": 361,
       "lengthSec": 15,
       "onScreen": "Next: EP 70 · Class templates",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -273,7 +273,7 @@
     "why": "The compiler must find one T for both arguments. An int and a double give two different types, so deduction fails. Name the type yourself."
   },
   "pun": "\"I wrote a template for jokes. It works with any type of audience, but not always with the right one.\"",
-  "challenge": "Write a function template called smallest. Test it with ints and with doubles.",
+  "challenge": "Write a function template called smallest. Test it with ints and with doubles. Hint: copy the biggest template, and change the comparison sign to less than.",
   "challengeAnswer": "Write template typename T, then T smallest with two T parameters. Return a if a is less than b, otherwise b.",
   "shorts": [
     {

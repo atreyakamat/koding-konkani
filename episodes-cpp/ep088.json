@@ -3,7 +3,7 @@
   "ep": 88,
   "title": "Project: student records",
   "module": 10,
-  "lengthSec": 297,
+  "lengthSec": 399,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Project: Student Records Program | C++ Programming EP 88",
-    "description": "In this episode you will design a small class, combine a vector, a lambda and algorithms and write a const correct class, with Xecxec the crab. 0:00 Intro · 0:16 Project: student records · 0:46 The Roster class · 1:34 Class design · 2:04 Second program · 3:04 Recap · 3:34 Bug of the Day · 4:22 Challenge · 4:42 Next episode",
+    "description": "In this episode you will design a small class, combine a vector, a lambda and algorithms and write a const correct class, with Xecxec the crab. 0:00 Intro · 0:16 Project: student records · 1:11 The Roster class · 2:28 Class design · 3:05 Second program · 4:42 Recap · 5:12 Bug of the Day · 6:00 Challenge · 6:24 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Project: student records"
       },
       {
-        "t": "0:46",
+        "t": "1:11",
         "label": "The Roster class"
       },
       {
-        "t": "1:34",
+        "t": "2:28",
         "label": "Class design"
       },
       {
-        "t": "2:04",
+        "t": "3:05",
         "label": "Second program"
       },
       {
-        "t": "3:04",
+        "t": "4:42",
         "label": "Recap"
       },
       {
-        "t": "3:34",
+        "t": "5:12",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:22",
+        "t": "6:00",
         "label": "Challenge"
       },
       {
-        "t": "4:42",
+        "t": "6:24",
         "label": "Next episode"
       }
     ],
@@ -96,13 +96,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 16,
-      "lengthSec": 30,
+      "lengthSec": 55,
       "onScreen": "\"Project: student records\": numbered lines (1. One class owns the data; 2. Methods that only read are const; 3. Use library algorithms inside the class) and an analogy card: a teacher with a register: add a student, ask for the average",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A good class owns its data and hides it. It offers a few clear methods. Methods that only read the data are marked const. We use a vector to store students, a lambda to sort them, and an optional for the best student.",
+      "narration": "A good class owns its data and hides it. It offers a few clear methods. Methods that only read the data are marked const. We use a vector to store students, a lambda to sort them, and an optional for the best student. This project joins many ideas from the course. A struct holds one student. A class holds the roster and protects it. A vector stores the data, and a lambda sorts it. Design first. Decide what the roster must do. Then write one method for each job, and keep the data private.",
       "points": [
         "One class owns the data",
         "Methods that only read are const",
@@ -116,15 +116,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 46,
-      "lengthSec": 48,
+      "startSec": 71,
+      "lengthSec": 77,
       "onScreen": "roster.cpp: a roster adds students, ranks them and computes the average",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 15] Add stores one student at the back of the vector. [HL 19] Average only reads the data, so it is const. [HL 24] If the roster is empty, we return zero, and we never divide by zero. [HL 28] Print ranking works on a copy, so the original order does not change. [HL 29] The lambda puts the highest marks first. [HL 35] The vector is private. Only the class can change it. [HL 41] Main adds three students. [HL 44] The ranking is Asha ninety-one, Mia eighty-five, Ravi seventy-eight. [HL 45] The average is eighty-four point seven.",
+      "narration": "[HL 15] Add stores one student at the back of the vector. [HL 19] Average only reads the data, so it is const. [HL 24] If the roster is empty, we return zero, and we never divide by zero. [HL 28] Print ranking works on a copy, so the original order does not change. [HL 29] The lambda puts the highest marks first. [HL 35] The vector is private. Only the class can change it. [HL 41] Main adds three students. [HL 44] The ranking is Asha ninety-one, Mia eighty-five, Ravi seventy-eight. [HL 45] The average is eighty-four point seven. [HL 8] The struct holds the facts about one student. [HL 15] Add stores a new student at the end. [HL 19] The average is a const method, because it only reads. [HL 24] If the roster is empty, we return zero, so we never divide by zero. [HL 28] The ranking works on a copy, so the original order stays the same.",
       "code": {
         "file": "roster.cpp",
         "source": "#include <algorithm>\n#include <iomanip>\n#include <iostream>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int marks;\n};\n\nclass Roster {\npublic:\n    void add(const string& name, int marks) {\n        students_.push_back({name, marks});\n    }\n\n    double average() const {\n        double total = 0;\n        for (const Student& s : students_) {\n            total += s.marks;\n        }\n        return students_.empty() ? 0 : total / students_.size();\n    }\n\n    void print_ranking() const {\n        vector<Student> copy = students_;\n        sort(copy.begin(), copy.end(), [](const Student& a, const Student& b) { return a.marks > b.marks; });\n        for (const Student& s : copy) {\n            cout << s.name << \" \" << s.marks << endl;\n        }\n    }\n\nprivate:\n    vector<Student> students_;\n};\n\nint main() {\n    Roster r;\n    r.add(\"Ravi\", 78);\n    r.add(\"Asha\", 91);\n    r.add(\"Mia\", 85);\n    r.print_ranking();\n    cout << fixed << setprecision(1) << r.average() << endl;\n    return 0;\n}",
@@ -134,12 +134,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 94,
-      "lengthSec": 30,
+      "startSec": 148,
+      "lengthSec": 37,
       "onScreen": "a table of the members of Roster",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "The data is private. The add method changes the roster, so it is not const. Average and print ranking only read the data, so both are const.",
+      "narration": "The data is private. The add method changes the roster, so it is not const. Average and print ranking only read the data, so both are const. Notice the wall between the inside and the outside. Main can add students and ask questions, but it cannot touch the vector. If you later change the vector to a map, main does not change.",
       "diagram": {
         "kind": "table",
         "caption": "a table of the members of Roster",
@@ -180,14 +180,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 124,
-      "lengthSec": 40,
+      "startSec": 185,
+      "lengthSec": 68,
       "onScreen": "best.cpp: best returns an optional student",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 19] Best returns an optional, because an empty roster has no best student. [HL 21] For an empty roster, it returns nullopt. [HL 23] Max element finds the student with the highest marks. [HL 24] The lambda says that a is smaller than b when a has fewer marks. [HL 34] The first call is on an empty roster, so it prints zero. [HL 38] After two adds, the optional holds a value. The output is Asha ninety-one.",
+      "narration": "[HL 19] Best returns an optional, because an empty roster has no best student. [HL 21] For an empty roster, it returns nullopt. [HL 23] Max element finds the student with the highest marks. [HL 24] The lambda says that a is smaller than b when a has fewer marks. [HL 34] The first call is on an empty roster, so it prints zero. [HL 38] After two adds, the optional holds a value. The output is Asha ninety-one. [HL 19] The best method returns an optional. If the roster is empty, there is no best student. [HL 23] Max element gives the student with the highest marks. The lambda says which of two students is smaller. [HL 34] The first call prints zero, because the roster is empty. [HL 39] The second call prints Asha with ninety-one.",
       "code": {
         "file": "best.cpp",
         "source": "#include <algorithm>\n#include <iostream>\n#include <optional>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int marks;\n};\n\nclass Roster {\npublic:\n    void add(const string& name, int marks) {\n        students_.push_back({name, marks});\n    }\n\n    optional<Student> best() const {\n        if (students_.empty()) {\n            return nullopt;\n        }\n        return *max_element(students_.begin(), students_.end(),\n                            [](const Student& a, const Student& b) { return a.marks < b.marks; });\n    }\n\nprivate:\n    vector<Student> students_;\n};\n\nint main() {\n    Roster r;\n    auto none = r.best();\n    cout << none.has_value() << endl;\n    r.add(\"Ravi\", 78);\n    r.add(\"Asha\", 91);\n    auto top = r.best();\n    if (top) {\n        cout << top->name << \" \" << top->marks << endl;\n    }\n    return 0;\n}",
@@ -197,20 +197,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 164,
-      "lengthSec": 20,
+      "startSec": 253,
+      "lengthSec": 29,
       "onScreen": "Terminal: g++ -std=c++20 best.cpp -o best then ./best",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as best dot cpp. Compile it with g plus plus. Then run the program. The program prints the ranking and the average, then zero, and then Asha ninety-one."
+      "narration": "Save the file as best dot cpp. Compile it with g plus plus. Then run the program. The program prints the ranking and the average, then zero, and then Asha ninety-one. Notice that the code checks the optional before it reads it. This habit avoids many bugs."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 184,
+      "startSec": 282,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -228,7 +228,7 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 214,
+      "startSec": 312,
       "lengthSec": 40,
       "onScreen": "BUG OF THE DAY: A const object calls a non const method",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
@@ -236,12 +236,12 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The function gets a const reference, and calls average. The compiler says this discards qualifiers. Average does not change the object, so mark it const."
+      "narration": "Bug of the Day. The function gets a const reference, and calls average. The compiler says this discards qualifiers. Average does not change the object, so mark it const. A const object can call only const methods. If a method only reads, mark it const. Then it works on const references and const objects. It is a promise to your reader, and the compiler holds you to it."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 254,
+      "startSec": 352,
       "lengthSec": 8,
       "onScreen": "Why did the roster stay calm? Everything inside it was in order.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -253,19 +253,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 262,
-      "lengthSec": 20,
+      "startSec": 360,
+      "lengthSec": 24,
       "onScreen": "Task card: add a method to find a student",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Add a method that takes a name and returns the marks of that student as an optional. Write your answer in the comments."
+      "narration": "Your challenge: Add a method that takes a name and returns the marks of that student as an optional. Hint: loop over the students, and return a student only if the name matches. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 282,
+      "startSec": 384,
       "lengthSec": 15,
       "onScreen": "Next: EP 89 · Common mistakes and exam questions",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -282,7 +282,7 @@
     "why": "A const reference may call only const methods. Add const after the parameter list of every method that does not change the object."
   },
   "pun": "\"Why did the roster stay calm? Everything inside it was in order.\"",
-  "challenge": "Add a method that takes a name and returns the marks of that student as an optional.",
+  "challenge": "Add a method that takes a name and returns the marks of that student as an optional. Hint: loop over the students, and return a student only if the name matches.",
   "challengeAnswer": "Loop over the students. If the name matches, return the marks. After the loop, return nullopt.",
   "shorts": [
     {

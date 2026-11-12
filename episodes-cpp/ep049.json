@@ -3,7 +3,7 @@
   "ep": 49,
   "title": "unique_ptr",
   "module": 5,
-  "lengthSec": 295,
+  "lengthSec": 367,
   "colours": {
     "bg": "#D9C9FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ unique_ptr: Smart Pointers, Part One | C++ Programming EP 49",
-    "description": "In this episode you will make a unique_ptr with make_unique, explain single ownership and move ownership with std::move, with Xecxec the crab. 0:00 Intro · 0:15 unique_ptr · 0:52 make_unique · 1:32 One owner · 2:02 Second program · 3:02 Recap · 3:32 Bug of the Day · 4:20 Challenge · 4:40 Next episode",
+    "description": "In this episode you will make a unique_ptr with make_unique, explain single ownership and move ownership with std::move, with Xecxec the crab. 0:00 Intro · 0:15 unique_ptr · 1:17 make_unique · 2:17 One owner · 2:55 Second program · 4:05 Recap · 4:35 Bug of the Day · 5:27 Challenge · 5:52 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "unique_ptr"
       },
       {
-        "t": "0:52",
+        "t": "1:17",
         "label": "make_unique"
       },
       {
-        "t": "1:32",
+        "t": "2:17",
         "label": "One owner"
       },
       {
-        "t": "2:02",
+        "t": "2:55",
         "label": "Second program"
       },
       {
-        "t": "3:02",
+        "t": "4:05",
         "label": "Recap"
       },
       {
-        "t": "3:32",
+        "t": "4:35",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:20",
+        "t": "5:27",
         "label": "Challenge"
       },
       {
-        "t": "4:40",
+        "t": "5:52",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 37,
+      "lengthSec": 62,
       "onScreen": "\"unique_ptr\": numbered lines (1. A unique_ptr owns one heap object; 2. It deletes the object by itself; 3. It cannot be copied, only moved) and an analogy card: a house key with one owner: you can hand it over, but you cannot copy it",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A unique pointer owns one heap object. When the unique pointer dies, it deletes the object. You never write delete. This is RAII for heap memory. A unique pointer has one owner. You cannot copy it, but you can move it to a new owner. Think of a house key with one owner. You can hand it over, but you cannot copy it.",
+      "narration": "A unique pointer owns one heap object. When the unique pointer dies, it deletes the object. You never write delete. This is RAII for heap memory. A unique pointer has one owner. You cannot copy it, but you can move it to a new owner. Think of a house key with one owner. You can hand it over, but you cannot copy it. Modern C plus plus advises you to avoid raw new and delete. Smart pointers do the work. Unique pointer is the first choice. It costs nothing extra. It is as fast as a raw pointer, and it deletes the object at the right time.",
       "points": [
         "A unique_ptr owns one heap object",
         "It deletes the object by itself",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 52,
-      "lengthSec": 40,
+      "startSec": 77,
+      "lengthSec": 60,
       "onScreen": "unique.cpp: a unique_ptr owns an int",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 2] The memory header holds the smart pointers. [HL 6] Make unique builds an int with the value five on the heap. The unique pointer p owns it. [HL 7] Star works as before. It reads five. [HL 8] We change it to eight. [HL 10] At the end of main, p dies and deletes the int. There is no delete in our code.",
+      "narration": "[HL 2] The memory header holds the smart pointers. [HL 6] Make unique builds an int with the value five on the heap. The unique pointer p owns it. [HL 7] Star works as before. It reads five. [HL 8] We change it to eight. [HL 10] At the end of main, p dies and deletes the int. There is no delete in our code. [HL 6] Make unique builds the int on the heap, and the unique pointer owns it. [HL 7] The star works as with a raw pointer. We see five. [HL 8] We can change the value, as before. [HL 10] When main ends, the unique pointer dies, and the heap box is freed. We wrote no delete.",
       "code": {
         "file": "unique.cpp",
         "source": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nint main() {\n    unique_ptr<int> p = make_unique<int>(5);\n    cout << *p << endl;\n    *p = 8;\n    cout << *p << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 92,
-      "lengthSec": 30,
+      "startSec": 137,
+      "lengthSec": 38,
       "onScreen": "the unique_ptr on the stack owns the int on the heap",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the arrow. P owns the int on the heap. There is only one owner. When p goes out of scope, it deletes the int. A raw pointer has no such duty. It only points.",
+      "narration": "Look at the arrow. P owns the int on the heap. There is only one owner. When p goes out of scope, it deletes the int. A raw pointer has no such duty. It only points. Notice the single owner. The key has one holder. If you hand the key to someone else, you no longer have it. This rule makes double delete impossible.",
       "memory": {
         "frames": [
           {
@@ -180,14 +180,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 122,
-      "lengthSec": 40,
+      "startSec": 175,
+      "lengthSec": 45,
       "onScreen": "moveown.cpp: std::move hands the object to another unique_ptr",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 7] A owns an int with the value five. [HL 8] Move hands the ownership to b. [HL 9] A is now empty. It equals nullptr, so the program prints one. [HL 10] B owns the int and reads five. When b dies, the int is deleted exactly once.",
+      "narration": "[HL 7] A owns an int with the value five. [HL 8] Move hands the ownership to b. [HL 9] A is now empty. It equals nullptr, so the program prints one. [HL 10] B owns the int and reads five. When b dies, the int is deleted exactly once. [HL 8] The move function hands the object from a to b. After that, a is empty. [HL 9] A moved-from pointer equals nullptr, so the test prints one. [HL 10] The new owner b still sees the value five.",
       "code": {
         "file": "moveown.cpp",
         "source": "#include <iostream>\n#include <memory>\n#include <utility>\nusing namespace std;\n\nint main() {\n    unique_ptr<int> a = make_unique<int>(5);\n    unique_ptr<int> b = move(a);\n    cout << (a == nullptr) << endl;\n    cout << *b << endl;\n    return 0;\n}",
@@ -197,20 +197,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 162,
-      "lengthSec": 20,
+      "startSec": 220,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 moveown.cpp -o moveown then ./moveown",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as moveown dot cpp. Compile it with g plus plus. Then run the program. The program prints one, and then five."
+      "narration": "Save the file as moveown dot cpp. Compile it with g plus plus. Then run the program. The program prints one, and then five. Notice that a is empty, and b holds the value. Ownership moved, and nothing was copied."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 182,
+      "startSec": 245,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -228,20 +228,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 212,
-      "lengthSec": 40,
+      "startSec": 275,
+      "lengthSec": 44,
       "onScreen": "BUG OF THE DAY: Copying a unique_ptr",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We copy a unique pointer. The compiler says use of deleted function. The copy is blocked on purpose. Two owners would delete the object twice. Use move to hand over the ownership."
+      "narration": "Bug of the Day. We copy a unique pointer. The compiler says use of deleted function. The copy is blocked on purpose. Two owners would delete the object twice. Use move to hand over the ownership. If two unique pointers owned one object, both would delete it. That is a crash. So the language does not allow a copy. When you want a new owner, say so with move. Then the old pointer becomes empty."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 252,
+      "startSec": 319,
       "lengthSec": 8,
       "onScreen": "A unique pointer never shares its umbrella. It is all about ownership.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -253,19 +253,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 260,
-      "lengthSec": 20,
+      "startSec": 327,
+      "lengthSec": 25,
       "onScreen": "Task card: own a heap int",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make a unique pointer to an int with the value twenty. Add one through the pointer, and print the result. Write your answer in the comments."
+      "narration": "Your challenge: Make a unique pointer to an int with the value twenty. Add one through the pointer, and print the result. Hint: make unique with the value twenty, and add one with the star. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 280,
+      "startSec": 352,
       "lengthSec": 15,
       "onScreen": "Next: EP 50 · shared_ptr and weak_ptr",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -282,7 +282,7 @@
     "why": "Two unique pointers must never own the same object, or it would be deleted twice. The compiler blocks the copy. Use move."
   },
   "pun": "\"A unique pointer never shares its umbrella. It is all about ownership.\"",
-  "challenge": "Make a unique pointer to an int with the value twenty. Add one through the pointer, and print the result.",
+  "challenge": "Make a unique pointer to an int with the value twenty. Add one through the pointer, and print the result. Hint: make unique with the value twenty, and add one with the star.",
   "challengeAnswer": "Use make unique with twenty. Write star p plus plus, then print star p. The answer is twenty-one.",
   "shorts": [
     {

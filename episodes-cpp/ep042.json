@@ -3,7 +3,7 @@
   "ep": 42,
   "title": "Pointers",
   "module": 5,
-  "lengthSec": 300,
+  "lengthSec": 414,
   "colours": {
     "bg": "#D9C9FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Pointers Explained: &, * and nullptr | C++ Programming EP 42",
-    "description": "In this episode you will declare a pointer, read and write through a pointer and tell p from star p, with Xecxec the crab. 0:00 Intro · 0:15 Pointers · 0:57 Follow the pointer · 1:37 A pointer and its target · 2:07 Second program · 3:07 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "description": "In this episode you will declare a pointer, read and write through a pointer and tell p from star p, with Xecxec the crab. 0:00 Intro · 0:15 Pointers · 1:31 Follow the pointer · 2:36 A pointer and its target · 3:16 Second program · 4:50 Recap · 5:20 Bug of the Day · 6:15 Challenge · 6:39 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Pointers"
       },
       {
-        "t": "0:57",
+        "t": "1:31",
         "label": "Follow the pointer"
       },
       {
-        "t": "1:37",
+        "t": "2:36",
         "label": "A pointer and its target"
       },
       {
-        "t": "2:07",
+        "t": "3:16",
         "label": "Second program"
       },
       {
-        "t": "3:07",
+        "t": "4:50",
         "label": "Recap"
       },
       {
-        "t": "3:37",
+        "t": "5:20",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:25",
+        "t": "6:15",
         "label": "Challenge"
       },
       {
-        "t": "4:45",
+        "t": "6:39",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 42,
+      "lengthSec": 76,
       "onScreen": "\"Pointers\": numbered lines (1. A pointer holds an address; 2. Star in a declaration means pointer; 3. Star in front of a pointer means follow it) and an analogy card: a house key tag: the tag is not the house, but it tells you where to go",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A pointer is a variable that holds an address. You declare it with a star after the type. You give it the address of a variable with the ampersand. A star in front of the pointer means follow the address. You can then read or change the box it points to. Think of a key tag with an address. The tag is not the house, but it tells you where to go.",
+      "narration": "A pointer is a variable that holds an address. You declare it with a star after the type. You give it the address of a variable with the ampersand. A star in front of the pointer means follow the address. You can then read or change the box it points to. Think of a key tag with an address. The tag is not the house, but it tells you where to go. Two symbols do all the work, and they look alike. The ampersand means, give me the address. The star means, go to that address. In a declaration, the star only says that the variable is a pointer. A pointer is a way to reach a variable from far away. A function can use a pointer to change a variable in main.",
       "points": [
         "A pointer holds an address",
         "Star in a declaration means pointer",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 57,
-      "lengthSec": 40,
+      "startSec": 91,
+      "lengthSec": 65,
       "onScreen": "pointer.cpp: a pointer reads and changes fish",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] Fish is an int with the value three. [HL 6] P is a pointer to an int. It holds the address of fish. [HL 7] Star p means follow the pointer. It reads the box at that address. It prints three. [HL 8] We can also write through the pointer. [HL 9] Fish is now ten. We changed fish without using its name.",
+      "narration": "[HL 5] Fish is an int with the value three. [HL 6] P is a pointer to an int. It holds the address of fish. [HL 7] Star p means follow the pointer. It reads the box at that address. It prints three. [HL 8] We can also write through the pointer. [HL 9] Fish is now ten. We changed fish without using its name. [HL 5] Fish is a plain int with the value three. [HL 6] The pointer p holds the address of fish. Read the line as, p is a pointer to int, and it points at fish. [HL 7] The star in front of p means, follow the address. We see three. [HL 8] Now we write through the pointer. Fish becomes ten. [HL 9] The print confirms it.",
       "code": {
         "file": "pointer.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int fish = 3;\n    int* p = &fish;\n    cout << *p << endl;\n    *p = 10;\n    cout << fish << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 97,
-      "lengthSec": 30,
+      "startSec": 156,
+      "lengthSec": 40,
       "onScreen": "the pointer p holds the address of fish, shown as an arrow",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the two boxes. Fish holds ten. P holds the address of fish. The arrow shows that link. Star p follows the arrow to fish. Writing to star p changes fish.",
+      "narration": "Look at the two boxes. Fish holds ten. P holds the address of fish. The arrow shows that link. Star p follows the arrow to fish. Writing to star p changes fish. Notice the arrow in the picture. The pointer box holds an address, and the arrow shows where it leads. The pointer is a separate box with its own address, and it takes up its own bytes.",
       "memory": {
         "frames": [
           {
@@ -175,14 +175,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 127,
-      "lengthSec": 40,
+      "startSec": 196,
+      "lengthSec": 69,
       "onScreen": "swapptr.cpp: a swap function that takes two addresses",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 4] The function takes two pointers. [HL 5] T copies the value that a points to. [HL 6] The value at a becomes the value at b. [HL 7] The value at b becomes the old value of a. [HL 12] The caller passes the addresses of x and y. Now x is two, and y is one. This is the C way to swap. Episode twenty-four showed the C plus plus way.",
+      "narration": "[HL 4] The function takes two pointers. [HL 5] T copies the value that a points to. [HL 6] The value at a becomes the value at b. [HL 7] The value at b becomes the old value of a. [HL 12] The caller passes the addresses of x and y. Now x is two, and y is one. This is the C way to swap. Episode twenty-four showed the C plus plus way. [HL 4] The parameters are pointers, so the function receives addresses, not copies. [HL 5] The star reads the value at the first address. [HL 12] In main, the ampersand passes the addresses of x and y. This is the old C way to change a caller variable. In C plus plus, a reference does the same job with less typing.",
       "code": {
         "file": "swapptr.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nvoid swap_values(int* a, int* b) {\n    int t = *a;\n    *a = *b;\n    *b = t;\n}\n\nint main() {\n    int x = 1, y = 2;\n    swap_values(&x, &y);\n    cout << x << \" \" << y << endl;\n    return 0;\n}",
@@ -192,20 +192,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 167,
-      "lengthSec": 20,
+      "startSec": 265,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 swapptr.cpp -o swapptr then ./swapptr",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as swapptr dot cpp. Compile it with g plus plus. Then run the program. The program prints two and one."
+      "narration": "Save the file as swapptr dot cpp. Compile it with g plus plus. Then run the program. The program prints two and one. Compare with the swap that used references. The result is the same, but the call has ampersands."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 187,
+      "startSec": 290,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -223,20 +223,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 217,
-      "lengthSec": 40,
+      "startSec": 320,
+      "lengthSec": 47,
       "onScreen": "BUG OF THE DAY: A pointer to the wrong type",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We point an int pointer at a double. The compiler says it cannot convert double star to int star. The pointer type tells the computer how to read the bytes. Use a double pointer for a double."
+      "narration": "Bug of the Day. We point an int pointer at a double. The compiler says it cannot convert double star to int star. The pointer type tells the computer how to read the bytes. Use a double pointer for a double. A pointer to int promises that an int lives at the address. If it pointed to a double, the program would read the wrong bytes. So the compiler checks the types. Match the pointer type with the variable type."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 257,
+      "startSec": 367,
       "lengthSec": 8,
       "onScreen": "A pointer walked into a bar. It said, I am just here to point out the drinks.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -248,19 +248,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 265,
-      "lengthSec": 20,
+      "startSec": 375,
+      "lengthSec": 24,
       "onScreen": "Task card: change a variable through a pointer",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make an int called score. Make a pointer to it. Add five to score through the pointer, and print score. Write your answer in the comments."
+      "narration": "Your challenge: Make an int called score. Make a pointer to it. Add five to score through the pointer, and print score. Hint: write star p plus equals five, and then print score. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 285,
+      "startSec": 399,
       "lengthSec": 15,
       "onScreen": "Next: EP 43 · Pointers and arrays",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -277,7 +277,7 @@
     "why": "The type of a pointer says how to read the bytes at the address. A pointer to int cannot point at a double."
   },
   "pun": "\"A pointer walked into a bar. It said, I am just here to point out the drinks.\"",
-  "challenge": "Make an int called score. Make a pointer to it. Add five to score through the pointer, and print score.",
+  "challenge": "Make an int called score. Make a pointer to it. Add five to score through the pointer, and print score. Hint: write star p plus equals five, and then print score.",
   "challengeAnswer": "Write star p plus equals five. Then print score. It shows the new value.",
   "shorts": [
     {

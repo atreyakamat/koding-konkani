@@ -3,7 +3,7 @@
   "ep": 51,
   "title": "Structs",
   "module": 6,
-  "lengthSec": 292,
+  "lengthSec": 401,
   "colours": {
     "bg": "#FFD8BE",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Structs: Group Your Data | C++ Programming EP 51",
-    "description": "In this episode you will define a struct with several fields, make and fill a struct variable and pass a struct to a function, with Xecxec the crab. 0:00 Intro · 0:15 Structs · 0:49 A student struct · 1:29 Fields in memory · 1:59 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:37 Next episode",
+    "description": "In this episode you will define a struct with several fields, make and fill a struct variable and pass a struct to a function, with Xecxec the crab. 0:00 Intro · 0:15 Structs · 1:26 A student struct · 2:33 Fields in memory · 3:12 Second program · 4:28 Recap · 4:58 Bug of the Day · 6:00 Challenge · 6:26 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Structs"
       },
       {
-        "t": "0:49",
+        "t": "1:26",
         "label": "A student struct"
       },
       {
-        "t": "1:29",
+        "t": "2:33",
         "label": "Fields in memory"
       },
       {
-        "t": "1:59",
+        "t": "3:12",
         "label": "Second program"
       },
       {
-        "t": "2:59",
+        "t": "4:28",
         "label": "Recap"
       },
       {
-        "t": "3:29",
+        "t": "4:58",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:17",
+        "t": "6:00",
         "label": "Challenge"
       },
       {
-        "t": "4:37",
+        "t": "6:26",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 34,
+      "lengthSec": 71,
       "onScreen": "\"Structs\": numbered lines (1. A struct groups related variables; 2. Each variable is a field; 3. The dot reaches a field) and an analogy card: an ID card: one card, many fields",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A struct groups related variables under one name. Each variable inside is a field. You define the struct once, and then you make as many variables of it as you like. The dot operator reaches one field. Think of an ID card. It is one card, but it holds a name, a class and a number.",
+      "narration": "A struct groups related variables under one name. Each variable inside is a field. You define the struct once, and then you make as many variables of it as you like. The dot operator reaches one field. Think of an ID card. It is one card, but it holds a name, a class and a number. Until now, a student would need two separate variables, one for the name and one for the marks. If you have fifty students, you must keep a hundred variables in step. A struct solves this. A struct is your own type. After you define it, you can use it like int or string. You can pass it to functions, store it in a vector, and copy it.",
       "points": [
         "A struct groups related variables",
         "Each variable is a field",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 49,
-      "lengthSec": 40,
+      "startSec": 86,
+      "lengthSec": 67,
       "onScreen": "student.cpp: a struct with a name and marks",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] The struct has a name for the new type. [HL 6] The first field is a string. [HL 7] The second field is an int. [HL 8] Do not forget the semicolon after the closing brace. [HL 11] Here we make a variable of the new type. [HL 12] The dot reaches a field. We set the name. [HL 13] Then we set the marks. [HL 14] We print both fields.",
+      "narration": "[HL 5] The struct has a name for the new type. [HL 6] The first field is a string. [HL 7] The second field is an int. [HL 8] Do not forget the semicolon after the closing brace. [HL 11] Here we make a variable of the new type. [HL 12] The dot reaches a field. We set the name. [HL 13] Then we set the marks. [HL 14] We print both fields. [HL 5] The word struct starts the definition. Student is the name of the new type. [HL 6] Each field has a type and a name, as in an ordinary variable. [HL 8] Do not forget the semicolon after the closing brace. [HL 11] Now we make a variable s of type Student. [HL 12] The dot reaches the name field, and we store Asha. [HL 13] The dot also reaches marks.",
       "code": {
         "file": "student.cpp",
         "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int marks;\n};\n\nint main() {\n    Student s;\n    s.name = \"Asha\";\n    s.marks = 91;\n    cout << s.name << \" scored \" << s.marks << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 89,
-      "lengthSec": 30,
+      "startSec": 153,
+      "lengthSec": 39,
       "onScreen": "the struct s holds two fields, side by side",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the struct in memory. It has two fields. The name sits first, and the marks come next. The compiler may add small gaps between fields, to keep them aligned.",
+      "narration": "Look at the struct in memory. It has two fields. The name sits first, and the marks come next. The compiler may add small gaps between fields, to keep them aligned. Notice that the struct is only a plan. It uses no memory until you make a variable of it. Each variable gets its own set of fields, so two students never share one name.",
       "memory": {
         "frames": [
           {
@@ -169,14 +169,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 119,
-      "lengthSec": 40,
+      "startSec": 192,
+      "lengthSec": 50,
       "onScreen": "list.cpp: a function takes a struct by const reference",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 10] The function takes a const reference, as in episode twenty-five. No copy is made. [HL 15] Braces fill the fields in order. Asha gets the name, and ninety-one gets the marks. [HL 16] Ravi has seventy-eight. [HL 17] We call show for each student. The output has two lines.",
+      "narration": "[HL 10] The function takes a const reference, as in episode twenty-five. No copy is made. [HL 15] Braces fill the fields in order. Asha gets the name, and ninety-one gets the marks. [HL 16] Ravi has seventy-eight. [HL 17] We call show for each student. The output has two lines. [HL 10] The function takes a const reference, so there is no copy, and the function cannot change the student. [HL 15] The curly braces fill the fields in the order of the definition. Name comes first, and then marks. [HL 17] Each call to show prints one student.",
       "code": {
         "file": "list.cpp",
         "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int marks;\n};\n\nvoid show(const Student& s) {\n    cout << s.name << \": \" << s.marks << endl;\n}\n\nint main() {\n    Student a = {\"Asha\", 91};\n    Student b = {\"Ravi\", 78};\n    show(a);\n    show(b);\n    return 0;\n}",
@@ -186,20 +186,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 159,
-      "lengthSec": 20,
+      "startSec": 242,
+      "lengthSec": 26,
       "onScreen": "Terminal: g++ -std=c++20 list.cpp -o list then ./list",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as list dot cpp. Compile it with g plus plus. Then run the program. The program prints Asha colon ninety-one, and then Ravi colon seventy-eight."
+      "narration": "Save the file as list dot cpp. Compile it with g plus plus. Then run the program. The program prints Asha colon ninety-one, and then Ravi colon seventy-eight. Notice that one function shows any student. The struct makes the code short and clear."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 179,
+      "startSec": 268,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -217,20 +217,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 209,
-      "lengthSec": 40,
+      "startSec": 298,
+      "lengthSec": 54,
       "onScreen": "BUG OF THE DAY: A missing semicolon after a struct",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The struct has no semicolon after its closing brace. The compiler says expected semicolon after struct definition. A struct is a declaration, so it needs a semicolon. This is one of the most common beginner errors."
+      "narration": "Bug of the Day. The struct has no semicolon after its closing brace. The compiler says expected semicolon after struct definition. A struct is a declaration, so it needs a semicolon. This is one of the most common beginner errors. The struct definition looks like a block, but it is a declaration. A declaration needs the semicolon at its end. Without it, the compiler reads the next line as part of the struct. The error message then points to a strange place. When the error looks odd, check the line above it."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 249,
+      "startSec": 352,
       "lengthSec": 8,
       "onScreen": "I made a struct for my fish. It has two fields: name and price. The price is always a catch.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -242,19 +242,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 257,
-      "lengthSec": 20,
+      "startSec": 360,
+      "lengthSec": 26,
       "onScreen": "Task card: make a book struct",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make a struct called Book with a title and a price. Make two books and print them with a function. Write your answer in the comments."
+      "narration": "Your challenge: Make a struct called Book with a title and a price. Make two books and print them with a function. Hint: write the struct above main, and end the closing brace with a semicolon. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 277,
+      "startSec": 386,
       "lengthSec": 15,
       "onScreen": "Next: EP 52 · Classes and objects",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -271,7 +271,7 @@
     "why": "A struct definition is a declaration, and every declaration ends with a semicolon. The compiler reads on and gets confused."
   },
   "pun": "\"I made a struct for my fish. It has two fields: name and price. The price is always a catch.\"",
-  "challenge": "Make a struct called Book with a title and a price. Make two books and print them with a function.",
+  "challenge": "Make a struct called Book with a title and a price. Make two books and print them with a function. Hint: write the struct above main, and end the closing brace with a semicolon.",
   "challengeAnswer": "Define struct Book with a string and a double. Write a show function with a const reference. Call it for both books.",
   "shorts": [
     {

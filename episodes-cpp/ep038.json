@@ -3,7 +3,7 @@
   "ep": 38,
   "title": "C-style strings",
   "module": 4,
-  "lengthSec": 292,
+  "lengthSec": 361,
   "colours": {
     "bg": "#FFE58A",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ C-Style Strings: char Arrays and strlen | C++ Programming EP 38",
-    "description": "In this episode you will explain what a char array is, use strlen and strcmp and avoid comparing C strings with equals equals, with Xecxec the crab. 0:00 Intro · 0:15 C-style strings · 0:49 A char array · 1:29 Four boxes for three letters · 1:59 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:37 Next episode",
+    "description": "In this episode you will explain what a char array is, use strlen and strcmp and avoid comparing C strings with equals equals, with Xecxec the crab. 0:00 Intro · 0:15 C-style strings · 1:17 A char array · 2:11 Four boxes for three letters · 2:53 Second program · 3:55 Recap · 4:25 Bug of the Day · 5:20 Challenge · 5:46 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "C-style strings"
       },
       {
-        "t": "0:49",
+        "t": "1:17",
         "label": "A char array"
       },
       {
-        "t": "1:29",
+        "t": "2:11",
         "label": "Four boxes for three letters"
       },
       {
-        "t": "1:59",
+        "t": "2:53",
         "label": "Second program"
       },
       {
-        "t": "2:59",
+        "t": "3:55",
         "label": "Recap"
       },
       {
-        "t": "3:29",
+        "t": "4:25",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:17",
+        "t": "5:20",
         "label": "Challenge"
       },
       {
-        "t": "4:37",
+        "t": "5:46",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 34,
+      "lengthSec": 62,
       "onScreen": "\"C-style strings\": numbered lines (1. A C string is a char array; 2. It ends with a null character; 3. Compare C strings with strcmp) and an analogy card: a necklace of letter beads that ends in a special blank bead",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A C string is an array of chars. The last char is a special null character. It marks the end of the text. The null character has the code zero. The cstring header has helpers. Strlen counts the letters. Strcmp compares two strings. Think of a necklace of letter beads that ends with one blank bead.",
+      "narration": "A C string is an array of chars. The last char is a special null character. It marks the end of the text. The null character has the code zero. The cstring header has helpers. Strlen counts the letters. Strcmp compares two strings. Think of a necklace of letter beads that ends with one blank bead. C strings come from the C language, and C plus plus keeps them for old code. You will meet them in many libraries. The null character is the key. Every function in the cstring header stops when it finds it. If you forget it, the functions run on into other memory.",
       "points": [
         "A C string is a char array",
         "It ends with a null character",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 49,
-      "lengthSec": 40,
+      "startSec": 77,
+      "lengthSec": 54,
       "onScreen": "cstring.cpp: a char array with strlen and sizeof",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] The compiler counts the letters and makes room for them. [HL 7] Strlen counts the letters before the null. It gives three. [HL 8] Sizeof counts all the bytes. It gives four, because the null character takes one byte. [HL 9] Cout prints letters until it meets the null.",
+      "narration": "[HL 6] The compiler counts the letters and makes room for them. [HL 7] Strlen counts the letters before the null. It gives three. [HL 8] Sizeof counts all the bytes. It gives four, because the null character takes one byte. [HL 9] Cout prints letters until it meets the null. [HL 6] The compiler counts the letters, and it adds the null character for us. [HL 7] Strlen counts the letters until it finds the null. It gives three. [HL 8] Sizeof gives the size of the whole array. That is four, because the null takes one place. [HL 9] Cout also stops at the null character.",
       "code": {
         "file": "cstring.cpp",
         "source": "#include <cstring>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    char name[] = \"Goa\";\n    cout << strlen(name) << endl;\n    cout << sizeof(name) << endl;\n    cout << name << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 89,
-      "lengthSec": 30,
+      "startSec": 131,
+      "lengthSec": 42,
       "onScreen": "four char boxes: G, o, a and the null character",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the four boxes. The first three hold the letters. The fourth holds the null character. Cout and strlen stop when they meet it. If the null is missing, they read on into other memory.",
+      "narration": "Look at the four boxes. The first three hold the letters. The fourth holds the null character. Cout and strlen stop when they meet it. If the null is missing, they read on into other memory. Notice the picture. The word Goa has three letters, and the array has four boxes. The last box holds the null. That one extra box is the most common reason for a mistake with sizes.",
       "memory": {
         "frames": [
           {
@@ -179,14 +179,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 119,
-      "lengthSec": 40,
+      "startSec": 173,
+      "lengthSec": 41,
       "onScreen": "compare.cpp: strcmp compares the text, not the address",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] Two arrays hold the same text. [HL 8] Strcmp compares the letters. It returns zero when the texts are equal. [HL 8] So we test the answer against zero. The result is true, so cout prints one.",
+      "narration": "[HL 6] Two arrays hold the same text. [HL 8] Strcmp compares the letters. It returns zero when the texts are equal. [HL 8] So we test the answer against zero. The result is true, so cout prints one. [HL 6] Both arrays hold the same word, but they sit at different places in memory. [HL 8] Strcmp compares the letters. It gives zero when the two strings are equal. That is why we test the answer against zero.",
       "code": {
         "file": "compare.cpp",
         "source": "#include <cstring>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    char a[] = \"goa\";\n    char b[] = \"goa\";\n    cout << (strcmp(a, b) == 0) << endl;\n    return 0;\n}",
@@ -196,20 +196,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 159,
-      "lengthSec": 20,
+      "startSec": 214,
+      "lengthSec": 21,
       "onScreen": "Terminal: g++ -std=c++20 compare.cpp -o compare then ./compare",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as compare dot cpp. Compile it with g plus plus. Then run the program. The program prints one."
+      "narration": "Save the file as compare dot cpp. Compile it with g plus plus. Then run the program. The program prints one. Notice that the answer prints as one, because true prints as one."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 179,
+      "startSec": 235,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -227,20 +227,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 209,
-      "lengthSec": 40,
+      "startSec": 265,
+      "lengthSec": 47,
       "onScreen": "BUG OF THE DAY: Comparing C strings with equals",
       "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Both arrays hold goa, but the test is never true. Two equals signs compare addresses, not letters. The compiler warns that comparing two arrays is deprecated. Use strcmp, or better, use std string."
+      "narration": "Bug of the Day. Both arrays hold goa, but the test is never true. Two equals signs compare addresses, not letters. The compiler warns that comparing two arrays is deprecated. Use strcmp, or better, use std string. An array name stands for an address. Two arrays have two addresses, so a test with equals is always false. That is rarely what you want. Use strcmp for C strings, or use std string, where the double equals sign compares the letters."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 249,
+      "startSec": 312,
       "lengthSec": 8,
       "onScreen": "Why did the C string feel empty? Its last bead was always null.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -252,19 +252,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 257,
-      "lengthSec": 20,
+      "startSec": 320,
+      "lengthSec": 26,
       "onScreen": "Task card: count the letters with a loop",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a loop that counts the letters of a char array, without strlen. Stop at the null character. Write your answer in the comments."
+      "narration": "Your challenge: Write a loop that counts the letters of a char array, without strlen. Stop at the null character. Hint: the loop runs while the char is not the null character, which is backslash zero. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 277,
+      "startSec": 346,
       "lengthSec": 15,
       "onScreen": "Next: EP 39 · Searching",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -281,7 +281,7 @@
     "why": "Two equals signs compare the addresses of the two arrays, not their letters. The addresses always differ. Use strcmp, or use std string."
   },
   "pun": "\"Why did the C string feel empty? Its last bead was always null.\"",
-  "challenge": "Write a loop that counts the letters of a char array, without strlen. Stop at the null character.",
+  "challenge": "Write a loop that counts the letters of a char array, without strlen. Stop at the null character. Hint: the loop runs while the char is not the null character, which is backslash zero.",
   "challengeAnswer": "Start i at zero. While name at i is not the null character, add one to i. The final i is the length.",
   "shorts": [
     {

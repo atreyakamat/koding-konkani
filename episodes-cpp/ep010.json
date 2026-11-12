@@ -3,7 +3,7 @@
   "ep": 10,
   "title": "auto, const and constexpr",
   "module": 1,
-  "lengthSec": 295,
+  "lengthSec": 410,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ auto, const and constexpr Explained | C++ Programming EP 10",
-    "description": "In this episode you will let the compiler pick a type with auto, protect a value with const and explain what constexpr adds, with Xecxec the crab. 0:00 Intro · 0:15 auto, const and constexpr · 0:52 Three keywords · 1:32 Types and locks · 2:02 Second program · 3:02 Recap · 3:32 Bug of the Day · 4:20 Challenge · 4:40 Next episode",
+    "description": "In this episode you will let the compiler pick a type with auto, protect a value with const and explain what constexpr adds, with Xecxec the crab. 0:00 Intro · 0:15 auto, const and constexpr · 1:21 Three keywords · 2:37 Types and locks · 3:28 Second program · 4:41 Recap · 5:11 Bug of the Day · 6:13 Challenge · 6:35 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "auto, const and constexpr"
       },
       {
-        "t": "0:52",
+        "t": "1:21",
         "label": "Three keywords"
       },
       {
-        "t": "1:32",
+        "t": "2:37",
         "label": "Types and locks"
       },
       {
-        "t": "2:02",
+        "t": "3:28",
         "label": "Second program"
       },
       {
-        "t": "3:02",
+        "t": "4:41",
         "label": "Recap"
       },
       {
-        "t": "3:32",
+        "t": "5:11",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:20",
+        "t": "6:13",
         "label": "Challenge"
       },
       {
-        "t": "4:40",
+        "t": "6:35",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 37,
+      "lengthSec": 66,
       "onScreen": "\"auto, const and constexpr\": numbered lines (1. auto lets the compiler find the type; 2. const stops a value from changing; 3. constexpr fixes the value at compile time) and an analogy card: a sealed jar of masala: you can look at it, but you cannot change it",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "The keyword auto tells the compiler to find the type from the value. The keyword const makes a variable read-only. You cannot change it after you set it. The keyword constexpr is stronger. The value must be known when the program is compiled. Think of a sealed jar of masala. You can look at it, but you cannot change what is inside.",
+      "narration": "The keyword auto tells the compiler to find the type from the value. The keyword const makes a variable read-only. You cannot change it after you set it. The keyword constexpr is stronger. The value must be known when the program is compiled. Think of a sealed jar of masala. You can look at it, but you cannot change what is inside. Why use const? It protects you from your own mistakes. If a value must never change, say so, and the compiler guards it for you. Auto saves typing, but use it with care. When the type is obvious from the value, auto is fine. When the type is not clear, write it out.",
       "points": [
         "auto lets the compiler find the type",
         "const stops a value from changing",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 52,
-      "lengthSec": 40,
+      "startSec": 81,
+      "lengthSec": 76,
       "onScreen": "keywords.cpp: auto, const and constexpr in one program",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] Max seats is const. It stays forty for the whole program. [HL 6] Pi is constexpr. The compiler knows its value before the program runs. [HL 7] Auto sees twenty-five point five and picks double. [HL 8] Auto sees twelve and picks int. [HL 10] The fare is a double times an int. The answer is three hundred and six.",
+      "narration": "[HL 5] Max seats is const. It stays forty for the whole program. [HL 6] Pi is constexpr. The compiler knows its value before the program runs. [HL 7] Auto sees twenty-five point five and picks double. [HL 8] Auto sees twelve and picks int. [HL 10] The fare is a double times an int. The answer is three hundred and six. [HL 5] A const variable must get its value in the same line. You cannot add the value later. [HL 6] Constexpr goes one step further. The compiler can use the value while it builds, for example to set the size of an array. [HL 7] Auto looks at the right side of the equals sign. A number with a decimal point is a double. [HL 8] A plain whole number is an int. [HL 10] An int times a double gives a double, so the answer keeps its decimals.",
       "code": {
         "file": "keywords.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    const int max_seats = 40;\n    constexpr double pi = 3.14159;\n    auto fare = 25.5;\n    auto seats = 12;\n    cout << \"Max: \" << max_seats << endl;\n    cout << \"Fare: \" << fare * seats << endl;\n    cout << \"Pi: \" << pi << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 92,
-      "lengthSec": 30,
+      "startSec": 157,
+      "lengthSec": 51,
       "onScreen": "memory boxes: two locked boxes and two auto boxes",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the memory. Max seats and pi are locked. The program cannot change them. Pi lives in the static region, because the compiler fixed it early. The auto variables fare and seats look like ordinary boxes. The compiler picked their types for us.",
+      "narration": "Here is the memory. Max seats and pi are locked. The program cannot change them. Pi lives in the static region, because the compiler fixed it early. The auto variables fare and seats look like ordinary boxes. The compiler picked their types for us. Notice the lock on two of the boxes. The program may read them as often as it likes. But any line that tries to change them stops the build. Auto boxes have no lock. They are ordinary boxes whose type came from the compiler.",
       "memory": {
         "frames": [
           {
@@ -184,14 +184,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 122,
-      "lengthSec": 40,
+      "startSec": 208,
+      "lengthSec": 47,
       "onScreen": "area.cpp: const protects a value used in a formula",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 5] Pi is a constexpr. [HL 6] The radius is const. We promise not to change it. [HL 7] Auto picks double for the area, because pi and radius are doubles. [HL 8] The area is twelve point five six.",
+      "narration": "[HL 5] Pi is a constexpr. [HL 6] The radius is const. We promise not to change it. [HL 7] Auto picks double for the area, because pi and radius are doubles. [HL 8] The area is twelve point five six. [HL 5] Constants have names, and names tell the story. A reader sees pi and knows what it means at once. [HL 7] Three variables go into one line, and auto still finds the right type. Here, every part of the formula is a double, so the area is a double.",
       "code": {
         "file": "area.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    constexpr double pi = 3.14159;\n    const double radius = 2.0;\n    auto area = pi * radius * radius;\n    cout << \"Area: \" << area << endl;\n    return 0;\n}",
@@ -201,20 +201,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 162,
-      "lengthSec": 20,
+      "startSec": 255,
+      "lengthSec": 26,
       "onScreen": "Terminal: g++ -std=c++20 area.cpp -o area then ./area",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as area dot cpp. Compile it with g plus plus. Then run the program. The program prints the area, twelve point five six."
+      "narration": "Save the file as area dot cpp. Compile it with g plus plus. Then run the program. The program prints the area, twelve point five six. Check the number by hand. Pi times two times two is about twelve point five six."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 182,
+      "startSec": 281,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -232,20 +232,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 212,
-      "lengthSec": 40,
+      "startSec": 311,
+      "lengthSec": 54,
       "onScreen": "BUG OF THE DAY: Changing a const",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Max seats is const, but line six tries to change it. The compiler says assignment of read-only variable. That is a good error. It stops a real bug before the program runs. Remove the line, or remove const if the value must change."
+      "narration": "Bug of the Day. Max seats is const, but line six tries to change it. The compiler says assignment of read-only variable. That is a good error. It stops a real bug before the program runs. Remove the line, or remove const if the value must change. Read the message slowly. It says read-only variable, and it names the variable and the line. That is all you need. You can fix it in one of two ways. Remove the changing line, or ask yourself why the variable was const in the first place."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 252,
+      "startSec": 365,
       "lengthSec": 8,
       "onScreen": "I put a const on my bank balance. Now it will never change, and that is the problem.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -257,19 +257,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 260,
-      "lengthSec": 20,
+      "startSec": 373,
+      "lengthSec": 22,
       "onScreen": "Task card: make a circle program with const",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Use constexpr for pi and const for a radius that you choose. Print the area and the circumference. Write your answer in the comments."
+      "narration": "Your challenge: Use constexpr for pi and const for a radius that you choose. Print the area and the circumference. Hint: the circumference is two times pi times the radius. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 280,
+      "startSec": 395,
       "lengthSec": 15,
       "onScreen": "Next: EP 11 · Strings with std::string",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -286,7 +286,7 @@
     "why": "A const variable is read-only. The compiler refuses any line that tries to change it. That is the whole point of const."
   },
   "pun": "\"I put a const on my bank balance. Now it will never change, and that is the problem.\"",
-  "challenge": "Use constexpr for pi and const for a radius that you choose. Print the area and the circumference.",
+  "challenge": "Use constexpr for pi and const for a radius that you choose. Print the area and the circumference. Hint: the circumference is two times pi times the radius.",
   "challengeAnswer": "Area is pi times radius times radius. Circumference is two times pi times radius. Let auto pick the types.",
   "shorts": [
     {

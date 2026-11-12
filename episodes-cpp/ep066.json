@@ -3,7 +3,7 @@
   "ep": 66,
   "title": "Virtual destructors",
   "module": 7,
-  "lengthSec": 298,
+  "lengthSec": 361,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FFB88A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Virtual Destructors: Avoid This Bug | C++ Programming EP 66",
-    "description": "In this episode you will explain why a base destructor must be virtual, predict the output with and without virtual and read the compiler warning, with Xecxec the crab. 0:00 Intro · 0:15 Virtual destructors · 0:54 A virtual destructor · 1:34 What delete runs · 2:04 Second program · 3:04 Recap · 3:35 Bug of the Day · 4:23 Challenge · 4:43 Next episode",
+    "description": "In this episode you will explain why a base destructor must be virtual, predict the output with and without virtual and read the compiler warning, with Xecxec the crab. 0:00 Intro · 0:15 Virtual destructors · 1:20 A virtual destructor · 2:07 What delete runs · 2:42 Second program · 3:51 Recap · 4:22 Bug of the Day · 5:19 Challenge · 5:46 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Virtual destructors"
       },
       {
-        "t": "0:54",
+        "t": "1:20",
         "label": "A virtual destructor"
       },
       {
-        "t": "1:34",
+        "t": "2:07",
         "label": "What delete runs"
       },
       {
-        "t": "2:04",
+        "t": "2:42",
         "label": "Second program"
       },
       {
-        "t": "3:04",
+        "t": "3:51",
         "label": "Recap"
       },
       {
-        "t": "3:35",
+        "t": "4:22",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:23",
+        "t": "5:19",
         "label": "Challenge"
       },
       {
-        "t": "4:43",
+        "t": "5:46",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 39,
+      "lengthSec": 65,
       "onScreen": "\"Virtual destructors\": numbered lines (1. Deleting through a base pointer needs a virtual destructor; 2. Without it, only the base part is destroyed; 3. Smart pointers need it too) and an analogy card: a cleaning crew: if the manager only knows the lobby, the back room is never cleaned",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "When you delete an object through a base pointer, the compiler must find the right destructor. If the base destructor is not virtual, only the base destructor runs. The derived part is never cleaned. The rule is simple. A class with any virtual function gets a virtual destructor. Think of a cleaning crew. If the manager only knows the lobby, the back room is never cleaned.",
+      "narration": "When you delete an object through a base pointer, the compiler must find the right destructor. If the base destructor is not virtual, only the base destructor runs. The derived part is never cleaned. The rule is simple. A class with any virtual function gets a virtual destructor. Think of a cleaning crew. If the manager only knows the lobby, the back room is never cleaned. This is one of the most important rules in C plus plus. A base class that is used through pointers needs a virtual destructor. Without it, the delete goes to the base destructor only. The derived part is never cleaned, and memory or files may leak.",
       "points": [
         "Deleting through a base pointer needs a virtual destructor",
         "Without it, only the base part is destroyed",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 54,
-      "lengthSec": 40,
+      "startSec": 80,
+      "lengthSec": 47,
       "onScreen": "vdtor.cpp: both destructors run, in the right order",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] The base destructor is virtual. [HL 11] The Dog destructor overrides it. [HL 15] The pointer is an Animal pointer, and the object is a Dog. [HL 16] Delete finds the real type. Dog gone prints first. Then Animal gone prints. Both parts are cleaned.",
+      "narration": "[HL 6] The base destructor is virtual. [HL 11] The Dog destructor overrides it. [HL 15] The pointer is an Animal pointer, and the object is a Dog. [HL 16] Delete finds the real type. Dog gone prints first. Then Animal gone prints. Both parts are cleaned. [HL 6] The base destructor is virtual. [HL 11] The Dog destructor uses override, so the compiler checks the match. [HL 15] The pointer type is Animal, but the object is a Dog. [HL 16] Delete finds the real type. The output is Dog gone, and then Animal gone.",
       "code": {
         "file": "vdtor.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Animal {\npublic:\n    virtual ~Animal() { cout << \"Animal gone\" << endl; }\n};\n\nclass Dog : public Animal {\npublic:\n    ~Dog() override { cout << \"Dog gone\" << endl; }\n};\n\nint main() {\n    Animal* a = new Dog;\n    delete a;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 94,
-      "lengthSec": 30,
+      "startSec": 127,
+      "lengthSec": 35,
       "onScreen": "a table: with and without a virtual destructor",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "The table shows both cases. With a virtual destructor, delete runs the Dog destructor, and then the Animal one. Without virtual, only the Animal destructor runs. The result is undefined behaviour.",
+      "narration": "The table shows both cases. With a virtual destructor, delete runs the Dog destructor, and then the Animal one. Without virtual, only the Animal destructor runs. The result is undefined behaviour. Notice the order of the output. The derived destructor runs first, and the base destructor runs after it. Without the word virtual, the first line would be missing.",
       "diagram": {
         "kind": "table",
         "caption": "a table: with and without a virtual destructor",
@@ -164,14 +164,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 124,
-      "lengthSec": 40,
+      "startSec": 162,
+      "lengthSec": 42,
       "onScreen": "smart.cpp: unique_ptr needs the virtual destructor too",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 16] A smart pointer to Animal holds a Dog. [HL 17] The program prints working. [HL 18] At the end, the unique pointer deletes the object through the base type. Because the destructor is virtual, both Dog gone and Animal gone print. The rule is the same for smart pointers.",
+      "narration": "[HL 16] A smart pointer to Animal holds a Dog. [HL 17] The program prints working. [HL 18] At the end, the unique pointer deletes the object through the base type. Because the destructor is virtual, both Dog gone and Animal gone print. The rule is the same for smart pointers. [HL 16] A unique pointer holds the Dog. [HL 17] The program prints working. [HL 18] When main ends, the unique pointer deletes the object. The virtual destructor makes the deletion complete.",
       "code": {
         "file": "smart.cpp",
         "source": "#include <iostream>\n#include <memory>\nusing namespace std;\n\nclass Animal {\npublic:\n    virtual ~Animal() { cout << \"Animal gone\" << endl; }\n};\n\nclass Dog : public Animal {\npublic:\n    ~Dog() override { cout << \"Dog gone\" << endl; }\n};\n\nint main() {\n    unique_ptr<Animal> a = make_unique<Dog>();\n    cout << \"working\" << endl;\n    return 0;\n}",
@@ -181,20 +181,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 164,
-      "lengthSec": 20,
+      "startSec": 204,
+      "lengthSec": 27,
       "onScreen": "Terminal: g++ -std=c++20 smart.cpp -o smart then ./smart",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as smart dot cpp. Compile it with g plus plus. Then run the program. The program prints working, then Dog gone, then Animal gone."
+      "narration": "Save the file as smart dot cpp. Compile it with g plus plus. Then run the program. The program prints working, then Dog gone, then Animal gone. Notice that we wrote no delete. The smart pointer did it, and the virtual destructor made it correct."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 184,
+      "startSec": 231,
       "lengthSec": 31,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -212,20 +212,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 215,
-      "lengthSec": 40,
+      "startSec": 262,
+      "lengthSec": 49,
       "onScreen": "BUG OF THE DAY: A base destructor that is not virtual",
       "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The class has a virtual function, but the destructor is not virtual. The compiler warns that deleting an object of polymorphic class type might cause undefined behaviour. Only the Animal part would be destroyed. Make the destructor virtual."
+      "narration": "Bug of the Day. The class has a virtual function, but the destructor is not virtual. The compiler warns that deleting an object of polymorphic class type might cause undefined behaviour. Only the Animal part would be destroyed. Make the destructor virtual. This bug is silent. The program builds and runs, and it may look fine. But the Dog part is never destroyed, so its resources leak. Turn on warnings. Most compilers warn about a class with virtual functions and a non-virtual destructor."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 255,
+      "startSec": 311,
       "lengthSec": 8,
       "onScreen": "Why was the destructor so tired? It had to clean up after the whole family.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -237,19 +237,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 263,
-      "lengthSec": 20,
+      "startSec": 319,
+      "lengthSec": 27,
       "onScreen": "Task card: check the rule",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a base class with one virtual function. Add a virtual destructor. Explain in a comment why it is needed. Write your answer in the comments."
+      "narration": "Your challenge: Write a base class with one virtual function. Add a virtual destructor. Explain in a comment why it is needed. Hint: write the word virtual in front of the destructor, and add a comment that says why. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 283,
+      "startSec": 346,
       "lengthSec": 15,
       "onScreen": "Next: EP 67 · Multiple inheritance",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -266,7 +266,7 @@
     "why": "Delete through a base pointer only runs the base destructor, when it is not virtual. The Dog part is never destroyed."
   },
   "pun": "\"Why was the destructor so tired? It had to clean up after the whole family.\"",
-  "challenge": "Write a base class with one virtual function. Add a virtual destructor. Explain in a comment why it is needed.",
+  "challenge": "Write a base class with one virtual function. Add a virtual destructor. Explain in a comment why it is needed. Hint: write the word virtual in front of the destructor, and add a comment that says why.",
   "challengeAnswer": "Delete through a base pointer needs the real destructor to run. A virtual destructor makes the compiler find it.",
   "shorts": [
     {

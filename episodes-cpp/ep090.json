@@ -3,7 +3,7 @@
   "ep": 90,
   "title": "Finale: what you can build",
   "module": 10,
-  "lengthSec": 290,
+  "lengthSec": 385,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Course Finale: What You Can Build Now | C++ Programming EP 90",
-    "description": "In this episode you will read a modern C++ program, see the whole course map and choose a project to build next, with Xecxec the crab. 0:00 Intro · 0:15 Finale: what you can build · 0:45 A small modern program · 1:26 Your road · 1:56 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "description": "In this episode you will read a modern C++ program, see the whole course map and choose a project to build next, with Xecxec the crab. 0:00 Intro · 0:15 Finale: what you can build · 1:11 A small modern program · 2:28 Your road · 3:05 Second program · 4:18 Recap · 4:48 Bug of the Day · 5:40 Challenge · 6:10 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Finale: what you can build"
       },
       {
-        "t": "0:45",
+        "t": "1:11",
         "label": "A small modern program"
       },
       {
-        "t": "1:26",
+        "t": "2:28",
         "label": "Your road"
       },
       {
-        "t": "1:56",
+        "t": "3:05",
         "label": "Second program"
       },
       {
-        "t": "2:57",
+        "t": "4:18",
         "label": "Recap"
       },
       {
-        "t": "3:27",
+        "t": "4:48",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:15",
+        "t": "5:40",
         "label": "Challenge"
       },
       {
-        "t": "4:35",
+        "t": "6:10",
         "label": "Next episode"
       }
     ],
@@ -96,13 +96,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 56,
       "onScreen": "\"Finale: what you can build\": numbered lines (1. You can read modern C plus plus; 2. You know the whole core language; 3. The next step is to build something) and an analogy card: a map of everything you have climbed",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "You started with a first program. Now you know types, control flow, functions, memory, classes, inheritance, templates, the library, and threads. Reading is the first skill. Let us read a small modern program, line by line, and see how much you already know.",
+      "narration": "You started with a first program. Now you know types, control flow, functions, memory, classes, inheritance, templates, the library, and threads. Reading is the first skill. Let us read a small modern program, line by line, and see how much you already know. Look back at what you can do now. You write loops and functions. You manage memory with care. You build classes, and you use the library. These are real skills. Companies use C plus plus for games, for banks, for phones and for rockets. You have the base to learn any of those areas.",
       "points": [
         "You can read modern C plus plus",
         "You know the whole core language",
@@ -116,15 +116,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 41,
+      "startSec": 71,
+      "lengthSec": 77,
       "onScreen": "library.cpp: books are searched, sorted and printed",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 8] A struct groups a title and a page count. [HL 13] The function may have no answer, so it returns an optional. [HL 17] It uses a library algorithm with a lambda. [HL 23] The if statement makes the optional and tests it in one step. [HL 24] The longest book is Pointers, with two hundred pages. [HL 26] Then we sort by title. [HL 27] A range for loop prints the titles in order. You learned every part of this program.",
+      "narration": "[HL 8] A struct groups a title and a page count. [HL 13] The function may have no answer, so it returns an optional. [HL 17] It uses a library algorithm with a lambda. [HL 23] The if statement makes the optional and tests it in one step. [HL 24] The longest book is Pointers, with two hundred pages. [HL 26] Then we sort by title. [HL 27] A range for loop prints the titles in order. You learned every part of this program. [HL 8] A struct holds a title and a page count. [HL 13] The function returns an optional, because an empty list has no longest book. [HL 17] Max element finds the book with the most pages, and the lambda tells it how to compare. [HL 23] The if with a declaration checks the optional and names it in one line. [HL 26] The sort uses another lambda, and it orders the books by title.",
       "code": {
         "file": "library.cpp",
         "source": "#include <algorithm>\n#include <iostream>\n#include <optional>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Book {\n    string title;\n    int pages;\n};\n\noptional<Book> longest(const vector<Book>& books) {\n    if (books.empty()) {\n        return nullopt;\n    }\n    return *max_element(books.begin(), books.end(),\n                        [](const Book& a, const Book& b) { return a.pages < b.pages; });\n}\n\nint main() {\n    vector<Book> books = {{\"Basics\", 120}, {\"Pointers\", 200}, {\"Templates\", 150}};\n    if (auto top = longest(books)) {\n        cout << top->title << \" \" << top->pages << endl;\n    }\n    sort(books.begin(), books.end(), [](const Book& a, const Book& b) { return a.title < b.title; });\n    for (const Book& b : books) {\n        cout << b.title << endl;\n    }\n    return 0;\n}",
@@ -134,14 +134,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 86,
-      "lengthSec": 30,
+      "startSec": 148,
+      "lengthSec": 37,
       "onScreen": "a flow of the six stages of the course",
       "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
       "sfx": [
         "pop"
       ],
-      "narration": "Here is your road. You began with a first program. Then came the core language, and then memory. After that came objects, templates and the library. The next stage is yours.",
+      "narration": "Here is your road. You began with a first program. Then came the core language, and then memory. After that came objects, templates and the library. The next stage is yours. Notice how many ideas sit in this short program. Structs, vectors, lambdas, optional and algorithms all work together. A year ago, this code was a puzzle. Now you can read it.",
       "diagram": {
         "kind": "flow",
         "caption": "a flow of the six stages of the course",
@@ -182,14 +182,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 116,
-      "lengthSec": 40,
+      "startSec": 185,
+      "lengthSec": 44,
       "onScreen": "grades.cpp: a map is printed with structured bindings",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 7] A map joins names to marks. [HL 8] A structured binding names the key and the value. [HL 9] The loop prints Asha ninety-one, and then Mia eighty-five. This is modern C plus plus. It is short, and you can read it.",
+      "narration": "[HL 7] A map joins names to marks. [HL 8] A structured binding names the key and the value. [HL 9] The loop prints Asha ninety-one, and then Mia eighty-five. This is modern C plus plus. It is short, and you can read it. [HL 7] The map holds names and marks. [HL 8] A structured binding unpacks each pair into two clear names. The loop prints the pairs in sorted order of name. This is modern C plus plus. Short, clear and safe.",
       "code": {
         "file": "grades.cpp",
         "source": "#include <iostream>\n#include <map>\n#include <string>\nusing namespace std;\n\nint main() {\n    map<string, int> marks = {{\"Asha\", 91}, {\"Mia\", 85}};\n    for (const auto& [name, mark] : marks) {\n        cout << name << \" \" << mark << endl;\n    }\n    return 0;\n}",
@@ -199,20 +199,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 156,
-      "lengthSec": 21,
+      "startSec": 229,
+      "lengthSec": 29,
       "onScreen": "Terminal: g++ -std=c++20 grades.cpp -o grades then ./grades",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as grades dot cpp. Compile it with g plus plus. Then run the program. The program prints Pointers two hundred, then the sorted titles, then the two students from the map."
+      "narration": "Save the file as grades dot cpp. Compile it with g plus plus. Then run the program. The program prints Pointers two hundred, then the sorted titles, then the two students from the map. Notice that you now understand every symbol on the screen. That is real progress."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 177,
+      "startSec": 258,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -230,20 +230,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 207,
-      "lengthSec": 40,
+      "startSec": 288,
+      "lengthSec": 44,
       "onScreen": "BUG OF THE DAY: The last classic: a missing semicolon",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day, the last one. The struct has no semicolon after the closing brace. The compiler says expected semicolon after struct definition. Read the error, and look one line up."
+      "narration": "Bug of the Day, the last one. The struct has no semicolon after the closing brace. The compiler says expected semicolon after struct definition. Read the error, and look one line up. Here is the last classic. When a struct or a class has no semicolon at the end, the compiler gets confused. It often reports the error one line later. Remember the tip. When an error looks odd, read the line above it."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 247,
+      "startSec": 332,
       "lengthSec": 8,
       "onScreen": "Why did the programmer love this course? Every bug had a fix, and every fix had a pun.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -255,19 +255,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 255,
-      "lengthSec": 20,
+      "startSec": 340,
+      "lengthSec": 30,
       "onScreen": "Task card: build your own project",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Pick one small idea. A quiz, a contact book, or a to do list. Build it, and share it in the comments. Write your answer in the comments."
+      "narration": "Your challenge: Pick one small idea. A quiz, a contact book, or a to do list. Build it, and share it in the comments. Hint: start small. A program of fifty lines that you finish is worth more than one that you never end. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 275,
+      "startSec": 370,
       "lengthSec": 15,
       "onScreen": "The end of the course",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -284,7 +284,7 @@
     "why": "A struct or a class definition ends with a semicolon. The compiler often reports the error on the next line, so read one line up."
   },
   "pun": "\"Why did the programmer love this course? Every bug had a fix, and every fix had a pun.\"",
-  "challenge": "Pick one small idea. A quiz, a contact book, or a to do list. Build it, and share it in the comments.",
+  "challenge": "Pick one small idea. A quiz, a contact book, or a to do list. Build it, and share it in the comments. Hint: start small. A program of fifty lines that you finish is worth more than one that you never end.",
   "challengeAnswer": "Start with one struct and one vector. Add one feature at a time, and compile after each step.",
   "shorts": [
     {

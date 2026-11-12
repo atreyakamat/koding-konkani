@@ -3,7 +3,7 @@
   "ep": 46,
   "title": "new and delete",
   "module": 5,
-  "lengthSec": 301,
+  "lengthSec": 407,
   "colours": {
     "bg": "#D9C9FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ new and delete: The Heap Explained | C++ Programming EP 46",
-    "description": "In this episode you will make a variable on the heap with new, free it with delete and explain stack and heap, with Xecxec the crab. 0:00 Intro · 0:15 new and delete · 0:58 One box on the heap · 1:38 Stack and heap · 2:08 Second program · 3:08 Recap · 3:38 Bug of the Day · 4:26 Challenge · 4:46 Next episode",
+    "description": "In this episode you will make a variable on the heap with new, free it with delete and explain stack and heap, with Xecxec the crab. 0:00 Intro · 0:15 new and delete · 1:29 One box on the heap · 2:30 Stack and heap · 3:21 Second program · 4:38 Recap · 5:08 Bug of the Day · 6:03 Challenge · 6:32 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "new and delete"
       },
       {
-        "t": "0:58",
+        "t": "1:29",
         "label": "One box on the heap"
       },
       {
-        "t": "1:38",
+        "t": "2:30",
         "label": "Stack and heap"
       },
       {
-        "t": "2:08",
+        "t": "3:21",
         "label": "Second program"
       },
       {
-        "t": "3:08",
+        "t": "4:38",
         "label": "Recap"
       },
       {
-        "t": "3:38",
+        "t": "5:08",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:26",
+        "t": "6:03",
         "label": "Challenge"
       },
       {
-        "t": "4:46",
+        "t": "6:32",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 43,
+      "lengthSec": 74,
       "onScreen": "\"new and delete\": numbered lines (1. New asks the heap for a box; 2. Delete gives the box back; 3. Every new needs one delete) and an analogy card: a library book: you borrow it with new, and you must return it with delete",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Local variables live on the stack. They appear and disappear by themselves. The heap is a big pool of memory that you manage yourself. New asks the heap for a box, and gives you its address. Delete returns the box. If you forget, the box is lost until the program ends. That is a memory leak. Think of a library book. You borrow it with new, and you must return it with delete.",
+      "narration": "Local variables live on the stack. They appear and disappear by themselves. The heap is a big pool of memory that you manage yourself. New asks the heap for a box, and gives you its address. Delete returns the box. If you forget, the box is lost until the program ends. That is a memory leak. Think of a library book. You borrow it with new, and you must return it with delete. Why do we need the heap? A stack variable lives only until its block ends. Sometimes data must live longer, or its size is not known early. The heap gives you that freedom. But freedom has a price. You must give every box back. Count your news and deletes. They must match, one for one.",
       "points": [
         "New asks the heap for a box",
         "Delete gives the box back",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 58,
-      "lengthSec": 40,
+      "startSec": 89,
+      "lengthSec": 61,
       "onScreen": "heap.cpp: new makes an int on the heap, delete frees it",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] New makes an int on the heap and sets it to five. It returns the address, and p stores it. [HL 6] Star p reads five. [HL 7] We change the value to six. [HL 9] Delete gives the box back to the heap. After delete, p still holds the old address, so do not use p again.",
+      "narration": "[HL 5] New makes an int on the heap and sets it to five. It returns the address, and p stores it. [HL 6] Star p reads five. [HL 7] We change the value to six. [HL 9] Delete gives the box back to the heap. After delete, p still holds the old address, so do not use p again. [HL 5] New asks the heap for one int, and it sets the value to five. The answer is an address, and p stores it. [HL 6] The star follows the address and reads five. [HL 7] We can change the value through the pointer. [HL 9] Delete gives the box back. After the delete, we must not use p again.",
       "code": {
         "file": "heap.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int* p = new int(5);\n    cout << *p << endl;\n    *p = *p + 1;\n    cout << *p << endl;\n    delete p;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 98,
-      "lengthSec": 30,
+      "startSec": 150,
+      "lengthSec": 51,
       "onScreen": "p lives on the stack, and the int lives on the heap",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the two regions. P is a normal local variable on the stack. It dies at the end of the function. The int lives on the heap. It stays until you delete it. If you lose p before you delete, nobody can ever free that box.",
+      "narration": "Look at the two regions. P is a normal local variable on the stack. It dies at the end of the function. The int lives on the heap. It stays until you delete it. If you lose p before you delete, nobody can ever free that box. Notice the two regions. The pointer p lives on the stack, and the int lives on the heap. When main ends, p disappears. If we forgot the delete, the int would stay in the pool with nobody to reach it.",
       "memory": {
         "frames": [
           {
@@ -180,14 +180,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 128,
-      "lengthSec": 40,
+      "startSec": 201,
+      "lengthSec": 53,
       "onScreen": "heaparray.cpp: new with square brackets makes an array",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 5] New with square brackets makes an array of three ints on the heap. [HL 6] The loop multiplies each item by ten. [HL 9] The output is ten, twenty, thirty. [HL 10] An array made with new square brackets needs delete square brackets. A plain delete is a bug.",
+      "narration": "[HL 5] New with square brackets makes an array of three ints on the heap. [HL 6] The loop multiplies each item by ten. [HL 9] The output is ten, twenty, thirty. [HL 10] An array made with new square brackets needs delete square brackets. A plain delete is a bug. [HL 5] New with square brackets makes a row of three ints on the heap. [HL 7] Square brackets work on the pointer, as on any array. Each item is multiplied by ten. [HL 10] A row must be freed with delete and square brackets. Remember the pair, new with brackets, delete with brackets.",
       "code": {
         "file": "heaparray.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int* a = new int[3]{1, 2, 3};\n    for (int i = 0; i < 3; i++) {\n        a[i] = a[i] * 10;\n    }\n    cout << a[0] << \" \" << a[1] << \" \" << a[2] << endl;\n    delete[] a;\n    return 0;\n}",
@@ -197,20 +197,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 168,
-      "lengthSec": 20,
+      "startSec": 254,
+      "lengthSec": 24,
       "onScreen": "Terminal: g++ -std=c++20 heaparray.cpp -o heaparray then ./heaparray",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as heaparray dot cpp. Compile it with g plus plus. Then run the program. The program prints ten, twenty and thirty."
+      "narration": "Save the file as heaparray dot cpp. Compile it with g plus plus. Then run the program. The program prints ten, twenty and thirty. Notice the numbers. The items one, two and three become ten, twenty and thirty."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 188,
+      "startSec": 278,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -228,20 +228,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 218,
-      "lengthSec": 40,
+      "startSec": 308,
+      "lengthSec": 47,
       "onScreen": "BUG OF THE DAY: The wrong delete",
       "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We make an array with new square brackets, but we free it with plain delete. The compiler warns about a mismatched allocation function. The two forms must match. New square brackets pairs with delete square brackets."
+      "narration": "Bug of the Day. We make an array with new square brackets, but we free it with plain delete. The compiler warns about a mismatched allocation function. The two forms must match. New square brackets pairs with delete square brackets. The two forms of new and delete are a pair. The plain delete calls the destructor of one object only. For a row, the compiler needs the square brackets to free every item. A mismatch is undefined, and it may crash."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 258,
+      "startSec": 355,
       "lengthSec": 8,
       "onScreen": "I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -253,19 +253,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 266,
-      "lengthSec": 20,
+      "startSec": 363,
+      "lengthSec": 29,
       "onScreen": "Task card: make and free a heap array",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it. Write your answer in the comments."
+      "narration": "Your challenge: Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it. Hint: use a loop for the squares, and call delete with square brackets at the end. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 286,
+      "startSec": 392,
       "lengthSec": 15,
       "onScreen": "Next: EP 47 · Dynamic arrays",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -282,7 +282,7 @@
     "why": "New with square brackets must pair with delete with square brackets. A plain delete frees the memory in the wrong way, and the result is undefined."
   },
   "pun": "\"I borrowed a box from the heap and forgot to return it. Now I have a leak in my budget.\"",
-  "challenge": "Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it.",
+  "challenge": "Make an array of four ints on the heap. Fill it with the squares one, four, nine and sixteen. Print it, and free it. Hint: use a loop for the squares, and call delete with square brackets at the end.",
   "challengeAnswer": "Use new int with four in square brackets. Fill with i plus one squared. Print the items, then call delete with square brackets.",
   "shorts": [
     {

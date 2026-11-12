@@ -3,7 +3,7 @@
   "ep": 29,
   "title": "Lambda functions",
   "module": 3,
-  "lengthSec": 293,
+  "lengthSec": 361,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Lambdas: Small Functions Without a Name | C++ Programming EP 29",
-    "description": "In this episode you will write a lambda, capture a variable and store a lambda with auto, with Xecxec the crab. 0:00 Intro · 0:15 Lambda functions · 0:50 A first lambda · 1:30 Parts of a lambda · 2:00 Second program · 3:00 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:38 Next episode",
+    "description": "In this episode you will write a lambda, capture a variable and store a lambda with auto, with Xecxec the crab. 0:00 Intro · 0:15 Lambda functions · 1:20 A first lambda · 2:17 Parts of a lambda · 2:50 Second program · 3:55 Recap · 4:25 Bug of the Day · 5:20 Challenge · 5:46 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Lambda functions"
       },
       {
-        "t": "0:50",
+        "t": "1:20",
         "label": "A first lambda"
       },
       {
-        "t": "1:30",
+        "t": "2:17",
         "label": "Parts of a lambda"
       },
       {
-        "t": "2:00",
+        "t": "2:50",
         "label": "Second program"
       },
       {
-        "t": "3:00",
+        "t": "3:55",
         "label": "Recap"
       },
       {
-        "t": "3:30",
+        "t": "4:25",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:18",
+        "t": "5:20",
         "label": "Challenge"
       },
       {
-        "t": "4:38",
+        "t": "5:46",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 35,
+      "lengthSec": 65,
       "onScreen": "\"Lambda functions\": numbered lines (1. A lambda is a small unnamed function; 2. Square brackets capture outside variables; 3. Store it in an auto variable) and an analogy card: a sticky note with an instruction: short, local, and thrown away after use",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A lambda is a small function without a name. It has square brackets, then parameters, then a body. The square brackets say which outside variables the lambda may use. You can store a lambda in an auto variable and call it like a function. Think of a sticky note with one short instruction. You use it on the spot.",
+      "narration": "A lambda is a small function without a name. It has square brackets, then parameters, then a body. The square brackets say which outside variables the lambda may use. You can store a lambda in an auto variable and call it like a function. Think of a sticky note with one short instruction. You use it on the spot. Why do we need lambdas? Sometimes you need a tiny function for a few lines only. Writing a full function with a name is too much. Later, you will pass lambdas to library tools, such as sort. There they are a great help. For now, learn the four parts and how to call one.",
       "points": [
         "A lambda is a small unnamed function",
         "Square brackets capture outside variables",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 50,
-      "lengthSec": 40,
+      "startSec": 80,
+      "lengthSec": 57,
       "onScreen": "lambda.cpp: a lambda that squares a number",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] The square brackets start the lambda. Inside them nothing is captured. [HL 5] The parameter is x. [HL 6] The body returns x times x. [HL 5] We store the lambda in the auto variable square. [HL 8] We call it like a function. Six squared is thirty-six. [HL 9] Nine squared is eighty-one.",
+      "narration": "[HL 5] The square brackets start the lambda. Inside them nothing is captured. [HL 5] The parameter is x. [HL 6] The body returns x times x. [HL 5] We store the lambda in the auto variable square. [HL 8] We call it like a function. Six squared is thirty-six. [HL 9] Nine squared is eighty-one. [HL 5] The square brackets come first. They are the capture list, and here it is empty. [HL 6] The body is ordinary code. Return gives back the square of x. [HL 7] A semicolon follows the closing brace, because the whole lambda is one statement that makes a variable. [HL 9] You can call the lambda as many times as you like.",
       "code": {
         "file": "lambda.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    auto square = [](int x) {\n        return x * x;\n    };\n    cout << square(6) << endl;\n    cout << square(9) << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 90,
-      "lengthSec": 30,
+      "startSec": 137,
+      "lengthSec": 33,
       "onScreen": "a flow of the four parts of a lambda",
       "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
       "sfx": [
         "pop"
       ],
-      "narration": "Here are the four parts. The square brackets are the capture list. The round brackets hold the parameters. The curly braces hold the body. The auto variable holds the whole lambda.",
+      "narration": "Here are the four parts. The square brackets are the capture list. The round brackets hold the parameters. The curly braces hold the body. The auto variable holds the whole lambda. Notice the order of the parts. Brackets, then round brackets, then braces. If you keep this order in mind, you can read any lambda.",
       "diagram": {
         "kind": "flow",
         "caption": "a flow of the four parts of a lambda",
@@ -171,14 +171,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 120,
-      "lengthSec": 40,
+      "startSec": 170,
+      "lengthSec": 43,
       "onScreen": "capture.cpp: a lambda captures offset by value",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 5] Offset is one hundred. [HL 6] The capture list names offset. The lambda keeps a copy of it. [HL 7] The body adds the offset to x. [HL 9] Shift of five gives one hundred and five.",
+      "narration": "[HL 5] Offset is one hundred. [HL 6] The capture list names offset. The lambda keeps a copy of it. [HL 7] The body adds the offset to x. [HL 9] Shift of five gives one hundred and five. [HL 6] A lambda by default keeps a copy of the captured value. The copy is made when the lambda is made. If offset changes later, the lambda still holds the old value. [HL 7] Inside the body, you use the name like any other variable.",
       "code": {
         "file": "capture.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int offset = 100;\n    auto shift = [offset](int x) {\n        return x + offset;\n    };\n    cout << shift(5) << endl;\n    return 0;\n}",
@@ -188,20 +188,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 160,
-      "lengthSec": 20,
+      "startSec": 213,
+      "lengthSec": 22,
       "onScreen": "Terminal: g++ -std=c++20 capture.cpp -o capture then ./capture",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as capture dot cpp. Compile it with g plus plus. Then run the program. The program prints one hundred and five."
+      "narration": "Save the file as capture dot cpp. Compile it with g plus plus. Then run the program. The program prints one hundred and five. Five plus one hundred is one hundred and five, as expected."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 180,
+      "startSec": 235,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -219,20 +219,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 210,
-      "lengthSec": 40,
+      "startSec": 265,
+      "lengthSec": 47,
       "onScreen": "BUG OF THE DAY: A variable that is not captured",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The lambda uses offset, but the capture list is empty. The compiler says offset is not captured. A lambda cannot see outside variables unless you list them. Write offset between the square brackets."
+      "narration": "Bug of the Day. The lambda uses offset, but the capture list is empty. The compiler says offset is not captured. A lambda cannot see outside variables unless you list them. Write offset between the square brackets. A lambda is like a sealed room. It sees only what you let in through the square brackets. Name the variable in the list, and the error goes away. If you capture everything with an equals sign, the lambda takes copies of all."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 250,
+      "startSec": 312,
       "lengthSec": 8,
       "onScreen": "My lambda did not want to share. It said, I will only capture what I need.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -244,19 +244,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 258,
-      "lengthSec": 20,
+      "startSec": 320,
+      "lengthSec": 26,
       "onScreen": "Task card: write a lambda that doubles a number",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a lambda that takes an int and returns double that number. Store it in auto and call it with eight. Write your answer in the comments."
+      "narration": "Your challenge: Write a lambda that takes an int and returns double that number. Store it in auto and call it with eight. Hint: the capture list stays empty, because the lambda needs only its parameter. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 278,
+      "startSec": 346,
       "lengthSec": 15,
       "onScreen": "Next: EP 30 · Mini project: calculator",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -273,7 +273,7 @@
     "why": "A lambda can only use outside variables that you list in its square brackets. Add offset to the capture list."
   },
   "pun": "\"My lambda did not want to share. It said, I will only capture what I need.\"",
-  "challenge": "Write a lambda that takes an int and returns double that number. Store it in auto and call it with eight.",
+  "challenge": "Write a lambda that takes an int and returns double that number. Store it in auto and call it with eight. Hint: the capture list stays empty, because the lambda needs only its parameter.",
   "challengeAnswer": "Write auto twice equals square brackets, round brackets with int x, and a body that returns x times two. Then print twice of eight, which is sixteen.",
   "shorts": [
     {

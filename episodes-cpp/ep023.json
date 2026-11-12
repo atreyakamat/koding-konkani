@@ -3,7 +3,7 @@
   "ep": 23,
   "title": "Pass by value",
   "module": 3,
-  "lengthSec": 290,
+  "lengthSec": 369,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Pass by Value: Why Your Change Disappears | C++ Programming EP 23",
-    "description": "In this episode you will explain that arguments are copied, show that the original does not change and return a result instead, with Xecxec the crab. 0:00 Intro · 0:15 Pass by value · 0:47 A copy is changed · 1:27 Two separate boxes · 1:57 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "description": "In this episode you will explain that arguments are copied, show that the original does not change and return a result instead, with Xecxec the crab. 0:00 Intro · 0:15 Pass by value · 1:15 A copy is changed · 2:10 Two separate boxes · 2:47 Second program · 4:00 Recap · 4:30 Bug of the Day · 5:27 Challenge · 5:54 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Pass by value"
       },
       {
-        "t": "0:47",
+        "t": "1:15",
         "label": "A copy is changed"
       },
       {
-        "t": "1:27",
+        "t": "2:10",
         "label": "Two separate boxes"
       },
       {
-        "t": "1:57",
+        "t": "2:47",
         "label": "Second program"
       },
       {
-        "t": "2:57",
+        "t": "4:00",
         "label": "Recap"
       },
       {
-        "t": "3:27",
+        "t": "4:30",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:15",
+        "t": "5:27",
         "label": "Challenge"
       },
       {
-        "t": "4:35",
+        "t": "5:54",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 32,
+      "lengthSec": 60,
       "onScreen": "\"Pass by value\": numbered lines (1. The function gets a copy of the argument; 2. Changes to the copy stay inside; 3. Return the result to send it out) and an analogy card: a photocopy: you scribble on the copy, and the original stays clean",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "When you pass a value to a function, C plus plus makes a copy. The function works on the copy. The original variable never changes. This is called pass by value. To send a result out, use return. Think of a photocopy. You can scribble on the copy, and the original stays clean.",
+      "narration": "When you pass a value to a function, C plus plus makes a copy. The function works on the copy. The original variable never changes. This is called pass by value. To send a result out, use return. Think of a photocopy. You can scribble on the copy, and the original stays clean. Why does C plus plus copy the value? It is safe. The function cannot spoil your variable by accident. But copies cost time for big values, and they cannot send results back through the parameter. So you must know when to use a copy, and when to use another tool.",
       "points": [
         "The function gets a copy of the argument",
         "Changes to the copy stay inside",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 47,
-      "lengthSec": 40,
+      "startSec": 75,
+      "lengthSec": 55,
       "onScreen": "copy.cpp: double_it changes its own copy",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 10] Number is ten. [HL 11] We call double it with number. C plus plus copies ten into the parameter n. [HL 5] The function doubles its copy. [HL 6] Inside the function, n is twenty. [HL 12] Back in main, number is still ten. The copy was changed, not the original.",
+      "narration": "[HL 10] Number is ten. [HL 11] We call double it with number. C plus plus copies ten into the parameter n. [HL 5] The function doubles its copy. [HL 6] Inside the function, n is twenty. [HL 12] Back in main, number is still ten. The copy was changed, not the original. [HL 4] The parameter n is a new box. It is a different box from number, even though it holds the same value. [HL 5] This line changes only the new box. [HL 6] So inside the function, we see twenty. [HL 12] But back in main, the original box still holds ten. The change did not travel back.",
       "code": {
         "file": "copy.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nvoid double_it(int n) {\n    n = n * 2;\n    cout << \"Inside: \" << n << endl;\n}\n\nint main() {\n    int number = 10;\n    double_it(number);\n    cout << \"Outside: \" << number << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 87,
-      "lengthSec": 30,
+      "startSec": 130,
+      "lengthSec": 37,
       "onScreen": "memory boxes: number in main and n in double_it have different addresses",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the two boxes. Number lives in main. N lives in the function. They have different addresses. The function doubled n to twenty. The box named number still holds ten.",
+      "narration": "Look at the two boxes. Number lives in main. N lives in the function. They have different addresses. The function doubled n to twenty. The box named number still holds ten. Notice that the two boxes have different addresses. When the function ends, its box is thrown away, and the doubled value is gone. If you want to keep it, return it.",
       "memory": {
         "frames": [
           {
@@ -169,14 +169,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 117,
-      "lengthSec": 40,
+      "startSec": 167,
+      "lengthSec": 48,
       "onScreen": "noswap.cpp: swap_values swaps copies, not the originals",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 4] The function swaps a and b. [HL 5] It uses a helper box t. [HL 12] Main calls it with x and y. The function swaps only its copies. [HL 13] So x is still one, and y is still two. We need another way to change the originals. That is the next episode.",
+      "narration": "[HL 4] The function swaps a and b. [HL 5] It uses a helper box t. [HL 12] Main calls it with x and y. The function swaps only its copies. [HL 13] So x is still one, and y is still two. We need another way to change the originals. That is the next episode. [HL 6] The function swaps a and b, but they are copies. When the function ends, the copies vanish, and nothing in main has changed. [HL 13] The output proves it. The order is still one, then two.",
       "code": {
         "file": "noswap.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nvoid swap_values(int a, int b) {\n    int t = a;\n    a = b;\n    b = t;\n}\n\nint main() {\n    int x = 1, y = 2;\n    swap_values(x, y);\n    cout << x << \" \" << y << endl;\n    return 0;\n}",
@@ -186,20 +186,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 157,
-      "lengthSec": 20,
+      "startSec": 215,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 noswap.cpp -o noswap then ./noswap",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as noswap dot cpp. Compile it with g plus plus. Then run the program. The program prints one and two. Nothing was swapped."
+      "narration": "Save the file as noswap dot cpp. Compile it with g plus plus. Then run the program. The program prints one and two. Nothing was swapped. This result is surprising at first, but it is the normal rule of copies."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 177,
+      "startSec": 240,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -217,20 +217,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 207,
-      "lengthSec": 40,
+      "startSec": 270,
+      "lengthSec": 49,
       "onScreen": "BUG OF THE DAY: Expecting the original to change",
       "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Add tax should raise the price to one hundred and five. But the program prints one hundred. The function changed only a copy. Return the new price, and store it in the variable. Now the answer is right."
+      "narration": "Bug of the Day. Add tax should raise the price to one hundred and five. But the program prints one hundred. The function changed only a copy. Return the new price, and store it in the variable. Now the answer is right. This bug is common, so do not feel bad if you make it. The fix has two parts. The function returns the new price, and the caller stores that value. Write price equals add tax of price, and the original variable changes."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 247,
+      "startSec": 319,
       "lengthSec": 8,
       "onScreen": "I gave my function a copy of my homework. It said, nice try, I will only change the copy.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -242,19 +242,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 255,
-      "lengthSec": 20,
+      "startSec": 327,
+      "lengthSec": 27,
       "onScreen": "Task card: predict the output before you run",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a function that adds one to its int parameter. Call it from main. Print the variable before and after. Write your answer in the comments."
+      "narration": "Your challenge: Write a function that adds one to its int parameter. Call it from main. Print the variable before and after. Hint: the function returns the new value, and main stores it back in the same variable. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 275,
+      "startSec": 354,
       "lengthSec": 15,
       "onScreen": "Next: EP 24 · Pass by reference",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -271,7 +271,7 @@
     "why": "The function changes its own copy of price, and then the copy disappears. Return the new value and store it in the variable."
   },
   "pun": "\"I gave my function a copy of my homework. It said, nice try, I will only change the copy.\"",
-  "challenge": "Write a function that adds one to its int parameter. Call it from main. Print the variable before and after.",
+  "challenge": "Write a function that adds one to its int parameter. Call it from main. Print the variable before and after. Hint: the function returns the new value, and main stores it back in the same variable.",
   "challengeAnswer": "The variable does not change, because the function adds one to a copy. To change it, return the new value and store it.",
   "shorts": [
     {

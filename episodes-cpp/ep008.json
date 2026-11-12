@@ -3,7 +3,7 @@
   "ep": 8,
   "title": "Comparison and logical operators",
   "module": 1,
-  "lengthSec": 298,
+  "lengthSec": 406,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Comparison and Logical Operators | C++ Programming EP 08",
-    "description": "In this episode you will compare two values, combine tests with and, or and not and print bool values as true and false, with Xecxec the crab. 0:00 Intro · 0:15 Comparison and logical operators · 0:54 Four questions · 1:34 Truth table · 2:04 Second program · 3:04 Recap · 3:35 Bug of the Day · 4:23 Challenge · 4:43 Next episode",
+    "description": "In this episode you will compare two values, combine tests with and, or and not and print bool values as true and false, with Xecxec the crab. 0:00 Intro · 0:15 Comparison and logical operators · 1:25 Four questions · 2:34 Truth table · 3:19 Second program · 4:35 Recap · 5:06 Bug of the Day · 6:06 Challenge · 6:31 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Comparison and logical operators"
       },
       {
-        "t": "0:54",
+        "t": "1:25",
         "label": "Four questions"
       },
       {
-        "t": "1:34",
+        "t": "2:34",
         "label": "Truth table"
       },
       {
-        "t": "2:04",
+        "t": "3:19",
         "label": "Second program"
       },
       {
-        "t": "3:04",
+        "t": "4:35",
         "label": "Recap"
       },
       {
-        "t": "3:35",
+        "t": "5:06",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:23",
+        "t": "6:06",
         "label": "Challenge"
       },
       {
-        "t": "4:43",
+        "t": "6:31",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 39,
+      "lengthSec": 70,
       "onScreen": "\"Comparison and logical operators\": numbered lines (1. A comparison gives true or false; 2. And needs both tests true; 3. Or needs one test true) and an analogy card: a cinema gate: you need a ticket and the right age",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A comparison asks a question about two values. The answer is a bool, so it is true or false. The comparison operators are less than, greater than, equal to and not equal to. The logical operators join tests. And needs both tests to be true. Or needs only one. Not flips the answer. Think of a cinema gate. You need a ticket and the right age.",
+      "narration": "A comparison asks a question about two values. The answer is a bool, so it is true or false. The comparison operators are less than, greater than, equal to and not equal to. The logical operators join tests. And needs both tests to be true. Or needs only one. Not flips the answer. Think of a cinema gate. You need a ticket and the right age. A comparison never changes the values. It only asks a question and gives back true or false. You can store the answer in a bool variable, or use it directly in an if. Be careful with equal to. It uses two equals signs. One equals sign stores a value, and that is a different job.",
       "points": [
         "A comparison gives true or false",
         "And needs both tests true",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 54,
-      "lengthSec": 40,
+      "startSec": 85,
+      "lengthSec": 69,
       "onScreen": "logic.cpp: four tests print true or false",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 7] Boolalpha makes cout print true and false instead of one and zero. [HL 8] Is seventeen greater than or equal to eighteen? No, so false. [HL 9] Is age under eighteen, and does the person have a pass? Both are true, so the answer is true. [HL 10] Is age seventeen, or is it eighteen? One test is true, so the answer is true. [HL 11] Not has pass flips true into false.",
+      "narration": "[HL 7] Boolalpha makes cout print true and false instead of one and zero. [HL 8] Is seventeen greater than or equal to eighteen? No, so false. [HL 9] Is age under eighteen, and does the person have a pass? Both are true, so the answer is true. [HL 10] Is age seventeen, or is it eighteen? One test is true, so the answer is true. [HL 11] Not has pass flips true into false. [HL 5] The age is seventeen. [HL 6] The pass is true. [HL 8] The brackets around the comparison matter. Without them, the arrows of cout would mix with the comparison. [HL 9] And is strict. If one side is false, the whole answer is false. [HL 11] The exclamation mark is the not operator. It turns true into false, and false into true.",
       "code": {
         "file": "logic.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int age = 17;\n    bool has_pass = true;\n    cout << boolalpha;\n    cout << (age >= 18) << endl;\n    cout << (age < 18 && has_pass) << endl;\n    cout << (age == 17 || age == 18) << endl;\n    cout << !has_pass << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 94,
-      "lengthSec": 30,
+      "startSec": 154,
+      "lengthSec": 45,
       "onScreen": "a table for and, or and not",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "This table shows all cases for two tests, A and B. And is true only in the first row. Or is false only in the last row. Not has one input. It always gives the opposite value.",
+      "narration": "This table shows all cases for two tests, A and B. And is true only in the first row. Or is false only in the last row. Not has one input. It always gives the opposite value. Look at the rows again. For and, you need two yes answers. For or, one yes is enough. A cinema gate is a good picture. The guard asks for a ticket and the right age, and both must be fine.",
       "diagram": {
         "kind": "table",
         "caption": "a table for and, or and not",
@@ -179,14 +179,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 124,
-      "lengthSec": 40,
+      "startSec": 199,
+      "lengthSec": 52,
       "onScreen": "range.cpp: is a mark between zero and one hundred?",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 5] The mark is seventy-two. [HL 6] A valid mark must be at least zero and at most one hundred. We join two tests with and. [HL 7] A pass needs at least thirty-five. [HL 8] Both bools print as true. Always write the two tests in full. Never write zero less than mark less than one hundred.",
+      "narration": "[HL 5] The mark is seventy-two. [HL 6] A valid mark must be at least zero and at most one hundred. We join two tests with and. [HL 7] A pass needs at least thirty-five. [HL 8] Both bools print as true. Always write the two tests in full. Never write zero less than mark less than one hundred. [HL 6] Read this line aloud. The mark is at least zero, and the mark is at most one hundred. That sounds like normal speech, which makes the code easy to check. [HL 8] Both bools print as words because of boolalpha.",
       "code": {
         "file": "range.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int mark = 72;\n    bool valid = mark >= 0 && mark <= 100;\n    bool pass = mark >= 35;\n    cout << boolalpha << valid << \" \" << pass << endl;\n    return 0;\n}",
@@ -196,20 +196,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 164,
-      "lengthSec": 20,
+      "startSec": 251,
+      "lengthSec": 24,
       "onScreen": "Terminal: g++ -std=c++20 range.cpp -o range then ./range",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as range dot cpp. Compile it with g plus plus. Then run the program. The program prints true and true."
+      "narration": "Save the file as range dot cpp. Compile it with g plus plus. Then run the program. The program prints true and true. Change the mark to one hundred and fifty, and run it again. Then valid turns false."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 184,
+      "startSec": 275,
       "lengthSec": 31,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -227,20 +227,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 215,
-      "lengthSec": 40,
+      "startSec": 306,
+      "lengthSec": 52,
       "onScreen": "BUG OF THE DAY: One equals sign instead of two",
       "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Here the if test uses one equals sign. That does not compare. It stores zero in seats. The compiler warns about an assignment used as a truth value. Use two equals signs to compare. Always read warnings. They often point at real bugs."
+      "narration": "Bug of the Day. Here the if test uses one equals sign. That does not compare. It stores zero in seats. The compiler warns about an assignment used as a truth value. Use two equals signs to compare. Always read warnings. They often point at real bugs. This bug is quiet. The program builds, and it may even run. But the test is always true or always false, and the wrong branch runs. Turn on warnings with the Wall flag. Then the compiler tells you about this mistake at once."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 255,
+      "startSec": 358,
       "lengthSec": 8,
       "onScreen": "Why was the boolean so honest? It only knew true or false.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -252,19 +252,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 263,
-      "lengthSec": 20,
+      "startSec": 366,
+      "lengthSec": 25,
       "onScreen": "Task card: test whether a year is a leap year",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write one bool expression that is true when a number is even and bigger than ten. Write your answer in the comments."
+      "narration": "Your challenge: Write one bool expression that is true when a number is even and bigger than ten. Hint: use the remainder operator to test for even, and the and operator to join both tests. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 283,
+      "startSec": 391,
       "lengthSec": 15,
       "onScreen": "Next: EP 09 · Type conversion and casting",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -281,7 +281,7 @@
     "why": "A single equals sign stores a value. Two equals signs compare. The wrong test also changes seats to zero."
   },
   "pun": "\"Why was the boolean so honest? It only knew true or false.\"",
-  "challenge": "Write one bool expression that is true when a number is even and bigger than ten.",
+  "challenge": "Write one bool expression that is true when a number is even and bigger than ten. Hint: use the remainder operator to test for even, and the and operator to join both tests.",
   "challengeAnswer": "Use n remainder two equals equals zero, and n greater than ten, joined with two ampersands.",
   "shorts": [
     {

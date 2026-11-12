@@ -3,7 +3,7 @@
   "ep": 78,
   "title": "Lambdas with algorithms",
   "module": 9,
-  "lengthSec": 288,
+  "lengthSec": 366,
   "colours": {
     "bg": "#FFF4EC",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Lambdas with STL Algorithms | C++ Programming EP 78",
-    "description": "In this episode you will write a lambda, sort with your own rule and capture a variable in a lambda, with Xecxec the crab. 0:00 Intro · 0:15 Lambdas with algorithms · 0:45 Sort descending and count_if · 1:25 Anatomy of a lambda · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "description": "In this episode you will write a lambda, sort with your own rule and capture a variable in a lambda, with Xecxec the crab. 0:00 Intro · 0:15 Lambdas with algorithms · 1:15 Sort descending and count_if · 2:25 Anatomy of a lambda · 3:01 Second program · 4:13 Recap · 4:43 Bug of the Day · 5:31 Challenge · 5:51 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Lambdas with algorithms"
       },
       {
-        "t": "0:45",
+        "t": "1:15",
         "label": "Sort descending and count_if"
       },
       {
-        "t": "1:25",
+        "t": "2:25",
         "label": "Anatomy of a lambda"
       },
       {
-        "t": "1:55",
+        "t": "3:01",
         "label": "Second program"
       },
       {
-        "t": "2:55",
+        "t": "4:13",
         "label": "Recap"
       },
       {
-        "t": "3:25",
+        "t": "4:43",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:13",
+        "t": "5:31",
         "label": "Challenge"
       },
       {
-        "t": "4:33",
+        "t": "5:51",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 60,
       "onScreen": "\"Lambdas with algorithms\": numbered lines (1. A lambda is a function with no name; 2. Square brackets hold the captures; 3. Algorithms accept lambdas as rules) and an analogy card: a sticky note with a small rule, handed to the algorithm",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A lambda has square brackets, a parameter list and a body. The square brackets are the capture list. They name outside variables that the lambda may read. Think of a sticky note with a small rule. You hand the note to the algorithm, and it follows the rule.",
+      "narration": "A lambda has square brackets, a parameter list and a body. The square brackets are the capture list. They name outside variables that the lambda may read. Think of a sticky note with a small rule. You hand the note to the algorithm, and it follows the rule. Many algorithms take a rule as the last argument. The rule says how to compare, or what to count. A lambda is the best way to write the rule. Write the lambda right where you need it. The reader sees the rule next to the call, and does not have to jump to another place.",
       "points": [
         "A lambda is a function with no name",
         "Square brackets hold the captures",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 40,
+      "startSec": 75,
+      "lengthSec": 70,
       "onScreen": "lambda.cpp: a lambda sorts in reverse and another lambda counts big numbers",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 8] The empty square brackets mean the lambda captures nothing. It takes two ints. [HL 8] It says that a comes first when a is bigger. The result is nine seven five two one. [HL 13] Now we make a local variable. [HL 14] Putting limit in the brackets captures it. The lambda can now read it. [HL 14] Count if counts the items for which the lambda says true. Three items are bigger than four.",
+      "narration": "[HL 8] The empty square brackets mean the lambda captures nothing. It takes two ints. [HL 8] It says that a comes first when a is bigger. The result is nine seven five two one. [HL 13] Now we make a local variable. [HL 14] Putting limit in the brackets captures it. The lambda can now read it. [HL 14] Count if counts the items for which the lambda says true. Three items are bigger than four. [HL 8] The third argument is a lambda that takes two ints. It returns true when a is bigger than b. This changes sort from smallest first to biggest first. [HL 13] The variable limit is four. [HL 14] The capture list holds limit, so the lambda can read it. Count if counts the numbers above four. The answer is three.",
       "code": {
         "file": "lambda.cpp",
         "source": "#include <algorithm>\n#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {5, 2, 9, 1, 7};\n    sort(v.begin(), v.end(), [](int a, int b) { return a > b; });\n    for (int x : v) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    int limit = 4;\n    int big = count_if(v.begin(), v.end(), [limit](int x) { return x > limit; });\n    cout << big << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 85,
-      "lengthSec": 30,
+      "startSec": 145,
+      "lengthSec": 36,
       "onScreen": "a table that names each part of a lambda",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "A lambda has three parts. The capture list names outside variables. The parameters are the values the algorithm passes in. The body holds the rule.",
+      "narration": "A lambda has three parts. The capture list names outside variables. The parameters are the values the algorithm passes in. The body holds the rule. Notice the two jobs. The lambda in sort decides the order of two items. The lambda in count if answers a yes or no question about one item. The algorithm calls the lambda again and again.",
       "diagram": {
         "kind": "table",
         "caption": "a table that names each part of a lambda",
@@ -169,14 +169,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 115,
-      "lengthSec": 40,
+      "startSec": 181,
+      "lengthSec": 44,
       "onScreen": "students.cpp: students are sorted by marks with a lambda",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 7] A student has a name and marks. [HL 14] We sort the students. [HL 14] The lambda compares marks, so the highest marks come first. [HL 15] For each calls a lambda on every item. [HL 15] The lambda prints Asha ninety-one, then Mia eighty-five, then Ravi seventy-eight.",
+      "narration": "[HL 7] A student has a name and marks. [HL 14] We sort the students. [HL 14] The lambda compares marks, so the highest marks come first. [HL 15] For each calls a lambda on every item. [HL 15] The lambda prints Asha ninety-one, then Mia eighty-five, then Ravi seventy-eight. [HL 13] This vector holds three students. [HL 14] The lambda compares the marks, so the students are ordered by their marks, highest first. [HL 15] For each runs a lambda on every student. It prints the name and the marks.",
       "code": {
         "file": "students.cpp",
         "source": "#include <algorithm>\n#include <iostream>\n#include <string>\n#include <vector>\nusing namespace std;\n\nstruct Student {\n    string name;\n    int marks;\n};\n\nint main() {\n    vector<Student> s = {{\"Asha\", 91}, {\"Ravi\", 78}, {\"Mia\", 85}};\n    sort(s.begin(), s.end(), [](const Student& a, const Student& b) { return a.marks > b.marks; });\n    for_each(s.begin(), s.end(), [](const Student& st) { cout << st.name << \" \" << st.marks << endl; });\n    return 0;\n}",
@@ -186,20 +186,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 155,
-      "lengthSec": 20,
+      "startSec": 225,
+      "lengthSec": 28,
       "onScreen": "Terminal: g++ -std=c++20 students.cpp -o students then ./students",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as students dot cpp. Compile it with g plus plus. Then run the program. The program prints the three students, from the highest marks to the lowest."
+      "narration": "Save the file as students dot cpp. Compile it with g plus plus. Then run the program. The program prints the three students, from the highest marks to the lowest. Notice the order of the output. Asha has ninety-one, Mia has eighty-five, and Ravi has seventy-eight."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 175,
+      "startSec": 253,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -217,7 +217,7 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 205,
+      "startSec": 283,
       "lengthSec": 40,
       "onScreen": "BUG OF THE DAY: A variable that is not captured",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
@@ -225,12 +225,12 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The lambda reads limit, but the brackets are empty. The compiler says limit is not captured. Put limit in the square brackets."
+      "narration": "Bug of the Day. The lambda reads limit, but the brackets are empty. The compiler says limit is not captured. Put limit in the square brackets. A lambda starts with a clean slate. It sees nothing from outside until you capture it. Write the name in the square brackets to copy it. Add an ampersand to use the original variable, and to change it."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 245,
+      "startSec": 323,
       "lengthSec": 8,
       "onScreen": "Why did the lambda join the party? Nobody had to give it a name.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -242,19 +242,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 253,
+      "startSec": 331,
       "lengthSec": 20,
       "onScreen": "Task card: count the even numbers",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Use count if and a lambda to count the even numbers in a vector. Write your answer in the comments."
+      "narration": "Your challenge: Use count if and a lambda to count the even numbers in a vector. Hint: the lambda tests the remainder after dividing by two. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 273,
+      "startSec": 351,
       "lengthSec": 15,
       "onScreen": "Next: EP 79 · Ranges in C++20",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -271,7 +271,7 @@
     "why": "A lambda cannot see local variables unless you capture them. Write the name in the square brackets. Use an ampersand in front of the name to capture by reference."
   },
   "pun": "\"Why did the lambda join the party? Nobody had to give it a name.\"",
-  "challenge": "Use count if and a lambda to count the even numbers in a vector.",
+  "challenge": "Use count if and a lambda to count the even numbers in a vector. Hint: the lambda tests the remainder after dividing by two.",
   "challengeAnswer": "Call count if with begin and end. The lambda takes an int x and returns x modulo two equals zero.",
   "shorts": [
     {

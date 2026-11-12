@@ -3,7 +3,7 @@
   "ep": 13,
   "title": "if and else",
   "module": 2,
-  "lengthSec": 290,
+  "lengthSec": 397,
   "colours": {
     "bg": "#FFF4EC",
     "accent": "#FFB88A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ if and else: Make Your Program Decide | C++ Programming EP 13",
-    "description": "In this episode you will write an if statement, add an else branch and use braces around every branch, with Xecxec the crab. 0:00 Intro · 0:15 if and else · 0:47 Pass or fail · 1:27 Two paths · 1:57 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "description": "In this episode you will write an if statement, add an else branch and use braces around every branch, with Xecxec the crab. 0:00 Intro · 0:15 if and else · 1:20 Pass or fail · 2:22 Two paths · 3:11 Second program · 4:24 Recap · 4:54 Bug of the Day · 5:55 Challenge · 6:22 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "if and else"
       },
       {
-        "t": "0:47",
+        "t": "1:20",
         "label": "Pass or fail"
       },
       {
-        "t": "1:27",
+        "t": "2:22",
         "label": "Two paths"
       },
       {
-        "t": "1:57",
+        "t": "3:11",
         "label": "Second program"
       },
       {
-        "t": "2:57",
+        "t": "4:24",
         "label": "Recap"
       },
       {
-        "t": "3:27",
+        "t": "4:54",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:15",
+        "t": "5:55",
         "label": "Challenge"
       },
       {
-        "t": "4:35",
+        "t": "6:22",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 32,
+      "lengthSec": 65,
       "onScreen": "\"if and else\": numbered lines (1. An if statement tests a condition; 2. The body runs only when the test is true; 3. Else runs when the test is false) and an analogy card: a fork in the road: the sign decides which way you walk",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "An if statement tests a condition. If the condition is true, the body runs. If it is false, the body is skipped. Add an else branch for the false case. Exactly one branch runs. Think of a fork in the road. A sign says which way to walk, and you never take both paths.",
+      "narration": "An if statement tests a condition. If the condition is true, the body runs. If it is false, the body is skipped. Add an else branch for the false case. Exactly one branch runs. Think of a fork in the road. A sign says which way to walk, and you never take both paths. Every program you use makes decisions. A phone checks the password before it opens. A bank app checks your balance before it pays. All of this starts with a plain if. The curly braces hold the body of each branch. Even for one line, write the braces. They stop many mistakes when you add a second line later.",
       "points": [
         "An if statement tests a condition",
         "The body runs only when the test is true",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 47,
-      "lengthSec": 40,
+      "startSec": 80,
+      "lengthSec": 62,
       "onScreen": "result.cpp: an if and else branch decide on a mark",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] Marks is seventy-two. [HL 6] The if tests whether marks is at least thirty-five. The test sits inside round brackets. [HL 7] The test is true, so this line runs and prints Pass. [HL 8] The else branch is skipped. [HL 9] It would print Fail, but only for a mark below thirty-five.",
+      "narration": "[HL 5] Marks is seventy-two. [HL 6] The if tests whether marks is at least thirty-five. The test sits inside round brackets. [HL 7] The test is true, so this line runs and prints Pass. [HL 8] The else branch is skipped. [HL 9] It would print Fail, but only for a mark below thirty-five. [HL 6] The test must give true or false. Here, the comparison gives a bool, and that is exactly what if needs. [HL 7] This line runs only when the test is true. Our marks are above thirty-five, so the program prints Pass. [HL 8] Notice that else has no test of its own. It means, in all other cases. [HL 9] Change marks to thirty, and this line runs instead.",
       "code": {
         "file": "result.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int marks = 72;\n    if (marks >= 35) {\n        cout << \"Pass\" << endl;\n    } else {\n        cout << \"Fail\" << endl;\n    }\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 87,
-      "lengthSec": 30,
+      "startSec": 142,
+      "lengthSec": 49,
       "onScreen": "a decision tree: the test, and the true and false paths",
       "animation": "Nodes pop in one by one; edges draw on as the narrator mentions them",
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the decision as a tree. The test is at the top. If it is true, we follow the left path and print Pass. If it is false, we follow the right path and print Fail. The program never follows both paths.",
+      "narration": "Here is the decision as a tree. The test is at the top. If it is true, we follow the left path and print Pass. If it is false, we follow the right path and print Fail. The program never follows both paths. Notice that only one path runs in each run of the program. The other path stays silent, and the computer does not even look at it. A tree like this is a good way to plan code before you type it.",
       "diagram": {
         "kind": "graph",
         "layout": "tree",
@@ -179,14 +179,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 117,
-      "lengthSec": 40,
+      "startSec": 191,
+      "lengthSec": 46,
       "onScreen": "parity.cpp: the remainder decides if a number is even or odd",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] Cin reads a number. [HL 7] An even number has remainder zero when we divide by two. [HL 8] That branch prints even. [HL 9] Seven has remainder one, so the else branch runs. [HL 10] The program prints seven is odd.",
+      "narration": "[HL 6] Cin reads a number. [HL 7] An even number has remainder zero when we divide by two. [HL 8] That branch prints even. [HL 9] Seven has remainder one, so the else branch runs. [HL 10] The program prints seven is odd. [HL 7] The remainder of a number divided by two tells us if the number is even. Every even number gives zero, and every odd number gives one. [HL 10] You can use this trick for any test on odd and even, such as seats in a bus.",
       "code": {
         "file": "parity.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    if (n % 2 == 0) {\n        cout << n << \" is even\" << endl;\n    } else {\n        cout << n << \" is odd\" << endl;\n    }\n    return 0;\n}",
@@ -196,20 +196,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 157,
-      "lengthSec": 20,
+      "startSec": 237,
+      "lengthSec": 27,
       "onScreen": "Terminal: g++ -std=c++20 parity.cpp -o parity then ./parity",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as parity dot cpp. Compile it with g plus plus. Then run the program. Type seven and press Enter. The program prints seven is odd."
+      "narration": "Save the file as parity dot cpp. Compile it with g plus plus. Then run the program. Type seven and press Enter. The program prints seven is odd. Try more numbers. Type ten, and then type zero. Zero is even, because the remainder is zero."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 177,
+      "startSec": 264,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -227,20 +227,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 207,
-      "lengthSec": 40,
+      "startSec": 294,
+      "lengthSec": 53,
       "onScreen": "BUG OF THE DAY: A semicolon after the if",
       "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. A semicolon sits after the if test. C plus plus reads it as an empty body. The block below then always runs. With marks equal to twenty, the program would still print Pass. The compiler warns about an empty body. Remove the semicolon."
+      "narration": "Bug of the Day. A semicolon sits after the if test. C plus plus reads it as an empty body. The block below then always runs. With marks equal to twenty, the program would still print Pass. The compiler warns about an empty body. Remove the semicolon. This mistake is hard to see, because the code looks almost right. The semicolon ends the if statement early. The braces then belong to nothing, and they run every time. So read every if line slowly, and look at the end of the line."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 247,
+      "startSec": 347,
       "lengthSec": 8,
       "onScreen": "Why did the if statement break up with else? It said, you are always my second choice.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -252,19 +252,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 255,
-      "lengthSec": 20,
+      "startSec": 355,
+      "lengthSec": 27,
       "onScreen": "Task card: decide if a number is positive",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Read a number. Print positive if it is greater than zero, and not positive in all other cases. Write your answer in the comments."
+      "narration": "Your challenge: Read a number. Print positive if it is greater than zero, and not positive in all other cases. Hint: the test is the number greater than zero, and the else branch covers zero and all negative numbers. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 275,
+      "startSec": 382,
       "lengthSec": 15,
       "onScreen": "Next: EP 14 · else if ladders",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -281,7 +281,7 @@
     "why": "A semicolon after the test is an empty body. The block below it is then an ordinary block, and it always runs."
   },
   "pun": "\"Why did the if statement break up with else? It said, you are always my second choice.\"",
-  "challenge": "Read a number. Print positive if it is greater than zero, and not positive in all other cases.",
+  "challenge": "Read a number. Print positive if it is greater than zero, and not positive in all other cases. Hint: the test is the number greater than zero, and the else branch covers zero and all negative numbers.",
   "challengeAnswer": "Use cin to read n. Test n greater than zero. Print positive in the if branch, and not positive in the else branch.",
   "shorts": [
     {

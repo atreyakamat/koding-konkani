@@ -3,7 +3,7 @@
   "ep": 18,
   "title": "Range-based for",
   "module": 2,
-  "lengthSec": 295,
+  "lengthSec": 381,
   "colours": {
     "bg": "#FFF4EC",
     "accent": "#FFB88A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Range-Based for Loop | C++ Programming EP 18",
-    "description": "In this episode you will loop over every item with a range-based for, loop over the letters of a string and change items with a reference, with Xecxec the crab. 0:00 Intro · 0:15 Range-based for · 0:52 Visit every item · 1:32 Round by round · 2:02 Second program · 3:02 Recap · 3:32 Bug of the Day · 4:20 Challenge · 4:40 Next episode",
+    "description": "In this episode you will loop over every item with a range-based for, loop over the letters of a string and change items with a reference, with Xecxec the crab. 0:00 Intro · 0:15 Range-based for · 1:17 Visit every item · 2:09 Round by round · 2:51 Second program · 4:09 Recap · 4:39 Bug of the Day · 5:41 Challenge · 6:06 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Range-based for"
       },
       {
-        "t": "0:52",
+        "t": "1:17",
         "label": "Visit every item"
       },
       {
-        "t": "1:32",
+        "t": "2:09",
         "label": "Round by round"
       },
       {
-        "t": "2:02",
+        "t": "2:51",
         "label": "Second program"
       },
       {
-        "t": "3:02",
+        "t": "4:09",
         "label": "Recap"
       },
       {
-        "t": "3:32",
+        "t": "4:39",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:20",
+        "t": "5:41",
         "label": "Challenge"
       },
       {
-        "t": "4:40",
+        "t": "6:06",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 37,
+      "lengthSec": 62,
       "onScreen": "\"Range-based for\": numbered lines (1. Range-based for visits every item; 2. No counter is needed; 3. An ampersand lets you change the items) and an analogy card: a teacher calling the roll: each name is called once, in order",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A range-based for loop visits every item in a group. You do not need a counter, and you cannot go past the end. It works on strings, lists and many other groups. By default the loop variable is a copy. Add an ampersand to work on the real item. Think of a teacher calling the roll. Each name is called once, in order.",
+      "narration": "A range-based for loop visits every item in a group. You do not need a counter, and you cannot go past the end. It works on strings, lists and many other groups. By default the loop variable is a copy. Add an ampersand to work on the real item. Think of a teacher calling the roll. Each name is called once, in order. Why use this loop? It is safe. You cannot count one too many, and you cannot start at the wrong place. Use a normal for loop when you need the position of an item. Use the range-based loop when you only need the item itself.",
       "points": [
         "Range-based for visits every item",
         "No counter is needed",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 52,
-      "lengthSec": 40,
+      "startSec": 77,
+      "lengthSec": 52,
       "onScreen": "foreach.cpp: a range-based for over letters and numbers",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] Word holds Goa. [HL 7] The loop takes each letter in turn and puts it in c. [TRACK c=G] First c is G. [TRACK c=o] Then o. [TRACK c=a] Then a. [HL 10] This loop visits the numbers ten, twenty and thirty. [HL 11] It prints each one.",
+      "narration": "[HL 6] Word holds Goa. [HL 7] The loop takes each letter in turn and puts it in c. [TRACK c=G] First c is G. [TRACK c=o] Then o. [TRACK c=a] Then a. [HL 10] This loop visits the numbers ten, twenty and thirty. [HL 11] It prints each one. [HL 7] Read the colon as the word in. For each char c in word. The loop takes one letter at a time, from the first to the last. [HL 10] The curly braces make a small list of numbers right inside the loop line. The loop visits them in the same order as you wrote them.",
       "code": {
         "file": "foreach.cpp",
         "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string word = \"Goa\";\n    for (char c : word) {\n        cout << c << endl;\n    }\n    for (int n : {10, 20, 30}) {\n        cout << n << endl;\n    }\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 92,
-      "lengthSec": 30,
+      "startSec": 129,
+      "lengthSec": 42,
       "onScreen": "a table: round, the item and the action",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Here is the loop over Goa. In each round, the loop gives us the next letter. After the last letter, no items remain. The loop ends by itself. You never write a test or a step.",
+      "narration": "Here is the loop over Goa. In each round, the loop gives us the next letter. After the last letter, no items remain. The loop ends by itself. You never write a test or a step. Notice what is missing. There is no counter, no test and no step. The loop does all three jobs by itself. That is why it is shorter, and why it has fewer places for a mistake.",
       "diagram": {
         "kind": "table",
         "caption": "a table: round, the item and the action",
@@ -174,14 +174,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 122,
-      "lengthSec": 40,
+      "startSec": 171,
+      "lengthSec": 53,
       "onScreen": "vowels.cpp: a range-based for counts vowels in a word",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] Word holds Konkani. [HL 7] The count starts at zero. [HL 8] The loop visits each letter. [HL 9] An if tests the letter against five vowels. [HL 10] A vowel adds one to the count. [TRACK vowels=3] The word Konkani has three vowels, which are o, a and i. [HL 13] The program prints the count.",
+      "narration": "[HL 6] Word holds Konkani. [HL 7] The count starts at zero. [HL 8] The loop visits each letter. [HL 9] An if tests the letter against five vowels. [HL 10] A vowel adds one to the count. [TRACK vowels=3] The word Konkani has three vowels, which are o, a and i. [HL 13] The program prints the count. [HL 9] The or operator joins five tests. If any of them is true, the letter is a vowel. This list is a little long, but it is clear. In a later episode, we shorten it with a string search. [HL 10] The count grows only when a vowel appears.",
       "code": {
         "file": "vowels.cpp",
         "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string word = \"Konkani\";\n    int vowels = 0;\n    for (char c : word) {\n        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {\n            vowels++;\n        }\n    }\n    cout << \"Vowels: \" << vowels << endl;\n    return 0;\n}",
@@ -191,20 +191,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 162,
-      "lengthSec": 20,
+      "startSec": 224,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 vowels.cpp -o vowels then ./vowels",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as vowels dot cpp. Compile it with g plus plus. Then run the program. The program prints Vowels colon three."
+      "narration": "Save the file as vowels dot cpp. Compile it with g plus plus. Then run the program. The program prints Vowels colon three. Try your own name next. Count the vowels by hand first, and then compare with the program."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 182,
+      "startSec": 249,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -222,20 +222,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 212,
-      "lengthSec": 40,
+      "startSec": 279,
+      "lengthSec": 54,
       "onScreen": "BUG OF THE DAY: Changing a copy",
       "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We try to change goa into capital letters. But the program prints goa again. The loop variable c is a copy. We change the copy and not the string. Add an ampersand after char. Then c is a nickname for the real letter."
+      "narration": "Bug of the Day. We try to change goa into capital letters. But the program prints goa again. The loop variable c is a copy. We change the copy and not the string. Add an ampersand after char. Then c is a nickname for the real letter. Remember what a copy means. A copy is a second box with the same value. When you change the copy, the original box does not feel it. An ampersand makes a nickname instead. The nickname and the real letter are one and the same box."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 252,
+      "startSec": 333,
       "lengthSec": 8,
       "onScreen": "I wrote a for-each loop for my fish. Now every fish gets visited exactly once.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -247,19 +247,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 260,
-      "lengthSec": 20,
+      "startSec": 341,
+      "lengthSec": 25,
       "onScreen": "Task card: count the letter a",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Read a word. Use a range-based for to count how many times the letter a appears. Write your answer in the comments."
+      "narration": "Your challenge: Read a word. Use a range-based for to count how many times the letter a appears. Hint: compare each letter with the character a inside the loop, and add one to a counter. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 280,
+      "startSec": 366,
       "lengthSec": 15,
       "onScreen": "Next: EP 19 · break and continue",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -276,7 +276,7 @@
     "why": "Without the ampersand, c is a copy of each letter. The code changes the copy, and the real string stays the same."
   },
   "pun": "\"I wrote a for-each loop for my fish. Now every fish gets visited exactly once.\"",
-  "challenge": "Read a word. Use a range-based for to count how many times the letter a appears.",
+  "challenge": "Read a word. Use a range-based for to count how many times the letter a appears. Hint: compare each letter with the character a inside the loop, and add one to a counter.",
   "challengeAnswer": "Read the word into a string. Loop over each char. If the char is the letter a, add one to a counter.",
   "shorts": [
     {

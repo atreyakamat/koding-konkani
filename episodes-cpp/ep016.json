@@ -3,7 +3,7 @@
   "ep": 16,
   "title": "while loops",
   "module": 2,
-  "lengthSec": 296,
+  "lengthSec": 404,
   "colours": {
     "bg": "#FFF4EC",
     "accent": "#FFB88A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ while Loop: Repeat Until Done | C++ Programming EP 16",
-    "description": "In this episode you will write a while loop, update the loop variable and predict the number of rounds, with Xecxec the crab. 0:00 Intro · 0:15 while loops · 0:52 A countdown · 1:32 Round by round · 2:02 Second program · 3:02 Recap · 3:33 Bug of the Day · 4:21 Challenge · 4:41 Next episode",
+    "description": "In this episode you will write a while loop, update the loop variable and predict the number of rounds, with Xecxec the crab. 0:00 Intro · 0:15 while loops · 1:22 A countdown · 2:23 Round by round · 3:05 Second program · 4:29 Recap · 5:00 Bug of the Day · 6:05 Challenge · 6:29 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "while loops"
       },
       {
-        "t": "0:52",
+        "t": "1:22",
         "label": "A countdown"
       },
       {
-        "t": "1:32",
+        "t": "2:23",
         "label": "Round by round"
       },
       {
-        "t": "2:02",
+        "t": "3:05",
         "label": "Second program"
       },
       {
-        "t": "3:02",
+        "t": "4:29",
         "label": "Recap"
       },
       {
-        "t": "3:33",
+        "t": "5:00",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:21",
+        "t": "6:05",
         "label": "Challenge"
       },
       {
-        "t": "4:41",
+        "t": "6:29",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 37,
+      "lengthSec": 67,
       "onScreen": "\"while loops\": numbered lines (1. A loop repeats a block; 2. The test runs before each round; 3. Update the variable or the loop never ends) and an analogy card: a ceiling fan: it keeps turning while the switch is on",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A while loop repeats a block as long as its test is true. The test runs before every round. When the test is false, the loop ends. You must change the loop variable inside the body. If you do not, the test stays true, and the loop never ends. Think of a ceiling fan. It keeps turning while the switch is on.",
+      "narration": "A while loop repeats a block as long as its test is true. The test runs before every round. When the test is false, the loop ends. You must change the loop variable inside the body. If you do not, the test stays true, and the loop never ends. Think of a ceiling fan. It keeps turning while the switch is on. Loops save you from typing the same line again and again. If you must print one thousand lines, you write one loop. The computer does the repeating, and it never gets tired. Every loop needs three things. A start value, a test, and a change. If one of the three is missing, the loop breaks.",
       "points": [
         "A loop repeats a block",
         "The test runs before each round",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 52,
-      "lengthSec": 40,
+      "startSec": 82,
+      "lengthSec": 61,
       "onScreen": "countdown.cpp: a while loop counts down from three",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] We start n at three. [HL 6] The loop tests whether n is greater than zero. [HL 7] It prints the value. [HL 8] Then n minus minus lowers n by one. [TRACK n=2] Now n is two, and the loop tests again. When n reaches zero, the test is false. [HL 10] The program prints Liftoff.",
+      "narration": "[HL 5] We start n at three. [HL 6] The loop tests whether n is greater than zero. [HL 7] It prints the value. [HL 8] Then n minus minus lowers n by one. [TRACK n=2] Now n is two, and the loop tests again. When n reaches zero, the test is false. [HL 10] The program prints Liftoff. [HL 5] This is the start value. Without it, the test has nothing to look at. [HL 6] The test runs first. If it is false at the start, the body never runs at all. [HL 8] This line is the change. Remove it, and n stays three forever. The loop then never ends. [HL 10] After the loop, the program carries on with the next line.",
       "code": {
         "file": "countdown.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n = 3;\n    while (n > 0) {\n        cout << n << endl;\n        n--;\n    }\n    cout << \"Liftoff!\" << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 92,
-      "lengthSec": 30,
+      "startSec": 143,
+      "lengthSec": 42,
       "onScreen": "a table of the rounds with the variable values",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Here are the rounds. In round one, n is three and the test is true. In rounds two and three, the same happens. In round four, n is zero. The test is false, so the loop ends. Three rounds ran.",
+      "narration": "Here are the rounds. In round one, n is three and the test is true. In rounds two and three, the same happens. In round four, n is zero. The test is false, so the loop ends. Three rounds ran. Notice that the test runs four times, but the body runs only three times. The last test is the one that fails. This detail explains many off-by-one mistakes, so remember it.",
       "diagram": {
         "kind": "table",
         "caption": "a table of the rounds with the variable values",
@@ -179,14 +179,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 122,
-      "lengthSec": 40,
+      "startSec": 185,
+      "lengthSec": 54,
       "onScreen": "total.cpp: a loop adds the numbers one to five",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 5] The counter i starts at one. [HL 6] The sum starts at zero. [HL 7] The loop runs while i is at most five. [HL 8] Each round adds i to the sum. [TRACK sum=3] After two rounds the sum is three. [HL 9] Then i goes up by one. [HL 11] At the end, the sum is fifteen.",
+      "narration": "[HL 5] The counter i starts at one. [HL 6] The sum starts at zero. [HL 7] The loop runs while i is at most five. [HL 8] Each round adds i to the sum. [TRACK sum=3] After two rounds the sum is three. [HL 9] Then i goes up by one. [HL 11] At the end, the sum is fifteen. [HL 8] The plus-equals line adds the current value of i to the sum. The sum grows by one, then two, then three, then four, then five. [HL 9] Without this line, the loop never ends, and the program hangs. If that happens, press control and C to stop it.",
       "code": {
         "file": "total.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int i = 1;\n    int sum = 0;\n    while (i <= 5) {\n        sum += i;\n        i++;\n    }\n    cout << \"Sum: \" << sum << endl;\n    return 0;\n}",
@@ -196,20 +196,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 162,
-      "lengthSec": 20,
+      "startSec": 239,
+      "lengthSec": 30,
       "onScreen": "Terminal: g++ -std=c++20 total.cpp -o total then ./total",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as total dot cpp. Compile it with g plus plus. Then run the program. The program prints Sum colon fifteen."
+      "narration": "Save the file as total dot cpp. Compile it with g plus plus. Then run the program. The program prints Sum colon fifteen. You can check this sum with a trick. One plus five is six, two plus four is six, and three stays. Six, six and three give fifteen."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 182,
+      "startSec": 269,
       "lengthSec": 31,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -227,20 +227,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 213,
-      "lengthSec": 40,
+      "startSec": 300,
+      "lengthSec": 57,
       "onScreen": "BUG OF THE DAY: An off-by-one error",
       "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We want the sum of one to five. The program prints ten. The test says less than five, so the loop stops before it adds five. This is an off-by-one error. Check the first round and the last round by hand. Use less than or equal."
+      "narration": "Bug of the Day. We want the sum of one to five. The program prints ten. The test says less than five, so the loop stops before it adds five. This is an off-by-one error. Check the first round and the last round by hand. Use less than or equal. Always test the first round and the last round by hand. For the first round, i is one. For the last round, you want i to be five. If the test says less than five, then i is never five in the body. That is the whole bug."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 253,
+      "startSec": 357,
       "lengthSec": 8,
       "onScreen": "Why did the loop go to the doctor? It had a problem with its condition, and it kept coming back.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -252,19 +252,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 261,
-      "lengthSec": 20,
+      "startSec": 365,
+      "lengthSec": 24,
       "onScreen": "Task card: print a table of two",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Use a while loop to print the table of two, from two times one to two times ten. Write your answer in the comments."
+      "narration": "Your challenge: Use a while loop to print the table of two, from two times one to two times ten. Hint: start the counter at one, and print two times the counter. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 281,
+      "startSec": 389,
       "lengthSec": 15,
       "onScreen": "Next: EP 17 · for loops",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -281,7 +281,7 @@
     "why": "With less than five, the loop stops before it adds five. The sum is ten, not fifteen."
   },
   "pun": "\"Why did the loop go to the doctor? It had a problem with its condition, and it kept coming back.\"",
-  "challenge": "Use a while loop to print the table of two, from two times one to two times ten.",
+  "challenge": "Use a while loop to print the table of two, from two times one to two times ten. Hint: start the counter at one, and print two times the counter.",
   "challengeAnswer": "Start i at one. While i is at most ten, print two times i, and then add one to i.",
   "shorts": [
     {

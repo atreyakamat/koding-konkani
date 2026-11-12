@@ -3,7 +3,7 @@
   "ep": 39,
   "title": "Searching",
   "module": 4,
-  "lengthSec": 295,
+  "lengthSec": 422,
   "colours": {
     "bg": "#FFE58A",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Searching: Linear and Binary Search | C++ Programming EP 39",
-    "description": "In this episode you will write a linear search, write a binary search on a sorted array and explain why binary search needs sorted data, with Xecxec the crab. 0:00 Intro · 0:15 Searching · 0:51 Linear search · 1:31 Binary search steps · 2:02 Second program · 3:02 Recap · 3:32 Bug of the Day · 4:20 Challenge · 4:40 Next episode",
+    "description": "In this episode you will write a linear search, write a binary search on a sorted array and explain why binary search needs sorted data, with Xecxec the crab. 0:00 Intro · 0:15 Searching · 1:21 Linear search · 2:23 Binary search steps · 3:13 Second program · 4:50 Recap · 5:20 Bug of the Day · 6:20 Challenge · 6:47 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Searching"
       },
       {
-        "t": "0:51",
+        "t": "1:21",
         "label": "Linear search"
       },
       {
-        "t": "1:31",
+        "t": "2:23",
         "label": "Binary search steps"
       },
       {
-        "t": "2:02",
+        "t": "3:13",
         "label": "Second program"
       },
       {
-        "t": "3:02",
+        "t": "4:50",
         "label": "Recap"
       },
       {
-        "t": "3:32",
+        "t": "5:20",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:20",
+        "t": "6:20",
         "label": "Challenge"
       },
       {
-        "t": "4:40",
+        "t": "6:47",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 36,
+      "lengthSec": 66,
       "onScreen": "\"Searching\": numbered lines (1. Linear search checks each item; 2. Binary search halves the range each time; 3. Binary search needs sorted data) and an analogy card: a dictionary: you open it in the middle, then choose the left or the right half",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Linear search checks the items one by one, from the start. It works on any data, but it can be slow. Binary search needs sorted data. It looks at the middle item, and then it throws away half of the range. Think of a dictionary. You open it in the middle, then you pick the left or the right half.",
+      "narration": "Linear search checks the items one by one, from the start. It works on any data, but it can be slow. Binary search needs sorted data. It looks at the middle item, and then it throws away half of the range. Think of a dictionary. You open it in the middle, then you pick the left or the right half. Searching is one of the oldest jobs in computing. Every time you look for a contact in your phone, a search runs. Linear search is simple and works on any list. Binary search is much faster, but the list must be sorted first. For a million items, binary search needs only about twenty steps.",
       "points": [
         "Linear search checks each item",
         "Binary search halves the range each time",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 51,
-      "lengthSec": 40,
+      "startSec": 81,
+      "lengthSec": 62,
       "onScreen": "linear.cpp: a function that returns the index of a value",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] The loop checks each index from zero. [HL 6] If the item equals the target, [HL 7] the function returns that index at once. [HL 10] If the loop ends, the value is not there. We return minus one. [HL 15] Three is at index three. [HL 16] Four is not in the array, so the answer is minus one.",
+      "narration": "[HL 5] The loop checks each index from zero. [HL 6] If the item equals the target, [HL 7] the function returns that index at once. [HL 10] If the loop ends, the value is not there. We return minus one. [HL 15] Three is at index three. [HL 16] Four is not in the array, so the answer is minus one. [HL 5] The loop visits each index in turn. [HL 6] If the item equals the target, we return the index at once. [HL 10] If the loop ends with no match, we return minus one. Minus one is a good signal, because no index is negative. [HL 15] The first call finds the number three at index three. [HL 16] The second call gives minus one.",
       "code": {
         "file": "linear.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint find_index(const int a[], int n, int target) {\n    for (int i = 0; i < n; i++) {\n        if (a[i] == target) {\n            return i;\n        }\n    }\n    return -1;\n}\n\nint main() {\n    int a[5] = {5, 1, 9, 3, 7};\n    cout << find_index(a, 5, 3) << endl;\n    cout << find_index(a, 5, 4) << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 91,
-      "lengthSec": 31,
+      "startSec": 143,
+      "lengthSec": 50,
       "onScreen": "a table: low, high, middle and the decision for each step",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Here is a binary search for five in the sorted list one, three, five, seven, nine, eleven, thirteen. Step one looks at the middle item, seven. Five is smaller, so go left. Step two looks at three. Five is bigger, so go right. Step three finds five. Only three steps were needed.",
+      "narration": "Here is a binary search for five in the sorted list one, three, five, seven, nine, eleven, thirteen. Step one looks at the middle item, seven. Five is smaller, so go left. Step two looks at three. Five is bigger, so go right. Step three finds five. Only three steps were needed. Notice how the work grows. For ten items, linear search may take ten steps. For a million, it may take a million. Binary search halves the range each step, so it grows slowly.",
       "diagram": {
         "kind": "table",
         "caption": "a table: low, high, middle and the decision for each step",
@@ -177,14 +177,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 122,
-      "lengthSec": 40,
+      "startSec": 193,
+      "lengthSec": 67,
       "onScreen": "binary.cpp: binary search on a sorted array",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 5] Low and high mark the part of the array that is still possible. [HL 7] Mid is the middle index. [HL 8] If the middle item is the target, we are done. [HL 11] If it is too small, we move low past mid. [HL 13] If it is too big, we move high below mid. [HL 16] When low passes high, the target is not there.",
+      "narration": "[HL 5] Low and high mark the part of the array that is still possible. [HL 7] Mid is the middle index. [HL 8] If the middle item is the target, we are done. [HL 11] If it is too small, we move low past mid. [HL 13] If it is too big, we move high below mid. [HL 16] When low passes high, the target is not there. [HL 5] Low and high mark the part of the array we still search. [HL 7] The middle is the average of the two ends. [HL 10] If the middle item is too small, the target must be on the right. So we move low up. [HL 13] If the middle item is too big, we move high down. Each step throws away half of the items.",
       "code": {
         "file": "binary.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint binary_search_index(const int a[], int n, int target) {\n    int low = 0, high = n - 1;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (a[mid] == target) {\n            return mid;\n        } else if (a[mid] < target) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return -1;\n}\n\nint main() {\n    int a[7] = {1, 3, 5, 7, 9, 11, 13};\n    cout << binary_search_index(a, 7, 5) << endl;\n    return 0;\n}",
@@ -194,20 +194,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 162,
-      "lengthSec": 20,
+      "startSec": 260,
+      "lengthSec": 30,
       "onScreen": "Terminal: g++ -std=c++20 binary.cpp -o binary then ./binary",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as binary dot cpp. Compile it with g plus plus. Then run the program. The program prints two."
+      "narration": "Save the file as binary dot cpp. Compile it with g plus plus. Then run the program. The program prints two. Check by hand. The middle of seven items is index three, which is seven. Five is smaller, so we go left, and we find five at index two."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 182,
+      "startSec": 290,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -225,20 +225,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 212,
-      "lengthSec": 40,
+      "startSec": 320,
+      "lengthSec": 52,
       "onScreen": "BUG OF THE DAY: Binary search on unsorted data",
       "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The array holds three, but the search says minus one. The array is not sorted. Binary search looks at nine in the middle. Nine is bigger than three, so it throws away the right half. But the three was in the right half. Sort the array first."
+      "narration": "Bug of the Day. The array holds three, but the search says minus one. The array is not sorted. Binary search looks at nine in the middle. Nine is bigger than three, so it throws away the right half. But the three was in the right half. Sort the array first. Binary search trusts that the data is sorted. If it is not, the program may throw away the half that holds the target. The program does not warn you. So sort the data first, or use linear search."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 252,
+      "startSec": 372,
       "lengthSec": 8,
       "onScreen": "I use binary search to find my socks. Half of the drawer is always wrong.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -250,19 +250,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 260,
-      "lengthSec": 20,
+      "startSec": 380,
+      "lengthSec": 27,
       "onScreen": "Task card: search for a name",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a linear search that finds a name in an array of five strings. Print the index, or minus one. Write your answer in the comments."
+      "narration": "Your challenge: Write a linear search that finds a name in an array of five strings. Print the index, or minus one. Hint: return the index when the item matches, and return minus one when the loop ends. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 280,
+      "startSec": 407,
       "lengthSec": 15,
       "onScreen": "Next: EP 40 · Sorting: bubble and selection",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -279,7 +279,7 @@
     "why": "Binary search throws away half of the range using the order of the items. If the items are not in order, it throws away the wrong half."
   },
   "pun": "\"I use binary search to find my socks. Half of the drawer is always wrong.\"",
-  "challenge": "Write a linear search that finds a name in an array of five strings. Print the index, or minus one.",
+  "challenge": "Write a linear search that finds a name in an array of five strings. Print the index, or minus one. Hint: return the index when the item matches, and return minus one when the loop ends.",
   "challengeAnswer": "Loop over the array. If the item equals the target string, return its index. After the loop, return minus one.",
   "shorts": [
     {

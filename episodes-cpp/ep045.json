@@ -3,7 +3,7 @@
   "ep": 45,
   "title": "nullptr and dangling pointers",
   "module": 5,
-  "lengthSec": 293,
+  "lengthSec": 401,
   "colours": {
     "bg": "#D9C9FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ nullptr and Dangling Pointers | C++ Programming EP 45",
-    "description": "In this episode you will use nullptr for a pointer that points nowhere, check a pointer before you use it and spot a dangling pointer, with Xecxec the crab. 0:00 Intro · 0:15 nullptr and dangling pointers · 0:50 Check before you follow · 1:30 Null and dangling · 2:00 Second program · 3:00 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:38 Next episode",
+    "description": "In this episode you will use nullptr for a pointer that points nowhere, check a pointer before you use it and spot a dangling pointer, with Xecxec the crab. 0:00 Intro · 0:15 nullptr and dangling pointers · 1:17 Check before you follow · 2:18 Null and dangling · 3:07 Second program · 4:32 Recap · 5:02 Bug of the Day · 5:59 Challenge · 6:26 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "nullptr and dangling pointers"
       },
       {
-        "t": "0:50",
+        "t": "1:17",
         "label": "Check before you follow"
       },
       {
-        "t": "1:30",
+        "t": "2:18",
         "label": "Null and dangling"
       },
       {
-        "t": "2:00",
+        "t": "3:07",
         "label": "Second program"
       },
       {
-        "t": "3:00",
+        "t": "4:32",
         "label": "Recap"
       },
       {
-        "t": "3:30",
+        "t": "5:02",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:18",
+        "t": "5:59",
         "label": "Challenge"
       },
       {
-        "t": "4:38",
+        "t": "6:26",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 35,
+      "lengthSec": 62,
       "onScreen": "\"nullptr and dangling pointers\": numbered lines (1. nullptr means points to nothing; 2. Check a pointer before you follow it; 3. A dangling pointer points to a dead variable) and an analogy card: a letter sent to a house that was pulled down: the address exists, but nobody lives there",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Nullptr is a pointer that points to nothing. You can test it in an if. Never follow a null pointer. The program will crash. A dangling pointer is worse. It holds the address of a variable that no longer exists. Think of a letter sent to a house that was pulled down. The address exists, but nobody lives there.",
+      "narration": "Nullptr is a pointer that points to nothing. You can test it in an if. Never follow a null pointer. The program will crash. A dangling pointer is worse. It holds the address of a variable that no longer exists. Think of a letter sent to a house that was pulled down. The address exists, but nobody lives there. Null and dangling pointers cause many crashes. A good habit is to give a pointer a safe value at birth. If you have no address yet, use nullptr. Before you follow a pointer that may be null, test it. The test is short, and it can save the program.",
       "points": [
         "nullptr means points to nothing",
         "Check a pointer before you follow it",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 50,
-      "lengthSec": 40,
+      "startSec": 77,
+      "lengthSec": 61,
       "onScreen": "nullcheck.cpp: a pointer is tested before it is used",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] P starts as nullptr. It points to nothing. [HL 7] We test it with two equals signs. The test is true. [HL 10] Now p points at fish. [HL 11] A pointer works as a test by itself. Nullptr counts as false. Any real address counts as true. [HL 12] So it is safe to follow p here.",
+      "narration": "[HL 6] P starts as nullptr. It points to nothing. [HL 7] We test it with two equals signs. The test is true. [HL 10] Now p points at fish. [HL 11] A pointer works as a test by itself. Nullptr counts as false. Any real address counts as true. [HL 12] So it is safe to follow p here. [HL 6] The pointer starts as nullptr. It points to nothing, and that is a safe state. [HL 7] This test asks, is the pointer null? Yes, so the message prints. [HL 10] Now the pointer gets a real address. [HL 11] A pointer works as a test by itself. It is true when it is not null. Then we may follow it.",
       "code": {
         "file": "nullcheck.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int fish = 3;\n    int* p = nullptr;\n    if (p == nullptr) {\n        cout << \"p points to nothing\" << endl;\n    }\n    p = &fish;\n    if (p) {\n        cout << *p << endl;\n    }\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 90,
-      "lengthSec": 30,
+      "startSec": 138,
+      "lengthSec": 49,
       "onScreen": "three pointers: one valid, one null, one dangling",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Here are two pointers. Good points at fish, and it is safe to follow. None holds nullptr, so it points nowhere. Never follow none. A third kind, the dangling pointer, looks like good, but its target is gone.",
+      "narration": "Here are two pointers. Good points at fish, and it is safe to follow. None holds nullptr, so it points nowhere. Never follow none. A third kind, the dangling pointer, looks like good, but its target is gone. Notice the three states of a pointer. It may point to a live variable. It may be null. Or it may dangle, and that one is the worst. A null pointer is easy to test. A dangling pointer looks normal, so it hides the bug.",
       "memory": {
         "frames": [
           {
@@ -180,14 +180,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 120,
-      "lengthSec": 40,
+      "startSec": 187,
+      "lengthSec": 60,
       "onScreen": "lookup.cpp: a function returns nullptr when nothing matches",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 4] This function returns a pointer. [HL 7] When it finds the target, it returns the address of that item. [HL 10] When nothing matches, it returns nullptr. [HL 16] The caller must check the result first. [HL 17] Eight is in the array, so the program prints Found eight. [HL 19] Ninety-nine is not there, so the program prints Not found.",
+      "narration": "[HL 4] This function returns a pointer. [HL 7] When it finds the target, it returns the address of that item. [HL 10] When nothing matches, it returns nullptr. [HL 16] The caller must check the result first. [HL 17] Eight is in the array, so the program prints Found eight. [HL 19] Ninety-nine is not there, so the program prints Not found. [HL 4] This function returns a pointer. It points to the item that we found, or to nothing. [HL 7] Returning the address of an array item is safe, because the array lives on in main. [HL 10] If the loop ends with no match, we return nullptr. The caller must test the result before it follows the pointer.",
       "code": {
         "file": "lookup.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint* find_item(int a[], int n, int target) {\n    for (int i = 0; i < n; i++) {\n        if (a[i] == target) {\n            return &a[i];\n        }\n    }\n    return nullptr;\n}\n\nint main() {\n    int a[3] = {4, 8, 15};\n    int* hit = find_item(a, 3, 8);\n    if (hit != nullptr) {\n        cout << \"Found \" << *hit << endl;\n    }\n    if (find_item(a, 3, 99) == nullptr) {\n        cout << \"Not found\" << endl;\n    }\n    return 0;\n}",
@@ -197,20 +197,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 160,
-      "lengthSec": 20,
+      "startSec": 247,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 lookup.cpp -o lookup then ./lookup",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as lookup dot cpp. Compile it with g plus plus. Then run the program. The program prints Found eight, and then Not found."
+      "narration": "Save the file as lookup dot cpp. Compile it with g plus plus. Then run the program. The program prints Found eight, and then Not found. Notice that the program tests the pointer before the star. This habit prevents crashes."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 180,
+      "startSec": 272,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -228,20 +228,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 210,
-      "lengthSec": 40,
+      "startSec": 302,
+      "lengthSec": 49,
       "onScreen": "BUG OF THE DAY: Returning the address of a local",
       "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The function returns the address of its local variable x. But x dies when the function ends. The compiler warns that the address of a local variable is returned. The pointer now dangles. Return the value instead."
+      "narration": "Bug of the Day. The function returns the address of its local variable x. But x dies when the function ends. The compiler warns that the address of a local variable is returned. The pointer now dangles. Return the value instead. Local variables live on the stack, and they die when the function ends. The address of a dead variable is a trap. The pointer looks fine, but the box now belongs to someone else. Return the value, or use memory that lives longer."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 250,
+      "startSec": 351,
       "lengthSec": 8,
       "onScreen": "Why did the pointer see a therapist? It had too many unresolved references.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -253,19 +253,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 258,
-      "lengthSec": 20,
+      "startSec": 359,
+      "lengthSec": 27,
       "onScreen": "Task card: write a safe function",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a function that takes a pointer to an int. If the pointer is null, print an error. Otherwise print the value. Write your answer in the comments."
+      "narration": "Your challenge: Write a function that takes a pointer to an int. If the pointer is null, print an error. Otherwise print the value. Hint: test the pointer in an if, and follow it only in the else branch. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 278,
+      "startSec": 386,
       "lengthSec": 15,
       "onScreen": "Next: EP 46 · new and delete",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -282,7 +282,7 @@
     "why": "The local variable x dies when the function ends. The returned address then points to a dead box. Return the value instead."
   },
   "pun": "\"Why did the pointer see a therapist? It had too many unresolved references.\"",
-  "challenge": "Write a function that takes a pointer to an int. If the pointer is null, print an error. Otherwise print the value.",
+  "challenge": "Write a function that takes a pointer to an int. If the pointer is null, print an error. Otherwise print the value. Hint: test the pointer in an if, and follow it only in the else branch.",
   "challengeAnswer": "Start with if p equals equals nullptr. Print the error and return. After that, print star p.",
   "shorts": [
     {
