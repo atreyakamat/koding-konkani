@@ -3,7 +3,7 @@
   "ep": 2,
   "title": "Setting up and compiling",
   "module": 0,
-  "lengthSec": 305,
+  "lengthSec": 442,
   "colours": {
     "bg": "#FFD8BE",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Setup on Windows: VS Code and GCC | C++ Programming EP 02",
-    "description": "In this episode you will name the three tools you need, compile a file with g++ and run the program you built, with Xecxec the crab. 0:00 Intro · 0:15 Setting up and compiling · 0:54 A setup check · 1:34 Three tools · 2:04 Second program · 3:10 Recap · 3:42 Bug of the Day · 4:30 Challenge · 4:50 Next episode",
+    "description": "In this episode you will name the three tools you need, compile a file with g++ and run the program you built, with Xecxec the crab. 0:00 Intro · 0:15 Setting up and compiling · 1:40 A setup check · 2:39 Three tools · 3:34 Second program · 5:06 Recap · 5:38 Bug of the Day · 6:43 Challenge · 7:07 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Setting up and compiling"
       },
       {
-        "t": "0:54",
+        "t": "1:40",
         "label": "A setup check"
       },
       {
-        "t": "1:34",
+        "t": "2:39",
         "label": "Three tools"
       },
       {
-        "t": "2:04",
+        "t": "3:34",
         "label": "Second program"
       },
       {
-        "t": "3:10",
+        "t": "5:06",
         "label": "Recap"
       },
       {
-        "t": "3:42",
+        "t": "5:38",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:30",
+        "t": "6:43",
         "label": "Challenge"
       },
       {
-        "t": "4:50",
+        "t": "7:07",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 39,
+      "lengthSec": 85,
       "onScreen": "\"Setting up and compiling\": numbered lines (1. An editor is where you type code; 2. A compiler builds the program; 3. A terminal runs commands) and an analogy card: a kitchen: the editor is the notebook, the compiler is the stove, the terminal is the table",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "You need three tools. The editor is where you type your code. We use Visual Studio Code. The compiler builds your program. We use g plus plus, from the GCC family. The terminal is where you type commands and run programs. Think of a kitchen. The editor is the notebook with the recipe. The compiler is the stove. The terminal is the table where you eat.",
+      "narration": "You need three tools. The editor is where you type your code. We use Visual Studio Code. The compiler builds your program. We use g plus plus, from the GCC family. The terminal is where you type commands and run programs. Think of a kitchen. The editor is the notebook with the recipe. The compiler is the stove. The terminal is the table where you eat. Here is how the three tools work together. First, you open the editor and type your code. Then you save the file with the dot cpp ending. Next, you open the terminal in the same folder. There you run the compiler on your file. If the compiler finds no mistakes, it creates a program. Then you run that program from the terminal. On Windows, we get the compiler from M S Y S two. Linux users often have g plus plus ready already.",
       "points": [
         "An editor is where you type code",
         "A compiler builds the program",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 54,
-      "lengthSec": 40,
+      "startSec": 100,
+      "lengthSec": 59,
       "onScreen": "setup.cpp: a program that prints three ready messages",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "Type this program in your editor and save it as setup dot cpp. [HL 4] The first line of main reports on the editor. [HL 5] The second line reports on the compiler. [HL 6] The third line reports on the terminal. If you see all three lines at the end, your setup works.",
+      "narration": "Type this program in your editor and save it as setup dot cpp. [HL 4] The first line of main reports on the editor. [HL 5] The second line reports on the compiler. [HL 6] The third line reports on the terminal. If you see all three lines at the end, your setup works. [HL 4] Notice that all three lines look the same. Only the words inside the quotes change. [HL 5] This is the pattern of a first program. You write one statement for each message. [HL 6] If a line is missing in your output, check the semicolon and the closing quote. [HL 7] The return line stays at the end of main.",
       "code": {
         "file": "setup.cpp",
         "source": "#include <iostream>\n\nint main() {\n    std::cout << \"Editor: ready\" << std::endl;\n    std::cout << \"Compiler: ready\" << std::endl;\n    std::cout << \"Terminal: ready\" << std::endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 94,
-      "lengthSec": 30,
+      "startSec": 159,
+      "lengthSec": 55,
       "onScreen": "a table: tool, job and example",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Look at the table. The editor lets you type and save code. The compiler reads your file and builds a program. The terminal lets you type the compile command and run the result. Every episode uses all three.",
+      "narration": "Look at the table. The editor lets you type and save code. The compiler reads your file and builds a program. The terminal lets you type the compile command and run the result. Every episode uses all three. Pick one editor and stay with it for the whole course. Visual Studio Code is free, and it works on Windows, Mac and Linux. The terminal must know where the compiler lives on your computer. If the terminal says command not found, this is the usual reason. Close the terminal, open it again, and try once more.",
       "diagram": {
         "kind": "table",
         "caption": "a table: tool, job and example",
@@ -169,14 +169,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 124,
-      "lengthSec": 40,
+      "startSec": 214,
+      "lengthSec": 59,
       "onScreen": "standard.cpp: a program that prints the language version code",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 4] A built-in name holds a number for the language version. The name starts with two underscores, then c plus plus. With the flag std equals c plus plus twenty, the number is two zero two zero zero two. That number means C plus plus twenty. We use this version in the whole course.",
+      "narration": "[HL 4] A built-in name holds a number for the language version. The name starts with two underscores, then c plus plus. With the flag std equals c plus plus twenty, the number is two zero two zero zero two. That number means C plus plus twenty. We use this version in the whole course. The compiler fills in this number by itself. You never type it. Each language version has its own code, so you can always check which version the compiler uses. If you forget the flag, the compiler may use a different version, and some new features will not work.",
       "code": {
         "file": "standard.cpp",
         "source": "#include <iostream>\n\nint main() {\n    std::cout << \"Language version code: \" << __cplusplus << std::endl;\n    return 0;\n}",
@@ -186,20 +186,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 164,
-      "lengthSec": 26,
+      "startSec": 273,
+      "lengthSec": 33,
       "onScreen": "Terminal: g++ -std=c++20 standard.cpp -o standard then ./standard",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as standard dot cpp. Compile it with g plus plus. Then run the program. Type g plus plus, then the flags dash std equals c plus plus twenty, dash Wall and dash Wextra. The program prints the version code."
+      "narration": "Save the file as standard dot cpp. Compile it with g plus plus. Then run the program. Type g plus plus, then the flags dash std equals c plus plus twenty, dash Wall and dash Wextra. The program prints the version code. If the program prints a different number, check how you spelled the flag."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 190,
+      "startSec": 306,
       "lengthSec": 32,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -217,20 +217,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 222,
-      "lengthSec": 40,
+      "startSec": 338,
+      "lengthSec": 57,
       "onScreen": "BUG OF THE DAY: A missing include",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Here the include line is missing. The compiler says cout is not a member of std. It even tells you what to do. It asks if you forgot to include iostream. Add the include line at the top, and the error goes away."
+      "narration": "Bug of the Day. Here the include line is missing. The compiler says cout is not a member of std. It even tells you what to do. It asks if you forgot to include iostream. Add the include line at the top, and the error goes away. Think of an include line as packing your bag for school. If you forget the iostream book, cout is not in your bag. The compiler cannot guess where cout lives, so it stops. Remember this rule. If a message says not declared or not a member, check your include lines first."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 262,
+      "startSec": 395,
       "lengthSec": 8,
       "onScreen": "Why did the programmer install three tools? Because two was a bug, and four was a feature.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -242,19 +242,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 270,
-      "lengthSec": 20,
+      "startSec": 403,
+      "lengthSec": 24,
       "onScreen": "Task card: compile and run setup dot cpp",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Type setup dot cpp, compile it with g plus plus, and run it. Then change one message and compile again. Write your answer in the comments."
+      "narration": "Your challenge: Type setup dot cpp, compile it with g plus plus, and run it. Then change one message and compile again. Hint: after every change, compile again before you run the program. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 290,
+      "startSec": 427,
       "lengthSec": 15,
       "onScreen": "Next: EP 03 · C vs C++: what changed",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -271,7 +271,7 @@
     "why": "The compiler only knows cout after you include the iostream header. Add the include line at the top of the file."
   },
   "pun": "\"Why did the programmer install three tools? Because two was a bug, and four was a feature.\"",
-  "challenge": "Type setup dot cpp, compile it with g plus plus, and run it. Then change one message and compile again.",
+  "challenge": "Type setup dot cpp, compile it with g plus plus, and run it. Then change one message and compile again. Hint: after every change, compile again before you run the program.",
   "challengeAnswer": "Run g plus plus with the file name and dash o setup. Then type dot slash setup. After a change, you must compile again.",
   "shorts": [
     {

@@ -175,6 +175,34 @@ def run_prog(ep: int, p: dict, cxx: str) -> str:
     return r.stdout
 
 
+def apply_ext(ep: dict, ext: dict) -> dict:
+    """Add the longer narration from ext_mNN.py to the end of the matching texts. Nothing else changes."""
+    e = ext.get(ep["n"])
+    if not e:
+        return ep
+    # The Shorts are built from the short original text, so keep it: a Short must not end on a half tip.
+    base = {"concept": ep["concept"], "A": ep["A"]["narr"], "ill": ep["ill"]["narr"], "B": ep["B"]["narr"],
+            "term": ep["term"], "bug": ep["bug"]["narr"], "challenge": ep["challenge"]}
+    ep = {**ep, "A": dict(ep["A"]), "B": dict(ep["B"]), "ill": dict(ep["ill"]), "bug": dict(ep["bug"]), "_base": base}
+    if "intro" in e:
+        ep["intro"] = ep["intro"] + " " + e["intro"]
+    if "concept" in e:
+        ep["concept"] = ep["concept"] + "\n" + e["concept"]
+    if "A" in e:
+        ep["A"]["narr"] = ep["A"]["narr"].rstrip() + " " + e["A"]
+    if "ill" in e:
+        ep["ill"]["narr"] = ep["ill"]["narr"].rstrip() + " " + e["ill"]
+    if "B" in e:
+        ep["B"]["narr"] = ep["B"]["narr"].rstrip() + " " + e["B"]
+    if "term" in e:
+        ep["term"] = ep["term"] + " " + e["term"]
+    if "bug" in e:
+        ep["bug"]["narr"] = ep["bug"]["narr"].rstrip() + " " + e["bug"]
+    if "hint" in e:
+        ep["challenge"] = ep["challenge"] + " " + e["hint"]
+    return ep
+
+
 def build_episode(mod: dict, ep: dict, nxt: dict | None, cxx: str) -> str:
     n = ep["n"]
     A, B, bug, ill = ep["A"], ep["B"], ep["bug"], ep["ill"]
@@ -338,14 +366,20 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None, cxx: str) -> str:
 
     # ---- Shorts, built from the scene narration
     L.append(f"### Shorts for EP {n:02d}\n")
+    base = ep.get("_base", {})
     narr = {i + 1: s["narr"] for i, s in enumerate(sc)}
+    for idx, key in ((2, "concept"), (3, "A"), (4, "ill"), (5, "B"), (8, "bug")):
+        if key in base:
+            narr[idx] = resolve_hl(n, base[key], A["src"] if key == "A" else B["src"]) if key in ("A", "B") else base[key]
+    short_term = base.get("term", ep["term"])
+    short_challenge = base.get("challenge", ep["challenge"])
     recap_s = [f"{r}" for r in ords]
     plan = [
         ("S1", f"What you will learn: {ep['title']}", [ep["hook"]] + sents(narr[1]) + sents(narr[2]) + recap_s, [1, 2]),
         ("S2", f"{ep['title']} in one minute", sents(narr[2]) + sents(narr[3]) + recap_s, [2, 3]),
-        ("S3", "Inside the second program", sents(narr[5]) + sents(ep["term"]) + recap_s, [5, 6]),
+        ("S3", "Inside the second program", sents(narr[5]) + sents(short_term) + recap_s, [5, 6]),
         ("S4", f"Bug of the Day: {bug['title']}", [f"Can you spot the bug in {ep['spoken']}?"] + sents(narr[8]) + sents(bug["why"]) + recap_s, [8]),
-        ("S5", "Pun and challenge", [f"Can you {ep['task']} in {ep['spoken']}?", ep["pun"]] + sents(ep["challenge"]) + ["Write your answer in the comments."] + recap_s, [9, 10]),
+        ("S5", "Pun and challenge", [f"Can you {ep['task']} in {ep['spoken']}?", ep["pun"]] + sents(short_challenge) + ["Write your answer in the comments."] + recap_s, [9, 10]),
     ]
     slug = re.sub(r"[^a-z0-9]", "", ep["title"].lower())
     used_hooks: set[str] = set()
@@ -384,6 +418,11 @@ def build_episode(mod: dict, ep: dict, nxt: dict | None, cxx: str) -> str:
 def build_module(name: str, cxx: str = "g++") -> int:
     m = importlib.import_module(name)
     mod, eps = m.MODULE, m.EPISODES
+    try:
+        ext = importlib.import_module("ext_" + name).EXT
+    except ModuleNotFoundError:
+        ext = {}
+    eps = [apply_ext(e, ext) for e in eps]
     nxt_mod = getattr(m, "NEXT_AFTER", None)
     out = [f"# C++ Module {mod['id']} — {mod['name']}\n",
            f"Episodes {mod['range']} · {mod['colours']} · Every sample compiled and run with g++ `-std=c++20 -Wall -Wextra`; "
