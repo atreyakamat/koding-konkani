@@ -37,7 +37,7 @@ Source of truth: this repo (`docs/python-bible/mNN.md`, generated from `scripts/
 
 Set `KK_COURSE=python` first (`$env:KK_COURSE = "python"`). It switches the episode folder to `episodes-python/`. Narration goes to `audio/voice/python-epNNN/`.
 
-- Narration: `python scripts/render_episode_audio.py <ep>` writes `audio/voice/python-epNNN`.
+- Narration: `python scripts/render_episode_audio.py <ep> --lang python` writes `audio/voice/python-epNNN`.
 - One long video: `npx remotion render src/index.ts LongVideo out/py-ep005.mp4 --props='{"episodeNumber":5,"lang":"python"}' --concurrency=4`
 - One Short: `npx remotion render src/index.ts Short-S4 out/py-ep005-S4.mp4 --props='{"episodeNumber":5,"shortId":"S4","lang":"python"}'`
 - Render one video at a time.

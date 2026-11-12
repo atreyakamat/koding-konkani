@@ -20,9 +20,11 @@ Run these in PowerShell from the repo folder. Each line says what "good" looks l
    - `npx tsc --noEmit` and `npm run lint` - no output
 8. Close other heavy apps. Keep 13 GB RAM free. Use `--concurrency=4`; drop to 3 if RAM goes over about 13 GB.
 
+Note: on Python 3.12 `check_py.py` reports about 21 problems (traceback `^^^^` markers and a few outputs differ from 3.13; EP84 also needs a working Windows network provider). Use 3.13 for a clean 0.
+
 ## Part B. Pilot (EP5), then the rest
 
-1. Narration: `python scripts/render_episode_audio.py 5` - writes `audio/voice/python-ep005` (WAV per scene, captions, manifest).
+1. Narration: `python scripts/render_episode_audio.py 5 --lang python` (without `--lang python` it narrates the C course by mistake) - writes `audio/voice/python-ep005` (WAV per scene, captions, manifest).
 2. Listen to 2 scenes. Check that "print", "input", "str" and "int" sound right. Note any wrong word.
 3. Long video: `npx remotion render src/index.ts LongVideo out/py-ep005.mp4 --props='{"episodeNumber":5,"lang":"python"}' --concurrency=4`
 4. Short: `npx remotion render src/index.ts Short-S4 out/py-ep005-S4.mp4 --props='{"episodeNumber":5,"shortId":"S4","lang":"python"}'`
