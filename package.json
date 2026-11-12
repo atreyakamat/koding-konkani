@@ -22,6 +22,7 @@
     "cpp:build": ".venv\\Scripts\\python.exe scripts/bible_to_json.py --lang cpp && node scripts/check_render_ready.mts --lang cpp",
     "cpp:ready": "node scripts/check_render_ready.mts --lang cpp",
     "cpp:smoke": "node scripts/smoke_render.mts --lang cpp",
+    "cpp:all": "node scripts/render_all.mts",
     "cpp:render": "node scripts/render_queue.mts --lang cpp"
   },
   "dependencies": {

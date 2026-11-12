@@ -6,6 +6,19 @@ Follow the steps in order. Each step says what you should see. If a check fails,
 
 Run every command in the repo folder: `cd C:\path\to\koding-konkani`.
 
+## The short way: one command
+
+After step 0 and step 1, this does the system check, the data check, narration, rendering and QA for every episode, one at a time. You can stop it and run it again; finished work is skipped.
+
+```powershell
+npm run cpp:all                 # all 90 episodes (1080p long videos on a PC with less than 20 GB RAM)
+npm run cpp:all -- 1 4          # only episodes 1 to 4 (start here: module 0)
+npm run cpp:all -- --check      # checks only, renders nothing
+npm run cpp:all -- --4k         # force 4K
+```
+
+The report is `out\render-all-report.md`. Leave the PC awake and close other apps. Plan for about 15 to 25 minutes for each episode, so all 90 take days: run one module a night.
+
 ## Step 0. One-time setup
 
 ```powershell
