@@ -3,7 +3,7 @@
   "ep": 77,
   "title": "Algorithms from the library",
   "module": 9,
-  "lengthSec": 288,
+  "lengthSec": 358,
   "colours": {
     "bg": "#FFF4EC",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ STL Algorithms: sort, find, count, accumulate | C++ Programming EP 77",
-    "description": "In this episode you will sort a vector with one call, find and count values and add up a range with accumulate, with Xecxec the crab. 0:00 Intro · 0:15 Algorithms from the library · 0:45 Sort, max and reverse · 1:25 Common algorithms · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "description": "In this episode you will sort a vector with one call, find and count values and add up a range with accumulate, with Xecxec the crab. 0:00 Intro · 0:15 Algorithms from the library · 1:10 Sort, max and reverse · 2:07 Common algorithms · 2:41 Second program · 3:59 Recap · 4:29 Bug of the Day · 5:18 Challenge · 5:43 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Algorithms from the library"
       },
       {
-        "t": "0:45",
+        "t": "1:10",
         "label": "Sort, max and reverse"
       },
       {
-        "t": "1:25",
+        "t": "2:07",
         "label": "Common algorithms"
       },
       {
-        "t": "1:55",
+        "t": "2:41",
         "label": "Second program"
       },
       {
-        "t": "2:55",
+        "t": "3:59",
         "label": "Recap"
       },
       {
-        "t": "3:25",
+        "t": "4:29",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:13",
+        "t": "5:18",
         "label": "Challenge"
       },
       {
-        "t": "4:33",
+        "t": "5:43",
         "label": "Next episode"
       }
     ],
@@ -96,13 +96,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 55,
       "onScreen": "\"Algorithms from the library\": numbered lines (1. Algorithms work on a range of iterators; 2. A range is a begin and an end; 3. Do not write loops the library already has) and an analogy card: a toolbox where every tool already exists",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "The algorithm header holds many ready tools. Each tool takes a range, which is a begin iterator and an end iterator. The tools are tested and fast. Think of a toolbox. You pick the tool, and you do not build it again.",
+      "narration": "The algorithm header holds many ready tools. Each tool takes a range, which is a begin iterator and an end iterator. The tools are tested and fast. Think of a toolbox. You pick the tool, and you do not build it again. Experienced programmers rarely write a loop for sorting, searching or counting. They call an algorithm. The code is shorter, and it has fewer bugs. The library algorithms are tuned by experts. Most of the time, they are faster than what you would write yourself. Learn the names, and you will save hours.",
       "points": [
         "Algorithms work on a range of iterators",
         "A range is a begin and an end",
@@ -116,15 +116,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 40,
+      "startSec": 70,
+      "lengthSec": 57,
       "onScreen": "algos.cpp: a vector is sorted, searched for its biggest, and reversed",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 8] Sort takes the begin and the end of the vector. It puts the numbers in order. [HL 9] The loop prints one two five seven nine. [HL 13] Max element returns an iterator to the biggest value. [HL 13] The star reads the value, which is nine. [HL 14] Reverse flips the order. [HL 15] The first item is now nine.",
+      "narration": "[HL 8] Sort takes the begin and the end of the vector. It puts the numbers in order. [HL 9] The loop prints one two five seven nine. [HL 13] Max element returns an iterator to the biggest value. [HL 13] The star reads the value, which is nine. [HL 14] Reverse flips the order. [HL 15] The first item is now nine. [HL 8] Sort takes two iterators, the start and the end. After this line, the vector is in order. [HL 13] Max element gives an iterator, so we put a star in front to read the value. The answer is nine. [HL 14] Reverse turns the order round. [HL 15] Now the first item is nine.",
       "code": {
         "file": "algos.cpp",
         "source": "#include <algorithm>\n#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {5, 2, 9, 1, 7};\n    sort(v.begin(), v.end());\n    for (int x : v) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    cout << *max_element(v.begin(), v.end()) << endl;\n    reverse(v.begin(), v.end());\n    cout << v[0] << endl;\n    return 0;\n}",
@@ -134,12 +134,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 85,
-      "lengthSec": 30,
+      "startSec": 127,
+      "lengthSec": 34,
       "onScreen": "a table of five library algorithms and what each one does",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Here are five tools. Sort, find, count and reverse live in the algorithm header. Accumulate lives in the numeric header. All five take a range.",
+      "narration": "Here are five tools. Sort, find, count and reverse live in the algorithm header. Accumulate lives in the numeric header. All five take a range. Notice the common shape of the calls. Each takes a begin and an end. Then it may take a value or a rule. Once you know one algorithm, the others feel familiar.",
       "diagram": {
         "kind": "table",
         "caption": "a table of five library algorithms and what each one does",
@@ -180,14 +180,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 115,
-      "lengthSec": 40,
+      "startSec": 161,
+      "lengthSec": 53,
       "onScreen": "find.cpp: find a value, count a value, and add up all values",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 9] Find returns an iterator to the first match. [HL 10] If the result is not the end, the value exists. [HL 11] Subtracting the begin gives the index, which is one. [HL 13] Count returns how many fours there are, which is three. [HL 14] Accumulate adds all values, starting from zero. The sum is twenty-one.",
+      "narration": "[HL 9] Find returns an iterator to the first match. [HL 10] If the result is not the end, the value exists. [HL 11] Subtracting the begin gives the index, which is one. [HL 13] Count returns how many fours there are, which is three. [HL 14] Accumulate adds all values, starting from zero. The sum is twenty-one. [HL 9] Find looks for the value eight, and it gives an iterator. [HL 10] Always test the iterator against end, before you read it. [HL 13] Count tells how many times four appears. It is three. [HL 14] Accumulate adds all the items, starting from zero. The total is twenty-one.",
       "code": {
         "file": "find.cpp",
         "source": "#include <algorithm>\n#include <iostream>\n#include <numeric>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {4, 8, 4, 1, 4};\n    auto it = find(v.begin(), v.end(), 8);\n    if (it != v.end()) {\n        cout << \"found at \" << (it - v.begin()) << endl;\n    }\n    cout << count(v.begin(), v.end(), 4) << endl;\n    cout << accumulate(v.begin(), v.end(), 0) << endl;\n    return 0;\n}",
@@ -197,20 +197,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 155,
-      "lengthSec": 20,
+      "startSec": 214,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 find.cpp -o find then ./find",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as find dot cpp. Compile it with g plus plus. Then run the program. The program prints found at one, then three, then twenty-one."
+      "narration": "Save the file as find dot cpp. Compile it with g plus plus. Then run the program. The program prints found at one, then three, then twenty-one. Check by hand. Four plus eight plus four plus one plus four is twenty-one."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 175,
+      "startSec": 239,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -228,20 +228,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 205,
-      "lengthSec": 40,
+      "startSec": 269,
+      "lengthSec": 41,
       "onScreen": "BUG OF THE DAY: Sort with no iterators",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We call sort with only the vector. The compiler says there is no matching function. Sort needs a begin and an end. Pass both iterators."
+      "narration": "Bug of the Day. We call sort with only the vector. The compiler says there is no matching function. Sort needs a begin and an end. Pass both iterators. The classic sort needs the start and the end. If you pass only the vector, the compiler cannot match the call. C plus plus twenty has a ranges version that takes the whole vector. For now, write begin and end."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 245,
+      "startSec": 310,
       "lengthSec": 8,
       "onScreen": "Why did the vector go to the library? It wanted to be sorted out.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -253,19 +253,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 253,
-      "lengthSec": 20,
+      "startSec": 318,
+      "lengthSec": 25,
       "onScreen": "Task card: find the smallest value",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Use a library algorithm to print the smallest value of a vector. Do not write a loop. Write your answer in the comments."
+      "narration": "Your challenge: Use a library algorithm to print the smallest value of a vector. Do not write a loop. Hint: the min element function works like max element, and it also gives an iterator. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 273,
+      "startSec": 343,
       "lengthSec": 15,
       "onScreen": "Next: EP 78 · Lambdas with algorithms",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -282,7 +282,7 @@
     "why": "The classic sort needs two iterators. Pass v dot begin and v dot end. In C plus plus twenty, ranges sort accepts the whole vector."
   },
   "pun": "\"Why did the vector go to the library? It wanted to be sorted out.\"",
-  "challenge": "Use a library algorithm to print the smallest value of a vector. Do not write a loop.",
+  "challenge": "Use a library algorithm to print the smallest value of a vector. Do not write a loop. Hint: the min element function works like max element, and it also gives an iterator.",
   "challengeAnswer": "Call min element with begin and end. Put a star in front of the result to read the value.",
   "shorts": [
     {

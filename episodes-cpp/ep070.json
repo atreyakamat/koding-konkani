@@ -3,7 +3,7 @@
   "ep": 70,
   "title": "Class templates",
   "module": 8,
-  "lengthSec": 295,
+  "lengthSec": 365,
   "colours": {
     "bg": "#D9C9FF",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Class Templates: Build Your Own Container | C++ Programming EP 70",
-    "description": "In this episode you will write a class template, make objects with a type in angle brackets and build a small stack, with Xecxec the crab. 0:00 Intro · 0:15 Class templates · 0:52 A Box template · 1:32 One template, two classes · 2:02 Second program · 3:02 Recap · 3:32 Bug of the Day · 4:20 Challenge · 4:40 Next episode",
+    "description": "In this episode you will write a class template, make objects with a type in angle brackets and build a small stack, with Xecxec the crab. 0:00 Intro · 0:15 Class templates · 1:16 A Box template · 2:03 One template, two classes · 2:41 Second program · 3:56 Recap · 4:26 Bug of the Day · 5:23 Challenge · 5:50 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Class templates"
       },
       {
-        "t": "0:52",
+        "t": "1:16",
         "label": "A Box template"
       },
       {
-        "t": "1:32",
+        "t": "2:03",
         "label": "One template, two classes"
       },
       {
-        "t": "2:02",
+        "t": "2:41",
         "label": "Second program"
       },
       {
-        "t": "3:02",
+        "t": "3:56",
         "label": "Recap"
       },
       {
-        "t": "3:32",
+        "t": "4:26",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:20",
+        "t": "5:23",
         "label": "Challenge"
       },
       {
-        "t": "4:40",
+        "t": "5:50",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 37,
+      "lengthSec": 61,
       "onScreen": "\"Class templates\": numbered lines (1. A class template has a type placeholder; 2. You name the type when you make an object; 3. Each type gets its own class) and an analogy card: a storage box with a blank label: write int, double or string on it",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A class template puts a type placeholder on the whole class. When you make an object, you name the type in angle brackets. The compiler then builds a class for that type. The standard library containers, such as vector, are class templates. Think of a storage box with a blank label. You write int, double or string on it when you use it.",
+      "narration": "A class template puts a type placeholder on the whole class. When you make an object, you name the type in angle brackets. The compiler then builds a class for that type. The standard library containers, such as vector, are class templates. Think of a storage box with a blank label. You write int, double or string on it when you use it. A class template works like a function template, but for a whole class. You write the class once, and it holds any type. This is how vector, map and unique pointer are written. You are about to build a small one yourself.",
       "points": [
         "A class template has a type placeholder",
         "You name the type when you make an object",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 52,
-      "lengthSec": 40,
+      "startSec": 76,
+      "lengthSec": 47,
       "onScreen": "box.cpp: a Box holds one value of any type",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] T is the placeholder. [HL 7] The member has type T. [HL 10] The constructor takes a T. [HL 11] The getter returns a T. [HL 15] Here T is int. [HL 16] Here T is string. They are two different classes. The output is seven, and Goa.",
+      "narration": "[HL 5] T is the placeholder. [HL 7] The member has type T. [HL 10] The constructor takes a T. [HL 11] The getter returns a T. [HL 15] Here T is int. [HL 16] Here T is string. They are two different classes. The output is seven, and Goa. [HL 5] The template line comes before the class. [HL 7] The member value has the type T. [HL 10] The constructor takes a T. [HL 11] The getter returns a T. [HL 15] Box of int holds a seven. [HL 16] Box of string holds a word. The same class works for both.",
       "code": {
         "file": "box.cpp",
         "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\ntemplate <typename T>\nclass Box {\n    T value_;\n\npublic:\n    Box(T value) : value_(value) {}\n    T get() const { return value_; }\n};\n\nint main() {\n    Box<int> a(7);\n    Box<string> b(\"Goa\");\n    cout << a.get() << \" \" << b.get() << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 92,
-      "lengthSec": 30,
+      "startSec": 123,
+      "lengthSec": 38,
       "onScreen": "a table of the classes that the compiler builds",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Each use of the template with a new type makes a new class. Box of int holds an int. Box of string holds a string. They do not share anything, except the recipe.",
+      "narration": "Each use of the template with a new type makes a new class. Box of int holds an int. Box of string holds a string. They do not share anything, except the recipe. Notice that Box of int and Box of string are two different types. They share a recipe, but they are not the same class. You cannot put one into the other.",
       "diagram": {
         "kind": "table",
         "caption": "a table of the classes that the compiler builds",
@@ -169,14 +169,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 122,
-      "lengthSec": 40,
+      "startSec": 161,
+      "lengthSec": 50,
       "onScreen": "stack.cpp: a Stack template built on a vector",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 7] Inside, a vector of T holds the items. [HL 10] Push adds an item at the end. [HL 11] Pop removes the last item, and returns it. [HL 20] Here we make a stack of ints. [HL 21] We push one, two and three. [HL 25] Pop gives the last item first. The output is three, two, one.",
+      "narration": "[HL 7] Inside, a vector of T holds the items. [HL 10] Push adds an item at the end. [HL 11] Pop removes the last item, and returns it. [HL 20] Here we make a stack of ints. [HL 21] We push one, two and three. [HL 25] Pop gives the last item first. The output is three, two, one. [HL 7] A vector inside does the storage. [HL 10] Push adds an item at the end. [HL 11] Pop takes the last item out, and returns it. [HL 25] The items come back in reverse order. This is the stack rule, last in, first out.",
       "code": {
         "file": "stack.cpp",
         "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\ntemplate <typename T>\nclass Stack {\n    vector<T> items_;\n\npublic:\n    void push(const T& x) { items_.push_back(x); }\n    T pop() {\n        T x = items_.back();\n        items_.pop_back();\n        return x;\n    }\n    bool empty() const { return items_.empty(); }\n};\n\nint main() {\n    Stack<int> s;\n    s.push(1);\n    s.push(2);\n    s.push(3);\n    while (!s.empty()) {\n        cout << s.pop() << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
@@ -186,20 +186,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 162,
-      "lengthSec": 20,
+      "startSec": 211,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 stack.cpp -o stack then ./stack",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as stack dot cpp. Compile it with g plus plus. Then run the program. The program prints three, two and one."
+      "narration": "Save the file as stack dot cpp. Compile it with g plus plus. Then run the program. The program prints three, two and one. Notice that the output is three, two, one. The last item pushed is the first item popped."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 182,
+      "startSec": 236,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -217,20 +217,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 212,
-      "lengthSec": 40,
+      "startSec": 266,
+      "lengthSec": 49,
       "onScreen": "BUG OF THE DAY: A missing template argument",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We make a Box with no type. The compiler says class template argument deduction failed. It has nothing to learn T from. Write the type in angle brackets, as in Box of int."
+      "narration": "Bug of the Day. We make a Box with no type. The compiler says class template argument deduction failed. It has nothing to learn T from. Write the type in angle brackets, as in Box of int. For a function, the compiler learns T from the arguments. For a class with no constructor argument, it has nothing to learn from. Write the type in angle brackets, and the object can be built. Since C plus plus seventeen, a constructor argument is often enough."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 252,
+      "startSec": 315,
       "lengthSec": 8,
       "onScreen": "My template is an open-minded class. It accepts any type, but it still wants a label.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -242,19 +242,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 260,
-      "lengthSec": 20,
+      "startSec": 323,
+      "lengthSec": 27,
       "onScreen": "Task card: make a Pair template",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a class template Pair with two members of the same type T. Add a function that returns the bigger one. Write your answer in the comments."
+      "narration": "Your challenge: Write a class template Pair with two members of the same type T. Add a function that returns the bigger one. Hint: the member function compares the two members, and returns the bigger one as a T. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 280,
+      "startSec": 350,
       "lengthSec": 15,
       "onScreen": "Next: EP 71 · pair and tuple",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -271,7 +271,7 @@
     "why": "The compiler cannot guess T when there is no constructor argument to learn it from. Write the type in angle brackets."
   },
   "pun": "\"My template is an open-minded class. It accepts any type, but it still wants a label.\"",
-  "challenge": "Write a class template Pair with two members of the same type T. Add a function that returns the bigger one.",
+  "challenge": "Write a class template Pair with two members of the same type T. Add a function that returns the bigger one. Hint: the member function compares the two members, and returns the bigger one as a T.",
   "challengeAnswer": "Store two T members. In the function, return the first if it is bigger than the second, otherwise the second.",
   "shorts": [
     {

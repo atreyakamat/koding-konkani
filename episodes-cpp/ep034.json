@@ -3,7 +3,7 @@
   "ep": 34,
   "title": "std::array",
   "module": 4,
-  "lengthSec": 300,
+  "lengthSec": 401,
   "colours": {
     "bg": "#FFE58A",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ std::array: A Safer Array | C++ Programming EP 34",
-    "description": "In this episode you will make a std array, use size and at and read an out-of-range error, with Xecxec the crab. 0:00 Intro · 0:16 std::array · 0:57 A std array · 1:37 Plain array or std::array · 2:07 Second program · 3:07 Recap · 3:37 Bug of the Day · 4:25 Challenge · 4:45 Next episode",
+    "description": "In this episode you will make a std array, use size and at and read an out-of-range error, with Xecxec the crab. 0:00 Intro · 0:16 std::array · 1:26 A std array · 2:25 Plain array or std::array · 3:10 Second program · 4:30 Recap · 5:00 Bug of the Day · 6:00 Challenge · 6:26 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "std::array"
       },
       {
-        "t": "0:57",
+        "t": "1:26",
         "label": "A std array"
       },
       {
-        "t": "1:37",
+        "t": "2:25",
         "label": "Plain array or std::array"
       },
       {
-        "t": "2:07",
+        "t": "3:10",
         "label": "Second program"
       },
       {
-        "t": "3:07",
+        "t": "4:30",
         "label": "Recap"
       },
       {
-        "t": "3:37",
+        "t": "5:00",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:25",
+        "t": "6:00",
         "label": "Challenge"
       },
       {
-        "t": "4:45",
+        "t": "6:26",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 16,
-      "lengthSec": 41,
+      "lengthSec": 70,
       "onScreen": "\"std::array\": numbered lines (1. std array knows its own size; 2. at checks the index; 3. It costs nothing extra) and an analogy card: a locker row with a guard: ask for door nine, and the guard says no such door",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "The std array type wraps a plain array. It knows its own size. The size function tells you. The at function checks the index. If the index is wrong, it stops with an error. A plain array does not check anything, and a wrong index gives garbage. Think of a locker row with a guard. If you ask for door nine, the guard says there is no such door.",
+      "narration": "The std array type wraps a plain array. It knows its own size. The size function tells you. The at function checks the index. If the index is wrong, it stops with an error. A plain array does not check anything, and a wrong index gives garbage. Think of a locker row with a guard. If you ask for door nine, the guard says there is no such door. A plain array is fast, but it is careless. It does not know its own size, and it does not check the index. The std array fixes both problems and costs nothing extra. The size is part of the type. So array of int, three, and array of int, four, are different types.",
       "points": [
         "std array knows its own size",
         "at checks the index",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 57,
-      "lengthSec": 40,
+      "startSec": 86,
+      "lengthSec": 59,
       "onScreen": "stdarray.cpp: size, at and fill on a std array",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] The array header gives us std array. [HL 6] The type and the size go in angle brackets. [HL 7] The size is three. [HL 8] At one gives the second item, which is six. [HL 9] The fill function sets every item to zero. [HL 10] So the last item is now zero.",
+      "narration": "[HL 1] The array header gives us std array. [HL 6] The type and the size go in angle brackets. [HL 7] The size is three. [HL 8] At one gives the second item, which is six. [HL 9] The fill function sets every item to zero. [HL 10] So the last item is now zero. [HL 6] The two parts inside the angle brackets are the item type and the size. [HL 7] The size function tells us the size. No need to count by hand. [HL 8] The at function checks the index, and it stops the program with an error if the index is too big. [HL 9] The fill function sets every item to one value, here zero.",
       "code": {
         "file": "stdarray.cpp",
         "source": "#include <array>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    array<int, 3> a = {5, 6, 7};\n    cout << a.size() << endl;\n    cout << a.at(1) << endl;\n    a.fill(0);\n    cout << a[2] << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 97,
-      "lengthSec": 30,
+      "startSec": 145,
+      "lengthSec": 45,
       "onScreen": "a table that compares the two",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Here are the two types side by side. The std array knows its size. It can check an index with at. You can copy it with a single equals sign. And it costs no more memory than a plain array.",
+      "narration": "Here are the two types side by side. The std array knows its size. It can check an index with at. You can copy it with a single equals sign. And it costs no more memory than a plain array. Notice the difference in the table. Square brackets are fast but trust you. The at function costs a tiny check, and it protects you. While you learn, use at, and you will find your mistakes sooner.",
       "diagram": {
         "kind": "table",
         "caption": "a table that compares the two",
@@ -174,14 +174,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 127,
-      "lengthSec": 40,
+      "startSec": 190,
+      "lengthSec": 55,
       "onScreen": "same.cpp: two std arrays compared with two equals signs",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 7] This line copies the whole array. A plain array cannot do this. [HL 8] We change the first item of b only. [HL 9] Two equals signs compare all items. The arrays differ now, so the answer is false. [HL 10] The original a still starts with one, and b starts with nine.",
+      "narration": "[HL 7] This line copies the whole array. A plain array cannot do this. [HL 8] We change the first item of b only. [HL 9] Two equals signs compare all items. The arrays differ now, so the answer is false. [HL 10] The original a still starts with one, and b starts with nine. [HL 7] A std array can be copied with a plain equals sign. A plain array cannot. The copy has its own items, so a change to b leaves a alone. [HL 9] You can also compare two arrays with the double equals sign. Here, they differ, so the answer is false.",
       "code": {
         "file": "same.cpp",
         "source": "#include <array>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    array<int, 3> a = {1, 2, 3};\n    array<int, 3> b = a;\n    b[0] = 9;\n    cout << boolalpha << (a == b) << endl;\n    cout << a[0] << \" \" << b[0] << endl;\n    return 0;\n}",
@@ -191,20 +191,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 167,
-      "lengthSec": 20,
+      "startSec": 245,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 same.cpp -o same then ./same",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as same dot cpp. Compile it with g plus plus. Then run the program. The program prints false, and then one and nine."
+      "narration": "Save the file as same dot cpp. Compile it with g plus plus. Then run the program. The program prints false, and then one and nine. Notice that a keeps its first item. The copy changed, but the original did not."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 187,
+      "startSec": 270,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -222,20 +222,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 217,
-      "lengthSec": 40,
+      "startSec": 300,
+      "lengthSec": 52,
       "onScreen": "BUG OF THE DAY: An index that is too big",
       "animation": "Butter banner drops in with a buzzer; the program crashes and the run-time error appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The array has three items, and we ask for index five. At stops the program. It says terminate called after throwing an instance of out of range. That is better than reading garbage. Check the index against the size before you use it."
+      "narration": "Bug of the Day. The array has three items, and we ask for index five. At stops the program. It says terminate called after throwing an instance of out of range. That is better than reading garbage. Check the index against the size before you use it. Indexes run from zero to size minus one. The index nine is far outside a row of three. A plain array would read some random memory and say nothing. The at function stops the program, and the message tells you what went wrong."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 257,
+      "startSec": 352,
       "lengthSec": 8,
       "onScreen": "Std array put on a helmet. Now it has a safe place to fall.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -247,19 +247,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 265,
-      "lengthSec": 20,
+      "startSec": 360,
+      "lengthSec": 26,
       "onScreen": "Task card: fill and print a std array",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make a std array of four ints. Fill it with the number seven. Print every item with a range-based for. Write your answer in the comments."
+      "narration": "Your challenge: Make a std array of four ints. Fill it with the number seven. Print every item with a range-based for. Hint: the fill function sets every item to one value, so call it once. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 285,
+      "startSec": 386,
       "lengthSec": 15,
       "onScreen": "Next: EP 35 · std::vector",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -276,7 +276,7 @@
     "why": "The array has three items, so the valid indexes are zero, one and two. At stops the program with an exception instead of reading garbage."
   },
   "pun": "\"Std array put on a helmet. Now it has a safe place to fall.\"",
-  "challenge": "Make a std array of four ints. Fill it with the number seven. Print every item with a range-based for.",
+  "challenge": "Make a std array of four ints. Fill it with the number seven. Print every item with a range-based for. Hint: the fill function sets every item to one value, so call it once.",
   "challengeAnswer": "Write array of int, four. Call fill with seven. Then use for int x colon the array, and print x.",
   "shorts": [
     {

@@ -3,7 +3,7 @@
   "ep": 36,
   "title": "Vector operations",
   "module": 4,
-  "lengthSec": 294,
+  "lengthSec": 365,
   "colours": {
     "bg": "#FFE58A",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Vector: insert, erase, sort and find | C++ Programming EP 36",
-    "description": "In this episode you will insert and erase items, sort a vector and find a value in a vector, with Xecxec the crab. 0:00 Intro · 0:15 Vector operations · 0:51 Insert and erase · 1:31 The vector after each call · 2:01 Second program · 3:01 Recap · 3:31 Bug of the Day · 4:19 Challenge · 4:39 Next episode",
+    "description": "In this episode you will insert and erase items, sort a vector and find a value in a vector, with Xecxec the crab. 0:00 Intro · 0:15 Vector operations · 1:24 Insert and erase · 2:11 The vector after each call · 2:50 Second program · 4:07 Recap · 4:37 Bug of the Day · 5:28 Challenge · 5:50 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Vector operations"
       },
       {
-        "t": "0:51",
+        "t": "1:24",
         "label": "Insert and erase"
       },
       {
-        "t": "1:31",
+        "t": "2:11",
         "label": "The vector after each call"
       },
       {
-        "t": "2:01",
+        "t": "2:50",
         "label": "Second program"
       },
       {
-        "t": "3:01",
+        "t": "4:07",
         "label": "Recap"
       },
       {
-        "t": "3:31",
+        "t": "4:37",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:19",
+        "t": "5:28",
         "label": "Challenge"
       },
       {
-        "t": "4:39",
+        "t": "5:50",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 36,
+      "lengthSec": 69,
       "onScreen": "\"Vector operations\": numbered lines (1. Insert and erase use iterators; 2. begin points to the first item; 3. Sort and find come from the algorithm header) and an analogy card: a train: you can add a coach in the middle, remove one, or re-order them",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A vector has many tools. Insert adds an item at a position. Erase removes an item at a position. Both use an iterator. The begin function gives an iterator to the first item. The algorithm header adds sort and find. Think of a train. You can add a coach in the middle, take one out, or put them in order.",
+      "narration": "A vector has many tools. Insert adds an item at a position. Erase removes an item at a position. Both use an iterator. The begin function gives an iterator to the first item. The algorithm header adds sort and find. Think of a train. You can add a coach in the middle, take one out, or put them in order. Iterators are like arrows that point at an item. The begin function points at the first item, and the end function points after the last item. You can add a number to an iterator to move it along. Many library tools work with a pair of iterators, the start and the end. Sort and find are two of them.",
       "points": [
         "Insert and erase use iterators",
         "begin points to the first item",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 51,
-      "lengthSec": 40,
+      "startSec": 84,
+      "lengthSec": 47,
       "onScreen": "edit.cpp: insert 99 at position one, then erase the first item",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] The vector starts as ten, twenty, thirty. [HL 7] Begin plus one is the second position. Insert puts ninety-nine there. [TRACK size=4] The vector is now ten, ninety-nine, twenty, thirty. [HL 8] Erase removes the first item. [HL 9] The loop prints ninety-nine, twenty, thirty.",
+      "narration": "[HL 6] The vector starts as ten, twenty, thirty. [HL 7] Begin plus one is the second position. Insert puts ninety-nine there. [TRACK size=4] The vector is now ten, ninety-nine, twenty, thirty. [HL 8] Erase removes the first item. [HL 9] The loop prints ninety-nine, twenty, thirty. [HL 6] The vector holds ten, twenty and thirty. [HL 7] Begin plus one points at the second item. Insert puts ninety-nine in front of it. The vector is now ten, ninety-nine, twenty and thirty. [HL 8] Erase removes the first item. Now we have ninety-nine, twenty and thirty.",
       "code": {
         "file": "edit.cpp",
         "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {10, 20, 30};\n    v.insert(v.begin() + 1, 99);\n    v.erase(v.begin());\n    for (int x : v) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 91,
-      "lengthSec": 30,
+      "startSec": 131,
+      "lengthSec": 39,
       "onScreen": "a table: each call and the vector after it",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Follow the table. The start is ten, twenty, thirty. Insert adds ninety-nine at position one. Erase removes the first item. Push back adds five at the end. Items move to make room, or to close the gap.",
+      "narration": "Follow the table. The start is ten, twenty, thirty. Insert adds ninety-nine at position one. Erase removes the first item. Push back adds five at the end. Items move to make room, or to close the gap. Notice that insert and erase move all the items after the spot. For a big vector, this takes time. So add and remove at the end when you can.",
       "diagram": {
         "kind": "table",
         "caption": "a table: each call and the vector after it",
@@ -169,14 +169,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 121,
-      "lengthSec": 40,
+      "startSec": 170,
+      "lengthSec": 52,
       "onScreen": "sortfind.cpp: sort puts the values in order, find looks for one",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 8] Sort takes the start and the end of the vector. It puts the items in order. [HL 9] The loop prints ten, twenty, thirty, forty. [HL 13] Find looks for thirty. It returns an iterator to the item. [HL 14] Subtracting begin gives the index. Thirty is at index two.",
+      "narration": "[HL 8] Sort takes the start and the end of the vector. It puts the items in order. [HL 9] The loop prints ten, twenty, thirty, forty. [HL 13] Find looks for thirty. It returns an iterator to the item. [HL 14] Subtracting begin gives the index. Thirty is at index two. [HL 8] Sort needs two iterators, the start and the end. After the call, the numbers are in order. [HL 13] Find gives back an iterator. If it finds the value, it points at that item. [HL 14] Subtract begin to get the index. The value thirty sits at index two.",
       "code": {
         "file": "sortfind.cpp",
         "source": "#include <algorithm>\n#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> v = {40, 10, 30, 20};\n    sort(v.begin(), v.end());\n    for (int x : v) {\n        cout << x << \" \";\n    }\n    cout << endl;\n    auto it = find(v.begin(), v.end(), 30);\n    cout << (it - v.begin()) << endl;\n    return 0;\n}",
@@ -186,20 +186,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 161,
-      "lengthSec": 20,
+      "startSec": 222,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 sortfind.cpp -o sortfind then ./sortfind",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as sortfind dot cpp. Compile it with g plus plus. Then run the program. The program prints the sorted numbers, and then the index two."
+      "narration": "Save the file as sortfind dot cpp. Compile it with g plus plus. Then run the program. The program prints the sorted numbers, and then the index two. The sorted vector is ten, twenty, thirty, forty. Thirty has index two."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 181,
+      "startSec": 247,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -217,20 +217,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 211,
-      "lengthSec": 40,
+      "startSec": 277,
+      "lengthSec": 43,
       "onScreen": "BUG OF THE DAY: Erase with a number",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We call erase with the plain number one. The compiler says no matching function for call to erase. Erase wants an iterator, not an index. Write begin plus one, and the call works."
+      "narration": "Bug of the Day. We call erase with the plain number one. The compiler says no matching function for call to erase. Erase wants an iterator, not an index. Write begin plus one, and the call works. An index is a plain number, but erase needs an iterator. The compiler cannot turn one into the other. So write begin plus the index. This makes a point in the vector that erase can use."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 251,
+      "startSec": 320,
       "lengthSec": 8,
       "onScreen": "I tried to find my lost sock in a sorted vector. It was at the end, as always.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -242,19 +242,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 259,
-      "lengthSec": 20,
+      "startSec": 328,
+      "lengthSec": 22,
       "onScreen": "Task card: sort and print",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make a vector with five numbers. Sort it, and print the smallest and the biggest. Write your answer in the comments."
+      "narration": "Your challenge: Make a vector with five numbers. Sort it, and print the smallest and the biggest. Hint: after sort, the smallest item is first, and the biggest is last. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 279,
+      "startSec": 350,
       "lengthSec": 15,
       "onScreen": "Next: EP 37 · More string tools",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -271,7 +271,7 @@
     "why": "Erase wants a position in the form of an iterator, not an index. Add the index to begin to make an iterator."
   },
   "pun": "\"I tried to find my lost sock in a sorted vector. It was at the end, as always.\"",
-  "challenge": "Make a vector with five numbers. Sort it, and print the smallest and the biggest.",
+  "challenge": "Make a vector with five numbers. Sort it, and print the smallest and the biggest. Hint: after sort, the smallest item is first, and the biggest is last.",
   "challengeAnswer": "After sort, the smallest is v front, and the biggest is v back. Print both.",
   "shorts": [
     {

@@ -3,7 +3,7 @@
   "ep": 24,
   "title": "Pass by reference",
   "module": 3,
-  "lengthSec": 289,
+  "lengthSec": 358,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ References: Pass by Reference and swap | C++ Programming EP 24",
-    "description": "In this episode you will write a reference parameter, change the original variable and write a working swap function, with Xecxec the crab. 0:00 Intro · 0:15 Pass by reference · 0:45 A reference parameter · 1:25 One box, two names · 1:55 Second program · 2:55 Recap · 3:26 Bug of the Day · 4:14 Challenge · 4:34 Next episode",
+    "description": "In this episode you will write a reference parameter, change the original variable and write a working swap function, with Xecxec the crab. 0:00 Intro · 0:15 Pass by reference · 1:14 A reference parameter · 2:07 One box, two names · 2:46 Second program · 4:01 Recap · 4:32 Bug of the Day · 5:23 Challenge · 5:43 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Pass by reference"
       },
       {
-        "t": "0:45",
+        "t": "1:14",
         "label": "A reference parameter"
       },
       {
-        "t": "1:25",
+        "t": "2:07",
         "label": "One box, two names"
       },
       {
-        "t": "1:55",
+        "t": "2:46",
         "label": "Second program"
       },
       {
-        "t": "2:55",
+        "t": "4:01",
         "label": "Recap"
       },
       {
-        "t": "3:26",
+        "t": "4:32",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:14",
+        "t": "5:23",
         "label": "Challenge"
       },
       {
-        "t": "4:34",
+        "t": "5:43",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 59,
       "onScreen": "\"Pass by reference\": numbered lines (1. An ampersand makes a reference; 2. A reference is another name for the same box; 3. Changes reach the original) and an analogy card: a nickname: two names for the same person",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A reference is another name for an existing variable. You write an ampersand after the type. No copy is made. When a function takes a reference, it works on the original variable. Think of a nickname. Two names point to the same person.",
+      "narration": "A reference is another name for an existing variable. You write an ampersand after the type. No copy is made. When a function takes a reference, it works on the original variable. Think of a nickname. Two names point to the same person. With a reference, the function and the caller share one box. There is no copy at all. You tie a reference to a variable when you make it. It can never point to a different variable later. Use a reference when a function must change the caller variable. You can also use it to return more than one result.",
       "points": [
         "An ampersand makes a reference",
         "A reference is another name for the same box",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 40,
+      "startSec": 74,
+      "lengthSec": 53,
       "onScreen": "byref.cpp: double_it changes the original with a reference",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 4] The ampersand after int makes n a reference. N is another name for the caller variable. [HL 5] The function doubles n. [HL 10] Main passes number. No copy is made. [HL 11] Number is now twenty. The original changed.",
+      "narration": "[HL 4] The ampersand after int makes n a reference. N is another name for the caller variable. [HL 5] The function doubles n. [HL 10] Main passes number. No copy is made. [HL 11] Number is now twenty. The original changed. [HL 4] The ampersand is part of the type, not of the name. Read the type as int reference. [HL 5] When the function writes to n, it writes into the box of number. [HL 10] The call looks the same as before. You write number, with no ampersand. The only change is in the function line, and the compiler does the rest.",
       "code": {
         "file": "byref.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nvoid double_it(int& n) {\n    n = n * 2;\n}\n\nint main() {\n    int number = 10;\n    double_it(number);\n    cout << \"Number: \" << number << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 85,
-      "lengthSec": 30,
+      "startSec": 127,
+      "lengthSec": 39,
       "onScreen": "memory boxes: n is a reference to number",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the picture. There is one box that holds the value. Number is its name in main. N is its second name in the function. A change through n changes the same box.",
+      "narration": "Look at the picture. There is one box that holds the value. Number is its name in main. N is its second name in the function. A change through n changes the same box. Notice how the picture differs from the last episode. Last time, we had two boxes. Now we have one box with two labels. Any change through one label shows through the other.",
       "memory": {
         "frames": [
           {
@@ -175,14 +175,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 115,
-      "lengthSec": 40,
+      "startSec": 166,
+      "lengthSec": 50,
       "onScreen": "swapref.cpp: swap_values with references swaps the originals",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 4] Both parameters are references. [HL 5] The helper box t keeps the old value of a. [HL 6] A takes the value of b. [HL 7] B takes the old value from t. [HL 13] Now main prints two and one. The swap worked. The C plus plus library also has a function called swap.",
+      "narration": "[HL 4] Both parameters are references. [HL 5] The helper box t keeps the old value of a. [HL 6] A takes the value of b. [HL 7] B takes the old value from t. [HL 13] Now main prints two and one. The swap worked. The C plus plus library also has a function called swap. [HL 4] Because both parameters are references, a and b are other names for x and y. [HL 7] Every line works on the real values. A swap is a classic use of references. It needs to change two caller variables at once.",
       "code": {
         "file": "swapref.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nvoid swap_values(int& a, int& b) {\n    int t = a;\n    a = b;\n    b = t;\n}\n\nint main() {\n    int x = 1, y = 2;\n    swap_values(x, y);\n    cout << x << \" \" << y << endl;\n    return 0;\n}",
@@ -192,20 +192,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 155,
-      "lengthSec": 20,
+      "startSec": 216,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 swapref.cpp -o swapref then ./swapref",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as swapref dot cpp. Compile it with g plus plus. Then run the program. The program prints two and one."
+      "narration": "Save the file as swapref dot cpp. Compile it with g plus plus. Then run the program. The program prints two and one. Compare this with the last episode. The code is nearly the same, but the result is different."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 175,
+      "startSec": 241,
       "lengthSec": 31,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -223,20 +223,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 206,
-      "lengthSec": 40,
+      "startSec": 272,
+      "lengthSec": 43,
       "onScreen": "BUG OF THE DAY: A number cannot be a reference",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We call inc with the plain number five. The compiler says it cannot bind a non-const lvalue reference to an rvalue. In simple words, five has no box to change. Pass a variable instead."
+      "narration": "Bug of the Day. We call inc with the plain number five. The compiler says it cannot bind a non-const lvalue reference to an rvalue. In simple words, five has no box to change. Pass a variable instead. A reference needs a real box. A plain number is only a value, and it has no place in memory. So the compiler refuses. Put the five in a variable first, and pass the variable."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 246,
+      "startSec": 315,
       "lengthSec": 8,
       "onScreen": "A reference told a variable, I will always have your back. The variable said, I know, you are my alias.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -248,19 +248,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 254,
+      "startSec": 323,
       "lengthSec": 20,
       "onScreen": "Task card: write a function that doubles two numbers",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a function that takes two int references and doubles both. Test it in main. Write your answer in the comments."
+      "narration": "Your challenge: Write a function that takes two int references and doubles both. Test it in main. Hint: write an ampersand after int in both parameters. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 274,
+      "startSec": 343,
       "lengthSec": 15,
       "onScreen": "Next: EP 25 · const references",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -277,7 +277,7 @@
     "why": "A reference must refer to a real variable. The plain number five has no box that the function could change."
   },
   "pun": "\"A reference told a variable, I will always have your back. The variable said, I know, you are my alias.\"",
-  "challenge": "Write a function that takes two int references and doubles both. Test it in main.",
+  "challenge": "Write a function that takes two int references and doubles both. Test it in main. Hint: write an ampersand after int in both parameters.",
   "challengeAnswer": "Write a void function called double both with two int ampersand parameters. Inside, multiply each by two. Print both variables in main.",
   "shorts": [
     {

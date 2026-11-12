@@ -3,7 +3,7 @@
   "ep": 60,
   "title": "Rule of three, five and zero",
   "module": 6,
-  "lengthSec": 304,
+  "lengthSec": 407,
   "colours": {
     "bg": "#FFD8BE",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Rule of Three, Five and Zero | C++ Programming EP 60",
-    "description": "In this episode you will explain deep copy and shallow copy, write a copy constructor and prefer the rule of zero, with Xecxec the crab. 0:00 Intro · 0:15 Rule of three, five and zero · 0:56 A deep copy · 1:36 Shallow and deep copy · 2:06 Second program · 3:06 Recap · 3:41 Bug of the Day · 4:29 Challenge · 4:49 Next episode",
+    "description": "In this episode you will explain deep copy and shallow copy, write a copy constructor and prefer the rule of zero, with Xecxec the crab. 0:00 Intro · 0:15 Rule of three, five and zero · 1:31 A deep copy · 2:35 Shallow and deep copy · 3:21 Second program · 4:36 Recap · 5:11 Bug of the Day · 6:03 Challenge · 6:32 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Rule of three, five and zero"
       },
       {
-        "t": "0:56",
+        "t": "1:31",
         "label": "A deep copy"
       },
       {
-        "t": "1:36",
+        "t": "2:35",
         "label": "Shallow and deep copy"
       },
       {
-        "t": "2:06",
+        "t": "3:21",
         "label": "Second program"
       },
       {
-        "t": "3:06",
+        "t": "4:36",
         "label": "Recap"
       },
       {
-        "t": "3:41",
+        "t": "5:11",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:29",
+        "t": "6:03",
         "label": "Challenge"
       },
       {
-        "t": "4:49",
+        "t": "6:32",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 41,
+      "lengthSec": 76,
       "onScreen": "\"Rule of three, five and zero\": numbered lines (1. A shallow copy shares the memory; 2. A deep copy makes new memory; 3. Best: let vector and string do the work) and an analogy card: photocopying a key: copy the key itself, not just the label on it",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A class that owns heap memory needs care. The default copy copies the pointer, not the memory. That is a shallow copy. Two objects then share one box, and both try to delete it. The rule of three says: if you write a destructor, a copy constructor or a copy assignment, write all three. The rule of zero is better. Use vector and string, and write none of them.",
+      "narration": "A class that owns heap memory needs care. The default copy copies the pointer, not the memory. That is a shallow copy. Two objects then share one box, and both try to delete it. The rule of three says: if you write a destructor, a copy constructor or a copy assignment, write all three. The rule of zero is better. Use vector and string, and write none of them. Copying is easy for a plain number. For an object that owns memory, copying is more subtle. A shallow copy copies only the pointer. Then both objects point at one box. The first object dies and frees the box. The second object dies and frees it again. That double free crashes the program. A deep copy makes a new box for each object.",
       "points": [
         "A shallow copy shares the memory",
         "A deep copy makes new memory",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 56,
-      "lengthSec": 40,
+      "startSec": 91,
+      "lengthSec": 64,
       "onScreen": "deep.cpp: a copy constructor makes new memory",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] The box owns one int on the heap. [HL 9] The copy constructor makes a new int, with the same value. That is a deep copy. [HL 10] The destructor deletes the box. [HL 17] This line calls the copy constructor. [HL 18] We change b only. [HL 19] A still holds five, and b holds nine. They have separate memory.",
+      "narration": "[HL 5] The box owns one int on the heap. [HL 9] The copy constructor makes a new int, with the same value. That is a deep copy. [HL 10] The destructor deletes the box. [HL 17] This line calls the copy constructor. [HL 18] We change b only. [HL 19] A still holds five, and b holds nine. They have separate memory. [HL 8] The constructor makes a box on the heap with the value. [HL 9] The copy constructor makes a new box, and it copies the value into it. This is a deep copy. [HL 10] The destructor frees the box of this object only. [HL 17] The object b is a copy of a. [HL 18] Changing b does not change a. The output is five and nine.",
       "code": {
         "file": "deep.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Box {\n    int* data_;\n\npublic:\n    Box(int v) : data_(new int(v)) {}\n    Box(const Box& other) : data_(new int(*other.data_)) {}\n    ~Box() { delete data_; }\n    void set(int v) { *data_ = v; }\n    int get() const { return *data_; }\n};\n\nint main() {\n    Box a(5);\n    Box b = a;\n    b.set(9);\n    cout << a.get() << \" \" << b.get() << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 96,
-      "lengthSec": 30,
+      "startSec": 155,
+      "lengthSec": 46,
       "onScreen": "a shallow copy shares one box, and a deep copy makes two",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Here is a deep copy. A owns its box. B owns another box with the same value. A change to one does not affect the other. In a shallow copy, both pointers would point to the first box, and both would delete it. That is a crash.",
+      "narration": "Here is a deep copy. A owns its box. B owns another box with the same value. A change to one does not affect the other. In a shallow copy, both pointers would point to the first box, and both would delete it. That is a crash. Notice the two pictures. In the shallow copy, two pointers lead to one box. In the deep copy, each pointer leads to its own box. Only the deep copy is safe.",
       "memory": {
         "frames": [
           {
@@ -194,14 +194,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 126,
-      "lengthSec": 40,
+      "startSec": 201,
+      "lengthSec": 52,
       "onScreen": "zero.cpp: a class that uses vector needs no copy code",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] The vector owns the memory. [HL 9] We write no destructor and no copy functions. [HL 17] The default copy copies the vector, and the vector copies its items. [HL 18] We add to b only. [HL 19] A has two items, and b has three. The rule of zero gives us the right result for free.",
+      "narration": "[HL 6] The vector owns the memory. [HL 9] We write no destructor and no copy functions. [HL 17] The default copy copies the vector, and the vector copies its items. [HL 18] We add to b only. [HL 19] A has two items, and b has three. The rule of zero gives us the right result for free. [HL 6] The class holds a vector, and the vector knows how to copy itself. [HL 17] The copy gets its own list. So we need no destructor and no copy constructor. This is the rule of zero. [HL 19] The output is two and three.",
       "code": {
         "file": "zero.cpp",
         "source": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nclass Scores {\n    vector<int> data_;\n\npublic:\n    void add(int v) { data_.push_back(v); }\n    int count() const { return static_cast<int>(data_.size()); }\n};\n\nint main() {\n    Scores a;\n    a.add(10);\n    a.add(20);\n    Scores b = a;\n    b.add(30);\n    cout << a.count() << \" \" << b.count() << endl;\n    return 0;\n}",
@@ -211,20 +211,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 166,
-      "lengthSec": 20,
+      "startSec": 253,
+      "lengthSec": 23,
       "onScreen": "Terminal: g++ -std=c++20 zero.cpp -o zero then ./zero",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as zero dot cpp. Compile it with g plus plus. Then run the program. The program prints two and three."
+      "narration": "Save the file as zero dot cpp. Compile it with g plus plus. Then run the program. The program prints two and three. Notice that the two counts differ. The change to b did not touch a."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 186,
+      "startSec": 276,
       "lengthSec": 35,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -242,20 +242,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 221,
-      "lengthSec": 40,
+      "startSec": 311,
+      "lengthSec": 44,
       "onScreen": "BUG OF THE DAY: A copy that was switched off",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The copy constructor is marked equals delete. The compiler says use of deleted function. That is on purpose. It switches a function off. Remove the delete line if the class should be copyable."
+      "narration": "Bug of the Day. The copy constructor is marked equals delete. The compiler says use of deleted function. That is on purpose. It switches a function off. Remove the delete line if the class should be copyable. Sometimes copying makes no sense. A file handle or a network link cannot be copied. You write equals delete after the function, and the compiler refuses any call. The error appears at once, and not at run time."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 261,
+      "startSec": 355,
       "lengthSec": 8,
       "onScreen": "The programmer said, I will copy my homework. The compiler replied, that is a shallow excuse.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -267,19 +267,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 269,
-      "lengthSec": 20,
+      "startSec": 363,
+      "lengthSec": 29,
       "onScreen": "Task card: decide: rule of three or zero",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make a class that holds a name and a list of marks. Decide if it needs a destructor. Explain in a comment. Write your answer in the comments."
+      "narration": "Your challenge: Make a class that holds a name and a list of marks. Decide if it needs a destructor. Explain in a comment. Hint: a vector of marks and a string name look after themselves, so no destructor is needed. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 289,
+      "startSec": 392,
       "lengthSec": 15,
       "onScreen": "Next: EP 61 · Inheritance",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -296,7 +296,7 @@
     "why": "Writing equals delete switches a function off. The compiler then refuses any code that calls it. Use it when copying makes no sense."
   },
   "pun": "\"The programmer said, I will copy my homework. The compiler replied, that is a shallow excuse.\"",
-  "challenge": "Make a class that holds a name and a list of marks. Decide if it needs a destructor. Explain in a comment.",
+  "challenge": "Make a class that holds a name and a list of marks. Decide if it needs a destructor. Explain in a comment. Hint: a vector of marks and a string name look after themselves, so no destructor is needed.",
   "challengeAnswer": "It needs no destructor, because string and vector manage their own memory. That is the rule of zero.",
   "shorts": [
     {

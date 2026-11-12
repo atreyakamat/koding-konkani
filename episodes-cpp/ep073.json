@@ -3,7 +3,7 @@
   "ep": 73,
   "title": "unordered_map",
   "module": 8,
-  "lengthSec": 297,
+  "lengthSec": 392,
   "colours": {
     "bg": "#D9C9FF",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ unordered_map: Fast Look-Up | C++ Programming EP 73",
-    "description": "In this episode you will use unordered_map for fast look-up, count words and know when at throws, with Xecxec the crab. 0:00 Intro · 0:15 unordered_map · 0:54 Count the words · 1:34 Counts after the loop · 2:04 Second program · 3:04 Recap · 3:34 Bug of the Day · 4:22 Challenge · 4:42 Next episode",
+    "description": "In this episode you will use unordered_map for fast look-up, count words and know when at throws, with Xecxec the crab. 0:00 Intro · 0:15 unordered_map · 1:26 Count the words · 2:35 Counts after the loop · 3:15 Second program · 4:24 Recap · 4:54 Bug of the Day · 5:51 Challenge · 6:17 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "unordered_map"
       },
       {
-        "t": "0:54",
+        "t": "1:26",
         "label": "Count the words"
       },
       {
-        "t": "1:34",
+        "t": "2:35",
         "label": "Counts after the loop"
       },
       {
-        "t": "2:04",
+        "t": "3:15",
         "label": "Second program"
       },
       {
-        "t": "3:04",
+        "t": "4:24",
         "label": "Recap"
       },
       {
-        "t": "3:34",
+        "t": "4:54",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:22",
+        "t": "5:51",
         "label": "Challenge"
       },
       {
-        "t": "4:42",
+        "t": "6:17",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 39,
+      "lengthSec": 71,
       "onScreen": "\"unordered_map\": numbered lines (1. It finds a key fast; 2. The order of the keys is not defined; 3. At throws an exception for a missing key) and an analogy card: a locker room: the key number takes you straight to the locker, but the lockers are not in order",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "An unordered map uses a hash table. It finds a key in about one step, even when the map is big. The price is that the keys have no order. It has the same functions as map. Use map when you need sorted keys. Use unordered map when you need speed. Think of a locker room. The key number takes you straight to the locker.",
+      "narration": "An unordered map uses a hash table. It finds a key in about one step, even when the map is big. The price is that the keys have no order. It has the same functions as map. Use map when you need sorted keys. Use unordered map when you need speed. Think of a locker room. The key number takes you straight to the locker. How does a hash table work? A function turns each key into a number. The number tells which slot to look in. So the computer goes straight to the slot, with no search. Two keys can land in the same slot, and the table handles that. Because the slots are scattered, the order of the keys looks random.",
       "points": [
         "It finds a key fast",
         "The order of the keys is not defined",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 54,
-      "lengthSec": 40,
+      "startSec": 86,
+      "lengthSec": 69,
       "onScreen": "count.cpp: an unordered_map counts how many times each word appears",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 8] The keys are words, and the values are counts. [HL 9] This stream lets us read the words of a text, one by one. [HL 11] The loop reads each word. [HL 12] The first time, square brackets create the key with zero, and then plus plus makes it one. Later it counts up. [HL 14] Sun appears three times, sea once, and there are four different words.",
+      "narration": "[HL 8] The keys are words, and the values are counts. [HL 9] This stream lets us read the words of a text, one by one. [HL 11] The loop reads each word. [HL 12] The first time, square brackets create the key with zero, and then plus plus makes it one. Later it counts up. [HL 14] Sun appears three times, sea once, and there are four different words. [HL 8] The map has strings as keys and ints as values. [HL 9] A string stream lets us read words from a text, as if from a keyboard. [HL 11] The loop reads one word at a time. [HL 12] Plus plus adds one to the count of that word. A new word starts at zero, so it becomes one. [HL 14] The word sun appears three times.",
       "code": {
         "file": "count.cpp",
         "source": "#include <iostream>\n#include <sstream>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    unordered_map<string, int> counts;\n    istringstream text(\"goa sun sea sun sand sun\");\n    string word;\n    while (text >> word) {\n        counts[word]++;\n    }\n    cout << counts[\"sun\"] << \" \" << counts[\"sea\"] << \" \" << counts.size() << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 94,
-      "lengthSec": 30,
+      "startSec": 155,
+      "lengthSec": 40,
       "onScreen": "a table: each word and its count",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "After the loop, each word has a count. Sun has three. The others have one. The table shows an example order. A real unordered map may list them in any order, so never rely on it.",
+      "narration": "After the loop, each word has a count. Sun has three. The others have one. The table shows an example order. A real unordered map may list them in any order, so never rely on it. Notice that the counting needed no if statement. The square brackets make a new key with zero, and the plus plus does the rest. This is a short way to count words.",
       "diagram": {
         "kind": "table",
         "caption": "a table: each word and its count",
@@ -169,14 +169,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 124,
-      "lengthSec": 40,
+      "startSec": 195,
+      "lengthSec": 45,
       "onScreen": "lookup.cpp: count and find check a key without creating it",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 7] The map holds two prices. [HL 8] Count returns one if the key exists. [HL 9] It returns zero if it does not. [HL 10] Find gives an iterator to the pair. [HL 11] The value is forty-five. Neither call changes the map.",
+      "narration": "[HL 7] The map holds two prices. [HL 8] Count returns one if the key exists. [HL 9] It returns zero if it does not. [HL 10] Find gives an iterator to the pair. [HL 11] The value is forty-five. Neither call changes the map. [HL 8] The count function answers one if the key exists, and zero if it does not. [HL 9] It never changes the map. [HL 10] The find function gives an iterator to the pair. [HL 11] The arrow with second reaches the value. The price of rice is forty-five.",
       "code": {
         "file": "lookup.cpp",
         "source": "#include <iostream>\n#include <string>\n#include <unordered_map>\nusing namespace std;\n\nint main() {\n    unordered_map<string, int> price = {{\"fish\", 120}, {\"rice\", 45}};\n    cout << price.count(\"fish\") << endl;\n    cout << price.count(\"tea\") << endl;\n    auto it = price.find(\"rice\");\n    cout << it->second << endl;\n    return 0;\n}",
@@ -186,20 +186,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 164,
-      "lengthSec": 20,
+      "startSec": 240,
+      "lengthSec": 24,
       "onScreen": "Terminal: g++ -std=c++20 lookup.cpp -o lookup then ./lookup",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as lookup dot cpp. Compile it with g plus plus. Then run the program. The program prints one, zero, and forty-five."
+      "narration": "Save the file as lookup dot cpp. Compile it with g plus plus. Then run the program. The program prints one, zero, and forty-five. Notice the three numbers. One for fish, zero for tea, and forty-five for rice."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 184,
+      "startSec": 264,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -217,20 +217,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 214,
-      "lengthSec": 40,
+      "startSec": 294,
+      "lengthSec": 49,
       "onScreen": "BUG OF THE DAY: At with a missing key",
       "animation": "Butter banner drops in with a buzzer; the program crashes and the run-time error appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We call at with a key that is not in the map. The program stops. It says terminate called after throwing an instance of out of range. At is the safe way, because it tells you about the problem. Check with count first."
+      "narration": "Bug of the Day. We call at with a key that is not in the map. The program stops. It says terminate called after throwing an instance of out of range. At is the safe way, because it tells you about the problem. Check with count first. The at function is the strict version of square brackets. It does not create anything. If the key is missing, it throws an exception. Test with count first, or wrap the call in try and catch."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 254,
+      "startSec": 343,
       "lengthSec": 8,
       "onScreen": "The hash map said, I do not care about order. I only care that you find me fast.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -242,19 +242,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 262,
-      "lengthSec": 20,
+      "startSec": 351,
+      "lengthSec": 26,
       "onScreen": "Task card: count letters",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Count how often each letter appears in the word Konkani. Print the count of the letter n. Write your answer in the comments."
+      "narration": "Your challenge: Count how often each letter appears in the word Konkani. Print the count of the letter n. Hint: loop over the letters of the word, and add one to the count of each letter. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 282,
+      "startSec": 377,
       "lengthSec": 15,
       "onScreen": "Next: EP 74 · set and unordered_set",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -271,7 +271,7 @@
     "why": "At checks the key, and it throws an exception when the key is missing. Check with count first, or catch the exception."
   },
   "pun": "\"The hash map said, I do not care about order. I only care that you find me fast.\"",
-  "challenge": "Count how often each letter appears in the word Konkani. Print the count of the letter n.",
+  "challenge": "Count how often each letter appears in the word Konkani. Print the count of the letter n. Hint: loop over the letters of the word, and add one to the count of each letter.",
   "challengeAnswer": "Loop over the letters. Add one to counts at the letter. Print counts of the letter n, which is two.",
   "shorts": [
     {

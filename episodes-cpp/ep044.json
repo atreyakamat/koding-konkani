@@ -3,7 +3,7 @@
   "ep": 44,
   "title": "Pointer arithmetic",
   "module": 5,
-  "lengthSec": 299,
+  "lengthSec": 382,
   "colours": {
     "bg": "#D9C9FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Pointer Arithmetic: p + 1 Explained | C++ Programming EP 44",
-    "description": "In this episode you will explain what p plus one means, subtract two pointers and know which operations are allowed, with Xecxec the crab. 0:00 Intro · 0:15 Pointer arithmetic · 0:56 Hop by one item · 1:36 One step is one item · 2:06 Second program · 3:06 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "description": "In this episode you will explain what p plus one means, subtract two pointers and know which operations are allowed, with Xecxec the crab. 0:00 Intro · 0:15 Pointer arithmetic · 1:29 Hop by one item · 2:18 One step is one item · 3:02 Second program · 4:16 Recap · 4:46 Bug of the Day · 5:41 Challenge · 6:07 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Pointer arithmetic"
       },
       {
-        "t": "0:56",
+        "t": "1:29",
         "label": "Hop by one item"
       },
       {
-        "t": "1:36",
+        "t": "2:18",
         "label": "One step is one item"
       },
       {
-        "t": "2:06",
+        "t": "3:02",
         "label": "Second program"
       },
       {
-        "t": "3:06",
+        "t": "4:16",
         "label": "Recap"
       },
       {
-        "t": "3:36",
+        "t": "4:46",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:24",
+        "t": "5:41",
         "label": "Challenge"
       },
       {
-        "t": "4:44",
+        "t": "6:07",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 41,
+      "lengthSec": 74,
       "onScreen": "\"Pointer arithmetic\": numbered lines (1. P plus one moves by one item, not one byte; 2. Two pointers can be subtracted; 3. Two pointers cannot be added) and an analogy card: a bus conductor: one stop forward means one seat, not one metre",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "When you add one to a pointer, it moves by one item, not by one byte. For an int pointer, the address grows by four. For a double pointer, it grows by eight. You may subtract two pointers into the same array. You get the number of items between them. You may not add two pointers. Think of a bus conductor. One stop forward means one seat, not one metre.",
+      "narration": "When you add one to a pointer, it moves by one item, not by one byte. For an int pointer, the address grows by four. For a double pointer, it grows by eight. You may subtract two pointers into the same array. You get the number of items between them. You may not add two pointers. Think of a bus conductor. One stop forward means one seat, not one metre. Pointer arithmetic is a big help, because the compiler does the byte counting for you. You think in items, and it works in bytes. The rules are strict. You may add a number to a pointer, subtract a number, or subtract two pointers. You may not add two pointers, multiply them or divide them. Those have no meaning.",
       "points": [
         "P plus one moves by one item, not one byte",
         "Two pointers can be subtracted",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 56,
-      "lengthSec": 40,
+      "startSec": 89,
+      "lengthSec": 49,
       "onScreen": "hop.cpp: p plus one moves four bytes for an int",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] P points to the first item. [HL 7] Q is p plus one. It points to the second item. [HL 8] It reads six. [HL 9] Now we measure the distance in bytes. The answer is four. P plus one moved by the size of one int.",
+      "narration": "[HL 6] P points to the first item. [HL 7] Q is p plus one. It points to the second item. [HL 8] It reads six. [HL 9] Now we measure the distance in bytes. The answer is four. P plus one moved by the size of one int. [HL 5] The array holds five, six, seven and eight. [HL 6] The pointer p points at five. [HL 7] Adding one gives q, which points at six. [HL 8] The star on q gives six. [HL 9] The byte count between p and q is four, because one int is four bytes.",
       "code": {
         "file": "hop.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[4] = {5, 6, 7, 8};\n    int* p = a;\n    int* q = p + 1;\n    cout << *q << endl;\n    cout << (reinterpret_cast<char*>(q) - reinterpret_cast<char*>(p)) << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 96,
-      "lengthSec": 30,
+      "startSec": 138,
+      "lengthSec": 44,
       "onScreen": "a table: expression, items moved and bytes moved",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Look at the table. P plus one moves one item. For an int pointer that is four bytes. For a double pointer it is eight bytes. The compiler does the multiplication for you. Subtracting two pointers gives a count of items, not bytes.",
+      "narration": "Look at the table. P plus one moves one item. For an int pointer that is four bytes. For a double pointer it is eight bytes. The compiler does the multiplication for you. Subtracting two pointers gives a count of items, not bytes. Notice the two columns in the table. One column counts items, and the other counts bytes. The same step is one item for the compiler, and four bytes for the machine.",
       "diagram": {
         "kind": "table",
         "caption": "a table: expression, items moved and bytes moved",
@@ -179,14 +179,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 126,
-      "lengthSec": 40,
+      "startSec": 182,
+      "lengthSec": 50,
       "onScreen": "distance.cpp: end minus start gives the number of items",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] Start points to the first item. [HL 7] End points right after the last item. [HL 8] The difference is five. That is the number of items. [HL 9] End minus one points to the last item. It reads five. This idea powers many library functions.",
+      "narration": "[HL 6] Start points to the first item. [HL 7] End points right after the last item. [HL 8] The difference is five. That is the number of items. [HL 9] End minus one points to the last item. It reads five. This idea powers many library functions. [HL 6] The pointer start points at the first item. [HL 7] The pointer end points right after the last item. This place is allowed, but you must not read it. [HL 8] Subtracting two pointers gives the number of items, which is five. [HL 9] End minus one points at the last item.",
       "code": {
         "file": "distance.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[5] = {1, 2, 3, 4, 5};\n    int* start = a;\n    int* end = a + 5;\n    cout << (end - start) << endl;\n    cout << *(end - 1) << endl;\n    return 0;\n}",
@@ -196,20 +196,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 166,
-      "lengthSec": 20,
+      "startSec": 232,
+      "lengthSec": 24,
       "onScreen": "Terminal: g++ -std=c++20 distance.cpp -o distance then ./distance",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as distance dot cpp. Compile it with g plus plus. Then run the program. The program prints five and five."
+      "narration": "Save the file as distance dot cpp. Compile it with g plus plus. Then run the program. The program prints five and five. The two prints are five and then five again, because the last item is five."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 186,
+      "startSec": 256,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -227,20 +227,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 216,
-      "lengthSec": 40,
+      "startSec": 286,
+      "lengthSec": 47,
       "onScreen": "BUG OF THE DAY: Adding two pointers",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We add two pointers to find the middle. The compiler says invalid operands to binary plus. The sum of two addresses has no meaning. Take the distance between them, halve it, and add it to the low pointer."
+      "narration": "Bug of the Day. We add two pointers to find the middle. The compiler says invalid operands to binary plus. The sum of two addresses has no meaning. Take the distance between them, halve it, and add it to the low pointer. Two addresses added together point to nowhere useful. But the distance between two addresses is a real count. So to find the middle, add half of the distance to the low pointer. Binary search with pointers uses this rule."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 256,
+      "startSec": 333,
       "lengthSec": 8,
       "onScreen": "A pointer asked for directions. The answer was, just add one.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -252,19 +252,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 264,
-      "lengthSec": 20,
+      "startSec": 341,
+      "lengthSec": 26,
       "onScreen": "Task card: print an array backwards with a pointer",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Use a pointer that starts at the last item. Print the array in reverse order. Write your answer in the comments."
+      "narration": "Your challenge: Use a pointer that starts at the last item. Print the array in reverse order. Hint: start the pointer at the array plus the size minus one, and move it back with minus minus. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 284,
+      "startSec": 367,
       "lengthSec": 15,
       "onScreen": "Next: EP 45 · nullptr and dangling pointers",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -281,7 +281,7 @@
     "why": "The sum of two addresses has no meaning. The distance between two addresses does. Add half of the distance to the low pointer."
   },
   "pun": "\"A pointer asked for directions. The answer was, just add one.\"",
-  "challenge": "Use a pointer that starts at the last item. Print the array in reverse order.",
+  "challenge": "Use a pointer that starts at the last item. Print the array in reverse order. Hint: start the pointer at the array plus the size minus one, and move it back with minus minus.",
   "challengeAnswer": "Start p at a plus size minus one. Loop while p is not before a. Print star p, and subtract one from p.",
   "shorts": [
     {

@@ -3,7 +3,7 @@
   "ep": 80,
   "title": "Move semantics",
   "module": 9,
-  "lengthSec": 288,
+  "lengthSec": 373,
   "colours": {
     "bg": "#FFF4EC",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Move Semantics: std::move Explained | C++ Programming EP 80",
-    "description": "In this episode you will tell a copy from a move, use std move and write a move constructor, with Xecxec the crab. 0:00 Intro · 0:15 Move semantics · 0:45 Move a vector · 1:25 Before and after the move · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "description": "In this episode you will tell a copy from a move, use std move and write a move constructor, with Xecxec the crab. 0:00 Intro · 0:15 Move semantics · 1:10 Move a vector · 2:10 Before and after the move · 2:46 Second program · 4:15 Recap · 4:45 Bug of the Day · 5:33 Challenge · 5:58 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Move semantics"
       },
       {
-        "t": "0:45",
+        "t": "1:10",
         "label": "Move a vector"
       },
       {
-        "t": "1:25",
+        "t": "2:10",
         "label": "Before and after the move"
       },
       {
-        "t": "1:55",
+        "t": "2:46",
         "label": "Second program"
       },
       {
-        "t": "2:55",
+        "t": "4:15",
         "label": "Recap"
       },
       {
-        "t": "3:25",
+        "t": "4:45",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:13",
+        "t": "5:33",
         "label": "Challenge"
       },
       {
-        "t": "4:33",
+        "t": "5:58",
         "label": "Next episode"
       }
     ],
@@ -96,13 +96,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 55,
       "onScreen": "\"Move semantics\": numbered lines (1. A copy duplicates the data; 2. A move steals the data; 3. Do not use an object after you move it) and an analogy card: handing over the keys instead of building a second house",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A copy makes a second set of data. A move hands the data to the new owner, and leaves the old owner empty. Think of handing over the keys of a house. You do not build a second house.",
+      "narration": "A copy makes a second set of data. A move hands the data to the new owner, and leaves the old owner empty. Think of handing over the keys of a house. You do not build a second house. Copying a big vector is slow, because every item is copied. If the old vector is about to die anyway, a copy is a waste. A move steals the inside of the old object. It takes only a few steps, whatever the size. The old object stays valid, but you should not rely on its value.",
       "points": [
         "A copy duplicates the data",
         "A move steals the data",
@@ -116,15 +116,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 40,
+      "startSec": 70,
+      "lengthSec": 60,
       "onScreen": "move.cpp: a vector is moved, and the old vector is empty",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 7] Vector a owns three numbers on the heap. [HL 8] Move does not move anything by itself. It marks a as safe to steal from. [HL 8] The vector b takes the heap block from a. No number is copied. [HL 9] Vector b has three items. [HL 10] For a vector, the standard says the old vector is empty. The output is one.",
+      "narration": "[HL 7] Vector a owns three numbers on the heap. [HL 8] Move does not move anything by itself. It marks a as safe to steal from. [HL 8] The vector b takes the heap block from a. No number is copied. [HL 9] Vector b has three items. [HL 10] For a vector, the standard says the old vector is empty. The output is one. [HL 7] The vector a holds three items. [HL 8] The move function does not move anything by itself. It marks a as a thing that may be emptied. The new vector b then takes the inside of a. [HL 9] The size of b is three. [HL 10] The vector a is now empty.",
       "code": {
         "file": "move.cpp",
         "source": "#include <iostream>\n#include <utility>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> a = {1, 2, 3};\n    vector<int> b = move(a);\n    cout << b.size() << endl;\n    cout << a.empty() << endl;\n    return 0;\n}",
@@ -134,14 +134,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 85,
-      "lengthSec": 30,
+      "startSec": 130,
+      "lengthSec": 36,
       "onScreen": "memory boxes: b now owns the block, a points to nothing",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "After the move, b owns the heap block. The pointer inside a is null. Only the pointer moved. The three numbers did not move at all.",
+      "narration": "After the move, b owns the heap block. The pointer inside a is null. Only the pointer moved. The three numbers did not move at all. Notice that no new data was made. The new vector only took the pointer to the old data. The old vector got an empty pointer. It is like handing over the keys of a house.",
       "memory": {
         "frames": [
           {
@@ -196,14 +196,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 115,
-      "lengthSec": 40,
+      "startSec": 166,
+      "lengthSec": 65,
       "onScreen": "buffer.cpp: a class with a move constructor steals the pointer",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 11] Two ampersands make an rvalue reference. This is the move constructor. [HL 11] It copies only the pointer. [HL 12] Then it sets the old pointer to null, so the old object frees nothing. [HL 16] We delete the copy constructor, because a copy would be wrong here. [HL 27] This line calls the move constructor. The output is made, moved, and then one hundred and zero.",
+      "narration": "[HL 11] Two ampersands make an rvalue reference. This is the move constructor. [HL 11] It copies only the pointer. [HL 12] Then it sets the old pointer to null, so the old object frees nothing. [HL 16] We delete the copy constructor, because a copy would be wrong here. [HL 27] This line calls the move constructor. The output is made, moved, and then one hundred and zero. [HL 11] The move constructor takes an rvalue reference, written with two ampersands. It steals the pointer. [HL 12] The old object gets a null pointer, so its destructor does no harm. [HL 16] The copy is switched off, so a Buffer can only be moved. [HL 28] The new Buffer has size one hundred, and the old one has size zero.",
       "code": {
         "file": "buffer.cpp",
         "source": "#include <cstddef>\n#include <iostream>\n#include <utility>\nusing namespace std;\n\nclass Buffer {\npublic:\n    explicit Buffer(size_t n) : data_(new int[n]), size_(n) {\n        cout << \"made\" << endl;\n    }\n    Buffer(Buffer&& other) noexcept : data_(other.data_), size_(other.size_) {\n        other.data_ = nullptr;\n        other.size_ = 0;\n        cout << \"moved\" << endl;\n    }\n    Buffer(const Buffer&) = delete;\n    ~Buffer() { delete[] data_; }\n    size_t size() const { return size_; }\n\nprivate:\n    int* data_;\n    size_t size_;\n};\n\nint main() {\n    Buffer a(100);\n    Buffer b = move(a);\n    cout << b.size() << \" \" << a.size() << endl;\n    return 0;\n}",
@@ -213,20 +213,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 155,
-      "lengthSec": 20,
+      "startSec": 231,
+      "lengthSec": 24,
       "onScreen": "Terminal: g++ -std=c++20 buffer.cpp -o buffer then ./buffer",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as buffer dot cpp. Compile it with g plus plus. Then run the program. The program prints made, moved, and then one hundred and zero."
+      "narration": "Save the file as buffer dot cpp. Compile it with g plus plus. Then run the program. The program prints made, moved, and then one hundred and zero. Notice the output. Made, moved, and then one hundred, zero."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 175,
+      "startSec": 255,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -244,7 +244,7 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 205,
+      "startSec": 285,
       "lengthSec": 40,
       "onScreen": "BUG OF THE DAY: Copying a unique pointer",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
@@ -252,12 +252,12 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We copy a unique pointer. The compiler says the copy constructor is deleted. One owner only. Use move to hand over the ownership."
+      "narration": "Bug of the Day. We copy a unique pointer. The compiler says the copy constructor is deleted. One owner only. Use move to hand over the ownership. A unique pointer has one owner. If you could copy it, there would be two owners, and a double delete. So copying is not allowed. To give the object to another pointer, use move, and the old pointer becomes empty."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 245,
+      "startSec": 325,
       "lengthSec": 8,
       "onScreen": "Why did the string move out? It wanted its own space, with no copies.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -269,19 +269,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 253,
-      "lengthSec": 20,
+      "startSec": 333,
+      "lengthSec": 25,
       "onScreen": "Task card: move a string into a vector",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make a string, and push it into a vector of strings with move. Print the vector size. Write your answer in the comments."
+      "narration": "Your challenge: Make a string, and push it into a vector of strings with move. Print the vector size. Hint: the move function turns the string into something that the vector may take apart. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 273,
+      "startSec": 358,
       "lengthSec": 15,
       "onScreen": "Next: EP 81 · optional and variant",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -298,7 +298,7 @@
     "why": "A unique pointer has one owner only, so it cannot be copied. Move it to give the ownership to another pointer."
   },
   "pun": "\"Why did the string move out? It wanted its own space, with no copies.\"",
-  "challenge": "Make a string, and push it into a vector of strings with move. Print the vector size.",
+  "challenge": "Make a string, and push it into a vector of strings with move. Print the vector size. Hint: the move function turns the string into something that the vector may take apart.",
   "challengeAnswer": "Call push back with move of the string. The vector size is one.",
   "shorts": [
     {

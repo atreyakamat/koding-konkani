@@ -3,7 +3,7 @@
   "ep": 27,
   "title": "Scope and lifetime",
   "module": 3,
-  "lengthSec": 292,
+  "lengthSec": 379,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Scope: Local, Global and Block Variables | C++ Programming EP 27",
-    "description": "In this episode you will tell local from global variables, know that a block has its own scope and use a static local variable, with Xecxec the crab. 0:00 Intro · 0:15 Scope and lifetime · 0:48 Local and global · 1:28 Where each variable lives · 1:58 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:37 Next episode",
+    "description": "In this episode you will tell local from global variables, know that a block has its own scope and use a static local variable, with Xecxec the crab. 0:00 Intro · 0:15 Scope and lifetime · 1:17 Local and global · 2:19 Where each variable lives · 2:59 Second program · 4:15 Recap · 4:45 Bug of the Day · 5:38 Challenge · 6:04 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Scope and lifetime"
       },
       {
-        "t": "0:48",
+        "t": "1:17",
         "label": "Local and global"
       },
       {
-        "t": "1:28",
+        "t": "2:19",
         "label": "Where each variable lives"
       },
       {
-        "t": "1:58",
+        "t": "2:59",
         "label": "Second program"
       },
       {
-        "t": "2:59",
+        "t": "4:15",
         "label": "Recap"
       },
       {
-        "t": "3:29",
+        "t": "4:45",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:17",
+        "t": "5:38",
         "label": "Challenge"
       },
       {
-        "t": "4:37",
+        "t": "6:04",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 33,
+      "lengthSec": 62,
       "onScreen": "\"Scope and lifetime\": numbered lines (1. A variable lives inside its braces; 2. A global variable lives for the whole program; 3. A static local keeps its value between calls) and an analogy card: rooms in a house: a box in the kitchen is not visible in the bedroom",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Scope is the part of the program where a name is visible. A variable made inside braces dies at the closing brace. A global variable lives for the whole program. A static local variable stays alive between calls. Think of rooms in a house. A box in the kitchen is not visible from the bedroom.",
+      "narration": "Scope is the part of the program where a name is visible. A variable made inside braces dies at the closing brace. A global variable lives for the whole program. A static local variable stays alive between calls. Think of rooms in a house. A box in the kitchen is not visible from the bedroom. Think of scope as the walls of a room. A name made inside a pair of braces can be used only inside those braces. Global variables are visible everywhere, and that is a danger. Any function can change them, so bugs are hard to trace. Prefer local variables, and pass values with parameters.",
       "points": [
         "A variable lives inside its braces",
         "A global variable lives for the whole program",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 48,
-      "lengthSec": 40,
+      "startSec": 77,
+      "lengthSec": 62,
       "onScreen": "scope.cpp: a global counter and a local variable",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 4] Visits lives outside every function, so it is global. It lives for the whole program. [HL 7] Local lives inside enter. It is created at each call. [HL 8] Each call adds one to visits. [HL 13] The first call prints visits one. [HL 14] The second call prints visits two. Local is ten each time, because it is made fresh.",
+      "narration": "[HL 4] Visits lives outside every function, so it is global. It lives for the whole program. [HL 7] Local lives inside enter. It is created at each call. [HL 8] Each call adds one to visits. [HL 13] The first call prints visits one. [HL 14] The second call prints visits two. Local is ten each time, because it is made fresh. [HL 4] This variable is outside every function. All functions in the file can use it. [HL 7] This variable is born each time the function starts, and it dies when the function ends. [HL 8] Because visits is global, the count survives between calls. [HL 9] Compare the two numbers on the output. One grows, and the other stays the same.",
       "code": {
         "file": "scope.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint visits = 0;\n\nvoid enter() {\n    int local = 10;\n    visits++;\n    cout << \"visits=\" << visits << \" local=\" << local << endl;\n}\n\nint main() {\n    enter();\n    enter();\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 88,
-      "lengthSec": 30,
+      "startSec": 139,
+      "lengthSec": 40,
       "onScreen": "memory boxes: a global in the static region and a local on the stack",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the two regions. Visits lives in the static region. It stays until the program ends. Local lives on the stack. It is made when enter starts, and it is destroyed when enter ends.",
+      "narration": "Look at the two regions. Visits lives in the static region. It stays until the program ends. Local lives on the stack. It is made when enter starts, and it is destroyed when enter ends. Notice where each variable lives. The stack is busy and changes with every call. The static region stays the same for the whole run. Your choice of scope decides where the data goes.",
       "memory": {
         "frames": [
           {
@@ -174,14 +174,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 118,
-      "lengthSec": 40,
+      "startSec": 179,
+      "lengthSec": 47,
       "onScreen": "counter.cpp: a static local keeps its value between calls",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 5] The word static makes ticket live for the whole program. The start value is set only once. [HL 6] Each call adds one. [HL 7] It returns the new ticket. [HL 11] The first call prints one hundred and one. [HL 12] The second prints one hundred and two, and so on.",
+      "narration": "[HL 5] The word static makes ticket live for the whole program. The start value is set only once. [HL 6] Each call adds one. [HL 7] It returns the new ticket. [HL 11] The first call prints one hundred and one. [HL 12] The second prints one hundred and two, and so on. [HL 5] The word static does not change who can see the name. Only the function can see ticket. It changes how long the variable lives. [HL 7] Because the value stays, the next call continues where the last call stopped.",
       "code": {
         "file": "counter.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint next_ticket() {\n    static int ticket = 100;\n    ticket++;\n    return ticket;\n}\n\nint main() {\n    cout << next_ticket() << endl;\n    cout << next_ticket() << endl;\n    cout << next_ticket() << endl;\n    return 0;\n}",
@@ -191,20 +191,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 158,
-      "lengthSec": 21,
+      "startSec": 226,
+      "lengthSec": 29,
       "onScreen": "Terminal: g++ -std=c++20 counter.cpp -o counter then ./counter",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as counter dot cpp. Compile it with g plus plus. Then run the program. The program prints one hundred and one, one hundred and two, and one hundred and three."
+      "narration": "Save the file as counter dot cpp. Compile it with g plus plus. Then run the program. The program prints one hundred and one, one hundred and two, and one hundred and three. Think of a ticket machine at a station. Each press gives the next number."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 179,
+      "startSec": 255,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -222,20 +222,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 209,
-      "lengthSec": 40,
+      "startSec": 285,
+      "lengthSec": 45,
       "onScreen": "BUG OF THE DAY: Using a variable outside its block",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Total is made inside the loop, but we print it after the loop. The compiler says total was not declared in this scope. The variable died at the closing brace. Make it before the loop."
+      "narration": "Bug of the Day. Total is made inside the loop, but we print it after the loop. The compiler says total was not declared in this scope. The variable died at the closing brace. Make it before the loop. A name is valid only between its braces. Here, total lives inside the loop, and the loop ends before the print. Move the line that makes total above the loop. Then the variable lives through the whole function."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 249,
+      "startSec": 330,
       "lengthSec": 8,
       "onScreen": "Why was the local variable sad? It knew that it would be gone at the closing brace.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -247,19 +247,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 257,
-      "lengthSec": 20,
+      "startSec": 338,
+      "lengthSec": 26,
       "onScreen": "Task card: count function calls",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a function that counts how many times it was called. Use a static local variable. Call it four times. Write your answer in the comments."
+      "narration": "Your challenge: Write a function that counts how many times it was called. Use a static local variable. Call it four times. Hint: a static local variable keeps its value, so add one to it each time. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 277,
+      "startSec": 364,
       "lengthSec": 15,
       "onScreen": "Next: EP 28 · Recursion",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -276,7 +276,7 @@
     "why": "Total dies at the closing brace of the loop. Make it before the loop, so it lives until the end of main."
   },
   "pun": "\"Why was the local variable sad? It knew that it would be gone at the closing brace.\"",
-  "challenge": "Write a function that counts how many times it was called. Use a static local variable. Call it four times.",
+  "challenge": "Write a function that counts how many times it was called. Use a static local variable. Call it four times. Hint: a static local variable keeps its value, so add one to it each time.",
   "challengeAnswer": "Write static int calls equals zero inside the function. Add one on each call, and print it. After four calls it shows four.",
   "shorts": [
     {

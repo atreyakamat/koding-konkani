@@ -3,7 +3,7 @@
   "ep": 58,
   "title": "Static members",
   "module": 6,
-  "lengthSec": 299,
+  "lengthSec": 365,
   "colours": {
     "bg": "#FFD8BE",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Static Members: Shared by All Objects | C++ Programming EP 58",
-    "description": "In this episode you will share one value among all objects, write a static member function and know that static functions have no this, with Xecxec the crab. 0:00 Intro · 0:15 Static members · 0:56 Count the objects · 1:36 One shared copy · 2:06 Second program · 3:06 Recap · 3:36 Bug of the Day · 4:24 Challenge · 4:44 Next episode",
+    "description": "In this episode you will share one value among all objects, write a static member function and know that static functions have no this, with Xecxec the crab. 0:00 Intro · 0:15 Static members · 1:21 Count the objects · 2:18 One shared copy · 2:51 Second program · 3:55 Recap · 4:25 Bug of the Day · 5:24 Challenge · 5:50 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Static members"
       },
       {
-        "t": "0:56",
+        "t": "1:21",
         "label": "Count the objects"
       },
       {
-        "t": "1:36",
+        "t": "2:18",
         "label": "One shared copy"
       },
       {
-        "t": "2:06",
+        "t": "2:51",
         "label": "Second program"
       },
       {
-        "t": "3:06",
+        "t": "3:55",
         "label": "Recap"
       },
       {
-        "t": "3:36",
+        "t": "4:25",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:24",
+        "t": "5:24",
         "label": "Challenge"
       },
       {
-        "t": "4:44",
+        "t": "5:50",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 41,
+      "lengthSec": 66,
       "onScreen": "\"Static members\": numbered lines (1. A static member belongs to the class; 2. All objects share one copy; 3. A static function has no this) and an analogy card: a school notice board: one board, shared by every classroom",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A normal member belongs to each object. A static member belongs to the class. There is only one copy, and every object shares it. Since C plus plus seventeen, you can write inline static and set the value inside the class. A static function has no this pointer, so it can only use static members. Think of a school notice board. There is one board, and every classroom reads it.",
+      "narration": "A normal member belongs to each object. A static member belongs to the class. There is only one copy, and every object shares it. Since C plus plus seventeen, you can write inline static and set the value inside the class. A static function has no this pointer, so it can only use static members. Think of a school notice board. There is one board, and every classroom reads it. Static members are useful for shared facts. How many tickets were sold? What is the tax rate? These facts belong to the class, not to one object. You reach a static member with the class name and two colons. You do not need an object.",
       "points": [
         "A static member belongs to the class",
         "All objects share one copy",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 56,
-      "lengthSec": 40,
+      "startSec": 81,
+      "lengthSec": 57,
       "onScreen": "tally.cpp: a static counter counts how many objects exist",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] Sold is static. It belongs to the class, and there is one copy. [HL 7] Each constructor adds one to the shared count. [HL 11] Three objects are made, so the count goes up three times. [HL 12] We reach a static member with the class name and two colons. The answer is three.",
+      "narration": "[HL 6] Sold is static. It belongs to the class, and there is one copy. [HL 7] Each constructor adds one to the shared count. [HL 11] Three objects are made, so the count goes up three times. [HL 12] We reach a static member with the class name and two colons. The answer is three. [HL 6] The static member is made once, for the whole class. The word inline gives it its value inside the class. [HL 7] Each constructor adds one to the shared count. [HL 11] Three objects are made, so the constructor runs three times. [HL 12] The class name and two colons reach the count. The answer is three.",
       "code": {
         "file": "tally.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Ticket {\npublic:\n    inline static int sold = 0;\n    Ticket() { sold++; }\n};\n\nint main() {\n    Ticket a, b, c;\n    cout << Ticket::sold << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 96,
-      "lengthSec": 30,
+      "startSec": 138,
+      "lengthSec": 33,
       "onScreen": "three objects, and one static value in the static region",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the static region. One box holds sold. The three objects do not each have their own copy. They all read and write the same box.",
+      "narration": "Look at the static region. One box holds sold. The three objects do not each have their own copy. They all read and write the same box. Notice that the three objects have their own data, but they share one counter. The counter lives in the static region, so it stays until the program ends.",
       "memory": {
         "frames": [
           {
@@ -184,14 +184,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 126,
-      "lengthSec": 40,
+      "startSec": 171,
+      "lengthSec": 42,
       "onScreen": "statfunc.cpp: a static function works without an object",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] A static function belongs to the class. We can call it without an object. [HL 10] We write the class name, two colons, and the function name. One hundred degrees Celsius is two hundred twelve degrees Fahrenheit.",
+      "narration": "[HL 6] A static function belongs to the class. We can call it without an object. [HL 10] We write the class name, two colons, and the function name. One hundred degrees Celsius is two hundred twelve degrees Fahrenheit. [HL 6] A static function does not need an object. It works only with its parameters and with other static members. [HL 10] We call it with the class name. The answer for one hundred degrees is two hundred and twelve.",
       "code": {
         "file": "statfunc.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Temperature {\npublic:\n    static double to_fahrenheit(double c) { return c * 9 / 5 + 32; }\n};\n\nint main() {\n    cout << Temperature::to_fahrenheit(100) << endl;\n    return 0;\n}",
@@ -201,20 +201,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 166,
-      "lengthSec": 20,
+      "startSec": 213,
+      "lengthSec": 22,
       "onScreen": "Terminal: g++ -std=c++20 statfunc.cpp -o statfunc then ./statfunc",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as statfunc dot cpp. Compile it with g plus plus. Then run the program. The program prints two hundred twelve."
+      "narration": "Save the file as statfunc dot cpp. Compile it with g plus plus. Then run the program. The program prints two hundred twelve. Notice that no Temperature object exists in this program. The function still works."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 186,
+      "startSec": 235,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -232,20 +232,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 216,
-      "lengthSec": 40,
+      "startSec": 265,
+      "lengthSec": 51,
       "onScreen": "BUG OF THE DAY: A static function that uses a normal member",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. A static function tries to read a normal member. The compiler says invalid use of member in static member function. A static function has no object, so it has no count. Make the function normal, and call it on an object."
+      "narration": "Bug of the Day. A static function tries to read a normal member. The compiler says invalid use of member in static member function. A static function has no object, so it has no count. Make the function normal, and call it on an object. A static function has no object behind it, so it has no this pointer. A normal member belongs to an object, and none exists. The compiler cannot decide which count to read. Make the member static too, or make the function normal."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 256,
+      "startSec": 316,
       "lengthSec": 8,
       "onScreen": "Why is the static member so popular? Everybody shares it, and nobody pays rent.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -257,19 +257,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 264,
-      "lengthSec": 20,
+      "startSec": 324,
+      "lengthSec": 26,
       "onScreen": "Task card: count the objects",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a class with a static counter. Count how many objects exist. Print the count after you make five. Write your answer in the comments."
+      "narration": "Your challenge: Write a class with a static counter. Count how many objects exist. Print the count after you make five. Hint: add one to the static counter in the constructor, and print it after five objects. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 284,
+      "startSec": 350,
       "lengthSec": 15,
       "onScreen": "Next: EP 59 · Operator overloading",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -286,7 +286,7 @@
     "why": "A normal member belongs to an object. A static function has no object, so it has no count to read."
   },
   "pun": "\"Why is the static member so popular? Everybody shares it, and nobody pays rent.\"",
-  "challenge": "Write a class with a static counter. Count how many objects exist. Print the count after you make five.",
+  "challenge": "Write a class with a static counter. Count how many objects exist. Print the count after you make five. Hint: add one to the static counter in the constructor, and print it after five objects.",
   "challengeAnswer": "Use inline static int count equals zero. Add one in the constructor. Print the class name, two colons, and count. It shows five.",
   "shorts": [
     {

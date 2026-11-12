@@ -3,7 +3,7 @@
   "ep": 57,
   "title": "this and const methods",
   "module": 6,
-  "lengthSec": 294,
+  "lengthSec": 382,
   "colours": {
     "bg": "#FFD8BE",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ this Pointer and const Member Functions | C++ Programming EP 57",
-    "description": "In this episode you will explain the this pointer, chain calls by returning a reference and mark read-only functions const, with Xecxec the crab. 0:00 Intro · 0:15 this and const methods · 0:49 Chain the calls · 1:29 Where this points · 1:59 Second program · 2:59 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:39 Next episode",
+    "description": "In this episode you will explain the this pointer, chain calls by returning a reference and mark read-only functions const, with Xecxec the crab. 0:00 Intro · 0:15 this and const methods · 1:22 Chain the calls · 2:19 Where this points · 2:59 Second program · 4:11 Recap · 4:42 Bug of the Day · 5:37 Challenge · 6:07 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "this and const methods"
       },
       {
-        "t": "0:49",
+        "t": "1:22",
         "label": "Chain the calls"
       },
       {
-        "t": "1:29",
+        "t": "2:19",
         "label": "Where this points"
       },
       {
-        "t": "1:59",
+        "t": "2:59",
         "label": "Second program"
       },
       {
-        "t": "2:59",
+        "t": "4:11",
         "label": "Recap"
       },
       {
-        "t": "3:30",
+        "t": "4:42",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:18",
+        "t": "5:37",
         "label": "Challenge"
       },
       {
-        "t": "4:39",
+        "t": "6:07",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 34,
+      "lengthSec": 67,
       "onScreen": "\"this and const methods\": numbered lines (1. This points to the current object; 2. Return star this to chain calls; 3. A const function promises not to change the object) and an analogy card: saying me: every object can talk about itself",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Inside a member function, the name this is a pointer to the current object. You rarely need to write it, but it explains how member functions work. A function that returns star this lets you chain calls. A const function promises not to change the object. Think of the word me. Every object can talk about itself.",
+      "narration": "Inside a member function, the name this is a pointer to the current object. You rarely need to write it, but it explains how member functions work. A function that returns star this lets you chain calls. A const function promises not to change the object. Think of the word me. Every object can talk about itself. Inside a member function, the object needs a way to refer to itself. The name this is that way. It holds the address of the current object. Most of the time, you do not write it. If you write count underscore, the compiler reads this arrow count underscore. You need this when you want to return the object itself.",
       "points": [
         "This points to the current object",
         "Return star this to chain calls",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 49,
-      "lengthSec": 40,
+      "startSec": 82,
+      "lengthSec": 57,
       "onScreen": "chain.cpp: each function returns the object, so calls chain",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 8] Add returns a reference to a Counter. [HL 9] It adds n to the count. [HL 10] This is a pointer to the current object. Star this is the object itself. [HL 17] Because add returns the object, we can call add again on the result. [HL 18] Two plus three plus ten gives fifteen.",
+      "narration": "[HL 8] Add returns a reference to a Counter. [HL 9] It adds n to the count. [HL 10] This is a pointer to the current object. Star this is the object itself. [HL 17] Because add returns the object, we can call add again on the result. [HL 18] Two plus three plus ten gives fifteen. [HL 8] The function returns a reference to a Counter. [HL 9] It adds the number to the count. [HL 10] Star this means, the object that I am running on. The function hands the object back. [HL 17] Because each call returns the same object, the next call can follow at once. Two, then three, then ten, give fifteen.",
       "code": {
         "file": "chain.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 0;\n\npublic:\n    Counter& add(int n) {\n        count_ += n;\n        return *this;\n    }\n    int get() const { return count_; }\n};\n\nint main() {\n    Counter c;\n    c.add(2).add(3).add(10);\n    cout << c.get() << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 89,
-      "lengthSec": 30,
+      "startSec": 139,
+      "lengthSec": 40,
       "onScreen": "the pointer this points at the object c",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Inside add, the hidden pointer this holds the address of c. That is how add knows which count to change. Each object has its own address, so each call changes the right object.",
+      "narration": "Inside add, the hidden pointer this holds the address of c. That is how add knows which count to change. Each object has its own address, so each call changes the right object. Notice the chain. Each add returns the same object, so the calls link like beads on a string. Streams use this trick. That is why you can write many arrows in one cout line.",
       "memory": {
         "frames": [
           {
@@ -175,14 +175,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 119,
-      "lengthSec": 40,
+      "startSec": 179,
+      "lengthSec": 49,
       "onScreen": "constfunc.cpp: show promises not to change the object",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 8] This function changes the object, so it is not const. [HL 9] The word const after the brackets is a promise. This function does not change the object. [HL 13] Here the object is const. [HL 14] A const object may only call const functions. Get is const, so the call is fine.",
+      "narration": "[HL 8] This function changes the object, so it is not const. [HL 9] The word const after the brackets is a promise. This function does not change the object. [HL 13] Here the object is const. [HL 14] A const object may only call const functions. Get is const, so the call is fine. [HL 8] The increment function can change the object. [HL 9] The get function cannot, and it says so with const. [HL 13] The object c is const, so it may call only const functions. Get is fine, and it prints seven.",
       "code": {
         "file": "constfunc.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Counter {\n    int count_ = 7;\n\npublic:\n    void increment() { count_++; }\n    int get() const { return count_; }\n};\n\nint main() {\n    const Counter c;\n    cout << c.get() << endl;\n    return 0;\n}",
@@ -192,20 +192,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 159,
-      "lengthSec": 20,
+      "startSec": 228,
+      "lengthSec": 23,
       "onScreen": "Terminal: g++ -std=c++20 constfunc.cpp -o constfunc then ./constfunc",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as constfunc dot cpp. Compile it with g plus plus. Then run the program. The program prints seven."
+      "narration": "Save the file as constfunc dot cpp. Compile it with g plus plus. Then run the program. The program prints seven. Notice that the program prints seven. The call to get is allowed on a const object."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 179,
+      "startSec": 251,
       "lengthSec": 31,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -223,20 +223,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 210,
-      "lengthSec": 40,
+      "startSec": 282,
+      "lengthSec": 47,
       "onScreen": "BUG OF THE DAY: A non-const call on a const object",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The object is const, but we call increment. The compiler says passing const Counter as this argument discards qualifiers. That sounds hard, but it means this. A const object cannot call a function that may change it."
+      "narration": "Bug of the Day. The object is const, but we call increment. The compiler says passing const Counter as this argument discards qualifiers. That sounds hard, but it means this. A const object cannot call a function that may change it. A const object is a promise that nothing changes. A function without const might change something, so the compiler refuses the call. The best fix is to mark every function that only reads as const. Then const objects work smoothly."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 250,
+      "startSec": 329,
       "lengthSec": 8,
       "onScreen": "The object looked in the mirror and said, I like this.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -248,19 +248,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 258,
-      "lengthSec": 21,
+      "startSec": 337,
+      "lengthSec": 30,
       "onScreen": "Task card: mark the right functions const",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const. Write your answer in the comments."
+      "narration": "Your challenge: Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const. Hint: put the word const after the brackets of get and print, but not of set. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 279,
+      "startSec": 367,
       "lengthSec": 15,
       "onScreen": "Next: EP 58 · Static members",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -277,7 +277,7 @@
     "why": "A const object may not change, so it may not call a function that can change it. Remove const from the object, or do not call that function."
   },
   "pun": "\"The object looked in the mirror and said, I like this.\"",
-  "challenge": "Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const.",
+  "challenge": "Write a class with a private value. Add three functions: set, get and print. Mark every function that does not change the object as const. Hint: put the word const after the brackets of get and print, but not of set.",
   "challengeAnswer": "Get and print do not change the object, so mark both const. Set changes the value, so it stays non-const.",
   "shorts": [
     {

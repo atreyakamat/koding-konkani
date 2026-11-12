@@ -3,7 +3,7 @@
   "ep": 85,
   "title": "Linked list",
   "module": 10,
-  "lengthSec": 305,
+  "lengthSec": 425,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Linked List from Scratch | C++ Programming EP 85",
-    "description": "In this episode you will build a linked list with nodes, walk along a list and free every node, with Xecxec the crab. 0:00 Intro · 0:15 Linked list · 0:45 Build, walk and free · 1:41 Three nodes on the heap · 2:11 Second program · 3:11 Recap · 3:42 Bug of the Day · 4:30 Challenge · 4:50 Next episode",
+    "description": "In this episode you will build a linked list with nodes, walk along a list and free every node, with Xecxec the crab. 0:00 Intro · 0:15 Linked list · 1:19 Build, walk and free · 2:55 Three nodes on the heap · 3:35 Second program · 5:01 Recap · 5:32 Bug of the Day · 6:25 Challenge · 6:50 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Linked list"
       },
       {
-        "t": "0:45",
+        "t": "1:19",
         "label": "Build, walk and free"
       },
       {
-        "t": "1:41",
+        "t": "2:55",
         "label": "Three nodes on the heap"
       },
       {
-        "t": "2:11",
+        "t": "3:35",
         "label": "Second program"
       },
       {
-        "t": "3:11",
+        "t": "5:01",
         "label": "Recap"
       },
       {
-        "t": "3:42",
+        "t": "5:32",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:30",
+        "t": "6:25",
         "label": "Challenge"
       },
       {
-        "t": "4:50",
+        "t": "6:50",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 64,
       "onScreen": "\"Linked list\": numbered lines (1. A node holds a value and a pointer; 2. The head points to the first node; 3. Free every node when you finish) and an analogy card: train cars: each car knows only the next car",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A node holds a value and a pointer to the next node. The last node points to null. A pointer called head points to the first node. Think of train cars. Each car knows only the next car. To reach the last car, you walk along the train.",
+      "narration": "A node holds a value and a pointer to the next node. The last node points to null. A pointer called head points to the first node. Think of train cars. Each car knows only the next car. To reach the last car, you walk along the train. Why learn a linked list when we have a vector? The list teaches you how data structures are built from nodes and pointers. Every tree and graph uses the same idea. A vector keeps its items side by side. A list keeps them anywhere, and the pointers join them. Adding to the front of a list is quick, because nothing else moves.",
       "points": [
         "A node holds a value and a pointer",
         "The head points to the first node",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 56,
+      "startSec": 79,
+      "lengthSec": 96,
       "onScreen": "list.cpp: three nodes are linked, printed, and freed",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 4] A node has a value and a pointer to the next node. [HL 10] New makes the first node on the heap. The head pointer keeps its address. [HL 11] The next pointer of the first node points to a second node. [HL 12] The same step adds a third node. [HL 13] The walker cur starts at the head. [HL 13] Each step moves cur to the next node. The loop stops at null. The output is ten twenty thirty. [HL 18] To free the list, first save the next pointer. [HL 19] Then delete the node. [HL 20] Then move on. If you delete first, you lose the way forward.",
+      "narration": "[HL 4] A node has a value and a pointer to the next node. [HL 10] New makes the first node on the heap. The head pointer keeps its address. [HL 11] The next pointer of the first node points to a second node. [HL 12] The same step adds a third node. [HL 13] The walker cur starts at the head. [HL 13] Each step moves cur to the next node. The loop stops at null. The output is ten twenty thirty. [HL 18] To free the list, first save the next pointer. [HL 19] Then delete the node. [HL 20] Then move on. If you delete first, you lose the way forward. [HL 4] A node holds a value and a pointer to the next node. [HL 10] The first node holds ten, and head points at it. [HL 11] The second node is added through the next pointer of the first. [HL 13] The loop starts at head, and follows the next pointers. It stops at null. [HL 17] At the end, we free the nodes one by one. We save the next pointer first, or we would lose the rest of the list.",
       "code": {
         "file": "list.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nstruct Node {\n    int value;\n    Node* next;\n};\n\nint main() {\n    Node* head = new Node{10, nullptr};\n    head->next = new Node{20, nullptr};\n    head->next->next = new Node{30, nullptr};\n    for (Node* cur = head; cur != nullptr; cur = cur->next) {\n        cout << cur->value << \" \";\n    }\n    cout << endl;\n    while (head != nullptr) {\n        Node* next = head->next;\n        delete head;\n        head = next;\n    }\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 101,
-      "lengthSec": 30,
+      "startSec": 175,
+      "lengthSec": 40,
       "onScreen": "memory boxes: head and three nodes joined by next pointers",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "The head pointer lives on the stack. The three nodes live on the heap. Each next pointer holds the address of the next node. The last pointer is null, so the walk stops there.",
+      "narration": "The head pointer lives on the stack. The three nodes live on the heap. Each next pointer holds the address of the next node. The last pointer is null, so the walk stops there. Notice that the nodes can sit far apart in memory. Only the arrows connect them. If you lose the head, you lose the whole list. So never overwrite head before you save it.",
       "memory": {
         "frames": [
           {
@@ -213,14 +213,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 131,
-      "lengthSec": 40,
+      "startSec": 215,
+      "lengthSec": 61,
       "onScreen": "push.cpp: a function adds a node at the front of the list",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 9] This function makes a new node, and its next pointer is the old head. The new node is now the first one. [HL 29] An empty list has a null head. [HL 31] Each call returns the new head, so we store it. [HL 33] We add one, then two, then three, each at the front. The list prints three two one. [HL 34] Free list deletes every node.",
+      "narration": "[HL 9] This function makes a new node, and its next pointer is the old head. The new node is now the first one. [HL 29] An empty list has a null head. [HL 31] Each call returns the new head, so we store it. [HL 33] We add one, then two, then three, each at the front. The list prints three two one. [HL 34] Free list deletes every node. [HL 9] This function makes a new node, and its next pointer is the old head. The new node becomes the new head. [HL 31] Pushing one, two and three gives the list three, two, one. [HL 33] The print function walks the list. [HL 34] The free function releases every node.",
       "code": {
         "file": "push.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nstruct Node {\n    int value;\n    Node* next;\n};\n\nNode* push_front(Node* head, int value) {\n    return new Node{value, head};\n}\n\nvoid print_list(const Node* head) {\n    for (const Node* cur = head; cur != nullptr; cur = cur->next) {\n        cout << cur->value << \" \";\n    }\n    cout << endl;\n}\n\nvoid free_list(Node* head) {\n    while (head != nullptr) {\n        Node* next = head->next;\n        delete head;\n        head = next;\n    }\n}\n\nint main() {\n    Node* head = nullptr;\n    for (int i = 1; i <= 3; ++i) {\n        head = push_front(head, i);\n    }\n    print_list(head);\n    free_list(head);\n    return 0;\n}",
@@ -230,20 +230,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 171,
-      "lengthSec": 20,
+      "startSec": 276,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 push.cpp -o push then ./push",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as push dot cpp. Compile it with g plus plus. Then run the program. The program prints ten twenty thirty, and then three two one."
+      "narration": "Save the file as push dot cpp. Compile it with g plus plus. Then run the program. The program prints ten twenty thirty, and then three two one. Notice the order. The last number pushed is the first one printed."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 191,
+      "startSec": 301,
       "lengthSec": 31,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -261,20 +261,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 222,
-      "lengthSec": 40,
+      "startSec": 332,
+      "lengthSec": 45,
       "onScreen": "BUG OF THE DAY: The walk stops one node early",
       "animation": "Butter banner drops in with a buzzer; the program runs and the wrong output appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The list holds one, two and three, but the output shows only one and two. The loop tests the next pointer. It stops on the last node, before it prints. Test cur itself."
+      "narration": "Bug of the Day. The list holds one, two and three, but the output shows only one and two. The loop tests the next pointer. It stops on the last node, before it prints. Test cur itself. Think about what the loop test means. When cur is the last node, its next pointer is null. If the test looks at next, the loop stops one node too early. Test cur itself, and the last node is included."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 262,
+      "startSec": 377,
       "lengthSec": 8,
       "onScreen": "Why did the node feel lonely? It only ever knew the next one.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -286,19 +286,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 270,
-      "lengthSec": 20,
+      "startSec": 385,
+      "lengthSec": 25,
       "onScreen": "Task card: count the nodes",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a function that counts the nodes in a linked list. An empty list has zero nodes. Write your answer in the comments."
+      "narration": "Your challenge: Write a function that counts the nodes in a linked list. An empty list has zero nodes. Hint: start the count at zero, walk the list, and add one for each node. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 290,
+      "startSec": 410,
       "lengthSec": 15,
       "onScreen": "Next: EP 86 · Binary tree",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -315,7 +315,7 @@
     "why": "The test cur next not null stops at the last node, before it prints. Test cur itself. It is null only after the last node."
   },
   "pun": "\"Why did the node feel lonely? It only ever knew the next one.\"",
-  "challenge": "Write a function that counts the nodes in a linked list. An empty list has zero nodes.",
+  "challenge": "Write a function that counts the nodes in a linked list. An empty list has zero nodes. Hint: start the count at zero, walk the list, and add one for each node.",
   "challengeAnswer": "Set a counter to zero. Walk with a pointer from the head until null. Add one on each step.",
   "shorts": [
     {

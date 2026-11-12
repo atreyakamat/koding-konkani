@@ -3,7 +3,7 @@
   "ep": 37,
   "title": "More string tools",
   "module": 4,
-  "lengthSec": 288,
+  "lengthSec": 365,
   "colours": {
     "bg": "#FFE58A",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Strings: replace, erase, stoi and to_string | C++ Programming EP 37",
-    "description": "In this episode you will change a string with replace and erase, turn text into a number with stoi and turn a number into text with to_string, with Xecxec the crab. 0:00 Intro · 0:15 More string tools · 0:45 Edit a string · 1:25 Edit tools · 1:55 Second program · 2:55 Recap · 3:25 Bug of the Day · 4:13 Challenge · 4:33 Next episode",
+    "description": "In this episode you will change a string with replace and erase, turn text into a number with stoi and turn a number into text with to_string, with Xecxec the crab. 0:00 Intro · 0:15 More string tools · 1:07 Edit a string · 2:08 Edit tools · 2:46 Second program · 3:57 Recap · 4:27 Bug of the Day · 5:24 Challenge · 5:50 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "More string tools"
       },
       {
-        "t": "0:45",
+        "t": "1:07",
         "label": "Edit a string"
       },
       {
-        "t": "1:25",
+        "t": "2:08",
         "label": "Edit tools"
       },
       {
-        "t": "1:55",
+        "t": "2:46",
         "label": "Second program"
       },
       {
-        "t": "2:55",
+        "t": "3:57",
         "label": "Recap"
       },
       {
-        "t": "3:25",
+        "t": "4:27",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:13",
+        "t": "5:24",
         "label": "Challenge"
       },
       {
-        "t": "4:33",
+        "t": "5:50",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 52,
       "onScreen": "\"More string tools\": numbered lines (1. Replace and erase edit a string; 2. stoi turns text into an int; 3. to_string turns a number into text) and an analogy card: a tailor: cut a piece, stitch a new piece, measure the cloth",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A string has editing tools. Replace swaps a piece of text for another. Erase removes a piece. Insert adds a piece. Stoi turns text into an int. To string turns a number into text. Think of a tailor. He cuts a piece, stitches a new piece, and measures the cloth.",
+      "narration": "A string has editing tools. Replace swaps a piece of text for another. Erase removes a piece. Insert adds a piece. Stoi turns text into an int. To string turns a number into text. Think of a tailor. He cuts a piece, stitches a new piece, and measures the cloth. Text is everywhere in programs. Names, messages and file paths are all strings. A good programmer knows the common tools. Most tools use an index and a count. Replace and erase both say, start here, and take this many letters.",
       "points": [
         "Replace and erase edit a string",
         "stoi turns text into an int",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 40,
+      "startSec": 67,
+      "lengthSec": 61,
       "onScreen": "edit.cpp: replace and erase change the text in place",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] The text is Goa is sunny. [HL 7] Replace starts at index seven, cuts five letters, and puts in warm. The text is now Goa is warm. [HL 9] Erase starts at index three and removes three letters. Those letters are a space, the letter i and the letter s. [HL 10] The text is now Goa warm.",
+      "narration": "[HL 6] The text is Goa is sunny. [HL 7] Replace starts at index seven, cuts five letters, and puts in warm. The text is now Goa is warm. [HL 9] Erase starts at index three and removes three letters. Those letters are a space, the letter i and the letter s. [HL 10] The text is now Goa warm. [HL 6] The string is Goa is sunny. The word sunny starts at index seven. [HL 7] Replace takes the start, the length, and the new text. Five letters from index seven become warm. [HL 9] Erase takes a start and a length too. We remove three letters from index three. The result is shorter, and the space moves.",
       "code": {
         "file": "edit.cpp",
         "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string s = \"Goa is sunny\";\n    s.replace(7, 5, \"warm\");\n    cout << s << endl;\n    s.erase(3, 3);\n    cout << s << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 85,
-      "lengthSec": 30,
+      "startSec": 128,
+      "lengthSec": 38,
       "onScreen": "a table of string edit calls",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "The table lists four calls. Each call changes the text, or makes a new piece. Index and length are always the two numbers. The first number is where to start. The second is how many letters.",
+      "narration": "The table lists four calls. Each call changes the text, or makes a new piece. Index and length are always the two numbers. The first number is where to start. The second is how many letters. Notice that each tool changes the string itself. It does not make a new one. If you need the old text later, make a copy before you edit.",
       "diagram": {
         "kind": "table",
         "caption": "a table of string edit calls",
@@ -169,14 +169,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 115,
-      "lengthSec": 40,
+      "startSec": 166,
+      "lengthSec": 46,
       "onScreen": "convert.cpp: stoi and to_string convert between text and numbers",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] The text holds the two characters four and two. [HL 7] Stoi reads them as the number forty-two. [HL 8] Now we can do maths. Forty-two plus one is forty-three. [HL 9] To string turns eighty-four into text. [HL 10] Plus joins it to the label.",
+      "narration": "[HL 6] The text holds the two characters four and two. [HL 7] Stoi reads them as the number forty-two. [HL 8] Now we can do maths. Forty-two plus one is forty-three. [HL 9] To string turns eighty-four into text. [HL 10] Plus joins it to the label. [HL 7] Stoi turns the text forty-two into the number forty-two. Now we can use it in maths. [HL 8] Forty-two plus one is forty-three. [HL 9] To string goes the other way. It turns a number into text, so we can join it with other text.",
       "code": {
         "file": "convert.cpp",
         "source": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string text = \"42\";\n    int n = stoi(text);\n    cout << n + 1 << endl;\n    string label = \"Total: \" + to_string(n * 2);\n    cout << label << endl;\n    return 0;\n}",
@@ -186,20 +186,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 155,
-      "lengthSec": 20,
+      "startSec": 212,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 convert.cpp -o convert then ./convert",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as convert dot cpp. Compile it with g plus plus. Then run the program. The program prints forty-three, then Total colon eighty-four."
+      "narration": "Save the file as convert dot cpp. Compile it with g plus plus. Then run the program. The program prints forty-three, then Total colon eighty-four. Notice that the answer is a string, so we can add more text to it."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 175,
+      "startSec": 237,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -217,20 +217,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 205,
-      "lengthSec": 40,
+      "startSec": 267,
+      "lengthSec": 49,
       "onScreen": "BUG OF THE DAY: Stoi on text that is not a number",
       "animation": "Butter banner drops in with a buzzer; the program crashes and the run-time error appears in tomato; the fix slides in and the output turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We call stoi on the text abc. The program stops. It says terminate called after throwing an instance of invalid argument. Stoi cannot read letters as a number. Wrap the call in try and catch, and print a friendly message."
+      "narration": "Bug of the Day. We call stoi on the text abc. The program stops. It says terminate called after throwing an instance of invalid argument. Stoi cannot read letters as a number. Wrap the call in try and catch, and print a friendly message. Text like abc has no number in it. Stoi cannot guess one, so it throws an exception. A try block runs the risky line, and a catch block handles the problem. We study this in detail later in the course."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 245,
+      "startSec": 316,
       "lengthSec": 8,
       "onScreen": "I asked a string to become a number. It said, I need a moment to digit.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -242,19 +242,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 253,
-      "lengthSec": 20,
+      "startSec": 324,
+      "lengthSec": 26,
       "onScreen": "Task card: add two numbers from text",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Convert the texts twelve and thirty to ints with stoi. Print their sum as text with to string. Write your answer in the comments."
+      "narration": "Your challenge: Convert the texts twelve and thirty to ints with stoi. Print their sum as text with to string. Hint: call stoi on each text, add the two ints, and give the sum to to string. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 273,
+      "startSec": 350,
       "lengthSec": 15,
       "onScreen": "Next: EP 38 · C-style strings",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -271,7 +271,7 @@
     "why": "Stoi cannot read letters as a number, so it throws an exception. If nobody catches it, the program stops. Use try and catch to handle it."
   },
   "pun": "\"I asked a string to become a number. It said, I need a moment to digit.\"",
-  "challenge": "Convert the texts twelve and thirty to ints with stoi. Print their sum as text with to string.",
+  "challenge": "Convert the texts twelve and thirty to ints with stoi. Print their sum as text with to string. Hint: call stoi on each text, add the two ints, and give the sum to to string.",
   "challengeAnswer": "Call stoi on each text. Add the two ints, and pass the sum to to string. The answer is forty-two.",
   "shorts": [
     {

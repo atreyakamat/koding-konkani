@@ -3,7 +3,7 @@
   "ep": 89,
   "title": "Common mistakes and exam questions",
   "module": 10,
-  "lengthSec": 292,
+  "lengthSec": 383,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Common Mistakes and Exam Questions | C++ Programming EP 89",
-    "description": "In this episode you will spot six classic traps, explain integer division and wraparound and compare floating point numbers safely, with Xecxec the crab. 0:00 Intro · 0:15 Common mistakes and exam questions · 0:49 Division and wraparound · 1:29 Six classic traps · 1:59 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:37 Next episode",
+    "description": "In this episode you will spot six classic traps, explain integer division and wraparound and compare floating point numbers safely, with Xecxec the crab. 0:00 Intro · 0:15 Common mistakes and exam questions · 1:13 Division and wraparound · 2:25 Six classic traps · 2:55 Second program · 4:15 Recap · 4:45 Bug of the Day · 5:41 Challenge · 6:08 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Common mistakes and exam questions"
       },
       {
-        "t": "0:49",
+        "t": "1:13",
         "label": "Division and wraparound"
       },
       {
-        "t": "1:29",
+        "t": "2:25",
         "label": "Six classic traps"
       },
       {
-        "t": "1:59",
+        "t": "2:55",
         "label": "Second program"
       },
       {
-        "t": "2:59",
+        "t": "4:15",
         "label": "Recap"
       },
       {
-        "t": "3:29",
+        "t": "4:45",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:17",
+        "t": "5:41",
         "label": "Challenge"
       },
       {
-        "t": "4:37",
+        "t": "6:08",
         "label": "Next episode"
       }
     ],
@@ -96,13 +96,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 34,
+      "lengthSec": 58,
       "onScreen": "\"Common mistakes and exam questions\": numbered lines (1. Integer division drops the decimals; 2. Small types wrap around; 3. Never compare doubles with equals) and an analogy card: banana peels on the road: easy to see once you know them",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Most wrong answers come from a few old traps. Integer division drops the decimals. A small type wraps around when it is too small. A double is not exact, so equals can fail. Also, never return a reference to a local variable. Never use a moved object. Never forget to free what you made with new.",
+      "narration": "Most wrong answers come from a few old traps. Integer division drops the decimals. A small type wraps around when it is too small. A double is not exact, so equals can fail. Also, never return a reference to a local variable. Never use a moved object. Never forget to free what you made with new. Exam questions love tricks. They are not unfair. They test whether you know how the language works in truth. Read every line slowly. Ask three questions. What is the type? What is the value now? Does anything change the value before it is used?",
       "points": [
         "Integer division drops the decimals",
         "Small types wrap around",
@@ -116,15 +116,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 49,
-      "lengthSec": 40,
+      "startSec": 73,
+      "lengthSec": 72,
       "onScreen": "traps.cpp: integer division and a char that wraps around",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] Both numbers are ints, so the answer is an int. The decimals are cut, and the answer is three. [HL 6] An unsigned char holds values from zero to two hundred and fifty-five. [HL 7] Adding ten goes past the top, and the value wraps around to zero. [HL 8] The cast to int prints the number, not a letter. The answer is four. Exam tip. Always ask what the type can hold.",
+      "narration": "[HL 5] Both numbers are ints, so the answer is an int. The decimals are cut, and the answer is three. [HL 6] An unsigned char holds values from zero to two hundred and fifty-five. [HL 7] Adding ten goes past the top, and the value wraps around to zero. [HL 8] The cast to int prints the number, not a letter. The answer is four. Exam tip. Always ask what the type can hold. [HL 5] Both numbers are ints, so the division gives three, not three point five. [HL 6] An unsigned char holds numbers from zero to two hundred and fifty-five. [HL 7] Adding ten to two hundred and fifty gives two hundred and sixty, which does not fit. The value wraps around to four. [HL 8] The cast to int shows the number, and not a letter.",
       "code": {
         "file": "traps.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << 7 / 2 << endl;\n    unsigned char c = 250;\n    c += 10;\n    cout << static_cast<int>(c) << endl;\n    return 0;\n}",
@@ -134,12 +134,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 89,
+      "startSec": 145,
       "lengthSec": 30,
       "onScreen": "a table of six mistakes, the symptom and the fix",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Here are the six traps. Each one has a symptom and a fix. Learn the symptom, and the fix follows.",
+      "narration": "Here are the six traps. Each one has a symptom and a fix. Learn the symptom, and the fix follows. Notice the shape of each trap. A value is too small, too big or not exact. Once you see the pattern, you spot the trap at once.",
       "diagram": {
         "kind": "table",
         "caption": "a table of six mistakes, the symptom and the fix",
@@ -185,14 +185,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 119,
-      "lengthSec": 40,
+      "startSec": 175,
+      "lengthSec": 54,
       "onScreen": "floats.cpp: equals fails for doubles, and an epsilon test works",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] A double stores a close value, and not the exact value. [HL 7] So the test with equals is false. [HL 8] Instead, take the difference. If its size is smaller than a tiny epsilon, the numbers are equal for our purpose. This test is true.",
+      "narration": "[HL 6] A double stores a close value, and not the exact value. [HL 7] So the test with equals is false. [HL 8] Instead, take the difference. If its size is smaller than a tiny epsilon, the numbers are equal for our purpose. This test is true. [HL 6] The numbers zero point one and zero point two cannot be stored exactly in binary. The sum is a tiny bit different from zero point three. [HL 7] So the test with equals is false. [HL 8] The safe way is to compare the difference with a small limit. Then the test is true.",
       "code": {
         "file": "floats.cpp",
         "source": "#include <cmath>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    double a = 0.1 + 0.2;\n    cout << boolalpha << (a == 0.3) << endl;\n    cout << (fabs(a - 0.3) < 1e-9) << endl;\n    return 0;\n}",
@@ -202,20 +202,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 159,
-      "lengthSec": 20,
+      "startSec": 229,
+      "lengthSec": 26,
       "onScreen": "Terminal: g++ -std=c++20 floats.cpp -o floats then ./floats",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as floats dot cpp. Compile it with g plus plus. Then run the program. The program prints three, then four, then false, and then true."
+      "narration": "Save the file as floats dot cpp. Compile it with g plus plus. Then run the program. The program prints three, then four, then false, and then true. Notice the two answers. False for the exact test, and true for the safe test."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 179,
+      "startSec": 255,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -233,20 +233,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 209,
-      "lengthSec": 40,
+      "startSec": 285,
+      "lengthSec": 48,
       "onScreen": "BUG OF THE DAY: A reference to a local variable",
       "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The function returns a reference to a local variable. The compiler warns that it returns a reference to a local variable. The variable dies at the end of the function. Return by value."
+      "narration": "Bug of the Day. The function returns a reference to a local variable. The compiler warns that it returns a reference to a local variable. The variable dies at the end of the function. Return by value. A reference is only a nickname for a box. When the box dies at the end of the function, the nickname points at nothing. Return small values by value. For big values, return by value too. Modern C plus plus makes this cheap with moves."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 249,
+      "startSec": 333,
       "lengthSec": 8,
       "onScreen": "Why did the exam trap fail? We saw it coming.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -258,19 +258,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 257,
-      "lengthSec": 20,
+      "startSec": 341,
+      "lengthSec": 27,
       "onScreen": "Task card: fix three traps",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Fix this: a program prints the average of seven and two as three. Make it print three point five. Write your answer in the comments."
+      "narration": "Your challenge: Fix this: a program prints the average of seven and two as three. Make it print three point five. Hint: make one of the two numbers a double, for example by dividing by two point zero. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 277,
+      "startSec": 368,
       "lengthSec": 15,
       "onScreen": "Next: EP 90 · Finale: what you can build",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -287,7 +287,7 @@
     "why": "The local variable dies when the function ends, so the reference points to nothing. Return small values by value."
   },
   "pun": "\"Why did the exam trap fail? We saw it coming.\"",
-  "challenge": "Fix this: a program prints the average of seven and two as three. Make it print three point five.",
+  "challenge": "Fix this: a program prints the average of seven and two as three. Make it print three point five. Hint: make one of the two numbers a double, for example by dividing by two point zero.",
   "challengeAnswer": "Make one of the two numbers a double, or use a cast. Then the division keeps the decimals.",
   "shorts": [
     {

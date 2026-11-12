@@ -3,7 +3,7 @@
   "ep": 33,
   "title": "Two-dimensional arrays",
   "module": 4,
-  "lengthSec": 293,
+  "lengthSec": 379,
   "colours": {
     "bg": "#FFE58A",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ 2D Arrays: Rows and Columns | C++ Programming EP 33",
-    "description": "In this episode you will make a table with rows and columns, read an item with two indexes and loop over a grid, with Xecxec the crab. 0:00 Intro · 0:15 Two-dimensional arrays · 0:49 A small grid · 1:29 Rows in memory · 1:59 Second program · 2:59 Recap · 3:29 Bug of the Day · 4:17 Challenge · 4:38 Next episode",
+    "description": "In this episode you will make a table with rows and columns, read an item with two indexes and loop over a grid, with Xecxec the crab. 0:00 Intro · 0:15 Two-dimensional arrays · 1:19 A small grid · 2:10 Rows in memory · 2:51 Second program · 4:07 Recap · 4:37 Bug of the Day · 5:35 Challenge · 6:04 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Two-dimensional arrays"
       },
       {
-        "t": "0:49",
+        "t": "1:19",
         "label": "A small grid"
       },
       {
-        "t": "1:29",
+        "t": "2:10",
         "label": "Rows in memory"
       },
       {
-        "t": "1:59",
+        "t": "2:51",
         "label": "Second program"
       },
       {
-        "t": "2:59",
+        "t": "4:07",
         "label": "Recap"
       },
       {
-        "t": "3:29",
+        "t": "4:37",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:17",
+        "t": "5:35",
         "label": "Challenge"
       },
       {
-        "t": "4:38",
+        "t": "6:04",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 34,
+      "lengthSec": 64,
       "onScreen": "\"Two-dimensional arrays\": numbered lines (1. A 2D array is an array of rows; 2. Two indexes: row first, then column; 3. Use nested loops to visit every cell) and an analogy card: a cinema seat plan: you need a row and a seat number",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A two-dimensional array is an array of rows. Each row is an array of columns. You need two indexes. The first is the row, and the second is the column. In memory, the rows sit one after another. Think of a cinema seat plan. To find your seat, you need a row and a seat number.",
+      "narration": "A two-dimensional array is an array of rows. Each row is an array of columns. You need two indexes. The first is the row, and the second is the column. In memory, the rows sit one after another. Think of a cinema seat plan. To find your seat, you need a row and a seat number. Two-dimensional arrays are for tables. A school timetable, a chess board and a game map all have rows and columns. Think of the first index as the row, and the second index as the seat in that row. Both indexes start at zero, so the first seat of the first row is grid zero zero.",
       "points": [
         "A 2D array is an array of rows",
         "Two indexes: row first, then column",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 49,
-      "lengthSec": 40,
+      "startSec": 79,
+      "lengthSec": 51,
       "onScreen": "seats.cpp: a grid with two rows and three columns",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 5] Two rows and three columns. Each inner pair of braces is one row. [HL 6] Row zero, column two is the number three. [HL 7] Row one, column zero is the number four.",
+      "narration": "[HL 5] Two rows and three columns. Each inner pair of braces is one row. [HL 6] Row zero, column two is the number three. [HL 7] Row one, column zero is the number four. [HL 5] The first number in the type is the rows, and the second is the columns. The inner braces show each row. The first row holds one, two and three. [HL 6] Row zero, column two is the last item of the first row. That is three. [HL 7] Row one, column zero is the first item of the second row. That is four.",
       "code": {
         "file": "seats.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int grid[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    cout << grid[0][2] << endl;\n    cout << grid[1][0] << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 89,
-      "lengthSec": 30,
+      "startSec": 130,
+      "lengthSec": 41,
       "onScreen": "six int boxes in a row: row zero first, then row one",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "In memory, the grid is one long row of six boxes. Row zero is the first three. Row one is the next three. The computer finds a cell with the sum row times three plus column.",
+      "narration": "In memory, the grid is one long row of six boxes. Row zero is the first three. Row one is the next three. The computer finds a cell with the sum row times three plus column. Notice the memory. The computer stores the second row right after the first row, as one long line. The two indexes are only a way to find the right place in that line.",
       "memory": {
         "frames": [
           {
@@ -189,14 +189,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 119,
-      "lengthSec": 40,
+      "startSec": 171,
+      "lengthSec": 48,
       "onScreen": "rowsum.cpp: nested loops add each row",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] The outer loop picks the row. [HL 7] Each row starts with a new sum of zero. [HL 8] The inner loop visits the three columns. [HL 9] Each cell is added to the sum. [HL 11] Row zero sums to six. Row one sums to fifteen.",
+      "narration": "[HL 6] The outer loop picks the row. [HL 7] Each row starts with a new sum of zero. [HL 8] The inner loop visits the three columns. [HL 9] Each cell is added to the sum. [HL 11] Row zero sums to six. Row one sums to fifteen. [HL 6] The outer loop picks a row. [HL 7] The sum starts at zero for every row. If we put it outside the loop, the rows would add up together. [HL 8] The inner loop walks along the columns. [HL 11] After the inner loop, we print the row sum.",
       "code": {
         "file": "rowsum.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int grid[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    for (int r = 0; r < 2; r++) {\n        int sum = 0;\n        for (int c = 0; c < 3; c++) {\n            sum += grid[r][c];\n        }\n        cout << \"Row \" << r << \": \" << sum << endl;\n    }\n    return 0;\n}",
@@ -206,20 +206,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 159,
-      "lengthSec": 20,
+      "startSec": 219,
+      "lengthSec": 28,
       "onScreen": "Terminal: g++ -std=c++20 rowsum.cpp -o rowsum then ./rowsum",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as rowsum dot cpp. Compile it with g plus plus. Then run the program. The program prints Row zero colon six, and Row one colon fifteen."
+      "narration": "Save the file as rowsum dot cpp. Compile it with g plus plus. Then run the program. The program prints Row zero colon six, and Row one colon fifteen. Check by hand. One plus two plus three is six. Four plus five plus six is fifteen."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 179,
+      "startSec": 247,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -237,20 +237,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 209,
-      "lengthSec": 40,
+      "startSec": 277,
+      "lengthSec": 50,
       "onScreen": "BUG OF THE DAY: A missing column size",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Both sizes are empty. The compiler says multidimensional array must have bounds for all dimensions except the first. It can count the rows from your list. But it needs the column size. Write the number two in the second brackets."
+      "narration": "Bug of the Day. Both sizes are empty. The compiler says multidimensional array must have bounds for all dimensions except the first. It can count the rows from your list. But it needs the column size. Write the number two in the second brackets. To find a seat, the compiler must know how long each row is. It can guess the number of rows from your list, but not the columns. So always write the column size. You may leave out only the first size."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 249,
+      "startSec": 327,
       "lengthSec": 8,
       "onScreen": "I made a grid of jokes. Every row had a punchline, and every column had a groan.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -262,19 +262,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 257,
-      "lengthSec": 21,
+      "startSec": 335,
+      "lengthSec": 29,
       "onScreen": "Task card: print a multiplication grid",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make a two by two grid with the numbers one, two, three and four. Print the diagonal: row zero column zero, and row one column one. Write your answer in the comments."
+      "narration": "Your challenge: Make a two by two grid with the numbers one, two, three and four. Print the diagonal: row zero column zero, and row one column one. Hint: the diagonal uses the same number for the row and the column. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 278,
+      "startSec": 364,
       "lengthSec": 15,
       "onScreen": "Next: EP 34 · std::array",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -291,7 +291,7 @@
     "why": "The compiler can count the rows from your list. It needs the column size to find the start of each row."
   },
   "pun": "\"I made a grid of jokes. Every row had a punchline, and every column had a groan.\"",
-  "challenge": "Make a two by two grid with the numbers one, two, three and four. Print the diagonal: row zero column zero, and row one column one.",
+  "challenge": "Make a two by two grid with the numbers one, two, three and four. Print the diagonal: row zero column zero, and row one column one. Hint: the diagonal uses the same number for the row and the column.",
   "challengeAnswer": "Use int grid with two by two braces. Print grid at zero zero, which is one, and grid at one one, which is four.",
   "shorts": [
     {

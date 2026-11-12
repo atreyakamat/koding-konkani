@@ -3,7 +3,7 @@
   "ep": 21,
   "title": "Functions",
   "module": 3,
-  "lengthSec": 294,
+  "lengthSec": 399,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Functions: Write Code Once, Use It Many Times | C++ Programming EP 21",
-    "description": "In this episode you will write a function, call a function many times and declare a function before main, with Xecxec the crab. 0:00 Intro · 0:15 Functions · 0:51 Your first function · 1:31 The call and the return · 2:01 Second program · 3:01 Recap · 3:31 Bug of the Day · 4:19 Challenge · 4:39 Next episode",
+    "description": "In this episode you will write a function, call a function many times and declare a function before main, with Xecxec the crab. 0:00 Intro · 0:15 Functions · 1:25 Your first function · 2:37 The call and the return · 3:15 Second program · 4:34 Recap · 5:04 Bug of the Day · 6:01 Challenge · 6:24 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Functions"
       },
       {
-        "t": "0:51",
+        "t": "1:25",
         "label": "Your first function"
       },
       {
-        "t": "1:31",
+        "t": "2:37",
         "label": "The call and the return"
       },
       {
-        "t": "2:01",
+        "t": "3:15",
         "label": "Second program"
       },
       {
-        "t": "3:01",
+        "t": "4:34",
         "label": "Recap"
       },
       {
-        "t": "3:31",
+        "t": "5:04",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:19",
+        "t": "6:01",
         "label": "Challenge"
       },
       {
-        "t": "4:39",
+        "t": "6:24",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 36,
+      "lengthSec": 70,
       "onScreen": "\"Functions\": numbered lines (1. A function is a named block of code; 2. You call it by its name; 3. It runs, then control returns) and an analogy card: a tea stall menu: one recipe, many cups",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A function is a named block of code. You write it once, and you call it by name as often as you like. When the function ends, the program returns to the line after the call. A function that gives nothing back has the type void. Think of a tea stall. There is one recipe, and it makes many cups.",
+      "narration": "A function is a named block of code. You write it once, and you call it by name as often as you like. When the function ends, the program returns to the line after the call. A function that gives nothing back has the type void. Think of a tea stall. There is one recipe, and it makes many cups. Why do programmers write functions? A long program becomes hard to read. Functions cut it into small parts, and each part has a name. When you need the same job again, you call the name, and you do not copy the code. Every program you have written has one function already. It is main. Now you learn to write your own.",
       "points": [
         "A function is a named block of code",
         "You call it by its name",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 51,
-      "lengthSec": 40,
+      "startSec": 85,
+      "lengthSec": 72,
       "onScreen": "greet.cpp: a void function prints a greeting",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 4] The word void means this function gives nothing back. Greet is the name. The empty brackets mean it takes nothing in. [HL 5] The body prints a line. [HL 9] In main, we call greet by its name. The program jumps to the function. [HL 10] We call it a second time. The line prints twice, and we wrote it once.",
+      "narration": "[HL 4] The word void means this function gives nothing back. Greet is the name. The empty brackets mean it takes nothing in. [HL 5] The body prints a line. [HL 9] In main, we call greet by its name. The program jumps to the function. [HL 10] We call it a second time. The line prints twice, and we wrote it once. [HL 4] Read the first line as a label. It says the type that comes back, the name, and the inputs. [HL 5] Everything between the braces is the body, and it runs only when someone calls the function. [HL 9] A call is the name with round brackets. Do not forget the brackets, or the compiler reads the name as a plain word. If you change the message in the body, both calls change together.",
       "code": {
         "file": "greet.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nvoid greet() {\n    cout << \"Namaskar from a function!\" << endl;\n}\n\nint main() {\n    greet();\n    greet();\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 91,
-      "lengthSec": 30,
+      "startSec": 157,
+      "lengthSec": 38,
       "onScreen": "a flow: main calls greet, greet runs, control returns",
       "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
       "sfx": [
         "pop"
       ],
-      "narration": "Follow the path. Main reaches the call. The program jumps into greet. Greet prints its line. Then control returns to main, to the line after the call.",
+      "narration": "Follow the path. Main reaches the call. The program jumps into greet. Greet prints its line. Then control returns to main, to the line after the call. Notice the jump. The program leaves main, runs the body, and comes back to the exact place where it left. It is like a bookmark. The computer remembers where to return, so you do not have to.",
       "diagram": {
         "kind": "flow",
         "caption": "a flow: main calls greet, greet runs, control returns",
@@ -171,14 +171,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 121,
-      "lengthSec": 40,
+      "startSec": 195,
+      "lengthSec": 55,
       "onScreen": "order.cpp: a declaration lets main come first",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 4] This line is a declaration. It tells the compiler that tea exists, and it ends with a semicolon. [HL 7] Now main can call tea, even though the body comes later. [HL 11] The full definition sits below main. Without the declaration, the compiler would not know the name tea at line seven.",
+      "narration": "[HL 4] This line is a declaration. It tells the compiler that tea exists, and it ends with a semicolon. [HL 7] Now main can call tea, even though the body comes later. [HL 11] The full definition sits below main. Without the declaration, the compiler would not know the name tea at line seven. [HL 4] A declaration is only a promise. It names the function, the inputs and the type, but it has no body. Large programs keep declarations at the top, or in a header file. [HL 11] The body can sit anywhere below, in the same file or in another file.",
       "code": {
         "file": "order.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nvoid tea();\n\nint main() {\n    tea();\n    return 0;\n}\n\nvoid tea() {\n    cout << \"One cup of tea\" << endl;\n}",
@@ -188,20 +188,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 161,
-      "lengthSec": 20,
+      "startSec": 250,
+      "lengthSec": 24,
       "onScreen": "Terminal: g++ -std=c++20 order.cpp -o order then ./order",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as order dot cpp. Compile it with g plus plus. Then run the program. The program prints One cup of tea."
+      "narration": "Save the file as order dot cpp. Compile it with g plus plus. Then run the program. The program prints One cup of tea. Notice that the declaration prints nothing. Only the call in main makes the output."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 181,
+      "startSec": 274,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -219,20 +219,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 211,
-      "lengthSec": 40,
+      "startSec": 304,
+      "lengthSec": 49,
       "onScreen": "BUG OF THE DAY: Calling a function before it exists",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Main calls tea, but the function is written below main. The compiler says tea was not declared in this scope. It reads from top to bottom. Add a declaration above main, or move the whole function above main."
+      "narration": "Bug of the Day. Main calls tea, but the function is written below main. The compiler says tea was not declared in this scope. It reads from top to bottom. Add a declaration above main, or move the whole function above main. The compiler reads the file once, from the top. It has no memory of the lines below. So any name must appear before it is used. You have two easy fixes. Move the function up, or write a short declaration above main."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 251,
+      "startSec": 353,
       "lengthSec": 8,
       "onScreen": "I wrote a function to make tea. It returns void, and my cup is empty.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -244,19 +244,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 259,
-      "lengthSec": 20,
+      "startSec": 361,
+      "lengthSec": 23,
       "onScreen": "Task card: write a function that prints a banner",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a function called banner. It prints a line of stars. Call it before and after a message. Write your answer in the comments."
+      "narration": "Your challenge: Write a function called banner. It prints a line of stars. Call it before and after a message. Hint: write the function above main, so you need no declaration. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 279,
+      "startSec": 384,
       "lengthSec": 15,
       "onScreen": "Next: EP 22 · Parameters and return values",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -273,7 +273,7 @@
     "why": "The compiler reads the file from top to bottom. It must see a function name before the line that uses it."
   },
   "pun": "\"I wrote a function to make tea. It returns void, and my cup is empty.\"",
-  "challenge": "Write a function called banner. It prints a line of stars. Call it before and after a message.",
+  "challenge": "Write a function called banner. It prints a line of stars. Call it before and after a message. Hint: write the function above main, so you need no declaration.",
   "challengeAnswer": "Write void banner with one cout of a line of stars. In main, call banner, print the message, and call banner again.",
   "shorts": [
     {

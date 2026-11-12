@@ -3,7 +3,7 @@
   "ep": 26,
   "title": "Default arguments and overloading",
   "module": 3,
-  "lengthSec": 290,
+  "lengthSec": 371,
   "colours": {
     "bg": "#B8F2D0",
     "accent": "#1E2A4A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Default Arguments and Function Overloading | C++ Programming EP 26",
-    "description": "In this episode you will give a parameter a default value, write overloaded functions and read an ambiguous call error, with Xecxec the crab. 0:00 Intro · 0:15 Default arguments and overloading · 0:47 A default value · 1:27 Which call matches? · 1:57 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "description": "In this episode you will give a parameter a default value, write overloaded functions and read an ambiguous call error, with Xecxec the crab. 0:00 Intro · 0:15 Default arguments and overloading · 1:15 A default value · 2:10 Which call matches? · 2:48 Second program · 4:00 Recap · 4:30 Bug of the Day · 5:30 Challenge · 5:56 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Default arguments and overloading"
       },
       {
-        "t": "0:47",
+        "t": "1:15",
         "label": "A default value"
       },
       {
-        "t": "1:27",
+        "t": "2:10",
         "label": "Which call matches?"
       },
       {
-        "t": "1:57",
+        "t": "2:48",
         "label": "Second program"
       },
       {
-        "t": "2:57",
+        "t": "4:00",
         "label": "Recap"
       },
       {
-        "t": "3:27",
+        "t": "4:30",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:15",
+        "t": "5:30",
         "label": "Challenge"
       },
       {
-        "t": "4:35",
+        "t": "5:56",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 32,
+      "lengthSec": 60,
       "onScreen": "\"Default arguments and overloading\": numbered lines (1. A default value fills a missing argument; 2. Overloads share a name but differ in parameters; 3. The compiler picks the best match) and an analogy card: a tea stall: the usual order is chai, but you can ask for coffee",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A default argument is a value that the compiler uses when the caller leaves it out. Overloading means several functions share one name, but have different parameters. The compiler picks the one that matches the call best. Think of a tea stall. The usual order is chai, but you may ask for coffee.",
+      "narration": "A default argument is a value that the compiler uses when the caller leaves it out. Overloading means several functions share one name, but have different parameters. The compiler picks the one that matches the call best. Think of a tea stall. The usual order is chai, but you may ask for coffee. Defaults make a function easy to use. The common case needs fewer arguments, and the special case can still use more. A default value goes in the function line, and only the last parameters can have defaults. Overloading makes the code read well, because one name fits one idea, like area.",
       "points": [
         "A default value fills a missing argument",
         "Overloads share a name but differ in parameters",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 47,
-      "lengthSec": 40,
+      "startSec": 75,
+      "lengthSec": 55,
       "onScreen": "power.cpp: power has a default exponent of two",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 4] The parameter exp has a default of two. [HL 6] The loop multiplies the base, exp times. [HL 13] The call power of five leaves out exp. The default of two is used. The answer is twenty-five. [HL 14] The call power of two and ten gives one thousand and twenty-four.",
+      "narration": "[HL 4] The parameter exp has a default of two. [HL 6] The loop multiplies the base, exp times. [HL 13] The call power of five leaves out exp. The default of two is used. The answer is twenty-five. [HL 14] The call power of two and ten gives one thousand and twenty-four. [HL 4] The equals sign here is not an assignment. It sets the default for a missing argument. [HL 7] The loop multiplies the result by base again and again. With exp equal to two, it runs two times. [HL 13] Five times five is twenty-five. [HL 14] Two times itself ten times gives one thousand and twenty-four.",
       "code": {
         "file": "power.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint power(int base, int exp = 2) {\n    int result = 1;\n    for (int i = 0; i < exp; i++) {\n        result *= base;\n    }\n    return result;\n}\n\nint main() {\n    cout << power(5) << endl;\n    cout << power(2, 10) << endl;\n    return 0;\n}",
@@ -133,12 +133,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 87,
-      "lengthSec": 30,
+      "startSec": 130,
+      "lengthSec": 38,
       "onScreen": "a table of calls and the functions that the compiler picks",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "Look at the three calls. The compiler checks the number of arguments, and their types. One int picks the first function. Two ints pick the second. One double picks the third.",
+      "narration": "Look at the three calls. The compiler checks the number of arguments, and their types. One int picks the first function. Two ints pick the second. One double picks the third. Notice how the compiler decides. First it counts the arguments. Then it compares the types. If one function fits best, the compiler picks it. If two fit equally well, you get an error.",
       "diagram": {
         "kind": "table",
         "caption": "a table of calls and the functions that the compiler picks",
@@ -169,14 +169,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 117,
-      "lengthSec": 40,
+      "startSec": 168,
+      "lengthSec": 48,
       "onScreen": "overload.cpp: three functions called area",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 4] Area of one int is a square. [HL 5] Area of two ints is a rectangle. [HL 6] Area of a double is a circle. [HL 9] Five is an int, so we get twenty-five. [HL 10] Four and six give twenty-four. [HL 11] Two point zero is a double, so we get twelve point five six.",
+      "narration": "[HL 4] Area of one int is a square. [HL 5] Area of two ints is a rectangle. [HL 6] Area of a double is a circle. [HL 9] Five is an int, so we get twenty-five. [HL 10] Four and six give twenty-four. [HL 11] Two point zero is a double, so we get twelve point five six. [HL 4] A function name can mean three different functions. The compiler picks the right one from the number and the type of the arguments. Note that the return type alone can never tell two functions apart.",
       "code": {
         "file": "overload.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint area(int side) { return side * side; }\nint area(int w, int h) { return w * h; }\ndouble area(double radius) { return 3.14 * radius * radius; }\n\nint main() {\n    cout << area(5) << endl;\n    cout << area(4, 6) << endl;\n    cout << area(2.0) << endl;\n    return 0;\n}",
@@ -186,20 +186,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 157,
-      "lengthSec": 20,
+      "startSec": 216,
+      "lengthSec": 24,
       "onScreen": "Terminal: g++ -std=c++20 overload.cpp -o overload then ./overload",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as overload dot cpp. Compile it with g plus plus. Then run the program. The program prints twenty-five, twenty-four and twelve point five six."
+      "narration": "Save the file as overload dot cpp. Compile it with g plus plus. Then run the program. The program prints twenty-five, twenty-four and twelve point five six. Check the middle line by hand. Four times six is twenty-four."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 177,
+      "startSec": 240,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -217,20 +217,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 207,
-      "lengthSec": 40,
+      "startSec": 270,
+      "lengthSec": 52,
       "onScreen": "BUG OF THE DAY: An ambiguous call",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We call show with the plain number five. There is a long version and a double version. The compiler says the call is ambiguous. An int fits both equally well. Write five with the letter L, or add an int version."
+      "narration": "Bug of the Day. We call show with the plain number five. There is a long version and a double version. The compiler says the call is ambiguous. An int fits both equally well. Write five with the letter L, or add an int version. An int can become a long, and it can also become a double. Both changes cost the same, so the compiler cannot choose. Make the call exact. Write the number with the letter L for a long, or add a function that takes an int."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 247,
+      "startSec": 322,
       "lengthSec": 8,
       "onScreen": "I overloaded my function. Now it has a lot on its plate, but it keeps its name.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -242,19 +242,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 255,
-      "lengthSec": 20,
+      "startSec": 330,
+      "lengthSec": 26,
       "onScreen": "Task card: overload a print function",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write two functions called describe. One takes an int and one takes a string. Call both. Write your answer in the comments."
+      "narration": "Your challenge: Write two functions called describe. One takes an int and one takes a string. Call both. Hint: both functions have the same name, but one takes an int and the other takes a string. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 275,
+      "startSec": 356,
       "lengthSec": 15,
       "onScreen": "Next: EP 27 · Scope and lifetime",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -271,7 +271,7 @@
     "why": "An int converts to long and to double with the same cost, so the compiler cannot choose. Make the type exact, or add an int overload."
   },
   "pun": "\"I overloaded my function. Now it has a lot on its plate, but it keeps its name.\"",
-  "challenge": "Write two functions called describe. One takes an int and one takes a string. Call both.",
+  "challenge": "Write two functions called describe. One takes an int and one takes a string. Call both. Hint: both functions have the same name, but one takes an int and the other takes a string.",
   "challengeAnswer": "Write void describe with an int parameter and void describe with a string parameter. Call describe with seven and with a quoted word.",
   "shorts": [
     {

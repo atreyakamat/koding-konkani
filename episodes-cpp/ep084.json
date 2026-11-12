@@ -3,7 +3,7 @@
   "ep": 84,
   "title": "Namespaces and organising code",
   "module": 9,
-  "lengthSec": 290,
+  "lengthSec": 357,
   "colours": {
     "bg": "#FFF4EC",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Namespaces and Header Files Explained | C++ Programming EP 84",
-    "description": "In this episode you will write a namespace, avoid name clashes and know how headers and source files work together, with Xecxec the crab. 0:00 Intro · 0:15 Namespaces and organising code · 0:45 Two namespaces · 1:25 Two drawers · 1:55 Second program · 2:57 Recap · 3:27 Bug of the Day · 4:15 Challenge · 4:35 Next episode",
+    "description": "In this episode you will write a namespace, avoid name clashes and know how headers and source files work together, with Xecxec the crab. 0:00 Intro · 0:15 Namespaces and organising code · 1:09 Two namespaces · 2:15 Two drawers · 2:45 Second program · 3:58 Recap · 4:28 Bug of the Day · 5:16 Challenge · 5:42 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Namespaces and organising code"
       },
       {
-        "t": "0:45",
+        "t": "1:09",
         "label": "Two namespaces"
       },
       {
-        "t": "1:25",
+        "t": "2:15",
         "label": "Two drawers"
       },
       {
-        "t": "1:55",
+        "t": "2:45",
         "label": "Second program"
       },
       {
-        "t": "2:57",
+        "t": "3:58",
         "label": "Recap"
       },
       {
-        "t": "3:27",
+        "t": "4:28",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:15",
+        "t": "5:16",
         "label": "Challenge"
       },
       {
-        "t": "4:35",
+        "t": "5:42",
         "label": "Next episode"
       }
     ],
@@ -96,13 +96,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 30,
+      "lengthSec": 54,
       "onScreen": "\"Namespaces and organising code\": numbered lines (1. A namespace is a labelled drawer; 2. Use the double colon to open it; 3. A header holds declarations) and an analogy card: labelled drawers: two tools with one name, in two drawers",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A namespace is a labelled drawer for names. Two drawers can each hold a function called area. You open a drawer with the double colon. In a bigger program, a header file holds declarations, and a source file holds the code. You compile the source files together.",
+      "narration": "A namespace is a labelled drawer for names. Two drawers can each hold a function called area. You open a drawer with the double colon. In a bigger program, a header file holds declarations, and a source file holds the code. You compile the source files together. In a big program, many people write code at the same time. Two of them may choose the same name for different things. Namespaces prevent a clash. The standard library puts everything in the std namespace for this reason. Your own code can do the same.",
       "points": [
         "A namespace is a labelled drawer",
         "Use the double colon to open it",
@@ -116,15 +116,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 45,
-      "lengthSec": 40,
+      "startSec": 69,
+      "lengthSec": 66,
       "onScreen": "space.cpp: two area functions live in two namespaces",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 4] This namespace is the circle drawer. [HL 6] It holds an area function for a radius. [HL 11] This is the square drawer. It also holds a function named area. There is no clash, because the drawers are different. [HL 18] The double colon opens the circle drawer. The area is twelve point five six six four. [HL 19] This call opens the square drawer. The area is nine.",
+      "narration": "[HL 4] This namespace is the circle drawer. [HL 6] It holds an area function for a radius. [HL 11] This is the square drawer. It also holds a function named area. There is no clash, because the drawers are different. [HL 18] The double colon opens the circle drawer. The area is twelve point five six six four. [HL 19] This call opens the square drawer. The area is nine. [HL 4] The namespace circle opens a drawer. [HL 6] The area function inside takes a radius. [HL 11] The namespace square is another drawer. [HL 12] It has its own area function, with the same name. [HL 18] The double colon opens the circle drawer, and the answer is twelve point five six. [HL 19] The same name in the square drawer gives nine.",
       "code": {
         "file": "space.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nnamespace circle {\nconst double pi = 3.14159;\ndouble area(double r) {\n    return pi * r * r;\n}\n}\n\nnamespace square {\ndouble area(double s) {\n    return s * s;\n}\n}\n\nint main() {\n    cout << circle::area(2) << endl;\n    cout << square::area(3) << endl;\n    return 0;\n}",
@@ -134,12 +134,12 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 85,
+      "startSec": 135,
       "lengthSec": 30,
       "onScreen": "a table of the two namespaces and their members",
       "animation": "Table rows slide in one by one; the row the narrator mentions glows butter",
       "sfx": [],
-      "narration": "The circle namespace holds pi and area. The square namespace holds its own area. The double colon tells the compiler which drawer to open.",
+      "narration": "The circle namespace holds pi and area. The square namespace holds its own area. The double colon tells the compiler which drawer to open. Notice that the two area functions do not clash. Each lives in its own drawer, and the label tells you which one you mean.",
       "diagram": {
         "kind": "table",
         "caption": "a table of the two namespaces and their members",
@@ -165,14 +165,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 115,
-      "lengthSec": 40,
+      "startSec": 165,
+      "lengthSec": 44,
       "onScreen": "alias.cpp: a nested namespace gets a short alias",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 4] Since C plus plus seventeen, you can write a nested namespace on one line. [HL 10] An alias gives a long name a short one. [HL 13] We call the function through the alias. The result is six point two eight three one eight.",
+      "narration": "[HL 4] Since C plus plus seventeen, you can write a nested namespace on one line. [HL 10] An alias gives a long name a short one. [HL 13] We call the function through the alias. The result is six point two eight three one eight. [HL 4] A namespace can hold another namespace. [HL 10] An alias gives a short name to a long path. [HL 13] Now we write sr instead of the whole path. The circumference for radius one is six point two eight.",
       "code": {
         "file": "alias.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nnamespace shapes::round {\ndouble circumference(double r) {\n    return 2 * 3.14159 * r;\n}\n}\n\nnamespace sr = shapes::round;\n\nint main() {\n    cout << sr::circumference(1) << endl;\n    return 0;\n}",
@@ -182,20 +182,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 155,
-      "lengthSec": 22,
+      "startSec": 209,
+      "lengthSec": 29,
       "onScreen": "Terminal: g++ -std=c++20 alias.cpp -o alias then ./alias",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as alias dot cpp. Compile it with g plus plus. Then run the program. The program prints twelve point five six six four, nine, and then six point two eight three one eight."
+      "narration": "Save the file as alias dot cpp. Compile it with g plus plus. Then run the program. The program prints twelve point five six six four, nine, and then six point two eight three one eight. Notice that the alias saves typing, and the meaning stays clear."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 177,
+      "startSec": 238,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -213,7 +213,7 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 207,
+      "startSec": 268,
       "lengthSec": 40,
       "onScreen": "BUG OF THE DAY: An ambiguous call",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
@@ -221,12 +221,12 @@
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. We open both namespaces, and then call area. The compiler says the call is ambiguous. Write the namespace name in front of the call."
+      "narration": "Bug of the Day. We open both namespaces, and then call area. The compiler says the call is ambiguous. Write the namespace name in front of the call. The line using namespace opens every drawer at once, and then the names can clash again. In small programs this is fine. In big programs, write the namespace name in front of each call."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 247,
+      "startSec": 308,
       "lengthSec": 8,
       "onScreen": "Why do namespaces never fight? Everyone stays in their own drawer.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -238,19 +238,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 255,
-      "lengthSec": 20,
+      "startSec": 316,
+      "lengthSec": 26,
       "onScreen": "Task card: make a math namespace",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a namespace called mymath with a function square. Call it from main with the double colon. Write your answer in the comments."
+      "narration": "Your challenge: Write a namespace called mymath with a function square. Call it from main with the double colon. Hint: put the function in the namespace, and call it with the namespace name and two colons. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 275,
+      "startSec": 342,
       "lengthSec": 15,
       "onScreen": "Next: EP 85 · Linked list",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -267,7 +267,7 @@
     "why": "Using namespace opens the drawers, and the names clash again. Write the namespace name in front of the call, and avoid using namespace in big programs."
   },
   "pun": "\"Why do namespaces never fight? Everyone stays in their own drawer.\"",
-  "challenge": "Write a namespace called mymath with a function square. Call it from main with the double colon.",
+  "challenge": "Write a namespace called mymath with a function square. Call it from main with the double colon. Hint: put the function in the namespace, and call it with the namespace name and two colons.",
   "challengeAnswer": "Write namespace mymath, and put the function inside the braces. In main, call mymath double colon square.",
   "shorts": [
     {

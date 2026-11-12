@@ -3,7 +3,7 @@
   "ep": 65,
   "title": "Abstract classes",
   "module": 7,
-  "lengthSec": 293,
+  "lengthSec": 370,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FFB88A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Abstract Classes and Interfaces | C++ Programming EP 65",
-    "description": "In this episode you will write a pure virtual function, explain that an abstract class cannot be built and use a class as an interface, with Xecxec the crab. 0:00 Intro · 0:15 Abstract classes · 0:50 A Shape interface · 1:30 Shape and its children · 2:00 Second program · 3:00 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:38 Next episode",
+    "description": "In this episode you will write a pure virtual function, explain that an abstract class cannot be built and use a class as an interface, with Xecxec the crab. 0:00 Intro · 0:15 Abstract classes · 1:16 A Shape interface · 2:12 Shape and its children · 2:53 Second program · 4:03 Recap · 4:33 Bug of the Day · 5:29 Challenge · 5:55 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Abstract classes"
       },
       {
-        "t": "0:50",
+        "t": "1:16",
         "label": "A Shape interface"
       },
       {
-        "t": "1:30",
+        "t": "2:12",
         "label": "Shape and its children"
       },
       {
-        "t": "2:00",
+        "t": "2:53",
         "label": "Second program"
       },
       {
-        "t": "3:00",
+        "t": "4:03",
         "label": "Recap"
       },
       {
-        "t": "3:30",
+        "t": "4:33",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:18",
+        "t": "5:29",
         "label": "Challenge"
       },
       {
-        "t": "4:38",
+        "t": "5:55",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 35,
+      "lengthSec": 61,
       "onScreen": "\"Abstract classes\": numbered lines (1. Equals zero makes a function pure virtual; 2. A class with one is abstract; 3. Derived classes must fill the blank) and an analogy card: a contract: it says what must be done, but not how",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "A pure virtual function has equals zero after its declaration. It has no body in the base. A class with a pure virtual function is abstract. You cannot make an object of it. Derived classes must override every pure function. Then they can be built. Think of a contract. It says what must be done, but not how.",
+      "narration": "A pure virtual function has equals zero after its declaration. It has no body in the base. A class with a pure virtual function is abstract. You cannot make an object of it. Derived classes must override every pure function. Then they can be built. Think of a contract. It says what must be done, but not how. Abstract classes describe ideas. A shape in general has no area. Only a rectangle or a circle has one. The abstract class sets the rules. Every derived class must follow them. Code that uses a Shape reference can work with any shape, now or in the future.",
       "points": [
         "Equals zero makes a function pure virtual",
         "A class with one is abstract",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 50,
-      "lengthSec": 40,
+      "startSec": 76,
+      "lengthSec": 56,
       "onScreen": "shapes.cpp: Shape is abstract, and Circle and Rect fill the blank",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] Equals zero makes area a pure virtual function. Shape has no body for it. [HL 10] Rect inherits from Shape. [HL 14] It takes a width and a height. [HL 15] Rect fills in the blank. It returns width times height. [HL 19] Main makes a rectangle. [HL 20] A Shape reference can refer to it. [HL 21] The answer is twelve.",
+      "narration": "[HL 6] Equals zero makes area a pure virtual function. Shape has no body for it. [HL 10] Rect inherits from Shape. [HL 14] It takes a width and a height. [HL 15] Rect fills in the blank. It returns width times height. [HL 19] Main makes a rectangle. [HL 20] A Shape reference can refer to it. [HL 21] The answer is twelve. [HL 6] The equals zero makes this function pure. No body is needed, and none is allowed here. [HL 15] Rect gives the body, so Rect is a complete class. [HL 20] A reference to Shape can refer to a Rect. [HL 21] The call finds the Rect version, and the answer is twelve.",
       "code": {
         "file": "shapes.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Shape {\npublic:\n    virtual double area() const = 0;\n    virtual ~Shape() = default;\n};\n\nclass Rect : public Shape {\n    double w_, h_;\n\npublic:\n    Rect(double w, double h) : w_(w), h_(h) {}\n    double area() const override { return w_ * h_; }\n};\n\nint main() {\n    Rect r(3, 4);\n    const Shape& s = r;\n    cout << s.area() << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 90,
-      "lengthSec": 30,
+      "startSec": 132,
+      "lengthSec": 41,
       "onScreen": "Shape at the top, Circle and Rect below",
       "animation": "Nodes pop in one by one; edges draw on as the narrator mentions them",
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the family. Shape is abstract. It only declares area. Circle and Rect each write their own area. You can make Circle and Rect objects, but never a plain Shape.",
+      "narration": "Here is the family. Shape is abstract. It only declares area. Circle and Rect each write their own area. You can make Circle and Rect objects, but never a plain Shape. Notice the dotted outline of the Shape box in the picture. You cannot make a Shape object, but you can make a Rect object that is a Shape. The outline marks an idea, and the solid boxes are things.",
       "diagram": {
         "kind": "graph",
         "layout": "tree",
@@ -179,14 +179,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 120,
-      "lengthSec": 40,
+      "startSec": 173,
+      "lengthSec": 46,
       "onScreen": "total.cpp: a vector of shapes and one loop for the total area",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 12] Rect fills the blank one way. [HL 20] Square fills it another way. [HL 29] The vector holds shapes of both kinds. [HL 34] The loop adds their areas. It does not need to know which shape is which. Twelve plus twenty-five gives thirty-seven.",
+      "narration": "[HL 12] Rect fills the blank one way. [HL 20] Square fills it another way. [HL 29] The vector holds shapes of both kinds. [HL 34] The loop adds their areas. It does not need to know which shape is which. Twelve plus twenty-five gives thirty-seven. [HL 30] A vector of Shape pointers holds a Rect and a Square. [HL 31] The Square has side five. [HL 34] The loop adds each area to the total. Twelve plus twenty-five gives thirty-seven. New shapes can join the vector, and the loop never changes.",
       "code": {
         "file": "total.cpp",
         "source": "#include <iostream>\n#include <memory>\n#include <vector>\nusing namespace std;\n\nclass Shape {\npublic:\n    virtual double area() const = 0;\n    virtual ~Shape() = default;\n};\n\nclass Rect : public Shape {\n    double w_, h_;\n\npublic:\n    Rect(double w, double h) : w_(w), h_(h) {}\n    double area() const override { return w_ * h_; }\n};\n\nclass Square : public Shape {\n    double s_;\n\npublic:\n    Square(double s) : s_(s) {}\n    double area() const override { return s_ * s_; }\n};\n\nint main() {\n    vector<unique_ptr<Shape>> shapes;\n    shapes.push_back(make_unique<Rect>(3, 4));\n    shapes.push_back(make_unique<Square>(5));\n    double total = 0;\n    for (const auto& s : shapes) {\n        total += s->area();\n    }\n    cout << total << endl;\n    return 0;\n}",
@@ -196,20 +196,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 160,
-      "lengthSec": 20,
+      "startSec": 219,
+      "lengthSec": 24,
       "onScreen": "Terminal: g++ -std=c++20 total.cpp -o total then ./total",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as total dot cpp. Compile it with g plus plus. Then run the program. The program prints thirty-seven."
+      "narration": "Save the file as total dot cpp. Compile it with g plus plus. Then run the program. The program prints thirty-seven. Check by hand. Three times four is twelve. Five times five is twenty-five. The total is thirty-seven."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 180,
+      "startSec": 243,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -227,20 +227,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 210,
-      "lengthSec": 40,
+      "startSec": 273,
+      "lengthSec": 48,
       "onScreen": "BUG OF THE DAY: Building an abstract class",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Main makes a plain Shape. The compiler says it cannot declare a variable of abstract type Shape. A pure function has no body, so an object could never call it. Build a derived class instead."
+      "narration": "Bug of the Day. Main makes a plain Shape. The compiler says it cannot declare a variable of abstract type Shape. A pure function has no body, so an object could never call it. Build a derived class instead. A shape without an area is only an idea. So the compiler stops you from making one. The message says that the class is abstract, and it names the pure function. Make a derived class that gives a body for every pure function."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 250,
+      "startSec": 321,
       "lengthSec": 8,
       "onScreen": "An abstract class is like a promise. It says, I will do it, but not how.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -252,19 +252,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 258,
-      "lengthSec": 20,
+      "startSec": 329,
+      "lengthSec": 26,
       "onScreen": "Task card: add a Circle",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Add a class Circle to the shapes program. Its area is three point one four times the radius squared. Write your answer in the comments."
+      "narration": "Your challenge: Add a class Circle to the shapes program. Its area is three point one four times the radius squared. Hint: the area of a circle uses the radius twice, so write radius times radius. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 278,
+      "startSec": 355,
       "lengthSec": 15,
       "onScreen": "Next: EP 66 · Virtual destructors",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -281,7 +281,7 @@
     "why": "A shape with no area has no meaning. The compiler blocks the object. Build a derived class that fills in every pure function."
   },
   "pun": "\"An abstract class is like a promise. It says, I will do it, but not how.\"",
-  "challenge": "Add a class Circle to the shapes program. Its area is three point one four times the radius squared.",
+  "challenge": "Add a class Circle to the shapes program. Its area is three point one four times the radius squared. Hint: the area of a circle uses the radius twice, so write radius times radius.",
   "challengeAnswer": "Write class Circle colon public Shape. Store the radius. Override area, and return three point one four times r times r.",
   "shorts": [
     {

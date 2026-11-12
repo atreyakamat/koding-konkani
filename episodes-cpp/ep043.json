@@ -3,7 +3,7 @@
   "ep": 43,
   "title": "Pointers and arrays",
   "module": 5,
-  "lengthSec": 304,
+  "lengthSec": 408,
   "colours": {
     "bg": "#D9C9FF",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Pointers and Arrays: Array Decay | C++ Programming EP 43",
-    "description": "In this episode you will use an array name as a pointer, read items through a pointer and explain array decay, with Xecxec the crab. 0:00 Intro · 0:15 Pointers and arrays · 0:55 An array and a pointer · 1:35 The pointer at the first item · 2:05 Second program · 3:05 Recap · 3:41 Bug of the Day · 4:29 Challenge · 4:49 Next episode",
+    "description": "In this episode you will use an array name as a pointer, read items through a pointer and explain array decay, with Xecxec the crab. 0:00 Intro · 0:15 Pointers and arrays · 1:30 An array and a pointer · 2:32 The pointer at the first item · 3:14 Second program · 4:32 Recap · 5:08 Bug of the Day · 6:06 Challenge · 6:33 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Pointers and arrays"
       },
       {
-        "t": "0:55",
+        "t": "1:30",
         "label": "An array and a pointer"
       },
       {
-        "t": "1:35",
+        "t": "2:32",
         "label": "The pointer at the first item"
       },
       {
-        "t": "2:05",
+        "t": "3:14",
         "label": "Second program"
       },
       {
-        "t": "3:05",
+        "t": "4:32",
         "label": "Recap"
       },
       {
-        "t": "3:41",
+        "t": "5:08",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:29",
+        "t": "6:06",
         "label": "Challenge"
       },
       {
-        "t": "4:49",
+        "t": "6:33",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 40,
+      "lengthSec": 75,
       "onScreen": "\"Pointers and arrays\": numbered lines (1. An array name acts as the address of the first item; 2. p[i] works the same as a[i]; 3. An array loses its size when it decays) and an analogy card: the first house on a street: its address starts the whole street",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "In most places, an array name turns into the address of its first item. We call this array decay. So you can store the array name in a pointer. Then p index i works like a index i. But there is a cost. A pointer does not know the size of the array. Think of the first house on a street. Its address starts the whole street.",
+      "narration": "In most places, an array name turns into the address of its first item. We call this array decay. So you can store the array name in a pointer. Then p index i works like a index i. But there is a cost. A pointer does not know the size of the array. Think of the first house on a street. Its address starts the whole street. This episode joins two ideas. An array is a row of boxes, and a pointer is an address. The array name is a handy address of the first box. That is why you can pass an array to a function. The function gets a pointer in truth. It is fast, because no copy is made, but the function does not know the length.",
       "points": [
         "An array name acts as the address of the first item",
         "p[i] works the same as a[i]",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 55,
-      "lengthSec": 40,
+      "startSec": 90,
+      "lengthSec": 62,
       "onScreen": "decay.cpp: a pointer reads the items of an array",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 6] The array name a becomes the address of the first item. P now points to ten. [HL 7] Star p reads ten. [HL 8] Square brackets work on a pointer, too. P index one reads twenty. [HL 9] This form is the same. It moves two items on, and then follows the pointer. It reads thirty.",
+      "narration": "[HL 6] The array name a becomes the address of the first item. P now points to ten. [HL 7] Star p reads ten. [HL 8] Square brackets work on a pointer, too. P index one reads twenty. [HL 9] This form is the same. It moves two items on, and then follows the pointer. It reads thirty. [HL 6] The array name turns into the address of its first item. [HL 7] The star gives the first item, which is ten. [HL 8] Square brackets work on pointers as well. P of one is the same as a of one. [HL 9] You can also add to the pointer. P plus two points at the third item, and the star reads it.",
       "code": {
         "file": "decay.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[3] = {10, 20, 30};\n    int* p = a;\n    cout << *p << endl;\n    cout << p[1] << endl;\n    cout << *(p + 2) << endl;\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "memory-boxes",
-      "startSec": 95,
-      "lengthSec": 30,
+      "startSec": 152,
+      "lengthSec": 42,
       "onScreen": "p points at the first of three boxes",
       "animation": "Boxes pop in one by one with size and address tags; arrows draw on as the narrator mentions them; regions are labelled; pop per box",
       "sfx": [
         "pop"
       ],
-      "narration": "Here is the picture. The array has three boxes. P points to the first box. P plus one would point to the second box. P plus two would point to the third box.",
+      "narration": "Here is the picture. The array has three boxes. P points to the first box. P plus one would point to the second box. P plus two would point to the third box. Notice that the pointer holds only the start. It does not know where the array ends. If you walk too far, you read memory that does not belong to the array. So keep the size in another variable.",
       "memory": {
         "frames": [
           {
@@ -190,14 +190,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 125,
-      "lengthSec": 40,
+      "startSec": 194,
+      "lengthSec": 53,
       "onScreen": "walk.cpp: a pointer moves along the array",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 6] Q starts at the first item. [HL 6] A plus three is the address right after the last item. The loop stops when q reaches it. [HL 6] Q plus plus moves q to the next item. [HL 7] Each round prints the item that q points to.",
+      "narration": "[HL 6] Q starts at the first item. [HL 6] A plus three is the address right after the last item. The loop stops when q reaches it. [HL 6] Q plus plus moves q to the next item. [HL 7] Each round prints the item that q points to. [HL 6] The pointer q starts at the first item. The loop stops when q reaches the address after the last item. [HL 7] The star reads the item, and q plus plus moves to the next one. This pattern is the base of the iterators that you met in the vector episodes.",
       "code": {
         "file": "walk.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a[3] = {10, 20, 30};\n    for (int* q = a; q != a + 3; q++) {\n        cout << *q << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
@@ -207,20 +207,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 165,
-      "lengthSec": 20,
+      "startSec": 247,
+      "lengthSec": 25,
       "onScreen": "Terminal: g++ -std=c++20 walk.cpp -o walk then ./walk",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as walk dot cpp. Compile it with g plus plus. Then run the program. The program prints ten, twenty and thirty on one line."
+      "narration": "Save the file as walk dot cpp. Compile it with g plus plus. Then run the program. The program prints ten, twenty and thirty on one line. The loop prints ten, twenty and thirty, the same as an index loop would."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 185,
+      "startSec": 272,
       "lengthSec": 36,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -238,20 +238,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 221,
-      "lengthSec": 40,
+      "startSec": 308,
+      "lengthSec": 50,
       "onScreen": "BUG OF THE DAY: Sizeof on an array parameter",
       "animation": "Butter banner drops in with a buzzer; the g++ warning appears in tomato; the fix slides in and the warning goes away with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. The function tries to count the items with sizeof. The compiler warns that sizeof on an array parameter returns the size of a pointer. The array decayed to a pointer, and the size was lost. Pass the size as a second parameter."
+      "narration": "Bug of the Day. The function tries to count the items with sizeof. The compiler warns that sizeof on an array parameter returns the size of a pointer. The array decayed to a pointer, and the size was lost. Pass the size as a second parameter. Look at the function line again. The square brackets in a parameter are only a disguise. The compiler turns them into a plain pointer. Sizeof then measures the pointer, not the array. So send the size as a second parameter."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 261,
+      "startSec": 358,
       "lengthSec": 8,
       "onScreen": "The array told the pointer, you complete me. The pointer said, I only know where you start.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -263,19 +263,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 269,
-      "lengthSec": 20,
+      "startSec": 366,
+      "lengthSec": 27,
       "onScreen": "Task card: sum an array through a pointer",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a function that takes a pointer and a size. It returns the sum of the items. Write your answer in the comments."
+      "narration": "Your challenge: Write a function that takes a pointer and a size. It returns the sum of the items. Hint: the function takes an int pointer and an int for the size, and a loop adds the items. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 289,
+      "startSec": 393,
       "lengthSec": 15,
       "onScreen": "Next: EP 44 · Pointer arithmetic",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -292,7 +292,7 @@
     "why": "An array parameter is a pointer in disguise. Sizeof then gives the size of the pointer, not the size of the array. Pass the size as a second argument."
   },
   "pun": "\"The array told the pointer, you complete me. The pointer said, I only know where you start.\"",
-  "challenge": "Write a function that takes a pointer and a size. It returns the sum of the items.",
+  "challenge": "Write a function that takes a pointer and a size. It returns the sum of the items. Hint: the function takes an int pointer and an int for the size, and a loop adds the items.",
   "challengeAnswer": "Use a loop from zero to size minus one. Add p index i to a total. Return the total.",
   "shorts": [
     {

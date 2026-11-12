@@ -3,7 +3,7 @@
   "ep": 67,
   "title": "Multiple inheritance",
   "module": 7,
-  "lengthSec": 294,
+  "lengthSec": 345,
   "colours": {
     "bg": "#BFD7FF",
     "accent": "#FFB88A"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "C++ Multiple Inheritance and the Diamond Problem | C++ Programming EP 67",
-    "description": "In this episode you will inherit from two bases, explain the diamond problem and fix it with virtual inheritance, with Xecxec the crab. 0:00 Intro · 0:15 Multiple inheritance · 0:51 Two bases · 1:31 The diamond · 2:01 Second program · 3:01 Recap · 3:31 Bug of the Day · 4:19 Challenge · 4:39 Next episode",
+    "description": "In this episode you will inherit from two bases, explain the diamond problem and fix it with virtual inheritance, with Xecxec the crab. 0:00 Intro · 0:15 Multiple inheritance · 1:15 Two bases · 1:56 The diamond · 2:32 Second program · 3:43 Recap · 4:13 Bug of the Day · 5:05 Challenge · 5:30 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Multiple inheritance"
       },
       {
-        "t": "0:51",
+        "t": "1:15",
         "label": "Two bases"
       },
       {
-        "t": "1:31",
+        "t": "1:56",
         "label": "The diamond"
       },
       {
-        "t": "2:01",
+        "t": "2:32",
         "label": "Second program"
       },
       {
-        "t": "3:01",
+        "t": "3:43",
         "label": "Recap"
       },
       {
-        "t": "3:31",
+        "t": "4:13",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:19",
+        "t": "5:05",
         "label": "Challenge"
       },
       {
-        "t": "4:39",
+        "t": "5:30",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 36,
+      "lengthSec": 60,
       "onScreen": "\"Multiple inheritance\": numbered lines (1. A class can have several bases; 2. Two bases may have the same member name; 3. Virtual inheritance keeps one shared base) and an analogy card: a child with two parents: both may have a family car, so which car is meant?",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "C plus plus lets a class inherit from more than one base. List them with commas. If both bases have a member with the same name, a call is ambiguous. You must say which one you mean. The diamond problem appears when two bases share one grandparent. Then the object holds two copies of it. Virtual inheritance keeps only one.",
+      "narration": "C plus plus lets a class inherit from more than one base. List them with commas. If both bases have a member with the same name, a call is ambiguous. You must say which one you mean. The diamond problem appears when two bases share one grandparent. Then the object holds two copies of it. Virtual inheritance keeps only one. Multiple inheritance gives a class the powers of more than one base. A Duck can walk and swim. That fits real life. But it adds risks. Names may clash, and the diamond problem can appear. Many designers use it only for small, simple interfaces.",
       "points": [
         "A class can have several bases",
         "Two bases may have the same member name",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 51,
-      "lengthSec": 40,
+      "startSec": 75,
+      "lengthSec": 41,
       "onScreen": "two.cpp: a class that inherits from two bases",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 4] Walker has a walk function. [HL 9] Swimmer has a swim function. [HL 14] Duck inherits from both. A comma separates the bases. [HL 18] A duck can walk. [HL 19] A duck can swim. The names are different, so there is no problem.",
+      "narration": "[HL 4] Walker has a walk function. [HL 9] Swimmer has a swim function. [HL 14] Duck inherits from both. A comma separates the bases. [HL 18] A duck can walk. [HL 19] A duck can swim. The names are different, so there is no problem. [HL 4] Walker can walk. [HL 9] Swimmer can swim. [HL 14] The Duck lists both bases, with a comma between them. The body is empty, because Duck needs nothing more. [HL 18] The Duck object can walk. [HL 19] It can also swim.",
       "code": {
         "file": "two.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Walker {\npublic:\n    void walk() const { cout << \"walks\" << endl; }\n};\n\nclass Swimmer {\npublic:\n    void swim() const { cout << \"swims\" << endl; }\n};\n\nclass Duck : public Walker, public Swimmer {};\n\nint main() {\n    Duck d;\n    d.walk();\n    d.swim();\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 91,
-      "lengthSec": 30,
+      "startSec": 116,
+      "lengthSec": 36,
       "onScreen": "two classes share one grandparent",
       "animation": "Nodes pop in one by one; edges draw on as the narrator mentions them",
       "sfx": [
         "pop"
       ],
-      "narration": "Look at the diamond. Animal is the grandparent. Walker and Swimmer both inherit from Animal. Duck inherits from both of them. Without care, a Duck would hold two Animal parts, one through each parent.",
+      "narration": "Look at the diamond. Animal is the grandparent. Walker and Swimmer both inherit from Animal. Duck inherits from both of them. Without care, a Duck would hold two Animal parts, one through each parent. Notice the two arrows that point from Duck to its two parents. Duck holds a Walker part and a Swimmer part. Each part brings its own members.",
       "diagram": {
         "kind": "graph",
         "layout": "row",
@@ -194,14 +194,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 121,
-      "lengthSec": 40,
+      "startSec": 152,
+      "lengthSec": 47,
       "onScreen": "diamond.cpp: virtual keeps one shared Animal part",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 4] Animal has one member, legs. [HL 9] The word virtual tells the compiler to share one Animal part. [HL 10] Swimmer does the same. [HL 11] Duck has only one Animal part. [HL 15] So the name legs is not ambiguous. We can use it directly. [HL 16] The output is four.",
+      "narration": "[HL 4] Animal has one member, legs. [HL 9] The word virtual tells the compiler to share one Animal part. [HL 10] Swimmer does the same. [HL 11] Duck has only one Animal part. [HL 15] So the name legs is not ambiguous. We can use it directly. [HL 16] The output is four. [HL 6] The base Animal has a number of legs. [HL 9] The word virtual before the base name makes both children share one Animal part. [HL 15] So there is only one legs member, and there is no clash. [HL 16] The output is four.",
       "code": {
         "file": "diamond.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nclass Animal {\npublic:\n    int legs = 2;\n};\n\nclass Walker : virtual public Animal {};\nclass Swimmer : virtual public Animal {};\nclass Duck : public Walker, public Swimmer {};\n\nint main() {\n    Duck d;\n    d.legs = 4;\n    cout << d.legs << endl;\n    return 0;\n}",
@@ -211,20 +211,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 161,
-      "lengthSec": 20,
+      "startSec": 199,
+      "lengthSec": 24,
       "onScreen": "Terminal: g++ -std=c++20 diamond.cpp -o diamond then ./diamond",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as diamond dot cpp. Compile it with g plus plus. Then run the program. The program prints four."
+      "narration": "Save the file as diamond dot cpp. Compile it with g plus plus. Then run the program. The program prints four. Notice that the program sets legs once and reads it once. Without virtual, this line would not compile."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 181,
+      "startSec": 223,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -242,20 +242,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 211,
-      "lengthSec": 40,
+      "startSec": 253,
+      "lengthSec": 44,
       "onScreen": "BUG OF THE DAY: An ambiguous member",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Both bases have a hello function. The call on C says hello, and the compiler says the request for hello is ambiguous. It cannot guess. Write the base name and two colons to choose."
+      "narration": "Bug of the Day. Both bases have a hello function. The call on C says hello, and the compiler says the request for hello is ambiguous. It cannot guess. Write the base name and two colons to choose. When two bases have a function with the same name, the compiler cannot decide. It reports that the call is ambiguous. Write the base name, then two colons, and then the function. Then the choice is clear."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 251,
+      "startSec": 297,
       "lengthSec": 8,
       "onScreen": "A diamond is forever. So is the ambiguity, until you add virtual.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -267,19 +267,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 259,
-      "lengthSec": 20,
+      "startSec": 305,
+      "lengthSec": 25,
       "onScreen": "Task card: resolve an ambiguity",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Make two base classes with the same function name. Inherit from both, and call each version. Write your answer in the comments."
+      "narration": "Your challenge: Make two base classes with the same function name. Inherit from both, and call each version. Hint: write the base name and two colons before each call, to pick the right version. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 279,
+      "startSec": 330,
       "lengthSec": 15,
       "onScreen": "Next: EP 68 · Composition and slicing",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -296,7 +296,7 @@
     "why": "Both bases offer hello, so the compiler cannot guess. Write the name of the base and two colons to choose one."
   },
   "pun": "\"A diamond is forever. So is the ambiguity, until you add virtual.\"",
-  "challenge": "Make two base classes with the same function name. Inherit from both, and call each version.",
+  "challenge": "Make two base classes with the same function name. Inherit from both, and call each version. Hint: write the base name and two colons before each call, to pick the right version.",
   "challengeAnswer": "Write the base name, two colons, and the function name. Call a colon colon hello, and then b colon colon hello.",
   "shorts": [
     {
