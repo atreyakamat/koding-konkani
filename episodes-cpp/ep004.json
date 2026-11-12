@@ -3,7 +3,7 @@
   "ep": 4,
   "title": "Anatomy of a C++ program",
   "module": 0,
-  "lengthSec": 293,
+  "lengthSec": 423,
   "colours": {
     "bg": "#FFD8BE",
     "accent": "#FF6F59"
@@ -15,7 +15,7 @@
   ],
   "youtube": {
     "title": "Anatomy of a C++ Program | C++ Programming EP 04",
-    "description": "In this episode you will name the parts of a small program, write comments and use a using line to shorten names, with Xecxec the crab. 0:00 Intro · 0:15 Anatomy of a C++ program · 0:50 Name the parts · 1:30 The parts in order · 2:00 Second program · 3:00 Recap · 3:30 Bug of the Day · 4:18 Challenge · 4:38 Next episode",
+    "description": "In this episode you will name the parts of a small program, write comments and use a using line to shorten names, with Xecxec the crab. 0:00 Intro · 0:15 Anatomy of a C++ program · 1:27 Name the parts · 2:33 The parts in order · 3:24 Second program · 4:46 Recap · 5:16 Bug of the Day · 6:23 Challenge · 6:48 Next episode",
     "chapters": [
       {
         "t": "0:00",
@@ -26,31 +26,31 @@
         "label": "Anatomy of a C++ program"
       },
       {
-        "t": "0:50",
+        "t": "1:27",
         "label": "Name the parts"
       },
       {
-        "t": "1:30",
+        "t": "2:33",
         "label": "The parts in order"
       },
       {
-        "t": "2:00",
+        "t": "3:24",
         "label": "Second program"
       },
       {
-        "t": "3:00",
+        "t": "4:46",
         "label": "Recap"
       },
       {
-        "t": "3:30",
+        "t": "5:16",
         "label": "Bug of the Day"
       },
       {
-        "t": "4:18",
+        "t": "6:23",
         "label": "Challenge"
       },
       {
-        "t": "4:38",
+        "t": "6:48",
         "label": "Next episode"
       }
     ],
@@ -95,13 +95,13 @@
       "id": 2,
       "template": "concept-slide",
       "startSec": 15,
-      "lengthSec": 35,
+      "lengthSec": 72,
       "onScreen": "\"Anatomy of a C++ program\": numbered lines (1. Comments are notes for people; 2. Includes bring in library tools; 3. Main is where the program starts) and an analogy card: a thali: every dish has its own spot on the plate",
       "animation": "Lines spring in one by one with a pop; the analogy card slides in from the right",
       "sfx": [
         "pop"
       ],
-      "narration": "Every C plus plus program has the same parts. A comment is a note for people. The compiler ignores it. An include line brings in library tools. The main function is where the program starts. Statements do the work, and each ends with a semicolon. Think of a thali. Each dish has its own spot on the plate.",
+      "narration": "Every C plus plus program has the same parts. A comment is a note for people. The compiler ignores it. An include line brings in library tools. The main function is where the program starts. Statements do the work, and each ends with a semicolon. Think of a thali. Each dish has its own spot on the plate. Let us look at each part in more detail. Comments help you and other people read the code later. Good programmers write comments that explain why, not what. The include line asks the compiler to read a library first. The main function is the front door of the program. The statements inside it run in order, from top to bottom. The close brace is the last piece.",
       "points": [
         "Comments are notes for people",
         "Includes bring in library tools",
@@ -115,15 +115,15 @@
     {
       "id": 3,
       "template": "code-explain",
-      "startSec": 50,
-      "lengthSec": 40,
+      "startSec": 87,
+      "lengthSec": 66,
       "onScreen": "parts.cpp: a small program with a comment on every important line",
       "animation": "Code types in with key-tick; butter [HL n] highlight sweeps line by line with marker-swipe; explanation card on the right",
       "sfx": [
         "key-tick",
         "marker-swipe"
       ],
-      "narration": "[HL 1] The two slashes start a comment. The compiler skips it. [HL 2] The include line brings in iostream. [HL 4] The main function starts here, and the open brace starts its body. [HL 5] This statement prints a line. A comment can also sit at the end of a line. [HL 6] The return statement ends the program. [HL 7] The close brace ends main.",
+      "narration": "[HL 1] The two slashes start a comment. The compiler skips it. [HL 2] The include line brings in iostream. [HL 4] The main function starts here, and the open brace starts its body. [HL 5] This statement prints a line. A comment can also sit at the end of a line. [HL 6] The return statement ends the program. [HL 7] The close brace ends main. [HL 1] A comment can say who wrote the program or what it does. [HL 5] The comment at the end of this line explains the statement. Use comments with care. Too many comments make code harder to read. [HL 6] The return statement is optional in main, but we write it so the ending is clear. [HL 7] Always match every open brace with a close brace.",
       "code": {
         "file": "parts.cpp",
         "source": "// A small program\n#include <iostream>\n\nint main() {\n    std::cout << \"Anatomy lesson\" << std::endl;  // print a line\n    return 0;\n}",
@@ -133,14 +133,14 @@
     {
       "id": 4,
       "template": "concept-slide",
-      "startSec": 90,
-      "lengthSec": 30,
+      "startSec": 153,
+      "lengthSec": 51,
       "onScreen": "five parts of a program, from top to bottom",
       "animation": "Steps drop in left to right with a pop; connecting arrows draw on; the active step glows butter",
       "sfx": [
         "pop"
       ],
-      "narration": "Here are the parts in order. First, the comment. Second, the include line. Third, the main function. Inside main, the statements do the work. At the end, return sends zero back to the computer. Every program you write follows this shape.",
+      "narration": "Here are the parts in order. First, the comment. Second, the include line. Third, the main function. Inside main, the statements do the work. At the end, return sends zero back to the computer. Every program you write follows this shape. Notice the order from top to bottom. A comment can go anywhere, but the include line must come before the code that uses it. The main function holds the statements. Return is the last statement. If you keep this order, your programs stay easy to read.",
       "diagram": {
         "kind": "flow",
         "caption": "five parts of a program, from top to bottom",
@@ -176,14 +176,14 @@
     {
       "id": 5,
       "template": "code-explain",
-      "startSec": 120,
-      "lengthSec": 40,
+      "startSec": 204,
+      "lengthSec": 52,
       "onScreen": "shortnames.cpp: using namespace std shortens every name",
       "animation": "Second program or a twist on the first; [HL n] and [TRACK name=value] cues drive the variable tracker; output panel fills line by line with a ding per line",
       "sfx": [
         "ding"
       ],
-      "narration": "[HL 2] This using line tells the compiler to look inside std. [HL 5] Now we can write cout and endl without the prefix. The program is shorter. In big projects, the prefix is safer, so we use both styles in this course. [HL 6] The return statement is the same as before.",
+      "narration": "[HL 2] This using line tells the compiler to look inside std. [HL 5] Now we can write cout and endl without the prefix. The program is shorter. In big projects, the prefix is safer, so we use both styles in this course. [HL 6] The return statement is the same as before. [HL 2] A using line saves typing in small programs. But two libraries can use the same name for different things. Then the compiler cannot tell which one you mean. That is why big projects keep the std prefix. [HL 5] For now, both styles are fine.",
       "code": {
         "file": "shortnames.cpp",
         "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Short names work now.\" << endl;\n    return 0;\n}",
@@ -193,20 +193,20 @@
     {
       "id": 6,
       "template": "terminal",
-      "startSec": 160,
-      "lengthSec": 20,
+      "startSec": 256,
+      "lengthSec": 30,
       "onScreen": "Terminal: g++ -std=c++20 shortnames.cpp -o shortnames then ./shortnames",
       "animation": "Dark-blue terminal: the compile command types with key-tick, the run command types, output prints in mint with a ding",
       "sfx": [
         "ding",
         "key-tick"
       ],
-      "narration": "Save the file as shortnames dot cpp. Compile it with g plus plus. Then run the program. The program prints one line. The output is the same as with std colon colon."
+      "narration": "Save the file as shortnames dot cpp. Compile it with g plus plus. Then run the program. The program prints one line. The output is the same as with std colon colon. The compiler treats both styles in the same way, so choose the one that is clear to you."
     },
     {
       "id": 7,
       "template": "concept-slide",
-      "startSec": 180,
+      "startSec": 286,
       "lengthSec": 30,
       "onScreen": "Recap: 4 ideas on one card",
       "animation": "Recap lines tick in one by one with a pop; Xecxec nods after each tick",
@@ -224,20 +224,20 @@
     {
       "id": 8,
       "template": "bug-of-the-day",
-      "startSec": 210,
-      "lengthSec": 40,
+      "startSec": 316,
+      "lengthSec": 59,
       "onScreen": "BUG OF THE DAY: A missing closing brace",
       "animation": "Butter banner drops in with a buzzer; wrong code shakes; the g++ error lines appear in tomato; the fix slides in and the terminal turns mint with a ding",
       "sfx": [
         "buzzer",
         "ding"
       ],
-      "narration": "Bug of the Day. Here the closing brace of main is missing. The compiler reads to the end of the file. Then it says expected close brace at end of input. Every open brace needs a close brace. Add it, and the program builds."
+      "narration": "Bug of the Day. Here the closing brace of main is missing. The compiler reads to the end of the file. Then it says expected close brace at end of input. Every open brace needs a close brace. Add it, and the program builds. Braces come in pairs, like the two covers of a book. When a close brace is missing, the compiler keeps reading until the file ends. Then it complains about the end of input. If you see that message, count your braces. Many editors highlight the matching brace when you click on one, and that helps a lot."
     },
     {
       "id": 9,
       "template": "pun-card",
-      "startSec": 250,
+      "startSec": 375,
       "lengthSec": 8,
       "onScreen": "My program has a comment, an include, and a main. It is a very well-balanced meal.",
       "animation": "Full tomato screen, card flips in with a rimshot, Xecxec snaps his claw",
@@ -249,19 +249,19 @@
     {
       "id": 10,
       "template": "challenge",
-      "startSec": 258,
-      "lengthSec": 20,
+      "startSec": 383,
+      "lengthSec": 25,
       "onScreen": "Task card: label the parts of your own program",
       "animation": "Task card pops in; checklist ticks with a pop; Xecxec holds a tiny pen",
       "sfx": [
         "pop"
       ],
-      "narration": "Your challenge: Write a program with one comment, one include line and one cout. Add a comment at the end of the cout line. Write your answer in the comments."
+      "narration": "Your challenge: Write a program with one comment, one include line and one cout. Add a comment at the end of the cout line. Hint: write the comment first, then the include line, then main. Write your answer in the comments."
     },
     {
       "id": 11,
       "template": "outro",
-      "startSec": 278,
+      "startSec": 408,
       "lengthSec": 15,
       "onScreen": "Next: EP 05 · Variables and types",
       "animation": "Next-episode card slides up with a whoosh; right side stays empty for end-screen elements; sign-off text types in",
@@ -278,7 +278,7 @@
     "why": "Every open brace needs a close brace. The compiler reaches the end of the file and still waits for the last one."
   },
   "pun": "\"My program has a comment, an include, and a main. It is a very well-balanced meal.\"",
-  "challenge": "Write a program with one comment, one include line and one cout. Add a comment at the end of the cout line.",
+  "challenge": "Write a program with one comment, one include line and one cout. Add a comment at the end of the cout line. Hint: write the comment first, then the include line, then main.",
   "challengeAnswer": "Start with a double slash comment. Add the include line for iostream. Write main with a cout line, then add a double slash comment after the semicolon.",
   "shorts": [
     {
