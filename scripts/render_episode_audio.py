@@ -74,11 +74,20 @@ def render_episode(ep: int, lang: str = "c", fake: bool = False) -> dict:
         from narration import load_voice_config, render_scene_audio
 
         voice_cfg = load_voice_config()
+        # Per-course pacing (the C course keeps the base pacing).
+        override = voice_cfg.get("pacingOverrides", {}).get(lang, {})
+        voice_cfg["pacing"] = {**voice_cfg["pacing"], **{k: v for k, v in override.items() if k != "note"}}
 
     out_dir = VOICE_DIR / folder_name(lang, ep)
     out_dir.mkdir(parents=True, exist_ok=True)
     # Marker so render_queue can refuse to render a real video over silent dry-run audio.
     fake_marker = out_dir / ".fake"
+    pace_marker = out_dir / ".pace"
+    if fake:
+        pace_marker.unlink(missing_ok=True)
+    else:
+        # render_all compares this with the current setting and redoes narration if it changed.
+        pace_marker.write_text(str(voice_cfg["pacing"]["lengthScale"]), encoding="utf-8")
     if fake:
         fake_marker.write_text("silent dry-run audio; run without --fake-voice before rendering\n", encoding="utf-8")
     else:
