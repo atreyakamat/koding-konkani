@@ -91,12 +91,15 @@ const log = (line: string): void => {
 const usedMemGB = (): number => (os.totalmem() - os.freemem()) / 1e9;
 
 /** Drops to a lower concurrency when system memory is already tight, per the
- * explicit "lower it if RAM goes above ~13GB" instruction (used, not free). */
+ * owner's RAM limit (15 GB by default; set KK_RAM_LIMIT_GB to change it). Used memory, not free. */
+const RAM_LIMIT_GB = Number(process.env.KK_RAM_LIMIT_GB ?? "15");
 const pickConcurrency = (base: number, label: string): number => {
   const used = usedMemGB();
-  if (used > 12) {
+  if (used > RAM_LIMIT_GB) {
     const lowered = Math.max(1, Math.floor(base / 2));
-    log(`MEMORY ${label}: ${used.toFixed(1)}GB used, dropping concurrency ${base} -> ${lowered}`);
+    log(
+      `MEMORY ${label}: ${used.toFixed(1)}GB used, above the ${RAM_LIMIT_GB}GB limit, dropping concurrency ${base} -> ${lowered}`,
+    );
     return lowered;
   }
   return base;
