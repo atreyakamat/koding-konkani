@@ -50,7 +50,16 @@ export const sceneTemplateFromBibleName = (name: string): SceneTemplate => {
 };
 
 /** Course language. Absent means the original C course. */
-export const LANGS = ["c", "cpp", "python"] as const;
+export const LANGS = [
+  "c",
+  "cpp",
+  "python",
+  "java",
+  "docker",
+  "kubernetes",
+  "jenkins",
+  "sonarqube",
+] as const;
 export type Lang = (typeof LANGS)[number];
 
 /** Folder name of an episode's narration under audio/voice/. The C course keeps its plain `ep001`
@@ -67,13 +76,19 @@ export const DiagramSchema = z.discriminatedUnion("kind", [
   z.object({
     kind: z.literal("flow"),
     ...DiagramBaseSchema,
-    steps: z.array(z.object({ id: z.string(), label: z.string().min(1), detail: z.string() })).min(2).max(6),
+    steps: z
+      .array(z.object({ id: z.string(), label: z.string().min(1), detail: z.string() }))
+      .min(2)
+      .max(6),
   }),
   z.object({
     kind: z.literal("graph"),
     ...DiagramBaseSchema,
     layout: z.enum(["row", "column", "tree"]),
-    nodes: z.array(z.object({ id: z.string(), label: z.string().min(1), sub: z.string() })).min(2).max(8),
+    nodes: z
+      .array(z.object({ id: z.string(), label: z.string().min(1), sub: z.string() }))
+      .min(2)
+      .max(8),
     edges: z.array(z.object({ from: z.string(), to: z.string(), label: z.string() })),
   }),
   z.object({
@@ -86,7 +101,13 @@ export const DiagramSchema = z.discriminatedUnion("kind", [
     kind: z.literal("callstack"),
     ...DiagramBaseSchema,
     steps: z
-      .array(z.object({ step: z.number(), frames: z.array(z.string().min(1)).min(1).max(8), note: z.string() }))
+      .array(
+        z.object({
+          step: z.number(),
+          frames: z.array(z.string().min(1)).min(1).max(8),
+          note: z.string(),
+        }),
+      )
       .min(1)
       .max(12),
   }),

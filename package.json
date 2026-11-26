@@ -23,7 +23,8 @@
     "cpp:ready": "node scripts/check_render_ready.mts --lang cpp",
     "cpp:smoke": "node scripts/smoke_render.mts --lang cpp",
     "cpp:all": "node scripts/render_all.mts",
-    "cpp:render": "node scripts/render_queue.mts --lang cpp"
+    "cpp:render": "node scripts/render_queue.mts --lang cpp",
+    "toolchain:check": "node scripts/check_toolchain.mts"
   },
   "dependencies": {
     "@remotion/captions": "4.0.539",

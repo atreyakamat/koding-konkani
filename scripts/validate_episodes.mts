@@ -7,12 +7,12 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { EpisodeSchema, sceneTemplateFromBibleName } from "../src/lib/episode.ts";
-import { COURSE, episodesDir } from "./lib/course.mts";
+import { COURSE, COURSE_INFO, episodesDir } from "./lib/course.mts";
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([a-zA-Z]:)/, "$1");
 const EPISODES_DIR = episodesDir(ROOT);
-/** The C course has 86 episodes, the Python and C++ courses 90. */
-const EPISODE_COUNT = COURSE === "c" ? 86 : 90;
+/** Episode count per course, from the course registry. */
+const EPISODE_COUNT = COURSE_INFO[COURSE].episodeCount;
 
 // Sanity-check the Bible-name -> slug mapping fails loudly on garbage input,
 // since bible_to_json.py relies on duplicating this same mapping in Python.
@@ -75,7 +75,9 @@ if (missing.length > 0) {
   failures += missing.length;
 }
 
-console.log(`Validated ${files.length} files, ${seenEp.size} distinct episodes, ${failures} failures.`);
+console.log(
+  `Validated ${files.length} files, ${seenEp.size} distinct episodes, ${failures} failures.`,
+);
 if (failures > 0) {
   process.exit(1);
 }
