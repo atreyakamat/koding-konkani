@@ -68,7 +68,7 @@ const KEYWORDS = new Set([
 const TOKEN_PATTERN =
   /(\/\/.*$)|(#\w+.*$)|("(?:[^"\\]|\\.)*")|('(?:[^'\\]|\\.)*')|(\b\d+\.?\d*\b)|(\b[A-Za-z_]\w*\b)|(.)/gm;
 
-export type CodeLang = "c" | "python";
+export type CodeLang = "c" | "python" | "java" | "yaml" | "shell" | "dockerfile";
 
 const PY_KEYWORDS = new Set([
   "and",
@@ -134,9 +134,213 @@ const tokenizePython = (line: string): Token[] => {
   return tokens;
 };
 
-/** Minimal tokenizer: comments, strings, numbers, keywords (C by default; Python with lang="python"). */
+const JAVA_KEYWORDS = new Set([
+  "abstract",
+  "assert",
+  "boolean",
+  "break",
+  "byte",
+  "case",
+  "catch",
+  "char",
+  "class",
+  "const",
+  "continue",
+  "default",
+  "do",
+  "double",
+  "else",
+  "enum",
+  "extends",
+  "final",
+  "finally",
+  "float",
+  "for",
+  "goto",
+  "if",
+  "implements",
+  "import",
+  "instanceof",
+  "int",
+  "interface",
+  "long",
+  "native",
+  "new",
+  "package",
+  "private",
+  "protected",
+  "public",
+  "return",
+  "short",
+  "static",
+  "strictfp",
+  "super",
+  "switch",
+  "synchronized",
+  "this",
+  "throw",
+  "throws",
+  "transient",
+  "try",
+  "void",
+  "volatile",
+  "while",
+  "var",
+  "record",
+  "yield",
+  "sealed",
+  "permits",
+  "true",
+  "false",
+  "null",
+]);
+
+/** comment | text block or string | annotation | number | word | other. */
+const JAVA_PATTERN =
+  /(\/\/.*$)|("""|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|(@\w+)|(\b\d[\d_]*\.?\d*[LlFfDd]?\b)|(\b[A-Za-z_]\w*\b)|(.)/g;
+
+const tokenizeJava = (line: string): Token[] => {
+  const tokens: Token[] = [];
+  for (const match of line.matchAll(JAVA_PATTERN)) {
+    const [, comment, str, annotation, number, word, other] = match;
+    if (comment !== undefined) tokens.push({ text: comment, color: "rgba(17, 17, 17, 0.45)" });
+    else if (str !== undefined) tokens.push({ text: str, color: "#1f7a4c" });
+    else if (annotation !== undefined) tokens.push({ text: annotation, color: palette.tomato });
+    else if (number !== undefined) tokens.push({ text: number, color: palette.darkBlue });
+    else if (word !== undefined) {
+      const isKeyword = JAVA_KEYWORDS.has(word);
+      tokens.push({
+        text: word,
+        color: isKeyword ? palette.darkBlue : palette.ink,
+        bold: isKeyword,
+      });
+    } else if (other !== undefined) tokens.push({ text: other, color: palette.ink });
+  }
+  return tokens;
+};
+
+const YAML_PATTERN =
+  /(#.*$)|("(?:[^"\\]|\\.)*"|'[^']*')|((?<=^\s*-?\s*)[\w.\-/]+(?=\s*:))|(\b(?:true|false|null|yes|no|on|off)\b)|(\b\d[\d.]*\b)|(.)/g;
+
+const tokenizeYaml = (line: string): Token[] => {
+  const tokens: Token[] = [];
+  for (const match of line.matchAll(YAML_PATTERN)) {
+    const [, comment, str, key, literal, number, other] = match;
+    if (comment !== undefined) tokens.push({ text: comment, color: "rgba(17, 17, 17, 0.45)" });
+    else if (str !== undefined) tokens.push({ text: str, color: "#1f7a4c" });
+    else if (key !== undefined) tokens.push({ text: key, color: palette.darkBlue, bold: true });
+    else if (literal !== undefined) tokens.push({ text: literal, color: palette.tomato });
+    else if (number !== undefined) tokens.push({ text: number, color: palette.darkBlue });
+    else if (other !== undefined) tokens.push({ text: other, color: palette.ink });
+  }
+  return tokens;
+};
+
+const SHELL_KEYWORDS = new Set([
+  "if",
+  "then",
+  "else",
+  "elif",
+  "fi",
+  "for",
+  "in",
+  "do",
+  "done",
+  "while",
+  "until",
+  "case",
+  "esac",
+  "function",
+  "return",
+  "exit",
+  "export",
+  "local",
+  "set",
+  "unset",
+  "readonly",
+  "cd",
+  "echo",
+  "sudo",
+]);
+
+const SHELL_PATTERN =
+  /(#.*$)|("(?:[^"\\]|\\.)*"|'[^']*')|(\$\{?\w+\}?)|(--?[\w-]+)|(\b[A-Za-z_][\w-]*\b)|(.)/g;
+
+const tokenizeShell = (line: string): Token[] => {
+  const tokens: Token[] = [];
+  for (const match of line.matchAll(SHELL_PATTERN)) {
+    const [, comment, str, variable, flag, word, other] = match;
+    if (comment !== undefined) tokens.push({ text: comment, color: "rgba(17, 17, 17, 0.45)" });
+    else if (str !== undefined) tokens.push({ text: str, color: "#1f7a4c" });
+    else if (variable !== undefined) tokens.push({ text: variable, color: palette.tomato });
+    else if (flag !== undefined) tokens.push({ text: flag, color: palette.darkBlue });
+    else if (word !== undefined) {
+      const isKeyword = SHELL_KEYWORDS.has(word);
+      tokens.push({
+        text: word,
+        color: isKeyword ? palette.darkBlue : palette.ink,
+        bold: isKeyword,
+      });
+    } else if (other !== undefined) tokens.push({ text: other, color: palette.ink });
+  }
+  return tokens;
+};
+
+const DOCKERFILE_INSTRUCTIONS = new Set([
+  "ARG",
+  "CMD",
+  "COPY",
+  "ENTRYPOINT",
+  "ENV",
+  "EXPOSE",
+  "FROM",
+  "HEALTHCHECK",
+  "LABEL",
+  "ONBUILD",
+  "RUN",
+  "SHELL",
+  "STOPSIGNAL",
+  "USER",
+  "VOLUME",
+  "WORKDIR",
+  "ADD",
+  "AS",
+]);
+
+const DOCKERFILE_PATTERN =
+  /(#.*$)|("(?:[^"\\]|\\.)*"|'[^']*')|(--?[\w-]+(?:=[^\s]*)?)|(\b[A-Za-z0-9_][\w.-]*\b)|(.)/g;
+
+const tokenizeDockerfile = (line: string): Token[] => {
+  const tokens: Token[] = [];
+  let firstWord = true;
+  for (const match of line.matchAll(DOCKERFILE_PATTERN)) {
+    const [, comment, str, flag, word, other] = match;
+    if (comment !== undefined) tokens.push({ text: comment, color: "rgba(17, 17, 17, 0.45)" });
+    else if (str !== undefined) tokens.push({ text: str, color: "#1f7a4c" });
+    else if (flag !== undefined) tokens.push({ text: flag, color: palette.darkBlue });
+    else if (word !== undefined) {
+      const isInstruction = firstWord && DOCKERFILE_INSTRUCTIONS.has(word.toUpperCase());
+      tokens.push({
+        text: word,
+        color: isInstruction ? palette.tomato : palette.ink,
+        bold: isInstruction,
+      });
+      if (firstWord) firstWord = false;
+    } else if (other !== undefined) {
+      if (other.trim() !== "") firstWord = false;
+      tokens.push({ text: other, color: palette.ink });
+    }
+  }
+  return tokens;
+};
+
+/** Minimal tokenizer: comments, strings, numbers, keywords (C by default; Python, Java, YAML, shell and Dockerfile by lang). */
 export const tokenizeLine = (line: string, lang: CodeLang = "c"): Token[] => {
   if (lang === "python") return tokenizePython(line);
+  if (lang === "java") return tokenizeJava(line);
+  if (lang === "yaml") return tokenizeYaml(line);
+  if (lang === "shell") return tokenizeShell(line);
+  if (lang === "dockerfile") return tokenizeDockerfile(line);
   const tokens: Token[] = [];
   for (const match of line.matchAll(TOKEN_PATTERN)) {
     const [, comment, preprocessor, dquote, squote, number, word, other] = match;
